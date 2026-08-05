@@ -1981,3 +1981,40 @@ textarea:focus-visible {
     border-color: var(--border-dark);
     background: var(--bg-card);
 }
+
+/* Mobile Responsive Global Navbar Override */
+@media(max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 0;
+        position: relative; /* Stays sticky or scrolls flow on mobile */
+    }
+    .nav-container {
+        flex-direction: column;
+        gap: 0.55rem;
+        align-items: center;
+        text-align: center;
+    }
+    .nav-links {
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+    }
+    .nav-btn {
+        font-size: 11px;
+        padding: 0.25rem 0.65rem;
+    }
+    /* Compensate page padding for relative navbar */
+    .hero {
+        padding-top: 2rem;
+    }
+    main {
+        padding-top: 0;
+    }
+    /* Compensate padding on internal subpages */
+    #main-content[style*="padding-top: 120px"] {
+        padding-top: 20px !important;
+    }
+}
