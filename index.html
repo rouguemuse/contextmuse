@@ -23,7 +23,7 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Top Navigation Header -->
+    <!-- Navbar -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
             <a href="/" class="logo">Context &amp; Muse</a>
@@ -32,7 +32,7 @@
                 <a href="/jayme/#selected-work" class="nav-link">Selected Work</a>
                 <a href="/creative/" class="nav-link">Creative Work</a>
                 <a href="/jayme/#about-jayme" class="nav-link">About Jayme</a>
-                <a href="#contact" class="nav-btn">Contact</a>
+                <a href="/#contact" class="nav-btn">Contact</a>
             </div>
         </div>
     </nav>
@@ -88,26 +88,31 @@
                         <div class="system-card-details">
                             <h4 class="capabilities-title">Interface Demonstration</h4>
                             
-                            <!-- Signal CSS Mockup -->
-                            <div class="mockup-container" aria-label="Signal illustrative interface demonstration">
-                                <div class="mockup-header-bar">
-                                    <span class="mockup-header-title">SIGNAL DIAGNOSTIC RUN</span>
-                                    <span class="mockup-subtext">Active POS Log</span>
+                            <!-- Signal Priority Matrix Visual -->
+                            <div class="mockup-container visual-matrix" aria-label="Signal Priority Matrix">
+                                <div class="matrix-row first-priority">
+                                    <div class="matrix-info">
+                                        <span class="matrix-issue">Labor Overrun</span>
+                                        <span class="matrix-stats">Impact: <strong>High</strong> / Effort: <strong>Low</strong></span>
+                                    </div>
+                                    <span class="matrix-action action-red">Address First</span>
                                 </div>
-                                <div class="mockup-row high">
-                                    <span>ToastPOS / Override #1024</span>
-                                    <span class="mockup-tag high">HIGH AUDIT</span>
+                                <div class="matrix-row">
+                                    <div class="matrix-info">
+                                        <span class="matrix-issue">Manager Overrides</span>
+                                        <span class="matrix-stats">Impact: <strong>Med</strong> / Effort: <strong>Low</strong></span>
+                                    </div>
+                                    <span class="matrix-action">Audit</span>
                                 </div>
-                                <div class="mockup-row medium">
-                                    <span>Labor Cost > Revenue (14:00)</span>
-                                    <span class="mockup-tag medium">MARGIN EXCEED</span>
+                                <div class="matrix-row">
+                                    <div class="matrix-info">
+                                        <span class="matrix-issue">Clock-Out Drift</span>
+                                        <span class="matrix-stats">Impact: <strong>Low</strong> / Effort: <strong>Low</strong></span>
+                                    </div>
+                                    <span class="matrix-action">Monitor</span>
                                 </div>
-                                <div class="mockup-row low">
-                                    <span>Missing clock-out verification</span>
-                                    <span class="mockup-tag low">LOG MISS</span>
-                                </div>
-                                <span class="mockup-label">Illustrative interface demonstration using synthetic data.</span>
                             </div>
+                            <span class="visual-disclosure">Illustrative priority matrix using synthetic data.</span>
                         </div>
                     </article>
 
@@ -130,32 +135,32 @@
                         <div class="system-card-details">
                             <h4 class="capabilities-title">Interface Demonstration</h4>
                             
-                            <!-- GenSort CSS Mockup -->
-                            <div class="mockup-container" aria-label="GenSort illustrative interface demonstration">
-                                <div class="mockup-header-bar">
-                                    <span class="mockup-header-title">GENSORT DIRECTORY GRID</span>
-                                    <span class="mockup-subtext">Local Files</span>
+                            <!-- GenSort Asset Workspace Visual -->
+                            <div class="mockup-container visual-workspace" aria-label="GenSort Asset Workspace">
+                                <div class="workspace-top">
+                                    <span class="workspace-folder">Folder: /brand-photography</span>
                                 </div>
-                                <div class="mockup-grid-layout">
-                                    <div class="mockup-grid-item">
-                                        <span class="mockup-subtext">Hero_B.jpg</span>
-                                        <span class="mockup-tag low" style="align-self: flex-start;">Score: 92</span>
+                                <div class="workspace-contact-sheet">
+                                    <div class="asset-frame asset-keep">
+                                        <div class="asset-img">🌄</div>
+                                        <div class="asset-meta">
+                                            <span class="asset-name">hero.png</span>
+                                            <span class="badge badge-teal">Keep</span>
+                                        </div>
                                     </div>
-                                    <div class="mockup-grid-item">
-                                        <span class="mockup-subtext">Hero_B_alt.jpg</span>
-                                        <span class="mockup-tag high" style="align-self: flex-start;">Duplicate</span>
-                                    </div>
-                                    <div class="mockup-grid-item">
-                                        <span class="mockup-subtext">Sidebar_A.png</span>
-                                        <span class="mockup-tag low" style="align-self: flex-start;">Score: 88</span>
-                                    </div>
-                                    <div class="mockup-grid-item">
-                                        <span class="mockup-subtext">Feature_C.jpg</span>
-                                        <span class="mockup-tag medium" style="align-self: flex-start;">Score: 70</span>
+                                    <div class="asset-frame asset-duplicate">
+                                        <div class="asset-img">🌄</div>
+                                        <div class="asset-meta">
+                                            <span class="asset-name">hero-v2.png</span>
+                                            <span class="badge badge-red">Duplicate</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <span class="mockup-label">Illustrative interface demonstration using synthetic data.</span>
+                                <div class="comparison-bar">
+                                    Compare: <strong>300 DPI</strong> vs <strong>72 DPI</strong>
+                                </div>
                             </div>
+                            <span class="visual-disclosure">Illustrative asset workspace using synthetic data.</span>
                         </div>
                     </article>
 
@@ -176,27 +181,27 @@
                         <div class="system-card-details">
                             <h4 class="capabilities-title">Interface Demonstration</h4>
                             
-                            <!-- Message Analysis CSS Mockup -->
-                            <div class="mockup-container" aria-label="Message Analysis illustrative interface demonstration">
-                                <div class="mockup-header-bar">
-                                    <span class="mockup-header-title">CONTRADICTION FINDER</span>
-                                    <span class="mockup-subtext">Statement Audit</span>
-                                </div>
-                                <div class="mockup-timeline">
-                                    <div class="mockup-timeline-item">
-                                        <strong style="color:var(--accent-red); display:block; margin-bottom:0.15rem;">Statement A:</strong>
-                                        <span class="mockup-subtext">"I was in Houston during the incident week."</span>
+                            <!-- Message Analysis Timeline Visual -->
+                            <div class="mockup-container visual-timeline" aria-label="Message Analysis Mismatch Timeline">
+                                <div class="timeline-container">
+                                    <div class="timeline-step">
+                                        <span class="time-label">09:00 AM</span>
+                                        <div class="statement-card statement-teal">
+                                            "Ready at <span class="hl-teal">dock 4</span>"
+                                        </div>
                                     </div>
-                                    <div class="mockup-timeline-item">
-                                        <strong style="color:var(--accent-red); display:block; margin-bottom:0.15rem;">Statement B:</strong>
-                                        <span class="mockup-subtext">"I was traveling in Austin during that entire week."</span>
+                                    <div class="timeline-line-connector">
+                                        <span class="mismatch-label">Conflict</span>
+                                    </div>
+                                    <div class="timeline-step">
+                                        <span class="time-label">09:15 AM</span>
+                                        <div class="statement-card statement-red">
+                                            "Delayed <span class="hl-red">in transit</span>"
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mockup-subtext" style="color:var(--accent-gold); text-align:center; font-weight:bold; margin-top:0.25rem;">
-                                    ⚠ Factual Variance: Location Discrepancy
-                                </div>
-                                <span class="mockup-label">Illustrative interface demonstration using synthetic data.</span>
                             </div>
+                            <span class="visual-disclosure">Illustrative contradiction timeline using synthetic data.</span>
                         </div>
                     </article>
 
@@ -217,29 +222,43 @@
                         <div class="system-card-details">
                             <h4 class="capabilities-title">Interface Demonstration</h4>
                             
-                            <!-- Record Integrity CSS Mockup -->
-                            <div class="mockup-container" aria-label="Record Integrity illustrative interface demonstration">
-                                <div class="mockup-header-bar">
-                                    <span class="mockup-header-title">INTEGRITY LEDGER</span>
-                                    <span class="mockup-subtext">Hash Checks</span>
+                            <!-- Record Integrity Provenance Flow Visual -->
+                            <div class="mockup-container visual-flow" aria-label="Record Integrity Provenance Flow">
+                                <div class="flow-layout">
+                                    <div class="flow-step">
+                                        <span class="step-label">Original</span>
+                                        <div class="flow-card">
+                                            <span class="card-title">File</span>
+                                            <span class="card-val">data.csv</span>
+                                        </div>
+                                    </div>
+                                    <div class="flow-connector">&rarr;</div>
+                                    <div class="flow-step">
+                                        <span class="step-label">Hash</span>
+                                        <div class="flow-card hash-card">
+                                            <span class="card-title">Stored</span>
+                                            <span class="card-val font-mono">#b7a2</span>
+                                        </div>
+                                    </div>
+                                    <div class="flow-connector">&rarr;</div>
+                                    <div class="flow-step">
+                                        <span class="step-label">Current</span>
+                                        <div class="flow-card">
+                                            <span class="card-title">File</span>
+                                            <span class="card-val">data.csv</span>
+                                        </div>
+                                    </div>
+                                    <div class="flow-connector">&rarr;</div>
+                                    <div class="flow-step">
+                                        <span class="step-label">Result</span>
+                                        <div class="flow-result-card result-verified">
+                                            <span class="card-title">Status</span>
+                                            <span class="result-badge">Verified</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mockup-ledger-row">
-                                    <span>Import File A.csv</span>
-                                    <span style="color: var(--accent-lime); font-weight:bold;">[d3a4b9 - OK]</span>
-                                </div>
-                                <div class="mockup-ledger-row">
-                                    <span>Edit Log B.txt</span>
-                                    <span style="color: var(--accent-lime); font-weight:bold;">[8c2b7f - OK]</span>
-                                </div>
-                                <div class="mockup-ledger-row" style="border-bottom:none;">
-                                    <span>Import File C.csv</span>
-                                    <span style="color: var(--accent-red); font-weight:bold;">[f1a8e9 - ALERT]</span>
-                                </div>
-                                <div class="mockup-subtext" style="color:#A1A1AA; font-size:9px; text-align:center; margin-top:0.25rem;">
-                                    Verification Status: Ledger modification audit alert
-                                </div>
-                                <span class="mockup-label">Illustrative interface demonstration using synthetic data.</span>
                             </div>
+                            <span class="visual-disclosure">Illustrative provenance flow using synthetic data.</span>
                         </div>
                     </article>
                 </div>
@@ -302,14 +321,14 @@
                         <div class="system-card-meta">
                             <div>
                                 <span class="system-category" style="color: var(--accent-red);">Allegorical Memoir &bull; Completed Manuscript</span>
-                                <h3 class="system-title" style="font-family: var(--font-serif); font-size: 2.5rem; line-height: 1.15; margin-bottom: 1.5rem;">
+                                <h3 class="system-title" style="font-family: var(--font-serif); font-size: 2.8rem; line-height: 1.15; margin-bottom: 2rem;">
                                     How to Explain Yourself to Wolves
                                 </h3>
                                 
                                 <!-- Approved Project Statement -->
-                                <p style="font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; color: var(--text-primary); border-left: 2px solid var(--accent-red); padding-left: 1.5rem; margin: 1.5rem 0; line-height: 1.55;">
+                                <p style="font-family: var(--font-serif); font-size: 1.5rem; font-style: italic; color: var(--text-primary); border-left: 2px solid var(--accent-red); padding-left: 1.5rem; margin: 2.5rem 0; line-height: 1.55;">
                                     "Some problems need a system. Others need a language."
-                                    <span style="display:block; font-family:var(--font-mono); font-size:11px; font-style:normal; color:var(--text-secondary); margin-top:0.5rem; text-transform:uppercase;">Project Statement</span>
+                                    <span style="display:block; font-family:var(--font-mono); font-size:11px; font-style:normal; color:var(--text-secondary); margin-top:0.75rem; text-transform:uppercase;">Project Statement</span>
                                 </p>
 
                                 <p class="system-description" style="font-size: 1.05rem;">
