@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Guide Compilation | Jayme Volstad</title>
+    <meta name="description" content="A structured resource-compilation system designed to turn fragmented public information into a searchable, validated directory.">
+    <link rel="canonical" href="https://contextmuse.com/creative/resource-guide/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://contextmuse.com/creative/resource-guide/">
+    <meta property="og:title" content="Resource Guide Compilation | Jayme Volstad">
+    <meta property="og:description" content="Searchable demonstration resource guide showing public-interest information architecture and category filtering.">
+    <meta property="og:image" content="https://contextmuse.com/social-preview.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo">Context &amp; Muse</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/jayme/#selected-work" class="nav-link">Selected Work</a>
+                <a href="/creative/" class="nav-link">Creative Work</a>
+                <a href="/jayme/#about-jayme" class="nav-link">About Jayme</a>
+                <a href="mailto:jayme@contextmuse.com" class="nav-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" style="padding-top: 120px; padding-bottom: 6rem;">
+        <div class="container">
+            <!-- Back to Hub -->
+            <div style="margin-bottom: 2rem;">
+                <a href="/creative/" style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; color: var(--accent-teal); font-weight: bold;">&larr; Back to Creative Work</a>
+            </div>
+
+            <!-- Header Content -->
+            <div class="systems-header" style="max-width: 850px;">
+                <span class="eyebrow">Information Architecture &middot; Research Synthesis &middot; Public-Interest Design</span>
+                <h1 style="margin: 0.5rem 0 1.5rem 0;">Resource Guide Compilation</h1>
+                <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    A structured resource-compilation system designed to turn fragmented public information into a guide people can search, understand, verify, and act on.
+                </p>
+                <div class="system-disclosure" style="border-left-color: var(--accent-teal); margin-top: 0; background: var(--bg-panel);">
+                    <strong>Interdisciplinary Framing:</strong> Featured in both Creative Work and Product &amp; Experience Design because the project combines public-interest research, content systems, taxonomy design, and interface development.
+                </div>
+            </div>
+
+            <!-- Permanent Fictional Demo Notice -->
+            <div style="background: rgba(197, 160, 89, 0.1); border: 1px solid var(--accent-gold); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; line-height: 1.6;">
+                <h3 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 700; color: #8a6210; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span>&#9888;</span> Permanent Notice
+                </h3>
+                <p style="font-size: 0.95rem; color: var(--text-primary);">
+                    <strong>Demonstration only:</strong> The organizations, availability details, eligibility rules, and service records shown below are fictional examples created to demonstrate the directory’s information architecture and filtering system. This is not a live service directory.
+                </p>
+            </div>
+
+            <!-- Dashboard Interactive Search Interface -->
+            <section class="dashboard-container" aria-label="Interactive Search Directory">
+                <div class="search-controls">
+                    <!-- Text Search & Dropdowns -->
+                    <div class="search-wrapper">
+                        <label for="search-input" class="filter-label">Search Fictional Directory</label>
+                        <input type="text" id="search-input" class="search-input-field" placeholder="Search by name, eligibility, or services..." aria-controls="directory-results">
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                            <div>
+                                <label for="geography-select" class="filter-label">Geography</label>
+                                <select id="geography-select" class="form-input" style="padding: 0.5rem 0.75rem; background: var(--bg-paper);">
+                                    <option value="ALL">All Regions</option>
+                                    <option value="North County">North County</option>
+                                    <option value="Harbor District">Harbor District</option>
+                                    <option value="Metro Area">Metro Area</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="accessibility-select" class="filter-label">Accessibility</label>
+                                <select id="accessibility-select" class="form-input" style="padding: 0.5rem 0.75rem; background: var(--bg-paper);">
+                                    <option value="ALL">All Accessibility</option>
+                                    <option value="Wheelchair Accessible">Wheelchair Accessible</option>
+                                    <option value="Translation Services">Translation Services</option>
+                                    <option value="Sign Language">Sign Language</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Filters -->
+                    <div class="filter-wrapper">
+                        <span class="filter-label">Service Category</span>
+                        <div class="filter-buttons" id="category-buttons" role="group" aria-label="Category Filters">
+                            <button type="button" class="filter-btn active" data-category="ALL">All</button>
+                            <button type="button" class="filter-btn" data-category="Housing">Housing</button>
+                            <button type="button" class="filter-btn" data-category="Food">Food</button>
+                            <button type="button" class="filter-btn" data-category="Employment">Employment</button>
+                            <button type="button" class="filter-btn" data-category="Transportation">Transportation</button>
+                            <button type="button" class="filter-btn" data-category="Education">Education</button>
+                            <button type="button" class="filter-btn" data-category="Emergency">Emergency</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Area -->
+                <div class="results-summary">
+                    <span class="results-count" id="count-label">Showing 0 of 0 records</span>
+                    <button type="button" class="clear-filters-btn" id="clear-filters" style="display: none;">Clear all filters</button>
+                </div>
+
+                <!-- Directory Grid / Table (Desktop) -->
+                <div class="directory-table-wrapper" id="directory-results">
+                    <table class="directory-table" id="results-table">
+                        <thead>
+                            <tr>
+                                <th>Provider / Organization</th>
+                                <th>Category</th>
+                                <th>Eligibility &amp; Coverage</th>
+                                <th>Services Offered</th>
+                                <th>Intake Requirements</th>
+                                <th>Status / Provenance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Card Presentation (Mobile) -->
+                <div class="mobile-cards-wrapper" id="results-cards">
+                    <!-- Injected by JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <h3>No matching records found</h3>
+                    <p>Try clearing your search text or selecting a different category filter.</p>
+                </div>
+            </section>
+
+            <!-- Diagnostic Process & IA Details -->
+            <section style="margin-top: 4rem;">
+                <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1.5rem;">System &amp; Content Architecture</h2>
+                <p style="margin-bottom: 1.5rem;">
+                    This project focuses on normalizing scattered, inconsistent public service listings into a clean database. When designing public-interest guides, the content architecture must account for the changing nature of resources, providing users with clear validation indicators:
+                </p>
+                <div class="contribute-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 2rem;">
+                    <div class="contribute-card">
+                        <h3>Taxonomy Design</h3>
+                        <p>Defining service classifications (Housing, Food, Transportation) so users filter resources based on their immediate crisis level.</p>
+                    </div>
+                    <div class="contribute-card">
+                        <h3>Plain Language Translation</h3>
+                        <p>Converting dense administrative eligibility criteria into readable lists of required documents and cost points.</p>
+                    </div>
+                    <div class="contribute-card">
+                        <h3>Source Traceability</h3>
+                        <p>Providing clear metadata (Verification status, review dates) so operators trust the currency of the directory data.</p>
+                    </div>
+                </div>
+
+                <div class="system-disclosure" style="margin-top: 2.5rem;">
+                    <strong>Boundary Notice:</strong> Resource details can change. The directory organizes and summarizes information but does not replace confirmation with the listed provider or qualified professionals.
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <div class="logo">Jayme Volstad</div>
+                <p>Writing, operations, and implementation. Houston, TX.</p>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2026 Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript logic for Dashboard search & filtering -->
+    <script>
+        // Synthetic fictional dataset
+        const syntheticResources = [
+            {
+                id: 1,
+                name: "Northstar Demonstration Services",
+                category: "Housing",
+                geography: "North County",
+                accessibility: "Wheelchair Accessible",
+                eligibility: "Income below 150% poverty line, county residency proof required.",
+                services: "Emergency housing, rental subsidy vouchers, utility payment assistance.",
+                intake: "Walk-in intake available, or call portal for scheduling.",
+                requiredDocs: "Photo ID, lease agreement, proof of income.",
+                cost: "Free",
+                source: "Demonstration record",
+                status: "Synthetic example",
+                lastReviewed: "Not applicable"
+            },
+            {
+                id: 2,
+                name: "Harbor Sample Resource Center",
+                category: "Food",
+                geography: "Harbor District",
+                accessibility: "Sign Language",
+                eligibility: "Fictional open access to all residents in district.",
+                services: "Hot community meals, shelf-stable food box distributions.",
+                intake: "Open dining doors daily, walk-in registration.",
+                requiredDocs: "Self-declaration of residency.",
+                cost: "Free",
+                source: "Demonstration record",
+                status: "Synthetic example",
+                lastReviewed: "Not applicable"
+            },
+            {
+                id: 3,
+                name: "Juniper Community Demo",
+                category: "Employment",
+                geography: "Metro Area",
+                accessibility: "Translation Services",
+                eligibility: "Adults seeking culinary or service industry career training.",
+                services: "Job coaching, resume review classes, hospitality placement matching.",
+                intake: "Application submission followed by selection interview.",
+                requiredDocs: "Photo ID, training authorization.",
+                cost: "Funded (No cost to participant)",
+                source: "Demonstration record",
+                status: "Synthetic example",
+                lastReviewed: "Not applicable"
+            },
+            {
+                id: 4,
+                name: "Example Housing Network",
+                category: "Housing",
+                geography: "Metro Area",
+                accessibility: "Wheelchair Accessible",
+                eligibility: "Residents experiencing temporary housing instability.",
+                services: "Short-term shelter housing, casework support.",
+                intake: "Referral from central intake agency required.",
+                requiredDocs: "Referral confirmation ID, photo ID.",
+                cost: "Free",
+                source: "Demonstration record",
+                status: "Synthetic example",
+                lastReviewed: "Not applicable"
+            },
+            {
+                id: 5,
+                name: "Sample Provider A",
+                category: "Emergency",
+                geography: "North County",
+                accessibility: "Translation Services",
+                eligibility: "Immediate emergency assistance requirements.",
+                services: "Extreme weather shelters, crisis blankets, basic supply kits.",
+                intake: "Immediate walk-in entry during weather emergencies.",
+                requiredDocs: "None required for entry.",
+                cost: "Free",
+                source: "Demonstration record",
+                status: "Synthetic example",
+                lastReviewed: "Not applicable"
+            },
+            {
+                id: 6,
+                name: "Apex Transit Demo",
+                category: "Transportation",
+                geography: "Harbor District",
+                accessibility: "Wheelchair Accessible",
+                eligibility: "Seniors and individuals with verified mobility restrictions.",
+                services: "Subsidized ride vouchers, shuttle scheduling assistance.",
+                intake: "Online portal registration or phone schedule booking.",
+                requiredDocs: "Mobility verification certificate, photo ID.",
+                cost: "Muted cost ($1 per ride voucher)",
+                source: "Demonstration record",
+                status: "Synthetic example",
+                lastReviewed: "Not applicable"
+            },
+            {
+                id: 7,
+                name: "Beacon Learning Demo",
+                category: "Education",
+                geography: "Metro Area",
+                accessibility: "Sign Language",
+                eligibility: "Adult students seeking ESL or literacy classes.",
+                services: "Night classes, digital learning lab access, 1-on-1 tutoring.",
+                intake: "Walk-in registration during first week of any month.",
+                requiredDocs: "Residency proof (any utility bill), ID.",
+                cost: "Free",
+                source: "Demonstration record",
+                status: "Synthetic example",
+                lastReviewed: "Not applicable"
+            }
+        ];
+
+        // UI State
+        let activeCategory = "ALL";
+        let activeGeography = "ALL";
+        let activeAccessibility = "ALL";
+        let searchQuery = "";
+
+        // Elements
+        const searchInput = document.getElementById("search-input");
+        const geographySelect = document.getElementById("geography-select");
+        const accessibilitySelect = document.getElementById("accessibility-select");
+        const categoryButtons = document.querySelectorAll("#category-buttons .filter-btn");
+        const countLabel = document.getElementById("count-label");
+        const clearFiltersBtn = document.getElementById("clear-filters");
+        const tableBody = document.getElementById("table-body");
+        const cardsBody = document.getElementById("results-cards");
+        const resultsTableWrapper = document.getElementById("directory-results");
+        const emptyState = document.getElementById("empty-state");
+
+        // Category Filter Event Listeners
+        categoryButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                categoryButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                activeCategory = button.getAttribute("data-category");
+                render();
+            });
+        });
+
+        // Other Controls Event Listeners
+        searchInput.addEventListener("keyup", (e) => {
+            searchQuery = e.target.value.toLowerCase();
+            render();
+        });
+
+        geographySelect.addEventListener("change", (e) => {
+            activeGeography = e.target.value;
+            render();
+        });
+
+        accessibilitySelect.addEventListener("change", (e) => {
+            activeAccessibility = e.target.value;
+            render();
+        });
+
+        clearFiltersBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            searchQuery = "";
+            activeCategory = "ALL";
+            activeGeography = "ALL";
+            activeAccessibility = "ALL";
+            geographySelect.value = "ALL";
+            accessibilitySelect.value = "ALL";
+            
+            categoryButtons.forEach(btn => {
+                btn.classList.remove("active");
+                if (btn.getAttribute("data-category") === "ALL") {
+                    btn.classList.add("active");
+                }
+            });
+            render();
+        });
+
+        // Filter and Render Logic
+        function render() {
+            // 1. Filter data
+            const filtered = syntheticResources.filter(item => {
+                // Category match
+                if (activeCategory !== "ALL" && item.category !== activeCategory) {
+                    return false;
+                }
+                // Geography match
+                if (activeGeography !== "ALL" && item.geography !== activeGeography) {
+                    return false;
+                }
+                // Accessibility match
+                if (activeAccessibility !== "ALL" && item.accessibility !== activeAccessibility) {
+                    return false;
+                }
+                // Text search match
+                if (searchQuery.trim() !== "") {
+                    const matchesName = item.name.toLowerCase().includes(searchQuery);
+                    const matchesEligibility = item.eligibility.toLowerCase().includes(searchQuery);
+                    const matchesServices = item.services.toLowerCase().includes(searchQuery);
+                    return matchesName || matchesEligibility || matchesServices;
+                }
+                return true;
+            });
+
+            // Update filters button visibility
+            const isFilterActive = activeCategory !== "ALL" || activeGeography !== "ALL" || activeAccessibility !== "ALL" || searchQuery !== "";
+            clearFiltersBtn.style.display = isFilterActive ? "inline-block" : "none";
+
+            // Update counts label
+            countLabel.textContent = `Showing ${filtered.length} of ${syntheticResources.length} fictional records`;
+
+            // Clear previous outputs
+            tableBody.innerHTML = "";
+            cardsBody.innerHTML = "";
+
+            if (filtered.length === 0) {
+                resultsTableWrapper.style.display = "none";
+                cardsBody.style.display = "none";
+                emptyState.style.display = "block";
+            } else {
+                resultsTableWrapper.style.display = "";
+                cardsBody.style.display = "";
+                emptyState.style.display = "none";
+
+                filtered.forEach(item => {
+                    // Inject Row (Desktop)
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>
+                            <strong style="display:block; font-size:1.05rem;">${item.name}</strong>
+                            <span class="table-tag" style="margin-top:0.25rem;">${item.geography}</span>
+                        </td>
+                        <td>
+                            <span class="status-badge working-prototype" style="font-size:0.65rem; background:transparent; padding:0;">${item.category}</span>
+                        </td>
+                        <td>
+                            <p style="font-size:0.88rem; color:var(--text-primary);">${item.eligibility}</p>
+                            <span class="table-tag" style="margin-top:0.5rem; background:rgba(15,118,110,0.05); color:var(--accent-teal);">${item.accessibility}</span>
+                        </td>
+                        <td style="font-size:0.88rem; color:var(--text-secondary);">${item.services}</td>
+                        <td>
+                            <strong style="display:block; font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary);">Intake:</strong>
+                            <span style="font-size:0.88rem;">${item.intake}</span>
+                            <strong style="display:block; font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); margin-top:0.5rem;">Cost:</strong>
+                            <span style="font-size:0.88rem;">${item.cost}</span>
+                        </td>
+                        <td>
+                            <span class="table-source-lbl">Source: ${item.source}</span><br>
+                            <span class="table-source-lbl">Status: ${item.status}</span><br>
+                            <span class="table-source-lbl">Reviewed: ${item.lastReviewed}</span>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+
+                    // Inject Card (Mobile)
+                    const card = document.createElement("div");
+                    card.className = "resource-mobile-card";
+                    card.innerHTML = `
+                        <div class="mobile-card-header">
+                            <span class="mobile-card-title">${item.name}</span>
+                            <span class="table-tag">${item.geography}</span>
+                        </div>
+                        <div class="mobile-card-row">
+                            <strong>Category</strong>
+                            <span>${item.category}</span>
+                        </div>
+                        <div class="mobile-card-row">
+                            <strong>Eligibility</strong>
+                            <span>${item.eligibility}</span>
+                        </div>
+                        <div class="mobile-card-row">
+                            <strong>Accessibility</strong>
+                            <span>${item.accessibility}</span>
+                        </div>
+                        <div class="mobile-card-row">
+                            <strong>Services</strong>
+                            <span>${item.services}</span>
+                        </div>
+                        <div class="mobile-card-row">
+                            <strong>Intake &amp; Cost</strong>
+                            <span>Intake: ${item.intake} &bull; Cost: ${item.cost}</span>
+                        </div>
+                        <div class="mobile-card-row" style="border-top:1px dashed var(--border-light); padding-top:0.5rem; margin-top:0.5rem; font-size:0.75rem; color:var(--text-secondary);">
+                            Source: ${item.source} &bull; Status: ${item.status}
+                        </div>
+                    `;
+                    cardsBody.appendChild(card);
+                });
+            }
+        }
+
+        // Initial Run
+        render();
+    </script>
+</body>
+</html>
