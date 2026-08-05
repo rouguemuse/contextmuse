@@ -39,228 +39,293 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="container hero-content">
-            <span class="eyebrow">Applied Systems &bull; Product Thinking &bull; Creative Intelligence</span>
-            <h1 class="hero-headline">
-                Clarity shapes perception.<br>
-                Perception changes everything.
-            </h1>
-            <p class="hero-subhead">
-                Context &amp; Muse turns complex information, fragmented workflows, and difficult ideas into clear systems people can understand and use.
-            </p>
-            <div class="btn-group">
-                <a href="#systems" class="btn btn-primary">Explore the Systems</a>
-                <a href="/jayme/" class="btn btn-secondary">Meet the Builder</a>
+        <!-- Faint background geometric shape -->
+        <div class="hero-bg-shape"></div>
+        
+        <div class="container hero-container-grid">
+            <div class="hero-text-column">
+                <span class="eyebrow">Applied Systems &bull; Product Thinking &bull; Creative Intelligence</span>
+                <h1 class="hero-headline">
+                    Clarity shapes perception.<br>
+                    Perception changes everything.
+                </h1>
+                <p class="hero-subhead">
+                    Context &amp; Muse turns complex information, fragmented workflows, and difficult ideas into clear systems people can understand and use.
+                </p>
+                <div class="btn-group">
+                    <a href="#systems" class="btn btn-primary">Explore the Systems</a>
+                    <a href="/jayme/" class="btn btn-secondary">Meet the Builder</a>
+                </div>
+                <span class="hero-credential-line">Independent systems designer &middot; Available for product, operations, and implementation work</span>
             </div>
-            <span class="hero-credential-line">Independent systems designer &middot; Available for product, operations, and implementation work</span>
+            
+            <div class="hero-visual-column">
+                <!-- Abstract Clarity Visualization -->
+                <div class="clarity-visualization" aria-hidden="true">
+                    <!-- Left: Scattered fragments -->
+                    <div class="vis-zone">
+                        <span class="vis-dot" style="top: 20%; left: 20%;"></span>
+                        <span class="vis-dot" style="top: 60%; left: 10%;"></span>
+                        <span class="vis-dot" style="top: 80%; left: 45%;"></span>
+                        <span class="vis-char" style="top: 35%; left: 40%;">x_0</span>
+                        <span class="vis-char" style="top: 75%; left: 30%;">err_log</span>
+                        <div class="vis-line-fragment" style="top: 45%; left: 15%; width: 50px; transform: rotate(15deg);"></div>
+                        <div class="vis-line-fragment" style="top: 70%; left: 25%; width: 40px; transform: rotate(-35deg);"></div>
+                    </div>
+                    
+                    <!-- Center: Lens/Grid -->
+                    <div class="vis-lens">
+                        <div class="vis-lens-inner"></div>
+                    </div>
+                    
+                    <!-- Right: Clear Ordered Path -->
+                    <div class="vis-output">
+                        <div class="vis-path-line">
+                            <span class="vis-path-node"></span>
+                        </div>
+                        <div class="vis-path-line">
+                            <span class="vis-path-node" style="left: 40%;"></span>
+                        </div>
+                        <div class="vis-path-line">
+                            <span class="vis-path-node" style="left: 65%;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
     <main id="main-content">
-        <!-- Flagship Systems Section -->
-        <section class="systems-section" id="systems" aria-labelledby="systems-heading">
+        <!-- Flagship Systems Section (Deep-Ink Contrast Redesign) -->
+        <section class="systems-section-dark" id="systems" aria-labelledby="systems-heading">
             <div class="container">
                 <div class="systems-header">
                     <span class="eyebrow">Capabilities</span>
-                    <h2 id="systems-heading">Flagship Systems</h2>
-                    <p style="margin-top: 1rem; font-size: 1.15rem; color: var(--text-secondary);">
+                    <h2 id="systems-heading" class="section-title">Flagship Systems</h2>
+                    <p class="project-copy" style="margin-top: 1rem;">
                         I build software templates, logic schemas, and diagnostic dashboards to solve hard organizational and communication problems.
                     </p>
                 </div>
 
-                <div class="systems-grid">
-                    <!-- System 1: Signal -->
-                    <article class="system-card" id="card-signal">
-                        <div class="system-card-meta">
-                            <div>
-                                <span class="system-category">Diagnostic Dashboard &bull; Operations Support</span>
-                                <h3 class="system-title">Signal</h3>
-                                <p class="system-description">
-                                    Converts raw Toast POS transaction logs into a clean "to-fix" checklist. Signal flags shift anomalies, labor cost inefficiencies, and override irregularities so managers can take action immediately.
-                                </p>
+                <div class="systems-grid-dark">
+                    
+                    <!-- System 1: Signal (Split Layout) -->
+                    <article class="project-showcase split-layout" id="card-signal">
+                        <div class="project-meta">
+                            <span class="project-num">01</span>
+                            <span class="project-category">Diagnostic Dashboard &bull; Operations Support</span>
+                            <h3 class="project-title">Signal</h3>
+                            <p class="project-copy">
+                                Converts raw Toast POS transaction logs into a clean checklist to flag shift anomalies, labor inefficiencies, and override irregularities.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag-dark">ToastPOS parsing</span>
+                                <span class="project-tag-dark">labor optimization</span>
+                                <span class="project-tag-dark">override audits</span>
                             </div>
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                <a href="/jayme/product-experience/#project-signal" class="btn-outline" style="padding: 0.4rem 0.8rem; font-size: 13px;">Case Study &rarr;</a>
-                                <a href="/gold-tooth-signal-report.html" class="btn btn-primary" target="_blank" style="padding: 0.4rem 0.8rem; font-size: 13px; margin-top: 0;">Live Demo</a>
-                                <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn-outline" target="_blank" style="padding: 0.4rem 0.8rem; font-size: 13px;">GitHub &rarr;</a>
+                            <div class="project-ctas">
+                                <a href="/gold-tooth-signal-report.html" class="btn btn-primary" target="_blank">Live Demo</a>
+                                <a href="/jayme/product-experience/#project-signal" class="btn-outline" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">Case Study &rarr;</a>
+                                <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn-outline" target="_blank" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">GitHub &rarr;</a>
                             </div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Working Prototype</span>
                         </div>
-                        <div class="system-card-details">
-                            <h4 class="capabilities-title">Interface Demonstration</h4>
-                            
-                            <!-- Signal Priority Matrix Visual -->
-                            <div class="mockup-container visual-matrix" aria-label="Signal Priority Matrix">
-                                <div class="matrix-row first-priority">
-                                    <div class="matrix-info">
-                                        <span class="matrix-issue">Labor Overrun</span>
-                                        <span class="matrix-stats">Impact: <strong>High</strong> / Effort: <strong>Low</strong></span>
-                                    </div>
-                                    <span class="matrix-action action-red">Address First</span>
+                        
+                        <div class="visual-panel">
+                            <span class="visual-type-label">Product Interface</span>
+                            <div class="browser-frame">
+                                <div class="browser-header">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-url">signal.contextmuse.com/runs/1024</span>
                                 </div>
-                                <div class="matrix-row">
-                                    <div class="matrix-info">
-                                        <span class="matrix-issue">Manager Overrides</span>
-                                        <span class="matrix-stats">Impact: <strong>Med</strong> / Effort: <strong>Low</strong></span>
+                                <div class="browser-content">
+                                    <div class="matrix-layout">
+                                        <div class="matrix-card high-alert">
+                                            <span class="badge red-badge">High Impact / Low Effort &bull; Labor Overrun</span>
+                                            <h4>Shift B Labor Costs exceed sales by 42%</h4>
+                                            <p class="matrix-recommendation">Action: Re-align floor chart with hourly transaction velocities.</p>
+                                        </div>
                                     </div>
-                                    <span class="matrix-action">Audit</span>
-                                </div>
-                                <div class="matrix-row">
-                                    <div class="matrix-info">
-                                        <span class="matrix-issue">Clock-Out Drift</span>
-                                        <span class="matrix-stats">Impact: <strong>Low</strong> / Effort: <strong>Low</strong></span>
-                                    </div>
-                                    <span class="matrix-action">Monitor</span>
                                 </div>
                             </div>
-                            <span class="visual-disclosure">Illustrative priority matrix using synthetic data.</span>
+                            
+                            <!-- Callouts -->
+                            <div class="annotations-box">
+                                <div class="annotation-item">
+                                    <span class="annotation-number">1</span>
+                                    <p>Labor overruns map directly to predictable peak-order delay patterns.</p>
+                                </div>
+                                <div class="annotation-item">
+                                    <span class="annotation-number">2</span>
+                                    <p>Action: Deploy automatic clock-out verification script to isolate drift.</p>
+                                </div>
+                            </div>
                         </div>
                     </article>
 
-                    <!-- System 2: GenSort -->
-                    <article class="system-card" id="card-gensort">
-                        <div class="system-card-meta">
-                            <div>
-                                <span class="system-category">Asset Organization &bull; Local Metadata Catalog</span>
-                                <h3 class="system-title">GenSort</h3>
-                                <p class="system-description">
-                                    An offline, local-first file categorizer designed for high-volume graphic libraries. It indexes image assets, parses prompt lineage metadata, scoring readiness, and isolates duplicate media assets automatically.
-                                </p>
+                    <!-- System 2: GenSort (Full Width Layout) -->
+                    <article class="project-showcase full-width-layout" id="card-gensort">
+                        <div class="project-meta" style="max-width: 720px;">
+                            <span class="project-num">02</span>
+                            <span class="project-category">Asset Organization &bull; Local Metadata Catalog</span>
+                            <h3 class="project-title">GenSort</h3>
+                            <p class="project-copy">
+                                An offline, local-first file categorizer designed to index image assets, parse prompt lineages, and isolate duplicate media.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag-dark">local-first directory scanner</span>
+                                <span class="project-tag-dark">prompt lineage indexing</span>
+                                <span class="project-tag-dark">similarity tagging</span>
                             </div>
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                <a href="/jayme/product-experience/#project-gensort" class="btn-outline" style="padding: 0.4rem 0.8rem; font-size: 13px;">Case Study &rarr;</a>
-                                <a href="/cxm_gensort/index.html" class="btn btn-primary" target="_blank" style="padding: 0.4rem 0.8rem; font-size: 13px; margin-top: 0;">Live Demo</a>
-                                <a href="https://github.com/rouguemuse/gensort_studio_sortimage" class="btn-outline" target="_blank" style="padding: 0.4rem 0.8rem; font-size: 13px;">GitHub &rarr;</a>
+                            <div class="project-ctas">
+                                <a href="/cxm_gensort/index.html" class="btn btn-primary" target="_blank">Live Demo</a>
+                                <a href="/jayme/product-experience/#project-gensort" class="btn-outline" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">Case Study &rarr;</a>
+                                <a href="https://github.com/rouguemuse/gensort_studio_sortimage" class="btn-outline" target="_blank" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">GitHub &rarr;</a>
                             </div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Working Prototype</span>
                         </div>
-                        <div class="system-card-details">
-                            <h4 class="capabilities-title">Interface Demonstration</h4>
-                            
-                            <!-- GenSort Asset Workspace Visual -->
-                            <div class="mockup-container visual-workspace" aria-label="GenSort Asset Workspace">
-                                <div class="workspace-top">
-                                    <span class="workspace-folder">Folder: /brand-photography</span>
+                        
+                        <div class="visual-panel">
+                            <span class="visual-type-label">Product Interface</span>
+                            <div class="workspace-layout">
+                                <div class="workspace-sidebar">
+                                    <span class="sidebar-header">Directories</span>
+                                    <span class="sidebar-item active-folder">📂 brand_photography</span>
+                                    <span class="sidebar-item">📂 promotional_ads</span>
+                                    <span class="sidebar-item">📂 templates</span>
                                 </div>
-                                <div class="workspace-contact-sheet">
-                                    <div class="asset-frame asset-keep">
-                                        <div class="asset-img">🌄</div>
-                                        <div class="asset-meta">
-                                            <span class="asset-name">hero.png</span>
-                                            <span class="badge badge-teal">Keep</span>
+                                <div class="workspace-main">
+                                    <div class="workspace-toolbar">
+                                        <span>Filter: duplicates only</span>
+                                        <span>Sort: prompt seed match</span>
+                                    </div>
+                                    <div class="contact-sheet-grid">
+                                        <div class="grid-card">
+                                            <div class="grid-card-img">🌄</div>
+                                            <span class="grid-card-name">hero_landscape.png</span>
+                                            <span class="grid-card-tag tag-keep">Keep (300 dpi)</span>
+                                        </div>
+                                        <div class="grid-card">
+                                            <div class="grid-card-img">🌄</div>
+                                            <span class="grid-card-name">hero_landscape_copy.png</span>
+                                            <span class="grid-card-tag tag-duplicate">Duplicate (72 dpi)</span>
+                                        </div>
+                                        <div class="grid-card card-compare">
+                                            <div class="compare-details">
+                                                <h5>Resolution Diff</h5>
+                                                <p>Prompt Match: 99%</p>
+                                                <p>Status: Redundant</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="asset-frame asset-duplicate">
-                                        <div class="asset-img">🌄</div>
-                                        <div class="asset-meta">
-                                            <span class="asset-name">hero-v2.png</span>
-                                            <span class="badge badge-red">Duplicate</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comparison-bar">
-                                    Compare: <strong>300 DPI</strong> vs <strong>72 DPI</strong>
                                 </div>
                             </div>
-                            <span class="visual-disclosure">Illustrative asset workspace using synthetic data.</span>
                         </div>
                     </article>
 
-                    <!-- System 3: Message Analysis -->
-                    <article class="system-card" id="card-message-analysis">
-                        <div class="system-card-meta">
-                            <div>
-                                <span class="system-category">Information Verification &bull; Logical Compliance</span>
-                                <h3 class="system-title">Message Analysis</h3>
-                                <p class="system-description">
-                                    A structured mapping system to analyze written statements, transcripts, and timeline logs. It extracts factual assertions and cross-references timestamps to flag direct contradictions and locate narrative gaps.
-                                </p>
+                    <!-- System 3: Message Analysis (Full Width Layout) -->
+                    <article class="project-showcase full-width-layout" id="card-message-analysis">
+                        <div class="project-meta" style="max-width: 720px;">
+                            <span class="project-num">03</span>
+                            <span class="project-category">Information Verification &bull; Logical Compliance</span>
+                            <h3 class="project-title">Message Analysis</h3>
+                            <p class="project-copy">
+                                A structured mapping system to analyze written statements and timeline logs to flag contradictions and locate narrative gaps.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag-dark">transcript cross-referencing</span>
+                                <span class="project-tag-dark">factual variance logs</span>
+                                <span class="project-tag-dark">timeline alignment</span>
                             </div>
-                            <div>
-                                <a href="/jayme/#selected-work" class="btn-outline">Explore Methodology &rarr;</a>
+                            <div class="project-ctas">
+                                <a href="/jayme/#selected-work" class="btn btn-primary">Explore Methodology</a>
                             </div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Concept</span>
                         </div>
-                        <div class="system-card-details">
-                            <h4 class="capabilities-title">Interface Demonstration</h4>
-                            
-                            <!-- Message Analysis Timeline Visual -->
-                            <div class="mockup-container visual-timeline" aria-label="Message Analysis Mismatch Timeline">
-                                <div class="timeline-container">
-                                    <div class="timeline-step">
-                                        <span class="time-label">09:00 AM</span>
-                                        <div class="statement-card statement-teal">
-                                            "Ready at <span class="hl-teal">dock 4</span>"
-                                        </div>
+                        
+                        <div class="visual-panel">
+                            <span class="visual-type-label">Conceptual Process Visualization</span>
+                            <div class="editorial-panel">
+                                <div class="comparison-grid">
+                                    <div class="comparison-side">
+                                        <span class="side-title">Statement A &middot; 09:00 AM</span>
+                                        <blockquote class="quote-box">
+                                            "Ready at <strong class="hl-teal">dock 4</strong>"
+                                        </blockquote>
                                     </div>
-                                    <div class="timeline-line-connector">
-                                        <span class="mismatch-label">Conflict</span>
+                                    <div class="comparison-connector">
+                                        <div class="connector-line"></div>
+                                        <span class="connector-mismatch-badge">Location Conflict</span>
                                     </div>
-                                    <div class="timeline-step">
-                                        <span class="time-label">09:15 AM</span>
-                                        <div class="statement-card statement-red">
-                                            "Delayed <span class="hl-red">in transit</span>"
-                                        </div>
+                                    <div class="comparison-side">
+                                        <span class="side-title">Statement B &middot; 09:15 AM</span>
+                                        <blockquote class="quote-box">
+                                            "Delayed <strong class="hl-red">in transit</strong>"
+                                        </blockquote>
                                     </div>
                                 </div>
                             </div>
-                            <span class="visual-disclosure">Illustrative contradiction timeline using synthetic data.</span>
                         </div>
                     </article>
 
-                    <!-- System 4: Record Integrity -->
-                    <article class="system-card" id="card-record-integrity">
-                        <div class="system-card-meta">
-                            <div>
-                                <span class="system-category">Source Traceability &bull; Integrity Ledger</span>
-                                <h3 class="system-title">Record Integrity</h3>
-                                <p class="system-description">
-                                    An integrity ledger and hash-verification flow ensuring dataset provenance. It establishes verification rules, records import origins, and detects unauthorized manual modifications to preserve original data authenticity.
-                                </p>
+                    <!-- System 4: Record Integrity (Full Width Layout) -->
+                    <article class="project-showcase full-width-layout" id="card-record-integrity">
+                        <div class="project-meta" style="max-width: 720px;">
+                            <span class="project-num">04</span>
+                            <span class="project-category">Source Traceability &bull; Integrity Ledger</span>
+                            <h3 class="project-title">Record Integrity</h3>
+                            <p class="project-copy">
+                                An integrity ledger and hash-verification flow ensuring dataset provenance and detecting unauthorized modifications.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag-dark">SHA-256 fingerprinting</span>
+                                <span class="project-tag-dark">provenance logs</span>
+                                <span class="project-tag-dark">change detection</span>
                             </div>
-                            <div>
-                                <a href="/jayme/#selected-work" class="btn-outline">Explore Methodology &rarr;</a>
+                            <div class="project-ctas">
+                                <a href="/jayme/#selected-work" class="btn btn-primary">Explore Methodology</a>
                             </div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Concept</span>
                         </div>
-                        <div class="system-card-details">
-                            <h4 class="capabilities-title">Interface Demonstration</h4>
-                            
-                            <!-- Record Integrity Provenance Flow Visual -->
-                            <div class="mockup-container visual-flow" aria-label="Record Integrity Provenance Flow">
-                                <div class="flow-layout">
-                                    <div class="flow-step">
-                                        <span class="step-label">Original</span>
-                                        <div class="flow-card">
-                                            <span class="card-title">File</span>
-                                            <span class="card-val">data.csv</span>
-                                        </div>
+                        
+                        <div class="visual-panel">
+                            <span class="visual-type-label">Conceptual Process Visualization</span>
+                            <div class="provenance-flow-container">
+                                <div class="flow-node">
+                                    <div class="node-box">
+                                        <span class="node-icon">📄</span>
+                                        <span class="node-name">ledger.csv</span>
                                     </div>
-                                    <div class="flow-connector">&rarr;</div>
-                                    <div class="flow-step">
-                                        <span class="step-label">Hash</span>
-                                        <div class="flow-card hash-card">
-                                            <span class="card-title">Stored</span>
-                                            <span class="card-val font-mono">#b7a2</span>
-                                        </div>
+                                    <span class="node-label">Original File</span>
+                                </div>
+                                <div class="flow-arrow-line"></div>
+                                <div class="flow-node">
+                                    <div class="node-box">
+                                        <span class="node-hash">#9a3f2c</span>
                                     </div>
-                                    <div class="flow-connector">&rarr;</div>
-                                    <div class="flow-step">
-                                        <span class="step-label">Current</span>
-                                        <div class="flow-card">
-                                            <span class="card-title">File</span>
-                                            <span class="card-val">data.csv</span>
-                                        </div>
+                                    <span class="node-label">SHA-256 Fingerprint</span>
+                                </div>
+                                <div class="flow-arrow-line"></div>
+                                <div class="flow-node">
+                                    <div class="node-box">
+                                        <span class="node-icon">📄</span>
+                                        <span class="node-name">ledger.csv</span>
                                     </div>
-                                    <div class="flow-connector">&rarr;</div>
-                                    <div class="flow-step">
-                                        <span class="step-label">Result</span>
-                                        <div class="flow-result-card result-verified">
-                                            <span class="card-title">Status</span>
-                                            <span class="result-badge">Verified</span>
-                                        </div>
+                                    <span class="node-label">Current Version</span>
+                                </div>
+                                <div class="flow-arrow-line"></div>
+                                <div class="flow-node">
+                                    <div class="node-box status-box-verified">
+                                        <span class="node-status-badge">Verified</span>
                                     </div>
+                                    <span class="node-label">Status Result</span>
                                 </div>
                             </div>
-                            <span class="visual-disclosure">Illustrative provenance flow using synthetic data.</span>
                         </div>
                     </article>
+
                 </div>
             </div>
         </section>
@@ -270,141 +335,117 @@
             <div class="container">
                 <div class="method-header">
                     <span class="eyebrow">Approach</span>
-                    <h2 id="method-heading">How I Build</h2>
-                    <p style="margin-top: 1rem; font-size: 1.15rem; color: var(--text-secondary);">
+                    <h2 id="method-heading" class="section-title">How I Build</h2>
+                    <p class="body-copy" style="margin-top: 1rem;">
                         Every layout, database column, and interface route is built upon a standard diagnostic process to isolate and resolve operational leaks.
                     </p>
                 </div>
 
-                <div class="method-grid">
-                    <div class="method-step">
-                        <div class="method-number">01</div>
-                        <div class="method-info">
-                            <h3>Map the Flow</h3>
-                            <p>Examine the personnel, physical steps, software handoffs, and documentation inputs that drive the daily operation.</p>
-                        </div>
+                <!-- Horizontal Process Flow -->
+                <div class="process-flow-container">
+                    <div class="process-step">
+                        <span class="step-num">01</span>
+                        <h3 class="step-name">Observe</h3>
+                        <p class="step-desc">Examine transaction paths, directory structures, and logs in their native environments.</p>
                     </div>
-                    <div class="method-step">
-                        <div class="method-number">02</div>
-                        <div class="method-info">
-                            <h3>Isolate the Leaks</h3>
-                            <p>Identify where data is lost, manually copied, left unverified, or open to communication anomalies.</p>
-                        </div>
+                    <div class="process-step">
+                        <span class="step-num">02</span>
+                        <h3 class="step-name">Structure</h3>
+                        <p class="step-desc">Normalize messy database logs, narrative fragments, or assets into clean schemas.</p>
                     </div>
-                    <div class="method-step">
-                        <div class="method-number">03</div>
-                        <div class="method-info">
-                            <h3>Design the Rules</h3>
-                            <p>Write clean schemas, validation scripts, and plain-language interfaces to prevent operational failures before they occur.</p>
-                        </div>
+                    <div class="process-step">
+                        <span class="step-num">03</span>
+                        <h3 class="step-name">Validate</h3>
+                        <p class="step-desc">Cross-reference timestamps, hashes, and records to locate anomalies.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">04</span>
+                        <h3 class="step-name">Prioritize</h3>
+                        <p class="step-desc">Filter findings into actionable checklists ranked by operational impact.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">05</span>
+                        <h3 class="step-name">Translate</h3>
+                        <p class="step-desc">Present raw diagnostic findings in clear, plain-language interfaces.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">06</span>
+                        <h3 class="step-name">Implement</h3>
+                        <p class="step-desc">Deploy verification scripts and rules to maintain system order.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Creative Practice Section (Realigned / Asymmetrical Anchor) -->
-        <section class="systems-section" id="creative-practice" aria-labelledby="creative-heading" style="background: var(--bg-paper); border-top: 1px solid var(--border-light);">
+        <!-- Creative Practice Section (Editorial Book-like Redesign) -->
+        <section class="systems-section" id="creative-practice" aria-labelledby="creative-heading" style="background: var(--bg-paper); border-top: 1px solid var(--border-light); padding: 140px 0;">
             <div class="container">
                 <div class="systems-header">
                     <span class="eyebrow" style="color: var(--accent-red);">Editorial Systems &bull; Independent Projects</span>
-                    <h2 id="creative-heading">Creative Practice</h2>
-                    <p style="margin-top: 1rem; font-size: 1.15rem; color: var(--text-secondary);">
+                    <h2 id="creative-heading" class="section-title">Creative Practice</h2>
+                    <p class="body-copy" style="margin-top: 1rem;">
                         Some problems need a system. Others need a language. My creative work explores symbolic architectures, narrative systems, and public directories.
                     </p>
                 </div>
 
-                <!-- Asymmetrical Layout: Dominant Wolves Card + Supporting Card Sidebar -->
-                <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2rem;">
+                <div class="creative-practice-editorial">
+                    <!-- Red thread line gesture -->
+                    <div class="red-thread-gesture" aria-hidden="true"></div>
                     
-                    <!-- 1. Wolves Dominant Anchor -->
-                    <article class="system-card" id="card-wolves-featured" style="border-left: 3px solid var(--accent-red); background: var(--bg-card); padding: 3.5rem;">
-                        <div class="system-card-meta">
-                            <div>
-                                <span class="system-category" style="color: var(--accent-red);">Allegorical Memoir &bull; Completed Manuscript</span>
-                                <h3 class="system-title" style="font-family: var(--font-serif); font-size: 2.8rem; line-height: 1.15; margin-bottom: 2rem;">
-                                    How to Explain Yourself to Wolves
-                                </h3>
-                                
-                                <!-- Approved Project Statement -->
-                                <p style="font-family: var(--font-serif); font-size: 1.5rem; font-style: italic; color: var(--text-primary); border-left: 2px solid var(--accent-red); padding-left: 1.5rem; margin: 2.5rem 0; line-height: 1.55;">
-                                    "Some problems need a system. Others need a language."
-                                    <span style="display:block; font-family:var(--font-mono); font-size:11px; font-style:normal; color:var(--text-secondary); margin-top:0.75rem; text-transform:uppercase;">Project Statement</span>
-                                </p>
-
-                                <p class="system-description" style="font-size: 1.05rem;">
-                                    An allegorical memoir exploring explanation, survival, identity, motherhood, memory, and the limits of being understood. The book uses a structured topology of roads, weather, maps, lanterns, and wolves to map out where communication breaks down.
-                                </p>
-                            </div>
-                            <div style="margin-top: 1.5rem;">
-                                <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);">Explore Companion Map &rarr;</a>
+                    <div class="wolves-editorial-block">
+                        <div class="wolves-text-side">
+                            <span class="manuscript-status">Completed Manuscript &bull; Representation Inquiries Welcome</span>
+                            <h3 class="wolves-title">How to Explain Yourself to Wolves</h3>
+                            
+                            <blockquote class="wolves-quote">
+                                &ldquo;Some problems need a system. Others need a language.&rdquo;
+                            </blockquote>
+                            
+                            <p class="wolves-description">
+                                An allegorical memoir exploring explanation, survival, identity, motherhood, memory, and the limits of being understood. The book uses a structured topology of roads, weather, maps, lanterns, and wolves to map out where communication breaks down.
+                            </p>
+                            
+                            <div class="wolves-cta-container">
+                                <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn btn-primary btn-wolves">Explore Companion Map &rarr;</a>
                             </div>
                         </div>
-                        <div class="system-card-details" style="border-left: none; padding-left: 0; padding-top: 2rem;">
-                            <h4 class="capabilities-title" style="color: var(--accent-red);">Narrative Elements</h4>
-                            <ul class="capabilities-list" style="margin-bottom: 0;">
-                                <li><strong>Format:</strong> Book-length literary manuscript</li>
-                                <li><strong>Associated work:</strong> Self Cartography theme maps and symbolic glossaries</li>
-                                <li><strong>Design Relevance:</strong> Conceptual worldbuilding, symbolic indexing, voice design, and narrative integrity</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <!-- Cartographic Red-Thread Connecting Line -->
-                    <div style="display:flex; align-items:center; justify-content:center; position:relative; height: 2px; margin: 1.5rem 0;">
-                        <div style="position:absolute; width:100%; border-top: 1px dashed var(--accent-red); opacity:0.4;"></div>
-                        <div style="background: var(--bg-paper); z-index: 10; padding: 0 1.5rem; font-family: var(--font-mono); font-size: 11px; color: var(--accent-red); font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase;">
-                            Shared Symbolic Framework
+                        
+                        <!-- Right side: Symbolic map / line illustration -->
+                        <div class="wolves-visual-side" aria-hidden="true">
+                            <div class="cartographic-illustration">
+                                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="map-svg">
+                                    <circle cx="100" cy="100" r="80" stroke="var(--border-dark)" stroke-width="0.5" stroke-dasharray="2 2" />
+                                    <path d="M20 100 H180" stroke="var(--accent-red)" stroke-width="1" opacity="0.3" />
+                                    <path d="M100 20 V180" stroke="var(--border-dark)" stroke-width="0.5" opacity="0.3" />
+                                    <path d="M40 60 C80 90, 120 70, 160 140" stroke="var(--accent-red)" stroke-width="1.5" />
+                                    <circle cx="40" cy="60" r="3" fill="var(--accent-red)" />
+                                    <circle cx="160" cy="140" r="3" fill="var(--accent-red)" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- 2. Two Smaller Supporting Cards (Side-by-side or stacked on mobile) -->
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;">
-                        <script>
-                            // Add media query dynamic styling for supporting cards
-                            if (window.innerWidth >= 850) {
-                                document.write('<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">');
-                            }
-                        </script>
-                        
-                        <!-- Supporting Card A: Resource Guide -->
-                        <article class="system-card" id="card-resource-support" style="padding: 2.25rem;">
-                            <div class="system-card-meta">
-                                <div>
-                                    <span class="system-category">Information System &bull; Public-Interest Design</span>
-                                    <h3 class="system-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Resource Guide</h3>
-                                    <p class="system-description" style="font-size: 14px;">
-                                        A normalized compilation framework converting scattered, unstructured community service directories into a searchable, verified directory.
-                                    </p>
-                                </div>
-                                <div style="margin-top: 1.25rem;">
-                                    <a href="/creative/resource-guide/" class="btn-outline">View Directory &rarr;</a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Supporting Card B: Self Cartography -->
-                        <article class="system-card" id="card-cartography-support" style="padding: 2.25rem;">
-                            <div class="system-card-meta">
-                                <div>
-                                    <span class="system-category">Concept Mapping &bull; Vocabulary Schemas</span>
-                                    <h3 class="system-title" style="font-size: 1.6rem; margin-bottom: 1rem;">Self Cartography</h3>
-                                    <p class="system-description" style="font-size: 14px;">
-                                        An independent conceptual project mapping personal boundaries, interactive gates, and relational weather variables into a vocabulary ledger.
-                                    </p>
-                                </div>
-                                <div style="margin-top: 1.25rem;">
-                                    <a href="/creative/#self-cartography" class="btn-outline">View Design &rarr;</a>
-                                </div>
-                            </div>
-                        </article>
-                        
-                        <script>
-                            if (window.innerWidth >= 850) {
-                                document.write('</div>');
-                            }
-                        </script>
+                    
+                    <!-- Related works section below -->
+                    <div class="related-works-section">
+                        <h4 class="related-works-title">Related Works</h4>
+                        <div class="related-works-grid">
+                            <!-- Related Work A -->
+                            <a href="/creative/resource-guide/" class="related-work-card">
+                                <span class="related-category">Information System &bull; Public-Interest Design</span>
+                                <h5>Resource Guide</h5>
+                                <p>A normalized compilation framework converting scattered community service directories into a searchable, verified directory.</p>
+                            </a>
+                            <!-- Related Work B -->
+                            <a href="/jayme/product-experience/" class="related-work-card">
+                                <span class="related-category">Concept Mapping &bull; Vocabulary Schemas</span>
+                                <h5>Self Cartography</h5>
+                                <p>An independent conceptual project mapping personal boundaries, interactive gates, and relational variables into a vocabulary ledger.</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
             </div>
         </section>
 
@@ -413,52 +454,57 @@
             <div class="proof-container">
                 <div class="proof-row">
                     <a href="/jayme/product-experience/" class="proof-item">
+                        <span class="proof-metric">03+</span>
                         <h4>Working Prototypes</h4>
-                        <p>Signal, GenSort, Contradiction Finder, and Risk Scanner</p>
+                        <p>Verifiable systems codebases &rarr;</p>
                     </a>
                     <a href="/jayme/#project-webwork" class="proof-item">
-                        <h4>Production Client Work</h4>
-                        <p>Selected websites and operational systems</p>
+                        <span class="proof-metric">Active</span>
+                        <h4>Production Systems</h4>
+                        <p>Selected client websites and operational systems &rarr;</p>
                     </a>
                     <a href="/jayme/product-experience/" class="proof-item">
+                        <span class="proof-metric">Demo</span>
                         <h4>Interactive Demos</h4>
-                        <p>Product and information-architecture concepts</p>
+                        <p>Product and information-architecture concepts &rarr;</p>
                     </a>
                     <a href="/creative/how-to-explain-yourself-to-wolves/" class="proof-item">
+                        <span class="proof-metric">01</span>
                         <h4>Completed Manuscript</h4>
-                        <p>How to Explain Yourself to Wolves</p>
+                        <p>How to Explain Yourself to Wolves &rarr;</p>
                     </a>
                     <a href="/jayme/#operating-background" class="proof-item">
+                        <span class="proof-metric">10+ Yrs</span>
                         <h4>Operational Leadership</h4>
-                        <p>Restaurant, pastry, staffing, workflow, and service operations</p>
+                        <p>Staffing, workflow, and hospitality operations &rarr;</p>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="audit-section" id="contact" aria-labelledby="contact-heading">
+        <!-- Contact Section (Simplified Premium Contrast) -->
+        <section class="audit-section" id="contact" aria-labelledby="contact-heading" style="background: var(--bg-panel); padding: 140px 0;">
             <div class="container">
                 <div class="audit-grid">
                     <!-- Column 1: Info -->
                     <div class="audit-info">
                         <span class="eyebrow">Contact &bull; Evaluation</span>
-                        <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: 3rem; font-weight: 500; margin-bottom: 1.5rem;">
+                        <h2 id="contact-heading" class="section-title">
                             Bring me the mess.
                         </h2>
-                        <blockquote style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-primary); border-left: 2px solid var(--accent-teal); padding-left: 1.25rem; margin-bottom: 2rem; line-height: 1.5;">
+                        <blockquote style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55;">
                             Send the workflow, information problem, or unfinished system you are trying to make sense of. I’ll identify where clarity is breaking down and what a practical next step could look like.
                         </blockquote>
-                        <p style="font-size: 15px; color: var(--text-secondary);">
+                        <p class="body-copy">
                             Whether you are dealing with broken spreadsheet hierarchies, conflicting timelines, POS discrepancies, or a product that feels structurally chaotic—we can map a path to order.
                         </p>
-                        <div style="margin-top: 2rem; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">
+                        <div style="margin-top: 2rem; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
                             Email inquiries: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: bold; text-decoration: none;">jayme@contextmuse.com</a>
                         </div>
                     </div>
 
-                    <!-- Column 2: Form -->
-                    <div class="audit-form-container">
+                    <!-- Column 2: Form (Simplified to 3 Fields) -->
+                    <div class="audit-form-container" style="background: #FFFFFF;">
                         <form action="https://formspree.io/f/xoqydgvw" method="POST" class="audit-form">
                             <!-- Anti-spam hidden field -->
                             <input type="text" name="_gotcha" style="display:none">
@@ -474,13 +520,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="form-org">Organization / Project</label>
-                                <input type="text" id="form-org" name="organization" class="form-input" placeholder="Organization / Project">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="form-message">Workflow, information problem, or operational bottleneck to evaluate</label>
-                                <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the current workflow, information problem, or bottleneck..."></textarea>
+                                <label for="form-message">What are you trying to make clearer?</label>
+                                <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the current workflow, information problem, or operational bottleneck..."></textarea>
                             </div>
 
                             <button type="submit" class="form-submit">Start the Conversation</button>
