@@ -158,7 +158,7 @@
 
         .home-project-index {
             display: grid;
-            grid-template-columns: repeat(4, minmax(110px, 1fr));
+            grid-template-columns: repeat(3, minmax(110px, 1fr));
             gap: 0;
             width: min(650px, 100%);
             margin-top: 46px;
@@ -341,20 +341,20 @@
         }
         .hp-cards-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
         .hp-project-card {
             background: #ffffff;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 3rem;
+            padding: 2.25rem;
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 520px;
+            min-height: 485px;
             transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s;
         }
         .hp-project-card:hover {
@@ -561,13 +561,21 @@
                 width: min(500px, 50vw);
             }
             .home-project-index {
-                grid-template-columns: repeat(2, minmax(110px, 1fr));
-                gap: 1rem;
-                max-width: 440px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem;
+                max-width: 520px;
             }
             .project-nav-item:not(:last-child) {
-                border-right: none;
-                padding-right: 0;
+                border-right: 1px solid rgba(197, 160, 89, 0.3);
+                padding-right: 0.75rem;
+            }
+            .hp-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hp-project-card {
+                padding: 2.25rem;
+                min-height: auto;
             }
         }
 
@@ -639,8 +647,8 @@
             }
             .home-project-index {
                 order: 6;
-                grid-template-columns: repeat(2, minmax(110px, 1fr));
-                gap: 1.25rem;
+                grid-template-columns: repeat(3, minmax(80px, 1fr));
+                gap: 1rem;
                 width: calc(100% - 3rem) !important;
                 margin: 32px 1.5rem 0 !important;
                 padding-top: 20px;
@@ -769,13 +777,6 @@
                     <div class="p-meta">
                         <strong class="p-title">Message &amp; Record Analysis</strong>
                         <span class="p-desc">Timeline Recovery &amp; Contradiction Review</span>
-                    </div>
-                </div>
-                <div class="project-nav-item">
-                    <span class="p-num">04</span>
-                    <div class="p-meta">
-                        <strong class="p-title">Record Integrity</strong>
-                        <span class="p-desc">Document Traceability</span>
                     </div>
                 </div>
             </nav>
@@ -914,38 +915,7 @@
                         </div>
                     </a>
 
-                    <!-- Card 4: Record Integrity -->
-                    <div class="hp-project-card" aria-label="Project 04: Record Integrity (Document Traceability)">
-                        <div>
-                            <div class="hp-card-meta">
-                                <span>04 &bull; Document Traceability</span>
-                                <span class="hp-card-status status-concept" style="color: var(--text-secondary); background: rgba(87, 86, 81, 0.06); border: 1.5px solid rgba(87, 86, 81, 0.15);">In Development</span>
-                            </div>
-                            <h3 class="hp-card-title">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-teal);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
-                                Record Integrity
-                            </h3>
-                            <p class="hp-card-desc">
-                                Tracks provenance, change history, and source reliability across document sets to establish a verifiable chain of record.
-                            </p>
-                            <div class="hp-card-visual-wrapper" style="background: #0d1a16; padding: 1.5rem; box-sizing: border-box;">
-                                <svg viewBox="0 0 200 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-height: 200px;">
-                                    <rect x="20" y="10" width="160" height="22" rx="2" fill="none" stroke="rgba(45,212,191,0.4)" stroke-width="1"/>
-                                    <rect x="20" y="10" width="72" height="22" rx="2" fill="rgba(45,212,191,0.12)"/>
-                                    <line x1="40" y1="52" x2="40" y2="100" stroke="rgba(45,212,191,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
-                                    <rect x="24" y="48" width="100" height="16" rx="2" fill="rgba(250,249,245,0.06)" stroke="rgba(250,249,245,0.12)" stroke-width="1"/>
-                                    <rect x="24" y="72" width="76" height="16" rx="2" fill="rgba(250,249,245,0.04)" stroke="rgba(250,249,245,0.08)" stroke-width="1"/>
-                                    <rect x="24" y="96" width="120" height="16" rx="2" fill="rgba(250,249,245,0.04)" stroke="rgba(250,249,245,0.08)" stroke-width="1"/>
-                                    <circle cx="156" cy="20" r="4" fill="rgba(197,160,89,0.6)"/>
-                                    <circle cx="168" cy="20" r="4" fill="rgba(45,212,191,0.6)"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="hp-card-footer">
-                            <span class="hp-card-footer-label">Systems</span>
-                            <span style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--text-secondary); opacity: 0.5;">In Development</span>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
