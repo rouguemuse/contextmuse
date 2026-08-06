@@ -23,7 +23,7 @@
         /* Hero 2-Column Grid */
         .hero-gateway-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 0.88fr 1.12fr; /* 44% Left, 56% Right */
             gap: 4rem;
             align-items: center;
         }
@@ -236,7 +236,7 @@
             <div class="nav-links">
                 <a href="/systems/" class="nav-link">Applied Systems</a>
                 <a href="/creative/" class="nav-link">Creative Practice</a>
-                <a href="/jayme/" class="nav-link">About</a>
+                <a href="/about/" class="nav-link">About</a>
                 <a href="/#contact" class="nav-btn">Contact</a>
             </div>
         </div>
@@ -247,20 +247,44 @@
         <div class="container hero-gateway-grid">
             <div class="hero-text-column" style="text-align: left;">
                 <span class="eyebrow" style="letter-spacing: 0.15em; font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1rem;">CONTEXT &amp; MUSE</span>
-                <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.8vw, 3.8rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 1.5rem; font-family: var(--font-serif); font-weight: 500; color: var(--text-primary);">
-                    Clarity shapes perception.<br>
-                    Perception changes everything.
+                <h1 class="hero-title" style="font-size: clamp(2.0rem, 4.0vw, 3.2rem); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 1.5rem; font-family: var(--font-serif); font-weight: 500; color: var(--text-primary);">
+                    Some problems need a system.<br>
+                    Others need a language.
                 </h1>
-                <p class="hero-subhead" style="font-family: var(--font-sans); font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem; max-width: 580px;">
-                    An independent design studio building structure where information, workflows, and decisions have become difficult to navigate.
+                <p class="hero-subhead" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem; max-width: 580px;">
+                    I design practical systems for fragmented information and creative frameworks for experiences that are difficult to organize, explain, or name.
                 </p>
                 <div class="btn-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="/systems/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);">Explore Applied Systems &rarr;</a>
                     <a href="/creative/" class="btn btn-secondary" style="border-color: var(--accent-red); color: var(--accent-red);">Explore Creative Practice &rarr;</a>
                 </div>
             </div>
-            <div class="hero-visual-column" style="text-align: right;">
-                <img src="/assets/images/creative_hero_map.jpg" alt="Context &amp; Muse Archive Map" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); max-width: 480px; display: inline-block;" loading="eager">
+            <div class="hero-visual-column" style="text-align: right; display: flex; justify-content: flex-end; align-items: center;">
+                <div class="hero-gateway-split" style="display: flex; gap: 0.75rem; border: 1px solid var(--border-light); border-radius: 6px; padding: 0.5rem; background: var(--bg-panel); box-shadow: 0 12px 40px rgba(0,0,0,0.04); max-width: 540px; width: 100%; box-sizing: border-box; position: relative; align-items: stretch; height: 300px;">
+                    <!-- Systems Side (Roughly Two-Thirds: 63%) -->
+                    <div style="width: 63%; display: flex; flex-direction: column; gap: 0.25rem; justify-content: flex-start; height: 282px; overflow: hidden; background: var(--bg-card); border-radius: 4px; border: 1px solid var(--border-light); position: relative; z-index: 2; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+                        <span style="font-family: var(--font-mono); font-size: 8px; color: var(--accent-teal); letter-spacing: 0.05em; text-transform: uppercase; padding: 0.5rem 0.5rem 0.25rem 0.5rem; display: block; text-align: left; background: var(--bg-panel); border-bottom: 1px solid var(--border-light);">SYSTEMS ARTIFACT &bull; SIGNAL</span>
+                        <div style="flex-grow: 1; overflow: hidden; display: flex; align-items: stretch; justify-content: center; position: relative; height: 100%;">
+                            <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; filter: saturate(0.9);" loading="eager">
+                        </div>
+                    </div>
+                    <!-- Creative Side (Roughly One-Third: 33%) -->
+                    <div style="width: 33%; display: flex; flex-direction: column; gap: 0.25rem; justify-content: flex-start; height: 282px; overflow: hidden; background: var(--bg-paper); border-radius: 4px; border: 1px solid var(--border-light); position: relative; z-index: 2; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+                        <span style="font-family: var(--font-mono); font-size: 8px; color: var(--accent-red); letter-spacing: 0.05em; text-transform: uppercase; padding: 0.5rem 0.5rem 0.25rem 0.5rem; display: block; text-align: left; background: var(--bg-panel); border-bottom: 1px solid var(--border-light);">CREATIVE MARKS</span>
+                        <div style="flex-grow: 1; overflow: hidden; display: flex; align-items: stretch; justify-content: center; position: relative; height: 100%;">
+                            <img src="/assets/images/creative_hero_map.jpg" alt="Cartographic landscape details" style="width: 100%; height: 100%; object-fit: cover; object-position: center; filter: sepia(0.12) contrast(1.1);" loading="eager">
+                        </div>
+                    </div>
+                    <!-- Restrained Red Thread Connector -->
+                    <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3;" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M 45 60 Q 60 30 75 50" fill="none" stroke="var(--accent-red)" stroke-width="1.8" stroke-dasharray="0" opacity="0.85"></path>
+                        <circle cx="45" cy="60" r="1.5" fill="var(--accent-red)" opacity="0.9"></circle>
+                        <circle cx="75" cy="50" r="1.5" fill="var(--accent-red)" opacity="0.9"></circle>
+                    </svg>
+                </div>
+            </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -299,13 +323,13 @@
                                     <span>Systems</span>
                                 </div>
                                 <h3 class="tilt-card-title">Signal</h3>
-                                <p class="tilt-card-desc">A weighted decision-intelligence system that converts operational friction into prioritized action.</p>
+                                <p class="tilt-card-desc">A weighted decision-support system that converts operational friction into prioritized action.</p>
                                 <div class="tilt-card-visual">
                                     <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard screenshot" loading="lazy">
                                 </div>
                             </div>
                             <div class="tilt-card-footer">
-                                <span class="tilt-card-status status-demo">Working Prototype</span>
+                                <span class="tilt-card-status status-demo">Interactive Demo</span>
                                 <span class="tilt-card-link">View Project &rarr;</span>
                             </div>
                         </a>
@@ -318,7 +342,7 @@
                                     <span>Systems</span>
                                 </div>
                                 <h3 class="tilt-card-title">GenSort</h3>
-                                <p class="tilt-card-desc">A flexible organization and export system for turning mixed, fragmented material into a usable structure.</p>
+                                <p class="tilt-card-desc">A flexible, local-first organization and export system for turning mixed visual and information assets into a usable structure.</p>
                                 <div class="tilt-card-visual">
                                     <img src="/assets/images/gensort-workspace.webp" alt="GenSort Workspace Dashboard screenshot" loading="lazy">
                                 </div>
@@ -333,11 +357,11 @@
                         <a href="/systems/#message-record" class="tilt-card" tabindex="0" aria-label="Project 03: Message &amp; Record Analysis (Chronology Recovery)">
                             <div>
                                 <div class="tilt-card-header">
-                                    <span>03 &bull; Chronology Recovery</span>
+                                    <span>03 &bull; Record Navigation &amp; Timeline Recovery</span>
                                     <span>Systems</span>
                                 </div>
                                 <h3 class="tilt-card-title">Message &amp; Record Analysis</h3>
-                                <p class="tilt-card-desc">An assisted-navigation system for recovering chronology and locating relevant material inside message collections.</p>
+                                <p class="tilt-card-desc">An assisted-review system designed to turn fragmented messaging logs and record files into a navigable timeline.</p>
                                 <div class="tilt-card-visual" style="background: #FAF9F5; display: flex; flex-direction: column; justify-content: center; padding: 1.5rem; border: 1px solid var(--border-light); border-radius: 4px; height: 140px; box-sizing: border-box;">
                                     <div style="font-family: var(--font-mono); font-size: 8.5px; border-bottom: 1px solid var(--border-light); padding-bottom: 3px; margin-bottom: 6px; color: var(--accent-red); font-weight: bold; width: 100%; text-align: left;">⚠️ LOGICAL VARIANCE DETECTED</div>
                                     <div style="font-family: var(--font-serif); font-size: 11px; line-height: 1.35; color: var(--text-primary); text-align: left;">Presence claim conflicts with self-reported arrival by 25 mins.</div>
@@ -382,7 +406,7 @@
                             <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent-teal); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">01 &bull; OPERATION &amp; STRUCTURE</span>
                             <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; margin-bottom: 1.25rem; font-weight: 500;">Applied Systems</h2>
                             <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 2rem;">
-                                Operational intelligence tools, database design, and structure built for decision clarity: Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, Resource Guide, and selected client builds.
+                                Operational intelligence tools, database design, and structure built for decision clarity: Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, Resource Guide Compilation, and Selected Commercial Builds.
                             </p>
                         </div>
                         <a href="/systems/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); width: fit-content; margin-top: auto;">Explore Applied Systems &rarr;</a>
@@ -407,7 +431,7 @@
         <section class="proof-section" aria-label="Selected proof and verification status">
             <div class="proof-container">
                 <div class="proof-row">
-                    <a href="/systems/" class="proof-item">
+                    <a href="/systems/#systems-projects" class="proof-item">
                         <span class="proof-metric">03+</span>
                         <h4>Working Prototypes</h4>
                         <p>Verifiable systems codebases &rarr;</p>
@@ -417,7 +441,7 @@
                         <h4>Production Systems</h4>
                         <p>Selected client websites and operational systems &rarr;</p>
                     </a>
-                    <a href="/systems/" class="proof-item">
+                    <a href="/systems/#signal" class="proof-item">
                         <span class="proof-metric">Demo</span>
                         <h4>Interactive Demos</h4>
                         <p>Product and information-architecture concepts &rarr;</p>
@@ -427,7 +451,7 @@
                         <h4>Completed Manuscript</h4>
                         <p>How to Explain Yourself to Wolves &rarr;</p>
                     </a>
-                    <a href="/jayme/#operating-background" class="proof-item">
+                    <a href="/about/#operating-background" class="proof-item">
                         <span class="proof-metric">10+ Yrs</span>
                         <h4>Operational Leadership</h4>
                         <p>Staffing, workflow, and hospitality operations &rarr;</p>

@@ -90,9 +90,9 @@ async function runRedirectTests() {
     const host = '127.0.0.1';
     const port = 3000;
     const testCases = [
-        { path: '/jayme', target: '/jayme/' },
+        { path: '/jayme', target: '/about/' },
         { path: '/creative', target: '/creative/' },
-        { path: '/creative/resource-guide', target: '/creative/resource-guide/' }
+        { path: '/creative/resource-guide', target: '/systems/resource-guide/' }
     ];
 
     let serverOnline = false;
@@ -139,11 +139,11 @@ if (fs.existsSync(sitemapPath)) {
 
     const publicUrls = [
         'https://contextmuse.com/',
-        'https://contextmuse.com/jayme/',
-        'https://contextmuse.com/jayme/product-experience/',
+        'https://contextmuse.com/about/',
+        // 'https://contextmuse.com/jayme/product-experience/',
         'https://contextmuse.com/creative/',
         'https://contextmuse.com/creative/how-to-explain-yourself-to-wolves/',
-        'https://contextmuse.com/creative/resource-guide/',
+        'https://contextmuse.com/systems/resource-guide/',
         'https://contextmuse.com/systems/'
     ];
 
@@ -167,11 +167,11 @@ log('\n[4] STRUCTURE AND NAVIGATION AUDITS');
 const filesToVerify = [
     { name: 'index.html', relPath: 'index.html', canonical: 'https://contextmuse.com/' },
     { name: 'proof-of-work.html', relPath: 'proof-of-work.html', canonical: null },
-    { name: 'jayme/index.html', relPath: 'jayme/index.html', canonical: 'https://contextmuse.com/jayme/' },
-    { name: 'jayme/product-experience/index.html', relPath: 'jayme/product-experience/index.html', canonical: 'https://contextmuse.com/jayme/product-experience/' },
+    { name: 'about/index.html', relPath: 'about/index.html', canonical: 'https://contextmuse.com/about/' },
+    // { name: 'jayme/product-experience/index.html', relPath: 'jayme/product-experience/index.html', canonical: 'https://contextmuse.com/jayme/product-experience/' },
     { name: 'creative/index.html', relPath: 'creative/index.html', canonical: 'https://contextmuse.com/creative/' },
     { name: 'creative/how-to-explain-yourself-to-wolves/index.html', relPath: 'creative/how-to-explain-yourself-to-wolves/index.html', canonical: 'https://contextmuse.com/creative/how-to-explain-yourself-to-wolves/' },
-    { name: 'creative/resource-guide/index.html', relPath: 'creative/resource-guide/index.html', canonical: 'https://contextmuse.com/creative/resource-guide/' },
+    { name: 'systems/resource-guide/index.html', relPath: 'systems/resource-guide/index.html', canonical: 'https://contextmuse.com/systems/resource-guide/' },
     { name: 'systems/index.html', relPath: 'systems/index.html', canonical: 'https://contextmuse.com/systems/' }
 ];
 
@@ -296,41 +296,15 @@ const wolvesPagePath = path.join(projectRoot, 'creative/how-to-explain-yourself-
 if (fs.existsSync(wolvesPagePath)) {
     const wolvesContent = fs.readFileSync(wolvesPagePath, 'utf8');
     
-    // Check exactly one placeholder container exists
+    // Verify that the legacy manuscript excerpt placeholder has been completely removed
     const placeholderCount = (wolvesContent.match(/class=["']excerpt-placeholder["']/gi) || []).length;
-    if (placeholderCount === 1) {
-        log('  [PASS] Exactly one approved excerpt placeholder container exists.');
+    const textMatch = wolvesContent.match(/Approved manuscript excerpt will appear here/);
+    if (placeholderCount === 0 && !textMatch) {
+        log('  [PASS] Checked that legacy placeholder excerpt container and copy are successfully removed.');
     } else {
-        log(`  [FAIL] Expected exactly 1 placeholder, found ${placeholderCount}`);
+        log('  [FAIL] Legacy placeholder excerpt container or text still remains on the page.');
         overallSuccess = false;
     }
-
-    // Check placeholder reads exactly: Approved manuscript excerpt will appear here.
-    const textMatch = wolvesContent.match(/>Approved manuscript excerpt will appear here\.</);
-    if (textMatch) {
-        log('  [PASS] Placeholder text reads exactly: "Approved manuscript excerpt will appear here."');
-    } else {
-        log('  [FAIL] Placeholder text is missing or modified.');
-        overallSuccess = false;
-    }
-
-    // Check no additional prose inside the container
-    const rawContainerContent = wolvesContent.match(/class=["']excerpt-placeholder["'][^>]*>([\s\S]*?)<\/div>/i);
-    if (rawContainerContent) {
-        const cleanContent = rawContainerContent[1].trim();
-        if (cleanContent === 'Approved manuscript excerpt will appear here.') {
-            log('  [PASS] No additional prose appears inside the excerpt container.');
-        } else {
-            log(`  [FAIL] Extra text detected inside excerpt placeholder: "${cleanContent}"`);
-            overallSuccess = false;
-        }
-    } else {
-        log('  [FAIL] Could not parse excerpt placeholder container.');
-        overallSuccess = false;
-    }
-
-    // Confirm that manuscript excerpt placeholders were not replaced with generated text
-    log('  [PASS] Confirmation: Manuscript excerpt placeholders were NOT replaced with generated text.');
 } else {
     log('  [FAIL] Wolves companion page does not exist.');
     overallSuccess = false;
@@ -527,6 +501,196 @@ if (manuscriptLeaked) {
     overallSuccess = false;
 } else {
     log('  [PASS] Confirmed: No manuscript document or downloadable manuscript asset exists in deployment output.');
+}
+
+
+// ==========================================================================
+// 8. AUTOMATED ASSET VALIDATION
+// ==========================================================================
+log('\n[8] AUTOMATED ASSET VALIDATION');
+
+const assetRegex = /src=["']([^"']+\.(png|webp|jpg|jpeg|gif|svg))["']/gi;
+const cssUrlRegex = /url\(["']?([^"')]+\.(png|webp|jpg|jpeg|gif|svg))["']?\)/gi;
+
+const discoveredAssets = new Set();
+
+filesToVerify.forEach(fileSpec => {
+    const filePath = path.join(projectRoot, fileSpec.relPath);
+    if (!fs.existsSync(filePath)) return;
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+
+    let match;
+    // Scan img src
+    while ((match = assetRegex.exec(fileContent)) !== null) {
+        discoveredAssets.add(match[1]);
+    }
+    // Scan CSS backgrounds
+    while ((match = cssUrlRegex.exec(fileContent)) !== null) {
+        discoveredAssets.add(match[1]);
+    }
+});
+
+log(`  Discovered ${discoveredAssets.size} unique referenced asset paths.`);
+
+function getImageDimensions(filePath) {
+    const buffer = fs.readFileSync(filePath);
+    // PNG
+    if (buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4e && buffer[3] === 0x47) {
+        const width = buffer.readInt32BE(16);
+        const height = buffer.readInt32BE(20);
+        return { width, height };
+    }
+    // JPEG
+    if (buffer[0] === 0xff && buffer[1] === 0xd8) {
+        let offset = 2;
+        while (offset < buffer.length) {
+            if (buffer[offset] !== 0xff) break;
+            const marker = buffer[offset + 1];
+            if (marker === 0xc0 || marker === 0xc2) {
+                const height = buffer.readUInt16BE(offset + 5);
+                const width = buffer.readUInt16BE(offset + 7);
+                return { width, height };
+            }
+            const length = buffer.readUInt16BE(offset + 2);
+            offset += 2 + length;
+        }
+    }
+    // WebP
+    if (buffer[0] === 0x52 && buffer[1] === 0x49 && buffer[2] === 0x46 && buffer[3] === 0x46 && // RIFF
+        buffer[8] === 0x57 && buffer[9] === 0x45 && buffer[10] === 0x42 && buffer[11] === 0x50) { // WEBP
+        const chunkHeader = buffer.toString('ascii', 12, 16);
+        if (chunkHeader === 'VP8 ') {
+            const width = buffer.readUInt16LE(26) & 0x3fff;
+            const height = buffer.readUInt16LE(28) & 0x3fff;
+            return { width, height };
+        } else if (chunkHeader === 'VP8L') {
+            const val = buffer.readUInt32LE(21);
+            const width = (val & 0x3fff) + 1;
+            const height = ((val >> 14) & 0x3fff) + 1;
+            return { width, height };
+        } else if (chunkHeader === 'VP8X') {
+            const width = (buffer.readUInt32LE(24) & 0xffffff) + 1;
+            const height = (buffer.readUInt32LE(27) & 0xffffff) + 1;
+            return { width, height };
+        }
+    }
+    return { width: 0, height: 0 };
+}
+
+function hasGPSMetadata(filePath) {
+    const buffer = fs.readFileSync(filePath);
+    if (buffer[0] === 0xff && buffer[1] === 0xd8) {
+        let offset = 2;
+        while (offset < buffer.length - 4) {
+            if (buffer[offset] !== 0xff) break;
+            const marker = buffer[offset + 1];
+            if (marker === 0xe1) {
+                const length = buffer.readUInt16BE(offset + 2);
+                const app1Data = buffer.slice(offset + 4, offset + 2 + length);
+                if (app1Data.slice(0, 4).toString('ascii') === 'Exif') {
+                    const exifStr = app1Data.toString('binary');
+                    if (exifStr.includes('GPS ') || exifStr.includes('GPS\0')) {
+                        return true;
+                    }
+                    for (let i = 0; i < app1Data.length - 2; i++) {
+                        if ((app1Data[i] === 0x88 && app1Data[i+1] === 0x25) || (app1Data[i] === 0x25 && app1Data[i+1] === 0x88)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            if (marker === 0xda) break;
+            const length = buffer.readUInt16BE(offset + 2);
+            offset += 2 + length;
+        }
+    }
+    return false;
+}
+
+let assetsPassed = true;
+
+discoveredAssets.forEach(asset => {
+    // We only validate local project assets (start with / or are relative without http)
+    if (asset.startsWith('http://') || asset.startsWith('https://')) {
+        return;
+    }
+
+    let cleanAsset = asset.split('#')[0].split('?')[0];
+    let resolvedPath = cleanAsset.startsWith('/')
+        ? path.join(projectRoot, cleanAsset.substring(1))
+        : path.resolve(projectRoot, cleanAsset);
+
+    const relativePath = path.relative(projectRoot, resolvedPath).replace(/\\/g, '/');
+
+    // 8.1 Exists check
+    if (!fs.existsSync(resolvedPath)) {
+        log(`  [FAIL] Referenced asset does not exist: "${asset}" (Resolved: ${resolvedPath})`);
+        assetsPassed = false;
+        overallSuccess = false;
+        return;
+    }
+
+    // 8.2 Casing check
+    const dir = path.dirname(resolvedPath);
+    const base = path.basename(resolvedPath);
+    if (fs.existsSync(dir)) {
+        const contents = fs.readdirSync(dir);
+        if (!contents.includes(base)) {
+            log(`  [FAIL] Asset filename casing mismatch: "${asset}" (Basename mismatch in FS: "${base}")`);
+            assetsPassed = false;
+            overallSuccess = false;
+        }
+    }
+
+    // 8.3 Non-zero file size check
+    const stats = fs.statSync(resolvedPath);
+    if (stats.size === 0) {
+        log(`  [FAIL] Asset file is empty (0 bytes): "${asset}"`);
+        assetsPassed = false;
+        overallSuccess = false;
+    }
+
+    // 8.4 .vercelignore check
+    if (vercelIgnoreList.some(pattern => {
+        if (pattern.startsWith('/')) {
+            return relativePath.startsWith(pattern.substring(1));
+        }
+        return relativePath.includes(pattern);
+    })) {
+        log(`  [FAIL] Asset file is accidentally excluded by vercelignore: "${asset}"`);
+        assetsPassed = false;
+        overallSuccess = false;
+    }
+
+    // 8.5 Dimensions check (for rasters: png, jpg, webp)
+    const ext = path.extname(cleanAsset).toLowerCase();
+    if (['.png', '.jpg', '.jpeg', '.webp'].includes(ext)) {
+        const dims = getImageDimensions(resolvedPath);
+        if (dims.width > 0 && dims.height > 0) {
+            log(`  [PASS] Asset: "${asset}" (${dims.width}x${dims.height}, ${stats.size} bytes)`);
+        } else {
+            log(`  [FAIL] Asset: "${asset}" has invalid or zero dimensions.`);
+            assetsPassed = false;
+            overallSuccess = false;
+        }
+
+        // 8.6 EXIF GPS coordinates checks
+        if (['.jpg', '.jpeg'].includes(ext)) {
+            if (hasGPSMetadata(resolvedPath)) {
+                log(`  [FAIL] Asset: "${asset}" contains EXIF GPS coordinates / location metadata (security risk).`);
+                assetsPassed = false;
+                overallSuccess = false;
+            } else {
+                log(`  [PASS] Exif metadata is safe (no GPS tags found) for: "${asset}"`);
+            }
+        }
+    } else if (ext === '.svg') {
+        log(`  [PASS] Asset: "${asset}" (SVG Vector, ${stats.size} bytes)`);
+    }
+});
+
+if (assetsPassed) {
+    log('  [PASS] All referenced assets passed structure, casing, size, and metadata audits.');
 }
 
 log('\n==========================================================================');

@@ -5,6 +5,21 @@
       "source": "/creative-practice/how-to-explain-yourself-to-wolves/",
       "destination": "/creative/how-to-explain-yourself-to-wolves/",
       "permanent": true
+    },
+    {
+      "source": "/jayme/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/jayme/product-experience/",
+      "destination": "/systems/",
+      "permanent": true
+    },
+    {
+      "source": "/creative/resource-guide/",
+      "destination": "/systems/resource-guide/",
+      "permanent": true
     }
   ]
 }

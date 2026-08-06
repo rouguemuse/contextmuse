@@ -1630,14 +1630,14 @@ p {
 
 .step-num {
     font-family: var(--font-mono);
-    font-size: 16px;
+    font-size: 13px;
     color: var(--accent-teal);
     background: var(--bg-paper);
-    padding: 0.35rem 0.75rem;
-    border: 1.5px solid var(--border-dark);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--border-dark);
     border-radius: 3px;
-    margin-bottom: 1.5rem;
-    font-weight: bold;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
     transition: var(--transition-smooth);
     z-index: 3;
 }
@@ -1650,16 +1650,17 @@ p {
 }
 
 .step-name {
-    font-family: var(--font-sans);
-    font-size: 21px;
-    font-weight: 700;
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 500;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
 }
 
 .step-desc {
-    font-size: 15px;
-    line-height: 1.5;
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.6;
     color: var(--text-secondary);
 }
 
