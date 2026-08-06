@@ -1082,7 +1082,8 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4.5rem;
+    overflow: hidden;
+    padding: 0;
 }
 
 .grid-card-name {
