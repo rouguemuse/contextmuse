@@ -21,6 +21,52 @@
     <link rel="stylesheet" href="/styles.css">
     
     <style>
+        /* Deep forest green background style override */
+        .systems-section-dark {
+            background-color: #071714 !important; /* Deep forest green */
+            color: #FAF9F5 !important;
+        }
+
+        /* Alternating split-layout grid */
+        .flagship-grid-alternating {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            padding-bottom: 80px;
+        }
+        
+        .flagship-project {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .flagship-project:nth-child(even) {
+            grid-template-columns: 0.95fr 1.05fr;
+        }
+        
+        .flagship-project:nth-child(even) .project-meta {
+            order: 2;
+        }
+        
+        .flagship-project:nth-child(even) .visual-panel {
+            order: 1;
+        }
+        
+        @media (max-width: 900px) {
+            .flagship-project, .flagship-project:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .flagship-project:nth-child(even) .project-meta {
+                order: 1;
+            }
+            .flagship-project:nth-child(even) .visual-panel {
+                order: 2;
+            }
+        }
+
         /* Restrained 1-2 degree tilt on hover for project images */
         .browser-frame {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -153,9 +199,9 @@
                     </p>
                 </div>
 
-                <div class="systems-grid-dark">
-                    <!-- System 1: Signal (Split Layout) -->
-                    <article class="project-showcase split-layout flagship-project" id="signal">
+                <div class="flagship-grid-alternating">
+                    <!-- System 1: Signal -->
+                    <article class="flagship-project" id="signal">
                         <div class="project-meta">
                             <span class="project-num">01</span>
                             <span class="project-category">Diagnostic Dashboard &bull; Operations Support</span>
@@ -218,13 +264,13 @@
                         </div>
                     </article>
 
-                    <!-- System 2: GenSort (Stacked Layout) -->
-                    <article class="project-showcase full-width-layout flagship-project" id="gensort">
-                        <div class="project-meta" style="max-width: 800px;">
+                    <!-- System 2: GenSort -->
+                    <article class="flagship-project" id="gensort">
+                        <div class="project-meta">
                             <span class="project-num">02</span>
                             <span class="project-category">Visual Library Governance &bull; Local Curation</span>
                             <h3 class="project-title">GenSort</h3>
-                            <p class="project-copy" style="max-width: 720px;">
+                            <p class="project-copy">
                                 A flexible organization and export system for turning mixed, fragmented material into a usable structure. GenSort can be re-skinned and expanded for business files, evidence organization, research archives, grant materials, client records, content libraries, and other environments where large mixed-information collections need to be sorted, reviewed, and exported.
                             </p>
                             <div class="project-tags">
@@ -268,7 +314,7 @@
                             </div>
                         </div>
                         
-                        <div class="visual-panel" style="width: 100%;">
+                        <div class="visual-panel">
                             <span class="visual-type-label">WORKSPACE ENVIRONMENT</span>
                             <div class="browser-frame">
                                 <div class="browser-header">
@@ -284,13 +330,13 @@
                         </div>
                     </article>
 
-                    <!-- System 3: Message & Record Analysis (Full Width Layout) -->
-                    <article class="project-showcase full-width-layout flagship-project" id="message-record">
-                        <div class="project-meta" style="max-width: 800px;">
+                    <!-- System 3: Message & Record Analysis -->
+                    <article class="flagship-project" id="message-record">
+                        <div class="project-meta">
                             <span class="project-num">03</span>
                             <span class="project-category">Record Navigation &bull; Timeline Recovery</span>
                             <h3 class="project-title">Message &amp; Record Analysis</h3>
-                            <p class="project-copy" style="max-width: 720px;">
+                            <p class="project-copy">
                                 Factual inconsistencies and timeline gaps remain hidden in raw conversation transcripts. Message &amp; Record Analysis maps statements to timestamps to flag logical variances. Includes the <strong>Contradiction Finder</strong> analysis engine.
                             </p>
                             
@@ -356,7 +402,7 @@
                                             </div>
                                             <p style="margin: 0; font-family: var(--font-serif); font-size: 13.5px; line-height: 1.45; color: var(--text-primary);">
                                                 "I arrived <span style="background: rgba(225, 29, 72, 0.1); border-bottom: 1.5px dashed var(--accent-red); padding: 0 2px; font-weight: bold; color: var(--accent-red);">after</span> the meeting was adjourned."
-                                            </p>
+                                             </p>
                                             <div style="margin-top: 0.4rem; display: flex; gap: 4px;">
                                                 <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#arrival-time</span>
                                                 <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#statement-a</span>
@@ -455,8 +501,44 @@
                         </div>
                     </article>
 
-                    <!-- System 4: Record Integrity & Traceability (Split Layout Reverse) -->
-                    <article class="project-showcase split-layout-reverse flagship-project" id="record-integrity">
+                    <!-- System 4: Record Integrity & Traceability -->
+                    <article class="flagship-project" id="record-integrity">
+                        <div class="project-meta">
+                            <span class="project-num">04</span>
+                            <span class="project-category">Provenance Traceability &bull; Risk Signals</span>
+                            <h3 class="project-title">Record Integrity &amp; Traceability</h3>
+                            <p class="project-copy">
+                                A conceptual review system that examines behavioral patterns across documents, versions, sequences, and metadata rather than treating one isolated marker as proof of manipulation.
+                            </p>
+                            
+                            <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                                <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">SURFACED RISK PATTERNS</strong>
+                                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                                    <span class="project-tag-dark">Version Drift</span>
+                                    <span class="project-tag-dark">Metadata Conflicts</span>
+                                    <span class="project-tag-dark">Timing Anomalies</span>
+                                    <span class="project-tag-dark">Template Artifacts</span>
+                                    <span class="project-tag-dark">Copy-Paste Patterns</span>
+                                    <span class="project-tag-dark">Sequence Inconsistencies</span>
+                                    <span class="project-tag-dark">Cross-Document Contradictions</span>
+                                    <span class="project-tag-dark">Provenance Gaps</span>
+                                </div>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag-dark">SHA-256 fingerprinting</span>
+                                <span class="project-tag-dark">provenance logs</span>
+                                <span class="project-tag-dark">change detection</span>
+                            </div>
+                            <div class="project-disclaimer">
+                                <strong>Technical Limit Disclaimer:</strong> The system surfaces combinations of risk indicators for human review. It does not label a document fraudulent based on one anomaly. Cryptographic hashes verify files are unaltered; they do not prove factual correctness.
+                            </div>
+                            <div class="project-ctas" style="margin-top: 1rem;">
+                                <a href="/jayme/#selected-work" class="btn btn-primary">Explore Methodology</a>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Concept</span>
+                        </div>
+
                         <div class="visual-panel">
                             <span class="visual-type-label">PROCESS VISUALIZATION</span>
                             <!-- Native Layered Provenance Stack -->
@@ -515,42 +597,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
- 
-                        <div class="project-meta">
-                            <span class="project-num">04</span>
-                            <span class="project-category">Provenance Traceability &bull; Risk Signals</span>
-                            <h3 class="project-title">Record Integrity &amp; Traceability</h3>
-                            <p class="project-copy">
-                                A conceptual review system that examines behavioral patterns across documents, versions, sequences, and metadata rather than treating one isolated marker as proof of manipulation.
-                            </p>
-                            
-                            <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
-                                <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">SURFACED RISK PATTERNS</strong>
-                                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                                    <span class="project-tag-dark">Version Drift</span>
-                                    <span class="project-tag-dark">Metadata Conflicts</span>
-                                    <span class="project-tag-dark">Timing Anomalies</span>
-                                    <span class="project-tag-dark">Template Artifacts</span>
-                                    <span class="project-tag-dark">Copy-Paste Patterns</span>
-                                    <span class="project-tag-dark">Sequence Inconsistencies</span>
-                                    <span class="project-tag-dark">Cross-Document Contradictions</span>
-                                    <span class="project-tag-dark">Provenance Gaps</span>
-                                </div>
-                            </div>
-
-                            <div class="project-tags">
-                                <span class="project-tag-dark">SHA-256 fingerprinting</span>
-                                <span class="project-tag-dark">provenance logs</span>
-                                <span class="project-tag-dark">change detection</span>
-                            </div>
-                            <div class="project-disclaimer">
-                                <strong>Technical Limit Disclaimer:</strong> The system surfaces combinations of risk indicators for human review. It does not label a document fraudulent based on one anomaly. Cryptographic hashes verify files are unaltered; they do not prove factual correctness.
-                            </div>
-                            <div class="project-ctas" style="margin-top: 1rem;">
-                                <a href="/jayme/#selected-work" class="btn btn-primary">Explore Methodology</a>
-                            </div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Concept</span>
                         </div>
                     </article>
                 </div>

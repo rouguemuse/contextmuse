@@ -19,6 +19,208 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=2.1">
+    <style>
+        /* Hero 2-Column Grid */
+        .hero-gateway-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .hero-gateway-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+            .hero-gateway-grid .hero-text-column {
+                order: 1;
+                text-align: center !important;
+            }
+            .hero-gateway-grid .hero-visual-column {
+                order: 2;
+                text-align: center !important;
+            }
+            .hero-gateway-grid .btn-group {
+                justify-content: center;
+            }
+        }
+
+        /* Carousel and Cards CSS */
+        .preview-section {
+            background: var(--bg-paper);
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .preview-header {
+            margin-bottom: 2.5rem;
+        }
+        .carousel-viewport-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .carousel-viewport {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 1.5rem 0;
+            scrollbar-width: none;
+        }
+        .carousel-viewport::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tilt-card {
+            flex: 0 0 85%;
+            max-width: 480px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.25rem;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.02);
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        @media (min-width: 769px) {
+            .tilt-card {
+                flex: 0 0 calc(25% - 1.5rem); /* 4 columns since we show 4 projects */
+                max-width: none;
+            }
+            .carousel-viewport {
+                scroll-snap-type: none;
+            }
+        }
+        
+        .tilt-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%), rgba(15, 118, 110, 0.06), transparent 80%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .tilt-card:hover::before {
+            opacity: 1;
+        }
+        .tilt-card:hover {
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            border-color: var(--border-dark);
+        }
+
+        .tilt-card-header {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .tilt-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .tilt-card-desc {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .tilt-card-visual {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            height: 140px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateZ(20px);
+        }
+        .tilt-card-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.3s ease;
+        }
+        .tilt-card:hover .tilt-card-visual img {
+            transform: scale(1.03);
+        }
+        
+        .tilt-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1rem;
+            margin-top: auto;
+            transform: translateZ(10px);
+        }
+        .tilt-card-status {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-live { color: var(--accent-lime); }
+        .status-demo { color: var(--accent-teal); }
+        .status-manuscript { color: var(--accent-red); }
+        
+        .tilt-card-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .tilt-card:hover .tilt-card-link {
+            color: var(--accent-teal);
+        }
+
+        .carousel-nav-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 14px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .carousel-nav-btn:hover {
+            border-color: var(--border-dark);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -40,25 +242,25 @@
         </div>
     </nav>
 
-    <!-- Premium Hero Section (Clean Gateway Redesign) -->
-    <header class="hero hero-premium" id="portfolio-hero" style="padding: 160px 0 80px;">
-        <div class="container" style="max-width: 800px; text-align: center;">
-            <span class="eyebrow" style="letter-spacing: 0.15em; font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase;">CONTEXT &amp; MUSE</span>
-            
-            <h1 class="hero-title" style="font-size: clamp(2.8rem, 5.4vw, 4.8rem); line-height: 1.05; letter-spacing: -0.035em; max-width: 720px; margin: 1.5rem auto; font-family: var(--font-serif); font-weight: 500; color: var(--text-primary);">
-                Clarity shapes perception.<br>
-                Perception changes<br>
-                everything.
-            </h1>
-
-            <!-- Subtle typographic brand element replacing collage -->
-            <div style="margin: 2.5rem auto; max-width: 320px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 0.75rem 0;">
-                <span style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase;">Applied Systems &bull; Creative Practice</span>
+    <!-- Premium Hero Section (Mockup Gateway Style) -->
+    <header class="hero hero-premium" id="portfolio-hero" style="padding: 140px 0 80px;">
+        <div class="container hero-gateway-grid">
+            <div class="hero-text-column" style="text-align: left;">
+                <span class="eyebrow" style="letter-spacing: 0.15em; font-family: var(--font-mono); font-size: 11px; color: var(--accent-red); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1rem;">WRITING &middot; EDITORIAL SYSTEMS &middot; INDEPENDENT WORK</span>
+                <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.8vw, 3.8rem); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 1.5rem; font-family: var(--font-serif); font-weight: 500; color: var(--text-primary);">
+                    Some problems need a system.<br>
+                    Others need a language.
+                </h1>
+                <p class="hero-subhead" style="font-family: var(--font-sans); font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem; max-width: 580px;">
+                    My work helps people organize experience, understand complex information, and find their way through systems that are emotional, fragmented, or difficult to name.
+                </p>
+                <div class="btn-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/creative/" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);">Explore the Work &rarr;</a>
+                    <a href="/systems/" class="btn btn-secondary" style="border-color: var(--accent-teal); color: var(--accent-teal);">View Professional Portfolio &rarr;</a>
+                </div>
             </div>
-
-            <div class="btn-group" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="/systems/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);">Explore Applied Systems &rarr;</a>
-                <a href="/creative/" class="btn btn-secondary" style="border-color: var(--accent-red); color: var(--accent-red);">Explore Creative Practice &rarr;</a>
+            <div class="hero-visual-column" style="text-align: right;">
+                <img src="/assets/images/creative_hero_map.jpg" alt="Context &amp; Muse Archive Map" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); max-width: 480px; display: inline-block;" loading="eager">
             </div>
         </div>
     </header>
@@ -70,6 +272,103 @@
                 <p style="font-family: var(--font-serif); font-size: clamp(1.2rem, 2.5vw, 1.45rem); line-height: 1.7; color: var(--text-secondary); font-style: italic;">
                     Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use. The studio builds software templates, logic schemas, diagnostic dashboards, and creative language projects.
                 </p>
+            </div>
+        </section>
+
+        <!-- Project Showcase Preview Section -->
+        <section class="preview-section" id="project-previews" aria-labelledby="preview-heading">
+            <div class="container">
+                <div class="preview-header" style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <div>
+                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;">Showcase</span>
+                        <h2 id="preview-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 0;">Selected Project Showcase</h2>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="carousel-nav-btn" id="carousel-prev" aria-label="Previous card">&larr;</button>
+                        <button class="carousel-nav-btn" id="carousel-next" aria-label="Next card">&rarr;</button>
+                    </div>
+                </div>
+                
+                <div class="carousel-viewport-wrapper">
+                    <div class="carousel-viewport" id="carousel-view">
+                        <!-- Card 1: Signal -->
+                        <a href="/systems/#signal" class="tilt-card" tabindex="0" aria-label="Project 01: Signal (Diagnostic Dashboard)">
+                            <div>
+                                <div class="tilt-card-header">
+                                    <span>01 &bull; Diagnostic Dashboard</span>
+                                    <span>Systems</span>
+                                </div>
+                                <h3 class="tilt-card-title">Signal</h3>
+                                <p class="tilt-card-desc">A weighted decision-intelligence system that converts operational friction into prioritized action.</p>
+                                <div class="tilt-card-visual">
+                                    <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard screenshot" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="tilt-card-footer">
+                                <span class="tilt-card-status status-demo">Working Prototype</span>
+                                <span class="tilt-card-link">View Project &rarr;</span>
+                            </div>
+                        </a>
+
+                        <!-- Card 2: GenSort -->
+                        <a href="/systems/#gensort" class="tilt-card" tabindex="0" aria-label="Project 02: GenSort (Visual Catalog System)">
+                            <div>
+                                <div class="tilt-card-header">
+                                    <span>02 &bull; Visual Catalog System</span>
+                                    <span>Systems</span>
+                                </div>
+                                <h3 class="tilt-card-title">GenSort</h3>
+                                <p class="tilt-card-desc">A flexible organization and export system for turning mixed, fragmented material into a usable structure.</p>
+                                <div class="tilt-card-visual">
+                                    <img src="/assets/images/gensort-workspace.webp" alt="GenSort Workspace Dashboard screenshot" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="tilt-card-footer">
+                                <span class="tilt-card-status status-demo">Working Prototype</span>
+                                <span class="tilt-card-link">View Project &rarr;</span>
+                            </div>
+                        </a>
+
+                        <!-- Card 3: Message & Record Analysis -->
+                        <a href="/systems/#message-record" class="tilt-card" tabindex="0" aria-label="Project 03: Message &amp; Record Analysis (Chronology Recovery)">
+                            <div>
+                                <div class="tilt-card-header">
+                                    <span>03 &bull; Chronology Recovery</span>
+                                    <span>Systems</span>
+                                </div>
+                                <h3 class="tilt-card-title">Message &amp; Record Analysis</h3>
+                                <p class="tilt-card-desc">An assisted-navigation system for recovering chronology and locating relevant material inside message collections.</p>
+                                <div class="tilt-card-visual" style="background: #FAF9F5; display: flex; flex-direction: column; justify-content: center; padding: 1.5rem; border: 1px solid var(--border-light); border-radius: 4px; height: 140px; box-sizing: border-box;">
+                                    <div style="font-family: var(--font-mono); font-size: 8.5px; border-bottom: 1px solid var(--border-light); padding-bottom: 3px; margin-bottom: 6px; color: var(--accent-red); font-weight: bold; width: 100%; text-align: left;">⚠️ LOGICAL VARIANCE DETECTED</div>
+                                    <div style="font-family: var(--font-serif); font-size: 11px; line-height: 1.35; color: var(--text-primary); text-align: left;">Presence claim conflicts with self-reported arrival by 25 mins.</div>
+                                </div>
+                            </div>
+                            <div class="tilt-card-footer">
+                                <span class="tilt-card-status status-demo">Concept Model</span>
+                                <span class="tilt-card-link">View Project &rarr;</span>
+                            </div>
+                        </a>
+
+                        <!-- Card 4: How to Explain Yourself to Wolves -->
+                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="tilt-card" tabindex="0" aria-label="Project 04: How to Explain Yourself to Wolves (Literary Companion)">
+                            <div>
+                                <div class="tilt-card-header">
+                                    <span>04 &bull; Literary Companion</span>
+                                    <span>Creative</span>
+                                </div>
+                                <h3 class="tilt-card-title">How to Explain Yourself to Wolves</h3>
+                                <p class="tilt-card-desc">An interactive literary companion exploring translation boundaries and communication constraints.</p>
+                                <div class="tilt-card-visual">
+                                    <img src="/assets/images/wolves_charcoal_art.jpg" alt="Wolves companion visual layout sketch" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="tilt-card-footer">
+                                <span class="tilt-card-status status-manuscript">Completed Manuscript</span>
+                                <span class="tilt-card-link">View Project &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -199,5 +498,42 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Cursor-reactive 3D tilt effect for showcase cards
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth <= 768) {
+                    return;
+                }
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                
+                const rotateX = (yc - y) / 12; // Max ~6 degrees
+                const rotateY = (x - xc) / 12;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+
+        // Carousel buttons scroll logic
+        const carousel = document.getElementById('carousel-view');
+        document.getElementById('carousel-prev').addEventListener('click', () => {
+            carousel.scrollBy({ left: -320, behavior: 'smooth' });
+        });
+        document.getElementById('carousel-next').addEventListener('click', () => {
+            carousel.scrollBy({ left: 320, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
