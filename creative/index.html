@@ -736,6 +736,202 @@
             margin: 0 auto 2rem;
         }
 
+        /* Revamped Wolves Ecosystem & Manuscript Preview styles */
+        .wolves-split-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .wolves-split-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .manuscript-page-preview {
+            background: #FAF8F5; /* Archival paper color */
+            border: 1px solid #E4E0D5;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-radius: 4px;
+            padding: 2rem;
+            position: relative;
+            font-family: 'Newsreader', 'Georgia', serif;
+            font-size: 14px;
+            line-height: 1.65;
+            color: #2F2F2D;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-align: left;
+        }
+        .manuscript-page-header {
+            border-bottom: 1px solid #EAE6DB;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: #8C887E;
+            text-transform: uppercase;
+        }
+        .manuscript-red-line {
+            position: absolute;
+            top: 0;
+            left: 2.2rem;
+            bottom: 0;
+            width: 1px;
+            background: rgba(225, 29, 72, 0.18);
+        }
+        .manuscript-text {
+            padding-left: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .manuscript-annotation {
+            font-family: var(--font-mono);
+            font-size: 8.5px;
+            color: var(--accent-red);
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-style: normal;
+            border: 1px solid rgba(225, 29, 72, 0.2);
+            padding: 2px 6px;
+            border-radius: 2px;
+            background: rgba(225, 29, 72, 0.02);
+        }
+        
+        /* Wolves Extension Card Group */
+        .wolves-extensions-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            text-align: left;
+        }
+        .wolves-extension-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .wolves-extension-card:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.04);
+        }
+        .wolves-extension-thumb {
+            width: 54px;
+            height: 54px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #FAF8F5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            flex-shrink: 0;
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+        .wolves-extension-body {
+            flex-grow: 1;
+        }
+        .wolves-extension-title {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+        .wolves-extension-desc {
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+        .wolves-extension-status {
+            font-family: var(--font-mono);
+            font-size: 8px;
+            padding: 1px 5px;
+            border-radius: 2px;
+            font-weight: 500;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            margin-top: 4px;
+            display: inline-block;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        /* 02 — Self Cartography standalone visual identity */
+        .cartography-card-pro {
+            background: var(--bg-card);
+            border: 1px solid #D5DBDE; /* Steel blue tint border */
+            border-radius: 6px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 15px rgba(15, 76, 129, 0.03);
+            text-align: left;
+        }
+        .cartography-card-pro.span-2 {
+            grid-column: span 2;
+        }
+        @media (max-width: 600px) {
+            .cartography-card-pro.span-2 {
+                grid-column: span 1;
+            }
+        }
+        .cartography-card-label-pro {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #0F4C81; /* Drafting Blue color */
+            margin-bottom: 10px;
+            display: block;
+        }
+        .cartography-matrix-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #EAEFF2;
+            font-size: 11.5px;
+        }
+        .cartography-matrix-row:last-child {
+            border-bottom: none;
+        }
+        .cartography-matrix-val {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .cartography-matrix-status {
+            font-family: var(--font-mono);
+            font-size: 8px;
+            padding: 2px 6px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .cartography-matrix-status.high {
+            background: rgba(15, 118, 110, 0.1);
+            color: var(--accent-teal);
+        }
+        .cartography-matrix-status.warning {
+            background: rgba(197, 160, 89, 0.1);
+            color: var(--accent-gold);
+        }
+        .cartography-matrix-status.action {
+            background: rgba(225, 29, 72, 0.1);
+            color: var(--accent-red);
+        }
     </style>
 </head>
 <body>
@@ -774,10 +970,9 @@
                     </div>
                 </div>
                 <div>
-                    <img src="/assets/images/creative_hero_map.jpg"
-                         alt="Archival vintage road map with contours, compass segments, tiny hand-drawn lantern marks, and a single winding crimson-red route line"
+                    <img src="/assets/images/wolves_charcoal_art.jpg"
+                         alt="Charcoal illustration of a girl in a red coat walking away on a winding forest path with a subtle wolf standing among trees"
                          class="creative-hero-image"
-                         style="width: 100%; height: auto; max-height: 380px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-light); filter: sepia(0.08) contrast(1.05);"
                          width="720" height="480" loading="eager">
                 </div>
             </div>
@@ -787,132 +982,181 @@
     <main id="main-content">
 
         <!-- 1. How to Explain Yourself to Wolves (PRIMARY PROJECT) -->
-        <section class="creative-section" id="project-wolves" aria-labelledby="wolves-heading" style="background: var(--bg-panel);">
+        <!-- 1. How to Explain Yourself to Wolves (PRIMARY PROJECT ECOSYSTEM) -->
+        <section class="creative-section" id="project-wolves" aria-labelledby="wolves-heading" style="background: var(--bg-panel); border-bottom: 1px solid var(--border-light);">
             <div class="container creative-project">
-                <span class="creative-section-eyebrow" style="color: var(--accent-red);">PRIMARY PROJECT &middot; LITERARY COMPANION</span>
+                <span class="creative-section-eyebrow" style="color: var(--accent-red); display: block; margin-bottom: 2rem;">01 // Flagship Project Ecosystem</span>
                 <h2 id="wolves-heading" style="display:none;">How to Explain Yourself to Wolves</h2>
 
-                <div class="wolves-cinematic-layout">
-                    <!-- Red Thread SVG: begins at wolf's feet in image (approx x=22%, y=68%), loops on road, moves behind text panel (approx x=68%, y=50%), and leads down to legend -->
-                    <svg class="wolves-svg-thread" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M 240 380 Q 320 440, 520 400 T 780 430 Q 820 480, 500 580" fill="none" stroke="var(--accent-red)" stroke-width="2.5" stroke-dasharray="4 4" opacity="0.85"/>
-                    </svg>
-
-                    <div class="wolves-cinematic-grid">
-                        <!-- Left: Cinematic 65% width image -->
-                        <div class="wolves-image-wrapper">
-                            <img src="/assets/images/wolves_charcoal_art.jpg"
-                                 alt="Charcoal illustration of a girl in a red coat walking away on a winding forest path with a subtle wolf standing among trees"
-                                 width="780" height="600" loading="lazy">
+                <div class="wolves-split-layout">
+                    <!-- Left: Principal Project (The Manuscript) -->
+                    <div>
+                        <span class="wolves-status-tag">Allegorical Memoir &middot; Principal Work</span>
+                        <h3 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 2.5vw, 2.1rem); margin-bottom: 1rem; color: var(--text-primary);">The Manuscript</h3>
+                        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.5rem;">
+                            An allegorical memoir about what happens when a person keeps translating herself for people determined to misunderstand her. The text turns emotional translation, identity friction, and hidden personal boundaries into an explorable symbolic vocabulary.
+                        </p>
+                        
+                        <!-- Real Project Material: Manuscript Page Excerpt (HTML/CSS) -->
+                        <div class="manuscript-page-preview">
+                            <div class="manuscript-red-line"></div>
+                            <div class="manuscript-page-header">
+                                <span>How to Explain Yourself to Wolves</span>
+                                <span>Draft MS &bull; Page 104</span>
+                            </div>
+                            <div class="manuscript-text">
+                                <p style="margin: 0 0 1rem 0; text-indent: 1.5rem; font-style: italic;">
+                                    &ldquo;You cannot draw a map of a place you are still fleeing. You can only drop coordinates, light a lantern behind you, and hope someone understands the path you had to carve.&rdquo;
+                                </p>
+                                <p style="margin: 0; text-indent: 1.5rem; font-style: italic;">
+                                    &ldquo;The wolves are not wrong for hunting. They are simply incompatible with the road you are trying to build.&rdquo;
+                                </p>
+                            </div>
+                            <div class="manuscript-annotation">Editorial Note: Glossary mapping matches companion.</div>
                         </div>
+                    </div>
 
-                        <!-- Right: Overlapping warm cream paper panel -->
-                        <div class="wolves-text-panel-cinematic">
-                            <span class="wolves-status-tag">Allegorical Memoir &middot; Completed Manuscript</span>
-                            <h2 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.4vw, 2.2rem); line-height: 1.1; margin-bottom: 0.5rem;">How to Explain Yourself to Wolves</h2>
-                            <p class="wolves-premise">
-                                An interactive literary companion to an allegorical memoir about what happens when a person keeps translating herself for people determined to misunderstand her.
-                            </p>
-                            <p class="wolves-statement">
-                                The companion turns the manuscript's recurring language—roads, maps, red thread, wolves, lanterns, rooms, and borrowed identities—into an explorable visual system.
-                            </p>
-                            <span class="wolves-completion">Completed manuscript &middot; Representation inquiries welcome</span>
-                            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
-                                <a href="/creative/how-to-explain-yourself-to-wolves/"
-                                   class="btn btn-primary"
-                                   style="background: var(--accent-red); border-color: var(--accent-red);"
-                                   id="wolves-cta">Explore the Literary Companion &rarr;</a>
-                                <a href="/creative/how-to-explain-yourself-to-wolves/#companion-work"
-                                   class="btn btn-secondary"
-                                   style="border-color: var(--accent-red); color: var(--accent-red);"
-                                   id="wolves-cta-manuscript">View the Manuscript Project &rarr;</a>
+                    <!-- Right: Connected Expressions (Ecosystem Extensions) -->
+                    <div style="display: flex; flex-direction: column; justify-content: flex-start; height: 100%;">
+                        <span class="wolves-status-tag" style="background: rgba(15, 118, 110, 0.06); border-color: rgba(15, 118, 110, 0.15); color: var(--accent-teal); align-self: flex-start;">Ecosystem Extensions</span>
+                        <h3 style="font-family: var(--font-serif); font-size: clamp(1.3rem, 2vw, 1.8rem); margin-bottom: 1.25rem; color: var(--text-primary);">Explore the Project World</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.75rem;">
+                            The manuscript serves as the anchor for several narrative tools and cartographic reference materials that visualize its themes.
+                        </p>
+                        
+                        <div class="wolves-extensions-group">
+                            <a href="/creative/how-to-explain-yourself-to-wolves/" class="wolves-extension-card">
+                                <div class="wolves-extension-thumb" aria-hidden="true" style="color: var(--accent-red);">🗺️</div>
+                                <div class="wolves-extension-body">
+                                    <div class="wolves-extension-title">Literary Companion</div>
+                                    <div class="wolves-extension-desc">Interactive diagnostic map that translates manuscript terminology into a narrative logic schema.</div>
+                                    <span class="wolves-extension-status">Live Companion App &rarr;</span>
+                                </div>
+                            </a>
+
+                            <div class="wolves-extension-card" style="cursor: default;">
+                                <div class="wolves-extension-thumb" aria-hidden="true" style="color: var(--accent-gold);">📜</div>
+                                <div class="wolves-extension-body">
+                                    <div class="wolves-extension-title">The Cartographer’s Defect</div>
+                                    <div class="wolves-extension-desc">A series of physical drafting-sheet maps, road deviations, and coordinate indices exploring boundary rules.</div>
+                                    <span class="wolves-extension-status">Archived Folio</span>
+                                </div>
+                            </div>
+
+                            <div class="wolves-extension-card" style="cursor: default;">
+                                <div class="wolves-extension-thumb" aria-hidden="true" style="color: var(--text-secondary);">📓</div>
+                                <div class="wolves-extension-body">
+                                    <div class="wolves-extension-title">Field Guide &amp; Archive</div>
+                                    <div class="wolves-extension-desc">Glossary fragments, symbolic definitions, environmental variables, and raw character records.</div>
+                                    <span class="wolves-extension-status">Reference Material</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Symbolic motif legend -->
-                <div class="wolves-motif-strip" aria-label="Project symbolic motifs">
-                    <div class="motif-cell"><span class="motif-symbol" aria-hidden="true">🐺</span><span class="motif-label">Wolves</span></div>
-                    <div class="motif-cell"><span class="motif-symbol" aria-hidden="true">🗺</span><span class="motif-label">Roads</span></div>
-                    <div class="motif-cell"><span class="motif-symbol" aria-hidden="true">🌧</span><span class="motif-label">Weather</span></div>
-                    <div class="motif-cell"><span class="motif-symbol" aria-hidden="true">🏮</span><span class="motif-label">Lanterns</span></div>
                 </div>
             </div>
         </section>
 
         <!-- 2. Self Cartography -->
-        <section class="creative-section" id="self-cartography" aria-labelledby="cartography-heading" style="background: var(--bg-paper);">
+        <section class="creative-section" id="self-cartography" aria-labelledby="cartography-heading" style="background: var(--bg-paper); border-bottom: 1px solid var(--border-light);">
             <div class="container creative-project">
-                <span class="creative-section-eyebrow">Concept Mapping &middot; Values Systems &middot; Relational Cartography</span>
+                <span class="creative-section-eyebrow" style="color: #0F4C81; display: block; margin-bottom: 2rem;">02 // Standalone Personal Framework</span>
                 <div class="cartography-layout">
                     <div class="cartography-text">
-                        <span class="cartography-status">Companion Framework &middot; Values Mapping System</span>
-                        <h2 id="cartography-heading">Self Cartography</h2>
-                        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.65;margin-bottom:0.75rem;">
-                            People often operate from a set of core values they have never stopped to identify. Because those values remain invisible, they may not recognize the discrepancies between what they believe, what they tolerate, and how they actually make decisions.
+                        <span class="cartography-status" style="background: rgba(15, 76, 129, 0.06); border-color: rgba(15, 76, 129, 0.15); color: #0F4C81;">From Story to Structure</span>
+                        <h2 id="cartography-heading" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 3.2vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.25rem;">Self Cartography</h2>
+                        <p style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-primary); line-height: 1.6; margin-bottom: 1.5rem; border-left: 2px solid #0F4C81; padding-left: 1.25rem;">
+                            The manuscript explores what happens when people lack language for their internal maps, while Self Cartography turns similar questions into a practical standalone framework.
                         </p>
-                        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.65;margin-bottom:0.75rem;">
-                            They may also struggle to identify their love languages, triggers, boundaries, environmental pressures, and recurring relational patterns. Without language for those forces, they cannot effectively navigate them.
-                        </p>
-                        <p style="color:var(--text-secondary);font-size:1rem;line-height:1.65;margin-bottom:1.5rem;">
-                            Self Cartography helps users make those invisible forces visible. It maps values, relational cues, triggers, boundaries, environmental variables, emotional conditions, and recurring patterns so users can identify where their choices support—or contradict—the life they believe they want.
+                        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.65;margin-bottom:1.5rem;">
+                            Self Cartography makes invisible personal forces visible. It maps values, boundary parameters, emotional triggers, environmental pressures, and behavioral patterns so users can identify where their choices support—or contradict—their intended path.
                         </p>
                         <div class="cartography-pillars">
                             <div class="cartography-pillar">
-                                <span class="cartography-pillar-num">01</span>
+                                <span class="cartography-pillar-num" style="color: #0F4C81;">01</span>
                                 <div class="cartography-pillar-body">
-                                    <h4>Core Values Mapping</h4>
-                                    <p>Identify the values driving decisions before examining where choices contradict or reinforce them.</p>
+                                    <h4>Values Matrix</h4>
+                                    <p>Establish a prioritized hierarchy of core operational principles before evaluating behavioral choices.</p>
                                 </div>
                             </div>
                             <div class="cartography-pillar">
-                                <span class="cartography-pillar-num">02</span>
+                                <span class="cartography-pillar-num" style="color: #0F4C81;">02</span>
                                 <div class="cartography-pillar-body">
-                                    <h4>Trigger &amp; Boundary Fields</h4>
-                                    <p>Map love languages, triggers, and boundary conditions into a structured vocabulary for navigating relationships.</p>
+                                    <h4>Boundaries &amp; Triggers</h4>
+                                    <p>Isolate external cues and define environmental safety margins to navigate difficult relational fields systematically.</p>
                                 </div>
                             </div>
                             <div class="cartography-pillar">
-                                <span class="cartography-pillar-num">03</span>
+                                <span class="cartography-pillar-num" style="color: #0F4C81;">03</span>
                                 <div class="cartography-pillar-body">
-                                    <h4>Environmental Variables</h4>
-                                    <p>Track external pressure, environmental conditions, and recurring patterns that shape decisions invisibly.</p>
+                                    <h4>Discrepancy Tracking</h4>
+                                    <p>Track alignment variance over time, identifying where operational compromises create structural friction.</p>
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
-                    <div class="cartography-collage">
-                        <span style="font-family: var(--font-mono); font-size: 9px; color: var(--accent-red); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.75rem; text-align: left;">Framework Visualization</span>
-                        <div class="cartography-card span-2">
-                            <span class="cartography-card-label">Symbolic Glossary</span>
-                            <div class="glossary-entry">
-                                <span class="glossary-symbol" aria-hidden="true">🏮</span>
-                                <div><div class="glossary-term">Lantern</div><div class="glossary-def">A signal of presence without explanation. Visible but not legible to those who have not walked the road.</div></div>
+                    
+                    <!-- Separate Visual Identity Collage: drafting blue, charcoal, muted gold, values maps, boundaries, field notes -->
+                    <div class="cartography-collage" style="position: relative;">
+                        <!-- Subtle technical compass geometry background -->
+                        <svg class="drafting-geometry-svg" viewBox="0 0 200 200" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.15; stroke: #0F4C81; stroke-width: 0.5; fill: none;">
+                            <circle cx="100" cy="100" r="80"></circle>
+                            <circle cx="100" cy="100" r="40" stroke-dasharray="2 2"></circle>
+                            <line x1="100" y1="10" x2="100" y2="190"></line>
+                            <line x1="10" y1="100" x2="190" y2="100"></line>
+                        </svg>
+                        
+                        <span style="font-family: var(--font-mono); font-size: 9px; color: #0F4C81; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.75rem; text-align: left; grid-column: span 2;">Workbook Interfaces &amp; Geometry</span>
+                        
+                        <!-- Values Matrix Map -->
+                        <div class="cartography-card-pro span-2">
+                            <span class="cartography-card-label-pro">Values Mapping Matrix</span>
+                            <div class="cartography-matrix-row">
+                                <span>Core Autonomy</span>
+                                <span class="cartography-matrix-val">Self-determination priority</span>
+                                <span class="cartography-matrix-status high">90% Align</span>
                             </div>
-                            <div class="glossary-entry">
-                                <span class="glossary-symbol" aria-hidden="true">🐺</span>
-                                <div><div class="glossary-term">Wolf</div><div class="glossary-def">A presence that demands translation. Never wrong — only incompatible with the road you are on.</div></div>
+                            <div class="cartography-matrix-row">
+                                <span>Operational Rigor</span>
+                                <span class="cartography-matrix-val">Kitchen-scale execution</span>
+                                <span class="cartography-matrix-status high">85% Align</span>
                             </div>
-                            <div class="glossary-entry">
-                                <span class="glossary-symbol" aria-hidden="true">🗺</span>
-                                <div><div class="glossary-term">Cartographer</div><div class="glossary-def">One who draws the territory after walking it. Maps made during transit, not in advance.</div></div>
+                            <div class="cartography-matrix-row">
+                                <span>Structural Clarity</span>
+                                <span class="cartography-matrix-val">Friction-point reduction</span>
+                                <span class="cartography-matrix-status warning">65% Align</span>
+                            </div>
+                            <div class="cartography-matrix-row">
+                                <span>Relational Translation</span>
+                                <span class="cartography-matrix-val">Explaining boundary limits</span>
+                                <span class="cartography-matrix-status action">Defect</span>
                             </div>
                         </div>
-                        <div class="cartography-card">
-                            <span class="cartography-card-label">Boundary Diagram</span>
+
+                        <!-- Boundaries & Triggers Workbook Field -->
+                        <div class="cartography-card-pro">
+                            <span class="cartography-card-label-pro" style="color: var(--accent-gold);">Boundary Fields</span>
                             <div class="boundary-diagram">
-                                <div class="boundary-row"><span class="boundary-label">Safety</span><div class="boundary-bar-track"><div class="boundary-bar-fill" style="width:72%;background:var(--accent-teal);"></div></div></div>
-                                <div class="boundary-row"><span class="boundary-label">Translation</span><div class="boundary-bar-track"><div class="boundary-bar-fill" style="width:55%;background:var(--accent-gold);"></div></div></div>
-                                <div class="boundary-row"><span class="boundary-label">Exposure</span><div class="boundary-bar-track"><div class="boundary-bar-fill" style="width:38%;background:var(--accent-red);"></div></div></div>
-                                <div class="boundary-row"><span class="boundary-label">Exit Gate</span><div class="boundary-bar-track"><div class="boundary-bar-fill" style="width:20%;background:#999;"></div></div></div>
+                                <div class="boundary-row">
+                                    <span class="boundary-label" style="font-size: 8.5px; min-width: 58px;">Autonomy</span>
+                                    <div class="boundary-bar-track"><div class="boundary-bar-fill" style="width:85%;background:#0F4C81;"></div></div>
+                                </div>
+                                <div class="boundary-row">
+                                    <span class="boundary-label" style="font-size: 8.5px; min-width: 58px;">Rigor</span>
+                                    <div class="boundary-bar-track"><div class="boundary-bar-fill" style="width:70%;background:#0F4C81;"></div></div>
+                                </div>
+                                <div class="boundary-row">
+                                    <span class="boundary-label" style="font-size: 8.5px; min-width: 58px;">Tolerance</span>
+                                    <div class="boundary-bar-track"><div class="boundary-bar-fill" style="width:30%;background:var(--accent-gold);"></div></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="cartography-card">
-                            <span class="cartography-card-label">Field Note</span>
-                            <div class="fieldnote" data-date="LOG &middot; 2024-03-11">
-                                "The road looks the same from either direction. The difference is which way the lantern is pointing and whether you lit it yourself."
+
+                        <!-- Technical Workbook Field Note -->
+                        <div class="cartography-card-pro">
+                            <span class="cartography-card-label-pro" style="color: var(--text-secondary);">Operational Log</span>
+                            <div class="fieldnote" data-date="LOG &middot; CRITICAL VALUES" style="background: var(--bg-paper); border-color: #D5DBDE; font-family: var(--font-sans); font-size: 10.5px; font-style: normal; color: var(--text-secondary); line-height: 1.45; padding: 0.5rem;">
+                                Boundary conditions must be declared before exposure occurs. Friction is not a failure of character; it is a structural mismatch between the system built and the environment.
                             </div>
                         </div>
                     </div>
