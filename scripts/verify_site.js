@@ -244,7 +244,7 @@ filesToVerify.forEach(fileSpec => {
         }
 
         // Handle root-absolute paths starting with /
-        let cleanLink = link.split('#')[0];
+        let cleanLink = link.split('#')[0].split('?')[0];
         if (cleanLink === '') {
             return;
         }

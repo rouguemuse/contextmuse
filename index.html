@@ -29,9 +29,10 @@
             <a href="/" class="logo">Context &amp; Muse</a>
             <div class="nav-links">
                 <a href="/#systems" class="nav-link">Systems</a>
-                <a href="/jayme/#selected-work" class="nav-link">Selected Work</a>
-                <a href="/creative/" class="nav-link">Creative Work</a>
-                <a href="/jayme/#about-jayme" class="nav-link">About Jayme</a>
+                <a href="/jayme/#selected-work" class="nav-link">Work</a>
+                <a href="/jayme/product-experience/" class="nav-link">Product &amp; Experience</a>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/jayme/" class="nav-link">Jayme</a>
                 <a href="/#contact" class="nav-btn">Contact</a>
             </div>
         </div>
@@ -62,34 +63,51 @@
             <div class="hero-visual-column">
                 <!-- Abstract Clarity Visualization -->
                 <div class="clarity-visualization" aria-hidden="true">
-                    <!-- Left: Scattered fragments -->
-                    <div class="vis-zone">
-                        <span class="vis-dot" style="top: 20%; left: 20%;"></span>
-                        <span class="vis-dot" style="top: 60%; left: 10%;"></span>
-                        <span class="vis-dot" style="top: 80%; left: 45%;"></span>
-                        <span class="vis-char" style="top: 35%; left: 40%;">x_0</span>
-                        <span class="vis-char" style="top: 75%; left: 30%;">err_log</span>
-                        <div class="vis-line-fragment" style="top: 45%; left: 15%; width: 50px; transform: rotate(15deg);"></div>
-                        <div class="vis-line-fragment" style="top: 70%; left: 25%; width: 40px; transform: rotate(-35deg);"></div>
-                    </div>
-                    
-                    <!-- Center: Lens/Grid -->
-                    <div class="vis-lens">
-                        <div class="vis-lens-inner"></div>
-                    </div>
-                    
-                    <!-- Right: Clear Ordered Path -->
-                    <div class="vis-output">
-                        <div class="vis-path-line">
-                            <span class="vis-path-node"></span>
-                        </div>
-                        <div class="vis-path-line">
-                            <span class="vis-path-node" style="left: 40%;"></span>
-                        </div>
-                        <div class="vis-path-line">
-                            <span class="vis-path-node" style="left: 65%;"></span>
-                        </div>
-                    </div>
+                    <svg viewBox="0 0 500 350" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-vis-svg">
+                        <!-- Left: Scattered Messy Inputs -->
+                        <g opacity="0.9">
+                            <!-- Monospace disconnected data labels -->
+                            <text x="30" y="65" fill="#1F1F1D" font-family="var(--font-mono)" font-size="11" font-weight="500" opacity="0.55">[x_0]</text>
+                            <text x="45" y="145" fill="#1F1F1D" font-family="var(--font-mono)" font-size="11" font-weight="500" opacity="0.55">err_log</text>
+                            <text x="25" y="245" fill="#1F1F1D" font-family="var(--font-mono)" font-size="11" font-weight="500" opacity="0.55">data_drift</text>
+                            <text x="75" y="300" fill="#1F1F1D" font-family="var(--font-mono)" font-size="11" font-weight="500" opacity="0.55">null_ref</text>
+
+                            <!-- Messy scattered paths converging to lens -->
+                            <path d="M40 80 Q105 110, 190 145" stroke="#1F1F1D" stroke-width="1.25" stroke-dasharray="3 3" opacity="0.4" />
+                            <path d="M90 150 Q135 160, 190 165" stroke="#1F1F1D" stroke-width="1.25" stroke-dasharray="2 2" opacity="0.4" />
+                            <path d="M40 250 Q110 240, 190 195" stroke="#1F1F1D" stroke-width="1.25" stroke-dasharray="3 3" opacity="0.4" />
+                            <path d="M105 300 Q145 270, 190 215" stroke="#1F1F1D" stroke-width="1.25" stroke-dasharray="2 2" opacity="0.4" />
+
+                            <!-- Scattered raw nodes -->
+                            <circle cx="40" cy="80" r="4.5" fill="#1F1F1D" opacity="0.6" />
+                            <circle cx="90" cy="150" r="4.5" fill="#1F1F1D" opacity="0.6" />
+                            <circle cx="40" cy="250" r="4.5" fill="#1F1F1D" opacity="0.6" />
+                            <circle cx="105" cy="300" r="4.5" fill="#1F1F1D" opacity="0.6" />
+                        </g>
+
+                        <!-- Center: Structural Frame (Concentric Lens & Target Grid) -->
+                        <g>
+                            <!-- Concentric outer ring -->
+                            <circle cx="215" cy="180" r="85" stroke="#1F1F1D" stroke-width="1" stroke-dasharray="4 4" opacity="0.25" />
+                            <!-- Solid lens boundary -->
+                            <circle cx="215" cy="180" r="62" fill="#FAF9F5" stroke="#1F1F1D" stroke-width="1.75" />
+                            <!-- Grid lines inside the lens -->
+                            <line x1="215" y1="118" x2="215" y2="242" stroke="#1F1F1D" stroke-width="0.75" opacity="0.2" />
+                            <line x1="153" y1="180" x2="277" y2="180" stroke="#1F1F1D" stroke-width="0.75" opacity="0.2" />
+                            <!-- Focal target marker -->
+                            <circle cx="215" cy="180" r="4" fill="var(--accent-teal)" />
+                        </g>
+
+                        <!-- Right: One Clear Path (Emerging bold teal line) -->
+                        <g>
+                            <!-- Bold teal path emerging from the center lens -->
+                            <path d="M215 180 C310 180, 360 180, 475 180" stroke="var(--accent-teal)" stroke-width="4" stroke-linecap="round" />
+                            <circle cx="475" cy="180" r="6.5" fill="var(--accent-teal)" />
+                            
+                            <!-- Labeling text -->
+                            <text x="315" y="162" fill="var(--accent-teal)" font-family="var(--font-mono)" font-size="11" font-weight="700" letter-spacing="0.08em">SYSTEM_ORDER</text>
+                        </g>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -413,13 +431,33 @@
                         <!-- Right side: Symbolic map / line illustration -->
                         <div class="wolves-visual-side" aria-hidden="true">
                             <div class="cartographic-illustration">
-                                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="map-svg">
-                                    <circle cx="100" cy="100" r="80" stroke="var(--border-dark)" stroke-width="0.5" stroke-dasharray="2 2" />
-                                    <path d="M20 100 H180" stroke="var(--accent-red)" stroke-width="1" opacity="0.3" />
-                                    <path d="M100 20 V180" stroke="var(--border-dark)" stroke-width="0.5" opacity="0.3" />
-                                    <path d="M40 60 C80 90, 120 70, 160 140" stroke="var(--accent-red)" stroke-width="1.5" />
-                                    <circle cx="40" cy="60" r="3" fill="var(--accent-red)" />
-                                    <circle cx="160" cy="140" r="3" fill="var(--accent-red)" />
+                                <svg viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg" class="map-svg" style="width: 100%; height: auto;">
+                                    <!-- Concentric Range Indicator Rings -->
+                                    <circle cx="125" cy="125" r="100" stroke="var(--border-dark)" stroke-width="0.5" opacity="0.35" />
+                                    <circle cx="125" cy="125" r="75" stroke="var(--border-dark)" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.4" />
+                                    <circle cx="125" cy="125" r="45" stroke="var(--border-dark)" stroke-width="0.5" opacity="0.25" />
+                                    
+                                    <!-- Grid Axes -->
+                                    <path d="M125 10 V240" stroke="var(--border-light)" stroke-width="0.5" opacity="0.3" />
+                                    <path d="M10 125 H240" stroke="var(--border-light)" stroke-width="0.5" opacity="0.3" />
+                                    
+                                    <!-- Route Vector Paths -->
+                                    <path d="M35 85 C85 65, 115 155, 215 185" stroke="var(--accent-red)" stroke-width="1.75" stroke-linecap="round" />
+                                    <path d="M60 205 C110 165, 140 105, 205 65" stroke="var(--border-dark)" stroke-width="1" stroke-dasharray="2 2" opacity="0.5" />
+                                    
+                                    <!-- Map Indicators / Star Points -->
+                                    <circle cx="35" cy="85" r="4" fill="var(--accent-red)" />
+                                    <circle cx="215" cy="185" r="4" fill="var(--accent-red)" />
+                                    <circle cx="125" cy="125" r="3" fill="var(--border-dark)" />
+                                    
+                                    <!-- Star Burst Indicator Lines on Focal Points -->
+                                    <line x1="35" y1="75" x2="35" y2="95" stroke="var(--accent-red)" stroke-width="0.5" opacity="0.6" />
+                                    <line x1="25" y1="85" x2="45" y2="85" stroke="var(--accent-red)" stroke-width="0.5" opacity="0.6" />
+                                    
+                                    <!-- Monospace Coordinate Labels -->
+                                    <text x="135" y="45" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="8" opacity="0.5">R_01 [0.45, 0.72]</text>
+                                    <text x="15" y="115" fill="var(--accent-red)" font-family="var(--font-mono)" font-size="8" opacity="0.6">PATH_SECTOR_4</text>
+                                    <text x="140" y="215" fill="var(--text-secondary)" font-family="var(--font-mono)" font-size="8" opacity="0.5">LIMIT_WARN [N_08]</text>
                                 </svg>
                             </div>
                         </div>
