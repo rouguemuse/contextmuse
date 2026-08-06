@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Systems | Context &amp; Muse</title>
+    <meta name="description" content="Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, and selected commercial builds by Context &amp; Muse.">
+    <link rel="canonical" href="https://contextmuse.com/systems/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://contextmuse.com/systems/">
+    <meta property="og:title" content="Applied Systems | Context &amp; Muse">
+    <meta property="og:description" content="Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, and selected commercial builds by Context &amp; Muse.">
+    <meta property="og:image" content="https://contextmuse.com/social-preview.png">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    
+    <style>
+        /* Restrained 1-2 degree tilt on hover for project images */
+        .browser-frame {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 800px;
+        }
+        .browser-frame:hover {
+            transform: rotateX(1.5deg) rotateY(1.5deg);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+        }
+        
+        /* Static Index Hover Effect */
+        .systems-index-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border-light);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: color 0.2s ease;
+        }
+        .systems-index-item:hover {
+            color: var(--accent-teal);
+        }
+        .systems-index-item .index-name {
+            font-family: var(--font-serif);
+            font-size: clamp(1.2rem, 2vw, 1.7rem);
+            transition: transform 0.2s ease;
+        }
+        .systems-index-item:hover .index-name {
+            transform: translateX(4px);
+        }
+        .systems-index-item .index-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent-teal);
+            margin-right: 1.5rem;
+            min-width: 24px;
+        }
+        .systems-index-item .index-arrow {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo">Context &amp; Muse</a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="/systems/" class="nav-link active" aria-current="page">Applied Systems</a>
+                <a href="/creative/" class="nav-link">Creative Practice</a>
+                <a href="/jayme/" class="nav-link">About</a>
+                <a href="/#contact" class="nav-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="systems-section-dark" id="systems-hero" style="padding: 140px 0 80px; background: var(--bg-ink, #090a0f); color: #FAF9F5;">
+        <div class="container">
+            <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">CONTEXT &amp; MUSE &bull; APPLIED SYSTEMS</span>
+            <h1 style="font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-top: 1rem; margin-bottom: 1.5rem; color: #FAF9F5; max-width: 900px;">
+                I build structure where information and workflows have become difficult to use.
+            </h1>
+            <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.6; color: rgba(250,249,245,0.7); max-width: 680px; margin-bottom: 2rem;">
+                Flexible systems for organizing fragmented information, recovering context, prioritizing decisions, and turning complex material into something people can actually navigate.
+            </p>
+            <div class="btn-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#systems-projects" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);">Explore the Systems &darr;</a>
+                <a href="/jayme/" class="btn btn-secondary" style="border-color: rgba(250,249,245,0.3); color: #FAF9F5;">Meet the Builder &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Static Project Index -->
+        <section style="background: var(--bg-panel); padding: 60px 0 40px; border-bottom: 1px solid var(--border-light);">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">FLAGSHIP SYSTEMS INDEX</span>
+                <div style="display: flex; flex-direction: column;">
+                    <a href="#signal" class="systems-index-item">
+                        <div>
+                            <span class="index-num">01</span>
+                            <span class="index-name">Signal</span>
+                        </div>
+                        <span class="index-arrow">&darr;</span>
+                    </a>
+                    <a href="#gensort" class="systems-index-item">
+                        <div>
+                            <span class="index-num">02</span>
+                            <span class="index-name">GenSort</span>
+                        </div>
+                        <span class="index-arrow">&darr;</span>
+                    </a>
+                    <a href="#message-record" class="systems-index-item">
+                        <div>
+                            <span class="index-num">03</span>
+                            <span class="index-name">Message &amp; Record Analysis</span>
+                        </div>
+                        <span class="index-arrow">&darr;</span>
+                    </a>
+                    <a href="#record-integrity" class="systems-index-item">
+                        <div>
+                            <span class="index-num">04</span>
+                            <span class="index-name">Record Integrity &amp; Traceability</span>
+                        </div>
+                        <span class="index-arrow">&darr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flagship Systems Section -->
+        <section class="systems-section-dark" id="systems-projects" aria-labelledby="systems-heading" style="padding-top: 80px;">
+            <div class="container">
+                <div class="systems-header" style="margin-bottom: 4rem;">
+                    <span class="eyebrow">Capabilities</span>
+                    <h2 id="systems-heading" class="section-title">Flagship Systems</h2>
+                    <p class="project-copy" style="margin-top: 1rem;">
+                        Software templates, logic schemas, and diagnostic dashboards designed to solve hard organizational and communication problems.
+                    </p>
+                </div>
+
+                <div class="systems-grid-dark">
+                    <!-- System 1: Signal (Split Layout) -->
+                    <article class="project-showcase split-layout flagship-project" id="signal">
+                        <div class="project-meta">
+                            <span class="project-num">01</span>
+                            <span class="project-category">Diagnostic Dashboard &bull; Operations Support</span>
+                            <h3 class="project-title">Signal</h3>
+                            <p class="project-copy">
+                                A weighted decision-intelligence system that converts operational friction into prioritized action. Adapts beyond restaurants to hospitality groups, property services, multi-location operations, compliance workflows, and operational audits.
+                            </p>
+                            
+                            <div style="margin-top:1.5rem; margin-bottom: 1.5rem;">
+                                <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">DECISION RANKING METRICS</strong>
+                                <ul style="padding-left: 1.25rem; margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 4px;">
+                                    <li><strong>Likely Impact:</strong> Projected financial or time savings.</li>
+                                    <li><strong>Urgency:</strong> Time-sensitive bottlenecks.</li>
+                                    <li><strong>Cost:</strong> Resource capital needed to deploy.</li>
+                                    <li><strong>Implementation Friction:</strong> Personnel training and operational setup barriers.</li>
+                                    <li><strong>Operational Risk:</strong> Business vulnerabilities addressed.</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag-dark">Weighted Prioritization</span>
+                                <span class="project-tag-dark">Operational Diagnostics</span>
+                                <span class="project-tag-dark">Prioritized Decisions</span>
+                            </div>
+                            
+                            <div class="architecture-steps">
+                                <span class="step-node">Observe</span> &rarr;
+                                <span class="step-node">Structure</span> &rarr;
+                                <span class="step-node">Validate</span> &rarr;
+                                <span class="step-node">Prioritize</span> &rarr;
+                                <span class="step-node">Translate</span>
+                            </div>
+                            
+                            <div class="project-ctas" style="margin-top: 1.5rem;">
+                                <a href="/gold-tooth-signal-report.html" class="btn btn-primary" target="_blank">Live Demo</a>
+                                <a href="/jayme/product-experience/#project-signal" class="btn-outline" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">Case Study &rarr;</a>
+                                <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn-outline" target="_blank" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">GitHub &rarr;</a>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Working Prototype</span>
+                        </div>
+                        
+                        <div class="visual-panel" style="position: relative;">
+                            <span class="visual-type-label">PRODUCT INTERFACE</span>
+                            <div class="browser-frame">
+                                <div class="browser-header">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-url">signal.contextmuse.com/runs/1024</span>
+                                </div>
+                                <div class="browser-content" style="padding: 0; background: #090a0f;">
+                                    <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard" style="width: 100%; height: auto; display: block;" loading="lazy">
+                                </div>
+                            </div>
+                            <!-- Styled overlay callout -->
+                            <div class="visual-callout" style="position: absolute; bottom: 20px; right: -15px; background: rgba(9, 10, 15, 0.95); border: 1px solid var(--accent-teal); padding: 12px; border-radius: 4px; color: #FAF9F5; max-width: 240px; font-size: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 5;">
+                                <strong style="color: var(--accent-teal); display: block; margin-bottom: 4px; font-family: var(--font-mono); font-size: 10px;">OPERATIONAL DIAGNOSTIC</strong>
+                                Flags shift anomalies compared to local sales velocity logs to pinpoint margin leaks.
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- System 2: GenSort (Stacked Layout) -->
+                    <article class="project-showcase full-width-layout flagship-project" id="gensort">
+                        <div class="project-meta" style="max-width: 800px;">
+                            <span class="project-num">02</span>
+                            <span class="project-category">Visual Library Governance &bull; Local Curation</span>
+                            <h3 class="project-title">GenSort</h3>
+                            <p class="project-copy" style="max-width: 720px;">
+                                A flexible organization and export system for turning mixed, fragmented material into a usable structure. GenSort can be re-skinned and expanded for business files, evidence organization, research archives, grant materials, client records, content libraries, and other environments where large mixed-information collections need to be sorted, reviewed, and exported.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag-dark">Local-First Directory Scanner</span>
+                                <span class="project-tag-dark">Prompt Lineage Indexing</span>
+                                <span class="project-tag-dark">Similarity Tagging</span>
+                            </div>
+                            
+                            <!-- Workspace Segment Boundaries -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; border-top: 1px solid rgba(243, 240, 232, 0.1); padding-top: 1rem;">
+                                <div>
+                                    <strong style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; display: block; margin-bottom: 4px;">WORKING PROTOTYPE FEATURES</strong>
+                                    <ul style="padding-left: 1.25rem; margin: 0; font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
+                                        <li>Offline local directory scanning &amp; indexing</li>
+                                        <li>Prompt lineage extraction &amp; comparison</li>
+                                        <li>Visual similarity matching &amp; redundancy tagging</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 11px; display: block; margin-bottom: 4px;">APPLICABILITY SAMPLES</strong>
+                                    <ul style="padding-left: 1.25rem; margin: 0; font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
+                                        <li><strong>Creator Content:</strong> Metadata mapping for media catalogs.</li>
+                                        <li><strong>Business Records:</strong> Sorting legacy scans &amp; receipts.</li>
+                                        <li><strong>Evidence Organization:</strong> Normalizing timelines &amp; exhibits.</li>
+                                        <li><strong>Research Archives:</strong> Cross-referencing disparate texts &amp; datasets.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="project-disclaimer" style="margin-top: 1rem;">
+                                <strong>Architecture Disclosure:</strong> GenSort operates locally via web standards. Enterprise extensions are architectural proposals rather than implemented production features.
+                            </div>
+
+                            <p class="body-copy" style="font-size: 13.5px; color: var(--text-secondary); margin-top: 0.5rem;">
+                                Configurable for advertising agencies, design studios, and architectural archives.
+                            </p>
+                            
+                            <div class="project-ctas">
+                                <a href="https://github.com/rouguemuse/gensort" class="btn btn-primary" target="_blank">View Repository</a>
+                                <a href="/jayme/product-experience/#project-gensort" class="btn-outline" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">Case Study &rarr;</a>
+                            </div>
+                        </div>
+                        
+                        <div class="visual-panel" style="width: 100%;">
+                            <span class="visual-type-label">WORKSPACE ENVIRONMENT</span>
+                            <div class="browser-frame">
+                                <div class="browser-header">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-url">gensort.local/workspace</span>
+                                </div>
+                                <div class="browser-content" style="padding: 0; background: #0b0d19;">
+                                    <img src="/assets/images/gensort-workspace.webp" alt="GenSort Workspace Visual Catalog" style="width: 100%; height: auto; display: block;" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- System 3: Message & Record Analysis (Full Width Layout) -->
+                    <article class="project-showcase full-width-layout flagship-project" id="message-record">
+                        <div class="project-meta" style="max-width: 800px;">
+                            <span class="project-num">03</span>
+                            <span class="project-category">Record Navigation &bull; Timeline Recovery</span>
+                            <h3 class="project-title">Message &amp; Record Analysis</h3>
+                            <p class="project-copy" style="max-width: 720px;">
+                                Factual inconsistencies and timeline gaps remain hidden in raw conversation transcripts. Message &amp; Record Analysis maps statements to timestamps to flag logical variances. Includes the <strong>Contradiction Finder</strong> analysis engine.
+                            </p>
+                            
+                            <div style="margin-top:1rem; margin-bottom: 1.5rem;">
+                                <strong style="font-family:var(--font-mono);font-size:10px;color:var(--accent-teal);">CAPABILITIES</strong>
+                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:0.5rem;">
+                                    <span class="project-tag-dark">Smart Search</span>
+                                    <span class="project-tag-dark">Timeline Recovery</span>
+                                    <span class="project-tag-dark">Date &amp; Speaker Filtering</span>
+                                    <span class="project-tag-dark">Topic Clusters</span>
+                                    <span class="project-tag-dark">Communication Heat Maps</span>
+                                    <span class="project-tag-dark">Escalation-Density Views</span>
+                                    <span class="project-tag-dark">Related-Message Grouping</span>
+                                    <span class="project-tag-dark">Evidence Bookmarking</span>
+                                    <span class="project-tag-dark">Exportable Chronology</span>
+                                    <span class="project-tag-dark">Contextual Navigation</span>
+                                </div>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag-dark">Transcript Cross-Referencing</span>
+                                <span class="project-tag-dark">Factual Variance Logs</span>
+                                <span class="project-tag-dark">Timeline Alignment</span>
+                            </div>
+                            
+                            <!-- Application Modes -->
+                            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; border-top: 1px solid rgba(243, 240, 232, 0.1); padding-top: 1rem; font-family: var(--font-mono); font-size: 11px;">
+                                <div style="background: rgba(243, 240, 232, 0.05); padding: 6px 12px; border-radius: 3px; border: 1px solid rgba(243, 240, 232, 0.15); color: #F7F4ED;">
+                                    <span style="color: var(--accent-teal);">MODE A:</span> Operational Record Review
+                                </div>
+                                <div style="background: rgba(243, 240, 232, 0.05); padding: 6px 12px; border-radius: 3px; border: 1px solid rgba(243, 240, 232, 0.15); color: #F7F4ED;">
+                                    <span style="color: var(--accent-teal);">MODE B:</span> Case and Record Review
+                                </div>
+                            </div>
+                            
+                            <div class="project-disclaimer" style="margin-top: 1rem;">
+                                <strong>Technical Disclaimer:</strong> The system helps a reviewer locate, organize, and understand the record. It does not replace human interpretation or declare what another person intended.
+                            </div>
+
+                            <div class="project-ctas" style="margin-top: 1.5rem;">
+                                <a href="/jayme/#selected-work" class="btn btn-primary">Explore Methodology</a>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Concept</span>
+                        </div>
+                        
+                        <div class="visual-panel">
+                            <span class="visual-type-label">PROCESS VISUALIZATION</span>
+                            <div class="editorial-panel light-editorial-bg" style="background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 1.75rem; color: var(--text-primary); font-family: var(--font-sans); box-shadow: 0 16px 48px rgba(0,0,0,0.06); font-size: 13px;">
+                                <!-- Two Column Layout: Chat Transcript & Metadata Analysis -->
+                                <div class="message-analysis-grid" style="display: grid; gap: 1.5rem; align-items: start; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+                                    
+                                    <!-- Left Column: Excerpts -->
+                                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 0.25rem;">
+                                            CONVERSATION LOG &bull; ID_RUN_0412
+                                        </div>
+                                        
+                                        <!-- Message bubble 1 -->
+                                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-red); padding: 0.75rem; border-radius: 4px; position: relative;">
+                                            <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: 0.35rem;">
+                                                <span>SPKR_A [Subject 01]</span>
+                                                <span>09:15 AM</span>
+                                            </div>
+                                            <p style="margin: 0; font-family: var(--font-serif); font-size: 13.5px; line-height: 1.45; color: var(--text-primary);">
+                                                "I arrived <span style="background: rgba(225, 29, 72, 0.1); border-bottom: 1.5px dashed var(--accent-red); padding: 0 2px; font-weight: bold; color: var(--accent-red);">after</span> the meeting was adjourned."
+                                            </p>
+                                            <div style="margin-top: 0.4rem; display: flex; gap: 4px;">
+                                                <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#arrival-time</span>
+                                                <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#statement-a</span>
+                                            </div>
+                                        </div>
+ 
+                                        <!-- Message bubble 2 -->
+                                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-teal); padding: 0.75rem; border-radius: 4px; position: relative;">
+                                            <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: 0.35rem;">
+                                                <span>SPKR_B [Subject 02]</span>
+                                                <span>10:04 AM</span>
+                                            </div>
+                                            <p style="margin: 0; font-family: var(--font-serif); font-size: 13.5px; line-height: 1.45; color: var(--text-primary);">
+                                                "No, Subject 01 was inside the room <span style="background: rgba(45, 212, 191, 0.1); border-bottom: 1.5px dashed var(--accent-teal); padding: 0 2px; font-weight: bold; color: var(--accent-teal);">before</span> the schedule began."
+                                            </p>
+                                            <div style="margin-top: 0.4rem; display: flex; gap: 4px;">
+                                                <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#presence-claim</span>
+                                                <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#statement-b</span>
+                                            </div>
+                                        </div>
+                                    </div>
+ 
+                                    <!-- Right Column: Forensic Details -->
+                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 1rem; border-radius: 4px; display: flex; flex-direction: column; gap: 0.75rem; height: 100%;">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 0.25rem;">
+                                            FORENSIC ANALYSIS
+                                        </div>
+                                        
+                                        <!-- Conflict tag -->
+                                        <div>
+                                            <strong style="color: var(--accent-red); font-family: var(--font-mono); font-size: 9px; display: block; margin-bottom: 0.2rem;">⚠️ LOGICAL VARIANCE DETECTED</strong>
+                                            <div style="font-size: 11.5px; color: var(--text-secondary); line-height: 1.35;">
+                                                Statement B presence claim conflicts with Statement A self-reported arrival by 25 mins.
+                                            </div>
+                                        </div>
+ 
+                                        <!-- Confidence rating -->
+                                        <div style="border-top: 1px solid var(--border-light); padding-top: 0.5rem;">
+                                            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">CONFIDENCE COEFFICIENT</span>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <div style="flex: 1; height: 6px; background: #E4E2DD; border-radius: 3px; overflow: hidden;">
+                                                    <div style="width: 94%; height: 100%; background: var(--accent-teal);"></div>
+                                                </div>
+                                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: bold; color: var(--accent-teal);">94%</span>
+                                            </div>
+                                        </div>
+ 
+                                        <!-- Referenced Documents -->
+                                        <div style="border-top: 1px solid var(--border-light); padding-top: 0.5rem; font-family: var(--font-mono); font-size: 9px; color: var(--text-secondary);">
+                                            <span style="display: block; margin-bottom: 0.25rem;">CROSS-REFERENCES</span>
+                                            <ul style="list-style: none; padding-left: 0; margin: 0; display: flex; flex-direction: column; gap: 4px;">
+                                                <li>📁 <a href="/jayme/product-experience/" style="color: var(--accent-teal); text-decoration: none;">ledger_run_1024.csv</a></li>
+                                                <li>📁 <a href="/jayme/product-experience/" style="color: var(--accent-teal); text-decoration: none;">schedule_v1.json</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+ 
+                                </div>
+ 
+                                <!-- Horizontal Timeline -->
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <div style="font-family: var(--font-mono); font-size: 9.5px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold;">
+                                        TIMELINE SCHEMATIC (CONFLICT WINDOW)
+                                    </div>
+                                    <div style="position: relative; height: 45px; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; overflow: hidden;">
+                                        <!-- Background line -->
+                                        <div style="position: absolute; left: 1rem; right: 1rem; top: 50%; height: 1px; background: var(--border-light); z-index: 1;"></div>
+                                        
+                                        <!-- Timeline Points -->
+                                        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
+                                            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-teal); border: 2px solid #FFFFFF;"></div>
+                                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">08:50 AM</span>
+                                            <span style="font-size: 8px; color: var(--text-secondary); opacity: 0.85;">Spkr_B Claim</span>
+                                        </div>
+ 
+                                        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
+                                            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--border-dark); border: 2px solid #FFFFFF;"></div>
+                                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">08:52 AM</span>
+                                            <span style="font-size: 8px; color: var(--text-secondary); opacity: 0.85;">Badge Scan</span>
+                                        </div>
+ 
+                                        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
+                                            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--border-dark); border: 2px solid #FFFFFF;"></div>
+                                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">09:00 AM</span>
+                                            <span style="font-size: 8px; color: var(--text-secondary); opacity: 0.85;">Sched. Start</span>
+                                        </div>
+ 
+                                        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
+                                            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-red); border: 2px solid #FFFFFF;"></div>
+                                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">09:15 AM</span>
+                                            <span style="font-size: 8px; color: var(--text-secondary); opacity: 0.85;">Spkr_A Arrival</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- System 4: Record Integrity & Traceability (Split Layout Reverse) -->
+                    <article class="project-showcase split-layout-reverse flagship-project" id="record-integrity">
+                        <div class="visual-panel">
+                            <span class="visual-type-label">PROCESS VISUALIZATION</span>
+                            <!-- Native Layered Provenance Stack -->
+                            <div class="provenance-stack">
+                                <!-- Dotted grid background overlay -->
+                                <div class="provenance-grid-bg"></div>
+                                
+                                <!-- Layer 1: Original Document Card -->
+                                <div class="prov-card card-source">
+                                    <div class="card-header">
+                                        <span class="card-icon">📄</span>
+                                        <span class="card-title">ORIGINAL RECORD</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="bar-long"></div>
+                                        <div class="bar-medium"></div>
+                                        <div class="bar-short"></div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span class="prov-hash">raw_ledger.csv</span>
+                                    </div>
+                                </div>
+ 
+                                <!-- SVG connection lines -->
+                                <svg class="prov-connectors" width="100%" height="100%" style="position: absolute; top:0; left:0; pointer-events:none; z-index: 2;">
+                                    <path d="M 180,75 C 230,75 200,165 250,165" fill="none" stroke="var(--accent-teal)" stroke-width="1.5" stroke-dasharray="3,3" />
+                                    <path d="M 330,165 C 380,165 350,255 400,255" fill="none" stroke="var(--accent-teal)" stroke-width="1.5" stroke-dasharray="3,3" />
+                                </svg>
+ 
+                                <!-- Layer 2: Intermediate Process Card (Deltas/Changes) -->
+                                <div class="prov-card card-delta">
+                                    <div class="card-header">
+                                        <span class="card-icon">🔍</span>
+                                        <span class="card-title">CHANGE COMPARISON</span>
+                                    </div>
+                                    <div class="card-body" style="font-family: var(--font-mono); font-size: 9px; line-height: 1.4;">
+                                        <div class="delta-diff text-red">- Row 104: Overtime override</div>
+                                        <div class="delta-diff text-teal" style="color: var(--accent-teal);">+ Row 104: Standard shift</div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span class="prov-hash text-gold" style="color: var(--accent-gold);">SHA-256: #9a3f2c</span>
+                                    </div>
+                                </div>
+ 
+                                <!-- Layer 3: Fingerprint & Status Card -->
+                                <div class="prov-card card-status">
+                                    <div class="card-header">
+                                        <span class="card-icon">🛡️</span>
+                                        <span class="card-title">INTEGRITY STATE</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="integrity-badge">MATCHES IMPORTED FINGERPRINT</div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span class="prov-hash text-teal" style="color: var(--accent-teal);">Ledger verified &bull; delta: 0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <div class="project-meta">
+                            <span class="project-num">04</span>
+                            <span class="project-category">Provenance Traceability &bull; Risk Signals</span>
+                            <h3 class="project-title">Record Integrity &amp; Traceability</h3>
+                            <p class="project-copy">
+                                A conceptual review system that examines behavioral patterns across documents, versions, sequences, and metadata rather than treating one isolated marker as proof of manipulation.
+                            </p>
+                            
+                            <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                                <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">SURFACED RISK PATTERNS</strong>
+                                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                                    <span class="project-tag-dark">Version Drift</span>
+                                    <span class="project-tag-dark">Metadata Conflicts</span>
+                                    <span class="project-tag-dark">Timing Anomalies</span>
+                                    <span class="project-tag-dark">Template Artifacts</span>
+                                    <span class="project-tag-dark">Copy-Paste Patterns</span>
+                                    <span class="project-tag-dark">Sequence Inconsistencies</span>
+                                    <span class="project-tag-dark">Cross-Document Contradictions</span>
+                                    <span class="project-tag-dark">Provenance Gaps</span>
+                                </div>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag-dark">SHA-256 fingerprinting</span>
+                                <span class="project-tag-dark">provenance logs</span>
+                                <span class="project-tag-dark">change detection</span>
+                            </div>
+                            <div class="project-disclaimer">
+                                <strong>Technical Limit Disclaimer:</strong> The system surfaces combinations of risk indicators for human review. It does not label a document fraudulent based on one anomaly. Cryptographic hashes verify files are unaltered; they do not prove factual correctness.
+                            </div>
+                            <div class="project-ctas" style="margin-top: 1rem;">
+                                <a href="/jayme/#selected-work" class="btn btn-primary">Explore Methodology</a>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Concept</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resource Guide Section (Applied Information Architecture) -->
+        <section id="resource-guide" style="background: var(--bg-paper); padding: 80px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">APPLIED INFORMATION ARCHITECTURE</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1rem;">Resource Guide Compilation</h2>
+                <p style="max-width: 680px; color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.05rem; line-height: 1.65;">
+                    A searchable, verification-aware information architecture for converting fragmented public information into a navigable and citable resource system.
+                </p>
+                <div class="resource-layout">
+                    <div class="resource-interface">
+                        <div class="resource-interface-bar">
+                            <span></span><span></span><span></span>
+                            <span class="resource-interface-title">Resource Directory &mdash; Demo Data</span>
+                        </div>
+                        <div class="resource-interface-body">
+                            <div class="resource-search-row">
+                                <div class="resource-search-input">housing assistance + austin tx</div>
+                                <div class="resource-search-btn">Search</div>
+                            </div>
+                            <div class="resource-filters">
+                                <span class="resource-filter-chip active">Housing</span>
+                                <span class="resource-filter-chip active">Austin, TX</span>
+                                <span class="resource-filter-chip">Income &lt; 80% AMI</span>
+                                <span class="resource-filter-chip active">Verified</span>
+                                <span class="resource-filter-chip">Rental Only</span>
+                                <span class="resource-filter-chip">No Wait List</span>
+                            </div>
+                            <div class="resource-result-card">
+                                <div class="resource-result-header">
+                                    <span class="resource-result-name">Austin Tenant Rights Hotline</span>
+                                    <span class="resource-verify-badge verified">&#10003; VERIFIED</span>
+                                </div>
+                                <div class="resource-result-meta">Category: Legal Aid &nbsp;&middot;&nbsp; Geography: Travis County &nbsp;&middot;&nbsp; Updated: 2026-07</div>
+                                <div class="resource-result-desc">Free legal guidance for tenants facing eviction, lease disputes, or habitability issues. Spanish-language line available.</div>
+                            </div>
+                            <div class="resource-result-card">
+                                <div class="resource-result-header">
+                                    <span class="resource-result-name">City of Austin Rental Assistance</span>
+                                    <span class="resource-verify-badge unverified">&#9888; CHECK STATUS</span>
+                                </div>
+                                <div class="resource-result-meta">Category: Financial Aid &nbsp;&middot;&nbsp; Geography: City of Austin &nbsp;&middot;&nbsp; Updated: 2026-03</div>
+                                <div class="resource-result-desc">Emergency rental assistance. Waitlist currently open; eligibility requires documentation of hardship.</div>
+                            </div>
+                            <div class="resource-result-card">
+                                <div class="resource-result-header">
+                                    <span class="resource-result-name">Foundation Communities Housing</span>
+                                    <span class="resource-verify-badge verified">&#10003; VERIFIED</span>
+                                </div>
+                                <div class="resource-result-meta">Category: Housing &nbsp;&middot;&nbsp; Geography: Austin Metro &nbsp;&middot;&nbsp; Updated: 2026-06</div>
+                                <div class="resource-result-desc">Affordable apartment communities for individuals and families. Income-based eligibility. Applications online.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resource-sidebar">
+                        <div class="resource-meta-block">
+                            <h4 style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-teal); margin-bottom: 0.75rem;">Capabilities</h4>
+                            <div class="resource-capability-tags">
+                                <span class="cap-tag">Source Verification</span>
+                                <span class="cap-tag">Taxonomy Design</span>
+                                <span class="cap-tag">Plain-Language</span>
+                                <span class="cap-tag">Search + Filter</span>
+                                <span class="cap-tag">Eligibility Logic</span>
+                                <span class="cap-tag">Traceable Records</span>
+                            </div>
+                        </div>
+                        <div class="taxonomy-flow">
+                            <div class="taxonomy-flow-title">Information Pipeline</div>
+                            <div class="taxonomy-steps">
+                                <div class="taxonomy-step"><span class="taxonomy-step-num">01</span><span class="taxonomy-step-label">Source collection</span><span class="taxonomy-step-arrow">&#8595;</span></div>
+                                <div class="taxonomy-step"><span class="taxonomy-step-num">02</span><span class="taxonomy-step-label">Normalize</span><span class="taxonomy-step-arrow">&#8595;</span></div>
+                                <div class="taxonomy-step"><span class="taxonomy-step-num">03</span><span class="taxonomy-step-label">Categorize</span><span class="taxonomy-step-arrow">&#8595;</span></div>
+                                <div class="taxonomy-step"><span class="taxonomy-step-num">04</span><span class="taxonomy-step-label">Verify</span><span class="taxonomy-step-arrow">&#8595;</span></div>
+                                <div class="taxonomy-step"><span class="taxonomy-step-num">05</span><span class="taxonomy-step-label">Present</span></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="color:var(--text-secondary);font-size:14px;line-height:1.6;margin-bottom:1.25rem;">
+                                This project combines public-interest research, content directories, taxonomy design, and accessible interface design to make public records actionable.
+                            </p>
+                            <a href="/creative/resource-guide/" class="btn btn-secondary" id="resource-guide-cta" style="display:inline-block;">View Resource Directory &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Commercial Builds Section -->
+        <section class="builds-section" id="builds" aria-labelledby="builds-heading" style="background: var(--bg-panel); padding: 80px 0;">
+            <div class="container">
+                <div class="builds-header">
+                    <span class="eyebrow" style="color: var(--accent-teal);">Operational Implementations</span>
+                    <h2 id="builds-heading" class="section-title" style="margin-top: 0.5rem;">Selected Commercial Builds</h2>
+                    <p class="body-copy" style="margin-top: 1rem; color: var(--text-secondary); max-width: 720px;">
+                        Production systems and commercial builds. Real operational platforms solving inventory management, service delivery, and multi-channel business problems.
+                    </p>
+                </div>
+
+                <div class="builds-list" style="margin-top: 4rem; display: flex; flex-direction: column; gap: 6rem;">
+                    <!-- Build 1: INNcontrol Coils -->
+                    <div class="build-row" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;">
+                        <div class="build-meta-col">
+                            <span class="build-num">01</span>
+                            <span class="build-category">Commercial Service Operations</span>
+                            <h3 class="build-title">INNcontrol Coils</h3>
+                            <p class="build-desc">
+                                A commercial service platform that turns scattered hotel and property needs into a structured assessment, prioritized service plan, and qualified sales opportunity.
+                            </p>
+                            
+                            <ul class="build-details-list">
+                                <li class="build-detail-item">
+                                    <h4>The Business Problem</h4>
+                                    <p>Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.</p>
+                                </li>
+                                <li class="build-detail-item">
+                                    <h4>The System Built</h4>
+                                    <p>An interactive, property-wide assessment system that maps complex equipment locations, generates standardized intake details, and produces custom service reports.</p>
+                                </li>
+                                <li class="build-detail-item">
+                                    <h4>Operational Value</h4>
+                                    <p>Replaces chaotic paper checklists and generic service listings with prioritized recommendations, allowing sales teams to rapidly convert property needs into structured deals.</p>
+                                </li>
+                            </ul>
+
+                            <div class="build-ctas">
+                                <a href="https://www.inncontrolcoils.com" class="btn btn-primary" target="_blank" rel="noopener">Explore INNcontrolCoils.com &rarr;</a>
+                                <a href="/jayme/product-experience/#project-webwork" class="btn-outline">View Case Study &rarr;</a>
+                            </div>
+                        </div>
+
+                        <div class="build-visual-col">
+                            <!-- Clickable Real Screenshot -->
+                            <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" style="display: block; text-decoration: none;">
+                                <div class="build-browser-frame">
+                                    <div class="build-browser-header">
+                                        <div class="browser-dots">
+                                            <span class="browser-dot" style="background: #E11D48;"></span>
+                                            <span class="browser-dot" style="background: #C5A059;"></span>
+                                            <span class="browser-dot" style="background: #0F766E;"></span>
+                                        </div>
+                                        <div class="browser-url-bar">https://www.inncontrolcoils.com</div>
+                                        <div style="width: 24px;"></div>
+                                    </div>
+                                    <div class="browser-content" style="padding: 0; background: #000;">
+                                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils Homepage website" style="width: 100%; height: auto; display: block;" loading="lazy">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Build 2: D2 Auto Detail -->
+                    <div class="build-row row-reverse" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: start;">
+                        <div class="build-visual-col">
+                            <!-- Clickable Real Screenshot -->
+                            <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" style="display: block; text-decoration: none;">
+                                <div class="build-browser-frame">
+                                    <div class="build-browser-header">
+                                        <div class="browser-dots">
+                                            <span class="browser-dot" style="background: #E11D48;"></span>
+                                            <span class="browser-dot" style="background: #C5A059;"></span>
+                                            <span class="browser-dot" style="background: #0F766E;"></span>
+                                        </div>
+                                        <div class="browser-url-bar">https://www.d2autodetail.com</div>
+                                        <div style="width: 24px;"></div>
+                                    </div>
+                                    <div class="browser-content" style="padding: 0; background: #000;">
+                                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail website" style="width: 100%; height: auto; display: block;" loading="lazy">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="build-meta-col">
+                            <span class="build-num">02</span>
+                            <span class="build-category">Unified Business Platform</span>
+                            <h3 class="build-title">D2 Auto Detail</h3>
+                            <p class="build-desc">
+                                A conversion-focused auto-detailing platform designed around service discovery, trust, estimates, booking, and customer engagement.
+                            </p>
+                            
+                            <ul class="build-details-list">
+                                <li class="build-detail-item">
+                                    <h4>The Business Problem</h4>
+                                    <p>Premium detailing services require managing highly specific inquiries (by vehicle type and service tiers), generating local advertisements, and publishing content without juggling separate dashboard tools.</p>
+                                </li>
+                                <li class="build-detail-item">
+                                    <h4>The System Built</h4>
+                                    <p>A connected custom application linking the public marketing storefront directly to an admin interface with customer pipeline tools, an automated local ad generator, blog publishing, and a D2TV media player database.</p>
+                                </li>
+                                <li class="build-detail-item">
+                                    <h4>Operational Value</h4>
+                                    <p>Combines brand marketing with deep backend tools to capture, qualify, and convert details. Replaces standard brochure structures with a workflow engine.</p>
+                                </li>
+                            </ul>
+
+                            <div class="build-ctas">
+                                <a href="https://www.d2autodetail.com" class="btn btn-primary" target="_blank" rel="noopener">Explore D2AutoDetail.com &rarr;</a>
+                                <a href="/jayme/product-experience/#project-d2" class="btn-outline">View Case Study &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Build 3: EDR Party Rentals -->
+                    <div class="build-row" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;">
+                        <div class="build-meta-col">
+                            <span class="build-num">03</span>
+                            <span class="build-category">Inventory-Aware Storefront</span>
+                            <h3 class="build-title">EDR Party Rentals</h3>
+                            <p class="build-desc">
+                                A visual rental storefront with inventory-aware inquiries, event logistics, bilingual content, and reservation controls.
+                            </p>
+                            
+                            <ul class="build-details-list">
+                                <li class="build-detail-item">
+                                    <h4>The Business Problem</h4>
+                                    <p>Rental companies own highly specific, one-of-one event inventory (individual slides, custom arches, tables). Normal ecommerce shopping carts fail because they allow double-booking on identical date ranges.</p>
+                                </li>
+                                <li class="build-detail-item">
+                                    <h4>The System Built</h4>
+                                    <p>An inventory availability checker linked to the storefront cart. Customers check inventory by date, and the admin system locks bookings for that product serial number on approved dates.</p>
+                                </li>
+                                <li class="build-detail-item">
+                                    <h4>Operational Value</h4>
+                                    <p>Eliminates double-booking errors, automates translation across English and Spanish storefront versions, and organizes delivery dispatch schedules based on verified dates.</p>
+                                </li>
+                            </ul>
+
+                            <div class="build-ctas">
+                                <a href="https://edrpartyrentals.com" class="btn btn-primary" target="_blank" rel="noopener">Explore EDRPartyRentals.com &rarr;</a>
+                                <a href="/jayme/#project-webwork" class="btn-outline">View Case Study &rarr;</a>
+                            </div>
+                        </div>
+
+                        <div class="build-visual-col">
+                            <!-- Clickable Real Screenshot -->
+                            <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" style="display: block; text-decoration: none;">
+                                <div class="build-browser-frame">
+                                    <div class="build-browser-header">
+                                        <div class="browser-dots">
+                                            <span class="browser-dot" style="background: #E11D48;"></span>
+                                            <span class="browser-dot" style="background: #C5A059;"></span>
+                                            <span class="browser-dot" style="background: #0F766E;"></span>
+                                        </div>
+                                        <div class="browser-url-bar">https://edrpartyrentals.com</div>
+                                        <div style="width: 24px;"></div>
+                                    </div>
+                                    <div class="browser-content" style="padding: 0; background: #000;">
+                                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals website" style="width: 100%; height: auto; display: block;" loading="lazy">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method Section -->
+        <section class="method-section" id="process" aria-labelledby="method-heading" style="background: var(--bg-paper);">
+            <div class="container">
+                <div class="method-header">
+                    <span class="eyebrow">Approach</span>
+                    <h2 id="method-heading" class="section-title">How I Build</h2>
+                    <p class="body-copy" style="margin-top: 1rem;">
+                        Every layout, database column, and interface route is built upon a standard diagnostic process to isolate and resolve operational leaks.
+                    </p>
+                </div>
+
+                <!-- Horizontal Process Flow -->
+                <div class="process-flow-container">
+                    <div class="process-step">
+                        <span class="step-num">01</span>
+                        <h3 class="step-name">Observe</h3>
+                        <p class="step-desc">Examine transaction paths, directory structures, and logs in their native environments.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">02</span>
+                        <h3 class="step-name">Structure</h3>
+                        <p class="step-desc">Normalize messy database logs, narrative fragments, or assets into clean schemas.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">03</span>
+                        <h3 class="step-name">Validate</h3>
+                        <p class="step-desc">Cross-reference timestamps, hashes, and records to locate anomalies.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">04</span>
+                        <h3 class="step-name">Prioritize</h3>
+                        <p class="step-desc">Filter findings into actionable checklists ranked by operational impact.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">05</span>
+                        <h3 class="step-name">Translate</h3>
+                        <p class="step-desc">Present raw diagnostic findings in clear, plain-language interfaces.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">06</span>
+                        <h3 class="step-name">Implement</h3>
+                        <p class="step-desc">Deploy verification scripts and rules to maintain system order.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="audit-section" id="contact" aria-labelledby="contact-heading" style="background: var(--bg-panel); padding: 140px 0;">
+            <div class="container">
+                <div class="audit-grid">
+                    <!-- Column 1: Info -->
+                    <div class="audit-info">
+                        <span class="eyebrow">Contact &bull; Evaluation</span>
+                        <h2 id="contact-heading" class="section-title">
+                            Bring me the mess.
+                        </h2>
+                        <blockquote style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55;">
+                            Send the workflow, information problem, or unfinished system you are trying to make sense of. I’ll identify where clarity is breaking down and what a practical next step could look like.
+                        </blockquote>
+                        <p class="body-copy">
+                            Whether you are dealing with broken spreadsheet hierarchies, conflicting timelines, POS discrepancies, or a product that feels structurally chaotic—we can map a path to order.
+                        </p>
+                        <div style="margin-top: 2rem; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
+                            Email inquiries: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: bold; text-decoration: none;">jayme@contextmuse.com</a>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Form -->
+                    <div class="audit-form-container" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 2rem;">
+                        <form action="https://formspree.io/f/xoqydgvw" method="POST" class="audit-form">
+                            <input type="text" name="_gotcha" style="display:none">
+                            
+                            <div class="form-group">
+                                <label for="form-name">Name</label>
+                                <input type="text" id="form-name" name="name" class="form-input" required placeholder="Name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-email">Email Address</label>
+                                <input type="email" id="form-email" name="email" class="form-input" required placeholder="Email Address">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-message">What are you trying to make clearer?</label>
+                                <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the current workflow, information problem, or operational bottleneck..."></textarea>
+                            </div>
+
+                            <button type="submit" class="form-submit" style="background: var(--accent-teal); color: #FFF; border: none; padding: 0.75rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: background 0.2s;">Start the Conversation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">Context &amp; Muse</a>
+                <p>Applied Systems · Decision Intelligence · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

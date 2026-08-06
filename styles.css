@@ -3807,3 +3807,389 @@ body.page-professional .btn {
     font-weight: 600;
     letter-spacing: -0.01em;
 }
+
+/* ==========================================================================
+   HOMEPAGE VISUALS OVERHAUL CUSTOM STYLES
+   ========================================================================== */
+
+/* ── Hero Collage ────────────────────────────────────────────────────────── */
+.hero-systems-collage {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 440px;
+    background: #FAF9F6;
+    border: 1px solid rgba(197, 160, 89, 0.3); /* Muted gold rule */
+    border-radius: 6px;
+    box-shadow: 0 16px 40px rgba(16, 33, 29, 0.05);
+    overflow: hidden;
+}
+
+.hero-grid-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(15, 118, 110, 0.1) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    z-index: 1;
+}
+
+.hero-floating-card {
+    position: absolute;
+    background: #090a0f;
+    border: 1px solid rgba(243, 240, 232, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    z-index: 3;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    color: #f3f0e8;
+}
+
+.hero-floating-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    border-color: rgba(243, 240, 232, 0.2);
+}
+
+.hero-floating-card .card-header {
+    background: #0f111a;
+    border-bottom: 1px solid rgba(243, 240, 232, 0.08);
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hero-floating-card .card-header .dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(243, 240, 232, 0.25);
+    border-radius: 50%;
+}
+
+.hero-floating-card .card-header .url {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: #8e94a5;
+    margin-left: auto;
+}
+
+/* Specific Card Layouts */
+.hero-floating-card.card-signal {
+    width: 200px;
+    top: 40px;
+    left: 40px;
+}
+
+.hero-floating-card.card-signal .card-content {
+    padding: 12px;
+}
+
+.hero-floating-card.card-signal .metric {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: #ff5e5e;
+}
+
+.hero-floating-card.card-signal .desc {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.hero-floating-card.card-gensort {
+    width: 220px;
+    top: 180px;
+    left: 280px;
+}
+
+.hero-floating-card.card-gensort .card-content-img {
+    padding: 8px;
+}
+
+.hero-floating-card.card-gensort .badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(52, 211, 153, 0.9);
+    color: #000;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.hero-floating-card.card-integrity {
+    width: 240px;
+    top: 280px;
+    left: 30px;
+}
+
+.hero-floating-card.card-integrity .card-content {
+    padding: 12px;
+}
+
+.hero-floating-card.card-integrity .hash {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #ffc252;
+}
+
+.hero-floating-card.card-integrity .status-stamp {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: bold;
+    color: #34d399;
+    margin-top: 4px;
+}
+
+.hero-svg-connectors {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ── Record Integrity Stack ─────────────────────────────────────────────── */
+.provenance-stack {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    background: rgba(243, 240, 232, 0.02);
+    border: 1px solid rgba(243, 240, 232, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.provenance-grid-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(243, 240, 232, 0.05) 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+    z-index: 1;
+}
+
+.prov-card {
+    position: absolute;
+    background: #141620;
+    border: 1px solid rgba(243, 240, 232, 0.08);
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    z-index: 3;
+    color: #f3f0e8;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.prov-card .card-header {
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(243, 240, 232, 0.05);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.prov-card .card-icon {
+    font-size: 12px;
+}
+
+.prov-card .card-title {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: bold;
+    color: #8e94a5;
+    letter-spacing: 0.05em;
+}
+
+.prov-card .card-body {
+    padding: 12px;
+    flex: 1;
+}
+
+.prov-card .card-footer {
+    background: rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(243, 240, 232, 0.04);
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #8e94a5;
+}
+
+/* Card Specific Positions */
+.prov-card.card-source {
+    width: 170px;
+    top: 30px;
+    left: 30px;
+}
+
+.prov-card.card-source .bar-long {
+    height: 4px;
+    width: 80%;
+    background: rgba(243, 240, 232, 0.15);
+    margin-bottom: 4px;
+}
+.prov-card.card-source .bar-medium {
+    height: 4px;
+    width: 60%;
+    background: rgba(243, 240, 232, 0.15);
+    margin-bottom: 4px;
+}
+.prov-card.card-source .bar-short {
+    height: 4px;
+    width: 40%;
+    background: rgba(243, 240, 232, 0.15);
+}
+
+.prov-card.card-delta {
+    width: 210px;
+    top: 110px;
+    left: 170px;
+    background: #191427;
+    border-color: rgba(167, 139, 250, 0.15);
+}
+
+.prov-card.card-delta .delta-diff {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    margin-bottom: 3px;
+}
+.prov-card.card-delta .delta-diff.text-red { color: #f87171; }
+.prov-card.card-delta .delta-diff.text-teal { color: #34d399; }
+
+.prov-card.card-status {
+    width: 240px;
+    top: 230px;
+    left: 310px;
+    border-color: rgba(52, 211, 153, 0.2);
+}
+
+.prov-card.card-status .integrity-badge {
+    background: rgba(52, 211, 153, 0.08);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 8px 10px;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+/* ── Architecture Steps ─────────────────────────────────────────────────── */
+.architecture-steps {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-teal);
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.architecture-steps .step-node {
+    background: rgba(15, 118, 110, 0.08);
+    border: 1px solid rgba(15, 118, 110, 0.2);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #F7F4ED;
+}
+
+.project-disclaimer {
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(243, 240, 232, 0.1);
+    padding-top: 1rem;
+    margin-top: 1.25rem;
+}
+
+/* Reverse Split Layout Support */
+@media(min-width: 950px) {
+    .project-showcase.split-layout-reverse {
+        grid-template-columns: 1.65fr 1fr;
+        gap: 6rem;
+    }
+}
+
+/* Mobile Overrides to prevent layout overflow under 500px */
+@media(max-width: 500px) {
+    .hero-systems-collage {
+        height: 350px !important;
+    }
+    .hero-floating-card.card-signal {
+        width: 140px !important;
+        top: 20px !important;
+        left: 15px !important;
+    }
+    .hero-floating-card.card-signal .card-content {
+        padding: 8px !important;
+    }
+    .hero-floating-card.card-signal .desc {
+        font-size: 10px !important;
+    }
+    .hero-floating-card.card-gensort {
+        width: 150px !important;
+        top: 105px !important;
+        left: 175px !important;
+    }
+    .hero-floating-card.card-gensort .card-content-img {
+        height: 70px !important;
+    }
+    .hero-floating-card.card-integrity {
+        width: 170px !important;
+        top: 220px !important;
+        left: 20px !important;
+    }
+    .hero-floating-card.card-integrity .card-content {
+        padding: 8px !important;
+    }
+    .hero-svg-connectors {
+        display: none !important;
+    }
+
+    .provenance-stack {
+        height: 350px !important;
+    }
+    .prov-card.card-source {
+        width: 130px !important;
+        top: 20px !important;
+        left: 15px !important;
+    }
+    .prov-card.card-source .card-body {
+        padding: 8px !important;
+    }
+    .prov-card.card-delta {
+        width: 160px !important;
+        top: 100px !important;
+        left: 160px !important;
+    }
+    .prov-card.card-delta .card-body {
+        padding: 8px !important;
+    }
+    .prov-card.card-status {
+        width: 180px !important;
+        top: 215px !important;
+        left: 15px !important;
+    }
+    .prov-card.card-status .card-body {
+        padding: 8px !important;
+    }
+    .prov-connectors {
+        display: none !important;
+    }
+}

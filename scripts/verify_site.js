@@ -142,8 +142,9 @@ if (fs.existsSync(sitemapPath)) {
         'https://contextmuse.com/jayme/',
         'https://contextmuse.com/jayme/product-experience/',
         'https://contextmuse.com/creative/',
-        'https://contextmuse.com/creative-practice/how-to-explain-yourself-to-wolves/',
-        'https://contextmuse.com/creative/resource-guide/'
+        'https://contextmuse.com/creative/how-to-explain-yourself-to-wolves/',
+        'https://contextmuse.com/creative/resource-guide/',
+        'https://contextmuse.com/systems/'
     ];
 
     publicUrls.forEach(url => {
@@ -169,8 +170,9 @@ const filesToVerify = [
     { name: 'jayme/index.html', relPath: 'jayme/index.html', canonical: 'https://contextmuse.com/jayme/' },
     { name: 'jayme/product-experience/index.html', relPath: 'jayme/product-experience/index.html', canonical: 'https://contextmuse.com/jayme/product-experience/' },
     { name: 'creative/index.html', relPath: 'creative/index.html', canonical: 'https://contextmuse.com/creative/' },
-    { name: 'creative-practice/how-to-explain-yourself-to-wolves/index.html', relPath: 'creative-practice/how-to-explain-yourself-to-wolves/index.html', canonical: 'https://contextmuse.com/creative-practice/how-to-explain-yourself-to-wolves/' },
-    { name: 'creative/resource-guide/index.html', relPath: 'creative/resource-guide/index.html', canonical: 'https://contextmuse.com/creative/resource-guide/' }
+    { name: 'creative/how-to-explain-yourself-to-wolves/index.html', relPath: 'creative/how-to-explain-yourself-to-wolves/index.html', canonical: 'https://contextmuse.com/creative/how-to-explain-yourself-to-wolves/' },
+    { name: 'creative/resource-guide/index.html', relPath: 'creative/resource-guide/index.html', canonical: 'https://contextmuse.com/creative/resource-guide/' },
+    { name: 'systems/index.html', relPath: 'systems/index.html', canonical: 'https://contextmuse.com/systems/' }
 ];
 
 filesToVerify.forEach(fileSpec => {
@@ -290,7 +292,7 @@ filesToVerify.forEach(fileSpec => {
 // 5. WOLVES EXCERPT VALIDATION
 // ==========================================================================
 log('\n[5] WOLVES EXCERPT VALIDATION');
-const wolvesPagePath = path.join(projectRoot, 'creative-practice/how-to-explain-yourself-to-wolves/index.html');
+const wolvesPagePath = path.join(projectRoot, 'creative/how-to-explain-yourself-to-wolves/index.html');
 if (fs.existsSync(wolvesPagePath)) {
     const wolvesContent = fs.readFileSync(wolvesPagePath, 'utf8');
     

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Context &amp; Muse | Applied Systems &amp; Decision Intelligence Studio</title>
-    <meta name="description" content="Applied systems, operational diagnostics, decision intelligence, and information tools designed by Jayme Volstad.">
+    <title>Context &amp; Muse | Applied Systems &amp; Creative Practice Studio</title>
+    <meta name="description" content="Applied systems, operational diagnostics, decision intelligence, and creative language projects designed by Jayme Volstad.">
     <link rel="canonical" href="https://contextmuse.com/">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://contextmuse.com/">
-    <meta property="og:title" content="Context &amp; Muse | Applied Systems &amp; Decision Intelligence Studio">
+    <meta property="og:title" content="Context &amp; Muse | Applied Systems &amp; Creative Practice Studio">
     <meta property="og:description" content="Clarity shapes perception. Perception changes everything. Systems design, product thinking, and creative intelligence.">
     <meta property="og:image" content="https://contextmuse.com/social-preview.png">
 
@@ -32,8 +32,7 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <a href="/#systems" class="nav-link">Systems</a>
-                <a href="/#process" class="nav-link">Process</a>
+                <a href="/systems/" class="nav-link">Applied Systems</a>
                 <a href="/creative/" class="nav-link">Creative Practice</a>
                 <a href="/jayme/" class="nav-link">About</a>
                 <a href="/#contact" class="nav-btn">Contact</a>
@@ -41,941 +40,65 @@
         </div>
     </nav>
 
-    <!-- Premium Hero Section -->
-    <header class="hero hero-premium" id="portfolio-hero">
-        <div class="container hero-container-grid">
-            <div class="hero-text-column">
-                <span class="eyebrow">CONTEXT &amp; MUSE</span>
-                <h1 class="hero-headline">
-                    Clarity shapes perception.<br>
-                    Perception changes<br>
-                    everything.
-                </h1>
-                <p class="hero-subhead">
-                    Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use.
-                </p>
-                <div class="btn-group">
-                    <a href="#systems" class="btn btn-primary" id="hero-cta-systems">Explore the Systems</a>
-                    <a href="/jayme/" class="btn btn-secondary" id="hero-cta-builder">Meet the Builder</a>
-                </div>
-            </div>
+    <!-- Premium Hero Section (Clean Gateway Redesign) -->
+    <header class="hero hero-premium" id="portfolio-hero" style="padding: 160px 0 80px;">
+        <div class="container" style="max-width: 800px; text-align: center;">
+            <span class="eyebrow" style="letter-spacing: 0.15em; font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase;">CONTEXT &amp; MUSE</span>
             
-            <div class="hero-visual-column" style="overflow: visible;">
-                <div class="hero-prism-container">
-                    <img src="/assets/images/hero_systems_collage.jpg" alt="Editorial systems composition showcasing Signal, GenSort, and Record Integrity workflows" class="hero-prism-img" width="680" height="453" loading="eager">
-                </div>
+            <h1 class="hero-title" style="font-size: clamp(2.8rem, 5.4vw, 4.8rem); line-height: 1.05; letter-spacing: -0.035em; max-width: 720px; margin: 1.5rem auto; font-family: var(--font-serif); font-weight: 500; color: var(--text-primary);">
+                Clarity shapes perception.<br>
+                Perception changes<br>
+                everything.
+            </h1>
+
+            <!-- Subtle typographic brand element replacing collage -->
+            <div style="margin: 2.5rem auto; max-width: 320px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 0.75rem 0;">
+                <span style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase;">Applied Systems &bull; Creative Practice</span>
+            </div>
+
+            <div class="btn-group" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/systems/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);">Explore Applied Systems &rarr;</a>
+                <a href="/creative/" class="btn btn-secondary" style="border-color: var(--accent-red); color: var(--accent-red);">Explore Creative Practice &rarr;</a>
             </div>
         </div>
     </header>
 
     <main id="main-content">
-        <!-- Flagship Systems Section (Deep-Ink Contrast Redesign) -->
-        <section class="systems-section-dark" id="systems" aria-labelledby="systems-heading">
-            <div class="container">
-                <div class="systems-header">
-                    <span class="eyebrow">Capabilities</span>
-                    <h2 id="systems-heading" class="section-title">Flagship Systems</h2>
-                    <p class="project-copy" style="margin-top: 1rem;">
-                        I build software templates, logic schemas, and diagnostic dashboards to solve hard organizational and communication problems.
-                    </p>
-                </div>
-
-                <div class="systems-grid-dark">
-                    
-                    <!-- System 1: Signal (Split Layout) -->
-                    <article class="project-showcase split-layout flagship-project" id="card-signal">
-                        <div class="project-meta">
-                            <span class="project-num">01</span>
-                            <span class="project-category">Diagnostic Dashboard &bull; Operations Support</span>
-                            <h3 class="project-title">Signal</h3>
-                            <p class="project-copy">
-                                Converts raw Toast POS transaction logs into a clean checklist to flag shift anomalies, labor inefficiencies, and override irregularities.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag-dark">ToastPOS parsing</span>
-                                <span class="project-tag-dark">labor optimization</span>
-                                <span class="project-tag-dark">override audits</span>
-                            </div>
-                            <div class="project-ctas">
-                                <a href="/gold-tooth-signal-report.html" class="btn btn-primary" target="_blank">Live Demo</a>
-                                <a href="/jayme/product-experience/#project-signal" class="btn-outline" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">Case Study &rarr;</a>
-                                <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn-outline" target="_blank" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">GitHub &rarr;</a>
-                            </div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Working Prototype</span>
-                        </div>
-                        
-                        <div class="visual-panel">
-                            <span class="visual-type-label">PRODUCT INTERFACE</span>
-                            <div class="browser-frame">
-                                <div class="browser-header">
-                                    <span class="browser-dot"></span>
-                                    <span class="browser-dot"></span>
-                                    <span class="browser-dot"></span>
-                                    <span class="browser-url">signal.contextmuse.com/runs/1024</span>
-                                </div>
-                                <div class="browser-content">
-                                    <div class="dashboard-layout">
-                                        <aside class="dashboard-sidebar">
-                                            <div class="sidebar-brand">Signal</div>
-                                            <nav class="sidebar-nav">
-                                                <span class="nav-item active">Overview</span>
-                                                <span class="nav-item">Labor Audits</span>
-                                                <span class="nav-item">System Runs</span>
-                                            </nav>
-                                        </aside>
-                                        <main class="dashboard-main">
-                                            <header class="dashboard-header">
-                                                <span class="run-status">RUN #1024 &bull; COMPLETE</span>
-                                                <h4 class="run-title">Labor Overrun Analysis</h4>
-                                            </header>
-                                            <div class="metrics-grid">
-                                                <div class="metric-box">
-                                                    <span class="metric-label">Priority Ranking</span>
-                                                    <span class="metric-val text-red">#01 CRITICAL</span>
-                                                </div>
-                                                <div class="metric-box">
-                                                    <span class="metric-label">Impact Score</span>
-                                                    <span class="metric-val">$14,200 / wk</span>
-                                                </div>
-                                                <div class="metric-box">
-                                                    <span class="metric-label">Friction Score</span>
-                                                    <span class="metric-val">8.8 / 10</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Findings List -->
-                                            <div class="findings-list" style="border-top: 1px solid var(--border-light); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                                                <span class="action-badge" style="color: var(--text-secondary); margin-bottom: 0.25rem;">DETECTED ANOMALIES (3)</span>
-                                                <div class="finding-item active-finding" style="background: rgba(243, 240, 232, 0.4); border: 1.5px solid var(--border-dark); padding: 0.75rem 1rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
-                                                    <div>
-                                                        <strong style="color: var(--accent-red); font-family: var(--font-mono); font-size: 10px;">#01 CRITICAL</strong>
-                                                        <div style="font-weight: 600; margin-top: 0.15rem; color: var(--text-primary);">Shift B Labor Velocity Mismatch</div>
-                                                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 0.1rem;">Evidence: 14% deviation vs transaction velocity log &bull; 8 consecutive shifts</div>
-                                                    </div>
-                                                    <span style="font-weight: bold; color: var(--accent-red); font-family: var(--font-mono); font-size: 13px;">$14,200/wk</span>
-                                                </div>
-                                                <div class="finding-item" style="border: 1px solid var(--border-light); padding: 0.75rem 1rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; opacity: 0.85;">
-                                                    <div>
-                                                        <strong style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px;">#02 HIGH</strong>
-                                                        <div style="font-weight: 600; margin-top: 0.15rem; color: var(--text-primary);">Grace Period Auto-Clock Out Bypass</div>
-                                                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 0.1rem;">Evidence: 42 employee records exceeding standard limit by &gt;30 mins</div>
-                                                    </div>
-                                                    <span style="font-weight: bold; color: var(--text-primary); font-family: var(--font-mono); font-size: 13px;">$5,400/wk</span>
-                                                </div>
-                                                <div class="finding-item" style="border: 1px solid var(--border-light); padding: 0.75rem 1rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; opacity: 0.85;">
-                                                    <div>
-                                                        <strong style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 10px;">#03 MEDIUM</strong>
-                                                        <div style="font-weight: 600; margin-top: 0.15rem; color: var(--text-primary);">Manager Key-Reuse Override Alert</div>
-                                                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 0.1rem;">Evidence: Terminal ID #4 shared authorization signature mismatch</div>
-                                                    </div>
-                                                    <span style="font-weight: bold; color: var(--text-secondary); font-family: var(--font-mono); font-size: 13px;">$1,800/wk</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="action-card">
-                                                <span class="action-badge">RECOMMENDED NEXT ACTION</span>
-                                                <p class="action-desc">Re-align Shift B floor chart with hourly transaction velocities and deploy automatic clock-out verification script.</p>
-                                            </div>
-                                        </main>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- System 2: GenSort (Full Width Layout) -->
-                    <article class="project-showcase full-width-layout flagship-project" id="card-gensort">
-                        <div class="project-meta" style="max-width: 720px;">
-                            <span class="project-num">02</span>
-                            <span class="project-category">Asset Organization &bull; Local Metadata Catalog</span>
-                            <h3 class="project-title">GenSort</h3>
-                            <p class="project-copy">
-                                An offline, local-first file categorizer designed to index image assets, parse prompt lineages, and isolate duplicate media.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag-dark">local-first directory scanner</span>
-                                <span class="project-tag-dark">prompt lineage indexing</span>
-                                <span class="project-tag-dark">similarity tagging</span>
-                            </div>
-                            <div class="project-ctas">
-                                <a href="/cxm_gensort/index.html" class="btn btn-primary" target="_blank">Live Demo</a>
-                                <a href="/jayme/product-experience/#project-gensort" class="btn-outline" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">Case Study &rarr;</a>
-                                <a href="https://github.com/rouguemuse/gensort_studio_sortimage" class="btn-outline" target="_blank" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3);">GitHub &rarr;</a>
-                            </div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Working Prototype</span>
-                        </div>
-                        
-                        <div class="visual-panel">
-                            <span class="visual-type-label">PRODUCT INTERFACE</span>
-                            <div class="workspace-layout">
-                                <aside class="workspace-sidebar">
-                                    <div class="sidebar-folder-list">
-                                        <span class="sidebar-header">Folders</span>
-                                        <span class="sidebar-item active-folder">📂 brand_photography</span>
-                                        <span class="sidebar-item">📂 promotional_ads</span>
-                                        <span class="sidebar-item">📂 social_assets</span>
-                                        <span class="sidebar-item">📂 templates</span>
-                                    </div>
-                                    <div class="status-box">
-                                        <span class="status-label">ORGANIZATION STATUS</span>
-                                        <span class="status-value text-teal">94% Organized</span>
-                                    </div>
-                                </aside>
-                                <main class="workspace-main">
-                                    <div class="workspace-toolbar">
-                                        <span>Showing 8 assets &bull; prompt lineage matching</span>
-                                        <span>Sort: Similarity Index</span>
-                                    </div>
-                                    <div class="contact-sheet-grid">
-                                        <!-- Invoice Document (Keep) -->
-                                        <div class="grid-card">
-                                            <div class="grid-card-img" style="background: #F5F4F0; padding: 12px; display: block; overflow: hidden; position: relative;">
-                                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); height: 100%; border-radius: 2px; padding: 8px; font-family: var(--font-mono); font-size: 8px; color: var(--text-primary); text-align: left; line-height: 1.2;">
-                                                    <div style="font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 3px; display: flex; justify-content: space-between;">
-                                                        <span>INVOICE</span>
-                                                        <span style="color: var(--accent-teal);">#1042</span>
-                                                    </div>
-                                                    <div style="margin-top: 6px; height: 3px; width: 80%; background: #E4E2DD;"></div>
-                                                    <div style="margin-top: 4px; height: 3px; width: 60%; background: #E4E2DD;"></div>
-                                                    <div style="margin-top: 15px; border-top: 1px solid var(--border-light); padding-top: 4px; text-align: right; font-weight: bold; font-size: 9px; color: var(--text-primary);">
-                                                        $14,200.00
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="grid-card-name">invoice_2026_08.pdf</span>
-                                            <span class="grid-card-tag tag-keep">Keep &bull; 98% Match</span>
-                                        </div>
-
-                                        <!-- Invoice Duplicate (Redundant) -->
-                                        <div class="grid-card duplicate-highlight">
-                                            <div class="grid-card-img" style="background: #EFEFEF; padding: 12px; display: block; overflow: hidden; position: relative; opacity: 0.65;">
-                                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); height: 100%; border-radius: 2px; padding: 8px; font-family: var(--font-mono); font-size: 8px; color: var(--text-primary); text-align: left; opacity: 0.6; line-height: 1.2;">
-                                                    <div style="font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 3px; display: flex; justify-content: space-between;">
-                                                        <span>INVOICE</span>
-                                                        <span>#1042</span>
-                                                    </div>
-                                                    <div style="margin-top: 6px; height: 3px; width: 80%; background: #E4E2DD;"></div>
-                                                    <div style="margin-top: 15px; border-top: 1px solid var(--border-light); padding-top: 4px; text-align: right; font-weight: bold; font-size: 9px;">
-                                                        $14,200.00
-                                                    </div>
-                                                </div>
-                                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); border: 2px solid var(--accent-red); color: var(--accent-red); font-family: var(--font-mono); font-size: 11px; font-weight: bold; padding: 2px 6px; border-radius: 3px; background: #FFFFFF; letter-spacing: 0.05em; z-index: 10;">DUPLICATE</div>
-                                            </div>
-                                            <span class="grid-card-name">invoice_2026_08_copy.pdf</span>
-                                            <span class="grid-card-tag tag-duplicate">Redundant &bull; 99% Sim</span>
-                                        </div>
-
-                                        <!-- Email Screenshot (Keep) -->
-                                        <div class="grid-card">
-                                            <div class="grid-card-img" style="background: #FAF9F5; padding: 12px; display: block; overflow: hidden; position: relative;">
-                                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); height: 100%; border-radius: 2px; padding: 8px; font-family: var(--font-sans); font-size: 8px; text-align: left; line-height: 1.3; color: var(--text-primary);">
-                                                    <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 6px;">
-                                                        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-teal);"></div>
-                                                        <div style="font-weight: bold; font-size: 7px;">Re: Labor Velocity...</div>
-                                                    </div>
-                                                    <div style="height: 4px; width: 90%; background: #E4E2DD; margin-bottom: 3px;"></div>
-                                                    <div style="height: 4px; width: 80%; background: #E4E2DD; margin-bottom: 3px;"></div>
-                                                    <div style="height: 4px; width: 45%; background: #E4E2DD;"></div>
-                                                </div>
-                                            </div>
-                                            <span class="grid-card-name">email_thread_0314.png</span>
-                                            <span class="grid-card-tag tag-keep">Keep &bull; 92% Match</span>
-                                        </div>
-
-                                        <!-- Field Photo (Keep) -->
-                                        <div class="grid-card">
-                                            <div class="grid-card-img" style="background: #FAF9F5; display: block; overflow: hidden; position: relative;">
-                                                <img src="/assets/images/brutalist_lobby.jpg" alt="Field photo - Brutalist lobby" style="width: 100%; height: 100%; object-fit: cover;">
-                                                <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.65); color: #FFF; font-family: var(--font-mono); font-size: 7px; padding: 2px 4px; border-radius: 2px;">FIELD_PHOTO</div>
-                                            </div>
-                                            <span class="grid-card-name">field_photo_site_b.jpg</span>
-                                            <span class="grid-card-tag tag-keep">Keep &bull; 95% Match</span>
-                                        </div>
-
-                                        <!-- Contract Document (Keep) -->
-                                        <div class="grid-card">
-                                            <div class="grid-card-img" style="background: #F5F4F0; padding: 12px; display: block; overflow: hidden; position: relative;">
-                                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); height: 100%; border-radius: 2px; padding: 8px; font-family: var(--font-sans); font-size: 7px; text-align: left; line-height: 1.4; color: var(--text-primary);">
-                                                    <div style="text-align: center; font-weight: bold; margin-bottom: 8px; font-size: 8px; border-bottom: 1px solid var(--border-light); padding-bottom: 2px;">MUTUAL NDA</div>
-                                                    <div style="height: 3px; width: 90%; background: #E4E2DD; margin-bottom: 3px;"></div>
-                                                    <div style="height: 3px; width: 95%; background: #E4E2DD; margin-bottom: 3px;"></div>
-                                                    <div style="height: 3px; width: 75%; background: #E4E2DD; margin-bottom: 5px;"></div>
-                                                    <div style="display: flex; gap: 10px; margin-top: 5px;">
-                                                        <div style="flex: 1; border-top: 0.5px solid #1F1F1D; height: 3px;"></div>
-                                                        <div style="flex: 1; border-top: 0.5px solid #1F1F1D; height: 3px;"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="grid-card-name">contract_draft_v2.docx</span>
-                                            <span class="grid-card-tag tag-keep">Keep &bull; 90% Match</span>
-                                        </div>
-
-                                        <!-- Log File (Keep) -->
-                                        <div class="grid-card">
-                                            <div class="grid-card-img" style="background: #1E1E1C; padding: 12px; display: block; overflow: hidden; position: relative;">
-                                                <div style="font-family: var(--font-mono); font-size: 7px; color: #FAF9F5; text-align: left; line-height: 1.4; overflow: hidden; height: 100%;">
-                                                    <div style="color: var(--accent-teal);">&gt; RUNNING AUDIT...</div>
-                                                    <div>[08:04:12] ID_204: OK</div>
-                                                    <div style="color: var(--accent-red);">[08:04:15] ID_205: WARN</div>
-                                                    <div>[08:04:19] ID_206: OK</div>
-                                                    <div>[08:04:22] ID_207: OK</div>
-                                                </div>
-                                            </div>
-                                            <span class="grid-card-name">message_export_0802.txt</span>
-                                            <span class="grid-card-tag tag-keep">Keep &bull; 88% Match</span>
-                                        </div>
-
-                                        <!-- Inspection PDF (Keep) -->
-                                        <div class="grid-card">
-                                            <div class="grid-card-img" style="background: #F5F4F0; padding: 12px; display: block; overflow: hidden; position: relative;">
-                                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); height: 100%; border-radius: 2px; padding: 8px; font-family: var(--font-sans); font-size: 7px; text-align: left; line-height: 1.3; color: var(--text-primary);">
-                                                    <div style="font-weight: bold; font-size: 8px; color: var(--accent-teal); margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
-                                                        <span>REPORT B</span>
-                                                        <span style="font-size: 9px;">✓</span>
-                                                    </div>
-                                                    <div style="height: 3px; width: 90%; background: #E4E2DD; margin-bottom: 3px;"></div>
-                                                    <div style="height: 3px; width: 85%; background: #E4E2DD; margin-bottom: 3px;"></div>
-                                                    <div style="height: 3px; width: 60%; background: #E4E2DD;"></div>
-                                                </div>
-                                            </div>
-                                            <span class="grid-card-name">inspection_report.pdf</span>
-                                            <span class="grid-card-tag tag-keep">Keep &bull; 96% Match</span>
-                                        </div>
-
-                                        <!-- Inspection PDF Duplicate (Redundant) -->
-                                        <div class="grid-card duplicate-highlight">
-                                            <div class="grid-card-img" style="background: #EFEFEF; padding: 12px; display: block; overflow: hidden; position: relative; opacity: 0.65;">
-                                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); height: 100%; border-radius: 2px; padding: 8px; font-family: var(--font-sans); font-size: 7px; text-align: left; line-height: 1.3; opacity: 0.6; color: var(--text-primary);">
-                                                    <div style="font-weight: bold; font-size: 8px; color: var(--text-secondary); margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
-                                                        <span>REPORT B</span>
-                                                        <span style="font-size: 9px;">✓</span>
-                                                    </div>
-                                                    <div style="height: 3px; width: 90%; background: #E4E2DD; margin-bottom: 3px;"></div>
-                                                    <div style="height: 3px; width: 85%; background: #E4E2DD; margin-bottom: 3px;"></div>
-                                                </div>
-                                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); border: 2px solid var(--accent-gold); color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px; font-weight: bold; padding: 2px 4px; border-radius: 3px; background: #FFFFFF; letter-spacing: 0.05em; z-index: 10;">REDUNDANT</div>
-                                            </div>
-                                            <span class="grid-card-name">inspection_report_copy.pdf</span>
-                                            <span class="grid-card-tag tag-duplicate">Redundant &bull; 99% Sim</span>
-                                        </div>
-                                    </div>
-                                </main>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- System 3: Message Analysis (Full Width Layout) -->
-                    <article class="project-showcase full-width-layout flagship-project" id="card-message-analysis">
-                        <div class="project-meta" style="max-width: 720px;">
-                            <span class="project-num">03</span>
-                            <span class="project-category">Information Verification &bull; Logical Compliance</span>
-                            <h3 class="project-title">Message Analysis</h3>
-                            <p class="project-copy">
-                                A structured mapping system to analyze written statements and timeline logs to flag contradictions and locate narrative gaps.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag-dark">transcript cross-referencing</span>
-                                <span class="project-tag-dark">factual variance logs</span>
-                                <span class="project-tag-dark">timeline alignment</span>
-                            </div>
-                            <div class="project-ctas">
-                                <a href="/jayme/#selected-work" class="btn btn-primary">Explore Methodology</a>
-                            </div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Concept</span>
-                        </div>
-                        
-                        <div class="visual-panel">
-                            <span class="visual-type-label">PROCESS VISUALIZATION</span>
-                            <div class="editorial-panel light-editorial-bg" style="background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 1.75rem; color: var(--text-primary); font-family: var(--font-sans); box-shadow: 0 16px 48px rgba(0,0,0,0.06); font-size: 13px;">
-                                <!-- Two Column Layout: Chat Transcript & Metadata Analysis -->
-                                <div class="message-analysis-grid" style="display: grid; gap: 1.5rem; align-items: start; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
-                                    
-                                    <!-- Left Column: Excerpts -->
-                                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 0.25rem;">
-                                            CONVERSATION LOG &bull; ID_RUN_0412
-                                        </div>
-                                        
-                                        <!-- Message bubble 1 -->
-                                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-red); padding: 0.75rem; border-radius: 4px; position: relative;">
-                                            <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: 0.35rem;">
-                                                <span>SPKR_A [Subject 01]</span>
-                                                <span>09:15 AM</span>
-                                            </div>
-                                            <p style="margin: 0; font-family: var(--font-serif); font-size: 13.5px; line-height: 1.45; color: var(--text-primary);">
-                                                "I arrived <span style="background: rgba(225, 29, 72, 0.1); border-bottom: 1.5px dashed var(--accent-red); padding: 0 2px; font-weight: bold; color: var(--accent-red);">after</span> the meeting was adjourned."
-                                            </p>
-                                            <div style="margin-top: 0.4rem; display: flex; gap: 4px;">
-                                                <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#arrival-time</span>
-                                                <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#statement-a</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Message bubble 2 -->
-                                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-teal); padding: 0.75rem; border-radius: 4px; position: relative;">
-                                            <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: 0.35rem;">
-                                                <span>SPKR_B [Subject 02]</span>
-                                                <span>10:04 AM</span>
-                                            </div>
-                                            <p style="margin: 0; font-family: var(--font-serif); font-size: 13.5px; line-height: 1.45; color: var(--text-primary);">
-                                                "No, Subject 01 was inside the room <span style="background: rgba(45, 212, 191, 0.1); border-bottom: 1.5px dashed var(--accent-teal); padding: 0 2px; font-weight: bold; color: var(--accent-teal);">before</span> the schedule began."
-                                            </p>
-                                            <div style="margin-top: 0.4rem; display: flex; gap: 4px;">
-                                                <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#presence-claim</span>
-                                                <span style="font-family: var(--font-mono); font-size: 8.5px; background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 2px; color: var(--text-secondary);">#statement-b</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Right Column: Forensic Details -->
-                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 1rem; border-radius: 4px; display: flex; flex-direction: column; gap: 0.75rem; height: 100%;">
-                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 0.25rem;">
-                                            FORENSIC ANALYSIS
-                                        </div>
-                                        
-                                        <!-- Conflict tag -->
-                                        <div>
-                                            <strong style="color: var(--accent-red); font-family: var(--font-mono); font-size: 9px; display: block; margin-bottom: 0.2rem;">⚠️ LOGICAL VARIANCE DETECTED</strong>
-                                            <div style="font-size: 11.5px; color: var(--text-secondary); line-height: 1.35;">
-                                                Statement B presence claim conflicts with Statement A self-reported arrival by 25 mins.
-                                            </div>
-                                        </div>
-
-                                        <!-- Confidence rating -->
-                                        <div style="border-top: 1px solid var(--border-light); padding-top: 0.5rem;">
-                                            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">CONFIDENCE COEFFICIENT</span>
-                                            <div style="display: flex; align-items: center; gap: 8px;">
-                                                <div style="flex: 1; height: 6px; background: #E4E2DD; border-radius: 3px; overflow: hidden;">
-                                                    <div style="width: 94%; height: 100%; background: var(--accent-teal);"></div>
-                                                </div>
-                                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: bold; color: var(--accent-teal);">94%</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Referenced Documents -->
-                                        <div style="border-top: 1px solid var(--border-light); padding-top: 0.5rem; font-family: var(--font-mono); font-size: 9px; color: var(--text-secondary);">
-                                            <span style="display: block; margin-bottom: 0.25rem;">CROSS-REFERENCES</span>
-                                            <ul style="list-style: none; padding-left: 0; margin: 0; display: flex; flex-direction: column; gap: 4px;">
-                                                <li>📁 <a href="/jayme/product-experience/" style="color: var(--accent-teal); text-decoration: none;">ledger_run_1024.csv</a></li>
-                                                <li>📁 <a href="/jayme/product-experience/" style="color: var(--accent-teal); text-decoration: none;">schedule_v1.json</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- Horizontal Timeline -->
-                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                    <div style="font-family: var(--font-mono); font-size: 9.5px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold;">
-                                        TIMELINE SCHEMATIC (CONFLICT WINDOW)
-                                    </div>
-                                    <div style="position: relative; height: 45px; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; overflow: hidden;">
-                                        <!-- Background line -->
-                                        <div style="position: absolute; left: 1rem; right: 1rem; top: 50%; height: 1px; background: var(--border-light); z-index: 1;"></div>
-                                        
-                                        <!-- Timeline Points -->
-                                        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
-                                            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-teal); border: 2px solid #FFFFFF;"></div>
-                                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">08:50 AM</span>
-                                            <span style="font-size: 8px; color: var(--text-secondary); opacity: 0.85;">Spkr_B Claim</span>
-                                        </div>
-
-                                        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
-                                            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--border-dark); border: 2px solid #FFFFFF;"></div>
-                                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">08:52 AM</span>
-                                            <span style="font-size: 8px; color: var(--text-secondary); opacity: 0.85;">Badge Scan</span>
-                                        </div>
-
-                                        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
-                                            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--border-dark); border: 2px solid #FFFFFF;"></div>
-                                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">09:00 AM</span>
-                                            <span style="font-size: 8px; color: var(--text-secondary); opacity: 0.85;">Sched. Start</span>
-                                        </div>
-
-                                        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
-                                            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-red); border: 2px solid #FFFFFF;"></div>
-                                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">09:15 AM</span>
-                                            <span style="font-size: 8px; color: var(--text-secondary); opacity: 0.85;">Spkr_A Arrival</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- System 4: Record Integrity (Full Width Layout) -->
-                    <article class="project-showcase full-width-layout flagship-project" id="card-record-integrity">
-                        <div class="project-meta" style="max-width: 720px;">
-                            <span class="project-num">04</span>
-                            <span class="project-category">Source Traceability &bull; Integrity Ledger</span>
-                            <h3 class="project-title">Record Integrity</h3>
-                            <p class="project-copy">
-                                An integrity ledger and hash-verification flow ensuring dataset provenance and detecting unauthorized modifications.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag-dark">SHA-256 fingerprinting</span>
-                                <span class="project-tag-dark">provenance logs</span>
-                                <span class="project-tag-dark">change detection</span>
-                            </div>
-                            <div class="project-ctas">
-                                <a href="/jayme/#selected-work" class="btn btn-primary">Explore Methodology</a>
-                            </div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase;">Status: Concept</span>
-                        </div>
-                        
-                        <div class="visual-panel">
-                            <span class="visual-type-label">PROCESS VISUALIZATION</span>
-                            <div class="provenance-flow-container-large" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; background: rgba(243, 240, 232, 0.03); border: 1px solid rgba(243, 240, 232, 0.15); border-radius: 4px; padding: 2rem 1.5rem; width: 100%;">
-                                
-                                <!-- Stage 1: Original Source -->
-                                <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <div class="file-icon-large" style="font-size: 2rem;">📄</div>
-                                    <strong style="font-size: 13px; color: #FAF9F5; font-family: var(--font-sans);">1. Original Source</strong>
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary);">raw_ledger.csv</span>
-                                </div>
-
-                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
-
-                                <!-- Stage 2: Fingerprint -->
-                                <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <div style="font-size: 2rem;">🎯</div>
-                                    <strong style="font-size: 13px; color: #FAF9F5; font-family: var(--font-sans);">2. Fingerprint</strong>
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold);">SHA-256: #9a3f2c</span>
-                                </div>
-
-                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
-
-                                <!-- Stage 3: Extraction -->
-                                <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <div style="font-size: 2rem;">🔍</div>
-                                    <strong style="font-size: 13px; color: #FAF9F5; font-family: var(--font-sans);">3. Extraction</strong>
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary);">Normalize: 1024 Rows</span>
-                                </div>
-
-                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
-
-                                <!-- Stage 4: Comparison -->
-                                <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <div style="font-size: 2rem;">🔄</div>
-                                    <strong style="font-size: 13px; color: #FAF9F5; font-family: var(--font-sans);">4. Comparison</strong>
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary);">Delta validation</span>
-                                </div>
-
-                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
-
-                                <!-- Stage 5: Anomaly Check -->
-                                <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <div style="font-size: 2rem;">⚠️</div>
-                                    <strong style="font-size: 13px; color: #FAF9F5; font-family: var(--font-sans);">5. Anomaly Check</strong>
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary);">Variance: 0 flags</span>
-                                </div>
-
-                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
-
-                                <!-- Stage 6: Verified Export -->
-                                <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(45, 212, 191, 0.05); border: 1px solid var(--accent-teal); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <div style="font-size: 2rem; color: var(--accent-teal);">✓</div>
-                                    <strong style="font-size: 13px; color: var(--accent-teal); font-family: var(--font-sans);">6. Verified Export</strong>
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal);">Signature: OK</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
+        <!-- Studio Introduction Section -->
+        <section style="background: var(--bg-paper); padding: 60px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+            <div class="container" style="max-width: 680px; text-align: center;">
+                <p style="font-family: var(--font-serif); font-size: clamp(1.2rem, 2.5vw, 1.45rem); line-height: 1.7; color: var(--text-secondary); font-style: italic;">
+                    Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use. The studio builds software templates, logic schemas, diagnostic dashboards, and creative language projects.
+                </p>
             </div>
         </section>
 
-        <!-- Selected Builds Section (Light Editorial Case Studies) -->
-        <section class="builds-section" id="builds" aria-labelledby="builds-heading">
+        <!-- Two Primary Destinations (Side-by-side Panel Split) -->
+        <section style="background: var(--bg-panel); padding: 80px 0;">
             <div class="container">
-                <div class="builds-header">
-                    <span class="eyebrow" style="color: var(--accent-teal);">Operational Implementations</span>
-                    <h2 id="builds-heading" class="section-title" style="margin-top: 0.5rem;">Selected Builds</h2>
-                    <p class="body-copy" style="margin-top: 1rem; color: var(--text-secondary);">
-                        Production systems built to solve operational complexity, improve conversions, and manage date-sensitive inventory for real businesses.
-                    </p>
-                </div>
-
-                <div class="builds-list">
-                    <!-- Build 1: INNcontrol Coils -->
-                    <div class="build-row">
-                        <div class="build-meta-col">
-                            <span class="build-num">01</span>
-                            <span class="build-category">Commercial Service Operations</span>
-                            <h3 class="build-title">INNcontrol Coils</h3>
-                            <p class="build-desc">
-                                A commercial-service platform that transforms scattered property needs into a structured assessment, prioritized service plan, and qualified sales opportunity.
-                            </p>
-                            
-                            <ul class="build-details-list">
-                                <li class="build-detail-item">
-                                    <h4>The Business Problem</h4>
-                                    <p>Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>The System Built</h4>
-                                    <p>An interactive, property-wide assessment system that maps complex equipment locations, generates standardized intake details, and produces custom service reports.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>Operational Value</h4>
-                                    <p>Replaces chaotic paper checklists and generic service listings with prioritized recommendations, allowing sales teams to rapidly convert property needs into structured deals.</p>
-                                </li>
-                            </ul>
-
-                            <div class="build-ctas">
-                                <a href="https://www.inncontrolcoils.com" class="btn btn-primary" target="_blank" rel="noopener">Explore INNcontrolCoils.com</a>
-                                <a href="/jayme/#project-webwork" class="btn-outline">View Case Study &rarr;</a>
-                            </div>
-                        </div>
-
-                        <div class="build-visual-col">
-                            <!-- Browser Frame containing property assessment UI -->
-                            <div class="build-browser-frame">
-                                <div class="build-browser-header">
-                                    <div class="browser-dots">
-                                        <span class="browser-dot" style="background: #E11D48;"></span>
-                                        <span class="browser-dot" style="background: #C5A059;"></span>
-                                        <span class="browser-dot" style="background: #0F766E;"></span>
-                                    </div>
-                                    <div class="browser-url-bar">https://www.inncontrolcoils.com/intake</div>
-                                    <div style="width: 24px;"></div>
-                                </div>
-                                <div class="inncoils-diagram" style="background: var(--bg-panel); padding: 1.5rem;">
-                                    <!-- Assessment Checklist Card -->
-                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1.25rem; font-family: var(--font-sans); box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
-                                            <span style="font-size: 11px; font-family: var(--font-mono); color: var(--accent-teal); font-weight: bold;">PROPERTY ASSESSMENT // INTAKE</span>
-                                            <span style="background: rgba(77, 124, 15, 0.1); color: var(--accent-lime); font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 2px;">Active Survey</span>
-                                        </div>
-                                        <div style="font-size: 12px; margin-bottom: 0.5rem;">
-                                            <strong>Facility:</strong> Austin Downtown Hotel Complex
-                                        </div>
-                                        
-                                        <!-- Survey Items -->
-                                        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem;">
-                                            <div style="display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--text-primary);">
-                                                <span style="display: inline-block; width: 12px; height: 12px; border: 1.5px solid var(--accent-teal); background: var(--accent-teal); color: #FFF; font-size: 8px; text-align: center; line-height: 10px; border-radius: 2px;">✓</span>
-                                                <span>AHU-04: Primary Condenser Coil Scale (Level: High)</span>
-                                            </div>
-                                            <div style="display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--text-primary);">
-                                                <span style="display: inline-block; width: 12px; height: 12px; border: 1.5px solid var(--accent-teal); background: var(--accent-teal); color: #FFF; font-size: 8px; text-align: center; line-height: 10px; border-radius: 2px;">✓</span>
-                                                <span>AHU-09: Chilled Water Coil Bypass Leak Detected</span>
-                                            </div>
-                                            <div style="display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--text-primary);">
-                                                <span style="display: inline-block; width: 12px; height: 12px; border: 1.5px solid var(--border-dark); border-radius: 2px;"></span>
-                                                <span style="color: var(--text-secondary);">FCU-12: Tenant Space Fan Coil Inspection Pending</span>
-                                            </div>
-                                        </div>
-
-                                        <div style="margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
-                                            <span style="font-size: 10.5px; color: var(--text-secondary);">Intake Progress:</span>
-                                            <div style="width: 100px; height: 6px; background: var(--border-light); border-radius: 3px; overflow: hidden; display: inline-block;">
-                                                <div style="width: 66%; height: 100%; background: var(--accent-teal);"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Assessment Output / Prioritized Recommendations Card -->
-                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1.25rem; font-family: var(--font-sans); box-shadow: 0 4px 12px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 0.5rem;">
-                                        <span style="font-size: 10px; font-family: var(--font-mono); color: var(--accent-gold); font-weight: bold;">PRIORITIZED ACTION PLAN</span>
-                                        <div style="border-left: 2px solid var(--accent-red); padding-left: 8px; font-size: 11px; margin-bottom: 0.25rem;">
-                                            <strong style="color: var(--text-primary); display: block;">1. Coil Refurbishment (AHU-04)</strong>
-                                            <span style="color: var(--text-secondary);">Target: restore heat transfer by 22%</span>
-                                        </div>
-                                        <div style="border-left: 2px solid var(--accent-gold); padding-left: 8px; font-size: 11px;">
-                                            <strong style="color: var(--text-primary); display: block;">2. Valve Replacement (AHU-09)</strong>
-                                            <span style="color: var(--text-secondary);">Target: stop bypass flow and chilled loss</span>
-                                        </div>
-                                        <div style="background: var(--bg-panel); border-radius: 3px; padding: 6px; text-align: center; margin-top: 0.5rem;">
-                                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: bold; color: var(--text-primary);">Sales Opp: $18,450.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Build 2: D2 Auto Detail -->
-                    <div class="build-row row-reverse">
-                        <div class="build-meta-col">
-                            <span class="build-num">02</span>
-                            <span class="build-category">Unified Business Platform</span>
-                            <h3 class="build-title">D2 Auto Detail</h3>
-                            <p class="build-desc">
-                                A conversion-focused auto-detailing platform supported by an internal dashboard for inquiries, advertising, publishing, and customer engagement.
-                            </p>
-                            
-                            <ul class="build-details-list">
-                                <li class="build-detail-item">
-                                    <h4>The Business Problem</h4>
-                                    <p>Premium detailing services require managing highly specific inquiries (by vehicle type and service tiers), generating local advertisements, and publishing content without juggling separate dashboard tools.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>The System Built</h4>
-                                    <p>A connected custom application linking the public marketing storefront directly to an admin interface with customer pipeline tools, an automated local ad generator, blog publishing, and a D2TV media player database.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>Operational Value</h4>
-                                    <p>Combines brand marketing with deep backend tools to capture, qualify, and convert details. Replaces standard brochure structures with a workflow engine.</p>
-                                </li>
-                            </ul>
-
-                            <div class="build-ctas">
-                                <a href="https://www.d2autodetail.com" class="btn btn-primary" target="_blank" rel="noopener">Explore D2AutoDetail.com</a>
-                                <a href="/jayme/product-experience/#project-d2" class="btn-outline">View Case Study &rarr;</a>
-                            </div>
-                        </div>
-
-                        <div class="build-visual-col">
-                            <div class="d2-container">
-                                <!-- Main Front-end site -->
-                                <div class="build-browser-frame d2-main-site">
-                                    <div class="build-browser-header">
-                                        <div class="browser-dots">
-                                            <span class="browser-dot"></span>
-                                            <span class="browser-dot"></span>
-                                            <span class="browser-dot"></span>
-                                        </div>
-                                        <div class="browser-url-bar" style="font-size: 8px;">d2autodetail.com</div>
-                                    </div>
-                                    <div style="background: #111; color: #FFF; padding: 1.5rem; height: 100%; font-family: var(--font-serif); display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; text-align: center;">
-                                        <span style="font-family: var(--font-sans); font-size: 8px; letter-spacing: 0.2em; color: var(--accent-gold);">PREMIUM AUTO DETAILING</span>
-                                        <h4 style="font-size: 18px; line-height: 1.1; margin: 0;">Preserving value.<br>Elevating aesthetics.</h4>
-                                        <div style="background: var(--accent-gold); color: #000; font-family: var(--font-sans); font-size: 8px; font-weight: bold; padding: 4px 10px; width: fit-content; margin: 5px auto 0 auto; border-radius: 2px;">BOOK EXPERIENCE</div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Dash Panel 1: Inquiry Pipeline -->
-                                <div class="d2-dashboard-panel d2-dash-1">
-                                    <div style="font-family: var(--font-mono); font-size: 8px; color: var(--accent-teal); font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 3px; margin-bottom: 5px; display: flex; justify-content: space-between;">
-                                        <span>INQUIRY PIPELINE</span>
-                                        <span>Active: 14</span>
-                                    </div>
-                                    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 8.5px;">
-                                        <div style="background: var(--bg-panel); padding: 3px 5px; border-radius: 2px; display: flex; justify-content: space-between;">
-                                            <strong>Porsche 911 (Ceramic)</strong>
-                                            <span style="color: var(--accent-lime); font-weight: bold;">New</span>
-                                        </div>
-                                        <div style="background: var(--bg-panel); padding: 3px 5px; border-radius: 2px; display: flex; justify-content: space-between;">
-                                            <strong>Tesla Model Y (Full Detail)</strong>
-                                            <span style="color: var(--text-secondary);">Contacted</span>
-                                        </div>
-                                        <div style="background: var(--bg-panel); padding: 3px 5px; border-radius: 2px; display: flex; justify-content: space-between;">
-                                            <strong>Ford Raptor (Interior Detail)</strong>
-                                            <span style="color: var(--text-secondary);">Scheduled</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Dash Panel 2: Ad & Content Publishing -->
-                                <div class="d2-dashboard-panel d2-dash-2">
-                                    <div style="font-family: var(--font-mono); font-size: 8px; color: var(--accent-gold); font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 3px; margin-bottom: 5px; display: flex; justify-content: space-between;">
-                                        <span>SYSTEM UTILITIES</span>
-                                        <span>D2TV &bull; ADS</span>
-                                    </div>
-                                    <div style="display: flex; flex-direction: column; gap: 5px; font-size: 8.5px;">
-                                        <div style="border-left: 2px solid var(--accent-teal); padding-left: 5px;">
-                                            <strong>D2TV Video Link:</strong>
-                                            <span style="color: var(--text-secondary); display: block; font-family: var(--font-mono); font-size: 7.5px;">/content/d2tv-s3-e12-stream</span>
-                                        </div>
-                                        <div style="border-left: 2px solid var(--accent-gold); padding-left: 5px;">
-                                            <strong>Ad Generator Output:</strong>
-                                            <span style="color: var(--text-secondary); display: block; font-size: 8px;">"Premium Austin detailing starting from..."</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Build 3: EDR Party Rentals -->
-                    <div class="build-row">
-                        <div class="build-meta-col">
-                            <span class="build-num">03</span>
-                            <span class="build-category">Inventory-Aware Storefront</span>
-                            <h3 class="build-title">EDR Party Rentals</h3>
-                            <p class="build-desc">
-                                A visual rental storefront with inventory-aware inquiries, event logistics, bilingual content, and reservation controls built for products that cannot be booked twice.
-                            </p>
-                            
-                            <ul class="build-details-list">
-                                <li class="build-detail-item">
-                                    <h4>The Business Problem</h4>
-                                    <p>Rental companies own highly specific, one-of-one event inventory (individual slides, custom arches, tables). Normal ecommerce shopping carts fail because they allow double-booking on identical date ranges.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>The System Built</h4>
-                                    <p>An inventory availability checker linked to the storefront cart. Customers check inventory by date, and the admin system locks bookings for that product serial number on approved dates.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>Operational Value</h4>
-                                    <p>Eliminates double-booking errors, automates translation across English and Spanish storefront versions, and organizes delivery dispatch schedules based on verified dates.</p>
-                                </li>
-                            </ul>
-
-                            <div class="build-ctas">
-                                <a href="https://edrpartyrentals.com" class="btn btn-primary" target="_blank" rel="noopener">Explore EDRPartyRentals.com</a>
-                                <a href="/jayme/#project-webwork" class="btn-outline">View Case Study &rarr;</a>
-                            </div>
-                        </div>
-
-                        <div class="build-visual-col">
-                            <!-- Browser Frame containing date picker & availability list -->
-                            <div class="build-browser-frame">
-                                <div class="build-browser-header">
-                                    <div class="browser-dots">
-                                        <span class="browser-dot"></span>
-                                        <span class="browser-dot"></span>
-                                        <span class="browser-dot"></span>
-                                    </div>
-                                    <div class="browser-url-bar">https://edrpartyrentals.com/rentals</div>
-                                    <div style="width: 24px;"></div>
-                                </div>
-                                <div class="edr-inventory-grid" style="background: var(--bg-panel); padding: 1.25rem;">
-                                    <!-- Storefront Calendar Check Card -->
-                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1rem; font-family: var(--font-sans); box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-                                        <span style="font-size: 9.5px; font-family: var(--font-mono); color: var(--accent-teal); font-weight: bold; display: block; margin-bottom: 0.5rem;">EVENT AVAILABILITY FILTER</span>
-                                        
-                                        <!-- Date Selector -->
-                                        <div style="background: var(--bg-panel); border: 1px solid var(--border-light); padding: 8px; border-radius: 3px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                                            <span>📅 Oct 24, 2026 &mdash; Oct 25, 2026</span>
-                                            <span style="color: var(--accent-teal); font-weight: bold; font-size: 9px;">BILINGUAL: EN/ES</span>
-                                        </div>
-
-                                        <!-- Serial Availability Check -->
-                                        <div style="font-size: 11px; display: flex; flex-direction: column; gap: 0.5rem;">
-                                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 4px;">
-                                                <span>Inflatable Arch "Gold Rust"</span>
-                                                <span style="color: var(--accent-lime); font-weight: bold;">✓ Available</span>
-                                            </div>
-                                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 4px;">
-                                                <span>Commercial Tent (20x40)</span>
-                                                <span style="color: var(--accent-red); font-weight: bold;">✕ Booked (TX-109)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Admin Reservation Control Card -->
-                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1rem; font-family: var(--font-sans); box-shadow: 0 4px 12px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 0.5rem;">
-                                        <span style="font-size: 9.5px; font-family: var(--font-mono); color: var(--accent-gold); font-weight: bold;">ADMIN CONTROL // RESERVATIONS</span>
-                                        
-                                        <div style="background: var(--bg-panel); padding: 8px; border-radius: 3px; font-size: 11px; line-height: 1.3;">
-                                            <strong>Booking ID:</strong> EDR-94812<br>
-                                            <strong>Item Serial:</strong> ARCH-GR-01<br>
-                                            <strong>Customer:</strong> Event Planning Co.<br>
-                                            <span style="color: var(--accent-teal); font-weight: bold;">Availability Calendar Blocked</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Method Section -->
-        <section class="method-section" id="process" aria-labelledby="method-heading">
-            <div class="container">
-                <div class="method-header">
-                    <span class="eyebrow">Approach</span>
-                    <h2 id="method-heading" class="section-title">How I Build</h2>
-                    <p class="body-copy" style="margin-top: 1rem;">
-                        Every layout, database column, and interface route is built upon a standard diagnostic process to isolate and resolve operational leaks.
-                    </p>
-                </div>
-
-                <!-- Horizontal Process Flow -->
-                <div class="process-flow-container">
-                    <div class="process-step">
-                        <span class="step-num">01</span>
-                        <h3 class="step-name">Observe</h3>
-                        <p class="step-desc">Examine transaction paths, directory structures, and logs in their native environments.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">02</span>
-                        <h3 class="step-name">Structure</h3>
-                        <p class="step-desc">Normalize messy database logs, narrative fragments, or assets into clean schemas.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">03</span>
-                        <h3 class="step-name">Validate</h3>
-                        <p class="step-desc">Cross-reference timestamps, hashes, and records to locate anomalies.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">04</span>
-                        <h3 class="step-name">Prioritize</h3>
-                        <p class="step-desc">Filter findings into actionable checklists ranked by operational impact.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">05</span>
-                        <h3 class="step-name">Translate</h3>
-                        <p class="step-desc">Present raw diagnostic findings in clear, plain-language interfaces.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">06</span>
-                        <h3 class="step-name">Implement</h3>
-                        <p class="step-desc">Deploy verification scripts and rules to maintain system order.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Concept Lab Section (Experimental & Narrative Work) -->
-        <section class="concept-lab-section" id="creative-practice" aria-labelledby="concept-heading">
-            <div class="container">
-                <div style="max-width: 720px; margin-bottom: 3.5rem;">
-                    <span class="eyebrow" style="color: var(--accent-red);">Concept Lab</span>
-                    <h2 id="concept-heading" class="section-title" style="margin-top: 0.5rem;">Experimental systems, narrative interfaces, and human-centered tools</h2>
-                    <p class="body-copy" style="margin-top: 1rem; color: var(--text-secondary);">
-                        A dedicated space for literary memoirs, alternative cartographies, and interactive narrative experiments exploring translation, communication limits, and human systems.
-                    </p>
-                </div>
-
-                <div class="concept-lab-grid">
-                    <!-- Concept 1: How to Explain Yourself to Wolves -->
-                    <div class="concept-card">
-                        <div class="concept-card-top">
-                            <span class="concept-card-category">Literary System &bull; Manuscript</span>
-                            <h3 class="concept-card-title">How to Explain Yourself to Wolves</h3>
-                            <p class="concept-card-desc">
-                                An allegorical memoir and cartographic project exploring translation boundaries, neurodivergent logic systems, and communication constraints.
+                <div class="destination-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <!-- Destination 1: Applied Systems -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 6px; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.02); min-height: 380px;">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent-teal); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">01 &bull; OPERATION &amp; STRUCTURE</span>
+                            <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; margin-bottom: 1.25rem; font-weight: 500;">Applied Systems</h2>
+                            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 2rem;">
+                                Operational intelligence tools, database design, and structure built for decision clarity: Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, Resource Guide, and selected client builds.
                             </p>
                         </div>
-                        <div style="margin-top: 2rem; display: flex; gap: 0.75rem;">
-                            <a href="/creative-practice/how-to-explain-yourself-to-wolves/" class="btn btn-primary" style="background: var(--accent-red) !important; border-color: var(--accent-red) !important; padding: 0.5rem 1rem; font-size: 13px;">Explore Project &rarr;</a>
-                            <a href="/creative/" class="btn btn-secondary" style="border-color: var(--border-dark); color: var(--text-primary); padding: 0.5rem 1rem; font-size: 13px;">Creative List</a>
-                        </div>
+                        <a href="/systems/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); width: fit-content; margin-top: auto;">Explore Applied Systems &rarr;</a>
                     </div>
 
-                    <!-- Concept 2: The Secret Door -->
-                    <div class="concept-card">
-                        <div class="concept-card-top">
-                            <span class="concept-card-category">Interactive Narrative &bull; Hidden Portal</span>
-                            <h3 class="concept-card-title">The Secret Door</h3>
-                            <p class="concept-card-desc">
-                                An interactive installation exploring hidden digital thresholds, secret access mechanisms, and easter-egg website patterns.
+                    <!-- Destination 2: Creative Practice -->
+                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 6px; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.02); min-height: 380px;">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent-red); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">02 &bull; LANGUAGE &amp; FORM</span>
+                            <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; margin-bottom: 1.25rem; font-weight: 500;">Creative Practice</h2>
+                            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 2rem;">
+                                Literary systems, symbolic cartography, and interactive narrative projects exploring translation, neurodivergent logic, and communication boundaries: How to Explain Yourself to Wolves, Self Cartography, MadeOfReasons, and Brain Raccoon.
                             </p>
                         </div>
-                        <div style="margin-top: 2rem; display: flex; gap: 0.75rem;">
-                            <a href="/creative/" class="btn btn-primary" style="background: var(--text-primary) !important; border-color: var(--text-primary) !important; padding: 0.5rem 1rem; font-size: 13px;">Enter Portal &rarr;</a>
-                        </div>
-                    </div>
-
-                    <!-- Concept 3: Self Cartography -->
-                    <div class="concept-card">
-                        <div class="concept-card-top">
-                            <span class="concept-card-category">Information Design &bull; Glossary DB</span>
-                            <h3 class="concept-card-title">Self Cartography</h3>
-                            <p class="concept-card-desc">
-                                A conceptual mapping system indexing translation definitions, environmental variables, symbols, and communication boundaries.
-                            </p>
-                        </div>
-                        <div style="margin-top: 2rem; display: flex; gap: 0.75rem;">
-                            <a href="/jayme/product-experience/" class="btn btn-primary" style="background: var(--accent-teal) !important; border-color: var(--accent-teal) !important; padding: 0.5rem 1rem; font-size: 13px;">View Database &rarr;</a>
-                        </div>
+                        <a href="/creative/" class="btn btn-secondary" style="border-color: var(--accent-red); color: var(--accent-red); width: fit-content; margin-top: auto;">Explore Creative Practice &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -985,22 +108,22 @@
         <section class="proof-section" aria-label="Selected proof and verification status">
             <div class="proof-container">
                 <div class="proof-row">
-                    <a href="/jayme/product-experience/" class="proof-item">
+                    <a href="/systems/" class="proof-item">
                         <span class="proof-metric">03+</span>
                         <h4>Working Prototypes</h4>
                         <p>Verifiable systems codebases &rarr;</p>
                     </a>
-                    <a href="/jayme/#project-webwork" class="proof-item">
+                    <a href="/systems/#builds" class="proof-item">
                         <span class="proof-metric">Active</span>
                         <h4>Production Systems</h4>
                         <p>Selected client websites and operational systems &rarr;</p>
                     </a>
-                    <a href="/jayme/product-experience/" class="proof-item">
+                    <a href="/systems/" class="proof-item">
                         <span class="proof-metric">Demo</span>
                         <h4>Interactive Demos</h4>
                         <p>Product and information-architecture concepts &rarr;</p>
                     </a>
-                    <a href="/creative-practice/how-to-explain-yourself-to-wolves/" class="proof-item">
+                    <a href="/creative/how-to-explain-yourself-to-wolves/" class="proof-item">
                         <span class="proof-metric">01</span>
                         <h4>Completed Manuscript</h4>
                         <p>How to Explain Yourself to Wolves &rarr;</p>
@@ -1036,7 +159,7 @@
                     </div>
 
                     <!-- Column 2: Form (Simplified to 3 Fields) -->
-                    <div class="audit-form-container" style="background: #FFFFFF;">
+                    <div class="audit-form-container" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 2rem;">
                         <form action="https://formspree.io/f/xoqydgvw" method="POST" class="audit-form">
                             <!-- Anti-spam hidden field -->
                             <input type="text" name="_gotcha" style="display:none">
@@ -1056,7 +179,7 @@
                                 <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the current workflow, information problem, or operational bottleneck..."></textarea>
                             </div>
 
-                            <button type="submit" class="form-submit">Start the Conversation</button>
+                            <button type="submit" class="form-submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.75rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: background 0.2s;">Start the Conversation</button>
                         </form>
                     </div>
                 </div>
@@ -1069,10 +192,10 @@
         <div class="container footer-container">
             <div class="footer-logo-area">
                 <a href="/" class="logo">Context &amp; Muse</a>
-                <p>Applied Systems · Product Thinking · Creative Intelligence</p>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
-                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. Austin, Texas. Professional portfolio.</p>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
             </div>
         </div>
     </footer>

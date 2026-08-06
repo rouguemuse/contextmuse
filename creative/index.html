@@ -750,8 +750,7 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <a href="/#systems" class="nav-link">Systems</a>
-                <a href="/#process" class="nav-link">Process</a>
+                <a href="/systems/" class="nav-link">Applied Systems</a>
                 <a href="/creative/" class="nav-link active" aria-current="page">Creative Practice</a>
                 <a href="/jayme/" class="nav-link">About</a>
                 <a href="/#contact" class="nav-btn">Contact</a>
@@ -770,8 +769,8 @@
                         My creative work explores how people organize experience, explain themselves, and find their way through information that is emotional, fragmented, or difficult to name.
                     </p>
                     <div class="btn-group">
-                        <a href="#project-resource-guide" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="creative-cta-explore">Explore the Work</a>
-                        <a href="/jayme/" class="btn btn-secondary" id="creative-cta-pro">View Professional Portfolio</a>
+                        <a href="#project-wolves" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="creative-cta-explore">Explore the Work</a>
+                        <a href="/systems/" class="btn btn-secondary" id="creative-cta-systems">Applied Systems &rarr;</a>
                     </div>
                 </div>
                 <div>
@@ -786,97 +785,11 @@
 
     <main id="main-content">
 
-        <!-- 1. Resource Guide Compilation (At the top of list) -->
-        <section class="creative-section" id="project-resource-guide" aria-labelledby="resource-heading" style="background: var(--bg-paper);">
-            <div class="container">
-                <span class="creative-section-eyebrow">Information Architecture &middot; Research Synthesis &middot; Public-Interest Design</span>
-                <h2 id="resource-heading">Resource Guide Compilation</h2>
-                <p style="max-width:680px;color:var(--text-secondary);margin-bottom:3rem;font-size:1.05rem;line-height:1.65;">
-                    Fragmented public information is abundant. Finding it, verifying it, and acting on it is the problem. This system turns scattered sources into a searchable, verified, navigable guide.
-                </p>
-                <div class="resource-layout">
-                    <div class="resource-interface">
-                        <div class="resource-interface-bar">
-                            <span></span><span></span><span></span>
-                            <span class="resource-interface-title">Resource Directory &mdash; Demo Data</span>
-                        </div>
-                        <div class="resource-interface-body">
-                            <div class="resource-search-row">
-                                <div class="resource-search-input">housing assistance + austin tx</div>
-                                <div class="resource-search-btn">Search</div>
-                            </div>
-                            <div class="resource-filters">
-                                <span class="resource-filter-chip active">Housing</span>
-                                <span class="resource-filter-chip active">Austin, TX</span>
-                                <span class="resource-filter-chip">Income &lt; 80% AMI</span>
-                                <span class="resource-filter-chip active">Verified</span>
-                                <span class="resource-filter-chip">Rental Only</span>
-                                <span class="resource-filter-chip">No Wait List</span>
-                            </div>
-                            <div class="resource-result-card">
-                                <div class="resource-result-header">
-                                    <span class="resource-result-name">Austin Tenant Rights Hotline</span>
-                                    <span class="resource-verify-badge verified">&#10003; VERIFIED</span>
-                                </div>
-                                <div class="resource-result-meta">Category: Legal Aid &nbsp;&middot;&nbsp; Geography: Travis County &nbsp;&middot;&nbsp; Updated: 2026-07</div>
-                                <div class="resource-result-desc">Free legal guidance for tenants facing eviction, lease disputes, or habitability issues. Spanish-language line available.</div>
-                            </div>
-                            <div class="resource-result-card">
-                                <div class="resource-result-header">
-                                    <span class="resource-result-name">City of Austin Rental Assistance</span>
-                                    <span class="resource-verify-badge unverified">&#9888; CHECK STATUS</span>
-                                </div>
-                                <div class="resource-result-meta">Category: Financial Aid &nbsp;&middot;&nbsp; Geography: City of Austin &nbsp;&middot;&nbsp; Updated: 2026-03</div>
-                                <div class="resource-result-desc">Emergency rental assistance. Waitlist currently open; eligibility requires documentation of hardship.</div>
-                            </div>
-                            <div class="resource-result-card">
-                                <div class="resource-result-header">
-                                    <span class="resource-result-name">Foundation Communities Housing</span>
-                                    <span class="resource-verify-badge verified">&#10003; VERIFIED</span>
-                                </div>
-                                <div class="resource-result-meta">Category: Housing &nbsp;&middot;&nbsp; Geography: Austin Metro &nbsp;&middot;&nbsp; Updated: 2026-06</div>
-                                <div class="resource-result-desc">Affordable apartment communities for individuals and families. Income-based eligibility. Applications online.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="resource-sidebar">
-                        <div class="resource-meta-block">
-                            <h4>Capabilities</h4>
-                            <div class="resource-capability-tags">
-                                <span class="cap-tag">Source Verification</span>
-                                <span class="cap-tag">Taxonomy Design</span>
-                                <span class="cap-tag">Plain-Language</span>
-                                <span class="cap-tag">Search + Filter</span>
-                                <span class="cap-tag">Eligibility Logic</span>
-                                <span class="cap-tag">Traceable Records</span>
-                            </div>
-                        </div>
-                        <div class="taxonomy-flow">
-                            <div class="taxonomy-flow-title">Information Pipeline</div>
-                            <div class="taxonomy-steps">
-                                <div class="taxonomy-step"><span class="taxonomy-step-num">01</span><span class="taxonomy-step-label">Source collection</span><span class="taxonomy-step-arrow">&#8595;</span></div>
-                                <div class="taxonomy-step"><span class="taxonomy-step-num">02</span><span class="taxonomy-step-label">Normalize</span><span class="taxonomy-step-arrow">&#8595;</span></div>
-                                <div class="taxonomy-step"><span class="taxonomy-step-num">03</span><span class="taxonomy-step-label">Categorize</span><span class="taxonomy-step-arrow">&#8595;</span></div>
-                                <div class="taxonomy-step"><span class="taxonomy-step-num">04</span><span class="taxonomy-step-label">Verify</span><span class="taxonomy-step-arrow">&#8595;</span></div>
-                                <div class="taxonomy-step"><span class="taxonomy-step-num">05</span><span class="taxonomy-step-label">Present</span></div>
-                            </div>
-                        </div>
-                        <div>
-                            <p style="color:var(--text-secondary);font-size:14px;line-height:1.6;margin-bottom:1.25rem;">
-                                Featured in both Creative Work and Product &amp; Experience because this project combines public-interest research, content systems, taxonomy design, and interface development.
-                            </p>
-                            <a href="/creative/resource-guide/" class="btn btn-secondary" id="resource-guide-cta" style="display:inline-block;">View Resource Directory &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. How to Explain Yourself to Wolves (Cinematic Wide-Field Layout) -->
+        <!-- 1. How to Explain Yourself to Wolves (PRIMARY PROJECT) -->
         <section class="creative-section" id="project-wolves" aria-labelledby="wolves-heading" style="background: var(--bg-panel);">
             <div class="container creative-project">
-                <span class="creative-section-eyebrow">Primary Project</span>
-                <h2 id="wolves-heading" style="margin-bottom: 2.5rem;">Featured Writing Project</h2>
+                <span class="creative-section-eyebrow" style="color: var(--accent-red);">PRIMARY PROJECT &middot; LITERARY COMPANION</span>
+                <h2 id="wolves-heading" style="margin-bottom: 2.5rem; display:none;">How to Explain Yourself to Wolves</h2>
 
                 <div class="wolves-cinematic-layout">
                     <!-- Red Thread SVG: begins at wolf's feet in image (approx x=22%, y=68%), loops on road, moves behind text panel (approx x=68%, y=50%), and leads down to legend -->
@@ -897,16 +810,22 @@
                             <span class="wolves-status-tag">Allegorical Memoir &middot; Completed Manuscript</span>
                             <h3 style="font-family: var(--font-serif); font-size: clamp(1.4rem, 2.2vw, 2.1rem); line-height: 1.1; margin-bottom: 0.5rem;">How to Explain Yourself to Wolves</h3>
                             <p class="wolves-premise">
-                                An allegorical memoir about the exhausting work of translating yourself for people determined to misunderstand you—and what happens when explanation is no longer a path to safety.
+                                An interactive literary companion to an allegorical memoir about what happens when a person keeps translating herself for people determined to misunderstand her.
                             </p>
                             <p class="wolves-statement">
-                                Some problems need a system. Others need a language. An interconnected landscape of maps, weather, rooms, and markers to examine survival and the limits of translation.
+                                The companion turns the manuscript's recurring language—roads, maps, red thread, wolves, lanterns, rooms, and borrowed identities—into an explorable visual system.
                             </p>
                             <span class="wolves-completion">Completed manuscript &middot; Representation inquiries welcome</span>
-                            <a href="/creative-practice/how-to-explain-yourself-to-wolves/"
-                               class="btn btn-primary"
-                               style="background: var(--accent-red); border-color: var(--accent-red);"
-                               id="wolves-cta">Explore Project Companion &rarr;</a>
+                            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+                                <a href="/creative/how-to-explain-yourself-to-wolves/"
+                                   class="btn btn-primary"
+                                   style="background: var(--accent-red); border-color: var(--accent-red);"
+                                   id="wolves-cta">Explore the Companion &rarr;</a>
+                                <a href="/creative/how-to-explain-yourself-to-wolves/#companion-work"
+                                   class="btn btn-secondary"
+                                   style="border-color: var(--accent-red); color: var(--accent-red);"
+                                   id="wolves-cta-manuscript">View the Manuscript Project &rarr;</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -921,42 +840,48 @@
             </div>
         </section>
 
-        <!-- 3. Self Cartography (Single, Unified section directly under Wolves) -->
+        <!-- 2. Self Cartography -->
         <section class="creative-section" id="self-cartography" aria-labelledby="cartography-heading" style="background: var(--bg-paper);">
             <div class="container creative-project">
-                <span class="creative-section-eyebrow">Concept Mapping &middot; Vocabulary Systems</span>
+                <span class="creative-section-eyebrow">Concept Mapping &middot; Values Systems &middot; Relational Cartography</span>
                 <div class="cartography-layout">
                     <div class="cartography-text">
-                        <span class="cartography-status">Companion Framework &middot; Digital Experience in Development</span>
+                        <span class="cartography-status">Companion Framework &middot; Values Mapping System</span>
                         <h2 id="cartography-heading">Self Cartography</h2>
-                        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.65;margin-bottom:0.5rem;">
-                            A companion framework and interactive field-work system connected to <em>Wolves</em>. Rather than text entries, it maps boundaries, interpersonal gates, and conceptual weather patterns through a structured symbolic dictionary.
+                        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.65;margin-bottom:0.75rem;">
+                            People often operate from a set of core values they have never stopped to identify. Because those values remain invisible, they may not recognize the discrepancies between what they believe, what they tolerate, and how they actually make decisions.
+                        </p>
+                        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.65;margin-bottom:0.75rem;">
+                            They may also struggle to identify their love languages, triggers, boundaries, environmental pressures, and recurring relational patterns. Without language for those forces, they cannot effectively navigate them.
+                        </p>
+                        <p style="color:var(--text-secondary);font-size:1rem;line-height:1.65;margin-bottom:1.5rem;">
+                            Self Cartography helps users make those invisible forces visible. It maps values, relational cues, triggers, boundaries, environmental variables, emotional conditions, and recurring patterns so users can identify where their choices support—or contradict—the life they believe they want.
                         </p>
                         <div class="cartography-pillars">
                             <div class="cartography-pillar">
                                 <span class="cartography-pillar-num">01</span>
                                 <div class="cartography-pillar-body">
-                                    <h4>Symbolic Glossary</h4>
-                                    <p>A relational taxonomy defining symbols—lanterns, cartographers, roads—ensuring narrative continuity across the system.</p>
+                                    <h4>Core Values Mapping</h4>
+                                    <p>Identify the values driving decisions before examining where choices contradict or reinforce them.</p>
                                 </div>
                             </div>
                             <div class="cartography-pillar">
                                 <span class="cartography-pillar-num">02</span>
                                 <div class="cartography-pillar-body">
-                                    <h4>Boundary Mapping</h4>
-                                    <p>Logical rules for interaction gates: constraints describing where self-translation stops yielding safety.</p>
+                                    <h4>Trigger &amp; Boundary Fields</h4>
+                                    <p>Map love languages, triggers, and boundary conditions into a structured vocabulary for navigating relationships.</p>
                                 </div>
                             </div>
                             <div class="cartography-pillar">
                                 <span class="cartography-pillar-num">03</span>
                                 <div class="cartography-pillar-body">
                                     <h4>Environmental Variables</h4>
-                                    <p>Mapping external weather patterns, road conditions, and pressure that influence how communication scales.</p>
+                                    <p>Track external pressure, environmental conditions, and recurring patterns that shape decisions invisibly.</p>
                                 </div>
                             </div>
                         </div>
                         <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);line-height:1.6;border-left:2px solid var(--border-dark);padding-left:1rem;">
-                            Interactive visual modules, canvas-based nodes, and digital glossaries are in active R&amp;D. No live tools are currently available for public registration.
+                            Interface in development. Real workbook interface will appear here when exported.
                         </p>
                     </div>
                     <div class="cartography-collage">
@@ -995,22 +920,23 @@
             </div>
         </section>
 
-        <!-- 4. Brain Raccoon Section (New interactive system card) -->
+        <!-- 4. Brain Raccoon -->
         <section class="creative-section" id="project-brain-raccoon" aria-labelledby="raccoon-heading" style="background: var(--bg-panel);">
             <div class="container creative-project">
-                <span class="creative-section-eyebrow">Creative Experiment &middot; Interactive System</span>
+                <span class="creative-section-eyebrow">Creative Tool &middot; Focus Intervention</span>
                 <div class="raccoon-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center;">
                     <div>
-                        <h2 id="raccoon-heading" style="margin-bottom: 1rem;">Brain Raccoon: 20 Minute Override</h2>
+                        <h2 id="raccoon-heading" style="margin-bottom: 1rem;">Brain Raccoon</h2>
                         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.5rem;">
-                            A fast-paced interactive override tool built to break mental loops, interrupt creative blocks, and restore focus momentum. Developed as an independent web-based cognitive rhythm experiment.
+                            A fast intervention tool for interrupting mental loops, identifying the immediate obstacle, and selecting one useful next action.
                         </p>
-                        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-red); font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;">
+                        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;">
                             Live Web Application &bull; 20-Minute Focus Session
                         </p>
-                        <a href="https://brain-is-fos.vercel.app/" target="_blank" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="raccoon-cta">Launch Override &rarr;</a>
+                        <a href="https://brain-is-fos.vercel.app/" target="_blank" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="raccoon-cta">Launch Brain Raccoon &rarr;</a>
                     </div>
-                    <!-- Minimalist Visual representation of the focus session -->
+                    <!-- Concept model — labeled as interface in development -->
+                    <!-- CONCEPT MODEL · INTERFACE IN DEVELOPMENT -->
                     <div style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 6px; padding: 2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.03);">
                         <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; display: flex; justify-content: space-between;">
                             <span>System Active</span>
@@ -1038,47 +964,30 @@
             </div>
         </section>
 
-        <!-- 5. Made of Reasons Section -->
+        <!-- 3. MadeOfReasons -->
         <section class="creative-section" id="project-made-of-reasons" aria-labelledby="reasons-heading" style="background: var(--bg-paper);">
             <div class="container creative-project">
-                <span class="creative-section-eyebrow">Interactive Constellation &middot; Relational Narrative</span>
+                <span class="creative-section-eyebrow">Interactive Constellation &middot; Relational Keepsake</span>
                 <div class="reasons-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center;">
                     <div>
-                        <h2 id="reasons-heading" style="margin-bottom: 1rem;">Made of Reasons</h2>
+                        <h2 id="reasons-heading" style="margin-bottom: 1rem;">MadeOfReasons</h2>
                         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.5rem;">
-                            A digital canvas that translates personal relationships into interactive star-themed constellations. Users define ten points of relational significance, generating a custom visual sky of messages.
+                            A relational keepsake that turns the specific reasons someone matters into a constellation. Each reason becomes a star. The relationships between those reasons form a personal map that can be explored, expanded, and preserved.
                         </p>
                         <p style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-red); font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;">
-                            Live Web Application &bull; Relational Constellations
+                            Live Web Application &bull; madeofreasons.com
                         </p>
-                        <a href="https://www.madeofreasons.com/" target="_blank" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="reasons-cta">Launch Made of Reasons &rarr;</a>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <a href="https://www.madeofreasons.com/" target="_blank" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="reasons-cta">Create a Constellation &rarr;</a>
+                            <a href="https://www.madeofreasons.com/" target="_blank" class="btn btn-secondary" style="border-color: var(--accent-red); color: var(--accent-red);" id="reasons-cta-explore">Explore the Project &rarr;</a>
+                        </div>
                     </div>
-                    <!-- Minimalist Visual representation of the constellation gift -->
-                    <div style="background: #111215; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 2.25rem; box-shadow: 0 8px 30px rgba(0,0,0,0.2); position: relative; overflow: hidden; min-height: 220px;">
-                        <!-- Star particles / Constellation grid -->
-                        <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0.85;">
-                            <!-- Star nodes -->
-                            <div style="position: absolute; width: 4px; height: 4px; background: #FFF; border-radius: 50%; top: 20%; left: 30%; box-shadow: 0 0 8px #FFF;"></div>
-                            <div style="position: absolute; width: 3px; height: 3px; background: #FAF9F5; border-radius: 50%; top: 45%; left: 15%;"></div>
-                            <div style="position: absolute; width: 5px; height: 5px; background: var(--accent-gold); border-radius: 50%; top: 35%; left: 60%; box-shadow: 0 0 10px var(--accent-gold);"></div>
-                            <div style="position: absolute; width: 4px; height: 4px; background: #FFF; border-radius: 50%; top: 70%; left: 45%; box-shadow: 0 0 8px #FFF;"></div>
-                            <div style="position: absolute; width: 3px; height: 3px; background: #FFF; border-radius: 50%; top: 60%; left: 80%;"></div>
-                            
-                            <!-- Constellation lines -->
-                            <svg style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                <line x1="30" y1="20" x2="15" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                                <line x1="30" y1="20" x2="60" y2="35" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                                <line x1="60" y1="35" x2="80" y2="60" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                                <line x1="15" y1="45" x2="45" y2="70" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                                <line x1="45" y1="70" x2="80" y2="60" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                            </svg>
-                        </div>
-                        <div style="position: relative; z-index: 2; font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5.5rem;">
-                            Constellation Canvas
-                        </div>
-                        <div style="position: relative; z-index: 2; font-family: var(--font-sans); font-size: 11.5px; color: #FAF9F5; background: rgba(255,255,255,0.06); padding: 8px 12px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); display: inline-block;">
-                            <span style="color: var(--accent-gold); font-weight: 600;">Node 04:</span> "A space built to listen."
-                        </div>
+                    <!-- Real screenshot from madeofreasons.com -->
+                    <div style="position: relative;">
+                        <img src="/assets/images/madeofreasons-screenshot.webp"
+                             alt="MadeOfReasons constellation interface showing star nodes, connecting lines, and a reason detail panel on a dark canvas"
+                             style="width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);" loading="lazy"
+                             onerror="this.parentElement.innerHTML='<div style=&quot;background:#111215;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2.25rem;min-height:220px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.4);&quot;>Screenshot loading — visit madeofreasons.com</div>'">
                     </div>
                 </div>
             </div>
