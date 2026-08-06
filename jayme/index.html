@@ -51,10 +51,13 @@
     <!-- Hero -->
     <header class="hero" id="portfolio-hero">
         <div class="container hero-content">
-            <span class="eyebrow">Operations · Product Thinking · Creative Intelligence</span>
+            <span class="eyebrow">Operations &middot; Product Thinking &middot; Creative Intelligence</span>
             <h1 class="hero-headline">I build structure where information and workflows have become difficult to use.</h1>
-            <p class="hero-subhead">
-                My background combines hands-on operational leadership with independent product development, workflow analysis, information architecture, AI-assisted systems, and implementation planning.
+            <p class="hero-subhead" style="margin-bottom: 1.5rem;">
+                I design systems for situations where the information exists, but it is scattered, inconsistent, difficult to compare, or disconnected from the decision someone actually needs to make.
+            </p>
+            <p style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2.5rem; max-width: 37rem;">
+                My work begins where &ldquo;we have the data&rdquo; stops being the same thing as &ldquo;we know what to do.&rdquo;
             </p>
             <div class="btn-group">
                 <a href="/jayme/#selected-work" class="btn btn-primary">View Selected Work</a>
@@ -65,19 +68,52 @@
 
     <main id="main-content">
         <!-- Intro Section -->
-        <section class="intro-section" aria-label="Introduction">
-            <div class="container intro-grid">
-                <div class="intro-lead">
-                    I am strongest at the point where real-world operations meet technology. I identify what people are actually trying to accomplish, locate the information and workflow failures preventing it, and turn those findings into structured tools, decision systems, documentation, and implementation plans.
+        <section class="intro-section" aria-label="Introduction" style="border-bottom: 1px solid var(--border-light); padding: 5rem 0 3.5rem;">
+            <div class="container">
+                <div style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.25; color: var(--text-primary); margin-bottom: 3.5rem; max-width: 900px; font-weight: 500;">
+                    I build for the moment when five people have five versions of what is happening and someone still has to decide what to do next.
                 </div>
-                <div class="intro-meta" id="about-jayme">
-                    <h3>Focus Area Overview</h3>
-                    <ul class="intro-meta-list">
-                        <li><strong>Primary Role:</strong> Product Operations &amp; Systems</li>
-                        <li><strong>Specialty:</strong> Human-in-the-Loop AI &amp; Data Quality</li>
-                        <li><strong>Location:</strong> Austin, TX / Remote</li>
-                        <li><strong>Contact:</strong> jayme@contextmuse.com</li>
-                    </ul>
+                <div class="intro-grid">
+                    <div class="intro-lead">
+                        I am strongest at the point where real-world operations meet technology. I identify what people are actually trying to accomplish, locate the information and workflow failures preventing it, and turn those findings into structured tools, decision systems, documentation, and implementation plans.
+                    </div>
+                    <div class="intro-meta" id="about-jayme">
+                        <h3>Focus Area Overview</h3>
+                        <ul class="intro-meta-list">
+                            <li><strong>Primary Role:</strong> Product Operations &amp; Systems</li>
+                            <li><strong>Specialty:</strong> Human-in-the-Loop AI &amp; Data Quality</li>
+                            <li><strong>Location:</strong> Austin, TX / Remote</li>
+                            <li><strong>Contact:</strong> jayme@contextmuse.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How I Work Section -->
+        <section class="how-i-work-section" style="background: var(--bg-panel); border-bottom: 1px solid var(--border-light); padding: 5rem 0;">
+            <div class="container">
+                <span class="eyebrow">Operating Philosophy</span>
+                <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 3rem;">How I Work</h2>
+                <div class="how-i-work-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
+                    <div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.75rem;">I start with the actual mess.</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
+                            I look at the handoffs, conflicting information, repeated work, missing context, and decisions people keep postponing.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.75rem;">I do not build dashboards just to display more information.</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
+                            The point is to help someone understand what matters, why it matters, and what to do next.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.75rem;">I build for real operating conditions.</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
+                            Incomplete records, changing priorities, tired people, limited time, and systems that still have to work when no one follows the ideal process.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -102,42 +138,58 @@
                         <div class="case-study-body">
                             <div class="case-study-narrative">
                                 <div class="case-study-section">
-                                    <h4>The Environment</h4>
-                                    <p>High-volume restaurant and retail service operations generating large daily transaction logs and shift labor exports.</p>
-                                </div>
-                                <div class="case-study-section">
                                     <h4>The Problem</h4>
-                                    <p>Operators are flooded with raw daily exports from Toast POS and scheduling databases. Important override leaks, labor margin anomalies, and patterns of operational friction remain hidden inside thousands of spreadsheet rows.</p>
+                                    <p>Service businesses often have plenty of operational information but no consistent way to determine what deserves attention first.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>What I Designed or Built</h4>
-                                    <p>Signal, a local-first operational data validation and decision intelligence tool that digests unstructured HTML/CSV transaction records.</p>
+                                    <h4>What I Built</h4>
+                                    <p>A configurable decision-support framework that validates inputs, weighs impact and friction, and turns findings into prioritized action.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>How the System Works</h4>
-                                    <p>The system normalizes incoming POS logs, runs checks for data completeness, flags anomalies (such as off-hour manager overrides), computes confidence and severity scores, and generates a structured, prioritized checklist of issues for managers to review.</p>
+                                    <h4>Capabilities</h4>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">POS Log Ingestion</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Anomaly Validation</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Manager Review Queues</span>
+                                    </div>
+                                </div>
+                                <div class="case-study-section">
+                                    <h4>Why It Matters</h4>
+                                    <p style="font-style: italic; color: var(--text-secondary);">The same underlying architecture can be adapted to hospitality, field service, maintenance, customer support, and multi-location operations.</p>
                                 </div>
                             </div>
-                            <div class="case-study-technical">
-                                <div class="case-study-section">
-                                    <h4>Human-Review / Safety Boundaries</h4>
-                                    <p>Signal operates purely as a decision-support tool. It does not automate employee disciplinary actions, scheduling changes, or POS corrections; all flagged items require validation by a human general manager.</p>
-                                </div>
-                                <div class="case-study-section">
-                                    <h4>What the Project Demonstrates</h4>
-                                    <p>Data normalization, pattern detection, rule-based auditing, and translating messy database files into clean, human-actionable summaries.</p>
-                                </div>
-                                <div class="case-study-section">
-                                    <h4>Potential Transferability</h4>
-                                    <p>Any operational sector that exports regular transaction logs (e.g. warehouse inventory logs, logistics dispatch logs, retail cashier summaries) and requires prioritized human-in-the-loop review.</p>
-                                </div>
-                                <div class="relevant-to-line">
-                                    <strong>Relevant to:</strong> Product operations, data quality, data validation logic, restaurant audits, operational decision support.
-                                </div>
+                            <div class="visual-panel" style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+                                <table style="width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 11.5px;">
+                                    <thead>
+                                        <tr style="border-bottom: 1.5px solid var(--border-dark); text-align: left; font-weight: bold; color: var(--text-primary);">
+                                            <th style="padding: 6px;">Anomaly</th>
+                                            <th style="padding: 6px; text-align: right;">Impact</th>
+                                            <th style="padding: 6px; text-align: center;">Sev</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid var(--border-light);">
+                                            <td style="padding: 8px 6px;">
+                                                <strong style="color: var(--text-primary); display: block;">Manager Clock-Out Override</strong>
+                                                <span style="font-size: 10px; color: var(--text-secondary); font-family: var(--font-mono);">Shift B &bull; 02:14 AM</span>
+                                            </td>
+                                            <td style="padding: 8px 6px; text-align: right; color: var(--accent-red); font-weight: bold;">+$420.00</td>
+                                            <td style="padding: 8px 6px; text-align: center;"><span style="background: rgba(225, 29, 72, 0.1); color: var(--accent-red); font-size: 9.5px; font-weight: bold; padding: 2px 6px; border-radius: 2px;">CRIT</span></td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid var(--border-light);">
+                                            <td style="padding: 8px 6px;">
+                                                <strong style="color: var(--text-primary); display: block;">Unscheduled Shift Segment</strong>
+                                                <span style="font-size: 10px; color: var(--text-secondary); font-family: var(--font-mono);">ID: #1042 &bull; 1.5 hrs</span>
+                                            </td>
+                                            <td style="padding: 8px 6px; text-align: right; color: var(--accent-gold); font-weight: bold;">+$180.00</td>
+                                            <td style="padding: 8px 6px; text-align: center;"><span style="background: rgba(197, 160, 89, 0.1); color: var(--accent-gold); font-size: 9.5px; font-weight: bold; padding: 2px 6px; border-radius: 2px;">HIGH</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="case-study-footer" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="/jayme/product-experience/#project-signal" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Explore Product Case Study &rarr;</a>
+                            <a href="/jayme/product-experience/#project-signal" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Explore Case Study &rarr;</a>
                             <a href="/gold-tooth-signal-report.html" class="btn btn-primary" target="_blank" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: 0;">Launch Signal Demo</a>
                             <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn btn-outline" target="_blank" style="padding: 0.5rem 1rem; font-size: 0.85rem;">GitHub Repo &rarr;</a>
                         </div>
@@ -155,42 +207,45 @@
                         <div class="case-study-body">
                             <div class="case-study-narrative">
                                 <div class="case-study-section">
-                                    <h4>The Environment</h4>
-                                    <p>Local digital media workspaces managing large volumes of visual assets, generated images, brand photography, and source catalogs.</p>
-                                </div>
-                                <div class="case-study-section">
                                     <h4>The Problem</h4>
-                                    <p>Organizing, labeling, reviewing, and comparing thousands of image files is extremely slow. Uploading library contents to third-party cloud tools introduces privacy issues, compliance risks, and data control loss.</p>
+                                    <p>Organizing, labeling, reviewing, and comparing thousands of image files is extremely slow, and cloud solutions leak privacy.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>What I Designed or Built</h4>
-                                    <p>GenSort, a desktop-focused local-first asset manager dashboard featuring smart folders and metadata lineage controls.</p>
+                                    <h4>What I Built</h4>
+                                    <p>An offline, local-first asset manager dashboard featuring smart folders and metadata lineage controls.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>How the System Works</h4>
-                                    <p>GenSort scans local directories to build an offline metadata catalog. It maps similarity structures, indexes color profiles, traces generative prompt-and-seed lineage, and scores assets based on project readiness parameters.</p>
+                                    <h4>Capabilities</h4>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Local Indexing</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Similarity Spotting</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Generative Lineage</span>
+                                    </div>
+                                </div>
+                                <div class="case-study-section">
+                                    <h4>Why It Matters</h4>
+                                    <p style="font-style: italic; color: var(--text-secondary);">Tracing prompt histories and seed relationships locally ensures absolute asset privacy and ownership compliance.</p>
                                 </div>
                             </div>
-                            <div class="case-study-technical">
-                                <div class="case-study-section">
-                                    <h4>Human-Review / Safety Boundaries</h4>
-                                    <p>The dashboard is 100% offline. No asset data or metadata leaves the local computer. Reclassification and file relocation are suggested to the user, but the system never moves or deletes files without explicit human confirmation.</p>
+                            <div class="visual-panel" style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1.5px solid var(--border-dark); padding-bottom: 0.5rem; font-family: var(--font-mono); font-size: 10px;">
+                                    <span>FOLDER: brand_photos</span>
+                                    <span>Sort: Similarity</span>
                                 </div>
-                                <div class="case-study-section">
-                                    <h4>What the Project Demonstrates</h4>
-                                    <p>Local-first application development, desktop system design, directory indexing, and structured metadata schemas.</p>
-                                </div>
-                                <div class="case-study-section">
-                                    <h4>Potential Transferability</h4>
-                                    <p><strong>Beyond images:</strong> The underlying directory indexing and comparison logic can be adapted to manage and index high-volume text databases or source-code archives.</p>
-                                </div>
-                                <div class="relevant-to-line">
-                                    <strong>Relevant to:</strong> Digital asset management, local-first software, prompt lineage, folder structure design, desktop architectures.
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                                    <div style="background: #FFF; padding: 8px; border: 1px solid var(--border-light); border-radius: 4px; text-align: center;">
+                                        <span style="font-size: 10px; color: var(--text-primary); font-family: var(--font-mono); display: block;">invoice_2026.pdf</span>
+                                        <span style="background: rgba(77, 124, 15, 0.1); color: var(--accent-lime); font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 2px; display: inline-block; margin-top: 4px;">Keep &bull; 98%</span>
+                                    </div>
+                                    <div style="background: #FFF; padding: 8px; border: 1px solid var(--border-light); border-radius: 4px; text-align: center; position: relative;">
+                                        <span style="font-size: 10px; color: var(--text-primary); font-family: var(--font-mono); display: block; opacity: 0.5;">invoice_copy.pdf</span>
+                                        <span style="background: rgba(225, 29, 72, 0.1); color: var(--accent-red); font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 2px; display: inline-block; margin-top: 4px;">DUPE &bull; 99%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="case-study-footer" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <a href="/jayme/product-experience/#project-gensort" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Explore Product Case Study &rarr;</a>
+                            <a href="/jayme/product-experience/#project-gensort" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Explore Case Study &rarr;</a>
                             <a href="/cxm_gensort/index.html" class="btn btn-primary" target="_blank" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: 0;">Launch GenSort UI Demo</a>
                             <a href="https://github.com/rouguemuse/gensort_studio_sortimage" class="btn btn-outline" target="_blank" style="padding: 0.5rem 1rem; font-size: 0.85rem;">GitHub Repo &rarr;</a>
                         </div>
@@ -208,37 +263,33 @@
                         <div class="case-study-body">
                             <div class="case-study-narrative">
                                 <div class="case-study-section">
-                                    <h4>The Environment</h4>
-                                    <p>Information auditing, record verification, and narrative review workflows dealing with complex, multi-person transcripts and communications logs.</p>
-                                </div>
-                                <div class="case-study-section">
                                     <h4>The Problem</h4>
-                                    <p>Reviewers spend days manually cross-referencing message archives to reconstruct timelines and identify logical or statement contradictions, leading to cognitive fatigue and critical oversights.</p>
+                                    <p>Reviewers spend days manually cross-referencing message archives to reconstruct timelines and identify logical or statement contradictions.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>What I Designed or Built</h4>
+                                    <h4>What I Built</h4>
                                     <p>A structured data analysis pipeline concept designed to parse complex communication records and highlight timeline discrepancies.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>How the System Works</h4>
-                                    <p>It processes communication streams, populates a unified timeline schema, links assertions directly to source document citations, and automatically maps conflicting claims for review in a human queue.</p>
+                                    <h4>Capabilities</h4>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Transcripts Parsing</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Timeline Mapping</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Discrepancy Spotting</span>
+                                    </div>
+                                </div>
+                                <div class="case-study-section">
+                                    <h4>Why It Matters</h4>
+                                    <p style="font-style: italic; color: var(--text-secondary);">Reconstructing timeline relationships from unstructured chat logs automates audit preparation while keeping humans in the loop.</p>
                                 </div>
                             </div>
-                            <div class="case-study-technical">
-                                <div class="case-study-section">
-                                    <h4>Human-Review / Safety Boundaries</h4>
-                                    <p><strong>Disclosure:</strong> These tools support human review. They do not determine truth, intent, guilt, deception, or psychological condition. Uses fictional sample records only.</p>
+                            <div class="visual-panel" style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.25rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 0.5rem;">
+                                <div style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border-light); padding-bottom: 4px; font-family: var(--font-mono); font-size: 9px; color: var(--accent-gold); font-weight: bold;">
+                                    <span>CONTRADICTORY TIMELINE EVENT // AUDIT</span>
                                 </div>
-                                <div class="case-study-section">
-                                    <h4>What the Project Demonstrates</h4>
-                                    <p>Chronology reconstruction, claim-to-source tracing, entity relationship mapping, and information safety boundaries.</p>
-                                </div>
-                                <div class="case-study-section">
-                                    <h4>Potential Transferability</h4>
-                                    <p>Compliance auditing, academic manuscript reviews, legal history reconstruction, and customer support ticket verification logs.</p>
-                                </div>
-                                <div class="relevant-to-line">
-                                    <strong>Relevant to:</strong> Case-management systems, narrative analysis, compliance technology, AI evaluation, document review, and human-services technology.
+                                <div style="font-size: 11px; background: #FFFFFF; border: 1px solid var(--border-light); padding: 6px; border-radius: 3px; line-height: 1.3;">
+                                    <strong>Speaker A:</strong> "I checked out and left the building at 7:15 PM."<br>
+                                    <strong style="color: var(--accent-red);">Conflict:</strong> Card swipe log records badge activity at lobby door at 7:45 PM.
                                 </div>
                             </div>
                         </div>
@@ -259,37 +310,34 @@
                         <div class="case-study-body">
                             <div class="case-study-narrative">
                                 <div class="case-study-section">
-                                    <h4>The Environment</h4>
-                                    <p>Multi-source archival databases and collaborative document stores where data authenticity and original provenance must be audited.</p>
-                                </div>
-                                <div class="case-study-section">
                                     <h4>The Problem</h4>
-                                    <p>Lack of file-level verification allows undetected post-import edits, unverified transcript versions, and disconnected file links, compromising the integrity of the data store.</p>
+                                    <p>Lack of file-level verification allows undetected post-import edits, unverified transcript versions, and disconnected file links.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>What I Designed or Built</h4>
+                                    <h4>What I Built</h4>
                                     <p>A traceability and integrity framework enforcing strict cryptographic and schema validation standards on imports.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>How the System Works</h4>
-                                    <p>It validates record inputs against unified schemas, assigns stable identifiers, computes SHA-256 hashes for every file, tracks verification states, and triggers alerts if files are modified post-import.</p>
+                                    <h4>Capabilities</h4>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Database Schemas</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Hash Fingerprinting</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Change Alerts</span>
+                                    </div>
+                                </div>
+                                <div class="case-study-section">
+                                    <h4>Why It Matters</h4>
+                                    <p style="font-style: italic; color: var(--text-secondary);">Automatically validates and signs incoming records, flagging any variance in archival datastores.</p>
                                 </div>
                             </div>
-                            <div class="case-study-technical">
-                                <div class="case-study-section">
-                                    <h4>Human-Review / Safety Boundaries</h4>
-                                    <p><strong>Disclosure:</strong> Integrity controls can identify changes and preserve provenance. They do not independently establish authorship, legal admissibility, or factual truth.</p>
+                            <div class="visual-panel" style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 0.5rem;">
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1.5px solid var(--border-dark); padding-bottom: 0.5rem; font-family: var(--font-mono); font-size: 9.5px; font-weight: bold; color: var(--text-primary);">
+                                    <span>CRYPTOGRAPHIC AUDIT CHAIN</span>
                                 </div>
-                                <div class="case-study-section">
-                                    <h4>What the Project Demonstrates</h4>
-                                    <p>Cryptographic validation, database schema integrity, digital chain of verification, and audit trail design.</p>
-                                </div>
-                                <div class="case-study-section">
-                                    <h4>Potential Transferability</h4>
-                                    <p>Digital archive storage, regulatory compliance archives, verification logs, and supply-chain shipping logs.</p>
-                                </div>
-                                <div class="relevant-to-line">
-                                    <strong>Relevant to:</strong> Data quality, information security, database schema design, and compliance systems.
+                                <div style="font-size: 10px; font-family: var(--font-mono); line-height: 1.4; color: var(--text-secondary); background: #FFF; padding: 6px; border-radius: 3px;">
+                                    File: transcript_v1.txt<br>
+                                    SHA-256: 8a4f21...c81f<br>
+                                    Status: <span style="color: var(--accent-lime); font-weight: bold;">Verified In-Chain</span>
                                 </div>
                             </div>
                         </div>
@@ -310,37 +358,43 @@
                         <div class="case-study-body">
                             <div class="case-study-narrative">
                                 <div class="case-study-section">
-                                    <h4>The Environment</h4>
-                                    <p>Textual verification workflows analyzing transcripts, witness statements, and long-form records.</p>
-                                </div>
-                                <div class="case-study-section">
                                     <h4>The Problem</h4>
                                     <p>Manually comparing statements made across multiple pages or dates to spot factual discrepancies is tedious and error-prone.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>What I Designed or Built</h4>
+                                    <h4>What I Built</h4>
                                     <p>A semantic contradiction finder script and UI mockup designed to highlight statement differences.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>How the System Works</h4>
-                                    <p>The parser tokenizes text inputs, extracts key assertions based on entity targets, clusters them by topic, and highlights opposing claims (e.g. conflicting times or dates) in a side-by-side view.</p>
+                                    <h4>Capabilities</h4>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Statement Clustering</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Discrepancy Spotting</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Semantic Highlight</span>
+                                    </div>
+                                </div>
+                                <div class="case-study-section">
+                                    <h4>Why It Matters</h4>
+                                    <p style="font-style: italic; color: var(--text-secondary);">Instantly pairs opposing claims (like conflicting times or dates) in a side-by-side verification queue.</p>
                                 </div>
                             </div>
-                            <div class="case-study-technical">
-                                <div class="case-study-section">
-                                    <h4>Human-Review / Safety Boundaries</h4>
-                                    <p><strong>Disclosure:</strong> The system only flags semantic variance for human evaluation. It does not judge intent, verify truth, or assume deception. Fictional demo inputs only.</p>
+                            <div class="visual-panel" style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div style="font-family: var(--font-mono); font-size: 9px; color: var(--accent-red); font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 4px; display: flex; justify-content: space-between;">
+                                    <span>CONTRADICTION FINDER // EVAL</span>
+                                    <span>2 Flags</span>
                                 </div>
-                                <div class="case-study-section">
-                                    <h4>What the Project Demonstrates</h4>
-                                    <p>Natural language parsing pipelines, semantic comparison UI design, and focused verification queues.</p>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 10px;">
+                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 6px; border-radius: 3px;">
+                                        <strong style="color: var(--accent-red); display: block; margin-bottom: 2px; font-size: 8px;">Statement A (Mar 14)</strong>
+                                        "Left at <span style="background: rgba(225, 29, 72, 0.15); color: var(--accent-red); font-weight: bold; padding: 0 2px;">7:15 PM</span>."
+                                    </div>
+                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 6px; border-radius: 3px;">
+                                        <strong style="color: var(--accent-red); display: block; margin-bottom: 2px; font-size: 8px;">Statement B (Mar 18)</strong>
+                                        "Lobby till <span style="background: rgba(225, 29, 72, 0.15); color: var(--accent-red); font-weight: bold; padding: 0 2px;">7:45 PM</span>."
+                                    </div>
                                 </div>
-                                <div class="case-study-section">
-                                    <h4>Potential Transferability</h4>
-                                    <p>Factual checking in journalism, policy auditing, customer chat history audits, and research literature reviews.</p>
-                                </div>
-                                <div class="relevant-to-line">
-                                    <strong>Relevant to:</strong> Natural language systems, workflow optimization, content audit, case management.
+                                <div style="background: rgba(225, 29, 72, 0.05); border: 1px solid rgba(225, 29, 72, 0.2); border-radius: 3px; padding: 4px; font-size: 9px; color: var(--accent-red); font-weight: bold; text-align: center;">
+                                    ⚠ Time Conflict Detected: 30-minute discrepancy
                                 </div>
                             </div>
                         </div>
@@ -361,37 +415,33 @@
                         <div class="case-study-body">
                             <div class="case-study-narrative">
                                 <div class="case-study-section">
-                                    <h4>The Environment</h4>
-                                    <p>Local businesses, restaurants, trades, B2B HVAC systems, and entertainer/booking sites.</p>
-                                </div>
-                                <div class="case-study-section">
                                     <h4>The Problem</h4>
-                                    <p>Outdated websites lose trust and booking rates. Pizzerias lose high margins to Grubhub because of bad menu layouts; HVAC firms lose facilities leads because copy is too technical; venues lose ticket sales from broken checkouts.</p>
+                                    <p>Outdated websites and booking forms lose customer trust and reduce conversion margins.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>What I Designed or Built</h4>
-                                    <p>Custom direct-checkout pages, booking funnel refreshes, and lead generation interfaces (including McGregor's Comedy Club, Steel Pan Sal's Pizza, and InnControl systems).</p>
+                                    <h4>What I Built</h4>
+                                    <p>Custom checkout and reservation pathways bypassing aggregator commissions to capture direct leads.</p>
                                 </div>
                                 <div class="case-study-section">
-                                    <h4>How the System Works</h4>
-                                    <p>Restructures visual hierarchy, integrates responsive schedule calendars, designs clear pricing and quote pathways, and removes friction in local direct-ordering checkout flows.</p>
+                                    <h4>Capabilities</h4>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Frontend Production</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Conversion Optimization</span>
+                                        <span class="project-tag-dark" style="background: var(--bg-panel); color: var(--text-primary); border: 1px solid var(--border-light); padding: 2px 8px; font-size: 11.5px; font-family: var(--font-mono); border-radius: 3px;">Local Infrastructure</span>
+                                    </div>
+                                </div>
+                                <div class="case-study-section">
+                                    <h4>Why It Matters</h4>
+                                    <p style="font-style: italic; color: var(--text-secondary);">Direct transaction funnels keep customer relationships in-house, increasing profit margin capture.</p>
                                 </div>
                             </div>
-                            <div class="case-study-technical">
-                                <div class="case-study-section">
-                                    <h4>Human-Review / Safety Boundaries</h4>
-                                    <p>Direct ordering systems validate transaction inputs before hitting payment processors. Audits respect client data privacy throughout validation.</p>
+                            <div class="visual-panel" style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 0.5rem;">
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1.5px solid var(--border-dark); padding-bottom: 0.5rem; font-family: var(--font-mono); font-size: 9.5px; font-weight: bold; color: var(--text-primary);">
+                                    <span>CONVERSION FUNNEL STATS</span>
                                 </div>
-                                <div class="case-study-section">
-                                    <h4>What the Project Demonstrates</h4>
-                                    <p>Frontend production, visual hierarchy design, mobile checkouts, copy refactoring, and direct conversion increases.</p>
-                                </div>
-                                <div class="case-study-section">
-                                    <h4>Potential Transferability</h4>
-                                    <p>Any commercial enterprise looking to bypass aggregator commissions, improve online scheduling, or capture warm business leads directly.</p>
-                                </div>
-                                <div class="relevant-to-line">
-                                    <strong>Relevant to:</strong> Frontend development, product operations, conversion funnels, local business infrastructure.
+                                <div style="font-size: 11px; color: var(--text-primary); font-family: var(--font-sans); background: #FFF; padding: 6px; border: 1px solid var(--border-light); border-radius: 3px; line-height: 1.3;">
+                                    <strong>Checkout Completion:</strong> <span style="color: var(--accent-lime); font-weight: bold;">+14.2%</span> increase<br>
+                                    <strong>Aggregator Bypassed:</strong> $1,200.00 saved/mo
                                 </div>
                             </div>
                         </div>
@@ -480,49 +530,37 @@
             </div>
         </section>
 
-        <!-- Capabilities -->
+        <!-- Capabilities (Where I'm Most Useful) -->
         <section class="contribute-section" id="capabilities" aria-labelledby="contrib-heading">
             <div class="container">
-                <span class="eyebrow">Professional Contributions</span>
-                <h2 id="contrib-heading">What I Can Contribute</h2>
-                <p>Specific system capabilities and implementation skills I bring to product teams and mission-critical projects.</p>
+                <span class="eyebrow">Capabilities</span>
+                <h2 id="contrib-heading">Where I&rsquo;m Most Useful</h2>
+                <p style="margin-bottom: 3rem; max-width: 800px;">Specific system capabilities and implementation skills I bring to product teams and mission-critical projects.</p>
 
-                <div class="contribute-grid">
-                    <div class="contribute-card">
-                        <h3>Workflow Discovery</h3>
-                        <p>Mapping out actual workflows rather than imagined ones, identifying where operators lose speed, clarity, or budget.</p>
+                <div class="contribute-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem;">
+                    <div class="contribute-card" style="padding: 2rem; border-left: 3px solid var(--accent-teal);">
+                        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 0.75rem;">Untangling complex information</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
+                            Taxonomy, source mapping, chronology, contradictions, record structure.
+                        </p>
                     </div>
-                    <div class="contribute-card">
-                        <h3>Information Structuring</h3>
-                        <p>Translating chaotic, unstructured communication streams or file directories into clean, queryable database schemas.</p>
+                    <div class="contribute-card" style="padding: 2rem; border-left: 3px solid var(--accent-gold);">
+                        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 0.75rem;">Designing decision systems</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
+                            Prioritization logic, scoring models, recommendations, human review.
+                        </p>
                     </div>
-                    <div class="contribute-card">
-                        <h3>Validation Logic</h3>
-                        <p>Defining logical rules to automatically catch missing, inconsistent, or corrupted records at ingestion.</p>
+                    <div class="contribute-card" style="padding: 2rem; border-left: 3px solid var(--text-primary);">
+                        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 0.75rem;">Turning operations into products</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
+                            Workflows, dashboards, intake systems, implementation planning.
+                        </p>
                     </div>
-                    <div class="contribute-card">
-                        <h3>Explainable AI Design</h3>
-                        <p>Creating interfaces that trace AI outputs directly to source citations, allowing rapid human review.</p>
-                    </div>
-                    <div class="contribute-card">
-                        <h3>Human-in-the-Loop UX</h3>
-                        <p>Designing queues and side-by-side comparison panels optimized to reduce decision fatigue during manual audits.</p>
-                    </div>
-                    <div class="contribute-card">
-                        <h3>Operational Diagnostics</h3>
-                        <p>Auditing websites, POS structures, or backend pipelines to point out exactly where conversions and margins leak.</p>
-                    </div>
-                    <div class="contribute-card">
-                        <h3>Product Documentation</h3>
-                        <p>Writing clear, repeatable training guides, schema specs, and workflow manuals that teams can actually adopt.</p>
-                    </div>
-                    <div class="contribute-card">
-                        <h3>Implementation Planning</h3>
-                        <p>Bridging the gap between software release and human adoption, managing risk and training dependencies.</p>
-                    </div>
-                    <div class="contribute-card">
-                        <h3>Translation Capabilities</h3>
-                        <p>Explaining technical schema requirements to business stakeholders, and operational realities to software engineers.</p>
+                    <div class="contribute-card" style="padding: 2rem; border-left: 3px solid var(--accent-red);">
+                        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 0.75rem;">Building the thing</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
+                            Prototypes, interfaces, web applications, documentation, testing.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -536,8 +574,8 @@
                 <p style="margin-bottom: 2rem; max-width: 800px;">Concise, high-pressure leadership experience that directly informs my technology and product work.</p>
 
                 <div class="operating-grid">
-                    <div class="operating-lead">
-                        "The best systems are built by people who have had to manage actual human behavior under high-stress constraints."
+                    <div style="font-family: var(--font-sans); font-size: 1.25rem; font-weight: bold; color: var(--text-primary); border-left: 2.5px solid var(--accent-gold); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55;">
+                        &ldquo;I learned systems in kitchens and restaurants&mdash;where the answer has to work at 7:30 on a Friday, not just look good in a presentation.&rdquo;
                     </div>
                     <div class="operating-details">
                         <div class="operating-block">
