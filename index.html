@@ -48,15 +48,15 @@
         /* ── HERO PREMIUM FULL-WIDTH COMPOSITION STYLE ── */
         .home-hero {
             position: relative;
-            min-height: clamp(700px, 82vh, 860px);
+            min-height: clamp(720px, 85vh, 880px);
             overflow: hidden;
             display: flex;
             align-items: center;
             background:
                 radial-gradient(
-                    circle at 68% 48%,
+                    circle at 75% 50%,
                     #fffdf8 0%,
-                    #f8f3eb 44%,
+                    #f8f2e9 45%,
                     #f3ede4 100%
                 );
             border-bottom: 1px solid var(--border-light);
@@ -75,13 +75,16 @@
         .home-hero-art img {
             position: absolute;
             top: 50%;
-            right: -3vw;
-            width: min(79vw, 1280px);
+            right: -2vw;
+            width: min(58vw, 840px);
             height: auto;
-            max-width: none;
             transform: translateY(-50%);
             object-fit: contain;
             object-position: center right;
+            mix-blend-mode: multiply;
+            opacity: 0.95;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 4%, black 20%, black 100%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 4%, black 20%, black 100%);
         }
 
         .home-hero-overlay {
@@ -93,10 +96,10 @@
                 linear-gradient(
                     90deg,
                     rgba(248,244,236,1) 0%,
-                    rgba(248,244,236,.98) 24%,
-                    rgba(248,244,236,.82) 38%,
-                    rgba(248,244,236,.22) 53%,
-                    rgba(248,244,236,0) 68%
+                    rgba(248,244,236,.98) 25%,
+                    rgba(248,244,236,.82) 40%,
+                    rgba(248,244,236,.22) 55%,
+                    rgba(248,244,236,0) 70%
                 );
         }
 
@@ -109,7 +112,7 @@
         }
 
         .home-hero-copy {
-            width: min(570px, 45vw);
+            width: min(580px, 46vw);
             position: relative;
             z-index: 4;
         }
@@ -127,13 +130,13 @@
 
         .home-hero-copy .hero-title {
             font-family: var(--font-serif) !important;
-            font-size: clamp(4.25rem, 6.1vw, 6.8rem) !important;
-            line-height: 0.88 !important;
-            letter-spacing: -0.048em !important;
+            font-size: clamp(3.8rem, 5.2vw, 5.4rem) !important;
+            line-height: 0.96 !important;
+            letter-spacing: -0.04em !important;
             color: #10211D !important;
             margin: 0 0 1.75rem 0 !important;
-            font-weight: 400 !important;
-            max-width: 650px !important;
+            font-weight: 500 !important;
+            max-width: 680px !important;
         }
 
         .home-hero-copy .hero-subhead {
@@ -205,34 +208,44 @@
         /* ── STUDIO THESIS ── */
         .hp-thesis-section {
             background: var(--bg-paper);
-            padding: 64px 0;
+            padding: 80px 0;
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
+        }
+        .hp-thesis-text {
+            font-family: var(--font-sans);
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            font-weight: 350;
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         /* ── THE METHOD ── */
         .method-section {
             background: var(--bg-paper);
-            padding: 80px 0;
+            padding: 100px 0;
             border-bottom: 1px solid var(--border-light);
         }
         .process-flow-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             position: relative;
-            gap: 1.5rem;
-            margin-top: 3.5rem;
+            gap: 2.5rem;
+            margin-top: 4.5rem;
         }
         .process-flow-container::before {
             content: '';
             position: absolute;
-            top: 21px;
-            left: 10%;
-            right: 10%;
-            height: 1px;
+            top: 24px;
+            left: 8%;
+            right: 8%;
+            height: 1.5px;
             background: var(--border-dark);
             z-index: 0;
-            opacity: 0.6;
+            opacity: 0.8;
         }
         .process-step {
             display: flex;
@@ -243,20 +256,20 @@
             z-index: 1;
         }
         .process-node {
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: var(--bg-paper);
-            border: 1.5px solid var(--accent-teal);
+            border: 2px solid var(--accent-teal);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
         .process-node span {
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             color: var(--accent-teal);
         }
@@ -267,18 +280,182 @@
             color: var(--accent-gold);
         }
         .step-name {
-            font-family: var(--font-serif);
-            font-size: 16px;
+            font-family: var(--font-sans);
+            font-size: 18px;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         .step-desc {
             font-family: var(--font-sans);
-            font-size: 13.5px;
+            font-size: 14.5px;
             line-height: 1.5;
             color: var(--text-secondary);
-            max-width: 180px;
+            max-width: 200px;
+        }
+
+        /* ── SYSTEMS IN PRACTICE SHOWCASE ── */
+        .hp-projects-section {
+            background: var(--bg-panel);
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .hp-projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+        }
+        .hp-projects-header .section-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--accent-teal);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .hp-projects-header h2 {
+            font-family: var(--font-sans);
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        .hp-projects-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1.5px solid var(--text-primary);
+            padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .hp-projects-link:hover {
+            color: var(--accent-teal);
+            border-color: var(--accent-teal);
+        }
+        .hp-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+        .hp-project-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 3rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 520px;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s;
+        }
+        .hp-project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(16, 33, 29, 0.05);
+            border-color: var(--border-dark);
+        }
+        .hp-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .hp-card-status {
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 9px;
+        }
+        .hp-card-status.status-demo {
+            color: var(--accent-teal);
+            background: rgba(15, 118, 110, 0.06);
+            border: 1.5px solid rgba(15, 118, 110, 0.15);
+        }
+        .hp-card-status.status-prototype {
+            color: var(--accent-gold);
+            background: rgba(197, 160, 89, 0.06);
+            border: 1.5px solid rgba(197, 160, 89, 0.15);
+        }
+        .hp-card-status.status-concept {
+            color: var(--text-secondary);
+            background: rgba(87, 86, 81, 0.06);
+            border: 1.5px solid rgba(87, 86, 81, 0.15);
+        }
+        .hp-card-title {
+            font-family: var(--font-sans);
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.75rem;
+        }
+        .hp-card-desc {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .hp-card-visual-wrapper {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            height: 280px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hp-card-visual-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.3s ease;
+        }
+        .hp-project-card:hover .hp-card-visual-wrapper img {
+            transform: scale(1.02);
+        }
+        .hp-card-footer {
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        .hp-card-footer-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        .hp-card-arrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--accent-teal);
+            transition: transform 0.2s;
+        }
+        .hp-project-card:hover .hp-card-arrow {
+            transform: translateX(4px);
         }
 
         /* ── SYSTEMS IN PRACTICE ── */
@@ -551,7 +728,7 @@
     <!-- ── INTEGRATED HERO SECTION (FULL WIDTH) ── -->
     <header class="home-hero" id="portfolio-hero">
         <div class="home-hero-art" aria-hidden="true">
-            <img src="/assets/images/homepage-prism-wide.webp" alt="Context &amp; Muse Prism">
+            <img src="/assets/images/homepage_hero.jpg" alt="Context &amp; Muse Prism">
         </div>
 
         <div class="home-hero-overlay"></div>
@@ -560,10 +737,8 @@
             <div class="home-hero-copy">
                 <span class="hero-eyebrow">CONTEXT &amp; MUSE</span>
                 <h1 class="hero-title">
-                    Clarity shapes<br>
-                    perception.<br>
-                    Perception changes<br>
-                    everything.
+                    Clarity shapes perception.<br>
+                    Perception changes everything.
                 </h1>
                 <p class="hero-subhead">
                     Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use.
@@ -592,15 +767,15 @@
                 <div class="project-nav-item">
                     <span class="p-num">03</span>
                     <div class="p-meta">
-                        <strong class="p-title">Message Analysis</strong>
-                        <span class="p-desc">Timeline Recovery</span>
+                        <strong class="p-title">Message &amp; Record Analysis</strong>
+                        <span class="p-desc">Timeline Recovery &amp; Contradiction Review</span>
                     </div>
                 </div>
                 <div class="project-nav-item">
                     <span class="p-num">04</span>
                     <div class="p-meta">
                         <strong class="p-title">Record Integrity</strong>
-                        <span class="p-desc">Source Traceability</span>
+                        <span class="p-desc">Document Traceability</span>
                     </div>
                 </div>
             </nav>
@@ -610,8 +785,8 @@
     <main id="main-content">
         <!-- ── STUDIO THESIS SECTION ── -->
         <section class="hp-thesis-section" aria-label="Studio Introduction">
-            <div class="container" style="max-width: 680px; text-align: center;">
-                <p style="font-family: var(--font-serif); font-size: clamp(1.2rem, 2.5vw, 1.45rem); line-height: 1.7; color: var(--text-secondary); font-style: italic; margin: 0;">
+            <div class="container">
+                <p class="hp-thesis-text">
                     Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use. The studio builds software templates, logic schemas, diagnostic dashboards, and creative language projects.
                 </p>
             </div>
@@ -622,7 +797,7 @@
             <div class="container">
                 <div class="method-header" style="text-align: center;">
                     <span class="hp-eyebrow-teal" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">The Method</span>
-                    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 2.8vw, 2.2rem); margin-top: 0.5rem; margin-bottom: 0; font-weight: 400; color: var(--text-primary);">Approach to Complexity</h2>
+                    <h2 style="font-family: var(--font-sans); font-size: clamp(1.8rem, 2.8vw, 2.2rem); margin-top: 0.5rem; margin-bottom: 0; font-weight: 700; color: var(--text-primary);">Approach to Complexity</h2>
                 </div>
                 
                 <div class="process-flow-container">
@@ -660,91 +835,97 @@
             <div class="container">
                 <div class="hp-projects-header">
                     <div>
-                        <span class="section-label" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">Showcase</span>
-                        <h2 id="projects-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.6rem); margin-top: 0.5rem; margin-bottom: 0; font-weight: 400; color: var(--text-primary);">Systems in Practice</h2>
+                        <span class="section-label">Showcase</span>
+                        <h2 id="projects-heading">Systems in Practice</h2>
                     </div>
-                    <a href="/systems/" class="hp-projects-link" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; font-weight: bold; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">View All Systems &rarr;</a>
+                    <a href="/systems/" class="hp-projects-link">View All Systems &rarr;</a>
                 </div>
 
                 <div class="hp-cards-grid">
                     <!-- Card 1: Signal -->
-                    <a href="/systems/#signal" class="hp-project-card" aria-label="Project 01: Signal (Diagnostic Dashboard)">
+                    <a href="/systems/#signal" class="hp-project-card" aria-label="Project 01: Signal (Decision Intelligence)">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <div class="hp-card-meta">
                                 <span>01 &bull; Decision Intelligence</span>
-                                <span style="font-weight: 600; color: var(--accent-teal);" class="hp-card-status status-demo">Interactive Demo</span>
+                                <span class="hp-card-status status-demo">Interactive Demo</span>
                             </div>
                             <h3 class="hp-card-title">
                                 <img src="/assets/images/signal_icon.png" style="width: 22px; height: 22px; object-fit: contain;" alt="">
                                 Signal
                             </h3>
-                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                            <p class="hp-card-desc">
                                 Converts operational friction into ranked decisions, practical recommendations, and measurable areas of impact.
                             </p>
                             <div class="hp-card-visual-wrapper">
                                 <img src="/assets/images/signal-diagnostic-preview.png" alt="Signal Dashboard Preview">
                             </div>
                         </div>
-                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Systems</span>
-                            <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--accent-teal);">View Project &rarr;</span>
+                        <div class="hp-card-footer">
+                            <span class="hp-card-footer-label">Systems</span>
+                            <span class="hp-card-arrow">View Project &rarr;</span>
                         </div>
                     </a>
 
                     <!-- Card 2: GenSort -->
-                    <a href="/systems/#gensort" class="hp-project-card" aria-label="Project 02: GenSort (Visual Catalog System)">
+                    <a href="/systems/#gensort" class="hp-project-card" aria-label="Project 02: GenSort (Information Organization)">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                                <span>02 &bull; Information Architecture</span>
-                                <span style="font-weight: 600; color: #9A7A38;" class="hp-card-status status-prototype">Working Prototype</span>
+                            <div class="hp-card-meta">
+                                <span>02 &bull; Information Organization</span>
+                                <span class="hp-card-status status-prototype">Working Prototype</span>
                             </div>
                             <h3 class="hp-card-title">
                                 <img src="/assets/images/gensort_logo.svg" style="width: 22px; height: 22px; object-fit: contain;" alt="">
                                 GenSort
                             </h3>
-                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                            <p class="hp-card-desc">
                                 Organizes fragmented files, ideas, and source material into usable project structures and export-ready collections.
                             </p>
                             <div class="hp-card-visual-wrapper">
                                 <img src="/assets/images/gensort-ui-preview.png" alt="GenSort Workspace Preview">
                             </div>
                         </div>
-                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Systems</span>
-                            <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--accent-teal);">View Project &rarr;</span>
+                        <div class="hp-card-footer">
+                            <span class="hp-card-footer-label">Systems</span>
+                            <span class="hp-card-arrow">View Project &rarr;</span>
                         </div>
                     </a>
 
                     <!-- Card 3: Message & Record Analysis -->
-                    <a href="/systems/#message-record" class="hp-project-card" aria-label="Project 03: Message &amp; Record Analysis (Chronology Recovery)">
+                    <a href="/systems/#message-record" class="hp-project-card" aria-label="Project 03: Message &amp; Record Analysis (Timeline Recovery &amp; Contradiction Review)">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                                <span>03 &bull; Evidence Navigation</span>
-                                <span style="font-weight: 600; color: var(--text-secondary);" class="hp-card-status status-concept">Concept Model</span>
+                            <div class="hp-card-meta">
+                                <span>03 &bull; Timeline Recovery &amp; Contradiction Review</span>
+                                <span class="hp-card-status status-concept">Concept Model</span>
                             </div>
-                            <h3 class="hp-card-title">Message &amp; Record Analysis</h3>
-                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                            <h3 class="hp-card-title">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-teal);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M8 10h.01"></path><path d="M12 10h.01"></path><path d="M16 10h.01"></path></svg>
+                                Message &amp; Record Analysis
+                            </h3>
+                            <p class="hp-card-desc">
                                 Makes large communication records searchable, traceable, and easier to review across timelines, patterns, and contradictions.
                             </p>
                             <div class="hp-card-visual-wrapper">
                                 <img src="/assets/images/message-analysis-mockup.png" alt="Message and Record Analysis Preview">
                             </div>
                         </div>
-                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Systems</span>
-                            <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--accent-teal);">View Project &rarr;</span>
+                        <div class="hp-card-footer">
+                            <span class="hp-card-footer-label">Systems</span>
+                            <span class="hp-card-arrow">View Project &rarr;</span>
                         </div>
                     </a>
 
                     <!-- Card 4: Record Integrity -->
                     <div class="hp-project-card" aria-label="Project 04: Record Integrity (Document Traceability)">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <div class="hp-card-meta">
                                 <span>04 &bull; Document Traceability</span>
-                                <span style="font-weight: 600; color: var(--text-secondary);" class="hp-card-status status-concept">In Development</span>
+                                <span class="hp-card-status status-concept" style="color: var(--text-secondary); background: rgba(87, 86, 81, 0.06); border: 1.5px solid rgba(87, 86, 81, 0.15);">In Development</span>
                             </div>
-                            <h3 class="hp-card-title">Record Integrity</h3>
-                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                            <h3 class="hp-card-title">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-teal);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+                                Record Integrity
+                            </h3>
+                            <p class="hp-card-desc">
                                 Tracks provenance, change history, and source reliability across document sets to establish a verifiable chain of record.
                             </p>
                             <div class="hp-card-visual-wrapper" style="background: #0d1a16; padding: 1.5rem; box-sizing: border-box;">
@@ -760,8 +941,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Systems</span>
+                        <div class="hp-card-footer">
+                            <span class="hp-card-footer-label">Systems</span>
                             <span style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--text-secondary); opacity: 0.5;">In Development</span>
                         </div>
                     </div>
