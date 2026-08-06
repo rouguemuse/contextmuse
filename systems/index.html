@@ -850,6 +850,10 @@
     <script>
         // Cursor-reactive 3D tilt effect for flagship systems cards
         document.querySelectorAll('.flagship-project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'none';
+            });
+
             card.addEventListener('mousemove', e => {
                 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth <= 950) {
                     return;
@@ -868,6 +872,7 @@
             });
             
             card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.5s ease-out, box-shadow 0.3s ease';
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
             });
         });
