@@ -469,7 +469,7 @@ p {
 .systems-grid-dark {
     display: flex;
     flex-direction: column;
-    gap: 8rem;                   /* Generous spacing between showcase blocks */
+    gap: 5rem;                   /* Spacing between showcase blocks */
 }
 
 .project-showcase, .flagship-project {
@@ -479,7 +479,7 @@ p {
     align-items: center;
     position: relative;
     border-bottom: 1px solid rgba(243, 240, 232, 0.13);
-    padding-block: clamp(5rem, 8vw, 8rem);
+    padding-block: clamp(3.5rem, 5.5vw, 5.5rem);
 }
 
 .project-showcase:last-child, .flagship-project:last-child {
@@ -817,7 +817,7 @@ p {
     background: #FFFFFF;
     color: var(--text-primary);
     font-family: var(--font-sans);
-    min-height: 320px;
+    min-height: 480px;
 }
 
 @media(min-width: 768px) {

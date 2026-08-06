@@ -1,3 +1,10 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/creative/how-to-explain-yourself-to-wolves/",
+      "destination": "/creative-practice/how-to-explain-yourself-to-wolves/",
+      "permanent": true
+    }
+  ]
 }
