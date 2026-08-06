@@ -1165,28 +1165,29 @@
         </section>
 
         <!-- 3. MadeOfReasons -->
-        <section class="creative-section" id="project-made-of-reasons" aria-labelledby="reasons-heading" style="background: var(--bg-paper);">
+        <section class="creative-section" id="project-made-of-reasons" aria-labelledby="reasons-heading" style="background: #090A0F; color: #FAF9F5; border-bottom: 1px solid rgba(250, 249, 245, 0.08);">
             <div class="container creative-project">
-                <span class="creative-section-eyebrow">Interactive Constellation &middot; Relational Keepsake</span>
+                <span class="creative-section-eyebrow" style="color: #38BDF8; display: block; margin-bottom: 2rem;">03 // Independent Relational System</span>
                 <div class="reasons-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center;">
                     <div>
-                        <h2 id="reasons-heading" style="margin-bottom: 1rem;">MadeOfReasons</h2>
-                        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.5rem;">
-                            A relational keepsake that turns the specific reasons someone matters into a constellation. Each reason becomes a star. The relationships between those reasons form a personal map that can be explored, expanded, and preserved.
+                        <h2 id="reasons-heading" style="margin-bottom: 1rem; color: #FAF9F5; font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 3.2vw, 2.8rem); line-height: 1.05;">MadeOfReasons</h2>
+                        <p style="color: rgba(250, 249, 245, 0.75); font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.5rem;">
+                            A relational keepsake that turns the specific reasons someone matters into an explorable constellation. Each reason becomes a star. The relationships between those reasons form a personal relational map that can be explored, expanded, and preserved.
                         </p>
-                        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-red); font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;">
+                        <p style="font-family: var(--font-mono); font-size: 11px; color: #38BDF8; font-weight: 600; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 0.05em;">
                             Live Web Application &bull; madeofreasons.com
                         </p>
                         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <a href="https://www.madeofreasons.com/" target="_blank" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="reasons-cta">Create a Constellation &rarr;</a>
-                            
+                            <a href="https://www.madeofreasons.com/" target="_blank" class="btn btn-primary" style="background: #0F766E; border-color: #0F766E;" id="reasons-cta">Create a Constellation &rarr;</a>
                         </div>
                     </div>
                     <!-- Real screenshot from madeofreasons.com -->
                     <div style="position: relative;">
+                        <!-- Glowing backdrop effect to emphasize "luminous nodes / dark constellation field" -->
+                        <div style="position: absolute; inset: -10px; background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%); pointer-events: none; z-index: 1;"></div>
                         <img src="/assets/images/madeofreasons-screenshot.webp"
                              alt="MadeOfReasons constellation interface showing star nodes, connecting lines, and a reason detail panel on a dark canvas"
-                             style="width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);" loading="lazy"
+                             style="width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.4); border: 1px solid rgba(250, 249, 245, 0.1); position: relative; z-index: 2;" loading="lazy"
                              onerror="this.parentElement.innerHTML='<div style=&quot;background:#111215;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2.25rem;min-height:220px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.4);&quot;>Screenshot loading — visit madeofreasons.com</div>'">
                     </div>
                 </div>
@@ -1194,38 +1195,38 @@
         </section>
 
         <!-- 4. Brain Raccoon -->
-        <section class="creative-section" id="project-brain-raccoon" aria-labelledby="raccoon-heading" style="background: var(--bg-panel);">
+        <section class="creative-section" id="project-brain-raccoon" aria-labelledby="raccoon-heading" style="background: var(--bg-panel); border-bottom: 1px solid var(--border-light);">
             <div class="container creative-project">
-                <span class="creative-section-eyebrow" style="color: var(--accent-red);">Creative Tool &middot; Focus Intervention</span>
+                <span class="creative-section-eyebrow" style="color: #0F766E; display: block; margin-bottom: 2rem;">04 // Focus Intervention Tool</span>
                 <div class="raccoon-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center;">
                     <div>
-                        <h2 id="raccoon-heading" style="margin-bottom: 1rem;">Brain Raccoon</h2>
+                        <h2 id="raccoon-heading" style="margin-bottom: 1rem; font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 3.2vw, 2.8rem); line-height: 1.05; color: var(--text-primary);">Brain Raccoon</h2>
                         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.5rem;">
-                            A fast intervention tool for interrupting mental loops, identifying the immediate obstacle, and selecting one useful next action.
+                            A fast, direct intervention tool for interrupting mental loops, identifying the immediate obstacle, and selecting one useful next action. Built around simple controls and focused active session states.
                         </p>
                         
-                        <div style="margin-bottom: 1.5rem;">
-                            <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-red); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">INTERVENTION PROCESS</strong>
-                            <ol style="padding-left: 1.25rem; margin: 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 4px;">
-                                <li><strong>Interrupt loop:</strong> Break the pattern of repetitive, unproductive thinking.</li>
-                                <li><strong>Direct action override:</strong> Force focus onto the immediate, concrete obstacle.</li>
-                                <li><strong>Restore momentum:</strong> Choose exactly one small, useful action to execute immediately.</li>
+                        <div style="margin-bottom: 1.5rem; background: var(--bg-card); padding: 1.25rem; border: 1px solid var(--border-light); border-radius: 4px;">
+                            <strong style="font-family: var(--font-mono); font-size: 10px; color: #0F766E; display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em; text-transform: uppercase;">ACTIVE INTERVENTION SYSTEM</strong>
+                            <ol style="padding-left: 1.25rem; margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.65; display: flex; flex-direction: column; gap: 5px;">
+                                <li><strong>Pattern Interrupt:</strong> Break repetitive loop states immediately.</li>
+                                <li><strong>Obstacle Isolation:</strong> Declare the single concrete blocker on screen.</li>
+                                <li><strong>Ramp Out:</strong> Select a single small action and begin a 20-minute timed focus sprint.</li>
                             </ol>
                         </div>
 
-                        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-red); font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;">
-                            Live Web Application &bull; 20-Minute Focus Session &bull; External deployment: Brain Racoon
+                        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 0.05em;">
+                            Active Timing Mode &bull; Timed Sprints &bull; Focus Session Framework
                         </p>
-                        <a href="https://brain-is-fos.vercel.app/" target="_blank" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="raccoon-cta">Launch Brain Raccoon &rarr;</a>
+                        <a href="https://brain-is-fos.vercel.app/" target="_blank" class="btn btn-primary" style="background: #0F766E; border-color: #0F766E;" id="raccoon-cta">Launch Brain Raccoon &rarr;</a>
                     </div>
                     <!-- Real screenshot from brainraccoon -->
                     <div style="position: relative;">
                         
-                        <div class="browser-frame" style="box-shadow: 0 8px 30px rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden;">
+                        <div class="browser-frame" style="box-shadow: 0 8px 30px rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden; border: 1px solid var(--border-light);">
                             <div class="browser-header" style="background: var(--bg-panel); border-bottom: 1px solid var(--border-light); padding: 8px 12px; display: flex; align-items: center; gap: 6px;">
-                                <span style="display:inline-block; width: 6px; height: 6px; border-radius: 50%; background: #E11D48;"></span>
-                                <span style="display:inline-block; width: 6px; height: 6px; border-radius: 50%; background: #C5A059;"></span>
-                                <span style="display:inline-block; width: 6px; height: 6px; border-radius: 50%; background: #0F766E;"></span>
+                                <span style="display:inline-block; width: 6px; height: 6px; border-radius: 50%; background: #FF5F57;"></span>
+                                <span style="display:inline-block; width: 6px; height: 6px; border-radius: 50%; background: #FFBD2E;"></span>
+                                <span style="display:inline-block; width: 6px; height: 6px; border-radius: 50%; background: #28CA42;"></span>
                                 <span style="font-family: var(--font-mono); font-size: 8px; color: var(--text-secondary); margin-left: 10px;">brain-is-fos.vercel.app</span>
                             </div>
                             <div class="browser-content" style="padding: 0; background: #FAF9F5;">
