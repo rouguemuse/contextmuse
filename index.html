@@ -812,37 +812,6 @@
     </footer>
 
     <script>
-        // Cursor-reactive 3D tilt effect for showcase cards
-        document.querySelectorAll('.tilt-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transition = 'none';
-            });
-
-            card.addEventListener('mousemove', e => {
-                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth <= 768) {
-                    return;
-                }
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const xc = rect.width / 2;
-                const yc = rect.height / 2;
-                
-                const rotateX = (yc - y) / 12; // Max ~6 degrees
-                const rotateY = (x - xc) / 12;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                card.style.setProperty('--x', `${x}px`);
-                card.style.setProperty('--y', `${y}px`);
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transition = 'transform 0.5s ease-out, box-shadow 0.3s ease';
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-            });
-        });
-
         // Carousel buttons scroll logic
         const carousel = document.getElementById('carousel-view');
         document.getElementById('carousel-prev').addEventListener('click', () => {
