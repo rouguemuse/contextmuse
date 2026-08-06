@@ -20,29 +20,314 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=2.1">
     <style>
-        /* Hero 2-Column Grid */
-        .hero-gateway-grid {
-            display: grid;
-            grid-template-columns: 0.88fr 1.12fr; /* 44% Left, 56% Right */
-            gap: 4rem;
+        /* Hero Premium Redesign */
+        .hero-premium {
+            position: relative;
+            width: 100%;
+            min-height: clamp(760px, 80vh, 840px);
+            background: radial-gradient(
+                circle at 70% 45%,
+                #fffdf8 0%,
+                #f8f2e9 48%,
+                #f3ede4 100%
+            ) !important;
+            border-bottom: 1px solid #DDD8CE !important;
+            display: flex;
             align-items: center;
+            overflow: hidden;
+            padding: 120px 0 60px 0 !important;
+            box-sizing: border-box;
         }
+
+        /* Readable text-side overlay gradient */
+        .hero-premium::after {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 52%;
+            background: linear-gradient(
+                90deg,
+                rgba(248, 244, 236, 0.98) 0%,
+                rgba(248, 244, 236, 0.88) 55%,
+                rgba(248, 244, 236, 0) 100%
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-content-wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 1380px !important;
+            padding-left: 8% !important; /* Starts ~8-10% from left edge */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero-copy-container {
+            max-width: 600px;
+            position: relative;
+            z-index: 4;
+        }
+
+        .hero-premium .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-premium .hero-title {
+            font-family: var(--font-serif) !important;
+            font-size: clamp(4rem, 6.2vw, 6.6rem) !important;
+            line-height: 0.88 !important;
+            letter-spacing: -0.045em !important;
+            color: #10211D !important; /* deep green-black */
+            margin: 0 0 1.75rem 0 !important;
+            font-weight: 400 !important;
+            max-width: 600px !important;
+        }
+
+        .hero-premium .hero-subhead {
+            font-family: var(--font-sans) !important;
+            font-size: 19px !important; /* 18-20px text */
+            line-height: 1.65 !important;
+            color: var(--text-secondary) !important;
+            margin-bottom: 2rem !important;
+            max-width: 470px !important; /* 470px maximum width */
+        }
+
+        .hero-premium .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+
+        .btn-primary-teal {
+            background: #0F766E !important; /* Deep teal */
+            border: 1px solid #0F766E !important;
+            color: #FAF9F5 !important;
+            padding: 0.75rem 1.75rem;
+            border-radius: 4px; /* Restrained rectangular */
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary-teal:hover {
+            background: #115E59 !important;
+            border-color: #115E59 !important;
+        }
+
+        .btn-secondary-cream {
+            background: rgba(250, 249, 245, 0.65) !important; /* Warm translucent cream */
+            border: 1px solid rgba(16, 33, 29, 0.25) !important;
+            color: #10211D !important; /* Dark text */
+            padding: 0.75rem 1.75rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary-cream:hover {
+            background: rgba(250, 249, 245, 0.85) !important;
+            border-color: rgba(16, 33, 29, 0.4) !important;
+        }
+
+        /* Project Navigation Strip */
+        .project-nav-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 680px;
+            border-top: 1px solid rgba(16, 33, 29, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .project-nav-item {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .project-nav-item:not(:last-child) {
+            border-right: 1px solid rgba(197, 160, 89, 0.4); /* vertical muted gold line */
+            padding-right: 1.5rem;
+        }
+
+        .project-nav-item .p-num {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .project-nav-item .p-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-nav-item .p-title {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: var(--text-primary);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .project-nav-item .p-desc {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: var(--text-secondary);
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+
+        /* Absolute Prism Visual Layer */
+        .hero-art-layer {
+            position: absolute;
+            right: -4vw;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(72vw, 1180px);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            pointer-events: none;
+            z-index: 1; /* Below text layer */
+        }
+
+        .hero-prism-artwork {
+            width: auto;
+            height: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+            /* Blend left edge */
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(0,0,0,.15) 8%,
+                black 28%,
+                black 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(0,0,0,.15) 8%,
+                black 28%,
+                black 100%
+            );
+        }
+
+        /* Soft backdrop glow centered around the prism */
+        .hero-radial-glow {
+            position: absolute;
+            right: 15%;
+            top: 45%;
+            transform: translate(50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
         @media (max-width: 768px) {
-            .hero-gateway-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
+            .hero-premium {
+                min-height: auto;
+                padding: 100px 0 40px 0 !important;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .hero-premium::after {
+                display: none; /* Hide overlay on stacked layout */
+            }
+            
+            .hero-content-wrapper {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+            
+            .hero-copy-container {
+                max-width: 100%;
+            }
+            
+            .hero-premium .hero-title {
+                font-size: clamp(3.1rem, 13vw, 4.4rem) !important;
+                line-height: 0.9 !important;
+                max-width: 100% !important;
+            }
+            
+            .hero-premium .hero-subhead {
+                max-width: 100% !important;
+            }
+            
+            .hero-premium .btn-group {
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 2.5rem;
+            }
+            
+            .hero-premium .btn-group a {
+                width: 100%;
                 text-align: center;
+                box-sizing: border-box;
             }
-            .hero-gateway-grid .hero-text-column {
-                order: 1;
-                text-align: center !important;
+            
+            /* Project labels stacked in two columns */
+            .project-nav-strip {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+                max-width: 100%;
             }
-            .hero-gateway-grid .hero-visual-column {
-                order: 2;
-                text-align: center !important;
+            
+            .project-nav-item:not(:last-child) {
+                border-right: none;
+                padding-right: 0;
             }
-            .hero-gateway-grid .btn-group {
+            
+            /* Artwork layer underneath */
+            .hero-art-layer {
+                position: relative;
+                right: 0;
+                top: 0;
+                transform: none;
+                width: 135%;
+                margin-left: -17.5%; /* Shift slightly right */
+                height: 260px;
+                margin-top: 2rem;
                 justify-content: center;
+            }
+            
+            .hero-prism-artwork {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
+            
+            .hero-radial-glow {
+                display: none;
             }
         }
 
@@ -242,29 +527,65 @@
         </div>
     </nav>
 
-    <!-- Premium Hero Section (Mockup Gateway Style) -->
-    <header class="hero hero-premium" id="portfolio-hero" style="padding: 140px 0 80px;">
-        <div class="container hero-gateway-grid">
-            <div class="hero-text-column" style="text-align: left;">
-                <span class="eyebrow" style="letter-spacing: 0.15em; font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1rem;">CONTEXT &amp; MUSE</span>
-                <h1 class="hero-title" style="font-size: clamp(2.1rem, 4.2vw, 3.4rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; font-family: var(--font-serif); font-weight: 400; color: var(--text-primary);">
+    <!-- Premium Hero Section (Editorial Integrated Composition Style) -->
+    <header class="hero hero-premium" id="portfolio-hero">
+        <!-- Radial background element for soft warm glow -->
+        <div class="hero-radial-glow"></div>
+        
+        <!-- Absolutely positioned prism artwork visual layer -->
+        <div class="hero-art-layer">
+            <img src="/assets/images/hero_prism.jpg" class="hero-prism-artwork" alt="Context & Muse Prism" />
+        </div>
+        
+        <!-- Continuous layout container -->
+        <div class="container hero-content-wrapper">
+            <div class="hero-copy-container">
+                <span class="hero-eyebrow">CONTEXT &amp; MUSE</span>
+                <h1 class="hero-title">
                     Clarity shapes<br>
                     perception.<br>
-                    <span style="display: inline-block; margin-top: 0.15em;">Perception<br>
+                    Perception<br>
                     changes<br>
-                    everything.</span>
+                    everything.
                 </h1>
-                <p class="hero-subhead" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem; max-width: 520px;">
-                    Context &amp; Muse turns complexity into something people can see, navigate, and act on—through applied systems, information architecture, and creative frameworks.
+                <p class="hero-subhead">
+                    Context &amp; Muse turns complexity into signal. We build practical systems that help people see, decide, and move forward with clarity.
                 </p>
-                <div class="btn-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="/systems/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);">Explore Applied Systems &rarr;</a>
-                    <a href="/creative/" class="btn btn-secondary" style="border-color: var(--accent-red); color: var(--accent-red);">Explore Creative Practice &rarr;</a>
+                <div class="btn-group">
+                    <a href="/systems/" class="btn-primary-teal">Explore Systems</a>
+                    <a href="#project-previews" class="btn-secondary-cream">See How It Works</a>
                 </div>
-            </div>
-            <div class="hero-visual-column" style="text-align: right; display: flex; justify-content: flex-end; align-items: center;">
-                <div style="border: 1px solid var(--border-light); border-radius: 6px; padding: 0.5rem; background: var(--bg-panel); box-shadow: 0 12px 40px rgba(0,0,0,0.04); max-width: 540px; width: 100%; box-sizing: border-box; overflow: hidden;">
-                    <img src="/assets/images/homepage_hero.jpg" alt="Context & Muse Premium Architecture Hero" style="width: 100%; height: 320px; object-fit: cover; border-radius: 4px; display: block;" loading="eager" />
+                
+                <!-- Project Navigation Strip -->
+                <div class="project-nav-strip">
+                    <div class="project-nav-item">
+                        <span class="p-num">01</span>
+                        <div class="p-meta">
+                            <strong class="p-title">Signal</strong>
+                            <span class="p-desc">Decision Intelligence</span>
+                        </div>
+                    </div>
+                    <div class="project-nav-item">
+                        <span class="p-num">02</span>
+                        <div class="p-meta">
+                            <strong class="p-title">GenSort</strong>
+                            <span class="p-desc">Smart Organization</span>
+                        </div>
+                    </div>
+                    <div class="project-nav-item">
+                        <span class="p-num">03</span>
+                        <div class="p-meta">
+                            <strong class="p-title">Message Analysis</strong>
+                            <span class="p-desc">Meaning in Motion</span>
+                        </div>
+                    </div>
+                    <div class="project-nav-item">
+                        <span class="p-num">04</span>
+                        <div class="p-meta">
+                            <strong class="p-title">Record Integrity</strong>
+                            <span class="p-desc">Source Traceability</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -357,24 +678,7 @@
                             </div>
                         </a>
 
-                        <!-- Card 4: How to Explain Yourself to Wolves -->
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="tilt-card" tabindex="0" aria-label="Project 04: How to Explain Yourself to Wolves (Literary Companion)">
-                            <div>
-                                <div class="tilt-card-header">
-                                    <span>04 &bull; Literary Companion</span>
-                                    <span>Creative</span>
-                                </div>
-                                <h3 class="tilt-card-title">How to Explain Yourself to Wolves</h3>
-                                <p class="tilt-card-desc">An interactive literary companion exploring translation boundaries and communication constraints.</p>
-                                <div class="tilt-card-visual">
-                                    <img src="/assets/images/wolves_charcoal_art.jpg" alt="Wolves companion visual layout sketch" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="tilt-card-footer">
-                                <span class="tilt-card-status status-manuscript">Completed Manuscript</span>
-                                <span class="tilt-card-link">View Project &rarr;</span>
-                            </div>
-                        </a>
+
                     </div>
                 </div>
             </div>

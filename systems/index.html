@@ -14,6 +14,22 @@
     <meta property="og:description" content="Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, and selected commercial builds by Context &amp; Muse.">
     <meta property="og:image" content="https://contextmuse.com/social-preview.png">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Systems | Context &amp; Muse</title>
+    <meta name="description" content="Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, and selected commercial builds by Context &amp; Muse.">
+    <link rel="canonical" href="https://contextmuse.com/systems/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://contextmuse.com/systems/">
+    <meta property="og:title" content="Applied Systems | Context &amp; Muse">
+    <meta property="og:description" content="Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, and selected commercial builds by Context &amp; Muse.">
+    <meta property="og:image" content="https://contextmuse.com/social-preview.png">
+
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,63 +37,6 @@
     <link rel="stylesheet" href="/styles.css">
     
     <style>
-        /* Deep forest green background style override */
-        .systems-section-dark {
-            background-color: #071714 !important; /* Deep forest green */
-            color: #FAF9F5 !important;
-        }
-
-        /* Alternating split-layout grid */
-        .flagship-grid-alternating {
-            display: flex;
-            flex-direction: column;
-            gap: 6rem;
-            padding-bottom: 80px;
-        }
-        
-        .flagship-project {
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .flagship-project:nth-child(even) {
-            grid-template-columns: 0.95fr 1.05fr;
-        }
-        
-        .flagship-project:nth-child(even) .project-meta {
-            order: 2;
-        }
-        
-        .flagship-project:nth-child(even) .visual-panel {
-            order: 1;
-        }
-        
-        @media (max-width: 900px) {
-            .flagship-project, .flagship-project:nth-child(even) {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            .flagship-project:nth-child(even) .project-meta {
-                order: 1;
-            }
-            .flagship-project:nth-child(even) .visual-panel {
-                order: 2;
-            }
-        }
-
-        /* Restrained 1-2 degree tilt on hover for project images */
-        .browser-frame {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            transform-style: preserve-3d;
-            perspective: 800px;
-        }
-        .browser-frame:hover {
-            transform: rotateX(1.5deg) rotateY(1.5deg);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-        }
-        
         /* Static Index Hover Effect */
         .systems-index-item {
             display: flex;
@@ -110,6 +69,497 @@
         .systems-index-item .index-arrow {
             font-size: 12px;
             color: var(--text-secondary);
+        }
+
+        /* Systems Spatial Gallery Redesign */
+        .systems-spatial-gallery {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: var(--bg-ink, #090a0f);
+            color: #FAF9F5;
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+
+        .systems-spatial-gallery .gallery-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .systems-spatial-gallery .gallery-rail {
+            display: flex;
+            gap: 3rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 3rem 10% 4rem 10%; /* peeking margins */
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .systems-spatial-gallery .gallery-rail::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 3D Spatial Card */
+        .systems-spatial-gallery .spatial-card {
+            flex: 0 0 clamp(680px, 68vw, 980px); /* 10-15% of next card visible */
+            min-height: 560px;
+            max-height: 680px;
+            background: #11131E; /* deep dark blue-grey card */
+            border: 1px solid rgba(250, 249, 245, 0.06);
+            border-radius: 16px;
+            padding: 3rem;
+            color: #FAF9F5;
+            position: relative;
+            scroll-snap-align: center;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, border-color 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr 1.25fr; /* 40/60 text-to-preview balance */
+            gap: 3.5rem;
+            overflow: hidden;
+            box-sizing: border-box;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .systems-spatial-gallery .spatial-card:focus-within {
+            outline: 2px solid var(--accent-teal);
+            outline-offset: 4px;
+        }
+
+        .systems-spatial-gallery .spatial-card[data-accent="teal"]:hover {
+            border-color: rgba(45, 212, 191, 0.35);
+        }
+        .systems-spatial-gallery .spatial-card[data-accent="red"]:hover {
+            border-color: rgba(163, 29, 29, 0.35);
+        }
+        .systems-spatial-gallery .spatial-card[data-accent="neutral"]:hover {
+            border-color: rgba(250, 249, 245, 0.2);
+        }
+
+        .systems-spatial-gallery .card-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            z-index: 4;
+            position: relative;
+        }
+
+        .systems-spatial-gallery .card-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .systems-spatial-gallery .spatial-card[data-accent="teal"] .card-eyebrow { color: #38BDF8; }
+        .systems-spatial-gallery .spatial-card[data-accent="red"] .card-eyebrow { color: #F87171; }
+        .systems-spatial-gallery .spatial-card[data-accent="neutral"] .card-eyebrow { color: #A3A3A3; }
+
+        .systems-spatial-gallery .card-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+            line-height: 1.1;
+            margin: 0 0 0.5rem 0;
+            color: #FAF9F5;
+            font-weight: 500;
+        }
+
+        .systems-spatial-gallery .card-subhead {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: rgba(250, 249, 245, 0.45);
+            margin-bottom: 1rem;
+            margin-top: -0.25rem;
+            line-height: 1.35;
+        }
+
+        .systems-spatial-gallery .card-desc {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: rgba(250, 249, 245, 0.75);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Attributes List */
+        .systems-spatial-gallery .card-labels-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid rgba(250, 249, 245, 0.08);
+            padding-top: 1rem;
+        }
+
+        .systems-spatial-gallery .card-label-row {
+            display: flex;
+            gap: 8px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .systems-spatial-gallery .card-label-title {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            min-width: 70px;
+            display: inline-block;
+            letter-spacing: 0.05em;
+        }
+
+        .systems-spatial-gallery .card-label-val {
+            color: rgba(250, 249, 245, 0.75);
+        }
+
+        /* Buttons / Actions */
+        .systems-spatial-gallery .card-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .systems-spatial-gallery .btn-card-primary {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.65rem 1.25rem;
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .systems-spatial-gallery .spatial-card[data-accent="teal"] .btn-card-primary {
+            background: #0F766E;
+            color: #FAF9F5;
+            border: 1px solid #0F766E;
+        }
+        .systems-spatial-gallery .spatial-card[data-accent="teal"] .btn-card-primary:hover {
+            background: #115E59;
+            border-color: #115E59;
+        }
+
+        .systems-spatial-gallery .spatial-card[data-accent="red"] .btn-card-primary {
+            background: #A31D1D;
+            color: #FAF9F5;
+            border: 1px solid #A31D1D;
+        }
+        .systems-spatial-gallery .spatial-card[data-accent="red"] .btn-card-primary:hover {
+            background: #851616;
+            border-color: #851616;
+        }
+
+        .systems-spatial-gallery .spatial-card[data-accent="neutral"] .btn-card-primary {
+            background: #FAF9F5;
+            color: #10211D;
+            border: 1px solid #FAF9F5;
+        }
+        .systems-spatial-gallery .spatial-card[data-accent="neutral"] .btn-card-primary:hover {
+            background: #E5E5E5;
+            border-color: #E5E5E5;
+        }
+
+        .systems-spatial-gallery .btn-card-outline {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.65rem 1.25rem;
+            border-radius: 4px;
+            display: inline-block;
+            border: 1px solid rgba(250, 249, 245, 0.2);
+            color: rgba(250, 249, 245, 0.7);
+            transition: all 0.2s ease;
+        }
+
+        .systems-spatial-gallery .btn-card-outline:hover {
+            border-color: rgba(250, 249, 245, 0.4);
+            color: #FAF9F5;
+        }
+
+        /* 3D Visual Column & Container */
+        .systems-spatial-gallery .card-visual-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            transform-style: preserve-3d;
+            height: 100%;
+            width: 100%;
+            z-index: 3;
+        }
+
+        .systems-spatial-gallery .card-visual-container {
+            width: 100%;
+            height: 100%;
+            max-height: 480px;
+            background: rgba(250, 249, 245, 0.015);
+            border: 1px solid rgba(250, 249, 245, 0.06);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transform: translateZ(18px); /* move forward by 18px */
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .systems-spatial-gallery .card-visual-container img {
+            max-width: 95%;
+            max-height: 95%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        /* Operational Builds nested panels layout */
+        .systems-spatial-gallery .builds-card-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            width: 95%;
+            height: auto;
+            transform: translateZ(18px);
+        }
+
+        .systems-spatial-gallery .build-panel-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .systems-spatial-gallery .build-panel-thumb {
+            width: 100%;
+            height: 180px;
+            background: #000;
+            border: 1px solid rgba(250, 249, 245, 0.15);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .systems-spatial-gallery .build-panel-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .systems-spatial-gallery .build-panel-item:hover .build-panel-thumb img {
+            opacity: 1;
+        }
+
+        .systems-spatial-gallery .build-panel-label {
+            font-family: var(--font-mono);
+            font-size: 8.5px;
+            color: rgba(250, 249, 245, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Status Label positioning */
+        .systems-spatial-gallery .gallery-status-label {
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-family: var(--font-mono);
+            font-size: 8.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 3px 8px;
+            border-radius: 3px;
+            border: 1px solid rgba(250, 249, 245, 0.15);
+            color: rgba(250, 249, 245, 0.5);
+            background: rgba(250, 249, 245, 0.02);
+            z-index: 4;
+        }
+
+        /* Wolves Card Theme Override */
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] {
+            background: #FAF8F5 !important; /* Parchment cream background */
+            border: 1px solid rgba(163, 29, 29, 0.12);
+            color: #10211D !important;
+            box-shadow: 0 20px 50px rgba(163, 29, 29, 0.05);
+        }
+
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-title,
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-label-val {
+            color: #10211D !important;
+        }
+
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-subhead,
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-desc {
+            color: var(--text-secondary) !important;
+        }
+
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .gallery-status-label {
+            border-color: rgba(163, 29, 29, 0.2);
+            color: #A31D1D;
+            background: rgba(163, 29, 29, 0.02);
+        }
+
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-labels-grid {
+            border-top-color: rgba(16, 33, 29, 0.1);
+        }
+
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .btn-card-outline {
+            border-color: rgba(16, 33, 29, 0.2);
+            color: var(--text-secondary);
+        }
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .btn-card-outline:hover {
+            border-color: rgba(16, 33, 29, 0.4);
+            color: #10211D;
+        }
+
+        /* Mouse interaction radial shine */
+        .systems-spatial-gallery .card-glow {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250, 249, 245, 0.045) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .systems-spatial-gallery .spatial-card:hover .card-glow {
+            opacity: 1;
+        }
+
+        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-glow {
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(163, 29, 29, 0.03) 0%, transparent 60%);
+        }
+
+        /* Navigation Strip below gallery */
+        .systems-spatial-gallery .gallery-nav-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 680px;
+            margin: 2.5rem auto 0 auto;
+            padding: 0 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .systems-spatial-gallery .gallery-progress-track {
+            flex-grow: 1;
+            height: 2px;
+            background: rgba(250, 249, 245, 0.1);
+            margin-right: 2.5rem;
+            position: relative;
+            border-radius: 1px;
+        }
+
+        .systems-spatial-gallery .gallery-progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: #2DD4BF; /* Lighter teal for progress */
+            transform: scaleX(0); /* Modified dynamically via JS transform */
+            transform-origin: left;
+            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .systems-spatial-gallery .gallery-nav-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .systems-spatial-gallery .gallery-nav-btn {
+            background: transparent;
+            border: 1px solid rgba(250, 249, 245, 0.2);
+            color: #FAF9F5;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .systems-spatial-gallery .gallery-nav-btn:hover {
+            background: rgba(250, 249, 245, 0.05);
+            border-color: rgba(250, 249, 245, 0.4);
+        }
+
+        .systems-spatial-gallery .gallery-nav-btn:focus {
+            outline: 2px solid var(--accent-teal);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .systems-spatial-gallery {
+                padding: 60px 0;
+            }
+
+            .systems-spatial-gallery .gallery-rail {
+                flex-direction: column;
+                gap: 2.5rem;
+                padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+                overflow-x: visible;
+                scroll-snap-type: none;
+                width: 100%;
+            }
+
+            .systems-spatial-gallery .spatial-card {
+                flex: 1 1 auto;
+                width: 100%;
+                max-width: 100%;
+                grid-template-columns: 1fr; /* stack content vertically */
+                gap: 2rem;
+                padding: 2.5rem 1.75rem;
+                min-height: auto;
+                max-height: none;
+                scroll-snap-align: none;
+                transform: none !important; /* remove 3D transform on mobile */
+            }
+
+            .systems-spatial-gallery .card-visual-column {
+                order: 2; /* Visual below description */
+            }
+
+            .systems-spatial-gallery .card-visual-container {
+                height: 220px;
+                transform: none !important;
+            }
+
+            .systems-spatial-gallery .builds-card-panel {
+                transform: none !important;
+                grid-template-columns: 1fr; /* stack builds vertically on small screen */
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .systems-spatial-gallery .build-panel-thumb {
+                height: 140px;
+            }
+
+            .systems-spatial-gallery .gallery-nav-section {
+                display: none !important; /* Hide previous/next controls & progress rail on mobile */
+            }
         }
     </style>
 </head>
@@ -188,313 +638,340 @@
             </div>
         </section>
 
-        <!-- Flagship Systems Section -->
-        <section class="systems-section-dark" id="systems-projects" aria-labelledby="systems-heading" style="padding: 80px 0;">
+        <!-- Spatial Gallery Section -->
+        <section class="systems-spatial-gallery" id="systems-projects" aria-labelledby="systems-heading">
             <div class="container">
-                <div class="systems-header" style="margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;">
-                    <div>
-                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">Capabilities</span>
-                        <h2 id="systems-heading" class="section-title" style="margin-bottom: 0; color: #FAF9F5; font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem);">Flagship Systems</h2>
-                        <p class="project-copy" style="margin-top: 1rem; max-width: 600px; color: var(--text-secondary);">
-                            Software templates, logic schemas, and diagnostic dashboards designed to solve hard organizational and communication problems.
-                        </p>
-                    </div>
-                    <div class="carousel-nav-container">
-                        <button class="carousel-nav-btn" id="carousel-prev-sys" aria-label="Previous system">&larr;</button>
-                        <button class="carousel-nav-btn" id="carousel-next-sys" aria-label="Next system">&rarr;</button>
-                    </div>
+                <div class="systems-header" style="margin-bottom: 2rem; max-width: 800px; padding: 0 1rem;">
+                    <span class="eyebrow" style="color: #2DD4BF; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">Capabilities</span>
+                    <h2 id="systems-heading" class="section-title" style="margin-bottom: 0; color: #FAF9F5; font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem);">Selected Systems &amp; Projects</h2>
+                    <p class="project-copy" style="margin-top: 1rem; max-width: 650px; color: var(--text-secondary); font-size: 14.5px; line-height: 1.65;">
+                        Operational tools, information systems, independent builds, and narrative experiments designed to make complicated material easier to understand and use.
+                    </p>
                 </div>
-
-                <div class="carousel-viewport-wrapper">
-                    <div class="flagship-carousel" id="systems-carousel-view">
-                        
-                        <!-- Card 1: Signal -->
-                        <article class="flagship-project-card" id="signal">
-                            <div class="project-meta">
-                                <span class="project-num" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">01 &bull; Diagnostic Decision Support &amp; Operations Intelligence</span>
-                                <h3 class="project-title" style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1rem; color: #FAF9F5; display: flex; align-items: center; gap: 12px;">
-                                    <img src="/assets/images/signal_icon.png" style="width: 32px; height: 32px; object-fit: contain; border-radius: 6px;" alt="">
+            </div>
+            
+            <div class="gallery-wrapper">
+                <div class="gallery-rail" id="systems-carousel-view">
+                    
+                    <!-- Card 1: Signal -->
+                    <article class="spatial-card" id="signal" data-accent="teal">
+                        <div class="card-glow"></div>
+                        <span class="gallery-status-label">Interactive Demo</span>
+                        <div class="card-info">
+                            <div>
+                                <span class="card-eyebrow">01 // Operational Intelligence</span>
+                                <h3 class="card-title" style="display: flex; align-items: center; gap: 10px;">
+                                    <img src="/assets/images/signal_icon.png" style="width: 26px; height: 26px; object-fit: contain; border-radius: 4px;" alt="">
                                     Signal
                                 </h3>
-                                <p class="project-copy" style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                    A weighted decision-support system that converts operational friction into prioritized action.
+                                <p class="card-desc">
+                                    Converts operational friction into ranked decisions, practical recommendations, and measurable areas of impact.
                                 </p>
-                                
-                                <div style="margin-top:1.5rem; margin-bottom: 1.5rem;">
-                                    <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">DECISION RANKING METRICS</strong>
-                                    <ul style="padding-left: 1.25rem; margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 4px;">
-                                        <li><strong>Likely Impact:</strong> Projected financial or time savings.</li>
-                                        <li><strong>Urgency:</strong> Time-sensitive bottlenecks.</li>
-                                        <li><strong>Cost:</strong> Resource capital needed to deploy.</li>
-                                        <li><strong>Implementation Friction:</strong> Personnel training and operational setup barriers.</li>
-                                        <li><strong>Operational Risk:</strong> Business vulnerabilities addressed.</li>
-                                        <li><strong>Dependency Relationships:</strong> Downstream workflow impacts.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;">
-                                    <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Restaurant Operations</span>
-                                    <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Hospitality</span>
-                                    <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Multi-Location Services</span>
-                                    <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Operational Audits</span>
-                                </div>
-                                
-                                <div class="project-disclaimer" style="margin-top: 1rem; font-size: 11px; line-height: 1.5; color: rgba(250,249,245,0.4); border-left: 2px solid rgba(250,249,245,0.2); padding-left: 0.75rem; margin-bottom: 1.5rem;">
-                                    <strong>Disclosure:</strong> The values displayed below are fictional demonstration records and estimated metrics for architectural comparison, not measured production outcomes.
-                                </div>
-                                
-                                <div class="project-ctas" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem;">
-                                    <a href="/gold-tooth-signal-report.html" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);" target="_blank">Live Demo</a>
-                                    <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn-outline" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3); text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 3px; font-size: 12px; font-family: var(--font-mono); font-weight: bold; text-transform: uppercase;" target="_blank">GitHub &rarr;</a>
-                                </div>
-                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase; display: block;">Status: Interactive Demo</span>
                             </div>
                             
-                            <div class="visual-panel">
-                                <span class="visual-type-label" style="font-family: var(--font-mono); font-size: 9px; color: rgba(250,249,245,0.4); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">OPERATIONAL DIAGNOSTICS</span>
-                                <div class="browser-frame" style="border: 1px solid rgba(250,249,245,0.15); border-radius: 6px; overflow: hidden; background: #0b0d19; box-shadow: 0 16px 40px rgba(0,0,0,0.3);">
-                                    <div class="browser-header" style="background: rgba(250,249,245,0.03); border-bottom: 1px solid rgba(250,249,245,0.1); padding: 8px 12px; display: flex; align-items: center; gap: 6px;">
-                                        <span class="browser-dot" style="width: 6px; height: 6px; border-radius: 50%; background: rgba(250,249,245,0.2);"></span>
-                                        <span class="browser-dot" style="width: 6px; height: 6px; border-radius: 50%; background: rgba(250,249,245,0.2);"></span>
-                                        <span class="browser-dot" style="width: 6px; height: 6px; border-radius: 50%; background: rgba(250,249,245,0.2);"></span>
-                                        <span class="browser-url" style="font-family: var(--font-mono); font-size: 8px; color: rgba(250,249,245,0.4); margin-left: 8px;">signal.local/diagnostics</span>
+                            <div>
+                                <div class="card-labels-grid">
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Problem:</span>
+                                        <span class="card-label-val">Scattered operational issues</span>
                                     </div>
-                                    <div class="browser-content" style="padding: 0;">
-                                        <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard" style="width: 100%; height: auto; display: block;" loading="lazy">
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">System:</span>
+                                        <span class="card-label-val">Weighted diagnostic engine</span>
                                     </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Result:</span>
+                                        <span class="card-label-val">Prioritized action plan</span>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <a href="/gold-tooth-signal-report.html" class="btn-card-primary">Explore Signal</a>
+                                    <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn-card-outline" target="_blank" rel="noopener">View Case Study</a>
                                 </div>
                             </div>
-                        </article>
+                        </div>
+                        
+                        <div class="card-visual-column">
+                            <div class="card-visual-container">
+                                <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard Interface" style="object-fit: contain;">
+                            </div>
+                        </div>
+                    </article>
 
-                        <!-- Card 2: GenSort -->
-                        <article class="flagship-project-card" id="gensort">
-                            <div class="project-meta">
-                                <span class="project-num" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">02 &bull; Visual Asset Intelligence &amp; Local-First Organization</span>
-                                <h3 class="project-title" style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1rem; color: #FAF9F5;">GenSort</h3>
-                                <p class="project-copy" style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                    A flexible, local-first organization and export system for turning mixed visual and information assets into a usable structure.
+                    <!-- Card 2: GenSort -->
+                    <article class="spatial-card" id="gensort" data-accent="teal">
+                        <div class="card-glow"></div>
+                        <span class="gallery-status-label">Working Prototype</span>
+                        <div class="card-info">
+                            <div>
+                                <span class="card-eyebrow">02 // Information Architecture</span>
+                                <h3 class="card-title">GenSort</h3>
+                                <p class="card-desc">
+                                    Organizes fragmented files, ideas, and source material into usable project structures and export-ready collections.
                                 </p>
-                                
-                                <div style="margin-top:1.5rem; margin-bottom: 1.5rem;">
-                                    <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">POTENTIAL APPLICATIONS</strong>
-                                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 13px; color: var(--text-secondary);">
-                                        <div>&bull; Visual content libraries</div>
-                                        <div>&bull; Business files</div>
-                                        <div>&bull; Evidence organization</div>
-                                        <div>&bull; Research archives</div>
-                                        <div>&bull; Grant materials</div>
-                                        <div>&bull; Client records</div>
-                                        <div>&bull; Resource libraries</div>
-                                        <div>&bull; Mixed-media collections</div>
-                                    </div>
-                                </div>
-
-                                <div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;">
-                                    <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Local Indexing</span>
-                                    <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Metadata Curation</span>
-                                    <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Similarity Search</span>
-                                </div>
-                                
-                                <div class="project-ctas" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem;">
-                                    <a href="https://gensort-studio-sortimage.vercel.app/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);" target="_blank" rel="noopener">Live App &rarr;</a>
-                            <a href="https://github.com/rouguemuse/gensort_studio_sortimage" class="btn-outline" style="color: #FAF9F5; border-color: rgba(243,240,232,0.3); text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 3px; font-size: 12px; font-family: var(--font-mono); font-weight: bold; text-transform: uppercase;" target="_blank" rel="noopener">GitHub &rarr;</a>
-                                </div>
-                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase; display: block;">Status: Working Prototype</span>
                             </div>
                             
-                            <div class="visual-panel">
-                                <span class="visual-type-label" style="font-family: var(--font-mono); font-size: 9px; color: rgba(250,249,245,0.4); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">WORKSPACE ENVIRONMENT</span>
-                                <div class="browser-frame" style="border: 1px solid rgba(250,249,245,0.15); border-radius: 6px; overflow: hidden; background: #0b0d19; box-shadow: 0 16px 40px rgba(0,0,0,0.3);">
-                                    <div class="browser-header" style="background: rgba(250,249,245,0.03); border-bottom: 1px solid rgba(250,249,245,0.1); padding: 8px 12px; display: flex; align-items: center; gap: 6px;">
-                                        <span class="browser-dot" style="width: 6px; height: 6px; border-radius: 50%; background: rgba(250,249,245,0.2);"></span>
-                                        <span class="browser-dot" style="width: 6px; height: 6px; border-radius: 50%; background: rgba(250,249,245,0.2);"></span>
-                                        <span class="browser-dot" style="width: 6px; height: 6px; border-radius: 50%; background: rgba(250,249,245,0.2);"></span>
-                                        <span class="browser-url" style="font-family: var(--font-mono); font-size: 8px; color: rgba(250,249,245,0.4); margin-left: 8px;">gensort.local/workspace</span>
+                            <div>
+                                <div class="card-labels-grid">
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Problem:</span>
+                                        <span class="card-label-val">Disorganized source material</span>
                                     </div>
-                                    <div class="browser-content" style="padding: 0;">
-                                        <img src="/assets/images/gensort-workspace.webp" alt="GenSort Workspace Visual Catalog" style="width: 100%; height: auto; display: block;" loading="lazy">
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">System:</span>
+                                        <span class="card-label-val">Classification and grouping workflow</span>
                                     </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Result:</span>
+                                        <span class="card-label-val">Navigable project structure</span>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <a href="https://gensort-studio-sortimage.vercel.app/" class="btn-card-primary" target="_blank" rel="noopener">Explore GenSort</a>
+                                    <a href="https://gensort.vercel.app/" class="btn-card-outline" target="_blank" rel="noopener">View Product Overview</a>
                                 </div>
                             </div>
-                        </article>
+                        </div>
+                        
+                        <div class="card-visual-column">
+                            <div class="card-visual-container">
+                                <img src="/assets/images/gensort-workspace.webp" alt="GenSort Workspace Organizing Interface" style="object-fit: contain;">
+                            </div>
+                        </div>
+                    </article>
 
-                        <!-- Card 3: Message Navigation & Timeline Recovery -->
-                        <article class="flagship-project-card" id="message-record">
-                            <div class="project-meta">
-                                <span class="project-num" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">03 &bull; Record Navigation, Timeline Recovery &amp; Contradiction Review</span>
-                                <h3 class="project-title" style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1rem; color: #FAF9F5;">Message &amp; Record Analysis</h3>
-                                <p style="font-size: 11px; font-family: var(--font-mono); color: var(--accent-gold); text-transform: uppercase; margin-bottom: 0.75rem;">Includes the Contradiction Finder analysis engine</p>
-                                <p class="project-copy" style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                    An assisted-review system designed to turn fragmented messaging logs and record files into a navigable timeline.
+                    <!-- Card 3: Message & Record Analysis -->
+                    <article class="spatial-card" id="message-record" data-accent="teal">
+                        <div class="card-glow"></div>
+                        <span class="gallery-status-label">Concept Development</span>
+                        <div class="card-info">
+                            <div>
+                                <span class="card-eyebrow">03 // Evidence Navigation</span>
+                                <h3 class="card-title">Message &amp; Record Analysis</h3>
+                                <div class="card-subhead">Record Navigation, Timeline Recovery &amp; Contradiction Review</div>
+                                <p class="card-desc">
+                                    Makes large communication records searchable, traceable, and easier to review across timelines, patterns, and contradictions.
                                 </p>
-                                
-                                <div style="margin-top:1rem; margin-bottom: 1.5rem;">
-                                    <strong style="font-family:var(--font-mono);font-size:10px;color:var(--accent-teal);">SYSTEM CAPABILITIES</strong>
-                                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:0.5rem;">
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Smart Search</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Chronology Recovery</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Date &amp; Speaker Filtering</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Topic Clustering</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Message-Volume Heat Maps</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Escalation-Density Views</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Related-Record Grouping</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Contradiction Review</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Original Source Jump</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Evidence Bookmarking</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Chronology Export</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Human Review</span>
-                                    </div>
-                                </div>
-
-                                <div class="project-disclaimer" style="margin-top: 1rem; font-size: 11.5px; line-height: 1.5; color: rgba(250,249,245,0.5); border-left: 2px solid rgba(250,249,245,0.2); padding-left: 0.75rem; margin-bottom: 1.5rem;">
-                                    &ldquo;The system helps a reviewer locate, organize, compare, and understand the record. It does not replace human interpretation or independently determine another person&rsquo;s intent.&rdquo;
-                                </div>
-
-                                <div class="project-ctas" style="margin-bottom: 1rem;">
-                                    <a href="/about/#selected-work" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);">Explore Methodology</a>
-                                </div>
-                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase; display: block;">Status: Concept Model</span>
                             </div>
                             
-                            <div class="visual-panel">
-                                <span class="visual-type-label" style="font-family: var(--font-mono); font-size: 9px; color: rgba(250,249,245,0.4); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">PROCESS VISUALIZATION</span>
-                                <div class="editorial-panel" style="background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 1.75rem; color: var(--text-primary); font-family: var(--font-sans); box-shadow: 0 16px 48px rgba(0,0,0,0.3); font-size: 13px;">
-                                    <div class="message-analysis-grid" style="display: grid; gap: 1.5rem; align-items: start; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
-                                        
-                                        <!-- Left Column: Excerpts -->
-                                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                                            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 0.25rem;">
-                                                CONVERSATION LOG &bull; ID_RUN_0412
-                                            </div>
-                                            
-                                            <!-- Message bubble 1 -->
-                                            <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-red); padding: 0.75rem; border-radius: 4px; position: relative;">
-                                                <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: 0.35rem;">
-                                                    <span>SPKR_A [Subject 01]</span>
-                                                    <span>09:15 AM</span>
-                                                </div>
-                                                <p style="margin: 0; font-family: var(--font-serif); font-size: 13.5px; line-height: 1.45; color: var(--text-primary);">
-                                                    "I arrived <span style="background: rgba(225, 29, 72, 0.1); border-bottom: 1.5px dashed var(--accent-red); padding: 0 2px; font-weight: bold; color: var(--accent-red);">after</span> the meeting was adjourned."
-                                                 </p>
-                                            </div>
-       
-                                            <!-- Message bubble 2 -->
-                                            <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-teal); padding: 0.75rem; border-radius: 4px; position: relative;">
-                                                <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: 0.35rem;">
-                                                    <span>SPKR_B [Subject 02]</span>
-                                                    <span>10:04 AM</span>
-                                                </div>
-                                                <p style="margin: 0; font-family: var(--font-serif); font-size: 13.5px; line-height: 1.45; color: var(--text-primary);">
-                                                    "No, Subject 01 was inside the room <span style="background: rgba(45, 212, 191, 0.1); border-bottom: 1.5px dashed var(--accent-teal); padding: 0 2px; font-weight: bold; color: var(--accent-teal);">before</span> the schedule began."
-                                                </p>
-                                            </div>
-                                        </div>
-       
-                                        <!-- Right Column: Forensic Details -->
-                                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 1rem; border-radius: 4px; display: flex; flex-direction: column; gap: 0.75rem; height: 100%;">
-                                            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 0.25rem;">
-                                                CONTRADICTION REVIEW
-                                            </div>
-                                            
-                                            <div>
-                                                <strong style="color: var(--accent-red); font-family: var(--font-mono); font-size: 9px; display: block; margin-bottom: 0.2rem;">⚠️ POTENTIAL CHRONOLOGY CONFLICT</strong>
-                                                <div style="font-size: 11.5px; color: var(--text-secondary); line-height: 1.35;">
-                                                    Statement B presence claim conflicts with Statement A self-reported arrival by 25 mins.
-                                                </div>
-                                            </div>
-      
-                                            <div style="border-top: 1px solid var(--border-light); padding-top: 0.5rem;">
-                                                <span style="font-family: var(--font-mono); font-size: 9px; color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">TIMESTAMP DIFFERENCE</span>
-                                                <div style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--text-primary);">+25 mins variance</div>
-                                            </div>
-                                            <div style="border-top: 1px solid var(--border-light); padding-top: 0.5rem;">
-                                                <span style="font-family: var(--font-mono); font-size: 9px; color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">AUDIT STATUS</span>
-                                                <div style="font-family: var(--font-mono); font-size: 10px; font-weight: bold; color: var(--accent-teal); text-transform: uppercase;">Human Review Required</div>
-                                            </div>
-                                        </div>
+                            <div>
+                                <div class="card-labels-grid">
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Problem:</span>
+                                        <span class="card-label-val">Overwhelming message volume</span>
                                     </div>
-       
-                                    <!-- Horizontal Timeline -->
-                                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                        <div style="font-family: var(--font-mono); font-size: 9.5px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold;">
-                                            TIMELINE SCHEMATIC
-                                        </div>
-                                        <div style="position: relative; height: 45px; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; overflow: hidden;">
-                                            <div style="position: absolute; left: 1rem; right: 1rem; top: 50%; height: 1px; background: var(--border-light); z-index: 1;"></div>
-                                            <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
-                                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-teal); border: 2px solid #FFFFFF;"></div>
-                                                <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">08:50 AM</span>
-                                            </div>
-                                            <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
-                                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--border-dark); border: 2px solid #FFFFFF;"></div>
-                                                <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">09:00 AM</span>
-                                            </div>
-                                            <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;">
-                                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-red); border: 2px solid #FFFFFF;"></div>
-                                                <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; margin-top: 2px;">09:15 AM</span>
-                                            </div>
-                                        </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">System:</span>
+                                        <span class="card-label-val">Search, tagging, and timeline recovery</span>
+                                    </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Result:</span>
+                                        <span class="card-label-val">Reviewable evidence structure</span>
                                     </div>
                                 </div>
+                                <div class="card-actions">
+                                    <a href="/about/#selected-work" class="btn-card-primary">View Analysis System</a>
+                                    <a href="/about/#selected-work" class="btn-card-outline">Explore Method</a>
+                                </div>
                             </div>
-                        </article>
+                        </div>
+                        
+                        <div class="card-visual-column">
+                            <!-- Custom timeline preview mockup -->
+                            <div class="card-visual-container" style="background: #FAF9F5; border: 1px solid var(--border-dark); padding: 1.25rem; color: var(--text-primary); font-size: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div style="display: flex; gap: 0.5rem; flex-direction: column; width: 100%;">
+                                    <div style="font-family: var(--font-mono); font-size: 8px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 4px; margin-bottom: 4px;">
+                                        LOGICAL VARIANCE DETECTED
+                                    </div>
+                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-red); padding: 0.5rem; border-radius: 3px; margin-bottom: 6px;">
+                                        <span style="font-family: var(--font-mono); font-size: 8px; color: var(--text-secondary);">SPKR_A [09:15 AM]</span>
+                                        <p style="margin: 3px 0 0; font-family: var(--font-serif); font-size: 11.5px; line-height: 1.35; color: #10211D;">
+                                            "I arrived <span style="background: rgba(225,29,72,0.08); border-bottom: 1.5px dashed var(--accent-red); padding: 0 1px; color: var(--accent-red); font-weight: bold;">after</span> the meeting."
+                                        </p>
+                                    </div>
+                                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-teal); padding: 0.5rem; border-radius: 3px;">
+                                        <span style="font-family: var(--font-mono); font-size: 8px; color: var(--text-secondary);">SPKR_B [10:04 AM]</span>
+                                        <p style="margin: 3px 0 0; font-family: var(--font-serif); font-size: 11.5px; line-height: 1.35; color: #10211D;">
+                                            "Subject 01 was there <span style="background: rgba(45,212,191,0.08); border-bottom: 1.5px dashed var(--accent-teal); padding: 0 1px; color: var(--accent-teal); font-weight: bold;">before</span>."
+                                        </p>
+                                    </div>
+                                </div>
+                                <div style="border-top: 1px solid var(--border-light); padding-top: 6px; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 8.5px;">
+                                    <span style="color: var(--accent-red); font-weight: bold;">⚠️ CHRONOLOGY CONFLICT</span>
+                                    <span style="color: var(--text-primary); font-weight: bold;">+25m variance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
 
-                        <!-- Card 4: Record Integrity & Traceability -->
-                        <article class="flagship-project-card" id="record-integrity">
-                            <div class="project-meta">
-                                <span class="project-num" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">04 &bull; Provenance Verification &amp; Risk Signals</span>
-                                <h3 class="project-title" style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1rem; color: #FAF9F5;">Record Integrity &amp; Traceability</h3>
-                                <p class="project-copy" style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                    A conceptual review system that examines behavioral patterns across documents, versions, sequences, and metadata rather than treating one isolated marker as proof of manipulation.
+                    <!-- Card 4: Record Integrity & Traceability -->
+                    <article class="spatial-card" id="record-integrity" data-accent="teal">
+                        <div class="card-glow"></div>
+                        <span class="gallery-status-label">Concept Development</span>
+                        <div class="card-info">
+                            <div>
+                                <span class="card-eyebrow">04 // Document Intelligence</span>
+                                <h3 class="card-title">Record Integrity &amp; Traceability</h3>
+                                <p class="card-desc">
+                                    Examines file history, metadata, and provenance trail indicators to make record integrity easier to inspect and explain.
                                 </p>
-                                
-                                <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
-                                    <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em;">MONITORED RISK PATTERNS</strong>
-                                    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Metadata Conflicts</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Version Differences</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Source Inconsistencies</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Structural Anomalies</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Authoring Changes</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Timestamp Differences</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Creation Sequences</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Template Artifacts</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Copied Sections</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Provenance Gaps</span>
-                                        <span class="project-tag-dark" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); padding: 3px 8px; font-size: 11px; font-family: var(--font-mono); border-radius: 3px; color: var(--text-primary);">Minor Irregularities</span>
-                                    </div>
-                                </div>
-
-                                <div class="project-disclaimer" style="margin-top: 1rem; font-size: 11.5px; line-height: 1.5; color: rgba(250,249,245,0.5); border-left: 2px solid rgba(250,249,245,0.2); padding-left: 0.75rem; margin-bottom: 1.5rem;">
-                                    &ldquo;Surfaces metadata conflicts, version differences, source inconsistencies, and structural anomalies for human review. It does not independently determine fraud, authenticity, or intent.&rdquo;
-                                </div>
-                                <div class="project-ctas" style="margin-bottom: 1rem;">
-                                    <a href="/about/#selected-work" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);">Explore Methodology</a>
-                                </div>
-                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase; display: block;">Status: Concept Model</span>
                             </div>
-
-                            <div class="visual-panel">
-                                <span class="visual-type-label" style="font-family: var(--font-mono); font-size: 9px; color: rgba(250,249,245,0.4); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">PROVENANCE AUDITING</span>
-                                <!-- Native Layered Provenance Stack -->
-                                <div class="provenance-stack" style="position: relative; height: 260px; background: rgba(250,249,245,0.02); border: 1px solid rgba(250,249,245,0.1); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                                    <div class="prov-card card-source" style="position: absolute; width: 70%; background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 12px; color: var(--text-primary); transform: translate(-10px, -20px) rotate(-1deg); box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 11px;">
-                                        <div style="font-family: var(--font-mono); font-size: 8px; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; margin-bottom: 6px; color: var(--text-secondary);">ORIGINAL TRANSCRIPT (IMPORT)</div>
-                                        <span>SHA-256: 8a4f21d3f66...c81f</span>
+                            
+                            <div>
+                                <div class="card-labels-grid">
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Problem:</span>
+                                        <span class="card-label-val">Unclear document provenance</span>
                                     </div>
-                                    <div class="prov-card card-target" style="position: absolute; width: 70%; background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 12px; color: var(--text-primary); transform: translate(15px, 20px) rotate(1deg); box-shadow: 0 8px 25px rgba(0,0,0,0.4); font-size: 11px;">
-                                        <div style="font-family: var(--font-mono); font-size: 8px; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; margin-bottom: 6px; color: var(--accent-teal); font-weight: bold;">VERIFICATION LEDGER</div>
-                                        <div style="background: rgba(15, 118, 110, 0.1); color: var(--accent-teal); font-family: var(--font-mono); font-size: 9px; padding: 4px; border-radius: 2px; font-weight: bold; text-align: center; border: 1px solid rgba(15, 118, 110, 0.2); margin-top: 4px;">✓ AUDIT LOGGED &bull; REVIEW RECOMMENDED</div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">System:</span>
+                                        <span class="card-label-val">Integrity and traceability checks</span>
                                     </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Result:</span>
+                                        <span class="card-label-val">Defensible record history</span>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <a href="/about/#selected-work" class="btn-card-primary">Explore Record Integrity</a>
+                                    <a href="/about/#selected-work" class="btn-card-outline">View Technical Overview</a>
                                 </div>
                             </div>
-                        </article>
+                        </div>
+                        
+                        <div class="card-visual-column">
+                            <!-- Custom provenance stack preview mockup -->
+                            <div class="card-visual-container" style="background: rgba(250,249,245,0.02); border: 1px solid rgba(250,249,245,0.1); display: flex; align-items: center; justify-content: center; position: relative;">
+                                <div style="width: 75%; background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 10px; color: var(--text-primary); transform: translate(-10px, -15px) rotate(-1.5deg); box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 9.5px;">
+                                    <div style="font-family: var(--font-mono); font-size: 7.5px; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; margin-bottom: 4px; color: var(--text-secondary);">ORIGINAL TRANSCRIPT (IMPORT)</div>
+                                    <span style="font-family: var(--font-mono);">SHA-256: 8a4f21d3f66...c81f</span>
+                                </div>
+                                <div style="position: absolute; width: 75%; background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 10px; color: var(--text-primary); transform: translate(15px, 20px) rotate(1.5deg); box-shadow: 0 8px 25px rgba(0,0,0,0.4); font-size: 9.5px;">
+                                    <div style="font-family: var(--font-mono); font-size: 7.5px; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; margin-bottom: 4px; color: var(--accent-teal); font-weight: bold;">VERIFICATION LEDGER</div>
+                                    <div style="background: rgba(15, 118, 110, 0.1); color: var(--accent-teal); font-family: var(--font-mono); font-size: 8px; padding: 3px; border-radius: 2px; font-weight: bold; text-align: center; border: 1px solid rgba(15, 118, 110, 0.2);">✓ AUDIT LOGGED</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
 
-                    </div>
+                    <!-- Card 5: Selected Operational Builds -->
+                    <article class="spatial-card" id="client-builds" data-accent="neutral">
+                        <div class="card-glow"></div>
+                        <span class="gallery-status-label">Completed Builds</span>
+                        <div class="card-info">
+                            <div>
+                                <span class="card-eyebrow">05 // Independent Client Systems</span>
+                                <h3 class="card-title">Selected Operational Builds</h3>
+                                <p class="card-desc">
+                                    Customer-facing websites paired with practical intake, inventory, scheduling, recommendation, or lead-management systems.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <div class="card-labels-grid">
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Problem:</span>
+                                        <span class="card-label-val">Manual fragmented workflows</span>
+                                    </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">System:</span>
+                                        <span class="card-label-val">Custom operational interfaces</span>
+                                    </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Result:</span>
+                                        <span class="card-label-val">Usable business infrastructure</span>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <a href="#builds" class="btn-card-primary">View Selected Builds</a>
+                                    <a href="#builds" class="btn-card-outline">Browse Case Studies</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-visual-column">
+                            <!-- Three nested flat image panels with labels below each -->
+                            <div class="builds-card-panel">
+                                <div class="build-panel-item">
+                                    <div class="build-panel-thumb">
+                                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils Website" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
+                                    <span class="build-panel-label">INNcontrol</span>
+                                </div>
+                                <div class="build-panel-item">
+                                    <div class="build-panel-thumb">
+                                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail Website" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
+                                    <span class="build-panel-label">D2 Auto Detail</span>
+                                </div>
+                                <div class="build-panel-item">
+                                    <div class="build-panel-thumb">
+                                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals Website" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
+                                    <span class="build-panel-label">EDR Rentals</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6: How to Explain Yourself to Wolves -->
+                    <article class="spatial-card" id="wolves" data-accent="red" data-style="wolves">
+                        <div class="card-glow"></div>
+                        <span class="gallery-status-label">Completed Manuscript</span>
+                        <div class="card-info">
+                            <div>
+                                <span class="card-eyebrow">06 // Narrative System</span>
+                                <h3 class="card-title">How to Explain Yourself to Wolves</h3>
+                                <p class="card-desc">
+                                    An allegorical memoir and connected symbolic system about survival, explanation, translation failure, and the limits of being understood.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <div class="card-labels-grid">
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Form:</span>
+                                        <span class="card-label-val">Allegorical memoir</span>
+                                    </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">System:</span>
+                                        <span class="card-label-val">Symbolic narrative cartography</span>
+                                    </div>
+                                    <div class="card-label-row">
+                                        <span class="card-label-title">Status:</span>
+                                        <span class="card-label-val">Completed manuscript</span>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <a href="/creative/#project-wolves" class="btn-card-primary">Explore the Project</a>
+                                    <a href="/creative/#project-self-cartography" class="btn-card-outline">Enter Self Cartography</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-visual-column">
+                            <div class="card-visual-container">
+                                <img src="/assets/images/wolves_charcoal_art.jpg" alt="How to Explain Yourself to Wolves charcoal illustration" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- Scroll Navigation and Progress Indicator -->
+            <div class="gallery-nav-section" aria-label="Gallery Controls">
+                <div class="gallery-progress-track" aria-hidden="true">
+                    <div class="gallery-progress-fill"></div>
+                </div>
+                <div class="gallery-nav-buttons">
+                    <button class="gallery-nav-btn" id="carousel-prev-sys" aria-label="Previous Project">&larr;</button>
+                    <button class="gallery-nav-btn" id="carousel-next-sys" aria-label="Next Project">&rarr;</button>
                 </div>
             </div>
         </section>
-<!-- Resource Guide Section (Applied Information Architecture) -->
+
+        <!-- Resource Guide Section (Applied Information Architecture) -->
         <section id="resource-guide" style="background: var(--bg-paper); padding: 80px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
             <div class="container">
                 <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">APPLIED INFORMATION ARCHITECTURE</span>
@@ -861,61 +1338,114 @@
     </footer>
 
     <script>
-        // Cursor-reactive 3D tilt effect for flagship systems cards
-        document.querySelectorAll('.flagship-project-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transition = 'none';
+        const rail = document.getElementById('systems-carousel-view');
+        const fill = document.querySelector('.gallery-progress-fill');
+
+        // Scroll progress calculation using scroll ratio
+        function updateProgress() {
+            if (!rail || !fill) return;
+            const maxScroll = rail.scrollWidth - rail.clientWidth;
+            const ratio = maxScroll > 0 ? rail.scrollLeft / maxScroll : 0;
+            fill.style.transform = `scaleX(${ratio})`;
+        }
+
+        if (rail) {
+            rail.addEventListener('scroll', updateProgress, { passive: true });
+            window.addEventListener('resize', updateProgress, { passive: true });
+            updateProgress();
+        }
+
+        // Carousel navigation buttons scroll offset
+        const prevBtn = document.getElementById('carousel-prev-sys');
+        const nextBtn = document.getElementById('carousel-next-sys');
+
+        if (prevBtn && nextBtn && rail) {
+            prevBtn.addEventListener('click', () => {
+                const firstCard = rail.querySelector('.spatial-card');
+                const offset = firstCard ? firstCard.clientWidth + 48 : rail.clientWidth * 0.75;
+                rail.scrollBy({ left: -offset, behavior: 'smooth' });
             });
 
+            nextBtn.addEventListener('click', () => {
+                const firstCard = rail.querySelector('.spatial-card');
+                const offset = firstCard ? firstCard.clientWidth + 48 : rail.clientWidth * 0.75;
+                rail.scrollBy({ left: offset, behavior: 'smooth' });
+            });
+        }
+
+        // Pointer tracking for restrained 3D gyroscopic tilt and shine
+        let ticking = false;
+        document.querySelectorAll('.systems-spatial-gallery .spatial-card').forEach(card => {
             card.addEventListener('mousemove', e => {
-                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth <= 950) {
+                // Disable tilt for small screens and prefers-reduced-motion
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth <= 768) {
                     return;
                 }
+                
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
-                const xc = rect.width / 2;
-                const yc = rect.height / 2;
-                
-                const rotateX = (yc - y) / 22; // Restrained to max ~4-5 degrees
-                const rotateY = (x - xc) / 22;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const xc = rect.width / 2;
+                        const yc = rect.height / 2;
+                        
+                        // Maximum tilt rotateX: ±4deg, rotateY: ±5deg
+                        const rotateX = (yc - y) / 25; 
+                        const rotateY = (x - xc) / 25;
+                        
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                        
+                        // Update mouse position CSS variables for radial glow shine
+                        const pctX = (x / rect.width) * 100;
+                        const pctY = (y / rect.height) * 100;
+                        card.style.setProperty('--mouse-x', `${pctX}%`);
+                        card.style.setProperty('--mouse-y', `${pctY}%`);
+                        
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             });
             
+            // Return card smoothly to neutral state on mouseleave
             card.addEventListener('mouseleave', () => {
-                card.style.transition = 'transform 0.5s ease-out, box-shadow 0.3s ease';
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                card.style.setProperty('--mouse-x', '50%');
+                card.style.setProperty('--mouse-y', '50%');
             });
         });
 
-        // Carousel buttons scroll logic
-        const carousel = document.getElementById('systems-carousel-view');
-        document.getElementById('carousel-prev-sys').addEventListener('click', () => {
-            carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
-        });
-        document.getElementById('carousel-next-sys').addEventListener('click', () => {
-            carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
+        // Keyboard arrow navigation
+        window.addEventListener('keydown', e => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (e.key === 'ArrowLeft' && prevBtn) {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight' && nextBtn) {
+                nextBtn.click();
+            }
         });
 
-        // Static Project Index scroll integration
+        // Static Project Index click scrollTo integration
         document.querySelectorAll('.systems-index-item').forEach((link, idx) => {
             link.addEventListener('click', e => {
                 e.preventDefault();
                 
-                // Scroll container into view first
                 const targetSection = document.getElementById('systems-projects');
-                targetSection.scrollIntoView({ behavior: 'smooth' });
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
                 
-                // Horizontal scroll to index
                 setTimeout(() => {
-                    const cards = carousel.querySelectorAll('.flagship-project-card');
-                    if (cards[idx]) {
-                        carousel.scrollTo({
-                            left: cards[idx].offsetLeft - carousel.offsetLeft,
-                            behavior: 'smooth'
-                        });
+                    if (rail) {
+                        const cards = rail.querySelectorAll('.spatial-card');
+                        if (cards[idx]) {
+                            rail.scrollTo({
+                                left: cards[idx].offsetLeft - rail.offsetLeft,
+                                behavior: 'smooth'
+                            });
+                        }
                     }
                 }, 400);
             });
