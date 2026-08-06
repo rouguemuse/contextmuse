@@ -2917,3 +2917,337 @@ textarea:focus-visible {
         padding-top: 20px !important;
     }
 }
+
+/* ==========================================================================
+   SELECTED BUILDS SECTION (LIGHT EDITORIAL)
+   ========================================================================== */
+.builds-section {
+    background-color: var(--bg-paper);
+    padding: 120px 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.builds-header {
+    max-width: 720px;
+    margin-bottom: 5rem;
+}
+
+.builds-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.build-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    margin-bottom: 8rem;
+}
+
+.build-row:last-child {
+    margin-bottom: 0;
+}
+
+@media(min-width: 950px) {
+    .build-row {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: clamp(3rem, 7vw, 7rem);
+    }
+    
+    .build-row.row-reverse {
+        grid-template-columns: 0.9fr 1.1fr;
+    }
+    
+    .build-row.row-reverse .build-meta-col {
+        order: 2;
+    }
+    .build-row.row-reverse .build-visual-col {
+        order: 1;
+    }
+}
+
+.build-meta-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.build-num {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--accent-gold);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.build-category {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.build-title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+}
+
+.build-desc {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.build-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.build-detail-item {
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.build-detail-item::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent-teal);
+    font-weight: bold;
+}
+
+.build-detail-item h4 {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.build-detail-item p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+
+.build-ctas {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Build Visuals */
+.build-visual-col {
+    position: relative;
+}
+
+.build-browser-frame {
+    background: #FFFFFF;
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.build-browser-header {
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border-light);
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.browser-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.browser-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-dark);
+}
+
+.browser-url-bar {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--text-secondary);
+    padding: 2px 1.5rem;
+    text-align: center;
+    width: 60%;
+    max-width: 320px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 1. INNcontrol visual details */
+.inncoils-diagram {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+@media(min-width: 480px) {
+    .inncoils-diagram {
+        grid-template-columns: 1.1fr 0.9fr;
+    }
+}
+
+/* 2. D2 Auto Detail visual details */
+.d2-container {
+    position: relative;
+    height: 380px;
+    width: 100%;
+}
+
+.d2-main-site {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 70%;
+    height: 280px;
+    z-index: 10;
+}
+
+.d2-dashboard-panel {
+    position: absolute;
+    border: 1px solid var(--border-dark);
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    z-index: 5;
+    padding: 10px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+}
+
+.d2-dash-1 {
+    top: 50px;
+    right: 20px;
+    width: 45%;
+    height: 140px;
+    background: #FFFFFF;
+}
+
+.d2-dash-2 {
+    bottom: 20px;
+    right: 35px;
+    width: 45%;
+    height: 140px;
+    background: #FFFFFF;
+    z-index: 6;
+}
+
+/* 3. EDR Party Rentals visual details */
+.edr-inventory-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 1.25rem;
+}
+
+@media(min-width: 480px) {
+    .edr-inventory-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================================================
+   CONCEPT LAB SECTION (WARM & SEPARATE)
+   ========================================================================== */
+.concept-lab-section {
+    background-color: var(--bg-panel);
+    padding: 110px 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.concept-lab-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+@media(min-width: 768px) {
+    .concept-lab-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(min-width: 1050px) {
+    .concept-lab-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.concept-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 2.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+    transition: var(--transition-smooth);
+}
+
+.concept-card:hover {
+    border-color: var(--border-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+}
+
+.concept-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.concept-card-category {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-red);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.concept-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+.concept-card-desc {
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
