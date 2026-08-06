@@ -27,6 +27,10 @@
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
             <a href="/" class="logo">Context &amp; Muse</a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
             <div class="nav-links">
                 <a href="/#systems" class="nav-link">Systems</a>
                 <a href="/#process" class="nav-link">Process</a>
@@ -384,7 +388,7 @@
                             <span class="visual-type-label">PROCESS VISUALIZATION</span>
                             <div class="editorial-panel light-editorial-bg" style="background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 1.75rem; color: var(--text-primary); font-family: var(--font-sans); box-shadow: 0 16px 48px rgba(0,0,0,0.06); font-size: 13px;">
                                 <!-- Two Column Layout: Chat Transcript & Metadata Analysis -->
-                                <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.5rem; align-items: start; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+                                <div class="message-analysis-grid" style="display: grid; gap: 1.5rem; align-items: start; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
                                     
                                     <!-- Left Column: Excerpts -->
                                     <div style="display: flex; flex-direction: column; gap: 0.75rem;">
@@ -530,7 +534,7 @@
                                     <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary);">raw_ledger.csv</span>
                                 </div>
 
-                                <div style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
+                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
 
                                 <!-- Stage 2: Fingerprint -->
                                 <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
@@ -539,7 +543,7 @@
                                     <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold);">SHA-256: #9a3f2c</span>
                                 </div>
 
-                                <div style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
+                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
 
                                 <!-- Stage 3: Extraction -->
                                 <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
@@ -548,7 +552,7 @@
                                     <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary);">Normalize: 1024 Rows</span>
                                 </div>
 
-                                <div style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
+                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
 
                                 <!-- Stage 4: Comparison -->
                                 <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
@@ -557,7 +561,7 @@
                                     <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary);">Delta validation</span>
                                 </div>
 
-                                <div style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
+                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
 
                                 <!-- Stage 5: Anomaly Check -->
                                 <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 240, 232, 0.1); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
@@ -566,7 +570,7 @@
                                     <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary);">Variance: 0 flags</span>
                                 </div>
 
-                                <div style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
+                                <div class="provenance-arrow" style="color: rgba(243, 240, 232, 0.3); font-size: 1.5rem; font-weight: bold;">&rarr;</div>
 
                                 <!-- Stage 6: Verified Export -->
                                 <div class="large-flow-node" style="flex: 1; min-width: 140px; text-align: center; background: rgba(45, 212, 191, 0.05); border: 1px solid var(--accent-teal); border-radius: 4px; padding: 1rem 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
