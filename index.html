@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Context &amp; Muse | Applied Systems &amp; Creative Practice Studio</title>
-    <meta name="description" content="Context &amp; Muse turns complexity into something people can see, navigate, and act on—through applied systems, information architecture, and creative frameworks.">
+    <meta name="description" content="Context &amp; Muse turns complexity into signal — through applied systems, information architecture, and creative frameworks.">
     <link rel="canonical" href="https://contextmuse.com/">
-    
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://contextmuse.com/">
     <meta property="og:title" content="Context &amp; Muse | Applied Systems &amp; Creative Practice Studio">
-    <meta property="og:description" content="Context &amp; Muse turns complexity into something people can see, navigate, and act on—through applied systems, information architecture, and creative frameworks.">
+    <meta property="og:description" content="Context &amp; Muse turns complexity into signal. Applied systems, information architecture, and operational intelligence.">
     <meta property="og:image" content="https://contextmuse.com/social-preview.png">
 
     <!-- Fonts & CSS -->
@@ -19,32 +20,55 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=2.1">
+
     <style>
-        /* Hero Premium Redesign */
-        .hero-premium {
+        /* ── NAVBAR BRAND LOGO STYLE ── */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .navbar .logo span {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .navbar .brand-mark {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        /* ── HERO PREMIUM INTEGRATED STYLE ── */
+        .hero {
             position: relative;
-            width: 100%;
-            min-height: clamp(760px, 80vh, 840px);
+            min-height: 720px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
             background: radial-gradient(
-                circle at 70% 45%,
+                circle at 75% 50%,
                 #fffdf8 0%,
-                #f8f2e9 48%,
+                #f8f2e9 45%,
                 #f3ede4 100%
             ) !important;
             border-bottom: 1px solid #DDD8CE !important;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
             padding: 120px 0 60px 0 !important;
             box-sizing: border-box;
         }
 
         /* Readable text-side overlay gradient */
-        .hero-premium::after {
+        .hero::after {
             content: "";
             position: absolute;
             inset: 0 auto 0 0;
-            width: 52%;
+            width: 55%;
             background: linear-gradient(
                 90deg,
                 rgba(248, 244, 236, 0.98) 0%,
@@ -55,22 +79,22 @@
             z-index: 2;
         }
 
-        .hero-content-wrapper {
+        .hero-content {
             position: relative;
             z-index: 3;
-            max-width: 1380px !important;
-            padding-left: 8% !important; /* Starts ~8-10% from left edge */
-            width: 100%;
-            box-sizing: border-box;
+            width: min(1280px, calc(100% - 48px));
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
         }
 
-        .hero-copy-container {
-            max-width: 600px;
+        .hero-copy {
+            max-width: 560px;
             position: relative;
             z-index: 4;
         }
 
-        .hero-premium .hero-eyebrow {
+        .hero-eyebrow {
             font-family: var(--font-mono);
             font-size: 11px;
             font-weight: 600;
@@ -81,73 +105,80 @@
             margin-bottom: 1.5rem;
         }
 
-        .hero-premium .hero-title {
+        .hero-title {
             font-family: var(--font-serif) !important;
-            font-size: clamp(4rem, 6.2vw, 6.6rem) !important;
-            line-height: 0.88 !important;
+            font-size: clamp(3.2rem, 5.5vw, 5.8rem) !important;
+            line-height: 0.92 !important;
             letter-spacing: -0.045em !important;
-            color: #10211D !important; /* deep green-black */
+            color: #10211D !important;
             margin: 0 0 1.75rem 0 !important;
-            font-weight: 400 !important;
-            max-width: 600px !important;
+            font-weight: 500 !important;
+            max-width: 590px !important;
         }
 
-        .hero-premium .hero-subhead {
+        .hero-subhead {
             font-family: var(--font-sans) !important;
-            font-size: 19px !important; /* 18-20px text */
-            line-height: 1.65 !important;
+            font-size: 18px !important;
+            line-height: 1.6 !important;
             color: var(--text-secondary) !important;
-            margin-bottom: 2rem !important;
-            max-width: 470px !important; /* 470px maximum width */
+            margin-bottom: 2.25rem !important;
+            max-width: 500px !important;
         }
 
-        .hero-premium .btn-group {
+        .hero .btn-group {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
             margin-bottom: 3.5rem;
         }
 
-        .btn-primary-teal {
-            background: #0F766E !important; /* Deep teal */
-            border: 1px solid #0F766E !important;
-            color: #FAF9F5 !important;
-            padding: 0.75rem 1.75rem;
-            border-radius: 4px; /* Restrained rectangular */
-            font-family: var(--font-mono);
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.2s ease;
+        .hero-art {
+            position: absolute;
+            right: -4vw;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(72vw, 1180px);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        .btn-primary-teal:hover {
-            background: #115E59 !important;
-            border-color: #115E59 !important;
+        .hero-prism-img {
+            width: auto;
+            height: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+            /* Soft left-edge blend mask */
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(0,0,0,0.15) 8%,
+                black 28%,
+                black 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(0,0,0,0.15) 8%,
+                black 28%,
+                black 100%
+            );
         }
 
-        .btn-secondary-cream {
-            background: rgba(250, 249, 245, 0.65) !important; /* Warm translucent cream */
-            border: 1px solid rgba(16, 33, 29, 0.25) !important;
-            color: #10211D !important; /* Dark text */
-            padding: 0.75rem 1.75rem;
-            border-radius: 4px;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-
-        .btn-secondary-cream:hover {
-            background: rgba(250, 249, 245, 0.85) !important;
-            border-color: rgba(16, 33, 29, 0.4) !important;
+        .hero-radial-glow {
+            position: absolute;
+            right: 15%;
+            top: 45%;
+            transform: translate(50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Project Navigation Strip */
@@ -167,7 +198,7 @@
         }
 
         .project-nav-item:not(:last-child) {
-            border-right: 1px solid rgba(197, 160, 89, 0.4); /* vertical muted gold line */
+            border-right: 1px solid rgba(197, 160, 89, 0.4);
             padding-right: 1.5rem;
         }
 
@@ -199,321 +230,318 @@
             margin-top: 2px;
         }
 
-        /* Absolute Prism Visual Layer */
-        .hero-art-layer {
+        /* ── STUDIO THESIS ── */
+        .hp-thesis-section {
+            background: var(--bg-paper);
+            padding: 64px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        /* ── THE METHOD ── */
+        .method-section {
+            background: var(--bg-paper);
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .process-flow-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            position: relative;
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+        .process-flow-container::before {
+            content: '';
             position: absolute;
-            right: -4vw;
-            top: 50%;
-            transform: translateY(-50%);
-            width: min(72vw, 1180px);
-            height: 100%;
+            top: 21px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: var(--border-dark);
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .process-node {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-paper);
+            border: 1.5px solid var(--accent-teal);
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            pointer-events: none;
-            z-index: 1; /* Below text layer */
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        .process-node span {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--accent-teal);
+        }
+        .process-step:last-child .process-node {
+            border-color: var(--accent-gold);
+        }
+        .process-step:last-child .process-node span {
+            color: var(--accent-gold);
+        }
+        .step-name {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .step-desc {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            max-width: 180px;
         }
 
-        .hero-prism-artwork {
-            width: auto;
+        /* ── SYSTEMS IN PRACTICE ── */
+        .hp-projects-section {
+            background: var(--bg-panel);
+            padding: 88px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .hp-projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3.5rem;
+        }
+        .hp-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+        .hp-project-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.30s ease, box-shadow 0.30s ease, border-color 0.25s ease;
+        }
+        .hp-project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.06);
+            border-color: var(--border-dark);
+        }
+        .hp-card-visual-wrapper {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            height: 240px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hp-card-visual-wrapper img {
+            width: 100%;
             height: 100%;
-            max-height: 100%;
             object-fit: contain;
-            pointer-events: none;
-            /* Blend left edge */
-            -webkit-mask-image: linear-gradient(
-                to right,
-                transparent 0%,
-                rgba(0,0,0,.15) 8%,
-                black 28%,
-                black 100%
-            );
-            mask-image: linear-gradient(
-                to right,
-                transparent 0%,
-                rgba(0,0,0,.15) 8%,
-                black 28%,
-                black 100%
-            );
+            object-position: top center;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        .hp-project-card:hover .hp-card-visual-wrapper img {
+            transform: scale(1.015);
         }
 
-        /* Soft backdrop glow centered around the prism */
-        .hero-radial-glow {
-            position: absolute;
-            right: 15%;
-            top: 45%;
-            transform: translate(50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
+        /* ── TWO BRANCHES ── */
+        .hp-dual-section {
+            background: #10211D;
+            padding: 88px 0;
+            color: #FAF9F5;
+        }
+        .hp-dual-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .hp-dual-panel {
+            border-radius: 6px;
+            padding: 3.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+        }
+        .hp-dual-panel--systems {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(250, 249, 245, 0.1);
+        }
+        .hp-dual-panel--creative {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
         }
 
-        @media (max-width: 768px) {
-            .hero-premium {
+        /* ── CONTACT & FOOTER ── */
+        .hp-contact-section {
+            background: var(--bg-panel);
+            padding: 100px 0;
+        }
+
+        /* ── MEDIA QUERIES ── */
+        @media (max-width: 1024px) {
+            .hero {
                 min-height: auto;
-                padding: 100px 0 40px 0 !important;
+                padding: 110px 0 50px 0 !important;
+            }
+            .hero::after {
+                display: none;
+            }
+            .hero-content {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
-            .hero-premium::after {
-                display: none; /* Hide overlay on stacked layout */
-            }
-            
-            .hero-content-wrapper {
-                padding-left: 1.5rem !important;
-                padding-right: 1.5rem !important;
-            }
-            
-            .hero-copy-container {
+            .hero-copy {
                 max-width: 100%;
-            }
-            
-            .hero-premium .hero-title {
-                font-size: clamp(3.1rem, 13vw, 4.4rem) !important;
-                line-height: 0.9 !important;
-                max-width: 100% !important;
-            }
-            
-            .hero-premium .hero-subhead {
-                max-width: 100% !important;
-            }
-            
-            .hero-premium .btn-group {
-                flex-direction: column;
-                width: 100%;
-                margin-bottom: 2.5rem;
-            }
-            
-            .hero-premium .btn-group a {
-                width: 100%;
                 text-align: center;
-                box-sizing: border-box;
             }
-            
-            /* Project labels stacked in two columns */
-            .project-nav-strip {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-                max-width: 100%;
+            .hero-subhead {
+                max-width: 560px !important;
+                margin-left: auto;
+                margin-right: auto;
             }
-            
-            .project-nav-item:not(:last-child) {
-                border-right: none;
-                padding-right: 0;
+            .hero .btn-group {
+                justify-content: center;
             }
-            
-            /* Artwork layer underneath */
-            .hero-art-layer {
+            .hero-art {
                 position: relative;
                 right: 0;
                 top: 0;
                 transform: none;
-                width: 135%;
-                margin-left: -17.5%; /* Shift slightly right */
-                height: 260px;
+                width: 100%;
+                height: 320px;
                 margin-top: 2rem;
                 justify-content: center;
             }
-            
-            .hero-prism-artwork {
+            .hero-prism-img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 -webkit-mask-image: none;
                 mask-image: none;
             }
-            
-            .hero-radial-glow {
+            .project-nav-strip {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+                max-width: 440px;
+                margin: 0 auto;
+                text-align: left;
+            }
+            .project-nav-item:not(:last-child) {
+                border-right: none;
+                padding-right: 0;
+            }
+
+            .process-flow-container {
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 2.5rem;
+            }
+            .process-flow-container::before {
                 display: none;
             }
+            .process-step:last-child {
+                grid-column: 2;
+            }
+
+            .hp-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hp-dual-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .hp-dual-panel {
+                min-height: auto;
+                padding: 3rem 2.5rem;
+            }
         }
 
-        /* Carousel and Cards CSS */
-        .preview-section {
-            background: var(--bg-paper);
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .preview-header {
-            margin-bottom: 2.5rem;
-        }
-        .carousel-viewport-wrapper {
-            position: relative;
-            width: 100%;
-        }
-        .carousel-viewport {
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 1.5rem 0;
-            scrollbar-width: none;
-        }
-        .carousel-viewport::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .tilt-card {
-            flex: 0 0 85%;
-            max-width: 480px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 2.25rem;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.02);
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: transform 0.15s ease-out, box-shadow 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
-        @media (min-width: 769px) {
-            .tilt-card {
-                flex: 0 0 calc(25% - 1.5rem); /* 4 columns since we show 4 projects */
+        @media (max-width: 768px) {
+            .navbar .logo span {
+                font-size: 1.05rem;
+            }
+            .hero-title {
+                font-size: clamp(2.4rem, 10vw, 3.8rem) !important;
+                line-height: 0.95 !important;
+            }
+            .hero .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero .btn-group a {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+            .project-nav-strip {
+                max-width: 100%;
+            }
+
+            .hp-thesis-section {
+                padding: 44px 0;
+            }
+
+            .process-flow-container {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+            .process-step {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                gap: 1.25rem;
+            }
+            .process-node {
+                margin-bottom: 0;
+            }
+            .step-desc {
                 max-width: none;
             }
-            .carousel-viewport {
-                scroll-snap-type: none;
+
+            .hp-projects-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
             }
-        }
-        
-        .tilt-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%), rgba(15, 118, 110, 0.06), transparent 80%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .tilt-card:hover::before {
-            opacity: 1;
-        }
-        .tilt-card:hover {
-            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-            border-color: var(--border-dark);
-        }
-
-        .tilt-card-header {
-            display: flex;
-            justify-content: space-between;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .tilt-card-title {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        .tilt-card-desc {
-            font-size: 13.5px;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        
-        .tilt-card-visual {
-            background: var(--bg-panel);
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            height: 140px;
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateZ(20px);
-        }
-        .tilt-card-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.3s ease;
-        }
-        .tilt-card:hover .tilt-card-visual img {
-            transform: scale(1.03);
-        }
-        
-        .tilt-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-light);
-            padding-top: 1rem;
-            margin-top: auto;
-            transform: translateZ(10px);
-        }
-        .tilt-card-status {
-            font-family: var(--font-mono);
-            font-size: 9.5px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .status-live { color: var(--accent-lime); }
-        .status-demo { color: var(--accent-teal); }
-        .status-manuscript { color: var(--accent-red); }
-        
-        .tilt-card-link {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .tilt-card:hover .tilt-card-link {
-            color: var(--accent-teal);
-        }
-
-        .carousel-nav-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            font-size: 14px;
-            color: var(--text-primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-        }
-        .carousel-nav-btn:hover {
-            border-color: var(--border-dark);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navbar -->
+    <!-- ── NAV (Exactly once at top of page) ── -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
-            <a href="/" class="logo">Context &amp; Muse</a>
+            <a href="/" class="logo">
+                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="Context &amp; Muse">
+                <span>Context &amp; Muse</span>
+            </a>
             <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
@@ -522,38 +550,32 @@
                 <a href="/systems/" class="nav-link">Applied Systems</a>
                 <a href="/creative/" class="nav-link">Creative Practice</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/#contact" class="nav-btn">Contact</a>
+                <a href="#contact" class="nav-btn">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Premium Hero Section (Editorial Integrated Composition Style) -->
-    <header class="hero hero-premium" id="portfolio-hero">
-        <!-- Radial background element for soft warm glow -->
+    <!-- ── INTEGRATED HERO SECTION ── -->
+    <header class="hero" id="portfolio-hero">
         <div class="hero-radial-glow"></div>
         
-        <!-- Absolutely positioned prism artwork visual layer -->
-        <div class="hero-art-layer">
-            <img src="/assets/images/homepage_hero.jpg" class="hero-prism-artwork" alt="Context & Muse Prism" />
+        <div class="hero-art">
+            <img src="/assets/images/homepage_hero.jpg" class="hero-prism-img" alt="Context &amp; Muse Prism" />
         </div>
         
-        <!-- Continuous layout container -->
-        <div class="container hero-content-wrapper">
-            <div class="hero-copy-container">
+        <div class="container hero-content">
+            <div class="hero-copy">
                 <span class="hero-eyebrow">CONTEXT &amp; MUSE</span>
                 <h1 class="hero-title">
-                    Clarity shapes<br>
-                    perception.<br>
-                    Perception<br>
-                    changes<br>
-                    everything.
+                    Clarity shapes perception.<br>
+                    Perception changes everything.
                 </h1>
                 <p class="hero-subhead">
                     Context &amp; Muse turns complexity into signal. We build practical systems that help people see, decide, and move forward with clarity.
                 </p>
                 <div class="btn-group">
                     <a href="/systems/" class="btn-primary-teal">Explore Systems</a>
-                    <a href="#project-previews" class="btn-secondary-cream">See How It Works</a>
+                    <a href="#process" class="btn-secondary-cream">See How It Works</a>
                 </div>
                 
                 <!-- Project Navigation Strip -->
@@ -576,7 +598,7 @@
                         <span class="p-num">03</span>
                         <div class="p-meta">
                             <strong class="p-title">Message Analysis</strong>
-                            <span class="p-desc">Meaning in Motion</span>
+                            <span class="p-desc">Record Navigation</span>
                         </div>
                     </div>
                     <div class="project-nav-item">
@@ -592,175 +614,216 @@
     </header>
 
     <main id="main-content">
-        <!-- Studio Introduction Section -->
-        <section style="background: var(--bg-paper); padding: 60px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+        <!-- ── STUDIO THESIS SECTION ── -->
+        <section class="hp-thesis-section" aria-label="Studio Introduction">
             <div class="container" style="max-width: 680px; text-align: center;">
-                <p style="font-family: var(--font-serif); font-size: clamp(1.2rem, 2.5vw, 1.45rem); line-height: 1.7; color: var(--text-secondary); font-style: italic;">
+                <p style="font-family: var(--font-serif); font-size: clamp(1.2rem, 2.5vw, 1.45rem); line-height: 1.7; color: var(--text-secondary); font-style: italic; margin: 0;">
                     Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use. The studio builds software templates, logic schemas, diagnostic dashboards, and creative language projects.
                 </p>
             </div>
         </section>
 
-        <!-- Project Showcase Preview Section -->
-        <section class="preview-section" id="project-previews" aria-labelledby="preview-heading">
+        <!-- ── THE METHOD SECTION ── -->
+        <section class="method-section" id="process" aria-label="The Method">
             <div class="container">
-                <div class="preview-header" style="display: flex; justify-content: space-between; align-items: flex-end;">
-                    <div>
-                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;">Showcase</span>
-                        <h2 id="preview-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 0;">Selected Project Showcase</h2>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <button class="carousel-nav-btn" id="carousel-prev" aria-label="Previous card">&larr;</button>
-                        <button class="carousel-nav-btn" id="carousel-next" aria-label="Next card">&rarr;</button>
-                    </div>
+                <div class="method-header" style="text-align: center;">
+                    <span class="hp-eyebrow-teal" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">The Method</span>
+                    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 2.8vw, 2.2rem); margin-top: 0.5rem; margin-bottom: 0; font-weight: 400; color: var(--text-primary);">Approach to Complexity</h2>
                 </div>
                 
-                <div class="carousel-viewport-wrapper">
-                    <div class="carousel-viewport" id="carousel-view">
-                        <!-- Card 1: Signal -->
-                        <a href="/systems/#signal" class="tilt-card" tabindex="0" aria-label="Project 01: Signal (Diagnostic Dashboard)">
-                            <div>
-                                <div class="tilt-card-header">
-                                    <span>01 &bull; Diagnostic Decision Support</span>
-                                    <span>Systems</span>
-                                </div>
-                                <h3 class="tilt-card-title" style="display: flex; align-items: center; gap: 8px;">
-                                    <img src="/assets/images/signal_icon.png" style="width: 20px; height: 20px; object-fit: contain; border-radius: 4px;" alt="">
-                                    Signal
-                                </h3>
-                                <p class="tilt-card-desc">A weighted decision-support system that converts operational friction into prioritized action.</p>
-                                <div class="tilt-card-visual">
-                                    <img src="/assets/images/signal-priority-view.png" alt="Signal Priority View Dashboard screenshot" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="tilt-card-footer">
-                                <span class="tilt-card-status status-demo">Interactive Demo</span>
-                                <span class="tilt-card-link">View Project &rarr;</span>
-                            </div>
-                        </a>
-
-                        <!-- Card 2: GenSort -->
-                        <a href="/systems/#gensort" class="tilt-card" tabindex="0" aria-label="Project 02: GenSort (Visual Catalog System)">
-                            <div>
-                                <div class="tilt-card-header">
-                                    <span>02 &bull; Local-First Organization</span>
-                                    <span>Systems</span>
-                                </div>
-                                <h3 class="tilt-card-title">GenSort</h3>
-                                <p class="tilt-card-desc">A flexible, local-first organization and export system for turning mixed visual and information assets into a usable structure.</p>
-                                <div class="tilt-card-visual">
-                                    <img src="/assets/images/gensort-workspace.png" alt="GenSort Workspace Dashboard screenshot" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="tilt-card-footer">
-                                <span class="tilt-card-status status-demo">Working Prototype</span>
-                                <span class="tilt-card-link">View Project &rarr;</span>
-                            </div>
-                        </a>
-
-                        <!-- Card 3: Message & Record Analysis -->
-                        <a href="/systems/#message-record" class="tilt-card" tabindex="0" aria-label="Project 03: Message &amp; Record Analysis (Chronology Recovery)">
-                            <div>
-                                <div class="tilt-card-header">
-                                    <span>03 &bull; Timeline &amp; Contradiction Review</span>
-                                    <span>Systems</span>
-                                </div>
-                                <h3 class="tilt-card-title">Message &amp; Record Analysis</h3>
-                                <p class="tilt-card-desc">An assisted-review system designed to turn fragmented messaging logs and record files into a navigable timeline.</p>
-                                <div class="tilt-card-visual">
-                                    <img src="/assets/images/message-analysis-mockup.png" alt="Message &amp; Record Analysis Dashboard screenshot" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="tilt-card-footer">
-                                <span class="tilt-card-status status-demo">Concept Model</span>
-                                <span class="tilt-card-link">View Project &rarr;</span>
-                            </div>
-                        </a>
-
-
+                <div class="process-flow-container">
+                    <div class="process-step">
+                        <div class="process-node"><span>01</span></div>
+                        <h3 class="step-name">Identify</h3>
+                        <p class="step-desc">Find the signal inside complexity.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-node"><span>02</span></div>
+                        <h3 class="step-name">Isolate</h3>
+                        <p class="step-desc">Separate what matters from noise.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-node"><span>03</span></div>
+                        <h3 class="step-name">Organize</h3>
+                        <p class="step-desc">Create structure, relationships, hierarchy.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-node"><span>04</span></div>
+                        <h3 class="step-name">Understand</h3>
+                        <p class="step-desc">Reveal patterns, timelines, and meaning.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-node"><span>05</span></div>
+                        <h3 class="step-name">Act</h3>
+                        <p class="step-desc">Turn insight into practical decisions.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Two Primary Destinations (Side-by-side Panel Split) -->
-        <section style="background: var(--bg-panel); padding: 80px 0;">
+        <!-- ── SYSTEMS IN PRACTICE SHOWCASE (2x2 grid, large cards) ── -->
+        <section class="hp-projects-section" id="project-previews" aria-labelledby="projects-heading">
             <div class="container">
-                <div class="destination-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-                    <!-- Destination 1: Applied Systems -->
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 6px; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.02); min-height: 380px;">
+                <div class="hp-projects-header">
+                    <div>
+                        <span class="section-label" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">Showcase</span>
+                        <h2 id="projects-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.6rem); margin-top: 0.5rem; margin-bottom: 0; font-weight: 400; color: var(--text-primary);">Systems in Practice</h2>
+                    </div>
+                    <a href="/systems/" class="hp-projects-link" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; font-weight: bold; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">View All Systems &rarr;</a>
+                </div>
+
+                <div class="hp-cards-grid">
+                    <!-- Card 1: Signal -->
+                    <a href="/systems/#signal" class="hp-project-card" aria-label="Project 01: Signal (Diagnostic Dashboard)">
                         <div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent-teal); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">01 &bull; OPERATION &amp; STRUCTURE</span>
-                            <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; margin-bottom: 1.25rem; font-weight: 500;">Applied Systems</h2>
-                            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 2rem;">
-                                Operational intelligence tools, database design, and structure built for decision clarity: Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, Resource Guide Compilation, and Selected Commercial Builds.
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                <span>01 &bull; Decision Intelligence</span>
+                                <span style="font-weight: 600; color: var(--accent-teal);" class="hp-card-status status-demo">Interactive Demo</span>
+                            </div>
+                            <h3 class="hp-card-title">
+                                <img src="/assets/images/signal_icon.png" style="width: 22px; height: 22px; object-fit: contain;" alt="">
+                                Signal
+                            </h3>
+                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                                Converts operational friction into ranked decisions, practical recommendations, and measurable areas of impact.
+                            </p>
+                            <div class="hp-card-visual-wrapper">
+                                <img src="/assets/images/signal-diagnostic-preview.png" alt="Signal Dashboard Preview">
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Systems</span>
+                            <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--accent-teal);">View Project &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 2: GenSort -->
+                    <a href="/systems/#gensort" class="hp-project-card" aria-label="Project 02: GenSort (Visual Catalog System)">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                <span>02 &bull; Information Architecture</span>
+                                <span style="font-weight: 600; color: #9A7A38;" class="hp-card-status status-prototype">Working Prototype</span>
+                            </div>
+                            <h3 class="hp-card-title">
+                                <img src="/assets/images/gensort_logo.svg" style="width: 22px; height: 22px; object-fit: contain;" alt="">
+                                GenSort
+                            </h3>
+                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                                Organizes fragmented files, ideas, and source material into usable project structures and export-ready collections.
+                            </p>
+                            <div class="hp-card-visual-wrapper">
+                                <img src="/assets/images/gensort-ui-preview.png" alt="GenSort Workspace Preview">
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Systems</span>
+                            <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--accent-teal);">View Project &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Message & Record Analysis -->
+                    <a href="/systems/#message-record" class="hp-project-card" aria-label="Project 03: Message &amp; Record Analysis (Chronology Recovery)">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                <span>03 &bull; Evidence Navigation</span>
+                                <span style="font-weight: 600; color: var(--text-secondary);" class="hp-card-status status-concept">Concept Model</span>
+                            </div>
+                            <h3 class="hp-card-title">Message &amp; Record Analysis</h3>
+                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                                Makes large communication records searchable, traceable, and easier to review across timelines, patterns, and contradictions.
+                            </p>
+                            <div class="hp-card-visual-wrapper">
+                                <img src="/assets/images/message-analysis-mockup.png" alt="Message and Record Analysis Preview">
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Systems</span>
+                            <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--accent-teal);">View Project &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 4: Record Integrity -->
+                    <div class="hp-project-card" aria-label="Project 04: Record Integrity (Document Traceability)">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                <span>04 &bull; Document Traceability</span>
+                                <span style="font-weight: 600; color: var(--text-secondary);" class="hp-card-status status-concept">In Development</span>
+                            </div>
+                            <h3 class="hp-card-title">Record Integrity</h3>
+                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                                Tracks provenance, change history, and source reliability across document sets to establish a verifiable chain of record.
+                            </p>
+                            <div class="hp-card-visual-wrapper" style="background: #0d1a16; padding: 1.5rem; box-sizing: border-box;">
+                                <svg viewBox="0 0 200 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-height: 200px;">
+                                    <rect x="20" y="10" width="160" height="22" rx="2" fill="none" stroke="rgba(45,212,191,0.4)" stroke-width="1"/>
+                                    <rect x="20" y="10" width="72" height="22" rx="2" fill="rgba(45,212,191,0.12)"/>
+                                    <line x1="40" y1="52" x2="40" y2="100" stroke="rgba(45,212,191,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+                                    <rect x="24" y="48" width="100" height="16" rx="2" fill="rgba(250,249,245,0.06)" stroke="rgba(250,249,245,0.12)" stroke-width="1"/>
+                                    <rect x="24" y="72" width="76" height="16" rx="2" fill="rgba(250,249,245,0.04)" stroke="rgba(250,249,245,0.08)" stroke-width="1"/>
+                                    <rect x="24" y="96" width="120" height="16" rx="2" fill="rgba(250,249,245,0.04)" stroke="rgba(250,249,245,0.08)" stroke-width="1"/>
+                                    <circle cx="156" cy="20" r="4" fill="rgba(197,160,89,0.6)"/>
+                                    <circle cx="168" cy="20" r="4" fill="rgba(45,212,191,0.6)"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Systems</span>
+                            <span style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--text-secondary); opacity: 0.5;">In Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── TWO BRANCHES SECTION ── -->
+        <section class="hp-dual-section" aria-label="Applied Systems and Creative Practice">
+            <div class="container">
+                <div class="hp-dual-header" style="text-align: center; margin-bottom: 3.5rem;">
+                    <span style="font-family: var(--font-mono); font-size: 10px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.75rem;">The Studio</span>
+                    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: #FAF9F5; margin: 0; font-weight: 400; letter-spacing: -0.02em;">Two branches. One pattern of thinking.</h2>
+                </div>
+                <div class="hp-dual-grid">
+                    <!-- Panel 1: Applied Systems -->
+                    <div class="hp-dual-panel hp-dual-panel--systems">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: #2DD4BF; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">01 &bull; Operation &amp; Structure</span>
+                            <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2rem); color: #FAF9F5; line-height: 1.2; margin-bottom: 1.25rem; font-weight: 400;">Applied Systems</h3>
+                            <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: rgba(250, 249, 245, 0.65); margin-bottom: 2rem;">
+                                Operational tools. Decision intelligence. Diagnostic dashboards, database design, and info structures built for decision clarity: Signal, GenSort, Message Analysis, and selected commercial builds.
                             </p>
                         </div>
-                        <a href="/systems/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); width: fit-content; margin-top: auto;">Explore Applied Systems &rarr;</a>
+                        <a href="/systems/" style="background: #2DD4BF; border-color: #2DD4BF; color: #10211D; width: fit-content; margin-top: auto; font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.65rem 1.4rem; border-radius: 3px; text-decoration: none; text-align: center; display: inline-block; transition: all 0.2s;">Explore Applied Systems &rarr;</a>
                     </div>
 
-                    <!-- Destination 2: Creative Practice -->
-                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 6px; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.02); min-height: 380px;">
+                    <!-- Panel 2: Creative Practice -->
+                    <div class="hp-dual-panel hp-dual-panel--creative">
                         <div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent-red); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">02 &bull; LANGUAGE &amp; FORM</span>
-                            <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; margin-bottom: 1.25rem; font-weight: 500;">Creative Practice</h2>
-                            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 2rem;">
-                                Literary systems, symbolic cartography, and interactive narrative projects exploring translation, neurodivergent logic, and communication boundaries: How to Explain Yourself to Wolves, Self Cartography, MadeOfReasons, and Brain Raccoon.
+                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent-red); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">02 &bull; Language &amp; Form</span>
+                            <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2rem); color: #10211D; line-height: 1.2; margin-bottom: 1.25rem; font-weight: 400;">Creative Practice</h3>
+                            <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
+                                Literary systems. Symbolic mapping. Narrative projects exploring translation, neurodivergent logic, and communication boundaries: How to Explain Yourself to Wolves, Self Cartography, and MadeOfReasons.
                             </p>
                         </div>
-                        <a href="/creative/" class="btn btn-secondary" style="border-color: var(--accent-red); color: var(--accent-red); width: fit-content; margin-top: auto;">Explore Creative Practice &rarr;</a>
+                        <a href="/creative/" style="border: 1px solid var(--accent-red); color: var(--accent-red); width: fit-content; margin-top: auto; font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.65rem 1.4rem; border-radius: 3px; text-decoration: none; text-align: center; display: inline-block; background: transparent; transition: all 0.2s;">Explore Creative Practice &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Selected Proof Section (Source-Based Row) -->
-        <section class="proof-section" aria-label="Selected proof and verification status">
-            <div class="proof-container">
-                <div class="proof-row">
-                    <a href="/systems/#systems-projects" class="proof-item">
-                        <span class="proof-metric">03+</span>
-                        <h4>Working Prototypes</h4>
-                        <p>Verifiable systems codebases &rarr;</p>
-                    </a>
-                    <a href="/systems/#builds" class="proof-item">
-                        <span class="proof-metric">Active</span>
-                        <h4>Production Systems</h4>
-                        <p>Selected client websites and operational systems &rarr;</p>
-                    </a>
-                    <a href="/systems/#signal" class="proof-item">
-                        <span class="proof-metric">Demo</span>
-                        <h4>Interactive Demos</h4>
-                        <p>Product and information-architecture concepts &rarr;</p>
-                    </a>
-                    <a href="/creative/how-to-explain-yourself-to-wolves/" class="proof-item">
-                        <span class="proof-metric">01</span>
-                        <h4>Completed Manuscript</h4>
-                        <p>How to Explain Yourself to Wolves &rarr;</p>
-                    </a>
-                    <a href="/about/#operating-background" class="proof-item">
-                        <span class="proof-metric">10+ Yrs</span>
-                        <h4>Operational Leadership</h4>
-                        <p>Staffing, workflow, and hospitality operations &rarr;</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section (Simplified Premium Contrast) -->
-        <section class="audit-section" id="contact" aria-labelledby="contact-heading" style="background: var(--bg-panel); padding: 140px 0;">
+        <!-- ── CONTACT SECTION (Immediately follows Two Branches, exactly once) ── -->
+        <section class="hp-contact-section" id="contact" aria-labelledby="contact-heading">
             <div class="container">
-                <div class="audit-grid">
+                <div class="audit-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
                     <!-- Column 1: Info -->
                     <div class="audit-info">
-                        <span class="eyebrow">Contact &bull; Evaluation</span>
-                        <h2 id="contact-heading" class="section-title">
+                        <span class="eyebrow" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">Contact &bull; Evaluation</span>
+                        <h2 id="contact-heading" class="section-title" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 400; color: var(--text-primary);">
                             Bring me the mess.
                         </h2>
-                        <blockquote style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55;">
+                        <blockquote style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55; margin-left: 0;">
                             Send the workflow, information problem, or unfinished system you are trying to make sense of. I’ll identify where clarity is breaking down and what a practical next step could look like.
                         </blockquote>
-                        <p class="body-copy">
+                        <p class="body-copy" style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem;">
                             Whether you are dealing with broken spreadsheet hierarchies, conflicting timelines, POS discrepancies, or a product that feels structurally chaotic—we can map a path to order.
                         </p>
                         <div style="margin-top: 2rem; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
@@ -768,28 +831,28 @@
                         </div>
                     </div>
 
-                    <!-- Column 2: Form (Simplified to 3 Fields) -->
-                    <div class="audit-form-container" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 2rem;">
-                        <form action="https://formspree.io/f/xoqydgvw" method="POST" class="audit-form">
+                    <!-- Column 2: Form -->
+                    <div class="audit-form-container" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.01);">
+                        <form action="https://formspree.io/f/xoqydgvw" method="POST" class="audit-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <!-- Anti-spam hidden field -->
                             <input type="text" name="_gotcha" style="display:none">
                             
-                            <div class="form-group">
-                                <label for="form-name">Name</label>
-                                <input type="text" id="form-name" name="name" class="form-input" required placeholder="Name">
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Name</label>
+                                <input type="text" id="form-name" name="name" class="form-input" required placeholder="Name" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
                             </div>
                             
-                            <div class="form-group">
-                                <label for="form-email">Email Address</label>
-                                <input type="email" id="form-email" name="email" class="form-input" required placeholder="Email Address">
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Email Address</label>
+                                <input type="email" id="form-email" name="email" class="form-input" required placeholder="Email Address" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
                             </div>
 
-                            <div class="form-group">
-                                <label for="form-message">What are you trying to make clearer?</label>
-                                <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the current workflow, information problem, or operational bottleneck..."></textarea>
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">What are you trying to make clearer?</label>
+                                <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the current workflow, information problem, or operational bottleneck..." style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical;"></textarea>
                             </div>
 
-                            <button type="submit" class="form-submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.75rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: background 0.2s;">Start the Conversation</button>
+                            <button type="submit" class="form-submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.8rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s; text-align: center;">Start the Conversation</button>
                         </form>
                     </div>
                 </div>
@@ -797,11 +860,14 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ── FOOTER (Only at bottom of page) ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
-                <a href="/" class="logo">Context &amp; Muse</a>
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
                 <p>Applied Systems · Creative Practice · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
@@ -809,16 +875,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Carousel buttons scroll logic
-        const carousel = document.getElementById('carousel-view');
-        document.getElementById('carousel-prev').addEventListener('click', () => {
-            carousel.scrollBy({ left: -320, behavior: 'smooth' });
-        });
-        document.getElementById('carousel-next').addEventListener('click', () => {
-            carousel.scrollBy({ left: 320, behavior: 'smooth' });
-        });
-    </script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
+  <!-- Four-square prism mark — Context & Muse brand identity -->
+  <!-- Transparent background. viewBox exactly matches the mark. -->
+  <!-- Colors read: dark input (TL) → structured signal → refracted output (BR/gold) -->
+
+  <!-- Top-left: deep forest green -->
+  <rect x="0"  y="0"  width="10" height="10" rx="1.2" fill="#0E1F1B"/>
+  <!-- Top-right: teal-green -->
+  <rect x="12" y="0"  width="10" height="10" rx="1.2" fill="#0F766E"/>
+  <!-- Bottom-left: mid teal -->
+  <rect x="0"  y="12" width="10" height="10" rx="1.2" fill="#1A9089"/>
+  <!-- Bottom-right: warm gold — output / clarity -->
+  <rect x="12" y="12" width="10" height="10" rx="1.2" fill="#C5A059"/>
+</svg>

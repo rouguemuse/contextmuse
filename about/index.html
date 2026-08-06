@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Context &amp; Muse</title>
-    <meta name="description" content="About Jayme Volstad, operational leader and system designer building explainable systems, data validation logic, and human-in-the-loop interfaces at Context &amp; Muse.">
+    <meta name="description" content="About Jayme Volstad — operational leader and system designer who turns messy information environments into tools that support better human decisions.">
     <link rel="canonical" href="https://contextmuse.com/about/">
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://contextmuse.com/about/">
     <meta property="og:title" content="About | Context &amp; Muse">
-    <meta property="og:description" content="Operational leader and product builder designing explainable systems, data validation logic, and human-in-the-loop interfaces.">
+    <meta property="og:description" content="I build systems around how people actually work. Operational intelligence, information architecture, and decision tooling.">
     <meta property="og:image" content="https://contextmuse.com/social-preview.png">
 
     <!-- Fonts & CSS -->
@@ -20,30 +21,191 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
     <style>
-        /* Hero 2-Column Grid */
-        .hero-gateway-grid {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr; /* 45% Left, 55% Right */
-            gap: 4rem;
-            align-items: center;
+        /* ── Hero Layout ───────────────────────────────────────── */
+        .about-hero {
+            background: var(--bg-paper, #FAF9F5);
+            padding: 140px 0 0;
+            border-bottom: 1px solid var(--border-light);
+            overflow: hidden;
         }
-        @media (max-width: 992px) {
-            .hero-gateway-grid {
+
+        .about-hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: stretch;
+            min-height: 480px;
+        }
+
+        .about-hero-text {
+            padding: 0 3rem 5rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-hero-visual {
+            position: relative;
+            min-height: 420px;
+            overflow: hidden;
+            border-left: 1px solid var(--border-light);
+        }
+
+        /* Hero headline with explicit line rhythm */
+        .about-h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 500;
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            color: #10211D;
+            margin: 0 0 1.75rem;
+        }
+
+        .about-h1 em {
+            font-style: normal;
+            color: var(--accent-teal);
+        }
+
+        .about-hero-sub {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0;
+        }
+
+        /* ── Hero image artifact ───────────────────────────────── */
+        .about-hero-visual img.hero-base {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            filter: contrast(1.0) saturate(0.88) brightness(0.96);
+        }
+
+        .about-hero-visual .hero-overlay-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(250,249,245,0.55) 0%,
+                rgba(250,249,245,0.12) 40%,
+                transparent 70%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Floating artifact cards */
+        .artifact-card {
+            position: absolute;
+            z-index: 3;
+            font-family: var(--font-mono);
+            border-radius: 4px;
+            box-shadow: 0 8px 28px rgba(16,33,29,0.10);
+        }
+
+        .artifact-card--light {
+            background: rgba(250, 249, 245, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(16,33,29,0.1);
+            color: var(--text-primary);
+        }
+
+        .artifact-card--dark {
+            background: rgba(16, 33, 29, 0.97);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(250,249,245,0.12);
+            color: rgba(250,249,245,0.92);
+        }
+
+        /* ── Numbered What-I-Do list ───────────────────────────── */
+        .numbered-capabilities {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .numbered-cap-item {
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .cap-number {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-teal);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding-top: 0.35rem;
+            opacity: 0.9;
+        }
+
+        .cap-body strong {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .cap-body p {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ── Operating Background pull-quote ──────────────────── */
+        .ops-stanza {
+            font-family: var(--font-serif);
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            line-height: 2;
+            color: var(--text-primary);
+            border-left: 2.5px solid var(--accent-teal);
+            padding-left: 1.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ops-stanza .stanza-line {
+            display: block;
+        }
+
+        .ops-stanza .stanza-line--dim {
+            color: var(--text-secondary);
+            font-size: 0.88em;
+        }
+
+        /* ── Mobile ────────────────────────────────────────────── */
+        @media (max-width: 900px) {
+            .about-hero-inner {
                 grid-template-columns: 1fr;
-                gap: 3rem;
             }
-            .hero-gateway-grid .hero-text-column {
-                order: 1;
-                text-align: center !important;
+            .about-hero-text {
+                padding: 0 0 3rem 0;
+                text-align: center;
             }
-            .hero-gateway-grid .hero-visual-column {
-                order: 2;
-                display: flex;
-                justify-content: center !important;
+            .about-hero-text .about-hero-sub {
+                margin: 0 auto;
             }
-            .hero-gateway-grid .hero-visual-column > div {
-                width: 100% !important;
-                max-width: 480px !important;
+            .about-hero-visual {
+                min-height: 320px;
+                border-left: none;
+                border-top: 1px solid var(--border-light);
+            }
+            .numbered-cap-item {
+                grid-template-columns: 44px 1fr;
+                gap: 1rem;
             }
         }
     </style>
@@ -54,7 +216,10 @@
     <!-- Navbar -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
-            <a href="/" class="logo">Context &amp; Muse</a>
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
+                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;">
+                <span style="letter-spacing:0.04em;">Context &amp; Muse</span>
+            </a>
             <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
@@ -68,103 +233,162 @@
         </div>
     </nav>
 
-    <!-- Restrained Editorial Split Hero -->
-    <header class="hero hero-premium" id="portfolio-hero" style="padding: 140px 0 80px; overflow: hidden; background: var(--bg-paper, #FAF9F5); border-bottom: 1px solid var(--border-light);">
-        <div class="container hero-gateway-grid">
-            <div class="hero-text-column" style="text-align: left;">
-                <span class="eyebrow" style="letter-spacing: 0.15em; font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1rem;">ABOUT CONTEXT &amp; MUSE</span>
-                <h1 class="hero-headline" style="font-size: clamp(2.0rem, 4.0vw, 3.2rem); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 1.5rem; font-family: var(--font-serif); font-weight: 500; color: #10211D;">
-                    I build systems around the way people actually work.
-                </h1>
-                <p class="hero-subhead" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 0; max-width: 540px;">
-                    I notice where information, people, and processes stop making sense together—then create a structure that makes the next decision clearer.
-                </p>
-            </div>
-            <div class="hero-visual-column" style="display: flex; justify-content: flex-end; align-items: center; position: relative;">
-                <div style="position: relative; width: 100%; height: 320px; overflow: visible; display: flex; justify-content: flex-end; align-items: center;">
-                    
-                    <!-- Base Compass Image: watercolor paper texture, blue-gray ink, gold points, extending beyond right edge -->
-                    <div style="width: 78%; height: 100%; border-radius: 6px 0 0 6px; overflow: hidden; border: 1px solid var(--border-light); border-right: none; position: relative; z-index: 1;">
-                        <img src="/assets/images/about_compass.jpg" alt="Compass brand artwork watercolor detail" style="width: 120%; height: 100%; object-fit: cover; object-position: right center; filter: contrast(1.02) saturate(0.9) brightness(0.95); display: block;" />
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(250,249,245,1) 0%, rgba(250,249,245,0.3) 50%, transparent 100%);"></div>
-                    </div>
-                    
-                    <!-- Overlay 1: Restaurant Service Checklist -->
-                    <div style="position: absolute; top: 12%; left: 5%; width: 170px; background: rgba(250, 249, 245, 0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--border-light); border-radius: 4px; padding: 0.6rem 0.75rem; box-shadow: 0 8px 32px rgba(16,33,29,0.06); z-index: 2; font-family: var(--font-mono); font-size: 9px; color: var(--text-primary); text-align: left;">
-                        <div style="border-bottom: 1px solid var(--border-light); padding-bottom: 4px; margin-bottom: 6px; color: var(--accent-teal); font-weight: bold;">LINE CHECK // 19:30 FRI</div>
-                        <div style="margin-bottom: 3px; display: flex; align-items: center; gap: 4px;"><span>✓</span> Pastry Station Prep</div>
-                        <div style="margin-bottom: 3px; display: flex; align-items: center; gap: 4px;"><span>✓</span> Service Line Yield</div>
-                        <div style="display: flex; align-items: center; gap: 4px;"><span>✓</span> Pass Coordination</div>
+    <!-- ── HERO ──────────────────────────────────────────────────────────── -->
+    <header class="about-hero" id="portfolio-hero">
+        <div class="container">
+            <div class="about-hero-inner">
+
+                <!-- Text column -->
+                <div class="about-hero-text">
+                    <span class="eyebrow" style="letter-spacing:0.15em;font-family:var(--font-mono);font-size:11px;color:var(--accent-teal);text-transform:uppercase;font-weight:600;display:block;margin-bottom:1rem;">About Context &amp; Muse</span>
+
+                    <h1 class="about-h1">
+                        I build systems<br>
+                        around the way<br>
+                        people <em>actually</em> work.
+                    </h1>
+
+                    <p class="about-hero-sub">
+                        I notice where information, people, and processes stop making sense together — then create the structure that makes the next decision clearer.
+                    </p>
+                </div>
+
+                <!-- Visual column — expanded product artifact -->
+                <div class="about-hero-visual">
+                    <img
+                        class="hero-base"
+                        src="/assets/images/about_compass.jpg"
+                        alt="Compass and annotation detail — operational mapping artifact"
+                    >
+                    <div class="hero-overlay-gradient"></div>
+
+                    <!-- Artifact card 1: Line check -->
+                    <div class="artifact-card artifact-card--light" style="top:10%;left:8%;width:190px;padding:0.7rem 0.9rem;">
+                        <div style="border-bottom:1px solid rgba(16,33,29,0.1);padding-bottom:5px;margin-bottom:7px;color:var(--accent-teal);font-size:8.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">LINE CHECK // 19:30 FRI</div>
+                        <div style="font-size:9px;margin-bottom:4px;display:flex;align-items:center;gap:5px;"><span style="color:var(--accent-teal);">✓</span> Pastry Station Prep</div>
+                        <div style="font-size:9px;margin-bottom:4px;display:flex;align-items:center;gap:5px;"><span style="color:var(--accent-teal);">✓</span> Service Line Yield</div>
+                        <div style="font-size:9px;display:flex;align-items:center;gap:5px;"><span style="color:var(--accent-teal);">✓</span> Pass Coordination</div>
                     </div>
 
-                    <!-- Overlay 2: Real Signal Prioritization Panel -->
-                    <div style="position: absolute; bottom: 12%; left: 22%; width: 210px; background: rgba(16, 33, 29, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(250, 249, 245, 0.1); border-radius: 4px; padding: 0.6rem 0.75rem; box-shadow: 0 8px 32px rgba(16,33,29,0.12); z-index: 3; font-family: var(--font-sans); font-size: 10px; color: rgba(250, 249, 245, 0.9); text-align: left;">
-                        <div style="font-family: var(--font-mono); font-size: 8px; color: var(--accent-teal); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: bold;">Signal Prioritization</div>
-                        <div style="font-family: var(--font-serif); font-size: 11px; margin-bottom: 6px; font-weight: bold; color: #FAF9F5;">Decision queue normalization</div>
-                        <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 8.5px; color: rgba(250,249,245,0.6);">
-                            <span>Anomalies: 8</span>
-                            <span>Score: 92/100</span>
+                    <!-- Artifact card 2: Signal diagnostic -->
+                    <div class="artifact-card artifact-card--dark" style="bottom:10%;left:18%;width:240px;padding:0.75rem 1rem;">
+                        <div style="font-family:var(--font-mono);font-size:8px;color:var(--accent-teal);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.06em;font-weight:600;">Signal Prioritization</div>
+                        <div style="font-family:var(--font-serif);font-size:12px;font-weight:600;color:#FAF9F5;margin-bottom:8px;">Decision queue normalization</div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+                            <div style="font-size:9px;color:rgba(250,249,245,0.5);font-family:var(--font-mono);">ANOMALIES<br><span style="font-size:14px;font-weight:700;color:#FAF9F5;">8</span></div>
+                            <div style="font-size:9px;color:rgba(250,249,245,0.5);font-family:var(--font-mono);">SCORE<br><span style="font-size:14px;font-weight:700;color:var(--accent-teal);">92</span><span style="font-size:10px;color:rgba(250,249,245,0.4);">/100</span></div>
                         </div>
                     </div>
 
-                    <!-- Subtle Wireframe/Annotations Fragment (SVG) -->
-                    <svg style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4;" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <line x1="5" y1="20" x2="35" y2="20" stroke="rgba(16,33,29,0.1)" stroke-width="0.3" stroke-dasharray="2 2"></line>
-                        <line x1="35" y1="20" x2="45" y2="45" stroke="rgba(16,33,29,0.1)" stroke-width="0.3" stroke-dasharray="2 2"></line>
-                        <circle cx="35" cy="20" r="0.8" fill="var(--accent-teal)"></circle>
+                    <!-- Subtle annotation lines -->
+                    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <line x1="8" y1="22" x2="26" y2="22" stroke="rgba(16,33,29,0.08)" stroke-width="0.3" stroke-dasharray="2 2"></line>
+                        <line x1="26" y1="22" x2="36" y2="48" stroke="rgba(16,33,29,0.08)" stroke-width="0.3" stroke-dasharray="2 2"></line>
+                        <circle cx="26" cy="22" r="0.6" fill="var(--accent-teal)" opacity="0.7"></circle>
                     </svg>
-
                 </div>
+
             </div>
         </div>
     </header>
 
-    <!-- Prominent Editorial Quote Block -->
-    <section style="background: var(--bg-paper); padding: 50px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
-        <div class="container" style="max-width: 800px; text-align: center; padding: 0 2rem;">
-            <p style="font-family: var(--font-serif); font-size: clamp(1.2rem, 2.5vw, 1.55rem); line-height: 1.6; color: var(--text-primary); font-style: italic; margin: 0;">
-                &ldquo;I learned systems in kitchens and restaurants&mdash;where the answer has to work at 7:30 on a Friday, not just look good in a presentation.&rdquo;
+    <!-- ── EDITORIAL QUOTE ──────────────────────────────────────────────── -->
+    <section style="background:var(--bg-paper);padding:52px 0;border-bottom:1px solid var(--border-light);">
+        <div class="container" style="max-width:780px;text-align:center;padding:0 2rem;">
+            <p style="font-family:var(--font-serif);font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.65;color:var(--text-primary);font-style:italic;margin:0;">
+                &ldquo;I learned systems where failure has a cost — kitchens, production lines, and operations where the answer has to work at 7:30 on a Friday, not just look good in a presentation.&rdquo;
             </p>
         </div>
     </section>
 
     <main id="main-content">
-        <!-- 1. What I Do -->
-        <section class="intro-section" aria-label="What I Do" style="border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 5rem 0 3.5rem;">
-            <div class="container" style="max-width: 800px;">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;">01 // Focus</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">What I Do</h2>
-                <p style="font-size: 1.1rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                    I am strongest at the point where real-world operations meet technology. I identify what people are actually trying to accomplish, locate the information and workflow failures preventing it, and turn those findings into structured tools, decision systems, documentation, and implementation plans.
-                </p>
-                <p style="font-size: 1.1rem; line-height: 1.65; color: var(--text-secondary);">
-                    My work begins where &ldquo;we have the data&rdquo; stops being the same thing as &ldquo;we know what to do.&rdquo; I build for the moment when five people have five versions of what is happening and someone still has to decide what to do next.
-                </p>
+
+        <!-- ── OPERATING BACKGROUND (moved up — strongest differentiator) ── -->
+        <section id="operating-background" aria-label="Operating Background" style="background:var(--bg-panel);border-bottom:1px solid var(--border-light);padding:5.5rem 0;">
+            <div class="container" style="max-width:800px;">
+                <span class="eyebrow" style="color:var(--accent-teal);font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;">01 // Experience</span>
+                <h2 style="font-family:var(--font-serif);font-size:2rem;margin-top:0.5rem;margin-bottom:2.25rem;color:var(--text-primary);">Operating Background</h2>
+
+                <div class="ops-stanza">
+                    <span class="stanza-line">I learned systems where failure has a cost.</span>
+                    <span class="stanza-line stanza-line--dim">&nbsp;</span>
+                    <span class="stanza-line">Restaurants.</span>
+                    <span class="stanza-line">Production lines.</span>
+                    <span class="stanza-line">Customer operations.</span>
+                    <span class="stanza-line">Incomplete information.</span>
+                    <span class="stanza-line stanza-line--dim">&nbsp;</span>
+                    <span class="stanza-line stanza-line--dim">The work was never just collecting data.</span>
+                    <span class="stanza-line stanza-line--dim">It was figuring out what mattered.</span>
+                </div>
+
+                <div style="font-size:15px;line-height:1.7;color:var(--text-secondary);display:flex;flex-direction:column;gap:1.25rem;">
+                    <p>
+                        Years managing high-volume kitchen and pastry production lines built an instinct for resource prioritization, quality control, multi-workstream coordination, and adoption management under pressure.
+                    </p>
+                    <p>
+                        In a professional kitchen, an unoptimized workflow leads immediately to wasted prep, delayed service, and lost margins. That experience shapes every system I design: it must be simple, reliable, and built around how humans actually behave — not the ideal scenario in a planning document.
+                    </p>
+                    <p>
+                        The transition into operational intelligence and AI tooling was not a career pivot. It was the same problem with a wider set of tools.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- 2. How I Think -->
-        <section class="how-i-work-section" aria-label="How I Think" style="background: var(--bg-panel); border-bottom: 1px solid var(--border-light); padding: 5rem 0;">
-            <div class="container" style="max-width: 800px;">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;">02 // Philosophy</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-top: 0.5rem; margin-bottom: 3rem;">How I Think</h2>
-                
-                <div class="how-i-work-grid" style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;">
-                    <div style="border-left: 2px solid var(--accent-teal); padding-left: 1.5rem;">
-                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.75rem;">I start with the actual mess.</h3>
-                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
-                            I look at the handoffs, conflicting information, repeated work, missing context, and decisions people keep postponing.
+        <!-- ── WHAT I DO — numbered editorial format ─────────────────────── -->
+        <section id="selected-work" aria-label="What I Do" style="border-bottom:1px solid var(--border-light);padding:5.5rem 0;">
+            <div class="container" style="max-width:800px;">
+                <span class="eyebrow" style="color:var(--accent-teal);font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;">02 // Focus</span>
+                <h2 style="font-family:var(--font-serif);font-size:2rem;margin-top:0.5rem;margin-bottom:2.75rem;color:var(--text-primary);">What I Do</h2>
+
+                <div class="numbered-capabilities">
+                    <div class="numbered-cap-item">
+                        <span class="cap-number">01</span>
+                        <div class="cap-body">
+                            <strong>Untangle complexity</strong>
+                            <p>Taxonomy design, source mapping, chronology recovery, metadata contradictions, and record structure — making the disorganized navigable.</p>
+                        </div>
+                    </div>
+                    <div class="numbered-cap-item">
+                        <span class="cap-number">02</span>
+                        <div class="cap-body">
+                            <strong>Design decision systems</strong>
+                            <p>Prioritization logic, weighted scoring models, manager review queues, and human-in-the-loop workflows that support better judgment — not replace it.</p>
+                        </div>
+                    </div>
+                    <div class="numbered-cap-item">
+                        <span class="cap-number">03</span>
+                        <div class="cap-body">
+                            <strong>Turn operations into tools</strong>
+                            <p>Interactive dashboards, intake interfaces, user flow mapping, and technical implementation planning — connecting what people know to what a system can do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── HOW I THINK ────────────────────────────────────────────────── -->
+        <section id="about-jayme" aria-label="How I Think" style="background:var(--bg-panel);border-bottom:1px solid var(--border-light);padding:5.5rem 0;">
+            <div class="container" style="max-width:800px;">
+                <span class="eyebrow" style="color:var(--accent-teal);font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;">03 // Philosophy</span>
+                <h2 style="font-family:var(--font-serif);font-size:2rem;margin-top:0.5rem;margin-bottom:3rem;color:var(--text-primary);">How I Think</h2>
+
+                <div style="display:flex;flex-direction:column;gap:2.5rem;">
+                    <div style="border-left:2px solid var(--accent-teal);padding-left:1.5rem;">
+                        <h3 style="font-family:var(--font-serif);font-size:1.3rem;color:var(--text-primary);margin-bottom:0.65rem;font-weight:500;">I start with the actual mess.</h3>
+                        <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:0;">
+                            The handoffs, conflicting records, repeated work, missing context, and decisions people keep postponing. That is where the real problem lives.
                         </p>
                     </div>
-                    <div style="border-left: 2px solid var(--accent-teal); padding-left: 1.5rem;">
-                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.75rem;">I do not build dashboards just to display more information.</h3>
-                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
-                            The point is to help someone understand what matters, why it matters, and what to do next.
+                    <div style="border-left:2px solid var(--accent-teal);padding-left:1.5rem;">
+                        <h3 style="font-family:var(--font-serif);font-size:1.3rem;color:var(--text-primary);margin-bottom:0.65rem;font-weight:500;">Systems should accelerate judgment, not impersonate it.</h3>
+                        <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:0;">
+                            The goal is to help someone understand what matters, why it matters, and what to do next — not to automate away the person who has to make the call.
                         </p>
                     </div>
-                    <div style="border-left: 2px solid var(--accent-teal); padding-left: 1.5rem;">
-                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.75rem;">I build for real operating conditions.</h3>
-                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55; color: var(--text-secondary);">
+                    <div style="border-left:2px solid var(--accent-teal);padding-left:1.5rem;">
+                        <h3 style="font-family:var(--font-serif);font-size:1.3rem;color:var(--text-primary);margin-bottom:0.65rem;font-weight:500;">I build for real operating conditions.</h3>
+                        <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.6;color:var(--text-secondary);margin:0;">
                             Incomplete records, changing priorities, tired people, limited time, and systems that still have to work when no one follows the ideal process.
                         </p>
                     </div>
@@ -172,85 +396,40 @@
             </div>
         </section>
 
-        <!-- 3. Where I'm Most Useful -->
-        <section class="usefulness-section" aria-label="Where I'm Most Useful" style="border-bottom: 1px solid var(--border-light); padding: 5rem 0;">
-            <div class="container" style="max-width: 800px;">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;">03 // Application</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">Where I&rsquo;m Most Useful</h2>
-                <p style="margin-bottom: 3rem; color: var(--text-secondary); font-size: 1.05rem;">Specific transition points where operational leadership meets technical execution.</p>
-
-                <div class="capabilities-checklist" style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
-                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 4px; padding: 1.75rem;">
-                        <strong style="font-family: var(--font-serif); font-size: 1.15rem; display: block; margin-bottom: 0.5rem; color: var(--text-primary);">Untangling complex information</strong>
-                        <p style="font-size: 14px; line-height: 1.5; color: var(--text-secondary);">Taxonomy design, source mapping, chronology recovery, metadata contradictions, and record structure.</p>
-                    </div>
-                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 4px; padding: 1.75rem;">
-                        <strong style="font-family: var(--font-serif); font-size: 1.15rem; display: block; margin-bottom: 0.5rem; color: var(--text-primary);">Designing decision systems</strong>
-                        <p style="font-size: 14px; line-height: 1.5; color: var(--text-secondary);">Prioritization logic, weighted scoring models, manager review queues, and human-in-the-loop workflows.</p>
-                    </div>
-                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 4px; padding: 1.75rem;">
-                        <strong style="font-family: var(--font-serif); font-size: 1.15rem; display: block; margin-bottom: 0.5rem; color: var(--text-primary);">Turning operations into products</strong>
-                        <p style="font-size: 14px; line-height: 1.5; color: var(--text-secondary);">Interactive dashboards, intake interfaces, user flow mapping, and technical implementation planning.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. Operating Background -->
-        <section class="operating-section" id="operating-background" aria-label="Operating Background" style="background: var(--bg-panel); border-bottom: 1px solid var(--border-light); padding: 5rem 0;">
-            <div class="container" style="max-width: 800px;">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;">04 // Experience</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-top: 0.5rem; margin-bottom: 2rem;">Operating Background</h2>
-                
-                <div style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2.5rem; line-height: 1.55;">
-                    &ldquo;I learned systems in kitchens and restaurants&mdash;where the answer has to work at 7:30 on a Friday, not just look good in a presentation.&rdquo;
-                </div>
-                
-                <div style="font-size: 15px; line-height: 1.65; color: var(--text-secondary); display: flex; flex-direction: column; gap: 1.25rem;">
-                    <p>
-                        Years of managing high-volume kitchen and pastry production lines taught me resource prioritization, strict quality control, multi-workstream coordination, and adoption management. 
-                    </p>
-                    <p>
-                        In a professional kitchen, an unoptimized workflow leads immediately to wasted prep, delayed times, and lost margins. That experience drives how I design digital tools: they must be simple, reliable, and built around actual human behavior rather than idealistic scenarios.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Selected Capabilities & Contact -->
-        <section class="audit-section" id="contact" aria-labelledby="contact-heading" style="padding: 5rem 0;">
-            <div class="container" style="max-width: 800px;">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;">05 // Contact</span>
-                <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: 2rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">Get in Touch</h2>
-                <p style="margin-bottom: 3rem; color: var(--text-secondary); font-size: 1.05rem;">
+        <!-- ── CONTACT ────────────────────────────────────────────────────── -->
+        <section id="contact" aria-labelledby="contact-heading" style="padding:5.5rem 0;">
+            <div class="container" style="max-width:800px;">
+                <span class="eyebrow" style="color:var(--accent-teal);font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;">04 // Contact</span>
+                <h2 id="contact-heading" style="font-family:var(--font-serif);font-size:2rem;margin-top:0.5rem;margin-bottom:1.25rem;color:var(--text-primary);">Get in Touch</h2>
+                <p style="margin-bottom:3rem;color:var(--text-secondary);font-size:1.05rem;line-height:1.65;">
                     Bring me the mess. Send the workflow, information problem, or unfinished system you are trying to make sense of.
                 </p>
 
-                <div class="form-wrapper" style="background: var(--bg-panel); border: 1px solid var(--border-light); padding: 2.5rem; border-radius: 6px;">
+                <div class="form-wrapper" style="background:var(--bg-panel);border:1px solid var(--border-light);padding:2.5rem;border-radius:6px;">
                     <form id="audit-form" novalidate>
-                        <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label for="user-name" class="form-label" style="display: block; font-family: var(--font-mono); font-size: 11px; margin-bottom: 0.5rem; text-transform: uppercase; color: var(--text-secondary);">Your Name</label>
-                            <input type="text" id="user-name" class="form-input" required style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); background: var(--bg-paper);">
-                            <span class="error-msg" id="name-error" style="color: var(--accent-red); font-size: 12px; margin-top: 0.25rem; display: none;">Please enter your name.</span>
+                        <div class="form-group" style="margin-bottom:1.5rem;">
+                            <label for="user-name" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Your Name</label>
+                            <input type="text" id="user-name" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
+                            <span class="error-msg" id="name-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please enter your name.</span>
                         </div>
-                        <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label for="user-email" class="form-label" style="display: block; font-family: var(--font-mono); font-size: 11px; margin-bottom: 0.5rem; text-transform: uppercase; color: var(--text-secondary);">Your Email</label>
-                            <input type="email" id="user-email" class="form-input" required style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); background: var(--bg-paper);">
-                            <span class="error-msg" id="email-error" style="color: var(--accent-red); font-size: 12px; margin-top: 0.25rem; display: none;">Please enter a valid email address.</span>
+                        <div class="form-group" style="margin-bottom:1.5rem;">
+                            <label for="user-email" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Your Email</label>
+                            <input type="email" id="user-email" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
+                            <span class="error-msg" id="email-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please enter a valid email address.</span>
                         </div>
-                        <div class="form-group" style="margin-bottom: 2rem;">
-                            <label for="user-message" class="form-label" style="display: block; font-family: var(--font-mono); font-size: 11px; margin-bottom: 0.5rem; text-transform: uppercase; color: var(--text-secondary);">Message / Problem Description</label>
-                            <textarea id="user-message" class="form-input" rows="5" required style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); background: var(--bg-paper); resize: vertical;"></textarea>
-                            <span class="error-msg" id="message-error" style="color: var(--accent-red); font-size: 12px; margin-top: 0.25rem; display: none;">Please describe the problem or workflow.</span>
+                        <div class="form-group" style="margin-bottom:2rem;">
+                            <label for="user-message" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Message / Problem Description</label>
+                            <textarea id="user-message" class="form-input" rows="5" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);resize:vertical;"></textarea>
+                            <span class="error-msg" id="message-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please describe the problem or workflow.</span>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); cursor: pointer; width: 100%;">Send Inquiry</button>
+                        <button type="submit" id="form-submit-btn" class="btn btn-primary" style="background:var(--accent-teal);border-color:var(--accent-teal);cursor:pointer;width:100%;font-size:13px;letter-spacing:0.05em;">Start a Conversation</button>
                     </form>
-                    
-                    <div id="form-success" style="display: none; background: rgba(77, 124, 15, 0.08); border: 1px solid var(--accent-teal); padding: 1rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); font-weight: bold; text-align: center;">
+
+                    <div id="form-success" style="display:none;background:rgba(77,124,15,0.08);border:1px solid var(--accent-teal);padding:1rem;border-radius:4px;margin-top:1rem;color:var(--accent-teal);font-weight:bold;text-align:center;">
                         Thank you. Your message has been recorded.
                     </div>
-                    
-                    <p style="font-family: var(--font-sans); font-size: 11px; color: var(--text-secondary); margin-top: 1.5rem; line-height: 1.4; text-align: center;">
+
+                    <p style="font-family:var(--font-sans);font-size:11px;color:var(--text-secondary);margin-top:1.5rem;line-height:1.4;text-align:center;">
                         <strong>Privacy Notice:</strong> Any details submitted are stored strictly for operational review and correspondence. Information is never sold, shared, or compiled into third-party records.
                     </p>
                 </div>
@@ -262,7 +441,10 @@
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
-                <a href="/" class="logo">Context &amp; Muse</a>
+                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
+                    <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;">
+                    <span style="letter-spacing:0.04em;">Context &amp; Muse</span>
+                </a>
                 <p>Applied Systems · Creative Practice · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
@@ -272,94 +454,71 @@
     </footer>
 
     <script>
-        // Contact form validation & AJAX fetch submission handler
+        // Contact form validation & AJAX submission
         const form = document.getElementById('audit-form');
         const successDiv = document.getElementById('form-success');
 
-        // Create global form error element if it does not exist
         let errorMsgGlobal = document.getElementById('form-error-global');
         if (!errorMsgGlobal) {
             errorMsgGlobal = document.createElement('div');
             errorMsgGlobal.id = 'form-error-global';
-            errorMsgGlobal.style.display = 'none';
-            errorMsgGlobal.style.background = 'rgba(225, 29, 72, 0.08)';
-            errorMsgGlobal.style.border = '1px solid var(--accent-red)';
-            errorMsgGlobal.style.padding = '1rem';
-            errorMsgGlobal.style.borderRadius = '4px';
-            errorMsgGlobal.style.marginTop = '1rem';
-            errorMsgGlobal.style.color = 'var(--accent-red)';
-            errorMsgGlobal.style.fontWeight = 'bold';
-            errorMsgGlobal.style.textAlign = 'center';
-            errorMsgGlobal.style.fontFamily = 'var(--font-sans)';
-            errorMsgGlobal.style.fontSize = '13px';
+            Object.assign(errorMsgGlobal.style, {
+                display: 'none',
+                background: 'rgba(225,29,72,0.08)',
+                border: '1px solid var(--accent-red)',
+                padding: '1rem',
+                borderRadius: '4px',
+                marginTop: '1rem',
+                color: 'var(--accent-red)',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                fontFamily: 'var(--font-sans)',
+                fontSize: '13px'
+            });
             form.parentNode.appendChild(errorMsgGlobal);
         }
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', e => {
             e.preventDefault();
-            
             let isValid = true;
-            
-            const name = document.getElementById('user-name');
-            const nameErr = document.getElementById('name-error');
-            if (!name.value.trim()) {
-                nameErr.style.display = 'block';
-                isValid = false;
-            } else {
-                nameErr.style.display = 'none';
-            }
 
-            const email = document.getElementById('user-email');
+            const name     = document.getElementById('user-name');
+            const nameErr  = document.getElementById('name-error');
+            if (!name.value.trim()) { nameErr.style.display = 'block'; isValid = false; }
+            else { nameErr.style.display = 'none'; }
+
+            const email    = document.getElementById('user-email');
             const emailErr = document.getElementById('email-error');
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email.value.trim() || !emailPattern.test(email.value.trim())) {
-                emailErr.style.display = 'block';
-                isValid = false;
-            } else {
-                emailErr.style.display = 'none';
-            }
+            const emailRe  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRe.test(email.value.trim())) { emailErr.style.display = 'block'; isValid = false; }
+            else { emailErr.style.display = 'none'; }
 
-            const message = document.getElementById('user-message');
-            const msgErr = document.getElementById('message-error');
-            if (!message.value.trim()) {
-                msgErr.style.display = 'block';
-                isValid = false;
-            } else {
-                msgErr.style.display = 'none';
-            }
+            const message  = document.getElementById('user-message');
+            const msgErr   = document.getElementById('message-error');
+            if (!message.value.trim()) { msgErr.style.display = 'block'; isValid = false; }
+            else { msgErr.style.display = 'none'; }
 
             if (isValid) {
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
+                const btn = document.getElementById('form-submit-btn');
+                btn.disabled = true;
+                btn.textContent = 'Sending…';
                 errorMsgGlobal.style.display = 'none';
 
                 fetch('https://formspree.io/f/xoqydgvw', {
                     method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name.value.trim(),
-                        email: email.value.trim(),
-                        message: message.value.trim()
-                    })
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ name: name.value.trim(), email: email.value.trim(), message: message.value.trim() })
                 })
-                .then(response => {
-                    if (response.ok) {
+                .then(res => {
+                    if (res.ok) {
                         form.style.display = 'none';
                         successDiv.style.display = 'block';
-                        errorMsgGlobal.style.display = 'none';
-                    } else {
-                        throw new Error('Server returned an error status.');
-                    }
+                    } else { throw new Error(); }
                 })
-                .catch(error => {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
-                    errorMsgGlobal.textContent = 'Failed to submit form. Please check your network connection and try again.';
+                .catch(() => {
+                    btn.disabled = false;
+                    btn.textContent = 'Start a Conversation';
+                    errorMsgGlobal.textContent = 'Failed to submit. Please check your connection and try again.';
                     errorMsgGlobal.style.display = 'block';
                 });
             }
