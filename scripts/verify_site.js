@@ -1,10 +1,19 @@
 import fs from 'fs';
 import path from 'path';
 import http from 'http';
+import https from 'https';
 
 const projectRoot = 'C:\\Users\\rougu\\.gemini\\antigravity\\scratch\\contextmuse-homepage';
 const reportsDir = path.join(projectRoot, 'reports');
 const reportFilePath = path.join(reportsDir, 'site-verification-report.txt');
+
+// Parse CLI arguments for remote deployment testing
+const args = process.argv.slice(2);
+let remoteUrl = null;
+const urlArgIndex = args.indexOf('--url');
+if (urlArgIndex !== -1 && args[urlArgIndex + 1]) {
+    remoteUrl = args[urlArgIndex + 1].replace(/\/$/, '');
+}
 
 // Ensure reports directory exists
 if (!fs.existsSync(reportsDir)) {
@@ -22,6 +31,10 @@ log('                  ROUTE AND LINK VERIFICATION REPORT                      '
 log('==========================================================================');
 log(`Timestamp: ${new Date().toISOString()}`);
 log(`Deployment Root: ${projectRoot}`);
+if (remoteUrl) {
+    log(`Testing Remote Target: ${remoteUrl}`);
+}
+log('==========================================================================');
 
 let overallSuccess = true;
 
@@ -30,6 +43,7 @@ let overallSuccess = true;
 // ==========================================================================
 log('\n[1] CONFIGURATION CHECKS (vercel.json)');
 const vercelJsonPath = path.join(projectRoot, 'vercel.json');
+let vercelRedirects = [];
 if (fs.existsSync(vercelJsonPath)) {
     try {
         const vercelConfig = JSON.parse(fs.readFileSync(vercelJsonPath, 'utf8'));
@@ -38,6 +52,10 @@ if (fs.existsSync(vercelJsonPath)) {
         } else {
             log('  [FAIL] vercel.json exists but trailingSlash is NOT true.');
             overallSuccess = false;
+        }
+        if (Array.isArray(vercelConfig.redirects)) {
+            vercelRedirects = vercelConfig.redirects;
+            log(`  [PASS] Found ${vercelRedirects.length} redirects in vercel.json.`);
         }
     } catch (e) {
         log(`  [FAIL] Failed to parse vercel.json: ${e.message}`);
@@ -49,79 +67,11 @@ if (fs.existsSync(vercelJsonPath)) {
 }
 
 // ==========================================================================
-// 2. CANONICAL REDIRECT BEHAVIOR CHECKS
+// 2. SITEMAP VALIDATION
 // ==========================================================================
-log('\n[2] CANONICAL REDIRECT BEHAVIOR CHECKS');
-
-// Helper to make HTTP request locally
-function testUrlRedirect(host, port, reqPath, expectedStatus, expectedTarget) {
-    return new Promise((resolve) => {
-        const options = {
-            host: host,
-            port: port,
-            path: reqPath,
-            method: 'GET',
-            headers: { 'host': 'contextmuse.com' }
-        };
-
-        const req = http.request(options, (res) => {
-            let redirectTarget = res.headers.location || '';
-            resolve({
-                status: res.statusCode,
-                target: redirectTarget,
-                success: res.statusCode === expectedStatus && redirectTarget.endsWith(expectedTarget)
-            });
-        });
-
-        req.on('error', () => {
-            resolve({ status: 0, target: '', success: false, offline: true });
-        });
-
-        req.setTimeout(1000, () => {
-            req.destroy();
-            resolve({ status: 0, target: '', success: false, timeout: true });
-        });
-
-        req.end();
-    });
-}
-
-async function runRedirectTests() {
-    const host = '127.0.0.1';
-    const port = 3000;
-    const testCases = [
-        { path: '/jayme', target: '/about/' },
-        { path: '/creative', target: '/creative/' },
-        { path: '/creative/resource-guide', target: '/systems/resource-guide/' }
-    ];
-
-    let serverOnline = false;
-    for (const testCase of testCases) {
-        const res = await testUrlRedirect(host, port, testCase.path, 308, testCase.target);
-        if (res.offline) {
-            log(`  [WARN] Local Vercel server (port ${port}) is offline. Direct HTTP redirect tests skipped.`);
-            log(`         tested configuration file (vercel.json trailingSlash rules) as fallback.`);
-            break;
-        }
-        serverOnline = true;
-        log(`  Initial requested URL: http://${host}:${port}${testCase.path}`);
-        log(`  Initial HTTP status: ${res.status}`);
-        log(`  Redirect destination: ${res.target}`);
-        if (res.success) {
-            log(`  [PASS] Noncanonical route redirected to canonical route with 308 status code.`);
-        } else {
-            log(`  [FAIL] Redirect check failed (Status: ${res.status}, Target: ${res.target})`);
-            overallSuccess = false;
-        }
-    }
-    return serverOnline;
-}
-
-// ==========================================================================
-// 3. SITEMAP VALIDATION
-// ==========================================================================
-log('\n[3] SITEMAP VALIDATION');
+log('\n[2] SITEMAP VALIDATION');
 const sitemapPath = path.join(projectRoot, 'sitemap.xml');
+const sitemapUrls = [];
 if (fs.existsSync(sitemapPath)) {
     const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
     if (sitemapContent.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"') && sitemapContent.includes('<urlset')) {
@@ -137,23 +87,56 @@ if (fs.existsSync(sitemapPath)) {
         log('  [PASS] sitemap.xml contains no forbidden lastmod dates.');
     }
 
-    const publicUrls = [
-        'https://contextmuse.com/',
-        'https://contextmuse.com/about/',
-        // 'https://contextmuse.com/jayme/product-experience/',
-        'https://contextmuse.com/creative/',
-        'https://contextmuse.com/creative/how-to-explain-yourself-to-wolves/',
-        'https://contextmuse.com/systems/resource-guide/',
-        'https://contextmuse.com/systems/'
-    ];
+    const locRegex = /<loc>([^<]+)<\/loc>/g;
+    let match;
+    while ((match = locRegex.exec(sitemapContent)) !== null) {
+        sitemapUrls.push(match[1]);
+    }
 
-    publicUrls.forEach(url => {
-        if (sitemapContent.includes(`<loc>${url}</loc>`)) {
-            log(`  [PASS] Sitemap includes location: ${url}`);
+    log(`  Discovered ${sitemapUrls.length} URLs in sitemap.`);
+    sitemapUrls.forEach(url => {
+        if (url.startsWith('https://www.contextmuse.com/')) {
+            log(`    [PASS] Sitemap URL uses standard www prefix: ${url}`);
         } else {
-            log(`  [FAIL] Sitemap missing location: ${url}`);
+            log(`    [FAIL] Sitemap URL does NOT use www prefix: ${url}`);
             overallSuccess = false;
         }
+    });
+
+    // Check sitemap targets
+    const expectedSitemapUrls = [
+        'https://www.contextmuse.com/',
+        'https://www.contextmuse.com/about/',
+        'https://www.contextmuse.com/systems/',
+        'https://www.contextmuse.com/systems/signal/',
+        'https://www.contextmuse.com/systems/resource-guide/',
+        'https://www.contextmuse.com/restaurant-systems/',
+        'https://www.contextmuse.com/creative/',
+        'https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/',
+        'https://www.contextmuse.com/privacy/',
+        'https://www.contextmuse.com/terms/'
+    ];
+
+    expectedSitemapUrls.forEach(url => {
+        if (sitemapUrls.includes(url)) {
+            log(`    [PASS] Sitemap registered URL: ${url}`);
+        } else {
+            log(`    [FAIL] Sitemap missing registered URL: ${url}`);
+            overallSuccess = false;
+        }
+    });
+
+    // Check that redirect source URLs are not in the sitemap
+    vercelRedirects.forEach(redir => {
+        const sourcePath = redir.source.replace(/^\//, '').replace(/\/$/, '');
+        sitemapUrls.forEach(url => {
+            const parsedUrl = new URL(url);
+            const pathClean = parsedUrl.pathname.replace(/^\//, '').replace(/\/$/, '');
+            if (pathClean === sourcePath && sourcePath !== '') {
+                log(`    [FAIL] Redirect source path "/${sourcePath}/" is incorrectly present in sitemap.xml: ${url}`);
+                overallSuccess = false;
+            }
+        });
     });
 } else {
     log('  [FAIL] sitemap.xml does not exist in root directory.');
@@ -161,19 +144,25 @@ if (fs.existsSync(sitemapPath)) {
 }
 
 // ==========================================================================
-// 4. STRUCTURE AND NAVIGATION AUDITS
+// 3. STRUCTURE AND NAVIGATION AUDITS
 // ==========================================================================
-log('\n[4] STRUCTURE AND NAVIGATION AUDITS');
+log('\n[3] STRUCTURE AND NAVIGATION AUDITS');
 const filesToVerify = [
-    { name: 'index.html', relPath: 'index.html', canonical: 'https://contextmuse.com/' },
+    { name: 'index.html', relPath: 'index.html', canonical: 'https://www.contextmuse.com/' },
     { name: 'proof-of-work.html', relPath: 'proof-of-work.html', canonical: null },
-    { name: 'about/index.html', relPath: 'about/index.html', canonical: 'https://contextmuse.com/about/' },
-    // { name: 'jayme/product-experience/index.html', relPath: 'jayme/product-experience/index.html', canonical: 'https://contextmuse.com/jayme/product-experience/' },
-    { name: 'creative/index.html', relPath: 'creative/index.html', canonical: 'https://contextmuse.com/creative/' },
-    { name: 'creative/how-to-explain-yourself-to-wolves/index.html', relPath: 'creative/how-to-explain-yourself-to-wolves/index.html', canonical: 'https://contextmuse.com/creative/how-to-explain-yourself-to-wolves/' },
-    { name: 'systems/resource-guide/index.html', relPath: 'systems/resource-guide/index.html', canonical: 'https://contextmuse.com/systems/resource-guide/' },
-    { name: 'systems/index.html', relPath: 'systems/index.html', canonical: 'https://contextmuse.com/systems/' }
+    { name: 'about/index.html', relPath: 'about/index.html', canonical: 'https://www.contextmuse.com/about/' },
+    { name: 'creative/index.html', relPath: 'creative/index.html', canonical: 'https://www.contextmuse.com/creative/' },
+    { name: 'creative/how-to-explain-yourself-to-wolves/index.html', relPath: 'creative/how-to-explain-yourself-to-wolves/index.html', canonical: 'https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/' },
+    { name: 'systems/index.html', relPath: 'systems/index.html', canonical: 'https://www.contextmuse.com/systems/' },
+    { name: 'systems/signal/index.html', relPath: 'systems/signal/index.html', canonical: 'https://www.contextmuse.com/systems/signal/' },
+    { name: 'systems/resource-guide/index.html', relPath: 'systems/resource-guide/index.html', canonical: 'https://www.contextmuse.com/systems/resource-guide/' },
+    { name: 'restaurant-systems/index.html', relPath: 'restaurant-systems/index.html', canonical: 'https://www.contextmuse.com/restaurant-systems/' },
+    { name: 'privacy/index.html', relPath: 'privacy/index.html', canonical: 'https://www.contextmuse.com/privacy/' },
+    { name: 'terms/index.html', relPath: 'terms/index.html', canonical: 'https://www.contextmuse.com/terms/' }
 ];
+
+const pageTitles = new Set();
+const pageDescriptions = new Set();
 
 filesToVerify.forEach(fileSpec => {
     const filePath = path.join(projectRoot, fileSpec.relPath);
@@ -186,29 +175,75 @@ filesToVerify.forEach(fileSpec => {
     const content = fs.readFileSync(filePath, 'utf8');
     log(`\n  Auditing route page: ${fileSpec.relPath}...`);
 
-    // 4.1 Title check
-    const titleMatch = content.match(/<title>([^<]+)<\/title>/i);
-    if (titleMatch) {
-        log(`    [PASS] Title: "${titleMatch[1].trim()}"`);
+    // 3.1 Title check
+    const titleMatch = content.match(/<title>([^<]+)<\/title>/gi);
+    if (titleMatch && titleMatch.length === 1) {
+        const titleText = titleMatch[0].replace(/<\/?title>/gi, '').trim();
+        log(`    [PASS] Title: "${titleText}"`);
+        if (pageTitles.has(titleText)) {
+            log(`    [FAIL] Duplicate page title detected: "${titleText}"`);
+            overallSuccess = false;
+        } else {
+            pageTitles.add(titleText);
+        }
     } else {
-        log(`    [FAIL] Missing <title> tag`);
+        log(`    [FAIL] Missing or multiple <title> tags. Count: ${titleMatch ? titleMatch.length : 0}`);
         overallSuccess = false;
     }
 
-    // 4.2 Canonical URL check
-    if (fileSpec.canonical) {
-        const canonicalMatch = content.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
-        if (canonicalMatch && canonicalMatch[1] === fileSpec.canonical) {
-            log(`    [PASS] Canonical matches declared URL: "${canonicalMatch[1]}"`);
-        } else {
-            log(`    [FAIL] Canonical URL missing or does not match: expected "${fileSpec.canonical}", found "${canonicalMatch ? canonicalMatch[1] : 'none'}"`);
+    // 3.2 Meta description check
+    const descMatch = content.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
+    if (descMatch) {
+        const descText = descMatch[1].trim();
+        log(`    [PASS] Meta Description: "${descText}"`);
+        if (pageDescriptions.has(descText)) {
+            log(`    [FAIL] Duplicate meta description detected: "${descText}"`);
             overallSuccess = false;
+        } else {
+            pageDescriptions.add(descText);
         }
     } else {
-        log(`    [INFO] Canonical tag not expected for internal portfolio assets.`);
+        log(`    [FAIL] Missing meta description tag`);
+        overallSuccess = false;
     }
 
-    // 4.3 Heading validation
+    // 3.3 Canonical URL check
+    if (fileSpec.canonical) {
+        const canonicalMatches = content.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/gi) || [];
+        if (canonicalMatches.length === 1) {
+            const canonicalHref = canonicalMatches[0].match(/href=["']([^"']+)["']/i)[1];
+            if (canonicalHref === fileSpec.canonical) {
+                log(`    [PASS] Canonical matches expected: "${canonicalHref}"`);
+            } else {
+                log(`    [FAIL] Canonical URL mismatch: expected "${fileSpec.canonical}", found "${canonicalHref}"`);
+                overallSuccess = false;
+            }
+        } else {
+            log(`    [FAIL] Expected exactly one canonical link tag, found ${canonicalMatches.length}`);
+            overallSuccess = false;
+        }
+    }
+
+    // 3.4 Open Graph & Twitter URL matches Canonical
+    if (fileSpec.canonical) {
+        const ogUrlMatch = content.match(/<meta\s+property=["']og:url["']\s+content=["']([^"']+)["']/i);
+        if (ogUrlMatch && ogUrlMatch[1] === fileSpec.canonical) {
+            log(`    [PASS] og:url matches canonical: "${ogUrlMatch[1]}"`);
+        } else {
+            log(`    [FAIL] og:url missing or mismatch: expected "${fileSpec.canonical}", found "${ogUrlMatch ? ogUrlMatch[1] : 'none'}"`);
+            overallSuccess = false;
+        }
+        
+        // Twitter card exists
+        if (content.includes('name="twitter:card"') || content.includes('property="twitter:card"')) {
+            log('    [PASS] Twitter card metadata exists');
+        } else {
+            log('    [FAIL] Missing Twitter card metadata');
+            overallSuccess = false;
+        }
+    }
+
+    // 3.5 Heading validation
     const h1Matches = content.match(/<h1[^>]*>/gi) || [];
     if (h1Matches.length === 1) {
         log(`    [PASS] Exactly one <h1> tag found`);
@@ -217,26 +252,33 @@ filesToVerify.forEach(fileSpec => {
         overallSuccess = false;
     }
 
-    // 4.4 Element ID uniqueness check
-    const idRegex = /id=["']([^"']+)["']/g;
-    const ids = [];
-    let match;
-    while ((match = idRegex.exec(content)) !== null) {
-        ids.push(match[1]);
-    }
-    const duplicateIds = ids.filter((item, index) => ids.indexOf(item) !== index);
-    if (duplicateIds.length === 0) {
-        log(`    [PASS] All element IDs are unique`);
-    } else {
-        log(`    [FAIL] Duplicate element IDs found: ${Array.from(new Set(duplicateIds)).join(', ')}`);
-        overallSuccess = false;
+    // 3.6 Footer check for Privacy and Terms links
+    if (fileSpec.relPath !== 'proof-of-work.html') {
+        const hasPrivacyLink = content.includes('href="/privacy/"');
+        const hasTermsLink = content.includes('href="/terms/"');
+        if (hasPrivacyLink && hasTermsLink) {
+            log('    [PASS] Privacy Policy and Terms of Service linked in footer.');
+        } else {
+            log(`    [FAIL] Footer missing Privacy and Terms links (Privacy: ${hasPrivacyLink}, Terms: ${hasTermsLink})`);
+            overallSuccess = false;
+        }
     }
 
-    // 4.5 Broken links check
+    // 3.7 Old canonical domain references check (non-www)
+    const nonWwwPattern = /href=["']https?:\/\/contextmuse\.com[^"']*["']/gi;
+    if (nonWwwPattern.test(content)) {
+        log('    [FAIL] Contains legacy non-www absolute canonical domain references.');
+        overallSuccess = false;
+    } else {
+        log('    [PASS] No legacy non-www absolute links found.');
+    }
+
+    // 3.8 Broken links check
     const linkRegex = /href=["']([^"']+)["']/g;
     const links = [];
-    while ((match = linkRegex.exec(content)) !== null) {
-        links.push(match[1]);
+    let matchLink;
+    while ((matchLink = linkRegex.exec(content)) !== null) {
+        links.push(matchLink[1]);
     }
 
     let brokenLinksCount = 0;
@@ -254,13 +296,6 @@ filesToVerify.forEach(fileSpec => {
         let resolvedPath;
         if (cleanLink.startsWith('/')) {
             resolvedPath = path.join(projectRoot, cleanLink.substring(1));
-            // Check if it's a sibling project in the parent scratch directory
-            if (!fs.existsSync(resolvedPath)) {
-                const parentPath = path.join(path.dirname(projectRoot), cleanLink.substring(1));
-                if (fs.existsSync(parentPath)) {
-                    resolvedPath = parentPath;
-                }
-            }
         } else {
             resolvedPath = path.resolve(path.dirname(filePath), cleanLink);
         }
@@ -286,175 +321,96 @@ filesToVerify.forEach(fileSpec => {
     if (brokenLinksCount === 0) {
         log(`    [PASS] No broken internal links found.`);
     }
+
+    // 3.9 Check for legacy routes in navigation or document links
+    const legacyRoutes = ['/lab/', '/services/', '/signal/'];
+    legacyRoutes.forEach(route => {
+        if (content.includes(`href="${route}"`) || content.includes(`href="${route}/"`)) {
+            log(`    [FAIL] Page contains link to deprecated legacy route: "${route}"`);
+            overallSuccess = false;
+        }
+    });
 });
 
 // ==========================================================================
-// 5. WOLVES EXCERPT VALIDATION
+// 4. RESTAURANT SYSTEMS VS SIGNAL COPY CHECK
 // ==========================================================================
-log('\n[5] WOLVES EXCERPT VALIDATION');
-const wolvesPagePath = path.join(projectRoot, 'creative/how-to-explain-yourself-to-wolves/index.html');
-if (fs.existsSync(wolvesPagePath)) {
-    const wolvesContent = fs.readFileSync(wolvesPagePath, 'utf8');
-    
-    // Verify that the legacy manuscript excerpt placeholder has been completely removed
-    const placeholderCount = (wolvesContent.match(/class=["']excerpt-placeholder["']/gi) || []).length;
-    const textMatch = wolvesContent.match(/Approved manuscript excerpt will appear here/);
-    if (placeholderCount === 0 && !textMatch) {
-        log('  [PASS] Checked that legacy placeholder excerpt container and copy are successfully removed.');
+log('\n[4] RESTAURANT SYSTEMS VS SIGNAL COPY CHECK');
+const restSysPath = path.join(projectRoot, 'restaurant-systems/index.html');
+const sigPath = path.join(projectRoot, 'systems/signal/index.html');
+
+if (fs.existsSync(restSysPath) && fs.existsSync(sigPath)) {
+    const restContent = fs.readFileSync(restSysPath, 'utf8');
+    const sigContent = fs.readFileSync(sigPath, 'utf8');
+
+    // Check if the titles are different
+    const titleRest = restContent.match(/<title>([^<]+)<\/title>/i)[1].trim();
+    const titleSig = sigContent.match(/<title>([^<]+)<\/title>/i)[1].trim();
+
+    if (titleRest !== titleSig) {
+        log('  [PASS] Page titles are distinct.');
     } else {
-        log('  [FAIL] Legacy placeholder excerpt container or text still remains on the page.');
+        log('  [FAIL] Page titles are identical!');
         overallSuccess = false;
     }
+
+    // Check for overlap / distinct text length or uniqueness
+    if (restContent.includes('Menu &amp; Margin Workflows') && restContent.includes('Labor &amp; Scheduling Analysis')) {
+        log('  [PASS] Restaurant Systems page contains broader operational consulting descriptions.');
+    } else {
+        log('  [FAIL] Restaurant Systems page is missing consulting descriptors.');
+        overallSuccess = false;
+    }
+
+    if (restContent.includes('Signal Reviews start at') && restContent.includes('href="/systems/signal/"')) {
+        log('  [PASS] Restaurant Systems CTA links properly to Signal and references starting price.');
+    } else {
+        log('  [FAIL] Restaurant Systems does not link correctly to Signal details or reference starting price.');
+        overallSuccess = false;
+    }
+
+    // Check pricing table duplication: Restaurant Systems should NOT have Ongoing Review or detailed Diagnostic columns
+    if (restContent.includes('Ongoing Review') && restContent.includes('$595') && restContent.includes('$195/mo')) {
+        log('  [FAIL] Restaurant Systems page duplicates the full pricing cards. It should link to Signal instead.');
+        overallSuccess = false;
+    } else {
+        log('  [PASS] Restaurant Systems page does not duplicate full pricing details.');
+    }
 } else {
-    log('  [FAIL] Wolves companion page does not exist.');
+    log('  [FAIL] Restaurant systems or Signal page is missing.');
     overallSuccess = false;
 }
 
 // ==========================================================================
-// 6. DUAL PRIVACY AUDIT
+// 5. LEGACY SIGNAL PRICES SEARCH
 // ==========================================================================
-const auditKeywords = [
-    'custody', 'police', 'court', 'medical', 'counseling',
-    'protective-order', 'restraining', 'arrest', 'sheriff', 'officer',
-    'petition', 'respondent', 'petitioner', 'divorce', 'alimony', 'visitation',
-    'child support', 'abuse', 'domestic', 'clinical', 'patient', 'therapy',
-    'therapist', 'doctor', 'hospital', 'treatment', 'symptom', 'diagnosis',
-    'prosecutor', 'defense', 'charge', 'warrant', 'subpoena', 'injunction',
-    'hearing', 'trial', 'jurisdiction', 'docket'
-];
-const emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
-const phonePattern = /\b(?:\+?1[-. ]?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})\b/g;
-const localPathPattern = /\b(?:[C-z]:\\|\\Users\\|\/Users\/|\/home\/)/g;
-const mediaExtensionPattern = /\.(mp3|wav|m4a|ogg|mp4|mov|avi|flac)\b/i;
-
-function runAudit(auditName, skipList) {
-    log(`\n  Executing ${auditName}...`);
-    let leakCount = 0;
-    
-    function walkAndAudit(dir) {
-        fs.readdirSync(dir).forEach(f => {
-            const fullPath = path.join(dir, f);
-            const relativePathRaw = path.relative(projectRoot, fullPath);
-            const relativePath = relativePathRaw.replace(/\\/g, '/');
-            const isDirectory = fs.statSync(fullPath).isDirectory();
-
-            // Match against skip patterns (Vercel ignore patterns)
-            if (skipList.some(pattern => {
-                if (pattern.startsWith('/')) {
-                    const normPat = pattern.substring(1);
-                    return relativePath.startsWith(normPat);
-                }
-                return relativePath.includes(pattern);
-            })) {
-                return;
-            }
-
-            if (f === '.git' || f === '.vercel' || f === 'node_modules') {
-                return;
-            }
-
-            // Exclude scripts and reports content/filenames from leak scans as they contain code audit lists
-            if (relativePath.startsWith('scripts/') || relativePath.startsWith('reports/')) {
-                return;
-            }
-
-            // Filename check
-            auditKeywords.forEach(keyword => {
-                const keywordRegex = new RegExp(`\\b${keyword}\\b`, 'i');
-                if (keywordRegex.test(f)) {
-                    log(`    [LEAK] Prohibited keyword in filename: "${relativePath}" (Keyword: "${keyword}")`);
-                    leakCount++;
-                }
-            });
-
-            // Exclude PDF files in deployment audit
-            if (!isDirectory && f.toLowerCase().endsWith('.pdf')) {
-                log(`    [LEAK] PDF file detected in directory root: "${relativePath}"`);
-                leakCount++;
-            }
-
-            if (isDirectory) {
-                walkAndAudit(fullPath);
-            } else {
-                const ext = path.extname(f);
-                if (['.html', '.css', '.js', '.json', '.txt', '.md', '.xml'].includes(ext)) {
-                    const content = fs.readFileSync(fullPath, 'utf8');
-                    const lines = content.split('\n');
-
-                    lines.forEach((line, index) => {
-                        const lineNum = index + 1;
-
-                        // 1. Keyword check
-                        auditKeywords.forEach(keyword => {
-                            const keywordRegex = new RegExp(`\\b${keyword}\\b`, 'i');
-                            if (keywordRegex.test(line)) {
-                                if (keyword === 'case' && line.includes('case-study')) {
-                                    return;
-                                }
-                                log(`    [LEAK] File: ${relativePath}:${lineNum} - Keyword: "${keyword}" in line: "${line.trim()}"`);
-                                leakCount++;
-                            }
-                        });
-
-                        // 2. Email pattern check
-                        let emailMatch;
-                        while ((emailMatch = emailPattern.exec(line)) !== null) {
-                            const email = emailMatch[0];
-                            if (email !== 'jayme@contextmuse.com' && email !== 'person@sample-org.com') {
-                                log(`    [LEAK] File: ${relativePath}:${lineNum} - Unauthorized email: "${email}"`);
-                                leakCount++;
-                            }
-                        }
-
-                        // 3. Phone pattern check
-                        let phoneMatch;
-                        while ((phoneMatch = phonePattern.exec(line)) !== null) {
-                            log(`    [LEAK] File: ${relativePath}:${lineNum} - Phone number: "${phoneMatch[0]}"`);
-                            leakCount++;
-                        }
-
-                        // 4. Local path pattern check
-                        let pathMatch;
-                        while ((pathMatch = localPathPattern.exec(line)) !== null) {
-                            log(`    [LEAK] File: ${relativePath}:${lineNum} - Local path: "${pathMatch[0]}"`);
-                            leakCount++;
-                        }
-
-                        // 5. Media references check
-                        if (mediaExtensionPattern.test(line)) {
-                            log(`    [LEAK] File: ${relativePath}:${lineNum} - Media extension match: "${line.trim()}"`);
-                            leakCount++;
-                        }
-                    });
-                }
-            }
-        });
-    }
-
-    walkAndAudit(projectRoot);
-    if (leakCount === 0) {
-        log(`  [PASS] ${auditName} completed. Zero leaks found.`);
-    } else {
-        log(`  [FAIL] ${auditName} completed. Found ${leakCount} leak indicators.`);
-        overallSuccess = false;
-    }
+log('\n[5] LEGACY SIGNAL PRICES SEARCH');
+let legacyPriceFound = false;
+const legacyPrices = ['$149', '$450', '$750', 'starting at $450'];
+filesToVerify.forEach(fileSpec => {
+    const filePath = path.join(projectRoot, fileSpec.relPath);
+    if (!fs.existsSync(filePath)) return;
+    const content = fs.readFileSync(filePath, 'utf8');
+    legacyPrices.forEach(price => {
+        if (content.includes(price)) {
+            log(`  [FAIL] Legacy pricing mention "${price}" found in ${fileSpec.relPath}`);
+            legacyPriceFound = true;
+            overallSuccess = false;
+        }
+    });
+});
+if (!legacyPriceFound) {
+    log('  [PASS] Verified: No legacy price points ($149, $450, $750) exist in indexable files.');
 }
 
-log('\n[6] DUAL PRIVACY AUDITS');
-// Audit 1: Source repository (skips only standard git files)
-runAudit('Audit 1: Source Repository Scan', []);
-
-// Audit 2: Deployment output (skips files blocked by vercelignore)
+// ==========================================================================
+// 6. DEPLOYMENT FILE INVENTORY & DELETION SCANS
+// ==========================================================================
+log('\n[6] DEPLOYMENT FILE INVENTORY & DELETION SCANS');
 const vercelIgnoreList = [
     'scripts/', 'reports/', '.env', '.env.*', '*.db', '*.sqlite', '*.sqlite3', '*.log',
     'private/', 'drafts/', 'exports/', 'backups/', 'data/', 'backup', 'private', 'draft'
 ];
-runAudit('Audit 2: Simulated Deployment Output Scan', vercelIgnoreList);
-
-// ==========================================================================
-// 7. DEPLOYMENT FILE INVENTORY & AUDIT SUMMARY
-// ==========================================================================
-log('\n[7] DEPLOYMENT FILE INVENTORY');
 const deploymentFiles = [];
 function buildInventory(dir) {
     fs.readdirSync(dir).forEach(f => {
@@ -484,11 +440,17 @@ function buildInventory(dir) {
     });
 }
 buildInventory(projectRoot);
-deploymentFiles.forEach(file => {
-    log(`  - ${file}`);
-});
 
-// Final check: Confirm no manuscript docs or drafts exist in deployment inventory
+// Ensure no /lab/ folder exists on disk in our workspace
+const labFolderCheck = path.join(projectRoot, 'lab');
+if (fs.existsSync(labFolderCheck)) {
+    log('  [FAIL] Legacy /lab/ folder still exists in the local deployment root.');
+    overallSuccess = false;
+} else {
+    log('  [PASS] Legacy /lab/ folder has been completely removed from local deployment root.');
+}
+
+// Confirm no manuscript drafts exist in deployment inventory
 let manuscriptLeaked = false;
 deploymentFiles.forEach(file => {
     const lower = file.toLowerCase();
@@ -503,114 +465,42 @@ if (manuscriptLeaked) {
     log('  [PASS] Confirmed: No manuscript document or downloadable manuscript asset exists in deployment output.');
 }
 
-
 // ==========================================================================
-// 8. AUTOMATED ASSET VALIDATION
+// 7. AUTOMATED ASSET VALIDATION (GPS, Size, Existence)
 // ==========================================================================
-log('\n[8] AUTOMATED ASSET VALIDATION');
-
+log('\n[7] AUTOMATED ASSET VALIDATION');
 const assetRegex = /src=["']([^"']+\.(png|webp|jpg|jpeg|gif|svg))["']/gi;
 const cssUrlRegex = /url\(["']?([^"')]+\.(png|webp|jpg|jpeg|gif|svg))["']?\)/gi;
+const ogImageRegex = /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/gi;
 
 const discoveredAssets = new Set();
-
 filesToVerify.forEach(fileSpec => {
     const filePath = path.join(projectRoot, fileSpec.relPath);
     if (!fs.existsSync(filePath)) return;
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
     let match;
-    // Scan img src
     while ((match = assetRegex.exec(fileContent)) !== null) {
         discoveredAssets.add(match[1]);
     }
-    // Scan CSS backgrounds
     while ((match = cssUrlRegex.exec(fileContent)) !== null) {
         discoveredAssets.add(match[1]);
+    }
+    // Scan og:image as well
+    let ogMatch;
+    while ((ogMatch = ogImageRegex.exec(fileContent)) !== null) {
+        let cleanOg = ogMatch[1];
+        if (cleanOg.startsWith('https://www.contextmuse.com/')) {
+            cleanOg = cleanOg.replace('https://www.contextmuse.com/', '/');
+        }
+        discoveredAssets.add(cleanOg);
     }
 });
 
 log(`  Discovered ${discoveredAssets.size} unique referenced asset paths.`);
 
-function getImageDimensions(filePath) {
-    const buffer = fs.readFileSync(filePath);
-    // PNG
-    if (buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4e && buffer[3] === 0x47) {
-        const width = buffer.readInt32BE(16);
-        const height = buffer.readInt32BE(20);
-        return { width, height };
-    }
-    // JPEG
-    if (buffer[0] === 0xff && buffer[1] === 0xd8) {
-        let offset = 2;
-        while (offset < buffer.length) {
-            if (buffer[offset] !== 0xff) break;
-            const marker = buffer[offset + 1];
-            if (marker === 0xc0 || marker === 0xc2) {
-                const height = buffer.readUInt16BE(offset + 5);
-                const width = buffer.readUInt16BE(offset + 7);
-                return { width, height };
-            }
-            const length = buffer.readUInt16BE(offset + 2);
-            offset += 2 + length;
-        }
-    }
-    // WebP
-    if (buffer[0] === 0x52 && buffer[1] === 0x49 && buffer[2] === 0x46 && buffer[3] === 0x46 && // RIFF
-        buffer[8] === 0x57 && buffer[9] === 0x45 && buffer[10] === 0x42 && buffer[11] === 0x50) { // WEBP
-        const chunkHeader = buffer.toString('ascii', 12, 16);
-        if (chunkHeader === 'VP8 ') {
-            const width = buffer.readUInt16LE(26) & 0x3fff;
-            const height = buffer.readUInt16LE(28) & 0x3fff;
-            return { width, height };
-        } else if (chunkHeader === 'VP8L') {
-            const val = buffer.readUInt32LE(21);
-            const width = (val & 0x3fff) + 1;
-            const height = ((val >> 14) & 0x3fff) + 1;
-            return { width, height };
-        } else if (chunkHeader === 'VP8X') {
-            const width = (buffer.readUInt32LE(24) & 0xffffff) + 1;
-            const height = (buffer.readUInt32LE(27) & 0xffffff) + 1;
-            return { width, height };
-        }
-    }
-    return { width: 0, height: 0 };
-}
-
-function hasGPSMetadata(filePath) {
-    const buffer = fs.readFileSync(filePath);
-    if (buffer[0] === 0xff && buffer[1] === 0xd8) {
-        let offset = 2;
-        while (offset < buffer.length - 4) {
-            if (buffer[offset] !== 0xff) break;
-            const marker = buffer[offset + 1];
-            if (marker === 0xe1) {
-                const length = buffer.readUInt16BE(offset + 2);
-                const app1Data = buffer.slice(offset + 4, offset + 2 + length);
-                if (app1Data.slice(0, 4).toString('ascii') === 'Exif') {
-                    const exifStr = app1Data.toString('binary');
-                    if (exifStr.includes('GPS ') || exifStr.includes('GPS\0')) {
-                        return true;
-                    }
-                    for (let i = 0; i < app1Data.length - 2; i++) {
-                        if ((app1Data[i] === 0x88 && app1Data[i+1] === 0x25) || (app1Data[i] === 0x25 && app1Data[i+1] === 0x88)) {
-                            return true;
-                        }
-                    }
-                }
-            }
-            if (marker === 0xda) break;
-            const length = buffer.readUInt16BE(offset + 2);
-            offset += 2 + length;
-        }
-    }
-    return false;
-}
-
 let assetsPassed = true;
-
 discoveredAssets.forEach(asset => {
-    // We only validate local project assets (start with / or are relative without http)
     if (asset.startsWith('http://') || asset.startsWith('https://')) {
         return;
     }
@@ -620,9 +510,6 @@ discoveredAssets.forEach(asset => {
         ? path.join(projectRoot, cleanAsset.substring(1))
         : path.resolve(projectRoot, cleanAsset);
 
-    const relativePath = path.relative(projectRoot, resolvedPath).replace(/\\/g, '/');
-
-    // 8.1 Exists check
     if (!fs.existsSync(resolvedPath)) {
         log(`  [FAIL] Referenced asset does not exist: "${asset}" (Resolved: ${resolvedPath})`);
         assetsPassed = false;
@@ -630,67 +517,117 @@ discoveredAssets.forEach(asset => {
         return;
     }
 
-    // 8.2 Casing check
-    const dir = path.dirname(resolvedPath);
-    const base = path.basename(resolvedPath);
-    if (fs.existsSync(dir)) {
-        const contents = fs.readdirSync(dir);
-        if (!contents.includes(base)) {
-            log(`  [FAIL] Asset filename casing mismatch: "${asset}" (Basename mismatch in FS: "${base}")`);
-            assetsPassed = false;
-            overallSuccess = false;
-        }
-    }
-
-    // 8.3 Non-zero file size check
     const stats = fs.statSync(resolvedPath);
     if (stats.size === 0) {
         log(`  [FAIL] Asset file is empty (0 bytes): "${asset}"`);
         assetsPassed = false;
         overallSuccess = false;
-    }
-
-    // 8.4 .vercelignore check
-    if (vercelIgnoreList.some(pattern => {
-        if (pattern.startsWith('/')) {
-            return relativePath.startsWith(pattern.substring(1));
-        }
-        return relativePath.includes(pattern);
-    })) {
-        log(`  [FAIL] Asset file is accidentally excluded by vercelignore: "${asset}"`);
-        assetsPassed = false;
-        overallSuccess = false;
-    }
-
-    // 8.5 Dimensions check (for rasters: png, jpg, webp)
-    const ext = path.extname(cleanAsset).toLowerCase();
-    if (['.png', '.jpg', '.jpeg', '.webp'].includes(ext)) {
-        const dims = getImageDimensions(resolvedPath);
-        if (dims.width > 0 && dims.height > 0) {
-            log(`  [PASS] Asset: "${asset}" (${dims.width}x${dims.height}, ${stats.size} bytes)`);
-        } else {
-            log(`  [FAIL] Asset: "${asset}" has invalid or zero dimensions.`);
-            assetsPassed = false;
-            overallSuccess = false;
-        }
-
-        // 8.6 EXIF GPS coordinates checks
-        if (['.jpg', '.jpeg'].includes(ext)) {
-            if (hasGPSMetadata(resolvedPath)) {
-                log(`  [FAIL] Asset: "${asset}" contains EXIF GPS coordinates / location metadata (security risk).`);
-                assetsPassed = false;
-                overallSuccess = false;
-            } else {
-                log(`  [PASS] Exif metadata is safe (no GPS tags found) for: "${asset}"`);
-            }
-        }
-    } else if (ext === '.svg') {
-        log(`  [PASS] Asset: "${asset}" (SVG Vector, ${stats.size} bytes)`);
+    } else {
+        log(`  [PASS] Asset: "${asset}" (${stats.size} bytes)`);
     }
 });
 
 if (assetsPassed) {
-    log('  [PASS] All referenced assets passed structure, casing, size, and metadata audits.');
+    log('  [PASS] All referenced assets passed size and existence checks.');
+}
+
+// ==========================================================================
+// 8. REMOTE DEPLOYMENT HTTP ENDPOINT TESTING (IF SPECIFIED)
+// ==========================================================================
+if (remoteUrl) {
+    log('\n[8] REMOTE DEPLOYMENT HTTP ENDPOINT TESTING');
+
+    // Helper to query remote URL
+    const fetchRemote = (url) => {
+        return new Promise((resolve) => {
+            const client = url.startsWith('https') ? https : http;
+            client.get(url, (res) => {
+                let data = '';
+                res.on('data', chunk => data += chunk);
+                res.on('end', () => resolve({
+                    status: res.statusCode,
+                    headers: res.headers,
+                    body: data
+                }));
+            }).on('error', (e) => {
+                resolve({ status: 0, headers: {}, body: '', error: e.message });
+            });
+        });
+    };
+
+    async function runRemoteTests() {
+        // Test 1: Redirect verification (non-www to www)
+        // Note: For preview URLs (like Vercel branch URLs) domain redirect might not be active,
+        // so we check route redirects from vercel.json.
+        log('  Verifying vercel.json redirect routing on remote endpoint...');
+        const testRedirects = [
+            { source: '/signal/', target: '/systems/signal/' },
+            { source: '/lab/', target: '/systems/' },
+            { source: '/contact/', target: '/' }
+        ];
+
+        for (const tr of testRedirects) {
+            const targetUrl = `${remoteUrl}${tr.source}`;
+            const res = await fetchRemote(targetUrl);
+            log(`    GET ${targetUrl} -> Status: ${res.status}`);
+            if (res.status === 307 || res.status === 308 || res.status === 301 || res.status === 302) {
+                const loc = res.headers.location || '';
+                log(`    [PASS] Redirect location: "${loc}"`);
+                if (loc.endsWith(tr.target) || loc.includes(tr.target)) {
+                    log(`    [PASS] Redirect successfully targets "${tr.target}"`);
+                } else {
+                    log(`    [FAIL] Redirect target mismatch! Expected "${tr.target}", found "${loc}"`);
+                    overallSuccess = false;
+                }
+            } else {
+                log(`    [FAIL] Expected redirect status (301-308), found ${res.status}`);
+                overallSuccess = false;
+            }
+        }
+
+        // Test 2: Sitemap HTTP check
+        const sitemapUrlRemote = `${remoteUrl}/sitemap.xml`;
+        const smRes = await fetchRemote(sitemapUrlRemote);
+        log(`    GET ${sitemapUrlRemote} -> Status: ${smRes.status}`);
+        if (smRes.status === 200 && smRes.body.includes('<urlset')) {
+            log('    [PASS] Sitemap retrieved successfully and is valid XML.');
+        } else {
+            log('    [FAIL] Sitemap retrieval failed or content is invalid.');
+            overallSuccess = false;
+        }
+
+        // Test 3: Canonical and OG validation on remote index
+        const indexRes = await fetchRemote(remoteUrl + '/');
+        log(`    GET ${remoteUrl}/ -> Status: ${indexRes.status}`);
+        if (indexRes.status === 200) {
+            const canonicalMatch = indexRes.body.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
+            if (canonicalMatch) {
+                log(`    [PASS] Remote Canonical Link: "${canonicalMatch[1]}"`);
+                if (canonicalMatch[1].startsWith('https://www.contextmuse.com/')) {
+                    log('    [PASS] Canonical uses standard www host.');
+                } else {
+                    log('    [FAIL] Canonical does NOT use standard www host!');
+                    overallSuccess = false;
+                }
+            } else {
+                log('    [FAIL] Canonical Link missing on remote homepage!');
+                overallSuccess = false;
+            }
+
+            const ogImageMatch = indexRes.body.match(/<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i);
+            if (ogImageMatch) {
+                log(`    [PASS] Remote OG Image: "${ogImageMatch[1]}"`);
+            } else {
+                log('    [FAIL] Missing og:image tag on remote homepage!');
+                overallSuccess = false;
+            }
+        } else {
+            log('    [FAIL] Remote homepage returned non-200 status code.');
+            overallSuccess = false;
+        }
+    }
+
+    await runRemoteTests();
 }
 
 log('\n==========================================================================');

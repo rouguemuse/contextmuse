@@ -20,6 +20,46 @@
       "source": "/creative/resource-guide/",
       "destination": "/systems/resource-guide/",
       "permanent": true
+    },
+    {
+      "source": "/signal/",
+      "destination": "/systems/signal/",
+      "permanent": true
+    },
+    {
+      "source": "/custom-tools/",
+      "destination": "/systems/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/",
+      "destination": "/systems/",
+      "permanent": true
+    },
+    {
+      "source": "/method/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing/",
+      "destination": "/systems/signal/",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/systems/",
+      "permanent": true
+    },
+    {
+      "source": "/lab/",
+      "destination": "/systems/",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }

@@ -3,3 +3,5 @@ Allow: /
 Disallow: /private/
 Disallow: /backups/
 Disallow: /drafts/
+
+Sitemap: https://www.contextmuse.com/sitemap.xml
