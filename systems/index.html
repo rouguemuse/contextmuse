@@ -324,53 +324,222 @@
             transition: transform 0.3s ease;
         }
 
-        /* Operational Builds nested panels */
-        .systems-spatial-gallery .builds-card-panel {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            width: 95%;
-            height: auto;
-        }
-
-        .systems-spatial-gallery .build-panel-item {
+        /* Redesigned 05 // Independent Client Systems Section */
+        .systems-spatial-gallery #client-builds.full-width-card,
+        .systems-spatial-gallery #client-builds {
+            grid-column: 1 / -1;
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            align-items: center;
+            gap: 2rem;
+            padding: 3rem;
+            box-sizing: border-box;
         }
 
-        .systems-spatial-gallery .build-panel-thumb {
+        .card-full-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            max-width: 820px;
+        }
+
+        .card-full-header .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            line-height: 1.25;
+        }
+
+        .card-full-header .card-desc.header-copy {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .client-builds-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
             width: 100%;
-            height: 200px;
-            background: #0a0a0a;
-            border: 1px solid rgba(250, 249, 245, 0.18);
-            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .client-builds-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .client-builds-grid {
+                grid-template-columns: 1fr;
+            }
+            .systems-spatial-gallery #client-builds {
+                padding: 1.75rem 1.25rem;
+            }
+        }
+
+        .op-build-card {
+            background: rgba(13, 15, 23, 0.65);
+            border: 1px solid rgba(250, 249, 245, 0.1);
+            border-radius: 6px;
             overflow: hidden;
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
+            flex-direction: column;
+            transition: border-color 0.25s ease;
         }
 
-        .systems-spatial-gallery .build-panel-thumb img {
+        .op-build-card:hover {
+            border-color: rgba(250, 249, 245, 0.25);
+        }
+
+        .op-browser-frame {
+            display: block;
+            text-decoration: none;
+            background: #141722;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+
+        .op-browser-bar {
+            height: 28px;
+            background: #181b26;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.06);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 6px;
+        }
+
+        .op-browser-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .op-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .op-dot-red { background: #FF5F56; }
+        .op-dot-yellow { background: #FFBD2E; }
+        .op-dot-green { background: #27C93F; }
+
+        .op-browser-url {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            color: rgba(250, 249, 245, 0.45);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1px 8px;
+            border-radius: 3px;
+            margin-left: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .op-browser-viewport {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #090a0f;
+        }
+
+        .op-browser-viewport img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: top center;
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
+            display: block;
         }
 
-        .systems-spatial-gallery .build-panel-item:hover .build-panel-thumb img {
-            opacity: 1;
+        .op-card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex: 1;
         }
 
-        .systems-spatial-gallery .build-panel-label {
+        .op-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .op-card-summary {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        .op-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
+
+        .op-tag {
             font-family: var(--font-mono);
-            font-size: 8.5px;
-            color: rgba(250, 249, 245, 0.5);
+            font-size: 9px;
+            letter-spacing: 0.03em;
+            color: rgba(250, 249, 245, 0.6);
+            background: rgba(250, 249, 245, 0.04);
+            border: 1px solid rgba(250, 249, 245, 0.08);
+            padding: 2px 7px;
+            border-radius: 3px;
+        }
+
+        .op-card-footer {
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(250, 249, 245, 0.06);
+        }
+
+        .op-link {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            color: var(--accent-teal, #2DD4BF);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .op-link:hover {
+            opacity: 0.8;
+        }
+
+        .card-full-footer {
+            display: flex;
+            justify-content: flex-start;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(250, 249, 245, 0.08);
+            margin-top: 0.5rem;
+        }
+
+        .btn-all-builds {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            color: rgba(250, 249, 245, 0.75);
+            text-decoration: none;
+            padding: 8px 18px;
+            border: 1px solid rgba(250, 249, 245, 0.15);
+            border-radius: 4px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-all-builds:hover {
+            color: var(--text-primary);
+            border-color: rgba(250, 249, 245, 0.35);
+            background: rgba(250, 249, 245, 0.03);
         }
 
         /* Status Label positioning */
@@ -848,62 +1017,112 @@
                     </article>
 
                     <!-- Card 5: Selected Operational Builds -->
-                    <article class="spatial-card" id="client-builds" data-accent="neutral">
+                    <article class="spatial-card full-width-card" id="client-builds" data-accent="neutral">
                         <div class="card-glow"></div>
-                        <span class="gallery-status-label">Completed Builds</span>
-                        <div class="card-info">
-                            <div>
-                                <span class="card-eyebrow project-num">05 // Independent Client Systems</span>
-                                <h3 class="card-title project-title">Selected Operational Builds</h3>
-                                <p class="card-desc">
-                                    Customer-facing websites paired with practical intake, inventory, scheduling, recommendation, or lead-management systems.
-                                </p>
-                            </div>
-                            
-                            <div>
-                                <div class="card-labels-grid">
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Problem:</span>
-                                        <span class="card-label-val">Manual fragmented workflows</span>
+                        <span class="gallery-status-label">Completed Systems</span>
+                        
+                        <div class="card-full-header">
+                            <span class="card-eyebrow project-num">05 // INDEPENDENT CLIENT SYSTEMS</span>
+                            <h3 class="card-title project-title">Selected Operational Builds</h3>
+                            <p class="card-desc header-copy">
+                                Customer-facing websites paired with the systems behind them—intake, inventory, lead handling, recommendations, scheduling, and operational workflows.
+                            </p>
+                        </div>
+
+                        <div class="client-builds-grid">
+                            <!-- Project 1: INNcontrol Coils -->
+                            <div class="op-build-card">
+                                <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" class="op-browser-frame">
+                                    <div class="op-browser-bar">
+                                        <div class="op-browser-dots">
+                                            <span class="op-dot op-dot-red"></span>
+                                            <span class="op-dot op-dot-yellow"></span>
+                                            <span class="op-dot op-dot-green"></span>
+                                        </div>
+                                        <span class="op-browser-url">inncontrolcoils.com</span>
                                     </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">System:</span>
-                                        <span class="card-label-val">Custom operational interfaces</span>
+                                    <div class="op-browser-viewport">
+                                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils website and operational intake system" loading="lazy">
                                     </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Result:</span>
-                                        <span class="card-label-val">Usable business infrastructure</span>
+                                </a>
+                                <div class="op-card-body">
+                                    <h4 class="op-card-title">INNcontrol Coils</h4>
+                                    <p class="op-card-summary">Service website + lead and operational intake system</p>
+                                    <div class="op-card-tags">
+                                        <span class="op-tag">Service Architecture</span>
+                                        <span class="op-tag">Inquiry Routing</span>
+                                        <span class="op-tag">Operations</span>
+                                        <span class="op-tag">Field Service</span>
+                                    </div>
+                                    <div class="op-card-footer">
+                                        <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
                                     </div>
                                 </div>
-                                <div class="card-actions">
-                                    <a href="#builds" class="btn-card-primary">View Selected Builds</a>
-                                    <a href="#builds" class="btn-card-outline">Browse Case Studies</a>
+                            </div>
+
+                            <!-- Project 2: D2 Auto Detail -->
+                            <div class="op-build-card">
+                                <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" class="op-browser-frame">
+                                    <div class="op-browser-bar">
+                                        <div class="op-browser-dots">
+                                            <span class="op-dot op-dot-red"></span>
+                                            <span class="op-dot op-dot-yellow"></span>
+                                            <span class="op-dot op-dot-green"></span>
+                                        </div>
+                                        <span class="op-browser-url">d2autodetail.com</span>
+                                    </div>
+                                    <div class="op-browser-viewport">
+                                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail customer acquisition and booking infrastructure" loading="lazy">
+                                    </div>
+                                </a>
+                                <div class="op-card-body">
+                                    <h4 class="op-card-title">D2 Auto Detail</h4>
+                                    <p class="op-card-summary">Customer acquisition and booking infrastructure</p>
+                                    <div class="op-card-tags">
+                                        <span class="op-tag">Service UX</span>
+                                        <span class="op-tag">Lead Capture</span>
+                                        <span class="op-tag">Inquiry Flow</span>
+                                        <span class="op-tag">Marketing</span>
+                                    </div>
+                                    <div class="op-card-footer">
+                                        <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 3: EDR Party Rentals -->
+                            <div class="op-build-card">
+                                <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" class="op-browser-frame">
+                                    <div class="op-browser-bar">
+                                        <div class="op-browser-dots">
+                                            <span class="op-dot op-dot-red"></span>
+                                            <span class="op-dot op-dot-yellow"></span>
+                                            <span class="op-dot op-dot-green"></span>
+                                        </div>
+                                        <span class="op-browser-url">edrpartyrentals.com</span>
+                                    </div>
+                                    <div class="op-browser-viewport">
+                                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory-aware rental website" loading="lazy">
+                                    </div>
+                                </a>
+                                <div class="op-card-body">
+                                    <h4 class="op-card-title">EDR Party Rentals</h4>
+                                    <p class="op-card-summary">Inventory-aware rental website and customer intake system</p>
+                                    <div class="op-card-tags">
+                                        <span class="op-tag">Inventory</span>
+                                        <span class="op-tag">Reservation Intake</span>
+                                        <span class="op-tag">Product UX</span>
+                                        <span class="op-tag">Qualification</span>
+                                    </div>
+                                    <div class="op-card-footer">
+                                        <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="card-visual-column">
-                            <!-- Three nested flat image panels with labels below each -->
-                            <div class="builds-card-panel">
-                                <div class="build-panel-item">
-                                    <div class="build-panel-thumb">
-                                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils Website" style="width: 100%; height: 100%; object-fit: cover;">
-                                    </div>
-                                    <span class="build-panel-label">INNcontrol</span>
-                                </div>
-                                <div class="build-panel-item">
-                                    <div class="build-panel-thumb">
-                                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail Website" style="width: 100%; height: 100%; object-fit: cover;">
-                                    </div>
-                                    <span class="build-panel-label">D2 Auto Detail</span>
-                                </div>
-                                <div class="build-panel-item">
-                                    <div class="build-panel-thumb">
-                                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals Website" style="width: 100%; height: 100%; object-fit: cover;">
-                                    </div>
-                                    <span class="build-panel-label">EDR Rentals</span>
-                                </div>
-                            </div>
+
+                        <div class="card-full-footer">
+                            <a href="#builds" class="btn-all-builds">VIEW ALL CLIENT BUILDS &rarr;</a>
                         </div>
                     </article>
 
