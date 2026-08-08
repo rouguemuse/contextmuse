@@ -2,6 +2,17 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "contextmuse.com"
+        }
+      ],
+      "destination": "https://www.contextmuse.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/creative-practice/how-to-explain-yourself-to-wolves/",
       "destination": "/creative/how-to-explain-yourself-to-wolves/",
       "permanent": true
