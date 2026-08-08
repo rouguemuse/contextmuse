@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal | Operational Intelligence &amp; Decision Support</title>
+    <meta name="description" content="Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.">
+    <link rel="canonical" href="https://www.contextmuse.com/signal/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.contextmuse.com/signal/">
+    <meta property="og:title" content="Signal | Operational Intelligence &amp; Decision Support">
+    <meta property="og:description" content="Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Signal | Operational Intelligence &amp; Decision Support">
+    <meta name="twitter:description" content="Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .product-hero {
+            padding: 140px 0 80px;
+            background: var(--bg-ink, #090a0f);
+            color: #FAF9F5;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media(max-width: 950px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(45, 212, 191, 0.15);
+            color: var(--accent-teal, #2dd4bf);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        .questions-section {
+            padding: 5.5rem 0;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .questions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+        }
+        @media(max-width: 768px) {
+            .questions-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .question-box h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        .question-box p {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .pricing-section {
+            background: var(--bg-panel, #faf6f0);
+            padding: 5.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        @media(max-width: 950px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        .pricing-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+        .pricing-card:hover {
+            border-color: var(--text-primary);
+            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.05);
+        }
+        .pricing-card.featured {
+            border: 2px solid var(--text-primary);
+            position: relative;
+        }
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-teal);
+            color: #FAF9F5;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .price-val {
+            font-family: var(--font-sans);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 1rem 0;
+        }
+        .price-period {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="/systems/" class="nav-link">Systems</a>
+                <a href="/gensort/" class="nav-link">GenSort</a>
+                <a href="/signal/" class="nav-link active" aria-current="page">Signal</a>
+                <a href="/custom/" class="nav-link">Custom Builds</a>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="product-hero">
+        <div class="container">
+            <div class="product-grid">
+                <div>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">01 // OPERATIONAL INTELLIGENCE SYSTEM</span>
+                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.5rem; color: #FAF9F5;">
+                        Find what is actually costing the business.
+                    </h1>
+                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: rgba(250,249,245,0.75); margin-bottom: 2rem;">
+                        Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.
+                    </p>
+                    <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <a href="#pricing" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px;">See Pricing Ladder</a>
+                        <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn btn-secondary" style="border-color: rgba(250,249,245,0.3); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;" target="_blank" rel="noopener">Explore Codebase &rarr;</a>
+                    </div>
+                    <div>
+                        <span class="status-badge">Product Status: Operational analysis service + decision-support system</span>
+                    </div>
+                </div>
+
+                <div class="build-visual-col">
+                    <div class="build-browser-frame" style="background: #1e1e1e; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                        <div class="build-browser-header" style="background: #2d2d2d; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <div class="browser-dots" style="display: flex; gap: 6px;">
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #E11D48;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #C5A059;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #0F766E;"></span>
+                            </div>
+                            <div class="browser-url-bar" style="font-family: var(--font-mono); font-size: 10px; color: #888; background: #1a1a1a; padding: 3px 12px; border-radius: 4px; width: 60%; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">www.contextmuse.com/signal/</div>
+                            <div style="width: 24px;"></div>
+                        </div>
+                        <div class="browser-content" style="padding: 0; background: #000;">
+                            <img src="/assets/images/signal-priority-view.webp" alt="Signal diagnostic priority interface" style="width: 100%; height: auto; display: block;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Section I: Questions & Answers -->
+        <section class="questions-section">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3rem; text-align: center;">I // SYSTEM BOUNDARIES</span>
+                
+                <div class="questions-grid">
+                    <!-- Q1 -->
+                    <div class="question-box">
+                        <h3>What do I give you?</h3>
+                        <p>
+                            You provide standard operational exports: transaction logs, point-of-sale (POS) spreadsheets, timecard reports, labor rosters, void reports, or scheduling audits covering 30 to 90 days. We accept raw CSV, Excel, or JSON dumps directly from your system.
+                        </p>
+                    </div>
+                    
+                    <!-- Q2 -->
+                    <div class="question-box">
+                        <h3>What does Signal analyze?</h3>
+                        <p>
+                            We analyze operations across key risk areas: transaction comps/void patterns, throughput bottlenecks, scheduling vs. revenue timing, menu modifier anomalies, and high-frequency discount leaks.
+                        </p>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="question-box">
+                        <h3>What do I receive?</h3>
+                        <p>
+                            You receive a clear, plain-language diagnostic audit. It lists prioritized operating issues, estimated financial impact and measurable improvement targets, and a floor-validation script to verify findings before changing active procedures.
+                        </p>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="question-box">
+                        <h3>How much does it cost?</h3>
+                        <p>
+                            Signal uses a transparent three-tier offer structure starting at $195 one-time for targeted reviews, scaling to $595 for comprehensive diagnostics, and $195/month for continuous post-diagnostic review.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section II: Pricing -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 3.5rem;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">II // PRICING LADDER</span>
+                    <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); font-weight: 500;">
+                        Risk-Free Diagnostic Offers
+                    </h2>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Snapshot -->
+                    <div class="pricing-card">
+                        <div style="margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary);">Signal Snapshot</span>
+                            <div class="price-val">$195<span class="price-period"> · one time</span></div>
+                            <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                                Rapid, focused analysis of one defined operational problem or check-discrepancy pattern. Surfaces top-level leaks and validation steps.
+                            </p>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.45;">
+                                <strong style="font-family: var(--font-mono); font-size: 8.5px; color: var(--accent-teal); text-transform: uppercase; display: block;">Upgrade Credit</strong>
+                                100% of the Snapshot fee is creditable toward a Diagnostic booked within 30 days.
+                            </div>
+                            <a href="/#contact" class="btn" style="text-align: center; text-decoration: none; padding: 0.65rem 1rem; border-radius: 3px; font-family: var(--font-sans); font-size: 13px; font-weight: 600; background: var(--text-primary); color: #FAF9F5; border: 1px solid var(--text-primary);">Start a Signal Snapshot</a>
+                        </div>
+                    </div>
+
+                    <!-- Diagnostic -->
+                    <div class="pricing-card featured">
+                        <span class="pricing-badge">Primary Audit</span>
+                        <div style="margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-primary); margin-top: 0.5rem; display: block;">Signal Diagnostic</span>
+                            <div class="price-val">$595<span class="price-period"> · one time</span></div>
+                            <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                                Comprehensive operational and data review. Delivers prioritized findings, estimated financial impact, and custom validation playbooks.
+                            </p>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.45;">
+                                <strong style="font-family: var(--font-mono); font-size: 8.5px; color: var(--accent-teal); text-transform: uppercase; display: block;">Baseline Review</strong>
+                                Forms the baseline diagnostic framework required before starting Ongoing Review monitoring.
+                            </div>
+                            <a href="/#contact" class="btn" style="text-align: center; text-decoration: none; padding: 0.65rem 1rem; border-radius: 3px; font-family: var(--font-sans); font-size: 13px; font-weight: 600; background: var(--accent-teal); color: #FAF9F5; border: 1px solid var(--accent-teal);">Book a Signal Diagnostic</a>
+                        </div>
+                    </div>
+
+                    <!-- Ongoing -->
+                    <div class="pricing-card">
+                        <div style="margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary);">Ongoing Review</span>
+                            <div class="price-val">$195<span class="price-period"> / month</span></div>
+                            <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                                Monthly drift monitoring. Translates recurring sales summaries into delta audits to ensure margin leakage does not return.
+                            </p>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.45;">
+                                <strong style="font-family: var(--font-mono); font-size: 8.5px; color: var(--accent-teal); text-transform: uppercase; display: block;">Continuous Check</strong>
+                                Includes one scheduled lightweight review cycle per monthly billing period. Unused cycles do not roll over.
+                            </div>
+                            <a href="/#contact" class="btn" style="text-align: center; text-decoration: none; padding: 0.65rem 1rem; border-radius: 3px; font-family: var(--font-sans); font-size: 13px; font-weight: 600; background: var(--text-primary); color: #FAF9F5; border: 1px solid var(--text-primary);">Start Ongoing Review</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rules-box" style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.75rem; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-top: 2rem;">
+                    <strong>Illustration of Impact:</strong> A minor daily leak of $24 in modifier omissions translates to $8,760 in lost profit annually. A single peak-hour checkout block resulting in one lost table check average can leak over $15,000 yearly. Fixing just one operational issue typically covers the cost of analysis multiple times over.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;"><span style="letter-spacing:0.04em;">Context &amp; Muse</span></a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

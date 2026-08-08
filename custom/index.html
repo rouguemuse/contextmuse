@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Systems | Operational Machinery &amp; Web Systems</title>
+    <meta name="description" content="Customer-facing websites paired with custom operational machinery underneath—intake, inventory, scheduling, recommendations, and field service workflows.">
+    <link rel="canonical" href="https://www.contextmuse.com/custom/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.contextmuse.com/custom/">
+    <meta property="og:title" content="Custom Systems | Operational Machinery &amp; Web Systems">
+    <meta property="og:description" content="Customer-facing websites paired with custom operational machinery underneath—intake, inventory, scheduling, recommendations, and field service workflows.">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Custom Systems | Operational Machinery &amp; Web Systems">
+    <meta name="twitter:description" content="Customer-facing websites paired with custom operational machinery underneath—intake, inventory, scheduling, recommendations, and field service workflows.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .product-hero {
+            padding: 140px 0 80px;
+            background: var(--bg-ink, #090a0f);
+            color: #FAF9F5;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media(max-width: 950px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(45, 212, 191, 0.15);
+            color: var(--accent-teal, #2dd4bf);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        @media(max-width: 768px) {
+            .offerings-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        .offering-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.5rem;
+            transition: all 0.2s ease;
+        }
+        .offering-card:hover {
+            border-color: var(--text-primary);
+        }
+        .offering-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        .offering-card p {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        /* Proof section */
+        .proof-section {
+            background: var(--bg-panel, #faf6f0);
+            padding: 5.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media(max-width: 950px) {
+            .proof-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        .proof-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+        }
+        .proof-card:hover {
+            border-color: var(--text-primary);
+        }
+        .proof-img-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-light);
+            background: #eaeaea;
+        }
+        .proof-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .proof-info {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .proof-status {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .proof-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        .proof-desc {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+        .proof-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+        }
+        .proof-tag {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="/systems/" class="nav-link">Systems</a>
+                <a href="/gensort/" class="nav-link">GenSort</a>
+                <a href="/signal/" class="nav-link">Signal</a>
+                <a href="/custom/" class="nav-link active" aria-current="page">Custom Builds</a>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="product-hero">
+        <div class="container">
+            <div class="product-grid">
+                <div>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">03 // OPERATIONAL SYSTEMS DESIGN</span>
+                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.5rem; color: #FAF9F5;">
+                        Systems built around the way your business actually works.
+                    </h1>
+                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: rgba(250,249,245,0.75); margin-bottom: 2rem;">
+                        Customer-facing websites paired with custom operational machinery underneath—intake, inventory, scheduling, recommendations, and field service workflows.
+                    </p>
+                    <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <a href="/#contact" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px;">Tell Me What's Broken &rarr;</a>
+                    </div>
+                    <div>
+                        <span class="status-badge">Project Status: Custom client engagements</span>
+                    </div>
+                </div>
+
+                <div class="build-visual-col">
+                    <div class="build-browser-frame" style="background: #1e1e1e; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                        <div class="build-browser-header" style="background: #2d2d2d; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <div class="browser-dots" style="display: flex; gap: 6px;">
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #E11D48;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #C5A059;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #0F766E;"></span>
+                            </div>
+                            <div class="browser-url-bar" style="font-family: var(--font-mono); font-size: 10px; color: #888; background: #1a1a1a; padding: 3px 12px; border-radius: 4px; width: 60%; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">www.contextmuse.com/custom/</div>
+                            <div style="width: 24px;"></div>
+                        </div>
+                        <div class="browser-content" style="padding: 0; background: #000;">
+                            <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol custom client operational intake website" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Section I: Offerings -->
+        <section class="creative-section" style="background: var(--bg-paper); border-bottom: 1px solid var(--border-light); padding: 5.5rem 0;">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.5rem; text-align: center;">I // CORE SERVICES</span>
+                <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 1rem; font-weight: 500;">
+                    Systems built for workflow reality.
+                </h2>
+                
+                <div class="offerings-grid">
+                    <!-- Offering 1 -->
+                    <div class="offering-card">
+                        <h3>Website + Conversion System</h3>
+                        <p>Not just a brochure site. Custom systems integration for intake, lead qualification, booking, checkout, and client-facing digital workflows built from the ground up.</p>
+                    </div>
+
+                    <!-- Offering 2 -->
+                    <div class="offering-card">
+                        <h3>Intake + Lead Routing</h3>
+                        <p>Structured onboarding forms, logic-based qualification parameters, automated notification routing, and seamless lead handoffs to internal operational databases.</p>
+                    </div>
+
+                    <!-- Offering 3 -->
+                    <div class="offering-card">
+                        <h3>Reservation + Inventory Systems</h3>
+                        <p>Live inventory lookup grids, booking allocation rules, calendar reservation systems, and automated checkout validation logic integrated with Stripe or processor APIs.</p>
+                    </div>
+
+                    <!-- Offering 4 -->
+                    <div class="offering-card">
+                        <h3>Operational Tools</h3>
+                        <p>Custom field workflows, equipment records directories, maintenance audit dashboards, internal reporting templates, and command-line automation scripts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section II: Proof of Execution -->
+        <section class="proof-section">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem; text-align: center;">II // CLIENT PROOF</span>
+                <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 0.5rem; font-weight: 500;">
+                    Selected Client Builds
+                </h2>
+                <p style="font-size: 1rem; color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 3rem;">
+                    Active proof of custom systems designed and built around specific business needs.
+                </p>
+
+                <div class="proof-grid">
+                    <!-- INNcontrol -->
+                    <div class="proof-card">
+                        <div class="proof-img-container">
+                            <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils website interface">
+                        </div>
+                        <div class="proof-info">
+                            <span class="proof-status">Built</span>
+                            <h3 class="proof-title">INNcontrol Coils</h3>
+                            <p class="proof-desc">Commercial service website paired with a custom equipment intake and operational system.</p>
+                            <div class="proof-tags">
+                                <span class="proof-tag">Service Architecture</span>
+                                <span class="proof-tag">Inquiry Routing</span>
+                                <span class="proof-tag">Field Service</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- D2 Auto Detail -->
+                    <div class="proof-card">
+                        <div class="proof-img-container">
+                            <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail acquisition layout">
+                        </div>
+                        <div class="proof-info">
+                            <span class="proof-status">Designed</span>
+                            <h3 class="proof-title">D2 Auto Detail</h3>
+                            <p class="proof-desc">Acquisition framework and scheduling funnel prototype built to capture service intent.</p>
+                            <div class="proof-tags">
+                                <span class="proof-tag">Service UX</span>
+                                <span class="proof-tag">Lead Capture</span>
+                                <span class="proof-tag">Marketing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EDR Party Rentals -->
+                    <div class="proof-card">
+                        <div class="proof-img-container">
+                            <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals reservation workflow">
+                        </div>
+                        <div class="proof-info">
+                            <span class="proof-status">Prototype</span>
+                            <h3 class="proof-title">EDR Party Rentals</h3>
+                            <p class="proof-desc">Inventory-aware rental reservation and date-controlled intake system design.</p>
+                            <div class="proof-tags">
+                                <span class="proof-tag">Inventory</span>
+                                <span class="proof-tag">Product UX</span>
+                                <span class="proof-tag">Reservation Intake</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;"><span style="letter-spacing:0.04em;">Context &amp; Muse</span></a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

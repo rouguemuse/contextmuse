@@ -103,18 +103,28 @@ if (fs.existsSync(sitemapPath)) {
         }
     });
 
+    // Check that /systems/signal/ does NOT appear in sitemap
+    if (sitemapUrls.includes('https://www.contextmuse.com/systems/signal/')) {
+        log('    [FAIL] /systems/signal/ is present in sitemap.xml! Only /signal/ should be indexed.');
+        overallSuccess = false;
+    } else {
+        log('    [PASS] /systems/signal/ is not present in sitemap.xml.');
+    }
+
     // Check sitemap targets
     const expectedSitemapUrls = [
         'https://www.contextmuse.com/',
         'https://www.contextmuse.com/about/',
         'https://www.contextmuse.com/systems/',
-        'https://www.contextmuse.com/systems/signal/',
         'https://www.contextmuse.com/systems/resource-guide/',
         'https://www.contextmuse.com/restaurant-systems/',
         'https://www.contextmuse.com/creative/',
         'https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/',
         'https://www.contextmuse.com/privacy/',
-        'https://www.contextmuse.com/terms/'
+        'https://www.contextmuse.com/terms/',
+        'https://www.contextmuse.com/gensort/',
+        'https://www.contextmuse.com/signal/',
+        'https://www.contextmuse.com/custom/'
     ];
 
     expectedSitemapUrls.forEach(url => {
@@ -154,11 +164,13 @@ const filesToVerify = [
     { name: 'creative/index.html', relPath: 'creative/index.html', canonical: 'https://www.contextmuse.com/creative/' },
     { name: 'creative/how-to-explain-yourself-to-wolves/index.html', relPath: 'creative/how-to-explain-yourself-to-wolves/index.html', canonical: 'https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/' },
     { name: 'systems/index.html', relPath: 'systems/index.html', canonical: 'https://www.contextmuse.com/systems/' },
-    { name: 'systems/signal/index.html', relPath: 'systems/signal/index.html', canonical: 'https://www.contextmuse.com/systems/signal/' },
     { name: 'systems/resource-guide/index.html', relPath: 'systems/resource-guide/index.html', canonical: 'https://www.contextmuse.com/systems/resource-guide/' },
     { name: 'restaurant-systems/index.html', relPath: 'restaurant-systems/index.html', canonical: 'https://www.contextmuse.com/restaurant-systems/' },
     { name: 'privacy/index.html', relPath: 'privacy/index.html', canonical: 'https://www.contextmuse.com/privacy/' },
-    { name: 'terms/index.html', relPath: 'terms/index.html', canonical: 'https://www.contextmuse.com/terms/' }
+    { name: 'terms/index.html', relPath: 'terms/index.html', canonical: 'https://www.contextmuse.com/terms/' },
+    { name: 'gensort/index.html', relPath: 'gensort/index.html', canonical: 'https://www.contextmuse.com/gensort/' },
+    { name: 'signal/index.html', relPath: 'signal/index.html', canonical: 'https://www.contextmuse.com/signal/' },
+    { name: 'custom/index.html', relPath: 'custom/index.html', canonical: 'https://www.contextmuse.com/custom/' }
 ];
 
 const pageTitles = new Set();
@@ -284,6 +296,15 @@ filesToVerify.forEach(fileSpec => {
     let brokenLinksCount = 0;
     links.forEach(link => {
         if (link.startsWith('#') || link.startsWith('mailto:') || link.startsWith('tel:') || link.startsWith('http://') || link.startsWith('https://')) {
+            // Fail if link contains invalid fragments, placeholders or Stripe placeholders
+            if (link === '#' && fileSpec.relPath !== 'index.html' && !content.includes('id="nav-toggle"')) {
+                log(`    [FAIL] Link is exactly empty fragment '#': ${link}`);
+                overallSuccess = false;
+            }
+            if (link.includes('buy.stripe.com/...') || link.includes('example.com') || link.includes('javascript:void')) {
+                log(`    [FAIL] Link contains placeholder/broken target: ${link}`);
+                overallSuccess = false;
+            }
             return;
         }
 
@@ -322,14 +343,29 @@ filesToVerify.forEach(fileSpec => {
         log(`    [PASS] No broken internal links found.`);
     }
 
-    // 3.9 Check for legacy routes in navigation or document links
-    const legacyRoutes = ['/lab/', '/services/', '/signal/'];
+    // 3.9 Check for legacy routes in navigation or document links (like /lab/, /services/, /systems/signal/)
+    const legacyRoutes = ['/lab/', '/services/', '/systems/signal/'];
     legacyRoutes.forEach(route => {
         if (content.includes(`href="${route}"`) || content.includes(`href="${route}/"`)) {
             log(`    [FAIL] Page contains link to deprecated legacy route: "${route}"`);
             overallSuccess = false;
         }
     });
+
+    // Check that /systems/signal/ is not used as an internal canonical link
+    if (content.includes('rel="canonical" href="https://www.contextmuse.com/systems/signal/"') && fileSpec.relPath !== 'systems/signal/index.html') {
+        log('    [FAIL] Page contains deprecated systems/signal/ canonical target link!');
+        overallSuccess = false;
+    }
+
+    // 3.10 Check for vercel.app links in copy
+    const vercelAppPattern = /[a-zA-Z0-9-]+\.vercel\.app/i;
+    if (vercelAppPattern.test(content)) {
+        log('    [FAIL] Page contains raw vercel.app URL references.');
+        overallSuccess = false;
+    } else {
+        log('    [PASS] Verified: No raw vercel.app URLs exist in copy.');
+    }
 });
 
 // ==========================================================================
@@ -337,7 +373,7 @@ filesToVerify.forEach(fileSpec => {
 // ==========================================================================
 log('\n[4] RESTAURANT SYSTEMS VS SIGNAL COPY CHECK');
 const restSysPath = path.join(projectRoot, 'restaurant-systems/index.html');
-const sigPath = path.join(projectRoot, 'systems/signal/index.html');
+const sigPath = path.join(projectRoot, 'signal/index.html');
 
 if (fs.existsSync(restSysPath) && fs.existsSync(sigPath)) {
     const restContent = fs.readFileSync(restSysPath, 'utf8');
@@ -362,7 +398,7 @@ if (fs.existsSync(restSysPath) && fs.existsSync(sigPath)) {
         overallSuccess = false;
     }
 
-    if (restContent.includes('Signal Reviews start at') && restContent.includes('href="/systems/signal/"')) {
+    if (restContent.includes('Signal reviews from') && restContent.includes('href="/signal/"')) {
         log('  [PASS] Restaurant Systems CTA links properly to Signal and references starting price.');
     } else {
         log('  [FAIL] Restaurant Systems does not link correctly to Signal details or reference starting price.');
@@ -382,9 +418,9 @@ if (fs.existsSync(restSysPath) && fs.existsSync(sigPath)) {
 }
 
 // ==========================================================================
-// 5. LEGACY SIGNAL PRICES SEARCH
+// 5. LEGACY SIGNAL PRICES & OFFER NAME ALIGNMENT SEARCH
 // ==========================================================================
-log('\n[5] LEGACY SIGNAL PRICES SEARCH');
+log('\n[5] LEGACY SIGNAL PRICES & OFFER NAME ALIGNMENT SEARCH');
 let legacyPriceFound = false;
 const legacyPrices = ['$149', '$450', '$750', 'starting at $450'];
 filesToVerify.forEach(fileSpec => {
@@ -398,10 +434,57 @@ filesToVerify.forEach(fileSpec => {
             overallSuccess = false;
         }
     });
+
+    // Check for contradictory Signal offer names
+    const forbiddenOfferNames = ['Signal Operational Audit', 'Signal Continuous Monitoring'];
+    forbiddenOfferNames.forEach(name => {
+        if (content.includes(name)) {
+            log(`  [FAIL] Contradictory Signal offer name "${name}" found in ${fileSpec.relPath}`);
+            overallSuccess = false;
+        }
+    });
 });
 if (!legacyPriceFound) {
     log('  [PASS] Verified: No legacy price points ($149, $450, $750) exist in indexable files.');
 }
+
+// Check consistency of pricing: GenSort (Snapshot Export: $195), Signal (Snapshot: $195, Diagnostic: $595, Ongoing Review: $195/mo)
+log('\n  Verifying GenSort and Signal pricing values in all index pages...');
+filesToVerify.forEach(fileSpec => {
+    const filePath = path.join(projectRoot, fileSpec.relPath);
+    if (!fs.existsSync(filePath)) return;
+    const content = fs.readFileSync(filePath, 'utf8');
+
+    // GenSort: If it has pricing, verify it specifies $195
+    if (fileSpec.relPath === 'gensort/index.html') {
+        if (content.includes('$195')) {
+            log('    [PASS] GenSort page lists correct $195 export fee.');
+        } else {
+            log('    [FAIL] GenSort page does not mention $195 pricing.');
+            overallSuccess = false;
+        }
+    }
+
+    // Signal: If it has pricing, verify it specifies $195, $595, and $195/mo
+    if (fileSpec.relPath === 'signal/index.html') {
+        if (content.includes('$195') && content.includes('$595') && content.includes('$195/mo') && content.includes('Signal Snapshot') && content.includes('Signal Diagnostic') && content.includes('Ongoing Review')) {
+            log('    [PASS] Signal page lists standard offers: Snapshot ($195), Diagnostic ($595), Ongoing ($195/mo).');
+        } else {
+            log('    [FAIL] Signal page does not list standard pricing elements correctly.');
+            overallSuccess = false;
+        }
+    }
+
+    // Custom: Verify project status label is present
+    if (fileSpec.relPath === 'custom/index.html') {
+        if (content.includes('Custom client engagements')) {
+            log('    [PASS] Custom Systems page lists project status: Custom client engagements');
+        } else {
+            log('    [FAIL] Custom Systems page is missing product status label.');
+            overallSuccess = false;
+        }
+    }
+});
 
 // ==========================================================================
 // 6. DEPLOYMENT FILE INVENTORY & DELETION SCANS
@@ -466,7 +549,7 @@ if (manuscriptLeaked) {
 }
 
 // ==========================================================================
-// 7. AUTOMATED ASSET VALIDATION (GPS, Size, Existence)
+// 7. AUTOMATED ASSET VALIDATION (Existence & Size)
 // ==========================================================================
 log('\n[7] AUTOMATED ASSET VALIDATION');
 const assetRegex = /src=["']([^"']+\.(png|webp|jpg|jpeg|gif|svg))["']/gi;
@@ -557,11 +640,27 @@ if (remoteUrl) {
 
     async function runRemoteTests() {
         // Test 1: Redirect verification (non-www to www)
-        // Note: For preview URLs (like Vercel branch URLs) domain redirect might not be active,
-        // so we check route redirects from vercel.json.
+        log('  Verifying non-www to www redirect routing...');
+        const bareDomainUrl = remoteUrl.replace('www.', '');
+        const bareRes = await fetchRemote(bareDomainUrl + '/');
+        log(`    GET ${bareDomainUrl}/ -> Status: ${bareRes.status}`);
+        if (bareRes.status === 307 || bareRes.status === 308 || bareRes.status === 301 || bareRes.status === 302) {
+            const loc = bareRes.headers.location || '';
+            log(`    [PASS] Redirect location: "${loc}"`);
+            if (loc.startsWith('https://www.contextmuse.com/')) {
+                log('    [PASS] Redirect successfully targets canonical www host.');
+            } else {
+                log(`    [FAIL] Redirect target mismatch! Expected www domain, found "${loc}"`);
+                overallSuccess = false;
+            }
+        } else {
+            log(`    [WARNING] Expected redirect status for bare domain request, found status ${bareRes.status}. (If testing preview Vercel branch URLs, Vercel aliases are only bound to www.contextmuse.com)`);
+        }
+
+        // Test 2: Redirect verification for vercel.json routes
         log('  Verifying vercel.json redirect routing on remote endpoint...');
         const testRedirects = [
-            { source: '/signal/', target: '/systems/signal/' },
+            { source: '/systems/signal/', target: '/signal/' },
             { source: '/lab/', target: '/systems/' },
             { source: '/contact/', target: '/' }
         ];
@@ -585,7 +684,7 @@ if (remoteUrl) {
             }
         }
 
-        // Test 2: Sitemap HTTP check
+        // Test 3: Sitemap HTTP check
         const sitemapUrlRemote = `${remoteUrl}/sitemap.xml`;
         const smRes = await fetchRemote(sitemapUrlRemote);
         log(`    GET ${sitemapUrlRemote} -> Status: ${smRes.status}`);
@@ -596,7 +695,7 @@ if (remoteUrl) {
             overallSuccess = false;
         }
 
-        // Test 3: Canonical and OG validation on remote index
+        // Test 4: Canonical and OG validation on remote index
         const indexRes = await fetchRemote(remoteUrl + '/');
         log(`    GET ${remoteUrl}/ -> Status: ${indexRes.status}`);
         if (indexRes.status === 200) {

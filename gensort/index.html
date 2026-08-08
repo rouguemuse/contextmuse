@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenSort | Visual &amp; Digital Asset Organization</title>
+    <meta name="description" content="GenSort turns messy collections of visual and digital assets into searchable, comparable, structured libraries without forcing you to reorganize everything by hand.">
+    <link rel="canonical" href="https://www.contextmuse.com/gensort/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.contextmuse.com/gensort/">
+    <meta property="og:title" content="GenSort | Visual &amp; Digital Asset Organization">
+    <meta property="og:description" content="GenSort turns messy collections of visual and digital assets into searchable, comparable, structured libraries without forcing you to reorganize everything by hand.">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/gensort-workspace.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GenSort | Visual &amp; Digital Asset Organization">
+    <meta name="twitter:description" content="GenSort turns messy collections of visual and digital assets into searchable, comparable, structured libraries without forcing you to reorganize everything by hand.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/gensort-workspace.webp">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .product-hero {
+            padding: 140px 0 80px;
+            background: var(--bg-ink, #090a0f);
+            color: #FAF9F5;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media(max-width: 950px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(45, 212, 191, 0.15);
+            color: var(--accent-teal, #2dd4bf);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            padding: 2rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .feature-card:hover {
+            border-color: var(--text-primary);
+        }
+        .feature-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        .feature-desc {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .workflow-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin: 3.5rem 0;
+        }
+        @media(max-width: 768px) {
+            .workflow-strip {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        .workflow-step {
+            position: relative;
+            text-align: center;
+            background: var(--bg-panel);
+            padding: 1.75rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+        }
+        .workflow-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent-teal);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .workflow-name {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin: 0;
+            font-weight: 600;
+        }
+        .pricing-section {
+            background: var(--bg-panel, #faf6f0);
+            padding: 5.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .pricing-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.5rem;
+            max-width: 500px;
+            margin: 2.5rem auto 0;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .pricing-card:hover {
+            border-color: var(--text-primary);
+            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.05);
+        }
+        .price-val {
+            font-family: var(--font-sans);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 1rem 0;
+        }
+        .price-period {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="/systems/" class="nav-link">Systems</a>
+                <a href="/gensort/" class="nav-link active" aria-current="page">GenSort</a>
+                <a href="/signal/" class="nav-link">Signal</a>
+                <a href="/custom/" class="nav-link">Custom Builds</a>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="product-hero">
+        <div class="container">
+            <div class="product-grid">
+                <div>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">02 // INFORMATION ARCHITECTURE</span>
+                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.5rem; color: #FAF9F5;">
+                        Turn the pile into a structure.
+                    </h1>
+                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: rgba(250,249,245,0.75); margin-bottom: 2rem;">
+                        GenSort turns messy collections of visual and digital assets into searchable, comparable, structured libraries—without forcing you to reorganize everything by hand.
+                    </p>
+                    <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <a href="https://gensort.contextmuse.com" target="_blank" rel="noopener" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px;">Open GenSort &rarr;</a>
+                        <a href="#pricing" class="btn btn-secondary" style="border-color: rgba(250,249,245,0.3); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">See Pricing</a>
+                    </div>
+                    <div>
+                        <span class="status-badge">Product Status: Working Application</span>
+                    </div>
+                </div>
+
+                <div class="build-visual-col">
+                    <div class="build-browser-frame" style="background: #1e1e1e; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                        <div class="build-browser-header" style="background: #2d2d2d; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <div class="browser-dots" style="display: flex; gap: 6px;">
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #E11D48;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #C5A059;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #0F766E;"></span>
+                            </div>
+                            <div class="browser-url-bar" style="font-family: var(--font-mono); font-size: 10px; color: #888; background: #1a1a1a; padding: 3px 12px; border-radius: 4px; width: 60%; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">gensort.contextmuse.com</div>
+                            <div style="width: 24px;"></div>
+                        </div>
+                        <div class="browser-content" style="padding: 0; background: #000;">
+                            <img src="/assets/images/gensort-workspace.webp" alt="GenSort Workspace interface demonstrating asset ingestion and tag organization" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Section I: Workflow -->
+        <section class="creative-section" style="background: var(--bg-paper); border-bottom: 1px solid var(--border-light); padding: 5.5rem 0;">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem; text-align: center;">I // WORKFLOW PATHWAY</span>
+                <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 1rem; font-weight: 500;">
+                    From fragmented files to structured libraries.
+                </h2>
+                <p style="font-size: 1rem; color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 3rem;">
+                    Reorganizing folders manually is a losing battle. GenSort operates directly on your local system or digital collections, organizing assets without moving the actual files.
+                </p>
+
+                <div class="workflow-strip">
+                    <div class="workflow-step">
+                        <span class="workflow-num">01</span>
+                        <h3 class="workflow-name">Import</h3>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-num">02</span>
+                        <h3 class="workflow-name">Understand</h3>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-num">03</span>
+                        <h3 class="workflow-name">Organize</h3>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-num">04</span>
+                        <h3 class="workflow-name">Review</h3>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-num">05</span>
+                        <h3 class="workflow-name">Export</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section II: Capabilities -->
+        <section class="creative-section" style="background: var(--bg-panel); border-bottom: 1px solid var(--border-light); padding: 5.5rem 0;">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto 3.5rem; text-align: center;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">II // SYSTEM CAPABILITIES</span>
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-primary); font-weight: 500;">
+                        Structured features built for digital collections.
+                    </h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 class="feature-title">Local Directory Ingestion</h3>
+                        <p class="feature-desc">Load directories or asset trees directly into the visual interface in seconds without server uploads.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Visual Asset Organization</h3>
+                        <p class="feature-desc">Render, inspect, and evaluate visual grids, media files, and diagnostic logs side-by-side.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Metadata &amp; Custom Tags</h3>
+                        <p class="feature-desc">Apply tags, descriptors, and operational attributes to collections dynamically to build custom hierarchies.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Search &amp; Advanced Filters</h3>
+                        <p class="feature-desc">Filter by name, metadata flags, creation times, readiness status, or file dimensions instantly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Media Classification &amp; Smart Folders</h3>
+                        <p class="feature-desc">Group assets automatically using matching rules, file types, colors, or rating limits into virtual directories.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Sorting &amp; Readiness Scores</h3>
+                        <p class="feature-desc">Assign check marks, sorting scores, or readiness indicators to track which elements are ready for export.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Color Filtering &amp; Compare Tools</h3>
+                        <p class="feature-desc">Filter imagery by dominant tones or inspect multiple assets in compare view to isolate patterns and outliers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Structured Local Export</h3>
+                        <p class="feature-desc">Export final structured metadata or sorted manifest structures directly back to your local machine.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section III: Pricing -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">III // COMMERCIAL LICENSE</span>
+                    <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); font-weight: 500;">
+                        Pay on Export
+                    </h2>
+                    <p style="font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem; max-width: 550px; margin-left: auto; margin-right: auto;">
+                        Analyze, filter, and structure your collections locally for free. Purchase an export code only when you want to write out the organized results.
+                    </p>
+                </div>
+
+                <div class="pricing-card">
+                    <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary);">Single Project Export Run</span>
+                    <div class="price-val">$195<span class="price-period"> / export</span></div>
+                    <p style="font-size: 0.95rem; line-height: 1.55; color: var(--text-secondary); margin-bottom: 2rem; padding: 0 1rem;">
+                        Unlocks full export functionality for one sorted directory structure or manifest. Includes 12 months of support and updates.
+                    </p>
+                    <a href="https://gensort.contextmuse.com" target="_blank" rel="noopener" class="btn btn-primary" style="background: var(--text-primary); border-color: var(--text-primary); color: #FAF9F5; text-decoration: none; padding: 0.8rem 2rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; display: inline-block;">Open App to Start &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section IV: FAQ -->
+        <section class="creative-section" style="background: var(--bg-paper); border-top: 1px solid var(--border-light); padding: 5.5rem 0;">
+            <div class="container" style="max-width: 800px;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.5rem; text-align: center;">IV // SYSTEM FAQ</span>
+                <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-primary); text-align: center; margin-bottom: 3rem; font-weight: 500;">
+                    Frequently Answered Queries
+                </h2>
+
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div>
+                        <h3 style="font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem;">Does GenSort upload my files?</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                            No. GenSort runs entirely in your browser using local file handles. Your images, documents, and data files are never sent to a server. Processing and classification take place completely on your machine.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem;">What export formats are supported?</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                            You can export sorted indices, structure logs, custom tags, or organized references as CSV metadata manifests, which can be re-imported or referenced by other workflow scripts.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem;">How does the pay-on-export work?</h3>
+                        <p style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                            You can run sorting sessions, apply tags, filter directories, and view libraries as much as you like without restriction. When you are ready to export the final structured manifest, the app will prompt you for an export license code.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;"><span style="letter-spacing:0.04em;">Context &amp; Muse</span></a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

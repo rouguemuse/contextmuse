@@ -10,10 +10,16 @@
     <loc>https://www.contextmuse.com/systems/</loc>
   </url>
   <url>
-    <loc>https://www.contextmuse.com/systems/signal/</loc>
+    <loc>https://www.contextmuse.com/systems/resource-guide/</loc>
   </url>
   <url>
-    <loc>https://www.contextmuse.com/systems/resource-guide/</loc>
+    <loc>https://www.contextmuse.com/gensort/</loc>
+  </url>
+  <url>
+    <loc>https://www.contextmuse.com/signal/</loc>
+  </url>
+  <url>
+    <loc>https://www.contextmuse.com/custom/</loc>
   </url>
   <url>
     <loc>https://www.contextmuse.com/restaurant-systems/</loc>

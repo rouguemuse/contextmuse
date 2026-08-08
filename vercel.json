@@ -22,13 +22,28 @@
       "permanent": true
     },
     {
-      "source": "/signal/",
-      "destination": "/systems/signal/",
+      "source": "/systems/signal/",
+      "destination": "/signal/",
       "permanent": true
     },
     {
       "source": "/custom-tools/",
-      "destination": "/systems/",
+      "destination": "/custom/",
+      "permanent": true
+    },
+    {
+      "source": "/custom-builds/",
+      "destination": "/custom/",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/custom/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing/",
+      "destination": "/signal/",
       "permanent": true
     },
     {
@@ -37,23 +52,13 @@
       "permanent": true
     },
     {
-      "source": "/method/",
-      "destination": "/about/",
-      "permanent": true
-    },
-    {
-      "source": "/pricing/",
-      "destination": "/systems/signal/",
-      "permanent": true
-    },
-    {
-      "source": "/services/",
-      "destination": "/systems/",
-      "permanent": true
-    },
-    {
       "source": "/lab/",
       "destination": "/systems/",
+      "permanent": true
+    },
+    {
+      "source": "/method/",
+      "destination": "/about/",
       "permanent": true
     },
     {
