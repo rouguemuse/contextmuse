@@ -751,13 +751,37 @@
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-            <div class="nav-links">
-                <a href="/systems/" class="nav-link active" aria-current="page">Systems</a>
-                <a href="/gensort/" class="nav-link">GenSort</a>
-                <a href="/signal/" class="nav-link">Signal</a>
-                <a href="/custom/" class="nav-link">Custom Builds</a>
-                <a href="/creative/" class="nav-link">Creative</a>
+                        <div class="nav-links">
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
+                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
+                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
+                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
+                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
+                    </div>
+                </details>
                 <a href="/about/" class="nav-link">About</a>
+                <a href="/#contact" class="nav-btn">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -779,44 +803,17 @@
         </div>
     </header>
 
-    <main id="main-content">
-        <!-- Static Project Index -->
-        <section style="background: var(--bg-panel); padding: 60px 0 40px; border-bottom: 1px solid var(--border-light);">
-            <div class="container">
-                <span class="eyebrow" style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">FLAGSHIP SYSTEMS INDEX</span>
-                <div style="display: flex; flex-direction: column;">
-                    <a href="#signal" class="systems-index-item">
-                        <div>
-                            <span class="index-num">01</span>
-                            <span class="index-name">Signal</span>
-                        </div>
-                        <span class="index-arrow">&darr;</span>
-                    </a>
-                    <a href="#gensort" class="systems-index-item">
-                        <div>
-                            <span class="index-num">02</span>
-                            <span class="index-name">GenSort</span>
-                        </div>
-                        <span class="index-arrow">&darr;</span>
-                    </a>
-                    <a href="#message-record" class="systems-index-item">
-                        <div>
-                            <span class="index-num">03</span>
-                            <span class="index-name">Message &amp; Record Analysis</span>
-                        </div>
-                        <span class="index-arrow">&darr;</span>
-                    </a>
-                    <a href="#record-integrity" class="systems-index-item">
-                        <div>
-                            <span class="index-num">04</span>
-                            <span class="index-name">Record Integrity &amp; Traceability</span>
-                        </div>
-                        <span class="index-arrow">&darr;</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+    <!-- Page-Level Jump Navigation -->
+    <nav class="sub-navbar" aria-label="Page Navigation">
+        <div class="container sub-nav-container" style="justify-content: center;">
+            <a href="#systems-projects" class="sub-nav-link">Products</a>
+            <a href="#client-builds" class="sub-nav-link">Client Systems</a>
+            <a href="#record-integrity" class="sub-nav-link">Experimental Systems</a>
+            <a href="#process" class="sub-nav-link">How I Build</a>
+        </div>
+    </nav>
 
+    <main id="main-content">
         <!-- Spatial Gallery Section -->
         <section class="systems-spatial-gallery" id="systems-projects" aria-labelledby="systems-heading">
             <div class="container">
@@ -952,9 +949,10 @@
                                         <span class="card-label-val" style="color: var(--accent-red); font-weight: bold;">Human Review Required</span>
                                     </div>
                                 </div>
-                                <div class="card-actions">
-                                    <a href="/about/#operating-background" class="btn-card-primary">View Analysis System</a>
-                                    <a href="/about/#operating-background" class="btn-card-outline">Explore Method</a>
+                                <div class="card-actions" style="padding-top: 0.5rem;">
+                                    <p style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250,249,245,0.45); line-height: 1.6; letter-spacing: 0.03em; text-transform: uppercase; border-left: 2px solid rgba(15,118,110,0.35); padding-left: 10px; margin: 0;">
+                                        Proprietary communication timeline and analysis engine. Concept in active client engagement &mdash; inquire to request private demonstration.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1056,7 +1054,27 @@
                                         <span class="op-tag">Operations</span>
                                         <span class="op-tag">Field Service</span>
                                     </div>
-                                    <div class="op-card-footer">
+                                    <details style="margin-top: 1rem; border-top: 1px solid rgba(250,249,245,0.1); padding-top: 0.75rem; text-align: left;">
+                                        <summary style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; list-style: none; outline: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                                            <span>View Case Details</span>
+                                            <span class="nav-dropdown-arrow">▾</span>
+                                        </summary>
+                                        <div style="margin-top: 0.75rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The Business Problem</strong>
+                                                <p style="margin:0;">Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.</p>
+                                            </div>
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The System Built</strong>
+                                                <p style="margin:0;">An interactive, property-wide assessment system that maps complex equipment locations, generates standardized intake details, and produces custom service reports.</p>
+                                            </div>
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">Operational Value</strong>
+                                                <p style="margin:0;">Replaces chaotic paper checklists and generic service listings with prioritized recommendations, allowing sales teams to rapidly convert property needs into structured deals.</p>
+                                            </div>
+                                        </div>
+                                    </details>
+                                    <div class="op-card-footer" style="margin-top: 1rem;">
                                         <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
                                     </div>
                                 </div>
@@ -1086,7 +1104,27 @@
                                         <span class="op-tag">Inquiry Flow</span>
                                         <span class="op-tag">Marketing</span>
                                     </div>
-                                    <div class="op-card-footer">
+                                    <details style="margin-top: 1rem; border-top: 1px solid rgba(250,249,245,0.1); padding-top: 0.75rem; text-align: left;">
+                                        <summary style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; list-style: none; outline: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                                            <span>View Case Details</span>
+                                            <span class="nav-dropdown-arrow">▾</span>
+                                        </summary>
+                                        <div style="margin-top: 0.75rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The Business Problem</strong>
+                                                <p style="margin:0;">Premium detailing services require managing highly specific inquiries (by vehicle type and service tiers), generating local advertisements, and publishing content without juggling separate dashboard tools.</p>
+                                            </div>
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The System Built</strong>
+                                                <p style="margin:0;">A connected custom application linking the public marketing storefront directly to an admin interface with customer pipeline tools, an automated local ad generator, blog publishing, and a D2TV media player database.</p>
+                                            </div>
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">Operational Value</strong>
+                                                <p style="margin:0;">Combines brand marketing with deep backend tools to capture, qualify, and convert details. Replaces standard brochure structures with a workflow engine.</p>
+                                            </div>
+                                        </div>
+                                    </details>
+                                    <div class="op-card-footer" style="margin-top: 1rem;">
                                         <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
                                     </div>
                                 </div>
@@ -1116,7 +1154,27 @@
                                         <span class="op-tag">Product UX</span>
                                         <span class="op-tag">Qualification</span>
                                     </div>
-                                    <div class="op-card-footer">
+                                    <details style="margin-top: 1rem; border-top: 1px solid rgba(250,249,245,0.1); padding-top: 0.75rem; text-align: left;">
+                                        <summary style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; list-style: none; outline: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                                            <span>View Case Details</span>
+                                            <span class="nav-dropdown-arrow">▾</span>
+                                        </summary>
+                                        <div style="margin-top: 0.75rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The Business Problem</strong>
+                                                <p style="margin:0;">Rental companies own highly specific, one-of-one event inventory (individual slides, custom arches, tables). Normal ecommerce shopping carts fail because they allow double-booking on identical date ranges.</p>
+                                            </div>
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The System Built</strong>
+                                                <p style="margin:0;">An inventory availability checker linked to the storefront cart. Customers check inventory by date, and the admin system locks bookings for that product serial number on approved dates.</p>
+                                            </div>
+                                            <div>
+                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">Operational Value</strong>
+                                                <p style="margin:0;">Eliminates double-booking errors, automates translation across English and Spanish storefront versions, and organizes delivery dispatch schedules based on verified dates.</p>
+                                            </div>
+                                        </div>
+                                    </details>
+                                    <div class="op-card-footer" style="margin-top: 1rem;">
                                         <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
                                     </div>
                                 </div>
@@ -1124,7 +1182,7 @@
                         </div>
 
                         <div class="card-full-footer">
-                            <a href="#builds" class="btn-all-builds">VIEW ALL CLIENT BUILDS &rarr;</a>
+                            <a href="/custom/" class="btn-all-builds">VIEW ALL CLIENT BUILDS &rarr;</a>
                         </div>
                     </article>
 
@@ -1157,7 +1215,7 @@
                                     </div>
                                 </div>
                                 <div class="card-actions">
-                                    <a href="/creative/#project-wolves" class="btn-card-primary">Explore the Project</a>
+                                    <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn-card-primary">Explore the Project</a>
                                     <a href="/creative/#self-cartography" class="btn-card-outline">Enter Self Cartography</a>
                                 </div>
                             </div>
@@ -1186,178 +1244,8 @@
         </section>
 
 
-        <!-- Selected Commercial Builds Section -->
-        <section class="builds-section" id="builds" aria-labelledby="builds-heading" style="background: var(--bg-panel); padding: 80px 0;">
-            <div class="container">
-                <div class="builds-header">
-                    <span class="eyebrow" style="color: var(--accent-teal);">Operational Implementations</span>
-                    <h2 id="builds-heading" class="section-title" style="margin-top: 0.5rem;">Selected Commercial Builds</h2>
-                    <p class="body-copy" style="margin-top: 1rem; color: var(--text-secondary); max-width: 720px;">
-                        Production systems and commercial builds. Real operational platforms solving inventory management, service delivery, and multi-channel business problems.
-                    </p>
-                </div>
-
-                <div class="builds-list" style="margin-top: 4rem; display: flex; flex-direction: column; gap: 6rem;">
-                    <!-- Build 1: INNcontrol Coils -->
-                    <div class="build-row" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;">
-                        <div class="build-meta-col">
-                            <span class="build-num">01</span>
-                            <span class="build-category">Commercial Service Operations</span>
-                            <h3 class="build-title">INNcontrol Coils</h3>
-                            <p class="build-desc">
-                                A commercial service platform that turns scattered hotel and property needs into a structured assessment, prioritized service plan, and qualified sales opportunity.
-                            </p>
-                            
-                            <ul class="build-details-list">
-                                <li class="build-detail-item">
-                                    <h4>The Business Problem</h4>
-                                    <p>Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>The System Built</h4>
-                                    <p>An interactive, property-wide assessment system that maps complex equipment locations, generates standardized intake details, and produces custom service reports.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>Operational Value</h4>
-                                    <p>Replaces chaotic paper checklists and generic service listings with prioritized recommendations, allowing sales teams to rapidly convert property needs into structured deals.</p>
-                                </li>
-                            </ul>
-
-                            <div class="build-ctas">
-                                <a href="https://www.inncontrolcoils.com" class="btn btn-primary" target="_blank" rel="noopener">Explore INNcontrolCoils.com &rarr;</a>
-                                <a href="/systems/#builds" class="btn-outline">View Case Study &rarr;</a>
-                            </div>
-                        </div>
-
-                        <div class="build-visual-col">
-                            <!-- Clickable Real Screenshot -->
-                            <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" style="display: block; text-decoration: none;">
-                                <div class="build-browser-frame">
-                                    <div class="build-browser-header">
-                                        <div class="browser-dots">
-                                            <span class="browser-dot" style="background: #E11D48;"></span>
-                                            <span class="browser-dot" style="background: #C5A059;"></span>
-                                            <span class="browser-dot" style="background: #0F766E;"></span>
-                                        </div>
-                                        <div class="browser-url-bar">https://www.inncontrolcoils.com</div>
-                                        <div style="width: 24px;"></div>
-                                    </div>
-                                    <div class="browser-content" style="padding: 0; background: #000;">
-                                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils Homepage website" style="width: 100%; height: auto; display: block;" loading="lazy">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Build 2: D2 Auto Detail -->
-                    <div class="build-row row-reverse" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: start;">
-                        <div class="build-visual-col">
-                            <!-- Clickable Real Screenshot -->
-                            <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" style="display: block; text-decoration: none;">
-                                <div class="build-browser-frame">
-                                    <div class="build-browser-header">
-                                        <div class="browser-dots">
-                                            <span class="browser-dot" style="background: #E11D48;"></span>
-                                            <span class="browser-dot" style="background: #C5A059;"></span>
-                                            <span class="browser-dot" style="background: #0F766E;"></span>
-                                        </div>
-                                        <div class="browser-url-bar">https://www.d2autodetail.com</div>
-                                        <div style="width: 24px;"></div>
-                                    </div>
-                                    <div class="browser-content" style="padding: 0; background: #000;">
-                                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail website" style="width: 100%; height: auto; display: block;" loading="lazy">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="build-meta-col">
-                            <span class="build-num">02</span>
-                            <span class="build-category">Unified Business Platform</span>
-                            <h3 class="build-title">D2 Auto Detail</h3>
-                            <p class="build-desc">
-                                A conversion-focused auto-detailing platform designed around service discovery, trust, estimates, booking, and customer engagement.
-                            </p>
-                            
-                            <ul class="build-details-list">
-                                <li class="build-detail-item">
-                                    <h4>The Business Problem</h4>
-                                    <p>Premium detailing services require managing highly specific inquiries (by vehicle type and service tiers), generating local advertisements, and publishing content without juggling separate dashboard tools.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>The System Built</h4>
-                                    <p>A connected custom application linking the public marketing storefront directly to an admin interface with customer pipeline tools, an automated local ad generator, blog publishing, and a D2TV media player database.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>Operational Value</h4>
-                                    <p>Combines brand marketing with deep backend tools to capture, qualify, and convert details. Replaces standard brochure structures with a workflow engine.</p>
-                                </li>
-                            </ul>
-
-                            <div class="build-ctas">
-                                <a href="https://www.d2autodetail.com" class="btn btn-primary" target="_blank" rel="noopener">Explore D2AutoDetail.com &rarr;</a>
-                                <a href="/systems/#builds" class="btn-outline">View Case Study &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Build 3: EDR Party Rentals -->
-                    <div class="build-row" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;">
-                        <div class="build-meta-col">
-                            <span class="build-num">03</span>
-                            <span class="build-category">Inventory-Aware Storefront</span>
-                            <h3 class="build-title">EDR Party Rentals</h3>
-                            <p class="build-desc">
-                                A visual rental storefront with inventory-aware inquiries, event logistics, bilingual content, and reservation controls.
-                            </p>
-                            
-                            <ul class="build-details-list">
-                                <li class="build-detail-item">
-                                    <h4>The Business Problem</h4>
-                                    <p>Rental companies own highly specific, one-of-one event inventory (individual slides, custom arches, tables). Normal ecommerce shopping carts fail because they allow double-booking on identical date ranges.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>The System Built</h4>
-                                    <p>An inventory availability checker linked to the storefront cart. Customers check inventory by date, and the admin system locks bookings for that product serial number on approved dates.</p>
-                                </li>
-                                <li class="build-detail-item">
-                                    <h4>Operational Value</h4>
-                                    <p>Eliminates double-booking errors, automates translation across English and Spanish storefront versions, and organizes delivery dispatch schedules based on verified dates.</p>
-                                </li>
-                            </ul>
-
-                            <div class="build-ctas">
-                                <a href="https://edrpartyrentals.com" class="btn btn-primary" target="_blank" rel="noopener">Explore EDRPartyRentals.com &rarr;</a>
-                                <a href="/systems/#builds" class="btn-outline">View Case Study &rarr;</a>
-                            </div>
-                        </div>
-
-                        <div class="build-visual-col">
-                            <!-- Clickable Real Screenshot -->
-                            <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" style="display: block; text-decoration: none;">
-                                <div class="build-browser-frame">
-                                    <div class="build-browser-header">
-                                        <div class="browser-dots">
-                                            <span class="browser-dot" style="background: #E11D48;"></span>
-                                            <span class="browser-dot" style="background: #C5A059;"></span>
-                                            <span class="browser-dot" style="background: #0F766E;"></span>
-                                        </div>
-                                        <div class="browser-url-bar">https://edrpartyrentals.com</div>
-                                        <div style="width: 24px;"></div>
-                                    </div>
-                                    <div class="browser-content" style="padding: 0; background: #000;">
-                                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals website" style="width: 100%; height: auto; display: block;" loading="lazy">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Method Section -->
+
         <section class="method-section" id="process" aria-labelledby="method-heading" style="background: var(--bg-paper);">
             <div class="container">
                 <div class="method-header">
@@ -1370,36 +1258,66 @@
 
                 <!-- Horizontal Process Flow -->
                 <div class="process-flow-container">
-                    <div class="process-step">
-                        <span class="step-num">01</span>
-                        <h3 class="step-name">Observe</h3>
-                        <p class="step-desc">Examine transaction paths, directory structures, and logs in their native environments.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">02</span>
-                        <h3 class="step-name">Structure</h3>
-                        <p class="step-desc">Normalize messy database logs, narrative fragments, or assets into clean schemas.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">03</span>
-                        <h3 class="step-name">Validate</h3>
-                        <p class="step-desc">Cross-reference timestamps, hashes, and records to locate anomalies.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">04</span>
-                        <h3 class="step-name">Prioritize</h3>
-                        <p class="step-desc">Filter findings into actionable checklists ranked by operational impact.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">05</span>
-                        <h3 class="step-name">Translate</h3>
-                        <p class="step-desc">Present raw diagnostic findings in clear, plain-language interfaces.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-num">06</span>
-                        <h3 class="step-name">Implement</h3>
-                        <p class="step-desc">Deploy verification scripts and rules to maintain system order.</p>
-                    </div>
+                    <details class="process-step" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: block;">
+                            <span class="step-num">01</span>
+                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                <span>Observe</span>
+                                <span class="nav-dropdown-arrow">▾</span>
+                            </h3>
+                        </summary>
+                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Examine transaction paths, directory structures, and logs in their native environments.</p>
+                    </details>
+                    <details class="process-step" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: block;">
+                            <span class="step-num">02</span>
+                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                <span>Structure</span>
+                                <span class="nav-dropdown-arrow">▾</span>
+                            </h3>
+                        </summary>
+                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Normalize messy database logs, narrative fragments, or assets into clean schemas.</p>
+                    </details>
+                    <details class="process-step" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: block;">
+                            <span class="step-num">03</span>
+                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                <span>Validate</span>
+                                <span class="nav-dropdown-arrow">▾</span>
+                            </h3>
+                        </summary>
+                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Cross-reference timestamps, hashes, and records to locate anomalies.</p>
+                    </details>
+                    <details class="process-step" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: block;">
+                            <span class="step-num">04</span>
+                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                <span>Prioritize</span>
+                                <span class="nav-dropdown-arrow">▾</span>
+                            </h3>
+                        </summary>
+                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Filter findings into actionable checklists ranked by operational impact.</p>
+                    </details>
+                    <details class="process-step" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: block;">
+                            <span class="step-num">05</span>
+                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                <span>Translate</span>
+                                <span class="nav-dropdown-arrow">▾</span>
+                            </h3>
+                        </summary>
+                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Present raw diagnostic findings in clear, plain-language interfaces.</p>
+                    </details>
+                    <details class="process-step" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: block;">
+                            <span class="step-num">06</span>
+                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                <span>Implement</span>
+                                <span class="nav-dropdown-arrow">▾</span>
+                            </h3>
+                        </summary>
+                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Deploy verification scripts and rules to maintain system order.</p>
+                    </details>
                 </div>
             </div>
         </section>

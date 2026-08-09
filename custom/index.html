@@ -201,13 +201,37 @@
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-            <div class="nav-links">
-                <a href="/systems/" class="nav-link">Systems</a>
-                <a href="/gensort/" class="nav-link">GenSort</a>
-                <a href="/signal/" class="nav-link">Signal</a>
-                <a href="/custom/" class="nav-link active" aria-current="page">Custom Builds</a>
-                <a href="/creative/" class="nav-link">Creative</a>
+                        <div class="nav-links">
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
+                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
+                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
+                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
+                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
+                    </div>
+                </details>
                 <a href="/about/" class="nav-link">About</a>
+                <a href="/#contact" class="nav-btn">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -262,29 +286,41 @@
                 </h2>
                 
                 <div class="offerings-grid">
-                    <!-- Offering 1 -->
-                    <div class="offering-card">
-                        <h3>Website + Conversion System</h3>
-                        <p>Not just a brochure site. Custom systems integration for intake, lead qualification, booking, checkout, and client-facing digital workflows built from the ground up.</p>
-                    </div>
+                    <!-- Offering 1 (Open by default) -->
+                    <details class="offering-card" open style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin: 0;">
+                            <span>Website + Conversion System</span>
+                            <span class="nav-dropdown-arrow">▾</span>
+                        </summary>
+                        <p style="margin-top: 0.75rem; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Not just a brochure site. Custom systems integration for intake, lead qualification, booking, checkout, and client-facing digital workflows built from the ground up.</p>
+                    </details>
 
                     <!-- Offering 2 -->
-                    <div class="offering-card">
-                        <h3>Intake + Lead Routing</h3>
-                        <p>Structured onboarding forms, logic-based qualification parameters, automated notification routing, and seamless lead handoffs to internal operational databases.</p>
-                    </div>
+                    <details class="offering-card" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin: 0;">
+                            <span>Intake + Lead Routing</span>
+                            <span class="nav-dropdown-arrow">▾</span>
+                        </summary>
+                        <p style="margin-top: 0.75rem; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Structured onboarding forms, logic-based qualification parameters, automated notification routing, and seamless lead handoffs to internal operational databases.</p>
+                    </details>
 
                     <!-- Offering 3 -->
-                    <div class="offering-card">
-                        <h3>Reservation + Inventory Systems</h3>
-                        <p>Live inventory lookup grids, booking allocation rules, calendar reservation systems, and automated checkout validation logic integrated with Stripe or processor APIs.</p>
-                    </div>
+                    <details class="offering-card" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin: 0;">
+                            <span>Reservation + Inventory Systems</span>
+                            <span class="nav-dropdown-arrow">▾</span>
+                        </summary>
+                        <p style="margin-top: 0.75rem; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Live inventory lookup grids, booking allocation rules, calendar reservation systems, and automated checkout validation logic integrated with Stripe or processor APIs.</p>
+                    </details>
 
                     <!-- Offering 4 -->
-                    <div class="offering-card">
-                        <h3>Operational Tools</h3>
-                        <p>Custom field workflows, equipment records directories, maintenance audit dashboards, internal reporting templates, and command-line automation scripts.</p>
-                    </div>
+                    <details class="offering-card" style="cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin: 0;">
+                            <span>Operational Tools</span>
+                            <span class="nav-dropdown-arrow">▾</span>
+                        </summary>
+                        <p style="margin-top: 0.75rem; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Custom field workflows, equipment records directories, maintenance audit dashboards, internal reporting templates, and command-line automation scripts.</p>
+                    </details>
                 </div>
 
                 <div style="margin-top: 4.5rem; text-align: center; border-top: 1px solid var(--border-light); padding-top: 3rem;">

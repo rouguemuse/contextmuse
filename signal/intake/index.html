@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Intake Questionnaire | Context &amp; Muse</title>
+    <meta name="description" content="Operational intake questionnaire for Context &amp; Muse Signal reviews, diagnostics, and workflow audits.">
+    <link rel="canonical" href="https://www.contextmuse.com/signal/intake/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Signal Intake Questionnaire | Context &amp; Muse">
+    <meta property="og:description" content="Operational intake questionnaire for Context &amp; Muse Signal reviews, diagnostics, and workflow audits.">
+    <meta property="og:url" content="https://www.contextmuse.com/signal/intake/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Signal Intake Questionnaire | Context &amp; Muse">
+    <meta name="twitter:description" content="Operational intake questionnaire for Context &amp; Muse Signal reviews, diagnostics, and workflow audits.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="stylesheet" href="/styles.css">
+    
+    <style>
+        .intake-container {
+            max-width: 650px;
+            margin: 120px auto 80px;
+            padding: 0 1.5rem;
+        }
+        .intake-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .intake-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .intake-subtitle {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .form-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(16, 33, 29, 0.02);
+        }
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+        .form-label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: var(--text-primary);
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 3px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--accent-teal);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-submit-btn {
+            width: 100%;
+            padding: 0.9rem;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 600;
+            color: #FAF9F5;
+            background: var(--text-primary);
+            border: 1px solid var(--text-primary);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .form-submit-btn:hover {
+            background: var(--accent-teal);
+            border-color: var(--accent-teal);
+        }
+        @media (max-width: 576px) {
+            .form-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
+                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
+                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
+                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
+                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
+                    </div>
+                </details>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/#contact" class="nav-btn">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="intake-container">
+            <div class="intake-header">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">Signal Diagnostic Ingestion</span>
+                <h1 class="intake-title">Start a Signal Review</h1>
+                <p class="intake-subtitle">Provide details about your system or operations. I will review your inquiry and follow up within 24 business hours to coordinate sample logs ingestion.</p>
+            </div>
+
+            <div class="form-card">
+                <form action="https://formspree.io/f/mqkvgndk" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="e.g., Jane Miller" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="e.g., jane@mybrand.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company" class="form-label">Business Name &amp; Website</label>
+                        <input type="text" id="company" name="company" class="form-input" placeholder="e.g., Miller &amp; Co. / millerbrand.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tier" class="form-label">Selected Review Level</label>
+                        <select id="tier" name="tier" class="form-select" required>
+                            <option value="snapshot">Signal Snapshot — $195 (Focused Leak Review)</option>
+                            <option value="diagnostic" selected>Signal Diagnostic — $595 (Full System Baseline Audit)</option>
+                            <option value="ongoing">Ongoing Review — $195/mo (Drift Monitoring)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pos-system" class="form-label">POS or Inventory System Used</label>
+                        <input type="text" id="pos-system" name="pos_system" class="form-input" placeholder="e.g., Toast, Shopify, Custom DB, Lightspeed" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bottleneck" class="form-label">Core Operational Bottlenecks or Margin Leaks</label>
+                        <textarea id="bottleneck" name="bottleneck" class="form-textarea" placeholder="Explain the workflow friction, void patterns, or missing data alignment you're hoping to isolate..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit-btn">Submit Signal Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;"><span style="letter-spacing:0.04em;">Context &amp; Muse</span></a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const tier = params.get('tier');
+        if (tier) {
+            const selectEl = document.getElementById('tier');
+            if (selectEl) {
+                selectEl.value = tier;
+            }
+        }
+    </script>
+</body>
+</html>

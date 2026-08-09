@@ -167,13 +167,37 @@
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-            <div class="nav-links">
-                <a href="/systems/" class="nav-link">Systems</a>
-                <a href="/gensort/" class="nav-link">GenSort</a>
-                <a href="/signal/" class="nav-link active" aria-current="page">Signal</a>
-                <a href="/custom/" class="nav-link">Custom Builds</a>
-                <a href="/creative/" class="nav-link">Creative</a>
+                        <div class="nav-links">
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
+                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
+                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
+                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
+                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
+                    </div>
+                </details>
                 <a href="/about/" class="nav-link">About</a>
+                <a href="/#contact" class="nav-btn">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -218,6 +242,15 @@
             </div>
         </div>
     </header>
+
+    <!-- Page-Level Jump Navigation -->
+    <nav class="sub-navbar" aria-label="Page Navigation">
+        <div class="container sub-nav-container" style="justify-content: center;">
+            <a href="#main-content" class="sub-nav-link">Details</a>
+            <a href="#process" class="sub-nav-link">Process</a>
+            <a href="#pricing" class="sub-nav-link">Pricing</a>
+        </div>
+    </nav>
 
     <main id="main-content">
         <!-- Section I: Questions & Answers -->

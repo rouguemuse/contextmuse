@@ -324,13 +324,37 @@
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-            <div class="nav-links">
-                <a href="/systems/" class="nav-link">Systems</a>
-                <a href="/gensort/" class="nav-link">GenSort</a>
-                <a href="/signal/" class="nav-link">Signal</a>
-                <a href="/custom/" class="nav-link">Custom Builds</a>
-                <a href="/creative/" class="nav-link">Creative</a>
+                        <div class="nav-links">
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
+                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
+                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
+                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
+                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
+                    </div>
+                </details>
                 <a href="/about/" class="nav-link">About</a>
+                <a href="/#contact" class="nav-btn">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -359,6 +383,17 @@
             </div>
         </div>
     </header>
+
+    <!-- Page-Level Jump Navigation -->
+    <nav class="sub-navbar" aria-label="Page Navigation">
+        <div class="container sub-nav-container" style="justify-content: center;">
+            <a href="#selected-work" class="sub-nav-link">Work</a>
+            <a href="#heading-overflow" class="sub-nav-link">Process</a>
+            <a href="#heading-caps" class="sub-nav-link">Capabilities</a>
+            <a href="#heading-pricing" class="sub-nav-link">Rates</a>
+            <a href="#contact" class="sub-nav-link">Contact</a>
+        </div>
+    </nav>
 
     <main id="main-content">
         <!-- Selected Work Section -->
@@ -475,43 +510,17 @@
                 </div>
 
                 <!-- More selected work list -->
-                <div style="margin-top: 7rem; border-top: 1px solid var(--border-light); padding-top: 4rem;">
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">MORE SELECTED WORK</span>
-                    <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2rem;">
-                        Explore specific cases, custom layouts, and interactive logic experiments built across different niches:
-                    </p>
-                    <div class="more-work-grid">
-                        <a href="/custom/#d2" class="more-work-card">
-                            <span class="more-work-num">01</span>
-                            <h4 class="more-work-title">Detail Driven</h4>
+                <div style="margin-top: 5rem; border-top: 1px solid var(--border-light); padding-top: 3rem; text-align: center;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2rem;">Explore More Systems &amp; Work</span>
+                    <div style="display: flex; flex-direction: column; gap: 1.25rem; align-items: center; font-family: var(--font-mono); font-size: 13.5px;">
+                        <a href="/custom/" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; transition: color 0.2s;">
+                            See more Custom Web &amp; Systems builds &rarr;
                         </a>
-                        <a href="/custom/#inncontrol" class="more-work-card">
-                            <span class="more-work-num">02</span>
-                            <h4 class="more-work-title">INNcontrol</h4>
+                        <a href="/restaurant-systems/" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; transition: color 0.2s;">
+                            See more Restaurant Work builds &rarr;
                         </a>
-                        <a href="/custom/#edr" class="more-work-card">
-                            <span class="more-work-num">03</span>
-                            <h4 class="more-work-title">EDR Party Rentals</h4>
-                        </a>
-                        <a href="/signal/" class="more-work-card">
-                            <span class="more-work-num">04</span>
-                            <h4 class="more-work-title">Signal</h4>
-                        </a>
-                        <a href="/restaurant-systems/" class="more-work-card">
-                            <span class="more-work-num">05</span>
-                            <h4 class="more-work-title">The Armadillo's Nest</h4>
-                        </a>
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="more-work-card">
-                            <span class="more-work-num">06</span>
-                            <h4 class="more-work-title">How to Explain Yourself to Wolves</h4>
-                        </a>
-                        <a href="/custom/" class="more-work-card">
-                            <span class="more-work-num">07</span>
-                            <h4 class="more-work-title">Kill Tony DB</h4>
-                        </a>
-                        <a href="/creative/" class="more-work-card">
-                            <span class="more-work-num">08</span>
-                            <h4 class="more-work-title">The Cartographer's Defect</h4>
+                        <a href="/creative/" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; transition: color 0.2s;">
+                            See more Creative Practice projects &rarr;
                         </a>
                     </div>
                 </div>
@@ -529,26 +538,26 @@
                     You don't need another full-time developer every time three client projects land in the same week. Context &amp; Muse can step into a defined scope, build quietly behind your agency, and hand back production-ready work.
                 </p>
 
-                <div class="steps-grid">
-                    <div class="step-col">
-                        <span class="step-col__num">01 / You Send the Brief</span>
-                        <h3 class="step-col__title">The Specs</h3>
-                        <p class="step-col__desc">Brand files, scope, copy, Figma—or just the problem.</p>
+                <div class="steps-grid" style="grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: left;">
+                    <div class="step-col" style="border-left: 2px solid var(--accent-teal); padding-left: 1rem; border-top: none;">
+                        <span class="step-col__num" style="font-size: 11px;">01 / Brief</span>
+                        <h3 class="step-col__title" style="font-size: 1.15rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Specs</h3>
+                        <p class="step-col__desc" style="font-size: 13px; line-height: 1.5; color: rgba(250,249,245,0.6);">Send brand assets, copy, figma files, or just the problem definition.</p>
                     </div>
-                    <div class="step-col">
-                        <span class="step-col__num">02 / I Scope It</span>
-                        <h3 class="step-col__title">The Terms</h3>
-                        <p class="step-col__desc">Clear deliverables, timeline, and partner rate before work starts.</p>
+                    <div class="step-col" style="border-left: 2px solid var(--accent-teal); padding-left: 1rem; border-top: none;">
+                        <span class="step-col__num" style="font-size: 11px;">02 / Scope</span>
+                        <h3 class="step-col__title" style="font-size: 1.15rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Terms</h3>
+                        <p class="step-col__desc" style="font-size: 13px; line-height: 1.5; color: rgba(250,249,245,0.6);">Clear deliverables, transparent timeline, and partner wholesale rate before build starts.</p>
                     </div>
-                    <div class="step-col">
-                        <span class="step-col__num">03 / I Build</span>
-                        <h3 class="step-col__title">The Execution</h3>
-                        <p class="step-col__desc">Design, responsive HTML/JS/CSS implementation, and QA handled behind the scenes.</p>
+                    <div class="step-col" style="border-left: 2px solid var(--accent-teal); padding-left: 1rem; border-top: none;">
+                        <span class="step-col__num" style="font-size: 11px;">03 / Build</span>
+                        <h3 class="step-col__title" style="font-size: 1.15rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Execution</h3>
+                        <p class="step-col__desc" style="font-size: 13px; line-height: 1.5; color: rgba(250,249,245,0.6);">Responsive front-end layout design, custom JS/CSS interactions, and backend data flows.</p>
                     </div>
-                    <div class="step-col">
-                        <span class="step-col__num">04 / You Deliver</span>
-                        <h3 class="step-col__title">The Handoff</h3>
-                        <p class="step-col__desc">Your client relationship stays yours. Files, credentials, and documentation get handed back cleanly.</p>
+                    <div class="step-col" style="border-left: 2px solid var(--accent-teal); padding-left: 1rem; border-top: none;">
+                        <span class="step-col__num" style="font-size: 11px;">04 / Handoff</span>
+                        <h3 class="step-col__title" style="font-size: 1.15rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Delivery</h3>
+                        <p class="step-col__desc" style="font-size: 13px; line-height: 1.5; color: rgba(250,249,245,0.6);">Client relationships stay yours. Source files, credentials, and documentation handed back cleanly.</p>
                     </div>
                 </div>
             </div>
@@ -562,43 +571,62 @@
                     Production capabilities in agency language
                 </h2>
 
-                <div class="caps-grid">
-                    <div class="cap-block">
-                        <h3>WEB PRODUCTION</h3>
-                        <ul class="cap-list">
-                            <li>Landing pages</li>
-                            <li>Service-business websites</li>
-                            <li>Website refreshes</li>
-                            <li>Responsive implementation</li>
+                <div class="caps-grid" style="grid-template-columns: 1fr; gap: 1rem; max-width: 600px; margin: 2rem auto 0;">
+                    <!-- Cap 1 -->
+                    <details class="cap-block" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 5px; padding: 1.25rem 1.5rem; cursor: pointer;" open>
+                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; color: var(--text-primary);">
+                            <span>WEB PRODUCTION</span>
+                            <span class="nav-dropdown-arrow">▾</span>
+                        </summary>
+                        <ul class="cap-list" style="margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 12.5px; list-style: none; padding: 0;">
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Landing pages</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Service websites</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Website refreshes</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Responsive layouts</li>
                         </ul>
-                    </div>
-                    <div class="cap-block">
-                        <h3>CONVERSION BUILDS</h3>
-                        <ul class="cap-list">
-                            <li>Quote calculators</li>
-                            <li>Booking flows</li>
-                            <li>Lead funnels</li>
-                            <li>Forms + intake systems</li>
+                    </details>
+
+                    <!-- Cap 2 -->
+                    <details class="cap-block" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 5px; padding: 1.25rem 1.5rem; cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; color: var(--text-primary);">
+                            <span>CONVERSION BUILDS</span>
+                            <span class="nav-dropdown-arrow">▾</span>
+                        </summary>
+                        <ul class="cap-list" style="margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 12.5px; list-style: none; padding: 0;">
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Quote calculators</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Booking flows</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Lead funnels</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Forms + intake systems</li>
                         </ul>
-                    </div>
-                    <div class="cap-block">
-                        <h3>PRODUCT / CUSTOM UI</h3>
-                        <ul class="cap-list">
-                            <li>Dashboards</li>
-                            <li>Internal tools</li>
-                            <li>Portals</li>
-                            <li>Interactive utilities</li>
+                    </details>
+
+                    <!-- Cap 3 -->
+                    <details class="cap-block" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 5px; padding: 1.25rem 1.5rem; cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; color: var(--text-primary);">
+                            <span>PRODUCT / CUSTOM UI</span>
+                            <span class="nav-dropdown-arrow">▾</span>
+                        </summary>
+                        <ul class="cap-list" style="margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 12.5px; list-style: none; padding: 0;">
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Dashboards</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Internal tools</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Portals</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Interactive utilities</li>
                         </ul>
-                    </div>
-                    <div class="cap-block">
-                        <h3>CREATIVE PRODUCTION</h3>
-                        <ul class="cap-list">
-                            <li>Brand extensions</li>
-                            <li>Sales decks</li>
-                            <li>Campaign pages</li>
-                            <li>Digital collateral</li>
+                    </details>
+
+                    <!-- Cap 4 -->
+                    <details class="cap-block" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 5px; padding: 1.25rem 1.5rem; cursor: pointer;">
+                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; color: var(--text-primary);">
+                            <span>CREATIVE PRODUCTION</span>
+                            <span class="nav-dropdown-arrow">▾</span>
+                        </summary>
+                        <ul class="cap-list" style="margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 12.5px; list-style: none; padding: 0;">
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Brand extensions</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Sales decks</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Campaign pages</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span style="color:var(--accent-teal);">—</span> Digital collateral</li>
                         </ul>
-                    </div>
+                    </details>
                 </div>
             </div>
         </section>
