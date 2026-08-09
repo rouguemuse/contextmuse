@@ -124,7 +124,8 @@ if (fs.existsSync(sitemapPath)) {
         'https://www.contextmuse.com/terms/',
         'https://www.contextmuse.com/gensort/',
         'https://www.contextmuse.com/signal/',
-        'https://www.contextmuse.com/custom/'
+        'https://www.contextmuse.com/custom/',
+        'https://www.contextmuse.com/partners/'
     ];
 
     expectedSitemapUrls.forEach(url => {
@@ -170,7 +171,8 @@ const filesToVerify = [
     { name: 'terms/index.html', relPath: 'terms/index.html', canonical: 'https://www.contextmuse.com/terms/' },
     { name: 'gensort/index.html', relPath: 'gensort/index.html', canonical: 'https://www.contextmuse.com/gensort/' },
     { name: 'signal/index.html', relPath: 'signal/index.html', canonical: 'https://www.contextmuse.com/signal/' },
-    { name: 'custom/index.html', relPath: 'custom/index.html', canonical: 'https://www.contextmuse.com/custom/' }
+    { name: 'custom/index.html', relPath: 'custom/index.html', canonical: 'https://www.contextmuse.com/custom/' },
+    { name: 'partners/index.html', relPath: 'partners/index.html', canonical: 'https://www.contextmuse.com/partners/' }
 ];
 
 const pageTitles = new Set();

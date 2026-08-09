@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White-Label Production &amp; Agency Partnerships | Context &amp; Muse</title>
+    <meta name="description" content="Confidential white-label design and build partnerships for creative agencies. Custom websites, interactive tools, and web production when your queue is full.">
+    <link rel="canonical" href="https://www.contextmuse.com/partners/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.contextmuse.com/partners/">
+    <meta property="og:title" content="White-Label Production &amp; Agency Partnerships | Context &amp; Muse">
+    <meta property="og:description" content="Confidential white-label design and build partnerships for creative agencies. Custom websites, interactive tools, and web production when your queue is full.">
+    <meta property="og:image" content="https://www.contextmuse.com/social-preview.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="White-Label Production &amp; Agency Partnerships | Context &amp; Muse">
+    <meta name="twitter:description" content="Confidential white-label design and build partnerships for creative agencies. Custom websites, interactive tools, and web production when your queue is full.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/social-preview.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .partners-hero {
+            padding: 180px 0 100px;
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+            text-align: center;
+        }
+        .partners-intro {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .partners-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+        .partners-headline {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: #FAF9F5;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+        .partners-subhead {
+            font-family: var(--font-sans);
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            line-height: 1.6;
+            color: rgba(250, 249, 245, 0.7);
+            margin-bottom: 2.5rem;
+        }
+        .partners-tech-row {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent-teal);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+        .partners-assurance-line {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            color: rgba(250, 249, 245, 0.4);
+            margin-top: 2rem;
+            text-transform: uppercase;
+        }
+        .partners-section {
+            padding: 8rem 0;
+            background: #FAF9F5;
+            color: #10211D;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .partners-section--dark {
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+        }
+        .project-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+            margin-top: 4rem;
+        }
+        .p-card {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+        @media(max-width: 950px) {
+            .p-card {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .p-card:nth-child(even) .p-card__media {
+                order: -1;
+            }
+        }
+        .p-card__media {
+            border: 1px solid rgba(16, 33, 29, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #FAF9F5;
+            box-shadow: 0 12px 32px rgba(16,33,29,0.03);
+            transition: transform 0.3s ease;
+        }
+        .partners-section--dark .p-card__media {
+            border: 1px solid rgba(250, 249, 245, 0.1);
+            background: #142925;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+        .p-card__media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        .p-card__browser {
+            background: #FAF9F5;
+            border-bottom: 1px solid rgba(16, 33, 29, 0.08);
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .partners-section--dark .p-card__browser {
+            background: #142925;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .p-browser-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(16, 33, 29, 0.2);
+        }
+        .partners-section--dark .p-browser-dot {
+            background: rgba(250, 249, 245, 0.2);
+        }
+        .p-browser-url {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: rgba(16, 33, 29, 0.4);
+            margin-left: 12px;
+        }
+        .partners-section--dark .p-browser-url {
+            color: rgba(250, 249, 245, 0.4);
+        }
+        .p-card__tagline {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-teal);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        .p-card__title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        .p-card__desc {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .partners-section--dark .p-card__desc {
+            color: rgba(250, 249, 245, 0.65);
+        }
+        .p-card__spec-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(16, 33, 29, 0.2);
+            padding: 2px 8px;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+            color: rgba(16, 33, 29, 0.6);
+        }
+        .p-card__pillars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .p-pillar-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            background: rgba(16, 33, 29, 0.04);
+            padding: 4px 10px;
+            border-radius: 3px;
+            color: var(--text-secondary);
+        }
+        .partners-section--dark .p-pillar-tag {
+            background: rgba(250, 249, 245, 0.04);
+            color: rgba(250, 249, 245, 0.65);
+        }
+        .more-work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+        .more-work-card {
+            border: 1px solid var(--border-light);
+            background: var(--bg-paper);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .more-work-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+        .more-work-num {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--accent-teal);
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .more-work-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 500;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        .step-col {
+            border-left: 2px solid rgba(250, 249, 245, 0.1);
+            padding-left: 1.5rem;
+        }
+        .step-col__num {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent-teal);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .step-col__title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .step-col__desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(250, 249, 245, 0.6);
+            margin: 0;
+        }
+        .caps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        .cap-block h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.75rem;
+        }
+        .cap-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .cap-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cap-list li::before {
+            content: "—";
+            color: var(--accent-teal);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="/systems/" class="nav-link">Systems</a>
+                <a href="/gensort/" class="nav-link">GenSort</a>
+                <a href="/signal/" class="nav-link">Signal</a>
+                <a href="/custom/" class="nav-link">Custom Builds</a>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="partners-hero">
+        <div class="container">
+            <div class="partners-intro">
+                <span class="partners-eyebrow">WHITE-LABEL PRODUCTION</span>
+                <h1 class="partners-headline">
+                    Your client. Your brand.<br>My build.
+                </h1>
+                <p class="partners-subhead">
+                    When your internal queue is full—or the project gets more custom than your normal production stack—I handle the design and build behind the scenes.
+                </p>
+                <div class="partners-tech-row">
+                    Landing pages &bull; Business sites &bull; Custom UI &bull; Quote &amp; booking flows &bull; Interactive tools
+                </div>
+                <div class="btn-group" style="justify-content: center;">
+                    <a href="#selected-work" class="btn btn-primary" style="background: #FAF9F5; border-color: #FAF9F5; color: #10211D;">View Selected Work</a>
+                    <a href="#contact" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.3); color: #FAF9F5;">Check Availability</a>
+                </div>
+                <div class="partners-assurance-line">
+                    Direct communication &bull; Confidential production &bull; Clean handoff &bull; No client poaching
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Selected Work Section -->
+        <section class="partners-section" id="selected-work" aria-labelledby="heading-work">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem; text-align: center;">SELECTED PARTNER WORK</span>
+                <h2 id="heading-work" style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 4rem; font-weight: 500;">
+                    Systems built for overflow, not overhead
+                </h2>
+
+                <div class="project-card-list">
+                    <!-- Project 1: No. 1 Lawn Firm -->
+                    <article class="p-card">
+                        <div class="p-card__media">
+                            <div class="p-card__browser">
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-url">no1lawnfirm.com</span>
+                            </div>
+                            <img src="/assets/images/lawn_firm_preview.png" alt="No. 1 Lawn Firm website layout" loading="lazy">
+                        </div>
+                        <div>
+                            <span class="p-card__tagline">01 — No. 1 Lawn Firm</span>
+                            <h3 class="p-card__title">Local Service Conversion Site</h3>
+                            <p class="p-card__desc">
+                                Full-service local business experience built around credibility, services, proof, mobile usability, and estimate conversion.
+                            </p>
+                            <div class="p-card__pillars">
+                                <span class="p-pillar-tag">Website Strategy</span>
+                                <span class="p-pillar-tag">UI/UX</span>
+                                <span class="p-pillar-tag">Responsive Build</span>
+                                <span class="p-pillar-tag">Lead Flow</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Houston Comedy Club -->
+                    <article class="p-card">
+                        <div class="p-card__media">
+                            <div class="p-card__browser">
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-url">houstoncomedyclub.com</span>
+                            </div>
+                            <img src="/assets/images/comedy_club_preview.png" alt="Houston Comedy Club brand system layout" loading="lazy">
+                        </div>
+                        <div>
+                            <span class="p-card__tagline">02 — Houston Comedy Club</span>
+                            <h3 class="p-card__title">Brand + Sales System</h3>
+                            <span class="p-card__spec-label">Speculative concept</span>
+                            <p class="p-card__desc">
+                                Venue identity, visual language, company profile, event proposal architecture, and supporting collateral.
+                            </p>
+                            <div class="p-card__pillars">
+                                <span class="p-pillar-tag">Brand System</span>
+                                <span class="p-pillar-tag">Sales Enablement</span>
+                                <span class="p-pillar-tag">Presentation Design</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: WhisperMenu -->
+                    <article class="p-card">
+                        <div class="p-card__media">
+                            <div class="p-card__browser">
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-url">whispermenu.app</span>
+                            </div>
+                            <img src="/assets/images/whispermenu_preview.png" alt="WhisperMenu secure product interface layout" loading="lazy">
+                        </div>
+                        <div>
+                            <span class="p-card__tagline">03 — WhisperMenu</span>
+                            <h3 class="p-card__title">Complex Product Interface</h3>
+                            <p class="p-card__desc">
+                                Multi-source analysis environment for searching, filtering, visualizing, organizing, and exporting large culinary data records.
+                            </p>
+                            <div class="p-card__pillars">
+                                <span class="p-pillar-tag">Product UX</span>
+                                <span class="p-pillar-tag">Dashboard UI</span>
+                                <span class="p-pillar-tag">Information Architecture</span>
+                                <span class="p-pillar-tag">Workflow Design</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: GenSort -->
+                    <article class="p-card">
+                        <div class="p-card__media">
+                            <div class="p-card__browser">
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-url">gensort.contextmuse.com</span>
+                            </div>
+                            <img src="/assets/images/gensort-workspace.webp" alt="GenSort file sorting application layout" loading="lazy">
+                        </div>
+                        <div>
+                            <span class="p-card__tagline">04 — GenSort</span>
+                            <h3 class="p-card__title">Desktop Workflow Application</h3>
+                            <p class="p-card__desc">
+                                Asset-management interface with duplicate review, image classification, tagging, bulk selection, and local sorting workflows.
+                            </p>
+                            <div class="p-card__pillars">
+                                <span class="p-pillar-tag">Product UI</span>
+                                <span class="p-pillar-tag">Workflow Design</span>
+                                <span class="p-pillar-tag">Complex State</span>
+                                <span class="p-pillar-tag">Desktop UX</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 5: Gold Tooth Tony's -->
+                    <article class="p-card">
+                        <div class="p-card__media">
+                            <div class="p-card__browser">
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-dot"></span>
+                                <span class="p-browser-url">goldtoothtonys.com</span>
+                            </div>
+                            <img src="/assets/images/gold_tooth_tony_preview.png" alt="Gold Tooth Tony's website layout" loading="lazy">
+                        </div>
+                        <div>
+                            <span class="p-card__tagline">05 — Gold Tooth Tony's</span>
+                            <h3 class="p-card__title">Hospitality / Ordering Experience</h3>
+                            <p class="p-card__desc">
+                                Brand-forward restaurant experience built around menu discovery, custom builder layouts, and an obvious direct ordering path.
+                            </p>
+                            <div class="p-card__pillars">
+                                <span class="p-pillar-tag">Creative Direction</span>
+                                <span class="p-pillar-tag">Restaurant UX</span>
+                                <span class="p-pillar-tag">Ordering Integration</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- More selected work list -->
+                <div style="margin-top: 7rem; border-top: 1px solid var(--border-light); padding-top: 4rem;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">MORE SELECTED WORK</span>
+                    <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                        Explore specific cases, custom layouts, and interactive logic experiments built across different niches:
+                    </p>
+                    <div class="more-work-grid">
+                        <a href="/custom/" class="more-work-card">
+                            <span class="more-work-num">01</span>
+                            <h4 class="more-work-title">Detail Driven</h4>
+                        </a>
+                        <a href="/custom/" class="more-work-card">
+                            <span class="more-work-num">02</span>
+                            <h4 class="more-work-title">INNcontrol</h4>
+                        </a>
+                        <a href="/custom/" class="more-work-card">
+                            <span class="more-work-num">03</span>
+                            <h4 class="more-work-title">EDR Party Rentals</h4>
+                        </a>
+                        <a href="/signal/" class="more-work-card">
+                            <span class="more-work-num">04</span>
+                            <h4 class="more-work-title">Signal</h4>
+                        </a>
+                        <a href="/creative/" class="more-work-card">
+                            <span class="more-work-num">05</span>
+                            <h4 class="more-work-title">Sixes &amp; Sevens</h4>
+                        </a>
+                        <a href="/creative/" class="more-work-card">
+                            <span class="more-work-num">06</span>
+                            <h4 class="more-work-title">Timely Rain</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scoping Process Section -->
+        <section class="partners-section partners-section--dark" aria-labelledby="heading-overflow">
+            <div class="container">
+                <span class="partners-eyebrow" style="text-align: center; display: block;">BUILT FOR OVERFLOW, NOT OVERHEAD</span>
+                <h2 id="heading-overflow" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: #FAF9F5; text-align: center; margin-bottom: 1.5rem; font-weight: 400; letter-spacing: -0.01em;">
+                    Confidential production partnership
+                </h2>
+                <p style="font-size: 1.1rem; line-height: 1.65; color: rgba(250, 249, 245, 0.7); text-align: center; max-width: 700px; margin: 0 auto 4rem;">
+                    You don't need another full-time developer every time three client projects land in the same week. Context &amp; Muse can step into a defined scope, build quietly behind your agency, and hand back production-ready work.
+                </p>
+
+                <div class="steps-grid">
+                    <div class="step-col">
+                        <span class="step-col__num">01 / You Send the Brief</span>
+                        <h3 class="step-col__title">The Specs</h3>
+                        <p class="step-col__desc">Brand files, scope, copy, Figma—or just the problem.</p>
+                    </div>
+                    <div class="step-col">
+                        <span class="step-col__num">02 / I Scope It</span>
+                        <h3 class="step-col__title">The Terms</h3>
+                        <p class="step-col__desc">Clear deliverables, timeline, and partner rate before work starts.</p>
+                    </div>
+                    <div class="step-col">
+                        <span class="step-col__num">03 / I Build</span>
+                        <h3 class="step-col__title">The Execution</h3>
+                        <p class="step-col__desc">Design, responsive HTML/JS/CSS implementation, and QA handled behind the scenes.</p>
+                    </div>
+                    <div class="step-col">
+                        <span class="step-col__num">04 / You Deliver</span>
+                        <h3 class="step-col__title">The Handoff</h3>
+                        <p class="step-col__desc">Your client relationship stays yours. Files, credentials, and documentation get handed back cleanly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section class="partners-section" aria-labelledby="heading-caps">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem; text-align: center;">TECHNICAL CAPABILITIES</span>
+                <h2 id="heading-caps" style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 4rem; font-weight: 500;">
+                    Production capabilities in agency language
+                </h2>
+
+                <div class="caps-grid">
+                    <div class="cap-block">
+                        <h3>WEB PRODUCTION</h3>
+                        <ul class="cap-list">
+                            <li>Landing pages</li>
+                            <li>Service-business websites</li>
+                            <li>Website refreshes</li>
+                            <li>Responsive implementation</li>
+                        </ul>
+                    </div>
+                    <div class="cap-block">
+                        <h3>CONVERSION BUILDS</h3>
+                        <ul class="cap-list">
+                            <li>Quote calculators</li>
+                            <li>Booking flows</li>
+                            <li>Lead funnels</li>
+                            <li>Forms + intake systems</li>
+                        </ul>
+                    </div>
+                    <div class="cap-block">
+                        <h3>PRODUCT / CUSTOM UI</h3>
+                        <ul class="cap-list">
+                            <li>Dashboards</li>
+                            <li>Internal tools</li>
+                            <li>Portals</li>
+                            <li>Interactive utilities</li>
+                        </ul>
+                    </div>
+                    <div class="cap-block">
+                        <h3>CREATIVE PRODUCTION</h3>
+                        <ul class="cap-list">
+                            <li>Brand extensions</li>
+                            <li>Sales decks</li>
+                            <li>Campaign pages</li>
+                            <li>Digital collateral</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="partners-section partners-section--dark" style="text-align: center;" aria-labelledby="heading-pricing">
+            <div class="container" style="max-width: 700px;">
+                <span class="partners-eyebrow">PARTNER PRICING</span>
+                <h2 id="heading-pricing" style="font-family: var(--font-serif); font-size: 2rem; color: #FAF9F5; margin-bottom: 1.5rem; font-weight: 400;">
+                    Confidential wholesale structures
+                </h2>
+                <p style="font-size: 1.05rem; line-height: 1.65; color: rgba(250, 249, 245, 0.7); margin-bottom: 2.5rem;">
+                    Agency projects are quoted at partner production rates based on scope, turnaround, and ongoing volume. A rate card is available after introduction.
+                </p>
+                <a href="#contact" class="btn btn-primary" style="background: #FAF9F5; border-color: #FAF9F5; color: #10211D; padding: 0.8rem 2rem;">Request Partner Rate Card</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="partners-section" id="contact" aria-labelledby="contact-heading" style="background: var(--bg-panel); padding: 140px 0;">
+            <div class="container">
+                <div class="audit-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
+                    <!-- Column 1: Info -->
+                    <div class="audit-info">
+                        <span class="eyebrow" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">Agency Handoff &bull; Availability</span>
+                        <h2 id="contact-heading" class="section-title" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 400; color: var(--text-primary);">
+                            Need someone you can send the next weird project to?
+                        </h2>
+                        <blockquote style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55; margin-left: 0;">
+                            Landing page sitting in the queue? Client needs a calculator nobody wants to build? Designer finished the concept but nobody has bandwidth to ship it?
+                        </blockquote>
+                        <p class="body-copy" style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem;">
+                            Send it over. I'll tell you quickly whether I can take it. No discovery-call theater. Direct confidential production lines only.
+                        </p>
+                        <div style="margin-top: 2rem; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
+                            Confidential production inbox: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: bold; text-decoration: none;">jayme@contextmuse.com</a>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Form -->
+                    <div class="audit-form-container" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.01);">
+                        <form action="https://formspree.io/f/xoqydgvw" method="POST" class="audit-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                            <!-- Anti-spam hidden field -->
+                            <input type="text" name="_gotcha" style="display:none">
+                            <input type="hidden" name="_subject" value="New Agency Partnership Inquiry">
+                            
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Agency Name / Contact</label>
+                                <input type="text" id="form-name" name="name" class="form-input" required placeholder="Agency Name &amp; Contact Person" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                            </div>
+                            
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Email Address</label>
+                                <input type="email" id="form-email" name="email" class="form-input" required placeholder="partnership@youragency.com" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                            </div>
+
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">What is sitting in your queue?</label>
+                                <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the landing page, custom calculator, custom UI concept, or timeline requirements..." style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical;"></textarea>
+                            </div>
+
+                            <button type="submit" class="form-submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.8rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s; text-align: center;">Check Availability</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
