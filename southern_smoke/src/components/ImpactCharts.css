@@ -1,0 +1,71 @@
+.impact-charts-section {
+  width: 100%;
+  margin: 60px 0;
+  padding: 0 20px;
+}
+
+.chart-row {
+  margin-bottom: 20px;
+}
+
+.chart-row-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--brand-black);
+  border-bottom: 2px solid var(--brand-black);
+  padding-bottom: 10px;
+}
+
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.chart-box {
+  flex: 1;
+  min-width: 300px;
+  background: #fff;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.chart-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  color: var(--brand-black);
+}
+
+.chart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-tooltip {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--brand-black);
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.chart-tooltip .label {
+  font-weight: 600;
+  color: var(--brand-black);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .charts-container {
+    flex-direction: column;
+  }
+}

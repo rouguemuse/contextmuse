@@ -1,0 +1,23 @@
+<svg width="1000" height="80" viewBox="0 0 1000 80" xmlns="http://www.w3.org/2000/svg">
+    <!-- REFINED HORIZONTAL LOGO WITH AUTOMATIC SPACING -->
+    <g transform="translate(30, 15) scale(1.2)">
+        <!-- Pill Mic Icon -->
+        <rect x="15" y="0" width="12" height="25" rx="6" fill="#FFFFFF" />
+        <path d="M10 15 C 10 28, 32 28, 32 15" stroke="#FFFFFF" stroke-width="2.5" fill="none" />
+        <rect x="20" y="27" width="2" height="6" fill="#FFFFFF" />
+    </g>
+
+    <defs>
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;family=Outfit:wght@300&amp;display=swap');
+        </style>
+    </defs>
+
+    <!-- Text Section using spans for perfect flow -->
+    <g transform="translate(100, 52)">
+        <text fill="#FFFFFF">
+            <tspan font-family="'Outfit', sans-serif" font-weight="300" font-size="24" letter-spacing="0.25em">THE HOUSTON </tspan>
+            <tspan font-family="'Antonio', sans-serif" font-weight="700" font-size="36" letter-spacing="0.1em">COMEDY CLUB</tspan>
+        </text>
+    </g>
+</svg>

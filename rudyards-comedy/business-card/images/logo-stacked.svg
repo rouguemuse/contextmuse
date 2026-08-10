@@ -1,0 +1,22 @@
+<svg width="1000" height="600" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- BULLETPROOF STACKED LOGO - MASSIVE CANVAS TO PREVENT ALL CLIPPING -->
+    
+    <!-- Microphone (Centered Top) -->
+    <g transform="translate(500, 100)">
+        <rect x="-8" y="0" width="16" height="35" rx="8" fill="#FFFFFF" />
+        <path d="M-15 20 C -15 35, 15 35, 15 20" stroke="#FFFFFF" stroke-width="3.5" fill="none" />
+        <rect x="-1" y="36" width="2" height="10" fill="#FFFFFF" />
+        <rect x="-6" y="46" width="12" height="2" fill="#FFFFFF" />
+    </g>
+
+    <g transform="translate(500, 280)" text-anchor="middle">
+        <!-- THE HOUSTON -->
+        <text font-family="'Archivo Narrow', sans-serif" font-weight="400" font-size="28" letter-spacing="0.4em" fill="#FFFFFF">THE HOUSTON</text>
+        
+        <!-- COMEDY CLUB -->
+        <text y="90" font-family="'Archivo Narrow', sans-serif" font-weight="900" font-size="100" letter-spacing="0.02em" fill="#FFFFFF">COMEDY CLUB</text>
+        
+        <!-- A Better Room for Comedy -->
+        <text y="150" font-family="'Playfair Display', serif" font-style="italic" font-size="32" letter-spacing="0.05em" fill="#FFFFFF" opacity="0.75">A Better Room for Comedy</text>
+    </g>
+</svg>

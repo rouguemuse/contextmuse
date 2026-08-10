@@ -214,6 +214,168 @@ p {
     border-color: #087A6B;
 }
 
+/* ── Dropdown Navigation Menu Styles ── */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-dropdown summary {
+    list-style: none;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    user-select: none;
+    font-family: var(--font-sans);
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+}
+
+.nav-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+.nav-dropdown summary:hover,
+.nav-dropdown[open] summary {
+    color: var(--text-primary);
+}
+
+.nav-dropdown-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+    display: inline-block;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+.nav-dropdown[open] .nav-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    box-shadow: 0 12px 36px rgba(16, 33, 29, 0.08);
+    min-width: 260px;
+    padding: 0.75rem 0;
+    z-index: 1010;
+}
+
+.nav-dropdown-content::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-bottom-color: var(--border-light);
+}
+
+.nav-dropdown-content::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: #FFFFFF;
+}
+
+.nav-dropdown[open] .nav-dropdown-content {
+    display: block;
+}
+
+.nav-dropdown-link {
+    display: block;
+    padding: 0.6rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    text-align: left;
+}
+
+.nav-dropdown-link:hover {
+    background: var(--bg-panel);
+    color: var(--text-primary);
+}
+
+/* Hover-activated disclosure on desktop */
+@media (min-width: 901px) {
+    .nav-dropdown:hover .nav-dropdown-content {
+        display: block;
+    }
+}
+
+/* Mobile responsive accordion for dropdowns */
+@media (max-width: 900px) {
+    .nav-dropdown {
+        display: block;
+        width: 100%;
+    }
+    
+    .nav-dropdown summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        font-size: 1.25rem !important;
+        color: var(--text-secondary);
+        padding: 0.25rem 0;
+    }
+
+    .nav-dropdown-arrow {
+        font-size: 0.9rem;
+    }
+
+    .nav-dropdown-content {
+        position: static !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0.5rem 0 0 1rem !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        display: none;
+    }
+
+    .nav-dropdown-content::before,
+    .nav-dropdown-content::after {
+        display: none !important;
+    }
+
+    .nav-dropdown[open] .nav-dropdown-content {
+        display: flex !important;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .nav-dropdown-link {
+        font-size: 1.05rem !important;
+        padding: 0.4rem 0 !important;
+        border-bottom: none !important;
+        color: var(--text-secondary) !important;
+    }
+    
+    .nav-dropdown-link:hover {
+        color: var(--text-primary) !important;
+        background: transparent !important;
+    }
+}
+
 /* Secondary Navigation Bar (For Jayme Portfolio and internal views) */
 .sub-navbar {
     background: var(--bg-panel);

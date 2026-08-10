@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Houston Comedy Club | Live Stand-Up in Houston</title>
+    <meta name="description" content="Live stand-up comedy shows in Houston. Touring comedians, local showcases, and private events. Join the guest list for upcoming shows.">
+    <link rel="icon" type="image/svg+xml" href="images/logo-boxed.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="images/logo-boxed.svg" alt="The Houston Comedy Club">
+            </a>
+            <div class="nav-links">
+                <a href="#shows">Shows</a>
+                <a href="#about">About</a>
+                <a href="#private">Private Events</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="images/hero.png" alt="Intimate comedy stage at The Houston Comedy Club">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>A BETTER ROOM <br><span>FOR COMEDY</span></h1>
+                    <p>Live stand-up at The Houston Comedy Club. An intimate upscale environment powered by <a href="https://mcgregorspubhtx.com" target="_blank" style="color: var(--text-primary); text-decoration: underline;">McGregor's Pub</a>.</p>
+                    <p style="font-size: 0.8rem; letter-spacing: 0.05em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 2rem;">Hosted at one of Houston’s most established venues.</p>
+                    <div class="btn-group">
+                        <a href="#shows" class="btn btn-primary">View Shows</a>
+                        <a href="#private" class="btn btn-secondary">Private Events</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Shows -->
+        <section id="shows" class="container">
+            <div class="section-header">
+                <span class="section-tag">Feature Program</span>
+                <h2>Upcoming Shows</h2>
+            </div>
+            
+            <div id="shows-container" class="shows-grid">
+                <!-- Shows will be populated by script.js -->
+                <div class="loading" style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-secondary); letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem;">Loading upcoming sets...</div>
+            </div>
+        </section>
+
+        <!-- Weekly Programming -->
+        <section id="programming" class="textured-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Curated Schedule</span>
+                    <h2>Weekly Programming</h2>
+                </div>
+                
+                <div class="weekly-list">
+                    <div class="weekly-item">
+                        <span class="weekly-name">Open Mic Night</span>
+                        <span class="weekly-type">Every Monday</span>
+                    </div>
+                    <div class="weekly-item">
+                        <span class="weekly-name">Showcase Night</span>
+                        <span class="weekly-type">Every Thursday</span>
+                    </div>
+                    <div class="weekly-item">
+                        <span class="weekly-name">Headliner Series</span>
+                        <span class="weekly-type">Fri & Sat</span>
+                    </div>
+                    <div class="weekly-item">
+                        <span class="weekly-name">Guest Producers</span>
+                        <span class="weekly-type">Special Events</span>
+                    </div>
+                    <div class="weekly-item">
+                        <span class="weekly-name">Experimental Comedy</span>
+                        <span class="weekly-type">Last Wednesdays</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About The Room -->
+        <section id="about" class="container split-section">
+            <div class="content-box">
+                <span class="section-tag">The Venue</span>
+                <h2>The Houston Comedy Club</h2>
+                <p class="text-reveal">The club's upstairs space has become one of Houston’s most intimate environments for stand-up. The room creates a direct connection between performer and audience, allowing both touring comics and local talent to deliver unforgettable sets.</p>
+            </div>
+            <div class="image-box">
+            </div>
+        </section>
+
+        <!-- Private Events -->
+        <section id="private" class="container split-section" style="border-top: 1px solid var(--neutral-border);">
+            <div class="image-box" style="order: 2;">
+                <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop" alt="Private room setting" style="border-radius: 2px; filter: sepia(0.2) brightness(0.7);">
+            </div>
+            <div class="content-box" style="order: 1;">
+                <span class="section-tag">Exclusive Access</span>
+                <h2>Host Comedy <br>at The Houston Comedy Club</h2>
+                <p class="text-reveal" style="margin-bottom: 2.5rem;">Book the upstairs space for private shows, corporate events, celebrations, or custom comedy programming.</p>
+                <a href="#contact" class="btn btn-secondary">Request Info</a>
+            </div>
+        </section>
+
+        <!-- Email Signup -->
+        <section id="contact" class="signup-section">
+            <div class="container signup-box">
+                <span class="section-tag">Stay Informed</span>
+                <h2>Join the Guest List</h2>
+                <p style="color: var(--text-secondary); font-weight: 300;">Get early access to new show announcements and special events.</p>
+                
+                <form class="form-group">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="images/logo-boxed.svg" alt="The Houston Comedy Club">
+                    </a>
+                    <p>A Better Room for Comedy. Powered by <a href="https://mcgregorspubhtx.com" target="_blank" style="color: var(--text-primary); text-decoration: underline;">McGregor's</a>.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Location</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        2010 Waugh Dr<br>
+                        Houston, TX 77006<br>
+                        Upstairs Venue
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="#">Instagram</a>
+                        <a href="#">TikTok</a>
+                        <a href="#">YouTube</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <a href="mailto:booking@houstoncomedyclub.com">Booking Inquiries</a>
+                        <a href="mailto:info@houstoncomedyclub.com">General Info</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Houston Comedy Club. All Rights Reserved.</p>
+                <p>Designed for the culture.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

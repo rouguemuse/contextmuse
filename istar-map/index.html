@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Reasons, Written in Starlight</title>
+  <meta name="description" content="A private constellation — each light holds a message meant only for you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #050a18;
+      --navy-mid: #0a1128;
+      --gold: #c9a84c;
+      --gold-glow: rgba(201, 168, 76, 0.4);
+      --gold-dim: rgba(201, 168, 76, 0.15);
+      --star-white: #e8e4d8;
+      --text-dim: rgba(232, 228, 216, 0.5);
+      --text-muted: rgba(232, 228, 216, 0.3);
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--navy);
+      color: var(--star-white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── BACKGROUND STARFIELD ── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: opacity 1s ease;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 52px 24px 16px;
+      user-select: none;
+      transition: opacity 0.5s ease;
+    }
+    .header-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+    .header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 6vw, 52px);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      color: var(--star-white);
+      margin-bottom: 14px;
+    }
+    .header-sub {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ── HINT ── */
+    .hint {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-top: 8px;
+      animation: pulse-hint 3s ease-in-out infinite;
+    }
+    @keyframes pulse-hint {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.9; }
+    }
+
+    /* ── CONSTELLATION STAGE ── */
+    .stage {
+      position: relative;
+      width: min(560px, 96vw);
+      margin: 32px auto 0;
+      flex-shrink: 0;
+    }
+    #star-canvas {
+      display: block;
+      width: 100%;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    /* ── INLINE MESSAGES ── */
+    .inline-messages {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .inline-message {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(14px, 3.5vw, 17px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--star-white);
+      width: max-content;
+      max-width: 140px;
+      opacity: 0;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 12px rgba(5,10,24,0.8);
+      line-height: 1.35;
+      text-align: center;
+      z-index: 10;
+    }
+    .inline-message.visible {
+      opacity: 1;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-wrap {
+      width: min(400px, 88vw);
+      margin: 28px auto 0;
+      text-align: center;
+      transition: opacity 0.5s ease;
+    }
+    .progress-bar-bg {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+      border-radius: 2px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
+    }
+    .progress-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* ── FINAL MESSAGE (EXPLOSION) ── */
+    .final-message-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 2s ease;
+      background: radial-gradient(circle at center, rgba(10,17,40,0.8) 0%, var(--navy) 100%);
+    }
+    .final-message-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .final-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 8vw, 64px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 24px;
+      text-shadow: 0 0 30px var(--gold-glow);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 2s ease 1s;
+    }
+    .final-message-overlay.visible .final-title {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .final-body {
+      font-size: clamp(14px, 4vw, 16px);
+      color: var(--star-white);
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+      text-align: center;
+      max-width: 500px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1.5s ease 2s;
+    }
+    .final-message-overlay.visible .final-body {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reset-btn {
+      margin-top: 48px;
+      background: transparent;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+    .final-message-overlay.visible .reset-btn {
+      opacity: 1;
+      transition: all 1s ease 3.5s;
+    }
+    .reset-btn:hover {
+      background: rgba(201, 168, 76, 0.1);
+      border-color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="page" id="page-content">
+  <header class="header" id="header">
+    <p class="header-eyebrow">For You</p>
+    <h1 class="header-title">Reasons,<br>Written in Starlight</h1>
+    <p class="header-sub">Each light reveals a small truth.</p>
+    <p class="hint">Touch a star to begin →</p>
+  </header>
+
+  <div class="stage">
+    <canvas id="star-canvas"></canvas>
+    <div class="inline-messages" id="inline-messages"></div>
+  </div>
+
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+    <p class="progress-label" id="progress-label">0 of 9 discovered</p>
+  </div>
+
+  <footer class="footer" id="footer">
+    A private constellation · Made with intention
+  </footer>
+</div>
+
+<div class="final-message-overlay" id="final-message">
+  <h2 class="final-title">You found them all.</h2>
+  <p class="final-body">
+    Every star holds a truth someone wanted you to carry.<br>
+    These words were placed here for you — return whenever you need them.
+  </p>
+  <button class="reset-btn" onclick="resetAll()">Read Them Again</button>
+</div>
+
+<script>
+// ── MESSAGES ── 
+const MESSAGES = [
+  "The way you laugh at your own jokes before finishing them.",
+  "How you make every room feel like somewhere worth staying.",
+  "The quiet strength you carry that you don't even know is there.",
+  "You remember small things about people.",
+  "The courage it takes to keep going, even when no one sees it.",
+  "Your mind — how it finds connections no one else sees.",
+  "The warmth you give so freely, even when running low.",
+  "How you turned every hard thing into something worth telling.",
+  "Simply this: the world is better because you're in it."
+];
+
+// ── BACKGROUND STARFIELD ──
+(function() {
+  const c = document.getElementById('bg-canvas');
+  const ctx = c.getContext('2d');
+  let stars = [];
+  let W, H;
+
+  function resize() {
+    W = c.width = window.innerWidth;
+    H = c.height = window.innerHeight;
+    buildStars();
+  }
+
+  function buildStars() {
+    stars = [];
+    const count = Math.floor((W * H) / 4200);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 0.9 + 0.1,
+        a: Math.random(),
+        speed: Math.random() * 0.0008 + 0.0003,
+        offset: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+      const alpha = 0.15 + 0.5 * Math.abs(Math.sin(s.speed * t + s.offset));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(232,228,216,${alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  requestAnimationFrame(draw);
+})();
+
+// ── CONSTELLATION ──
+const canvas = document.getElementById('star-canvas');
+const ctx2 = canvas.getContext('2d');
+
+const STAR_POSITIONS = [
+  [0.50, 0.08],   // 0 top center
+  [0.28, 0.22],   // 1 upper left
+  [0.72, 0.22],   // 2 upper right
+  [0.18, 0.42],   // 3 mid left
+  [0.50, 0.38],   // 4 mid center
+  [0.82, 0.42],   // 5 mid right
+  [0.30, 0.62],   // 6 lower left
+  [0.50, 0.72],   // 7 lower center
+  [0.70, 0.62],   // 8 lower right
+];
+
+// Anchors for inline messages to push them outward
+const STAR_ANCHORS = [
+  { align: 'center', valign: 'bottom', dx: 0, dy: -20 },   // 0 top center
+  { align: 'right', valign: 'bottom', dx: -15, dy: -10 },  // 1 upper left
+  { align: 'left', valign: 'bottom', dx: 15, dy: -10 },    // 2 upper right
+  { align: 'right', valign: 'center', dx: -20, dy: 0 },    // 3 mid left
+  { align: 'left', valign: 'top', dx: 15, dy: 15 },        // 4 mid center
+  { align: 'left', valign: 'center', dx: 20, dy: 0 },      // 5 mid right
+  { align: 'right', valign: 'top', dx: -15, dy: 10 },      // 6 lower left
+  { align: 'center', valign: 'top', dx: 0, dy: 20 },       // 7 lower center
+  { align: 'left', valign: 'top', dx: 15, dy: 10 },        // 8 lower right
+];
+
+const EDGES = [
+  [0,1],[0,2],
+  [1,3],[1,4],
+  [2,4],[2,5],
+  [3,6],
+  [4,7],
+  [5,8],
+  [6,7],[7,8]
+];
+
+let W2 = 0, H2 = 0;
+let starPx = [];         
+let revealed = new Set();
+let hovered = -1;
+let introAnim = 0;       
+let isExploding = false;
+let explosionTime = 0;
+let particles = [];
+
+function initMessages() {
+  const container = document.getElementById('inline-messages');
+  container.innerHTML = '';
+  MESSAGES.forEach((msg, i) => {
+    const el = document.createElement('div');
+    el.className = 'inline-message';
+    el.id = 'msg-' + i;
+    el.textContent = msg;
+    container.appendChild(el);
+  });
+}
+
+function resizeCanvas() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const size = Math.min(rect.width, 560);
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = size * dpr;
+  canvas.height = size * 0.85 * dpr;
+  canvas.style.width = size + 'px';
+  canvas.style.height = (size * 0.85) + 'px';
+  W2 = canvas.width;
+  H2 = canvas.height;
+  ctx2.scale(dpr, dpr);
+
+  const pw = size, ph = size * 0.85;
+  starPx = STAR_POSITIONS.map(([nx, ny]) => ({
+    x: 0.15 * pw + nx * pw * 0.7,
+    y: 0.1 * ph + ny * ph * 0.8,
+    r: 6,
+    vx: (nx - 0.5) * 800 + (Math.random()-0.5)*200, // For explosion
+    vy: (ny - 0.5) * 800 + (Math.random()-0.5)*200
+  }));
+
+  updateMessagePositions();
+}
+
+function updateMessagePositions() {
+  MESSAGES.forEach((_, i) => {
+    const el = document.getElementById('msg-' + i);
+    if(!el) return;
+    const s = starPx[i];
+    const anchor = STAR_ANCHORS[i];
+    
+    let left = s.x + anchor.dx;
+    let top = s.y + anchor.dy;
+    
+    let xTrans = '0';
+    let yTrans = '0';
+    if (anchor.align === 'center') xTrans = '-50%';
+    else if (anchor.align === 'right') xTrans = '-100%';
+    
+    if (anchor.valign === 'center') yTrans = '-50%';
+    else if (anchor.valign === 'bottom') yTrans = '-100%';
+    
+    el.style.left = left + 'px';
+    el.style.top = top + 'px';
+    
+    el.dataset.transformVisible = `translate(${xTrans}, ${yTrans})`;
+    el.dataset.transformHidden = `translate(${xTrans}, calc(${yTrans} + 8px))`;
+    
+    if (el.classList.contains('visible')) {
+      el.style.transform = el.dataset.transformVisible;
+    } else {
+      el.style.transform = el.dataset.transformHidden;
+    }
+  });
+}
+
+function drawStar(cx, cy, spikes, outerR, innerR, t) {
+  let rot = (Math.PI / 2) * 3;
+  const step = Math.PI / spikes;
+  ctx2.beginPath();
+  for (let i = 0; i < spikes; i++) {
+    ctx2.lineTo(cx + Math.cos(rot) * outerR, cy + Math.sin(rot) * outerR);
+    rot += step;
+    ctx2.lineTo(cx + Math.cos(rot) * innerR, cy + Math.sin(rot) * innerR);
+    rot += step;
+  }
+  ctx2.closePath();
+}
+
+let lastTime = 0;
+function render(time) {
+  const dt = (time - lastTime) / 1000;
+  lastTime = time;
+  
+  const dpr = window.devicePixelRatio || 1;
+  const pw = canvas.width / dpr;
+  const ph = canvas.height / dpr;
+  ctx2.clearRect(0, 0, pw, ph);
+
+  const t = time * 0.001;
+
+  if (isExploding) {
+    const elapsed = t - explosionTime;
+    
+    // Draw exploding stars
+    starPx.forEach((s, i) => {
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
+      const alpha = Math.max(0, 1 - elapsed * 1.5);
+      
+      const pulse = Math.sin(t * 10 + i) * 0.5 + 1;
+      const r = 8 * pulse;
+      
+      ctx2.save();
+      ctx2.globalAlpha = alpha;
+      ctx2.translate(s.x, s.y);
+      ctx2.rotate(t * 2 + i);
+      drawStar(0, 0, 6, r, r*0.4, t);
+      ctx2.fillStyle = '#c9a84c';
+      ctx2.fill();
+      ctx2.restore();
+    });
+
+    // Draw particles
+    particles.forEach(p => {
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.life -= dt * 0.8;
+      ctx2.globalAlpha = Math.max(0, p.life);
+      ctx2.fillStyle = p.color;
+      ctx2.beginPath();
+      ctx2.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx2.fill();
+    });
+    ctx2.globalAlpha = 1;
+
+    requestAnimationFrame(render);
+    return;
+  }
+
+  if (introAnim < 1) introAnim = Math.min(1, introAnim + dt * 0.35);
+
+  const totalEdgeLen = EDGES.length;
+  EDGES.forEach(([a, b], idx) => {
+    const edgeProgress = Math.max(0, Math.min(1, (introAnim * totalEdgeLen - idx) ));
+    if (edgeProgress <= 0) return;
+    const pa = starPx[a], pb = starPx[b];
+    const ex = pa.x + (pb.x - pa.x) * edgeProgress;
+    const ey = pa.y + (pb.y - pa.y) * edgeProgress;
+    ctx2.beginPath();
+    ctx2.moveTo(pa.x, pa.y);
+    ctx2.lineTo(ex, ey);
+    ctx2.strokeStyle = 'rgba(201,168,76,0.18)';
+    ctx2.lineWidth = 0.8;
+    ctx2.stroke();
+  });
+
+  starPx.forEach((s, i) => {
+    const isRevealed = revealed.has(i);
+    const isHovered = hovered === i;
+
+    const pulse = Math.sin(t * 1.4 + i * 0.9) * 0.3 + 0.7;
+    const baseR = isRevealed ? 7 : 5;
+    const r = isRevealed ? baseR : baseR * pulse;
+    const glowR = isRevealed ? 22 : (isHovered ? 18 : 12);
+    const glowA = isRevealed ? 0.55 : (isHovered ? 0.45 : 0.2);
+
+    const grd = ctx2.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowR);
+    grd.addColorStop(0, `rgba(201,168,76,${glowA})`);
+    grd.addColorStop(1, 'rgba(201,168,76,0)');
+    ctx2.beginPath();
+    ctx2.arc(s.x, s.y, glowR, 0, Math.PI * 2);
+    ctx2.fillStyle = grd;
+    ctx2.fill();
+
+    const spikes = isRevealed ? 6 : 5;
+    const innerR = r * 0.45;
+    ctx2.save();
+    ctx2.translate(s.x, s.y);
+    ctx2.rotate(isRevealed ? t * 0.15 : t * 0.08 + i);
+    drawStar(0, 0, spikes, r, innerR, t);
+    const starGrd = ctx2.createRadialGradient(0, 0, 0, 0, 0, r);
+    starGrd.addColorStop(0, '#ffffff');
+    starGrd.addColorStop(0.5, isRevealed ? '#c9a84c' : '#d4cdb8');
+    starGrd.addColorStop(1, isRevealed ? 'rgba(201,168,76,0.3)' : 'rgba(200,195,180,0.2)');
+    ctx2.fillStyle = starGrd;
+    ctx2.fill();
+    ctx2.restore();
+
+    if (isRevealed) {
+      ctx2.beginPath();
+      ctx2.arc(s.x, s.y, 12, 0, Math.PI * 2);
+      ctx2.strokeStyle = 'rgba(201,168,76,0.4)';
+      ctx2.lineWidth = 0.8;
+      ctx2.stroke();
+    }
+
+    if (isHovered && !isRevealed) {
+      ctx2.beginPath();
+      ctx2.arc(s.x, s.y, 12 + Math.sin(t * 3) * 2, 0, Math.PI * 2);
+      ctx2.strokeStyle = 'rgba(201,168,76,0.35)';
+      ctx2.lineWidth = 0.8;
+      ctx2.stroke();
+    }
+  });
+
+  requestAnimationFrame(render);
+}
+
+function getStarAt(cx, cy) {
+  for (let i = 0; i < starPx.length; i++) {
+    const s = starPx[i];
+    const dx = cx - s.x, dy = cy - s.y;
+    if (Math.sqrt(dx*dx + dy*dy) < 22) return i;
+  }
+  return -1;
+}
+
+function canvasCoords(e) {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  const scaleX = (canvas.width / dpr) / rect.width;
+  const scaleY = (canvas.height / dpr) / rect.height;
+  if (e.touches) {
+    return {
+      x: (e.touches[0].clientX - rect.left) * scaleX,
+      y: (e.touches[0].clientY - rect.top) * scaleY
+    };
+  }
+  return {
+    x: (e.clientX - rect.left) * scaleX,
+    y: (e.clientY - rect.top) * scaleY
+  };
+}
+
+canvas.addEventListener('mousemove', e => {
+  if(isExploding) return;
+  const {x, y} = canvasCoords(e);
+  const idx = getStarAt(x, y);
+  hovered = idx;
+  canvas.style.cursor = idx >= 0 ? 'pointer' : 'default';
+});
+canvas.addEventListener('mouseleave', () => { hovered = -1; });
+
+canvas.addEventListener('click', e => {
+  if(isExploding) return;
+  const {x, y} = canvasCoords(e);
+  const idx = getStarAt(x, y);
+  if (idx >= 0 && !revealed.has(idx)) {
+    revealStar(idx);
+  }
+});
+canvas.addEventListener('touchstart', e => {
+  if(isExploding) return;
+  const {x, y} = canvasCoords(e);
+  const idx = getStarAt(x, y);
+  if (idx >= 0 && !revealed.has(idx)) {
+    revealStar(idx);
+    e.preventDefault();
+  }
+}, {passive: false});
+
+function revealStar(idx) {
+  revealed.add(idx);
+  const el = document.getElementById('msg-' + idx);
+  el.classList.add('visible');
+  el.style.transform = el.dataset.transformVisible;
+  
+  updateProgress();
+
+  if (revealed.size === MESSAGES.length) {
+    setTimeout(() => {
+      triggerExplosion();
+    }, 1200);
+  }
+}
+
+function updateProgress() {
+  const n = revealed.size;
+  const total = MESSAGES.length;
+  document.getElementById('progress-fill').style.width = (n / total * 100) + '%';
+  document.getElementById('progress-label').textContent = n + ' of ' + total + ' discovered';
+}
+
+function triggerExplosion() {
+  isExploding = true;
+  explosionTime = performance.now() * 0.001;
+  
+  document.getElementById('inline-messages').style.opacity = '0';
+  document.getElementById('header').style.opacity = '0';
+  document.getElementById('progress-wrap').style.opacity = '0';
+  document.getElementById('footer').style.opacity = '0';
+
+  // Generate particles
+  starPx.forEach(s => {
+    for(let i=0; i<25; i++) {
+      particles.push({
+        x: s.x, y: s.y,
+        vx: (Math.random() - 0.5) * 800,
+        vy: (Math.random() - 0.5) * 800,
+        r: Math.random() * 2.5 + 0.5,
+        life: 1.0 + Math.random() * 0.5,
+        color: Math.random() > 0.5 ? '#c9a84c' : '#ffffff'
+      });
+    }
+  });
+
+  setTimeout(() => {
+    document.getElementById('final-message').classList.add('visible');
+  }, 500);
+}
+
+function resetAll() {
+  revealed.clear();
+  isExploding = false;
+  particles = [];
+  
+  document.getElementById('final-message').classList.remove('visible');
+  document.getElementById('inline-messages').style.opacity = '1';
+  document.getElementById('header').style.opacity = '1';
+  document.getElementById('progress-wrap').style.opacity = '1';
+  document.getElementById('footer').style.opacity = '1';
+
+  const container = document.getElementById('inline-messages');
+  Array.from(container.children).forEach(el => {
+    el.classList.remove('visible');
+    el.style.transform = el.dataset.transformHidden;
+  });
+
+  resizeCanvas(); // reset star positions
+  updateProgress();
+}
+
+window.addEventListener('resize', () => { resizeCanvas(); });
+initMessages();
+resizeCanvas();
+requestAnimationFrame(render);
+</script>
+</body>
+</html>

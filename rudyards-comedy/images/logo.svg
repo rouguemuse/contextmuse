@@ -1,0 +1,24 @@
+<svg width="650" height="100" viewBox="0 0 650 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#996515;stop-opacity:1" />
+    </linearGradient>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;display=swap');
+      .logo-text { font-family: 'Antonio', sans-serif; font-weight: 700; text-transform: uppercase; }
+    </style>
+  </defs>
+  
+  <!-- Microphone Icon -->
+  <g transform="translate(20, 20) scale(2.5)" fill="url(#goldGradient)">
+    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+  </g>
+  
+  <!-- "THE HOUSTON" Text -->
+  <text x="100" y="65" class="logo-text" font-size="32" fill="#FFFFFF" letter-spacing="2">THE HOUSTON</text>
+  
+  <!-- "COMEDY CLUB" Text -->
+  <text x="355" y="65" class="logo-text" font-size="32" fill="#FFFFFF" letter-spacing="2">COMEDY CLUB</text>
+</svg>

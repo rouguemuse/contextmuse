@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@900&amp;family=Bodoni+Moda:ital,wght@1,900&amp;family=Outfit:wght@100..900&amp;display=swap');
+
+:root {
+    --bg-main: #0c0c0c;
+    --bg-card: #111111;
+    --text-primary: #FFFFFF;
+    --text-muted: #888888;
+    --border-soft: rgba(255, 255, 255, 0.08);
+    --accent: #FFFFFF;
+    --font-branding: 'Archivo Narrow', sans-serif;
+    --font-heading: 'Bodoni Moda', serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 80px 0;
+    font-family: var(--font-body);
+    color: var(--text-primary);
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    padding: 20px;
+}
+
+/* --- BASE CARD --- */
+.business-card {
+    width: 3.5in;
+    height: 2in;
+    background: var(--bg-card);
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.9);
+    transform: scale(2.2);
+    transform-origin: center center;
+    margin: 1.25in 0;
+    cursor: default;
+    border: 1px solid rgba(255,255,255,0.03);
+    overflow: hidden;
+}
+
+.card-interior {
+    width: 100%;
+    height: 100%;
+    padding: 0.2in;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- FRONT FACE --- */
+.logo-focus {
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #161616 0%, #0c0c0c 100%);
+}
+
+.title-logo {
+    width: 90%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+/* --- REGENERATED BACK FACE --- */
+.back-accent {
+    position: absolute;
+    top: 0;
+    left: 0.2in;
+    width: 20px;
+    height: 2px;
+    background: var(--accent);
+    opacity: 0.8;
+}
+
+.card-header {
+    margin-bottom: 25px;
+}
+
+.brand-title {
+    font-family: var(--font-branding);
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+    margin: 0;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+.brand-subtitle {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 10px;
+    margin: 4px 0 0 0;
+    color: var(--text-primary);
+    letter-spacing: 0.2px;
+}
+
+.info-columns {
+    display: flex;
+    gap: 30px;
+}
+
+.info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.section-label {
+    font-size: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.card-value {
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    color: #e2e2e2;
+    font-style: normal;
+}
+
+.card-value.phone {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.email-stack {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.email-entry {
+    font-size: 7px;
+    margin: 0;
+    color: #aeaeae;
+}
+
+.small-label {
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-right: 4px;
+}
+
+.card-footer-branding {
+    margin-top: auto;
+    border-top: 0.5px solid var(--border-soft);
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.location-stamp {
+    font-size: 6px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* Print Styles */
+@media print {
+    body { background: white; padding: 0; }
+    .card-wrapper { gap: 40px; }
+    .business-card { 
+        transform: none; 
+        margin: 20px; 
+        box-shadow: none; 
+        border: 1px solid #ddd;
+    }
+}

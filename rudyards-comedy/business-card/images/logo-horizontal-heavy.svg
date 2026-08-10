@@ -1,0 +1,25 @@
+<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- HARD-LOCKED DIMENSIONS TO PREVENT OVERLAP -->
+  <g fill="white" font-family="sans-serif" font-weight="900" text-transform="uppercase">
+    <!-- SIMPLE BORDER -->
+    <rect x="10" y="10" width="580" height="180" fill="none" stroke="white" stroke-width="6" />
+    
+    <!-- FORCED TEXT CONSTRAINTS: Locking width to 420px to guarantee mic clearance -->
+    <text x="40" y="85" font-size="50" textLength="420" lengthAdjust="spacing">THE HOUSTON</text>
+    <text x="40" y="155" font-size="65" textLength="420" lengthAdjust="spacing">COMEDY CLUB</text>
+    
+    <!-- SIMPLE PILL MICROPHONE (Moved further right to 530px) -->
+    <g transform="translate(530, 45)">
+       <rect x="0" y="0" width="35" height="75" rx="17.5" fill="white" />
+       <rect x="13" y="75" width="9" height="25" fill="white" />
+       <rect x="0" y="100" width="35" height="5" fill="white" />
+       <!-- Simple Grid -->
+       <g stroke="black" stroke-width="1.2">
+          <line x1="0" y1="18" x2="35" y2="18" />
+          <line x1="0" y1="36" x2="35" y2="36" />
+          <line x1="0" y1="54" x2="35" y2="54" />
+          <line x1="17.5" y1="0" x2="17.5" y2="75" />
+       </g>
+    </g>
+  </g>
+</svg>

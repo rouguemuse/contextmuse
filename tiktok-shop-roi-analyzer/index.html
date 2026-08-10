@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Shop Profit & Risk Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-section">
+                <h1>TikTok Shop Profit & Risk Analyzer</h1>
+                <p>Run risk grading simulations, calculate detailed creator economics, and check compliance before listing.</p>
+            </div>
+            <div>
+                <span class="badge">Decision Hub v2.0</span>
+            </div>
+        </header>
+
+        <!-- Presets Section -->
+        <div class="presets-container">
+            <p class="presets-label">Select a Niche Template to Test:</p>
+            <div class="presets-grid">
+                <button class="preset-btn active safe" data-preset="beauty">
+                    <strong>💅 Beauty: Glass Skin Kit</strong>
+                    <span class="tag">Beginner Friendly</span>
+                </button>
+                <button class="preset-btn safe" data-preset="scrubber">
+                    <strong>🧹 Home: Spin Scrubber</strong>
+                    <span class="tag">High Volume</span>
+                </button>
+                <button class="preset-btn" data-preset="vitamins">
+                    <strong>🌱 Health: Morning Vitamins</strong>
+                    <span class="tag">Compliance Required</span>
+                </button>
+                <button class="preset-btn" data-preset="weightloss">
+                    <strong>💊 Wellness: Weight Gummy</strong>
+                    <span class="tag">High Policy Risk</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            
+            <!-- Sidebar: Parameters Panel -->
+            <div class="card">
+                <div class="card-title">
+                    <span>⚙️</span> Product Parameters
+                </div>
+
+                <!-- Product Detail Section -->
+                <div class="form-section">
+                    <div class="section-subtitle">Basic Details</div>
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" class="form-control" value="Viral Glass Skin Kit">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-category">Product Category</label>
+                        <select id="product-category" class="form-control">
+                            <option value="beauty">Beauty & Personal Care</option>
+                            <option value="home">Home & Kitchen</option>
+                            <option value="supplements">Dietary Supplements</option>
+                            <option value="wellness">General Health & Wellness</option>
+                            <option value="weightloss">GLP-1 / Weight-Loss Claims</option>
+                            <option value="baby">Baby & Children Products</option>
+                            <option value="regulated">Regulated Electronics / Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Financial Variables Section -->
+                <div class="form-section">
+                    <div class="section-subtitle">Core Financials</div>
+                    <div class="form-group">
+                        <label for="selling-price">Target Retail Price</label>
+                        <div class="input-container">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="selling-price" class="form-control form-control-prefixed" value="29.99" step="0.01">
+                        </div>
+                        <input type="range" id="selling-price-slider" min="5" max="150" value="29.99" step="0.50">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cogs">Product Cost (COGS)</label>
+                        <div class="input-container">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="cogs" class="form-control form-control-prefixed" value="6.50" step="0.01">
+                        </div>
+                        <input type="range" id="cogs-slider" min="1" max="80" value="6.50" step="0.25">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shipping">Supplier Shipping Cost</label>
+                        <div class="input-container">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="shipping" class="form-control form-control-prefixed" value="4.99" step="0.01">
+                        </div>
+                        <input type="range" id="shipping-slider" min="0" max="25" value="4.99" step="0.25">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="platform-fee">TikTok Platform Fee</label>
+                        <div class="input-container">
+                            <input type="number" id="platform-fee" class="form-control form-control-suffixed" value="8.00" step="0.01">
+                            <span class="input-suffix">%</span>
+                        </div>
+                        <div class="fee-presets">
+                            <button type="button" class="fee-btn" id="btn-fee-6">6% Fee</button>
+                            <button type="button" class="fee-btn active" id="btn-fee-8">8% Fee</button>
+                            <button type="button" class="fee-btn" style="pointer-events: none;">Custom</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creator Economics & Budget -->
+                <div class="form-section">
+                    <div class="section-subtitle">Creator Economics</div>
+                    <div class="form-group">
+                        <label for="commission">Affiliate Commission</label>
+                        <div class="input-container">
+                            <input type="number" id="commission" class="form-control form-control-suffixed" value="15" step="1">
+                            <span class="input-suffix">%</span>
+                        </div>
+                        <input type="range" id="commission-slider" min="5" max="50" value="15" step="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sample-cost">Free Sample Cost (Product + Ship)</label>
+                        <div class="input-container">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="sample-cost" class="form-control form-control-prefixed" value="11.49" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sample-qty">Sample Seeding Quantity</label>
+                        <input type="number" id="sample-qty" class="form-control" value="20" step="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ad-spend">Monthly Content / Paid Ad Budget</label>
+                        <div class="input-container">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="ad-spend" class="form-control form-control-prefixed" value="150.00" step="1">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projected-sales">Monthly Testing Sales Target</label>
+                        <input type="number" id="projected-sales" class="form-control" value="100" step="10">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="return-rate">Projected Refund / Return Rate</label>
+                        <div class="input-container">
+                            <input type="number" id="return-rate" class="form-control form-control-suffixed" value="3.5" step="0.1">
+                            <span class="input-suffix">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right-Side Panels -->
+            <div class="panels-container">
+                
+                <!-- Compliance Alert Panel (Dynamic display) -->
+                <div class="risk-alert-panel full-width" id="compliance-alert">
+                    <div class="risk-alert-icon">⚠️</div>
+                    <div class="risk-alert-content">
+                        <h5 id="compliance-alert-title">Compliance Alert</h5>
+                        <p id="compliance-alert-text">Warning details go here.</p>
+                    </div>
+                </div>
+
+                <!-- Verdict Panel -->
+                <div class="card verdict-card verdict-watch full-width" id="verdict-card">
+                    <div class="verdict-header">
+                        <span class="verdict-title">Final Decision Verdict</span>
+                        <span class="verdict-badge" id="verdict-badge">Watch</span>
+                    </div>
+                    <p class="verdict-explanation" id="verdict-explanation">
+                        We are currently analyzing your inputs. Check details.
+                    </p>
+                </div>
+
+                <!-- Score Blocks Card -->
+                <div class="card">
+                    <div class="card-title">
+                        <span>🛡️</span> Risk Assessments
+                    </div>
+                    <div class="score-flex">
+                        <div class="score-box">
+                            <div class="verdict-title" style="margin-bottom: 0;">Policy Risk</div>
+                            <div class="score-num green" id="score-product-val">Green</div>
+                        </div>
+                        <div class="score-box">
+                            <div class="verdict-title" style="margin-bottom: 0;">Logistics Score</div>
+                            <div class="score-num green" id="score-fulfillment-val">95/100</div>
+                        </div>
+                    </div>
+
+                    <!-- Fulfillment Checklist Questionnaires -->
+                    <div class="switch-group">
+                        <div class="switch-row">
+                            <div class="switch-label">
+                                Domestic USA Sourcing
+                                <span>Fast delivery, matches 3-day tracking rules</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-domestic" checked>
+                                <span class="slider-toggle"></span>
+                            </label>
+                        </div>
+
+                        <div class="switch-row" style="margin-top: 0.5rem;">
+                            <div class="switch-label">
+                                Dispatch Delay Time
+                                <span>Days for package handover to carrier</span>
+                            </div>
+                            <select id="dispatch-time" class="form-control" style="width: 100px; padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                                <option value="1" selected>1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="4">4+ Days</option>
+                            </select>
+                        </div>
+
+                        <div class="switch-row">
+                            <div class="switch-label">
+                                Automated Valid Tracking
+                                <span>Real carrier sync without manual entry</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-tracking" checked>
+                                <span class="slider-toggle"></span>
+                            </label>
+                        </div>
+
+                        <div class="switch-row">
+                            <div class="switch-label">
+                                USA Domestic Returns
+                                <span>Simple address provided for return handling</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-returns" checked>
+                                <span class="slider-toggle"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Launch Economics Statement Card -->
+                <div class="card">
+                    <div class="card-title">
+                        <span>💵</span> Launch Economics
+                    </div>
+                    <div class="econ-list">
+                        <div class="econ-row">
+                            <span class="econ-label">Gross Margin (Price - COGS)</span>
+                            <span class="econ-val" id="econ-gross-margin">$0.00</span>
+                        </div>
+                        <div class="econ-row">
+                            <span class="econ-label">Platform Fee Deduction</span>
+                            <span class="econ-val" id="econ-platform-fee">$0.00</span>
+                        </div>
+                        <div class="econ-row">
+                            <span class="econ-label">Affiliate Commission (Unit)</span>
+                            <span class="econ-val" id="econ-commission">$0.00</span>
+                        </div>
+                        <div class="econ-row">
+                            <span class="econ-label">Est. Returns & Admin Overhead</span>
+                            <span class="econ-val" id="econ-refund-cost">$0.00</span>
+                        </div>
+                        <div class="econ-row">
+                            <span class="econ-label">Amortized Sample Seeding Cost</span>
+                            <span class="econ-val" id="econ-sample-cost">$0.00</span>
+                        </div>
+                        <div class="econ-row">
+                            <span class="econ-label">Amortized Content Ad Spend</span>
+                            <span class="econ-val" id="econ-ad-cost">$0.00</span>
+                        </div>
+                        <div class="econ-row" style="border-top: 1px dashed var(--border-color); padding-top: 0.5rem; margin-top: 0.25rem;">
+                            <span class="econ-label">Total Sourced Cost (Unit)</span>
+                            <span class="econ-val" id="econ-total-cost">$0.00</span>
+                        </div>
+                        <div class="econ-row">
+                            <span class="econ-label">Est. True Net Unit Profit</span>
+                            <span class="econ-val positive" id="econ-net-profit">$0.00</span>
+                        </div>
+                        <div class="econ-row">
+                            <span class="econ-label">Est. Net Margin Rate</span>
+                            <span class="econ-val positive" id="econ-net-margin">0.0%</span>
+                        </div>
+                        <div class="econ-row">
+                            <span class="econ-label">Estimated ROI Rate</span>
+                            <span class="econ-val" id="econ-roi">0.0%</span>
+                        </div>
+                        <div class="econ-row" style="border-top: 1px dashed var(--border-color); padding-top: 0.5rem;">
+                            <span class="econ-label">Breakeven ROAS</span>
+                            <span class="econ-val" id="econ-breakeven-roas">0.00x</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            TikTok Shop Profit & Risk Analyzer &copy; 2026. Sourced from compliance-first product testing methodologies.
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

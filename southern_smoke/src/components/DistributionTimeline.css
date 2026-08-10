@@ -1,0 +1,122 @@
+.timeline-section {
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline-container {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.year-sidebar {
+  flex: 0 0 150px;
+  border-right: 2px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.year-tab {
+  padding: 15px 20px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-right: 3px solid transparent;
+  margin-right: -2px; /* overlap the border */
+  transition: all 0.3s ease;
+}
+
+.year-tab:hover {
+  color: var(--brand-black);
+  background: rgba(255, 196, 57, 0.1);
+}
+
+.year-tab.active {
+  color: var(--brand-black);
+  border-right-color: var(--brand-yellow);
+  background: rgba(255, 196, 57, 0.15);
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-header h3 {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: var(--brand-black);
+  border-bottom: 2px solid var(--brand-yellow);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.event-card {
+  background: #fff;
+  border: 1px solid var(--glass-border);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  border-left: 4px solid var(--brand-yellow);
+}
+
+.event-month {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.event-amount {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--brand-black);
+  margin-bottom: 8px;
+}
+
+.event-desc {
+  font-size: 0.9rem;
+  color: var(--brand-black);
+  line-height: 1.4;
+}
+
+.no-data {
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .timeline-container {
+    flex-direction: column;
+  }
+  .year-sidebar {
+    border-right: none;
+    border-bottom: 2px solid var(--glass-border);
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  .year-tab {
+    border-right: none;
+    border-bottom: 3px solid transparent;
+    margin-right: 0;
+    margin-bottom: -12px;
+  }
+  .year-tab.active {
+    border-right-color: transparent;
+    border-bottom-color: var(--brand-yellow);
+  }
+}

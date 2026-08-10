@@ -1,0 +1,77 @@
+<svg width="800" height="600" viewBox="0 0 1000 750" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;family=Outfit:wght@400;700&amp;display=swap');
+      .logo-main { font-family: 'Antonio', sans-serif; font-weight: 700; text-transform: uppercase; fill: #FFFFFF; }
+      .logo-small { font-family: 'Outfit', sans-serif; font-weight: 700; text-transform: uppercase; fill: #FFFFFF; letter-spacing: 0.25em; }
+    </style>
+  </defs>
+
+  <!-- BORDER BOX WITH BREAKS -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="5">
+    <!-- TOP LINE BREAKS -->
+    <line x1="100" y1="100" x2="445" y2="100" />
+    <line x1="555" y1="100" x2="900" y2="100" />
+    <!-- BOTTOM LINE BREAKS -->
+    <line x1="100" y1="650" x2="445" y2="650" />
+    <line x1="555" y1="650" x2="900" y2="650" />
+    <!-- VERTICAL SIDES -->
+    <line x1="100" y1="100" x2="100" y2="650" />
+    <line x1="900" y1="100" x2="900" y2="650" />
+  </g>
+
+  <!-- TEXT: THE -->
+  <text x="500" y="112" text-anchor="middle" class="logo-small" font-size="32">THE</text>
+
+  <!-- TEXT: HOUSTON -->
+  <text x="500" y="240" text-anchor="middle" class="logo-main" font-size="160" letter-spacing="0.05em">HOUSTON</text>
+
+  <!-- CENTERPIECE -->
+  <g transform="translate(500, 395)">
+    <!-- Rays -->
+    <g stroke="#FFFFFF" stroke-width="1.5" opacity="0.9">
+      <line x1="-35" y1="-25" x2="-85" y2="-55" />
+      <line x1="-45" y1="-5" x2="-100" y2="-5" />
+      <line x1="-45" y1="15" x2="-100" y2="15" />
+      <line x1="-35" y1="35" x2="-85" y2="65" />
+      <line x1="35" y1="-25" x2="85" y2="-55" />
+      <line x1="45" y1="-5" x2="100" y2="-5" />
+      <line x1="45" y1="15" x2="100" y2="15" />
+      <line x1="35" y1="35" x2="85" y2="65" />
+    </g>
+
+    <!-- Side Stars -->
+    <path d="M -155 5 l 8 -13 l 16 0 l -12 11 l 4 14 l -16 -8 l -16 8 l 4 -14 l -12 -11 l 16 0 z" fill="#FFFFFF" transform="scale(0.8)" />
+    <path d="M 155 5 l 8 -13 l 16 0 l -12 11 l 4 14 l -16 -8 l -16 8 l 4 -14 l -12 -11 l 16 0 z" fill="#FFFFFF" transform="scale(0.8)" />
+
+    <!-- Mic Center Horizontals -->
+    <line x1="-28" y1="5" x2="-45" y2="5" stroke="#FFFFFF" stroke-width="2.5" />
+    <line x1="28" y1="5" x2="45" y2="5" stroke="#FFFFFF" stroke-width="2.5" />
+
+    <!-- Microphone Body -->
+    <path d="M -26 -45 Q -26 -65 0 -65 Q 26 -65 26 -45 L 26 55 Q 26 75 0 75 Q -26 75 -26 55 Z" fill="#FFFFFF" />
+    <g stroke="#000000" stroke-width="2">
+      <line x1="-26" y1="-20" x2="26" y2="-20" />
+      <line x1="-26" y1="5" x2="26" y2="5" />
+      <line x1="-26" y1="30" x2="26" y2="30" />
+      <line x1="-26" y1="55" x2="26" y2="55" />
+      <line x1="-9" y1="-65" x2="-9" y2="75" />
+      <line x1="0" y1="-65" x2="0" y2="75" />
+      <line x1="9" y1="-65" x2="9" y2="75" />
+    </g>
+  </g>
+
+  <!-- TEXT: COMEDY CLUB -->
+  <text x="500" y="560" text-anchor="middle" class="logo-main" font-size="140" letter-spacing="0.02em">COMEDY CLUB</text>
+
+  <!-- SUB-FOOTER LINE & LOCATION -->
+  <g transform="translate(500, 615)">
+    <line x1="-380" y1="0" x2="-55" y2="0" stroke="#FFFFFF" stroke-width="2" />
+    <line x1="380" y1="0" x2="55" y2="0" stroke="#FFFFFF" stroke-width="2" />
+    <path d="M 0 -10 l 4 7 l 8 1 l -6 6 l 2 8 l -8 -4 l -8 4 l 2 -8 l -6 -6 l 8 -1 z" fill="#FFFFFF" />
+    <text y="35" text-anchor="middle" class="logo-small" font-size="28" letter-spacing="16">HOUSTON, TEXAS</text>
+  </g>
+
+  <!-- TEXT: .COM -->
+  <text x="500" y="663" text-anchor="middle" class="logo-small" font-size="34">.COM</text>
+</svg>
