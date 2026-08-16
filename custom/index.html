@@ -179,14 +179,63 @@
             gap: 6px;
             margin-top: auto;
         }
-        .proof-tag {
+        /* ── Operational System Tab Consoles ────────────────────────── */
+        .system-console {
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1rem;
+            text-align: left;
+        }
+
+        .console-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .console-tab-btn {
+            background: none;
+            border: none;
             font-family: var(--font-mono);
             font-size: 9px;
-            background: var(--bg-panel);
-            border: 1px solid var(--border-light);
-            padding: 3px 8px;
-            border-radius: 4px;
             color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .console-tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(16, 33, 29, 0.04);
+        }
+
+        .console-tab-btn.active {
+            color: var(--accent-teal, #0f766e) !important;
+            background: rgba(15, 118, 110, 0.08) !important;
+        }
+
+        .console-content {
+            min-height: 100px;
+            position: relative;
+        }
+
+        .console-panel {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            opacity: 0;
+            display: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .console-panel.active {
+            display: block;
+            opacity: 1;
         }
     </style>
 </head>
@@ -201,37 +250,34 @@
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-                        <div class="nav-links">
-                <details class="nav-dropdown">
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
-                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
-                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
-                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
-                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
-                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
-                    </div>
-                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/#contact" class="nav-btn">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -277,6 +323,20 @@
     </header>
 
     <main id="main-content">
+        <!-- ── QUICK LAUNCH ENTRY STRIP ── -->
+        <section class="ql-entry-strip" style="background: #ffffff; border-bottom: 1px solid var(--border-light); padding: 2rem 0;">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div>
+                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.25rem;">NEED SOMETHING SIMPLER?</span>
+                    <strong style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); font-weight: 500; display: block; margin-bottom: 0.25rem;">Quick Launch Website &bull; Starting at $450</strong>
+                    <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0; max-width: 660px; line-height: 1.5;">If you need a professional business website but don't need a full custom operational system, Quick Launch offers a simpler starting point.</p>
+                </div>
+                <a href="/quick-launch/" class="btn-pathway-secondary" style="font-size: 11.5px; padding: 0.65rem 1.35rem; border: 1px solid var(--border-light); border-radius: 4px; background: var(--bg-paper); text-decoration: none; color: var(--text-primary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; white-space: nowrap;">
+                    EXPLORE QUICK LAUNCH &rarr;
+                </a>
+            </div>
+        </section>
+
         <!-- Section I: Offerings -->
         <section class="creative-section" style="background: var(--bg-paper); border-bottom: 1px solid var(--border-light); padding: 5.5rem 0;">
             <div class="container">
@@ -355,7 +415,25 @@
                             <span class="proof-status">Built</span>
                             <h3 class="proof-title">INNcontrol Coils</h3>
                             <p class="proof-desc">Commercial service website paired with a custom equipment intake and operational system.</p>
-                            <div class="proof-tags">
+                            <div class="system-console" data-project="inncontrol">
+                                <div class="console-tabs">
+                                    <button class="console-tab-btn active" data-tab="problem">Problem</button>
+                                    <button class="console-tab-btn" data-tab="backend">The Backend</button>
+                                    <button class="console-tab-btn" data-tab="value">How it helps</button>
+                                </div>
+                                <div class="console-content">
+                                    <div class="console-panel active" data-panel="problem">
+                                        Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.
+                                    </div>
+                                    <div class="console-panel" data-panel="backend">
+                                        Built property-wide interactive scoping tools allowing technicians to map units directly in a responsive visual floorplan, logging defects, unit types, photos, and necessary repairs on-site.
+                                    </div>
+                                    <div class="console-panel" data-panel="value">
+                                        Speeds up estimation, eliminates paper checklists, and creates a standardized visual ledger of required repairs, helping sales teams convert bids into closed deals.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="proof-tags" style="margin-top: 1rem;">
                                 <span class="proof-tag">Service Architecture</span>
                                 <span class="proof-tag">Inquiry Routing</span>
                                 <span class="proof-tag">Field Service</span>
@@ -372,7 +450,25 @@
                             <span class="proof-status">Designed</span>
                             <h3 class="proof-title">D2 Auto Detail</h3>
                             <p class="proof-desc">Acquisition framework and scheduling funnel prototype built to capture service intent.</p>
-                            <div class="proof-tags">
+                            <div class="system-console" data-project="d2">
+                                <div class="console-tabs">
+                                    <button class="console-tab-btn active" data-tab="problem">Problem</button>
+                                    <button class="console-tab-btn" data-tab="backend">The Backend</button>
+                                    <button class="console-tab-btn" data-tab="value">How it helps</button>
+                                </div>
+                                <div class="console-content">
+                                    <div class="console-panel active" data-panel="problem">
+                                        Premium detailing services need custom lead acquisition that handles vehicle types and service tiers, while matching lead generation with local ad creation and content publishing.
+                                    </div>
+                                    <div class="console-panel" data-panel="backend">
+                                        Built a centralized custom administration portal that hooks directly to the storefront booking funnel, an automated local ad generator, a blog publisher, and a custom D2TV media player playlist database.
+                                    </div>
+                                    <div class="console-panel" data-panel="value">
+                                        Bridges the gap between simple brochure websites and active business operations, bringing lead capture, scheduling, and local media marketing into a single dashboard.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="proof-tags" style="margin-top: 1rem;">
                                 <span class="proof-tag">Service UX</span>
                                 <span class="proof-tag">Lead Capture</span>
                                 <span class="proof-tag">Marketing</span>
@@ -389,7 +485,25 @@
                             <span class="proof-status">Prototype</span>
                             <h3 class="proof-title">EDR Party Rentals</h3>
                             <p class="proof-desc">Inventory-aware rental reservation and date-controlled intake system design.</p>
-                            <div class="proof-tags">
+                            <div class="system-console" data-project="edr">
+                                <div class="console-tabs">
+                                    <button class="console-tab-btn active" data-tab="problem">Problem</button>
+                                    <button class="console-tab-btn" data-tab="backend">The Backend</button>
+                                    <button class="console-tab-btn" data-tab="value">How it helps</button>
+                                </div>
+                                <div class="console-content">
+                                    <div class="console-panel active" data-panel="problem">
+                                        Event rentals have finite, calendar-dependent inventory (one-of-one arches, slide units, custom furniture). Standard ecommerce carts allow double-booking on the same day.
+                                    </div>
+                                    <div class="console-panel" data-panel="backend">
+                                        Designed a custom availability check system that matches real-time serial number stock with selected event dates, blocking out products on occupied dates during checkout, with automated English/Spanish localization.
+                                    </div>
+                                    <div class="console-panel" data-panel="value">
+                                        Stops booking clashes, reduces manual scheduling checks, and generates clean warehouse dispatch sheets showing date-verified drop-off orders.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="proof-tags" style="margin-top: 1rem;">
                                 <span class="proof-tag">Inventory</span>
                                 <span class="proof-tag">Product UX</span>
                                 <span class="proof-tag">Reservation Intake</span>
@@ -402,14 +516,24 @@
     </main>
 
     <!-- Footer -->
+    <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
-                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;"><span style="letter-spacing:0.04em;">Context &amp; Muse</span></a>
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
                 <p>Applied Systems · Creative Practice · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
                     <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
@@ -420,5 +544,32 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/nav.js" defer></script>
+    <script>
+        // Bind click-through tab behaviors for Operational Systems Consoles
+        document.querySelectorAll('.system-console').forEach(consoleEl => {
+            const buttons = consoleEl.querySelectorAll('.console-tab-btn');
+            const panels = consoleEl.querySelectorAll('.console-panel');
+            
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabName = btn.getAttribute('data-tab');
+                    
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    panels.forEach(p => {
+                        p.classList.remove('active');
+                    });
+                    
+                    const targetPanel = consoleEl.querySelector(`.console-panel[data-panel="${tabName}"]`);
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

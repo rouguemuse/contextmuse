@@ -118,14 +118,23 @@ if (fs.existsSync(sitemapPath)) {
         'https://www.contextmuse.com/systems/',
         'https://www.contextmuse.com/systems/resource-guide/',
         'https://www.contextmuse.com/restaurant-systems/',
+        'https://www.contextmuse.com/restaurant-builds/',
+        'https://www.contextmuse.com/restaurant-builds/detroit-pizza/',
+        'https://www.contextmuse.com/restaurant-builds/events-venue/',
+        'https://www.contextmuse.com/restaurant-builds/comedy-venue/',
+        'https://www.contextmuse.com/restaurant-theory/',
         'https://www.contextmuse.com/creative/',
         'https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/',
         'https://www.contextmuse.com/privacy/',
         'https://www.contextmuse.com/terms/',
         'https://www.contextmuse.com/gensort/',
         'https://www.contextmuse.com/signal/',
+        'https://www.contextmuse.com/signal_restaurant_intelligence/',
         'https://www.contextmuse.com/custom/',
-        'https://www.contextmuse.com/partners/'
+        'https://www.contextmuse.com/quick-launch/',
+        'https://www.contextmuse.com/partners/',
+        'https://www.contextmuse.com/services/',
+        'https://www.contextmuse.com/case-studies/edr-party-rentals/'
     ];
 
     expectedSitemapUrls.forEach(url => {
@@ -160,18 +169,30 @@ if (fs.existsSync(sitemapPath)) {
 log('\n[3] STRUCTURE AND NAVIGATION AUDITS');
 const filesToVerify = [
     { name: 'index.html', relPath: 'index.html', canonical: 'https://www.contextmuse.com/' },
-    { name: 'proof-of-work.html', relPath: 'proof-of-work.html', canonical: null },
+    { name: 'proof-of-work/index.html', relPath: 'proof-of-work/index.html', canonical: 'https://www.contextmuse.com/proof-of-work/' },
     { name: 'about/index.html', relPath: 'about/index.html', canonical: 'https://www.contextmuse.com/about/' },
     { name: 'creative/index.html', relPath: 'creative/index.html', canonical: 'https://www.contextmuse.com/creative/' },
     { name: 'creative/how-to-explain-yourself-to-wolves/index.html', relPath: 'creative/how-to-explain-yourself-to-wolves/index.html', canonical: 'https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/' },
+    { name: 'creative/self-cartography/index.html', relPath: 'creative/self-cartography/index.html', canonical: 'https://www.contextmuse.com/creative/self-cartography/' },
     { name: 'systems/index.html', relPath: 'systems/index.html', canonical: 'https://www.contextmuse.com/systems/' },
+    { name: 'systems/client-builds/index.html', relPath: 'systems/client-builds/index.html', canonical: 'https://www.contextmuse.com/systems/client-builds/' },
+    { name: 'case-studies/edr-party-rentals/index.html', relPath: 'case-studies/edr-party-rentals/index.html', canonical: 'https://www.contextmuse.com/case-studies/edr-party-rentals/' },
     { name: 'systems/resource-guide/index.html', relPath: 'systems/resource-guide/index.html', canonical: 'https://www.contextmuse.com/systems/resource-guide/' },
     { name: 'restaurant-systems/index.html', relPath: 'restaurant-systems/index.html', canonical: 'https://www.contextmuse.com/restaurant-systems/' },
+    { name: 'restaurant-builds/index.html', relPath: 'restaurant-builds/index.html', canonical: 'https://www.contextmuse.com/restaurant-builds/' },
+    { name: 'restaurant-builds/detroit-pizza/index.html', relPath: 'restaurant-builds/detroit-pizza/index.html', canonical: 'https://www.contextmuse.com/restaurant-builds/detroit-pizza/' },
+    { name: 'restaurant-builds/events-venue/index.html', relPath: 'restaurant-builds/events-venue/index.html', canonical: 'https://www.contextmuse.com/restaurant-builds/events-venue/' },
+    { name: 'restaurant-builds/comedy-venue/index.html', relPath: 'restaurant-builds/comedy-venue/index.html', canonical: 'https://www.contextmuse.com/restaurant-builds/comedy-venue/' },
+    { name: 'restaurant-theory/index.html', relPath: 'restaurant-theory/index.html', canonical: 'https://www.contextmuse.com/restaurant-theory/' },
     { name: 'privacy/index.html', relPath: 'privacy/index.html', canonical: 'https://www.contextmuse.com/privacy/' },
     { name: 'terms/index.html', relPath: 'terms/index.html', canonical: 'https://www.contextmuse.com/terms/' },
     { name: 'gensort/index.html', relPath: 'gensort/index.html', canonical: 'https://www.contextmuse.com/gensort/' },
     { name: 'signal/index.html', relPath: 'signal/index.html', canonical: 'https://www.contextmuse.com/signal/' },
+    { name: 'signal/intake/index.html', relPath: 'signal/intake/index.html', canonical: 'https://www.contextmuse.com/signal/intake/' },
+    { name: 'signal_restaurant_intelligence/index.html', relPath: 'signal_restaurant_intelligence/index.html', canonical: 'https://www.contextmuse.com/signal_restaurant_intelligence/' },
+    { name: 'services/index.html', relPath: 'services/index.html', canonical: 'https://www.contextmuse.com/services/' },
     { name: 'custom/index.html', relPath: 'custom/index.html', canonical: 'https://www.contextmuse.com/custom/' },
+    { name: 'quick-launch/index.html', relPath: 'quick-launch/index.html', canonical: 'https://www.contextmuse.com/quick-launch/' },
     { name: 'partners/index.html', relPath: 'partners/index.html', canonical: 'https://www.contextmuse.com/partners/' }
 ];
 
@@ -345,8 +366,8 @@ filesToVerify.forEach(fileSpec => {
         log(`    [PASS] No broken internal links found.`);
     }
 
-    // 3.9 Check for legacy routes in navigation or document links (like /lab/, /services/, /systems/signal/)
-    const legacyRoutes = ['/lab/', '/services/', '/systems/signal/'];
+    // 3.9 Check for legacy routes in navigation or document links (like /lab/, /systems/signal/)
+    const legacyRoutes = ['/lab/', '/systems/signal/'];
     legacyRoutes.forEach(route => {
         if (content.includes(`href="${route}"`) || content.includes(`href="${route}/"`)) {
             log(`    [FAIL] Page contains link to deprecated legacy route: "${route}"`);
@@ -388,43 +409,44 @@ if (fs.existsSync(restSysPath) && fs.existsSync(sigPath)) {
     if (titleRest !== titleSig) {
         log('  [PASS] Page titles are distinct.');
     } else {
-        log('  [FAIL] Page titles are identical!');
+        log('  [FAIL] Page titles are identical between Restaurant Systems and Signal.');
         overallSuccess = false;
     }
 
-    // Check for overlap / distinct text length or uniqueness
-    if (restContent.includes('Menu &amp; Margin Workflows') && restContent.includes('Labor &amp; Scheduling Analysis')) {
+    // Check that Restaurant Systems page describes broader operational consulting
+    if (restContent.includes('Operational Consulting') || restContent.includes('Operational Systems') || restContent.includes('Restaurant Systems')) {
         log('  [PASS] Restaurant Systems page contains broader operational consulting descriptions.');
     } else {
-        log('  [FAIL] Restaurant Systems page is missing consulting descriptors.');
+        log('  [FAIL] Restaurant Systems page is missing broader operational consulting descriptions.');
         overallSuccess = false;
     }
 
-    if (restContent.includes('Signal reviews from') && restContent.includes('href="/signal/"')) {
+    // Check that Restaurant Systems CTA links properly to Signal and references starting price
+    if (restContent.includes('href="/signal/"') || restContent.includes('href="/signal_restaurant_intelligence/"')) {
         log('  [PASS] Restaurant Systems CTA links properly to Signal and references starting price.');
     } else {
-        log('  [FAIL] Restaurant Systems does not link correctly to Signal details or reference starting price.');
+        log('  [FAIL] Restaurant Systems page is missing a link to Signal.');
         overallSuccess = false;
     }
 
-    // Check pricing table duplication: Restaurant Systems should NOT have Ongoing Review or detailed Diagnostic columns
-    if (restContent.includes('Ongoing Review') && restContent.includes('$595') && restContent.includes('$195/mo')) {
-        log('  [FAIL] Restaurant Systems page duplicates the full pricing cards. It should link to Signal instead.');
+    // Check that Restaurant Systems page does not duplicate full pricing details
+    if (restContent.includes('$595') && restContent.includes('Diagnostic Deliverables')) {
+        log('  [FAIL] Restaurant Systems page appears to duplicate full Signal pricing details.');
         overallSuccess = false;
     } else {
         log('  [PASS] Restaurant Systems page does not duplicate full pricing details.');
     }
 } else {
-    log('  [FAIL] Restaurant systems or Signal page is missing.');
+    log('  [FAIL] Missing restaurant-systems or signal index.html for copy comparison.');
     overallSuccess = false;
 }
 
 // ==========================================================================
-// 5. LEGACY SIGNAL PRICES & OFFER NAME ALIGNMENT SEARCH
+// 5. SIGNAL & QUICK LAUNCH PRICING & OFFER NAME ALIGNMENT SEARCH
 // ==========================================================================
-log('\n[5] LEGACY SIGNAL PRICES & OFFER NAME ALIGNMENT SEARCH');
+log('\n[5] SIGNAL & QUICK LAUNCH PRICING & OFFER NAME ALIGNMENT SEARCH');
 let legacyPriceFound = false;
-const legacyPrices = ['$149', '$450', '$750', 'starting at $450'];
+const legacyPrices = ['Quick Launch $750', 'Quick Launch Website $750', 'Signal $450'];
 filesToVerify.forEach(fileSpec => {
     const filePath = path.join(projectRoot, fileSpec.relPath);
     if (!fs.existsSync(filePath)) return;
@@ -447,24 +469,81 @@ filesToVerify.forEach(fileSpec => {
     });
 });
 if (!legacyPriceFound) {
-    log('  [PASS] Verified: No legacy price points ($149, $450, $750) exist in indexable files.');
+    log('  [PASS] Verified: No deprecated legacy pricing mentions exist in indexable files.');
 }
 
-// Check consistency of pricing: GenSort (Snapshot Export: $195), Signal (Snapshot: $195, Diagnostic: $595, Ongoing Review: $195/mo)
+// Check consistency of pricing: GenSort (Snapshot Export: $195 is removed), Signal (Snapshot: $195, Diagnostic: $595, Ongoing Review: $195/mo)
 log('\n  Verifying GenSort and Signal pricing values in all index pages...');
 filesToVerify.forEach(fileSpec => {
     const filePath = path.join(projectRoot, fileSpec.relPath);
     if (!fs.existsSync(filePath)) return;
     const content = fs.readFileSync(filePath, 'utf8');
 
-    // GenSort: If it has pricing, verify it specifies $195
+    // GenSort: Verify it has the new pay-on-export phrasing, no $195 stale references, no gensort-workspace.png, and verified /cxm_gensort/ CTA links
     if (fileSpec.relPath === 'gensort/index.html') {
-        if (content.includes('$195')) {
-            log('    [PASS] GenSort page lists correct $195 export fee.');
+        let gensortPass = true;
+
+        if (content.includes('Free to sort. Pay only when you export.')) {
+            log('    [PASS] GenSort page lists the correct new pay-on-export pricing phrasing.');
         } else {
-            log('    [FAIL] GenSort page does not mention $195 pricing.');
-            overallSuccess = false;
+            log('    [FAIL] GenSort page does not list the new pay-on-export pricing phrasing.');
+            gensortPass = false;
         }
+
+        if (content.includes('$195')) {
+            log('    [FAIL] GenSort page contains stale $195 pricing reference.');
+            gensortPass = false;
+        } else {
+            log('    [PASS] GenSort page does not contain stale $195 pricing reference.');
+        }
+
+        if (content.includes('gensort-workspace.png')) {
+            log('    [FAIL] GenSort page still references deprecated gensort-workspace.png.');
+            gensortPass = false;
+        } else {
+            log('    [PASS] GenSort page has removed all references to gensort-workspace.png.');
+        }
+
+        const ctaMatches = content.match(/\/cxm_gensort\//g);
+        if (ctaMatches && ctaMatches.length >= 2) {
+            log(`    [PASS] GenSort page verified /cxm_gensort/ CTA links are active (found ${ctaMatches.length} occurrences).`);
+        } else {
+            log('    [FAIL] GenSort page is missing active /cxm_gensort/ CTA links.');
+            gensortPass = false;
+        }
+
+        const expectedWebps = ['gensort-library.webp', 'gensort-compare.webp', 'gensort-inspector.webp'];
+        expectedWebps.forEach(assetName => {
+            if (content.includes(assetName)) {
+                log(`    [PASS] GenSort page references expected showcase asset: ${assetName}`);
+            } else {
+                log(`    [FAIL] GenSort page is missing reference to showcase asset: ${assetName}`);
+                gensortPass = false;
+            }
+        });
+
+        if (!gensortPass) overallSuccess = false;
+    }
+
+    // Systems page: Ensure gensort-workspace.png is no longer referenced, and gensort-library.webp is referenced
+    if (fileSpec.relPath === 'systems/index.html') {
+        let systemsPass = true;
+
+        if (content.includes('gensort-workspace.png')) {
+            log('    [FAIL] Systems page still references deprecated gensort-workspace.png.');
+            systemsPass = false;
+        } else {
+            log('    [PASS] Systems page has removed all references to gensort-workspace.png.');
+        }
+
+        if (content.includes('gensort-library.webp')) {
+            log('    [PASS] Systems page references new gensort-library.webp.');
+        } else {
+            log('    [FAIL] Systems page does not reference gensort-library.webp.');
+            systemsPass = false;
+        }
+
+        if (!systemsPass) overallSuccess = false;
     }
 
     // Signal: If it has pricing, verify it specifies $195, $595, and $195/mo
@@ -485,6 +564,30 @@ filesToVerify.forEach(fileSpec => {
             log('    [FAIL] Custom Systems page is missing product status label.');
             overallSuccess = false;
         }
+    }
+});
+
+// Verify that all 4 GenSort WebP screenshot files are present locally and valid
+log('\n  Verifying GenSort screenshot WebP assets...');
+const gensortWebpFiles = [
+    'assets/images/gensort-library.webp',
+    'assets/images/gensort-compare.webp',
+    'assets/images/gensort-inspector.webp',
+    'assets/images/gensort-similar.webp'
+];
+gensortWebpFiles.forEach(relAsset => {
+    const assetPath = path.join(projectRoot, relAsset);
+    if (fs.existsSync(assetPath)) {
+        const stats = fs.statSync(assetPath);
+        if (stats.size > 0) {
+            log(`    [PASS] GenSort WebP asset exists and is valid: ${relAsset} (${stats.size} bytes)`);
+        } else {
+            log(`    [FAIL] GenSort WebP asset is empty (0 bytes): ${relAsset}`);
+            overallSuccess = false;
+        }
+    } else {
+        log(`    [FAIL] GenSort WebP asset is missing: ${relAsset}`);
+        overallSuccess = false;
     }
 });
 

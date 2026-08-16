@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Profit Priority Scan | Context &amp; Muse</title>
+    <meta name="description" content="Stop guessing what to fix first. Context &amp; Muse analyzes sales, labor, menu mix, and purchasing data to rank the operational decisions with the highest financial impact.">
+    <link rel="canonical" href="https://www.contextmuse.com/signal_restaurant_intelligence/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.contextmuse.com/signal_restaurant_intelligence/">
+    <meta property="og:title" content="Restaurant Profit Priority Scan | Context &amp; Muse">
+    <meta property="og:description" content="Stop guessing what to fix first. Context &amp; Muse analyzes sales, labor, menu mix, and purchasing data to rank the operational decisions with the highest financial impact.">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Restaurant Profit Priority Scan | Context &amp; Muse">
+    <meta name="twitter:description" content="Stop guessing what to fix first. Context &amp; Muse analyzes sales, labor, menu mix, and purchasing data to rank the operational decisions with the highest financial impact.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .scan-hero {
+            padding: 130px 0 70px;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .scan-hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+        @media(max-width: 950px) {
+            .scan-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .scan-offer-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.25rem;
+            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .scan-price-badge {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .scan-price-val {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #10211D;
+            line-height: 1;
+        }
+        .scan-price-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-teal);
+            font-weight: 600;
+        }
+        .guarantee-callout {
+            background: rgba(15, 118, 110, 0.05);
+            border-left: 3px solid var(--accent-teal);
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: var(--text-primary);
+        }
+        .guarantee-callout strong {
+            color: var(--accent-teal);
+            font-weight: 600;
+        }
+
+        /* Priorities Deliverable Cards */
+        .priorities-section {
+            padding: 90px 0;
+            background: var(--bg-panel, #faf6f0);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .priority-cards-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .priority-item-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem 2.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .priority-item-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(16, 33, 29, 0.05);
+            border-color: var(--border-dark);
+        }
+        .priority-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .priority-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #10211D;
+            margin: 0;
+        }
+        .priority-metrics-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .metric-pill {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .metric-pill--opp {
+            background: rgba(15, 118, 110, 0.1);
+            color: var(--accent-teal);
+            border: 1px solid rgba(15, 118, 110, 0.2);
+        }
+        .metric-pill--conf {
+            background: rgba(197, 160, 89, 0.12);
+            color: #926C20;
+            border: 1px solid rgba(197, 160, 89, 0.25);
+        }
+        .metric-pill--effort {
+            background: rgba(87, 86, 81, 0.08);
+            color: var(--text-secondary);
+            border: 1px solid rgba(87, 86, 81, 0.15);
+        }
+        .priority-datasource {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            padding-top: 0.85rem;
+            border-top: 1px dashed var(--border-light);
+        }
+        .priority-datasource-tag {
+            color: var(--accent-teal);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.05em;
+        }
+
+        /* What We Need Grid */
+        .needs-section {
+            padding: 85px 0;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        @media(max-width: 950px) {
+            .needs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 580px) {
+            .needs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .need-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.75rem 1.5rem;
+        }
+        .need-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent-teal);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .need-title {
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .need-desc {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Acquisition / Access Model */
+        .access-section {
+            padding: 90px 0;
+            background: var(--bg-panel, #faf6f0);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .access-trust-banner {
+            background: #10211D;
+            color: #FAF9F5;
+            padding: 1.75rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .access-trust-text h4 {
+            color: #FAF9F5;
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            margin: 0 0 0.35rem 0;
+            font-weight: 500;
+        }
+        .access-trust-text p {
+            color: #C2BEB4;
+            font-size: 14px;
+            line-height: 1.55;
+            margin: 0;
+        }
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+        }
+        @media(max-width: 880px) {
+            .access-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .access-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .access-card--highlight {
+            border: 2px solid var(--accent-teal);
+            position: relative;
+        }
+        .access-card-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent-teal);
+            color: #FAF9F5;
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+        .access-card-title {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #10211D;
+            margin: 0 0 0.75rem 0;
+        }
+        .access-card-body {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* 3 Steps "What Happens Next" */
+        .steps-section {
+            padding: 85px 0;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        @media(max-width: 800px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+        }
+        .step-block {
+            border-left: 2px solid var(--accent-teal);
+            padding-left: 1.5rem;
+        }
+        .step-block-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-teal);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .step-block-title {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .step-block-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Intake / Order Module */
+        .order-section {
+            padding: 95px 0;
+            background: var(--bg-panel, #faf6f0);
+        }
+        .order-box {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 16px 40px rgba(16, 33, 29, 0.06);
+        }
+        @media(max-width: 650px) {
+            .order-box {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ── NAV ── -->
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- ── HERO SECTION ── -->
+        <header class="scan-hero">
+            <div class="container">
+                <div class="scan-hero-grid">
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 1.25rem;">
+                            RESTAURANT PROFIT PRIORITY SCAN
+                        </span>
+                        <h1 style="font-family: var(--font-serif); font-size: clamp(3rem, 5vw, 4.75rem); line-height: 1.02; letter-spacing: -0.03em; color: #10211D; margin: 0 0 1.5rem 0; font-weight: 500;">
+                            Stop guessing what to fix first.
+                        </h1>
+                        <p style="font-size: 18px; line-height: 1.65; color: var(--text-secondary); margin: 0 0 2rem 0; max-width: 580px;">
+                            Context &amp; Muse analyzes the numbers you're already collecting and identifies the restaurant decisions with the highest likely financial impact.
+                        </p>
+                        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                            <a href="#intake" class="btn-primary-teal" style="padding: 0.85rem 1.75rem; font-size: 15px;">Start Your Profit Scan &darr;</a>
+                            <a href="#example-output" style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">
+                                See Example Output &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column Offer Box -->
+                    <div>
+                        <div class="scan-offer-card">
+                            <div class="scan-price-badge">
+                                <span class="scan-price-val">$199</span>
+                                <span class="scan-price-tag">One-Time Diagnostic Scan</span>
+                            </div>
+                            
+                            <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                                We analyze sales, labor, menu mix, and purchasing data and rank the operational opportunities most likely to matter financially.
+                            </p>
+
+                            <div class="guarantee-callout">
+                                <strong>Our Guarantee:</strong> If we can’t identify at least one credible, actionable opportunity with estimated financial impact greater than the $199 scan price, we’ll refund the scan in full.
+                            </div>
+
+                            <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; padding-top: 0.5rem; border-top: 1px solid var(--border-light);">
+                                <span style="color: var(--accent-teal); font-weight: 600;">TIMELINE:</span> Most scans are completed within 2–3 business days after we receive the needed data.
+                            </div>
+
+                            <a href="#intake" class="btn-primary-teal" style="text-align: center; justify-content: center; width: 100%; box-sizing: border-box;">
+                                Find My Profit Priority
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ── VISUAL PRIORITIES OUTPUT DEMONSTRATION ── -->
+        <section class="priorities-section" id="example-output" aria-labelledby="output-heading">
+            <div class="container">
+                <div style="max-width: 680px;">
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">
+                        EXAMPLE DELIVERABLE
+                    </span>
+                    <h2 id="output-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); color: #10211D; margin: 0 0 1rem 0; font-weight: 500;">
+                        Your priorities this month
+                    </h2>
+                    <p style="font-size: 15.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                        No generic 40-page consulting binders or dashboard noise. You receive ranked, practical operational moves with clear financial estimates, confidence levels, effort ratings, and data-backed rationale.
+                    </p>
+                </div>
+
+                <div class="priority-cards-stack">
+                    <!-- Priority 1 -->
+                    <div class="priority-item-card">
+                        <div class="priority-card-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--accent-teal); letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 0.35rem;">
+                                    PRIORITY #1 • LABOR SCHEDULING
+                                </span>
+                                <h3 class="priority-card-title">Reduce Monday–Tuesday closing labor</h3>
+                            </div>
+                            <div class="priority-metrics-row">
+                                <span class="metric-pill metric-pill--opp">Opportunity: $620–$870 / mo</span>
+                                <span class="metric-pill metric-pill--conf">Confidence: High</span>
+                                <span class="metric-pill metric-pill--effort">Effort: Low</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin: 0 0 1rem 0;">
+                            Hourly guest count drops sharply after 9:15 PM on early-week shifts, yet closing staffing maintains 3 BOH and 2 FOH personnel until 11:30 PM. Adjusting cut times to match actual guest flow reclaims ~18 labor hours weekly with zero impact on speed or closing sanitation.
+                        </p>
+                        <div class="priority-datasource">
+                            <span class="priority-datasource-tag">Supporting Data Source:</span>
+                            <span>POS Hourly Sales &amp; Labor Summary (Toast / 7shifts / Square)</span>
+                        </div>
+                    </div>
+
+                    <!-- Priority 2 -->
+                    <div class="priority-item-card">
+                        <div class="priority-card-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--accent-teal); letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 0.35rem;">
+                                    PRIORITY #2 • MENU MARGIN ENGINEERING
+                                </span>
+                                <h3 class="priority-card-title">Reprice four high-volume, low-margin items</h3>
+                            </div>
+                            <div class="priority-metrics-row">
+                                <span class="metric-pill metric-pill--opp">Opportunity: $940–$1,300 / mo</span>
+                                <span class="metric-pill metric-pill--conf">Confidence: Med–High</span>
+                                <span class="metric-pill metric-pill--effort">Effort: Low</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin: 0 0 1rem 0;">
+                            Four top-velocity appetizers and sides experienced 11–16% ingredient cost creep over the last quarter, compressing item contribution margin below 58%. A targeted $1.00–$1.50 menu price adjustment restores target margins without impacting order volume.
+                        </p>
+                        <div class="priority-datasource">
+                            <span class="priority-datasource-tag">Supporting Data Source:</span>
+                            <span>PMIX Report + Current Menu Pricing + Theoretical Food Cost</span>
+                        </div>
+                    </div>
+
+                    <!-- Priority 3 -->
+                    <div class="priority-item-card">
+                        <div class="priority-card-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--accent-teal); letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 0.35rem;">
+                                    PRIORITY #3 • PURCHASING &amp; YIELD
+                                </span>
+                                <h3 class="priority-card-title">Investigate chicken purchasing variance</h3>
+                            </div>
+                            <div class="priority-metrics-row">
+                                <span class="metric-pill metric-pill--opp">Potential Exposure: $410 / mo</span>
+                                <span class="metric-pill metric-pill--conf">Confidence: Medium</span>
+                                <span class="metric-pill metric-pill--effort">Effort: Medium</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin: 0 0 1rem 0;">
+                            Purchased case weight for boneless poultry exceeds recipe theoretical usage by 18.4% across a 60-day billing cycle. Points to either prep trim yield inconsistency or portion weight drift on the grill station.
+                        </p>
+                        <div class="priority-datasource">
+                            <span class="priority-datasource-tag">Supporting Data Source:</span>
+                            <span>Vendor Invoices (US Foods / Sysco) vs. Recipe Theoretical Cost</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── WHAT WE NEED SECTION ── -->
+        <section class="needs-section" aria-labelledby="needs-heading">
+            <div class="container">
+                <div style="max-width: 640px;">
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">
+                        DATA REQUIREMENTS
+                    </span>
+                    <h2 id="needs-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); color: #10211D; margin: 0 0 1rem 0; font-weight: 500;">
+                        The numbers you already have.
+                    </h2>
+                    <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                        No new hardware, no software installations, and no disruption to your shift operations. We only need standard report exports from the systems you already run.
+                    </p>
+                </div>
+
+                <div class="needs-grid">
+                    <div class="need-card">
+                        <span class="need-num">01 / SALES</span>
+                        <h4 class="need-title">Sales Data</h4>
+                        <p class="need-desc">Hourly sales summaries, net sales by daypart, and revenue category totals.</p>
+                    </div>
+
+                    <div class="need-card">
+                        <span class="need-num">02 / LABOR</span>
+                        <h4 class="need-title">Labor Data</h4>
+                        <p class="need-desc">Scheduled vs. actual worked hours, hourly wage rates, and role/job code breakdowns.</p>
+                    </div>
+
+                    <div class="need-card">
+                        <span class="need-num">03 / MENU MIX</span>
+                        <h4 class="need-title">Menu Mix (PMIX)</h4>
+                        <p class="need-desc">Item sales velocity, modifier attachments, and product category volume.</p>
+                    </div>
+
+                    <div class="need-card">
+                        <span class="need-num">04 / PURCHASING</span>
+                        <h4 class="need-title">Purchasing</h4>
+                        <p class="need-desc"><em>(Optional but recommended)</em> Recent food and beverage distributor invoices or summary billing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── ACCESS & SECURITY MODEL ── -->
+        <section class="access-section" aria-labelledby="access-heading">
+            <div class="container">
+                <div class="access-trust-banner">
+                    <div style="font-size: 2rem; line-height: 1; flex-shrink: 0;">🛡️</div>
+                    <div class="access-trust-text">
+                        <h4>You stay in control of your data.</h4>
+                        <p>Context &amp; Muse never asks for or needs administrative access to your restaurant systems. Limited permissions protect your business and keep intake completely transparent.</p>
+                    </div>
+                </div>
+
+                <div style="max-width: 640px; margin-bottom: 2.5rem;">
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">
+                        THREE WAYS TO SHARE DATA
+                    </span>
+                    <h2 id="access-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); color: #10211D; margin: 0 0 1rem 0; font-weight: 500;">
+                        Choose the data workflow that fits you.
+                    </h2>
+                </div>
+
+                <div class="access-grid">
+                    <!-- Option 1: Upload Reports -->
+                    <div class="access-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">OPTION 1</span>
+                            <h3 class="access-card-title">Upload Reports</h3>
+                            <p class="access-card-body">
+                                Export standard CSV, Excel, or PDF reports directly from your POS (Toast, Square, Clover, Aloha) or back-office system and upload them securely.
+                            </p>
+                        </div>
+                        <div style="padding-top: 1rem; border-top: 1px solid var(--border-light); font-size: 12.5px; color: var(--text-secondary);">
+                            ✓ Self-serve export<br>
+                            ✓ Zero login credentials shared
+                        </div>
+                    </div>
+
+                    <!-- Option 2: Read-Only Access -->
+                    <div class="access-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">OPTION 2</span>
+                            <h3 class="access-card-title">Temporary Read-Only Access</h3>
+                            <p class="access-card-body">
+                                Add a viewer-only or reporting-only seat in your POS, scheduling, or accounting software. We pull the data with zero access to banking, settings, or management controls.
+                            </p>
+                        </div>
+                        <div style="padding-top: 1rem; border-top: 1px solid var(--border-light); font-size: 12.5px; color: var(--text-secondary);">
+                            ✓ Zero admin permissions<br>
+                            ✓ Revocable with one click anytime
+                        </div>
+                    </div>
+
+                    <!-- Option 3: Guided Data Pull (Highlight) -->
+                    <div class="access-card access-card--highlight">
+                        <span class="access-card-badge">Fastest Turnaround</span>
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">OPTION 3</span>
+                            <h3 class="access-card-title">Book a Guided Data Pull</h3>
+                            <p class="access-card-body">
+                                <strong>20–30 minute Google Meet walkthrough.</strong> No passwords. No admin access. We jump on a live screenshare and guide you through pulling the 4–6 needed reports together.
+                            </p>
+                        </div>
+                        <div style="padding-top: 1rem; border-top: 1px solid var(--border-light); font-size: 12.5px; color: var(--accent-teal); font-weight: 500;">
+                            ✓ We guide you click-by-click<br>
+                            ✓ Immediate validation of report accuracy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── WHAT HAPPENS NEXT SECTION ── -->
+        <section class="steps-section" aria-labelledby="steps-heading">
+            <div class="container">
+                <div style="max-width: 600px;">
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">
+                        HOW IT WORKS
+                    </span>
+                    <h2 id="steps-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); color: #10211D; margin: 0 0 1rem 0; font-weight: 500;">
+                        What happens next
+                    </h2>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-block">
+                        <span class="step-block-num">STEP 01</span>
+                        <h4 class="step-block-title">Share your data</h4>
+                        <p class="step-block-desc">Upload reports, grant temporary read-only access, or book a 20–30 minute guided data pull walkthrough.</p>
+                    </div>
+
+                    <div class="step-block">
+                        <span class="step-block-num">STEP 02</span>
+                        <h4 class="step-block-title">Signal prioritizes the opportunities</h4>
+                        <p class="step-block-desc">We analyze your numbers and rank operational opportunities by likely financial impact, confidence level, effort, and supporting evidence.</p>
+                    </div>
+
+                    <div class="step-block">
+                        <span class="step-block-num">STEP 03</span>
+                        <h4 class="step-block-title">You get the next moves</h4>
+                        <p class="step-block-desc">You receive the top priorities, what to change first, how much it's worth, and what metric to watch afterward.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── INTAKE & PAYMENT SECTION ── -->
+        <section class="order-section" id="intake" aria-labelledby="intake-heading">
+            <div class="container">
+                <div class="order-box">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">
+                            START YOUR SCAN
+                        </span>
+                        <h2 id="intake-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.5rem); color: #10211D; margin: 0 0 0.75rem 0; font-weight: 600;">
+                            Find Your Profit Priorities
+                        </h2>
+                        <p style="font-size: 15px; color: var(--text-secondary); margin: 0 auto; max-width: 540px; line-height: 1.55;">
+                            $199 one-time audit fee. If we can’t identify at least one credible, actionable opportunity with estimated financial impact greater than the $199 scan price, we’ll refund the scan in full.
+                        </p>
+                    </div>
+
+                    <form action="https://formspree.io/f/mqaejvyb" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <input type="hidden" name="_subject" value="New Restaurant Profit Priority Scan Intake">
+                        <input type="hidden" name="service_tier" value="Profit Priority Scan ($199)">
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                            <div>
+                                <label for="restaurant-name" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600; color: var(--text-primary);">Restaurant / Concept Name *</label>
+                                <input type="text" id="restaurant-name" name="restaurant_name" required placeholder="e.g. Hearth &amp; Vine" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-dark); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label for="location" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600; color: var(--text-primary);">Location (City, State) *</label>
+                                <input type="text" id="location" name="location" required placeholder="e.g. Austin, TX" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-dark); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; box-sizing: border-box;">
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                            <div>
+                                <label for="contact-email" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600; color: var(--text-primary);">Your Email Address *</label>
+                                <input type="email" id="contact-email" name="email" required placeholder="operator@restaurant.com" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-dark); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label for="pos-system" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600; color: var(--text-primary);">Primary POS / Labor System</label>
+                                <input type="text" id="pos-system" name="pos_system" placeholder="e.g. Toast, Square, 7shifts, Aloha" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-dark); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; box-sizing: border-box;">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="intake-preference" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600; color: var(--text-primary);">Preferred Data Sharing Method *</label>
+                            <select id="intake-preference" name="intake_method" required style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-dark); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; box-sizing: border-box; background: #ffffff;">
+                                <option value="guided-call">Guided Data Pull (20–30 min Google Meet walkthrough — Recommended)</option>
+                                <option value="upload-reports">Upload Reports (I will export and email CSV/PDFs)</option>
+                                <option value="read-only-access">Temporary Read-Only Access (I will invite viewer seat)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="notes" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600; color: var(--text-primary);">Operational Context / Questions (Optional)</label>
+                            <textarea id="notes" name="notes" rows="3" placeholder="Tell us about specific questions, recent menu changes, or areas of concern..." style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-dark); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; box-sizing: border-box;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary-teal" style="width: 100%; justify-content: center; padding: 14px; font-size: 16px; margin-top: 0.5rem; cursor: pointer; border: none;">
+                            Submit Intake &amp; Proceed to Scan ($199)
+                        </button>
+                    </form>
+
+                    <div style="margin-top: 1.5rem; text-align: center; font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
+                        🔒 Secure report intake • No administrative access required • Full refund guarantee
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

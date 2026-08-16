@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitality &amp; Restaurant Web Builds | Context &amp; Muse</title>
+    <meta name="description" content="Selected hospitality builds, custom restaurant websites, ordering interfaces, and venue booking systems.">
+    <link rel="canonical" href="https://www.contextmuse.com/restaurant-builds/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.contextmuse.com/restaurant-builds/">
+    <meta property="og:title" content="Hospitality &amp; Restaurant Web Builds | Context &amp; Muse">
+    <meta property="og:description" content="Selected hospitality builds, custom restaurant websites, ordering interfaces, and venue booking systems.">
+    <meta property="og:image" content="https://www.contextmuse.com/social-preview.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hospitality &amp; Restaurant Web Builds | Context &amp; Muse">
+    <meta name="twitter:description" content="Selected hospitality builds, custom restaurant websites, ordering interfaces, and venue booking systems.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/social-preview.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .builds-hero {
+            padding: 180px 0 80px;
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+        }
+        .builds-intro {
+            max-width: 800px;
+        }
+        .builds-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+        .builds-headline {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: #FAF9F5;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+        .builds-disclaimer {
+            margin-top: 2rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(250, 249, 245, 0.03);
+            border-left: 2px solid var(--accent-teal);
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: rgba(250, 249, 245, 0.7);
+            max-width: 650px;
+        }
+        .builds-section {
+            padding: 8rem 0;
+            background: #FAF9F5;
+            color: #10211D;
+        }
+        .project-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+            margin-top: 2rem;
+        }
+        .p-card {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+        @media(max-width: 950px) {
+            .p-card {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .p-card:nth-child(even) .p-card__media {
+                order: -1;
+            }
+        }
+        .p-card__media {
+            border: 1px solid rgba(16, 33, 29, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #FAF9F5;
+            box-shadow: 0 12px 32px rgba(16,33,29,0.03);
+            transition: all 0.3s ease;
+        }
+        .p-card__media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        .p-card__browser {
+            background: #FAF9F5;
+            border-bottom: 1px solid rgba(16, 33, 29, 0.08);
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .p-browser-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(16, 33, 29, 0.2);
+        }
+        .p-browser-url {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: rgba(16, 33, 29, 0.4);
+            margin-left: 12px;
+        }
+        .p-card__tagline {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-teal);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        .p-card__title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        .p-card__desc {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .p-card__pillars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .p-pillar-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            background: rgba(16, 33, 29, 0.04);
+            padding: 4px 10px;
+            border-radius: 3px;
+            color: var(--text-secondary);
+        }
+        .p-card__media-link {
+            text-decoration: none;
+            display: block;
+            outline: none;
+        }
+        .p-card__media-link:hover .p-card__media {
+            transform: translateY(-4px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 16px 36px rgba(16, 33, 29, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="builds-hero">
+        <div class="container">
+            <div class="builds-intro">
+                <span class="builds-eyebrow">HOSPITALITY PORTFOLIO</span>
+                <h1 class="builds-headline">
+                    Selected Hospitality Builds
+                </h1>
+                <div class="builds-disclaimer">
+                    <strong>Confidentiality Discipline:</strong> Some client identities are withheld. The work is shown to demonstrate interface, conversion, and production capabilities.
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="builds-section" aria-labelledby="selected-work-title">
+            <div class="container">
+                <h2 id="selected-work-title" style="display: none;">Hospitality Projects</h2>
+                <div class="project-card-list">
+                    <!-- Project 1: Confidential Detroit Pizza Brand -->
+                    <article class="p-card">
+                        <a href="/restaurant-builds/detroit-pizza/" class="p-card__media-link" aria-label="View Confidential Detroit Pizza Brand Case Study">
+                            <div class="p-card__media">
+                                <div class="p-card__browser">
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-url">pizza-ordering-ux.internal</span>
+                                </div>
+                                <img src="/assets/images/confidential_pizza_preview.png" alt="Confidential Detroit Pizza Brand website layout" loading="lazy">
+                            </div>
+                        </a>
+                        <div>
+                            <span class="p-card__tagline">01 — Confidential Detroit Pizza Brand</span>
+                            <h3 class="p-card__title">Hospitality Website &amp; Ordering UX</h3>
+                            <p class="p-card__desc">
+                                Custom digital presence, brand-forward menu layout, and responsive pizza building checkout funnel designed to maximize direct ticket value and bypass aggregator portal fees.
+                            </p>
+                            <div class="p-card__pillars" style="margin-bottom: 1.5rem;">
+                                <span class="p-pillar-tag">Conversion Design</span>
+                                <span class="p-pillar-tag">Ordering UX</span>
+                                <span class="p-pillar-tag">Restaurant Web Build</span>
+                            </div>
+                            <a href="/restaurant-builds/detroit-pizza/" style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;">
+                                View Case Study &rarr;
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Confidential Pub & Live Events Venue -->
+                    <article class="p-card">
+                        <a href="/restaurant-builds/events-venue/" class="p-card__media-link" aria-label="View Confidential Pub + Live Events Venue Case Study">
+                            <div class="p-card__media">
+                                <div class="p-card__browser">
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-url">pub-events-booking.internal</span>
+                                </div>
+                                <img src="/assets/images/confidential_pub_preview.png" alt="Confidential Pub + Live Events Venue website layout" loading="lazy">
+                            </div>
+                        </a>
+                        <div>
+                            <span class="p-card__tagline">02 — Confidential Pub + Live Events Venue</span>
+                            <h3 class="p-card__title">Venue Website &amp; Booking Experience</h3>
+                            <p class="p-card__desc">
+                                Integrated landing page ecosystem featuring automated calendar listings, live ticketing pathways, and private event intake flows for an established multi-concept hospitality group.
+                            </p>
+                            <div class="p-card__pillars" style="margin-bottom: 1.5rem;">
+                                <span class="p-pillar-tag">Private Events Intake</span>
+                                <span class="p-pillar-tag">Ticketing Flow</span>
+                                <span class="p-pillar-tag">Dynamic Calendar</span>
+                            </div>
+                            <a href="/restaurant-builds/events-venue/" style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;">
+                                View Case Study &rarr;
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Confidential Comedy Venue -->
+                    <article class="p-card">
+                        <a href="/restaurant-builds/comedy-venue/" class="p-card__media-link" aria-label="View Confidential Comedy Venue Case Study">
+                            <div class="p-card__media">
+                                <div class="p-card__browser">
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-url">comedy-ticketing-ux.internal</span>
+                                </div>
+                                <img src="/assets/images/confidential_comedy_preview.png" alt="Confidential Comedy Venue website layout" loading="lazy">
+                            </div>
+                        </a>
+                        <div>
+                            <span class="p-card__tagline">03 — Confidential Comedy Venue</span>
+                            <h3 class="p-card__title">Venue Website &amp; Ticketing</h3>
+                            <p class="p-card__desc">
+                                Ticketing platform and show discovery architecture optimizing table bookings, drink package selections, and guest list collection systems.
+                            </p>
+                            <div class="p-card__pillars" style="margin-bottom: 1.5rem;">
+                                <span class="p-pillar-tag">Ticketing UX</span>
+                                <span class="p-pillar-tag">Event Discovery</span>
+                                <span class="p-pillar-tag">Visual Menu</span>
+                            </div>
+                            <a href="/restaurant-builds/comedy-venue/" style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;">
+                                View Case Study &rarr;
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Steel Pan Sal's Detroit Pizza -->
+                    <article class="p-card">
+                        <a href="https://www.steelpansals.com" target="_blank" rel="noopener" class="p-card__media-link" aria-label="Visit Steel Pan Sal's live website">
+                            <div class="p-card__media">
+                                <div class="p-card__browser">
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-dot"></span>
+                                    <span class="p-browser-url">steelpansals.com/order</span>
+                                </div>
+                                <img src="/assets/images/steel_pan_sal_preview.png" alt="Steel Pan Sal's website layout" loading="lazy">
+                            </div>
+                        </a>
+                        <div>
+                            <span class="p-card__tagline">04 — Steel Pan Sal's Detroit Pizza</span>
+                            <h3 class="p-card__title">Ordering Checkout Funnel</h3>
+                            <p class="p-card__desc">
+                                Live remix focused on checkout cart layout, custom pizza builder UX, and direct customer acquisition pathways.
+                            </p>
+                            <div class="p-card__pillars" style="margin-bottom: 1.5rem;">
+                                <span class="p-pillar-tag">Pizza Builder UX</span>
+                                <span class="p-pillar-tag">Menu Optimization</span>
+                                <span class="p-pillar-tag">Cart Funnel</span>
+                            </div>
+                            <a href="https://www.steelpansals.com" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;">
+                                View Build &rarr;
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

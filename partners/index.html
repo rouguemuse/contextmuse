@@ -338,37 +338,34 @@
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-                        <div class="nav-links">
-                <details class="nav-dropdown">
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
-                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
-                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
-                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
-                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
-                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
-                    </div>
-                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/#contact" class="nav-btn">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -515,32 +512,32 @@
                         </div>
                     </article>
 
-                    <!-- Project 4: Gold Tooth Tony's -->
+                    <!-- Project 4: Confidential Detroit Pizza Brand -->
                     <article class="p-card">
-                        <a href="https://www.goldtoothtonys.com" target="_blank" rel="noopener" class="p-card__media-link" aria-label="Visit Gold Tooth Tony's live website">
+                        <a href="/restaurant-builds/detroit-pizza/" class="p-card__media-link" aria-label="View Confidential Detroit Pizza Brand Case Study">
                             <div class="p-card__media">
                                 <div class="p-card__browser">
                                     <span class="p-browser-dot"></span>
                                     <span class="p-browser-dot"></span>
                                     <span class="p-browser-dot"></span>
-                                    <span class="p-browser-url">goldtoothtonys.com</span>
+                                    <span class="p-browser-url">pizza-ordering-ux.internal</span>
                                 </div>
-                                <img src="/assets/images/gold_tooth_tony_preview.png" alt="Gold Tooth Tony's website layout" loading="lazy">
+                                <img src="/assets/images/confidential_pizza_preview.png" alt="Confidential Detroit Pizza Brand website layout" loading="lazy">
                             </div>
                         </a>
                         <div>
-                            <span class="p-card__tagline">04 — Gold Tooth Tony's</span>
-                            <h3 class="p-card__title">Hospitality / Ordering Experience</h3>
+                            <span class="p-card__tagline">04 — Confidential Detroit Pizza Brand</span>
+                            <h3 class="p-card__title">Hospitality Website &amp; Ordering UX</h3>
                             <p class="p-card__desc">
-                                Brand-forward restaurant experience built around menu discovery, custom builder layouts, and an obvious direct ordering path.
+                                Anonymized Detroit-style restaurant experience built around menu discovery, custom pizza builder layouts, and an optimized direct ordering checkout path.
                             </p>
                             <div class="p-card__pillars" style="margin-bottom: 1.5rem;">
-                                <span class="p-pillar-tag">Creative Direction</span>
-                                <span class="p-pillar-tag">Restaurant UX</span>
-                                <span class="p-pillar-tag">Ordering Integration</span>
+                                <span class="p-pillar-tag">Conversion Design</span>
+                                <span class="p-pillar-tag">Ordering UX</span>
+                                <span class="p-pillar-tag">Restaurant Web Build</span>
                             </div>
-                            <a href="https://www.goldtoothtonys.com" target="_blank" rel="noopener" class="p-card__action-link" style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;">
-                                View Build &rarr;
+                            <a href="/restaurant-builds/detroit-pizza/" class="p-card__action-link" style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;">
+                                View Case Study &rarr;
                             </a>
                         </div>
                     </article>
@@ -553,7 +550,7 @@
                         <a href="/custom/" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; transition: color 0.2s;">
                             See more Custom Web &amp; Systems builds &rarr;
                         </a>
-                        <a href="/restaurant-systems/" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; transition: color 0.2s;">
+                        <a href="/restaurant-builds/" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; transition: color 0.2s;">
                             See more Restaurant Work builds &rarr;
                         </a>
                         <a href="/creative/" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; transition: color 0.2s;">
@@ -745,6 +742,7 @@
     </main>
 
     <!-- Footer -->
+    <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
@@ -756,6 +754,12 @@
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
                     <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
@@ -766,5 +770,6 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

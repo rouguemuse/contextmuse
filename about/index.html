@@ -222,45 +222,39 @@
     <!-- Navbar -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
-                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;">
-                <span style="letter-spacing:0.04em;">Context &amp; Muse</span>
-            </a>
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
             <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-                        <div class="nav-links">
-                <details class="nav-dropdown">
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
-                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
-                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
-                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
-                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
-                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
-                    </div>
-                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/#contact" class="nav-btn">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -470,17 +464,24 @@
     </main>
 
     <!-- Footer -->
+    <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
-                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
-                    <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;">
-                    <span style="letter-spacing:0.04em;">Context &amp; Muse</span>
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
                 </a>
                 <p>Applied Systems · Creative Practice · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
                     <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
@@ -491,6 +492,7 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/nav.js" defer></script>
 
     <script>
         // Contact form validation & AJAX submission
@@ -563,5 +565,6 @@
             }
         });
     </script>
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

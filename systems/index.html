@@ -738,6 +738,65 @@
                 display: none !important; /* Hide previous/next controls & progress rail on mobile */
             }
         }
+
+        /* ── Operational System Tab Consoles ────────────────────────── */
+        .system-console {
+            margin-top: 1rem;
+            border-top: 1px solid rgba(250, 249, 245, 0.08);
+            padding-top: 1rem;
+            text-align: left;
+        }
+
+        .console-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.06);
+            padding-bottom: 0.5rem;
+        }
+
+        .console-tab-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: rgba(250, 249, 245, 0.4);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .console-tab-btn:hover {
+            color: rgba(250, 249, 245, 0.85);
+            background: rgba(250, 249, 245, 0.04);
+        }
+
+        .console-tab-btn.active {
+            color: var(--accent-teal, #2DD4BF) !important;
+            background: rgba(45, 212, 191, 0.08) !important;
+        }
+
+        .console-content {
+            min-height: 100px;
+            position: relative;
+        }
+
+        .console-panel {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            opacity: 0;
+            display: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .console-panel.active {
+            display: block;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -751,37 +810,34 @@
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-                        <div class="nav-links">
-                <details class="nav-dropdown">
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
-                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
-                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
-                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
-                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
-                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
-                    </div>
-                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/#contact" class="nav-btn">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -868,8 +924,8 @@
                         </div>
                         
                         <div class="card-visual-column">
-                            <div class="card-visual-container" style="background: #FAF9F5; border-color: rgba(250,249,245,0.12);">
-                                <img src="/assets/images/signal-diagnostic-preview.png" alt="Signal operational diagnostic and prioritized recommendations interface" style="width:100%;height:100%;object-fit:contain;object-position:center top;">
+                            <div class="card-visual-container" style="background: transparent; border: none; box-shadow: none; height: auto; max-height: none; overflow: visible;">
+                                <img src="/assets/images/signal-diagnostic-preview.png" alt="Signal operational diagnostic and prioritized recommendations interface" style="width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid rgba(250,249,245,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.35);">
                             </div>
                         </div>
                     </article>
@@ -910,8 +966,8 @@
                         </div>
                         
                         <div class="card-visual-column">
-                            <div class="card-visual-container" style="background: #FAF9F5; border-color: rgba(250,249,245,0.12);">
-                                <img src="/assets/images/gensort-workspace.png" alt="GenSort workspace asset organization interface" style="width:100%;height:100%;object-fit:contain;object-position:center top;">
+                            <div class="card-visual-container" style="background: transparent; border: none; box-shadow: none; height: auto; max-height: none; overflow: visible;">
+                                <img src="/assets/images/gensort-library.webp" alt="GenSort workspace asset organization interface" style="width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid rgba(250,249,245,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.35);">
                             </div>
                         </div>
                     </article>
@@ -919,7 +975,7 @@
                     <!-- Card 3: Message & Record Analysis -->
                     <article class="spatial-card" id="message-record" data-accent="teal">
                         <div class="card-glow"></div>
-                        <span class="gallery-status-label">Concept Development</span>
+                        <span class="gallery-status-label">Private Working System · Synthetic Case Study</span>
                         <div class="card-info">
                             <div>
                                 <span class="card-eyebrow">03 // Evidence Navigation</span>
@@ -1054,26 +1110,24 @@
                                         <span class="op-tag">Operations</span>
                                         <span class="op-tag">Field Service</span>
                                     </div>
-                                    <details style="margin-top: 1rem; border-top: 1px solid rgba(250,249,245,0.1); padding-top: 0.75rem; text-align: left;">
-                                        <summary style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; list-style: none; outline: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
-                                            <span>View Case Details</span>
-                                            <span class="nav-dropdown-arrow">▾</span>
-                                        </summary>
-                                        <div style="margin-top: 0.75rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The Business Problem</strong>
-                                                <p style="margin:0;">Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.</p>
+                                    <div class="system-console" data-project="inncontrol">
+                                        <div class="console-tabs">
+                                            <button class="console-tab-btn active" data-tab="problem">Problem</button>
+                                            <button class="console-tab-btn" data-tab="backend">The Backend</button>
+                                            <button class="console-tab-btn" data-tab="value">How it helps</button>
+                                        </div>
+                                        <div class="console-content">
+                                            <div class="console-panel active" data-panel="problem">
+                                                Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.
                                             </div>
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The System Built</strong>
-                                                <p style="margin:0;">An interactive, property-wide assessment system that maps complex equipment locations, generates standardized intake details, and produces custom service reports.</p>
+                                            <div class="console-panel" data-panel="backend">
+                                                Built property-wide interactive scoping tools allowing technicians to map units directly in a responsive visual floorplan, logging defects, unit types, photos, and necessary repairs on-site.
                                             </div>
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">Operational Value</strong>
-                                                <p style="margin:0;">Replaces chaotic paper checklists and generic service listings with prioritized recommendations, allowing sales teams to rapidly convert property needs into structured deals.</p>
+                                            <div class="console-panel" data-panel="value">
+                                                Speeds up estimation, eliminates paper checklists, and creates a standardized visual ledger of required repairs, helping sales teams convert bids into closed deals.
                                             </div>
                                         </div>
-                                    </details>
+                                    </div>
                                     <div class="op-card-footer" style="margin-top: 1rem;">
                                         <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
                                     </div>
@@ -1104,26 +1158,24 @@
                                         <span class="op-tag">Inquiry Flow</span>
                                         <span class="op-tag">Marketing</span>
                                     </div>
-                                    <details style="margin-top: 1rem; border-top: 1px solid rgba(250,249,245,0.1); padding-top: 0.75rem; text-align: left;">
-                                        <summary style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; list-style: none; outline: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
-                                            <span>View Case Details</span>
-                                            <span class="nav-dropdown-arrow">▾</span>
-                                        </summary>
-                                        <div style="margin-top: 0.75rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The Business Problem</strong>
-                                                <p style="margin:0;">Premium detailing services require managing highly specific inquiries (by vehicle type and service tiers), generating local advertisements, and publishing content without juggling separate dashboard tools.</p>
+                                    <div class="system-console" data-project="d2">
+                                        <div class="console-tabs">
+                                            <button class="console-tab-btn active" data-tab="problem">Problem</button>
+                                            <button class="console-tab-btn" data-tab="backend">The Backend</button>
+                                            <button class="console-tab-btn" data-tab="value">How it helps</button>
+                                        </div>
+                                        <div class="console-content">
+                                            <div class="console-panel active" data-panel="problem">
+                                                Premium detailing services need custom lead acquisition that handles vehicle types and service tiers, while matching lead generation with local ad creation and content publishing.
                                             </div>
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The System Built</strong>
-                                                <p style="margin:0;">A connected custom application linking the public marketing storefront directly to an admin interface with customer pipeline tools, an automated local ad generator, blog publishing, and a D2TV media player database.</p>
+                                            <div class="console-panel" data-panel="backend">
+                                                Built a centralized custom administration portal that hooks directly to the storefront booking funnel, an automated local ad generator, a blog publisher, and a custom D2TV media player playlist database.
                                             </div>
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">Operational Value</strong>
-                                                <p style="margin:0;">Combines brand marketing with deep backend tools to capture, qualify, and convert details. Replaces standard brochure structures with a workflow engine.</p>
+                                            <div class="console-panel" data-panel="value">
+                                                Bridges the gap between simple brochure websites and active business operations, bringing lead capture, scheduling, and local media marketing into a single dashboard.
                                             </div>
                                         </div>
-                                    </details>
+                                    </div>
                                     <div class="op-card-footer" style="margin-top: 1rem;">
                                         <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
                                     </div>
@@ -1154,26 +1206,24 @@
                                         <span class="op-tag">Product UX</span>
                                         <span class="op-tag">Qualification</span>
                                     </div>
-                                    <details style="margin-top: 1rem; border-top: 1px solid rgba(250,249,245,0.1); padding-top: 0.75rem; text-align: left;">
-                                        <summary style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; list-style: none; outline: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
-                                            <span>View Case Details</span>
-                                            <span class="nav-dropdown-arrow">▾</span>
-                                        </summary>
-                                        <div style="margin-top: 0.75rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The Business Problem</strong>
-                                                <p style="margin:0;">Rental companies own highly specific, one-of-one event inventory (individual slides, custom arches, tables). Normal ecommerce shopping carts fail because they allow double-booking on identical date ranges.</p>
+                                    <div class="system-console" data-project="edr">
+                                        <div class="console-tabs">
+                                            <button class="console-tab-btn active" data-tab="problem">Problem</button>
+                                            <button class="console-tab-btn" data-tab="backend">The Backend</button>
+                                            <button class="console-tab-btn" data-tab="value">How it helps</button>
+                                        </div>
+                                        <div class="console-content">
+                                            <div class="console-panel active" data-panel="problem">
+                                                Event rentals have finite, calendar-dependent inventory (one-of-one arches, slide units, custom furniture). Standard ecommerce carts allow double-booking on the same day.
                                             </div>
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">The System Built</strong>
-                                                <p style="margin:0;">An inventory availability checker linked to the storefront cart. Customers check inventory by date, and the admin system locks bookings for that product serial number on approved dates.</p>
+                                            <div class="console-panel" data-panel="backend">
+                                                Designed a custom availability check system that matches real-time serial number stock with selected event dates, blocking out products on occupied dates during checkout, with automated English/Spanish localization.
                                             </div>
-                                            <div>
-                                                <strong style="color: #FAF9F5; font-family: var(--font-sans); display: block; margin-bottom: 2px; font-size: 11px;">Operational Value</strong>
-                                                <p style="margin:0;">Eliminates double-booking errors, automates translation across English and Spanish storefront versions, and organizes delivery dispatch schedules based on verified dates.</p>
+                                            <div class="console-panel" data-panel="value">
+                                                Stops booking clashes, reduces manual scheduling checks, and generates clean warehouse dispatch sheets showing date-verified drop-off orders.
                                             </div>
                                         </div>
-                                    </details>
+                                    </div>
                                     <div class="op-card-footer" style="margin-top: 1rem;">
                                         <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
                                     </div>
@@ -1182,52 +1232,20 @@
                         </div>
 
                         <div class="card-full-footer">
-                            <a href="/custom/" class="btn-all-builds">VIEW ALL CLIENT BUILDS &rarr;</a>
+                            <a href="/systems/client-builds/" class="btn-all-builds">VIEW IN-DEPTH CLIENT CASE STUDIES &rarr;</a>
                         </div>
                     </article>
 
-                    <!-- Card 6: How to Explain Yourself to Wolves -->
-                    <article class="spatial-card" id="wolves" data-accent="red" data-style="wolves">
-                        <div class="card-glow"></div>
-                        <span class="gallery-status-label">Completed Manuscript</span>
-                        <div class="card-info">
-                            <div>
-                                <span class="card-eyebrow project-num">06 // Narrative System</span>
-                                <h3 class="card-title project-title" style="display:flex;align-items:center;gap:10px;"><img src="/assets/images/wolves_logo.svg"  alt="" aria-hidden="true" style="width:34px;height:34px;border-radius:6px;flex-shrink:0;"><span>How to Explain Yourself to Wolves</span></h3>
-                                <p class="card-desc">
-                                    An allegorical memoir and connected symbolic system about survival, explanation, translation failure, and the limits of being understood.
-                                </p>
-                            </div>
-                            
-                            <div>
-                                <div class="card-labels-grid">
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Form:</span>
-                                        <span class="card-label-val">Allegorical memoir</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">System:</span>
-                                        <span class="card-label-val">Symbolic narrative cartography</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Status:</span>
-                                        <span class="card-label-val">Completed manuscript</span>
-                                    </div>
-                                </div>
-                                <div class="card-actions">
-                                    <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn-card-primary">Explore the Project</a>
-                                    <a href="/creative/#self-cartography" class="btn-card-outline">Enter Self Cartography</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-visual-column">
-                            <div class="card-visual-container">
-                                <img src="/assets/images/wolves_charcoal_art.jpg" alt="How to Explain Yourself to Wolves charcoal illustration" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                        </div>
-                    </article>
+                </div>
+            </div>
 
+            <!-- Creative Transition Bridge -->
+            <div class="container" style="margin-top: 3.5rem;">
+                <div class="creative-bridge-strip" style="padding: 1.75rem 2.25rem; background: rgba(250, 249, 245, 0.03); border: 1px solid rgba(250, 249, 245, 0.08); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+                    <p style="font-family: var(--font-serif); font-size: 1.1rem; color: rgba(250, 249, 245, 0.8); margin: 0; font-style: italic;">
+                        Creative work applies the same structural thinking to language, narrative, and symbolic systems.
+                    </p>
+                    <a href="/creative/" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; text-decoration: none;">Explore Creative Practice &rarr;</a>
                 </div>
             </div>
 
@@ -1372,14 +1390,24 @@
     </main>
 
     <!-- Footer -->
+    <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
-                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
-                <p>Applied Systems · Decision Intelligence · Austin, Texas.</p>
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
                     <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
@@ -1390,6 +1418,7 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/nav.js" defer></script>
 
     <script>
         const rail = document.getElementById('systems-carousel-view');
@@ -1462,6 +1491,31 @@
                 }, 400);
             });
         });
+
+        // Bind click-through tab behaviors for Operational Systems Consoles
+        document.querySelectorAll('.system-console').forEach(consoleEl => {
+            const buttons = consoleEl.querySelectorAll('.console-tab-btn');
+            const panels = consoleEl.querySelectorAll('.console-panel');
+            
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabName = btn.getAttribute('data-tab');
+                    
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    panels.forEach(p => {
+                        p.classList.remove('active');
+                    });
+                    
+                    const targetPanel = consoleEl.querySelector(`.console-panel[data-panel="${tabName}"]`);
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                    }
+                });
+            });
+        });
     </script>
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

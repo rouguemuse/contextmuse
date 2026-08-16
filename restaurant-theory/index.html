@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Theory: The Menu Is an Interface | Context &amp; Muse</title>
+    <meta name="description" content="An information-design study exploring menu architecture, price anchoring, visual weight bias, modifier friction, and decision load.">
+    <link rel="canonical" href="https://www.contextmuse.com/restaurant-theory/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.contextmuse.com/restaurant-theory/">
+    <meta property="og:title" content="Restaurant Theory: The Menu Is an Interface | Context &amp; Muse">
+    <meta property="og:description" content="An information-design study exploring menu architecture, price anchoring, visual weight bias, modifier friction, and decision load.">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/menu_interface_theory.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Restaurant Theory: The Menu Is an Interface | Context &amp; Muse">
+    <meta name="twitter:description" content="An information-design study exploring menu architecture, price anchoring, visual weight bias, modifier friction, and decision load.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/menu_interface_theory.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .essay-hero {
+            padding: 160px 0 60px;
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+        }
+        .essay-meta {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .essay-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            line-height: 1.15;
+        }
+        .essay-back {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: rgba(250, 249, 245, 0.5);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+            margin-bottom: 2rem;
+        }
+        .essay-back:hover {
+            color: var(--accent-teal);
+        }
+        .essay-content {
+            padding: 6rem 0;
+            background: #FAF9F5;
+            color: #10211D;
+        }
+        .essay-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        @media(max-width: 950px) {
+            .essay-grid {
+                grid-template-columns: 1fr;
+                gap: 3.5rem;
+            }
+            .essay-grid .visual-col {
+                order: -1;
+            }
+        }
+        .visual-col {
+            border: 1px solid rgba(16, 33, 29, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(16,33,29,0.03);
+            background: #FAF9F5;
+            position: sticky;
+            top: 100px;
+        }
+        .visual-col img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .text-col h2 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .text-col p {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .text-col blockquote {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-style: italic;
+            border-left: 3px solid var(--accent-teal);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="essay-hero">
+        <div class="container">
+            <a href="/creative/" class="essay-back">&larr; Back to Creative Practice</a>
+            <span class="essay-meta">Restaurant Theory &bull; Visual Essay</span>
+            <h1 class="essay-title">The Menu Is an Interface</h1>
+            <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.6; color: rgba(250,249,245,0.7); max-width: 700px; margin: 0;">
+                Analyzing how guest behavior, decision load, and modifier friction dictates the operational efficiency and margins of a kitchen.
+            </p>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="essay-content">
+            <div class="container">
+                <div class="essay-grid">
+                    <div class="visual-col">
+                        <img src="/assets/images/menu_interface_theory.jpg" alt="The Menu Is an Interface: guest journey path diagram mapping Enters, Scans, Anchors, Compares, Hesitates, Selects, Modifies, Orders.">
+                    </div>
+                    <div class="text-col">
+                        <p>
+                            In restaurant design, we talk endlessly about lighting, chair comfort, and acoustics. But the most critical interface in any hospitality business is the menu. A menu is not a list of foods with prices. It is a decision-support interface that dictates your throughput velocity, average check value, and kitchen ticket consistency.
+                        </p>
+
+                        <blockquote>
+                            "The kitchen has two menus: the one the guest reads, and the one the line has to execute. Visual design bridges the two."
+                        </blockquote>
+
+                        <h2>The Cognitive Path</h2>
+                        <p>
+                            When a guest enters and opens a menu (either physical or mobile), they embark on a highly predictable journey of cognitive states:
+                        </p>
+                        <p>
+                            <strong>1. Scans &amp; Anchors:</strong> Guests do not read menus like books. They scan them in patterns (the "Golden Triangle" eye path). Placing high-margin items at visual anchor points sets a reference price anchor, influencing the perceived value of surrounding items.
+                        </p>
+                        <p>
+                            <strong>2. Compares &amp; Hesitates:</strong> Too many choices trigger decision paralysis. When faced with ten options for mains, guests hesitate. This hesitation directly impacts table-turn times. A streamlined menu structure accelerates decision speed.
+                        </p>
+                        <p>
+                            <strong>3. Modifies &amp; Orders:</strong> Modifier friction refers to the difficulty of customizing an order. If customizing an item requires excessive steps or is pricing-opaque, guests either drop the order or make errors. In turn, poorly structured modifiers create complex tickets that slow down the kitchen assembly line.
+                        </p>
+
+                        <h2>Operational Consequences</h2>
+                        <p>
+                            Every visual decision on a menu has a direct operational consequence:
+                        </p>
+                        <ul>
+                            <li><strong>Price Anchoring:</strong> High-priced signature items set the ceiling, making premium items below them feel reasonably priced.</li>
+                            <li><strong>Visual Weight Bias:</strong> High-margin items boxed or styled with more visual weight draw customer attention first.</li>
+                            <li><strong>Decision Load:</strong> Restricting choices limits table-side questions and speeds up kitchen ticket intake.</li>
+                            <li><strong>Modifier Friction:</strong> Clear modifiers prevent line-cook bottlenecks and reduce order corrections.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

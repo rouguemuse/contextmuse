@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDR Party Rentals Case Study · Systems &amp; UX | Context &amp; Muse</title>
+    <meta name="description" content="How Context &amp; Muse transformed a complicated event rental catalog into a streamlined, inventory-aware booking system that resolves customer friction before manual triage.">
+    <link rel="canonical" href="https://www.contextmuse.com/case-studies/edr-party-rentals/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.contextmuse.com/case-studies/edr-party-rentals/">
+    <meta property="og:title" content="EDR Party Rentals Case Study | Context &amp; Muse">
+    <meta property="og:description" content="Making a complicated rental business feel simple to book. Inventory logic, mobile UX, bilingual flows, and smarter customer intake.">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/edrpartyrentals-screenshot.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EDR Party Rentals Case Study | Context &amp; Muse">
+    <meta name="twitter:description" content="Making a complicated rental business feel simple to book. Inventory logic, mobile UX, bilingual flows, and smarter customer intake.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/edrpartyrentals-screenshot.webp">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.1">
+
+    <style>
+        .cs-hero {
+            padding: 130px 0 70px;
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .cs-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: #2DD4BF;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .cs-hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #FAF9F5 !important;
+            margin: 0 0 1rem 0;
+            font-weight: 400;
+        }
+        .cs-primary-statement {
+            font-family: var(--font-serif);
+            font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+            line-height: 1.4;
+            color: #2DD4BF;
+            font-style: italic;
+            margin-bottom: 1.75rem;
+            max-width: 800px;
+        }
+        .cs-meta-bar {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(250, 249, 245, 0.1);
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            color: rgba(250, 249, 245, 0.7);
+        }
+        .cs-meta-item strong {
+            color: #FAF9F5;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-right: 4px;
+        }
+
+        /* ── PROBLEM SECTION ── */
+        .cs-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .cs-problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .cs-problem-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .cs-section-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        .cs-section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--text-primary);
+            margin: 0 0 1.25rem 0;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        .cs-questions-card {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.5rem;
+        }
+        .cs-questions-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .cs-questions-list li {
+            font-family: var(--font-mono);
+            font-size: 13.5px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cs-questions-list li::before {
+            content: "?";
+            font-weight: 700;
+            color: var(--accent-teal);
+            background: rgba(15, 118, 110, 0.1);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            flex-shrink: 0;
+        }
+
+        /* ── WHAT CHANGED MATRIX ── */
+        .changes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 960px) {
+            .changes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .changes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .change-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        .change-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(15, 118, 110, 0.05);
+        }
+        .change-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.08em;
+        }
+        .change-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin: 0;
+            font-weight: 500;
+        }
+        .change-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ── RESULT / BENEFIT BANNER ── */
+        .cs-result-banner {
+            background: #10211D;
+            color: #FAF9F5;
+            padding: 5rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .result-headline {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3.8vw, 3rem);
+            color: #2DD4BF;
+            letter-spacing: 0.02em;
+            margin: 0 0 1.25rem 0;
+            font-weight: 400;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+        .result-subhead {
+            font-family: var(--font-sans);
+            font-size: 17px;
+            line-height: 1.65;
+            color: rgba(250, 249, 245, 0.85);
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* ── VISUAL PROOF SHOWCASE ── */
+        .cs-visuals-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        @media (max-width: 900px) {
+            .cs-visuals-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        .browser-mockup {
+            background: #1A2E29;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(16, 33, 29, 0.15);
+            box-shadow: 0 20px 48px rgba(16, 33, 29, 0.12);
+        }
+        .browser-bar {
+            background: #142420;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #FF5F56; }
+        .dot-yellow { background: #FFBD2E; }
+        .dot-green { background: #27C93F; }
+        .browser-url {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: rgba(250, 249, 245, 0.6);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3px 12px;
+            border-radius: 4px;
+            flex-grow: 1;
+            max-width: 280px;
+        }
+        .browser-img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* ── PLACEHOLDER COMPONENT (For Pending Assets) ── */
+        .asset-placeholder-box {
+            background: var(--bg-paper);
+            border: 1.5px dashed var(--border-light);
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        .placeholder-tag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: rgba(15, 118, 110, 0.08);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+        .placeholder-label {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin: 0;
+            font-weight: 500;
+        }
+        .placeholder-sub {
+            font-size: 13px;
+            color: var(--text-secondary);
+            max-width: 380px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* ── ARTICLE CTA STRIP ── */
+        .article-cta-strip {
+            padding: 4rem 0;
+            background: #FFFFFF;
+            text-align: center;
+        }
+        .btn-article-link {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-teal);
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent-teal);
+            padding-bottom: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        .btn-article-link:hover {
+            color: #0d635c;
+            border-color: #0d635c;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="cs-hero">
+        <div class="container">
+            <span class="cs-eyebrow">Recent Project &bull; Case Study</span>
+            <h1>EDR Party Rentals</h1>
+            <div class="cs-primary-statement">
+                Making a complicated rental business feel simple to book.
+            </div>
+            <div class="cs-meta-bar">
+                <div class="cs-meta-item"><strong>Client:</strong> EDR Party Rentals</div>
+                <div class="cs-meta-item"><strong>Discipline:</strong> Systems Architecture &bull; Mobile UX &bull; Inventory Logic</div>
+                <div class="cs-meta-item"><strong>Live System:</strong> <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" style="color: #2DD4BF; text-decoration: underline;">edrpartyrentals.com &rarr;</a></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ── PROBLEM SECTION ── -->
+        <section class="cs-section">
+            <div class="container">
+                <div class="cs-problem-grid">
+                    <div>
+                        <span class="cs-section-label">The Operational Challenge</span>
+                        <h2 class="cs-section-title">The Friction of Manual Triage</h2>
+                        <p style="font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                            Event rental companies deal with finite physical assets and strict date/location constraints. Before customers can place a deposit, they have multiple critical questions.
+                        </p>
+                        <p style="font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); margin: 0;">
+                            The existing customer journey risked pushing every one of these questions back into repetitive phone calls, fragmented text messages, and social media DMs—creating friction for customers and operational fatigue for staff.
+                        </p>
+                    </div>
+
+                    <div class="cs-questions-card">
+                        <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.1em; display: block;">Questions Customers Needed Answered Before Booking</span>
+                        <ul class="cs-questions-list">
+                            <li>What is available?</li>
+                            <li>Is it available on my date?</li>
+                            <li>Do you deliver to my location?</li>
+                            <li>What does delivery cost?</li>
+                            <li>Does my order qualify for free delivery?</li>
+                            <li>Which package makes sense?</li>
+                            <li>What happens next?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── WHAT CHANGED (01–06 MATRIX) ── -->
+        <section class="cs-section" style="background: var(--bg-paper);">
+            <div class="container">
+                <div style="max-width: 750px;">
+                    <span class="cs-section-label">System Implementation</span>
+                    <h2 class="cs-section-title">What Changed</h2>
+                    <p style="font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); margin: 0;">
+                        We re-engineered the digital storefront into an interactive qualification engine that resolves logistical questions early in the journey.
+                    </p>
+                </div>
+
+                <div class="changes-grid">
+                    <!-- 01 Package Logic -->
+                    <div class="change-card">
+                        <span class="change-num">01 — Package Logic</span>
+                        <h3 class="change-title">Package Combinations</h3>
+                        <p class="change-desc">Created understandable product/package combinations so customers don't have to build every event from scratch.</p>
+                    </div>
+
+                    <!-- 02 Date + Delivery Qualification -->
+                    <div class="change-card">
+                        <span class="change-num">02 — Date &amp; Delivery</span>
+                        <h3 class="change-title">Early Qualification</h3>
+                        <p class="change-desc">Moved date and location validation earlier in the customer journey to verify availability and delivery eligibility upfront.</p>
+                    </div>
+
+                    <!-- 03 Mobile-First UX -->
+                    <div class="change-card">
+                        <span class="change-num">03 — Mobile-First UX</span>
+                        <h3 class="change-title">Mobile Flow</h3>
+                        <p class="change-desc">Designed the primary shopping and inquiry experience specifically for customers arriving from phones and social media.</p>
+                    </div>
+
+                    <!-- 04 Bilingual Flow -->
+                    <div class="change-card">
+                        <span class="change-num">04 — Bilingual Flow</span>
+                        <h3 class="change-title">Dual-Language Routing</h3>
+                        <p class="change-desc">Structured important customer communication and intake logic for both English and Spanish audiences seamlessly.</p>
+                    </div>
+
+                    <!-- 05 Image Cleanup -->
+                    <div class="change-card">
+                        <span class="change-num">05 — Image Cleanup</span>
+                        <h3 class="change-title">Standardized Photography</h3>
+                        <p class="change-desc">Cleaned, brightened, isolated, and standardized real inventory photography so items are easy to understand and compare.</p>
+                    </div>
+
+                    <!-- 06 Smarter Intake -->
+                    <div class="change-card">
+                        <span class="change-num">06 — Smarter Intake</span>
+                        <h3 class="change-title">Structured Handoff</h3>
+                        <p class="change-desc">Structured customer requests so the business receives actionable, verified event data before the very first conversation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── RESULT / BENEFIT BANNER ── -->
+        <section class="cs-result-banner">
+            <div class="container">
+                <h2 class="result-headline">Fewer Decisions. Better-Prepared Leads. Less Back-and-Forth.</h2>
+                <p class="result-subhead">
+                    The website does more than display inventory. It resolves common customer questions before they become manual conversations.
+                </p>
+            </div>
+        </section>
+
+        <!-- ── VISUAL PROOF & REAL ASSET PRESENTATION ── -->
+        <section class="cs-section">
+            <div class="container">
+                <span class="cs-section-label">Visual Verification</span>
+                <h2 class="cs-section-title">Production Interface &amp; Visual Cleanup</h2>
+                
+                <div class="cs-visuals-grid">
+                    <!-- Real Desktop Screenshot -->
+                    <div class="browser-mockup">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="browser-url">edrpartyrentals.com</span>
+                        </div>
+                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals desktop website and inventory reservation flow" class="browser-img">
+                    </div>
+
+                    <!-- Structured Real Placeholder Slot for Mobile UX & Before/After Images -->
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="asset-placeholder-box">
+                            <span class="placeholder-tag">Mobile Experience Asset Slot</span>
+                            <h3 class="placeholder-label">Mobile UX Screenshot</h3>
+                            <p class="placeholder-sub">High-resolution mobile reservation flow asset supplied during content alignment.</p>
+                        </div>
+                        <div class="asset-placeholder-box">
+                            <span class="placeholder-tag">Inventory Photography Asset Slot</span>
+                            <h3 class="placeholder-label">Before / After Image Cleanup</h3>
+                            <p class="placeholder-sub">Standardized asset cleanup comparison highlighting isolated, color-balanced inventory items.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── READ FULL ARTICLE CTA ── -->
+        <section class="article-cta-strip">
+            <div class="container">
+                <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" class="btn-article-link" data-track-cta="edr_case_study_external">
+                    Read the Full Case Study &rarr;
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

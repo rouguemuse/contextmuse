@@ -3,111 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signal Intake Questionnaire | Context &amp; Muse</title>
-    <meta name="description" content="Operational intake questionnaire for Context &amp; Muse Signal reviews, diagnostics, and workflow audits.">
+    <title>Signal Intake · Bring Me the Mess | Context &amp; Muse</title>
+    <meta name="description" content="Send your messy reports, POS exports, spreadsheets, or operational bottlenecks for prioritized diagnostic analysis.">
     <link rel="canonical" href="https://www.contextmuse.com/signal/intake/">
-    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Signal Intake Questionnaire | Context &amp; Muse">
-    <meta property="og:description" content="Operational intake questionnaire for Context &amp; Muse Signal reviews, diagnostics, and workflow audits.">
-    <meta property="og:url" content="https://www.contextmuse.com/signal/intake/">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+    <meta property="og:title" content="Signal Intake · Bring Me the Mess | Context &amp; Muse">
+    <meta property="og:description" content="Send your messy reports, POS exports, spreadsheets, or operational bottlenecks for prioritized diagnostic analysis.">
+    <meta property="og:url" content="https://www.contextmuse.com/signal/intake/">
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Signal Intake Questionnaire | Context &amp; Muse">
-    <meta name="twitter:description" content="Operational intake questionnaire for Context &amp; Muse Signal reviews, diagnostics, and workflow audits.">
-    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+    <meta name="twitter:title" content="Signal Intake · Bring Me the Mess | Context &amp; Muse">
+    <meta name="twitter:description" content="Send your messy reports, POS exports, spreadsheets, or operational bottlenecks for prioritized diagnostic analysis.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.1">
     
     <style>
-        .intake-container {
-            max-width: 650px;
-            margin: 120px auto 80px;
-            padding: 0 1.5rem;
+        :root {
+            --bg-body: #FAF9F5;
+            --text-primary: #10211D;
+            --text-secondary: #4A5568;
+            --border-light: rgba(16, 33, 29, 0.12);
+            --accent-teal: #0F766E;
         }
-        .intake-header {
-            margin-bottom: 3rem;
+        
+        .intake-hero {
+            padding: 6.5rem 0 3rem;
+            background: #10211D;
+            color: #FAF9F5;
             text-align: center;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .intake-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: #2DD4BF;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
         }
         .intake-title {
             font-family: var(--font-serif);
-            font-size: 2.2rem;
-            color: var(--text-primary);
-            font-weight: 500;
-            margin-top: 0.5rem;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.15;
             margin-bottom: 1rem;
         }
-        .intake-subtitle {
+        .intake-sub {
             font-family: var(--font-sans);
-            font-size: 1rem;
-            color: var(--text-secondary);
+            font-size: 1.1rem;
             line-height: 1.6;
+            color: rgba(250, 249, 245, 0.7);
+            max-width: 620px;
+            margin: 0 auto;
         }
-        .form-card {
-            background: var(--bg-panel);
+        
+        .intake-section {
+            padding: 4rem 0 6rem;
+        }
+        .intake-container {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        
+        .branch-picker {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        @media (max-width: 768px) {
+            .branch-picker {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .branch-btn {
+            background: #FFFFFF;
+            border: 2px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.5rem 1.25rem;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .branch-btn:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.05);
+        }
+        .branch-btn.active {
+            border-color: var(--accent-teal);
+            background: rgba(15, 118, 110, 0.03);
+            box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
+        }
+        .branch-btn-title {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .branch-btn-desc {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        .branch-panel {
+            display: none;
+            background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(16, 33, 29, 0.02);
+            padding: 3rem;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.02);
         }
+        .branch-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .form-group {
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
         .form-label {
-            display: block;
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 10.5px;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
             font-weight: 600;
         }
         .form-input, .form-select, .form-textarea {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 0.9rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
             font-family: var(--font-sans);
             font-size: 14px;
+            background: var(--bg-body);
             color: var(--text-primary);
-            background: #ffffff;
-            border: 1px solid var(--border-light);
-            border-radius: 3px;
-            outline: none;
-            transition: border-color 0.2s ease;
+            box-sizing: border-box;
         }
         .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
             border-color: var(--accent-teal);
+            background: #FFFFFF;
         }
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        .form-submit-btn {
-            width: 100%;
-            padding: 0.9rem;
-            font-family: var(--font-sans);
-            font-size: 14px;
-            font-weight: 600;
-            color: #FAF9F5;
-            background: var(--text-primary);
-            border: 1px solid var(--text-primary);
-            border-radius: 3px;
+        
+        .file-dropzone {
+            border: 2px dashed rgba(15, 118, 110, 0.3);
+            border-radius: 6px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            background: rgba(15, 118, 110, 0.02);
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .form-submit-btn:hover {
-            background: var(--accent-teal);
+        .file-dropzone:hover {
             border-color: var(--accent-teal);
+            background: rgba(15, 118, 110, 0.05);
         }
-        @media (max-width: 576px) {
-            .form-card {
-                padding: 1.5rem;
-            }
+        
+        .reassurance-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 1.75rem 0;
+            padding: 1.25rem;
+            background: rgba(15, 118, 110, 0.04);
+            border: 1px solid rgba(15, 118, 110, 0.15);
+            border-radius: 4px;
+        }
+        .reassurance-check input[type="checkbox"] {
+            margin-top: 3px;
+            accent-color: var(--accent-teal);
+            width: 16px;
+            height: 16px;
+        }
+        .reassurance-label {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin: 0;
+            cursor: pointer;
+        }
+        
+        .btn-submit {
+            background: var(--accent-teal);
+            color: #FAF9F5;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background: #0D655E;
         }
     </style>
 </head>
@@ -123,99 +242,242 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <details class="nav-dropdown">
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
-                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
-                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
-                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
-                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
-                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
-                    </div>
-                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/#contact" class="nav-btn">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
 
     <main id="main-content">
-        <div class="intake-container">
-            <div class="intake-header">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">Signal Diagnostic Ingestion</span>
-                <h1 class="intake-title">Start a Signal Review</h1>
-                <p class="intake-subtitle">Provide details about your system or operations. I will review your inquiry and follow up within 24 business hours to coordinate sample logs ingestion.</p>
+        <!-- Hero -->
+        <header class="intake-hero">
+            <div class="container">
+                <span class="intake-eyebrow">Signal Intake Flow</span>
+                <h1 class="intake-title">Bring me the mess.</h1>
+                <p class="intake-sub">
+                    Choose what you have right now. Whether you have messy exports ready to analyze, a known issue without reports, or just need help figuring out where to start.
+                </p>
             </div>
+        </header>
 
-            <div class="form-card">
-                <form action="https://formspree.io/f/mqkvgndk" method="POST">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Full Name</label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="e.g., Jane Miller" required>
-                    </div>
+        <section class="intake-section">
+            <div class="container intake-container">
+                <!-- Branch Selector -->
+                <div class="branch-picker" role="tablist">
+                    <button class="branch-btn active" id="tab-1" role="tab" aria-selected="true" onclick="selectBranch(1)">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--accent-teal); font-weight: bold; text-transform: uppercase;">Door 01</span>
+                            <div class="branch-btn-title">I have reports or data to send</div>
+                        </div>
+                        <p class="branch-btn-desc">Upload raw spreadsheets, POS exports, or CSVs directly.</p>
+                    </button>
 
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="e.g., jane@mybrand.com" required>
-                    </div>
+                    <button class="branch-btn" id="tab-2" role="tab" aria-selected="false" onclick="selectBranch(2)">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--accent-teal); font-weight: bold; text-transform: uppercase;">Door 02</span>
+                            <div class="branch-btn-title">I know the issue, but not what reports you need</div>
+                        </div>
+                        <p class="branch-btn-desc">Describe the problem and schedule a short scoping call.</p>
+                    </button>
 
-                    <div class="form-group">
-                        <label for="company" class="form-label">Business Name &amp; Website</label>
-                        <input type="text" id="company" name="company" class="form-input" placeholder="e.g., Miller &amp; Co. / millerbrand.com" required>
-                    </div>
+                    <button class="branch-btn" id="tab-3" role="tab" aria-selected="false" onclick="selectBranch(3)">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--accent-teal); font-weight: bold; text-transform: uppercase;">Door 03</span>
+                            <div class="branch-btn-title">I need help figuring out where to start</div>
+                        </div>
+                        <p class="branch-btn-desc">Answer a few diagnostic questions to map your friction area.</p>
+                    </button>
+                </div>
 
-                    <div class="form-group">
-                        <label for="tier" class="form-label">Selected Review Level</label>
-                        <select id="tier" name="tier" class="form-select" required>
-                            <option value="snapshot">Signal Snapshot — $195 (Focused Leak Review)</option>
-                            <option value="diagnostic" selected>Signal Diagnostic — $595 (Full System Baseline Audit)</option>
-                            <option value="ongoing">Ongoing Review — $195/mo (Drift Monitoring)</option>
-                        </select>
-                    </div>
+                <!-- Branch 1 Form -->
+                <div class="branch-panel active" id="panel-1" role="tabpanel">
+                    <h2 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem; font-weight: 500;">
+                        Submit Operational Data for Analysis
+                    </h2>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.55;">
+                        Upload your raw exports. Accepted formats: `.csv`, `.xlsx`, `.pdf`, `.json`, or `.zip`.
+                    </p>
 
-                    <div class="form-group">
-                        <label for="pos-system" class="form-label">POS or Inventory System Used</label>
-                        <input type="text" id="pos-system" name="pos_system" class="form-input" placeholder="e.g., Toast, Shopify, Custom DB, Lightspeed" required>
-                    </div>
+                    <form action="https://formspree.io/f/xoqydgvw" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="branch" value="01_has_reports">
+                        <input type="text" name="_gotcha" style="display:none">
 
-                    <div class="form-group">
-                        <label for="bottleneck" class="form-label">Core Operational Bottlenecks or Margin Leaks</label>
-                        <textarea id="bottleneck" name="bottleneck" class="form-textarea" placeholder="Explain the workflow friction, void patterns, or missing data alignment you're hoping to isolate..." required></textarea>
-                    </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="b1-name">Name</label>
+                                <input type="text" id="b1-name" name="name" class="form-input" required placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="b1-email">Email Address</label>
+                                <input type="email" id="b1-email" name="email" class="form-input" required placeholder="name@business.com">
+                            </div>
+                        </div>
 
-                    <button type="submit" class="form-submit-btn">Submit Signal Inquiry</button>
-                </form>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="b1-business">Business Name &amp; Location</label>
+                                <input type="text" id="b1-business" name="business" class="form-input" required placeholder="e.g. Austin Smokehouse">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="b1-system">Primary POS / Operating Software</label>
+                                <input type="text" id="b1-system" name="operating_system" class="form-input" placeholder="e.g. Toast, Square, Aloha, 7shifts">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="b1-concern">What is the primary operational friction or leak?</label>
+                            <textarea id="b1-concern" name="concern" rows="4" class="form-textarea" required placeholder="Describe what feels off: check average discrepancies, labor timing spikes, unexplained void patterns, modifier waste..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Upload Exports / Spreadsheets</label>
+                            <div class="file-dropzone" onclick="document.getElementById('b1-files').click()">
+                                <input type="file" id="b1-files" name="files" multiple style="display:none" onchange="handleFileSelect(this)">
+                                <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">📂</div>
+                                <div style="font-family: var(--font-mono); font-size: 12px; font-weight: bold; color: var(--accent-teal); margin-bottom: 0.25rem;" id="dropzone-text">Click to choose files or drop them here</div>
+                                <div style="font-size: 11px; color: var(--text-secondary);">CSV, XLSX, PDF, JSON up to 25MB</div>
+                            </div>
+                        </div>
+
+                        <div class="reassurance-check">
+                            <input type="checkbox" id="b1-reassurance" name="reassurance_review_requested" value="yes" checked>
+                            <label for="b1-reassurance" class="reassurance-label">
+                                <strong>Reassurance Review:</strong> I'm not entirely sure these are the right reports &mdash; review what I uploaded and tell me what else you need before proceeding.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Submit for Signal Diagnostic Review &rarr;</button>
+                    </form>
+                </div>
+
+                <!-- Branch 2 Form -->
+                <div class="branch-panel" id="panel-2" role="tabpanel">
+                    <h2 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem; font-weight: 500;">
+                        Guided Operational Scoping
+                    </h2>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.55;">
+                        Tell me what’s happening in your business, and I will tell you the exact 2 or 3 standard reports to export.
+                    </p>
+
+                    <form action="https://formspree.io/f/xoqydgvw" method="POST">
+                        <input type="hidden" name="branch" value="02_needs_report_guidance">
+                        <input type="text" name="_gotcha" style="display:none">
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="b2-name">Name</label>
+                                <input type="text" id="b2-name" name="name" class="form-input" required placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="b2-email">Email Address</label>
+                                <input type="email" id="b2-email" name="email" class="form-input" required placeholder="name@business.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="b2-system">POS or Software You Currently Use</label>
+                            <input type="text" id="b2-system" name="operating_system" class="form-input" placeholder="e.g. Toast, Clover, Square, Revel, Excel">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="b2-problem">What problem are you noticing?</label>
+                            <textarea id="b2-problem" name="problem_description" rows="5" class="form-textarea" required placeholder="e.g. Labor feels too high during shoulder hours, food cost doesn't match sales, servers are splitting checks weirdly..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Request Export Instructions &rarr;</button>
+                    </form>
+                </div>
+
+                <!-- Branch 3 Form -->
+                <div class="branch-panel" id="panel-3" role="tabpanel">
+                    <h2 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem; font-weight: 500;">
+                        Diagnostic Starting Point
+                    </h2>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.55;">
+                        Not sure where the leak is? Select the symptoms you're experiencing to narrow the focus.
+                    </p>
+
+                    <form action="https://formspree.io/f/xoqydgvw" method="POST">
+                        <input type="hidden" name="branch" value="03_exploratory">
+                        <input type="text" name="_gotcha" style="display:none">
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="b3-name">Name</label>
+                                <input type="text" id="b3-name" name="name" class="form-input" required placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="b3-email">Email Address</label>
+                                <input type="email" id="b3-email" name="email" class="form-input" required placeholder="name@business.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="b3-symptom">Primary Operational Symptom</label>
+                            <select id="b3-symptom" name="symptom" class="form-select">
+                                <option value="margin_leak">Revenue is up, but margins and net profit are shrinking</option>
+                                <option value="labor_timing">Labor cost percentages spike during specific dayparts</option>
+                                <option value="inventory_waste">Physical inventory counts don't align with POS item sales</option>
+                                <option value="checkout_friction">Long transaction times or table bottlenecks during rushes</option>
+                                <option value="other">Other operational friction or disorganized records</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="b3-context">Additional Context</label>
+                            <textarea id="b3-context" name="context" rows="4" class="form-textarea" placeholder="Any details about your current setup or operations..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Start Initial Mapping Conversation &rarr;</button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
-                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:inline-block;"><span style="letter-spacing:0.04em;">Context &amp; Muse</span></a>
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
                 <p>Applied Systems · Creative Practice · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
                     <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
@@ -226,13 +488,29 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/nav.js" defer></script>
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const tier = params.get('tier');
-        if (tier) {
-            const selectEl = document.getElementById('tier');
-            if (selectEl) {
-                selectEl.value = tier;
+        function selectBranch(num) {
+            for (let i = 1; i <= 3; i++) {
+                const tab = document.getElementById('tab-' + i);
+                const panel = document.getElementById('panel-' + i);
+                if (i === num) {
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+                    panel.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                    tab.setAttribute('aria-selected', 'false');
+                    panel.classList.remove('active');
+                }
+            }
+        }
+
+        function handleFileSelect(input) {
+            const count = input.files.length;
+            const text = document.getElementById('dropzone-text');
+            if (count > 0) {
+                text.textContent = count === 1 ? input.files[0].name : count + ' files selected';
             }
         }
     </script>

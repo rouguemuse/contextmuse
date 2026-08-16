@@ -48,8 +48,8 @@
       "permanent": true
     },
     {
-      "source": "/services/",
-      "destination": "/custom/",
+      "source": "/work-with-me/",
+      "destination": "/services/",
       "permanent": true
     },
     {

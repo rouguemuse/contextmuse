@@ -30,48 +30,18 @@
     <link rel="stylesheet" href="/styles.css?v=2.1">
 
     <style>
-        /* ── NAVBAR BRAND LOGO STYLE ── */
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-        .navbar .logo span {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-        .navbar .brand-mark {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-            flex-shrink: 0;
-            display: block;
-        }
-
-        /* ── HERO PREMIUM FULL-WIDTH COMPOSITION STYLE ── */
+        /* ── HERO COMPOSITION ── */
         .home-hero {
             position: relative;
-            min-height: clamp(720px, 85vh, 880px);
+            min-height: clamp(680px, 80vh, 840px);
             overflow: hidden;
             display: flex;
             align-items: center;
-            background:
-                radial-gradient(
-                    circle at 75% 50%,
-                    #fffdf8 0%,
-                    #f8f2e9 45%,
-                    #f3ede4 100%
-                );
+            background: radial-gradient(circle at 75% 50%, #fffdf8 0%, #f8f2e9 45%, #f3ede4 100%);
             border-bottom: 1px solid var(--border-light);
-            padding: 120px 0 72px;
+            padding: 110px 0 60px;
             box-sizing: border-box;
         }
-
         .home-hero-art {
             position: absolute;
             inset: 0;
@@ -79,7 +49,6 @@
             overflow: hidden;
             pointer-events: none;
         }
-
         .home-hero-art img {
             position: absolute;
             top: 50%;
@@ -94,37 +63,24 @@
             -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 4%, black 20%, black 100%);
             mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 4%, black 20%, black 100%);
         }
-
         .home-hero-overlay {
             position: absolute;
             inset: 0;
             z-index: 2;
             pointer-events: none;
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(248,244,236,1) 0%,
-                    rgba(248,244,236,.98) 25%,
-                    rgba(248,244,236,.82) 40%,
-                    rgba(248,244,236,.22) 55%,
-                    rgba(248,244,236,0) 70%
-                );
+            background: linear-gradient(90deg, rgba(248,244,236,1) 0%, rgba(248,244,236,.98) 25%, rgba(248,244,236,.82) 40%, rgba(248,244,236,.22) 55%, rgba(248,244,236,0) 70%);
         }
-
         .home-hero-content {
             position: relative;
             z-index: 3;
             width: min(1320px, calc(100% - 48px));
             margin: 0 auto;
-            padding: 110px 0 72px;
         }
-
         .home-hero-copy {
-            width: min(580px, 46vw);
+            width: min(600px, 48vw);
             position: relative;
             z-index: 4;
         }
-
         .hero-eyebrow {
             font-family: var(--font-mono);
             font-size: 11px;
@@ -133,161 +89,219 @@
             letter-spacing: 0.15em;
             text-transform: uppercase;
             display: block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
-
         .home-hero-copy .hero-title {
             font-family: var(--font-serif) !important;
-            font-size: clamp(3.8rem, 5.2vw, 5.4rem) !important;
-            line-height: 0.96 !important;
-            letter-spacing: -0.04em !important;
+            font-size: clamp(3.2rem, 4.8vw, 5rem) !important;
+            line-height: 1.0 !important;
+            letter-spacing: -0.03em !important;
             color: #10211D !important;
-            margin: 0 0 1.75rem 0 !important;
-            font-weight: 500 !important;
-            max-width: 680px !important;
+            margin: 0 0 1.5rem 0 !important;
+            font-weight: 400 !important;
         }
-
         .home-hero-copy .hero-subhead {
             font-family: var(--font-sans) !important;
             font-size: 18px !important;
             line-height: 1.65 !important;
             color: var(--text-secondary) !important;
-            margin-top: 28px !important;
             margin-bottom: 2.25rem !important;
-            max-width: 500px !important;
         }
-
         .home-hero-copy .btn-group {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-bottom: 3.5rem;
         }
 
-        .btn-primary-teal {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.8rem 1.75rem;
-            font-family: var(--font-sans);
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 3px;
-            cursor: pointer;
-            background: var(--accent-teal);
-            color: #FAF9F5 !important;
-            border: 1px solid var(--accent-teal);
-            transition: var(--transition-smooth);
-        }
-        .btn-primary-teal:hover {
-            background: #0d635c;
-            border-color: #0d635c;
-            transform: translateY(-1px);
-            color: #FAF9F5 !important;
-        }
-        .btn-secondary-cream {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.8rem 1.75rem;
-            font-family: var(--font-sans);
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 3px;
-            cursor: pointer;
-            background: transparent;
-            color: var(--text-primary) !important;
-            border: 1px solid var(--border-dark);
-            transition: var(--transition-smooth);
-        }
-        .btn-secondary-cream:hover {
-            border-color: var(--text-primary);
-            background: rgba(31, 31, 29, 0.03);
-            transform: translateY(-1px);
-            color: var(--text-primary) !important;
-        }
-
-        .home-project-index {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(110px, 1fr));
-            gap: 0;
-            width: min(650px, 100%);
-            margin-top: 46px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(20,45,38,.18);
-        }
-
-        .project-nav-item {
-            display: flex;
-            gap: 0.5rem;
-            align-items: flex-start;
-        }
-
-        .project-nav-item:not(:last-child) {
-            border-right: 1px solid rgba(197, 160, 89, 0.4);
-            padding-right: 1.5rem;
-        }
-
-        .project-nav-item .p-num {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
-
-        .project-nav-item .p-meta {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-nav-item .p-title {
-            font-family: var(--font-sans);
-            font-size: 12px;
-            color: var(--text-primary);
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        .project-nav-item .p-desc {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            color: var(--text-secondary);
-            line-height: 1.2;
-            margin-top: 2px;
-        }
-
-        /* ── STUDIO THESIS ── */
-        .hp-thesis-section {
-            background: var(--bg-paper);
-            padding: 80px 0;
-            border-top: 1px solid var(--border-light);
+        /* ── 3 CONVERSION PATHWAYS ── */
+        .hp-paths-section {
+            background: #FFFFFF;
+            padding: 5rem 0;
             border-bottom: 1px solid var(--border-light);
         }
-        .hp-thesis-text {
-            font-family: var(--font-sans);
-            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-            line-height: 1.65;
-            color: var(--text-secondary);
-            font-weight: 350;
-            max-width: 720px;
-            margin: 0 auto;
+        .hp-paths-header {
             text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .hp-paths-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 950px) {
+            .hp-paths-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        .hp-path-card {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+        .hp-path-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(15, 118, 110, 0.05);
+        }
+        .hp-path-card-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .hp-path-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin: 0 0 0.75rem 0;
+            font-weight: 500;
+        }
+        .hp-path-card-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.75rem;
+        }
+        .hp-path-card-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+            margin-top: auto;
+        }
+        .hp-path-card:hover .hp-path-card-link {
+            color: var(--accent-teal);
         }
 
-        /* ── THE METHOD ── */
+        /* ── EDITORIAL SHOWCASE ROWS ── */
+        .hp-editorial-section {
+            padding: 6rem 0;
+            background: var(--bg-panel);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .editorial-row {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .editorial-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .editorial-row.reverse {
+            grid-template-columns: 1fr 1.15fr;
+        }
+        @media (max-width: 960px) {
+            .editorial-row, .editorial-row.reverse {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 3rem 0;
+            }
+        }
+        .editorial-media-container {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+            background: #FFFFFF;
+        }
+        .editorial-media-container img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+        .editorial-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .editorial-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 3.2vw, 2.7rem);
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+            font-weight: 400;
+            line-height: 1.15;
+        }
+        .editorial-subhead {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .editorial-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .editorial-tag-row {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 14px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+        .editorial-tag-label {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-primary);
+            font-weight: 700;
+            min-width: 65px;
+            flex-shrink: 0;
+        }
+
+        /* ── THE METHOD SECTION ── */
         .method-section {
             background: var(--bg-paper);
-            padding: 100px 0;
+            padding: 6rem 0;
             border-bottom: 1px solid var(--border-light);
         }
         .process-flow-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             position: relative;
-            gap: 2.5rem;
-            margin-top: 4.5rem;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        @media (max-width: 900px) {
+            .process-flow-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .process-flow-container::before {
+                display: none;
+            }
         }
         .process-flow-container::before {
             content: '';
@@ -298,7 +312,7 @@
             height: 1.5px;
             background: var(--border-dark);
             z-index: 0;
-            opacity: 0.8;
+            opacity: 0.4;
         }
         .process-step {
             display: flex;
@@ -317,561 +331,299 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
+            margin-bottom: 1.25rem;
         }
         .process-node span {
             font-family: var(--font-mono);
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--accent-teal);
-        }
-        .process-step:last-child .process-node {
-            border-color: var(--accent-gold);
-        }
-        .process-step:last-child .process-node span {
-            color: var(--accent-gold);
-        }
-        .step-name {
-            font-family: var(--font-sans);
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-        }
-        .step-desc {
-            font-family: var(--font-sans);
-            font-size: 14.5px;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            max-width: 200px;
         }
 
-        /* ── SYSTEMS IN PRACTICE SHOWCASE ── */
-        .hp-projects-section {
-            background: var(--bg-panel);
-            padding: 100px 0;
+        /* ── HOMEPAGE WAYS TO WORK TOGETHER ── */
+        .hp-offers-section {
+            padding: 6rem 0;
+            background: #FFFFFF;
             border-bottom: 1px solid var(--border-light);
         }
-        .hp-projects-header {
+        .hp-offers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 1024px) {
+            .hp-offers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .hp-offers-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+        }
+        .hp-offer-card {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2rem 1.75rem;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 4rem;
+            transition: all 0.2s ease;
         }
-        .hp-projects-header .section-label {
+        .hp-offer-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(15, 118, 110, 0.05);
+        }
+        .hp-offer-card.featured {
+            background: #FFFFFF;
+            border: 1.5px solid var(--accent-teal);
+        }
+        .hp-offer-badge {
             font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--accent-teal);
-            letter-spacing: 0.15em;
+            font-size: 9px;
+            font-weight: 700;
             text-transform: uppercase;
-            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--accent-teal);
+            margin-bottom: 0.75rem;
             display: block;
-            margin-bottom: 0.5rem;
         }
-        .hp-projects-header h2 {
-            font-family: var(--font-sans);
-            font-size: clamp(2rem, 3.5vw, 2.6rem);
+        .hp-offer-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 0 0 0.4rem 0;
+            line-height: 1.25;
+        }
+        .hp-offer-price {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin: 0;
+            margin-bottom: 1rem;
+            display: block;
         }
-        .hp-projects-link {
+        .hp-offer-desc {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0 0 1.5rem 0;
+            flex-grow: 1;
+        }
+        .hp-offer-cta {
             font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 10.5px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--text-primary);
             text-decoration: none;
-            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
             border-bottom: 1.5px solid var(--text-primary);
             padding-bottom: 2px;
-            transition: color 0.2s, border-color 0.2s;
+            width: fit-content;
+            transition: all 0.15s ease;
         }
-        .hp-projects-link:hover {
+        .hp-offer-card.featured .hp-offer-cta {
             color: var(--accent-teal);
             border-color: var(--accent-teal);
         }
-        .hp-cards-grid {
+        .hp-offer-cta:hover {
+            color: var(--accent-teal);
+            border-color: var(--accent-teal);
+        }
+        .hp-escalation-strip {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .hp-escalation-text {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin: 0;
+            max-width: 750px;
+        }
+        .hp-escalation-text strong {
+            font-weight: 600;
+        }
+        .hp-escalation-btn {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-teal);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .hp-escalation-btn:hover {
+            text-decoration: underline;
+        }
+        .hp-enhancements-note {
+            margin-top: 1.25rem;
+            text-align: center;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+        }
+        .hp-enhancements-note a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* ── PRODUCTION PROOF SECTION ── */
+        .hp-proof-section {
+            padding: 6rem 0;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .hp-proof-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            margin-top: 3.5rem;
         }
-        .hp-project-card {
-            background: #ffffff;
+        @media (max-width: 900px) {
+            .hp-proof-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hp-proof-card {
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 2.25rem;
-            text-decoration: none;
-            color: inherit;
+            overflow: hidden;
+            background: var(--bg-paper);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 485px;
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
         }
-        .hp-project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 36px rgba(16, 33, 29, 0.05);
-            border-color: var(--border-dark);
+        .hp-proof-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
         }
-        .hp-card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        .hp-card-status {
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 9px;
-        }
-        .hp-card-status.status-demo {
-            color: var(--accent-teal);
-            background: rgba(15, 118, 110, 0.06);
-            border: 1.5px solid rgba(15, 118, 110, 0.15);
-        }
-        .hp-card-status.status-prototype {
-            color: var(--accent-gold);
-            background: rgba(197, 160, 89, 0.06);
-            border: 1.5px solid rgba(197, 160, 89, 0.15);
-        }
-        .hp-card-status.status-concept {
-            color: var(--text-secondary);
-            background: rgba(87, 86, 81, 0.06);
-            border: 1.5px solid rgba(87, 86, 81, 0.15);
-        }
-        .hp-card-title {
-            font-family: var(--font-sans);
-            font-size: 21px;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.75rem;
-        }
-        .hp-card-desc {
-            font-family: var(--font-sans);
-            font-size: 14.5px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        .hp-card-visual-wrapper {
-            background: var(--bg-panel);
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            height: 280px;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .hp-card-visual-wrapper img {
+        .hp-proof-card img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            transition: transform 0.3s ease;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--border-light);
         }
-        .hp-project-card:hover .hp-card-visual-wrapper img {
-            transform: scale(1.02);
-        }
-        .hp-card-footer {
-            border-top: 1px solid var(--border-light);
-            padding-top: 1.5rem;
+        .hp-proof-card-body {
+            padding: 1.5rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1.5rem;
-        }
-        .hp-card-footer-label {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-        }
-        .hp-card-arrow {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: bold;
-            color: var(--accent-teal);
-            transition: transform 0.2s;
-        }
-        .hp-project-card:hover .hp-card-arrow {
-            transform: translateX(4px);
+            flex-direction: column;
+            flex-grow: 1;
         }
 
-
-
-        /* ── TWO BRANCHES ── */
+        /* ── DUAL STUDIO SECTION ── */
         .hp-dual-section {
+            padding: 6rem 0;
             background: #10211D;
-            padding: 88px 0;
             color: #FAF9F5;
+            border-bottom: 1px solid rgba(250,249,245,0.08);
         }
         .hp-dual-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+        @media (max-width: 800px) {
+            .hp-dual-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .hp-dual-panel {
+            background: rgba(250,249,245,0.02);
+            border: 1px solid rgba(250,249,245,0.1);
             border-radius: 6px;
-            padding: 3.5rem 3rem;
+            padding: 3rem 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 380px;
-        }
-        .hp-dual-panel--systems {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(250, 249, 245, 0.1);
-        }
-        .hp-dual-panel--creative {
-            background: #ffffff;
-            border: 1px solid var(--border-light);
-            color: var(--text-primary);
         }
 
-        /* ── CONTACT & FOOTER ── */
+        /* ── SHORT ABOUT STRIP ── */
+        .hp-about-strip {
+            padding: 4.5rem 0;
+            background: #FAF8F2;
+            border-bottom: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        /* ── CONTACT SECTION ── */
         .hp-contact-section {
-            background: var(--bg-panel);
-            padding: 100px 0;
-        }
-
-        /* ── MEDIA QUERIES ── */
-        @media (max-width: 1100px) {
-            .home-hero-art img {
-                width: min(74vw, 840px);
-                right: -6vw;
-            }
-            .home-hero-copy {
-                width: min(500px, 50vw);
-            }
-            .home-project-index {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.75rem;
-                max-width: 520px;
-            }
-            .project-nav-item:not(:last-child) {
-                border-right: 1px solid rgba(197, 160, 89, 0.3);
-                padding-right: 0.75rem;
-            }
-            .hp-cards-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .hp-project-card {
-                padding: 2.25rem;
-                min-height: auto;
-            }
-        }
-
-        @media (max-width: 720px) {
-            .home-hero {
-                display: flex;
-                flex-direction: column;
-                padding-top: 96px !important;
-                padding-bottom: 48px !important;
-                min-height: auto !important;
-                background: #FAF9F5 !important;
-            }
-            .home-hero-content {
-                display: contents;
-            }
-            .home-hero-copy {
-                display: contents;
-            }
-            .hero-eyebrow {
-                order: 1;
-                margin-left: 1.5rem;
-                margin-right: 1.5rem;
-                text-align: center;
-            }
-            .hero-title {
-                order: 2;
-                margin-left: 1.5rem;
-                margin-right: 1.5rem;
-                text-align: center;
-                font-size: clamp(3.25rem, 14vw, 4.6rem) !important;
-                line-height: 0.9 !important;
-            }
-            .hero-subhead {
-                order: 3;
-                margin-left: 1.5rem;
-                margin-right: 1.5rem;
-                text-align: center;
-            }
-            .btn-group {
-                order: 4;
-                margin-left: 1.5rem;
-                margin-right: 1.5rem;
-                display: flex;
-                flex-direction: column;
-                gap: 0.75rem;
-                width: calc(100% - 3rem) !important;
-            }
-            .btn-group a {
-                width: 100%;
-                text-align: center;
-                box-sizing: border-box;
-            }
-            .home-hero-art {
-                position: relative;
-                height: 310px;
-                width: 100%;
-                margin-top: 24px;
-                order: 5;
-                overflow: hidden;
-            }
-            .home-hero-art img {
-                position: absolute;
-                width: 155%;
-                max-width: none;
-                right: -43%;
-                top: 50%;
-                transform: translateY(-50%);
-                height: auto;
-            }
-            .home-project-index {
-                order: 6;
-                grid-template-columns: repeat(3, minmax(80px, 1fr));
-                gap: 1rem;
-                width: calc(100% - 3rem) !important;
-                margin: 32px 1.5rem 0 !important;
-                padding-top: 20px;
-                border-top: 1px solid rgba(20,45,38,.18);
-                box-sizing: border-box;
-            }
-            .home-hero-overlay {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar .logo span {
-                font-size: 1.05rem;
-            }
-            .hero-title {
-                font-size: clamp(2.4rem, 10vw, 3.8rem) !important;
-                line-height: 0.95 !important;
-            }
-            .hero .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-            .hero .btn-group a {
-                width: 100%;
-                text-align: center;
-                box-sizing: border-box;
-            }
-            .project-nav-strip {
-                max-width: 100%;
-            }
-
-            .hp-thesis-section {
-                padding: 44px 0;
-            }
-
-            .process-flow-container {
-                grid-template-columns: 1fr;
-                gap: 1.75rem;
-            }
-            .process-step {
-                flex-direction: row;
-                align-items: flex-start;
-                text-align: left;
-                gap: 1.25rem;
-            }
-            .process-node {
-                margin-bottom: 0;
-            }
-            .step-desc {
-                max-width: none;
-            }
-
-            .hp-projects-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
-            }
-        }
-
-        /* ── HP PATHWAYS STYLE ── */
-        .hp-pathways-section {
-            background: var(--bg-paper, #fdfbfa);
-            padding: 5rem 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-        
-        .pathways-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-        
-        @media(max-width: 768px) {
-            .pathways-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-        }
-        
-        .pathway-group {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        .pathway-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--accent-teal);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border-light);
-            padding-bottom: 0.75rem;
-            display: block;
-        }
-        
-        .pathway-item {
-            background: var(--bg-panel, #faf6f0);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 2.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: border-color 0.25s ease;
-        }
-        
-        .pathway-item:hover {
-            border-color: var(--text-primary);
-        }
-        
-        .pathway-title {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            margin: 0;
-            font-weight: 500;
-        }
-        
-        .pathway-desc {
-            font-family: var(--font-sans);
-            font-size: 14.5px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-        
-        .pathway-actions {
-            display: flex;
-            gap: 1.25rem;
-            margin-top: 0.75rem;
-            align-items: center;
-        }
-        
-        .btn-pathway-primary {
-            font-family: var(--font-sans);
-            font-size: 13.5px;
-            font-weight: 600;
-            color: #FAF9F5 !important;
-            background: var(--accent-teal);
-            border: 1px solid var(--accent-teal);
-            padding: 0.65rem 1.25rem;
-            border-radius: 3px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-        
-        .btn-pathway-primary:hover {
-            background: #0d635c;
-            border-color: #0d635c;
-        }
-        
-        .btn-pathway-secondary {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        
-        .btn-pathway-secondary:hover {
-            color: var(--accent-teal);
+            padding: 6rem 0;
+            background: #FFFFFF;
         }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- ── NAV (Exactly once at top of page) ── -->
+    <!-- Navbar -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
-            <a href="/" class="logo">
-                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="Context &amp; Muse">
-                <span>Context &amp; Muse</span>
-            </a>
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
             <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-                        <div class="nav-links">
-                <details class="nav-dropdown">
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
-                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
-                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
-                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
-                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
-                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
-                    </div>
-                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/#contact" class="nav-btn">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
 
-    <!-- ── INTEGRATED HERO SECTION (FULL WIDTH) ── -->
-    <header class="home-hero" id="portfolio-hero">
+    <!-- Hero -->
+    <header class="home-hero">
         <div class="home-hero-art" aria-hidden="true">
             <img src="/assets/images/homepage_hero.jpg" alt="Context &amp; Muse Prism">
         </div>
-
         <div class="home-hero-overlay"></div>
-
         <div class="container home-hero-content">
             <div class="home-hero-copy">
                 <span class="hero-eyebrow">CONTEXT &amp; MUSE</span>
@@ -883,89 +635,196 @@
                     Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use.
                 </p>
                 <div class="btn-group">
-                    <a href="/systems/" class="btn-primary-teal">Explore Systems</a>
-                    <a href="#process" class="btn-secondary-cream">See How It Works</a>
+                    <a href="/systems/" class="btn-primary-teal">Explore the Work &rarr;</a>
+                    <a href="/custom/#intake" class="btn-secondary-cream">Start a Project</a>
                 </div>
             </div>
-
-            <nav class="home-project-index">
-                <div class="project-nav-item">
-                    <span class="p-num">01</span>
-                    <div class="p-meta">
-                        <strong class="p-title">Signal</strong>
-                        <span class="p-desc">Decision Intelligence</span>
-                    </div>
-                </div>
-                <div class="project-nav-item">
-                    <span class="p-num">02</span>
-                    <div class="p-meta">
-                        <strong class="p-title">GenSort</strong>
-                        <span class="p-desc">Information Organization</span>
-                    </div>
-                </div>
-                <div class="project-nav-item">
-                    <span class="p-num">03</span>
-                    <div class="p-meta">
-                        <strong class="p-title">Message &amp; Record Analysis</strong>
-                        <span class="p-desc">Timeline Recovery &amp; Contradiction Review</span>
-                    </div>
-                </div>
-            </nav>
         </div>
     </header>
 
     <main id="main-content">
-        <!-- ── COMMERCIAL PATHWAYS SECTION ── -->
-        <section class="hp-pathways-section" aria-label="Commercial Pathways">
+        <!-- ── 3 CONVERSION PATHWAYS ── -->
+        <section class="hp-paths-section" aria-labelledby="paths-heading">
             <div class="container">
-                <div class="pathways-grid">
-                    <!-- USE A SYSTEM -->
-                    <div class="pathway-group">
-                        <span class="pathway-eyebrow">USE A SYSTEM</span>
-                        
-                        <!-- GenSort -->
-                        <div class="pathway-item">
-                            <h3 class="pathway-title">GenSort</h3>
-                            <p class="pathway-desc">Organize fragmented assets into something searchable, comparable, and usable.</p>
-                            <div class="pathway-actions">
-                                <a href="/gensort/" class="btn-pathway-primary">Explore GenSort &rarr;</a>
-                                <a href="/cxm_gensort/" target="_blank" rel="noopener" class="btn-pathway-secondary">Open the App &neararr;</a>
-                            </div>
-                        </div>
+                <div class="hp-paths-header">
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Navigation by Intent</span>
+                    <h2 id="paths-heading" style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--text-primary); font-weight: 400; margin: 0;">What are you here to do?</h2>
+                </div>
 
-                        <!-- Signal -->
-                        <div class="pathway-item">
-                            <h3 class="pathway-title">Signal</h3>
-                            <p class="pathway-desc">Find the operational problems worth fixing first.</p>
-                            <div class="pathway-actions">
-                                <a href="/signal/" class="btn-pathway-primary">Explore Signal &rarr;</a>
-                            </div>
+                <div class="hp-paths-grid">
+                    <!-- Path 1: Use a System -->
+                    <div class="hp-path-card">
+                        <div>
+                            <span class="hp-path-card-eyebrow">Interactive Software</span>
+                            <h3 class="hp-path-card-title">Use a System</h3>
+                            <p class="hp-path-card-desc">
+                                Standalone tools for operational diagnosis and asset organization: <strong>Signal</strong> (decision intelligence) and <strong>GenSort</strong> (local visual classification).
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="/signal/" class="hp-path-card-link">Signal &rarr;</a>
+                            <a href="/gensort/" class="hp-path-card-link">GenSort &rarr;</a>
                         </div>
                     </div>
 
-                    <!-- BUILD A SYSTEM -->
-                    <div class="pathway-group">
-                        <span class="pathway-eyebrow">BUILD A SYSTEM</span>
+                    <!-- Path 2: Build a System -->
+                    <div class="hp-path-card">
+                        <div>
+                            <span class="hp-path-card-eyebrow">Client Engagements</span>
+                            <h3 class="hp-path-card-title">Build a System</h3>
+                            <p class="hp-path-card-desc">
+                                Custom websites, client intake pipelines, booking logic, and operational workflow software engineered around specific business constraints.
+                            </p>
+                        </div>
+                        <a href="/custom/" class="hp-path-card-link">Custom Systems &amp; Scopes &rarr;</a>
+                    </div>
+
+                    <!-- Path 3: Review the Work -->
+                    <div class="hp-path-card">
+                        <div>
+                            <span class="hp-path-card-eyebrow">Technical Proof</span>
+                            <h3 class="hp-path-card-title">Review the Work</h3>
+                            <p class="hp-path-card-desc">
+                                Technical case studies, systems proof-of-work, and interactive models demonstrating architectural problem-solving and full-stack execution.
+                            </p>
+                        </div>
+                        <a href="/proof-of-work/" class="hp-path-card-link">Proof of Work &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FEATURED SYSTEMS (EDITORIAL ROWS) ── -->
+        <section class="hp-editorial-section" id="featured-systems" aria-labelledby="featured-heading">
+            <div class="container">
+                <div style="margin-bottom: 2rem;">
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Flagship Systems</span>
+                    <h2 id="featured-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--text-primary); margin: 0; font-weight: 400;">Featured Systems</h2>
+                </div>
+
+                <!-- 01 SIGNAL -->
+                <div class="editorial-row">
+                    <div>
+                        <span class="editorial-num">01 // OPERATIONAL INTELLIGENCE</span>
+                        <h3 class="editorial-title">Signal</h3>
+                        <div class="editorial-subhead">Decision &amp; Diagnostic Intelligence</div>
                         
-                        <!-- Custom Systems -->
-                        <div class="pathway-item pathway-custom">
-                            <h3 class="pathway-title">Custom Systems</h3>
-                            <p class="pathway-desc">Websites, intake systems, reservation workflows and operational tools designed around how your business actually works.</p>
-                            <div class="pathway-actions">
-                                <a href="/custom/" class="btn-pathway-primary">Tell Me What's Broken &rarr;</a>
+                        <div class="editorial-breakdown">
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Problem:</span>
+                                <span>Operational information arrives scattered across raw POS exports, labor schedules, and manager notes.</span>
                             </div>
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Structure:</span>
+                                <span>Normalizes transaction patterns, void frequencies, and labor timing against active floor constraints.</span>
+                            </div>
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Output:</span>
+                                <span>Prioritized financial leaks, dollar impact targets, and floor validation scripts.</span>
+                            </div>
+                        </div>
+
+                        <!-- Dataflow Pipeline -->
+                        <div style="padding: 1rem; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; margin-bottom: 1.75rem; font-family: var(--font-mono); font-size: 9.5px; color: var(--accent-teal); letter-spacing: 0.05em; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+                            <span>RAW EXPORT</span>
+                            <span style="color: var(--border-dark);">&rarr;</span>
+                            <span>NORMALIZE</span>
+                            <span style="color: var(--border-dark);">&rarr;</span>
+                            <span>FINDING</span>
+                            <span style="color: var(--border-dark);">&rarr;</span>
+                            <span>RECOMMENDATION</span>
+                            <span style="color: var(--border-dark);">&rarr;</span>
+                            <span>HUMAN VALIDATION</span>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="/signal/" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">Explore Signal &rarr;</a>
+                            <a href="/signal/intake/" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Bring Me the Mess</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="editorial-media-container">
+                            <img src="/assets/images/signal-priority-view.webp" alt="Signal diagnostic decision support interface" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02 GENSORT -->
+                <div class="editorial-row reverse">
+                    <div>
+                        <div class="editorial-media-container">
+                            <img src="/assets/images/gensort-library.webp" alt="GenSort workspace asset organization interface" loading="lazy">
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="editorial-num">02 // INFORMATION ARCHITECTURE</span>
+                        <h3 class="editorial-title">GenSort</h3>
+                        <div class="editorial-subhead">Visual Asset Organization &amp; Local Classification Engine</div>
+                        
+                        <div class="editorial-breakdown">
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Problem:</span>
+                                <span>High-volume generation outputs, creative screenshots, and assets get buried in unorganized desktop folders.</span>
+                            </div>
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Structure:</span>
+                                <span>Runs entirely client-side using browser IndexedDB and Web Workers for instant dHash fingerprinting and semantic prompt search.</span>
+                            </div>
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Output:</span>
+                                <span>Navigable project libraries, duplicate cleanup, and export-ready client collections.</span>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="/gensort/" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">Explore GenSort &rarr;</a>
+                            <a href="/cxm_gensort/" target="_blank" rel="noopener" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Open Web App &nearr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03 MESSAGE & RECORD ANALYSIS -->
+                <div class="editorial-row">
+                    <div>
+                        <span class="editorial-num">03 // EVIDENCE NAVIGATION</span>
+                        <h3 class="editorial-title">Message &amp; Record Analysis</h3>
+                        <div class="editorial-subhead">Private Working System · Timeline Recovery &amp; Contradiction Review</div>
+                        
+                        <div class="editorial-breakdown">
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Problem:</span>
+                                <span>Massive message archives hide critical chronological sequences and conflicting factual claims across disparate threads.</span>
+                            </div>
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Structure:</span>
+                                <span>Indexes multi-party communication histories with timestamp verification, statement tagging, and relationship chain mapping.</span>
+                            </div>
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Output:</span>
+                                <span>Structured synthetic ledgers built for human investigative review and verifiable fact navigation.</span>
+                            </div>
+                        </div>
+
+                        <a href="/systems/#message-record" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">View System Architecture &rarr;</a>
+                    </div>
+
+                    <div>
+                        <div class="editorial-media-container">
+                            <img src="/assets/images/message-analysis-mockup.png" alt="Message and record analysis review interface" loading="lazy">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ── THE METHOD SECTION ── -->
+        <!-- ── THE METHOD SECTION (Positioned after featured systems) ── -->
         <section class="method-section" id="process" aria-label="The Method">
             <div class="container">
-                <div class="method-header" style="text-align: center;">
-                    <span class="hp-eyebrow-teal" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">The Method</span>
-                    <h2 style="font-family: var(--font-sans); font-size: clamp(1.8rem, 2.8vw, 2.2rem); margin-top: 0.5rem; margin-bottom: 0; font-weight: 700; color: var(--text-primary);">Approach to Complexity</h2>
+                <div style="text-align: center;">
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Diagnostic Process</span>
+                    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin: 0; font-weight: 400; color: var(--text-primary);">Approach to Complexity</h2>
                 </div>
                 
                 <div class="process-flow-container">
@@ -998,91 +857,120 @@
             </div>
         </section>
 
-        <!-- ── SYSTEMS IN PRACTICE SHOWCASE (2x2 grid, large cards) ── -->
-        <section class="hp-projects-section" id="project-previews" aria-labelledby="projects-heading">
+        <!-- ── WAYS TO WORK TOGETHER (HOMEPAGE PRODUCTIZED FUNNEL) ── -->
+        <section class="hp-offers-section" id="ways-to-work" aria-label="Ways to Work Together">
             <div class="container">
-                <div class="hp-projects-header">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
                     <div>
-                        <span class="section-label">Proof of Work</span>
-                        <h2 id="projects-heading">Systems in Practice</h2>
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Ways to Work Together</span>
+                        <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--text-primary); margin: 0; font-weight: 400;">Defined Entry Points. Clear Outcomes.</h2>
                     </div>
-                    <a href="/systems/" class="hp-projects-link">View All Systems &rarr;</a>
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">View Full Services Catalog &rarr;</a>
                 </div>
 
-                <div class="hp-cards-grid">
-                    <!-- Card 1: Signal -->
-                    <a href="/systems/#signal" class="hp-project-card" aria-label="Project 01: Signal (Decision Intelligence)">
+                <!-- 4 Core Offers Grid -->
+                <div class="hp-offers-grid">
+                    <!-- 01: Quick Launch -->
+                    <div class="hp-offer-card featured">
                         <div>
-                            <div class="hp-card-meta">
-                                <span>01 &bull; Decision Intelligence</span>
-                                <span class="hp-card-status status-demo">Interactive Demo</span>
-                            </div>
-                            <h3 class="hp-card-title">
-                                <img src="/assets/images/signal_icon.png" style="width: 22px; height: 22px; object-fit: contain;" alt="">
-                                Signal
-                            </h3>
-                            <p class="hp-card-desc">
-                                Converts operational friction into ranked decisions, practical recommendations, and measurable areas of impact.
-                            </p>
-                            <div class="hp-card-visual-wrapper">
-                                <img src="/assets/images/signal-diagnostic-preview.png" alt="Signal Dashboard Preview">
-                            </div>
+                            <span class="hp-offer-badge">Primary Entry</span>
+                            <h3 class="hp-offer-title">Quick Launch Website</h3>
+                            <span class="hp-offer-price">Starting at $450</span>
+                            <p class="hp-offer-desc">A custom, conversion-focused one-page business website launched without agency overhead.</p>
                         </div>
-                        <div class="hp-card-footer">
-                            <span class="hp-card-footer-label">Systems</span>
-                            <span class="hp-card-arrow">View Project &rarr;</span>
+                        <a href="/quick-launch/" class="hp-offer-cta" data-offer="quick_launch" data-track-cta="hp_quick_launch">Start a Quick Launch &rarr;</a>
+                    </div>
+
+                    <!-- 02: Website Diagnostic -->
+                    <div class="hp-offer-card">
+                        <div>
+                            <span class="hp-offer-badge" style="color: var(--text-primary);">Diagnostic Audit</span>
+                            <h3 class="hp-offer-title">Website Diagnostic</h3>
+                            <span class="hp-offer-price">$199</span>
+                            <p class="hp-offer-desc">A focused diagnostic audit identifying why visitors leave, where mobile breaks, and what to fix first.</p>
+                        </div>
+                        <a href="/services/#website-diagnostic" class="hp-offer-cta" data-offer="website_diagnostic" data-track-cta="hp_diagnostic">Audit My Website &rarr;</a>
+                    </div>
+
+                    <!-- 03: Website Rescue -->
+                    <div class="hp-offer-card">
+                        <div>
+                            <span class="hp-offer-badge" style="color: var(--text-primary);">Targeted Fixes</span>
+                            <h3 class="hp-offer-title">Website Rescue</h3>
+                            <span class="hp-offer-price">Starting at $350</span>
+                            <p class="hp-offer-desc">Targeted fixes to confusing layouts, broken mobile views, weak CTAs, and leaky conversion funnels.</p>
+                        </div>
+                        <a href="/services/#website-rescue" class="hp-offer-cta" data-offer="website_rescue" data-track-cta="hp_rescue">Fix My Website &rarr;</a>
+                    </div>
+
+                    <!-- 04: Intake & Booking -->
+                    <div class="hp-offer-card">
+                        <div>
+                            <span class="hp-offer-badge">System Workflow</span>
+                            <h3 class="hp-offer-title">Intake &amp; Booking System</h3>
+                            <span class="hp-offer-price">Starting at $350</span>
+                            <p class="hp-offer-desc">Structured intake forms and automated routing to stop repetitive phone, text, and DM triage.</p>
+                        </div>
+                        <a href="/services/#intake-system" class="hp-offer-cta" data-offer="intake_system" data-track-cta="hp_intake">Build My Intake System &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Escalation Strip -->
+                <div class="hp-escalation-strip">
+                    <p class="hp-escalation-text">
+                        <strong>Need something more complex?</strong> Some businesses don't have a website problem. They have a systems problem. If your workflows, data, or operations need to work together, Context &amp; Muse builds custom systems.
+                    </p>
+                    <a href="/custom/#intake" class="hp-escalation-btn" data-offer="custom_system" data-track-cta="hp_escalation_custom">Build a Custom System &rarr;</a>
+                </div>
+
+                <!-- Enhancement Note -->
+                <div class="hp-enhancements-note">
+                    Also available: <a href="/services/#enhancements" data-track-cta="hp_enhancements">AI &amp; Search Visibility · Image &amp; Product Presentation &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PRODUCTION PROOF (CLIENT BUILDS) ── -->
+        <section class="hp-proof-section" aria-labelledby="proof-heading">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Applied Builds</span>
+                        <h2 id="proof-heading" style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--text-primary); margin: 0; font-weight: 400;">Production Implementations</h2>
+                    </div>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">View All Client Case Studies &rarr;</a>
+                </div>
+
+                <div class="hp-proof-grid">
+                    <!-- INNcontrol -->
+                    <a href="/systems/client-builds/#inncontrol" class="hp-proof-card">
+                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol HVAC scoping application" loading="lazy">
+                        <div class="hp-proof-card-body">
+                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;">Field Service Scoping</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">INNcontrol Coils</h3>
+                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Interactive unit mapper and on-site estimation ledger replacing paper HVAC surveys.</p>
                         </div>
                     </a>
 
-                    <!-- Card 2: GenSort -->
-                    <a href="/systems/#gensort" class="hp-project-card" aria-label="Project 02: GenSort (Information Organization)">
-                        <div>
-                            <div class="hp-card-meta">
-                                <span>02 &bull; Information Organization</span>
-                                <span class="hp-card-status status-prototype">Working Prototype</span>
-                            </div>
-                            <h3 class="hp-card-title">
-                                <img src="/assets/images/gensort_logo.svg" style="width: 22px; height: 22px; object-fit: contain;" alt="">
-                                GenSort
-                            </h3>
-                            <p class="hp-card-desc">
-                                Organizes fragmented files, ideas, and source material into usable project structures and export-ready collections.
-                            </p>
-                            <div class="hp-card-visual-wrapper">
-                                <img src="/assets/images/gensort-workspace.png" alt="GenSort Workspace Preview">
-                            </div>
-                        </div>
-                        <div class="hp-card-footer">
-                            <span class="hp-card-footer-label">Systems</span>
-                            <span class="hp-card-arrow">View Project &rarr;</span>
+                    <!-- D2 Auto Detail -->
+                    <a href="/systems/client-builds/#d2" class="hp-proof-card">
+                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail portal" loading="lazy">
+                        <div class="hp-proof-card-body">
+                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;">Acquisition &amp; Media</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">D2 Auto Detail</h3>
+                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Vehicle qualification funnel with automated ad generation and media streaming player.</p>
                         </div>
                     </a>
 
-                    <!-- Card 3: Message & Record Analysis -->
-                    <a href="/systems/#message-record" class="hp-project-card" aria-label="Project 03: Message &amp; Record Analysis (Timeline Recovery &amp; Contradiction Review)">
-                        <div>
-                            <div class="hp-card-meta">
-                                <span>03 &bull; Timeline Recovery &amp; Contradiction Review</span>
-                                <span class="hp-card-status status-concept">Concept Model</span>
-                            </div>
-                            <h3 class="hp-card-title">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-teal);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M8 10h.01"></path><path d="M12 10h.01"></path><path d="M16 10h.01"></path></svg>
-                                Message &amp; Record Analysis
-                            </h3>
-                            <p class="hp-card-desc">
-                                Makes large communication records searchable, traceable, and easier to review across timelines, patterns, and contradictions.
-                            </p>
-                            <div class="hp-card-visual-wrapper">
-                                <img src="/assets/images/message-analysis-mockup.png" alt="Message and Record Analysis Preview">
-                            </div>
-                        </div>
-                        <div class="hp-card-footer">
-                            <span class="hp-card-footer-label">Systems</span>
-                            <span class="hp-card-arrow">View Project &rarr;</span>
+                    <!-- EDR Party Rentals -->
+                    <a href="/case-studies/edr-party-rentals/" class="hp-proof-card">
+                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory system" loading="lazy">
+                        <div class="hp-proof-card-body">
+                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;">Inventory &amp; Reservation</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">EDR Party Rentals</h3>
+                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Real-time serial inventory lockouts eliminating calendar double-booking errors.</p>
                         </div>
                     </a>
-
-
                 </div>
             </div>
         </section>
@@ -1090,81 +978,92 @@
         <!-- ── TWO BRANCHES SECTION ── -->
         <section class="hp-dual-section" aria-label="Applied Systems and Creative Practice">
             <div class="container">
-                <div class="hp-dual-header" style="text-align: center; margin-bottom: 3.5rem;">
-                    <span style="font-family: var(--font-mono); font-size: 10px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.75rem;">The Studio</span>
-                    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: #FAF9F5; margin: 0; font-weight: 400; letter-spacing: -0.02em;">Two branches. One pattern of thinking.</h2>
+                <div style="text-align: center; margin-bottom: 3.5rem;">
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.75rem;">The Studio</span>
+                    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: #FAF9F5; margin: 0; font-weight: 400;">Two branches. One pattern of thinking.</h2>
                 </div>
                 <div class="hp-dual-grid">
                     <!-- Panel 1: Applied Systems -->
-                    <div class="hp-dual-panel hp-dual-panel--systems">
+                    <div class="hp-dual-panel">
                         <div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: #2DD4BF; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">01 &bull; Operation &amp; Structure</span>
-                            <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2rem); color: #FAF9F5; line-height: 1.2; margin-bottom: 1.25rem; font-weight: 400;">Applied Systems</h3>
-                            <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: rgba(250, 249, 245, 0.65); margin-bottom: 2rem;">
-                                Operational tools. Decision intelligence. Diagnostic dashboards, database design, and info structures built for decision clarity: Signal, GenSort, Message Analysis, and selected commercial builds.
+                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: #2DD4BF; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.25rem;">01 &bull; Operation &amp; Structure</span>
+                            <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2rem); color: #FAF9F5; line-height: 1.2; margin-bottom: 1rem; font-weight: 400;">Applied Systems</h3>
+                            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(250, 249, 245, 0.65); margin-bottom: 2rem;">
+                                Operational tools. Decision intelligence. Diagnostic dashboards, database design, and info structures built for decision clarity: Signal, GenSort, Message Analysis, and commercial client systems.
                             </p>
                         </div>
-                        <a href="/systems/" style="background: #2DD4BF; border-color: #2DD4BF; color: #10211D; width: fit-content; margin-top: auto; font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.65rem 1.4rem; border-radius: 3px; text-decoration: none; text-align: center; display: inline-block; transition: all 0.2s;">Explore Applied Systems &rarr;</a>
+                        <a href="/systems/" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; width: fit-content; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Explore Applied Systems &rarr;</a>
                     </div>
 
                     <!-- Panel 2: Creative Practice -->
-                    <div class="hp-dual-panel hp-dual-panel--creative">
+                    <div class="hp-dual-panel">
                         <div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent-red); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.5rem;">02 &bull; Language &amp; Form</span>
-                            <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2rem); color: #10211D; line-height: 1.2; margin-bottom: 1.25rem; font-weight: 400;">Creative Practice</h3>
-                            <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: #EF4444; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.25rem;">02 &bull; Language &amp; Form</span>
+                            <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2rem); color: #FAF9F5; line-height: 1.2; margin-bottom: 1rem; font-weight: 400;">Creative Practice</h3>
+                            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(250, 249, 245, 0.65); margin-bottom: 2rem;">
                                 Literary systems. Symbolic mapping. Narrative projects exploring translation, neurodivergent logic, and communication boundaries: How to Explain Yourself to Wolves, Self Cartography, and MadeOfReasons.
                             </p>
                         </div>
-                        <a href="/creative/" style="border: 1px solid var(--accent-red); color: var(--accent-red); width: fit-content; margin-top: auto; font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.65rem 1.4rem; border-radius: 3px; text-decoration: none; text-align: center; display: inline-block; background: transparent; transition: all 0.2s;">Explore Creative Practice &rarr;</a>
+                        <a href="/creative/" class="btn-magnetic" style="border: 1px solid #EF4444; color: #FAF9F5; width: fit-content; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Explore Creative Practice &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ── CONTACT SECTION (Immediately follows Two Branches, exactly once) ── -->
+        <!-- ── SHORT ABOUT STRIP ── -->
+        <section class="hp-about-strip">
+            <div class="container" style="max-width: 780px;">
+                <p style="font-family: var(--font-serif); font-size: clamp(1.2rem, 2.2vw, 1.5rem); color: var(--text-primary); line-height: 1.55; margin: 0; font-style: italic;">
+                    "Systems built by someone who learned operations where errors have immediate consequences."
+                </p>
+                <div style="margin-top: 1.25rem;">
+                    <a href="/about/" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Read Background &amp; Approach &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CONTACT SECTION ── -->
         <section class="hp-contact-section" id="contact" aria-labelledby="contact-heading">
             <div class="container">
-                <div class="audit-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
                     <!-- Column 1: Info -->
-                    <div class="audit-info">
-                        <span class="eyebrow" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">Contact &bull; Evaluation</span>
-                        <h2 id="contact-heading" class="section-title" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 400; color: var(--text-primary);">
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Contact &bull; Evaluation</span>
+                        <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 400; color: var(--text-primary);">
                             Bring me the mess.
                         </h2>
                         <blockquote style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55; margin-left: 0;">
                             Send the workflow, information problem, or unfinished system you are trying to make sense of. I’ll identify where clarity is breaking down and what a practical next step could look like.
                         </blockquote>
-                        <p class="body-copy" style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem;">
+                        <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem;">
                             Whether you are dealing with broken spreadsheet hierarchies, conflicting timelines, POS discrepancies, or a product that feels structurally chaotic—we can map a path to order.
                         </p>
-                        <div style="margin-top: 2rem; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
+                        <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
                             Email inquiries: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: bold; text-decoration: none;">jayme@contextmuse.com</a>
                         </div>
                     </div>
 
                     <!-- Column 2: Form -->
-                    <div class="audit-form-container" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.01);">
-                        <form action="https://formspree.io/f/xoqydgvw" method="POST" class="audit-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
-                            <!-- Anti-spam hidden field -->
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
+                        <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <input type="text" name="_gotcha" style="display:none">
                             
-                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Name</label>
-                                <input type="text" id="form-name" name="name" class="form-input" required placeholder="Name" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Name</label>
+                                <input type="text" id="form-name" name="name" required placeholder="Your name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
                             </div>
                             
-                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Email Address</label>
-                                <input type="email" id="form-email" name="email" class="form-input" required placeholder="Email Address" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Email Address</label>
+                                <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
                             </div>
 
-                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">What are you trying to make clearer?</label>
-                                <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the current workflow, information problem, or operational bottleneck..." style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical;"></textarea>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you trying to make clearer?</label>
+                                <textarea id="form-message" name="message" rows="5" required placeholder="Describe the current workflow, information problem, or operational bottleneck..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
                             </div>
 
-                            <button type="submit" class="form-submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.8rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s; text-align: center;">Start the Conversation</button>
+                            <button type="submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.85rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s; text-align: center;">Start the Conversation &rarr;</button>
                         </form>
                     </div>
                 </div>
@@ -1172,7 +1071,7 @@
         </section>
     </main>
 
-    <!-- ── FOOTER (Only at bottom of page) ── -->
+    <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
@@ -1184,6 +1083,12 @@
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
                     <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
@@ -1194,5 +1099,6 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

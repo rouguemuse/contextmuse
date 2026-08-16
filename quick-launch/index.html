@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Launch Websites — Starting at $450 | Context &amp; Muse</title>
+    <meta name="description" content="Custom, mobile-ready one-page business websites for service companies and startups that need a professional online presence without an agency-sized bill.">
+    <link rel="canonical" href="https://www.contextmuse.com/quick-launch/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.contextmuse.com/quick-launch/">
+    <meta property="og:title" content="Quick Launch Websites — Starting at $450 | Context &amp; Muse">
+    <meta property="og:description" content="A professional business website without the agency-sized bill. Custom, mobile-ready websites for service businesses and small companies.">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quick Launch Websites — Starting at $450 | Context &amp; Muse">
+    <meta name="twitter:description" content="Custom, mobile-ready one-page business websites for service companies and startups that need a professional online presence without an agency-sized bill.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .ql-hero {
+            padding: 135px 0 75px;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .ql-hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+        @media(max-width: 950px) {
+            .ql-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .ql-price-badge {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+        .ql-price-val {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #10211D;
+            line-height: 1;
+        }
+        .ql-price-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-teal);
+            font-weight: 600;
+        }
+        .ql-offer-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .ql-checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .ql-checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14.5px;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+        .ql-check-icon {
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.3;
+            flex-shrink: 0;
+        }
+        .ql-section {
+            padding: 85px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        @media(max-width: 768px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .scope-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2rem;
+        }
+        .scope-card.included {
+            border-top: 3px solid var(--accent-teal);
+        }
+        .scope-card.custom {
+            border-top: 3px solid var(--accent-gold);
+        }
+        .scope-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin: 0 0 0.75rem 0;
+            font-weight: 500;
+        }
+        .addon-accordion {
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            background: #ffffff;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        .addon-row {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .addon-row:last-child {
+            border-bottom: none;
+        }
+        .addon-summary {
+            padding: 1.15rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            list-style: none;
+            transition: background 0.2s ease;
+        }
+        .addon-summary::-webkit-details-marker {
+            display: none;
+        }
+        .addon-summary:hover {
+            background: var(--bg-paper);
+        }
+        .addon-name {
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .addon-price {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--accent-teal);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .addon-body {
+            padding: 0 1.5rem 1.25rem;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        .inquiry-box {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.75rem;
+            box-shadow: 0 16px 40px rgba(16, 33, 29, 0.05);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        @media(max-width: 600px) {
+            .inquiry-box {
+                padding: 1.75rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ── NAV ── -->
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── HERO SECTION ── -->
+    <header class="ql-hero">
+        <div class="container">
+            <div class="ql-hero-grid">
+                <div>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;">QUICK LAUNCH WEBSITES</span>
+                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.2vw, 3.6rem); line-height: 1.12; color: #10211D; margin: 0.75rem 0 1.25rem;">
+                        A professional business website without the agency-sized bill.
+                    </h1>
+                    <p style="font-family: var(--font-sans); font-size: 16.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
+                        Custom, mobile-ready websites for service businesses and small companies that need a sharper online presence — and a clear way for customers to actually contact them.
+                    </p>
+                    <div style="display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;">
+                        <a href="#intake" class="btn-primary-teal" style="padding: 0.85rem 1.75rem;">
+                            START MY WEBSITE
+                        </a>
+                        <a href="/custom/" class="btn-pathway-secondary" style="font-size: 12px;">
+                            Need something more complex? Explore Custom Systems &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="ql-offer-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.25rem;">CORE PACKAGE</span>
+                            <h2 style="font-family: var(--font-serif); font-size: 1.6rem; color: #10211D; margin: 0 0 0.5rem; font-weight: 500;">Quick Launch Website</h2>
+                            <div class="ql-price-badge">
+                                <span class="ql-price-val">$450</span>
+                                <span class="ql-price-tag">Starting Price</span>
+                            </div>
+                        </div>
+
+                        <p style="font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); margin: 0; border-top: 1px solid var(--border-light); padding-top: 1rem;">
+                            Everything needed to launch a clean, polished business website that converts visitors into phone calls and inquiry forms.
+                        </p>
+
+                        <ul class="ql-checklist">
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>Custom one-page business website</strong> built around your brand</span></li>
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>Mobile optimization</strong> for phones, tablets, and desktops</span></li>
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>SEO foundation</strong> (clean page titles, meta tags, and structured headings)</span></li>
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>Clear calls-to-action</strong> guiding customers to call, message, or request a quote</span></li>
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>Standard custom quote / contact intake</strong> routed to your email</span></li>
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>Domain connection</strong> to your custom domain</span></li>
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>Basic tracking tag installation</strong> (installing your Meta Pixel, GA4, or GTM container IDs)*</span></li>
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>Launch setup</strong> and live deployment</span></li>
+                            <li><span class="ql-check-icon">&#10003;</span> <span><strong>1 revision round</strong> before final launch</span></li>
+                        </ul>
+
+                        <div style="background: var(--bg-paper); border-left: 2px solid var(--accent-teal); padding: 8px 12px; font-size: 11.5px; color: var(--text-secondary); border-radius: 0 4px 4px 0;">
+                            *Basic tracking installs your provided tag IDs. Advanced conversion event architecture is available as a modular add-on.
+                        </div>
+
+                        <a href="#intake" class="btn-primary-teal" style="width: 100%; box-sizing: border-box; text-align: center;">
+                            Get Started for $450 &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ── SECTION: STANDARD INTAKE EXPLAINED ── -->
+        <section class="ql-section" style="background: #ffffff;">
+            <div class="container" style="max-width: 960px;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;">LEAD CAPTURE</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.3rem); color: #10211D; margin: 0.5rem 0 1rem; font-weight: 500;">
+                    What the standard custom intake collects
+                </h2>
+                <p style="font-size: 15px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
+                    The standard Quick Launch package includes a clean, custom-tailored intake form designed to collect straightforward business information so you can qualify and respond to inquiries without chasing people down:
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.25rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 4px;">01 // CONTACT</strong>
+                        <span style="font-size: 13.5px; color: var(--text-primary);">Name, email address, and phone number</span>
+                    </div>
+                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.25rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 4px;">02 // SERVICE</strong>
+                        <span style="font-size: 13.5px; color: var(--text-primary);">Service needed, project type, or request category</span>
+                    </div>
+                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.25rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 4px;">03 // LOCATION</strong>
+                        <span style="font-size: 13.5px; color: var(--text-primary);">ZIP code, neighborhood, or service area</span>
+                    </div>
+                    <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.25rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 4px;">04 // TIMING &amp; DETAILS</strong>
+                        <span style="font-size: 13.5px; color: var(--text-primary);">Preferred timeline, project notes, or qualifying answers</span>
+                    </div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 1.5rem; font-family: var(--font-mono);">
+                    Note: The standard package covers this direct lead-collection workflow. Complex multi-step conditional logic, stored databases, automated scheduling engines, and CRM integrations are available as add-ons below.
+                </p>
+            </div>
+        </section>
+
+        <!-- ── SECTION: THE SIMPLE SCOPE RULE ── -->
+        <section class="ql-section" style="background: var(--bg-panel, #faf6f0);">
+            <div class="container" style="max-width: 960px;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;">SCOPE BOUNDARIES</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.3rem); color: #10211D; margin: 0.5rem 0 1rem; font-weight: 500;">
+                    The Simple Scope Rule
+                </h2>
+                <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 0;">
+                    To keep things transparent and prevent unexpected surprises, here is how we distinguish standard website work from custom systems:
+                </p>
+
+                <div class="scope-grid">
+                    <div class="scope-card included">
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">STANDARD BUILD</span>
+                        <h3 class="scope-title">Included in Quick Launch</h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem;">
+                            If your website primarily needs to:
+                        </p>
+                        <ul style="padding-left: 1.25rem; margin: 0; font-size: 14.5px; color: var(--text-primary); line-height: 1.7;">
+                            <li><strong>Show information</strong> (services, story, proof, photos, pricing, FAQs)</li>
+                            <li><strong>Collect information</strong> (contact messages, quote requests, project details)</li>
+                        </ul>
+                        <p style="font-size: 13.5px; color: var(--text-secondary); margin-top: 1rem; margin-bottom: 0;">
+                            &rarr; It fits cleanly inside a standard Quick Launch website build.
+                        </p>
+                    </div>
+
+                    <div class="scope-card custom">
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">MODULAR / CUSTOM SCOPE</span>
+                        <h3 class="scope-title">Requires Custom Quoting</h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem;">
+                            If your website needs to:
+                        </p>
+                        <ul style="padding-left: 1.25rem; margin: 0; font-size: 14.5px; color: var(--text-primary); line-height: 1.7;">
+                            <li><strong>Process, calculate, or store data</strong> (databases, mini CRMs)</li>
+                            <li><strong>Automate, schedule, or sync workflows</strong> (calendars, webhooks)</li>
+                            <li><strong>Sell or manage inventory</strong> (ecommerce carts, multi-step portals)</li>
+                        </ul>
+                        <p style="font-size: 13.5px; color: var(--text-secondary); margin-top: 1rem; margin-bottom: 0;">
+                            &rarr; Additional modular development is required and quoted upfront.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SECTION: WHAT COSTS EXTRA? (EXPANDABLE ROWS) ── -->
+        <section class="ql-section" style="background: #ffffff;">
+            <div class="container" style="max-width: 960px;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;">MODULAR ADD-ONS</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.3rem); color: #10211D; margin: 0.5rem 0 1rem; font-weight: 500;">
+                    What Costs Extra?
+                </h2>
+                <p style="font-size: 15px; line-height: 1.65; color: var(--text-secondary); margin: 0;">
+                    You do not need to buy a bloated agency bundle. Add only what makes sense for your business, when you need it.
+                </p>
+
+                <div class="addon-accordion">
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Additional Standard Page</span>
+                            <span class="addon-price">Starting at +$100 / page <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Additional dedicated pages such as About, Individual Services, Gallery, Team, FAQs, or dedicated landing pages.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">SEO Service / Location Page</span>
+                            <span class="addon-price">Starting at +$125 / page <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Structured pages designed specifically around specific cities, neighborhoods, or high-intent search keywords in your service territory.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Advanced or Multi-Step Intake</span>
+                            <span class="addon-price">Starting at +$125 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Multi-step progressive forms, branching qualification questions, and conditional logic tailored to complex service quoting.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Advanced Advertising Conversion Setup</span>
+                            <span class="addon-price">Starting at +$100 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Google Ads conversion events, Meta lead/conversion events, completed-form conversion triggers, CTA button tracking, custom GTM setup, conversion verification, and troubleshooting existing tracking implementations.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Booking / Calendar Integration</span>
+                            <span class="addon-price">Starting at +$150 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Direct calendar scheduling (Calendly, Acuity, Square Appointments, etc.) embedded directly into your customer journey.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Payment Integration</span>
+                            <span class="addon-price">Starting at +$150 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Secure payment collection via Stripe, Square, or PayPal for deposits, service retains, or invoices.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Custom Self-Hosted Backend</span>
+                            <span class="addon-price">Starting at +$175 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Custom serverless handlers or backend endpoints running directly through your own hosting environment for proprietary form handling.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Database / Stored Leads</span>
+                            <span class="addon-price">Starting at +$200 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Persistent database storage of every incoming customer inquiry with exportable logs and timestamped records.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">CRM / Admin Dashboard</span>
+                            <span class="addon-price">Starting at +$300 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Password-protected administrative dashboard to view, filter, update job status, and manage client records in one place.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Ecommerce</span>
+                            <span class="addon-price">Starting at +$300 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Product catalog setup, inventory variants, shopping cart, and automated order fulfillment notifications.
+                        </div>
+                    </details>
+
+                    <details class="addon-row">
+                        <summary class="addon-summary">
+                            <span class="addon-name">Custom Automation</span>
+                            <span class="addon-price">Starting at +$100 <span class="nav-dropdown-arrow">▾</span></span>
+                        </summary>
+                        <div class="addon-body">
+                            Automated webhooks, email auto-responders, SMS alerts, or sync to Google Sheets / Airtable upon form submission.
+                        </div>
+                    </details>
+                </div>
+
+                <p style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary); margin-top: 1.25rem;">
+                    *Final pricing depends on project requirements and is confirmed before additional work begins.
+                </p>
+            </div>
+        </section>
+
+        <!-- ── SECTION: THIRD-PARTY COSTS & OWNERSHIP ── -->
+        <section class="ql-section" style="background: var(--bg-paper);">
+            <div class="container" style="max-width: 960px;">
+                <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: 6px; padding: 2rem 2.25rem;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;">TRANSPARENCY &amp; ASSET OWNERSHIP</span>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: #10211D; margin: 0.25rem 0 0.75rem; font-weight: 500;">
+                        Clear terms. You stay in control.
+                    </h3>
+                    <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-primary); margin-bottom: 0.85rem;">
+                        <strong>Your domain, hosting, advertising accounts, business accounts, and customer data remain under your ownership.</strong>
+                    </p>
+                    <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 0.85rem;">
+                        Whenever practical, Context &amp; Muse works with tools you already own rather than adding unnecessary monthly subscriptions. If third-party services are required (such as custom domain registration, web hosting, payment processor fees, SMS gateways, or specialized API tools), those accounts are set up directly in your name.
+                    </p>
+                    <p style="font-size: 12.5px; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                        Third-party software, licensed assets, APIs, fonts, and stock media remain subject to their respective licenses and terms of service.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SECTION: CUSTOM SYSTEM ESCALATION PATH ── -->
+        <section class="ql-section" style="background: #10211D; color: #FAF9F5;">
+            <div class="container" style="max-width: 960px; text-align: center;">
+                <span class="eyebrow" style="color: var(--accent-teal, #2dd4bf); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;">NEED MORE COMPLEXITY?</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.6rem); color: #FAF9F5; margin: 0.5rem 0 1rem; font-weight: 500;">
+                    Need More Than Quick Launch?
+                </h2>
+                <p style="font-size: 16px; line-height: 1.65; color: rgba(250, 249, 245, 0.8); max-width: 680px; margin: 0 auto 2rem;">
+                    If your business requires deep multi-page customer acquisition funnels, interactive scoping tools, custom database architecture, operational dashboards, field service workflows, or end-to-end operational software, we build custom client systems from the ground up.
+                </p>
+                <a href="/custom/" class="btn-primary-teal" style="background: var(--accent-teal, #0F766E); color: #FAF9F5; border-color: var(--accent-teal, #0F766E); padding: 0.85rem 2rem;">
+                    EXPLORE CUSTOM SYSTEMS &rarr;
+                </a>
+            </div>
+        </section>
+
+        <!-- ── SECTION: INTAKE FORM ── -->
+        <section class="ql-section" id="intake" style="background: var(--bg-panel, #faf6f0);">
+            <div class="container">
+                <div class="inquiry-box">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; display: block;">GET STARTED</span>
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem; color: #10211D; text-align: center; margin: 0.25rem 0 0.5rem; font-weight: 500;">
+                        Start Your Quick Launch Website
+                    </h2>
+                    <p style="font-size: 14.5px; color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">
+                        Tell me about your business. I'll review your details, confirm scope, and tell you the exact next steps.
+                    </p>
+
+                    <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <!-- Anti-spam -->
+                        <input type="text" name="_gotcha" style="display: none;">
+                        
+                        <!-- Preselected package indicator -->
+                        <input type="hidden" name="service" value="quick-launch-450">
+
+                        <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 4px; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong style="font-size: 14px; color: var(--text-primary);">Selected Package:</strong>
+                                <span style="font-size: 14px; color: var(--accent-teal); font-weight: 600; margin-left: 6px;">Quick Launch Website</span>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--text-primary);">Starting at $450</span>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Your Name *</label>
+                                <input type="text" id="form-name" name="name" required placeholder="First &amp; Last Name" style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                            </div>
+
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Email Address *</label>
+                                <input type="email" id="form-email" name="email" required placeholder="you@company.com" style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-business" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Business Name *</label>
+                                <input type="text" id="form-business" name="business_name" required placeholder="e.g. Apex Roofing, Austin Tile Co." style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                            </div>
+
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-url" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Current Website / Social Page (Optional)</label>
+                                <input type="text" id="form-url" name="current_website" placeholder="e.g. facebook.com/yourbusiness or existing site" style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                            <label for="form-what-you-do" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">What does your business do? *</label>
+                            <input type="text" id="form-what-you-do" name="business_description" required placeholder="e.g. Residential plumbing in Austin, boutique law practice, mobile detailing" style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                        </div>
+
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                            <label for="form-customer-action" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">What do you want customers to do on the website? *</label>
+                            <textarea id="form-customer-action" name="desired_customer_action" rows="3" required placeholder="e.g. Call directly, request a free quote with project details, check our service area, or view previous work..." style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical;"></textarea>
+                        </div>
+
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                            <label for="form-special-needs" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Anything special or specific you need? (Optional)</label>
+                            <input type="text" id="form-special-needs" name="special_requirements" placeholder="e.g. Need multiple location pages, booking calendar, extra pages, specific deadline" style="width: 100%; box-sizing: border-box; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper);">
+                        </div>
+
+                        <button type="submit" class="btn-primary-teal" style="width: 100%; padding: 0.9rem; font-size: 15px; cursor: pointer; margin-top: 0.5rem;">
+                            Submit Website Inquiry &rarr;
+                        </button>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); text-align: center; display: block;">
+                            No upfront payment required to inquire. I'll review and confirm scope first.
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

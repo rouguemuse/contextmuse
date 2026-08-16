@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Cartography · Symbolic Topology &amp; Interactive Coordinates | Context &amp; Muse</title>
+    <meta name="description" content="An interactive cartographic diagnostic framework charting boundaries, cognitive variables, and decision structures across distinct quadrants.">
+    <link rel="canonical" href="https://www.contextmuse.com/creative/self-cartography/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Self Cartography · Symbolic Topology &amp; Interactive Coordinates | Context &amp; Muse">
+    <meta property="og:description" content="An interactive cartographic diagnostic framework charting boundaries, cognitive variables, and decision structures across distinct quadrants.">
+    <meta property="og:url" content="https://www.contextmuse.com/creative/self-cartography/">
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Self Cartography · Symbolic Topology &amp; Interactive Coordinates | Context &amp; Muse">
+    <meta name="twitter:description" content="An interactive cartographic diagnostic framework charting boundaries, cognitive variables, and decision structures across distinct quadrants.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.1">
+    
+    <style>
+        :root {
+            --bg-body: #FAF9F5;
+            --text-primary: #10211D;
+            --text-secondary: #4A5568;
+            --border-light: rgba(16, 33, 29, 0.12);
+            --accent-red: #A83A32;
+            --accent-teal: #0F766E;
+        }
+        
+        .cart-hero {
+            padding: 7rem 0 4rem;
+            background: #1A1A18;
+            color: #FAF9F5;
+            position: relative;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: #C5A059;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            max-width: 800px;
+        }
+        .hero-sub {
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: rgba(250, 249, 245, 0.75);
+            max-width: 680px;
+            margin-bottom: 2rem;
+        }
+        
+        .cart-section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 960px) {
+            .cart-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        
+        .cart-img-container {
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+            background: #FFFFFF;
+        }
+        .cart-img-container img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+        
+        .quadrant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        @media (max-width: 600px) {
+            .quadrant-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .quadrant-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1.5rem;
+        }
+        .quadrant-num {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--accent-red);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .quadrant-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .quadrant-desc {
+            font-size: 13px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <header class="cart-hero">
+            <div class="container">
+                <div style="margin-bottom: 1.5rem;">
+                    <a href="/creative/" style="font-family: var(--font-mono); font-size: 11px; text-decoration: none; color: #C5A059; font-weight: bold;">&larr; Back to Creative Practice</a>
+                </div>
+                <span class="hero-eyebrow">Interactive Diagnostic Framework</span>
+                <h1 class="hero-title">Self Cartography</h1>
+                <p class="hero-sub">
+                    A topological framework and interactive coordinate canvas mapping boundaries, psychological variables, and translation thresholds.
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Breakdown -->
+        <section class="cart-section">
+            <div class="container">
+                <div class="cart-grid">
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-red); text-transform: uppercase; font-weight: bold; letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem;">Coordinate Topology</span>
+                        <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 2.8vw, 2.4rem); color: var(--text-primary); margin-bottom: 1rem; font-weight: 400;">Mapping the unexplainable.</h2>
+                        <p style="font-size: 15px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Self Cartography uses spatial coordinate geometry to represent states of mind, boundary violations, and communication exhaustion. Rather than relying solely on linear text, the framework plots dynamic variables across four distinct psychological quadrants.
+                        </p>
+                        
+                        <div class="quadrant-grid">
+                            <div class="quadrant-card">
+                                <span class="quadrant-num">Quadrant I</span>
+                                <h3 class="quadrant-title">The Sanctuary</h3>
+                                <p class="quadrant-desc">Low external demand, high internal coherence. The space where translation is unnecessary.</p>
+                            </div>
+                            <div class="quadrant-card">
+                                <span class="quadrant-num">Quadrant II</span>
+                                <h3 class="quadrant-title">The Threshold</h3>
+                                <p class="quadrant-desc">Moderate demand with high translation load. Where explanation begins to feel like a toll.</p>
+                            </div>
+                            <div class="quadrant-card">
+                                <span class="quadrant-num">Quadrant III</span>
+                                <h3 class="quadrant-title">The Perimeter</h3>
+                                <p class="quadrant-desc">High vigilance and boundary policing. Active defense against misinterpretation.</p>
+                            </div>
+                            <div class="quadrant-card">
+                                <span class="quadrant-num">Quadrant IV</span>
+                                <h3 class="quadrant-title">The Wilds</h3>
+                                <p class="quadrant-desc">Unmapped territory where external consensus breaks down and survival instincts take over.</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn-magnetic" style="background: var(--text-primary); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; padding: 0.75rem 1.4rem; border-radius: 4px; text-decoration: none;">View Wolves Manuscript &rarr;</a>
+                            <a href="/creative/" style="border: 1px solid var(--border-light); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; padding: 0.75rem 1.4rem; border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center;">All Creative Work</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="cart-img-container">
+                            <img src="/assets/images/self_cartography_mockup.jpg" alt="Self Cartography interactive coordinate canvas">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

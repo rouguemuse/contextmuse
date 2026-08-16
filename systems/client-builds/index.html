@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Builds · Applied Systems & Production Software | Context &amp; Muse</title>
+    <meta name="description" content="Production systems built to solve real business constraints: INNcontrol HVAC scoping, D2 Auto Detail acquisition infrastructure, and EDR Party Rentals inventory engine.">
+    <link rel="canonical" href="https://www.contextmuse.com/systems/client-builds/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Client Builds · Applied Systems & Production Software | Context &amp; Muse">
+    <meta property="og:description" content="Production systems built to solve real business constraints: INNcontrol HVAC scoping, D2 Auto Detail acquisition infrastructure, and EDR Party Rentals inventory engine.">
+    <meta property="og:url" content="https://www.contextmuse.com/systems/client-builds/">
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Client Builds · Applied Systems & Production Software | Context &amp; Muse">
+    <meta name="twitter:description" content="Production systems built to solve real business constraints: INNcontrol HVAC scoping, D2 Auto Detail acquisition infrastructure, and EDR Party Rentals inventory engine.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.1">
+    
+    <style>
+        :root {
+            --bg-body: #FAF9F5;
+            --text-primary: #10211D;
+            --text-secondary: #4A5568;
+            --border-light: rgba(16, 33, 29, 0.12);
+            --accent-teal: #0F766E;
+        }
+        
+        .client-builds-hero {
+            padding: 7rem 0 4rem;
+            background: #10211D;
+            color: #FAF9F5;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: #2DD4BF;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.15;
+            color: #FAF9F5 !important;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+            max-width: 820px;
+        }
+        .hero-sub {
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: rgba(250, 249, 245, 0.75);
+            max-width: 680px;
+            margin-bottom: 2rem;
+        }
+        
+        .case-study-section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 960px) {
+            .case-study-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        
+        .browser-mockup {
+            background: #1A2E29;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(16, 33, 29, 0.15);
+            box-shadow: 0 16px 40px rgba(16, 33, 29, 0.12);
+        }
+        .browser-bar {
+            background: #142420;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #EF4444; }
+        .dot-yellow { background: #F59E0B; }
+        .dot-green { background: #10B981; }
+        .browser-url {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: rgba(250, 249, 245, 0.5);
+            background: rgba(0, 0, 0, 0.25);
+            padding: 3px 12px;
+            border-radius: 12px;
+            flex: 1;
+        }
+        .browser-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .study-meta {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: var(--accent-teal);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .study-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+        .study-tagline {
+            font-family: var(--font-sans);
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .constraint-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .constraint-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-teal);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+        .constraint-text {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .btn-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--text-primary);
+            color: #FAF9F5;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: background 0.2s;
+        }
+        .btn-live:hover {
+            background: var(--accent-teal);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <header class="client-builds-hero">
+            <div class="container">
+                <span class="hero-eyebrow">Production Implementations</span>
+                <h1 class="hero-title">Systems that had to work outside the portfolio.</h1>
+                <p class="hero-sub">
+                    Web applications, customer intake pipelines, inventory blockouts, and field management systems built to model real-world business constraints.
+                </p>
+            </div>
+        </header>
+
+        <!-- Case Study 1: INNcontrol Coils -->
+        <section class="case-study-section" id="inncontrol">
+            <div class="container">
+                <div class="case-study-grid">
+                    <div>
+                        <span class="study-meta">Case Study 01 · Field Service &amp; Estimation</span>
+                        <h2 class="study-title">INNcontrol Coils</h2>
+                        <p class="study-tagline">
+                            Commercial HVAC refurbishing website paired with property-wide unit mapping and repair scoping software.
+                        </p>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">Business Problem</span>
+                            <p class="constraint-text">
+                                Commercial HVAC coil refurbishing services deal with hidden, hard-to-access equipment across massive multi-floor properties. Quoting, unit identification, and repair logging were fragmented across paper checklists and scattered photos, stalling bid proposals.
+                            </p>
+                        </div>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">System Built</span>
+                            <p class="constraint-text">
+                                Engineered an on-site responsive visual floorplan mapper enabling field technicians to plot exact unit locations, tag defect severity, attach diagnostic photos, and generate instant standardized repair ledgers.
+                            </p>
+                        </div>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">Operational Value</span>
+                            <p class="constraint-text">
+                                Reduced estimation turnaround from days to hours, eliminated manual data entry errors, and gave commercial clients an unassailable visual ledger that converts bids into signed contracts.
+                            </p>
+                        </div>
+                        
+                        <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" class="btn-live">Visit Live Application &rarr;</a>
+                    </div>
+                    
+                    <div>
+                        <div class="browser-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <span class="browser-url">inncontrolcoils.com</span>
+                            </div>
+                            <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils interface and field scoping tool" class="browser-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Study 2: D2 Auto Detail -->
+        <section class="case-study-section" id="d2" style="background: #FAF8F2;">
+            <div class="container">
+                <div class="case-study-grid">
+                    <div style="order: 2;">
+                        <div class="browser-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <span class="browser-url">d2autodetail.com</span>
+                            </div>
+                            <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail customer acquisition and media portal" class="browser-img">
+                        </div>
+                    </div>
+                    
+                    <div style="order: 1;">
+                        <span class="study-meta">Case Study 02 · Customer Acquisition &amp; Content</span>
+                        <h2 class="study-title">D2 Auto Detail</h2>
+                        <p class="study-tagline">
+                            High-end automotive acquisition portal connecting storefront booking tiers with localized marketing generation and video streaming.
+                        </p>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">Business Problem</span>
+                            <p class="constraint-text">
+                                Premium auto detailing requires complex vehicle qualification and multi-tiered service quoting. Generic booking plugins detached appointment scheduling from local ad campaigns and proof-of-work video content.
+                            </p>
+                        </div>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">System Built</span>
+                            <p class="constraint-text">
+                                Built an integrated operations platform featuring vehicle condition intake, automated local advertisement generation, content publishing pipelines, and a custom D2TV streaming media player.
+                            </p>
+                        </div>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">Operational Value</span>
+                            <p class="constraint-text">
+                                Unified lead intake, appointment routing, and localized content marketing into a single custom dashboard, cutting customer acquisition cost while lifting average ticket size.
+                            </p>
+                        </div>
+                        
+                        <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" class="btn-live">Visit Live Application &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Study 3: EDR Party Rentals -->
+        <section class="case-study-section" id="edr">
+            <div class="container">
+                <div class="case-study-grid">
+                    <div>
+                        <span class="study-meta">Case Study 03 · Inventory &amp; Reservation Flow</span>
+                        <h2 class="study-title">EDR Party Rentals</h2>
+                        <p class="study-tagline">
+                            Inventory-aware event rental website with real-time serial number stock reservation and bilingual dispatch routing.
+                        </p>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">Business Problem</span>
+                            <p class="constraint-text">
+                                Event rental companies manage finite, serial-numbered physical inventory (custom arches, inflatables, luxury furniture). Standard eCommerce platforms permit double-booking the same item on identical dates, causing catastrophic logistics failures.
+                            </p>
+                        </div>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">System Built</span>
+                            <p class="constraint-text">
+                                Implemented a custom calendar-aware reservation engine that locks specific serial items against requested delivery dates during checkout, backed by automated English/Spanish localization and dispatch schedule generation.
+                            </p>
+                        </div>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">Operational Value</span>
+                            <p class="constraint-text">
+                                Completely eliminated double-booking clashes, reduced customer support overhead by 80%, and produced automated warehouse drop-off manifests sorted by geographic delivery windows.
+                            </p>
+                        </div>
+                        
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.5rem;">
+                            <a href="/case-studies/edr-party-rentals/" class="btn-live" style="margin-top: 0;">Read Case Study &rarr;</a>
+                            <a href="https://edrpartyrentals.com" target="_blank" rel="noopener" class="btn-live" style="margin-top: 0; background: transparent; color: var(--text-primary); border: 1px solid var(--border-light);">Visit Live Application &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="browser-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <span class="browser-url">edrpartyrentals.com</span>
+                            </div>
+                            <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory reservation engine" class="browser-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scoping Bridge -->
+        <section style="padding: 5rem 0; background: #10211D; color: #FAF9F5; text-align: center;">
+            <div class="container">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 1rem;">Work With Context &amp; Muse</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; margin-bottom: 1.25rem;">Have a system that needs to work?</h2>
+                <p style="font-family: var(--font-sans); font-size: 1.1rem; color: rgba(250, 249, 245, 0.7); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
+                    Whether you need a full operational application, a high-converting customer portal, or custom workflow software.
+                </p>
+                <a href="/custom/#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.8rem; border-radius: 4px; text-decoration: none; display: inline-block;">Start a Project &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

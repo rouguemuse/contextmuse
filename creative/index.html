@@ -31,17 +31,16 @@
            CREATIVE PAGE LOCAL STYLES
            ================================================================ */
 
-        /* ── Hero ──────────────────────────────────────────────────── */
         .creative-hero {
             background: var(--bg-paper);
-            padding: 70px 0 50px;
+            padding: 160px 0 60px;
             border-bottom: 1px solid var(--border-light);
             overflow: hidden;
         }
 
         .creative-hero-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 4rem;
             align-items: center;
         }
@@ -49,7 +48,7 @@
         @media(max-width: 860px) {
             .creative-hero-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
             .creative-hero-image {
                 order: -1;
@@ -61,27 +60,28 @@
             color: var(--accent-red);
             margin-bottom: 1rem;
             display: block;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
-        /* Reduced H1 scale by 30% */
         .creative-hero h1 {
             font-family: var(--font-serif);
-            font-size: clamp(2.4rem, 4.2vw, 4rem); /* ~64px max desktop scale */
-            line-height: 1.0;
+            font-size: clamp(2.4rem, 4.2vw, 4rem);
+            line-height: 1.05;
             letter-spacing: -0.035em;
-            max-width: 620px;
-            margin: 0 0 1.25rem 0;
+            margin: 0 0 1.5rem 0;
             color: var(--text-primary);
             font-weight: 500;
         }
 
         .creative-hero-subhead {
             font-family: var(--font-sans);
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             line-height: 1.65;
             color: var(--text-secondary);
-            max-width: 520px;
-            margin-bottom: 1.75rem;
+            margin-bottom: 2rem;
         }
 
         .creative-hero-image {
@@ -90,12 +90,12 @@
             display: block;
             object-fit: cover;
             max-height: 380px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-light);
         }
 
-        /* ── Section base ──────────────────────────────────────────── */
         .creative-section {
-            padding: 85px 0;
+            padding: 8rem 0;
             border-bottom: 1px solid var(--border-light);
         }
 
@@ -114,50 +114,33 @@
             margin-bottom: 0.75rem;
         }
 
-        /* Reduced H2 scale proportionally by 30% */
         .creative-section h2 {
             font-family: var(--font-serif);
             font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-            line-height: 1.05;
+            line-height: 1.1;
             letter-spacing: -0.03em;
             font-weight: 500;
             color: var(--text-primary);
             margin: 0 0 1.25rem 0;
         }
 
-        /* Reduced H3 scale proportionally by 25% */
-        .creative-project h3 {
-            font-family: var(--font-serif);
-            font-size: clamp(1.4rem, 2.2vw, 2.1rem);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            font-weight: 500;
-            margin: 0 0 0.75rem 0;
-        }
-
         /* ── Wolves Cinematic Rebuild ───────────────────────────────── */
-        .wolves-cinematic-layout {
-            position: relative;
-            padding: 2rem 0;
-        }
-
         .wolves-cinematic-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             align-items: center;
             position: relative;
-            z-index: 2;
         }
 
         .wolves-image-wrapper {
-            grid-column: 1 / 9; /* Occupies ~66% width */
-            grid-row: 1;
+            grid-column: 1 / 8;
             position: relative;
             z-index: 1;
             border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-            aspect-ratio: 1.3 / 1;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            aspect-ratio: 1.35 / 1;
+            border: 1px solid var(--border-light);
         }
 
         .wolves-image-wrapper img {
@@ -168,15 +151,14 @@
         }
 
         .wolves-text-panel-cinematic {
-            grid-column: 7 / 13; /* Overlaps image on columns 7-8 */
-            grid-row: 1;
-            background: #FAF6EE; /* Warm cream instead of bright white */
+            grid-column: 7 / 13;
+            background: #FAF8F5;
             border: 1px solid var(--border-light);
             border-radius: 4px;
-            padding: 3rem;
+            padding: 3.5rem;
             z-index: 2;
             position: relative;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.05);
         }
 
         @media(max-width: 900px) {
@@ -211,740 +193,256 @@
             margin-bottom: 1.25rem;
         }
 
-        /* Darker, highly readable premise copy */
         .wolves-premise {
             font-family: var(--font-serif);
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             line-height: 1.65;
-            color: #1F1F1D; /* Darker charcoal */
+            color: #1F1F1D;
             margin: 0.75rem 0 1.25rem 0;
             font-style: italic;
         }
 
-        /* Darker, highly readable statement copy */
         .wolves-statement {
             font-family: var(--font-sans);
             font-size: 0.98rem;
             line-height: 1.6;
-            color: #3B3A36; /* Darker secondary */
+            color: #3B3A36;
             border-left: 2px solid var(--accent-red);
             padding-left: 1rem;
             margin: 1.25rem 0 1.5rem 0;
         }
 
-        .wolves-completion {
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            color: var(--text-secondary);
-            letter-spacing: 0.06em;
-            margin-bottom: 2rem;
-            display: block;
-        }
-
-        /* Red Thread SVG Path */
-        .wolves-svg-thread {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        /* Wolves motif strip */
-        .wolves-motif-strip {
+        /* ── Wolves Artifacts Grid ────────────────────────────────── */
+        .wolves-artifacts-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border-light);
-            border-radius: 0 0 4px 4px;
-            overflow: hidden;
-            margin-top: 1.5rem;
-            position: relative;
-            z-index: 4;
+            gap: 1.5rem;
+            margin-top: 4rem;
         }
-
-        @media(max-width: 600px) {
-            .wolves-motif-strip { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .motif-cell {
-            background: var(--bg-paper);
-            padding: 1.25rem 0.75rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .motif-symbol {
-            font-size: 1.6rem;
-            line-height: 1;
-            display: block;
-            opacity: 0.75;
-        }
-
-        .motif-label {
-            font-family: var(--font-mono);
-            font-size: 9.5px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-
-        /* ── Resource Guide ─────────────────────────────────────────── */
-        .resource-layout {
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        @media(max-width: 960px) {
-            .resource-layout { grid-template-columns: 1fr; }
-        }
-
-        .resource-interface {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 8px 28px rgba(0,0,0,0.05);
-        }
-
-        .resource-interface-bar {
-            background: #2A2A26;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .resource-interface-bar span {
-            width: 10px; height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .resource-interface-bar span:nth-child(1) { background: #FF5F57; }
-        .resource-interface-bar span:nth-child(2) { background: #FFBD2E; }
-        .resource-interface-bar span:nth-child(3) { background: #28CA42; }
-
-        .resource-interface-title {
-            color: rgba(255,255,255,0.45);
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            margin-left: auto;
-        }
-
-        .resource-interface-body {
-            padding: 16px;
-            font-size: 12px;
-        }
-
-        .resource-search-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .resource-search-input {
-            flex: 1;
-            background: var(--bg-paper);
-            border: 1px solid var(--border-dark);
-            border-radius: 3px;
-            padding: 7px 10px;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-
-        .resource-search-btn {
-            background: var(--accent-teal);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            padding: 7px 14px;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        .resource-filters {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-        }
-
-        .resource-filter-chip {
-            font-family: var(--font-mono);
-            font-size: 9.5px;
-            padding: 3px 8px;
-            border-radius: 20px;
-            border: 1px solid var(--border-dark);
-            color: var(--text-secondary);
-            background: var(--bg-paper);
-        }
-
-        .resource-filter-chip.active {
-            background: var(--accent-teal);
-            color: white;
-            border-color: var(--accent-teal);
-        }
-
-        .resource-result-card {
-            background: var(--bg-paper);
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            padding: 10px 12px;
-            margin-bottom: 8px;
-        }
-
-        .resource-result-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 5px;
-        }
-
-        .resource-result-name {
-            font-family: var(--font-sans);
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .resource-verify-badge {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            font-weight: 600;
-            padding: 2px 6px;
-            border-radius: 2px;
-        }
-
-        .resource-verify-badge.verified {
-            background: rgba(15, 118, 110, 0.1);
-            color: var(--accent-teal);
-        }
-
-        .resource-verify-badge.unverified {
-            background: rgba(197, 160, 89, 0.1);
-            color: var(--accent-gold);
-        }
-
-        .resource-result-meta {
-            font-family: var(--font-mono);
-            font-size: 9.5px;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
-        }
-
-        .resource-result-desc {
-            font-size: 11px;
-            color: var(--text-secondary);
-            line-height: 1.45;
-        }
-
-        /* Resource sidebar */
-        .resource-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .resource-meta-block h4 {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent-teal);
-            margin-bottom: 0.75rem;
-        }
-
-        .resource-capability-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 1.25rem;
-        }
-
-        .cap-tag {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            padding: 4px 10px;
-            border: 1px solid var(--border-dark);
-            border-radius: 3px;
-            color: var(--text-secondary);
-            background: var(--bg-card);
-        }
-
-        /* Taxonomy diagram */
-        .taxonomy-flow {
+        .artifact-thumb {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: 4px;
-            padding: 1.25rem;
-        }
-
-        .taxonomy-flow-title {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .taxonomy-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .taxonomy-step {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .taxonomy-step-num {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            color: var(--accent-teal);
-            min-width: 18px;
-        }
-
-        .taxonomy-step-label {
-            font-family: var(--font-sans);
-            font-size: 12px;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .taxonomy-step-arrow {
-            font-size: 9px;
-            color: var(--border-dark);
-            margin-left: auto;
-        }
-
-        /* ── Self Cartography ───────────────────────────────────────── */
-        .cartography-layout {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        @media(max-width: 900px) {
-            .cartography-layout { grid-template-columns: 1fr; }
-        }
-
-        .cartography-status {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            background: rgba(197, 160, 89, 0.08);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            padding: 4px 10px;
-            border-radius: 2px;
-            display: inline-block;
-            margin-bottom: 1.25rem;
-        }
-
-        .cartography-pillars {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .cartography-pillar {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .cartography-pillar-num {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--accent-red);
-            font-weight: 600;
-            min-width: 22px;
-            padding-top: 3px;
-        }
-
-        .cartography-pillar-body h4 {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-transform: none;
-            letter-spacing: 0;
-            margin-bottom: 3px;
-        }
-
-        .cartography-pillar-body p {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            line-height: 1.55;
-        }
-
-        /* Cartography artifact collage */
-        .cartography-collage {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .cartography-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 5px;
-            padding: 14px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-        }
-
-        .cartography-card-label {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent-red);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .cartography-card.span-2 {
-            grid-column: span 2;
-        }
-
-        /* Glossary card */
-        .glossary-entry {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .glossary-entry:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .glossary-symbol {
-            font-size: 1.1rem;
-            min-width: 24px;
-            line-height: 1;
-        }
-
-        .glossary-def {
-            font-family: var(--font-sans);
-            font-size: 11px;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        .glossary-term {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 11.5px;
-        }
-
-        /* Boundary diagram */
-        .boundary-diagram {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .boundary-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .boundary-label {
-            font-family: var(--font-mono);
-            font-size: 9.5px;
-            color: var(--text-secondary);
-            min-width: 68px;
-        }
-
-        .boundary-bar-track {
-            flex: 1;
-            height: 6px;
-            background: var(--border-light);
-            border-radius: 3px;
             overflow: hidden;
-        }
-
-        .boundary-bar-fill {
-            height: 100%;
-            border-radius: 3px;
-        }
-
-        /* Field note card */
-        .fieldnote {
-            background: #FBF9F3;
-            border: 1px solid var(--border-light);
-            border-radius: 3px;
-            padding: 12px;
-            font-family: var(--font-serif);
-            font-size: 12px;
-            font-style: italic;
-            line-height: 1.55;
-            color: var(--text-secondary);
-        }
-
-        .fieldnote::before {
-            content: attr(data-date);
-            font-family: var(--font-mono);
-            font-style: normal;
-            font-size: 9px;
-            color: var(--accent-red);
-            display: block;
-            margin-bottom: 7px;
-        }
-
-        /* Pulse animation for Brain Raccoon mockup */
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-
-        /* Creative footer contact strip */
-        .creative-contact {
-            padding: 80px 0;
-            text-align: center;
-            background: var(--bg-paper);
-        }
-
-        .creative-contact h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 2.8vw, 2.8rem);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .creative-contact p {
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto 2rem;
-        }
-
-        /* Revamped Wolves Ecosystem & Manuscript Preview styles */
-        .wolves-split-layout {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        @media (max-width: 900px) {
-            .wolves-split-layout {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        }
-        .manuscript-page-preview {
-            background: #FAF8F5; /* Archival paper color */
-            border: 1px solid #E4E0D5;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border-radius: 4px;
-            padding: 2rem;
-            position: relative;
-            font-family: 'Newsreader', 'Georgia', serif;
-            font-size: 14px;
-            line-height: 1.65;
-            color: #2F2F2D;
-            max-width: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
-            text-align: left;
-        }
-        .manuscript-page-header {
-            border-bottom: 1px solid #EAE6DB;
-            padding-bottom: 8px;
-            margin-bottom: 16px;
-            display: flex;
-            justify-content: space-between;
-            font-family: var(--font-mono);
-            font-size: 9px;
-            color: #8C887E;
-            text-transform: uppercase;
-        }
-        .manuscript-red-line {
-            position: absolute;
-            top: 0;
-            left: 2.2rem;
-            bottom: 0;
-            width: 1px;
-            background: rgba(225, 29, 72, 0.18);
-        }
-        .manuscript-text {
-            padding-left: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        .manuscript-annotation {
-            font-family: var(--font-mono);
-            font-size: 8.5px;
-            color: var(--accent-red);
-            position: absolute;
-            bottom: 1rem;
-            right: 1.5rem;
-            font-style: normal;
-            border: 1px solid rgba(225, 29, 72, 0.2);
-            padding: 2px 6px;
-            border-radius: 2px;
-            background: rgba(225, 29, 72, 0.02);
-        }
-        
-        /* Wolves Extension Card Group */
-        .wolves-extensions-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            text-align: left;
-        }
-        .wolves-extension-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 1.1rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
             transition: all 0.2s ease;
             text-decoration: none;
             color: inherit;
         }
-        .wolves-extension-card:hover {
+        .artifact-thumb:hover {
+            transform: translateY(-3px);
             border-color: var(--accent-red);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.04);
+            box-shadow: 0 8px 20px rgba(163, 29, 29, 0.06);
         }
-        .wolves-extension-thumb {
-            width: 54px;
-            height: 54px;
-            border-radius: 4px;
-            overflow: hidden;
-            background: #FAF8F5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border-light);
-            flex-shrink: 0;
-            font-size: 1.3rem;
-            line-height: 1;
-        }
-        .wolves-extension-body {
-            flex-grow: 1;
-        }
-        .wolves-extension-title {
-            font-family: var(--font-sans);
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 2px;
-            color: var(--text-primary);
-        }
-        .wolves-extension-desc {
-            font-size: 11.5px;
-            color: var(--text-secondary);
-            line-height: 1.45;
-        }
-        .wolves-extension-status {
-            font-family: var(--font-mono);
-            font-size: 8px;
-            padding: 1px 5px;
-            border-radius: 2px;
-            font-weight: 500;
-            background: var(--bg-panel);
-            border: 1px solid var(--border-light);
-            margin-top: 4px;
-            display: inline-block;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-        }
-
-        /* 02 — Self Cartography standalone visual identity */
-        .cartography-card-pro {
-            background: var(--bg-card);
-            border: 1px solid #D5DBDE; /* Steel blue tint border */
-            border-radius: 6px;
-            padding: 1.25rem;
-            box-shadow: 0 4px 15px rgba(15, 76, 129, 0.03);
-            text-align: left;
-        }
-        .cartography-card-pro.span-2 {
-            grid-column: span 2;
-        }
-        @media (max-width: 600px) {
-            .cartography-card-pro.span-2 {
-                grid-column: span 1;
-            }
-        }
-        .cartography-card-label-pro {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #0F4C81; /* Drafting Blue color */
-            margin-bottom: 10px;
+        .artifact-thumb img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
             display: block;
         }
-        .cartography-matrix-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px solid #EAEFF2;
-            font-size: 11.5px;
+        .artifact-meta {
+            padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-align: left;
         }
-        .cartography-matrix-row:last-child {
-            border-bottom: none;
-        }
-        .cartography-matrix-val {
+        .artifact-meta strong {
+            font-family: var(--font-serif);
+            font-size: 13.5px;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
             font-weight: 600;
+        }
+        @media(max-width: 768px) {
+            .wolves-artifacts-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ── Visual Essays Gallery ────────────────────────────────── */
+        .essays-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .essay-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .essay-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-red);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+        }
+        .essay-card img {
+            width: 100%;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+            display: block;
+        }
+        .essay-card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .essay-card-tag {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .essay-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
             color: var(--text-primary);
         }
-        .cartography-matrix-status {
+        .essay-card-desc {
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .essay-card-link {
             font-family: var(--font-mono);
-            font-size: 8px;
+            font-size: 11px;
+            color: var(--accent-red);
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        @media(max-width: 900px) {
+            .essays-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Interactive Work Grid ────────────────────────────────── */
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+            margin-top: 3rem;
+        }
+        .int-card {
+            display: flex;
+            flex-direction: column;
+        }
+        .int-card__media {
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .int-card__media img {
+            width: 100%;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+            display: block;
+        }
+        .int-card__media-link {
+            text-decoration: none;
+            display: block;
+            outline: none;
+        }
+        .int-card__media-link:hover .int-card__media {
+            transform: translateY(-4px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 16px 36px rgba(15, 118, 110, 0.08);
+        }
+        .int-card__tagline {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.10em;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .int-card__title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            text-align: left;
+        }
+        .int-card__desc {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        @media(max-width: 900px) {
+            .interactive-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        /* ── Experimental Interfaces Grid ────────────────────────── */
+        .experiments-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .exp-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .exp-card:hover {
+            border-color: var(--accent-teal);
+            box-shadow: 0 6px 16px rgba(15, 118, 110, 0.03);
+        }
+        .exp-meta {
+            font-family: var(--font-mono);
+            font-size: 8.5px;
+            text-transform: uppercase;
+            color: var(--accent-teal);
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
             padding: 2px 6px;
             border-radius: 2px;
-            text-transform: uppercase;
-            font-weight: 500;
+            font-weight: bold;
+            float: right;
         }
-        .cartography-matrix-status.high {
-            background: rgba(15, 118, 110, 0.1);
-            color: var(--accent-teal);
-        }
-        .cartography-matrix-status.warning {
-            background: rgba(197, 160, 89, 0.1);
-            color: var(--accent-gold);
-        }
-        .cartography-matrix-status.action {
-            background: rgba(225, 29, 72, 0.1);
-            color: var(--accent-red);
+        @media(max-width: 768px) {
+            .experiments-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Global Navigation -->
+    <!-- Navbar -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
             <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
@@ -952,37 +450,34 @@
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
                 <span></span>
             </label>
-                        <div class="nav-links">
-                <details class="nav-dropdown">
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Selected Work</a>
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="/systems/#builds" class="nav-dropdown-link">Client Systems</a>
-                        <a href="/systems/#experiments" class="nav-dropdown-link">Experimental Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/custom/#operations" class="nav-dropdown-link">Workflow / Operational Systems</a>
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
                     </div>
                 </details>
-                <details class="nav-dropdown">
-                    <summary class="nav-link">Creative <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="nav-dropdown-link">How to Explain Yourself to Wolves</a>
-                        <a href="/creative/#self-cartography" class="nav-dropdown-link">Self Cartography</a>
-                        <a href="https://www.madeofreasons.com" class="nav-dropdown-link" target="_blank" rel="noopener">MadeOfReasons</a>
-                        <a href="/creative/#experiments" class="nav-dropdown-link">Other Experiments</a>
-                    </div>
-                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/#contact" class="nav-btn">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -992,13 +487,13 @@
         <div class="container">
             <div class="creative-hero-grid">
                 <div class="creative-hero-text">
-                    <span class="eyebrow">Writing &middot; Editorial Systems &middot; Independent Work</span>
+                    <span class="eyebrow">CREATIVE PRACTICE / WRITING / VISUAL SYSTEMS / EXPERIMENTS</span>
                     <h1>Some problems need a system.<br>Others need a language.</h1>
                     <p class="creative-hero-subhead">
-                        My creative work explores how people organize experience, explain themselves, and find their way through information that is emotional, fragmented, or difficult to name.
+                        Independent work exploring how people organize experience, translate emotion, build meaning, and navigate things that resist clean explanation.
                     </p>
                     <div class="btn-group">
-                        <a href="#project-wolves" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="creative-cta-explore">Explore the Work</a>
+                        <a href="#selected-work" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red);" id="creative-cta-explore">Explore the Work &darr;</a>
                         <a href="/systems/" class="btn btn-secondary" id="creative-cta-systems">Applied Systems &rarr;</a>
                     </div>
                 </div>
@@ -1016,100 +511,185 @@
         <!-- Page-Level Jump Navigation -->
         <nav class="sub-navbar" aria-label="Page Navigation">
             <div class="container sub-nav-container" style="justify-content: center;">
-                <a href="#wolves" class="sub-nav-link">Wolves</a>
-                <a href="#self-cartography" class="sub-nav-link">Self Cartography</a>
-                <a href="#madeofreasons" class="sub-nav-link">MadeOfReasons</a>
-                <a href="#experiments" class="sub-nav-link">Experiments</a>
+                <a href="#wolves" class="sub-nav-link">01 / Narrative Worlds</a>
+                <a href="#essays" class="sub-nav-link">02 / Visual Essays</a>
+                <a href="#interactive" class="sub-nav-link">03 / Interactive Work</a>
+                <a href="#experimental" class="sub-nav-link">04 / Experimental Interfaces</a>
             </div>
         </nav>
 
-        <section class="creative-section" style="background: var(--bg-paper); padding: 5.5rem 0;">
+        <!-- Section 1: Narrative Worlds -->
+        <section class="creative-section" id="wolves" style="background: var(--bg-paper);">
             <div class="container">
-                <div style="text-align: center; margin-bottom: 4rem;">
-                    <span class="eyebrow" style="color: var(--accent-red); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">Creative Practice</span>
-                    <h2 class="section-title" style="margin-top: 0.5rem; font-family: var(--font-serif); font-weight: 500;">Symbolic &amp; Visual Systems</h2>
-                </div>
-
-                <div class="features-grid">
-                    <!-- Project 1: How to Explain Yourself to Wolves -->
-                    <div class="feature-card" id="wolves" style="border-top: 3px solid var(--accent-red); display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
-                                <img src="/assets/images/wolves_logo.svg" alt="" aria-hidden="true" style="width: 28px; height: 28px; border-radius: 4px;">
-                                <h3 class="feature-title" style="margin: 0;">How to Explain Yourself to Wolves</h3>
-                            </div>
-                            <p class="feature-desc" style="margin-bottom: 1.5rem;">Book + digital project world. An allegorical memoir and connected symbolic system exploring translation failure and the limits of explanation.</p>
-                        </div>
-                        <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red); color: white; text-decoration: none; padding: 0.65rem 1rem; border-radius: 3px; font-family: var(--font-sans); font-size: 13px; font-weight: 600; text-align: center; display: block; margin-top: auto;">Explore Project &rarr;</a>
+                <span class="creative-section-eyebrow">01 — Featured World</span>
+                <h2 style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 3rem;">How to Explain Yourself to Wolves</h2>
+                
+                <div class="wolves-cinematic-grid">
+                    <div class="wolves-image-wrapper">
+                        <img src="/assets/images/wolves_preview_main.jpg" alt="How to Explain Yourself to Wolves artwork">
                     </div>
-
-                    <!-- Project 2: Self Cartography -->
-                    <div class="feature-card" id="self-cartography" style="border-top: 3px solid var(--accent-teal); display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
-                                <span style="font-size: 20px;">🧭</span>
-                                <h3 class="feature-title" style="margin: 0;">Self Cartography</h3>
-                            </div>
-                            <p class="feature-desc" style="margin-bottom: 1.5rem;">An interactive reflection and diagnostic framework mapping personal boundaries, variables, and decision structures.</p>
-                            
-                            <details style="margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 0.75rem;">
-                                <summary style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; list-style: none; outline: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
-                                    <span>View Framework Details</span>
-                                    <span class="nav-dropdown-arrow">▾</span>
-                                </summary>
-                                <div style="margin-top: 0.75rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
-                                    <p style="margin:0;">Uses four specific quadrants to catalog state metrics: Boundary Drift, Friction Index, Decision Pathing, and Signal Recovery.</p>
-                                    <p style="margin:0; font-style: italic;">"Mapping coordinates doesn't solve the terrain, but it establishes exactly where your feet are standing." &mdash; Field Note, Aug 2026</p>
-                                </div>
-                            </details>
+                    <div class="wolves-text-panel-cinematic">
+                        <span class="wolves-status-tag">Manuscript &amp; Digital Project</span>
+                        <p class="wolves-premise">
+                            Allegorical memoir &middot; symbolic world &middot; visual language
+                        </p>
+                        <p class="wolves-statement">
+                            A book about what happens when explanation becomes survival—and the strange territories people build trying to become understandable.
+                        </p>
+                        <span class="wolves-completion" style="margin-bottom: 0.5rem; display: block; font-weight: 600; color: var(--text-primary);">Completed manuscript &middot; Companion systems active</span>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); display: block; margin-bottom: 2rem;">Development journal ongoing</span>
+                        <div class="btn-group">
+                            <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn btn-primary" style="background: var(--accent-red); border-color: var(--accent-red); color: white;">Enter the Project &rarr;</a>
+                            <a href="/creative/self-cartography/" class="btn btn-secondary" style="border-color: var(--border-dark); color: var(--text-primary);">Explore Self Cartography &rarr;</a>
                         </div>
-                        <a href="#self-cartography" class="btn btn-secondary" style="border-color: var(--accent-teal); color: var(--text-primary); text-decoration: none; padding: 0.65rem 1rem; border-radius: 3px; font-family: var(--font-sans); font-size: 13px; font-weight: 600; text-align: center; display: block; margin-top: 1.5rem;">Explore Framework</a>
-                    </div>
-
-                    <!-- Project 3: MadeOfReasons -->
-                    <div class="feature-card" id="madeofreasons" style="border-top: 3px solid #38BDF8; display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
-                                <span style="font-size: 20px;">✨</span>
-                                <h3 class="feature-title" style="margin: 0;">MadeOfReasons</h3>
-                            </div>
-                            <p class="feature-desc" style="margin-bottom: 1.5rem;">Interactive relational keepsake. A visual web application mapping connections, star nodes, and records of mutual value on a dark interactive canvas.</p>
-                        </div>
-                        <a href="https://www.madeofreasons.com/" target="_blank" rel="noopener" class="btn btn-primary" style="background: #0F766E; border-color: #0F766E; color: white; text-decoration: none; padding: 0.65rem 1rem; border-radius: 3px; font-family: var(--font-sans); font-size: 13px; font-weight: 600; text-align: center; display: block; margin-top: auto;">Open App &rarr;</a>
                     </div>
                 </div>
 
-                <!-- More Experiments Toggles -->
-                <div id="experiments" style="margin-top: 5.5rem; border-top: 1px solid var(--border-light); padding-top: 4rem;">
-                    <details class="more-experiments-details" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; text-align: center; font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-primary); display: flex; align-items: center; justify-content: center; gap: 8px;">
-                            <span>More Experiments</span>
-                            <span class="nav-dropdown-arrow">▾</span>
-                        </summary>
-                        
-                        <div class="features-grid" style="margin-top: 3rem; text-align: left;">
-                            <!-- Experiment 1: Cartographer's Defect -->
-                            <div class="feature-card">
-                                <span style="font-family: var(--font-mono); font-size: 8px; text-transform: uppercase; color: var(--accent-red); background: var(--bg-panel); border: 1px solid var(--border-light); padding: 2px 6px; border-radius: 2px; font-weight: 500; float: right;">Visual Map</span>
-                                <h4 style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; color: var(--text-primary);">Cartographer's Defect</h4>
-                                <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.55; margin: 0;">An interactive visual proof charting coordinate deviations in hand-drawn cartography vs digital projections.</p>
-                            </div>
-
-                            <!-- Experiment 2: Focus Override -->
-                            <div class="feature-card">
-                                <span style="font-family: var(--font-mono); font-size: 8px; text-transform: uppercase; color: var(--accent-teal); background: var(--bg-panel); border: 1px solid var(--border-light); padding: 2px 6px; border-radius: 2px; font-weight: 500; float: right;">Prototype</span>
-                                <h4 style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; color: var(--text-primary);">Focus Override</h4>
-                                <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.55; margin: 0;">A timed interaction utility designed to disrupt cognitive loops, isolate a single blocker, and choose one next action.</p>
-                            </div>
-
-                            <!-- Experiment 3: Archived Folio -->
-                            <div class="feature-card">
-                                <span style="font-family: var(--font-mono); font-size: 8px; text-transform: uppercase; color: var(--text-secondary); background: var(--bg-panel); border: 1px solid var(--border-light); padding: 2px 6px; border-radius: 2px; font-weight: 500; float: right;">Archive</span>
-                                <h4 style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; color: var(--text-primary);">Archived Folio</h4>
-                                <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.55; margin: 0;">Early essays, symbolic drafts, printmaking records, and developmental schemas from 2021–2024.</p>
-                            </div>
+                <!-- Small world-building artifacts section -->
+                <div class="wolves-artifacts-grid">
+                    <div class="artifact-thumb">
+                        <img src="/assets/images/the_red_thread.jpg" alt="The Red Thread object study">
+                        <div class="artifact-meta">
+                            <strong>The Red Thread</strong>
+                            Object study
                         </div>
-                    </details>
+                    </div>
+                    <div class="artifact-thumb">
+                        <img src="/assets/images/valley_understand_me.jpg" alt="The Valley of Please Understand Me map fragment">
+                        <div class="artifact-meta">
+                            <strong>Valley of Please Understand Me</strong>
+                            Map fragment
+                        </div>
+                    </div>
+                    <div class="artifact-thumb">
+                        <img src="/assets/images/provisional_understanding.jpg" alt="Provisional Understanding departmental artifact">
+                        <div class="artifact-meta">
+                            <strong>Provisional Understanding</strong>
+                            Departmental artifact
+                        </div>
+                    </div>
+                    <div class="artifact-thumb">
+                        <img src="/assets/images/other_peoples_weather.jpg" alt="Other People's Weather field observation">
+                        <div class="artifact-meta">
+                            <strong>Other People's Weather</strong>
+                            Field observation
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Visual Essays -->
+        <section class="creative-section" id="essays">
+            <div class="container" style="text-align: center;">
+                <span class="creative-section-eyebrow" style="text-align: center; display: block;">02 — Visual Essays</span>
+                <h2 style="font-family: var(--font-serif); font-weight: 500; text-align: center; margin-bottom: 1rem;">Visual Essays &amp; Information Design</h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem; font-size: 1.05rem;">
+                    Editorial visualizations mapping complex, overlapping, and operational relationships.
+                </p>
+
+                <div class="essays-gallery">
+                    <!-- Essay 1: Other People's Weather -->
+                    <div class="essay-card">
+                        <img src="/assets/images/other_peoples_weather.jpg" alt="Other People's Weather editorial visualization layout">
+                        <div class="essay-card-body">
+                            <span class="essay-card-tag">Editorial Study / Information Design</span>
+                            <h3 class="essay-card-title">Other People's Weather</h3>
+                            <p class="essay-card-desc">
+                                An editorial visualization exploring hypervigilance, prediction, and the false belief that noticing a storm means being responsible for stopping it.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Essay 2: Restaurant Theory: The Menu Is an Interface -->
+                    <a href="/restaurant-theory/" class="essay-card">
+                        <img src="/assets/images/menu_interface_theory.jpg" alt="The Menu Is an Interface infographic diagram">
+                        <div class="essay-card-body">
+                            <span class="essay-card-tag">Restaurant Theory / Visual Essay</span>
+                            <h3 class="essay-card-title">The Menu Is an Interface</h3>
+                            <p class="essay-card-desc">
+                                A visual essay diagramming the cognitive guest journey (enters, scans, anchors, compares) and its operational and financial consequences inside a kitchen.
+                            </p>
+                            <span class="essay-card-link">Read Visual Essay &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Essay 3: Provisional Understanding -->
+                    <div class="essay-card">
+                        <img src="/assets/images/provisional_understanding.jpg" alt="Provisional Understanding bureaucratic form study">
+                        <div class="essay-card-body">
+                            <span class="essay-card-tag">Artifact / Narrative Design</span>
+                            <h3 class="essay-card-title">Provisional Understanding</h3>
+                            <p class="essay-card-desc">
+                                A bureaucratic artifact from an imagined world in which understanding requires administrative approval, intent reviews, and signature logs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Interactive Work -->
+        <section class="creative-section" id="interactive" style="background: var(--bg-paper);">
+            <div class="container" style="text-align: center;">
+                <span class="creative-section-eyebrow" style="text-align: center; display: block;">03 — Interactive Work</span>
+                <h2 style="font-family: var(--font-serif); font-weight: 500; text-align: center; margin-bottom: 1rem;">Interactive Systems</h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem; font-size: 1.05rem;">
+                    Digital structures and custom canvases mapping networks, states, and relations.
+                </p>
+
+                <div class="interactive-grid">
+                    <!-- Interactive 1: Self Cartography -->
+                    <div class="int-card" id="self-cartography">
+                        <a href="#self-cartography" class="int-card__media-link" aria-label="Explore Self Cartography Framework">
+                            <div class="int-card__media">
+                                <img src="/assets/images/self_cartography_mockup.jpg" alt="Self Cartography digital map coordinate grid screenshot">
+                            </div>
+                        </a>
+                        <span class="int-card__tagline">Interactive Diagnostic System</span>
+                        <h3 class="int-card__title">Self Cartography</h3>
+                        <p class="int-card__desc">
+                            An interactive mapping coordinates dashboard charting personal boundaries, variables, and decision structures across distinct quadrants.
+                        </p>
+                    </div>
+
+                    <!-- Interactive 2: MadeOfReasons -->
+                    <div class="int-card">
+                        <a href="https://www.madeofreasons.com" target="_blank" rel="noopener" class="int-card__media-link" aria-label="Open MadeOfReasons application in a new tab">
+                            <div class="int-card__media">
+                                <img src="/assets/images/made_of_reasons_mockup.jpg" alt="MadeOfReasons dark 3D star-node application screenshot">
+                            </div>
+                        </a>
+                        <span class="int-card__tagline">Relational Keepsake App</span>
+                        <h3 class="int-card__title">MadeOfReasons</h3>
+                        <p class="int-card__desc">
+                            An interactive dark-canvas web application mapping connections, star-nodes, and custom semantic lists of mutual value.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Experimental Interfaces -->
+        <section class="creative-section" id="experimental">
+            <div class="container" style="text-align: center;">
+                <span class="creative-section-eyebrow" style="text-align: center; display: block;">04 — Experimental Interfaces</span>
+                <h2 style="font-family: var(--font-serif); font-weight: 500; text-align: center; margin-bottom: 3rem;">Experimental Interfaces &amp; Prototypes</h2>
+                
+                <div class="experiments-grid">
+                    <!-- Experiment 1: Cartographer's Defect -->
+                    <div class="exp-card">
+                        <span class="exp-meta">Visual Map</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; color: var(--text-primary);">Cartographer's Defect</h4>
+                        <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.55; margin: 0;">An interactive visual proof charting coordinate deviations in hand-drawn cartography vs digital projections.</p>
+                    </div>
+
+                    <!-- Experiment 2: Focus Override -->
+                    <div class="exp-card">
+                        <span class="exp-meta">Prototype</span>
+                        <h4 style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; color: var(--text-primary);">Focus Override</h4>
+                        <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.55; margin: 0;">A timed interaction utility designed to disrupt cognitive loops, isolate a single blocker, and choose one next action.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1123,14 +703,25 @@
         </div>
     </div>
 
+    <!-- Global Footer -->
+    <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
-                <div class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Jayme Volstad</span></div>
-                <p>Writing, operations, and implementation. Austin, TX.</p>
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
                     <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
@@ -1141,5 +732,6 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>
