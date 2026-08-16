@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartography V1 · Standalone Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse</title>
+    <meta name="description" content="A standalone, full-screen explainable behavioral-pattern engine mapping subjective reflections into topological coordinate space without clinical diagnosis.">
+    <link rel="canonical" href="https://www.contextmuse.com/cartography/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cartography V1 · Standalone Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse">
+    <meta property="og:description" content="A standalone, full-screen explainable behavioral-pattern engine mapping subjective reflections into topological coordinate space without clinical diagnosis.">
+    <meta property="og:url" content="https://www.contextmuse.com/cartography/">
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cartography V1 · Standalone Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse">
+    <meta name="twitter:description" content="A standalone, full-screen explainable behavioral-pattern engine mapping subjective reflections into topological coordinate space without clinical diagnosis.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-void: #050B0A;
+            --bg-panel: #0A1412;
+            --bg-card: #10211D;
+            --border-subtle: rgba(45, 212, 191, 0.15);
+            --border-focus: rgba(45, 212, 191, 0.5);
+            --text-main: #FAF9F5;
+            --text-muted: rgba(250, 249, 245, 0.65);
+            --accent-teal: #0F766E;
+            --accent-teal-bright: #2DD4BF;
+            --accent-amber: #D97706;
+            --accent-amber-bright: #FBBF24;
+            --accent-red: #EF4444;
+            --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            --font-serif: 'Newsreader', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── TOP APPLICATION BAR ── */
+        .app-topbar {
+            height: 52px;
+            background: var(--bg-panel);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            flex-shrink: 0;
+            z-index: 100;
+        }
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 500;
+        }
+        .app-badge {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 2px 7px;
+            border-radius: 3px;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber-bright);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        .topbar-divider {
+            color: var(--border-subtle);
+        }
+        .topbar-subhead {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+        }
+        @media (max-width: 900px) {
+            .topbar-subhead { display: none; }
+        }
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .btn-top {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-top-secondary {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+        }
+        .btn-top-secondary:hover {
+            border-color: var(--accent-teal-bright);
+            color: var(--accent-teal-bright);
+        }
+        .btn-top-primary {
+            background: var(--accent-teal);
+            border: 1px solid var(--accent-teal-bright);
+            color: var(--text-main);
+        }
+        .btn-top-primary:hover {
+            background: #115E59;
+            box-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+        }
+
+        /* ── MAIN WORKSPACE (3-PANEL GRID) ── */
+        .app-workspace {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 340px 1fr 340px;
+            height: calc(100vh - 52px - 28px);
+            overflow: hidden;
+        }
+        @media (max-width: 1200px) {
+            .app-workspace {
+                grid-template-columns: 300px 1fr 280px;
+            }
+        }
+        @media (max-width: 992px) {
+            .app-workspace {
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto;
+                height: auto;
+            }
+        }
+
+        /* ── LEFT PANEL: MOMENT LOGGER ── */
+        .workspace-sidebar {
+            background: var(--bg-panel);
+            border-right: 1px solid var(--border-subtle);
+            overflow-y: auto;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .sidebar-right {
+            border-right: none;
+            border-left: 1px solid var(--border-subtle);
+        }
+        .panel-heading {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--accent-teal-bright);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .control-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 1.1rem;
+        }
+        .form-label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-input {
+            width: 100%;
+            background: #060E0C;
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 8px 10px;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 13px;
+            margin-bottom: 0.85rem;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-teal-bright);
+        }
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+        .range-slider {
+            width: 100%;
+            accent-color: var(--accent-teal-bright);
+            margin-bottom: 0.85rem;
+            cursor: pointer;
+        }
+        .btn-action {
+            width: 100%;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            background: var(--accent-teal);
+            color: #FAF9F5;
+            border: 1px solid var(--accent-teal-bright);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .btn-action:hover {
+            background: #115E59;
+            box-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+        }
+
+        /* Preset buttons */
+        .preset-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+        }
+        .btn-preset-app {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            padding: 7px 10px;
+            border-radius: 4px;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.15s ease;
+        }
+        .btn-preset-app:hover, .btn-preset-app.active {
+            background: rgba(45, 212, 191, 0.12);
+            border-color: var(--accent-teal-bright);
+            color: var(--accent-teal-bright);
+        }
+
+        /* ── CENTER CANVAS WORKSPACE ── */
+        .workspace-canvas-area {
+            background: #040807;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .canvas-toolbar {
+            height: 36px;
+            background: rgba(10, 20, 18, 0.8);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: var(--text-muted);
+        }
+        .canvas-viewport {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #standalone-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: crosshair;
+        }
+        .canvas-hud {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(10, 20, 18, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 6px 12px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            pointer-events: none;
+            display: flex;
+            gap: 12px;
+        }
+        .hud-val {
+            color: var(--accent-teal-bright);
+            font-weight: 700;
+        }
+
+        /* ── RIGHT PANEL: EVIDENCE & LEDGER ── */
+        .ledger-item-card {
+            background: #060E0C;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-family: var(--font-mono);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            transition: border-color 0.15s ease;
+        }
+        .ledger-item-card:hover {
+            border-color: var(--accent-teal-bright);
+        }
+        .ledger-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ledger-index {
+            color: var(--accent-teal-bright);
+            font-weight: 700;
+        }
+        .ledger-tag-pill {
+            font-size: 9px;
+            padding: 1px 5px;
+            background: rgba(45, 212, 191, 0.1);
+            color: var(--accent-teal-bright);
+            border-radius: 2px;
+        }
+        .ledger-text-body {
+            color: var(--text-main);
+            font-size: 11.5px;
+            line-height: 1.35;
+        }
+        .ledger-coords {
+            font-size: 9.5px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ── BOTTOM STATUS STRIP ── */
+        .app-status-bar {
+            height: 28px;
+            background: #020605;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── APPLICATION TOP BAR ── -->
+    <header class="app-topbar">
+        <div class="topbar-left">
+            <a href="/creative/self-cartography/" class="app-brand">
+                <span>Context &amp; Muse</span>
+            </a>
+            <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Cartography V1 · Standalone Behavioral-Pattern &amp; Evidence Engine</h1>
+            <span class="app-badge">CARTOGRAPHY V1</span>
+            <span class="topbar-divider">/</span>
+            <span class="topbar-subhead">Explainable Behavioral-Pattern &amp; Evidence Engine</span>
+        </div>
+        <div class="topbar-actions">
+            <button id="btn-export-json" class="btn-top btn-top-secondary">&darr; Export JSON</button>
+            <button id="btn-reset-app" class="btn-top btn-top-secondary">&#8635; Reset</button>
+            <a href="/creative/self-cartography/" class="btn-top btn-top-primary">&larr; Case Study</a>
+        </div>
+    </header>
+
+    <!-- ── WORKSPACE ── -->
+    <main class="app-workspace">
+        
+        <!-- Left Panel: Input & Controls -->
+        <aside class="workspace-sidebar" aria-label="Input Controls">
+            
+            <!-- Quick Presets -->
+            <section class="control-box">
+                <div class="panel-heading">
+                    <span>01 / Preset Sequences</span>
+                </div>
+                <div class="preset-grid">
+                    <button class="btn-preset-app active" data-preset="flow">
+                        <span>Focus &amp; Deep Flow</span>
+                        <span style="color:var(--accent-teal-bright);">Q1 &rarr; Q1</span>
+                    </button>
+                    <button class="btn-preset-app" data-preset="fatigue">
+                        <span>Translation Fatigue</span>
+                        <span style="color:var(--accent-amber-bright);">Q1 &rarr; Q3</span>
+                    </button>
+                    <button class="btn-preset-app" data-preset="breach">
+                        <span>Boundary Breach</span>
+                        <span style="color:var(--accent-red);">Q2 &rarr; Q4</span>
+                    </button>
+                    <button class="btn-preset-app" data-preset="recovery">
+                        <span>Recovery Loop</span>
+                        <span style="color:var(--accent-teal-bright);">Q4 &rarr; Q1</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Plot Custom Moment -->
+            <section class="control-box">
+                <div class="panel-heading">
+                    <span>02 / Plot Observable Moment</span>
+                </div>
+                <label class="form-label" for="app-moment-text">Observation / Moment</label>
+                <input type="text" id="app-moment-text" class="form-input" placeholder="e.g. Scope shift during sprint" value="Design review with divergent feedback">
+                
+                <div class="slider-header">
+                    <span>Demand &amp; Vigilance (X)</span>
+                    <span id="label-x" style="color:var(--accent-teal-bright);">0</span>
+                </div>
+                <input type="range" id="app-slider-x" class="range-slider" min="-100" max="100" value="15">
+
+                <div class="slider-header">
+                    <span>Translation Toll / Strain (Y)</span>
+                    <span id="label-y" style="color:var(--accent-teal-bright);">25</span>
+                </div>
+                <input type="range" id="app-slider-y" class="range-slider" min="-100" max="100" value="25">
+
+                <button id="btn-add-node" class="btn-action">+ Plot Coordinate</button>
+            </section>
+
+            <!-- System Philosophy Note -->
+            <div style="font-size: 11.5px; line-height: 1.5; color: var(--text-muted); padding: 0.5rem;">
+                <strong style="color: var(--text-main); display: block; margin-bottom: 4px; font-family: var(--font-mono); font-size: 10px;">ZERO DIAGNOSTIC BIAS:</strong>
+                Moments represent topological coordinates across situational demand and translation toll. High vigilance is modeled as an active protective state rather than a pathological defect.
+            </div>
+        </aside>
+
+        <!-- Center Panel: Full Topological Canvas -->
+        <section class="workspace-canvas-area" aria-label="Cartography Canvas">
+            <div class="canvas-toolbar">
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent-teal-bright); box-shadow: 0 0 6px var(--accent-teal-bright);"></span>
+                    <span id="app-canvas-status">TOPOLOGICAL MANIFOLD // ACTIVE</span>
+                </div>
+                <div id="app-node-count">0 NODES PLOTTED</div>
+            </div>
+
+            <div class="canvas-viewport" id="canvas-wrapper">
+                <canvas id="standalone-canvas"></canvas>
+                
+                <div class="canvas-hud">
+                    <span>CURSOR: <span id="hud-coords" class="hud-val">(0, 0)</span></span>
+                    <span>QUADRANT: <span id="hud-quad" class="hud-val">Q1 Sanctuary</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Evidence Ledger & Insights -->
+        <aside class="workspace-sidebar sidebar-right" aria-label="Evidence Ledger">
+            <div class="panel-heading">
+                <span>03 / State Ledger</span>
+                <span id="ledger-count" style="color:var(--text-muted);">0 items</span>
+            </div>
+            
+            <div id="app-ledger-container" style="overflow-y: auto; flex: 1;">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Summary Insights Box -->
+            <section class="control-box" style="margin-top: auto;">
+                <div class="panel-heading">
+                    <span>Pattern Analysis</span>
+                </div>
+                <div id="pattern-summary-text" style="font-size: 11.5px; line-height: 1.45; color: var(--text-muted); font-family: var(--font-mono);">
+                    Select or plot coordinates to generate neutral state transition analytics.
+                </div>
+            </section>
+        </aside>
+
+    </main>
+
+    <!-- ── FOOTER STATUS BAR ── -->
+    <footer class="app-status-bar" role="contentinfo">
+        <div>Cartography V1 &middot; Context &amp; Muse &middot; Local-First Architecture</div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <a href="/privacy/" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+            <span>|</span>
+            <a href="/terms/" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+            <span>|</span>
+            <span>Storage: Local-Only</span>
+        </div>
+    </footer>
+
+    <!-- Standalone Canvas & State Logic -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('standalone-canvas');
+            const wrapper = document.getElementById('canvas-wrapper');
+            if (!canvas || !wrapper) return;
+            const ctx = canvas.getContext('2d');
+
+            const sliderX = document.getElementById('app-slider-x');
+            const sliderY = document.getElementById('app-slider-y');
+            const labelX = document.getElementById('label-x');
+            const labelY = document.getElementById('label-y');
+            const inputText = document.getElementById('app-moment-text');
+            const btnAdd = document.getElementById('btn-add-node');
+            const btnReset = document.getElementById('btn-reset-app');
+            const btnExport = document.getElementById('btn-export-json');
+            const ledgerContainer = document.getElementById('app-ledger-container');
+            const nodeCountElem = document.getElementById('app-node-count');
+            const ledgerCountElem = document.getElementById('ledger-count');
+            const hudCoords = document.getElementById('hud-coords');
+            const hudQuad = document.getElementById('hud-quad');
+            const patternSummary = document.getElementById('pattern-summary-text');
+
+            let nodes = [];
+            let pulseTime = 0;
+
+            const presets = {
+                flow: [
+                    { label: "Quiet deep work block", x: -65, y: -60, tag: "STABLE_FLOW" },
+                    { label: "Architecture drafting", x: -45, y: -50, tag: "HIGH_AGENCY" },
+                    { label: "Synthesis documentation", x: -70, y: -40, tag: "RESERVE_HIGH" }
+                ],
+                fatigue: [
+                    { label: "Unstructured meeting block", x: 20, y: 10, tag: "THRESHOLD_ENTRY" },
+                    { label: "Translating obvious requirements", x: 50, y: 40, tag: "HIGH_TOLL" },
+                    { label: "Vigilant status reporting", x: 80, y: 60, tag: "PERIMETER_GUARD" }
+                ],
+                breach: [
+                    { label: "Scope creep request", x: 40, y: 25, tag: "FRICTION" },
+                    { label: "Unilateral deadline shift", x: 75, y: 70, tag: "PERIMETER_HIGH" },
+                    { label: "Communication breakdown", x: 85, y: -60, tag: "REACTIVE_WILDS" }
+                ],
+                recovery: [
+                    { label: "Overwhelmed reactive reflex", x: 80, y: -70, tag: "WILDS_STRAIN" },
+                    { label: "Boundary reset & disconnect", x: 45, y: 35, tag: "VIGILANCE_STEP" },
+                    { label: "Restored quiet sanctuary", x: -65, y: -65, tag: "SANCTUARY_RETURN" }
+                ]
+            };
+
+            function getQuadrant(x, y) {
+                if (x < 0 && y < 0) return "Q1 // Sanctuary";
+                if (x >= 0 && y >= 0) return "Q2 // Threshold";
+                if (x >= 0 && y < 0) return "Q4 // Wilds";
+                return "Q3 // Perimeter";
+            }
+
+            function loadPreset(key) {
+                if (presets[key]) {
+                    nodes = JSON.parse(JSON.stringify(presets[key]));
+                    updateLedger();
+                }
+            }
+
+            function updateLedger() {
+                if (nodeCountElem) nodeCountElem.textContent = `${nodes.length} NODES PLOTTED`;
+                if (ledgerCountElem) ledgerCountElem.textContent = `${nodes.length} items`;
+                if (!ledgerContainer) return;
+                
+                ledgerContainer.innerHTML = '';
+                nodes.forEach((node, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'ledger-item-card';
+                    const quad = getQuadrant(node.x, node.y);
+                    card.innerHTML = `
+                        <div class="ledger-header-row">
+                            <span class="ledger-index">#0${index + 1}</span>
+                            <span class="ledger-tag-pill">${node.tag || 'MOMENT'}</span>
+                        </div>
+                        <div class="ledger-text-body">${node.label}</div>
+                        <div class="ledger-coords">
+                            <span>${quad}</span>
+                            <span>(${node.x}, ${node.y})</span>
+                        </div>
+                    `;
+                    ledgerContainer.appendChild(card);
+                });
+
+                // Generate Pattern Analysis
+                if (patternSummary) {
+                    if (nodes.length === 0) {
+                        patternSummary.textContent = "Canvas empty. Plot moments or load a preset sequence.";
+                    } else {
+                        const quads = nodes.map(n => getQuadrant(n.x, n.y).split('//')[0].trim());
+                        patternSummary.innerHTML = `
+                            <strong>Trajectory:</strong> ${quads.join(' &rarr; ')}<br>
+                            <strong>Dominant State:</strong> ${quads[quads.length - 1]}<br>
+                            <strong>State Loop:</strong> ${quads[0] === quads[quads.length - 1] && nodes.length > 2 ? 'Closed Cycle Detected' : 'Open Transition'}
+                        `;
+                    }
+                }
+            }
+
+            function draw() {
+                const w = canvas.width = wrapper.offsetWidth * (window.devicePixelRatio || 1);
+                const h = canvas.height = wrapper.offsetHeight * (window.devicePixelRatio || 1);
+                const cx = w / 2;
+                const cy = h / 2;
+                pulseTime += 0.025;
+
+                ctx.clearRect(0, 0, w, h);
+
+                // Grid background
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
+                ctx.lineWidth = 1;
+                const step = 40 * (window.devicePixelRatio || 1);
+                for (let x = 0; x < w; x += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, h);
+                    ctx.stroke();
+                }
+                for (let y = 0; y < h; y += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(w, y);
+                    ctx.stroke();
+                }
+
+                // Quadrant background highlights
+                ctx.fillStyle = 'rgba(15, 118, 110, 0.05)';
+                ctx.fillRect(0, 0, cx, cy); // Q1 Top-Left (Sanctuary)
+
+                ctx.fillStyle = 'rgba(217, 119, 6, 0.04)';
+                ctx.fillRect(cx, cy, cx, cy); // Q2 Bottom-Right (Threshold)
+
+                // Quadrant watermark titles
+                ctx.font = `${14 * (window.devicePixelRatio || 1)}px 'IBM Plex Mono', monospace`;
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+                ctx.fillText('Q1 // THE SANCTUARY', 20, 35);
+                ctx.fillText('Q3 // THE PERIMETER', 20, h - 20);
+                ctx.fillText('Q4 // THE WILDS', cx + 20, 35);
+                ctx.fillText('Q2 // THE THRESHOLD', cx + 20, h - 20);
+
+                // Axes
+                ctx.strokeStyle = 'rgba(45, 212, 191, 0.3)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(0, cy);
+                ctx.lineTo(w, cy);
+                ctx.moveTo(cx, 0);
+                ctx.lineTo(cx, h);
+                ctx.stroke();
+
+                // Axis Labels
+                ctx.font = `${10 * (window.devicePixelRatio || 1)}px 'IBM Plex Mono', monospace`;
+                ctx.fillStyle = 'rgba(250, 249, 245, 0.4)';
+                ctx.fillText('+ HIGH DEMAND / VIGILANCE', w - (180 * (window.devicePixelRatio || 1)), cy - 10);
+                ctx.fillText('- LOW DEMAND / AGENCY', 15, cy - 10);
+                ctx.fillText('+ HIGH TRANSLATION TOLL', cx + 10, h - 15);
+                ctx.fillText('- INTERNAL COHERENCE', cx + 10, 25);
+
+                // Connecting Vector Lines
+                if (nodes.length > 1) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = 'rgba(45, 212, 191, 0.7)';
+                    ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
+                    ctx.setLineDash([5, 5]);
+
+                    nodes.forEach((node, i) => {
+                        const px = cx + (node.x / 100) * (cx - 40);
+                        const py = cy + (node.y / 100) * (cy - 40);
+                        if (i === 0) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    });
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+
+                // Render Nodes
+                nodes.forEach((node, i) => {
+                    const px = cx + (node.x / 100) * (cx - 40);
+                    const py = cy + (node.y / 100) * (cy - 40);
+                    const pulse = Math.sin(pulseTime + i) * 3;
+
+                    // Glow circle
+                    ctx.fillStyle = 'rgba(45, 212, 191, 0.2)';
+                    ctx.beginPath();
+                    ctx.arc(px, py, (14 + pulse) * (window.devicePixelRatio || 1), 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Core point
+                    ctx.fillStyle = '#2DD4BF';
+                    ctx.beginPath();
+                    ctx.arc(px, py, 6 * (window.devicePixelRatio || 1), 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Label
+                    ctx.font = `${12 * (window.devicePixelRatio || 1)}px 'IBM Plex Sans', sans-serif`;
+                    ctx.fillStyle = '#FAF9F5';
+                    ctx.fillText(`${i + 1}. ${node.label}`, px + 12, py - 6);
+                });
+
+                requestAnimationFrame(draw);
+            }
+
+            // Presets Handlers
+            document.querySelectorAll('.btn-preset-app').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.btn-preset-app').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    loadPreset(btn.getAttribute('data-preset'));
+                });
+            });
+
+            // Sliders listener
+            if (sliderX && labelX) {
+                sliderX.addEventListener('input', () => {
+                    labelX.textContent = sliderX.value;
+                });
+            }
+            if (sliderY && labelY) {
+                sliderY.addEventListener('input', () => {
+                    labelY.textContent = sliderY.value;
+                });
+            }
+
+            // Add Moment button
+            if (btnAdd && inputText && sliderX && sliderY) {
+                btnAdd.addEventListener('click', () => {
+                    const text = inputText.value.trim();
+                    if (!text) return;
+                    const x = parseInt(sliderX.value);
+                    const y = parseInt(sliderY.value);
+                    nodes.push({ label: text, x, y, tag: "OBSERVATION" });
+                    updateLedger();
+                    inputText.value = '';
+                });
+            }
+
+            // Reset button
+            if (btnReset) {
+                btnReset.addEventListener('click', () => {
+                    nodes = [];
+                    updateLedger();
+                });
+            }
+
+            // Export JSON
+            if (btnExport) {
+                btnExport.addEventListener('click', () => {
+                    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(nodes, null, 2));
+                    const downloadAnchor = document.createElement('a');
+                    downloadAnchor.setAttribute("href", dataStr);
+                    downloadAnchor.setAttribute("download", "cartography_session.json");
+                    document.body.appendChild(downloadAnchor);
+                    downloadAnchor.click();
+                    downloadAnchor.remove();
+                });
+            }
+
+            // Canvas Click to Plot
+            canvas.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+                const w = canvas.offsetWidth;
+                const h = canvas.offsetHeight;
+                const normX = Math.round(((clickX - (w / 2)) / (w / 2)) * 100);
+                const normY = Math.round(((clickY - (h / 2)) / (h / 2)) * 100);
+
+                const label = inputText && inputText.value.trim() ? inputText.value.trim() : `Observation @ (${normX}, ${normY})`;
+                nodes.push({ label, x: normX, y: normY, tag: "CLICK_PLOTTED" });
+                updateLedger();
+                if (inputText) inputText.value = '';
+            });
+
+            // Canvas Mousemove HUD
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+                const w = canvas.offsetWidth;
+                const h = canvas.offsetHeight;
+                const normX = Math.round(((clickX - (w / 2)) / (w / 2)) * 100);
+                const normY = Math.round(((clickY - (h / 2)) / (h / 2)) * 100);
+
+                if (hudCoords) hudCoords.textContent = `(${normX}, ${normY})`;
+                if (hudQuad) hudQuad.textContent = getQuadrant(normX, normY);
+            });
+
+            // Initial load
+            loadPreset('flow');
+            draw();
+        })();
+    </script>
+</body>
+</html>

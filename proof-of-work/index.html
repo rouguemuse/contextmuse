@@ -4,28 +4,91 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proof of Work · Systems Architecture &amp; Case Studies | Context &amp; Muse</title>
-    <meta name="description" content="A curated showcase of website redesigns, app concepts, brand directions, and experimental tools by Context &amp; Muse.">
+    <title>Proof of Work · Three Systems Capabilities &amp; Implementations | Context &amp; Muse</title>
+    <meta name="description" content="A structured showcase of Digital Product Systems, Business Workflow Systems, and Web Experience &amp; Conversion builds by Context &amp; Muse.">
     <link rel="canonical" href="https://www.contextmuse.com/proof-of-work/">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.contextmuse.com/proof-of-work/">
-    <meta property="og:title" content="Proof of Work · Systems Architecture &amp; Case Studies | Context &amp; Muse">
-    <meta property="og:description" content="A curated showcase of website redesigns, app concepts, brand directions, and experimental tools by Context &amp; Muse.">
+    <meta property="og:title" content="Proof of Work · Three Systems Capabilities &amp; Implementations | Context &amp; Muse">
+    <meta property="og:description" content="A structured showcase of Digital Product Systems, Business Workflow Systems, and Web Experience &amp; Conversion builds by Context &amp; Muse.">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Proof of Work · Systems Architecture &amp; Case Studies | Context &amp; Muse">
-    <meta name="twitter:description" content="A curated showcase of website redesigns, app concepts, brand directions, and experimental tools by Context &amp; Muse.">
+    <meta name="twitter:title" content="Proof of Work · Three Systems Capabilities &amp; Implementations | Context &amp; Muse">
+    <meta name="twitter:description" content="A structured showcase of Digital Product Systems, Business Workflow Systems, and Web Experience &amp; Conversion builds by Context &amp; Muse.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=2.1">
+
+    <style>
+        .pow-capability-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+        .pow-capability-badge.amber {
+            background: rgba(245, 158, 11, 0.12);
+            color: #B45309;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        .pow-capability-badge.indigo {
+            background: rgba(99, 102, 241, 0.12);
+            color: #4F46E5;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+        .pow-capability-badge.teal {
+            background: rgba(15, 118, 110, 0.1);
+            color: var(--accent-teal);
+            border: 1px solid rgba(15, 118, 110, 0.25);
+        }
+        .pow-section-divider {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .pow-section-dark {
+            background: #10211D;
+            color: #FAF9F5;
+        }
+        .pow-section-dark h2, .pow-section-dark h3 {
+            color: #FAF9F5;
+        }
+        .pow-section-dark p {
+            color: rgba(250, 249, 245, 0.75);
+        }
+        .pow-card-custom {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .pow-card-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+        }
+        .pow-card-dark {
+            background: #1A2E29;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            color: #FAF9F5;
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -50,6 +113,7 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
+                        <a href="/cartography/" class="nav-dropdown-link">Cartography V1</a>
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
                     </div>
@@ -73,239 +137,238 @@
     <!-- Hero -->
     <header class="hero" id="pow-hero">
         <div class="container hero-content" style="text-align: center; margin: 0 auto; max-width: 850px;">
-            <span class="eyebrow">Showcase of Capability</span>
+            <span class="eyebrow">Portfolio &amp; Production Proof</span>
             <h1 class="hero-headline">Proof of Work</h1>
             <p class="hero-subhead" style="margin-left: auto; margin-right: auto;">
-                "Case studies sell trust. Concepts show range. Design directions show taste."
+                Three distinct ways I apply systems thinking: structured digital products, business operational workflows, and conversion web experiences.
             </p>
             
             <div class="pow-jump-nav" aria-label="Quick jump links">
-                <a href="#refreshes" class="pow-jump-link">1. Business Refreshes</a>
-                <a href="#concepts" class="pow-jump-link">2. Concept Builds</a>
-                <a href="#designs" class="pow-jump-link">3. Design Directions</a>
-                <a href="#lab" class="pow-jump-link">4. Experimental Lab</a>
+                <a href="#digital-product-systems" class="pow-jump-link">1. Digital Product Systems</a>
+                <a href="#business-workflows" class="pow-jump-link">2. Business Workflow Systems</a>
+                <a href="#web-conversion" class="pow-jump-link">3. Web Experience &amp; Conversion</a>
             </div>
         </div>
     </header>
 
     <main id="main-content">
-        <!-- SECTION 1: Business Refreshes -->
-        <section class="systems-section" id="refreshes" aria-labelledby="heading-refreshes" style="background: var(--bg-paper);">
+        <!-- ── CATEGORY 01: DIGITAL PRODUCT SYSTEMS ── -->
+        <section class="pow-section-divider" id="digital-product-systems" aria-labelledby="heading-prod-systems" style="background: var(--bg-paper);">
             <div class="container">
-                <div class="pow-section-intro">
-                    <span class="eyebrow">Category 01</span>
-                    <h2 id="heading-refreshes">1. Business Refreshes</h2>
-                    <p>Website redesigns, audits, and strategic local upgrades. Focuses on improving layout clarity, positioning trust proof, and building obvious booking/conversion pathways.</p>
+                <div class="pow-section-intro" style="margin-bottom: 3rem;">
+                    <span class="pow-capability-badge amber">01 // Capability Pillar</span>
+                    <h2 id="heading-prod-systems" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.2vw, 2.8rem); margin: 0 0 0.75rem 0; font-weight: 400;">Digital Product Systems</h2>
+                    <p style="font-size: 16px; color: var(--text-secondary); max-width: 720px;">
+                        Structured applications, evidence engines, and local algorithmic utilities built to organize complex personal, operational, or creative data without unnecessary cloud bloat.
+                    </p>
                 </div>
 
-                <div class="pow-grid-featured">
-                    
-                    <!-- McGregor's Comedy Club -->
-                    <article class="pow-card featured">
-                        <div class="pow-card__body">
-                            <div class="pow-card__header">
-                                <span class="pow-card__meta">Website Refresh &bull; <span class="pow-card__niche">Food, Beverage &amp; Event Space</span></span>
-                                <span class="pow-card__status live">Live Remix</span>
-                            </div>
-                            <h3 class="pow-card__title">McGregor's Comedy Club</h3>
-                            <div class="pow-card__section problem">
-                                <h4>Problem</h4>
-                                <p>Stand-up venue with outdated calendar systems, broken checkout pathways, and clunky local business presentation losing bookings and ticket revenue.</p>
-                            </div>
-                            <div class="pow-card__section strategy">
-                                <h4>Strategy</h4>
-                                <p>Implemented a booking-first venue and performer portal featuring unified ticket calendars, structured comedian bios, and simplified lead pathways.</p>
-                            </div>
-                            <div class="pow-card__section outcome">
-                                <h4>Conversion Improvements</h4>
-                                <p>Unified navigation, restructured show schedules, and introduced high-trust local testimonials. <strong>+35% online ticket conversion rate.</strong></p>
-                            </div>
-                            <div class="pow-card__section">
-                                <h4>Pillars</h4>
-                                <ul class="pow-card__tags">
-                                    <li>booking-first UX</li>
-                                    <li>testimonial engine</li>
-                                    <li>mobile ticket flow</li>
-                                    <li>clean typography</li>
-                                </ul>
-                            </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <!-- Card: Cartography V1 -->
+                    <div class="pow-card-custom">
+                        <div>
+                            <span class="pow-capability-badge amber">Behavioral Engine</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Cartography V1</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                                Explainable behavioral-pattern engine mapping reflections into continuous coordinate space across 4 non-diagnostic quadrants.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                                <li>Continuous topological coordinate mapping</li>
+                                <li>Dynamic vector transition sequences</li>
+                                <li>Client-side sandbox &amp; zero telemetry</li>
+                            </ul>
                         </div>
-                        <div class="pow-card__media">
-                            <div class="pow-card__mockup-fallback">
-                                <div class="pow-card__mockup-browser">
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-address">mcgregorspubhtx.com/comedy</span>
-                                </div>
-                                <div class="pow-card__mockup-content" style="background: linear-gradient(to bottom, #2C2C2A, #1C1C1A);">
-                                    <div class="pow-card__mockup-icon">🎭</div>
-                                    <div class="pow-card__mockup-title">McGregor's Comedy Room</div>
-                                    <div class="pow-card__mockup-tagline">Austin's Premier Stand-Up Venue</div>
-                                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem; width: 80%;">
-                                        <div style="flex: 1; height: 10px; background: rgba(255,255,255,0.05); border-radius: 2px;"></div>
-                                        <div style="flex: 1; height: 10px; background: rgba(255,255,255,0.05); border-radius: 2px;"></div>
-                                        <div style="flex: 1; height: 10px; background: var(--accent-gold); border-radius: 2px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pow-card__footer" style="position: absolute; bottom: 0; left: 0; width: 100%; border-top: none; background: rgba(243,241,235,0.95); padding: 1.25rem 2.5rem; margin-top: 0; border-top: 1px solid var(--border-light);">
-                                <a href="/rudyards-comedy/index.html" class="pow-card__cta" target="_blank">View Case Study</a>
-                            </div>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <a href="/cartography/" class="btn-magnetic" style="background: var(--text-primary); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none;">Launch App ↗</a>
+                            <a href="/creative/self-cartography/" style="border: 1px solid var(--border-light); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none;">Case Study</a>
                         </div>
-                    </article>
+                    </div>
 
-                    <!-- Steel Pan Sal's Detroit Pizza -->
-                    <article class="pow-card featured">
-                        <div class="pow-card__body">
-                            <div class="pow-card__header">
-                                <span class="pow-card__meta">Website Refresh &bull; <span class="pow-card__niche">Restaurant / Pizzeria</span></span>
-                                <span class="pow-card__status live">Live Remix</span>
-                            </div>
-                            <h3 class="pow-card__title">Steel Pan Sal's Detroit Pizza</h3>
-                            <div class="pow-card__section problem">
-                                <h4>Problem</h4>
-                                <p>High-volume local pizzeria losing margin to third-party portals because their online site lacked direct order pathways and user-friendly menu grids.</p>
-                            </div>
-                            <div class="pow-card__section strategy">
-                                <h4>Strategy</h4>
-                                <p>Engineered a high-speed direct ordering checkout funnel, clear visual item grids, and optimized mobile-first pizza builders.</p>
-                            </div>
-                            <div class="pow-card__section outcome">
-                                <h4>Conversion Improvements</h4>
-                                <p>Redirected customer traffic from Grubhub/DoorDash directly to site ordering. <strong>+22% growth in direct online orders.</strong></p>
-                            </div>
-                            <div class="pow-card__section">
-                                <h4>Pillars</h4>
-                                <ul class="pow-card__tags">
-                                    <li>direct cart funnel</li>
-                                    <li>pizza builder UX</li>
-                                    <li>menu optimization</li>
-                                    <li>local authority</li>
-                                </ul>
-                            </div>
+                    <!-- Card: GenSort -->
+                    <div class="pow-card-custom">
+                        <div>
+                            <span class="pow-capability-badge amber">Visual Intelligence</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">GenSort Visual Intelligence</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                                Local-first image sorting and classification engine for massive creative libraries, featuring fingerprint deduplication and prompt search.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                                <li>Local browser execution (zero cloud latency)</li>
+                                <li>Multi-criterion metadata extraction</li>
+                                <li>Exportable categorized file structures</li>
+                            </ul>
                         </div>
-                        <div class="pow-card__media">
-                            <div class="pow-card__mockup-fallback">
-                                <div class="pow-card__mockup-browser">
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-address">steelpansals.com/order</span>
-                                </div>
-                                <div class="pow-card__mockup-content" style="background: linear-gradient(to bottom, #2C2C2A, #1C1C1A);">
-                                    <div class="pow-card__mockup-icon">🍕</div>
-                                    <div class="pow-card__mockup-title">Steel Pan Sal's Pizza</div>
-                                    <div class="pow-card__mockup-tagline">Detroit Style Pizzeria</div>
-                                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem; width: 80%;">
-                                        <div style="flex: 2; height: 12px; background: rgba(255,255,255,0.05); border-radius: 2px;"></div>
-                                        <div style="flex: 1; height: 12px; background: var(--accent-lime); border-radius: 2px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pow-card__footer" style="position: absolute; bottom: 0; left: 0; width: 100%; border-top: none; background: rgba(243,241,235,0.95); padding: 1.25rem 2.5rem; margin-top: 0; border-top: 1px solid var(--border-light);">
-                                <span class="pow-card__cta" style="opacity: 0.5; cursor: not-allowed;">Case Study Archived</span>
-                            </div>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <a href="/gensort/" class="btn-magnetic" style="background: var(--text-primary); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none;">Explore GenSort ↗</a>
                         </div>
-                    </article>
+                    </div>
 
-                    <!-- Apex Auto Restoration -->
-                    <article class="pow-card featured">
-                        <div class="pow-card__body">
-                            <div class="pow-card__header">
-                                <span class="pow-card__meta">Website Refresh &bull; <span class="pow-card__niche">Automotive / Restoration Services</span></span>
-                                <span class="pow-card__status concept">Concept Direction</span>
-                            </div>
-                            <h3 class="pow-card__title">Apex Auto Restoration</h3>
-                            <div class="pow-card__section problem">
-                                <h4>Problem</h4>
-                                <p>Specialty mechanics operating with an obsolete 2012-era site, lacking high-res portfolios, client trust blocks, or qualified estimation funnels.</p>
-                            </div>
-                            <div class="pow-card__section strategy">
-                                <h4>Strategy</h4>
-                                <p>Designed a premium single-page layout featuring editorial typography, structured diagnostic services, and high-trust imagery checklists.</p>
-                            </div>
-                            <div class="pow-card__section outcome">
-                                <h4>Conversion Improvements</h4>
-                                <p>Qualifies classic car restoration inquiries through a high-end service scope selector before calls are booked.</p>
-                            </div>
-                            <div class="pow-card__section">
-                                <h4>Pillars</h4>
-                                <ul class="pow-card__tags">
-                                    <li>editorial typography</li>
-                                    <li>project timeline UX</li>
-                                    <li>trust markers</li>
-                                    <li>classic aesthetics</li>
-                                </ul>
-                            </div>
+                    <!-- Card: Message & Record Analysis -->
+                    <div class="pow-card-custom">
+                        <div>
+                            <span class="pow-capability-badge amber">Evidence Engine</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Message &amp; Record Analysis</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                                Private timeline recovery, forensic communication indexing, and contradiction review for dense legal and corporate records.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                                <li>Chronological statement reconciliation</li>
+                                <li>Multi-channel record synthesis</li>
+                                <li>Structured evidence ledgers</li>
+                            </ul>
                         </div>
-                        <div class="pow-card__media">
-                            <div class="pow-card__mockup-fallback">
-                                <div class="pow-card__mockup-browser">
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-dot"></span>
-                                    <span class="pow-card__mockup-address">apexrestoration.concept</span>
-                                </div>
-                                <div class="pow-card__mockup-content" style="background: linear-gradient(to bottom, #2C2C2A, #1C1C1A);">
-                                    <div class="pow-card__mockup-icon">🏎️</div>
-                                    <div class="pow-card__mockup-title">Apex Auto Restoration</div>
-                                    <div class="pow-card__mockup-tagline">Classic &amp; Muscle Car Upgrades</div>
-                                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem; width: 60%; justify-content: center;">
-                                        <div style="width: 50px; height: 16px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pow-card__footer" style="position: absolute; bottom: 0; left: 0; width: 100%; border-top: none; background: rgba(243,241,235,0.95); padding: 1.25rem 2.5rem; margin-top: 0; border-top: 1px solid var(--border-light);">
-                                <span class="pow-card__cta" style="opacity: 0.5; cursor: not-allowed;">Direction Sample</span>
-                            </div>
+                        <div>
+                            <a href="/systems/#message-record" style="border: 1px solid var(--border-light); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; display: inline-block;">View Architecture &rarr;</a>
                         </div>
-                    </article>
-
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 2: Concept Builds -->
-        <section class="systems-section" id="concepts" aria-labelledby="heading-concepts">
+        <!-- ── CATEGORY 02: BUSINESS WORKFLOW SYSTEMS ── -->
+        <section class="pow-section-divider pow-section-dark" id="business-workflows" aria-labelledby="heading-biz-workflows">
             <div class="container">
-                <div class="pow-section-intro">
-                    <span class="eyebrow">Category 02</span>
-                    <h2 id="heading-concepts">2. Concept Builds</h2>
-                    <p>Working software architectures and responsive product concepts built to explore complex operational workflows, dynamic state management, and interaction design.</p>
+                <div class="pow-section-intro" style="margin-bottom: 3rem;">
+                    <span class="pow-capability-badge indigo" style="background: rgba(99, 102, 241, 0.25); color: #A5B4FC; border-color: rgba(99, 102, 241, 0.5);">02 // Capability Pillar</span>
+                    <h2 id="heading-biz-workflows" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.2vw, 2.8rem); margin: 0 0 0.75rem 0; font-weight: 400;">Business Workflow Systems</h2>
+                    <p style="font-size: 16px; max-width: 720px;">
+                        Custom operational machinery paired with customer-facing interfaces underneath—intake, scoping, inventory, scheduling, and decision intelligence.
+                    </p>
                 </div>
 
-                <div class="pow-grid-concepts">
-                    <div class="pow-concept-card">
-                        <span class="pow-concept-tag">Web Application</span>
-                        <h3>Signal Diagnostic Engine</h3>
-                        <p>Decision intelligence platform translating messy restaurant labor, POS, and operational spreadsheets into prioritized executive action summaries.</p>
-                        <a href="/signal/" class="pow-concept-link">Explore Signal &rarr;</a>
-                    </div>
-                    
-                    <div class="pow-concept-card">
-                        <span class="pow-concept-tag">Desktop Software</span>
-                        <h3>GenSort Visual Intelligence</h3>
-                        <p>Local-first image sorting and classification engine for high-volume creative assets, featuring fingerprint deduplication and prompt search.</p>
-                        <a href="/gensort/" class="pow-concept-link">Explore GenSort &rarr;</a>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <!-- Card: Signal -->
+                    <div class="pow-card-custom pow-card-dark">
+                        <div>
+                            <span class="pow-capability-badge indigo" style="color: #A5B4FC;">Decision Support</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Signal Diagnostic Engine</h3>
+                            <p style="font-size: 14px; line-height: 1.6; margin-bottom: 1.25rem;">
+                                Decision intelligence platform converting noisy POS, labor, and food cost data into prioritized, evidence-ranked management actions.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8; color: rgba(250, 249, 245, 0.7);">
+                                <li>Multi-location operational triage</li>
+                                <li>Dollar-ranked opportunity index</li>
+                                <li>Executive diagnostic reports</li>
+                            </ul>
+                        </div>
+                        <a href="/signal/" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; width: fit-content;">Explore Signal &rarr;</a>
                     </div>
 
-                    <div class="pow-concept-card">
-                        <span class="pow-concept-tag">Private System</span>
-                        <h3>Message &amp; Record Analysis</h3>
-                        <p>Searchable timeline recovery and contradiction indexing for dense email archives and complex communication records.</p>
-                        <a href="/systems/#message-record" class="pow-concept-link">View Architecture &rarr;</a>
+                    <!-- Card: INNcontrol Coils -->
+                    <div class="pow-card-custom pow-card-dark">
+                        <div>
+                            <span class="pow-capability-badge indigo" style="color: #A5B4FC;">Field Scoping</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">INNcontrol Coils</h3>
+                            <p style="font-size: 14px; line-height: 1.6; margin-bottom: 1.25rem;">
+                                Interactive HVAC unit mapper and field estimation ledger that eliminated paper scoping errors across multi-property hotel surveys.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8; color: rgba(250, 249, 245, 0.7);">
+                                <li>Dynamic spatial unit grid selector</li>
+                                <li>Real-time material cost calculations</li>
+                                <li>Direct proposal ledger export</li>
+                            </ul>
+                        </div>
+                        <a href="/systems/client-builds/#inncontrol" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; width: fit-content;">View Case Study &rarr;</a>
+                    </div>
+
+                    <!-- Card: EDR Party Rentals -->
+                    <div class="pow-card-custom pow-card-dark">
+                        <div>
+                            <span class="pow-capability-badge indigo" style="color: #A5B4FC;">Inventory Lockouts</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">EDR Party Rentals</h3>
+                            <p style="font-size: 14px; line-height: 1.6; margin-bottom: 1.25rem;">
+                                Real-time serial inventory lockouts and automated delivery tier qualification, replacing manual phone calls with 24/7 self-serve checkout.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8; color: rgba(250, 249, 245, 0.7);">
+                                <li>Calendar availability conflict engine</li>
+                                <li>Automated surface &amp; power checks</li>
+                                <li>Instant delivery fee calculation</li>
+                            </ul>
+                        </div>
+                        <a href="/case-studies/edr-party-rentals/" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; width: fit-content;">View Case Study &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CATEGORY 03: WEB EXPERIENCE & CONVERSION ── -->
+        <section class="pow-section-divider" id="web-conversion" aria-labelledby="heading-web-conv" style="background: var(--bg-paper);">
+            <div class="container">
+                <div class="pow-section-intro" style="margin-bottom: 3rem;">
+                    <span class="pow-capability-badge teal">03 // Capability Pillar</span>
+                    <h2 id="heading-web-conv" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.2vw, 2.8rem); margin: 0 0 0.75rem 0; font-weight: 400;">Web Experience &amp; Conversion</h2>
+                    <p style="font-size: 16px; color: var(--text-secondary); max-width: 720px;">
+                        Website redesigns, friction audits, mobile UX optimizations, and conversion funnels designed to turn casual visitors into paying customers.
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <!-- Card: D2 Auto Detail -->
+                    <div class="pow-card-custom">
+                        <div>
+                            <span class="pow-capability-badge teal">Acquisition &amp; Media</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">D2 Auto Detail</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                                Premium ceramic coating qualification portal with integrated ad campaign automation and custom video player.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                                <li>Interactive vehicle package selector</li>
+                                <li>Automated meta campaign generation</li>
+                                <li>High-converting mobile booking flow</li>
+                            </ul>
+                        </div>
+                        <a href="/systems/client-builds/#d2" style="border: 1px solid var(--border-light); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; width: fit-content;">View Case Study &rarr;</a>
+                    </div>
+
+                    <!-- Card: McGregor's Comedy Club -->
+                    <div class="pow-card-custom">
+                        <div>
+                            <span class="pow-capability-badge teal">Booking-First UX</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">McGregor's Comedy Club</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                                Stand-up venue portal redesign replacing clumsy multi-click event listings with unified ticketing schedules (+35% conversion).
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                                <li>Single-screen show schedule picker</li>
+                                <li>Comedian profile integration</li>
+                                <li>Fast mobile checkout pathways</li>
+                            </ul>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Production Archive</span>
+                    </div>
+
+                    <!-- Card: Quick Launch Websites -->
+                    <div class="pow-card-custom">
+                        <div>
+                            <span class="pow-capability-badge teal">Productized Service</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Quick Launch Websites ($450)</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                                High-speed single-page business websites for local service companies that need immediate credibility and direct quote inquiries.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                                <li>48-hour production turnaround</li>
+                                <li>Local SEO schema &amp; mobile audit</li>
+                                <li>Direct lead intake routing</li>
+                            </ul>
+                        </div>
+                        <a href="/quick-launch/" class="btn-magnetic" style="background: var(--text-primary); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; width: fit-content;">View Quick Launch &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Scoping Bridge -->
-        <section style="padding: 4rem 0; background: #10211D; color: #FAF9F5; text-align: center;">
-            <div class="container">
-                <span style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.75rem;">Explore Scopes</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 400; margin-bottom: 1rem;">Ready to build a system?</h2>
-                <a href="/custom/#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.6rem; border-radius: 4px; text-decoration: none; display: inline-block;">Start a Project &rarr;</a>
+        <section style="padding: 4.5rem 0; background: #0A1412; color: #FAF9F5; text-align: center; border-top: 1px solid rgba(250, 249, 245, 0.1);">
+            <div class="container" style="max-width: 700px;">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.75rem;">Next Steps</span>
+                <h2 style="font-family: var(--font-serif); font-size: 2.3rem; font-weight: 400; margin-bottom: 1rem; color: #FAF9F5;">Have a complex problem to turn into a usable system?</h2>
+                <p style="font-size: 15px; color: rgba(250, 249, 245, 0.7); line-height: 1.6; margin-bottom: 2rem;">
+                    From focused website diagnostics to custom operational databases and client intake portals, explore predefined ways to work together.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/services/" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.6rem; border-radius: 4px; text-decoration: none;">Ways to Work Together &rarr;</a>
+                    <a href="/custom/#intake" style="border: 1px solid rgba(250, 249, 245, 0.25); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.6rem; border-radius: 4px; text-decoration: none;">Custom Project Scope</a>
+                </div>
             </div>
         </section>
     </main>
