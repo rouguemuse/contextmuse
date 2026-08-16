@@ -113,81 +113,102 @@
             flex-wrap: wrap;
         }
 
-        /* ── 3 CONVERSION PATHWAYS ── */
-        .hp-paths-section {
-            background: #FFFFFF;
-            padding: 5rem 0;
+        /* ── THREE CAPABILITIES SECTION ── */
+        .capabilities-section {
+            padding: 5.5rem 0;
+            background: var(--bg-paper);
             border-bottom: 1px solid var(--border-light);
         }
-        .hp-paths-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
+        .capabilities-header {
+            margin-bottom: 3rem;
         }
-        .hp-paths-grid {
+        .capabilities-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .capabilities-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--text-primary);
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        .capabilities-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
-        @media (max-width: 950px) {
-            .hp-paths-grid {
+        @media (max-width: 960px) {
+            .capabilities-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
         }
-        .hp-path-card {
-            background: var(--bg-paper);
+        .capability-card {
+            background: #FFFFFF;
             border: 1px solid var(--border-light);
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 2.25rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.2s ease;
+            gap: 1.5rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
         }
-        .hp-path-card:hover {
+        .capability-card:hover {
             border-color: var(--accent-teal);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(15, 118, 110, 0.05);
         }
-        .hp-path-card-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--accent-teal);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        .hp-path-card-title {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            color: var(--text-primary);
-            margin: 0 0 0.75rem 0;
-            font-weight: 500;
-        }
-        .hp-path-card-desc {
-            font-size: 14px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 1.75rem;
-        }
-        .hp-path-card-link {
+        .capability-num {
             font-family: var(--font-mono);
             font-size: 11px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-primary);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-            margin-top: auto;
-        }
-        .hp-path-card:hover .hp-path-card-link {
             color: var(--accent-teal);
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        .capability-name {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            color: var(--text-primary);
+            margin: 0 0 0.6rem 0;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+        .capability-lead {
+            font-size: 14px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .capability-list {
+            list-style: none;
+            padding: 1.25rem 0 0 0;
+            margin: 0;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .capability-list li {
+            font-size: 13.5px;
+            color: var(--text-primary);
+            line-height: 1.45;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .capability-bullet {
+            color: var(--accent-teal);
+            font-size: 14px;
+            line-height: 1;
         }
 
         /* ── EDITORIAL SHOWCASE ROWS ── */
@@ -229,6 +250,30 @@
             width: 100%;
             display: block;
             height: auto;
+        }
+        .capability-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-right: 8px;
+            background: rgba(15, 118, 110, 0.08);
+            color: var(--accent-teal);
+            border: 1px solid rgba(15, 118, 110, 0.2);
+        }
+        .capability-badge.amber {
+            background: rgba(217, 119, 6, 0.08);
+            color: #B45309;
+            border-color: rgba(217, 119, 6, 0.25);
+        }
+        .capability-badge.indigo {
+            background: rgba(79, 70, 229, 0.08);
+            color: #4338CA;
+            border-color: rgba(79, 70, 229, 0.2);
         }
         .editorial-num {
             font-family: var(--font-mono);
@@ -626,13 +671,13 @@
         <div class="home-hero-overlay"></div>
         <div class="container home-hero-content">
             <div class="home-hero-copy">
-                <span class="hero-eyebrow">CONTEXT &amp; MUSE</span>
+                <span class="hero-eyebrow">SYSTEMS THINKING &amp; DIGITAL PRODUCT DESIGN</span>
                 <h1 class="hero-title">
-                    Clarity shapes perception.<br>
-                    Perception changes everything.
+                    Complex problems,<br>
+                    turned into usable systems.
                 </h1>
                 <p class="hero-subhead">
-                    Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use.
+                    I design digital products, operational workflows, and conversion-focused web experiences that make complicated information easier to understand—and easier to act on.
                 </p>
                 <div class="btn-group">
                     <a href="/systems/" class="btn-primary-teal">Explore the Work &rarr;</a>
@@ -643,71 +688,125 @@
     </header>
 
     <main id="main-content">
-        <!-- ── 3 CONVERSION PATHWAYS ── -->
-        <section class="hp-paths-section" aria-labelledby="paths-heading">
+        <!-- ── THREE CAPABILITIES SECTION ── -->
+        <section class="capabilities-section" id="capabilities" aria-label="Capabilities">
             <div class="container">
-                <div class="hp-paths-header">
-                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Navigation by Intent</span>
-                    <h2 id="paths-heading" style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--text-primary); font-weight: 400; margin: 0;">What are you here to do?</h2>
+                <div class="capabilities-header">
+                    <span class="capabilities-eyebrow">01 / CAPABILITIES</span>
+                    <h2 class="capabilities-title">Three ways I apply systems thinking.</h2>
                 </div>
 
-                <div class="hp-paths-grid">
-                    <!-- Path 1: Use a System -->
-                    <div class="hp-path-card">
+                <div class="capabilities-grid">
+                    <!-- Bucket 1: Digital Product Systems -->
+                    <div class="capability-card">
                         <div>
-                            <span class="hp-path-card-eyebrow">Interactive Software</span>
-                            <h3 class="hp-path-card-title">Use a System</h3>
-                            <p class="hp-path-card-desc">
-                                Standalone tools for operational diagnosis and asset organization: <strong>Signal</strong> (decision intelligence) and <strong>GenSort</strong> (local visual classification).
-                            </p>
+                            <span class="capability-num">01</span>
+                            <h3 class="capability-name">Digital Product Systems</h3>
+                            <p class="capability-lead">Structured tools, applications, and evidence-based engines.</p>
                         </div>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="/signal/" class="hp-path-card-link">Signal &rarr;</a>
-                            <a href="/gensort/" class="hp-path-card-link">GenSort &rarr;</a>
-                        </div>
+                        <ul class="capability-list">
+                            <li><span class="capability-bullet">&bull;</span> Behavioral &amp; evidence engines</li>
+                            <li><span class="capability-bullet">&bull;</span> Algorithmic utilities &amp; data tools</li>
+                            <li><span class="capability-bullet">&bull;</span> Custom web &amp; desktop applications</li>
+                        </ul>
                     </div>
 
-                    <!-- Path 2: Build a System -->
-                    <div class="hp-path-card">
+                    <!-- Bucket 2: Business Workflow Systems -->
+                    <div class="capability-card">
                         <div>
-                            <span class="hp-path-card-eyebrow">Client Engagements</span>
-                            <h3 class="hp-path-card-title">Build a System</h3>
-                            <p class="hp-path-card-desc">
-                                Custom websites, client intake pipelines, booking logic, and operational workflow software engineered around specific business constraints.
-                            </p>
+                            <span class="capability-num">02</span>
+                            <h3 class="capability-name">Business Workflow Systems</h3>
+                            <p class="capability-lead">Intake, quoting, booking, qualification, and client operations.</p>
                         </div>
-                        <a href="/custom/" class="hp-path-card-link">Custom Systems &amp; Scopes &rarr;</a>
+                        <ul class="capability-list">
+                            <li><span class="capability-bullet">&bull;</span> Custom intake &amp; lead qualification</li>
+                            <li><span class="capability-bullet">&bull;</span> Dynamic quote &amp; pricing calculators</li>
+                            <li><span class="capability-bullet">&bull;</span> Client portals &amp; booking funnels</li>
+                        </ul>
                     </div>
 
-                    <!-- Path 3: Review the Work -->
-                    <div class="hp-path-card">
+                    <!-- Bucket 3: Web Experience & Conversion -->
+                    <div class="capability-card">
                         <div>
-                            <span class="hp-path-card-eyebrow">Technical Proof</span>
-                            <h3 class="hp-path-card-title">Review the Work</h3>
-                            <p class="hp-path-card-desc">
-                                Technical case studies, systems proof-of-work, and interactive models demonstrating architectural problem-solving and full-stack execution.
-                            </p>
+                            <span class="capability-num">03</span>
+                            <h3 class="capability-name">Web Experience &amp; Conversion</h3>
+                            <p class="capability-lead">Audits, redesigns, mobile UX, and clearer customer journeys.</p>
                         </div>
-                        <a href="/proof-of-work/" class="hp-path-card-link">Proof of Work &rarr;</a>
+                        <ul class="capability-list">
+                            <li><span class="capability-bullet">&bull;</span> UX &amp; copywriting friction audits</li>
+                            <li><span class="capability-bullet">&bull;</span> High-speed website redesigns</li>
+                            <li><span class="capability-bullet">&bull;</span> Mobile UX &amp; conversion optimization</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ── FEATURED SYSTEMS (EDITORIAL ROWS) ── -->
+        <!-- ── FEATURED PROOF (EDITORIAL ROWS) ── -->
         <section class="hp-editorial-section" id="featured-systems" aria-labelledby="featured-heading">
             <div class="container">
                 <div style="margin-bottom: 2rem;">
-                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Flagship Systems</span>
-                    <h2 id="featured-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--text-primary); margin: 0; font-weight: 400;">Featured Systems</h2>
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">02 / FEATURED PROOF</span>
+                    <h2 id="featured-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--text-primary); margin: 0; font-weight: 400;">Selected systems in action.</h2>
                 </div>
 
-                <!-- 01 SIGNAL -->
+                <!-- 01 CARTOGRAPHY V1 -->
                 <div class="editorial-row">
                     <div>
-                        <span class="editorial-num">01 // OPERATIONAL INTELLIGENCE</span>
+                        <div style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                            <span class="capability-badge amber">DIGITAL PRODUCT SYSTEMS</span>
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">01 // BEHAVIORAL ENGINE</span>
+                        </div>
+                        <h3 class="editorial-title">Cartography V1</h3>
+                        <div class="editorial-subhead">Explainable Behavioral-Pattern &amp; Evidence Engine</div>
+                        
+                        <p style="font-size: 15px; line-height: 1.6; color: var(--text-primary); margin-bottom: 1.5rem;">
+                            An explainable behavioral-pattern engine that turns subjective reflections into structured, evidence-backed patterns without diagnosing the user or treating context-dependent behaviors as inherently good or bad.
+                        </p>
+
+                        <div class="editorial-breakdown">
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Problem:</span>
+                                <span>Subjective self-reflections and personal notes are easily distorted by emotional reaction, clinical labeling, or loss of situational context.</span>
+                            </div>
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Structure:</span>
+                                <span>Maps user moments against observable behavioral patterns, temporal sequences, and neutral state transitions with zero moral framing.</span>
+                            </div>
+                            <div class="editorial-tag-row">
+                                <span class="editorial-tag-label">Output:</span>
+                                <span>Visual pattern cartography, verifiable recurrence loops, and self-directed operational clarity.</span>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="/creative/self-cartography/" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">Explore Cartography &rarr;</a>
+                            <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Read the Essay</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="editorial-media-container">
+                            <img src="/assets/images/self_cartography_mockup.jpg" alt="Cartography behavioral pattern mapping interface" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02 SIGNAL -->
+                <div class="editorial-row reverse">
+                    <div>
+                        <div class="editorial-media-container">
+                            <img src="/assets/images/signal-priority-view.webp" alt="Signal diagnostic decision support interface" loading="lazy">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                            <span class="capability-badge indigo">BUSINESS WORKFLOW SYSTEMS</span>
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">02 // OPERATIONAL INTELLIGENCE</span>
+                        </div>
                         <h3 class="editorial-title">Signal</h3>
-                        <div class="editorial-subhead">Decision &amp; Diagnostic Intelligence</div>
+                        <div class="editorial-subhead">Decision &amp; Diagnostic Intelligence for Restaurant Systems</div>
                         
                         <div class="editorial-breakdown">
                             <div class="editorial-tag-row">
@@ -734,32 +833,23 @@
                             <span style="color: var(--border-dark);">&rarr;</span>
                             <span>RECOMMENDATION</span>
                             <span style="color: var(--border-dark);">&rarr;</span>
-                            <span>HUMAN VALIDATION</span>
+                            <span>VALIDATION</span>
                         </div>
 
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="/signal/" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">Explore Signal &rarr;</a>
-                            <a href="/signal/intake/" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Bring Me the Mess</a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="editorial-media-container">
-                            <img src="/assets/images/signal-priority-view.webp" alt="Signal diagnostic decision support interface" loading="lazy">
+                            <a href="/signal/intake/" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Diagnostic Intake</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- 02 GENSORT -->
-                <div class="editorial-row reverse">
+                <!-- 03 GENSORT -->
+                <div class="editorial-row">
                     <div>
-                        <div class="editorial-media-container">
-                            <img src="/assets/images/gensort-library.webp" alt="GenSort workspace asset organization interface" loading="lazy">
+                        <div style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                            <span class="capability-badge amber">DIGITAL PRODUCT SYSTEMS</span>
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">03 // INFORMATION ARCHITECTURE</span>
                         </div>
-                    </div>
-
-                    <div>
-                        <span class="editorial-num">02 // INFORMATION ARCHITECTURE</span>
                         <h3 class="editorial-title">GenSort</h3>
                         <div class="editorial-subhead">Visual Asset Organization &amp; Local Classification Engine</div>
                         
@@ -783,12 +873,27 @@
                             <a href="/cxm_gensort/" target="_blank" rel="noopener" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Open Web App &nearr;</a>
                         </div>
                     </div>
+
+                    <div>
+                        <div class="editorial-media-container">
+                            <img src="/assets/images/gensort-library.webp" alt="GenSort workspace asset organization interface" loading="lazy">
+                        </div>
+                    </div>
                 </div>
 
-                <!-- 03 MESSAGE & RECORD ANALYSIS -->
-                <div class="editorial-row">
+                <!-- 04 MESSAGE & RECORD ANALYSIS -->
+                <div class="editorial-row reverse">
                     <div>
-                        <span class="editorial-num">03 // EVIDENCE NAVIGATION</span>
+                        <div class="editorial-media-container">
+                            <img src="/assets/images/message-analysis-mockup.png" alt="Message and record analysis review interface" loading="lazy">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                            <span class="capability-badge">EVIDENCE ARCHITECTURE</span>
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">04 // TIMELINE RECOVERY</span>
+                        </div>
                         <h3 class="editorial-title">Message &amp; Record Analysis</h3>
                         <div class="editorial-subhead">Private Working System · Timeline Recovery &amp; Contradiction Review</div>
                         
@@ -808,12 +913,6 @@
                         </div>
 
                         <a href="/systems/#message-record" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">View System Architecture &rarr;</a>
-                    </div>
-
-                    <div>
-                        <div class="editorial-media-container">
-                            <img src="/assets/images/message-analysis-mockup.png" alt="Message and record analysis review interface" loading="lazy">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -946,7 +1045,7 @@
                     <a href="/systems/client-builds/#inncontrol" class="hp-proof-card">
                         <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol HVAC scoping application" loading="lazy">
                         <div class="hp-proof-card-body">
-                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;">Field Service Scoping</span>
+                            <span class="capability-badge indigo" style="margin-bottom: 0.6rem;">BUSINESS WORKFLOW SYSTEMS</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">INNcontrol Coils</h3>
                             <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Interactive unit mapper and on-site estimation ledger replacing paper HVAC surveys.</p>
                         </div>
@@ -956,7 +1055,7 @@
                     <a href="/systems/client-builds/#d2" class="hp-proof-card">
                         <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail portal" loading="lazy">
                         <div class="hp-proof-card-body">
-                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;">Acquisition &amp; Media</span>
+                            <span class="capability-badge" style="margin-bottom: 0.6rem;">WEB EXPERIENCE &amp; CONVERSION</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">D2 Auto Detail</h3>
                             <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Vehicle qualification funnel with automated ad generation and media streaming player.</p>
                         </div>
@@ -966,9 +1065,9 @@
                     <a href="/case-studies/edr-party-rentals/" class="hp-proof-card">
                         <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory system" loading="lazy">
                         <div class="hp-proof-card-body">
-                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;">Inventory &amp; Reservation</span>
+                            <span class="capability-badge indigo" style="margin-bottom: 0.6rem;">BUSINESS WORKFLOW SYSTEMS</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">EDR Party Rentals</h3>
-                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Real-time serial inventory lockouts eliminating calendar double-booking errors.</p>
+                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Making a complicated rental business simple to book with real-time inventory and delivery qualification.</p>
                         </div>
                     </a>
                 </div>

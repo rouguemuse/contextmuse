@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Self Cartography · Symbolic Topology &amp; Interactive Coordinates | Context &amp; Muse</title>
-    <meta name="description" content="An interactive cartographic diagnostic framework charting boundaries, cognitive variables, and decision structures across distinct quadrants.">
+    <title>Cartography V1 · Explainable Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse</title>
+    <meta name="description" content="An explainable behavioral-pattern engine that turns subjective reflections into structured, evidence-backed patterns without diagnosing the user or moralizing behavior.">
     <link rel="canonical" href="https://www.contextmuse.com/creative/self-cartography/">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Self Cartography · Symbolic Topology &amp; Interactive Coordinates | Context &amp; Muse">
-    <meta property="og:description" content="An interactive cartographic diagnostic framework charting boundaries, cognitive variables, and decision structures across distinct quadrants.">
+    <meta property="og:title" content="Cartography V1 · Explainable Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse">
+    <meta property="og:description" content="An explainable behavioral-pattern engine that turns subjective reflections into structured, evidence-backed patterns without diagnosing the user or moralizing behavior.">
     <meta property="og:url" content="https://www.contextmuse.com/creative/self-cartography/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Self Cartography · Symbolic Topology &amp; Interactive Coordinates | Context &amp; Muse">
-    <meta name="twitter:description" content="An interactive cartographic diagnostic framework charting boundaries, cognitive variables, and decision structures across distinct quadrants.">
+    <meta name="twitter:title" content="Cartography V1 · Explainable Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse">
+    <meta name="twitter:description" content="An explainable behavioral-pattern engine that turns subjective reflections into structured, evidence-backed patterns without diagnosing the user or moralizing behavior.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=2.1">
     
     <style>
@@ -32,111 +32,356 @@
             --text-primary: #10211D;
             --text-secondary: #4A5568;
             --border-light: rgba(16, 33, 29, 0.12);
-            --accent-red: #A83A32;
             --accent-teal: #0F766E;
+            --accent-teal-bright: #2DD4BF;
+            --accent-amber: #D97706;
+            --accent-amber-bright: #FBBF24;
+            --accent-red: #A83A32;
         }
         
         .cart-hero {
-            padding: 7rem 0 4rem;
-            background: #1A1A18;
+            padding: 7rem 0 4.5rem;
+            background: #10211D;
             color: #FAF9F5;
             position: relative;
             border-bottom: 1px solid rgba(250, 249, 245, 0.08);
         }
-        .hero-eyebrow {
+        .hero-eyebrow-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .cart-badge {
             font-family: var(--font-mono);
-            font-size: 11px;
-            color: #C5A059;
-            letter-spacing: 0.15em;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 1rem;
+            padding: 4px 9px;
+            border-radius: 3px;
+            background: rgba(245, 158, 11, 0.15);
+            color: #FBBF24;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+        .cart-tag {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: rgba(250, 249, 245, 0.6);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
         .hero-title {
             font-family: var(--font-serif);
-            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
             font-weight: 400;
             line-height: 1.15;
-            margin-bottom: 1.25rem;
-            max-width: 800px;
+            margin-bottom: 1rem;
+            max-width: 840px;
         }
         .hero-sub {
-            font-family: var(--font-sans);
+            font-family: var(--font-mono);
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-teal-bright);
+            margin-bottom: 1.5rem;
+        }
+        .hero-lead {
             font-size: 1.15rem;
             line-height: 1.65;
-            color: rgba(250, 249, 245, 0.75);
-            max-width: 680px;
+            color: rgba(250, 249, 245, 0.82);
+            max-width: 760px;
             margin-bottom: 2rem;
         }
-        
-        .cart-section {
-            padding: 5rem 0;
-            border-bottom: 1px solid var(--border-light);
+
+        /* ── SANDBOX CONTAINER ── */
+        .sandbox-section {
+            padding: 5.5rem 0;
+            background: #0A1412;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
         }
-        .cart-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        @media (max-width: 960px) {
-            .cart-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        }
-        
-        .cart-img-container {
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
-            background: #FFFFFF;
-        }
-        .cart-img-container img {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-        
-        .quadrant-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .sandbox-header {
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
             gap: 1.5rem;
-            margin: 2.5rem 0;
         }
-        @media (max-width: 600px) {
-            .quadrant-grid {
+        .sandbox-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        @media (max-width: 1024px) {
+            .sandbox-grid {
                 grid-template-columns: 1fr;
             }
         }
-        .quadrant-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
+
+        /* ── CANVAS VIEWPORT ── */
+        .canvas-container {
+            background: #10211D;
+            border: 1px solid rgba(45, 212, 191, 0.25);
+            border-radius: 8px;
             padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
-        .quadrant-num {
+        .canvas-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: rgba(250, 249, 245, 0.6);
+            letter-spacing: 0.05em;
+        }
+        .canvas-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-teal-bright);
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-teal-bright);
+            box-shadow: 0 0 8px var(--accent-teal-bright);
+        }
+        #cartography-canvas {
+            width: 100%;
+            height: 440px;
+            background: #08110F;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            display: block;
+            cursor: crosshair;
+        }
+        .canvas-legend {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
             font-family: var(--font-mono);
             font-size: 10px;
-            color: var(--accent-red);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            display: block;
-            margin-bottom: 0.4rem;
+            color: rgba(250, 249, 245, 0.7);
         }
-        .quadrant-title {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
+        @media (max-width: 600px) {
+            .canvas-legend {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .legend-item {
+            padding: 6px 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 3px;
+        }
+        .legend-item strong {
+            display: block;
+            color: #FAF9F5;
+            font-size: 10.5px;
+        }
+
+        /* ── CONTROLS DECK ── */
+        .control-deck {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .deck-card {
+            background: #10211D;
+            border: 1px solid rgba(250, 249, 245, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .deck-title {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: #FBBF24;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin: 0 0 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .preset-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .btn-preset {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #FAF9F5;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .btn-preset:hover, .btn-preset.active {
+            background: rgba(45, 212, 191, 0.15);
+            border-color: var(--accent-teal-bright);
+            color: var(--accent-teal-bright);
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .input-label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: rgba(250, 249, 245, 0.7);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .input-text {
+            width: 100%;
+            box-sizing: border-box;
+            background: #08110F;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #FAF9F5;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+        }
+        .input-text:focus {
+            outline: none;
+            border-color: var(--accent-teal-bright);
+        }
+        .slider-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: rgba(250, 249, 245, 0.6);
+            margin-bottom: 0.25rem;
+        }
+        .slider-input {
+            width: 100%;
+            accent-color: var(--accent-teal-bright);
+            cursor: pointer;
+        }
+        .btn-plot {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            width: 100%;
+            padding: 9px;
+            background: var(--accent-teal);
+            color: #FAF9F5;
+            border: 1px solid var(--accent-teal-bright);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            margin-top: 0.5rem;
+        }
+        .btn-plot:hover {
+            background: #115E59;
+            box-shadow: 0 0 12px rgba(45, 212, 191, 0.3);
+        }
+
+        /* ── EVIDENCE LEDGER ── */
+        .ledger-container {
+            max-height: 180px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #08110F;
+            border-radius: 4px;
+            padding: 8px;
+        }
+        .ledger-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 12px;
+            font-family: var(--font-mono);
+        }
+        .ledger-row:last-child {
+            border-bottom: none;
+        }
+        .ledger-moment {
+            color: #FAF9F5;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .ledger-quadrant {
+            color: var(--accent-teal-bright);
+            font-size: 10px;
+        }
+        .ledger-tag {
+            font-size: 9.5px;
+            padding: 2px 6px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(250, 249, 245, 0.8);
+        }
+
+        /* ── PHILOSOPHY & SPECS ── */
+        .cart-section {
+            padding: 5.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+            background: var(--bg-body);
+        }
+        .quadrant-spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            .quadrant-spec-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .spec-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2rem;
+        }
+        .spec-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--accent-teal);
             margin-bottom: 0.5rem;
+            display: block;
+        }
+        .spec-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin: 0 0 0.75rem 0;
             color: var(--text-primary);
             font-weight: 500;
         }
-        .quadrant-desc {
-            font-size: 13px;
-            line-height: 1.55;
+        .spec-desc {
+            font-size: 14.5px;
+            line-height: 1.6;
             color: var(--text-secondary);
             margin: 0;
         }
@@ -190,61 +435,178 @@
         <header class="cart-hero">
             <div class="container">
                 <div style="margin-bottom: 1.5rem;">
-                    <a href="/creative/" style="font-family: var(--font-mono); font-size: 11px; text-decoration: none; color: #C5A059; font-weight: bold;">&larr; Back to Creative Practice</a>
+                    <a href="/#featured-systems" style="font-family: var(--font-mono); font-size: 11px; text-decoration: none; color: var(--accent-teal-bright); font-weight: bold;">&larr; Back to Featured Systems</a>
                 </div>
-                <span class="hero-eyebrow">Interactive Diagnostic Framework</span>
-                <h1 class="hero-title">Self Cartography</h1>
-                <p class="hero-sub">
-                    A topological framework and interactive coordinate canvas mapping boundaries, psychological variables, and translation thresholds.
+                <div class="hero-eyebrow-container">
+                    <span class="cart-badge">DIGITAL PRODUCT SYSTEMS</span>
+                    <span class="cart-tag">CASE STUDY &middot; BEHAVIORAL ENGINE</span>
+                </div>
+                <h1 class="hero-title">Cartography V1</h1>
+                <div class="hero-sub">Explainable Behavioral-Pattern &amp; Evidence Engine</div>
+                <p class="hero-lead">
+                    An explainable behavioral-pattern engine that turns subjective reflections into structured, evidence-backed patterns without diagnosing the user or treating context-dependent behaviors as inherently good or bad.
                 </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#interactive-sandbox" class="btn-magnetic" style="background: var(--accent-teal-bright); color: #10211D; font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Launch Interactive Sandbox &darr;</a>
+                    <a href="/creative/how-to-explain-yourself-to-wolves/" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Read Wolves Essay &rarr;</a>
+                </div>
             </div>
         </header>
 
-        <!-- Main Breakdown -->
+        <!-- ── INTERACTIVE SANDBOX SECTION ── -->
+        <section class="sandbox-section" id="interactive-sandbox" aria-label="Interactive Cartography Sandbox">
+            <div class="container">
+                <div class="sandbox-header">
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal-bright); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.4rem;">Live Engine Demonstration</span>
+                        <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 0; color: #FAF9F5; font-weight: 400;">Interactive Topological Canvas</h2>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(250, 249, 245, 0.6);">
+                        Client-side execution &middot; Zero diagnosis &middot; Local state
+                    </div>
+                </div>
+
+                <div class="sandbox-grid">
+                    <!-- Left: Interactive Canvas Viewport -->
+                    <div class="canvas-container">
+                        <div class="canvas-topbar">
+                            <div class="canvas-status">
+                                <span class="status-dot"></span>
+                                <span>COORDINATE TOPOLOGY // ENGINE ACTIVE</span>
+                            </div>
+                            <div id="node-counter">0 PLOTTED NODES</div>
+                        </div>
+
+                        <canvas id="cartography-canvas" width="600" height="440"></canvas>
+
+                        <div class="canvas-legend">
+                            <div class="legend-item">
+                                <strong>Q1 // THE SANCTUARY</strong>
+                                Low Demand &middot; High Coherence
+                            </div>
+                            <div class="legend-item">
+                                <strong>Q2 // THE THRESHOLD</strong>
+                                Moderate Demand &middot; High Toll
+                            </div>
+                            <div class="legend-item">
+                                <strong>Q3 // THE PERIMETER</strong>
+                                High Vigilance &middot; Boundary Guard
+                            </div>
+                            <div class="legend-item">
+                                <strong>Q4 // THE WILDS</strong>
+                                High Strain &middot; Reactive Break
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Controls & Evidence Ledger -->
+                    <div class="control-deck">
+                        <!-- Preset Pathways -->
+                        <div class="deck-card">
+                            <div class="deck-title">
+                                <span>01 / Preset Behavioral Pathways</span>
+                            </div>
+                            <div class="preset-buttons">
+                                <button class="btn-preset active" data-preset="flow">Focus Flow (Q1)</button>
+                                <button class="btn-preset" data-preset="fatigue">Translation Fatigue (Q1 &rarr; Q2 &rarr; Q3)</button>
+                                <button class="btn-preset" data-preset="breach">Boundary Breach (Q2 &rarr; Q3 &rarr; Q4)</button>
+                                <button class="btn-preset" data-preset="recovery">Recovery Loop (Q4 &rarr; Q1)</button>
+                            </div>
+                        </div>
+
+                        <!-- Plot Custom Moment -->
+                        <div class="deck-card">
+                            <div class="deck-title">
+                                <span>02 / Plot Observable Moment</span>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label" for="moment-text">Observation / Moment</label>
+                                <input type="text" id="moment-text" class="input-text" placeholder="e.g., Unclear stakeholder scope demand" value="Stakeholder alignment session">
+                            </div>
+                            <div class="input-group">
+                                <div class="slider-row">
+                                    <span>External Demand / Vigilance (X)</span>
+                                    <span id="val-demand">50%</span>
+                                </div>
+                                <input type="range" id="slider-demand" class="slider-input" min="-100" max="100" value="0">
+                            </div>
+                            <div class="input-group">
+                                <div class="slider-row">
+                                    <span>Translation Toll / Strain (Y)</span>
+                                    <span id="val-toll">50%</span>
+                                </div>
+                                <input type="range" id="slider-toll" class="slider-input" min="-100" max="100" value="20">
+                            </div>
+                            <button id="btn-add-moment" class="btn-plot">+ Plot Coordinate on Canvas</button>
+                        </div>
+
+                        <!-- Active Evidence Ledger -->
+                        <div class="deck-card">
+                            <div class="deck-title">
+                                <span>03 / State Ledger &amp; Vector Log</span>
+                                <button id="btn-clear-canvas" style="background:none; border:none; color: rgba(250,249,245,0.6); font-family: var(--font-mono); font-size: 10px; cursor: pointer; text-decoration: underline;">Reset</button>
+                            </div>
+                            <div class="ledger-container" id="ledger-list">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── ARCHITECTURAL BREAKDOWN ── -->
         <section class="cart-section">
             <div class="container">
-                <div class="cart-grid">
-                    <div>
-                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-red); text-transform: uppercase; font-weight: bold; letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem;">Coordinate Topology</span>
-                        <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 2.8vw, 2.4rem); color: var(--text-primary); margin-bottom: 1rem; font-weight: 400;">Mapping the unexplainable.</h2>
-                        <p style="font-size: 15px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                            Self Cartography uses spatial coordinate geometry to represent states of mind, boundary violations, and communication exhaustion. Rather than relying solely on linear text, the framework plots dynamic variables across four distinct psychological quadrants.
+                <div style="max-width: 800px;">
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; letter-spacing: 0.12em; display: block; margin-bottom: 0.5rem;">System Architecture</span>
+                    <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.2vw, 2.7rem); color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">Why Explainable Topologies Outperform Clinical Labels</h2>
+                    <p style="font-size: 16px; line-height: 1.65; color: var(--text-secondary);">
+                        Conventional productivity and psychological tracking tools force complex, context-dependent human moments into crude binary judgments: "good habits" vs "bad habits", or diagnostic classifications. Cartography approaches personal information architecture with mathematical neutrality.
+                    </p>
+                </div>
+
+                <div class="quadrant-spec-grid">
+                    <div class="spec-card">
+                        <span class="spec-num">01 // TOPOLOGICAL MAPPING</span>
+                        <h3 class="spec-title">Continuous Coordinate Geometry</h3>
+                        <p class="spec-desc">
+                            Instead of rigid discrete tags, moments exist on a continuous 2D manifold. Behaviors are defined relative to active situational demands and internal cognitive reserves.
                         </p>
-                        
-                        <div class="quadrant-grid">
-                            <div class="quadrant-card">
-                                <span class="quadrant-num">Quadrant I</span>
-                                <h3 class="quadrant-title">The Sanctuary</h3>
-                                <p class="quadrant-desc">Low external demand, high internal coherence. The space where translation is unnecessary.</p>
-                            </div>
-                            <div class="quadrant-card">
-                                <span class="quadrant-num">Quadrant II</span>
-                                <h3 class="quadrant-title">The Threshold</h3>
-                                <p class="quadrant-desc">Moderate demand with high translation load. Where explanation begins to feel like a toll.</p>
-                            </div>
-                            <div class="quadrant-card">
-                                <span class="quadrant-num">Quadrant III</span>
-                                <h3 class="quadrant-title">The Perimeter</h3>
-                                <p class="quadrant-desc">High vigilance and boundary policing. Active defense against misinterpretation.</p>
-                            </div>
-                            <div class="quadrant-card">
-                                <span class="quadrant-num">Quadrant IV</span>
-                                <h3 class="quadrant-title">The Wilds</h3>
-                                <p class="quadrant-desc">Unmapped territory where external consensus breaks down and survival instincts take over.</p>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn-magnetic" style="background: var(--text-primary); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; padding: 0.75rem 1.4rem; border-radius: 4px; text-decoration: none;">View Wolves Manuscript &rarr;</a>
-                            <a href="/creative/" style="border: 1px solid var(--border-light); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; padding: 0.75rem 1.4rem; border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center;">All Creative Work</a>
-                        </div>
                     </div>
 
+                    <div class="spec-card">
+                        <span class="spec-num">02 // ZERO MORAL FRAMING</span>
+                        <h3 class="spec-title">Non-Diagnostic Taxonomy</h3>
+                        <p class="spec-desc">
+                            The Perimeter (high vigilance) is not pathologized as "paranoia" or "maladaptive"—it is recognized as an active protective posture responding to environmental conditions.
+                        </p>
+                    </div>
+
+                    <div class="spec-card">
+                        <span class="spec-num">03 // VECTOR SEQUENCING</span>
+                        <h3 class="spec-title">State Transitions &amp; Loops</h3>
+                        <p class="spec-desc">
+                            The engine tracks state vectors over time, revealing recurring behavioral loops (e.g., Threshold &rarr; Perimeter &rarr; Wilds &rarr; Sanctuary) and identifying root inflection points.
+                        </p>
+                    </div>
+
+                    <div class="spec-card">
+                        <span class="spec-num">04 // DATA SOVEREIGNTY</span>
+                        <h3 class="spec-title">Local-First Privacy</h3>
+                        <p class="spec-desc">
+                            All spatial calculations, node indices, and state ledgers execute strictly in client-side memory with zero external telemetry, keeping reflections entirely private.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Call to Action Strip -->
+                <div style="margin-top: 4.5rem; padding: 2.5rem; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
                     <div>
-                        <div class="cart-img-container">
-                            <img src="/assets/images/self_cartography_mockup.jpg" alt="Self Cartography interactive coordinate canvas">
-                        </div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.4rem 0; font-weight: 500;">Interested in custom behavioral or evidence engines?</h3>
+                        <p style="font-size: 14.5px; color: var(--text-secondary); margin: 0;">I build custom operational machinery, algorithmic tools, and diagnostic web products.</p>
                     </div>
+                    <a href="/custom/#intake" class="btn-magnetic" style="background: var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.8rem 1.6rem; border-radius: 4px; text-decoration: none;">Start a Systems Project &rarr;</a>
                 </div>
             </div>
         </section>
@@ -278,6 +640,247 @@
             </div>
         </div>
     </footer>
+
+    <!-- Interactive Canvas & Engine Script -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('cartography-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const nodeCounter = document.getElementById('node-counter');
+            const ledgerList = document.getElementById('ledger-list');
+
+            let nodes = [];
+            let pulseTime = 0;
+
+            const presets = {
+                flow: [
+                    { label: "Quiet deep work block", x: -60, y: -60, tag: "STABLE_FLOW" },
+                    { label: "Architecture drafting", x: -45, y: -50, tag: "HIGH_AGENCY" },
+                    { label: "Synthesis documentation", x: -70, y: -40, tag: "RESERVE_HIGH" }
+                ],
+                fatigue: [
+                    { label: "Unstructured meeting block", x: 20, y: 10, tag: "THRESHOLD_ENTRY" },
+                    { label: "Translating obvious requirements", x: 45, y: 35, tag: "HIGH_TOLL" },
+                    { label: "Vigilant status reporting", x: 75, y: 55, tag: "PERIMETER_GUARD" }
+                ],
+                breach: [
+                    { label: "Scope creep request", x: 40, y: 25, tag: "FRICTION" },
+                    { label: "Unilateral deadline shift", x: 70, y: 65, tag: "PERIMETER_HIGH" },
+                    { label: "Communication breakdown", x: 85, y: -60, tag: "REACTIVE_WILDS" }
+                ],
+                recovery: [
+                    { label: "Overwhelmed reactive reflex", x: 80, y: -70, tag: "WILDS_STRAIN" },
+                    { label: "Boundary reset & disconnect", x: 50, y: 40, tag: "VIGILANCE_STEP" },
+                    { label: "Restored quiet sanctuary", x: -65, y: -65, tag: "SANCTUARY_RETURN" }
+                ]
+            };
+
+            function getQuadrant(x, y) {
+                if (x < 0 && y < 0) return "Q1 // The Sanctuary";
+                if (x >= 0 && y >= 0) return "Q2 // The Threshold";
+                if (x >= 0 && y < 0) return "Q4 // The Wilds";
+                return "Q3 // The Perimeter";
+            }
+
+            function loadPreset(key) {
+                if (presets[key]) {
+                    nodes = JSON.parse(JSON.stringify(presets[key]));
+                    updateLedger();
+                }
+            }
+
+            function updateLedger() {
+                if (nodeCounter) nodeCounter.textContent = `${nodes.length} PLOTTED NODES`;
+                if (!ledgerList) return;
+                ledgerList.innerHTML = '';
+                nodes.forEach((node, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'ledger-row';
+                    const quad = getQuadrant(node.x, node.y);
+                    row.innerHTML = `
+                        <span class="ledger-moment">${index + 1}. ${node.label}</span>
+                        <span class="ledger-quadrant">${quad.split('//')[0].trim()}</span>
+                        <span class="ledger-tag">${node.tag || 'MOMENT'}</span>
+                    `;
+                    ledgerList.appendChild(row);
+                });
+            }
+
+            function draw() {
+                const w = canvas.width = canvas.offsetWidth * window.devicePixelRatio || 600;
+                const h = canvas.height = canvas.offsetHeight * window.devicePixelRatio || 440;
+                const cx = w / 2;
+                const cy = h / 2;
+                pulseTime += 0.03;
+
+                ctx.clearRect(0, 0, w, h);
+
+                // Grid background
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+                ctx.lineWidth = 1;
+                const step = 40 * (window.devicePixelRatio || 1);
+                for (let x = 0; x < w; x += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, h);
+                    ctx.stroke();
+                }
+                for (let y = 0; y < h; y += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(w, y);
+                    ctx.stroke();
+                }
+
+                // Quadrant background tints
+                ctx.fillStyle = 'rgba(15, 118, 110, 0.04)';
+                ctx.fillRect(0, 0, cx, cy); // Q1 Top-Left (Sanctuary)
+
+                ctx.fillStyle = 'rgba(217, 119, 6, 0.04)';
+                ctx.fillRect(cx, cy, cx, cy); // Q2 Bottom-Right (Threshold)
+
+                // Axes
+                ctx.strokeStyle = 'rgba(45, 212, 191, 0.35)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(0, cy);
+                ctx.lineTo(w, cy);
+                ctx.moveTo(cx, 0);
+                ctx.lineTo(cx, h);
+                ctx.stroke();
+
+                // Axis Labels
+                const isNarrow = (canvas.offsetWidth < 480);
+                ctx.font = `${(isNarrow ? 8.5 : 10) * (window.devicePixelRatio || 1)}px 'IBM Plex Mono', monospace`;
+                ctx.fillStyle = 'rgba(250, 249, 245, 0.4)';
+                if (isNarrow) {
+                    ctx.fillText('+ DEMAND', w - (75 * (window.devicePixelRatio || 1)), cy - 8);
+                    ctx.fillText('- AGENCY', 10, cy - 8);
+                    ctx.fillText('+ TOLL', cx + 8, h - 12);
+                    ctx.fillText('- COHERENCE', cx + 8, 20);
+                } else {
+                    ctx.fillText('+ HIGH DEMAND / VIGILANCE', w - (180 * (window.devicePixelRatio || 1)), cy - 10);
+                    ctx.fillText('- LOW DEMAND / AGENCY', 15, cy - 10);
+                    ctx.fillText('+ HIGH TRANSLATION TOLL', cx + 10, h - 15);
+                    ctx.fillText('- INTERNAL COHERENCE', cx + 10, 25);
+                }
+
+                // Connecting Vector Lines
+                if (nodes.length > 1) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = 'rgba(45, 212, 191, 0.6)';
+                    ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
+                    ctx.setLineDash([4, 4]);
+
+                    nodes.forEach((node, i) => {
+                        const px = cx + (node.x / 100) * (cx - 40);
+                        const py = cy + (node.y / 100) * (cy - 40);
+                        if (i === 0) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    });
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+
+                // Render Nodes
+                nodes.forEach((node, i) => {
+                    const px = cx + (node.x / 100) * (cx - 40);
+                    const py = cy + (node.y / 100) * (cy - 40);
+                    const pulse = Math.sin(pulseTime + i) * 3;
+
+                    // Glow circle
+                    ctx.fillStyle = 'rgba(45, 212, 191, 0.2)';
+                    ctx.beginPath();
+                    ctx.arc(px, py, (12 + pulse) * (window.devicePixelRatio || 1), 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Core point
+                    ctx.fillStyle = '#2DD4BF';
+                    ctx.beginPath();
+                    ctx.arc(px, py, 5 * (window.devicePixelRatio || 1), 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Label
+                    ctx.font = `${11 * (window.devicePixelRatio || 1)}px 'IBM Plex Sans', sans-serif`;
+                    ctx.fillStyle = '#FAF9F5';
+                    ctx.fillText(`${i + 1}. ${node.label}`, px + 10, py - 6);
+                });
+
+                requestAnimationFrame(draw);
+            }
+
+            // Presets Handlers
+            document.querySelectorAll('.btn-preset').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.btn-preset').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    loadPreset(btn.getAttribute('data-preset'));
+                });
+            });
+
+            // Sliders real-time text
+            const sDemand = document.getElementById('slider-demand');
+            const sToll = document.getElementById('slider-toll');
+            const vDemand = document.getElementById('val-demand');
+            const vToll = document.getElementById('val-toll');
+
+            if (sDemand && vDemand) {
+                sDemand.addEventListener('input', () => {
+                    vDemand.textContent = `${Math.round(((parseInt(sDemand.value) + 100) / 200) * 100)}%`;
+                });
+            }
+            if (sToll && vToll) {
+                sToll.addEventListener('input', () => {
+                    vToll.textContent = `${Math.round(((parseInt(sToll.value) + 100) / 200) * 100)}%`;
+                });
+            }
+
+            // Add Moment Handler
+            const btnAdd = document.getElementById('btn-add-moment');
+            const inputMoment = document.getElementById('moment-text');
+            if (btnAdd && inputMoment && sDemand && sToll) {
+                btnAdd.addEventListener('click', () => {
+                    const text = inputMoment.value.trim();
+                    if (!text) return;
+                    const x = parseInt(sDemand.value);
+                    const y = parseInt(sToll.value);
+                    nodes.push({ label: text, x, y, tag: "USER_MOMENT" });
+                    updateLedger();
+                    inputMoment.value = '';
+                });
+            }
+
+            // Clear Handler
+            const btnClear = document.getElementById('btn-clear-canvas');
+            if (btnClear) {
+                btnClear.addEventListener('click', () => {
+                    nodes = [];
+                    updateLedger();
+                });
+            }
+
+            // Canvas Click to Plot
+            canvas.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+                const w = canvas.offsetWidth;
+                const h = canvas.offsetHeight;
+                const normX = Math.round(((clickX - (w / 2)) / (w / 2)) * 100);
+                const normY = Math.round(((clickY - (h / 2)) / (h / 2)) * 100);
+
+                const label = inputMoment && inputMoment.value.trim() ? inputMoment.value.trim() : `Moment @ (${normX}, ${normY})`;
+                nodes.push({ label, x: normX, y: normY, tag: "CLICK_PLOTTED" });
+                updateLedger();
+                if (inputMoment) inputMoment.value = '';
+            });
+
+            // Initial load
+            loadPreset('flow');
+            draw();
+        })();
+    </script>
     <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>
