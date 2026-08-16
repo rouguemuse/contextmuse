@@ -10,9 +10,15 @@
     --text-secondary: #575651; /* Muted slate/grey for secondary details */
     
     /* Accents (Restrained & Purposeful) */
+    --brand-forest: #0E1F1B;     /* Logo Top-Left: Deep Forest Ink */
+    --brand-teal: #0F766E;       /* Logo Top-Right: Deep Teal-Green */
+    --brand-teal-light: #1A9089; /* Logo Bottom-Left: Vibrant Mid Teal */
+    --brand-gold: #C5A059;       /* Logo Bottom-Right: Warm Gold / Refracted Clarity */
+    
     --accent-gold: #C5A059;   /* Elegant muted gold for concepts or warnings */
     --accent-lime: #4D7C0F;   /* Olive-lime for live/working status */
     --accent-teal: #0F766E;   /* Deep teal for links, primary interactions, structure */
+    --accent-teal-bright: #1A9089; /* Vibrant mid teal */
     --accent-red: #A31D1D;    /* Warm crimson red for literary threads and creative highlights */
     
     /* Borders & Lines */
@@ -120,9 +126,19 @@ p {
     font-size: 12px;            /* Standardized metadata eyebrows */
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--accent-teal);
+    color: var(--brand-teal, #0F766E);
     display: inline-block;
     margin-bottom: 1rem;
+}
+
+a {
+    color: var(--brand-teal, #0F766E);
+    text-decoration: none;
+    transition: color 0.18s ease;
+}
+
+a:hover {
+    color: var(--brand-forest, #0E1F1B);
 }
 
 /* Red-Thread and Line details */
@@ -228,11 +244,42 @@ p {
     border-color: #087A6B;
 }
 
+/* ── Context & Muse Brand Buttons (Woven from Logo Identity) ── */
+.nav-cta,
+.btn-magnetic {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 1.25rem;
+    border-radius: 4px;
+    text-decoration: none;
+    background: var(--brand-forest, #0E1F1B);
+    color: #FAF9F5 !important;
+    border: 1.5px solid var(--brand-teal, #0F766E);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(14, 31, 27, 0.15);
+}
+
+.nav-cta:hover,
+.btn-magnetic:hover {
+    background: var(--brand-teal, #0F766E);
+    border-color: var(--brand-teal-light, #1A9089);
+    color: #FAF9F5 !important;
+    box-shadow: 0 4px 14px rgba(15, 118, 110, 0.3);
+    transform: translateY(-1px);
+}
+
 .btn-primary-teal {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--accent-teal, #0F766E);
+    background: var(--brand-teal, #0F766E);
     color: #FAF9F5 !important;
     font-family: var(--font-sans);
     font-size: 14.5px;
@@ -241,15 +288,39 @@ p {
     border-radius: 4px;
     text-decoration: none;
     transition: all 0.2s ease;
-    border: 1px solid var(--accent-teal, #0F766E);
+    border: 1.5px solid var(--brand-teal, #0F766E);
     box-shadow: 0 2px 8px rgba(15, 118, 110, 0.15);
 }
 
 .btn-primary-teal:hover {
-    background: #0d635c;
-    border-color: #0d635c;
-    color: #ffffff !important;
-    box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+    background: var(--brand-forest, #0E1F1B);
+    border-color: var(--brand-gold, #C5A059);
+    color: var(--brand-gold, #C5A059) !important;
+    box-shadow: 0 4px 14px rgba(14, 31, 27, 0.25);
+    transform: translateY(-1px);
+}
+
+.btn-secondary-cream {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--brand-forest, #0E1F1B) !important;
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1.5px solid var(--brand-forest, #0E1F1B);
+}
+
+.btn-secondary-cream:hover {
+    background: rgba(14, 31, 27, 0.05);
+    border-color: var(--brand-teal, #0F766E);
+    color: var(--brand-teal, #0F766E) !important;
+    transform: translateY(-1px);
 }
 
 /* ── Dropdown Navigation Menu Styles ── */
