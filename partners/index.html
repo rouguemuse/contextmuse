@@ -339,12 +339,33 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <a href="/websites/" class="nav-link">Websites</a>
-                <a href="/audit/" class="nav-link">Site Audit</a>
-                <a href="/work/" class="nav-link">Work</a>
-                <a href="/services/" class="nav-link">Services</a>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/start/" class="nav-cta btn-magnetic">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -493,7 +514,7 @@
 
                     <!-- Project 4: Lone Wolf Dumpsters -->
                     <article class="p-card">
-                        <a href="/work/" class="p-card__media-link" aria-label="View Lone Wolf Dumpsters build details">
+                        <a href="/systems/client-builds/#lonewolf" class="p-card__media-link" aria-label="View Lone Wolf Dumpsters build details">
                             <div class="p-card__media">
                                 <div class="p-card__browser">
                                     <span class="p-browser-dot"></span>
@@ -519,7 +540,7 @@
                                 <span class="p-pillar-tag">Lead Routing</span>
                                 <span class="p-pillar-tag">CMS Architecture</span>
                             </div>
-                            <a href="/work/" class="p-card__action-link" style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;">
+                            <a href="/systems/client-builds/#lonewolf" class="p-card__action-link" style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;">
                                 View Work Summary &rarr;
                             </a>
                         </div>

@@ -251,12 +251,33 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <a href="/websites/" class="nav-link">Websites</a>
-                <a href="/audit/" class="nav-link">Site Audit</a>
-                <a href="/work/" class="nav-link">Work</a>
-                <a href="/services/" class="nav-link">Services</a>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/start/" class="nav-cta btn-magnetic">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -527,9 +548,9 @@
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
                                 <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="quick-launch">Quick Launch Website (from $450)</option>
-                                    <option value="website-diagnostic">Website Diagnostic ($199)</option>
-                                    <option value="structured-intake">Structured Intake Setup (from $350)</option>
+                                    <option value="website-system">Website + Workflow System (from $1,500)</option>
+                                    <option value="funnel-sprint">Funnel Sprint (from $750)</option>
+                                    <option value="audit">Conversion Leak Audit ($195)</option>
                                     <option value="custom-system">Custom Operational System (Scoped after discovery)</option>
                                     <option value="general">General Consultation / Other</option>
                                 </select>
@@ -625,7 +646,7 @@
             if (requestedService) {
                 const serviceSelect = document.getElementById('form-service');
                 if (serviceSelect) {
-                    const validOptions = ['quick-launch', 'website-diagnostic', 'structured-intake', 'custom-system', 'general'];
+                    const validOptions = ['website-system', 'funnel-sprint', 'audit', 'custom-system', 'general', 'quick-launch'];
                     if (validOptions.includes(requestedService)) {
                         serviceSelect.value = requestedService;
                     }

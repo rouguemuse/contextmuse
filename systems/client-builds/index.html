@@ -216,12 +216,33 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <a href="/websites/" class="nav-link">Websites</a>
-                <a href="/audit/" class="nav-link">Site Audit</a>
-                <a href="/work/" class="nav-link">Work</a>
-                <a href="/services/" class="nav-link">Services</a>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/start/" class="nav-cta btn-magnetic">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -238,12 +259,76 @@
             </div>
         </header>
 
+        <!-- Case Study 0: Lone Wolf Dumpsters -->
+        <section class="case-study-section" id="lonewolf" style="background: #FCFCF9;">
+            <div class="container">
+                <div class="case-study-grid">
+                    <div>
+                        <span class="study-meta">Case Study 01 · Local Search &amp; Commercial Lead System</span>
+                        <h2 class="study-title">Lone Wolf Dumpsters</h2>
+                        <p class="study-tagline">
+                            Multi-market waste management and roll-off dumpster website engineered around location-based search demand, customer segmentation, and automated quote routing.
+                        </p>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">Business Problem</span>
+                            <p class="constraint-text">
+                                Local dumpster rental companies lose qualified residential and commercial leads when service areas are unclear, pricing structures are hidden, and customers have to play phone tag for quotes.
+                            </p>
+                        </div>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">System Built</span>
+                            <p class="constraint-text">
+                                Engineered a scalable local SEO infrastructure with 40+ dedicated city landing pages, interactive DFW territory coverage maps, segmented contractor vs. residential quote builders, and instant dispatch notifications.
+                            </p>
+                        </div>
+                        
+                        <div class="constraint-card">
+                            <span class="constraint-label">Operational Value</span>
+                            <p class="constraint-text">
+                                Ranks across multiple target municipalities, captures structured waste hauling specifications on first contact, and routes qualified leads directly to regional dispatch queues.
+                            </p>
+                        </div>
+                        
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.5rem;">
+                            <a href="https://www.lonewolfdumpsters.com" target="_blank" rel="noopener" class="btn-live" style="margin-top: 0;">Visit Live Website &rarr;</a>
+                            <a href="/custom/?ref=lonewolf#intake" class="btn-live" style="background: transparent; border: 1px solid var(--text-primary); color: var(--text-primary); margin-top: 0;">Build Similar System &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="browser-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <span class="browser-url">lonewolfdumpsters.com</span>
+                            </div>
+                            <div style="background: #142420; padding: 3rem 2rem; color: #FAF9F5; text-align: center;">
+                                <span style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 3px;">Production Build</span>
+                                <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: #FAF9F5; margin: 1rem 0 0.5rem;">Lone Wolf Dumpsters</h3>
+                                <p style="font-size: 13.5px; color: rgba(250,249,245,0.75); margin-bottom: 1.5rem;">DFW Roll-Off Dumpster &amp; Waste Solutions</p>
+                                <div style="display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: center; font-family: var(--font-mono); font-size: 11px; color: #2DD4BF;">
+                                    <span>• 40+ City Pages</span>
+                                    <span>• Territory Logic</span>
+                                    <span>• Instant Triage</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Case Study 1: INNcontrol Coils -->
         <section class="case-study-section" id="inncontrol">
             <div class="container">
                 <div class="case-study-grid">
                     <div>
-                        <span class="study-meta">Case Study 01 · Field Service &amp; Estimation</span>
+                        <span class="study-meta">Case Study 02 · Field Service &amp; Estimation</span>
                         <h2 class="study-title">INNcontrol Coils</h2>
                         <p class="study-tagline">
                             Commercial HVAC refurbishing website paired with property-wide unit mapping and repair scoping software.
@@ -309,7 +394,7 @@
                     </div>
                     
                     <div style="order: 1;">
-                        <span class="study-meta">Case Study 02 · Customer Acquisition &amp; Content</span>
+                        <span class="study-meta">Case Study 03 · Customer Acquisition &amp; Content</span>
                         <h2 class="study-title">D2 Auto Detail</h2>
                         <p class="study-tagline">
                             High-end automotive acquisition portal connecting storefront booking tiers with localized marketing generation and video streaming.
@@ -347,7 +432,7 @@
             <div class="container">
                 <div class="case-study-grid">
                     <div>
-                        <span class="study-meta">Case Study 03 · Inventory &amp; Reservation Flow</span>
+                        <span class="study-meta">Case Study 04 · Inventory &amp; Reservation Flow</span>
                         <h2 class="study-title">EDR Party Rentals</h2>
                         <p class="study-tagline">
                             Inventory-aware event rental website with real-time serial number stock reservation and bilingual dispatch routing.

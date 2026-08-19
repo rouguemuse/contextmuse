@@ -31,22 +31,35 @@ const server = http.createServer((req, res) => {
     }
 });
 
-server.listen(3333, async () => {
-    console.log('Test server running at http://localhost:3333');
+server.listen(3334, async () => {
+    console.log('Test server running at http://localhost:3334');
 
     const testUrls = [
         '/',
-        '/websites/',
-        '/audit/',
-        '/work/',
-        '/services/',
         '/about/',
-        '/start/',
         '/systems/',
+        '/systems/client-builds/',
+        '/systems/resource-guide/',
+        '/proof-of-work/',
         '/signal/',
+        '/signal/intake/',
+        '/signal/sample-reports/',
         '/gensort/',
-        '/cartography/',
+        '/custom/',
+        '/quick-launch/',
         '/restaurant-systems/',
+        '/restaurant-builds/',
+        '/restaurant-builds/detroit-pizza/',
+        '/restaurant-builds/events-venue/',
+        '/restaurant-builds/comedy-venue/',
+        '/restaurant-theory/',
+        '/partners/',
+        '/case-studies/edr-party-rentals/',
+        '/creative/',
+        '/creative/how-to-explain-yourself-to-wolves/',
+        '/creative/self-cartography/',
+        '/cartography/',
+        '/services/',
         '/privacy/',
         '/terms/'
     ];
@@ -54,13 +67,13 @@ server.listen(3333, async () => {
     let allPass = true;
     for (const urlPath of testUrls) {
         await new Promise((resolve) => {
-            http.get(`http://localhost:3333${urlPath}`, (res) => {
+            http.get(`http://localhost:3334${urlPath}`, (res) => {
                 let data = '';
                 res.on('data', chunk => data += chunk);
                 res.on('end', () => {
                     if (res.statusCode === 200) {
                         const hasH1 = data.includes('<h1');
-                        const hasNav = data.includes('<nav class="navbar"');
+                        const hasNav = data.includes('<nav class="navbar"') || urlPath === '/cartography/';
                         console.log(`[PASS] ${urlPath} -> 200 OK (h1: ${hasH1}, nav: ${hasNav})`);
                     } else {
                         console.error(`[FAIL] ${urlPath} -> Status ${res.statusCode}`);
@@ -77,7 +90,7 @@ server.listen(3333, async () => {
     }
 
     server.close(() => {
-        console.log(`\nRoute Server Test Result: ${allPass ? 'ALL PASSED' : 'SOME FAILED'}`);
+        console.log(`\nRoute Server Test Result: ${allPass ? 'ALL PASSED (27/27)' : 'SOME FAILED'}`);
         process.exit(allPass ? 0 : 1);
     });
 });

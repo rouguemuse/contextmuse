@@ -363,12 +363,33 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <a href="/websites/" class="nav-link">Websites</a>
-                <a href="/audit/" class="nav-link">Site Audit</a>
-                <a href="/work/" class="nav-link">Work</a>
-                <a href="/services/" class="nav-link">Services</a>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/start/" class="nav-cta btn-magnetic">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -389,105 +410,101 @@
     <main id="main-content">
         <section class="services-catalog-section">
             <div class="container">
-                <!-- 4 Primary Productized Offers -->
-                <div class="services-grid">
+                <!-- 3 Primary Productized Offers -->
+                <div class="services-grid" style="grid-template-columns: repeat(3, 1fr);">
                     
-                    <!-- Offer 1: Launch Site -->
-                    <div class="offer-card" id="launch-site">
+                    <!-- Offer 1: Conversion Leak Audit -->
+                    <div class="offer-card" id="site-audit">
                         <div>
-                            <span class="offer-badge">Foundational Build</span>
+                            <span class="offer-badge">Diagnostic</span>
                             <div class="offer-header">
-                                <h2 class="offer-title">Launch Site</h2>
-                                <span class="offer-price">$1,500 – $2,000</span>
+                                <h2 class="offer-title">Site Audit</h2>
+                                <span class="offer-price">$195 Flat</span>
                             </div>
-                            <div class="offer-for">For businesses that need to look legitimate, build trust, and start converting traffic into inquiries.</div>
+                            <div class="offer-for">For businesses that have traffic but want to know exactly why visitors aren't converting.</div>
                             
                             <div class="offer-details">
                                 <div class="detail-block">
                                     <span class="detail-label">What It Solves</span>
-                                    <p class="detail-text">Outdated templates, amateur DIY builders, missing conversion focus, and messy mobile layouts.</p>
+                                    <p class="detail-text">Conversion friction, bounce rates, unclear CTAs, mobile touch issues, and weak local positioning.</p>
                                 </div>
                                 <div class="detail-block">
                                     <span class="detail-label">What You Get</span>
                                     <ul class="offer-checklist">
-                                        <li>Custom responsive design (5–7 core pages)</li>
-                                        <li>Mobile-optimized layout and typography</li>
-                                        <li>Contact &amp; quote capture forms</li>
-                                        <li>Basic on-page search metadata &amp; indexing setup</li>
-                                        <li>Analytics &amp; call tracking setup</li>
-                                        <li>Easy client handoff with zero forced retainers</li>
+                                        <li>First-viewport clarity review</li>
+                                        <li>Mobile touch flow teardown</li>
+                                        <li>Lead capture &amp; CTA placement audit</li>
+                                        <li>Annotated Fix Now / Fix Later roadmap</li>
+                                        <li>100% credited toward a build within 30 days</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="/start/?package=launch" class="btn-offer-cta" data-offer="launch_site">Choose Launch Site &rarr;</a>
+                        <a href="/custom/?service=audit#intake" class="btn-offer-cta" data-offer="site_audit">Audit My Site &rarr;</a>
                     </div>
 
-                    <!-- Offer 2: Growth Site -->
-                    <div class="offer-card featured" id="growth-site">
-                        <span class="offer-badge">Most Popular</span>
+                    <!-- Offer 2: Funnel Sprint -->
+                    <div class="offer-card" id="funnel-sprint">
                         <div>
+                            <span class="offer-badge">Focused Build</span>
                             <div class="offer-header">
-                                <h2 class="offer-title">Growth Site</h2>
-                                <span class="offer-price">From $3,500</span>
+                                <h2 class="offer-title">Funnel Sprint</h2>
+                                <span class="offer-price">From $750</span>
                             </div>
-                            <div class="offer-for">For established businesses that need the website to aggressively generate qualified inbound leads.</div>
+                            <div class="offer-for">For businesses that need a specific customer conversion path fixed, designed, or automated.</div>
                             
                             <div class="offer-details">
                                 <div class="detail-block">
                                     <span class="detail-label">What It Solves</span>
-                                    <p class="detail-text">Weak organic search visibility, high bounce rates, generic service pages, and low lead conversion.</p>
+                                    <p class="detail-text">Clunky quote requests, manual triage bottlenecks, poor landing page conversion, and scheduling phone tag.</p>
                                 </div>
                                 <div class="detail-block">
                                     <span class="detail-label">What You Get</span>
                                     <ul class="offer-checklist">
-                                        <li>Everything in Launch Site</li>
-                                        <li>Conversion-focused UX architecture</li>
-                                        <li>Service-specific landing pages</li>
-                                        <li>Local SEO architecture &amp; location pages</li>
-                                        <li>Reviews and trust proof systems</li>
-                                        <li>Stronger multi-step quote/intake flow</li>
-                                        <li>Editable CMS for direct client updates</li>
+                                        <li>Multi-step intake or quote form</li>
+                                        <li>Dedicated high-converting service landing page</li>
+                                        <li>Booking calendar or lead routing setup</li>
+                                        <li>Instant SMS/email lead alerts</li>
+                                        <li>Fast turnaround (3–5 business days)</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="/start/?package=growth" class="btn-offer-cta" data-offer="growth_site">Choose Growth Site &rarr;</a>
+                        <a href="/custom/?service=funnel-sprint#intake" class="btn-offer-cta" data-offer="funnel_sprint">Fix a Funnel &rarr;</a>
                     </div>
 
-                    <!-- Offer 3: Website + Growth System -->
-                    <div class="offer-card" id="growth-system">
+                    <!-- Offer 3: Website + Workflow System -->
+                    <div class="offer-card featured" id="growth-system">
+                        <span class="offer-badge">Most Complete</span>
                         <div>
-                            <span class="offer-badge" style="color: var(--text-primary); background: rgba(16, 33, 29, 0.06);">Infrastructure Build</span>
                             <div class="offer-header">
-                                <h2 class="offer-title">Website + Growth System</h2>
-                                <span class="offer-price">From $6,000</span>
+                                <h2 class="offer-title">Website + System</h2>
+                                <span class="offer-price">From $1,500</span>
                             </div>
-                            <div class="offer-for">Full lead-generation and operational infrastructure (like the Lone Wolf ecosystem).</div>
+                            <div class="offer-for">Custom website paired with the operational machinery needed to convert traffic into real business.</div>
                             
                             <div class="offer-details">
                                 <div class="detail-block">
                                     <span class="detail-label">What It Solves</span>
-                                    <p class="detail-text">Disconnected marketing, manual triage bottleneck, delayed customer follow-up, and missed territory expansion.</p>
+                                    <p class="detail-text">Outdated templates, slow mobile experience, fragmented tools, and manual customer intake friction.</p>
                                 </div>
                                 <div class="detail-block">
                                     <span class="detail-label">What You Get</span>
                                     <ul class="offer-checklist">
-                                        <li>Custom website + full Local SEO ecosystem</li>
-                                        <li>CMS/admin editing for all locations &amp; services</li>
-                                        <li>Automated lead routing &amp; dispatching</li>
-                                        <li>Instant SMS/email lead notifications</li>
-                                        <li>Booking or quote workflow engines</li>
-                                        <li>CRM integrations &amp; custom automations</li>
-                                        <li>Custom backend operational functionality</li>
+                                        <li>Custom responsive website design</li>
+                                        <li>Local SEO architecture &amp; city landing pages</li>
+                                        <li>Custom intake, quote, or scheduling logic</li>
+                                        <li>Direct client editing CMS</li>
+                                        <li>Lead routing &amp; automation integration</li>
+                                        <li>Zero forced subscription retainers</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="/start/?package=system" class="btn-offer-cta" data-offer="growth_system">Choose Growth System &rarr;</a>
+                        <a href="/custom/?service=website-system#intake" class="btn-offer-cta" data-offer="growth_system">Start a Build &rarr;</a>
                     </div>
 
                 </div>
@@ -508,7 +525,7 @@
                                     Crawlability review, schema structured data, semantic metadata, service &amp; FAQ architecture, and clean technical foundations so both search engines and AI systems can accurately understand your services.
                                 </p>
                             </div>
-                            <a href="/start/?addon=visibility" class="btn-enhancement" data-offer="visibility">Improve Visibility &rarr;</a>
+                            <a href="/custom/?service=visibility#intake" class="btn-enhancement" data-offer="visibility">Improve Visibility &rarr;</a>
                         </div>
 
                         <!-- Addon 2: Image Cleanup + Product Presentation -->
@@ -519,7 +536,7 @@
                                     Brightness correction, background cleanup, visual standardization, and product isolation. Turns real inventory and project photos into clear, credible visual assets.
                                 </p>
                             </div>
-                            <a href="/start/?addon=images" class="btn-enhancement" data-offer="images">Clean My Assets &rarr;</a>
+                            <a href="/custom/?service=images#intake" class="btn-enhancement" data-offer="images">Clean My Assets &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -536,6 +553,17 @@
                     <div style="display: flex; justify-content: flex-start;">
                         <a href="/custom/?service=custom-system#intake" class="btn-escalation" data-offer="custom_system" data-track-cta="services_escalation_custom">Discuss a Custom System &rarr;</a>
                     </div>
+                </div>
+
+                <!-- Tasteful Referral Note -->
+                <div style="background: rgba(15, 118, 110, 0.04); border: 1px dashed var(--accent-teal); border-radius: 6px; padding: 1.5rem 2rem; margin-top: 3.5rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="max-width: 680px;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem;">Client Referral Program</strong>
+                        <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">
+                            Know a business that needs a better website or digital system? Context &amp; Muse pays a <strong>10% referral fee</strong> on booked website projects (e.g. a $10,000 booked project = $1,000 referral fee).
+                        </p>
+                    </div>
+                    <a href="mailto:jayme@contextmuse.com?subject=Client%20Referral" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-decoration: none; text-transform: uppercase; border: 1px solid var(--accent-teal); padding: 0.5rem 1rem; border-radius: 4px;">Submit a Referral &rarr;</a>
                 </div>
 
             </div>

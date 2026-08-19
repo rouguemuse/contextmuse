@@ -451,12 +451,33 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <a href="/websites/" class="nav-link">Websites</a>
-                <a href="/audit/" class="nav-link">Site Audit</a>
-                <a href="/work/" class="nav-link">Work</a>
-                <a href="/services/" class="nav-link">Services</a>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/start/" class="nav-cta btn-magnetic">Start a Project</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -620,16 +641,22 @@
                 <div class="interactive-grid">
                     <!-- Interactive 1: Self Cartography -->
                     <div class="int-card" id="self-cartography">
-                        <a href="#self-cartography" class="int-card__media-link" aria-label="Explore Self Cartography Framework">
-                            <div class="int-card__media">
-                                <img src="/assets/images/self_cartography_mockup.jpg" alt="Self Cartography digital map coordinate grid screenshot">
+                        <a href="/cartography/" class="int-card__media-link" aria-label="Launch Standalone Self Cartography Engine">
+                            <div class="int-card__media" style="background: #050B0A; padding: 2.5rem 1.5rem; text-align: center; border: 1px solid rgba(45, 212, 191, 0.2); min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <span style="font-family: var(--font-mono); font-size: 9.5px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;">Interactive Coordinate Space</span>
+                                <div style="font-family: var(--font-serif); font-size: 1.5rem; color: #FAF9F5; margin-bottom: 0.5rem;">Cartography Engine V1</div>
+                                <span style="font-family: var(--font-mono); font-size: 11px; color: rgba(250, 249, 245, 0.6);">2D Topological Trajectory &bull; Evidence Ledger</span>
                             </div>
                         </a>
-                        <span class="int-card__tagline">Interactive Diagnostic System</span>
+                        <span class="int-card__tagline">Topological Evidence Engine</span>
                         <h3 class="int-card__title">Self Cartography</h3>
                         <p class="int-card__desc">
-                            An interactive mapping coordinates dashboard charting personal boundaries, variables, and decision structures across distinct quadrants.
+                            A standalone full-screen behavioral engine charting personal boundaries, variables, and decision structures across distinct quadrants without clinical diagnosis.
                         </p>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: auto;">
+                            <a href="/cartography/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">Launch Standalone Engine &rarr;</a>
+                            <a href="/creative/self-cartography/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary); text-decoration: none; font-weight: 700; text-transform: uppercase;">Read System Case Study &rarr;</a>
+                        </div>
                     </div>
 
                     <!-- Interactive 2: MadeOfReasons -->

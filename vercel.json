@@ -88,18 +88,33 @@
       "permanent": true
     },
     {
-      "source": "/portfolio/",
-      "destination": "/work/",
+      "source": "/websites/",
+      "destination": "/custom/",
       "permanent": true
     },
     {
-      "source": "/restaurant-builds/:path*",
-      "destination": "/restaurant-systems/",
+      "source": "/audit/",
+      "destination": "/custom/?service=audit#intake",
+      "permanent": true
+    },
+    {
+      "source": "/work/",
+      "destination": "/systems/client-builds/",
+      "permanent": true
+    },
+    {
+      "source": "/start/",
+      "destination": "/custom/#intake",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/",
+      "destination": "/systems/client-builds/",
       "permanent": true
     },
     {
       "source": "/lab/",
-      "destination": "/work/",
+      "destination": "/systems/",
       "permanent": true
     },
     {
@@ -109,7 +124,7 @@
     },
     {
       "source": "/contact/",
-      "destination": "/start/",
+      "destination": "/custom/#intake",
       "permanent": true
     }
   ],
