@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Context &amp; Muse | High-Conversion Custom Websites &amp; Operational Systems</title>
-    <meta name="description" content="Context &amp; Muse designs high-conversion websites and custom digital systems for businesses where every lost lead, confusing workflow, or unnecessary step costs money.">
+    <title>Context &amp; Muse | Websites, Funnels &amp; Business Systems</title>
+    <meta name="description" content="Context &amp; Muse builds websites, high-conversion funnels, and custom operational systems designed around how your business actually works.">
     <link rel="canonical" href="https://www.contextmuse.com/">
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Context &amp; Muse | High-Conversion Custom Websites &amp; Operational Systems">
-    <meta property="og:description" content="Custom websites and operational systems built to turn attention into revenue.">
+    <meta property="og:title" content="Context &amp; Muse | Websites, Funnels &amp; Business Systems">
+    <meta property="og:description" content="Websites and systems built around how your business actually works. Clearer paths from attention to action.">
     <meta property="og:url" content="https://www.contextmuse.com/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
     <meta property="og:image:width" content="2400">
@@ -19,15 +19,15 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Context &amp; Muse | High-Conversion Custom Websites &amp; Operational Systems">
-    <meta name="twitter:description" content="Custom websites and operational systems built to turn attention into revenue.">
+    <meta name="twitter:title" content="Context &amp; Muse | Websites, Funnels &amp; Business Systems">
+    <meta name="twitter:description" content="Websites and systems built around how your business actually works. Clearer paths from attention to action.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.3">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.4">
 
     <style>
         /* ── HERO COMPOSITION ── */
@@ -39,7 +39,7 @@
             align-items: center;
             background: radial-gradient(circle at 75% 50%, #fffdf8 0%, #f8f2e9 45%, #f3ede4 100%);
             border-bottom: 1px solid var(--border-light);
-            padding: 110px 0 60px;
+            padding: 120px 0 70px;
             box-sizing: border-box;
         }
         .home-hero-art {
@@ -77,7 +77,7 @@
             margin: 0 auto;
         }
         .home-hero-copy {
-            width: min(620px, 50vw);
+            width: min(640px, 52vw);
             position: relative;
             z-index: 4;
         }
@@ -87,7 +87,7 @@
         .hero-eyebrow {
             font-family: var(--font-mono);
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--accent-teal);
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -96,8 +96,8 @@
         }
         .home-hero-copy .hero-title {
             font-family: var(--font-serif) !important;
-            font-size: clamp(3rem, 4.6vw, 4.6rem) !important;
-            line-height: 1.05 !important;
+            font-size: clamp(2.8rem, 4.5vw, 4.4rem) !important;
+            line-height: 1.06 !important;
             letter-spacing: -0.02em !important;
             color: #10211D !important;
             margin: 0 0 1.25rem 0 !important;
@@ -106,7 +106,7 @@
         .home-hero-copy .hero-subhead {
             font-family: var(--font-sans) !important;
             font-size: 17.5px !important;
-            line-height: 1.6 !important;
+            line-height: 1.65 !important;
             color: var(--text-secondary) !important;
             margin-bottom: 2rem !important;
         }
@@ -115,19 +115,36 @@
             gap: 1rem;
             align-items: center;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .hero-reassurance {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--accent-teal);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+        .hero-proof-jump {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+        .hero-proof-jump:hover {
+            color: var(--accent-teal);
         }
 
-        /* ── COMMERCIAL OPTIONS SECTION ── */
-        .capabilities-section {
-            padding: 5.5rem 0;
-            background: var(--bg-paper);
-            border-bottom: 1px solid var(--border-light);
-        }
-        .capabilities-header {
+        /* ── SECTION STYLES ── */
+        .section-header {
             margin-bottom: 3rem;
-            max-width: 780px;
+            max-width: 800px;
         }
-        .capabilities-eyebrow {
+        .section-eyebrow {
             font-family: var(--font-mono);
             font-size: 10.5px;
             font-weight: 700;
@@ -137,47 +154,54 @@
             display: block;
             margin-bottom: 0.5rem;
         }
-        .capabilities-title {
+        .section-title {
             font-family: var(--font-serif);
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-size: clamp(2.1rem, 3.6vw, 2.9rem);
             color: var(--text-primary);
             margin: 0 0 0.5rem 0;
             font-weight: 400;
             line-height: 1.15;
         }
-        .capabilities-grid {
+
+        /* ── 3 BUYING OPTIONS ── */
+        .offers-section {
+            padding: 5.5rem 0;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .offers-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
         @media (max-width: 960px) {
-            .capabilities-grid {
+            .offers-grid {
                 grid-template-columns: 1fr;
                 gap: 1.75rem;
             }
         }
-        .capability-card {
+        .offer-box {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 8px;
-            padding: 2.25rem 2rem;
+            padding: 2.5rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             gap: 1.5rem;
-            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.25s ease;
             position: relative;
         }
-        .capability-card:hover {
+        .offer-box:hover {
             border-color: var(--accent-teal);
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(16, 33, 29, 0.05);
+            box-shadow: 0 14px 32px rgba(16, 33, 29, 0.06);
         }
-        .capability-card.featured {
+        .offer-box.featured {
             border: 2px solid var(--accent-teal);
             background: #FCFCF9;
         }
-        .card-badge {
+        .offer-box-badge {
             position: absolute;
             top: -12px;
             right: 20px;
@@ -191,38 +215,40 @@
             padding: 3px 10px;
             border-radius: 4px;
         }
-        .capability-num {
+        .offer-box-meta {
             font-family: var(--font-mono);
-            font-size: 10.5px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
             letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
             display: block;
-            margin-bottom: 0.5rem;
         }
-        .capability-name {
+        .offer-box-title {
             font-family: var(--font-serif);
-            font-size: 1.5rem;
+            font-size: 1.65rem;
             color: var(--text-primary);
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 0.35rem 0;
             font-weight: 500;
-            line-height: 1.25;
+            line-height: 1.2;
         }
-        .capability-price {
+        .offer-box-price {
             font-family: var(--font-mono);
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: 700;
-            color: var(--accent-teal);
+            color: var(--text-primary);
             margin-bottom: 0.75rem;
             display: block;
         }
-        .capability-lead {
+        .offer-box-sub {
             font-size: 14px;
             line-height: 1.55;
             color: var(--text-secondary);
-            margin: 0;
+            margin-bottom: 1.25rem;
+            font-style: italic;
         }
-        .capability-list {
+        .offer-box-list {
             list-style: none;
             padding: 1.25rem 0 0 0;
             margin: 0;
@@ -231,180 +257,233 @@
             flex-direction: column;
             gap: 0.65rem;
         }
-        .capability-list li {
+        .offer-box-list li {
             font-size: 13.5px;
             color: var(--text-primary);
             line-height: 1.45;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 8px;
         }
-        .capability-bullet {
+        .offer-box-list li span.bullet {
             color: var(--accent-teal);
-            font-size: 14px;
-            line-height: 1;
             font-weight: bold;
         }
 
-        /* ── DIFFERENTIATOR / SYSTEM FLOW ── */
-        .diff-section {
-            padding: 5.5rem 0;
+        /* ── FEATURED WORK CARDS ── */
+        .proof-section {
+            padding: 6rem 0;
             background: #FFFFFF;
             border-bottom: 1px solid var(--border-light);
         }
-        .diff-flow-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
-            align-items: center;
-            margin: 2.5rem 0 2rem;
-        }
-        @media (max-width: 900px) {
-            .diff-flow-grid {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-            }
-        }
-        .flow-step {
+        .featured-card {
             background: var(--bg-paper);
             border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 1.25rem 1rem;
-            text-align: center;
-        }
-        .flow-step-title {
-            font-family: var(--font-mono);
-            font-size: 11.5px;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.25rem;
-        }
-        .flow-step-desc {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.4;
-        }
-        .flow-arrow {
-            text-align: center;
-            font-family: var(--font-mono);
-            color: var(--accent-teal);
-            font-weight: bold;
-            font-size: 16px;
-            display: none;
-        }
-
-        /* ── EDITORIAL SHOWCASE ROWS ── */
-        .hp-editorial-section {
-            padding: 6rem 0;
-            background: var(--bg-panel);
-            border-bottom: 1px solid var(--border-light);
-        }
-        .editorial-row {
+            border-radius: 8px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3.5rem;
             display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            gap: 4.5rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3.5rem;
             align-items: center;
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border-light);
+            transition: border-color 0.2s ease;
         }
-        .editorial-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        .featured-card:last-child {
+            margin-bottom: 0;
         }
-        .editorial-row.reverse {
-            grid-template-columns: 1fr 1.15fr;
-        }
-        @media (max-width: 960px) {
-            .editorial-row, .editorial-row.reverse {
+        @media(max-width: 960px) {
+            .featured-card {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
-                padding: 3rem 0;
+                gap: 2rem;
+                padding: 2rem 1.5rem;
             }
         }
-        .editorial-media-container {
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-            background: #FFFFFF;
-        }
-        .editorial-media-container img {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-        .capability-badge {
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             font-family: var(--font-mono);
             font-size: 10px;
             font-weight: 700;
-            letter-spacing: 0.1em;
             text-transform: uppercase;
-            padding: 3px 8px;
-            border-radius: 3px;
-            display: inline-block;
-            margin-right: 8px;
-            background: rgba(15, 118, 110, 0.08);
+            letter-spacing: 0.08em;
+            background: rgba(15, 118, 110, 0.1);
             color: var(--accent-teal);
-            border: 1px solid rgba(15, 118, 110, 0.2);
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
         }
-        .capability-badge.amber {
-            background: rgba(217, 119, 6, 0.08);
-            color: #B45309;
-            border-color: rgba(217, 119, 6, 0.25);
+        .status-pill.client {
+            background: rgba(14, 31, 27, 0.08);
+            color: var(--text-primary);
         }
-        .capability-badge.indigo {
-            background: rgba(79, 70, 229, 0.08);
-            color: #4338CA;
-            border-color: rgba(79, 70, 229, 0.2);
+        .cs-pillar {
+            margin-bottom: 1.25rem;
         }
-        .editorial-num {
+        .cs-pillar-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-teal);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .cs-pillar-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        /* ── DIFFERENTIATOR STRIP ── */
+        .diff-section {
+            padding: 5.5rem 0;
+            background: var(--bg-panel);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        @media(max-width: 850px) {
+            .diff-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        .diff-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2rem 1.75rem;
+        }
+        .diff-step-num {
             font-family: var(--font-mono);
             font-size: 11px;
-            color: var(--accent-teal);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
             font-weight: 700;
+            color: var(--accent-teal);
             margin-bottom: 0.5rem;
             display: block;
         }
-        .editorial-title {
+        .diff-step-title {
             font-family: var(--font-serif);
-            font-size: clamp(2rem, 3.2vw, 2.7rem);
+            font-size: 1.4rem;
             color: var(--text-primary);
             margin: 0 0 0.5rem 0;
-            font-weight: 400;
-            line-height: 1.15;
+            font-weight: 500;
         }
-        .editorial-subhead {
-            font-family: var(--font-mono);
-            font-size: 12px;
+        .diff-step-desc {
+            font-size: 13.5px;
+            line-height: 1.6;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-        .editorial-lead {
-            font-size: 15px;
-            line-height: 1.65;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin: 0;
         }
 
-        /* ── CONTACT & REFERRAL SECTION ── */
-        .hp-contact-section {
+        /* ── POSITIONING / WHY SECTION ── */
+        .why-section {
+            padding: 6rem 0;
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+        }
+        .why-quote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+            font-weight: 400;
+            line-height: 1.25;
+            color: #FAF9F5;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #2DD4BF;
+            padding-left: 1.75rem;
+        }
+        .why-copy {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(250, 249, 245, 0.8);
+            max-width: 780px;
+            margin-bottom: 2rem;
+        }
+
+        /* ── CREATIVE & DEEP WING ── */
+        .wing-section {
             padding: 6rem 0;
             background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
         }
-        .referral-box {
-            background: rgba(15, 118, 110, 0.05);
-            border: 1px dashed var(--accent-teal);
+        .wing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        @media(max-width: 1024px) {
+            .wing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 600px) {
+            .wing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .wing-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 1.25rem 1.5rem;
-            margin-top: 2rem;
-            font-size: 13.5px;
-            color: var(--text-secondary);
+            padding: 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+        .wing-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(16, 33, 29, 0.05);
+        }
+        .wing-tag {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .wing-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+        }
+        .wing-desc {
+            font-size: 13px;
             line-height: 1.55;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+        .wing-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            margin-top: auto;
+        }
+
+        /* ── INTAKE SECTION ── */
+        .intake-section {
+            padding: 6rem 0;
+            background: #FFFFFF;
         }
     </style>
 </head>
@@ -423,7 +502,7 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Featured Systems</a>
                         <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
                         <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
@@ -438,10 +517,10 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
+                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnels</a>
+                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">For Agencies</a>
                     </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
@@ -453,7 +532,7 @@
 
     <main id="main-content">
 
-        <!-- 1. HERO -->
+        <!-- 1. HERO COMPOSITION -->
         <header class="home-hero">
             <div class="home-hero-art" aria-hidden="true">
                 <img src="/assets/images/homepage-prism-wide.webp" alt="Refraction and structural prism artwork">
@@ -462,290 +541,391 @@
 
             <div class="home-hero-content">
                 <div class="home-hero-copy">
-                    <span class="hero-eyebrow">CUSTOM WEBSITES &amp; OPERATIONAL SYSTEMS</span>
+                    <span class="hero-eyebrow">WEBSITES &bull; FUNNELS &bull; BUSINESS SYSTEMS</span>
                     <h1 class="hero-title">
-                        Custom websites built to do more than sit there.
+                        Websites and systems built around how your business actually works.
                     </h1>
                     <p class="hero-subhead">
-                        Context &amp; Muse designs high-conversion websites and custom digital systems for businesses where every lost lead, confusing workflow, or unnecessary step costs money.
+                        I find where customers get confused, where leads disappear, and where repetitive work is costing you—then build a clearer path from attention to action.
                     </p>
                     <div class="btn-group">
-                        <a href="/custom/#intake" class="btn btn-primary" style="background: var(--text-primary); border-color: var(--text-primary); color: #FAF9F5;">Start a Website Project &rarr;</a>
-                        <a href="#services" class="btn btn-secondary" style="border-color: var(--border-light); color: var(--text-primary);">Get a Site Audit &rarr;</a>
-                        <a href="#client-work" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; margin-left: 4px;">See Client Work &darr;</a>
+                        <a href="/custom/?service=audit#intake" class="btn btn-primary" style="background: var(--text-primary); border-color: var(--text-primary); color: #FAF9F5; padding: 0.85rem 1.6rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; text-decoration: none;">Get a Conversion Audit — $195</a>
+                        <a href="/systems/" class="btn btn-secondary" style="border: 1.5px solid var(--text-primary); color: var(--text-primary); padding: 0.85rem 1.6rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; text-decoration: none;">Need a Full Build? &rarr;</a>
+                    </div>
+                    <span class="hero-reassurance">The $195 audit is fully credited toward a build booked within 30 days.</span>
+                    <div>
+                        <a href="#featured-work" class="hero-proof-jump">See the Work &darr;</a>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- 2. THREE COMPACT BUYING OPTIONS -->
-        <section class="capabilities-section" id="services" aria-labelledby="services-heading">
+        <!-- 2. START WHERE THE PROBLEM IS (3 BUYING OPTIONS) -->
+        <section class="offers-section" id="offers" aria-labelledby="offers-heading">
             <div class="container">
-                <div class="capabilities-header">
-                    <span class="capabilities-eyebrow">01 // COMMERCIAL ENTRY POINTS</span>
-                    <h2 id="services-heading" class="capabilities-title">
-                        Three clear ways to work together.
+                <div class="section-header">
+                    <span class="section-eyebrow">COMMERCIAL ENTRY POINTS</span>
+                    <h2 id="offers-heading" class="section-title">
+                        Start where the problem is.
                     </h2>
                     <p style="font-size: 1.1rem; color: var(--text-secondary); margin: 0.5rem 0 0 0; line-height: 1.6;">
                         Direct project scoping, transparent starting rates, and zero forced subscription retainers.
                     </p>
                 </div>
 
-                <div class="capabilities-grid">
+                <div class="offers-grid">
                     <!-- Option 1: Conversion Leak Audit -->
-                    <div class="capability-card">
+                    <div class="offer-box">
                         <div>
-                            <span class="capability-num">DIAGNOSTIC</span>
-                            <h3 class="capability-name">Conversion Leak Audit</h3>
-                            <span class="capability-price">$195 Flat Fee</span>
-                            <p class="capability-lead">
-                                A focused review identifying friction, broken paths, conversion leaks, mobile problems, unclear CTAs, and missed local search opportunities.
-                            </p>
-                            <p style="font-size: 12px; color: var(--accent-teal); font-family: var(--font-mono); font-weight: 600; margin-top: 0.75rem;">
-                                100% credited toward any build booked within 30 days.
-                            </p>
+                            <span class="offer-box-meta">DIAGNOSTIC</span>
+                            <h3 class="offer-box-title">Conversion Leak Audit</h3>
+                            <span class="offer-box-price">$195 Flat Fee</span>
+                            <div class="offer-box-sub">Find what's costing you customers.</div>
                         </div>
                         <div>
-                            <ul class="capability-list" style="margin-bottom: 1.5rem;">
-                                <li><span class="capability-bullet">✓</span> First-viewport clarity &amp; copy review</li>
-                                <li><span class="capability-bullet">✓</span> Mobile touch flow &amp; CTA placement</li>
-                                <li><span class="capability-bullet">✓</span> Annotated "Fix Now / Fix Later" roadmap</li>
+                            <ul class="offer-box-list" style="margin-bottom: 1.75rem;">
+                                <li><span class="bullet">✓</span> First-viewport clarity &amp; copy review</li>
+                                <li><span class="bullet">✓</span> Mobile touch flow &amp; CTA placement audit</li>
+                                <li><span class="bullet">✓</span> Identification of drop-off points</li>
+                                <li><span class="bullet">✓</span> Annotated "Fix Now / Fix Later" roadmap</li>
+                                <li><span class="bullet">✓</span> 100% credited toward build in 30 days</li>
                             </ul>
-                            <a href="/custom/?service=audit#intake" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.75rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Audit My Site &rarr;</a>
+                            <a href="/custom/?service=audit#intake" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Audit My Site &rarr;</a>
                         </div>
                     </div>
 
                     <!-- Option 2: Funnel Sprint -->
-                    <div class="capability-card">
+                    <div class="offer-box">
                         <div>
-                            <span class="capability-num">FOCUSED BUILD</span>
-                            <h3 class="capability-name">Funnel Sprint</h3>
-                            <span class="capability-price">From $750</span>
-                            <p class="capability-lead">
-                                For businesses that do not need an entirely new site but need a specific customer conversion path fixed, designed, or automated.
-                            </p>
+                            <span class="offer-box-meta">FOCUSED BUILD</span>
+                            <h3 class="offer-box-title">Funnel Sprint</h3>
+                            <span class="offer-box-price">From $750</span>
+                            <div class="offer-box-sub">Give one valuable action a much better path to conversion.</div>
                         </div>
                         <div>
-                            <ul class="capability-list" style="margin-bottom: 1.5rem;">
-                                <li><span class="capability-bullet">✓</span> Quote capture &amp; custom intake flow</li>
-                                <li><span class="capability-bullet">✓</span> Dedicated service landing page</li>
-                                <li><span class="capability-bullet">✓</span> Booking, scheduling, or lead routing</li>
+                            <ul class="offer-box-list" style="margin-bottom: 1.75rem;">
+                                <li><span class="bullet">✓</span> Multi-step quote or intake flow</li>
+                                <li><span class="bullet">✓</span> Dedicated high-converting landing page</li>
+                                <li><span class="bullet">✓</span> Booking calendar or lead routing setup</li>
+                                <li><span class="bullet">✓</span> Instant SMS/email lead alerts</li>
+                                <li><span class="bullet">✓</span> Fast turnaround (3–5 business days)</li>
                             </ul>
-                            <a href="/custom/?service=funnel-sprint#intake" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.75rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Fix a Funnel &rarr;</a>
+                            <a href="/custom/?service=funnel-sprint#intake" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Fix a Funnel &rarr;</a>
                         </div>
                     </div>
 
-                    <!-- Option 3: Website + Workflow System -->
-                    <div class="capability-card featured">
-                        <span class="card-badge">Most Complete</span>
+                    <!-- Option 3: Custom Websites & Systems -->
+                    <div class="offer-box featured">
+                        <span class="offer-box-badge">Most Complete</span>
                         <div>
-                            <span class="capability-num">FULL SYSTEM</span>
-                            <h3 class="capability-name">Website + Workflow System</h3>
-                            <span class="capability-price">From $1,500</span>
-                            <p class="capability-lead">
-                                Custom responsive website plus the operational pieces required to turn traffic into actual business without subscription bloat.
-                            </p>
+                            <span class="offer-box-meta">FULL SYSTEM</span>
+                            <h3 class="offer-box-title">Websites &amp; Systems</h3>
+                            <span class="offer-box-price">Projects from $1,500</span>
+                            <div class="offer-box-sub">Build the customer-facing site and the machinery behind it.</div>
                         </div>
                         <div>
-                            <ul class="capability-list" style="margin-bottom: 1.5rem;">
-                                <li><span class="capability-bullet">✓</span> Custom design &amp; local SEO architecture</li>
-                                <li><span class="capability-bullet">✓</span> Multi-step intake, booking, or quote logic</li>
-                                <li><span class="capability-bullet">✓</span> Direct client editing CMS &amp; clean handoff</li>
+                            <ul class="offer-box-list" style="margin-bottom: 1.75rem;">
+                                <li><span class="bullet">✓</span> Custom responsive website architecture</li>
+                                <li><span class="bullet">✓</span> Local SEO &amp; service-area city pages</li>
+                                <li><span class="bullet">✓</span> Multi-step intake, booking, or quoting logic</li>
+                                <li><span class="bullet">✓</span> Lead routing &amp; automated dispatch workflows</li>
+                                <li><span class="bullet">✓</span> CMS for direct client editing &amp; zero retainers</li>
                             </ul>
-                            <a href="/custom/?service=website-system#intake" class="btn btn-primary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.75rem; background: var(--accent-teal); border: 1px solid var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Start a Build &rarr;</a>
+                            <a href="/systems/" class="btn btn-primary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; background: var(--accent-teal); border: 1px solid var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Scope My System &rarr;</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. SHOW WHY THIS IS DIFFERENT -->
-        <section class="diff-section" aria-labelledby="diff-heading">
+        <!-- 3. FEATURED WORK (GROUNDED IN SUBSTANTIATED PROOF) -->
+        <section class="proof-section" id="featured-work" aria-labelledby="featured-heading">
             <div class="container">
-                <div style="max-width: 800px;">
-                    <span class="capabilities-eyebrow">02 // THE DIFFERENTIATOR</span>
-                    <h2 id="diff-heading" class="capabilities-title">
-                        Most website projects stop at the page.
+                <div class="section-header">
+                    <span class="section-eyebrow">SUBSTANTIATED PROOF</span>
+                    <h2 id="featured-heading" class="section-title">
+                        Built for businesses where a lost lead actually matters.
                     </h2>
-                    <p style="font-size: 1.15rem; color: var(--text-primary); font-family: var(--font-serif); font-weight: 400; margin: 0.5rem 0 1rem 0;">
-                        Context &amp; Muse builds the logic underneath it.
-                    </p>
-                    <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0;">
-                        Instead of stacking 10 fragile third-party plugins that fight each other and bill you every month, I build lightweight, purpose-fit operational machinery directly into your digital presence.
-                    </p>
-                </div>
-
-                <!-- Step-by-Step Flow Diagram -->
-                <div class="diff-flow-grid">
-                    <div class="flow-step">
-                        <div class="flow-step-title">01 Website</div>
-                        <p class="flow-step-desc">Fast, responsive, conversion-focused design</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="flow-step-title">02 Action</div>
-                        <p class="flow-step-desc">Clear decision triggers &amp; local search relevancy</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="flow-step-title">03 Custom Form</div>
-                        <p class="flow-step-desc">Captures the exact specs needed up front</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="flow-step-title">04 Workflow</div>
-                        <p class="flow-step-desc">Instant alerts, lead routing, or calendar sync</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="flow-step-title">05 Result</div>
-                        <p class="flow-step-desc">Qualified lead, confirmed booking, or clean sale</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. REAL CLIENT PROOF -->
-        <section class="hp-editorial-section" id="client-work" aria-labelledby="client-work-heading">
-            <div class="container">
-                <div style="margin-bottom: 2rem;">
-                    <span class="capabilities-eyebrow">03 // PROVEN CLIENT BUILDS</span>
-                    <h2 id="client-work-heading" class="capabilities-title">
-                        Real systems in production.
-                    </h2>
-                    <p style="font-size: 1.05rem; color: var(--text-secondary); margin: 0.5rem 0 0 0;">
-                        Commercial websites, local service-area architecture, and custom operational tools.
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin: 0.5rem 0 0 0;">
+                        Structured problem-solving across customer-facing websites, local search demand, and operational machinery.
                     </p>
                 </div>
 
                 <!-- Case 1: Lone Wolf Dumpsters -->
-                <div class="editorial-row">
-                    <div class="editorial-media-container" style="background: #142420; padding: 2.5rem 2rem; color: #FAF9F5;">
-                        <span style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 3px;">Featured Build</span>
-                        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: #FAF9F5; margin: 0.75rem 0 0.5rem;">Lone Wolf Dumpsters</h3>
-                        <p style="font-size: 13.5px; color: rgba(250,249,245,0.75); line-height: 1.5; margin-bottom: 1.5rem;">
-                            Local-Service Website + Scalable Lead-Generation Infrastructure
+                <article class="featured-card">
+                    <div>
+                        <span class="status-pill">Live Client Build</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">Lone Wolf Dumpsters</h3>
+                        <p style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Full Commercial Website + Multi-Market Lead Architecture
                         </p>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 11.5px; color: #FAF9F5;">
-                            <div style="background: rgba(250,249,245,0.06); border: 1px solid rgba(250,249,245,0.1); border-radius: 4px; padding: 0.5rem 0.75rem;">✓ 40+ Local SEO Pages</div>
-                            <div style="background: rgba(250,249,245,0.06); border: 1px solid rgba(250,249,245,0.1); border-radius: 4px; padding: 0.5rem 0.75rem;">✓ Interactive DFW Coverage</div>
-                            <div style="background: rgba(250,249,245,0.06); border: 1px solid rgba(250,249,245,0.1); border-radius: 4px; padding: 0.5rem 0.75rem;">✓ Tiered Quote Intake</div>
-                            <div style="background: rgba(250,249,245,0.06); border: 1px solid rgba(250,249,245,0.1); border-radius: 4px; padding: 0.5rem 0.75rem;">✓ Automated Dispatch</div>
+
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Problem</span>
+                            <p class="cs-pillar-text">
+                                Local roll-off dumpster services lose qualified leads when service areas are vague, pricing tiers are opaque, and customers are forced into phone tag for basic quotes.
+                            </p>
+                        </div>
+
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Build</span>
+                            <p class="cs-pillar-text">
+                                Scalable local SEO infrastructure with 40+ dedicated municipality landing pages, interactive DFW territory coverage maps, segmented contractor vs. residential quote builders, and automated dispatch routing.
+                            </p>
+                        </div>
+
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Business Effect</span>
+                            <p class="cs-pillar-text">
+                                Captures structured project specs on first contact, eliminates manual quoting bottlenecks, and directly routes high-intent inquiries to regional dispatchers.
+                            </p>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem;">
+                            <a href="https://www.lonewolfdumpsters.com" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">Visit Live Website &rarr;</a>
+                            <a href="/systems/client-builds/#lonewolf" style="font-family: var(--font-mono); font-size: 11px; color: var(--text-primary); text-decoration: none; font-weight: 700; text-transform: uppercase;">View Case Details &rarr;</a>
                         </div>
                     </div>
-                    <div>
-                        <span class="editorial-num">CASE STUDY 01</span>
-                        <h3 class="editorial-title">Lone Wolf Dumpsters</h3>
-                        <div class="editorial-subhead">Commercial Lead Infrastructure &bull; Local Search Ecosystem</div>
-                        <p class="editorial-lead">
-                            Engineered a multi-market local SEO architecture paired with contractor and residential quote capture, connecting regional search demand directly to dispatcher queues.
-                        </p>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">View Case Details &rarr;</a>
-                            <a href="/custom/?ref=lonewolf#intake" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-primary); text-decoration: none; font-weight: 700; text-transform: uppercase;">Build Something Like This &rarr;</a>
+
+                    <div style="background: #142420; border-radius: 6px; padding: 2.5rem 2rem; color: #FAF9F5; text-align: center; border: 1px solid rgba(16,33,29,0.15); box-shadow: 0 12px 30px rgba(0,0,0,0.06);">
+                        <span style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 3px;">DFW Commercial Lead Engine</span>
+                        <div style="font-family: var(--font-serif); font-size: 1.75rem; color: #FAF9F5; margin: 1.25rem 0 0.5rem;">Lone Wolf Dumpsters</div>
+                        <p style="font-size: 13px; color: rgba(250,249,245,0.75); margin-bottom: 1.5rem;">Roll-Off Waste Solutions Across North Texas</p>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem; text-align: left; font-family: var(--font-mono); font-size: 11px; color: #2DD4BF;">
+                            <div>&bull; 40+ Municipal Local SEO Landing Pages</div>
+                            <div>&bull; Interactive DFW County &amp; Zip Radius Coverage</div>
+                            <div>&bull; Segmented Contractor vs Homeowner Quote Triage</div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Case 2: INNcontrol Coils -->
-                <div class="editorial-row reverse">
+                <!-- Case 2: EDR Party Rentals -->
+                <article class="featured-card">
                     <div>
-                        <span class="editorial-num">CASE STUDY 02</span>
-                        <h3 class="editorial-title">INNcontrol Hospitality</h3>
-                        <div class="editorial-subhead">Commercial Service Website &bull; Operational Intake Dashboard</div>
-                        <p class="editorial-lead">
-                            Built a technical catalog matching system for commercial HVAC replacement coils, cutting hours off manual field technician lookup and quoting workflows.
+                        <span class="status-pill client">Client System</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">EDR Party Rentals</h3>
+                        <p style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Bilingual Product Catalog &bull; Inventory-Aware Reservation Flow
                         </p>
-                        <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">View System Architecture &rarr;</a>
-                    </div>
-                    <div class="editorial-media-container">
-                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils dashboard screenshot" loading="lazy">
-                    </div>
-                </div>
 
-                <!-- Case 3: EDR Party Rentals -->
-                <div class="editorial-row">
-                    <div class="editorial-media-container">
-                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals website screenshot" loading="lazy">
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Problem</span>
+                            <p class="cs-pillar-text">
+                                Event rental inventory is finite and serial-numbered. Standard generic forms permit double-booking and fail to qualify delivery zones, creating customer service confusion and scheduling friction.
+                            </p>
+                        </div>
+
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Build</span>
+                            <p class="cs-pillar-text">
+                                Structured bilingual catalog and package selection flow with serial-item availability rules, delivery-tier zone qualification, and automated order handoff sheets.
+                            </p>
+                        </div>
+
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Business Effect</span>
+                            <p class="cs-pillar-text">
+                                Answers pricing and package questions before booking, qualifies delivery parameters automatically, and delivers clean customer records to warehouse teams.
+                            </p>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem;">
+                            <a href="/case-studies/edr-party-rentals/" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">Explore System Architecture &rarr;</a>
+                        </div>
                     </div>
+
+                    <div style="border-radius: 6px; overflow: hidden; border: 1px solid var(--border-light); box-shadow: 0 12px 30px rgba(0,0,0,0.04); background: #FFFFFF;">
+                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory reservation engine" style="width: 100%; display: block; height: auto;" loading="lazy">
+                    </div>
+                </article>
+
+                <!-- Case 3: INNcontrol Coils -->
+                <article class="featured-card">
                     <div>
-                        <span class="editorial-num">CASE STUDY 03</span>
-                        <h3 class="editorial-title">EDR Party Rentals</h3>
-                        <div class="editorial-subhead">Bilingual Product Catalog &bull; Delivery-Zone Intake</div>
-                        <p class="editorial-lead">
-                            Structured bilingual inventory catalog and package selection flow eliminating phone tag and qualifying rental delivery zones automatically before booking.
+                        <span class="status-pill">Production Architecture</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">INNcontrol Coils</h3>
+                        <p style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Commercial HVAC Field Scoping &amp; Estimation Engine
                         </p>
-                        <a href="/case-studies/edr-party-rentals/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">View Case Study &rarr;</a>
+
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Problem</span>
+                            <p class="cs-pillar-text">
+                                Commercial HVAC coil replacement across massive multi-story facilities required manual on-site paper checklists, stalling bid proposals and causing quotation errors.
+                            </p>
+                        </div>
+
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Build</span>
+                            <p class="cs-pillar-text">
+                                On-site responsive floorplan mapping engine enabling field technicians to locate equipment, tag damage severity, attach photos, and generate instant standardized repair ledgers.
+                            </p>
+                        </div>
+
+                        <div class="cs-pillar">
+                            <span class="cs-pillar-label">The Business Effect</span>
+                            <p class="cs-pillar-text">
+                                Cut proposal generation turnaround from days to hours and delivered verified visual ledgers that convert bids into signed commercial contracts.
+                            </p>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem;">
+                            <a href="/systems/client-builds/#inncontrol" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">View Production Architecture &rarr;</a>
+                        </div>
                     </div>
-                </div>
+
+                    <div style="border-radius: 6px; overflow: hidden; border: 1px solid var(--border-light); box-shadow: 0 12px 30px rgba(0,0,0,0.04); background: #FFFFFF;">
+                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils HVAC estimation dashboard" style="width: 100%; display: block; height: auto;" loading="lazy">
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- 5. DEEPER TECHNICAL DEPTH (SIGNAL & GENSORT) -->
-        <section class="hp-editorial-section" style="background: var(--bg-paper);" aria-labelledby="products-heading">
+        <!-- 4. NOT JUST PRETTIER PAGES (DIFFERENTIATOR) -->
+        <section class="diff-section" aria-labelledby="diff-heading">
             <div class="container">
-                <div style="margin-bottom: 2rem;">
-                    <span class="capabilities-eyebrow">04 // DEEP CAPABILITIES</span>
-                    <h2 id="products-heading" class="capabilities-title">
-                        Independent software &amp; diagnostic systems.
+                <div style="max-width: 820px;">
+                    <span class="section-eyebrow">THE CAPABILITIES</span>
+                    <h2 id="diff-heading" class="section-title">
+                        Not just prettier pages.
                     </h2>
-                    <p style="font-size: 1.05rem; color: var(--text-secondary); margin: 0.5rem 0 0 0;">
-                        Evidence of deeper software architecture, data modeling, and operational intelligence.
+                    <p style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0.5rem 0 1rem 0;">
+                        Booking. Qualification. Intake. Pricing logic. Service areas. Lead routing. Operational tools.
+                    </p>
+                    <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0;">
+                        Most website projects stop at the visual template. Context &amp; Muse builds the machinery underneath it—so your digital presence handles the operational heavy lifting instead of creating more administrative chaos for your staff.
                     </p>
                 </div>
 
-                <!-- Signal Row -->
-                <div class="editorial-row">
-                    <div class="editorial-media-container">
-                        <img src="/assets/images/signal-priority-view.webp" alt="Signal operational intelligence dashboard" loading="lazy">
-                    </div>
-                    <div>
-                        <span class="editorial-num">PRODUCT 01</span>
-                        <h3 class="editorial-title">Signal Operational Intelligence</h3>
-                        <div class="editorial-subhead">Forensic Margin Diagnostic &bull; Hospitality Data Modeling</div>
-                        <p class="editorial-lead">
-                            Diagnostic scoring engine identifying food waste, labor scheduling friction, and margin compression from raw POS transaction data.
+                <div class="diff-grid">
+                    <div class="diff-card">
+                        <span class="diff-step-num">01 // DIAGNOSE</span>
+                        <h3 class="diff-step-title">Locate the Leak</h3>
+                        <p class="diff-step-desc">
+                            Find exactly where potential clients get confused, where leads drop off, and where manual back-and-forth communication slows down your pipeline.
                         </p>
-                        <a href="/signal/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">Explore Signal &rarr;</a>
                     </div>
-                </div>
 
-                <!-- GenSort Row -->
-                <div class="editorial-row reverse">
-                    <div>
-                        <span class="editorial-num">PRODUCT 02</span>
-                        <h3 class="editorial-title">GenSort Local Classifier</h3>
-                        <div class="editorial-subhead">In-Browser Desktop Utility &bull; Zero Server Dependencies</div>
-                        <p class="editorial-lead">
-                            High-performance local-first image classifier and batch exporter running 100% in-browser with zero cloud uploads or privacy compromises.
+                    <div class="diff-card">
+                        <span class="diff-step-num">02 // BUILD</span>
+                        <h3 class="diff-step-title">Engineer the Machinery</h3>
+                        <p class="diff-step-desc">
+                            Design a custom responsive interface paired with structured intake forms, pricing calculators, territory maps, and automated lead routing.
                         </p>
-                        <a href="/gensort/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase;">Explore GenSort &rarr;</a>
                     </div>
-                    <div class="editorial-media-container">
-                        <img src="/assets/images/gensort-library.webp" alt="GenSort image classifier library screenshot" loading="lazy">
+
+                    <div class="diff-card">
+                        <span class="diff-step-num">03 // MEASURE</span>
+                        <h3 class="diff-step-title">Convert Attention</h3>
+                        <p class="diff-step-desc">
+                            Track conversion velocity, reduce administrative labor hours, and generate well-qualified inquiries ready for immediate execution.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 6. CONTACT SECTION & REFERRAL NOTE -->
-        <section class="hp-contact-section" id="contact" aria-labelledby="contact-heading">
+        <!-- 5. WHY CONTEXT & MUSE (OPERATIONAL POSITIONING) -->
+        <section class="why-section" aria-labelledby="why-heading">
+            <div class="container">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 1.5rem;">WHY CONTEXT &amp; MUSE</span>
+                <div class="why-quote">
+                    "I've worked in businesses where Friday night doesn't care whether the system is elegant. It either works or everyone feels it."
+                </div>
+                <p class="why-copy">
+                    Real operational experience running fast-paced, high-volume environments means I don't build theoretical designs that look good on a presentation slide but collapse under real customer traffic. Everything is engineered for resilience, speed, and real-world commercial clarity.
+                </p>
+                <a href="/about/" style="font-family: var(--font-mono); font-size: 11.5px; color: #2DD4BF; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Meet Jayme Volstad &rarr;</a>
+            </div>
+        </section>
+
+        <!-- 6. THERE IS ANOTHER WING OF THE STUDIO (CREATIVE & DEEP SYSTEMS) -->
+        <section class="wing-section" aria-labelledby="wing-heading">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow">DEEP CAPABILITIES &bull; CREATIVE PRACTICE</span>
+                    <h2 id="wing-heading" class="section-title">
+                        There is another wing of the studio.
+                    </h2>
+                    <p style="font-size: 1.05rem; color: var(--text-secondary); margin: 0.5rem 0 0 0;">
+                        Literary systems, symbolic cartography, and high-performance local software utilities.
+                    </p>
+                </div>
+
+                <div class="wing-grid">
+                    <!-- Wing 1: Self Cartography -->
+                    <a href="/cartography/" class="wing-card">
+                        <div>
+                            <span class="wing-tag">Interactive Engine</span>
+                            <h3 class="wing-title">Self Cartography</h3>
+                            <p class="wing-desc">
+                                A standalone topological coordinate space mapping personal boundaries and decision variables.
+                            </p>
+                        </div>
+                        <span class="wing-link">Launch Engine &rarr;</span>
+                    </a>
+
+                    <!-- Wing 2: Wolves -->
+                    <a href="/creative/how-to-explain-yourself-to-wolves/" class="wing-card">
+                        <div>
+                            <span class="wing-tag">Completed Manuscript</span>
+                            <h3 class="wing-title">Explaining Wolves</h3>
+                            <p class="wing-desc">
+                                A book and visual essay on perception, survival, and communication in high-stakes environments.
+                            </p>
+                        </div>
+                        <span class="wing-link">Explore Manuscript &rarr;</span>
+                    </a>
+
+                    <!-- Wing 3: Signal -->
+                    <a href="/signal/" class="wing-card">
+                        <div>
+                            <span class="wing-tag">Decision Diagnostic</span>
+                            <h3 class="wing-title">Signal Intelligence</h3>
+                            <p class="wing-desc">
+                                Forensic margin diagnostic identifying food waste and labor compression from transaction data.
+                            </p>
+                        </div>
+                        <span class="wing-link">View Diagnostic &rarr;</span>
+                    </a>
+
+                    <!-- Wing 4: GenSort -->
+                    <a href="/gensort/" class="wing-card">
+                        <div>
+                            <span class="wing-tag">Local Utility</span>
+                            <h3 class="wing-title">GenSort Classifier</h3>
+                            <p class="wing-desc">
+                                In-browser batch image sorting and classification tool running 100% locally with zero cloud upload.
+                            </p>
+                        </div>
+                        <span class="wing-link">Explore GenSort &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. BRING ME THE MESS (CONTACT & INTAKE) -->
+        <section class="intake-section" id="contact" aria-labelledby="intake-heading">
             <div class="container">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
-                    <!-- Column 1: Info -->
+                    <!-- Column 1: Copy & Referral -->
                     <div>
-                        <span class="capabilities-eyebrow">EVALUATION &bull; INTAKE</span>
-                        <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 400; color: var(--text-primary);">
+                        <span class="section-eyebrow">START A PROJECT</span>
+                        <h2 id="intake-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.25rem; font-weight: 400; color: var(--text-primary);">
                             Bring me the mess.
                         </h2>
-                        <blockquote style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55; margin-left: 0;">
-                            Send the website, workflow bottleneck, or unfinished digital system you are trying to make sense of. I’ll tell you what I’d recommend and what it would take to build.
+                        <blockquote style="font-family: var(--font-serif); font-size: 1.15rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.25rem; margin-bottom: 1.75rem; line-height: 1.55; margin-left: 0;">
+                            Send the website, conversion leak, or messy digital workflow you're trying to make sense of. I’ll review your setup and outline a practical next step.
                         </blockquote>
                         <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                            Direct communication with the person actually building your system. No account managers or outsourced junior staff.
+                            Direct collaboration with the person actually building your system. No account managers or outsourced junior staff.
                         </p>
                         <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); margin-bottom: 2rem;">
-                            Direct email: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: bold; text-decoration: none;">jayme@contextmuse.com</a>
+                            Direct email: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: 700; text-decoration: none;">jayme@contextmuse.com</a>
                         </div>
 
-                        <!-- Tasteful Referral Note -->
-                        <div class="referral-box">
+                        <!-- Referral Program -->
+                        <div style="background: rgba(15, 118, 110, 0.05); border: 1px dashed var(--accent-teal); border-radius: 6px; padding: 1.25rem 1.5rem; font-size: 13.5px; color: var(--text-secondary); line-height: 1.55;">
                             <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.35rem;">Client Referral Program</strong>
                             Know a business that needs a better website or digital system? Context &amp; Muse pays a <strong>10% referral fee</strong> on booked website projects (e.g. a $10,000 booked project = $1,000 referral fee).
                         </div>
@@ -755,35 +935,35 @@
                     <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
                         <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <input type="text" name="_gotcha" style="display:none">
-                            <input type="hidden" name="form_source" value="homepage_contact">
+                            <input type="hidden" name="form_source" value="homepage_intake">
                             
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Name *</label>
-                                <input type="text" id="form-name" name="name" required placeholder="Your name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Email Address *</label>
-                                <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
-                            </div>
-
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-service" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you interested in?</label>
-                                <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
-                                    <option value="website_system">Website + Workflow System (from $1,500)</option>
-                                    <option value="funnel_sprint">Funnel Sprint (from $750)</option>
-                                    <option value="site_audit">Conversion Leak Audit ($195)</option>
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
+                                <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
+                                    <option value="audit">Conversion Leak Audit ($195)</option>
+                                    <option value="funnel">Funnel Sprint (from $750)</option>
+                                    <option value="website_system">Custom Websites &amp; Systems (projects from $1,500)</option>
                                     <option value="custom_system">Custom Operational System</option>
-                                    <option value="other">General Inquiry / Not Sure</option>
+                                    <option value="general">General Consultation / Other</option>
                                 </select>
                             </div>
 
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you trying to make clearer / build? *</label>
-                                <textarea id="form-message" name="message" rows="4" required placeholder="Describe your website goals, where leads drop off, or what workflow you want automated..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Name *</label>
+                                <input type="text" id="form-name" name="name" required placeholder="Your name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Email Address *</label>
+                                <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
                             </div>
 
-                            <button type="submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.85rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s; text-align: center;">Start the Conversation &rarr;</button>
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What is creating the most friction right now? *</label>
+                                <textarea id="form-message" name="message" rows="4" required placeholder="Describe what customers or staff are struggling with..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
+                            </div>
+
+                            <button type="submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.85rem 1.5rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 4px; cursor: pointer; transition: background 0.2s; text-align: center;">Start the Conversation &rarr;</button>
                         </form>
                     </div>
                 </div>

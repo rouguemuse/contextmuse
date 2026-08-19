@@ -526,18 +526,17 @@ filesToVerify.forEach(fileSpec => {
     // Systems page: Ensure gensort-workspace.png is no longer referenced, and gensort-library.webp is referenced
     if (fileSpec.relPath === 'systems/index.html') {
         let systemsPass = true;
-
-        if (content.includes('gensort-workspace.png')) {
-            log('    [FAIL] Systems page still references deprecated gensort-workspace.png.');
-            systemsPass = false;
+        if (content.includes('$1,500')) {
+            log('    [PASS] Systems page lists projects from $1,500 baseline.');
         } else {
-            log('    [PASS] Systems page has removed all references to gensort-workspace.png.');
+            log('    [FAIL] Systems page does not reference $1,500 baseline.');
+            systemsPass = false;
         }
 
-        if (content.includes('gensort-library.webp')) {
-            log('    [PASS] Systems page references new gensort-library.webp.');
+        if (content.includes('Quoting &amp; Booking Flows') || content.includes('Quoting & Booking Flows')) {
+            log('    [PASS] Systems page details operational capabilities (quoting, booking, intake).');
         } else {
-            log('    [FAIL] Systems page does not reference gensort-library.webp.');
+            log('    [FAIL] Systems page missing operational capability breakdowns.');
             systemsPass = false;
         }
 

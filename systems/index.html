@@ -4,798 +4,216 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applied Systems | Context &amp; Muse</title>
-    <meta name="description" content="Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, and selected commercial builds by Context &amp; Muse.">
+    <title>Custom Websites &amp; Systems — Projects from $1,500 | Context &amp; Muse</title>
+    <meta name="description" content="Custom websites paired with operational machinery: booking intake, quoting flows, service-area architecture, CMS editing, and lead dispatch. Projects from $1,500.">
     <link rel="canonical" href="https://www.contextmuse.com/systems/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.contextmuse.com/systems/">
-    <meta property="og:title" content="Applied Systems | Context &amp; Muse">
-    <meta property="og:description" content="Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, and selected commercial builds by Context &amp; Muse.">
+    <meta property="og:title" content="Custom Websites &amp; Systems — Projects from $1,500 | Context &amp; Muse">
+    <meta property="og:description" content="Custom websites paired with operational machinery: booking intake, quoting flows, service-area architecture, CMS editing, and lead dispatch. Projects from $1,500.">
     <meta property="og:image" content="https://www.contextmuse.com/social-preview.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Applied Systems | Context &amp; Muse">
-    <meta name="twitter:description" content="Signal, GenSort, Message &amp; Record Analysis, Record Integrity &amp; Traceability, and selected commercial builds by Context &amp; Muse.">
+    <meta name="twitter:title" content="Custom Websites &amp; Systems — Projects from $1,500 | Context &amp; Muse">
+    <meta name="twitter:description" content="Custom websites paired with operational machinery: booking intake, quoting flows, service-area architecture, CMS editing, and lead dispatch. Projects from $1,500.">
     <meta name="twitter:image" content="https://www.contextmuse.com/social-preview.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
-    
+
     <style>
-        /* Static Index Hover Effect */
-        .systems-index-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 0;
-            border-bottom: 1px solid var(--border-light);
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: color 0.2s ease;
+        .systems-hero {
+            padding: 140px 0 80px;
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
         }
-        .systems-index-item:hover {
-            color: var(--accent-teal);
-        }
-        .systems-index-item .index-name {
-            font-family: var(--font-serif);
-            font-size: clamp(1.2rem, 2vw, 1.7rem);
-            transition: transform 0.2s ease;
-        }
-        .systems-index-item:hover .index-name {
-            transform: translateX(4px);
-        }
-        .systems-index-item .index-num {
+        .hero-eyebrow {
             font-family: var(--font-mono);
             font-size: 11px;
-            color: var(--accent-teal);
-            margin-right: 1.5rem;
-            min-width: 24px;
-        }
-        .systems-index-item .index-arrow {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        /* Systems Spatial Gallery Redesign */
-        .systems-spatial-gallery {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            background: var(--bg-ink, #090a0f);
-            color: #FAF9F5;
-            padding: 80px 0;
-            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
-        }
-
-        .systems-spatial-gallery .gallery-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .systems-spatial-gallery .gallery-rail {
-            display: flex;
-            gap: 3rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 3rem 10% 4rem 10%; /* peeking margins */
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .systems-spatial-gallery .gallery-rail::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* 3D Spatial Card */
-        .systems-spatial-gallery .spatial-card {
-            flex: 0 0 clamp(680px, 68vw, 980px); /* 10-15% of next card visible */
-            min-height: 560px;
-            max-height: 680px;
-            background: #11131E; /* deep dark blue-grey card */
-            border: 1px solid rgba(250, 249, 245, 0.06);
-            border-radius: 16px;
-            padding: 3rem;
-            color: #FAF9F5;
-            position: relative;
-            scroll-snap-align: center;
-            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease, opacity 0.4s ease;
-            display: grid;
-            grid-template-columns: 1fr 1.25fr;
-            gap: 3.5rem;
-            overflow: hidden;
-            box-sizing: border-box;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-        }
-
-        .systems-spatial-gallery .spatial-card:focus-within {
-            outline: 2px solid var(--accent-teal);
-            outline-offset: 4px;
-        }
-
-        .systems-spatial-gallery .spatial-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 52px rgba(0,0,0,0.38);
-        }
-
-        .systems-spatial-gallery .spatial-card[data-accent="teal"]:hover {
-            border-color: rgba(45, 212, 191, 0.4);
-        }
-        .systems-spatial-gallery .spatial-card[data-accent="red"]:hover {
-            border-color: rgba(163, 29, 29, 0.4);
-        }
-        .systems-spatial-gallery .spatial-card[data-accent="neutral"]:hover {
-            border-color: rgba(250, 249, 245, 0.25);
-        }
-
-        .systems-spatial-gallery .card-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            z-index: 4;
-            position: relative;
-        }
-
-        .systems-spatial-gallery .card-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 10px;
+            color: #2DD4BF;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            font-weight: 700;
             display: block;
-            margin-bottom: 0.75rem;
-        }
-
-        .systems-spatial-gallery .spatial-card[data-accent="teal"] .card-eyebrow { color: #38BDF8; }
-        .systems-spatial-gallery .spatial-card[data-accent="red"] .card-eyebrow { color: #F87171; }
-        .systems-spatial-gallery .spatial-card[data-accent="neutral"] .card-eyebrow { color: #A3A3A3; }
-
-        .systems-spatial-gallery .card-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 2.5vw, 2.3rem);
-            line-height: 1.1;
-            margin: 0 0 0.5rem 0;
-            color: #FAF9F5;
-            font-weight: 500;
-        }
-
-        .systems-spatial-gallery .card-subhead {
-            font-family: var(--font-sans);
-            font-size: 12px;
-            color: rgba(250, 249, 245, 0.45);
             margin-bottom: 1rem;
-            margin-top: -0.25rem;
-            line-height: 1.35;
         }
-
-        .systems-spatial-gallery .card-desc {
-            font-family: var(--font-sans);
-            font-size: 13.5px;
-            line-height: 1.6;
-            color: rgba(250, 249, 245, 0.75);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Attributes List */
-        .systems-spatial-gallery .card-labels-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 1.5rem;
-            border-top: 1px solid rgba(250, 249, 245, 0.08);
-            padding-top: 1rem;
-        }
-
-        .systems-spatial-gallery .card-label-row {
-            display: flex;
-            gap: 8px;
-            font-size: 12px;
-            line-height: 1.4;
-        }
-
-        .systems-spatial-gallery .card-label-title {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            min-width: 70px;
-            display: inline-block;
-            letter-spacing: 0.05em;
-        }
-
-        .systems-spatial-gallery .card-label-val {
-            color: rgba(250, 249, 245, 0.75);
-        }
-
-        /* Buttons / Actions */
-        .systems-spatial-gallery .card-actions {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: auto;
-            flex-wrap: wrap;
-        }
-
-        .systems-spatial-gallery .btn-card-primary {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 0.65rem 1.25rem;
-            border-radius: 4px;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-
-        .systems-spatial-gallery .spatial-card[data-accent="teal"] .btn-card-primary {
-            background: #0F766E;
-            color: #FAF9F5;
-            border: 1px solid #0F766E;
-        }
-        .systems-spatial-gallery .spatial-card[data-accent="teal"] .btn-card-primary:hover {
-            background: #115E59;
-            border-color: #115E59;
-        }
-
-        .systems-spatial-gallery .spatial-card[data-accent="red"] .btn-card-primary {
-            background: #A31D1D;
-            color: #FAF9F5;
-            border: 1px solid #A31D1D;
-        }
-        .systems-spatial-gallery .spatial-card[data-accent="red"] .btn-card-primary:hover {
-            background: #851616;
-            border-color: #851616;
-        }
-
-        .systems-spatial-gallery .spatial-card[data-accent="neutral"] .btn-card-primary {
-            background: #FAF9F5;
-            color: #10211D;
-            border: 1px solid #FAF9F5;
-        }
-        .systems-spatial-gallery .spatial-card[data-accent="neutral"] .btn-card-primary:hover {
-            background: #E5E5E5;
-            border-color: #E5E5E5;
-        }
-
-        .systems-spatial-gallery .btn-card-outline {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 0.65rem 1.25rem;
-            border-radius: 4px;
-            display: inline-block;
-            border: 1px solid rgba(250, 249, 245, 0.2);
-            color: rgba(250, 249, 245, 0.7);
-            transition: all 0.2s ease;
-        }
-
-        .systems-spatial-gallery .btn-card-outline:hover {
-            border-color: rgba(250, 249, 245, 0.4);
-            color: #FAF9F5;
-        }
-
-        /* Visual Column */
-        .systems-spatial-gallery .card-visual-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            height: 100%;
-            width: 100%;
-            z-index: 3;
-        }
-
-        .systems-spatial-gallery .card-visual-container {
-            width: 100%;
-            height: 100%;
-            max-height: 480px;
-            background: rgba(250, 249, 245, 0.015);
-            border: 1px solid rgba(250, 249, 245, 0.06);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-sizing: border-box;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-            transition: box-shadow 0.35s ease;
-        }
-
-        .systems-spatial-gallery .spatial-card:hover .card-visual-container {
-            box-shadow: 0 8px 28px rgba(0,0,0,0.25);
-        }
-
-        .systems-spatial-gallery .card-visual-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center top;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        /* Redesigned 05 // Independent Client Systems Section */
-        .systems-spatial-gallery #client-builds.full-width-card,
-        .systems-spatial-gallery #client-builds {
-            grid-column: 1 / -1;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding: 3rem;
-            box-sizing: border-box;
-        }
-
-        .card-full-header {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            max-width: 820px;
-        }
-
-        .card-full-header .card-title {
+        .hero-title {
             font-family: var(--font-serif);
-            font-size: 1.75rem;
-            font-weight: 300;
-            color: var(--text-primary);
-            line-height: 1.25;
+            font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+            line-height: 1.1;
+            font-weight: 400;
+            color: #FAF9F5 !important;
+            margin-bottom: 1.5rem;
+            max-width: 860px;
         }
-
-        .card-full-header .card-desc.header-copy {
+        .hero-sub {
             font-family: var(--font-sans);
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
+            font-size: 1.2rem;
+            line-height: 1.65;
+            color: rgba(250, 249, 245, 0.8);
+            max-width: 720px;
+            margin-bottom: 2.25rem;
         }
 
-        .client-builds-grid {
+        /* ── CAPABILITIES GRID ── */
+        .capabilities-section {
+            padding: 5.5rem 0;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .cap-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            width: 100%;
-            margin-top: 0.5rem;
+            gap: 2rem;
+            margin-top: 3rem;
         }
-
-        @media (max-width: 1024px) {
-            .client-builds-grid {
+        @media(max-width: 950px) {
+            .cap-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
-        @media (max-width: 640px) {
-            .client-builds-grid {
+        @media(max-width: 650px) {
+            .cap-grid {
                 grid-template-columns: 1fr;
             }
-            .systems-spatial-gallery #client-builds {
-                padding: 1.75rem 1.25rem;
-            }
         }
-
-        .op-build-card {
-            background: rgba(13, 15, 23, 0.65);
-            border: 1px solid rgba(250, 249, 245, 0.1);
+        .cap-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
             border-radius: 6px;
-            overflow: hidden;
+            padding: 2.25rem 2rem;
             display: flex;
             flex-direction: column;
-            transition: border-color 0.25s ease;
+            justify-content: space-between;
         }
-
-        .op-build-card:hover {
-            border-color: rgba(250, 249, 245, 0.25);
-        }
-
-        .op-browser-frame {
-            display: block;
-            text-decoration: none;
-            background: #141722;
-            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
-        }
-
-        .op-browser-bar {
-            height: 28px;
-            background: #181b26;
-            border-bottom: 1px solid rgba(250, 249, 245, 0.06);
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            gap: 6px;
-        }
-
-        .op-browser-dots {
-            display: flex;
-            gap: 5px;
-        }
-
-        .op-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-        .op-dot-red { background: #FF5F56; }
-        .op-dot-yellow { background: #FFBD2E; }
-        .op-dot-green { background: #27C93F; }
-
-        .op-browser-url {
+        .cap-num {
             font-family: var(--font-mono);
-            font-size: 9.5px;
-            color: rgba(250, 249, 245, 0.45);
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1px 8px;
-            border-radius: 3px;
-            margin-left: 6px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .op-browser-viewport {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            overflow: hidden;
-            background: #090a0f;
-        }
-
-        .op-browser-viewport img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            display: block;
-        }
-
-        .op-card-body {
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            flex: 1;
-        }
-
-        .op-card-title {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: var(--text-primary);
-            line-height: 1.3;
-            margin: 0;
-        }
-
-        .op-card-summary {
-            font-family: var(--font-sans);
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.45;
-            margin: 0;
-        }
-
-        .op-card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: auto;
-            padding-top: 0.5rem;
-        }
-
-        .op-tag {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            letter-spacing: 0.03em;
-            color: rgba(250, 249, 245, 0.6);
-            background: rgba(250, 249, 245, 0.04);
-            border: 1px solid rgba(250, 249, 245, 0.08);
-            padding: 2px 7px;
-            border-radius: 3px;
-        }
-
-        .op-card-footer {
-            padding-top: 0.5rem;
-            border-top: 1px solid rgba(250, 249, 245, 0.06);
-        }
-
-        .op-link {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            letter-spacing: 0.08em;
-            color: var(--accent-teal, #2DD4BF);
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-
-        .op-link:hover {
-            opacity: 0.8;
-        }
-
-        .card-full-footer {
-            display: flex;
-            justify-content: flex-start;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(250, 249, 245, 0.08);
-            margin-top: 0.5rem;
-        }
-
-        .btn-all-builds {
-            font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--accent-teal);
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: rgba(250, 249, 245, 0.75);
-            text-decoration: none;
-            padding: 8px 18px;
-            border: 1px solid rgba(250, 249, 245, 0.15);
-            border-radius: 4px;
-            transition: all 0.25s ease;
+            margin-bottom: 0.5rem;
+            display: block;
         }
-
-        .btn-all-builds:hover {
+        .cap-title {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            font-weight: 500;
             color: var(--text-primary);
-            border-color: rgba(250, 249, 245, 0.35);
-            background: rgba(250, 249, 245, 0.03);
+            margin: 0 0 0.75rem 0;
+            line-height: 1.25;
+        }
+        .cap-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
         }
 
-        /* Status Label positioning */
-        .systems-spatial-gallery .gallery-status-label {
+        /* ── SCOPING TIERS ── */
+        .tiers-section {
+            padding: 5.5rem 0;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media(max-width: 960px) {
+            .tier-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .tier-card {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.75rem 2.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .tier-card.featured {
+            border: 2px solid var(--accent-teal);
+            background: #FCFCF9;
+        }
+        .tier-badge {
             position: absolute;
-            top: 2.5rem;
-            right: 2.5rem;
+            top: -12px;
+            right: 20px;
+            background: var(--accent-teal);
+            color: #FAF9F5;
             font-family: var(--font-mono);
-            font-size: 8.5px;
+            font-size: 9.5px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            padding: 3px 8px;
-            border-radius: 3px;
-            border: 1px solid rgba(250, 249, 245, 0.15);
-            color: rgba(250, 249, 245, 0.5);
-            background: rgba(250, 249, 245, 0.02);
-            z-index: 4;
+            padding: 3px 10px;
+            border-radius: 4px;
         }
-
-        /* Wolves Card Theme Override */
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] {
-            background: #FAF8F5 !important; /* Parchment cream background */
-            border: 1px solid rgba(163, 29, 29, 0.12);
-            color: #10211D !important;
-            box-shadow: 0 20px 50px rgba(163, 29, 29, 0.05);
+        .tier-header {
+            margin-bottom: 1.5rem;
         }
-
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-title,
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-label-val {
-            color: #10211D !important;
+        .tier-title {
+            font-family: var(--font-serif);
+            font-size: 1.65rem;
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+            font-weight: 500;
         }
-
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-subhead,
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-desc {
-            color: var(--text-secondary) !important;
-        }
-
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] .gallery-status-label {
-            border-color: rgba(163, 29, 29, 0.2);
-            color: #A31D1D;
-            background: rgba(163, 29, 29, 0.02);
-        }
-
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] .card-labels-grid {
-            border-top-color: rgba(16, 33, 29, 0.1);
-        }
-
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] .btn-card-outline {
-            border-color: rgba(16, 33, 29, 0.2);
-            color: var(--text-secondary);
-        }
-        .systems-spatial-gallery .spatial-card[data-style="wolves"] .btn-card-outline:hover {
-            border-color: rgba(16, 33, 29, 0.4);
-            color: #10211D;
-        }
-
-        /* Ambient top-edge highlight — activates on hover, not mouse-tracked */
-        .systems-spatial-gallery .card-glow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            pointer-events: none;
-            z-index: 5;
-            background: transparent;
-            transition: background 0.35s ease;
-        }
-
-        .systems-spatial-gallery .spatial-card[data-accent="teal"]:hover .card-glow {
-            background: rgba(45, 212, 191, 0.55);
-        }
-        .systems-spatial-gallery .spatial-card[data-accent="red"]:hover .card-glow {
-            background: rgba(215, 25, 32, 0.45);
-        }
-        .systems-spatial-gallery .spatial-card[data-accent="neutral"]:hover .card-glow {
-            background: rgba(250, 249, 245, 0.3);
-        }
-
-        /* Wolves card keeps its parchment identity on hover */
-        .systems-spatial-gallery .spatial-card[data-style="wolves"]:hover {
-            border-color: rgba(163, 29, 29, 0.22);
-        }
-
-        /* Navigation Strip below gallery */
-        .systems-spatial-gallery .gallery-nav-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 680px;
-            margin: 2.5rem auto 0 auto;
-            padding: 0 1.5rem;
-            box-sizing: border-box;
-        }
-
-        .systems-spatial-gallery .gallery-progress-track {
-            flex-grow: 1;
-            height: 2px;
-            background: rgba(250, 249, 245, 0.1);
-            margin-right: 2.5rem;
-            position: relative;
-            border-radius: 1px;
-        }
-
-        .systems-spatial-gallery .gallery-progress-fill {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            background: #2DD4BF; /* Lighter teal for progress */
-            transform: scaleX(0); /* Modified dynamically via JS transform */
-            transform-origin: left;
-            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
-            border-radius: 1px;
-        }
-
-        .systems-spatial-gallery .gallery-nav-buttons {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .systems-spatial-gallery .gallery-nav-btn {
-            background: transparent;
-            border: 1px solid rgba(250, 249, 245, 0.2);
-            color: #FAF9F5;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .systems-spatial-gallery .gallery-nav-btn:hover {
-            background: rgba(250, 249, 245, 0.05);
-            border-color: rgba(250, 249, 245, 0.4);
-        }
-
-        .systems-spatial-gallery .gallery-nav-btn:focus {
-            outline: 2px solid var(--accent-teal);
-            outline-offset: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .systems-spatial-gallery {
-                padding: 60px 0;
-            }
-
-            .systems-spatial-gallery .gallery-rail {
-                flex-direction: column;
-                gap: 2.5rem;
-                padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-                overflow-x: visible;
-                scroll-snap-type: none;
-                width: 100%;
-            }
-
-            .systems-spatial-gallery .spatial-card {
-                flex: 1 1 auto;
-                width: 100%;
-                max-width: 100%;
-                grid-template-columns: 1fr; /* stack content vertically */
-                gap: 2rem;
-                padding: 2.5rem 1.75rem;
-                min-height: auto;
-                max-height: none;
-                scroll-snap-align: none;
-                transform: none !important; /* remove 3D transform on mobile */
-            }
-
-            .systems-spatial-gallery .card-visual-column {
-                order: 2; /* Visual below description */
-            }
-
-            .systems-spatial-gallery .card-visual-container {
-                height: 220px;
-                transform: none !important;
-            }
-
-            .systems-spatial-gallery .builds-card-panel {
-                transform: none !important;
-                grid-template-columns: 1fr; /* stack builds vertically on small screen */
-                gap: 1rem;
-                width: 100%;
-            }
-
-            .systems-spatial-gallery .build-panel-thumb {
-                height: 140px;
-            }
-
-            .systems-spatial-gallery .gallery-nav-section {
-                display: none !important; /* Hide previous/next controls & progress rail on mobile */
-            }
-        }
-
-        /* ── Operational System Tab Consoles ────────────────────────── */
-        .system-console {
-            margin-top: 1rem;
-            border-top: 1px solid rgba(250, 249, 245, 0.08);
-            padding-top: 1rem;
-            text-align: left;
-        }
-
-        .console-tabs {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(250, 249, 245, 0.06);
-            padding-bottom: 0.5rem;
-        }
-
-        .console-tab-btn {
-            background: none;
-            border: none;
+        .tier-price {
             font-family: var(--font-mono);
-            font-size: 9px;
-            color: rgba(250, 249, 245, 0.4);
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .console-tab-btn:hover {
-            color: rgba(250, 249, 245, 0.85);
-            background: rgba(250, 249, 245, 0.04);
-        }
-
-        .console-tab-btn.active {
-            color: var(--accent-teal, #2DD4BF) !important;
-            background: rgba(45, 212, 191, 0.08) !important;
-        }
-
-        .console-content {
-            min-height: 100px;
-            position: relative;
-        }
-
-        .console-panel {
-            font-size: 12.5px;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            opacity: 0;
-            display: none;
-            transition: opacity 0.25s ease;
-        }
-
-        .console-panel.active {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
             display: block;
-            opacity: 1;
+        }
+        .tier-for {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .tier-list {
+            list-style: none;
+            padding: 1.25rem 0 0 0;
+            margin: 0 0 2rem 0;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .tier-list li {
+            font-size: 13.5px;
+            color: var(--text-primary);
+            line-height: 1.45;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .tier-list li::before {
+            content: "✓";
+            color: var(--accent-teal);
+            font-weight: bold;
+        }
+
+        /* ── INTAKE SECTION ── */
+        .systems-intake {
+            padding: 6rem 0;
+            background: var(--bg-paper);
         }
     </style>
 </head>
@@ -814,7 +232,7 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/" class="nav-dropdown-link">Featured Systems</a>
                         <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
                         <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
@@ -829,10 +247,10 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/" class="nav-dropdown-link">Custom Websites &amp; Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
+                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnels</a>
+                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">For Agencies</a>
                     </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
@@ -842,546 +260,248 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
-    <header class="systems-section-dark" id="systems-hero" style="padding: 140px 0 80px; background: var(--bg-ink, #090a0f); color: #FAF9F5;">
-        <div class="container">
-            <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">CONTEXT &amp; MUSE &bull; APPLIED SYSTEMS</span>
-            <h1 style="font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-top: 1rem; margin-bottom: 1.5rem; color: #FAF9F5; max-width: 900px;">
-                Systems that turn messy information into clearer decisions.
-            </h1>
-            <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.6; color: rgba(250,249,245,0.7); max-width: 680px; margin-bottom: 2rem;">
-                Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use.
-            </p>
-            <div class="btn-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="#systems-projects" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal);">Explore the Systems &darr;</a>
-                <a href="/about/" class="btn btn-secondary" style="border-color: rgba(250,249,245,0.3); color: #FAF9F5;">Meet the Builder &rarr;</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Page-Level Jump Navigation -->
-    <nav class="sub-navbar" aria-label="Page Navigation">
-        <div class="container sub-nav-container" style="justify-content: center;">
-            <a href="#systems-projects" class="sub-nav-link">Products</a>
-            <a href="#client-builds" class="sub-nav-link">Client Systems</a>
-            <a href="#record-integrity" class="sub-nav-link">Experimental Systems</a>
-            <a href="#process" class="sub-nav-link">How I Build</a>
-        </div>
-    </nav>
-
     <main id="main-content">
-        <!-- Spatial Gallery Section -->
-        <section class="systems-spatial-gallery" id="systems-projects" aria-labelledby="systems-heading">
+        <!-- Hero -->
+        <header class="systems-hero">
             <div class="container">
-                <div class="systems-header" style="margin-bottom: 2rem; max-width: 800px; padding: 0 1rem;">
-                    <span class="eyebrow" style="color: #2DD4BF; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">Capabilities</span>
-                    <h2 id="systems-heading" class="section-title" style="margin-bottom: 0; color: #FAF9F5; font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem);">Selected Systems &amp; Projects</h2>
-                    <p class="project-copy" style="margin-top: 1rem; max-width: 650px; color: var(--text-secondary); font-size: 14.5px; line-height: 1.65;">
-                        Operational tools, information systems, independent builds, and narrative experiments designed to make complicated material easier to understand and use.
-                    </p>
+                <span class="hero-eyebrow">CUSTOM WEBSITES &amp; WORKFLOW SYSTEMS</span>
+                <h1 class="hero-title">Websites paired with the operational machinery that makes them work.</h1>
+                <p class="hero-sub">
+                    Custom responsive websites, booking intake, quoting flows, multi-market territory architecture, and automated dispatch—engineered for businesses where every lost lead costs money. Projects from $1,500.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <a href="#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.6rem; border-radius: 4px; text-decoration: none;">Scope My System &rarr;</a>
+                    <a href="#capabilities" style="font-family: var(--font-mono); font-size: 11.5px; color: rgba(250,249,245,0.75); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Explore Capabilities &darr;</a>
                 </div>
             </div>
-            
-            <div class="gallery-wrapper">
-                <div class="gallery-rail flagship-carousel" id="systems-carousel-view">
-                    
-                    <!-- Card 1: Signal -->
-                    <article class="spatial-card" id="signal" data-accent="teal">
-                        <div class="card-glow"></div>
-                        <span class="gallery-status-label">Interactive Demo</span>
-                        <div class="card-info">
-                            <div>
-                                <span class="card-eyebrow project-num">01 // Operational Intelligence</span>
-                                <h3 class="card-title project-title" style="display: flex; align-items: center; gap: 10px;">
-                                    <img src="/assets/images/signal_icon.png" style="width: 26px; height: 26px; object-fit: contain; border-radius: 4px;" alt="">
-                                    Signal
-                                </h3>
-                                <p class="card-desc">
-                                    Converts operational friction into ranked decisions, practical recommendations, and measurable areas of impact.
-                                </p>
-                            </div>
-                            
-                            <div>
-                                <div class="card-labels-grid">
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Problem:</span>
-                                        <span class="card-label-val">Scattered operational issues</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">System:</span>
-                                        <span class="card-label-val">Weighted diagnostic engine</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Result:</span>
-                                        <span class="card-label-val">Prioritized action plan</span>
-                                    </div>
-                                </div>
-                                <div class="card-actions">
-                                    <a href="/signal/" class="btn-card-primary">Explore Signal &rarr;</a>
-                                    <a href="https://github.com/rouguemuse/signal-ops-intelligence" class="btn-card-outline" target="_blank" rel="noopener">View Case Study</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-visual-column">
-                            <div class="card-visual-container" style="background: transparent; border: none; box-shadow: none; height: auto; max-height: none; overflow: visible;">
-                                <img src="/assets/images/signal-diagnostic-preview.png" alt="Signal operational diagnostic and prioritized recommendations interface" style="width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid rgba(250,249,245,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.35);">
-                            </div>
-                        </div>
-                    </article>
+        </header>
 
-                    <!-- Card 2: GenSort -->
-                    <article class="spatial-card" id="gensort" data-accent="teal">
-                        <div class="card-glow"></div>
-                        <span class="gallery-status-label">Working Prototype</span>
-                        <div class="card-info">
-                            <div>
-                                <span class="card-eyebrow project-num">02 // Information Architecture</span>
-                                <h3 class="card-title project-title" style="display:flex;align-items:center;gap:10px;"><img src="/assets/images/gensort_logo.svg" alt="" aria-hidden="true" style="width:34px;height:34px;border-radius:6px;flex-shrink:0;"><span>GenSort</span></h3>
-                                <p class="card-desc">
-                                    Organizes fragmented files, ideas, and source material into usable project structures and export-ready collections.
-                                </p>
-                            </div>
-                            
-                            <div>
-                                <div class="card-labels-grid">
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Problem:</span>
-                                        <span class="card-label-val">Disorganized source material</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">System:</span>
-                                        <span class="card-label-val">Classification and grouping workflow</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Result:</span>
-                                        <span class="card-label-val">Navigable project structure</span>
-                                    </div>
-                                </div>
-                                <div class="card-actions">
-                                    <a href="/cxm_gensort/" class="btn-card-primary" target="_blank" rel="noopener">Open GenSort</a>
-                                    <a href="/gensort/" class="btn-card-outline">View Product Page</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-visual-column">
-                            <div class="card-visual-container" style="background: transparent; border: none; box-shadow: none; height: auto; max-height: none; overflow: visible;">
-                                <img src="/assets/images/gensort-library.webp" alt="GenSort workspace asset organization interface" style="width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid rgba(250,249,245,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.35);">
-                            </div>
-                        </div>
-                    </article>
+        <!-- Capabilities Breakdown -->
+        <section class="capabilities-section" id="capabilities">
+            <div class="container">
+                <span class="hero-eyebrow" style="color: var(--accent-teal);">WHAT WE ACTUALLY BUILD</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--text-primary); font-weight: 400; margin: 0 0 0.5rem 0;">
+                    Beyond pretty templates.
+                </h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 780px; margin: 0; line-height: 1.6;">
+                    Every engagement pairs customer-facing clarity with purpose-built back-office machinery.
+                </p>
 
-                    <!-- Card 3: Message & Record Analysis -->
-                    <article class="spatial-card" id="message-record" data-accent="teal">
-                        <div class="card-glow"></div>
-                        <span class="gallery-status-label">Private Working System · Synthetic Case Study</span>
-                        <div class="card-info">
-                            <div>
-                                <span class="card-eyebrow">03 // Evidence Navigation</span>
-                                <h3 class="card-title project-title">Message &amp; Record Analysis</h3>
-                                <div class="card-subhead project-num">Record Navigation, Timeline Recovery &amp; Contradiction Review</div>
-                                <p class="card-desc">
-                                    Makes large communication records searchable, traceable, and easier to review across timelines, patterns, and contradictions.
-                                </p>
-                            </div>
-                            
-                            <div>
-                                <div class="card-labels-grid">
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Problem:</span>
-                                        <span class="card-label-val">Overwhelming message volume</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">System:</span>
-                                        <span class="card-label-val">Search, tagging, and timeline recovery</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Result:</span>
-                                        <span class="card-label-val">Reviewable evidence structure</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Status:</span>
-                                        <span class="card-label-val" style="color: var(--accent-red); font-weight: bold;">Human Review Required</span>
-                                    </div>
-                                </div>
-                                <div class="card-actions" style="padding-top: 0.5rem;">
-                                    <p style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250,249,245,0.45); line-height: 1.6; letter-spacing: 0.03em; text-transform: uppercase; border-left: 2px solid rgba(15,118,110,0.35); padding-left: 10px; margin: 0;">
-                                        Proprietary communication timeline and analysis engine. Concept in active client engagement &mdash; inquire to request private demonstration.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-visual-column">
-                            <div class="card-visual-container">
-                                <img src="/assets/images/message-analysis-mockup.png" alt="Message &amp; Record Analysis Dashboard Interface" style="object-fit: contain;">
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Card 4: Record Integrity & Traceability -->
-                    <article class="spatial-card" id="record-integrity" data-accent="teal">
-                        <div class="card-glow"></div>
-                        <span class="gallery-status-label">Concept Development</span>
-                        <div class="card-info">
-                            <div>
-                                <span class="card-eyebrow">04 // Document Intelligence</span>
-                                <h3 class="card-title project-title">Record Integrity &amp; Traceability</h3>
-                                <div class="card-subhead project-num">Provenance Verification &amp; Risk Signals</div>
-                                <p class="card-desc">
-                                    Examines file history, metadata, and provenance trail indicators to make record integrity easier to inspect and explain.
-                                </p>
-                            </div>
-                            
-                            <div>
-                                <div class="card-labels-grid">
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Problem:</span>
-                                        <span class="card-label-val">Unclear document provenance</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">System:</span>
-                                        <span class="card-label-val">Integrity and traceability checks</span>
-                                    </div>
-                                    <div class="card-label-row">
-                                        <span class="card-label-title">Result:</span>
-                                        <span class="card-label-val">Defensible record history</span>
-                                    </div>
-                                </div>
-                                <div class="card-actions" style="padding-top: 0.5rem;">
-                                    <p style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250,249,245,0.45); line-height: 1.6; letter-spacing: 0.03em; text-transform: uppercase; border-left: 2px solid rgba(15,118,110,0.35); padding-left: 10px; margin: 0;">
-                                        Framework in active development &mdash; provenance tooling, audit trail generation, and integrity verification. Available for scoped engagements.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-visual-column">
-                            <!-- Custom provenance stack preview mockup -->
-                            <div class="card-visual-container" style="background: rgba(250,249,245,0.02); border: 1px solid rgba(250,249,245,0.1); display: flex; align-items: center; justify-content: center; position: relative;">
-                                <div style="width: 75%; background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 10px; color: var(--text-primary); transform: translate(-10px, -15px) rotate(-1.5deg); box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 9.5px;">
-                                    <div style="font-family: var(--font-mono); font-size: 7.5px; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; margin-bottom: 4px; color: var(--text-secondary);">ORIGINAL TRANSCRIPT (IMPORT)</div>
-                                    <span style="font-family: var(--font-mono);">SHA-256: 8a4f21d3f66...c81f</span>
-                                </div>
-                                <div style="position: absolute; width: 75%; background: #FAF9F5; border: 1px solid var(--border-dark); border-radius: 4px; padding: 10px; color: var(--text-primary); transform: translate(15px, 20px) rotate(1.5deg); box-shadow: 0 8px 25px rgba(0,0,0,0.4); font-size: 9.5px;">
-                                    <div style="font-family: var(--font-mono); font-size: 7.5px; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; margin-bottom: 4px; color: var(--accent-teal); font-weight: bold;">VERIFICATION LEDGER</div>
-                                    <div style="background: rgba(15, 118, 110, 0.1); color: var(--accent-teal); font-family: var(--font-mono); font-size: 8px; padding: 3px; border-radius: 2px; font-weight: bold; text-align: center; border: 1px solid rgba(15, 118, 110, 0.2);">✓ AUDIT LOGGED</div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Card 5: Selected Operational Builds -->
-                    <article class="spatial-card full-width-card" id="client-builds" data-accent="neutral">
-                        <div class="card-glow"></div>
-                        <span class="gallery-status-label">Completed Systems</span>
-                        
-                        <div class="card-full-header">
-                            <span class="card-eyebrow project-num">05 // INDEPENDENT CLIENT SYSTEMS</span>
-                            <h3 class="card-title project-title">Selected Operational Builds</h3>
-                            <p class="card-desc header-copy">
-                                Customer-facing websites paired with the systems behind them—intake, inventory, lead handling, recommendations, scheduling, and operational workflows.
+                <div class="cap-grid">
+                    <!-- Cap 1: Custom Websites -->
+                    <div class="cap-card">
+                        <div>
+                            <span class="cap-num">01 // FRONTEND INTERFACES</span>
+                            <h3 class="cap-title">Custom Websites</h3>
+                            <p class="cap-desc">
+                                Bespoke responsive websites built for speed, conversion clarity, and mobile usability without bloated template themes.
                             </p>
                         </div>
+                    </div>
 
-                        <div class="client-builds-grid">
-                            <!-- Project 1: INNcontrol Coils -->
-                            <div class="op-build-card">
-                                <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" class="op-browser-frame">
-                                    <div class="op-browser-bar">
-                                        <div class="op-browser-dots">
-                                            <span class="op-dot op-dot-red"></span>
-                                            <span class="op-dot op-dot-yellow"></span>
-                                            <span class="op-dot op-dot-green"></span>
-                                        </div>
-                                        <span class="op-browser-url">inncontrolcoils.com</span>
-                                    </div>
-                                    <div class="op-browser-viewport">
-                                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils website and operational intake system" loading="lazy">
-                                    </div>
-                                </a>
-                                <div class="op-card-body">
-                                    <h4 class="op-card-title">INNcontrol Coils</h4>
-                                    <p class="op-card-summary">Service website + lead and operational intake system</p>
-                                    <div class="op-card-tags">
-                                        <span class="op-tag">Service Architecture</span>
-                                        <span class="op-tag">Inquiry Routing</span>
-                                        <span class="op-tag">Operations</span>
-                                        <span class="op-tag">Field Service</span>
-                                    </div>
-                                    <div class="system-console" data-project="inncontrol">
-                                        <div class="console-tabs">
-                                            <button class="console-tab-btn active" data-tab="problem">Problem</button>
-                                            <button class="console-tab-btn" data-tab="backend">The Backend</button>
-                                            <button class="console-tab-btn" data-tab="value">How it helps</button>
-                                        </div>
-                                        <div class="console-content">
-                                            <div class="console-panel active" data-panel="problem">
-                                                Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.
-                                            </div>
-                                            <div class="console-panel" data-panel="backend">
-                                                Built property-wide interactive scoping tools allowing technicians to map units directly in a responsive visual floorplan, logging defects, unit types, photos, and necessary repairs on-site.
-                                            </div>
-                                            <div class="console-panel" data-panel="value">
-                                                Speeds up estimation, eliminates paper checklists, and creates a standardized visual ledger of required repairs, helping sales teams convert bids into closed deals.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="op-card-footer" style="margin-top: 1rem;">
-                                        <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 2: D2 Auto Detail -->
-                            <div class="op-build-card">
-                                <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" class="op-browser-frame">
-                                    <div class="op-browser-bar">
-                                        <div class="op-browser-dots">
-                                            <span class="op-dot op-dot-red"></span>
-                                            <span class="op-dot op-dot-yellow"></span>
-                                            <span class="op-dot op-dot-green"></span>
-                                        </div>
-                                        <span class="op-browser-url">d2autodetail.com</span>
-                                    </div>
-                                    <div class="op-browser-viewport">
-                                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail customer acquisition and booking infrastructure" loading="lazy">
-                                    </div>
-                                </a>
-                                <div class="op-card-body">
-                                    <h4 class="op-card-title">D2 Auto Detail</h4>
-                                    <p class="op-card-summary">Customer acquisition and booking infrastructure</p>
-                                    <div class="op-card-tags">
-                                        <span class="op-tag">Service UX</span>
-                                        <span class="op-tag">Lead Capture</span>
-                                        <span class="op-tag">Inquiry Flow</span>
-                                        <span class="op-tag">Marketing</span>
-                                    </div>
-                                    <div class="system-console" data-project="d2">
-                                        <div class="console-tabs">
-                                            <button class="console-tab-btn active" data-tab="problem">Problem</button>
-                                            <button class="console-tab-btn" data-tab="backend">The Backend</button>
-                                            <button class="console-tab-btn" data-tab="value">How it helps</button>
-                                        </div>
-                                        <div class="console-content">
-                                            <div class="console-panel active" data-panel="problem">
-                                                Premium detailing services need custom lead acquisition that handles vehicle types and service tiers, while matching lead generation with local ad creation and content publishing.
-                                            </div>
-                                            <div class="console-panel" data-panel="backend">
-                                                Built a centralized custom administration portal that hooks directly to the storefront booking funnel, an automated local ad generator, a blog publisher, and a custom D2TV media player playlist database.
-                                            </div>
-                                            <div class="console-panel" data-panel="value">
-                                                Bridges the gap between simple brochure websites and active business operations, bringing lead capture, scheduling, and local media marketing into a single dashboard.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="op-card-footer" style="margin-top: 1rem;">
-                                        <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" class="op-link">VIEW BUILD &rarr;</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 3: EDR Party Rentals -->
-                            <div class="op-build-card">
-                                <a href="/case-studies/edr-party-rentals/" class="op-browser-frame">
-                                    <div class="op-browser-bar">
-                                        <div class="op-browser-dots">
-                                            <span class="op-dot op-dot-red"></span>
-                                            <span class="op-dot op-dot-yellow"></span>
-                                            <span class="op-dot op-dot-green"></span>
-                                        </div>
-                                        <span class="op-browser-url">edrpartyrentals.com (archive)</span>
-                                    </div>
-                                    <div class="op-browser-viewport">
-                                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory-aware rental website" loading="lazy">
-                                    </div>
-                                </a>
-                                <div class="op-card-body">
-                                    <h4 class="op-card-title">EDR Party Rentals</h4>
-                                    <p class="op-card-summary">Bilingual inventory catalog and structured customer qualification flow</p>
-                                    <div class="op-card-tags">
-                                        <span class="op-tag">Catalog UX</span>
-                                        <span class="op-tag">Bilingual</span>
-                                        <span class="op-tag">Package Structuring</span>
-                                        <span class="op-tag">Intake Flow</span>
-                                    </div>
-                                    <div class="system-console" data-project="edr">
-                                        <div class="console-tabs">
-                                            <button class="console-tab-btn active" data-tab="problem">Problem</button>
-                                            <button class="console-tab-btn" data-tab="backend">Designed Path</button>
-                                            <button class="console-tab-btn" data-tab="value">Designed Effect</button>
-                                        </div>
-                                        <div class="console-content">
-                                            <div class="console-panel active" data-panel="problem">
-                                                Customers needed answers about availability, delivery, packages, and pricing before booking, creating repetitive manual communication.
-                                            </div>
-                                            <div class="console-panel" data-panel="backend">
-                                                A mobile-first bilingual catalog, structured packages, delivery qualification, clearer pricing logic, and organized intake.
-                                            </div>
-                                            <div class="console-panel" data-panel="value">
-                                                More customer questions are answered before the first conversation, producing better-prepared inquiries and a cleaner operational handoff.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="op-card-footer" style="margin-top: 1rem;">
-                                        <a href="/case-studies/edr-party-rentals/" class="op-link">VIEW CASE STUDY &rarr;</a>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Cap 2: Booking & Quoting Flows -->
+                    <div class="cap-card">
+                        <div>
+                            <span class="cap-num">02 // CONVERSION ENGINES</span>
+                            <h3 class="cap-title">Quoting &amp; Booking Flows</h3>
+                            <p class="cap-desc">
+                                Multi-step pricing estimators, date-selective scheduling, and quote builders that capture exact project parameters up front.
+                            </p>
                         </div>
+                    </div>
 
-                        <div class="card-full-footer">
-                            <a href="/systems/client-builds/" class="btn-all-builds">VIEW IN-DEPTH CLIENT CASE STUDIES &rarr;</a>
+                    <!-- Cap 3: Service-Area Architecture -->
+                    <div class="cap-card">
+                        <div>
+                            <span class="cap-num">03 // LOCAL SEARCH RELEVANCE</span>
+                            <h3 class="cap-title">Service-Area Architecture</h3>
+                            <p class="cap-desc">
+                                Multi-city and municipality landing page networks (like the 40+ DFW pages on Lone Wolf Dumpsters) that capture high-intent local search demand.
+                            </p>
                         </div>
-                    </article>
+                    </div>
 
-                </div>
-            </div>
+                    <!-- Cap 4: Customer Qualification & Intake -->
+                    <div class="cap-card">
+                        <div>
+                            <span class="cap-num">04 // TRIAGE MACHINERY</span>
+                            <h3 class="cap-title">Customer Qualification</h3>
+                            <p class="cap-desc">
+                                Segmenting commercial contractors from residential inquiries before they hit your team, avoiding time wasted on bad-fit inquiries.
+                            </p>
+                        </div>
+                    </div>
 
-            <!-- Creative Transition Bridge -->
-            <div class="container" style="margin-top: 3.5rem;">
-                <div class="creative-bridge-strip" style="padding: 1.75rem 2.25rem; background: rgba(250, 249, 245, 0.03); border: 1px solid rgba(250, 249, 245, 0.08); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-                    <p style="font-family: var(--font-serif); font-size: 1.1rem; color: rgba(250, 249, 245, 0.8); margin: 0; font-style: italic;">
-                        Creative work applies the same structural thinking to language, narrative, and symbolic systems.
-                    </p>
-                    <a href="/creative/" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; text-decoration: none;">Explore Creative Practice &rarr;</a>
-                </div>
-            </div>
+                    <!-- Cap 5: Automated Handoffs -->
+                    <div class="cap-card">
+                        <div>
+                            <span class="cap-num">05 // OPERATIONAL DISPATCH</span>
+                            <h3 class="cap-title">Automated Handoffs</h3>
+                            <p class="cap-desc">
+                                Real-time SMS and email alerts, CRM integrations, calendar sync, and clean dispatch sheets for operations teams.
+                            </p>
+                        </div>
+                    </div>
 
-            <!-- Scroll Navigation and Progress Indicator -->
-            <div class="gallery-nav-section" aria-label="Gallery Controls">
-                <div class="gallery-progress-track" aria-hidden="true">
-                    <div class="gallery-progress-fill"></div>
-                </div>
-                <div class="gallery-nav-buttons">
-                    <button class="gallery-nav-btn" id="carousel-prev-sys" aria-label="Previous Project">&larr;</button>
-                    <button class="gallery-nav-btn" id="carousel-next-sys" aria-label="Next Project">&rarr;</button>
+                    <!-- Cap 6: Direct CMS Editing -->
+                    <div class="cap-card">
+                        <div>
+                            <span class="cap-num">06 // CLEAN HANDOFF</span>
+                            <h3 class="cap-title">Direct CMS Editing</h3>
+                            <p class="cap-desc">
+                                Clean editing interface for your team to update prices, add service areas, or publish content without paying a monthly webmaster retainer.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- Method Section -->
-
-        <section class="method-section" id="process" aria-labelledby="method-heading" style="background: var(--bg-paper);">
+        <!-- Project Scoping Tiers -->
+        <section class="tiers-section" id="pricing">
             <div class="container">
-                <div class="method-header">
-                    <span class="eyebrow">Approach</span>
-                    <h2 id="method-heading" class="section-title">How I Build</h2>
-                    <p class="body-copy" style="margin-top: 1rem;">
-                        Every layout, database column, and interface route is built upon a standard diagnostic process to isolate and resolve operational leaks.
-                    </p>
-                </div>
+                <span class="hero-eyebrow" style="color: var(--accent-teal);">TRANSPARENT ENGAGEMENT SCOPES</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--text-primary); font-weight: 400; margin: 0 0 0.5rem 0;">
+                    Clear starting points.
+                </h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 780px; margin: 0; line-height: 1.6;">
+                    Every project is scoped to your exact business constraints with zero forced ongoing retainers.
+                </p>
 
-                <!-- Horizontal Process Flow -->
-                <div class="process-flow-container">
-                    <details class="process-step" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: block;">
-                            <span class="step-num">01</span>
-                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                                <span>Observe</span>
-                                <span class="nav-dropdown-arrow">▾</span>
-                            </h3>
-                        </summary>
-                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Examine transaction paths, directory structures, and logs in their native environments.</p>
-                    </details>
-                    <details class="process-step" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: block;">
-                            <span class="step-num">02</span>
-                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                                <span>Structure</span>
-                                <span class="nav-dropdown-arrow">▾</span>
-                            </h3>
-                        </summary>
-                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Normalize messy database logs, narrative fragments, or assets into clean schemas.</p>
-                    </details>
-                    <details class="process-step" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: block;">
-                            <span class="step-num">03</span>
-                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                                <span>Validate</span>
-                                <span class="nav-dropdown-arrow">▾</span>
-                            </h3>
-                        </summary>
-                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Cross-reference timestamps, hashes, and records to locate anomalies.</p>
-                    </details>
-                    <details class="process-step" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: block;">
-                            <span class="step-num">04</span>
-                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                                <span>Prioritize</span>
-                                <span class="nav-dropdown-arrow">▾</span>
-                            </h3>
-                        </summary>
-                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Filter findings into actionable checklists ranked by operational impact.</p>
-                    </details>
-                    <details class="process-step" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: block;">
-                            <span class="step-num">05</span>
-                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                                <span>Translate</span>
-                                <span class="nav-dropdown-arrow">▾</span>
-                            </h3>
-                        </summary>
-                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Present raw diagnostic findings in clear, plain-language interfaces.</p>
-                    </details>
-                    <details class="process-step" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: block;">
-                            <span class="step-num">06</span>
-                            <h3 class="step-name" style="margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                                <span>Implement</span>
-                                <span class="nav-dropdown-arrow">▾</span>
-                            </h3>
-                        </summary>
-                        <p class="step-desc" style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">Deploy verification scripts and rules to maintain system order.</p>
-                    </details>
+                <div class="tier-grid">
+                    <!-- Tier 1: Launch System -->
+                    <div class="tier-card">
+                        <div>
+                            <div class="tier-header">
+                                <h3 class="tier-title">Launch System</h3>
+                                <span class="tier-price">$1,500 – $2,500</span>
+                                <div class="tier-for">For service businesses that need a clean, authoritative website with structured lead capture.</div>
+                            </div>
+                            <ul class="tier-list">
+                                <li>Custom responsive design (5–7 core pages)</li>
+                                <li>Mobile-optimized layout and typography</li>
+                                <li>Quote &amp; contact capture forms</li>
+                                <li>Basic on-page search metadata setup</li>
+                                <li>Direct client CMS editing handoff</li>
+                                <li>Zero forced retainers</li>
+                            </ul>
+                        </div>
+                        <a href="#intake" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Select Launch System &rarr;</a>
+                    </div>
+
+                    <!-- Tier 2: Growth & Multi-Market System -->
+                    <div class="tier-card featured">
+                        <span class="tier-badge">Most Popular</span>
+                        <div>
+                            <div class="tier-header">
+                                <h3 class="tier-title">Growth &amp; Multi-Market</h3>
+                                <span class="tier-price">$3,500 – $6,000</span>
+                                <div class="tier-for">For established businesses expanding territories and needing automated lead qualification.</div>
+                            </div>
+                            <ul class="tier-list">
+                                <li>Everything in Launch System</li>
+                                <li>Multi-city service-area page architecture</li>
+                                <li>Interactive territory coverage maps</li>
+                                <li>Segmented customer intake (contractor vs. residential)</li>
+                                <li>Automated SMS/email lead dispatch</li>
+                                <li>Reviews &amp; proof integrations</li>
+                            </ul>
+                        </div>
+                        <a href="#intake" class="btn btn-primary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; background: var(--accent-teal); border: 1px solid var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Select Growth System &rarr;</a>
+                    </div>
+
+                    <!-- Tier 3: Custom Operational Infrastructure -->
+                    <div class="tier-card">
+                        <div>
+                            <div class="tier-header">
+                                <h3 class="tier-title">Bespoke Infrastructure</h3>
+                                <span class="tier-price">Custom Scoped (from $6,000)</span>
+                                <div class="tier-for">For businesses needing custom databases, inventory locks, custom dashboards, or field apps.</div>
+                            </div>
+                            <ul class="tier-list">
+                                <li>Custom databases &amp; data models</li>
+                                <li>Serial-item inventory lock engines</li>
+                                <li>Field scoping floorplan mappers</li>
+                                <li>Multi-user role access controls</li>
+                                <li>Custom CRM &amp; payment integrations</li>
+                                <li>Full bespoke system documentation</li>
+                            </ul>
+                        </div>
+                        <a href="#intake" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Discuss Custom Scope &rarr;</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="audit-section" id="contact" aria-labelledby="contact-heading" style="background: var(--bg-panel); padding: 140px 0;">
+        <!-- Project Intake Section -->
+        <section class="systems-intake" id="intake">
             <div class="container">
-                <div class="audit-grid">
-                    <!-- Column 1: Info -->
-                    <div class="audit-info">
-                        <span class="eyebrow">Contact &bull; Evaluation</span>
-                        <h2 id="contact-heading" class="section-title">
-                            Bring me the mess.
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
+                    <!-- Column 1: Copy -->
+                    <div>
+                        <span class="hero-eyebrow" style="color: var(--accent-teal);">START A PROJECT &bull; INTAKE</span>
+                        <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.25rem; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                            Tell me what you need built.
                         </h2>
-                        <blockquote style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55;">
-                            Send the workflow, information problem, or unfinished system you are trying to make sense of. I’ll identify where clarity is breaking down and what a practical next step could look like.
-                        </blockquote>
-                        <p class="body-copy">
-                            Whether you are dealing with broken spreadsheet hierarchies, conflicting timelines, POS discrepancies, or a product that feels structurally chaotic—we can map a path to order.
+                        <p style="font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
+                            Describe your current website, what workflow bottlenecks are costing you time, or what system you want to replace. I’ll review your requirements and outline a concrete proposal.
                         </p>
-                        <div style="margin-top: 2rem; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
-                            Email inquiries: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: bold; text-decoration: none;">jayme@contextmuse.com</a>
+
+                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); font-weight: 700; display: block; margin-bottom: 0.5rem;">HOW WE WORK:</span>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
+                                <li>&bull; <strong>Direct Contact</strong> — You work directly with Jayme Volstad. No middlemen.</li>
+                                <li>&bull; <strong>Fixed Pricing</strong> — Clear project scope with zero unexpected billable surprises.</li>
+                                <li>&bull; <strong>Clean Handoff</strong> — Full ownership of your code, CMS, and assets upon launch.</li>
+                            </ul>
+                        </div>
+
+                        <div style="font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary);">
+                            Direct email: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: 600; text-decoration: none;">jayme@contextmuse.com</a>
                         </div>
                     </div>
 
                     <!-- Column 2: Form -->
-                    <div class="audit-form-container" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 2rem;">
-                        <form action="https://formspree.io/f/xoqydgvw" method="POST" class="audit-form">
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
+                        <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <input type="text" name="_gotcha" style="display:none">
+                            <input type="hidden" name="form_source" value="systems_page_intake">
                             
-                            <div class="form-group">
-                                <label for="form-name">Name</label>
-                                <input type="text" id="form-name" name="name" class="form-input" required placeholder="Name">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="form-email">Email Address</label>
-                                <input type="email" id="form-email" name="email" class="form-input" required placeholder="Email Address">
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Project Scope</label>
+                                <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
+                                    <option value="launch-system">Launch System ($1,500 – $2,500)</option>
+                                    <option value="growth-system">Growth &amp; Multi-Market System ($3,500 – $6,000)</option>
+                                    <option value="bespoke-infrastructure">Bespoke Operational Infrastructure (from $6,000)</option>
+                                    <option value="funnel-sprint">Funnel Sprint (from $750)</option>
+                                    <option value="conversion-audit">Conversion Leak Audit ($195)</option>
+                                    <option value="general">General Consultation / Other</option>
+                                </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="form-message">What are you trying to make clearer?</label>
-                                <textarea id="form-message" name="message" rows="5" class="form-textarea" required placeholder="Describe the current workflow, information problem, or operational bottleneck..."></textarea>
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Name *</label>
+                                <input type="text" id="form-name" name="name" required placeholder="Your name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Email Address *</label>
+                                <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
                             </div>
 
-                            <button type="submit" class="form-submit" style="background: var(--accent-teal); color: #FFF; border: none; padding: 0.75rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: background 0.2s;">Start the Conversation</button>
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-website" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Current Website (Optional)</label>
+                                <input type="text" id="form-website" name="website" placeholder="https://example.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you trying to build or improve? *</label>
+                                <textarea id="form-message" name="message" rows="4" required placeholder="Describe your business, current website friction, or the workflow you want automated..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary-teal" style="width: 100%; justify-content: center; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.85rem 1.5rem; cursor: pointer;">
+                                Send System Scope &rarr;
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -1389,7 +509,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
@@ -1418,104 +537,6 @@
             </div>
         </div>
     </footer>
-    <script src="/assets/js/nav.js" defer></script>
-
-    <script>
-        const rail = document.getElementById('systems-carousel-view');
-        const fill = document.querySelector('.gallery-progress-fill');
-
-        // Scroll progress calculation using scroll ratio
-        function updateProgress() {
-            if (!rail || !fill) return;
-            const maxScroll = rail.scrollWidth - rail.clientWidth;
-            const ratio = maxScroll > 0 ? rail.scrollLeft / maxScroll : 0;
-            fill.style.transform = `scaleX(${ratio})`;
-        }
-
-        if (rail) {
-            rail.addEventListener('scroll', updateProgress, { passive: true });
-            window.addEventListener('resize', updateProgress, { passive: true });
-            updateProgress();
-        }
-
-        // Carousel navigation buttons scroll offset
-        const prevBtn = document.getElementById('carousel-prev-sys');
-        const nextBtn = document.getElementById('carousel-next-sys');
-
-        if (prevBtn && nextBtn && rail) {
-            prevBtn.addEventListener('click', () => {
-                const firstCard = rail.querySelector('.spatial-card');
-                const offset = firstCard ? firstCard.clientWidth + 48 : rail.clientWidth * 0.75;
-                rail.scrollBy({ left: -offset, behavior: 'smooth' });
-            });
-
-            nextBtn.addEventListener('click', () => {
-                const firstCard = rail.querySelector('.spatial-card');
-                const offset = firstCard ? firstCard.clientWidth + 48 : rail.clientWidth * 0.75;
-                rail.scrollBy({ left: offset, behavior: 'smooth' });
-            });
-        }
-
-        // No pointer-tracking tilt — cards use flat editorial hover via CSS only
-
-        // Keyboard arrow navigation
-        window.addEventListener('keydown', e => {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            if (e.key === 'ArrowLeft' && prevBtn) {
-                prevBtn.click();
-            } else if (e.key === 'ArrowRight' && nextBtn) {
-                nextBtn.click();
-            }
-        });
-
-        // Static Project Index click scrollTo integration
-        document.querySelectorAll('.systems-index-item').forEach((link, idx) => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                
-                const targetSection = document.getElementById('systems-projects');
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-                
-                setTimeout(() => {
-                    if (rail) {
-                        const cards = rail.querySelectorAll('.spatial-card');
-                        if (cards[idx]) {
-                            rail.scrollTo({
-                                left: cards[idx].offsetLeft - rail.offsetLeft,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                }, 400);
-            });
-        });
-
-        // Bind click-through tab behaviors for Operational Systems Consoles
-        document.querySelectorAll('.system-console').forEach(consoleEl => {
-            const buttons = consoleEl.querySelectorAll('.console-tab-btn');
-            const panels = consoleEl.querySelectorAll('.console-panel');
-            
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const tabName = btn.getAttribute('data-tab');
-                    
-                    buttons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    panels.forEach(p => {
-                        p.classList.remove('active');
-                    });
-                    
-                    const targetPanel = consoleEl.querySelector(`.console-panel[data-panel="${tabName}"]`);
-                    if (targetPanel) {
-                        targetPanel.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
     <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>
