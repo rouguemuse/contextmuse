@@ -257,6 +257,9 @@
             gap: 1rem;
             margin: 1.75rem 0;
         }
+        @media (max-width: 540px) {
+            .build-features { grid-template-columns: 1fr; }
+        }
         .build-feature-item {
             background: rgba(250, 249, 245, 0.05);
             border: 1px solid rgba(250, 249, 245, 0.12);
@@ -265,6 +268,29 @@
             font-family: var(--font-mono);
             font-size: 12px;
             color: #FAF9F5;
+        }
+        .proof-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 960px) {
+            .proof-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+        }
+        .audit-box-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .audit-box-grid {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
         }
 
         /* ── BROADER CAPABILITIES ── */
@@ -442,7 +468,7 @@
         <!-- 2.5 SITE AUDIT ENTRYWAY -->
         <section class="packages-section" id="audit" style="background: #FFFFFF; border-bottom: 1px solid var(--border-light); padding: 5rem 0;">
             <div class="container" style="max-width: 900px;">
-                <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-left: 4px solid var(--accent-teal); border-radius: 8px; padding: 2.5rem 2.25rem; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; align-items: center;">
+                <div class="audit-box-grid" style="background: var(--bg-paper); border: 1px solid var(--border-light); border-left: 4px solid var(--accent-teal); border-radius: 8px; padding: 2.5rem 2.25rem;">
                     <div>
                         <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.4rem;">LOW-RISK STARTING POINT</span>
                         <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
@@ -523,62 +549,173 @@
             </div>
         </section>
 
-        <!-- 4. FEATURED BUILD (LONE WOLF DUMPSTERS) -->
-        <section class="featured-build-section" id="featured-build" aria-labelledby="build-heading">
+        <!-- 4. COMMERCIAL CLIENT PROOF -->
+        <section class="featured-build-section" id="featured-build" aria-labelledby="build-heading" style="padding: 6rem 0; background: #10211D; color: #FAF9F5; border-bottom: 1px solid rgba(250, 249, 245, 0.1);">
             <div class="container">
-                <span class="eyebrow" style="color: #2DD4BF; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.5rem;">FEATURED BUILD</span>
+                <span class="eyebrow" style="color: #2DD4BF; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.5rem;">03 // COMMERCIAL PROOF</span>
                 <h2 id="build-heading" style="font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.2rem); margin: 0 0 0.5rem 0; font-weight: 400; color: #FAF9F5;">
-                    Lone Wolf Dumpsters
+                    Proof, not promises.
                 </h2>
-                <p style="font-size: 1.15rem; color: rgba(250, 249, 245, 0.75); margin: 0; max-width: 650px;">
-                    From website to lead-generation infrastructure.
+                <p style="font-size: 1.15rem; color: rgba(250, 249, 245, 0.75); margin: 0 0 3.5rem 0; max-width: 650px;">
+                    Real client websites, local search architecture, and operational systems built to generate revenue.
                 </p>
 
-                <div class="build-grid">
+                <!-- Flagship Build: Lone Wolf Dumpsters -->
+                <div class="build-grid" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 3.5rem; align-items: center; background: rgba(250, 249, 245, 0.02); border: 1px solid rgba(250, 249, 245, 0.1); border-radius: 8px; padding: 2.5rem; margin-bottom: 3.5rem;">
                     <div>
-                        <p style="font-size: 15px; line-height: 1.65; color: rgba(250, 249, 245, 0.85); margin-bottom: 1.5rem;">
+                        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 0.75rem;">
+                            <span style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 3px;">Featured Build</span>
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: rgba(250, 249, 245, 0.6);">Service Area Infrastructure</span>
+                        </div>
+                        <h3 style="font-family: var(--font-serif); font-size: 2rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 400;">Lone Wolf Dumpsters</h3>
+                        <p style="font-size: 14.5px; line-height: 1.6; color: rgba(250, 249, 245, 0.8); margin-bottom: 1.5rem;">
                             Engineered a high-performing digital platform that connects regional search demand to automated dispatcher queues across multiple territories.
                         </p>
                         
                         <div class="build-features">
                             <div class="build-feature-item">✓ 40+ Local SEO Pages</div>
-                            <div class="build-feature-item">✓ Responsive Custom Site</div>
-                            <div class="build-feature-item">✓ Structured Quote Capture</div>
-                            <div class="build-feature-item">✓ Service-Area Architecture</div>
+                            <div class="build-feature-item">✓ Quote Capture Intake</div>
                             <div class="build-feature-item">✓ Admin CMS Editing</div>
-                            <div class="build-feature-item">✓ Instant Lead Notifications</div>
-                            <div class="build-feature-item">✓ Routing &amp; Automation</div>
-                            <div class="build-feature-item">✓ Fast Mobile Checkout</div>
+                            <div class="build-feature-item">✓ Automated Dispatch</div>
                         </div>
 
-                        <div style="margin: 2rem 0; font-family: var(--font-mono); font-size: 12px; color: #2DD4BF;">
+                        <div style="font-family: var(--font-mono); font-size: 11.5px; color: #2DD4BF; margin-bottom: 1.5rem;">
                             Comparable independent agency build: $12K–$20K+
                         </div>
 
-                        <a href="/custom/?service=growth-system#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.75rem; border-radius: 4px; text-decoration: none; display: inline-block;">Build Something Like This &rarr;</a>
+                        <a href="/custom/?service=growth-system#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; display: inline-block;">Build Something Like This &rarr;</a>
                     </div>
 
-                    <div style="background: rgba(250,249,245,0.03); border: 1px solid rgba(250,249,245,0.12); border-radius: 8px; padding: 2rem; text-align: center;">
-                        <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(250,249,245,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">System Blueprint</div>
-                        <div style="font-family: var(--font-serif); font-size: 1.4rem; color: #FAF9F5; margin-bottom: 1.5rem;">Regional Search &bull; Custom Intake &bull; Automated Dispatch</div>
-                        <div style="border-top: 1px solid rgba(250,249,245,0.1); padding-top: 1.5rem; font-size: 13.5px; color: rgba(250,249,245,0.7); line-height: 1.6; text-align: left;">
-                            "I build websites that work harder than websites. That means solving customer hesitation on screen while eliminating admin chaos behind the scenes."
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(250,249,245,0.1); border-radius: 8px; padding: 1.75rem;">
+                        <div style="font-family: var(--font-mono); font-size: 10px; color: #2DD4BF; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">System Architecture</div>
+                        <div style="font-family: var(--font-serif); font-size: 1.3rem; color: #FAF9F5; margin-bottom: 1rem; line-height: 1.3;">Regional Search Demand &bull; Instant Qualification &bull; Automated Routing</div>
+                        <p style="font-size: 13.5px; color: rgba(250,249,245,0.7); line-height: 1.6; margin: 0;">
+                            "I build websites that work harder than websites. That means turning search traffic into qualified quote requests while eliminating telephone chaos behind the scenes."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Client Proof Cards Grid -->
+                <div class="proof-cards-grid">
+                    
+                    <!-- EDR Party Rentals -->
+                    <div style="background: rgba(250, 249, 245, 0.03); border: 1px solid rgba(250, 249, 245, 0.1); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+                        <div style="background: #142420; padding: 8px 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(250,249,245,0.08);">
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #EF4444; display: inline-block;"></span>
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #F59E0B; display: inline-block;"></span>
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981; display: inline-block;"></span>
+                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: rgba(250,249,245,0.5); margin-left: 8px;">edrpartyrentals.com</span>
+                        </div>
+                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals website screenshot" style="width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(250,249,245,0.08);" loading="lazy">
+                        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 9.5px; color: #2DD4BF; text-transform: uppercase; font-weight: 700;">Live Client Build</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 400;">EDR Party Rentals</h4>
+                                <p style="font-size: 13px; line-height: 1.55; color: rgba(250,249,245,0.7); margin-bottom: 1rem;">
+                                    <strong>Problem:</strong> Bilingual customers lost in disorganized product lists and phone tag.<br>
+                                    <strong>Solution:</strong> Structured bilingual inventory catalog, delivery-zone intake qualification, and package builder.
+                                </p>
+                            </div>
+                            <a href="/case-studies/edr-party-rentals/" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-decoration: none; font-weight: 700; text-transform: uppercase;">View Case Study &rarr;</a>
                         </div>
                     </div>
+
+                    <!-- D2 Auto Detail -->
+                    <div style="background: rgba(250, 249, 245, 0.03); border: 1px solid rgba(250, 249, 245, 0.1); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+                        <div style="background: #142420; padding: 8px 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(250,249,245,0.08);">
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #EF4444; display: inline-block;"></span>
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #F59E0B; display: inline-block;"></span>
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981; display: inline-block;"></span>
+                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: rgba(250,249,245,0.5); margin-left: 8px;">d2autodetail.com</span>
+                        </div>
+                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail website screenshot" style="width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(250,249,245,0.08);" loading="lazy">
+                        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 9.5px; color: #2DD4BF; text-transform: uppercase; font-weight: 700;">Live Client Build</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 400;">D2 Auto Detail</h4>
+                                <p style="font-size: 13px; line-height: 1.55; color: rgba(250,249,245,0.7); margin-bottom: 1rem;">
+                                    <strong>Problem:</strong> Customers confused by package tiers, leading to endless phone consultations.<br>
+                                    <strong>Solution:</strong> Transparent vehicle-size tiered pricing, clear service breakdowns, and direct booking intake.
+                                </p>
+                            </div>
+                            <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-decoration: none; font-weight: 700; text-transform: uppercase;">View Client Build &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- InnControl Coils -->
+                    <div style="background: rgba(250, 249, 245, 0.03); border: 1px solid rgba(250, 249, 245, 0.1); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+                        <div style="background: #142420; padding: 8px 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(250,249,245,0.08);">
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #EF4444; display: inline-block;"></span>
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #F59E0B; display: inline-block;"></span>
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981; display: inline-block;"></span>
+                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: rgba(250,249,245,0.5); margin-left: 8px;">inncontrol.internal</span>
+                        </div>
+                        <img src="/assets/images/inncontrol-screenshot.webp" alt="InnControl Coils dashboard screenshot" style="width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(250,249,245,0.08);" loading="lazy">
+                        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 9.5px; color: #2DD4BF; text-transform: uppercase; font-weight: 700;">Production Architecture</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 400;">InnControl Hospitality</h4>
+                                <p style="font-size: 13px; line-height: 1.55; color: rgba(250,249,245,0.7); margin-bottom: 1rem;">
+                                    <strong>Problem:</strong> Field technicians losing hours manually matching complex commercial HVAC coil specs.<br>
+                                    <strong>Solution:</strong> Custom replacement catalog and automated specification matching engine.
+                                </p>
+                            </div>
+                            <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-decoration: none; font-weight: 700; text-transform: uppercase;">View System Architecture &rarr;</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- 5. BROADER CAPABILITIES (BEHIND THE WEBSITE) -->
-        <section class="behind-section" aria-labelledby="behind-heading">
+        <!-- 5. WHY CONTEXT & MUSE -->
+        <section style="background: var(--bg-panel); padding: 5.5rem 0; border-bottom: 1px solid var(--border-light);">
+            <div class="container" style="max-width: 840px;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">04 // PHILOSOPHY</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1.5rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                    Systems thinking without the agency fog
+                </h2>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2.5rem;">
+                    I started in high-pressure service and restaurant operations, where broken processes become visible very quickly. That experience still shapes how I work: understand the real environment, find the friction, and build something people can actually use.
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem;">
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">01 Context</strong>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Understand the actual business constraints before writing a single line of code.</p>
+                    </div>
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">02 Function</strong>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Lead capture, speed, and clarity come before aesthetic decoration.</p>
+                    </div>
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">03 Ownership</strong>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Full code, account, and asset handover upon launch. No forced retainers.</p>
+                    </div>
+                </div>
+
+                <div style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-primary); text-align: center; border-top: 1px solid var(--border-light); padding-top: 2rem;">
+                    &ldquo;No mystery retainers. No hostage situation with your own website.&rdquo;
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SECONDARY SYSTEM & PRODUCT PROOF (TECHNICAL DEPTH) -->
+        <section class="behind-section" aria-labelledby="behind-heading" style="padding: 5.5rem 0; background: var(--bg-paper); border-bottom: 1px solid var(--border-light);">
             <div class="container">
                 <div style="max-width: 750px;">
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">03 // BEYOND THE SURFACE</span>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">05 // TECHNICAL DEPTH</span>
                     <h2 id="behind-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
-                        I also build the things behind the website.
+                        And if you need more than a website, I build the systems behind it too.
                     </h2>
                     <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
-                        Sometimes the website isn't actually the problem.
+                        Evidence of deeper software architecture, data modeling, and operational intelligence.
                     </p>
                 </div>
 
@@ -586,51 +723,38 @@
                     <!-- Operational Systems -->
                     <div class="behind-card">
                         <div>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">OPERATIONS</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">Operational Systems</h3>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">OPERATIONAL INTELLIGENCE</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">Signal Intelligence</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
-                                Intake engines, custom workflows, multi-channel routing, and internal management tools.
+                                Multi-variable margin leak audits and diagnostic scoring engines for hospitality and service operations.
                             </p>
-                            <div style="margin-top: 1rem; font-size: 12.5px; color: var(--accent-teal); font-family: var(--font-mono);">
-                                Applied: Signal Operational Intelligence
-                            </div>
                         </div>
-                        <a href="/signal/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-primary); text-decoration: none;">Explore Signal &rarr;</a>
+                        <a href="/signal/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent-teal); text-decoration: none;">Explore Signal &rarr;</a>
                     </div>
 
                     <!-- Custom Tools -->
                     <div class="behind-card">
                         <div>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">SOFTWARE</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">Custom Tools</h3>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">STANDALONE SOFTWARE</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">GenSort Local Classifier</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
-                                Lightweight desktop software, purpose-built interfaces, and client-side processing utilities.
+                                High-performance client-side asset organizer and batch exporter with zero external server dependencies.
                             </p>
-                            <div style="margin-top: 1rem; font-size: 12.5px; color: var(--accent-teal); font-family: var(--font-mono);">
-                                Applied: GenSort Image Organizer
-                            </div>
                         </div>
-                        <a href="/gensort/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-primary); text-decoration: none;">Explore GenSort &rarr;</a>
+                        <a href="/gensort/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent-teal); text-decoration: none;">Explore GenSort &rarr;</a>
                     </div>
 
                     <!-- Experience Design -->
                     <div class="behind-card">
                         <div>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">TOPOLOGICAL UX</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">Experience Design</h3>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">TOPOLOGICAL MODELING</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">Cartography Engine</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
-                                Complex information and behavioral dynamics made usable, clear, and memorable.
+                                Explainable behavioral pattern engine mapping complex subjective reflections into coordinate topological space.
                             </p>
-                            <div style="margin-top: 1rem; font-size: 12.5px; color: var(--accent-teal); font-family: var(--font-mono);">
-                                Applied: Cartography Topological Engine
-                            </div>
                         </div>
-                        <a href="/cartography/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-primary); text-decoration: none;">Explore Cartography &rarr;</a>
+                        <a href="/cartography/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent-teal); text-decoration: none;">Explore Cartography &rarr;</a>
                     </div>
-                </div>
-
-                <div style="margin-top: 2.5rem; text-align: center;">
-                    <a href="/custom/#intake" class="btn-primary-teal" style="padding: 0.8rem 2rem; font-size: 13px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Tell Me What's Not Working &rarr;</a>
                 </div>
             </div>
         </section>
