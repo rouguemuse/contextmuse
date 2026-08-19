@@ -27,13 +27,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.2">
+    <link rel="stylesheet" href="/styles.css?v=2.3">
 
     <style>
         /* ── HERO ── */
         .home-hero {
             position: relative;
-            min-height: clamp(640px, 75vh, 800px);
+            min-height: clamp(620px, 75vh, 780px);
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -118,7 +118,7 @@
             letter-spacing: 0.04em;
         }
 
-        /* ── PACKAGES SECTION ── */
+        /* ── PACKAGES ── */
         .packages-section {
             padding: 5.5rem 0;
             background: var(--bg-paper);
@@ -196,7 +196,18 @@
             flex-shrink: 0;
         }
 
-        /* ── ADDONS / CHIPS ── */
+        /* ── AUDIT BOX ── */
+        .audit-box-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .audit-box-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+        }
+
+        /* ── ADDONS ── */
         .addons-section {
             padding: 5rem 0;
             background: var(--bg-panel);
@@ -215,9 +226,7 @@
             padding: 1.25rem 1.5rem;
             transition: border-color 0.2s ease;
         }
-        .addon-chip:hover {
-            border-color: var(--accent-teal);
-        }
+        .addon-chip:hover { border-color: var(--accent-teal); }
         .addon-title {
             font-family: var(--font-mono);
             font-size: 12px;
@@ -234,19 +243,105 @@
             line-height: 1.45;
         }
 
-        /* ── FEATURED BUILD (LONE WOLF DUMPSTERS) ── */
-        .featured-build-section {
-            padding: 6rem 0;
-            background: #10211D;
-            color: #FAF9F5;
-            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+        /* ── FOUR CAPABILITY CARDS (PART 4) ── */
+        .capabilities-4-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 800px) {
+            .capabilities-4-grid { grid-template-columns: 1fr; }
+        }
+        .cap-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .cap-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(16, 33, 29, 0.05);
+        }
+        .cap-category {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .cap-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin: 0 0 0.75rem 0;
+            font-weight: 500;
+        }
+        .cap-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+        .cap-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .cap-bullets li {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cap-bullets li::before {
+            content: "•";
+            color: var(--accent-teal);
+            font-weight: bold;
+        }
+        .cap-cta {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
+        }
+        .cap-card:hover .cap-cta { gap: 10px; }
+
+        /* ── PROOF GRID ── */
+        .proof-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 960px) {
+            .proof-cards-grid { grid-template-columns: 1fr; gap: 1.75rem; }
         }
         .build-grid {
             display: grid;
             grid-template-columns: 1.1fr 1fr;
             gap: 3.5rem;
             align-items: center;
-            margin-top: 2.5rem;
         }
         @media (max-width: 900px) {
             .build-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -269,55 +364,6 @@
             font-size: 12px;
             color: #FAF9F5;
         }
-        .proof-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        @media (max-width: 960px) {
-            .proof-cards-grid {
-                grid-template-columns: 1fr;
-                gap: 1.75rem;
-            }
-        }
-        .audit-box-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 2.5rem;
-            align-items: center;
-        }
-        @media (max-width: 768px) {
-            .audit-box-grid {
-                grid-template-columns: 1fr;
-                gap: 1.75rem;
-            }
-        }
-
-        /* ── BROADER CAPABILITIES ── */
-        .behind-section {
-            padding: 5.5rem 0;
-            background: var(--bg-paper);
-            border-bottom: 1px solid var(--border-light);
-        }
-        .behind-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        @media (max-width: 900px) {
-            .behind-grid { grid-template-columns: 1fr; }
-        }
-        .behind-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            padding: 2.25rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 1.5rem;
-        }
     </style>
 </head>
 <body>
@@ -332,12 +378,12 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <a href="/services/" class="nav-link">Websites</a>
-                <a href="/systems/" class="nav-link">Work</a>
-                <a href="/custom/" class="nav-link">Services</a>
+                <a href="/websites/" class="nav-link">Websites</a>
+                <a href="/audit/" class="nav-link">Site Audit</a>
+                <a href="/work/" class="nav-link">Work</a>
+                <a href="/services/" class="nav-link">Services</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/creative/" class="nav-link">Insights</a>
-                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+                <a href="/start/" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -353,7 +399,7 @@
 
             <div class="home-hero-content">
                 <div class="home-hero-copy">
-                    <span class="hero-eyebrow">WEBSITES · LOCAL SEO · WORKFLOWS</span>
+                    <span class="hero-eyebrow">CUSTOM WEBSITES · LOCAL SEARCH · LEAD SYSTEMS</span>
                     <h1 class="hero-title">
                         Websites built to turn attention into action.
                     </h1>
@@ -361,8 +407,8 @@
                         Custom websites for service businesses, built around leads, local search, and the systems that keep inquiries moving.
                     </p>
                     <div class="btn-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <a href="/custom/#intake" class="btn-primary-teal" style="padding: 0.85rem 1.75rem; font-size: 13.5px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Start a Website Project &rarr;</a>
-                        <a href="#audit" class="btn-outline-dark" style="padding: 0.85rem 1.75rem; font-size: 13.5px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Book a $195 Site Audit &rarr;</a>
+                        <a href="/start/" class="btn-primary-teal" style="padding: 0.85rem 1.75rem; font-size: 13.5px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; text-decoration: none;">Start a Website Project &rarr;</a>
+                        <a href="/audit/" class="btn-outline-dark" style="padding: 0.85rem 1.75rem; font-size: 13.5px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; text-decoration: none;">Book a $195 Site Audit &rarr;</a>
                     </div>
                     <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); margin-top: 1rem; font-weight: 600;">
                         100% of the $195 audit fee is credited toward any build booked within 30 days.
@@ -374,7 +420,7 @@
             </div>
         </header>
 
-        <!-- 2. THREE PACKAGES SECTION -->
+        <!-- 2. PACKAGES -->
         <section class="packages-section" id="packages" aria-labelledby="packages-heading">
             <div class="container">
                 <div style="max-width: 760px;">
@@ -407,7 +453,7 @@
                                 <li>Easy client handoff</li>
                             </ul>
                         </div>
-                        <a href="/custom/?service=launch-site#intake" class="btn btn-secondary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Launch Site &rarr;</a>
+                        <a href="/start/?package=launch" class="btn btn-secondary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Launch Site &rarr;</a>
                     </div>
 
                     <!-- Package 2: Growth Site -->
@@ -430,7 +476,7 @@
                                 <li>CMS for direct client editing</li>
                             </ul>
                         </div>
-                        <a href="/custom/?service=growth-site#intake" class="btn btn-primary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; background: var(--accent-teal); border: 1px solid var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Growth Site &rarr;</a>
+                        <a href="/start/?package=growth" class="btn btn-primary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; background: var(--accent-teal); border: 1px solid var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Growth Site &rarr;</a>
                     </div>
 
                     <!-- Package 3: Website + Growth System -->
@@ -452,7 +498,7 @@
                                 <li>Custom backend functionality</li>
                             </ul>
                         </div>
-                        <a href="/custom/?service=growth-system#intake" class="btn btn-secondary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Growth System &rarr;</a>
+                        <a href="/start/?package=system" class="btn btn-secondary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Growth System &rarr;</a>
                     </div>
                 </div>
 
@@ -460,7 +506,7 @@
                     <p style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-primary); margin: 0 0 0.5rem 0;">
                         Need something unusual? Good. That’s where I’m useful.
                     </p>
-                    <a href="/custom/#intake" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none;">Discuss a Custom Build &rarr;</a>
+                    <a href="/start/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none;">Discuss a Custom Build &rarr;</a>
                 </div>
             </div>
         </section>
@@ -487,13 +533,13 @@
                         <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
                             100% Credited Toward Any Build Booked Within 30 Days
                         </div>
-                        <a href="/custom/?service=audit#intake" class="btn-primary-teal" style="display: block; width: 100%; box-sizing: border-box; text-align: center; padding: 0.75rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; text-decoration: none;">Book a $195 Audit &rarr;</a>
+                        <a href="/audit/" class="btn-primary-teal" style="display: block; width: 100%; box-sizing: border-box; text-align: center; padding: 0.75rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; text-decoration: none;">Book a $195 Audit &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. BUILD ONTO IT (ADD-ONS) -->
+        <!-- 3. ADD-ONS -->
         <section class="addons-section" aria-labelledby="addons-heading">
             <div class="container">
                 <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
@@ -583,7 +629,7 @@
                             Comparable independent agency build: $12K–$20K+
                         </div>
 
-                        <a href="/custom/?service=growth-system#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; display: inline-block;">Build Something Like This &rarr;</a>
+                        <a href="/start/?ref=lonewolf" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; display: inline-block;">Build Something Like This &rarr;</a>
                     </div>
 
                     <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(250,249,245,0.1); border-radius: 8px; padding: 1.75rem;">
@@ -642,7 +688,7 @@
                                     <strong>Solution:</strong> Transparent vehicle-size tiered pricing, clear service breakdowns, and direct booking intake.
                                 </p>
                             </div>
-                            <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-decoration: none; font-weight: 700; text-transform: uppercase;">View Client Build &rarr;</a>
+                            <a href="/start/?package=growth" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-decoration: none; font-weight: 700; text-transform: uppercase;">Request a Build Like This &rarr;</a>
                         </div>
                     </div>
 
@@ -652,7 +698,7 @@
                             <span style="width: 8px; height: 8px; border-radius: 50%; background: #EF4444; display: inline-block;"></span>
                             <span style="width: 8px; height: 8px; border-radius: 50%; background: #F59E0B; display: inline-block;"></span>
                             <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981; display: inline-block;"></span>
-                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: rgba(250,249,245,0.5); margin-left: 8px;">inncontrol.internal</span>
+                            <span style="font-family: var(--font-mono); font-size: 9.5px; color: rgba(250,249,245,0.5); margin-left: 8px;">inncontrol dashboard</span>
                         </div>
                         <img src="/assets/images/inncontrol-screenshot.webp" alt="InnControl Coils dashboard screenshot" style="width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(250,249,245,0.08);" loading="lazy">
                         <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
@@ -666,7 +712,7 @@
                                     <strong>Solution:</strong> Custom replacement catalog and automated specification matching engine.
                                 </p>
                             </div>
-                            <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-decoration: none; font-weight: 700; text-transform: uppercase;">View System Architecture &rarr;</a>
+                            <a href="/work/#products" style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; text-decoration: none; font-weight: 700; text-transform: uppercase;">View System Architecture &rarr;</a>
                         </div>
                     </div>
 
@@ -674,10 +720,87 @@
             </div>
         </section>
 
-        <!-- 5. WHY CONTEXT & MUSE -->
+        <!-- 5. FOUR CAPABILITY CARDS (PART 4 SPECIFICATION) -->
+        <section style="padding: 5.5rem 0; background: var(--bg-paper); border-bottom: 1px solid var(--border-light);" aria-labelledby="capabilities-heading">
+            <div class="container">
+                <div style="max-width: 780px;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.5rem;">04 // CAPABILITY ARCHITECTURE</span>
+                    <h2 id="capabilities-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.8vw, 2.8rem); margin: 0 0 0.75rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                        A website can do more than display information.
+                    </h2>
+                    <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                        Start with the customer-facing site. Add the systems your business actually needs behind it.
+                    </p>
+                </div>
+
+                <div class="capabilities-4-grid">
+                    <!-- Card 1: Website + Conversion -->
+                    <a href="/websites/" class="cap-card">
+                        <div>
+                            <span class="cap-category">WEBSITE + CONVERSION</span>
+                            <h3 class="cap-title">Customer-Facing Websites</h3>
+                            <p class="cap-desc">Custom responsive websites built around calls, quote requests, bookings, purchases, and the next action you actually want customers to take.</p>
+                            <ul class="cap-bullets">
+                                <li>Conversion-focused UX</li>
+                                <li>Quote / contact flows</li>
+                                <li>Service architecture</li>
+                            </ul>
+                        </div>
+                        <span class="cap-cta">EXPLORE WEBSITE BUILDS &rarr;</span>
+                    </a>
+
+                    <!-- Card 2: Lead Capture + Routing -->
+                    <a href="/services/" class="cap-card">
+                        <div>
+                            <span class="cap-category">LEAD CAPTURE + ROUTING</span>
+                            <h3 class="cap-title">Lead Qualification Systems</h3>
+                            <p class="cap-desc">Collect the right information up front, qualify inquiries, notify the right person, and move leads into the next step automatically.</p>
+                            <ul class="cap-bullets">
+                                <li>Smart intake forms</li>
+                                <li>SMS / email alerts</li>
+                                <li>Lead qualification &amp; routing</li>
+                            </ul>
+                        </div>
+                        <span class="cap-cta">EXPLORE LEAD SYSTEMS &rarr;</span>
+                    </a>
+
+                    <!-- Card 3: Booking + Inventory -->
+                    <a href="/services/" class="cap-card">
+                        <div>
+                            <span class="cap-category">BOOKING + INVENTORY</span>
+                            <h3 class="cap-title">Scheduling &amp; Asset Logic</h3>
+                            <p class="cap-desc">Custom scheduling, reservation, availability, and inventory logic for businesses that cannot be handled by a generic contact form.</p>
+                            <ul class="cap-bullets">
+                                <li>Availability logic</li>
+                                <li>Reservations</li>
+                                <li>Checkout validation</li>
+                            </ul>
+                        </div>
+                        <span class="cap-cta">EXPLORE BOOKING SYSTEMS &rarr;</span>
+                    </a>
+
+                    <!-- Card 4: Operational Tools -->
+                    <a href="/work/#products" class="cap-card">
+                        <div>
+                            <span class="cap-category">OPERATIONAL TOOLS</span>
+                            <h3 class="cap-title">Internal Business Tools</h3>
+                            <p class="cap-desc">Dashboards, admin tools, equipment records, field workflows, reporting, and purpose-built interfaces for the work happening behind the website.</p>
+                            <ul class="cap-bullets">
+                                <li>Admin dashboards</li>
+                                <li>Internal workflows</li>
+                                <li>Custom interfaces</li>
+                            </ul>
+                        </div>
+                        <span class="cap-cta">EXPLORE CUSTOM SYSTEMS &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. WHY CONTEXT & MUSE -->
         <section style="background: var(--bg-panel); padding: 5.5rem 0; border-bottom: 1px solid var(--border-light);">
             <div class="container" style="max-width: 840px;">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">04 // PHILOSOPHY</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">05 // PHILOSOPHY</span>
                 <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1.5rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
                     Systems thinking without the agency fog
                 </h2>
@@ -706,11 +829,11 @@
             </div>
         </section>
 
-        <!-- 6. SECONDARY SYSTEM & PRODUCT PROOF (TECHNICAL DEPTH) -->
+        <!-- 7. SECONDARY SYSTEM & PRODUCT PROOF (TECHNICAL DEPTH) -->
         <section class="behind-section" aria-labelledby="behind-heading" style="padding: 5.5rem 0; background: var(--bg-paper); border-bottom: 1px solid var(--border-light);">
             <div class="container">
                 <div style="max-width: 750px;">
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">05 // TECHNICAL DEPTH</span>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">06 // TECHNICAL DEPTH</span>
                     <h2 id="behind-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
                         And if you need more than a website, I build the systems behind it too.
                     </h2>
@@ -720,7 +843,7 @@
                 </div>
 
                 <div class="behind-grid">
-                    <!-- Operational Systems -->
+                    <!-- Signal -->
                     <div class="behind-card">
                         <div>
                             <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">OPERATIONAL INTELLIGENCE</span>
@@ -732,7 +855,7 @@
                         <a href="/signal/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent-teal); text-decoration: none;">Explore Signal &rarr;</a>
                     </div>
 
-                    <!-- Custom Tools -->
+                    <!-- GenSort -->
                     <div class="behind-card">
                         <div>
                             <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">STANDALONE SOFTWARE</span>
@@ -744,7 +867,7 @@
                         <a href="/gensort/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent-teal); text-decoration: none;">Explore GenSort &rarr;</a>
                     </div>
 
-                    <!-- Experience Design -->
+                    <!-- Cartography -->
                     <div class="behind-card">
                         <div>
                             <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">TOPOLOGICAL MODELING</span>
@@ -759,42 +882,10 @@
             </div>
         </section>
 
-        <!-- 6. WHY CONTEXT & MUSE -->
+        <!-- 8. PROCESS -->
         <section style="background: var(--bg-panel); padding: 5.5rem 0; border-bottom: 1px solid var(--border-light);">
             <div class="container" style="max-width: 840px;">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">04 // PHILOSOPHY</span>
-                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1.5rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
-                    Systems thinking without the agency fog
-                </h2>
-                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2.5rem;">
-                    I started in high-pressure service and restaurant operations, where broken processes become visible very quickly. That experience still shapes how I work: understand the real environment, find the friction, and build something people can actually use.
-                </p>
-
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem;">
-                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
-                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">01 Context</strong>
-                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Understand the actual business constraints before writing a single line of code.</p>
-                    </div>
-                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
-                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">02 Function</strong>
-                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Lead capture, speed, and clarity come before aesthetic decoration.</p>
-                    </div>
-                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
-                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">03 Ownership</strong>
-                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Full code, account, and asset handover upon launch. No forced retainers.</p>
-                    </div>
-                </div>
-
-                <div style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-primary); text-align: center; border-top: 1px solid var(--border-light); padding-top: 2rem;">
-                    &ldquo;No mystery retainers. No hostage situation with your own website.&rdquo;
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. PROCESS -->
-        <section style="background: var(--bg-paper); padding: 5.5rem 0; border-bottom: 1px solid var(--border-light);">
-            <div class="container" style="max-width: 840px;">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">05 // PROCESS</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">07 // PROCESS</span>
                 <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.6rem); margin: 0 0 2.5rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
                     From messy to workable
                 </h2>
@@ -825,65 +916,19 @@
             </div>
         </section>
 
-        <!-- 8. FINAL INTAKE CTA -->
-        <section class="hp-contact-section" id="intake" aria-labelledby="contact-heading" style="background: var(--bg-panel); border-top: 1px solid var(--border-light); padding: 5.5rem 0;">
-            <div class="container" style="max-width: 780px;">
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.75rem;">06 // START A PROJECT</span>
-                    <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
-                        Bring me the mess.
-                    </h2>
-                    <p style="font-size: 1.1rem; line-height: 1.65; color: var(--text-secondary); margin: 0 auto; max-width: 640px;">
-                        Tell me what customers are trying to do, where the process breaks, and what you want working instead.
-                    </p>
-                </div>
-
-                <div class="form-wrapper" style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 2.5rem; border-radius: 8px;">
-                    <form id="audit-form" action="https://formspree.io/f/xoqydgvw" method="POST" novalidate>
-                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-                        <input type="hidden" name="source" value="homepage_commercial_intake">
-
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
-                            <div class="form-group">
-                                <label for="user-name" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Your Name</label>
-                                <input type="text" id="user-name" name="name" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
-                                <span class="error-msg" id="name-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please enter your name.</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="user-email" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Your Email</label>
-                                <input type="email" id="user-email" name="email" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
-                                <span class="error-msg" id="email-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please enter a valid email address.</span>
-                            </div>
-                        </div>
-
-                        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
-                            <div class="form-group">
-                                <label for="user-url" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Website / Business URL</label>
-                                <input type="text" id="user-url" name="website" placeholder="e.g. yourbusiness.com" class="form-input" style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
-                            </div>
-                            <div class="form-group">
-                                <label for="user-package" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Selected Package</label>
-                                <select id="user-package" name="package" class="form-input" style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
-                                    <option value="growth-site">Growth Site (From $3,500)</option>
-                                    <option value="launch-site">Launch Site ($1,500 – $2,000)</option>
-                                    <option value="growth-system">Website + Growth System (From $6,000)</option>
-                                    <option value="custom">Custom / Operational Tool</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 1.75rem;">
-                            <label for="user-message" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">What is not working or needs to be built?</label>
-                            <textarea id="user-message" name="message" class="form-input" rows="4" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);resize:vertical;" placeholder="Describe what you want fixed, built, or automated..."></textarea>
-                            <span class="error-msg" id="message-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please describe your project.</span>
-                        </div>
-
-                        <button type="submit" id="form-submit-btn" class="btn btn-primary" style="background:var(--accent-teal);border-color:var(--accent-teal);cursor:pointer;width:100%;font-size:13.5px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.05em;color:#FAF9F5;padding:0.9rem 1.5rem;border-radius:4px;font-weight:700;">Start a Project &rarr;</button>
-                    </form>
-
-                    <div id="form-success" style="display:none;background:rgba(77,124,15,0.08);border:1px solid var(--accent-teal);padding:1.25rem;border-radius:4px;margin-top:1rem;color:var(--accent-teal);font-weight:bold;text-align:center;">
-                        Thank you. Your inquiry has been received. I will review your details and respond within 24 hours.
-                    </div>
+        <!-- 9. FINAL CTA -->
+        <section class="hp-contact-section" id="intake" aria-labelledby="contact-heading" style="background: #10211D; color: #FAF9F5; padding: 6rem 0;">
+            <div class="container" style="max-width: 780px; text-align: center;">
+                <span class="eyebrow" style="color: #2DD4BF; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.75rem;">START A PROJECT</span>
+                <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: clamp(2.4rem, 4.5vw, 3.6rem); margin: 0 0 1.25rem 0; font-weight: 400; color: #FAF9F5; line-height: 1.1;">
+                    Tell me what you need the site to do.
+                </h2>
+                <p style="font-size: 1.15rem; line-height: 1.65; color: rgba(250, 249, 245, 0.75); margin: 0 auto 2.5rem auto; max-width: 620px;">
+                    Need a website, an audit, or something more custom? Give me the short version. I’ll tell you what I’d recommend and what it would take to build it.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/start/" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 1rem 2rem; border-radius: 4px; text-decoration: none;">START A PROJECT &rarr;</a>
+                    <a href="/audit/" class="btn-outline-dark" style="background: transparent; border-color: rgba(250,249,245,0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 1rem 2rem; border-radius: 4px; text-decoration: none;">BOOK A $195 SITE AUDIT &rarr;</a>
                 </div>
             </div>
         </section>
@@ -891,28 +936,30 @@
     </main>
 
     <!-- Footer -->
-    <footer role="contentinfo">
+    <footer role="contentinfo" style="border-top: 1px solid var(--border-light); background: var(--bg-panel); padding: 4rem 0;">
         <div class="container footer-container">
             <div class="footer-logo-area">
-                <a href="/" class="logo">
+                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
                     <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
                     <span>Context &amp; Muse</span>
                 </a>
-                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+                <p>Applied Systems · Commercial Web Design · Austin, Texas.</p>
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Websites &amp; Packages</a>
+                    <a href="/websites/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Websites</a>
                     <span style="color: var(--border-light);">|</span>
-                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <a href="/audit/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Site Audit</a>
                     <span style="color: var(--border-light);">|</span>
-                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <a href="/work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Work</a>
                     <span style="color: var(--border-light);">|</span>
-                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Services</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/about/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">About</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
                     <span style="color: var(--border-light);">|</span>
-                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms</a>
                 </div>
                 <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
             </div>
@@ -920,65 +967,5 @@
     </footer>
 
     <script src="/assets/js/nav.js" defer></script>
-    <script>
-        // Homepage form validation & AJAX submission
-        const form = document.getElementById('audit-form');
-        const successDiv = document.getElementById('form-success');
-
-        if (form) {
-            form.addEventListener('submit', e => {
-                e.preventDefault();
-                let isValid = true;
-
-                const name     = document.getElementById('user-name');
-                const nameErr  = document.getElementById('name-error');
-                if (!name.value.trim()) { nameErr.style.display = 'block'; isValid = false; }
-                else { nameErr.style.display = 'none'; }
-
-                const email    = document.getElementById('user-email');
-                const emailErr = document.getElementById('email-error');
-                const emailRe  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!email.value.trim() || !emailRe.test(email.value.trim())) { emailErr.style.display = 'block'; isValid = false; }
-                else { emailErr.style.display = 'none'; }
-
-                const message  = document.getElementById('user-message');
-                const msgErr   = document.getElementById('message-error');
-                if (!message.value.trim()) { msgErr.style.display = 'block'; isValid = false; }
-                else { msgErr.style.display = 'none'; }
-
-                if (isValid) {
-                    const btn = document.getElementById('form-submit-btn');
-                    btn.disabled = true;
-                    btn.textContent = 'Sending…';
-
-                    const website = document.getElementById('user-url') ? document.getElementById('user-url').value.trim() : '';
-                    const pkg = document.getElementById('user-package') ? document.getElementById('user-package').value : '';
-
-                    fetch('https://formspree.io/f/xoqydgvw', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify({
-                            name: name.value.trim(),
-                            email: email.value.trim(),
-                            website: website,
-                            package: pkg,
-                            message: message.value.trim()
-                        })
-                    })
-                    .then(res => {
-                        if (res.ok) {
-                            form.style.display = 'none';
-                            successDiv.style.display = 'block';
-                        } else { throw new Error(); }
-                    })
-                    .catch(() => {
-                        btn.disabled = false;
-                        btn.textContent = 'Start a Project';
-                        alert('Submission error. Please check your connection or email directly.');
-                    });
-                }
-            });
-        }
-    </script>
 </body>
 </html>

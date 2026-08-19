@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website &amp; Conversion Leak Audit ($195) | Context &amp; Muse</title>
+    <meta name="description" content="A practical $195 teardown of your website's conversion leaks, mobile friction, CTA placement, and local search opportunities. 100% credited toward any build within 30 days.">
+    <link rel="canonical" href="https://www.contextmuse.com/audit/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Website &amp; Conversion Leak Audit ($195) | Context &amp; Muse">
+    <meta property="og:description" content="Find where customers get confused and why your traffic isn't turning into inquiries. 100% credited toward a build booked within 30 days.">
+    <meta property="og:url" content="https://www.contextmuse.com/audit/">
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Website &amp; Conversion Leak Audit ($195) | Context &amp; Muse">
+    <meta name="twitter:description" content="Find where customers get confused and why your traffic isn't turning into inquiries. 100% credited toward a build booked within 30 days.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.3">
+
+    <style>
+        .audit-hero {
+            padding: 130px 0 70px;
+            background: radial-gradient(circle at 75% 35%, #fffdf8 0%, #f8f2e9 45%, #f3ede4 100%);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .audit-layout {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+            align-items: flex-start;
+            padding: 70px 0 100px;
+        }
+        @media (max-width: 960px) {
+            .audit-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+        .checklist-box {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .checklist-item:last-child { margin-bottom: 0; }
+        .checklist-item strong { color: var(--text-primary); }
+        .check-icon {
+            color: var(--accent-teal);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .audit-form-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-top: 4px solid var(--accent-teal);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.05);
+            position: sticky;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="/websites/" class="nav-link">Websites</a>
+                <a href="/audit/" class="nav-link">Site Audit</a>
+                <a href="/work/" class="nav-link">Work</a>
+                <a href="/services/" class="nav-link">Services</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/start/" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Header -->
+        <header class="audit-hero">
+            <div class="container" style="max-width: 900px;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.75rem;">LOW-RISK DIAGNOSTIC</span>
+                <h1 style="font-family: var(--font-serif); font-size: clamp(2.4rem, 4.5vw, 3.8rem); line-height: 1.1; margin: 0 0 1.25rem 0; font-weight: 400; color: var(--text-primary);">
+                    Conversion Leak Audit — $195
+                </h1>
+                <p style="font-size: 1.15rem; line-height: 1.65; color: var(--text-secondary); margin: 0 0 1.5rem 0;">
+                    Find where customers get confused, where leads disappear, and why visitors bounce before taking action.
+                </p>
+                <div style="display: inline-block; background: rgba(15, 118, 110, 0.08); border: 1px solid var(--accent-teal); padding: 0.6rem 1.25rem; border-radius: 4px; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase;">
+                    ✓ 100% of the $195 fee is credited toward any build booked within 30 days.
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body & Form Section -->
+        <section style="background: var(--bg-paper);">
+            <div class="container audit-layout">
+                <!-- Left: What's Reviewed -->
+                <div>
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
+                        What I examine
+                    </h2>
+                    <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;">
+                        This is not an automated generic SEO bot report. I personally inspect your live website from the perspective of an actual buying customer and an experienced conversion designer.
+                    </p>
+
+                    <div class="checklist-box">
+                        <div class="checklist-item">
+                            <span class="check-icon">✓</span>
+                            <div><strong>First-Viewport Clarity:</strong> Does a visitor understand what you do and who it is for within 5 seconds?</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">✓</span>
+                            <div><strong>CTA &amp; Decision Friction:</strong> Are the buttons clear, singular, and easy to find on all devices?</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">✓</span>
+                            <div><strong>Mobile UX &amp; Touch Flow:</strong> Where do thumb taps fail, fonts wrap awkwardly, or menus break down?</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">✓</span>
+                            <div><strong>Trust &amp; Proof Positioning:</strong> Are reviews, case studies, and credentials visible at the moment of decision?</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">✓</span>
+                            <div><strong>Service Page Architecture:</strong> Do service pages clearly explain the process and next step?</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">✓</span>
+                            <div><strong>Lead Capture Flow:</strong> Does the intake form ask the right questions without creating drop-off?</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">✓</span>
+                            <div><strong>Local SEO Opportunities:</strong> Are you missing key city or service-area targeting foundations?</div>
+                        </div>
+                    </div>
+
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-primary); margin: 2rem 0 1rem 0; font-weight: 400;">
+                        What you receive
+                    </h2>
+                    <div class="checklist-box">
+                        <div class="checklist-item">
+                            <span class="check-icon">→</span>
+                            <div><strong>Prioritized Findings:</strong> A clear, bulleted summary of the top conversion leaks.</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">→</span>
+                            <div><strong>Annotated Visual Examples:</strong> Real screenshots highlighting the exact UI and copy issues.</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">→</span>
+                            <div><strong>Fix Now vs. Fix Later Roadmap:</strong> Actionable steps ranked by speed and revenue impact.</div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">→</span>
+                            <div><strong>Next Steps Scope:</strong> Exact recommendations for fixing it yourself or having me build the solution.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Booking Form -->
+                <div>
+                    <div class="audit-form-card">
+                        <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; display: block; margin-bottom: 0.25rem;">REQUEST AUDIT</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">Book a $195 Audit</h3>
+                        <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.5rem;">
+                            Delivered within 3 business days. 100% credited if you book a build.
+                        </p>
+
+                        <form id="audit-booking-form" action="https://formspree.io/f/xoqydgvw" method="POST" novalidate>
+                            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                            <input type="hidden" name="service_needed" value="conversion_leak_audit">
+
+                            <div style="margin-bottom: 1.25rem;">
+                                <label for="audit-name" style="display:block; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; margin-bottom:0.4rem; font-weight:700;">Your Name *</label>
+                                <input type="text" id="audit-name" name="name" class="form-input" required placeholder="John Smith" style="width:100%; box-sizing:border-box; padding:0.75rem; border:1px solid var(--border-light); border-radius:4px; font-family:var(--font-sans); background:var(--bg-paper);">
+                                <span class="error-msg" id="aname-error" style="color:var(--accent-red); font-size:12px; display:none;">Please enter your name.</span>
+                            </div>
+
+                            <div style="margin-bottom: 1.25rem;">
+                                <label for="audit-email" style="display:block; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; margin-bottom:0.4rem; font-weight:700;">Your Email *</label>
+                                <input type="email" id="audit-email" name="email" class="form-input" required placeholder="john@business.com" style="width:100%; box-sizing:border-box; padding:0.75rem; border:1px solid var(--border-light); border-radius:4px; font-family:var(--font-sans); background:var(--bg-paper);">
+                                <span class="error-msg" id="aemail-error" style="color:var(--accent-red); font-size:12px; display:none;">Please enter a valid email address.</span>
+                            </div>
+
+                            <div style="margin-bottom: 1.25rem;">
+                                <label for="audit-url" style="display:block; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; margin-bottom:0.4rem; font-weight:700;">Website URL to Audit *</label>
+                                <input type="text" id="audit-url" name="website_url" class="form-input" required placeholder="https://yourwebsite.com" style="width:100%; box-sizing:border-box; padding:0.75rem; border:1px solid var(--border-light); border-radius:4px; font-family:var(--font-sans); background:var(--bg-paper);">
+                                <span class="error-msg" id="aurl-error" style="color:var(--accent-red); font-size:12px; display:none;">Please provide your website URL.</span>
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label for="audit-notes" style="display:block; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; margin-bottom:0.4rem; font-weight:700;">What is your biggest concern or question?</label>
+                                <textarea id="audit-notes" name="notes" rows="3" placeholder="e.g. Traffic comes from search but nobody fills out the quote form..." style="width:100%; box-sizing:border-box; padding:0.75rem; border:1px solid var(--border-light); border-radius:4px; font-family:var(--font-sans); background:var(--bg-paper); resize:vertical;"></textarea>
+                            </div>
+
+                            <button type="submit" id="audit-submit-btn" class="btn-primary-teal" style="width:100%; box-sizing:border-box; text-align:center; padding:0.9rem; font-family:var(--font-mono); font-size:12px; font-weight:700; text-transform:uppercase; cursor:pointer; border-radius:4px;">
+                                BOOK AUDIT ($195) &rarr;
+                            </button>
+                        </form>
+
+                        <div id="audit-success" style="display:none; padding:1.5rem; background:rgba(15,118,110,0.08); border:1px solid var(--accent-teal); border-radius:6px; text-align:center; margin-top:1rem;">
+                            <h4 style="font-family:var(--font-serif); font-size:1.3rem; margin-bottom:0.5rem; color:var(--text-primary);">Audit Request Received</h4>
+                            <p style="font-size:13.5px; color:var(--text-secondary); line-height:1.5; margin:0;">
+                                I will review your website URL and email you an invoice and confirmation within 24 hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo" style="border-top: 1px solid var(--border-light); background: var(--bg-panel); padding: 4rem 0;">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Commercial Web Design · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/websites/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Websites</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/audit/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Site Audit</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Services</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/nav.js" defer></script>
+    <script>
+        const aForm = document.getElementById('audit-booking-form');
+        const aSuccess = document.getElementById('audit-success');
+        if (aForm) {
+            aForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let valid = true;
+
+                const name = document.getElementById('audit-name');
+                const nameErr = document.getElementById('aname-error');
+                if (!name.value.trim()) { nameErr.style.display = 'block'; valid = false; }
+                else { nameErr.style.display = 'none'; }
+
+                const email = document.getElementById('audit-email');
+                const emailErr = document.getElementById('aemail-error');
+                const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.value.trim() || !emailRe.test(email.value.trim())) { emailErr.style.display = 'block'; valid = false; }
+                else { emailErr.style.display = 'none'; }
+
+                const url = document.getElementById('audit-url');
+                const urlErr = document.getElementById('aurl-error');
+                if (!url.value.trim()) { urlErr.style.display = 'block'; valid = false; }
+                else { urlErr.style.display = 'none'; }
+
+                if (valid) {
+                    const btn = document.getElementById('audit-submit-btn');
+                    btn.disabled = true;
+                    btn.textContent = 'Processing...';
+
+                    fetch('https://formspree.io/f/xoqydgvw', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            name: name.value.trim(),
+                            email: email.value.trim(),
+                            website_url: url.value.trim(),
+                            notes: document.getElementById('audit-notes').value.trim(),
+                            service: 'Conversion Leak Audit ($195)'
+                        })
+                    })
+                    .then(res => {
+                        if (res.ok) {
+                            aForm.style.display = 'none';
+                            aSuccess.style.display = 'block';
+                        } else { throw new Error(); }
+                    })
+                    .catch(() => {
+                        btn.disabled = false;
+                        btn.textContent = 'BOOK AUDIT ($195) →';
+                        alert('Submission error. Please check your connection or email directly.');
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

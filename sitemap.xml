@@ -4,6 +4,21 @@
     <loc>https://www.contextmuse.com/</loc>
   </url>
   <url>
+    <loc>https://www.contextmuse.com/websites/</loc>
+  </url>
+  <url>
+    <loc>https://www.contextmuse.com/audit/</loc>
+  </url>
+  <url>
+    <loc>https://www.contextmuse.com/work/</loc>
+  </url>
+  <url>
+    <loc>https://www.contextmuse.com/services/</loc>
+  </url>
+  <url>
+    <loc>https://www.contextmuse.com/start/</loc>
+  </url>
+  <url>
     <loc>https://www.contextmuse.com/about/</loc>
   </url>
   <url>
@@ -19,9 +34,6 @@
     <loc>https://www.contextmuse.com/signal/</loc>
   </url>
   <url>
-    <loc>https://www.contextmuse.com/signal_restaurant_intelligence/</loc>
-  </url>
-  <url>
     <loc>https://www.contextmuse.com/custom/</loc>
   </url>
   <url>
@@ -31,34 +43,22 @@
     <loc>https://www.contextmuse.com/restaurant-systems/</loc>
   </url>
   <url>
-    <loc>https://www.contextmuse.com/restaurant-builds/</loc>
-  </url>
-  <url>
-    <loc>https://www.contextmuse.com/restaurant-builds/detroit-pizza/</loc>
-  </url>
-  <url>
-    <loc>https://www.contextmuse.com/restaurant-builds/events-venue/</loc>
-  </url>
-  <url>
-    <loc>https://www.contextmuse.com/restaurant-builds/comedy-venue/</loc>
-  </url>
-  <url>
     <loc>https://www.contextmuse.com/restaurant-theory/</loc>
   </url>
   <url>
     <loc>https://www.contextmuse.com/partners/</loc>
   </url>
   <url>
+    <loc>https://www.contextmuse.com/case-studies/edr-party-rentals/</loc>
+  </url>
+  <url>
+    <loc>https://www.contextmuse.com/cartography/</loc>
+  </url>
+  <url>
     <loc>https://www.contextmuse.com/creative/</loc>
   </url>
   <url>
     <loc>https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/</loc>
-  </url>
-  <url>
-    <loc>https://www.contextmuse.com/proof-of-work/</loc>
-  </url>
-  <url>
-    <loc>https://www.contextmuse.com/systems/client-builds/</loc>
   </url>
   <url>
     <loc>https://www.contextmuse.com/creative/self-cartography/</loc>
@@ -70,18 +70,15 @@
     <loc>https://www.contextmuse.com/signal/sample-reports/</loc>
   </url>
   <url>
-    <loc>https://www.contextmuse.com/services/</loc>
+    <loc>https://www.contextmuse.com/proof-of-work/</loc>
   </url>
   <url>
-    <loc>https://www.contextmuse.com/case-studies/edr-party-rentals/</loc>
+    <loc>https://www.contextmuse.com/systems/client-builds/</loc>
   </url>
   <url>
     <loc>https://www.contextmuse.com/privacy/</loc>
   </url>
   <url>
     <loc>https://www.contextmuse.com/terms/</loc>
-  </url>
-  <url>
-    <loc>https://www.contextmuse.com/cartography/</loc>
   </url>
 </urlset>
