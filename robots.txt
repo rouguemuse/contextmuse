@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /private/
+Disallow: /records/
+Disallow: /evidence/
+Disallow: /legal/
+Disallow: /message-analysis/
+Disallow: /reports/
 Disallow: /backups/
 Disallow: /drafts/
 

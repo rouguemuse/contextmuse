@@ -13,6 +13,36 @@
       "permanent": true
     },
     {
+      "source": "/demo-restaurant-signal-report.html",
+      "destination": "/signal/sample-reports/",
+      "permanent": true
+    },
+    {
+      "source": "/evidence/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/records/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/private/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/legal/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/message-analysis/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
       "source": "/creative-practice/how-to-explain-yourself-to-wolves/",
       "destination": "/creative/how-to-explain-yourself-to-wolves/",
       "permanent": true
@@ -76,6 +106,34 @@
       "source": "/contact/",
       "destination": "/",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/(evidence|records|private|legal|message-analysis|drafts|reports)/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
     }
   ]
 }

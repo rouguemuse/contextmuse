@@ -512,6 +512,77 @@
                     </div>
                 </div>
             </div>
+        <!-- Section III: Project-Fit Intake Form -->
+        <section class="hp-contact-section" id="intake" aria-labelledby="intake-heading" style="background: var(--bg-paper); border-top: 1px solid var(--border-light); padding: 5.5rem 0;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
+                    <!-- Column 1: Copy -->
+                    <div>
+                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">START A PROJECT &bull; INTAKE</span>
+                        <h2 id="intake-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.25rem; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                            Tell me what's not working.
+                        </h2>
+                        <p style="font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
+                            Whether you need a clean one-page website, a $199 conversion diagnostic, an organized customer intake flow, or a custom operational system—describe where the friction is. I’ll review your workflow and outline a practical next step.
+                        </p>
+
+                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); font-weight: 700; display: block; margin-bottom: 0.5rem;">HOW WE START:</span>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
+                                <li>&bull; <strong>Review</strong> — I examine your site, intake flow, or operational bottleneck.</li>
+                                <li>&bull; <strong>Recommendation</strong> — I reply within 1–2 business days with clear options and pricing.</li>
+                                <li>&bull; <strong>Zero Hard Sales</strong> — Plain English guidance tailored to your exact business size.</li>
+                            </ul>
+                        </div>
+
+                        <div style="font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary);">
+                            Direct email: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: 600; text-decoration: none;">jayme@contextmuse.com</a>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Form -->
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
+                        <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                            <input type="text" name="_gotcha" style="display:none">
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
+                                <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
+                                    <option value="quick-launch">Quick Launch Website (from $450)</option>
+                                    <option value="website-diagnostic">Website Diagnostic ($199)</option>
+                                    <option value="structured-intake">Structured Intake Setup (from $350)</option>
+                                    <option value="custom-system">Custom Operational System (Scoped after discovery)</option>
+                                    <option value="general">General Consultation / Other</option>
+                                </select>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Name *</label>
+                                <input type="text" id="form-name" name="name" required placeholder="Your name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Email Address *</label>
+                                <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-website" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Current Website or Business Name (Optional)</label>
+                                <input type="text" id="form-website" name="website" placeholder="https://example.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What is creating the most friction right now? *</label>
+                                <textarea id="form-message" name="message" rows="4" required placeholder="Describe what customers or staff are struggling to do..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary-teal" style="width: 100%; justify-content: center; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.85rem 1.5rem; cursor: pointer;">
+                                Send Project Details &rarr;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -568,8 +639,20 @@
                     }
                 });
             });
+        // Auto-select service in intake form from URL query param (e.g. ?service=quick-launch)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const requestedService = urlParams.get('service');
+            if (requestedService) {
+                const serviceSelect = document.getElementById('form-service');
+                if (serviceSelect) {
+                    const validOptions = ['quick-launch', 'website-diagnostic', 'structured-intake', 'custom-system', 'general'];
+                    if (validOptions.includes(requestedService)) {
+                        serviceSelect.value = requestedService;
+                    }
+                }
+            }
         });
     </script>
-    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

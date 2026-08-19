@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Context &amp; Muse | Decision Intelligence &amp; Digital Systems</title>
-    <meta name="description" content="We turn messy information into usable structure — across operations, digital systems, and decision-making.">
+    <title>Context &amp; Muse | Websites Built to Turn Attention into Action</title>
+    <meta name="description" content="Custom websites for service businesses, built around leads, local search, and the systems that keep inquiries moving.">
     <link rel="canonical" href="https://www.contextmuse.com/">
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Context &amp; Muse | Decision Intelligence &amp; Digital Systems">
-    <meta property="og:description" content="We turn messy information into usable structure — across operations, digital systems, and decision-making.">
+    <meta property="og:title" content="Context &amp; Muse | Websites Built to Turn Attention into Action">
+    <meta property="og:description" content="Custom websites for service businesses, built around leads, local search, and the systems that keep inquiries moving.">
     <meta property="og:url" content="https://www.contextmuse.com/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
     <meta property="og:image:width" content="2400">
@@ -19,21 +19,21 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Context &amp; Muse | Decision Intelligence &amp; Digital Systems">
-    <meta name="twitter:description" content="We turn messy information into usable structure — across operations, digital systems, and decision-making.">
+    <meta name="twitter:title" content="Context &amp; Muse | Websites Built to Turn Attention into Action">
+    <meta name="twitter:description" content="Custom websites for service businesses, built around leads, local search, and the systems that keep inquiries moving.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.1">
+    <link rel="stylesheet" href="/styles.css?v=2.2">
 
     <style>
-        /* ── HERO COMPOSITION ── */
+        /* ── HERO ── */
         .home-hero {
             position: relative;
-            min-height: clamp(680px, 80vh, 840px);
+            min-height: clamp(640px, 75vh, 800px);
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -77,15 +77,18 @@
             margin: 0 auto;
         }
         .home-hero-copy {
-            width: min(600px, 48vw);
+            width: min(620px, 52vw);
             position: relative;
             z-index: 4;
+        }
+        @media (max-width: 900px) {
+            .home-hero-copy { width: 100%; }
         }
         .hero-eyebrow {
             font-family: var(--font-mono);
             font-size: 11px;
             font-weight: 600;
-            color: var(--text-secondary);
+            color: var(--accent-teal);
             letter-spacing: 0.15em;
             text-transform: uppercase;
             display: block;
@@ -93,65 +96,193 @@
         }
         .home-hero-copy .hero-title {
             font-family: var(--font-serif) !important;
-            font-size: clamp(3.2rem, 4.8vw, 5rem) !important;
-            line-height: 1.0 !important;
-            letter-spacing: -0.03em !important;
+            font-size: clamp(2.8rem, 4.5vw, 4.4rem) !important;
+            line-height: 1.05 !important;
+            letter-spacing: -0.02em !important;
             color: #10211D !important;
-            margin: 0 0 1.5rem 0 !important;
+            margin: 0 0 1.25rem 0 !important;
             font-weight: 400 !important;
         }
         .home-hero-copy .hero-subhead {
             font-family: var(--font-sans) !important;
-            font-size: 18px !important;
-            line-height: 1.65 !important;
+            font-size: 17.5px !important;
+            line-height: 1.6 !important;
             color: var(--text-secondary) !important;
-            margin-bottom: 2.25rem !important;
+            margin-bottom: 2rem !important;
         }
-        .home-hero-copy .btn-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+        .proof-pill-line {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            letter-spacing: 0.04em;
         }
 
-        /* ── THREE CAPABILITIES SECTION ── */
-        .capabilities-section {
+        /* ── PACKAGES SECTION ── */
+        .packages-section {
             padding: 5.5rem 0;
             background: var(--bg-paper);
             border-bottom: 1px solid var(--border-light);
         }
-        .capabilities-header {
-            margin-bottom: 3rem;
-        }
-        .capabilities-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            font-weight: 700;
-            color: var(--accent-teal);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .capabilities-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            color: var(--text-primary);
-            margin: 0;
-            font-weight: 400;
-            line-height: 1.2;
-        }
-        .capabilities-grid {
+        .packages-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            margin-top: 3rem;
         }
-        @media (max-width: 960px) {
-            .capabilities-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
+        @media (max-width: 990px) {
+            .packages-grid { grid-template-columns: 1fr; }
         }
-        .capability-card {
+        .package-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .package-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(16,33,29,0.05);
+        }
+        .package-card.featured {
+            border: 2px solid var(--accent-teal);
+            background: #FCFCF9;
+        }
+        .package-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent-teal);
+            color: #FAF9F5;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+        .package-price {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin: 0.5rem 0 1rem;
+            font-weight: 600;
+        }
+        .package-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 2rem;
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .package-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .package-list li::before {
+            content: "✓";
+            color: var(--accent-teal);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* ── ADDONS / CHIPS ── */
+        .addons-section {
+            padding: 5rem 0;
+            background: var(--bg-panel);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+        .addon-chip {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+            transition: border-color 0.2s ease;
+        }
+        .addon-chip:hover {
+            border-color: var(--accent-teal);
+        }
+        .addon-title {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem;
+        }
+        .addon-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        /* ── FEATURED BUILD (LONE WOLF DUMPSTERS) ── */
+        .featured-build-section {
+            padding: 6rem 0;
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+        }
+        .build-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+            margin-top: 2.5rem;
+        }
+        @media (max-width: 900px) {
+            .build-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        .build-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.75rem 0;
+        }
+        .build-feature-item {
+            background: rgba(250, 249, 245, 0.05);
+            border: 1px solid rgba(250, 249, 245, 0.12);
+            border-radius: 4px;
+            padding: 0.85rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: #FAF9F5;
+        }
+
+        /* ── BROADER CAPABILITIES ── */
+        .behind-section {
+            padding: 5.5rem 0;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .behind-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 900px) {
+            .behind-grid { grid-template-columns: 1fr; }
+        }
+        .behind-card {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 8px;
@@ -160,463 +291,6 @@
             flex-direction: column;
             justify-content: space-between;
             gap: 1.5rem;
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-        .capability-card:hover {
-            border-color: var(--accent-teal);
-        }
-        .capability-num {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--accent-teal);
-            letter-spacing: 0.1em;
-            display: block;
-            margin-bottom: 0.75rem;
-        }
-        .capability-name {
-            font-family: var(--font-serif);
-            font-size: 1.45rem;
-            color: var(--text-primary);
-            margin: 0 0 0.6rem 0;
-            font-weight: 500;
-            line-height: 1.25;
-        }
-        .capability-lead {
-            font-size: 14px;
-            line-height: 1.55;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-        .capability-list {
-            list-style: none;
-            padding: 1.25rem 0 0 0;
-            margin: 0;
-            border-top: 1px solid var(--border-light);
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-        }
-        .capability-list li {
-            font-size: 13.5px;
-            color: var(--text-primary);
-            line-height: 1.45;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .capability-bullet {
-            color: var(--accent-teal);
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        /* ── EDITORIAL SHOWCASE ROWS ── */
-        .hp-editorial-section {
-            padding: 6rem 0;
-            background: var(--bg-panel);
-            border-bottom: 1px solid var(--border-light);
-        }
-        .editorial-row {
-            display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            gap: 4.5rem;
-            align-items: center;
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .editorial-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        .editorial-row.reverse {
-            grid-template-columns: 1fr 1.15fr;
-        }
-        @media (max-width: 960px) {
-            .editorial-row, .editorial-row.reverse {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-                padding: 3rem 0;
-            }
-        }
-        .editorial-media-container {
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-            background: #FFFFFF;
-        }
-        .editorial-media-container img {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-        .capability-badge {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 3px 8px;
-            border-radius: 3px;
-            display: inline-block;
-            margin-right: 8px;
-            background: rgba(15, 118, 110, 0.08);
-            color: var(--accent-teal);
-            border: 1px solid rgba(15, 118, 110, 0.2);
-        }
-        .capability-badge.amber {
-            background: rgba(217, 119, 6, 0.08);
-            color: #B45309;
-            border-color: rgba(217, 119, 6, 0.25);
-        }
-        .capability-badge.indigo {
-            background: rgba(79, 70, 229, 0.08);
-            color: #4338CA;
-            border-color: rgba(79, 70, 229, 0.2);
-        }
-        .editorial-num {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--accent-teal);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        .editorial-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 3.2vw, 2.7rem);
-            color: var(--text-primary);
-            margin: 0 0 0.5rem 0;
-            font-weight: 400;
-            line-height: 1.15;
-        }
-        .editorial-subhead {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .editorial-breakdown {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        .editorial-tag-row {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            font-size: 14px;
-            line-height: 1.55;
-            color: var(--text-secondary);
-        }
-        .editorial-tag-label {
-            font-family: var(--font-mono);
-            font-size: 9.5px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-primary);
-            font-weight: 700;
-            min-width: 65px;
-            flex-shrink: 0;
-        }
-
-        /* ── THE METHOD SECTION ── */
-        .method-section {
-            background: var(--bg-paper);
-            padding: 6rem 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .process-flow-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            position: relative;
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-        @media (max-width: 900px) {
-            .process-flow-container {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .process-flow-container::before {
-                display: none;
-            }
-        }
-        .process-flow-container::before {
-            content: '';
-            position: absolute;
-            top: 24px;
-            left: 8%;
-            right: 8%;
-            height: 1.5px;
-            background: var(--border-dark);
-            z-index: 0;
-            opacity: 0.4;
-        }
-        .process-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .process-node {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--bg-paper);
-            border: 2px solid var(--accent-teal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-        }
-        .process-node span {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--accent-teal);
-        }
-
-        /* ── HOMEPAGE WAYS TO WORK TOGETHER ── */
-        .hp-offers-section {
-            padding: 6rem 0;
-            background: #FFFFFF;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .hp-offers-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-            margin-bottom: 2.5rem;
-        }
-        @media (max-width: 1024px) {
-            .hp-offers-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-        @media (max-width: 640px) {
-            .hp-offers-grid {
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
-            }
-        }
-        .hp-offer-card {
-            background: var(--bg-paper);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 2rem 1.75rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-        }
-        .hp-offer-card:hover {
-            border-color: var(--accent-teal);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(15, 118, 110, 0.05);
-        }
-        .hp-offer-card.featured {
-            background: #FFFFFF;
-            border: 1.5px solid var(--accent-teal);
-        }
-        .hp-offer-badge {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent-teal);
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-        .hp-offer-title {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin: 0 0 0.4rem 0;
-            line-height: 1.25;
-        }
-        .hp-offer-price {
-            font-family: var(--font-mono);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: block;
-        }
-        .hp-offer-desc {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin: 0 0 1.5rem 0;
-            flex-grow: 1;
-        }
-        .hp-offer-cta {
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-primary);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            border-bottom: 1.5px solid var(--text-primary);
-            padding-bottom: 2px;
-            width: fit-content;
-            transition: all 0.15s ease;
-        }
-        .hp-offer-card.featured .hp-offer-cta {
-            color: var(--accent-teal);
-            border-color: var(--accent-teal);
-        }
-        .hp-offer-cta:hover {
-            color: var(--accent-teal);
-            border-color: var(--accent-teal);
-        }
-        .hp-escalation-strip {
-            background: var(--bg-paper);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .hp-escalation-text {
-            font-size: 14px;
-            color: var(--text-primary);
-            line-height: 1.5;
-            margin: 0;
-            max-width: 750px;
-        }
-        .hp-escalation-text strong {
-            font-weight: 600;
-        }
-        .hp-escalation-btn {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-teal);
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .hp-escalation-btn:hover {
-            text-decoration: underline;
-        }
-        .hp-enhancements-note {
-            margin-top: 1.25rem;
-            text-align: center;
-            font-size: 12.5px;
-            color: var(--text-secondary);
-        }
-        .hp-enhancements-note a {
-            color: var(--text-primary);
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-
-        /* ── PRODUCTION PROOF SECTION ── */
-        .hp-proof-section {
-            padding: 6rem 0;
-            background: #FFFFFF;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .hp-proof-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3.5rem;
-        }
-        @media (max-width: 900px) {
-            .hp-proof-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .hp-proof-card {
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            overflow: hidden;
-            background: var(--bg-paper);
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-        }
-        .hp-proof-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-teal);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
-        }
-        .hp-proof-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .hp-proof-card-body {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        /* ── DUAL STUDIO SECTION ── */
-        .hp-dual-section {
-            padding: 6rem 0;
-            background: #10211D;
-            color: #FAF9F5;
-            border-bottom: 1px solid rgba(250,249,245,0.08);
-        }
-        .hp-dual-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-        }
-        @media (max-width: 800px) {
-            .hp-dual-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .hp-dual-panel {
-            background: rgba(250,249,245,0.02);
-            border: 1px solid rgba(250,249,245,0.1);
-            border-radius: 6px;
-            padding: 3rem 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* ── SHORT ABOUT STRIP ── */
-        .hp-about-strip {
-            padding: 4.5rem 0;
-            background: #FAF8F2;
-            border-bottom: 1px solid var(--border-light);
-            text-align: center;
-        }
-
-        /* ── CONTACT SECTION ── */
-        .hp-contact-section {
-            padding: 6rem 0;
-            background: #FFFFFF;
         }
     </style>
 </head>
@@ -632,545 +306,467 @@
                 <span></span>
             </label>
             <div class="nav-links">
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
-                    </div>
-                </details>
-                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/services/" class="nav-link">Websites</a>
+                <a href="/systems/" class="nav-link">Work</a>
+                <a href="/custom/" class="nav-link">Services</a>
                 <a href="/about/" class="nav-link">About</a>
+                <a href="/creative/" class="nav-link">Insights</a>
                 <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <header class="home-hero">
-        <div class="home-hero-art" aria-hidden="true">
-            <img src="/assets/images/homepage_hero.jpg" alt="Context &amp; Muse Prism">
-        </div>
-        <div class="home-hero-overlay"></div>
-        <div class="container home-hero-content">
-            <div class="home-hero-copy">
-                <span class="hero-eyebrow">SYSTEMS THINKING &amp; DIGITAL PRODUCT DESIGN</span>
-                <h1 class="hero-title">
-                    Complex problems,<br>
-                    turned into usable systems.
-                </h1>
-                <p class="hero-subhead">
-                    I design digital products, operational workflows, and conversion-focused web experiences that make complicated information easier to understand—and easier to act on.
-                </p>
-                <div class="btn-group">
-                    <a href="/systems/" class="btn-primary-teal">Explore the Work &rarr;</a>
-                    <a href="/custom/#intake" class="btn-secondary-cream">Start a Project</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <main id="main-content">
-        <!-- ── THREE CAPABILITIES SECTION ── -->
-        <section class="capabilities-section" id="capabilities" aria-label="Capabilities">
-            <div class="container">
-                <div class="capabilities-header">
-                    <span class="capabilities-eyebrow">01 / CAPABILITIES</span>
-                    <h2 class="capabilities-title">Three ways I apply systems thinking.</h2>
-                </div>
 
-                <div class="capabilities-grid">
-                    <!-- Bucket 1: Digital Product Systems -->
-                    <div class="capability-card">
-                        <div>
-                            <span class="capability-num">01</span>
-                            <h3 class="capability-name">Digital Product Systems</h3>
-                            <p class="capability-lead">Structured tools, applications, and evidence-based engines.</p>
-                        </div>
-                        <ul class="capability-list">
-                            <li><span class="capability-bullet">&bull;</span> Behavioral &amp; evidence engines</li>
-                            <li><span class="capability-bullet">&bull;</span> Algorithmic utilities &amp; data tools</li>
-                            <li><span class="capability-bullet">&bull;</span> Custom web &amp; desktop applications</li>
-                        </ul>
-                    </div>
-
-                    <!-- Bucket 2: Business Workflow Systems -->
-                    <div class="capability-card">
-                        <div>
-                            <span class="capability-num">02</span>
-                            <h3 class="capability-name">Business Workflow Systems</h3>
-                            <p class="capability-lead">Intake, quoting, booking, qualification, and client operations.</p>
-                        </div>
-                        <ul class="capability-list">
-                            <li><span class="capability-bullet">&bull;</span> Custom intake &amp; lead qualification</li>
-                            <li><span class="capability-bullet">&bull;</span> Dynamic quote &amp; pricing calculators</li>
-                            <li><span class="capability-bullet">&bull;</span> Client portals &amp; booking funnels</li>
-                        </ul>
-                    </div>
-
-                    <!-- Bucket 3: Web Experience & Conversion -->
-                    <div class="capability-card">
-                        <div>
-                            <span class="capability-num">03</span>
-                            <h3 class="capability-name">Web Experience &amp; Conversion</h3>
-                            <p class="capability-lead">Audits, redesigns, mobile UX, and clearer customer journeys.</p>
-                        </div>
-                        <ul class="capability-list">
-                            <li><span class="capability-bullet">&bull;</span> UX &amp; copywriting friction audits</li>
-                            <li><span class="capability-bullet">&bull;</span> High-speed website redesigns</li>
-                            <li><span class="capability-bullet">&bull;</span> Mobile UX &amp; conversion optimization</li>
-                        </ul>
-                    </div>
-                </div>
+        <!-- 1. HERO -->
+        <header class="home-hero">
+            <div class="home-hero-art" aria-hidden="true">
+                <img src="/assets/images/homepage-prism-wide.webp" alt="Refraction and structural prism artwork">
             </div>
-        </section>
+            <div class="home-hero-overlay" aria-hidden="true"></div>
 
-        <!-- ── FEATURED PROOF (EDITORIAL ROWS) ── -->
-        <section class="hp-editorial-section" id="featured-systems" aria-labelledby="featured-heading">
-            <div class="container">
-                <div style="margin-bottom: 2rem;">
-                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">02 / FEATURED PROOF</span>
-                    <h2 id="featured-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--text-primary); margin: 0; font-weight: 400;">Selected systems in action.</h2>
-                </div>
-
-                <!-- 01 CARTOGRAPHY V1 -->
-                <div class="editorial-row">
-                    <div>
-                        <div style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                            <span class="capability-badge amber">DIGITAL PRODUCT SYSTEMS</span>
-                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">01 // BEHAVIORAL ENGINE</span>
-                        </div>
-                        <h3 class="editorial-title">Cartography V1</h3>
-                        <div class="editorial-subhead">Explainable Behavioral-Pattern &amp; Evidence Engine</div>
-                        
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--text-primary); margin-bottom: 1.5rem;">
-                            An explainable behavioral-pattern engine that turns subjective reflections into structured, evidence-backed patterns without diagnosing the user or treating context-dependent behaviors as inherently good or bad.
-                        </p>
-
-                        <div class="editorial-breakdown">
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Problem:</span>
-                                <span>Subjective self-reflections and personal notes are easily distorted by emotional reaction, clinical labeling, or loss of situational context.</span>
-                            </div>
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Structure:</span>
-                                <span>Maps user moments against observable behavioral patterns, temporal sequences, and neutral state transitions with zero moral framing.</span>
-                            </div>
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Output:</span>
-                                <span>Visual pattern cartography, verifiable recurrence loops, and self-directed operational clarity.</span>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="/creative/self-cartography/" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">Explore Cartography &rarr;</a>
-                            <a href="/creative/how-to-explain-yourself-to-wolves/" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Read the Essay</a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="editorial-media-container">
-                            <img src="/assets/images/self_cartography_mockup.jpg" alt="Cartography behavioral pattern mapping interface" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 02 SIGNAL -->
-                <div class="editorial-row reverse">
-                    <div>
-                        <div class="editorial-media-container">
-                            <img src="/assets/images/signal-priority-view.webp" alt="Signal diagnostic decision support interface" loading="lazy">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                            <span class="capability-badge indigo">BUSINESS WORKFLOW SYSTEMS</span>
-                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">02 // OPERATIONAL INTELLIGENCE</span>
-                        </div>
-                        <h3 class="editorial-title">Signal</h3>
-                        <div class="editorial-subhead">Decision &amp; Diagnostic Intelligence for Restaurant Systems</div>
-                        
-                        <div class="editorial-breakdown">
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Problem:</span>
-                                <span>Operational information arrives scattered across raw POS exports, labor schedules, and manager notes.</span>
-                            </div>
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Structure:</span>
-                                <span>Normalizes transaction patterns, void frequencies, and labor timing against active floor constraints.</span>
-                            </div>
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Output:</span>
-                                <span>Prioritized financial leaks, dollar impact targets, and floor validation scripts.</span>
-                            </div>
-                        </div>
-
-                        <!-- Dataflow Pipeline -->
-                        <div style="padding: 1rem; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; margin-bottom: 1.75rem; font-family: var(--font-mono); font-size: 9.5px; color: var(--accent-teal); letter-spacing: 0.05em; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
-                            <span>RAW EXPORT</span>
-                            <span style="color: var(--border-dark);">&rarr;</span>
-                            <span>NORMALIZE</span>
-                            <span style="color: var(--border-dark);">&rarr;</span>
-                            <span>FINDING</span>
-                            <span style="color: var(--border-dark);">&rarr;</span>
-                            <span>RECOMMENDATION</span>
-                            <span style="color: var(--border-dark);">&rarr;</span>
-                            <span>VALIDATION</span>
-                        </div>
-
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="/signal/" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">Explore Signal &rarr;</a>
-                            <a href="/signal/intake/" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Diagnostic Intake</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 03 GENSORT -->
-                <div class="editorial-row">
-                    <div>
-                        <div style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                            <span class="capability-badge amber">DIGITAL PRODUCT SYSTEMS</span>
-                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">03 // INFORMATION ARCHITECTURE</span>
-                        </div>
-                        <h3 class="editorial-title">GenSort</h3>
-                        <div class="editorial-subhead">Visual Asset Organization &amp; Local Classification Engine</div>
-                        
-                        <div class="editorial-breakdown">
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Problem:</span>
-                                <span>High-volume generation outputs, creative screenshots, and assets get buried in unorganized desktop folders.</span>
-                            </div>
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Structure:</span>
-                                <span>Runs entirely client-side using browser IndexedDB and Web Workers for instant dHash fingerprinting and semantic prompt search.</span>
-                            </div>
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Output:</span>
-                                <span>Navigable project libraries, duplicate cleanup, and export-ready client collections.</span>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="/gensort/" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">Explore GenSort &rarr;</a>
-                            <a href="/cxm_gensort/" target="_blank" rel="noopener" class="btn-secondary-cream" style="font-size: 13px; padding: 0.65rem 1.4rem;">Open Web App &nearr;</a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="editorial-media-container">
-                            <img src="/assets/images/gensort-library.webp" alt="GenSort workspace asset organization interface" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 04 MESSAGE & RECORD ANALYSIS -->
-                <div class="editorial-row reverse">
-                    <div>
-                        <div class="editorial-media-container">
-                            <img src="/assets/images/message-analysis-mockup.png" alt="Message and record analysis review interface" loading="lazy">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                            <span class="capability-badge">EVIDENCE ARCHITECTURE</span>
-                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">04 // TIMELINE RECOVERY</span>
-                        </div>
-                        <h3 class="editorial-title">Message &amp; Record Analysis</h3>
-                        <div class="editorial-subhead">Private Working System · Timeline Recovery &amp; Contradiction Review</div>
-                        
-                        <div class="editorial-breakdown">
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Problem:</span>
-                                <span>Massive message archives hide critical chronological sequences and conflicting factual claims across disparate threads.</span>
-                            </div>
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Structure:</span>
-                                <span>Indexes multi-party communication histories with timestamp verification, statement tagging, and relationship chain mapping.</span>
-                            </div>
-                            <div class="editorial-tag-row">
-                                <span class="editorial-tag-label">Output:</span>
-                                <span>Structured synthetic ledgers built for human investigative review and verifiable fact navigation.</span>
-                            </div>
-                        </div>
-
-                        <a href="/systems/#message-record" class="btn-primary-teal" style="font-size: 13px; padding: 0.65rem 1.4rem;">View System Architecture &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── THE METHOD SECTION (Positioned after featured systems) ── -->
-        <section class="method-section" id="process" aria-label="The Method">
-            <div class="container">
-                <div style="text-align: center;">
-                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Diagnostic Process</span>
-                    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin: 0; font-weight: 400; color: var(--text-primary);">Approach to Complexity</h2>
-                </div>
-                
-                <div class="process-flow-container">
-                    <div class="process-step">
-                        <div class="process-node"><span>01</span></div>
-                        <h3 class="step-name">Identify</h3>
-                        <p class="step-desc">Find the signal inside complexity.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-node"><span>02</span></div>
-                        <h3 class="step-name">Isolate</h3>
-                        <p class="step-desc">Separate what matters from noise.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-node"><span>03</span></div>
-                        <h3 class="step-name">Organize</h3>
-                        <p class="step-desc">Create structure, relationships, hierarchy.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-node"><span>04</span></div>
-                        <h3 class="step-name">Understand</h3>
-                        <p class="step-desc">Reveal patterns, timelines, and meaning.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="process-node"><span>05</span></div>
-                        <h3 class="step-name">Act</h3>
-                        <p class="step-desc">Turn insight into practical decisions.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── WAYS TO WORK TOGETHER (HOMEPAGE PRODUCTIZED FUNNEL) ── -->
-        <section class="hp-offers-section" id="ways-to-work" aria-label="Ways to Work Together">
-            <div class="container">
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
-                    <div>
-                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Ways to Work Together</span>
-                        <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--text-primary); margin: 0; font-weight: 400;">Defined Entry Points. Clear Outcomes.</h2>
-                    </div>
-                    <a href="/services/" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">View Full Services Catalog &rarr;</a>
-                </div>
-
-                <!-- 4 Core Offers Grid -->
-                <div class="hp-offers-grid">
-                    <!-- 01: Quick Launch -->
-                    <div class="hp-offer-card featured">
-                        <div>
-                            <span class="hp-offer-badge">Primary Entry</span>
-                            <h3 class="hp-offer-title">Quick Launch Website</h3>
-                            <span class="hp-offer-price">Starting at $450</span>
-                            <p class="hp-offer-desc">A custom, conversion-focused one-page business website launched without agency overhead.</p>
-                        </div>
-                        <a href="/quick-launch/" class="hp-offer-cta" data-offer="quick_launch" data-track-cta="hp_quick_launch">Start a Quick Launch &rarr;</a>
-                    </div>
-
-                    <!-- 02: Website Diagnostic -->
-                    <div class="hp-offer-card">
-                        <div>
-                            <span class="hp-offer-badge" style="color: var(--text-primary);">Diagnostic Audit</span>
-                            <h3 class="hp-offer-title">Website Diagnostic</h3>
-                            <span class="hp-offer-price">$199</span>
-                            <p class="hp-offer-desc">A focused diagnostic audit identifying why visitors leave, where mobile breaks, and what to fix first.</p>
-                        </div>
-                        <a href="/services/#website-diagnostic" class="hp-offer-cta" data-offer="website_diagnostic" data-track-cta="hp_diagnostic">Audit My Website &rarr;</a>
-                    </div>
-
-                    <!-- 03: Website Rescue -->
-                    <div class="hp-offer-card">
-                        <div>
-                            <span class="hp-offer-badge" style="color: var(--text-primary);">Targeted Fixes</span>
-                            <h3 class="hp-offer-title">Website Rescue</h3>
-                            <span class="hp-offer-price">Starting at $350</span>
-                            <p class="hp-offer-desc">Targeted fixes to confusing layouts, broken mobile views, weak CTAs, and leaky conversion funnels.</p>
-                        </div>
-                        <a href="/services/#website-rescue" class="hp-offer-cta" data-offer="website_rescue" data-track-cta="hp_rescue">Fix My Website &rarr;</a>
-                    </div>
-
-                    <!-- 04: Intake & Booking -->
-                    <div class="hp-offer-card">
-                        <div>
-                            <span class="hp-offer-badge">System Workflow</span>
-                            <h3 class="hp-offer-title">Intake &amp; Booking System</h3>
-                            <span class="hp-offer-price">Starting at $350</span>
-                            <p class="hp-offer-desc">Structured intake forms and automated routing to stop repetitive phone, text, and DM triage.</p>
-                        </div>
-                        <a href="/services/#intake-system" class="hp-offer-cta" data-offer="intake_system" data-track-cta="hp_intake">Build My Intake System &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Escalation Strip -->
-                <div class="hp-escalation-strip">
-                    <p class="hp-escalation-text">
-                        <strong>Need something more complex?</strong> Some businesses don't have a website problem. They have a systems problem. If your workflows, data, or operations need to work together, Context &amp; Muse builds custom systems.
+            <div class="home-hero-content">
+                <div class="home-hero-copy">
+                    <span class="hero-eyebrow">WEBSITES · LOCAL SEO · WORKFLOWS</span>
+                    <h1 class="hero-title">
+                        Websites built to turn attention into action.
+                    </h1>
+                    <p class="hero-subhead">
+                        Custom websites for service businesses, built around leads, local search, and the systems that keep inquiries moving.
                     </p>
-                    <a href="/custom/#intake" class="hp-escalation-btn" data-offer="custom_system" data-track-cta="hp_escalation_custom">Build a Custom System &rarr;</a>
+                    <div class="btn-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="/custom/#intake" class="btn-primary-teal" style="padding: 0.85rem 1.75rem; font-size: 13.5px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Start a Website Project &rarr;</a>
+                        <a href="#audit" class="btn-outline-dark" style="padding: 0.85rem 1.75rem; font-size: 13.5px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Book a $195 Site Audit &rarr;</a>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); margin-top: 1rem; font-weight: 600;">
+                        100% of the $195 audit fee is credited toward any build booked within 30 days.
+                    </div>
+                    <div class="proof-pill-line">
+                        Web design &bull; Local SEO &bull; Lead capture &bull; CMS &bull; Automations
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. THREE PACKAGES SECTION -->
+        <section class="packages-section" id="packages" aria-labelledby="packages-heading">
+            <div class="container">
+                <div style="max-width: 760px;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">01 // PACKAGES</span>
+                    <h2 id="packages-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                        Three practical website packages
+                    </h2>
+                    <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                        Not ten services. Three clear doors designed around how your business grows.
+                    </p>
                 </div>
 
-                <!-- Enhancement Note -->
-                <div class="hp-enhancements-note">
-                    Also available: <a href="/services/#enhancements" data-track-cta="hp_enhancements">AI &amp; Search Visibility · Image &amp; Product Presentation &rarr;</a>
+                <div class="packages-grid">
+                    <!-- Package 1: Launch Site -->
+                    <div class="package-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block;">PACKAGE 01</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); margin: 0.25rem 0 0.5rem; font-weight: 500;">Launch Site</h3>
+                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                                For businesses that need to look legitimate, build trust, and start converting traffic into inquiries.
+                            </p>
+                            <div class="package-price">$1,500 – $2,000</div>
+                            <ul class="package-list">
+                                <li>Custom responsive design</li>
+                                <li>5–7 core pages</li>
+                                <li>Contact &amp; quote capture</li>
+                                <li>Mobile optimization</li>
+                                <li>Basic SEO setup &amp; indexing</li>
+                                <li>Analytics &amp; call tracking setup</li>
+                                <li>Easy client handoff</li>
+                            </ul>
+                        </div>
+                        <a href="/custom/?service=launch-site#intake" class="btn btn-secondary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Launch Site &rarr;</a>
+                    </div>
+
+                    <!-- Package 2: Growth Site -->
+                    <div class="package-card featured">
+                        <span class="package-badge">Most Popular</span>
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block;">PACKAGE 02</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); margin: 0.25rem 0 0.5rem; font-weight: 500;">Growth Site</h3>
+                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                                For established businesses that need the website to aggressively generate qualified inbound leads.
+                            </p>
+                            <div class="package-price">From $3,500</div>
+                            <ul class="package-list">
+                                <li>Everything in Launch Site</li>
+                                <li>Conversion-focused UX architecture</li>
+                                <li>Service-specific landing pages</li>
+                                <li>Local SEO architecture &amp; location pages</li>
+                                <li>Reviews &amp; trust integration</li>
+                                <li>Stronger multi-step quote/intake flow</li>
+                                <li>CMS for direct client editing</li>
+                            </ul>
+                        </div>
+                        <a href="/custom/?service=growth-site#intake" class="btn btn-primary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; background: var(--accent-teal); border: 1px solid var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Growth Site &rarr;</a>
+                    </div>
+
+                    <!-- Package 3: Website + Growth System -->
+                    <div class="package-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block;">PACKAGE 03</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); margin: 0.25rem 0 0.5rem; font-weight: 500;">Website + Growth System</h3>
+                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                                Full lead-generation and operational infrastructure (like the Lone Wolf ecosystem).
+                            </p>
+                            <div class="package-price">From $6,000</div>
+                            <ul class="package-list">
+                                <li>Custom website + full Local SEO ecosystem</li>
+                                <li>CMS/admin editing for all locations</li>
+                                <li>Automated lead routing &amp; dispatching</li>
+                                <li>Instant SMS/email lead notifications</li>
+                                <li>Booking or quote workflow engines</li>
+                                <li>CRM integrations &amp; custom automations</li>
+                                <li>Custom backend functionality</li>
+                            </ul>
+                        </div>
+                        <a href="/custom/?service=growth-system#intake" class="btn btn-secondary" style="text-align: center; text-decoration: none; padding: 0.75rem 1rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px;">Choose Growth System &rarr;</a>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; text-align: center; background: rgba(15, 118, 110, 0.04); border: 1px dashed var(--accent-teal); border-radius: 6px; padding: 1.5rem;">
+                    <p style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-primary); margin: 0 0 0.5rem 0;">
+                        Need something unusual? Good. That’s where I’m useful.
+                    </p>
+                    <a href="/custom/#intake" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none;">Discuss a Custom Build &rarr;</a>
                 </div>
             </div>
         </section>
 
-        <!-- ── PRODUCTION PROOF (CLIENT BUILDS) ── -->
-        <section class="hp-proof-section" aria-labelledby="proof-heading">
+        <!-- 2.5 SITE AUDIT ENTRYWAY -->
+        <section class="packages-section" id="audit" style="background: #FFFFFF; border-bottom: 1px solid var(--border-light); padding: 5rem 0;">
+            <div class="container" style="max-width: 900px;">
+                <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-left: 4px solid var(--accent-teal); border-radius: 8px; padding: 2.5rem 2.25rem; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; align-items: center;">
+                    <div>
+                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.4rem;">LOW-RISK STARTING POINT</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                            Conversion Leak Audit — $195
+                        </h3>
+                        <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Not ready for a full build? I review your homepage clarity, CTA placement, mobile UX, trust signals, service-page structure, lead capture, and local SEO opportunities.
+                        </p>
+                        <p style="font-size: 13.5px; line-height: 1.5; color: var(--text-primary); font-weight: 600; margin: 0;">
+                            You receive prioritized findings, annotated screenshots, a "fix now / fix later" breakdown, and recommended next steps.
+                        </p>
+                    </div>
+
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; text-align: center;">
+                        <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">$195</div>
+                        <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+                            100% Credited Toward Any Build Booked Within 30 Days
+                        </div>
+                        <a href="/custom/?service=audit#intake" class="btn-primary-teal" style="display: block; width: 100%; box-sizing: border-box; text-align: center; padding: 0.75rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; text-decoration: none;">Book a $195 Audit &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. BUILD ONTO IT (ADD-ONS) -->
+        <section class="addons-section" aria-labelledby="addons-heading">
             <div class="container">
                 <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
                     <div>
-                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Applied Builds</span>
-                        <h2 id="proof-heading" style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--text-primary); margin: 0; font-weight: 400;">Production Implementations</h2>
-                    </div>
-                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">View All Client Case Studies &rarr;</a>
-                </div>
-
-                <div class="hp-proof-grid">
-                    <!-- INNcontrol -->
-                    <a href="/systems/client-builds/#inncontrol" class="hp-proof-card">
-                        <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol HVAC scoping application" loading="lazy">
-                        <div class="hp-proof-card-body">
-                            <span class="capability-badge indigo" style="margin-bottom: 0.6rem;">BUSINESS WORKFLOW SYSTEMS</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">INNcontrol Coils</h3>
-                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Interactive unit mapper and on-site estimation ledger replacing paper HVAC surveys.</p>
-                        </div>
-                    </a>
-
-                    <!-- D2 Auto Detail -->
-                    <a href="/systems/client-builds/#d2" class="hp-proof-card">
-                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail portal" loading="lazy">
-                        <div class="hp-proof-card-body">
-                            <span class="capability-badge" style="margin-bottom: 0.6rem;">WEB EXPERIENCE &amp; CONVERSION</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">D2 Auto Detail</h3>
-                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Vehicle qualification funnel with automated ad generation and media streaming player.</p>
-                        </div>
-                    </a>
-
-                    <!-- EDR Party Rentals -->
-                    <a href="/case-studies/edr-party-rentals/" class="hp-proof-card">
-                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory system" loading="lazy">
-                        <div class="hp-proof-card-body">
-                            <span class="capability-badge indigo" style="margin-bottom: 0.6rem;">BUSINESS WORKFLOW SYSTEMS</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.5rem 0; font-weight: 500;">EDR Party Rentals</h3>
-                            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0;">Making a complicated rental business simple to book with real-time inventory and delivery qualification.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── TWO BRANCHES SECTION ── -->
-        <section class="hp-dual-section" aria-label="Applied Systems and Creative Practice">
-            <div class="container">
-                <div style="text-align: center; margin-bottom: 3.5rem;">
-                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.75rem;">The Studio</span>
-                    <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: #FAF9F5; margin: 0; font-weight: 400;">Two branches. One pattern of thinking.</h2>
-                </div>
-                <div class="hp-dual-grid">
-                    <!-- Panel 1: Applied Systems -->
-                    <div class="hp-dual-panel">
-                        <div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: #2DD4BF; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.25rem;">01 &bull; Operation &amp; Structure</span>
-                            <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2rem); color: #FAF9F5; line-height: 1.2; margin-bottom: 1rem; font-weight: 400;">Applied Systems</h3>
-                            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(250, 249, 245, 0.65); margin-bottom: 2rem;">
-                                Operational tools. Decision intelligence. Diagnostic dashboards, database design, and info structures built for decision clarity: Signal, GenSort, Message Analysis, and commercial client systems.
-                            </p>
-                        </div>
-                        <a href="/systems/" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; width: fit-content; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Explore Applied Systems &rarr;</a>
-                    </div>
-
-                    <!-- Panel 2: Creative Practice -->
-                    <div class="hp-dual-panel">
-                        <div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: #EF4444; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 1.25rem;">02 &bull; Language &amp; Form</span>
-                            <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.2vw, 2rem); color: #FAF9F5; line-height: 1.2; margin-bottom: 1rem; font-weight: 400;">Creative Practice</h3>
-                            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(250, 249, 245, 0.65); margin-bottom: 2rem;">
-                                Literary systems. Symbolic mapping. Narrative projects exploring translation, neurodivergent logic, and communication boundaries: How to Explain Yourself to Wolves, Self Cartography, and MadeOfReasons.
-                            </p>
-                        </div>
-                        <a href="/creative/" class="btn-magnetic" style="border: 1px solid #EF4444; color: #FAF9F5; width: fit-content; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Explore Creative Practice &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── SHORT ABOUT STRIP ── -->
-        <section class="hp-about-strip">
-            <div class="container" style="max-width: 780px;">
-                <p style="font-family: var(--font-serif); font-size: clamp(1.2rem, 2.2vw, 1.5rem); color: var(--text-primary); line-height: 1.55; margin: 0; font-style: italic;">
-                    "Systems built by someone who learned operations where errors have immediate consequences."
-                </p>
-                <div style="margin-top: 1.25rem;">
-                    <a href="/about/" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Read Background &amp; Approach &rarr;</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── CONTACT SECTION ── -->
-        <section class="hp-contact-section" id="contact" aria-labelledby="contact-heading">
-            <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
-                    <!-- Column 1: Info -->
-                    <div>
-                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Contact &bull; Evaluation</span>
-                        <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 400; color: var(--text-primary);">
-                            Bring me the mess.
+                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">02 // MODULAR EXPANSIONS</span>
+                        <h2 id="addons-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.6rem); margin: 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                            Build onto it.
                         </h2>
-                        <blockquote style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.5rem; margin-bottom: 2rem; line-height: 1.55; margin-left: 0;">
-                            Send the workflow, information problem, or unfinished system you are trying to make sense of. I’ll identify where clarity is breaking down and what a practical next step could look like.
-                        </blockquote>
-                        <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem;">
-                            Whether you are dealing with broken spreadsheet hierarchies, conflicting timelines, POS discrepancies, or a product that feels structurally chaotic—we can map a path to order.
-                        </p>
-                        <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
-                            Email inquiries: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: bold; text-decoration: none;">jayme@contextmuse.com</a>
-                        </div>
                     </div>
+                    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">
+                        Add-ons from $250 &bull; Custom integrations quoted individually
+                    </div>
+                </div>
 
-                    <!-- Column 2: Form -->
-                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
-                        <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
-                            <input type="text" name="_gotcha" style="display:none">
-                            
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Name</label>
-                                <input type="text" id="form-name" name="name" required placeholder="Your name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Email Address</label>
-                                <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
-                            </div>
-
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you trying to make clearer?</label>
-                                <textarea id="form-message" name="message" rows="5" required placeholder="Describe the current workflow, information problem, or operational bottleneck..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
-                            </div>
-
-                            <button type="submit" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.85rem 1.5rem; font-family: var(--font-mono); font-size: 12px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s; text-align: center;">Start the Conversation &rarr;</button>
-                        </form>
+                <div class="addons-grid">
+                    <div class="addon-chip">
+                        <div class="addon-title">Local SEO Pages</div>
+                        <p class="addon-desc">Target individual cities, counties, and high-value service areas.</p>
+                    </div>
+                    <div class="addon-chip">
+                        <div class="addon-title">Editable CMS</div>
+                        <p class="addon-desc">Change pricing, photos, FAQs, and content yourself without code.</p>
+                    </div>
+                    <div class="addon-chip">
+                        <div class="addon-title">Lead Alerts</div>
+                        <p class="addon-desc">Get notified instantly by text or email when an inquiry comes in.</p>
+                    </div>
+                    <div class="addon-chip">
+                        <div class="addon-title">Lead Routing</div>
+                        <p class="addon-desc">Automatically send different leads to the right crew or manager.</p>
+                    </div>
+                    <div class="addon-chip">
+                        <div class="addon-title">Booking &amp; Scheduling</div>
+                        <p class="addon-desc">Turn qualified website traffic directly into confirmed calendar appointments.</p>
+                    </div>
+                    <div class="addon-chip">
+                        <div class="addon-title">Quote Systems</div>
+                        <p class="addon-desc">Collect the exact dimensions and details needed before calling back.</p>
+                    </div>
+                    <div class="addon-chip">
+                        <div class="addon-title">CRM Integration</div>
+                        <p class="addon-desc">Push leads directly into Jobber, ServiceTitan, HubSpot, or custom databases.</p>
+                    </div>
+                    <div class="addon-chip">
+                        <div class="addon-title">Automations</div>
+                        <p class="addon-desc">Follow-ups, customer confirmations, reminders, and internal dispatch workflows.</p>
+                    </div>
+                    <div class="addon-chip">
+                        <div class="addon-title">Analytics &amp; Tracking</div>
+                        <p class="addon-desc">Know precisely where phone calls, form fills, and revenue originate.</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- 4. FEATURED BUILD (LONE WOLF DUMPSTERS) -->
+        <section class="featured-build-section" id="featured-build" aria-labelledby="build-heading">
+            <div class="container">
+                <span class="eyebrow" style="color: #2DD4BF; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.5rem;">FEATURED BUILD</span>
+                <h2 id="build-heading" style="font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.2rem); margin: 0 0 0.5rem 0; font-weight: 400; color: #FAF9F5;">
+                    Lone Wolf Dumpsters
+                </h2>
+                <p style="font-size: 1.15rem; color: rgba(250, 249, 245, 0.75); margin: 0; max-width: 650px;">
+                    From website to lead-generation infrastructure.
+                </p>
+
+                <div class="build-grid">
+                    <div>
+                        <p style="font-size: 15px; line-height: 1.65; color: rgba(250, 249, 245, 0.85); margin-bottom: 1.5rem;">
+                            Engineered a high-performing digital platform that connects regional search demand to automated dispatcher queues across multiple territories.
+                        </p>
+                        
+                        <div class="build-features">
+                            <div class="build-feature-item">✓ 40+ Local SEO Pages</div>
+                            <div class="build-feature-item">✓ Responsive Custom Site</div>
+                            <div class="build-feature-item">✓ Structured Quote Capture</div>
+                            <div class="build-feature-item">✓ Service-Area Architecture</div>
+                            <div class="build-feature-item">✓ Admin CMS Editing</div>
+                            <div class="build-feature-item">✓ Instant Lead Notifications</div>
+                            <div class="build-feature-item">✓ Routing &amp; Automation</div>
+                            <div class="build-feature-item">✓ Fast Mobile Checkout</div>
+                        </div>
+
+                        <div style="margin: 2rem 0; font-family: var(--font-mono); font-size: 12px; color: #2DD4BF;">
+                            Comparable independent agency build: $12K–$20K+
+                        </div>
+
+                        <a href="/custom/?service=growth-system#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.75rem; border-radius: 4px; text-decoration: none; display: inline-block;">Build Something Like This &rarr;</a>
+                    </div>
+
+                    <div style="background: rgba(250,249,245,0.03); border: 1px solid rgba(250,249,245,0.12); border-radius: 8px; padding: 2rem; text-align: center;">
+                        <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(250,249,245,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">System Blueprint</div>
+                        <div style="font-family: var(--font-serif); font-size: 1.4rem; color: #FAF9F5; margin-bottom: 1.5rem;">Regional Search &bull; Custom Intake &bull; Automated Dispatch</div>
+                        <div style="border-top: 1px solid rgba(250,249,245,0.1); padding-top: 1.5rem; font-size: 13.5px; color: rgba(250,249,245,0.7); line-height: 1.6; text-align: left;">
+                            "I build websites that work harder than websites. That means solving customer hesitation on screen while eliminating admin chaos behind the scenes."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. BROADER CAPABILITIES (BEHIND THE WEBSITE) -->
+        <section class="behind-section" aria-labelledby="behind-heading">
+            <div class="container">
+                <div style="max-width: 750px;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">03 // BEYOND THE SURFACE</span>
+                    <h2 id="behind-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                        I also build the things behind the website.
+                    </h2>
+                    <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                        Sometimes the website isn't actually the problem.
+                    </p>
+                </div>
+
+                <div class="behind-grid">
+                    <!-- Operational Systems -->
+                    <div class="behind-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">OPERATIONS</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">Operational Systems</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                                Intake engines, custom workflows, multi-channel routing, and internal management tools.
+                            </p>
+                            <div style="margin-top: 1rem; font-size: 12.5px; color: var(--accent-teal); font-family: var(--font-mono);">
+                                Applied: Signal Operational Intelligence
+                            </div>
+                        </div>
+                        <a href="/signal/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-primary); text-decoration: none;">Explore Signal &rarr;</a>
+                    </div>
+
+                    <!-- Custom Tools -->
+                    <div class="behind-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">SOFTWARE</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">Custom Tools</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                                Lightweight desktop software, purpose-built interfaces, and client-side processing utilities.
+                            </p>
+                            <div style="margin-top: 1rem; font-size: 12.5px; color: var(--accent-teal); font-family: var(--font-mono);">
+                                Applied: GenSort Image Organizer
+                            </div>
+                        </div>
+                        <a href="/gensort/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-primary); text-decoration: none;">Explore GenSort &rarr;</a>
+                    </div>
+
+                    <!-- Experience Design -->
+                    <div class="behind-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.5rem;">TOPOLOGICAL UX</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0 0 0.75rem; font-weight: 500;">Experience Design</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                                Complex information and behavioral dynamics made usable, clear, and memorable.
+                            </p>
+                            <div style="margin-top: 1rem; font-size: 12.5px; color: var(--accent-teal); font-family: var(--font-mono);">
+                                Applied: Cartography Topological Engine
+                            </div>
+                        </div>
+                        <a href="/cartography/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-primary); text-decoration: none;">Explore Cartography &rarr;</a>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2.5rem; text-align: center;">
+                    <a href="/custom/#intake" class="btn-primary-teal" style="padding: 0.8rem 2rem; font-size: 13px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Tell Me What's Not Working &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. WHY CONTEXT & MUSE -->
+        <section style="background: var(--bg-panel); padding: 5.5rem 0; border-bottom: 1px solid var(--border-light);">
+            <div class="container" style="max-width: 840px;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">04 // PHILOSOPHY</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1.5rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                    Systems thinking without the agency fog
+                </h2>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2.5rem;">
+                    I started in high-pressure service and restaurant operations, where broken processes become visible very quickly. That experience still shapes how I work: understand the real environment, find the friction, and build something people can actually use.
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem;">
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">01 Context</strong>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Understand the actual business constraints before writing a single line of code.</p>
+                    </div>
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">02 Function</strong>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Lead capture, speed, and clarity come before aesthetic decoration.</p>
+                    </div>
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
+                        <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">03 Ownership</strong>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Full code, account, and asset handover upon launch. No forced retainers.</p>
+                    </div>
+                </div>
+
+                <div style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-primary); text-align: center; border-top: 1px solid var(--border-light); padding-top: 2rem;">
+                    &ldquo;No mystery retainers. No hostage situation with your own website.&rdquo;
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. PROCESS -->
+        <section style="background: var(--bg-paper); padding: 5.5rem 0; border-bottom: 1px solid var(--border-light);">
+            <div class="container" style="max-width: 840px;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">05 // PROCESS</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.6rem); margin: 0 0 2.5rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                    From messy to workable
+                </h2>
+
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div style="display: flex; gap: 1.5rem; align-items: baseline; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--accent-teal);">01</span>
+                        <div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.35rem; font-weight: 500;">Map the Friction</h3>
+                            <p style="font-size: 14.5px; color: var(--text-secondary); margin: 0; line-height: 1.55;">Tell me what customers or staff are trying to accomplish and where the process breaks.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1.5rem; align-items: baseline; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--accent-teal);">02</span>
+                        <div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.35rem; font-weight: 500;">Define the Right Build</h3>
+                            <p style="font-size: 14.5px; color: var(--text-secondary); margin: 0; line-height: 1.55;">I turn the problem into a clear scope, pathway, and practical set of deliverables.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1.5rem; align-items: baseline;">
+                        <span style="font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--accent-teal);">03</span>
+                        <div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 0.35rem; font-weight: 500;">Build and Hand Off</h3>
+                            <p style="font-size: 14.5px; color: var(--text-secondary); margin: 0; line-height: 1.55;">I create, test, document, and hand over a system the business can actually own and use.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FINAL INTAKE CTA -->
+        <section class="hp-contact-section" id="intake" aria-labelledby="contact-heading" style="background: var(--bg-panel); border-top: 1px solid var(--border-light); padding: 5.5rem 0;">
+            <div class="container" style="max-width: 780px;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.75rem;">06 // START A PROJECT</span>
+                    <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin: 0 0 1rem 0; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
+                        Bring me the mess.
+                    </h2>
+                    <p style="font-size: 1.1rem; line-height: 1.65; color: var(--text-secondary); margin: 0 auto; max-width: 640px;">
+                        Tell me what customers are trying to do, where the process breaks, and what you want working instead.
+                    </p>
+                </div>
+
+                <div class="form-wrapper" style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 2.5rem; border-radius: 8px;">
+                    <form id="audit-form" action="https://formspree.io/f/xoqydgvw" method="POST" novalidate>
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="source" value="homepage_commercial_intake">
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                            <div class="form-group">
+                                <label for="user-name" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Your Name</label>
+                                <input type="text" id="user-name" name="name" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
+                                <span class="error-msg" id="name-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please enter your name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="user-email" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Your Email</label>
+                                <input type="email" id="user-email" name="email" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
+                                <span class="error-msg" id="email-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please enter a valid email address.</span>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                            <div class="form-group">
+                                <label for="user-url" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Website / Business URL</label>
+                                <input type="text" id="user-url" name="website" placeholder="e.g. yourbusiness.com" class="form-input" style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-package" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Selected Package</label>
+                                <select id="user-package" name="package" class="form-input" style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
+                                    <option value="growth-site">Growth Site (From $3,500)</option>
+                                    <option value="launch-site">Launch Site ($1,500 – $2,000)</option>
+                                    <option value="growth-system">Website + Growth System (From $6,000)</option>
+                                    <option value="custom">Custom / Operational Tool</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1.75rem;">
+                            <label for="user-message" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">What is not working or needs to be built?</label>
+                            <textarea id="user-message" name="message" class="form-input" rows="4" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);resize:vertical;" placeholder="Describe what you want fixed, built, or automated..."></textarea>
+                            <span class="error-msg" id="message-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please describe your project.</span>
+                        </div>
+
+                        <button type="submit" id="form-submit-btn" class="btn btn-primary" style="background:var(--accent-teal);border-color:var(--accent-teal);cursor:pointer;width:100%;font-size:13.5px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.05em;color:#FAF9F5;padding:0.9rem 1.5rem;border-radius:4px;font-weight:700;">Start a Project &rarr;</button>
+                    </form>
+
+                    <div id="form-success" style="display:none;background:rgba(77,124,15,0.08);border:1px solid var(--accent-teal);padding:1.25rem;border-radius:4px;margin-top:1rem;color:var(--accent-teal);font-weight:bold;text-align:center;">
+                        Thank you. Your inquiry has been received. I will review your details and respond within 24 hours.
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- ── FOOTER ── -->
+    <!-- Footer -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
@@ -1182,7 +778,7 @@
             </div>
             <div class="footer-copy">
                 <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Websites &amp; Packages</a>
                     <span style="color: var(--border-light);">|</span>
                     <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
                     <span style="color: var(--border-light);">|</span>
@@ -1198,6 +794,67 @@
             </div>
         </div>
     </footer>
+
     <script src="/assets/js/nav.js" defer></script>
+    <script>
+        // Homepage form validation & AJAX submission
+        const form = document.getElementById('audit-form');
+        const successDiv = document.getElementById('form-success');
+
+        if (form) {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                let isValid = true;
+
+                const name     = document.getElementById('user-name');
+                const nameErr  = document.getElementById('name-error');
+                if (!name.value.trim()) { nameErr.style.display = 'block'; isValid = false; }
+                else { nameErr.style.display = 'none'; }
+
+                const email    = document.getElementById('user-email');
+                const emailErr = document.getElementById('email-error');
+                const emailRe  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.value.trim() || !emailRe.test(email.value.trim())) { emailErr.style.display = 'block'; isValid = false; }
+                else { emailErr.style.display = 'none'; }
+
+                const message  = document.getElementById('user-message');
+                const msgErr   = document.getElementById('message-error');
+                if (!message.value.trim()) { msgErr.style.display = 'block'; isValid = false; }
+                else { msgErr.style.display = 'none'; }
+
+                if (isValid) {
+                    const btn = document.getElementById('form-submit-btn');
+                    btn.disabled = true;
+                    btn.textContent = 'Sending…';
+
+                    const website = document.getElementById('user-url') ? document.getElementById('user-url').value.trim() : '';
+                    const pkg = document.getElementById('user-package') ? document.getElementById('user-package').value : '';
+
+                    fetch('https://formspree.io/f/xoqydgvw', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            name: name.value.trim(),
+                            email: email.value.trim(),
+                            website: website,
+                            package: pkg,
+                            message: message.value.trim()
+                        })
+                    })
+                    .then(res => {
+                        if (res.ok) {
+                            form.style.display = 'none';
+                            successDiv.style.display = 'block';
+                        } else { throw new Error(); }
+                    })
+                    .catch(() => {
+                        btn.disabled = false;
+                        btn.textContent = 'Start a Project';
+                        alert('Submission error. Please check your connection or email directly.');
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>

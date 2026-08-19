@@ -73,9 +73,9 @@
                 summary.addEventListener('click', (e) => {
                     if (desktopQuery.matches) {
                         e.preventDefault();
-                        // If it's already open via hover, ensure other dropdowns are closed
+                        const wasOpen = dropdown.open;
                         closeAllDropdowns(dropdown);
-                        dropdown.open = true;
+                        dropdown.open = !wasOpen;
                     }
                 });
             }

@@ -494,14 +494,16 @@
             for (let i = 1; i <= 3; i++) {
                 const tab = document.getElementById('tab-' + i);
                 const panel = document.getElementById('panel-' + i);
-                if (i === num) {
-                    tab.classList.add('active');
-                    tab.setAttribute('aria-selected', 'true');
-                    panel.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                    tab.setAttribute('aria-selected', 'false');
-                    panel.classList.remove('active');
+                if (tab && panel) {
+                    if (i === num) {
+                        tab.classList.add('active');
+                        tab.setAttribute('aria-selected', 'true');
+                        panel.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                        tab.setAttribute('aria-selected', 'false');
+                        panel.classList.remove('active');
+                    }
                 }
             }
         }
@@ -509,10 +511,57 @@
         function handleFileSelect(input) {
             const count = input.files.length;
             const text = document.getElementById('dropzone-text');
-            if (count > 0) {
+            if (count > 0 && text) {
                 text.textContent = count === 1 ? input.files[0].name : count + ' files selected';
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const tier = params.get('tier');
+            const door = params.get('door');
+
+            if (door) {
+                const dNum = parseInt(door, 10);
+                if (dNum >= 1 && dNum <= 3) selectBranch(dNum);
+            }
+
+            if (tier) {
+                const tierNames = {
+                    'snapshot': 'Signal Snapshot ($149 Founding Rate / $195 Standard)',
+                    'diagnostic': 'Signal Diagnostic ($595 One-Time)',
+                    'ongoing': 'Ongoing Review ($195 / month)'
+                };
+                const tierLabel = tierNames[tier.toLowerCase()] || tier;
+
+                // Add selected_tier to forms
+                document.querySelectorAll('form').forEach(f => {
+                    let tInput = f.querySelector('input[name="selected_tier"]');
+                    if (!tInput) {
+                        tInput = document.createElement('input');
+                        tInput.type = 'hidden';
+                        tInput.name = 'selected_tier';
+                        f.appendChild(tInput);
+                    }
+                    tInput.value = tier;
+                });
+
+                // Display selected tier notification banner
+                const container = document.querySelector('.intake-container');
+                if (container) {
+                    const badge = document.createElement('div');
+                    badge.style.cssText = 'background: rgba(15, 118, 110, 0.08); border: 1px solid var(--accent-teal); border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-family: var(--font-sans);';
+                    badge.innerHTML = `
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 2px;">Selected Engagement Tier</span>
+                            <strong style="color: var(--text-primary); font-size: 14.5px;">${tierLabel}</strong>
+                        </div>
+                        <a href="/signal/#pricing" style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); text-decoration: underline;">Change Tier</a>
+                    `;
+                    container.insertBefore(badge, container.firstChild);
+                }
+            }
+        });
     </script>
 </body>
 </html>

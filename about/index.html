@@ -432,27 +432,30 @@
                 </p>
 
                 <div class="form-wrapper" style="background:var(--bg-panel);border:1px solid var(--border-light);padding:2.5rem;border-radius:6px;">
-                    <form id="audit-form" novalidate>
+                    <form id="audit-form" action="https://formspree.io/f/xoqydgvw" method="POST" novalidate>
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="source" value="about_contact_form">
+
                         <div class="form-group" style="margin-bottom:1.5rem;">
                             <label for="user-name" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Your Name</label>
-                            <input type="text" id="user-name" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
+                            <input type="text" id="user-name" name="name" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
                             <span class="error-msg" id="name-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please enter your name.</span>
                         </div>
                         <div class="form-group" style="margin-bottom:1.5rem;">
                             <label for="user-email" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Your Email</label>
-                            <input type="email" id="user-email" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
+                            <input type="email" id="user-email" name="email" class="form-input" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);">
                             <span class="error-msg" id="email-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please enter a valid email address.</span>
                         </div>
                         <div class="form-group" style="margin-bottom:2rem;">
                             <label for="user-message" class="form-label" style="display:block;font-family:var(--font-mono);font-size:11px;margin-bottom:0.5rem;text-transform:uppercase;color:var(--text-secondary);letter-spacing:0.06em;">Message / Problem Description</label>
-                            <textarea id="user-message" class="form-input" rows="5" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);resize:vertical;"></textarea>
+                            <textarea id="user-message" name="message" class="form-input" rows="5" required style="width:100%;box-sizing:border-box;padding:0.75rem;border:1px solid var(--border-light);border-radius:4px;font-family:var(--font-sans);background:var(--bg-paper);resize:vertical;"></textarea>
                             <span class="error-msg" id="message-error" style="color:var(--accent-red);font-size:12px;margin-top:0.25rem;display:none;">Please describe the problem or workflow.</span>
                         </div>
-                        <button type="submit" id="form-submit-btn" class="btn btn-primary" style="background:var(--accent-teal);border-color:var(--accent-teal);cursor:pointer;width:100%;font-size:13px;letter-spacing:0.05em;">Start a Conversation</button>
+                        <button type="submit" id="form-submit-btn" class="btn btn-primary" style="background:var(--accent-teal);border-color:var(--accent-teal);cursor:pointer;width:100%;font-size:13px;letter-spacing:0.05em;color:#FAF9F5;padding:0.85rem 1.5rem;border-radius:4px;">Start a Conversation &rarr;</button>
                     </form>
 
                     <div id="form-success" style="display:none;background:rgba(77,124,15,0.08);border:1px solid var(--accent-teal);padding:1rem;border-radius:4px;margin-top:1rem;color:var(--accent-teal);font-weight:bold;text-align:center;">
-                        Thank you. Your message has been recorded.
+                        Thank you. Your message has been sent. I will review it and reply directly.
                     </div>
 
                     <p style="font-family:var(--font-sans);font-size:11px;color:var(--text-secondary);margin-top:1.5rem;line-height:1.4;text-align:center;">

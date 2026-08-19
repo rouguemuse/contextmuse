@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Sample Diagnostic Report | Context &amp; Muse</title>
+    <meta name="description" content="View an anonymized sample of a Signal operational intelligence diagnostic brief, showing priority findings, financial exposure estimates, and floor validation plans.">
+    <link rel="canonical" href="https://www.contextmuse.com/signal/sample-reports/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Signal Sample Diagnostic Report | Context &amp; Muse">
+    <meta property="og:description" content="View an anonymized sample of a Signal operational intelligence diagnostic brief, showing priority findings, financial exposure estimates, and floor validation plans.">
+    <meta property="og:url" content="https://www.contextmuse.com/signal/sample-reports/">
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Signal Sample Diagnostic Report | Context &amp; Muse">
+    <meta name="twitter:description" content="View an anonymized sample of a Signal operational intelligence diagnostic brief, showing priority findings, financial exposure estimates, and floor validation plans.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.1">
+    
+    <style>
+        :root {
+            --bg-body: #FAF9F5;
+            --text-primary: #10211D;
+            --text-secondary: #4A5568;
+            --border-light: rgba(16, 33, 29, 0.12);
+            --accent-teal: #0F766E;
+            --accent-teal-bright: #2DD4BF;
+            --accent-red: #A83A32;
+        }
+
+        .report-hero {
+            padding: 6.5rem 0 3.5rem;
+            background: #10211D;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .report-badge {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: #2DD4BF;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+            background: rgba(45, 212, 191, 0.12);
+            padding: 4px 10px;
+            border-radius: 3px;
+        }
+        .report-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            color: #FAF9F5;
+        }
+        .report-lead {
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: rgba(250, 249, 245, 0.75);
+            max-width: 760px;
+            margin-bottom: 2rem;
+        }
+
+        .report-section {
+            padding: 5rem 0;
+            background: var(--bg-body);
+        }
+        .report-container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .report-paper {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: clamp(2rem, 5vw, 3.5rem);
+            box-shadow: 0 10px 30px rgba(16, 33, 29, 0.04);
+            margin-bottom: 3.5rem;
+        }
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid var(--text-primary);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .paper-id {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        
+        .finding-card {
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--accent-teal);
+            background: #FAF9F5;
+            border-radius: 4px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+        }
+        .finding-card.critical {
+            border-left-color: var(--accent-red);
+        }
+        .finding-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+            font-weight: 500;
+        }
+        .finding-meta {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .finding-body {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+        
+        .exposure-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+        @media (max-width: 650px) {
+            .exposure-grid { grid-template-columns: 1fr; }
+        }
+        .exposure-box {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.25rem;
+        }
+        .exposure-num {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0.25rem 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;"><img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0;display:block;"><span>Context &amp; Muse</span></a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" style="display: none;">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/" class="nav-dropdown-link">Applied Systems</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partnerships</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/custom/#intake" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <header class="report-hero">
+            <div class="container">
+                <div style="margin-bottom: 1.5rem;">
+                    <a href="/signal/" style="font-family: var(--font-mono); font-size: 11px; text-decoration: none; color: #2DD4BF; font-weight: bold;">&larr; Back to Signal Overview</a>
+                </div>
+                <span class="report-badge">SYNTHETIC OPERATIONAL BRIEF</span>
+                <h1 class="report-title">Signal Sample Diagnostic</h1>
+                <p class="report-lead">
+                    An anonymized demonstration of the structured findings, financial exposure models, and floor-validation checklists delivered in a Signal Diagnostic engagement.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/signal/intake/?tier=diagnostic" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Book a Signal Diagnostic ($595) &rarr;</a>
+                    <a href="/signal/#pricing" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">View Pricing Ladder</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="report-section">
+            <div class="container report-container">
+                <div class="report-paper">
+                    <div class="paper-header">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.25rem;">SIGNAL INTELLIGENCE AUDIT</span>
+                            <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin: 0; color: var(--text-primary); font-weight: 500;">Anonymized Hospitality Group</h2>
+                        </div>
+                        <div class="paper-id">
+                            <div>Audit ID: SIG-DEMO-2026</div>
+                            <div>Dataset: 90 Days POS &bull; 14,280 Checks</div>
+                        </div>
+                    </div>
+
+                    <!-- Executive Summary -->
+                    <div style="margin-bottom: 2.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">Executive Summary</span>
+                        <p style="font-size: 15px; line-height: 1.65; color: var(--text-primary); margin: 0;">
+                            Analysis of 90 days of operational check transactions identified severe throughput compression during peak dinner shifts (18:30–20:30 Friday/Saturday). High ticket times trigger cascading modifier omissions and manager discount overrides. Resolving physical line bottlenecks and POS modifier bundling represents the highest ROI operational opportunity.
+                        </p>
+                    </div>
+
+                    <!-- Exposure Estimates -->
+                    <div class="exposure-grid">
+                        <div class="exposure-box">
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Estimated Monthly Leak</span>
+                            <div class="exposure-num" style="color: var(--accent-red);">$1,840 – $3,200</div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Primarily uncaptured modifiers &amp; peak table turn delays</span>
+                        </div>
+                        <div class="exposure-box">
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Primary Risk Area</span>
+                            <div class="exposure-num" style="font-size: 1.4rem; color: var(--accent-teal);">Peak Hour Throughput</div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Avg 11.4 min check settlement friction during peak rushes</span>
+                        </div>
+                    </div>
+
+                    <!-- Priority Finding 1 -->
+                    <div class="finding-card critical">
+                        <div class="finding-meta">
+                            <span>Finding 01 // CRITICAL</span>
+                            <span>Category: Menu Modifier Omissions</span>
+                            <span>Est. Exposure: $840/mo</span>
+                        </div>
+                        <h3 class="finding-title">Unenforced Customization Modifiers</h3>
+                        <div class="finding-body">
+                            <p style="margin-bottom: 0.75rem;">
+                                POS logs indicate 14.2% of high-volume specialty entrees contained freeform kitchen note modifications (e.g. "add bacon", "sub gluten-free crust") without corresponding chargeable button modifiers.
+                            </p>
+                            <strong>Floor Validation Plan:</strong>
+                            <p style="margin-top: 0.25rem; font-size: 13.5px; color: var(--text-secondary);">
+                                1. Audit line tickets at the pass during Friday dinner service.<br>
+                                2. Restructure POS menu categories with nested mandatory modifier prompts.<br>
+                                3. Track server-level modifier capture over a 14-day validation window.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Priority Finding 2 -->
+                    <div class="finding-card">
+                        <div class="finding-meta">
+                            <span>Finding 02 // MODERATE</span>
+                            <span>Category: Table Turn Friction</span>
+                            <span>Est. Exposure: $1,400/mo</span>
+                        </div>
+                        <h3 class="finding-title">Payment Settlement Bottleneck</h3>
+                        <div class="finding-body">
+                            <p style="margin-bottom: 0.75rem;">
+                                Timestamp analysis between "Check Printed" and "Check Closed" averaged 9.8 minutes between 19:00 and 21:00, compared to 3.2 minutes during lunch service. The delay reduces turn capacity by approximately 1.2 turns per peak station.
+                            </p>
+                            <strong>Recommended Action:</strong>
+                            <p style="margin-top: 0.25rem; font-size: 13.5px; color: var(--text-secondary);">
+                                Implement pay-at-table QR receipts or dedicated portable handheld terminals for floor staff during peak service windows.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- CTA Box inside Paper -->
+                    <div style="background: rgba(15, 118, 110, 0.05); border: 1px solid var(--accent-teal); border-radius: 6px; padding: 2rem; text-align: center; margin-top: 3rem;">
+                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; color: var(--text-primary); font-weight: 500;">Ready to uncover what’s leaking in your operations?</h3>
+                        <p style="font-size: 14px; color: var(--text-secondary); max-width: 550px; margin: 0 auto 1.5rem;">
+                            Send your raw POS exports or scheduling logs. Receive a complete prioritized diagnostic audit and actionable floor validation roadmap.
+                        </p>
+                        <a href="/signal/intake/?tier=diagnostic" class="btn-magnetic" style="background: var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.8rem 1.75rem; border-radius: 4px; text-decoration: none; display: inline-block;">Start Your Signal Diagnostic ($595) &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="/services/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Ways to Work Together</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Client Builds</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/proof-of-work/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Proof of Work</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Agency Partners</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/privacy/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Privacy Policy</a>
+                    <span style="color: var(--border-light);">|</span>
+                    <a href="/terms/" style="font-family: var(--font-mono); font-size: 10px; text-decoration: none; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+</body>
+</html>

@@ -51,6 +51,8 @@ html {
     scroll-behavior: smooth;
     background-color: var(--bg-paper);
     scroll-padding-top: calc(var(--nav-height) + 24px);
+    overflow-x: hidden;
+    width: 100%;
 }
 
 section[id] {
@@ -70,6 +72,8 @@ body {
     line-height: 1.6;           /* Required base line-height */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .container {
