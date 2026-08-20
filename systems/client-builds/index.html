@@ -3,40 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Builds · Applied Systems & Production Software | Context &amp; Muse</title>
-    <meta name="description" content="Production systems built to solve real business constraints: INNcontrol HVAC scoping, D2 Auto Detail acquisition infrastructure, and EDR Party Rentals inventory engine.">
+    <title>Client Builds · Production Case Studies &amp; Systems | Context &amp; Muse</title>
+    <meta name="description" content="Deep-dive production case studies: Lone Wolf Dumpsters multi-market lead engine, INNcontrol Coils HVAC estimation system, and EDR Party Rentals inventory engine.">
     <link rel="canonical" href="https://www.contextmuse.com/systems/client-builds/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Client Builds · Applied Systems & Production Software | Context &amp; Muse">
-    <meta property="og:description" content="Production systems built to solve real business constraints: INNcontrol HVAC scoping, D2 Auto Detail acquisition infrastructure, and EDR Party Rentals inventory engine.">
+    <meta property="og:title" content="Client Builds · Production Case Studies &amp; Systems | Context &amp; Muse">
+    <meta property="og:description" content="Production systems built to solve real business constraints: Lone Wolf Dumpsters, INNcontrol Coils, and EDR Party Rentals.">
     <meta property="og:url" content="https://www.contextmuse.com/systems/client-builds/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Client Builds · Applied Systems & Production Software | Context &amp; Muse">
-    <meta name="twitter:description" content="Production systems built to solve real business constraints: INNcontrol HVAC scoping, D2 Auto Detail acquisition infrastructure, and EDR Party Rentals inventory engine.">
+    <meta name="twitter:title" content="Client Builds · Production Case Studies &amp; Systems | Context &amp; Muse">
+    <meta name="twitter:description" content="Production systems built to solve real business constraints: Lone Wolf Dumpsters, INNcontrol Coils, and EDR Party Rentals.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.1">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.6">
     
     <style>
-        :root {
-            --bg-body: #FAF9F5;
-            --text-primary: #10211D;
-            --text-secondary: #4A5568;
-            --border-light: rgba(16, 33, 29, 0.12);
-            --accent-teal: #0F766E;
-        }
-        
         .client-builds-hero {
-            padding: 7rem 0 4rem;
+            padding: 130px 0 70px;
             background: #10211D;
             color: #FAF9F5;
             position: relative;
@@ -49,38 +42,38 @@
             color: #2DD4BF;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
             display: block;
             margin-bottom: 1rem;
         }
         .hero-title {
             font-family: var(--font-serif);
-            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
             font-weight: 400;
-            line-height: 1.15;
+            line-height: 1.1;
             color: #FAF9F5 !important;
             letter-spacing: -0.02em;
             margin-bottom: 1.25rem;
-            max-width: 820px;
+            max-width: 860px;
         }
         .hero-sub {
             font-family: var(--font-sans);
             font-size: 1.15rem;
             line-height: 1.65;
             color: rgba(250, 249, 245, 0.75);
-            max-width: 680px;
+            max-width: 720px;
             margin-bottom: 2rem;
         }
         
         .case-study-section {
-            padding: 5rem 0;
+            padding: 6rem 0;
             border-bottom: 1px solid var(--border-light);
         }
         .case-study-grid {
             display: grid;
-            grid-template-columns: 1.1fr 1fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 4rem;
-            align-items: center;
+            align-items: start;
         }
         @media (max-width: 960px) {
             .case-study-grid {
@@ -101,6 +94,7 @@
             padding: 10px 14px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 12px;
             border-bottom: 1px solid rgba(250, 249, 245, 0.08);
         }
@@ -109,8 +103,8 @@
             gap: 6px;
         }
         .dot {
-            width: 9px;
-            height: 9px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
         }
         .dot-red { background: #EF4444; }
@@ -119,11 +113,10 @@
         .browser-url {
             font-family: var(--font-mono);
             font-size: 10px;
-            color: rgba(250, 249, 245, 0.5);
+            color: rgba(250, 249, 245, 0.6);
             background: rgba(0, 0, 0, 0.25);
             padding: 3px 12px;
             border-radius: 12px;
-            flex: 1;
         }
         .browser-img {
             display: block;
@@ -133,9 +126,9 @@
         
         .study-meta {
             font-family: var(--font-mono);
-            font-size: 10.5px;
+            font-size: 11px;
             color: var(--accent-teal);
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             font-weight: 700;
             margin-bottom: 0.75rem;
@@ -143,64 +136,146 @@
         }
         .study-title {
             font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+            font-size: clamp(2rem, 3.2vw, 2.8rem);
             color: var(--text-primary);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            font-weight: 400;
+            margin-bottom: 0.75rem;
+            line-height: 1.15;
+            font-weight: 500;
         }
         .study-tagline {
             font-family: var(--font-sans);
-            font-size: 15px;
+            font-size: 16px;
+            line-height: 1.6;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            line-height: 1.6;
         }
-        
-        .constraint-card {
+
+        /* ── WORKFLOW & ARCHITECTURE DIAGRAM PANELS ── */
+        .deepdive-block {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
         }
-        .constraint-label {
+        .deepdive-label {
             font-family: var(--font-mono);
             font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .deepdive-heading {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin: 0 0 0.75rem 0;
+            font-weight: 500;
+        }
+        .deepdive-text {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0 0 1rem 0;
+        }
+
+        /* Diagram Box */
+        .flow-diagram {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+        }
+        @media (max-width: 640px) {
+            .flow-diagram {
+                grid-template-columns: 1fr;
+            }
+        }
+        .flow-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .flow-col-title {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: var(--accent-teal);
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-            display: block;
+            margin-bottom: 0.25rem;
         }
-        .constraint-text {
-            font-family: var(--font-sans);
-            font-size: 13.5px;
-            line-height: 1.6;
-            color: var(--text-primary);
-            margin: 0;
-        }
+        .flow-col-title.before { color: #A31D1D; }
+        .flow-col-title.after { color: #0F766E; }
         
+        .flow-step-item {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 0.6rem 0.8rem;
+            font-size: 12.5px;
+            line-height: 1.45;
+            color: var(--text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+        .flow-step-item .flow-num {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-secondary);
+            min-width: 16px;
+        }
+
+        /* Testimonial Quote in Case Study */
+        .study-quote-card {
+            background: rgba(15, 118, 110, 0.04);
+            border-left: 2.5px solid var(--accent-teal);
+            border-radius: 0 4px 4px 0;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .study-quote-text {
+            font-family: var(--font-serif);
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--text-primary);
+            font-style: italic;
+            margin: 0 0 0.5rem 0;
+        }
+        .study-quote-author {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
         .btn-live {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: var(--text-primary);
             color: #FAF9F5;
+            padding: 0.75rem 1.4rem;
             font-family: var(--font-mono);
             font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            font-weight: 700;
-            padding: 0.75rem 1.5rem;
             border-radius: 4px;
             text-decoration: none;
-            margin-top: 1.5rem;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
         }
         .btn-live:hover {
             background: var(--accent-teal);
+            color: #FAF9F5;
         }
     </style>
 </head>
@@ -251,54 +326,137 @@
         <!-- Hero -->
         <header class="client-builds-hero">
             <div class="container">
-                <span class="hero-eyebrow">Production Implementations</span>
+                <span class="hero-eyebrow">PRODUCTION CASE STUDIES &bull; APPLIED SYSTEMS</span>
                 <h1 class="hero-title">Systems that had to work outside the portfolio.</h1>
                 <p class="hero-sub">
-                    Web applications, customer intake pipelines, inventory blockouts, and field management systems built to model real-world business constraints.
+                    In-depth technical and operational breakdowns of customer-facing websites, multi-market SEO landing page networks, field estimation apps, and inventory reservation flows.
                 </p>
             </div>
         </header>
 
-        <!-- Case Study 0: Lone Wolf Dumpsters -->
-        <section class="case-study-section" id="lonewolf" style="background: #FCFCF9;">
+        <!-- ==========================================================================
+             CASE STUDY 01: LONE WOLF DUMPSTERS (DEEP DIVE)
+             ========================================================================== -->
+        <section class="case-study-section" id="lonewolf" style="background: var(--bg-paper);">
             <div class="container">
                 <div class="case-study-grid">
                     <div>
-                        <span class="study-meta">Case Study 01 · Local Search &amp; Commercial Lead System</span>
+                        <span class="study-meta">Case Study 01 &bull; Live Client Build</span>
                         <h2 class="study-title">Lone Wolf Dumpsters</h2>
                         <p class="study-tagline">
-                            Multi-market waste management and roll-off dumpster website engineered around location-based search demand, customer segmentation, and automated quote routing.
+                            Multi-market waste management platform engineered around local search demand, contractor vs. homeowner quote triage, and automated dispatch routing.
                         </p>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">Business Problem</span>
-                            <p class="constraint-text">
-                                Local dumpster rental companies lose qualified residential and commercial leads when service areas are unclear, pricing structures are hidden, and customers have to play phone tag for quotes.
+
+                        <!-- The Friction & Problem -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">01 // THE OPERATIONAL PROBLEM</span>
+                            <h3 class="deepdive-heading">Vague service boundaries &amp; endless phone tag.</h3>
+                            <p class="deepdive-text">
+                                Local roll-off dumpster rental is a high-velocity, logistics-intensive business. Lone Wolf was losing qualified commercial and residential inquiries because prospective clients couldn't tell if their specific zip code was serviced, pricing tiers were hidden, and all quotes required manual telephone callbacks during high-traffic driving hours.
                             </p>
                         </div>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">System Built</span>
-                            <p class="constraint-text">
-                                Engineered a scalable local SEO infrastructure with 40+ dedicated city landing pages, interactive DFW territory coverage maps, segmented contractor vs. residential quote builders, and instant dispatch notifications.
-                            </p>
+
+                        <!-- Before vs. After Lead Flow Diagram -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">02 // WORKFLOW ARCHITECTURE</span>
+                            <h3 class="deepdive-heading">Before vs. After Lead Flow</h3>
+                            
+                            <div class="flow-diagram">
+                                <div class="flow-column">
+                                    <span class="flow-col-title before">Legacy Workflow (Friction)</span>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">1.</span>
+                                        <span>Customer searches generic "dumpster rental near me".</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">2.</span>
+                                        <span>Fills out generic 3-field contact form with no container size.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">3.</span>
+                                        <span>Dispatcher attempts phone callback 2 hours later during transit.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">4.</span>
+                                        <span>Customer already rented from a competitor who provided instant clarity.</span>
+                                    </div>
+                                </div>
+
+                                <div class="flow-column">
+                                    <span class="flow-col-title after">Context &amp; Muse System</span>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">1.</span>
+                                        <span>Customer lands on exact municipal page (e.g. Plano Dumpster Rental).</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">2.</span>
+                                        <span>Interactive DFW territory check validates delivery radius instantly.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">3.</span>
+                                        <span>Step-by-step triage captures dimensions, debris type &amp; delivery date.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">4.</span>
+                                        <span>Dispatcher receives structured drop sheet via SMS/email; books on spot.</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">Operational Value</span>
-                            <p class="constraint-text">
-                                Ranks across multiple target municipalities, captures structured waste hauling specifications on first contact, and routes qualified leads directly to regional dispatch queues.
+
+                        <!-- Local SEO Breakdown -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">03 // LOCAL SEO &amp; SERVICE-AREA ARCHITECTURE</span>
+                            <h3 class="deepdive-heading">40+ Municipal Landing Page Network</h3>
+                            <p class="deepdive-text">
+                                Engineered a scalable service-area directory structure covering over 40 distinct municipalities across the Dallas-Fort Worth metroplex (Dallas, Fort Worth, Arlington, Plano, Garland, Irving, Frisco, McKinney, Denton, etc.).
                             </p>
+                            <ul style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); line-height: 1.7; padding-left: 1.25rem; margin: 0;">
+                                <li><strong>Schema.org Structured Data:</strong> LocalBusiness, WasteManagementService, and geo-polygon coordinates embedded on every city node.</li>
+                                <li><strong>Territory Mapping:</strong> Interactive radius calculation answering "Do you deliver to my zip code?" without calling dispatch.</li>
+                                <li><strong>Direct Client CMS:</strong> Client can add new regional service zones, update container dimensions, and alter base pricing without code deployments.</li>
+                            </ul>
                         </div>
-                        
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.5rem;">
-                            <a href="https://www.lonewolfdumpsters.com" target="_blank" rel="noopener" class="btn-live" style="margin-top: 0;">Visit Live Website &rarr;</a>
-                            <a href="/custom/?ref=lonewolf#intake" class="btn-live" style="background: transparent; border: 1px solid var(--text-primary); color: var(--text-primary); margin-top: 0;">Build Similar System &rarr;</a>
+
+                        <!-- Quote Triage Logic -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">04 // QUOTE TRIAGE ENGINE</span>
+                            <h3 class="deepdive-heading">Segmented Customer Intake</h3>
+                            <p class="deepdive-text">
+                                Commercial contractors and residential homeowners have completely different buying requirements. The quote engine branches dynamically:
+                            </p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+                                <div style="background: var(--bg-panel); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-light);">
+                                    <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.35rem;">Commercial Contractor Path</strong>
+                                    <p style="font-size: 12.5px; margin: 0; color: var(--text-secondary); line-height: 1.5;">Multi-box scheduling, job site PO numbers, recurring swaps, and direct invoice routing.</p>
+                                </div>
+                                <div style="background: var(--bg-panel); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-light);">
+                                    <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.35rem;">Residential Homeowner Path</strong>
+                                    <p style="font-size: 12.5px; margin: 0; color: var(--text-secondary); line-height: 1.5;">Driveway placement rules, single-drop scheduling, weight limit clarity, and instant flat pricing.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Feedback Quote -->
+                        <div class="study-quote-card">
+                            <span style="font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; color: var(--accent-teal); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 0.35rem;">CLIENT FEEDBACK</span>
+                            <p class="study-quote-text">
+                                “Context &amp; Muse didn't just build a clean website; they structured our entire service area setup and quote intake so we stop playing phone tag and start landing booked jobs straight from local search.”
+                            </p>
+                            <div class="study-quote-author">
+                                <strong>Wayne</strong> &bull; Founder, Lone Wolf Dumpsters
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.75rem;">
+                            <a href="https://www.lonewolfdumpsters.com" target="_blank" rel="noopener" class="btn-live">Visit Live Website &rarr;</a>
+                            <a href="/systems/" class="btn-live" style="background: transparent; border: 1px solid var(--text-primary); color: var(--text-primary);">Scope Similar System &rarr;</a>
                         </div>
                     </div>
                     
                     <div>
-                        <div class="browser-mockup">
+                        <!-- Sticky Browser Mockup -->
+                        <div class="browser-mockup" style="position: sticky; top: 100px;">
                             <div class="browser-bar">
                                 <div class="browser-dots">
                                     <span class="dot dot-red"></span>
@@ -307,14 +465,16 @@
                                 </div>
                                 <span class="browser-url">lonewolfdumpsters.com</span>
                             </div>
-                            <div style="background: #142420; padding: 3rem 2rem; color: #FAF9F5; text-align: center;">
-                                <span style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 3px;">Production Build</span>
+                            <div style="background: #142420; padding: 3rem 2.25rem; color: #FAF9F5; text-align: center;">
+                                <span style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 3px;">Live Client Build</span>
                                 <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: #FAF9F5; margin: 1rem 0 0.5rem;">Lone Wolf Dumpsters</h3>
-                                <p style="font-size: 13.5px; color: rgba(250,249,245,0.75); margin-bottom: 1.5rem;">DFW Roll-Off Dumpster &amp; Waste Solutions</p>
-                                <div style="display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: center; font-family: var(--font-mono); font-size: 11px; color: #2DD4BF;">
-                                    <span>• 40+ City Pages</span>
-                                    <span>• Territory Logic</span>
-                                    <span>• Instant Triage</span>
+                                <p style="font-size: 13.5px; color: rgba(250,249,245,0.75); margin-bottom: 1.75rem;">DFW Roll-Off Dumpster &amp; Waste Management Infrastructure</p>
+                                <div style="display: flex; flex-direction: column; gap: 0.6rem; text-align: left; font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; background: rgba(0,0,0,0.25); padding: 1.25rem; border-radius: 4px;">
+                                    <div>&bull; 40+ Municipal SEO City Pages</div>
+                                    <div>&bull; Contractor vs Homeowner Triage</div>
+                                    <div>&bull; Interactive DFW Radius Verification</div>
+                                    <div>&bull; Instant SMS/Email Dispatch Routing</div>
+                                    <div>&bull; Direct Client CMS for Area Expansion</div>
                                 </div>
                             </div>
                         </div>
@@ -323,43 +483,96 @@
             </div>
         </section>
 
-        <!-- Case Study 1: INNcontrol Coils -->
-        <section class="case-study-section" id="inncontrol">
+
+        <!-- ==========================================================================
+             CASE STUDY 02: INNCONTROL COILS (DEEP DIVE)
+             ========================================================================== -->
+        <section class="case-study-section" id="inncontrol" style="background: #FFFFFF;">
             <div class="container">
                 <div class="case-study-grid">
                     <div>
-                        <span class="study-meta">Case Study 02 · Field Service &amp; Estimation</span>
+                        <span class="study-meta">Case Study 02 &bull; Production Architecture</span>
                         <h2 class="study-title">INNcontrol Coils</h2>
                         <p class="study-tagline">
-                            Commercial HVAC refurbishing website paired with property-wide unit mapping and repair scoping software.
+                            Commercial HVAC refurbishing web platform paired with responsive floorplan equipment mapping and instant proposal estimation software.
                         </p>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">Business Problem</span>
-                            <p class="constraint-text">
-                                Commercial HVAC coil refurbishing services deal with hidden, hard-to-access equipment across massive multi-floor properties. Quoting, unit identification, and repair logging were fragmented across paper checklists and scattered photos, stalling bid proposals.
+
+                        <!-- The Friction & Problem -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">01 // THE OPERATIONAL PROBLEM</span>
+                            <h3 class="deepdive-heading">Paper clipboard surveys across 500-room hotel properties.</h3>
+                            <p class="deepdive-text">
+                                Commercial HVAC coil restoration across large commercial properties (hotels, hospital wings, corporate campuses) involves hundreds of individual fan coil units (FCUs) and air handling units (AHUs). Technicians conducted physical walk-throughs using paper clipboards, hand-written notes, and unlinked smartphone camera rolls—taking days to consolidate into formal bids and resulting in frequent pricing errors.
                             </p>
                         </div>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">System Built</span>
-                            <p class="constraint-text">
-                                Engineered an on-site responsive visual floorplan mapper enabling field technicians to plot exact unit locations, tag defect severity, attach diagnostic photos, and generate instant standardized repair ledgers.
-                            </p>
+
+                        <!-- Before vs. After Workflow Diagram -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">02 // WORKFLOW ARCHITECTURE</span>
+                            <h3 class="deepdive-heading">Field Survey Transformation</h3>
+                            
+                            <div class="flow-diagram">
+                                <div class="flow-column">
+                                    <span class="flow-col-title before">Legacy Clipboard Method</span>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">1.</span>
+                                        <span>Tech writes unit numbers and fin damage on paper survey.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">2.</span>
+                                        <span>Takes dozens of photos on phone; lose track of room alignment.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">3.</span>
+                                        <span>Office manager spends 4–6 days re-typing notes into Excel.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">4.</span>
+                                        <span>Client receives abstract invoice without visual evidence.</span>
+                                    </div>
+                                </div>
+
+                                <div class="flow-column">
+                                    <span class="flow-col-title after">INNcontrol Web Engine</span>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">1.</span>
+                                        <span>Tech taps exact room location on responsive floorplan canvas.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">2.</span>
+                                        <span>Selects damage severity &amp; attaches photo directly to unit record.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">3.</span>
+                                        <span>System computes labor hours and material costs automatically.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">4.</span>
+                                        <span>Exports verified client ledger with floorplans on site.</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">Operational Value</span>
-                            <p class="constraint-text">
-                                Reduced estimation turnaround from days to hours, eliminated manual data entry errors, and gave commercial clients an unassailable visual ledger that converts bids into signed contracts.
-                            </p>
+
+                        <!-- Core Architectural Components -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">03 // CORE ENGINE COMPONENTS</span>
+                            <h3 class="deepdive-heading">Floorplan Mapper &amp; Parametric Ledger</h3>
+                            <ul style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); line-height: 1.7; padding-left: 1.25rem; margin: 0;">
+                                <li><strong>Interactive 2D Floorplan Canvas:</strong> Plot unit pins by coordinate on architectural layout SVGs, color-coded by defect level (Functional, Moderate Deterioration, Critical Failure).</li>
+                                <li><strong>Parametric Calculation Engine:</strong> Multiplies CFM ratings, coil dimensions, and fin density against labor-rate lookup tables.</li>
+                                <li><strong>Client Verification Ledger:</strong> Produces unassailable visual audit reports that give commercial property managers complete transparency, speeding contract approval.</li>
+                            </ul>
                         </div>
-                        
-                        <a href="https://www.inncontrolcoils.com" target="_blank" rel="noopener" class="btn-live">Visit Live Application &rarr;</a>
+
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.75rem;">
+                            <a href="/systems/" class="btn-live">Explore Custom Operational Systems &rarr;</a>
+                        </div>
                     </div>
                     
                     <div>
-                        <div class="browser-mockup">
+                        <!-- Sticky Browser Mockup -->
+                        <div class="browser-mockup" style="position: sticky; top: 100px;">
                             <div class="browser-bar">
                                 <div class="browser-dots">
                                     <span class="dot dot-red"></span>
@@ -375,97 +588,97 @@
             </div>
         </section>
 
-        <!-- Case Study 2: D2 Auto Detail -->
-        <section class="case-study-section" id="d2" style="background: #FAF8F2;">
-            <div class="container">
-                <div class="case-study-grid">
-                    <div style="order: 2;">
-                        <div class="browser-mockup">
-                            <div class="browser-bar">
-                                <div class="browser-dots">
-                                    <span class="dot dot-red"></span>
-                                    <span class="dot dot-yellow"></span>
-                                    <span class="dot dot-green"></span>
-                                </div>
-                                <span class="browser-url">d2autodetail.com</span>
-                            </div>
-                            <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail customer acquisition and media portal" class="browser-img">
-                        </div>
-                    </div>
-                    
-                    <div style="order: 1;">
-                        <span class="study-meta">Case Study 03 · Customer Acquisition &amp; Content</span>
-                        <h2 class="study-title">D2 Auto Detail</h2>
-                        <p class="study-tagline">
-                            High-end automotive acquisition portal connecting storefront booking tiers with localized marketing generation and video streaming.
-                        </p>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">Business Problem</span>
-                            <p class="constraint-text">
-                                Premium auto detailing requires complex vehicle qualification and multi-tiered service quoting. Generic booking plugins detached appointment scheduling from local ad campaigns and proof-of-work video content.
-                            </p>
-                        </div>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">System Built</span>
-                            <p class="constraint-text">
-                                Built an integrated operations platform featuring vehicle condition intake, automated local advertisement generation, content publishing pipelines, and a custom D2TV streaming media player.
-                            </p>
-                        </div>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">Operational Value</span>
-                            <p class="constraint-text">
-                                Unified lead intake, appointment routing, and localized content marketing into a single custom dashboard, cutting customer acquisition cost while lifting average ticket size.
-                            </p>
-                        </div>
-                        
-                        <a href="https://www.d2autodetail.com" target="_blank" rel="noopener" class="btn-live">Visit Live Application &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Case Study 3: EDR Party Rentals -->
-        <section class="case-study-section" id="edr">
+        <!-- ==========================================================================
+             CASE STUDY 03: EDR PARTY RENTALS (DEEP DIVE)
+             ========================================================================== -->
+        <section class="case-study-section" id="edr" style="background: var(--bg-paper);">
             <div class="container">
                 <div class="case-study-grid">
                     <div>
-                        <span class="study-meta">Case Study 04 · Inventory &amp; Reservation Flow</span>
+                        <span class="study-meta">Case Study 03 &bull; Client System</span>
                         <h2 class="study-title">EDR Party Rentals</h2>
                         <p class="study-tagline">
-                            Inventory-aware event rental website with real-time serial number stock reservation and bilingual dispatch routing.
+                            Inventory-aware bilingual reservation system with serial-item calendar lockouts, delivery tier qualification, and automated warehouse pack sheets.
                         </p>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">Business Problem</span>
-                            <p class="constraint-text">
-                                Event rental companies manage finite, serial-numbered physical inventory (custom arches, inflatables, luxury furniture). Standard eCommerce platforms permit double-booking the same item on identical dates, causing catastrophic logistics failures.
+
+                        <!-- The Friction & Problem -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">01 // THE OPERATIONAL PROBLEM</span>
+                            <h3 class="deepdive-heading">Double-booking finite physical assets &amp; delivery zone confusion.</h3>
+                            <p class="deepdive-text">
+                                Party and luxury event rentals manage unique, serial-numbered physical inventory (custom floral backdrops, bounce houses, marquee letters). Generic e-commerce storefronts allow two customers to book the exact same physical asset on the same weekend, creating severe logistics crises. In addition, customers outside the operational delivery radius frequently completed orders that had to be manually refunded.
                             </p>
                         </div>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">System Built</span>
-                            <p class="constraint-text">
-                                Implemented a custom calendar-aware reservation engine that locks specific serial items against requested delivery dates during checkout, backed by automated English/Spanish localization and dispatch schedule generation.
-                            </p>
+
+                        <!-- Before vs. After Workflow Diagram -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">02 // WORKFLOW ARCHITECTURE</span>
+                            <h3 class="deepdive-heading">Inventory &amp; Reservation Triage</h3>
+                            
+                            <div class="flow-diagram">
+                                <div class="flow-column">
+                                    <span class="flow-col-title before">Legacy Workflow (Double-Booking Risk)</span>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">1.</span>
+                                        <span>Customer browses static catalog and submits email inquiry.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">2.</span>
+                                        <span>Staff manually checks physical whiteboard inventory calendar.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">3.</span>
+                                        <span>Delivery address turns out to be outside serviceable delivery zone.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">4.</span>
+                                        <span>Staff calls back to cancel or decline; customer leaves poor review.</span>
+                                    </div>
+                                </div>
+
+                                <div class="flow-column">
+                                    <span class="flow-col-title after">Context &amp; Muse Reservation Flow</span>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">1.</span>
+                                        <span>Customer inputs event date; system filters unavailable serial items.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">2.</span>
+                                        <span>Delivery radius validator checks venue zip code before package selection.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">3.</span>
+                                        <span>Bilingual Spanish/English interface guides item add-ons and deposit.</span>
+                                    </div>
+                                    <div class="flow-step-item">
+                                        <span class="flow-num">4.</span>
+                                        <span>Generates clean warehouse pull sheet with delivery timeline.</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="constraint-card">
-                            <span class="constraint-label">Designed Operational Effect</span>
-                            <p class="constraint-text">
-                                Designed to answer key customer questions about inventory packages, delivery tiers, and pricing before booking, producing better-prepared inquiries and an organized operational handoff.
-                            </p>
+
+                        <!-- Key System Features -->
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">03 // INVENTORY &amp; LOGISTICS ENGINE</span>
+                            <h3 class="deepdive-heading">Bilingual State &amp; Asset Lockouts</h3>
+                            <ul style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); line-height: 1.7; padding-left: 1.25rem; margin: 0;">
+                                <li><strong>Real-Time Serial Lockout:</strong> Holds specific inventory serial numbers during checkout window to prevent simultaneous reservation conflicts.</li>
+                                <li><strong>Delivery Tier Calculator:</strong> Automatically groups venues into Standard, Extended, or Out-of-Area delivery tiers based on mileage.</li>
+                                <li><strong>Bilingual Spanish/English Flow:</strong> Persistent language toggling that maintains selected items, cart state, and custom date selections seamlessly.</li>
+                            </ul>
                         </div>
-                        
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.5rem;">
-                            <a href="/case-studies/edr-party-rentals/" class="btn-live" style="margin-top: 0;">Explore System Architecture &rarr;</a>
+
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.75rem;">
+                            <a href="/case-studies/edr-party-rentals/" class="btn-live">View Detailed Case Study &rarr;</a>
+                            <a href="/systems/" class="btn-live" style="background: transparent; border: 1px solid var(--text-primary); color: var(--text-primary);">Scope Custom System &rarr;</a>
                         </div>
                     </div>
                     
                     <div>
-                        <div class="browser-mockup">
+                        <!-- Sticky Browser Mockup -->
+                        <div class="browser-mockup" style="position: sticky; top: 100px;">
                             <div class="browser-bar">
                                 <div class="browser-dots">
                                     <span class="dot dot-red"></span>
@@ -481,15 +694,71 @@
             </div>
         </section>
 
-        <!-- Scoping Bridge -->
-        <section style="padding: 5rem 0; background: #10211D; color: #FAF9F5; text-align: center;">
+
+        <!-- ==========================================================================
+             CASE STUDY 04: D2 AUTO DETAIL
+             ========================================================================== -->
+        <section class="case-study-section" id="d2" style="background: #FFFFFF;">
             <div class="container">
-                <span style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 1rem;">Work With Context &amp; Muse</span>
+                <div class="case-study-grid">
+                    <div>
+                        <span class="study-meta">Case Study 04 &bull; Service Concept</span>
+                        <h2 class="study-title">D2 Auto Detail</h2>
+                        <p class="study-tagline">
+                            High-end automotive acquisition portal connecting multi-tiered vehicle qualification with localized media streaming.
+                        </p>
+
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">THE OPERATIONAL PROBLEM</span>
+                            <h3 class="deepdive-heading">Complex vehicle condition pricing and disconnected booking.</h3>
+                            <p class="deepdive-text">
+                                Premium automotive detailing (paint correction, ceramic coatings, interior restoration) requires precise vehicle condition assessment before quoting. Standard booking calendars failed to capture paint defect depth or vehicle size, resulting in on-site scope discrepancies and customer friction.
+                            </p>
+                        </div>
+
+                        <div class="deepdive-block">
+                            <span class="deepdive-label">THE SYSTEM BUILT</span>
+                            <h3 class="deepdive-heading">Condition Triage &amp; Proof-of-Work Portal</h3>
+                            <p class="deepdive-text">
+                                Engineered a structured intake flow that guides car owners through paint condition assessment, package tier comparison, and automated appointment scheduling, paired with custom video proof-of-work streaming.
+                            </p>
+                        </div>
+
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.75rem;">
+                            <a href="/systems/" class="btn-live">Explore Custom Websites &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="browser-mockup" style="position: sticky; top: 100px;">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <span class="browser-url">d2autodetail.com</span>
+                            </div>
+                            <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail customer acquisition and media portal" class="browser-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Scoping Bridge -->
+        <section style="padding: 5.5rem 0; background: #10211D; color: #FAF9F5; text-align: center;">
+            <div class="container">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 1rem;">WORK WITH CONTEXT &amp; MUSE</span>
                 <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; margin-bottom: 1.25rem;">Have a system that needs to work?</h2>
-                <p style="font-family: var(--font-sans); font-size: 1.1rem; color: rgba(250, 249, 245, 0.7); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
-                    Whether you need a full operational application, a high-converting customer portal, or custom workflow software.
+                <p style="font-family: var(--font-sans); font-size: 1.1rem; color: rgba(250, 249, 245, 0.7); max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.6;">
+                    Whether you need a custom website, high-converting customer intake pipeline, multi-market SEO infrastructure, or custom workflow software.
                 </p>
-                <a href="/custom/#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.8rem; border-radius: 4px; text-decoration: none; display: inline-block;">Start a Project &rarr;</a>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/custom/#intake" class="btn-magnetic" style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.8rem; border-radius: 4px; text-decoration: none; display: inline-block;">Start a Project &rarr;</a>
+                    <a href="/custom/?service=audit#intake" style="border: 1px solid rgba(250,249,245,0.4); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.8rem; border-radius: 4px; text-decoration: none; display: inline-block;">Book a $195 Audit &rarr;</a>
+                </div>
             </div>
         </section>
     </main>
