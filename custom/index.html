@@ -24,19 +24,19 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.6">
 
     <style>
         .product-hero {
             padding: 140px 0 80px;
-            background: var(--bg-ink, #090a0f);
+            background: #10211D;
             color: #FAF9F5;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
         }
         .product-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 4rem;
             align-items: center;
         }
@@ -52,11 +52,11 @@
             gap: 6px;
             font-family: var(--font-mono);
             font-size: 10px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             background: rgba(45, 212, 191, 0.15);
-            color: var(--accent-teal, #2dd4bf);
+            color: #2DD4BF;
             padding: 4px 10px;
             border-radius: 4px;
             margin-top: 1rem;
@@ -64,45 +64,30 @@
         .offerings-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin: 4rem 0;
+            gap: 2rem;
+            margin: 3.5rem 0;
         }
         @media(max-width: 768px) {
             .offerings-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
         }
         .offering-card {
             background: #ffffff;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 2.5rem;
+            padding: 2rem;
             transition: all 0.2s ease;
         }
         .offering-card:hover {
-            border-color: var(--text-primary);
-        }
-        .offering-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            color: var(--text-primary);
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-        }
-        .offering-card p {
-            font-family: var(--font-sans);
-            font-size: 14.5px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin: 0;
+            border-color: var(--accent-teal);
         }
         
         /* Proof section */
         .proof-section {
-            background: var(--bg-panel, #faf6f0);
-            padding: 5.5rem 0;
+            background: var(--bg-panel);
+            padding: 6rem 0;
             border-bottom: 1px solid var(--border-light);
         }
         .proof-grid {
@@ -114,7 +99,7 @@
         @media(max-width: 950px) {
             .proof-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 2rem;
             }
         }
         .proof-card {
@@ -125,16 +110,19 @@
             display: flex;
             flex-direction: column;
             transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
         }
         .proof-card:hover {
-            border-color: var(--text-primary);
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(16, 33, 29, 0.06);
         }
         .proof-img-container {
             width: 100%;
-            height: 180px;
+            height: 190px;
             overflow: hidden;
             border-bottom: 1px solid var(--border-light);
-            background: #eaeaea;
+            background: #142420;
         }
         .proof-img-container img {
             width: 100%;
@@ -150,26 +138,26 @@
         }
         .proof-status {
             font-family: var(--font-mono);
-            font-size: 9px;
+            font-size: 9.5px;
             font-weight: 700;
             color: var(--accent-teal);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.4rem;
             display: block;
         }
         .proof-title {
             font-family: var(--font-serif);
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             color: var(--text-primary);
             margin-top: 0;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             font-weight: 500;
         }
         .proof-desc {
             font-family: var(--font-sans);
             font-size: 13.5px;
-            line-height: 1.5;
+            line-height: 1.55;
             color: var(--text-secondary);
             margin-bottom: 1.25rem;
         }
@@ -179,6 +167,16 @@
             gap: 6px;
             margin-top: auto;
         }
+        .proof-tag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            background: var(--bg-panel);
+            color: var(--text-secondary);
+            padding: 3px 8px;
+            border-radius: 3px;
+            border: 1px solid var(--border-light);
+        }
+
         /* ── Operational System Tab Consoles ────────────────────────── */
         .system-console {
             margin-top: 1rem;
@@ -199,7 +197,7 @@
             background: none;
             border: none;
             font-family: var(--font-mono);
-            font-size: 9px;
+            font-size: 9.5px;
             color: var(--text-secondary);
             cursor: pointer;
             padding: 4px 8px;
@@ -220,7 +218,7 @@
         }
 
         .console-content {
-            min-height: 100px;
+            min-height: 95px;
             position: relative;
         }
 
@@ -236,6 +234,20 @@
         .console-panel.active {
             display: block;
             opacity: 1;
+        }
+
+        /* Service selector pill indicator */
+        .service-badge-indicator {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            background: rgba(15, 118, 110, 0.08);
+            border: 1px solid var(--accent-teal);
+            color: var(--accent-teal);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -287,15 +299,16 @@
         <div class="container">
             <div class="product-grid">
                 <div>
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">03 // OPERATIONAL SYSTEMS DESIGN</span>
-                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.5rem; color: #FAF9F5;">
+                    <span class="eyebrow" style="color: #2DD4BF; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;">APPLIED SYSTEMS &bull; CUSTOM MACHINERY</span>
+                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.5rem; color: #FAF9F5; font-weight: 400;">
                         Systems built around the way your business actually works.
                     </h1>
                     <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: rgba(250,249,245,0.75); margin-bottom: 2rem;">
                         Customer-facing websites paired with custom operational machinery underneath—intake, inventory, scheduling, recommendations, and field service workflows.
                     </p>
                     <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <a href="/#contact" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px;">Tell Me What's Broken &rarr;</a>
+                        <a href="#intake" class="btn btn-primary" style="background: #2DD4BF; border-color: #2DD4BF; color: #10211D; text-decoration: none; padding: 0.85rem 1.75rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px;">Start an Intake &darr;</a>
+                        <a href="/systems/client-builds/" style="border: 1px solid rgba(250,249,245,0.4); color: #FAF9F5; padding: 0.85rem 1.6rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; text-decoration: none;">View Case Studies &rarr;</a>
                     </div>
                     <div>
                         <span class="status-badge">Project Status: Custom client engagements</span>
@@ -306,9 +319,9 @@
                     <div class="build-browser-frame" style="background: #1e1e1e; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
                         <div class="build-browser-header" style="background: #2d2d2d; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05);">
                             <div class="browser-dots" style="display: flex; gap: 6px;">
-                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #E11D48;"></span>
-                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #C5A059;"></span>
-                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #0F766E;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #EF4444;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #F59E0B;"></span>
+                                <span class="browser-dot" style="width: 8px; height: 8px; border-radius: 50%; display: block; background: #10B981;"></span>
                             </div>
                             <div class="browser-url-bar" style="font-family: var(--font-mono); font-size: 10px; color: #888; background: #1a1a1a; padding: 3px 12px; border-radius: 4px; width: 60%; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">www.contextmuse.com/custom/</div>
                             <div style="width: 24px;"></div>
@@ -323,16 +336,16 @@
     </header>
 
     <main id="main-content">
-        <!-- ── QUICK LAUNCH ENTRY STRIP ── -->
-        <section class="ql-entry-strip" style="background: #ffffff; border-bottom: 1px solid var(--border-light); padding: 2rem 0;">
+        <!-- ── THREE ENGAGEMENT MODELS STRIP ── -->
+        <section class="ql-entry-strip" style="background: #ffffff; border-bottom: 1px solid var(--border-light); padding: 2.25rem 0;">
             <div class="container" style="display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
                 <div>
-                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.25rem;">NEED SOMETHING SIMPLER?</span>
-                    <strong style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); font-weight: 500; display: block; margin-bottom: 0.25rem;">Quick Launch Website &bull; Starting at $450</strong>
-                    <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0; max-width: 660px; line-height: 1.5;">If you need a professional business website but don't need a full custom operational system, Quick Launch offers a simpler starting point.</p>
+                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.25rem;">ENGAGEMENT TIERS</span>
+                    <strong style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); font-weight: 500; display: block; margin-bottom: 0.25rem;">$195 Audit &bull; From $750 Funnels &bull; From $1,500 Full Systems</strong>
+                    <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0; max-width: 680px; line-height: 1.5;">Choose the right level of intervention based on whether you need a quick leak audit, a single conversion sprint, or full custom infrastructure.</p>
                 </div>
-                <a href="/quick-launch/" class="btn-pathway-secondary" style="font-size: 11.5px; padding: 0.65rem 1.35rem; border: 1px solid var(--border-light); border-radius: 4px; background: var(--bg-paper); text-decoration: none; color: var(--text-primary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; white-space: nowrap;">
-                    EXPLORE QUICK LAUNCH &rarr;
+                <a href="#intake" class="btn-pathway-secondary" style="font-size: 11px; padding: 0.65rem 1.35rem; border: 1px solid var(--text-primary); border-radius: 4px; background: var(--bg-paper); text-decoration: none; color: var(--text-primary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; white-space: nowrap;">
+                    SELECT SERVICE BELOW &darr;
                 </a>
             </div>
         </section>
@@ -340,54 +353,49 @@
         <!-- Section I: Offerings -->
         <section class="creative-section" style="background: var(--bg-paper); border-bottom: 1px solid var(--border-light); padding: 5.5rem 0;">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.5rem; text-align: center;">I // CORE SERVICES</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 1rem; font-weight: 500;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; display: block; margin-bottom: 0.5rem; text-align: center;">CORE CAPABILITIES</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--text-primary); text-align: center; margin-bottom: 1rem; font-weight: 400;">
                     Systems built for workflow reality.
                 </h2>
+                <p style="font-size: 16px; color: var(--text-secondary); text-align: center; max-width: 640px; margin: 0 auto 3.5rem; line-height: 1.6;">
+                    Structured digital engineering designed to eliminate operational friction and convert customer attention into revenue.
+                </p>
                 
                 <div class="offerings-grid">
-                    <!-- Offering 1 (Open by default) -->
-                    <details class="offering-card" open style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin: 0;">
-                            <span>Website + Conversion System</span>
-                            <span class="nav-dropdown-arrow">▾</span>
-                        </summary>
-                        <p style="margin-top: 0.75rem; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Not just a brochure site. Custom systems integration for intake, lead qualification, booking, checkout, and client-facing digital workflows built from the ground up.</p>
-                    </details>
+                    <!-- Offering 1 -->
+                    <div class="offering-card">
+                        <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem;">01 // WEBSITES &amp; SEO</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; color: var(--text-primary); margin: 0 0 0.5rem 0;">Website + Local Search System</h3>
+                        <p style="font-family: var(--font-sans); font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Multi-market local SEO architecture, municipal city page networks, custom CMS editing for zero retainers, and responsive front-end design built from the ground up.</p>
+                    </div>
 
                     <!-- Offering 2 -->
-                    <details class="offering-card" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin: 0;">
-                            <span>Intake + Lead Routing</span>
-                            <span class="nav-dropdown-arrow">▾</span>
-                        </summary>
-                        <p style="margin-top: 0.75rem; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Structured onboarding forms, logic-based qualification parameters, automated notification routing, and seamless lead handoffs to internal operational databases.</p>
-                    </details>
+                    <div class="offering-card">
+                        <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem;">02 // CONVERSION &amp; TRIAGE</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; color: var(--text-primary); margin: 0 0 0.5rem 0;">Intake + Lead Routing Engine</h3>
+                        <p style="font-family: var(--font-sans); font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Step-by-step qualification forms, customer triage branching, territory radius validation, and instant automated SMS/email lead dispatch to team queues.</p>
+                    </div>
 
                     <!-- Offering 3 -->
-                    <details class="offering-card" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin: 0;">
-                            <span>Reservation + Inventory Systems</span>
-                            <span class="nav-dropdown-arrow">▾</span>
-                        </summary>
-                        <p style="margin-top: 0.75rem; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Live inventory lookup grids, booking allocation rules, calendar reservation systems, and automated checkout validation logic integrated with Stripe or processor APIs.</p>
-                    </details>
+                    <div class="offering-card">
+                        <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem;">03 // INVENTORY &amp; BOOKING</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; color: var(--text-primary); margin: 0 0 0.5rem 0;">Reservation &amp; Stock Availability</h3>
+                        <p style="font-family: var(--font-sans); font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Real-time serial-number item lockouts during checkout, delivery zone tier calculation, bilingual language state management, and automated warehouse pull sheets.</p>
+                    </div>
 
                     <!-- Offering 4 -->
-                    <details class="offering-card" style="cursor: pointer;">
-                        <summary style="list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin: 0;">
-                            <span>Operational Tools</span>
-                            <span class="nav-dropdown-arrow">▾</span>
-                        </summary>
-                        <p style="margin-top: 0.75rem; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Custom field workflows, equipment records directories, maintenance audit dashboards, internal reporting templates, and command-line automation scripts.</p>
-                    </details>
+                    <div class="offering-card">
+                        <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem;">04 // BESPOKE MACHINERY</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; color: var(--text-primary); margin: 0 0 0.5rem 0;">Operational &amp; Scoping Tools</h3>
+                        <p style="font-family: var(--font-sans); font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Interactive 2D floorplan unit mappers, parametric repair estimation engines, client visual audit ledgers, and custom command-line utilities.</p>
+                    </div>
                 </div>
 
-                <div style="margin-top: 4.5rem; text-align: center; border-top: 1px solid var(--border-light); padding-top: 3rem;">
-                    <p style="font-family: var(--font-sans); font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1rem;">
-                        Running an agency? These capabilities are also available white-label.
+                <div style="margin-top: 3.5rem; text-align: center; border-top: 1px solid var(--border-light); padding-top: 2.5rem;">
+                    <p style="font-family: var(--font-sans); font-size: 15px; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                        Running a creative agency? These capabilities are available on a confidential white-label basis.
                     </p>
-                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
+                    <a href="/partners/" style="font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem;">
                         Explore Agency Partnerships &rarr;
                     </a>
                 </div>
@@ -397,81 +405,83 @@
         <!-- Section II: Proof of Execution -->
         <section class="proof-section">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem; text-align: center;">II // CLIENT PROOF</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 0.5rem; font-weight: 500;">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; display: block; margin-bottom: 0.5rem; text-align: center;">PRODUCTION PROOF</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--text-primary); text-align: center; margin-bottom: 0.5rem; font-weight: 400;">
                     Selected Client Builds
                 </h2>
-                <p style="font-size: 1rem; color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 3rem;">
-                    Active proof of custom systems designed and built around specific business needs.
+                <p style="font-size: 15.5px; color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 3rem;">
+                    Active proof of custom systems designed and built around specific business constraints.
                 </p>
 
                 <div class="proof-grid">
+                    <!-- Lone Wolf Dumpsters -->
+                    <div class="proof-card" id="lonewolf">
+                        <div class="proof-img-container" style="background: #142420; padding: 2rem 1.5rem; text-align: center; color: #FAF9F5; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <span style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 9px; font-weight: 700; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; margin-bottom: 0.4rem;">Live Production</span>
+                            <div style="font-family: var(--font-serif); font-size: 1.25rem;">Lone Wolf Dumpsters</div>
+                            <div style="font-family: var(--font-mono); font-size: 10px; color: #2DD4BF; margin-top: 0.35rem;">40+ Municipal Pages &bull; Quote Triage</div>
+                        </div>
+                        <div class="proof-info">
+                            <span class="proof-status">Live Client Build</span>
+                            <h3 class="proof-title">Lone Wolf Dumpsters</h3>
+                            <p class="proof-desc">Multi-market local SEO architecture, contractor/homeowner quote triage, and automated dispatch routing.</p>
+                            <div class="system-console" data-project="lonewolf">
+                                <div class="console-tabs">
+                                    <button class="console-tab-btn active" data-tab="problem">Problem</button>
+                                    <button class="console-tab-btn" data-tab="backend">The System</button>
+                                    <button class="console-tab-btn" data-tab="value">Business Impact</button>
+                                </div>
+                                <div class="console-content">
+                                    <div class="console-panel active" data-panel="problem">
+                                        Vague service area borders and hidden pricing caused constant phone tag, losing qualified waste hauling leads.
+                                    </div>
+                                    <div class="console-panel" data-panel="backend">
+                                        40+ city SEO pages, interactive DFW territory coverage check, and segmented contractor vs homeowner quote forms.
+                                    </div>
+                                    <div class="console-panel" data-panel="value">
+                                        Captures complete project specs on first touch and routes high-intent inquiries straight to dispatch queues.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="proof-tags" style="margin-top: 1rem;">
+                                <span class="proof-tag">Local SEO</span>
+                                <span class="proof-tag">Quote Triage</span>
+                                <span class="proof-tag">Client CMS</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- INNcontrol -->
                     <div class="proof-card" id="inncontrol">
                         <div class="proof-img-container">
                             <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils website interface">
                         </div>
                         <div class="proof-info">
-                            <span class="proof-status">Built</span>
+                            <span class="proof-status">Production App</span>
                             <h3 class="proof-title">INNcontrol Coils</h3>
-                            <p class="proof-desc">Commercial service website paired with a custom equipment intake and operational system.</p>
+                            <p class="proof-desc">Commercial service website paired with an interactive floorplan scoping and estimation tool.</p>
                             <div class="system-console" data-project="inncontrol">
                                 <div class="console-tabs">
                                     <button class="console-tab-btn active" data-tab="problem">Problem</button>
-                                    <button class="console-tab-btn" data-tab="backend">The Backend</button>
-                                    <button class="console-tab-btn" data-tab="value">How it helps</button>
+                                    <button class="console-tab-btn" data-tab="backend">The System</button>
+                                    <button class="console-tab-btn" data-tab="value">Business Impact</button>
                                 </div>
                                 <div class="console-content">
                                     <div class="console-panel active" data-panel="problem">
-                                        Commercial HVAC and coil refurbishing services deal with hidden, hard-to-access equipment across huge properties, making quoting and assessment fragmented and slow.
+                                        HVAC coil refurbishing across 500-room properties was tracked on paper clipboards, delaying proposals by days.
                                     </div>
                                     <div class="console-panel" data-panel="backend">
-                                        Built property-wide interactive scoping tools allowing technicians to map units directly in a responsive visual floorplan, logging defects, unit types, photos, and necessary repairs on-site.
+                                        Tablet-first 2D floorplan mapper letting techs plot equipment pins, tag defect severity, and attach photos on site.
                                     </div>
                                     <div class="console-panel" data-panel="value">
-                                        Speeds up estimation, eliminates paper checklists, and creates a standardized visual ledger of required repairs, helping sales teams convert bids into closed deals.
+                                        Cuts proposal turnaround from days to hours with an unassailable visual audit ledger that closes commercial contracts.
                                     </div>
                                 </div>
                             </div>
                             <div class="proof-tags" style="margin-top: 1rem;">
-                                <span class="proof-tag">Service Architecture</span>
-                                <span class="proof-tag">Inquiry Routing</span>
-                                <span class="proof-tag">Field Service</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- D2 Auto Detail -->
-                    <div class="proof-card" id="d2">
-                        <div class="proof-img-container">
-                            <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail acquisition layout">
-                        </div>
-                        <div class="proof-info">
-                            <span class="proof-status">Designed</span>
-                            <h3 class="proof-title">D2 Auto Detail</h3>
-                            <p class="proof-desc">Acquisition framework and scheduling funnel prototype built to capture service intent.</p>
-                            <div class="system-console" data-project="d2">
-                                <div class="console-tabs">
-                                    <button class="console-tab-btn active" data-tab="problem">Problem</button>
-                                    <button class="console-tab-btn" data-tab="backend">The Backend</button>
-                                    <button class="console-tab-btn" data-tab="value">How it helps</button>
-                                </div>
-                                <div class="console-content">
-                                    <div class="console-panel active" data-panel="problem">
-                                        Premium detailing services need custom lead acquisition that handles vehicle types and service tiers, while matching lead generation with local ad creation and content publishing.
-                                    </div>
-                                    <div class="console-panel" data-panel="backend">
-                                        Built a centralized custom administration portal that hooks directly to the storefront booking funnel, an automated local ad generator, a blog publisher, and a custom D2TV media player playlist database.
-                                    </div>
-                                    <div class="console-panel" data-panel="value">
-                                        Bridges the gap between simple brochure websites and active business operations, bringing lead capture, scheduling, and local media marketing into a single dashboard.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="proof-tags" style="margin-top: 1rem;">
-                                <span class="proof-tag">Service UX</span>
-                                <span class="proof-tag">Lead Capture</span>
-                                <span class="proof-tag">Marketing</span>
+                                <span class="proof-tag">Field Scoping</span>
+                                <span class="proof-tag">Estimation</span>
+                                <span class="proof-tag">Floorplan UI</span>
                             </div>
                         </div>
                     </div>
@@ -479,80 +489,92 @@
                     <!-- EDR Party Rentals -->
                     <div class="proof-card" id="edr">
                         <div class="proof-img-container">
-                            <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals reservation workflow">
+                            <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory reservation interface">
                         </div>
                         <div class="proof-info">
-                            <span class="proof-status">Prototype</span>
+                            <span class="proof-status">Client System</span>
                             <h3 class="proof-title">EDR Party Rentals</h3>
-                            <p class="proof-desc">Inventory-aware rental reservation and date-controlled intake system design.</p>
+                            <p class="proof-desc">Inventory-aware bilingual reservation engine with real-time serial asset lockout and delivery tier validation.</p>
                             <div class="system-console" data-project="edr">
                                 <div class="console-tabs">
                                     <button class="console-tab-btn active" data-tab="problem">Problem</button>
-                                    <button class="console-tab-btn" data-tab="backend">The Backend</button>
-                                    <button class="console-tab-btn" data-tab="value">How it helps</button>
+                                    <button class="console-tab-btn" data-tab="backend">The System</button>
+                                    <button class="console-tab-btn" data-tab="value">Business Impact</button>
                                 </div>
                                 <div class="console-content">
                                     <div class="console-panel active" data-panel="problem">
-                                        Event rentals have finite, calendar-dependent inventory (one-of-one arches, slide units, custom furniture). Standard ecommerce carts allow double-booking on the same day.
+                                        Finite serial inventory was at risk of double-booking, and out-of-radius delivery orders required manual cancellation.
                                     </div>
                                     <div class="console-panel" data-panel="backend">
-                                        Designed a custom availability check system that matches real-time serial number stock with selected event dates, blocking out products on occupied dates during checkout, with automated English/Spanish localization.
+                                        Date-locked serial number reservation engine, delivery mileage calculator, and state-preserving bilingual UI.
                                     </div>
                                     <div class="console-panel" data-panel="value">
-                                        Stops booking clashes, reduces manual scheduling checks, and generates clean warehouse dispatch sheets showing date-verified drop-off orders.
+                                        Prevents scheduling conflicts, qualifies venue delivery automatically, and produces clean warehouse pull sheets.
                                     </div>
                                 </div>
                             </div>
                             <div class="proof-tags" style="margin-top: 1rem;">
-                                <span class="proof-tag">Inventory</span>
-                                <span class="proof-tag">Product UX</span>
-                                <span class="proof-tag">Reservation Intake</span>
+                                <span class="proof-tag">Inventory UX</span>
+                                <span class="proof-tag">Bilingual State</span>
+                                <span class="proof-tag">Logistics Triage</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
         <!-- Section III: Project-Fit Intake Form -->
-        <section class="hp-contact-section" id="intake" aria-labelledby="intake-heading" style="background: var(--bg-paper); border-top: 1px solid var(--border-light); padding: 5.5rem 0;">
+        <section class="hp-contact-section" id="intake" aria-labelledby="intake-heading" style="background: var(--bg-paper); border-top: 1px solid var(--border-light); padding: 6rem 0;">
             <div class="container">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
                     <!-- Column 1: Copy -->
                     <div>
-                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">START A PROJECT &bull; INTAKE</span>
+                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.5rem;">START A PROJECT &bull; INTAKE</span>
                         <h2 id="intake-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.25rem; font-weight: 400; color: var(--text-primary); line-height: 1.15;">
                             Tell me what's not working.
                         </h2>
-                        <p style="font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
-                            Whether you need a clean one-page website, a $199 conversion diagnostic, an organized customer intake flow, or a custom operational system—describe where the friction is. I’ll review your workflow and outline a practical next step.
+                        <blockquote style="font-family: var(--font-serif); font-size: 1.15rem; font-style: italic; color: var(--text-primary); border-left: 2.5px solid var(--accent-teal); padding-left: 1.25rem; margin-bottom: 1.75rem; line-height: 1.55; margin-left: 0;">
+                            Whether you need a $195 conversion leak audit, a focused funnel sprint, a multi-market website, or custom workflow machinery—describe where the friction is.
+                        </blockquote>
+                        <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2rem;">
+                            Direct collaboration with the person actually building your system. No account managers or junior handoffs.
                         </p>
 
-                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); font-weight: 700; display: block; margin-bottom: 0.5rem;">HOW WE START:</span>
-                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
-                                <li>&bull; <strong>Review</strong> — I examine your site, intake flow, or operational bottleneck.</li>
-                                <li>&bull; <strong>Recommendation</strong> — I reply within 1–2 business days with clear options and pricing.</li>
-                                <li>&bull; <strong>Zero Hard Sales</strong> — Plain English guidance tailored to your exact business size.</li>
+                        <!-- Trust / Crediting Box -->
+                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 14px rgba(0,0,0,0.02);">
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); font-weight: 700; display: block; margin-bottom: 0.5rem;">HOW ENGAGEMENTS WORK:</span>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 0.45rem;">
+                                <li>&bull; <strong>100% Audit Credit:</strong> The $195 audit fee is fully credited toward any build booked within 30 days.</li>
+                                <li>&bull; <strong>Clear Scoping:</strong> Transparent pricing with defined milestones before work commences.</li>
+                                <li>&bull; <strong>Fast Turnaround:</strong> Funnel sprints ship in 3–5 days; full systems typically 2–4 weeks.</li>
                             </ul>
                         </div>
 
                         <div style="font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary);">
-                            Direct email: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: 600; text-decoration: none;">jayme@contextmuse.com</a>
+                            Direct email: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: 700; text-decoration: none;">jayme@contextmuse.com</a>
                         </div>
                     </div>
 
                     <!-- Column 2: Form -->
                     <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
-                        <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <div id="service-context-pill" class="service-badge-indicator" style="display: none;">
+                            Selected: <span id="service-context-text">Website + Workflow System</span>
+                        </div>
+
+                        <form id="custom-intake-form" action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <input type="text" name="_gotcha" style="display:none">
+                            <input type="hidden" name="form_source" value="custom_systems_intake">
                             
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
                                 <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="website-system">Website + Workflow System (from $1,500)</option>
+                                    <option value="audit">Conversion Leak Audit ($195 flat fee)</option>
                                     <option value="funnel-sprint">Funnel Sprint (from $750)</option>
-                                    <option value="audit">Conversion Leak Audit ($195)</option>
-                                    <option value="custom-system">Custom Operational System (Scoped after discovery)</option>
-                                    <option value="general">General Consultation / Other</option>
+                                    <option value="website-system" selected>Website + Workflow System (from $1,500)</option>
+                                    <option value="custom-system">Custom Operational System (Bespoke build)</option>
+                                    <option value="agency">Agency White-Label Partnership</option>
+                                    <option value="general">General Inquiry / Other</option>
                                 </select>
                             </div>
 
@@ -567,7 +589,7 @@
                             </div>
 
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                                <label for="form-website" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Current Website or Business Name (Optional)</label>
+                                <label for="form-website" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Current Website or Business (Optional)</label>
                                 <input type="text" id="form-website" name="website" placeholder="https://example.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
                             </div>
 
@@ -576,17 +598,20 @@
                                 <textarea id="form-message" name="message" rows="4" required placeholder="Describe what customers or staff are struggling to do..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
                             </div>
 
-                            <button type="submit" class="btn-primary-teal" style="width: 100%; justify-content: center; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.85rem 1.5rem; cursor: pointer;">
+                            <button type="submit" id="intake-submit-btn" style="background: var(--text-primary); color: #FAF9F5; border: none; padding: 0.85rem 1.5rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 4px; cursor: pointer; transition: background 0.2s; text-align: center;">
                                 Send Project Details &rarr;
                             </button>
                         </form>
+
+                        <div id="intake-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); font-weight: bold; text-align: center; font-size: 14px;">
+                            Thank you. Your details have been received. I will review your project and respond within 1–2 business days.
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
@@ -639,17 +664,32 @@
                     }
                 });
             });
-        // Auto-select service in intake form from URL query param (e.g. ?service=quick-launch)
+        });
+
+        // Auto-select service in intake form from URL query param (e.g. ?service=audit)
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const requestedService = urlParams.get('service');
-            if (requestedService) {
-                const serviceSelect = document.getElementById('form-service');
-                if (serviceSelect) {
-                    const validOptions = ['website-system', 'funnel-sprint', 'audit', 'custom-system', 'general', 'quick-launch'];
-                    if (validOptions.includes(requestedService)) {
-                        serviceSelect.value = requestedService;
-                    }
+            const serviceSelect = document.getElementById('form-service');
+            const contextPill = document.getElementById('service-context-pill');
+            const contextText = document.getElementById('service-context-text');
+            
+            const serviceMap = {
+                'audit': { value: 'audit', label: 'Conversion Leak Audit ($195)' },
+                'funnel-sprint': { value: 'funnel-sprint', label: 'Funnel Sprint (from $750)' },
+                'funnel': { value: 'funnel-sprint', label: 'Funnel Sprint (from $750)' },
+                'website-system': { value: 'website-system', label: 'Website + Workflow System (from $1,500)' },
+                'systems': { value: 'website-system', label: 'Website + Workflow System (from $1,500)' },
+                'custom-system': { value: 'custom-system', label: 'Custom Operational System' },
+                'agency': { value: 'agency', label: 'Agency White-Label Partnership' },
+                'general': { value: 'general', label: 'General Inquiry / Other' }
+            };
+
+            if (requestedService && serviceMap[requestedService] && serviceSelect) {
+                serviceSelect.value = serviceMap[requestedService].value;
+                if (contextPill && contextText) {
+                    contextText.textContent = serviceMap[requestedService].label;
+                    contextPill.style.display = 'inline-block';
                 }
             }
         });
