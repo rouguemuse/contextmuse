@@ -30,11 +30,21 @@
     <link rel="stylesheet" href="/styles.css?v=2.6">
 
     <style>
-        /* ── HERO INTEGRATED STYLE ── */
+        /* ==========================================================================
+           HOMEPAGE ARCHITECTURAL RESTORATION
+           ========================================================================== */
+
+        /* Global Container standard */
+        .container {
+            max-width: min(1240px, calc(100% - 64px));
+            margin-inline: auto;
+            padding: 0;
+        }
+
+        /* ── 1. HERO INTEGRATED STYLE ── */
         .hero {
             position: relative;
-            min-height: 720px;
-            overflow: hidden;
+            min-height: 82vh;
             display: flex;
             align-items: center;
             background: radial-gradient(
@@ -44,44 +54,27 @@
                 #f3ede4 100%
             ) !important;
             border-bottom: 1px solid var(--border-light) !important;
-            padding: 130px 0 70px 0 !important;
+            padding: 140px 0 80px 0 !important;
             box-sizing: border-box;
         }
 
-        /* Readable text-side overlay gradient */
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0 auto 0 0;
-            width: 58%;
-            background: linear-gradient(
-                90deg,
-                rgba(248, 244, 236, 0.98) 0%,
-                rgba(248, 244, 236, 0.90) 50%,
-                rgba(248, 244, 236, 0) 100%
-            );
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            width: min(1280px, calc(100% - 48px));
-            margin: 0 auto;
-            display: flex;
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
             align-items: center;
+            width: 100%;
         }
 
         .hero-copy {
-            max-width: 620px;
+            max-width: 660px;
             position: relative;
-            z-index: 4;
+            z-index: 2;
         }
 
         .hero-eyebrow {
             font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 11.5px;
             font-weight: 700;
             color: var(--accent-teal);
             letter-spacing: 0.15em;
@@ -92,13 +85,12 @@
 
         .hero-title {
             font-family: var(--font-serif) !important;
-            font-size: clamp(3rem, 5vw, 5.2rem) !important;
-            line-height: 0.96 !important;
+            font-size: clamp(54px, 5.4vw, 84px) !important;
+            line-height: 0.95 !important;
             letter-spacing: -0.035em !important;
             color: #0E1F1B !important;
-            margin: 0 0 1.5rem 0 !important;
+            margin: 0 0 1.75rem 0 !important;
             font-weight: 400 !important;
-            max-width: 640px !important;
         }
 
         .hero-subhead {
@@ -141,41 +133,22 @@
             color: var(--accent-teal);
         }
 
-        .hero-art {
-            position: absolute;
-            right: -2vw;
-            top: 50%;
-            transform: translateY(-50%);
-            width: min(65vw, 920px);
-            height: 95%;
+        .hero-visual {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            pointer-events: none;
-            z-index: 1;
+            justify-content: center;
+            position: relative;
+            width: 100%;
         }
 
         .hero-prism-img {
             width: 100%;
+            max-width: 560px;
             height: auto;
-            max-height: 100%;
             object-fit: contain;
             mix-blend-mode: multiply;
             opacity: 0.95;
-            -webkit-mask-image: linear-gradient(
-                to right,
-                transparent 0%,
-                rgba(0,0,0,0.15) 8%,
-                black 25%,
-                black 100%
-            );
-            mask-image: linear-gradient(
-                to right,
-                transparent 0%,
-                rgba(0,0,0,0.15) 8%,
-                black 25%,
-                black 100%
-            );
+            filter: contrast(1.04);
         }
 
         /* ── SECTION HEADERS & BASICS ── */
@@ -185,7 +158,7 @@
         }
         .section-eyebrow {
             font-family: var(--font-mono);
-            font-size: 10.5px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
             letter-spacing: 0.15em;
@@ -195,35 +168,31 @@
         }
         .section-title {
             font-family: var(--font-serif);
-            font-size: clamp(2.1rem, 3.6vw, 2.9rem);
+            font-size: clamp(38px, 4vw, 54px);
             color: var(--text-primary);
             margin: 0 0 0.5rem 0;
             font-weight: 400;
-            line-height: 1.15;
+            line-height: 1.12;
+            letter-spacing: -0.015em;
         }
 
-        /* ── WAYS TO WORK TOGETHER (3 COMMERCIAL OFFERS) ── */
+        /* ── 2. WAYS TO WORK TOGETHER (3 COMMERCIAL OFFERS) ── */
         .offers-section {
-            padding: 6rem 0;
+            padding: 100px 0;
             background: var(--bg-paper);
             border-bottom: 1px solid var(--border-light);
         }
         .offers-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        @media (max-width: 960px) {
-            .offers-grid {
-                grid-template-columns: 1fr;
-                gap: 1.75rem;
-            }
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            align-items: stretch;
         }
         .offer-box {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 2.5rem 2rem;
+            padding: 2.75rem 2.25rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -231,6 +200,8 @@
             transition: all 0.25s ease;
             position: relative;
             box-shadow: 0 4px 18px rgba(16, 33, 29, 0.02);
+            height: 100%;
+            box-sizing: border-box;
         }
         .offer-box:hover {
             border-color: var(--accent-teal);
@@ -267,7 +238,7 @@
         }
         .offer-box-title {
             font-family: var(--font-serif);
-            font-size: 1.65rem;
+            font-size: 1.75rem;
             color: var(--text-primary);
             margin: 0 0 0.35rem 0;
             font-weight: 500;
@@ -275,14 +246,14 @@
         }
         .offer-box-price {
             font-family: var(--font-mono);
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 0.75rem;
             display: block;
         }
         .offer-box-sub {
-            font-size: 14px;
+            font-size: 14.5px;
             line-height: 1.55;
             color: var(--text-secondary);
             margin-bottom: 1.25rem;
@@ -310,15 +281,15 @@
             font-weight: bold;
         }
 
-        /* ── THE METHOD / APPROACH TO COMPLEXITY ── */
+        /* ── 3. APPROACH TO COMPLEXITY ── */
         .method-section {
             background: var(--bg-paper);
-            padding: 88px 0;
+            padding: 96px 0;
             border-bottom: 1px solid var(--border-light);
         }
         .process-flow-container {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(5, minmax(0, 1fr));
             position: relative;
             gap: 1.5rem;
             margin-top: 3.5rem;
@@ -327,12 +298,12 @@
             content: '';
             position: absolute;
             top: 21px;
-            left: 10%;
-            right: 10%;
+            left: 8%;
+            right: 8%;
             height: 1px;
             background: var(--border-dark);
             z-index: 0;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         .process-step {
             display: flex;
@@ -356,7 +327,7 @@
         }
         .process-node span {
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 10.5px;
             font-weight: 600;
             color: var(--accent-teal);
         }
@@ -368,7 +339,7 @@
         }
         .step-name {
             font-family: var(--font-serif);
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
@@ -378,13 +349,13 @@
             font-size: 13.5px;
             line-height: 1.5;
             color: var(--text-secondary);
-            max-width: 180px;
+            max-width: 190px;
         }
 
-        /* ── SYSTEMS IN PRACTICE ── */
+        /* ── 4. SYSTEMS IN PRACTICE (PORTFOLIO GRID) ── */
         .hp-projects-section {
             background: var(--bg-panel);
-            padding: 88px 0;
+            padding: 100px 0;
             border-bottom: 1px solid var(--border-light);
         }
         .hp-projects-header {
@@ -395,7 +366,7 @@
         }
         .hp-cards-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 2.5rem;
         }
         .hp-project-card {
@@ -409,17 +380,18 @@
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.30s ease, box-shadow 0.30s ease, border-color 0.25s ease;
+            box-shadow: 0 4px 18px rgba(16, 33, 29, 0.02);
         }
         .hp-project-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.06);
+            box-shadow: 0 16px 36px rgba(16, 33, 29, 0.06);
             border-color: var(--border-dark);
         }
         .hp-card-visual-wrapper {
             background: var(--bg-panel);
             border: 1px solid var(--border-light);
             border-radius: 4px;
-            height: 240px;
+            min-height: 200px;
             overflow: hidden;
             margin-bottom: 1.5rem;
             display: flex;
@@ -430,8 +402,9 @@
         .hp-card-visual-wrapper img {
             width: 100%;
             height: 100%;
+            max-height: 220px;
             object-fit: contain;
-            object-position: top center;
+            object-position: center;
             padding: 0.5rem;
             transition: transform 0.3s ease;
         }
@@ -439,17 +412,17 @@
             transform: scale(1.015);
         }
 
-        /* ── TWO BRANCHES SECTION ── */
+        /* ── 5. TWO BRANCHES ── */
         .hp-dual-section {
             background: #0E1F1B;
-            padding: 88px 0;
+            padding: 100px 0;
             color: #FAF9F5;
             border-bottom: 1px solid rgba(250, 249, 245, 0.1);
         }
         .hp-dual-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2.5rem;
         }
         .hp-dual-panel {
             border-radius: 6px;
@@ -457,11 +430,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 380px;
+            min-height: 400px;
         }
         .hp-dual-panel--systems {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(250, 249, 245, 0.1);
+            border: 1px solid rgba(250, 249, 245, 0.12);
         }
         .hp-dual-panel--creative {
             background: #ffffff;
@@ -469,53 +442,40 @@
             color: var(--text-primary);
         }
 
-        /* ── CONTACT & INTAKE SECTION ── */
+        /* ── 6. CONTACT & INTAKE SECTION ── */
         .hp-contact-section {
             background: var(--bg-paper);
-            padding: 96px 0;
+            padding: 100px 0;
+        }
+        .hp-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+            align-items: start;
         }
 
-        /* ── MEDIA QUERIES ── */
-        @media (max-width: 1024px) {
+        /* ── RESPONSIVE BREAKPOINTS (Desktop >=1100px, Tablet 768–1099px, Mobile <768px) ── */
+        @media (min-width: 768px) and (max-width: 1099px) {
             .hero {
+                padding: 120px 0 60px 0 !important;
                 min-height: auto;
-                padding: 110px 0 50px 0 !important;
             }
-            .hero::after {
-                display: none;
-            }
-            .hero-content {
-                flex-direction: column;
-                align-items: stretch;
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
             .hero-copy {
                 max-width: 100%;
-                text-align: center;
-            }
-            .hero-subhead {
-                max-width: 560px !important;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero .btn-group {
-                justify-content: center;
-            }
-            .hero-art {
-                position: relative;
-                right: 0;
-                top: 0;
-                transform: none;
-                width: 100%;
-                height: 320px;
-                margin-top: 2rem;
-                justify-content: center;
             }
             .hero-prism-img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                -webkit-mask-image: none;
-                mask-image: none;
+                max-width: 440px;
+            }
+            .offers-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 24px;
+            }
+            .offers-grid .offer-box:last-child {
+                grid-column: 1 / -1;
             }
             .process-flow-container {
                 grid-template-columns: repeat(3, 1fr);
@@ -524,26 +484,35 @@
             .process-flow-container::before {
                 display: none;
             }
-            .process-step:last-child {
-                grid-column: 2;
-            }
             .hp-cards-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             .hp-dual-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1.75rem;
             }
             .hp-dual-panel {
                 min-height: auto;
-                padding: 3rem 2.5rem;
+                padding: 2.75rem 2.25rem;
+            }
+            .hp-contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
+            .hero {
+                padding: 110px 0 50px 0 !important;
+                min-height: auto;
+            }
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
             .hero-title {
-                font-size: clamp(2.4rem, 10vw, 3.8rem) !important;
+                font-size: clamp(36px, 9.5vw, 50px) !important;
                 line-height: 0.98 !important;
             }
             .hero .btn-group {
@@ -555,12 +524,40 @@
                 text-align: center;
                 box-sizing: border-box;
             }
+            .hero-prism-img {
+                max-width: 100%;
+            }
+            .offers-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
             .process-flow-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-            .process-step:last-child {
-                grid-column: auto;
+            .process-flow-container::before {
+                display: none;
+            }
+            .hp-projects-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .hp-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hp-dual-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .hp-dual-panel {
+                min-height: auto;
+                padding: 2.25rem 1.75rem;
+            }
+            .hp-contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
         }
     </style>
@@ -612,15 +609,11 @@
 
         <!-- 1. HERO INTEGRATED SECTION -->
         <header class="hero" id="portfolio-hero">
-            <div class="hero-art" aria-hidden="true">
-                <img src="/assets/images/homepage-prism-wide.webp" class="hero-prism-img" alt="Refraction and structural prism artwork">
-            </div>
-
-            <div class="container hero-content">
+            <div class="container hero-container">
                 <div class="hero-copy">
                     <span class="hero-eyebrow">APPLIED SYSTEMS &bull; INFORMATION ARCHITECTURE</span>
                     <h1 class="hero-title">
-                        Clarity shapes perception. Perception changes everything.
+                        Clarity shapes perception.<br>Perception changes everything.
                     </h1>
                     <p class="hero-subhead">
                         Context &amp; Muse builds websites, conversion funnels, internal tools, and custom workflows around how a business actually operates—finding where attention is lost, where friction slows down teams, and turning complexity into signal.
@@ -633,6 +626,9 @@
                     <div>
                         <a href="#approach" class="hero-proof-jump">See How It Works &darr;</a>
                     </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <img src="/assets/images/homepage-prism-wide.webp" class="hero-prism-img" alt="Refraction and structural prism artwork">
                 </div>
             </div>
         </header>
@@ -802,52 +798,54 @@
                 </div>
 
                 <div class="hp-cards-grid">
-                    <!-- Card 1: Lone Wolf Dumpsters -->
-                    <a href="/systems/client-builds/#lonewolf" class="hp-project-card" aria-label="Project 01: Lone Wolf Dumpsters (Service Business Website & Lead System)">
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                                <span>01 &bull; Commercial Client Build</span>
-                                <span style="font-weight: 600; color: var(--accent-teal);" class="hp-card-status">Live Production</span>
-                            </div>
-                            <h3 class="hp-card-title" style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); margin: 0 0 0.5rem 0;">
-                                Lone Wolf Dumpsters
-                            </h3>
-                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.25rem;">
-                                Service-business website and lead-generation system engineered around multi-market local search demand, contractor/commercial customer paths, interactive service-area coverage, 40+ city landing pages, and automated quote routing.
-                            </p>
-
-                            <!-- Client Feedback Snippet -->
-                            <div style="background: rgba(15, 118, 110, 0.05); border-left: 2px solid var(--accent-teal); padding: 0.85rem 1rem; border-radius: 0 4px 4px 0; margin-bottom: 1.25rem;">
-                                <p style="font-family: var(--font-serif); font-size: 13.5px; font-style: italic; color: var(--text-primary); line-height: 1.5; margin: 0 0 0.35rem 0;">
-                                    “Context &amp; Muse structured our entire service area setup and quote intake so we stop playing phone tag and start landing booked jobs straight from local search.”
+                    <!-- Card 1: Lone Wolf Dumpsters (Featured) -->
+                    <a href="/systems/client-builds/#lonewolf" class="hp-project-card hp-project-card--featured" aria-label="Project 01: Lone Wolf Dumpsters (Service Business Website & Lead System)">
+                        <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                    <span>01 &bull; Commercial Client Build</span>
+                                    <span style="font-weight: 600; color: var(--accent-teal);" class="hp-card-status">Live Production</span>
+                                </div>
+                                <h3 class="hp-card-title" style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                                    Lone Wolf Dumpsters
+                                </h3>
+                                <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                                    Service-business website and lead-generation system engineered around multi-market local search demand, contractor/commercial customer paths, interactive service-area coverage, 40+ city landing pages, and automated quote routing.
                                 </p>
-                                <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary);">— Wayne, Founder, Lone Wolf Dumpsters</span>
-                            </div>
 
-                            <div class="hp-card-visual-wrapper" style="background: #142420; color: #FAF9F5; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                                <span style="background: #C5A059; color: #0E1F1B; font-family: var(--font-mono); font-size: 9px; font-weight: 700; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; margin-bottom: 0.5rem;">DFW Commercial Lead Engine</span>
-                                <div style="font-family: var(--font-serif); font-size: 1.35rem; color: #FAF9F5;">lonewolfdumpsters.com</div>
-                                <div style="font-family: var(--font-mono); font-size: 10.5px; color: #C5A059; margin-top: 0.5rem;">40+ Municipal Pages &bull; Quoting Triage</div>
+                                <!-- Client Feedback Snippet -->
+                                <div style="background: rgba(15, 118, 110, 0.05); border-left: 2px solid var(--accent-teal); padding: 1rem 1.25rem; border-radius: 0 4px 4px 0; margin-bottom: 1.5rem;">
+                                    <p style="font-family: var(--font-serif); font-size: 14px; font-style: italic; color: var(--text-primary); line-height: 1.5; margin: 0 0 0.35rem 0;">
+                                        “Context &amp; Muse structured our entire service area setup and quote intake so we stop playing phone tag and start landing booked jobs straight from local search.”
+                                    </p>
+                                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">— Wayne, Founder, Lone Wolf Dumpsters</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); text-transform: uppercase;">Applied Systems</span>
+                                <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11.5px; font-weight: bold; color: var(--accent-teal);">View Case Details &rarr;</span>
                             </div>
                         </div>
-                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Applied Systems</span>
-                            <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--accent-teal);">View Case Details &rarr;</span>
+
+                        <div class="hp-card-visual-wrapper" style="background: #0E1F1B; color: #FAF9F5; padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-radius: 6px; min-height: 280px; box-shadow: 0 8px 24px rgba(14,31,27,0.12);">
+                            <span style="background: #C5A059; color: #0E1F1B; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; margin-bottom: 0.75rem;">DFW Commercial Lead Engine</span>
+                            <div style="font-family: var(--font-serif); font-size: 1.6rem; color: #FAF9F5;">lonewolfdumpsters.com</div>
+                            <div style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; margin-top: 0.5rem;">40+ Municipal Pages &bull; Quoting Triage</div>
                         </div>
                     </a>
 
                     <!-- Card 2: Signal -->
                     <a href="/signal/" class="hp-project-card" aria-label="Project 02: Signal (Diagnostic Intelligence Engine)">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
                                 <span>02 &bull; Decision Intelligence</span>
                                 <span style="font-weight: 600; color: var(--accent-teal);" class="hp-card-status">Diagnostic Engine</span>
                             </div>
-                            <h3 class="hp-card-title" style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 8px;">
+                            <h3 class="hp-card-title" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 8px; font-weight: 500;">
                                 <img src="/assets/images/signal_icon.png" style="width: 20px; height: 20px; object-fit: contain;" alt="">
                                 Signal Diagnostic Engine
                             </h3>
-                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
                                 Forensic margin diagnostic that converts transaction data, labor compression, and operational notes into prioritized management decisions.
                             </p>
                             <div class="hp-card-visual-wrapper">
@@ -863,15 +861,15 @@
                     <!-- Card 3: GenSort -->
                     <a href="/gensort/" class="hp-project-card" aria-label="Project 03: GenSort (Visual Catalog System)">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
                                 <span>03 &bull; Information Architecture</span>
                                 <span style="font-weight: 600; color: #9A7A38;" class="hp-card-status">Working Utility</span>
                             </div>
-                            <h3 class="hp-card-title" style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 8px;">
+                            <h3 class="hp-card-title" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 8px; font-weight: 500;">
                                 <img src="/assets/images/gensort_logo.svg" style="width: 20px; height: 20px; object-fit: contain;" alt="">
                                 GenSort Classifier
                             </h3>
-                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
+                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
                                 In-browser batch image sorting and classification utility running 100% locally with zero cloud upload.
                             </p>
                             <div class="hp-card-visual-wrapper">
@@ -885,25 +883,32 @@
                     </a>
 
                     <!-- Card 4: Custom Systems & Operational Machinery -->
-                    <a href="/systems/" class="hp-project-card" aria-label="Project 04: Custom Systems &amp; Operational Machinery">
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                                <span>04 &bull; Custom Workflows</span>
-                                <span style="font-weight: 600; color: var(--accent-teal);" class="hp-card-status">Bespoke Builds</span>
+                    <a href="/systems/" class="hp-project-card" aria-label="Project 04: Custom Systems &amp; Operational Machinery" style="grid-column: 1 / -1;">
+                        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                    <span>04 &bull; Custom Workflows</span>
+                                    <span style="font-weight: 600; color: var(--accent-teal);" class="hp-card-status">Bespoke Builds</span>
+                                </div>
+                                <h3 class="hp-card-title" style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                                    Custom Systems &amp; Tooling
+                                </h3>
+                                <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                                    Behind-the-business tools, field scoping floorplan mappers (INNcontrol Coils), inventory reservation engines (EDR Party Rentals), and automated lead dispatch.
+                                </p>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 10.5px; background: var(--bg-panel); border: 1px solid var(--border-light); padding: 3px 8px; border-radius: 3px;">INNcontrol Coils</span>
+                                    <span style="font-family: var(--font-mono); font-size: 10.5px; background: var(--bg-panel); border: 1px solid var(--border-light); padding: 3px 8px; border-radius: 3px;">EDR Party Rentals</span>
+                                    <span style="font-family: var(--font-mono); font-size: 10.5px; background: var(--bg-panel); border: 1px solid var(--border-light); padding: 3px 8px; border-radius: 3px;">D2 Auto Detail</span>
+                                </div>
+                                <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); text-transform: uppercase;">Applied Systems</span>
+                                    <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11.5px; font-weight: bold; color: var(--accent-teal);">Explore Custom Systems &rarr;</span>
+                                </div>
                             </div>
-                            <h3 class="hp-card-title" style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); margin: 0 0 0.5rem 0;">
-                                Custom Systems &amp; Tooling
-                            </h3>
-                            <p class="hp-card-desc" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.75rem;">
-                                Behind-the-business tools, field scoping floorplan mappers (INNcontrol Coils), inventory reservation engines (EDR Party Rentals), and automated lead dispatch.
-                            </p>
-                            <div class="hp-card-visual-wrapper">
+                            <div class="hp-card-visual-wrapper" style="margin-bottom: 0; min-height: 240px;">
                                 <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils Field Scoping Interface">
                             </div>
-                        </div>
-                        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Applied Systems</span>
-                            <span class="hp-card-arrow" style="font-family: var(--font-mono); font-size: 11px; font-weight: bold; color: var(--accent-teal);">Explore Custom Systems &rarr;</span>
                         </div>
                     </a>
                 </div>
@@ -970,8 +975,8 @@
         <!-- 6. CONTACT & INTAKE SECTION ("BRING ME THE MESS") -->
         <section class="hp-contact-section" id="contact" aria-labelledby="contact-heading">
             <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; align-items: start;">
-                    <!-- Column 1: Copy & Referral -->
+                <div class="hp-contact-grid">
+                    <!-- Column 1: Copy -->
                     <div>
                         <span class="section-eyebrow">START A PROJECT</span>
                         <h2 id="contact-heading" style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-top: 0.5rem; margin-bottom: 1.25rem; font-weight: 400; color: var(--text-primary);">
@@ -986,12 +991,6 @@
                         <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); margin-bottom: 2rem;">
                             Direct email: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: 700; text-decoration: none;">jayme@contextmuse.com</a>
                         </div>
-
-                        <!-- Referral Program -->
-                        <div style="background: rgba(15, 118, 110, 0.05); border: 1px dashed var(--accent-teal); border-radius: 6px; padding: 1.25rem 1.5rem; font-size: 13.5px; color: var(--text-secondary); line-height: 1.55;">
-                            <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.35rem;">Client Referral Program</strong>
-                            Know a business that needs a better website or digital system? Context &amp; Muse pays a <strong>10% referral fee</strong> on booked website projects (e.g. a $10,000 booked project = $1,000 referral fee).
-                        </div>
                     </div>
 
                     <!-- Column 2: Form -->
@@ -1003,11 +1002,10 @@
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
                                 <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="audit">Conversion Leak Audit ($195)</option>
-                                    <option value="funnel">Funnel Sprint (from $750)</option>
-                                    <option value="website_system">Website + Workflow System (from $1,500)</option>
-                                    <option value="custom_system">Custom Operational System</option>
-                                    <option value="general">General Consultation / Other</option>
+                                    <option value="audit">Conversion Audit ($195 flat rate)</option>
+                                    <option value="launch-site">Launch Site (From $1,500)</option>
+                                    <option value="custom-system" selected>Custom Business System (From $2,500)</option>
+                                    <option value="custom">Custom Scope / Other</option>
                                 </select>
                             </div>
 
