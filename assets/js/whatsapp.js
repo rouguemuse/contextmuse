@@ -10,7 +10,7 @@
 
     // Business WhatsApp Phone Number (International format: Country code + Number without +, spaces, or dashes)
     // To configure your number, set window.CONTEXTMUSE_WHATSAPP_NUMBER or data-whatsapp-number on <body>
-    const DEFAULT_PHONE = '1XXXXXXXXXXX';
+    const DEFAULT_PHONE = '13468337291X';
 
     const OFFER_PREFILLS = {
         'launch': "Hi Jayme, I'm interested in a Launch Site. My business is: ",
@@ -71,7 +71,7 @@
             const location = el.getAttribute('data-whatsapp-location') || (el.closest('footer') ? 'footer' : 'content');
 
             const currentHref = el.getAttribute('href') || '';
-            if (!currentHref || currentHref === '#' || currentHref.includes('1XXXXXXXXXX') || !currentHref.includes('?text=')) {
+            if (!currentHref || currentHref === '#' || currentHref.includes('13468337291') || !currentHref.includes('?text=')) {
                 el.href = buildWhatsAppUrl(offer, customText);
             }
 
