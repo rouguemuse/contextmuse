@@ -30,11 +30,11 @@
     <style>
         .pow-capability-badge {
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            padding: 3px 8px;
+            padding: 4px 9px;
             border-radius: 3px;
             display: inline-block;
             margin-bottom: 0.75rem;
@@ -55,10 +55,11 @@
             border: 1px solid rgba(15, 118, 110, 0.25);
         }
         .pow-section-divider {
-            padding: 5rem 0;
+            padding: var(--section-padding-y) 0;
             border-bottom: 1px solid var(--border-light);
         }
         .pow-section-dark {
+            padding: var(--section-padding-y) 0;
             background: #0E1F1B;
             color: #FAF9F5;
         }
@@ -66,22 +67,23 @@
             color: #FAF9F5;
         }
         .pow-section-dark p {
-            color: rgba(250, 249, 245, 0.75);
+            color: rgba(250, 249, 245, 0.8);
         }
         .pow-card-custom {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 2rem;
+            padding: 2.25rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+            transition: var(--transition-smooth);
         }
         .pow-card-custom:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+            border-color: rgba(15, 118, 110, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
         }
         .pow-card-dark {
             background: #142420;

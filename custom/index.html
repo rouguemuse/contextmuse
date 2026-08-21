@@ -29,7 +29,7 @@
 
     <style>
         .product-hero {
-            padding: 140px 0 80px;
+            padding: clamp(5rem, 8vw, 7.5rem) 0 4.5rem;
             background: #0E1F1B;
             color: #FAF9F5;
             border-bottom: 1px solid rgba(250, 249, 245, 0.08);
@@ -51,7 +51,7 @@
             align-items: center;
             gap: 6px;
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -78,16 +78,18 @@
             border: 1px solid var(--border-light);
             border-radius: 6px;
             padding: 2rem;
-            transition: all 0.2s ease;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.02);
         }
         .offering-card:hover {
-            border-color: var(--accent-teal);
+            border-color: rgba(15, 118, 110, 0.3);
+            transform: translateY(-2px);
         }
         
         /* Proof section */
         .proof-section {
             background: var(--bg-panel);
-            padding: 6rem 0;
+            padding: var(--section-padding-y) 0;
             border-bottom: 1px solid var(--border-light);
         }
         .proof-grid {
@@ -109,11 +111,11 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: all 0.2s ease;
+            transition: var(--transition-smooth);
             box-shadow: 0 4px 14px rgba(0,0,0,0.02);
         }
         .proof-card:hover {
-            border-color: var(--accent-teal);
+            border-color: rgba(15, 118, 110, 0.3);
             transform: translateY(-2px);
             box-shadow: 0 12px 28px rgba(16, 33, 29, 0.06);
         }
@@ -138,7 +140,7 @@
         }
         .proof-status {
             font-family: var(--font-mono);
-            font-size: 9.5px;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--accent-teal);
             text-transform: uppercase;
@@ -152,11 +154,11 @@
             color: var(--text-primary);
             margin-top: 0;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-weight: 400;
         }
         .proof-desc {
             font-family: var(--font-sans);
-            font-size: 13.5px;
+            font-size: 0.875rem;
             line-height: 1.55;
             color: var(--text-secondary);
             margin-bottom: 1.25rem;
@@ -169,7 +171,7 @@
         }
         .proof-tag {
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 0.75rem;
             background: var(--bg-panel);
             color: var(--text-secondary);
             padding: 3px 8px;
@@ -197,7 +199,7 @@
             background: none;
             border: none;
             font-family: var(--font-mono);
-            font-size: 9.5px;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             cursor: pointer;
             padding: 4px 8px;

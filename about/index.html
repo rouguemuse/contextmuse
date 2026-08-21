@@ -24,13 +24,13 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
     <style>
         /* ── Hero Layout ───────────────────────────────────────── */
         .about-hero {
             background: var(--bg-paper, #FAF9F5);
-            padding: 140px 0 0;
+            padding: clamp(5rem, 8vw, 7.5rem) 0 0;
             border-bottom: 1px solid var(--border-light);
             overflow: hidden;
         }
@@ -60,12 +60,13 @@
         /* Hero headline with explicit line rhythm */
         .about-h1 {
             font-family: var(--font-serif);
-            font-size: clamp(2.2rem, 4vw, 3.4rem);
-            font-weight: 500;
-            line-height: 1.12;
-            letter-spacing: -0.03em;
+            font-size: clamp(3.2rem, 5.5vw, 5.25rem);
+            font-weight: 400;
+            line-height: 1.04;
+            letter-spacing: -0.025em;
             color: #0E1F1B;
             margin: 0 0 1.75rem;
+            text-wrap: balance;
         }
 
         .about-h1 em {
@@ -75,7 +76,7 @@
 
         .about-hero-sub {
             font-family: var(--font-sans);
-            font-size: 1.05rem;
+            font-size: 1.125rem;
             line-height: 1.65;
             color: var(--text-secondary);
             max-width: 500px;
@@ -146,7 +147,7 @@
 
         .cap-number {
             font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--accent-teal);
             letter-spacing: 0.08em;
@@ -161,12 +162,12 @@
             color: var(--text-primary);
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .cap-body p {
             font-family: var(--font-sans);
-            font-size: 14px;
+            font-size: 0.875rem;
             line-height: 1.6;
             color: var(--text-secondary);
             margin: 0;
@@ -175,8 +176,8 @@
         /* ── Operating Background pull-quote ──────────────────── */
         .ops-stanza {
             font-family: var(--font-serif);
-            font-size: clamp(1.05rem, 2vw, 1.3rem);
-            line-height: 2;
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            line-height: 1.85;
             color: var(--text-primary);
             border-left: 2.5px solid var(--accent-teal);
             padding-left: 1.75rem;

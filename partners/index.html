@@ -29,7 +29,7 @@
 
     <style>
         .partners-hero {
-            padding: 140px 0 80px;
+            padding: clamp(5rem, 8vw, 7.5rem) 0 4.5rem;
             background: #0E1F1B;
             color: #FAF9F5;
             border-bottom: 1px solid rgba(250, 249, 245, 0.08);
@@ -41,7 +41,7 @@
         }
         .partners-eyebrow {
             font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 0.75rem;
             letter-spacing: 0.15em;
             color: #C5A059;
             text-transform: uppercase;
@@ -51,28 +51,30 @@
         }
         .partners-headline {
             font-family: var(--font-serif);
-            font-size: clamp(2.4rem, 5vw, 4rem);
-            line-height: 1.1;
+            font-size: clamp(3.2rem, 5.5vw, 5.25rem);
+            line-height: 1.04;
             margin-bottom: 1.5rem;
             color: #FAF9F5;
             font-weight: 400;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
+            text-wrap: balance;
         }
         .partners-subhead {
             font-family: var(--font-sans);
-            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            font-size: 1.125rem;
             line-height: 1.65;
-            color: rgba(250, 249, 245, 0.75);
+            color: rgba(250, 249, 245, 0.85);
             margin-bottom: 2.25rem;
         }
 
         .partners-section {
-            padding: 6rem 0;
+            padding: var(--section-padding-y) 0;
             background: #FAF9F5;
             color: #0E1F1B;
             border-bottom: 1px solid var(--border-light);
         }
         .partners-section--dark {
+            padding: var(--section-padding-y) 0;
             background: #0E1F1B;
             color: #FAF9F5;
             border-bottom: 1px solid rgba(250, 249, 245, 0.1);
@@ -100,16 +102,16 @@
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 4px 14px rgba(0,0,0,0.02);
-            transition: all 0.25s ease;
+            transition: var(--transition-smooth);
         }
         .partner-model-card:hover {
-            border-color: var(--accent-teal);
+            border-color: rgba(15, 118, 110, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(16, 33, 29, 0.06);
+            box-shadow: 0 8px 24px rgba(16, 33, 29, 0.05);
         }
         .partner-model-meta {
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 0.75rem;
             color: var(--accent-teal);
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -122,19 +124,20 @@
             font-size: 1.5rem;
             color: var(--text-primary);
             margin: 0 0 0.5rem 0;
-            font-weight: 500;
+            font-weight: 400;
             line-height: 1.2;
         }
         .partner-model-rate {
             font-family: var(--font-mono);
-            font-size: 13.5px;
+            font-size: 0.875rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 0.75rem;
             display: block;
         }
         .partner-model-desc {
-            font-size: 13.5px;
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
             line-height: 1.6;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
@@ -192,7 +195,7 @@
         }
         .p-browser-url {
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 0.75rem;
             color: rgba(16, 33, 29, 0.5);
             margin-left: 8px;
         }
