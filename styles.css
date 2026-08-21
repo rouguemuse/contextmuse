@@ -326,6 +326,101 @@ a:hover {
     text-decoration: underline;
 }
 
+/* 4. WhatsApp Secondary / Direct CTA */
+.btn-whatsapp-subtle,
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem; /* 13px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.65rem 1.15rem;
+    border-radius: var(--radius-btn, 4px);
+    border: 1px solid var(--border-light, rgba(16, 33, 29, 0.15));
+    background: #FFFFFF;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    line-height: 1;
+}
+
+.btn-whatsapp-subtle:hover,
+.btn-whatsapp:hover {
+    border-color: #25D366;
+    background: rgba(37, 211, 102, 0.06);
+    color: #0E1F1B !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.12);
+}
+
+.btn-whatsapp-subtle svg,
+.btn-whatsapp svg {
+    color: #25D366;
+    flex-shrink: 0;
+}
+
+/* ── Mobile Sticky WhatsApp Quick Action Pill ── */
+.whatsapp-mobile-pill {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(250, 249, 245, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(16, 33, 29, 0.15);
+    border-radius: 999px;
+    padding: 0.55rem 1rem 0.55rem 0.8rem;
+    color: #0E1F1B;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(16, 33, 29, 0.12), 0 2px 6px rgba(0,0,0,0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.whatsapp-mobile-pill:hover,
+.whatsapp-mobile-pill:focus-visible {
+    transform: translateY(-2px);
+    border-color: #25D366;
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.2);
+    color: #0E1F1B;
+}
+
+.whatsapp-pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #25D366;
+    box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.25);
+    animation: pulse-green 2.5s infinite;
+}
+
+.whatsapp-icon-svg {
+    color: #25D366;
+    display: block;
+}
+
+@keyframes pulse-green {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 211, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 768px) {
+    .whatsapp-mobile-pill {
+        display: inline-flex;
+    }
+}
+
 /* ==========================================================================
    GLOBAL CARD SYSTEM
    ========================================================================== */
