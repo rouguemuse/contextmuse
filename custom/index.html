@@ -30,7 +30,7 @@
     <style>
         .product-hero {
             padding: 140px 0 80px;
-            background: #10211D;
+            background: #0E1F1B;
             color: #FAF9F5;
             border-bottom: 1px solid rgba(250, 249, 245, 0.08);
         }
@@ -56,7 +56,7 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
             background: rgba(45, 212, 191, 0.15);
-            color: #2DD4BF;
+            color: #C5A059;
             padding: 4px 10px;
             border-radius: 4px;
             margin-top: 1rem;
@@ -299,7 +299,7 @@
         <div class="container">
             <div class="product-grid">
                 <div>
-                    <span class="eyebrow" style="color: #2DD4BF; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;">APPLIED SYSTEMS &bull; CUSTOM MACHINERY</span>
+                    <span class="eyebrow" style="color: #C5A059; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;">APPLIED SYSTEMS &bull; CUSTOM MACHINERY</span>
                     <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.5rem; color: #FAF9F5; font-weight: 400;">
                         Systems built around the way your business actually works.
                     </h1>
@@ -307,7 +307,7 @@
                         Customer-facing websites paired with custom operational machinery underneath—intake, inventory, scheduling, recommendations, and field service workflows.
                     </p>
                     <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <a href="#intake" class="btn btn-primary" style="background: #2DD4BF; border-color: #2DD4BF; color: #10211D; text-decoration: none; padding: 0.85rem 1.75rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px;">Start an Intake &darr;</a>
+                        <a href="#intake" class="btn btn-primary" style="background: #C5A059; border-color: #C5A059; color: #0E1F1B; text-decoration: none; padding: 0.85rem 1.75rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px;">Start an Intake &darr;</a>
                         <a href="/systems/client-builds/" style="border: 1px solid rgba(250,249,245,0.4); color: #FAF9F5; padding: 0.85rem 1.6rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; text-decoration: none;">View Case Studies &rarr;</a>
                     </div>
                     <div>
@@ -416,10 +416,10 @@
                 <div class="proof-grid">
                     <!-- Lone Wolf Dumpsters -->
                     <div class="proof-card" id="lonewolf">
-                        <div class="proof-img-container" style="background: #142420; padding: 2rem 1.5rem; text-align: center; color: #FAF9F5; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <span style="background: #2DD4BF; color: #10211D; font-family: var(--font-mono); font-size: 9px; font-weight: 700; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; margin-bottom: 0.4rem;">Live Production</span>
+                        <div class="proof-img-container" style="background: #0E1F1B; padding: 2rem 1.5rem; text-align: center; color: #FAF9F5; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <span style="background: #C5A059; color: #0E1F1B; font-family: var(--font-mono); font-size: 9px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; margin-bottom: 0.4rem;">Live Production</span>
                             <div style="font-family: var(--font-serif); font-size: 1.25rem;">Lone Wolf Dumpsters</div>
-                            <div style="font-family: var(--font-mono); font-size: 10px; color: #2DD4BF; margin-top: 0.35rem;">40+ Municipal Pages &bull; Quote Triage</div>
+                            <div style="font-family: var(--font-mono); font-size: 10px; color: #E5E2D9; margin-top: 0.35rem;">40+ Municipal Pages &bull; Quote Triage</div>
                         </div>
                         <div class="proof-info">
                             <span class="proof-status">Live Client Build</span>
@@ -572,11 +572,7 @@
                                     <option value="audit">Conversion Audit ($195 flat rate)</option>
                                     <option value="launch-site" selected>Launch Site (From $1,500)</option>
                                     <option value="custom-system">Custom Business System (From $2,500)</option>
-                                    <option value="custom-software">Custom Software / Portal (From $4,500)</option>
-                                    <option value="care-essential">Essential Care ($375 / Quarter)</option>
-                                    <option value="care-growth">Growth Care ($600 / Quarter)</option>
-                                    <option value="agency">Agency White-Label Partnership</option>
-                                    <option value="general">General Inquiry / Other</option>
+                                    <option value="custom">Custom Scope / Other</option>
                                 </select>
                             </div>
 
@@ -678,16 +674,17 @@
             
             const serviceMap = {
                 'audit': { value: 'audit', label: 'Conversion Audit ($195 flat rate)' },
+                'conversion-audit': { value: 'audit', label: 'Conversion Audit ($195 flat rate)' },
                 'launch-site': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
+                'launch': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
                 'conversion-site': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
-                'custom-system': { value: 'custom-system', label: 'Custom Business System (From $2,500)' },
-                'custom-software': { value: 'custom-software', label: 'Custom Software / Portal (From $4,500)' },
-                'care-essential': { value: 'care-essential', label: 'Essential Care ($375 / Quarter)' },
-                'care-growth': { value: 'care-growth', label: 'Growth Care ($600 / Quarter)' },
                 'funnel-sprint': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
                 'funnel': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
-                'agency': { value: 'agency', label: 'Agency White-Label Partnership' },
-                'general': { value: 'general', label: 'General Inquiry / Other' }
+                'custom-system': { value: 'custom-system', label: 'Custom Business System (From $2,500)' },
+                'custom-software': { value: 'custom-system', label: 'Custom Business System (From $2,500)' },
+                'custom': { value: 'custom', label: 'Custom Scope / Other' },
+                'general': { value: 'custom', label: 'Custom Scope / Other' },
+                'agency': { value: 'custom', label: 'Custom Scope / Other' }
             };
 
             if (requestedService && serviceMap[requestedService] && serviceSelect) {
