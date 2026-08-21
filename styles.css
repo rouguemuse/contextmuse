@@ -216,17 +216,19 @@ a:hover {
 }
 
 .nav-link {
-    font-family: var(--font-sans);
-    font-size: 1.02rem;           /* Slightly larger navigation text */
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 450;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
     text-decoration: none;
     transition: var(--transition-smooth);
+    text-transform: none;
 }
 
 .nav-link:hover, 
 .nav-link.active {
-    color: var(--text-primary);
+    color: var(--accent-teal);
 }
 
 .nav-btn {
@@ -341,11 +343,13 @@ a:hover {
     align-items: center;
     gap: 0.35rem;
     user-select: none;
-    font-family: var(--font-sans);
-    font-size: 1.02rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 450;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
     transition: var(--transition-smooth);
+    text-transform: none;
 }
 
 .nav-dropdown summary::-webkit-details-marker {
@@ -354,15 +358,15 @@ a:hover {
 
 .nav-dropdown summary:hover,
 .nav-dropdown[open] summary {
-    color: var(--text-primary);
+    color: var(--accent-teal);
 }
 
 .nav-dropdown-arrow {
     font-size: 0.7rem;
     transition: transform 0.2s ease;
     display: inline-block;
-    color: var(--text-secondary);
-    opacity: 0.8;
+    color: var(--text-primary);
+    opacity: 0.75;
 }
 
 .nav-dropdown[open] .nav-dropdown-arrow {
@@ -423,10 +427,11 @@ a:hover {
 .nav-dropdown-link {
     display: block;
     padding: 0.6rem 1.5rem;
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    color: var(--text-primary);
     text-decoration: none;
     transition: var(--transition-smooth);
     text-align: left;
@@ -434,7 +439,7 @@ a:hover {
 
 .nav-dropdown-link:hover {
     background: var(--bg-panel);
-    color: var(--text-primary);
+    color: var(--accent-teal);
 }
 
 /* Mobile responsive accordion for dropdowns */
@@ -449,8 +454,9 @@ a:hover {
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        font-family: var(--font-serif);
         font-size: 1.25rem !important;
-        color: var(--text-secondary);
+        color: var(--text-primary);
         padding: 0.25rem 0;
     }
 
@@ -482,10 +488,11 @@ a:hover {
     }
 
     .nav-dropdown-link {
+        font-family: var(--font-serif);
         font-size: 1.05rem !important;
         padding: 0.4rem 0 !important;
         border-bottom: none !important;
-        color: var(--text-secondary) !important;
+        color: var(--text-primary) !important;
     }
     
     .nav-dropdown-link:hover {
@@ -3522,9 +3529,17 @@ textarea:focus-visible {
     }
     
     .navbar .nav-links a {
+        font-family: var(--font-serif);
         font-size: 1.25rem !important;
         width: 100%;
-        color: var(--text-secondary);
+        color: var(--text-primary);
+    }
+    .navbar .nav-links a.nav-cta {
+        font-family: var(--font-mono) !important;
+        font-size: 12px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.06em !important;
+        color: #FAF9F5 !important;
     }
     .navbar .nav-btn {
         width: 100% !important;
