@@ -444,7 +444,7 @@ if (fs.existsSync(restSysPath) && fs.existsSync(sigPath)) {
 // ==========================================================================
 log('\n[5] SIGNAL & QUICK LAUNCH PRICING & OFFER NAME ALIGNMENT SEARCH');
 let legacyPriceFound = false;
-const legacyPrices = ['Quick Launch $750', 'Quick Launch Website $750', 'Signal $450'];
+const legacyPrices = ['Quick Launch $750', 'Quick Launch Website $750', 'Starting at $450', 'Signal $450', '$350 websites', '$450 websites', '$500 websites'];
 filesToVerify.forEach(fileSpec => {
     const filePath = path.join(projectRoot, fileSpec.relPath);
     if (!fs.existsSync(filePath)) return;

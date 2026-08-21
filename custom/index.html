@@ -569,9 +569,12 @@
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
                                 <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="audit">Conversion Audit (Diagnostic)</option>
-                                    <option value="launch-site" selected>Launch Site (Fixed-Scope Build)</option>
-                                    <option value="custom-system">Custom Business Build (Quoted after discovery)</option>
+                                    <option value="audit">Conversion Audit ($195 flat rate)</option>
+                                    <option value="launch-site" selected>Launch Site (From $1,500)</option>
+                                    <option value="custom-system">Custom Business System (From $2,500)</option>
+                                    <option value="custom-software">Custom Software / Portal (From $4,500)</option>
+                                    <option value="care-essential">Essential Care ($375 / Quarter)</option>
+                                    <option value="care-growth">Growth Care ($600 / Quarter)</option>
                                     <option value="agency">Agency White-Label Partnership</option>
                                     <option value="general">General Inquiry / Other</option>
                                 </select>
@@ -674,12 +677,15 @@
             const contextText = document.getElementById('service-context-text');
             
             const serviceMap = {
-                'audit': { value: 'audit', label: 'Conversion Audit (Diagnostic)' },
-                'launch-site': { value: 'launch-site', label: 'Launch Site (Fixed-Scope Build)' },
-                'conversion-site': { value: 'launch-site', label: 'Launch Site (Fixed-Scope Build)' },
-                'custom-system': { value: 'custom-system', label: 'Custom Business Build (Quoted after discovery)' },
-                'funnel-sprint': { value: 'launch-site', label: 'Launch Site (Fixed-Scope Build)' },
-                'funnel': { value: 'launch-site', label: 'Launch Site (Fixed-Scope Build)' },
+                'audit': { value: 'audit', label: 'Conversion Audit ($195 flat rate)' },
+                'launch-site': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
+                'conversion-site': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
+                'custom-system': { value: 'custom-system', label: 'Custom Business System (From $2,500)' },
+                'custom-software': { value: 'custom-software', label: 'Custom Software / Portal (From $4,500)' },
+                'care-essential': { value: 'care-essential', label: 'Essential Care ($375 / Quarter)' },
+                'care-growth': { value: 'care-growth', label: 'Growth Care ($600 / Quarter)' },
+                'funnel-sprint': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
+                'funnel': { value: 'launch-site', label: 'Launch Site (From $1,500)' },
                 'agency': { value: 'agency', label: 'Agency White-Label Partnership' },
                 'general': { value: 'general', label: 'General Inquiry / Other' }
             };

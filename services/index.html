@@ -4,28 +4,28 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services &amp; Offers · Conversion Audits, Websites &amp; Custom Systems | Context &amp; Muse</title>
-    <meta name="description" content="Lean, intentionally built websites and business systems with minimal maintenance and technical overhead. Conversion Audits, Launch Sites, and Custom Business Builds.">
+    <title>Services &amp; Offers · Conversion Audits, Launch Sites, &amp; Custom Systems | Context &amp; Muse</title>
+    <meta name="description" content="Context &amp; Muse creates lean, custom websites and business software with minimal maintenance, plugins, and technical overhead. Conversion Audits, Launch Sites, Custom Business Systems, and Custom Software.">
     <link rel="canonical" href="https://www.contextmuse.com/services/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.contextmuse.com/services/">
-    <meta property="og:title" content="Services &amp; Offers · Conversion Audits, Websites &amp; Custom Systems | Context &amp; Muse">
-    <meta property="og:description" content="Lean, intentionally built websites and business systems with minimal unnecessary maintenance, subscriptions, plugins, and technical overhead.">
+    <meta property="og:title" content="Services &amp; Offers · Conversion Audits, Launch Sites, &amp; Custom Systems | Context &amp; Muse">
+    <meta property="og:description" content="Context &amp; Muse creates lean, custom websites and business software with minimal unnecessary maintenance, subscriptions, plugins, and technical overhead.">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Services &amp; Offers · Conversion Audits, Websites &amp; Custom Systems | Context &amp; Muse">
-    <meta name="twitter:description" content="Lean, intentionally built websites and business systems with minimal unnecessary maintenance, subscriptions, plugins, and technical overhead.">
+    <meta name="twitter:title" content="Services &amp; Offers · Conversion Audits, Launch Sites, &amp; Custom Systems | Context &amp; Muse">
+    <meta name="twitter:description" content="Context &amp; Muse creates lean, custom websites and business software with minimal unnecessary maintenance, subscriptions, plugins, and technical overhead.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.6">
+    <link rel="stylesheet" href="/styles.css?v=2.7">
 
     <style>
         .services-hero {
@@ -63,7 +63,7 @@
             margin: 0 0 2rem 0;
         }
 
-        /* ── THREE PATHS SECTION ── */
+        /* ── FOUR-TIER PRICING LADDER SECTION ── */
         .paths-section {
             padding: 80px 0 100px;
             background: #FFFFFF;
@@ -92,24 +92,30 @@
             font-weight: 400;
         }
 
-        .paths-grid {
+        .ladder-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             margin-bottom: 5rem;
         }
-        @media (max-width: 980px) {
-            .paths-grid {
+        @media (max-width: 1100px) {
+            .ladder-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        @media (max-width: 700px) {
+            .ladder-grid {
                 grid-template-columns: 1fr;
-                gap: 2.25rem;
+                gap: 2rem;
             }
         }
 
-        .path-card {
+        .ladder-card {
             background: var(--bg-paper);
             border: 1px solid var(--border-light);
             border-radius: 8px;
-            padding: 2.5rem 2rem;
+            padding: 2.25rem 1.65rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -117,123 +123,139 @@
             transition: all 0.25s ease;
             box-shadow: 0 4px 14px rgba(0,0,0,0.015);
         }
-        .path-card:hover {
+        .ladder-card:hover {
             border-color: var(--accent-teal);
             transform: translateY(-3px);
             box-shadow: 0 16px 36px rgba(15, 118, 110, 0.06);
         }
-        .path-card.featured {
+        .ladder-card.featured {
             background: #FFFFFF;
             border: 2px solid var(--accent-teal);
             box-shadow: 0 12px 30px rgba(15, 118, 110, 0.08);
         }
 
-        .path-stage-badge {
+        .ladder-stage-badge {
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 9.5px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--accent-teal);
             background: rgba(15, 118, 110, 0.08);
-            padding: 3px 10px;
+            padding: 3px 9px;
             border-radius: 3px;
             display: inline-block;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
             width: fit-content;
         }
 
-        .path-title {
+        .ladder-title {
             font-family: var(--font-serif);
-            font-size: 1.85rem;
+            font-size: 1.65rem;
             color: var(--text-primary);
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 0.25rem 0;
             font-weight: 500;
             line-height: 1.2;
         }
 
-        .path-result {
-            font-family: var(--font-sans);
-            font-size: 15px;
-            line-height: 1.55;
+        .ladder-price {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 700;
             color: var(--text-primary);
-            font-weight: 600;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+        .ladder-price-sub {
+            font-family: var(--font-sans);
+            font-size: 12.5px;
+            color: var(--text-secondary);
             margin-bottom: 1rem;
+            display: block;
         }
 
-        .path-meta-box {
+        .ladder-result {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        .ladder-meta-box {
             background: rgba(16, 33, 29, 0.03);
             border-left: 2.5px solid var(--accent-teal);
-            padding: 0.75rem 1rem;
+            padding: 0.65rem 0.85rem;
             border-radius: 0 4px 4px 0;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
-        .path-meta-label {
+        .ladder-meta-label {
             font-family: var(--font-mono);
-            font-size: 9.5px;
+            font-size: 9px;
             font-weight: 700;
             color: var(--accent-teal);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             display: block;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
-        .path-meta-text {
-            font-size: 13.5px;
+        .ladder-meta-text {
+            font-size: 12.5px;
             color: var(--text-secondary);
-            line-height: 1.45;
+            line-height: 1.4;
             margin: 0;
         }
 
-        .path-scope-box {
+        .ladder-scope-box {
             border-top: 1px solid var(--border-light);
-            padding-top: 1.25rem;
-            margin-bottom: 2rem;
+            padding-top: 1.1rem;
+            margin-bottom: 1.75rem;
             flex-grow: 1;
         }
-        .path-scope-title {
+        .ladder-scope-title {
             font-family: var(--font-mono);
-            font-size: 10px;
+            font-size: 9.5px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--text-primary);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.65rem;
             display: block;
         }
-        .path-scope-list {
+        .ladder-scope-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
-        .path-scope-list li {
-            font-size: 13.5px;
+        .ladder-scope-list li {
+            font-size: 13px;
             color: var(--text-secondary);
-            line-height: 1.45;
+            line-height: 1.4;
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            gap: 7px;
         }
-        .path-scope-list li::before {
+        .ladder-scope-list li::before {
             content: "•";
             color: var(--accent-teal);
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             line-height: 1.2;
         }
 
-        .btn-path-cta {
+        .btn-ladder-cta {
             background: var(--text-primary);
             color: #FAF9F5 !important;
             font-family: var(--font-mono);
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            padding: 0.85rem 1.4rem;
+            padding: 0.8rem 1.2rem;
             border-radius: 4px;
             text-decoration: none;
             text-align: center;
@@ -242,11 +264,11 @@
             margin-top: auto;
             border: 1px solid var(--text-primary);
         }
-        .path-card.featured .btn-path-cta {
+        .ladder-card.featured .btn-ladder-cta {
             background: var(--accent-teal);
             border-color: var(--accent-teal);
         }
-        .btn-path-cta:hover {
+        .btn-ladder-cta:hover {
             background: var(--accent-teal);
             border-color: var(--accent-teal);
             transform: translateY(-1px);
@@ -307,44 +329,83 @@
             transform: translateY(-1px);
         }
 
-        /* ── PHILOSOPHY SECTION ── */
-        .philosophy-strip {
-            background: #10211D;
-            color: #FAF9F5;
+        /* ── QUARTERLY CARE PLANS ── */
+        .care-section {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
             border-radius: 8px;
             padding: 3.5rem 3rem;
             margin-bottom: 5rem;
         }
-        .philosophy-grid {
+        .care-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
         }
-        @media (max-width: 900px) {
-            .philosophy-grid {
+        @media (max-width: 850px) {
+            .care-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 2rem;
             }
         }
-        .philosophy-item {
-            border-left: 2px solid #2DD4BF;
-            padding-left: 1.25rem;
+        .care-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .philosophy-item-title {
+        .care-card.featured {
+            border: 2px solid var(--accent-teal);
+        }
+        .care-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin: 0 0 0.25rem 0;
+            font-weight: 500;
+        }
+        .care-price {
             font-family: var(--font-mono);
-            font-size: 11px;
-            color: #2DD4BF;
-            text-transform: uppercase;
+            font-size: 1.35rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.35rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            display: block;
         }
-        .philosophy-item-desc {
-            font-size: 14px;
-            color: rgba(250, 249, 245, 0.75);
-            line-height: 1.55;
-            margin: 0;
+        .care-equiv {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            display: block;
+            font-style: italic;
+        }
+        .care-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+        .care-list li {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .care-list li::before {
+            content: "✓";
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -380,7 +441,8 @@
                     <div class="nav-dropdown-content">
                         <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
                         <a href="/custom/?service=launch-site#intake" class="nav-dropdown-link">Launch Site</a>
-                        <a href="/custom/?service=custom-system#intake" class="nav-dropdown-link">Custom Business Build</a>
+                        <a href="/custom/?service=custom-system#intake" class="nav-dropdown-link">Custom Business System</a>
+                        <a href="/custom/?service=custom-software#intake" class="nav-dropdown-link">Custom Software / Portal</a>
                         <a href="/partners/" class="nav-dropdown-link">For Agencies</a>
                     </div>
                 </details>
@@ -398,122 +460,158 @@
                 <span class="services-hero-eyebrow">LEAN WEBSITES &amp; INTENTIONAL SYSTEMS</span>
                 <h1>Intentionally built digital systems.<br>Zero maintenance circus.</h1>
                 <p>
-                    Context &amp; Muse creates lean, custom websites and business software with minimal unnecessary maintenance, subscriptions, plugins, and technical overhead. Three clear ways to work together.
+                    Context &amp; Muse creates lean, custom websites and business software with minimal unnecessary maintenance, subscriptions, plugins, and technical overhead. Clear, authoritative engagement tiers.
                 </p>
                 <div>
-                    <a href="#three-paths" class="btn btn-primary" style="background: var(--text-primary); border-color: var(--text-primary); color: #FAF9F5; padding: 0.85rem 1.6rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; text-decoration: none; display: inline-block;">Explore the Three Paths &darr;</a>
+                    <a href="#pricing-ladder" class="btn btn-primary" style="background: var(--text-primary); border-color: var(--text-primary); color: #FAF9F5; padding: 0.85rem 1.6rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; text-decoration: none; display: inline-block;">Explore Pricing &amp; Offers &darr;</a>
                 </div>
             </div>
         </div>
     </header>
 
     <main id="main-content">
-        <section class="paths-section" id="three-paths">
+        <section class="paths-section" id="pricing-ladder">
             <div class="container">
                 
                 <!-- Section Header -->
                 <div class="section-header-center">
-                    <span class="section-eyebrow">CLEAR SALES STRUCTURE</span>
-                    <h2 class="section-title">Three Paths to Clarity</h2>
+                    <span class="section-eyebrow">AUTHORITATIVE PRICING LADDER</span>
+                    <h2 class="section-title">Clear Paths to Clarity</h2>
                     <p style="font-size: 16px; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
-                        A natural progression from low-risk diagnosis to complete custom engineering.
+                        A natural progression from low-risk diagnosis to full custom software engineering.
                     </p>
                 </div>
 
-                <!-- 3 Primary Offers Grid -->
-                <div class="paths-grid">
+                <!-- 4 Primary Offers Grid -->
+                <div class="ladder-grid">
                     
-                    <!-- Path 1: Conversion Audit (DIAGNOSE) -->
-                    <div class="path-card" id="conversion-audit">
+                    <!-- Tier 1: Conversion Audit (DIAGNOSE) -->
+                    <div class="ladder-card" id="conversion-audit">
                         <div>
-                            <span class="path-stage-badge">STAGE 01 // DIAGNOSE</span>
-                            <h3 class="path-title">Conversion Audit</h3>
+                            <span class="ladder-stage-badge">01 // DIAGNOSE</span>
+                            <h3 class="ladder-title">Conversion Audit</h3>
+                            <span class="ladder-price">$195</span>
+                            <span class="ladder-price-sub">Flat Rate Diagnostic</span>
                             
-                            <div class="path-result">
-                                Identify why your existing site or customer journey is losing leads before spending money rebuilding it.
+                            <div class="ladder-result">
+                                Professional conversion &amp; website diagnostic to identify where leads are lost before rebuilding.
                             </div>
 
-                            <div class="path-meta-box">
-                                <span class="path-meta-label">Best For</span>
-                                <p class="path-meta-text">Businesses with existing traffic or digital touchpoints that aren't converting into booked calls, inquiries, or sales.</p>
+                            <div class="ladder-meta-box">
+                                <span class="ladder-meta-label">Positioning</span>
+                                <p class="ladder-meta-text">100% credited toward a qualifying build booked within 30 days.</p>
                             </div>
 
-                            <div class="path-scope-box">
-                                <span class="path-scope-title">What Is Evaluated</span>
-                                <ul class="path-scope-list">
+                            <div class="ladder-scope-box">
+                                <span class="ladder-scope-title">What Is Evaluated</span>
+                                <ul class="ladder-scope-list">
                                     <li>Calls to action &amp; lead flow continuity</li>
                                     <li>Mobile touch UX &amp; navigation friction</li>
                                     <li>Messaging clarity &amp; trust signals</li>
                                     <li>Form &amp; intake drop-off points</li>
-                                    <li>Technical, structural, or automation gaps</li>
-                                    <li>100% credited toward a build within 30 days</li>
+                                    <li>Technical or structural problems</li>
+                                    <li>Automation &amp; improvement roadmap</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <a href="/custom/?service=audit#intake" class="btn-path-cta">Book a Conversion Audit &rarr;</a>
+                        <a href="/custom/?service=audit#intake" class="btn-ladder-cta">Book a Conversion Audit &rarr;</a>
                     </div>
 
-                    <!-- Path 2: Launch Site (BUILD) -->
-                    <div class="path-card featured" id="launch-site">
+                    <!-- Tier 2: Launch Site (LAUNCH) -->
+                    <div class="ladder-card" id="launch-site">
                         <div>
-                            <span class="path-stage-badge">STAGE 02 // BUILD</span>
-                            <h3 class="path-title">Launch Site</h3>
+                            <span class="ladder-stage-badge">02 // LAUNCH</span>
+                            <h3 class="ladder-title">Launch Site</h3>
+                            <span class="ladder-price">From $1,500</span>
+                            <span class="ladder-price-sub">Typical: $1,500–$1,950</span>
                             
-                            <div class="path-result">
-                                A clean, custom-built business website without unnecessary technical baggage or endless plugin maintenance.
+                            <div class="ladder-result">
+                                Entry-level custom business website without unnecessary technical baggage or plugin bloat.
                             </div>
 
-                            <div class="path-meta-box">
-                                <span class="path-meta-label">Positioning</span>
-                                <p class="path-meta-text">Defined scope. Defined price. Defined launch.</p>
+                            <div class="ladder-meta-box">
+                                <span class="ladder-meta-label">Positioning</span>
+                                <p class="ladder-meta-text">Defined scope. Defined price. Defined launch.</p>
                             </div>
 
-                            <div class="path-scope-box">
-                                <span class="path-scope-title">Included Scope</span>
-                                <ul class="path-scope-list">
-                                    <li>Professional design &amp; mobile-responsive UI</li>
-                                    <li>Clear messaging &amp; first-viewport positioning</li>
-                                    <li>Lead capture, contact, &amp; quote inquiry flow</li>
+                            <div class="ladder-scope-box">
+                                <span class="ladder-scope-title">Included Scope</span>
+                                <ul class="ladder-scope-list">
+                                    <li>Professional design &amp; mobile responsive UI</li>
+                                    <li>Lead capture &amp; contact intake flow</li>
                                     <li>Core integrations &amp; SEO foundations</li>
-                                    <li>Clean performance &amp; analytics setup</li>
-                                    <li>Complete deployment, handoff, &amp; 100% ownership</li>
+                                    <li>Performance optimization &amp; analytics</li>
+                                    <li>Complete deployment &amp; 100% ownership</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <a href="/custom/?service=launch-site#intake" class="btn-path-cta">Start a Website &rarr;</a>
+                        <a href="/custom/?service=launch-site#intake" class="btn-ladder-cta">Start a Website &rarr;</a>
                     </div>
 
-                    <!-- Path 3: Custom Business Build (ENGINEER) -->
-                    <div class="path-card" id="custom-build">
+                    <!-- Tier 3: Custom Business System (BUILD THE SYSTEM) -->
+                    <div class="ladder-card featured" id="custom-system">
                         <div>
-                            <span class="path-stage-badge">STAGE 03 // ENGINEER</span>
-                            <h3 class="path-title">Custom Business Build</h3>
+                            <span class="ladder-stage-badge">03 // BUSINESS SYSTEM</span>
+                            <h3 class="ladder-title">Custom Business System</h3>
+                            <span class="ladder-price">From $2,500</span>
+                            <span class="ladder-price-sub">Typical: $2,500–$5,000+</span>
                             
-                            <div class="path-result">
-                                Bespoke software development for operational workflows, specialized customer journeys, and internal tools.
+                            <div class="ladder-result">
+                                Website and operational tools designed together around your actual business workflows.
                             </div>
 
-                            <div class="path-meta-box">
-                                <span class="path-meta-label">Positioning</span>
-                                <p class="path-meta-text">Quoted individually after discovery.</p>
+                            <div class="ladder-meta-box">
+                                <span class="ladder-meta-label">Positioning</span>
+                                <p class="ladder-meta-text">Complexity determines final pricing. Purpose-built operational machinery.</p>
                             </div>
 
-                            <div class="path-scope-box">
-                                <span class="path-scope-title">Capabilities &amp; Custom Modules</span>
-                                <ul class="path-scope-list">
-                                    <li>Custom intake workflows &amp; multi-step forms</li>
-                                    <li>Estimating tools, calculators, &amp; pricing logic</li>
-                                    <li>Dashboards, employee portals, &amp; customer portals</li>
-                                    <li>Directories, booking engines, &amp; reservation systems</li>
-                                    <li>Internal operational tools &amp; API integrations</li>
-                                    <li>Specialized software &amp; custom portal development</li>
+                            <div class="ladder-scope-box">
+                                <span class="ladder-scope-title">Included Scope</span>
+                                <ul class="ladder-scope-list">
+                                    <li>Custom intake systems, forms, &amp; lead routing</li>
+                                    <li>CRM &amp; sales pipeline functionality</li>
+                                    <li>Business workflows &amp; automations</li>
+                                    <li>Booking &amp; payment/invoicing connections</li>
+                                    <li>Internal workflow &amp; customer-facing tools</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <a href="/custom/?service=custom-system#intake" class="btn-path-cta">Discuss a Custom Build &rarr;</a>
+                        <a href="/custom/?service=custom-system#intake" class="btn-ladder-cta">Discuss a Custom System &rarr;</a>
+                    </div>
+
+                    <!-- Tier 4: Custom Software / Portal (BUILD CUSTOM SOFTWARE) -->
+                    <div class="ladder-card" id="custom-software">
+                        <div>
+                            <span class="ladder-stage-badge">04 // CUSTOM SOFTWARE</span>
+                            <h3 class="ladder-title">Custom Software / Portal</h3>
+                            <span class="ladder-price">From $4,500</span>
+                            <span class="ladder-price-sub">Custom Quoted Based on Scope</span>
+                            
+                            <div class="ladder-result">
+                                Bespoke software development for authenticated portals, dashboards, and multi-user systems.
+                            </div>
+
+                            <div class="ladder-meta-box">
+                                <span class="ladder-meta-label">Positioning</span>
+                                <p class="ladder-meta-text">From $4,500 · Custom quoted based on scope. No artificial ceiling.</p>
+                            </div>
+
+                            <div class="ladder-scope-box">
+                                <span class="ladder-scope-title">Capabilities</span>
+                                <ul class="ladder-scope-list">
+                                    <li>Employee portals &amp; client portals</li>
+                                    <li>Operational dashboards &amp; internal apps</li>
+                                    <li>Custom workflow software &amp; auth systems</li>
+                                    <li>Database-driven applications</li>
+                                    <li>Multi-user specialized tools</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <a href="/custom/?service=custom-software#intake" class="btn-ladder-cta">Discuss Custom Software &rarr;</a>
                     </div>
 
                 </div>
@@ -524,7 +622,7 @@
                         <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.4rem;">GUIDANCE &amp; SCOPING</span>
                         <h3 class="not-sure-title">Not sure which one you need?</h3>
                         <p class="not-sure-desc">
-                            You don't need to diagnose your own technical problem or decipher complex specs. Tell us what is happening in your business, what is frustrating your team or customers, and what you want to accomplish—Context &amp; Muse will recommend the appropriate scope.
+                            You don't need to diagnose your own technical problem. Explain what is happening in your business, what is frustrating your team or customers, and what you want to accomplish—Context &amp; Muse will recommend the appropriate scope.
                         </p>
                     </div>
                     <div style="display: flex; justify-content: flex-end;">
@@ -532,25 +630,58 @@
                     </div>
                 </div>
 
-                <!-- Philosophy / Avoid WordPress Overhead Strip -->
-                <div class="philosophy-strip">
-                    <span style="font-family: var(--font-mono); font-size: 10.5px; color: #2DD4BF; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.5rem;">OUR ENGINEERING STANDARD</span>
-                    <h3 style="font-family: var(--font-serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: #FAF9F5; margin: 0 0 1.25rem 0; font-weight: 400;">
-                        Built for long-term independence.
-                    </h3>
+                <!-- Quarterly Care Plans -->
+                <div class="care-section" id="care-plans">
+                    <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+                        <span class="section-eyebrow">KEEP IT HEALTHY &amp; IMPROVING</span>
+                        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 400;">Quarterly Care Plans</h2>
+                        <p style="font-size: 15.5px; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+                            Ongoing care plans AFTER you own your build. Billed quarterly—never a monthly website-rental fee.
+                        </p>
+                    </div>
 
-                    <div class="philosophy-grid">
-                        <div class="philosophy-item">
-                            <div class="philosophy-item-title">Minimal Tech Stack</div>
-                            <p class="philosophy-item-desc">No fragile plugin chains or bloated theme frameworks that break unexpectedly on updates.</p>
+                    <div class="care-grid">
+                        <!-- Essential Care -->
+                        <div class="care-card">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); margin-bottom: 0.5rem; display: block;">KEEP IT HEALTHY</span>
+                                <h3 class="care-title">Essential Care</h3>
+                                <span class="care-price">$375 / Quarter</span>
+                                <span class="care-equiv">Equivalent to ~$125/month, billed quarterly</span>
+                                
+                                <ul class="care-list">
+                                    <li>Standard Vercel hosting for business usage</li>
+                                    <li>Routine health scans &amp; uptime checks</li>
+                                    <li>Broken-link, form, &amp; CTA checks</li>
+                                    <li>Mobile, SSL, &amp; domain monitoring</li>
+                                    <li>Performance &amp; security dependency monitoring</li>
+                                    <li>Quarterly functional review &amp; minor fixes</li>
+                                    <li>Backups &amp; priority support</li>
+                                    <li>15% discount on additional Context &amp; Muse services</li>
+                                </ul>
+                            </div>
+                            <a href="/custom/?service=care-essential#intake" class="btn-ladder-cta" style="background: transparent; color: var(--text-primary) !important; border: 1.5px solid var(--text-primary);">Inquire Essential Care &rarr;</a>
                         </div>
-                        <div class="philosophy-item">
-                            <div class="philosophy-item-title">Zero Host Lock-in</div>
-                            <p class="philosophy-item-desc">Clean, portable code and assets. You own your site, your domain, and your data 100%.</p>
-                        </div>
-                        <div class="philosophy-item">
-                            <div class="philosophy-item-title">Plainspoken Scoping</div>
-                            <p class="philosophy-item-desc">No corporate buzzwords or artificial retainer lock-ins. Honest, transparent recommendations.</p>
+
+                        <!-- Growth Care -->
+                        <div class="care-card featured">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); margin-bottom: 0.5rem; display: block;">KEEP IMPROVING IT</span>
+                                <h3 class="care-title">Growth Care</h3>
+                                <span class="care-price">$600 / Quarter</span>
+                                <span class="care-equiv">Equivalent to ~$200/month, billed quarterly</span>
+                                
+                                <ul class="care-list">
+                                    <li>Everything in Essential Care included</li>
+                                    <li>Quarterly conversion review &amp; analytics breakdown</li>
+                                    <li>Strategic check-in &amp; priority planning</li>
+                                    <li>Up to 2 hours of small site improvements per quarter</li>
+                                    <li>Small layout, content, or functionality tweaks</li>
+                                    <li>Continued priority support</li>
+                                    <li>15% discount on additional Context &amp; Muse services</li>
+                                </ul>
+                            </div>
+                            <a href="/custom/?service=care-growth#intake" class="btn-ladder-cta" style="background: var(--accent-teal); color: #FAF9F5 !important; border: 1.5px solid var(--accent-teal);">Inquire Growth Care &rarr;</a>
                         </div>
                     </div>
                 </div>
