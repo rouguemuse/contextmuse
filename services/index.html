@@ -4,32 +4,32 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ways to Work Together · Productized Services &amp; Systems | Context &amp; Muse</title>
-    <meta name="description" content="Clear, productized entry points to improve conversion, clarify customer journeys, audit website friction, or build custom operational systems.">
+    <title>Websites &amp; Packages · High-Conversion Digital Systems | Context &amp; Muse</title>
+    <meta name="description" content="Clean, fast, low-overhead websites and digital systems built to convert without the maintenance circus. Launch Sites, Conversion Sites, and Custom Systems.">
     <link rel="canonical" href="https://www.contextmuse.com/services/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.contextmuse.com/services/">
-    <meta property="og:title" content="Ways to Work Together · Productized Services &amp; Systems | Context &amp; Muse">
-    <meta property="og:description" content="Clear, productized entry points to improve conversion, clarify customer journeys, audit website friction, or build custom operational systems.">
+    <meta property="og:title" content="Websites &amp; Packages · High-Conversion Digital Systems | Context &amp; Muse">
+    <meta property="og:description" content="Clean, fast, low-overhead websites and digital systems built to convert without the maintenance circus.">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ways to Work Together · Productized Services &amp; Systems | Context &amp; Muse">
-    <meta name="twitter:description" content="Clear, productized entry points to improve conversion, clarify customer journeys, audit website friction, or build custom operational systems.">
+    <meta name="twitter:title" content="Websites &amp; Packages · High-Conversion Digital Systems | Context &amp; Muse">
+    <meta name="twitter:description" content="Clean, fast, low-overhead websites and digital systems built to convert without the maintenance circus.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.1">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.6">
 
     <style>
         .services-hero {
-            padding: 130px 0 70px;
+            padding: 135px 0 75px;
             background: radial-gradient(circle at 80% 40%, #fffdf8 0%, #f8f2e9 45%, #f3ede4 100%);
             border-bottom: 1px solid var(--border-light);
         }
@@ -39,7 +39,7 @@
         .services-hero-eyebrow {
             font-family: var(--font-mono);
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--accent-teal);
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -48,7 +48,7 @@
         }
         .services-hero h1 {
             font-family: var(--font-serif);
-            font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
             line-height: 1.08;
             letter-spacing: -0.03em;
             color: var(--text-primary);
@@ -60,7 +60,7 @@
             font-size: 18px;
             line-height: 1.65;
             color: var(--text-secondary);
-            margin: 0;
+            margin: 0 0 2rem 0;
         }
 
         /* ── OFFERS GRID SECTION ── */
@@ -69,13 +69,36 @@
             background: #FFFFFF;
             border-bottom: 1px solid var(--border-light);
         }
+        .section-header-center {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 3.5rem;
+        }
+        .section-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+            font-weight: 400;
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
             margin-bottom: 5rem;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 960px) {
             .services-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -85,7 +108,7 @@
             background: var(--bg-paper);
             border: 1px solid var(--border-light);
             border-radius: 8px;
-            padding: 2.75rem 2.5rem;
+            padding: 2.5rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -118,10 +141,8 @@
         }
         .offer-header {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: 0.25rem;
             margin-bottom: 0.5rem;
         }
         .offer-title {
@@ -136,13 +157,14 @@
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-primary);
+            margin-bottom: 0.5rem;
         }
-        .offer-for {
+        .offer-subhead {
             font-family: var(--font-sans);
             font-size: 14.5px;
-            line-height: 1.55;
+            line-height: 1.5;
             color: var(--text-secondary);
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
         }
         .offer-details {
@@ -151,27 +173,8 @@
             margin-bottom: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1rem;
             flex-grow: 1;
-        }
-        .detail-block {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-        .detail-label {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-        .detail-text {
-            font-size: 13.5px;
-            line-height: 1.55;
-            color: var(--text-secondary);
-            margin: 0;
         }
         .offer-checklist {
             list-style: none;
@@ -179,7 +182,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
         .offer-checklist li {
             font-size: 13.5px;
@@ -222,132 +225,112 @@
             border-color: var(--accent-teal);
             transform: translateY(-1px);
         }
-        .offer-card.featured .btn-offer-cta:hover {
-            background: #0d635c;
-            border-color: #0d635c;
-        }
 
-        /* ── ENHANCEMENTS SECTION ── */
-        .enhancements-section {
+        /* ── WHY CONTEXT & MUSE SECTION ── */
+        .why-section {
             background: var(--bg-paper);
             border: 1px solid var(--border-light);
             border-radius: 8px;
-            padding: 3rem 2.5rem;
+            padding: 3.5rem 3rem;
             margin-bottom: 5rem;
         }
-        .enhancements-header {
-            margin-bottom: 2rem;
-        }
-        .enhancements-grid {
+        .why-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        @media (max-width: 768px) {
-            .enhancements-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+        @media (max-width: 900px) {
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
-        .enhancement-card {
+        @media (max-width: 600px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14.5px;
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        .why-bullet {
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* ── SITE CARE SECTION ── */
+        .site-care-panel {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
+            border-left: 3px solid var(--accent-teal);
             border-radius: 6px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            padding: 2.5rem 3rem;
+            margin-bottom: 5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
         }
-        .enhancement-title {
+
+        /* ── CUSTOMIZE YOUR BUILD SECTION ── */
+        .customize-section {
+            margin-bottom: 5rem;
+        }
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            margin-top: 2.5rem;
+        }
+        @media (max-width: 960px) {
+            .addons-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .addons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .addon-card {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.75rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .addon-card:hover {
+            border-color: var(--accent-teal);
+            background: #FFFFFF;
+        }
+        .addon-title {
             font-family: var(--font-serif);
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             color: var(--text-primary);
             margin: 0 0 0.5rem 0;
             font-weight: 500;
         }
-        .enhancement-desc {
+        .addon-desc {
             font-size: 13.5px;
-            line-height: 1.6;
+            line-height: 1.55;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-        .btn-enhancement {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-teal);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .btn-enhancement:hover {
-            text-decoration: underline;
-        }
-
-        /* ── ESCALATION PATH (CUSTOM SYSTEMS) ── */
-        .escalation-panel {
-            background: #10211D;
-            color: #FAF9F5;
-            border-radius: 8px;
-            padding: 4rem 3.5rem;
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        @media (max-width: 900px) {
-            .escalation-panel {
-                grid-template-columns: 1fr;
-                padding: 2.5rem 2rem;
-                gap: 2rem;
-            }
-        }
-        .escalation-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            color: #2DD4BF;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.75rem;
-        }
-        .escalation-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-            color: #FAF9F5;
-            margin: 0 0 1rem 0;
-            font-weight: 400;
-            line-height: 1.2;
-        }
-        .escalation-desc {
-            font-size: 15px;
-            line-height: 1.65;
-            color: rgba(250, 249, 245, 0.75);
             margin: 0;
         }
-        .btn-escalation {
-            background: #2DD4BF;
-            color: #10211D !important;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 1rem 1.8rem;
-            border-radius: 4px;
-            text-decoration: none;
+
+        .custom-quote-note {
             text-align: center;
-            display: inline-block;
-            transition: all 0.2s ease;
-            width: fit-content;
-        }
-        .btn-escalation:hover {
-            background: #23B5A2;
-            transform: translateY(-1px);
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
         }
     </style>
 </head>
@@ -394,15 +377,18 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <header class="services-hero">
         <div class="container">
             <div class="services-hero-copy">
-                <span class="services-hero-eyebrow">Ways to Work Together</span>
-                <h1>Clear, productized entry points.<br>Built around real business friction.</h1>
+                <span class="services-hero-eyebrow">WEBSITES &amp; DIGITAL SYSTEMS</span>
+                <h1>Websites built to convert — without the maintenance circus.</h1>
                 <p>
-                    Whether you need a fast professional web presence, a diagnostic audit of what is hurting conversion, surgical fixes to an existing site, or a structured customer intake pipeline.
+                    Clean, fast, low-overhead websites and digital systems for businesses that need a better path from attention to action.
                 </p>
+                <div>
+                    <a href="/custom/#intake" class="btn btn-primary" style="background: var(--text-primary); border-color: var(--text-primary); color: #FAF9F5; padding: 0.85rem 1.6rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; text-decoration: none; display: inline-block;">Start a Project &rarr;</a>
+                </div>
             </div>
         </div>
     </header>
@@ -410,160 +396,203 @@
     <main id="main-content">
         <section class="services-catalog-section">
             <div class="container">
-                <!-- 3 Primary Productized Offers -->
-                <div class="services-grid" style="grid-template-columns: repeat(3, 1fr);">
+                
+                <!-- Section 1: Pick Your Build -->
+                <div class="section-header-center" id="pick-your-build">
+                    <span class="section-eyebrow">CORE PACKAGES</span>
+                    <h2 class="section-title">Pick Your Build</h2>
+                    <p style="font-size: 16px; color: var(--text-secondary); margin-top: 0.5rem;">
+                        Three distinct engagement levels engineered around business scale, conversion goals, and workflow complexity.
+                    </p>
+                </div>
+
+                <div class="services-grid">
                     
-                    <!-- Offer 1: Conversion Leak Audit -->
-                    <div class="offer-card" id="site-audit">
+                    <!-- Build 1: Launch Site -->
+                    <div class="offer-card" id="launch-site">
                         <div>
-                            <span class="offer-badge">Diagnostic</span>
+                            <span class="offer-badge">ENTRY BUILD</span>
                             <div class="offer-header">
-                                <h2 class="offer-title">Site Audit</h2>
-                                <span class="offer-price">$195 Flat</span>
+                                <h3 class="offer-title">Launch Site</h3>
+                                <span class="offer-price">From $950</span>
                             </div>
-                            <div class="offer-for">For businesses that have traffic but want to know exactly why visitors aren't converting.</div>
+                            <div class="offer-subhead">Clean, credible, conversion-ready.</div>
                             
                             <div class="offer-details">
-                                <div class="detail-block">
-                                    <span class="detail-label">What It Solves</span>
-                                    <p class="detail-text">Conversion friction, bounce rates, unclear CTAs, mobile touch issues, and weak local positioning.</p>
-                                </div>
-                                <div class="detail-block">
-                                    <span class="detail-label">What You Get</span>
-                                    <ul class="offer-checklist">
-                                        <li>First-viewport clarity review</li>
-                                        <li>Mobile touch flow teardown</li>
-                                        <li>Lead capture &amp; CTA placement audit</li>
-                                        <li>Annotated Fix Now / Fix Later roadmap</li>
-                                        <li>100% credited toward a build within 30 days</li>
-                                    </ul>
-                                </div>
+                                <ul class="offer-checklist">
+                                    <li>First-viewport clarity &amp; value messaging</li>
+                                    <li>Fast mobile-responsive UI architecture</li>
+                                    <li>Lead intake form &amp; instant email alerts</li>
+                                    <li>Speed-optimized &amp; search engine ready</li>
+                                    <li>Zero mandatory monthly retainers</li>
+                                </ul>
                             </div>
                         </div>
 
-                        <a href="/custom/?service=audit#intake" class="btn-offer-cta" data-offer="site_audit">Audit My Site &rarr;</a>
+                        <a href="/custom/?service=launch-site#intake" class="btn-offer-cta" data-offer="launch_site">Choose Launch Site &rarr;</a>
                     </div>
 
-                    <!-- Offer 2: Funnel Sprint -->
-                    <div class="offer-card" id="funnel-sprint">
+                    <!-- Build 2: Conversion Site -->
+                    <div class="offer-card featured" id="conversion-site">
+                        <span class="offer-badge">MOST POPULAR</span>
                         <div>
-                            <span class="offer-badge">Focused Build</span>
                             <div class="offer-header">
-                                <h2 class="offer-title">Funnel Sprint</h2>
-                                <span class="offer-price">From $750</span>
+                                <h3 class="offer-title">Conversion Site</h3>
+                                <span class="offer-price">From $1,750</span>
                             </div>
-                            <div class="offer-for">For businesses that need a specific customer conversion path fixed, designed, or automated.</div>
+                            <div class="offer-subhead">Built around inquiries, bookings, and revenue.</div>
                             
                             <div class="offer-details">
-                                <div class="detail-block">
-                                    <span class="detail-label">What It Solves</span>
-                                    <p class="detail-text">Clunky quote requests, manual triage bottlenecks, poor landing page conversion, and scheduling phone tag.</p>
-                                </div>
-                                <div class="detail-block">
-                                    <span class="detail-label">What You Get</span>
-                                    <ul class="offer-checklist">
-                                        <li>Multi-step intake or quote form</li>
-                                        <li>Dedicated high-converting service landing page</li>
-                                        <li>Booking calendar or lead routing setup</li>
-                                        <li>Instant SMS/email lead alerts</li>
-                                        <li>Fast turnaround (3–5 business days)</li>
-                                    </ul>
-                                </div>
+                                <ul class="offer-checklist">
+                                    <li>Dedicated service &amp; campaign landing pages</li>
+                                    <li>Multi-step quote, booking, or intake triage</li>
+                                    <li>Local SEO architecture &amp; city landing pages</li>
+                                    <li>Direct client CMS for zero-code updates</li>
+                                    <li>Automated SMS/email lead notification setup</li>
+                                </ul>
                             </div>
                         </div>
 
-                        <a href="/custom/?service=funnel-sprint#intake" class="btn-offer-cta" data-offer="funnel_sprint">Fix a Funnel &rarr;</a>
+                        <a href="/custom/?service=conversion-site#intake" class="btn-offer-cta" data-offer="conversion_site">Choose Conversion Site &rarr;</a>
                     </div>
 
-                    <!-- Offer 3: Custom Websites & Systems -->
-                    <div class="offer-card featured" id="growth-system">
-                        <span class="offer-badge">Most Complete</span>
+                    <!-- Build 3: Custom System -->
+                    <div class="offer-card" id="custom-system">
                         <div>
+                            <span class="offer-badge">FULL ARCHITECTURE</span>
                             <div class="offer-header">
-                                <h2 class="offer-title">Websites &amp; Systems</h2>
-                                <span class="offer-price">Projects from $1,500</span>
+                                <h3 class="offer-title">Custom System</h3>
+                                <span class="offer-price">From $3,000+</span>
                             </div>
-                            <div class="offer-for">Custom website paired with the operational machinery needed to convert traffic into real business.</div>
+                            <div class="offer-subhead">For businesses that need custom functionality, workflows, tools, portals, booking logic, or more complex customer journeys.</div>
                             
                             <div class="offer-details">
-                                <div class="detail-block">
-                                    <span class="detail-label">What It Solves</span>
-                                    <p class="detail-text">Outdated templates, slow mobile experience, fragmented tools, and manual customer intake friction.</p>
-                                </div>
-                                <div class="detail-block">
-                                    <span class="detail-label">What You Get</span>
-                                    <ul class="offer-checklist">
-                                        <li>Custom responsive website design</li>
-                                        <li>Local SEO architecture &amp; city landing pages</li>
-                                        <li>Custom intake, quote, or scheduling logic</li>
-                                        <li>Direct client editing CMS</li>
-                                        <li>Lead routing &amp; automation integration</li>
-                                        <li>Zero forced subscription retainers</li>
-                                    </ul>
-                                </div>
+                                <ul class="offer-checklist">
+                                    <li>Bespoke operational tools &amp; web applications</li>
+                                    <li>Serial inventory, availability, or reservation engines</li>
+                                    <li>Interactive calculators, 2D mappers, or portals</li>
+                                    <li>CRM integrations &amp; automated lead dispatch</li>
+                                    <li>Custom database logic &amp; role permissions</li>
+                                </ul>
                             </div>
                         </div>
 
-                        <a href="/systems/" class="btn-offer-cta" data-offer="growth_system">Scope My System &rarr;</a>
+                        <a href="/custom/?service=custom-system#intake" class="btn-offer-cta" data-offer="custom_system">Scope Custom System &rarr;</a>
                     </div>
 
                 </div>
 
-                <!-- Add-ons / Enhancements Strip -->
-                <div class="enhancements-section">
-                    <div class="enhancements-header">
-                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.4rem;">Project Enhancements</span>
-                        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin: 0; font-weight: 500;">Add to your engagement.</h3>
+                <!-- Section 2: Why Context & Muse -->
+                <div class="why-section">
+                    <div style="text-align: center; max-width: 640px; margin: 0 auto 2rem;">
+                        <span class="section-eyebrow">THE DIFFERENCE</span>
+                        <h2 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); font-weight: 500; margin: 0;">Why Context &amp; Muse</h2>
                     </div>
 
-                    <div class="enhancements-grid">
-                        <!-- Addon 1: AI + Search Visibility -->
-                        <div class="enhancement-card">
-                            <div>
-                                <h4 class="enhancement-title">AI + Search Visibility ($150)</h4>
-                                <p class="enhancement-desc">
-                                    Crawlability review, schema structured data, semantic metadata, service &amp; FAQ architecture, and clean technical foundations so both search engines and AI systems can accurately understand your services.
-                                </p>
-                            </div>
-                            <a href="/custom/?service=visibility#intake" class="btn-enhancement" data-offer="visibility">Improve Visibility &rarr;</a>
+                    <div class="why-grid">
+                        <div class="why-item">
+                            <span class="why-bullet">✕</span>
+                            <span>No bloated WordPress stack</span>
                         </div>
-
-                        <!-- Addon 2: Image Cleanup + Product Presentation -->
-                        <div class="enhancement-card">
-                            <div>
-                                <h4 class="enhancement-title">Image Cleanup + Product Presentation ($120)</h4>
-                                <p class="enhancement-desc">
-                                    Brightness correction, background cleanup, visual standardization, and product isolation. Turns real inventory and project photos into clear, credible visual assets.
-                                </p>
-                            </div>
-                            <a href="/custom/?service=images#intake" class="btn-enhancement" data-offer="images">Clean My Assets &rarr;</a>
+                        <div class="why-item">
+                            <span class="why-bullet">✕</span>
+                            <span>No unnecessary plugin dependency</span>
+                        </div>
+                        <div class="why-item">
+                            <span class="why-bullet">✕</span>
+                            <span>No endless maintenance contract</span>
+                        </div>
+                        <div class="why-item">
+                            <span class="why-bullet">✓</span>
+                            <span>Fast, clean builds</span>
+                        </div>
+                        <div class="why-item">
+                            <span class="why-bullet">✓</span>
+                            <span>You own your site 100%</span>
+                        </div>
+                        <div class="why-item">
+                            <span class="why-bullet">✓</span>
+                            <span>Built around what customers actually need to do</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Escalation Path: Custom Operational Systems -->
-                <div class="escalation-panel">
-                    <div>
-                        <span class="escalation-eyebrow">Custom Architecture &bull; Higher-Value Systems</span>
-                        <h3 class="escalation-title">Custom Operational Systems</h3>
-                        <p class="escalation-desc">
-                            For workflows involving databases, integrations, automation, custom dashboards, scheduling engines, decision logic, or multiple user roles. Scoped after discovery.
+                <!-- Section 3: Site Care — optional -->
+                <div class="site-care-panel">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+                        <div style="max-width: 720px;">
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.4rem;">ONGOING PEACE OF MIND</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.65rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">Site Care — optional</h3>
+                            <p style="font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin: 0;">
+                                Quarterly hosting, uptime checks, health scans, small fixes, priority support, and discounted additional work. Keep your site fully independent, or let us handle ongoing technical upkeep on your schedule.
+                            </p>
+                        </div>
+                        <a href="/custom/?service=site-care#intake" style="font-family: var(--font-mono); font-size: 11px; color: var(--text-primary); font-weight: 700; text-decoration: none; text-transform: uppercase; border: 1.5px solid var(--text-primary); padding: 0.65rem 1.25rem; border-radius: 4px; white-space: nowrap;">Inquire About Site Care &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Section 4: Customize Your Build -->
+                <div class="customize-section" id="customize-your-build">
+                    <div class="section-header-center">
+                        <span class="section-eyebrow">ADD-ONS &amp; CAPABILITIES</span>
+                        <h2 class="section-title">Customize Your Build</h2>
+                        <p style="font-size: 15.5px; color: var(--text-secondary); margin-top: 0.5rem;">
+                            Tailor your package with targeted add-ons based on your specific growth goals.
                         </p>
                     </div>
-                    <div style="display: flex; justify-content: flex-start;">
-                        <a href="/custom/?service=custom-system#intake" class="btn-escalation" data-offer="custom_system" data-track-cta="services_escalation_custom">Discuss a Custom System &rarr;</a>
+
+                    <div class="addons-grid">
+                        <!-- Addon 1: Conversion -->
+                        <div class="addon-card">
+                            <h4 class="addon-title">Conversion</h4>
+                            <p class="addon-desc">Landing pages, funnels, intake flows, booking optimization</p>
+                        </div>
+
+                        <!-- Addon 2: SEO + Content -->
+                        <div class="addon-card">
+                            <h4 class="addon-title">SEO + Content</h4>
+                            <p class="addon-desc">Service pages, local pages, copywriting, case studies</p>
+                        </div>
+
+                        <!-- Addon 3: Automation -->
+                        <div class="addon-card">
+                            <h4 class="addon-title">Automation</h4>
+                            <p class="addon-desc">CRM connections, email flows, lead routing, scheduling</p>
+                        </div>
+
+                        <!-- Addon 4: Custom Features -->
+                        <div class="addon-card">
+                            <h4 class="addon-title">Custom Features</h4>
+                            <p class="addon-desc">Calculators, directories, dashboards, portals, interactive tools</p>
+                        </div>
+
+                        <!-- Addon 5: Brand + Visuals -->
+                        <div class="addon-card">
+                            <h4 class="addon-title">Brand + Visuals</h4>
+                            <p class="addon-desc">Brand refresh, graphics, infographics, image cleanup</p>
+                        </div>
+
+                        <!-- Addon 6: Growth Support -->
+                        <div class="addon-card">
+                            <h4 class="addon-title">Growth Support</h4>
+                            <p class="addon-desc">Analytics, conversion reviews, campaign pages, ongoing improvements</p>
+                        </div>
+                    </div>
+
+                    <div class="custom-quote-note">
+                        Have something specific in mind? Custom features and add-ons are quoted individually.
                     </div>
                 </div>
 
                 <!-- Tasteful Referral Note -->
-                <div style="background: rgba(15, 118, 110, 0.04); border: 1px dashed var(--accent-teal); border-radius: 6px; padding: 1.5rem 2rem; margin-top: 3.5rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="background: rgba(15, 118, 110, 0.04); border: 1px dashed var(--accent-teal); border-radius: 6px; padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
                     <div style="max-width: 680px;">
                         <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem;">Client Referral Program</strong>
                         <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">
                             Know a business that needs a better website or digital system? Context &amp; Muse pays a <strong>10% referral fee</strong> on booked website projects (e.g. a $10,000 booked project = $1,000 referral fee).
                         </p>
                     </div>
-                    <a href="mailto:jayme@contextmuse.com?subject=Client%20Referral" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-decoration: none; text-transform: uppercase; border: 1px solid var(--accent-teal); padding: 0.5rem 1rem; border-radius: 4px;">Submit a Referral &rarr;</a>
+                    <a href="mailto:jayme@contextmuse.com?subject=Client%20Referral" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-decoration: none; text-transform: uppercase; border: 1px solid var(--accent-teal); padding: 0.6rem 1.2rem; border-radius: 4px;">Submit a Referral &rarr;</a>
                 </div>
 
             </div>

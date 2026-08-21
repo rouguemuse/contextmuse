@@ -569,10 +569,12 @@
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
                                 <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
+                                    <option value="launch-site">Launch Site (from $950)</option>
+                                    <option value="conversion-site" selected>Conversion Site (from $1,750)</option>
+                                    <option value="custom-system">Custom System (from $3,000+)</option>
                                     <option value="audit">Conversion Leak Audit ($195 flat fee)</option>
                                     <option value="funnel-sprint">Funnel Sprint (from $750)</option>
-                                    <option value="website-system" selected>Website + Workflow System (from $1,500)</option>
-                                    <option value="custom-system">Custom Operational System (Bespoke build)</option>
+                                    <option value="site-care">Site Care (Optional Maintenance)</option>
                                     <option value="agency">Agency White-Label Partnership</option>
                                     <option value="general">General Inquiry / Other</option>
                                 </select>
@@ -675,12 +677,13 @@
             const contextText = document.getElementById('service-context-text');
             
             const serviceMap = {
+                'launch-site': { value: 'launch-site', label: 'Launch Site (from $950)' },
+                'conversion-site': { value: 'conversion-site', label: 'Conversion Site (from $1,750)' },
+                'custom-system': { value: 'custom-system', label: 'Custom System (from $3,000+)' },
                 'audit': { value: 'audit', label: 'Conversion Leak Audit ($195)' },
                 'funnel-sprint': { value: 'funnel-sprint', label: 'Funnel Sprint (from $750)' },
                 'funnel': { value: 'funnel-sprint', label: 'Funnel Sprint (from $750)' },
-                'website-system': { value: 'website-system', label: 'Website + Workflow System (from $1,500)' },
-                'systems': { value: 'website-system', label: 'Website + Workflow System (from $1,500)' },
-                'custom-system': { value: 'custom-system', label: 'Custom Operational System' },
+                'site-care': { value: 'site-care', label: 'Site Care (Optional Maintenance)' },
                 'agency': { value: 'agency', label: 'Agency White-Label Partnership' },
                 'general': { value: 'general', label: 'General Inquiry / Other' }
             };
