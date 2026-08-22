@@ -24,7 +24,7 @@ async function runSmokeTest() {
     
     // Check H1
     const h1Match = hp.body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-    const h1Text = h1Match ? h1Match[1].replace(/<[^>]+>/g, '').trim().replace(/\s+/g, ' ') : 'NOT FOUND';
+    const h1Text = h1Match ? h1Match[1].replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim().replace(/\s+/g, ' ') : 'NOT FOUND';
     const expectedH1 = "Clarity shapes perception. Perception changes everything.";
     if (h1Text === expectedH1) {
         console.log(`  [PASS] Homepage H1: "${h1Text}"`);
