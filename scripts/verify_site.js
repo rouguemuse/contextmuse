@@ -131,7 +131,8 @@ if (fs.existsSync(sitemapPath)) {
         'https://www.contextmuse.com/partners/',
         'https://www.contextmuse.com/services/',
         'https://www.contextmuse.com/case-studies/edr-party-rentals/',
-        'https://www.contextmuse.com/cartography/'
+        'https://www.contextmuse.com/cartography/',
+        'https://www.contextmuse.com/contact/'
     ];
 
     expectedSitemapUrls.forEach(url => {
@@ -191,7 +192,8 @@ const filesToVerify = [
     { name: 'custom/index.html', relPath: 'custom/index.html', canonical: 'https://www.contextmuse.com/custom/' },
     { name: 'quick-launch/index.html', relPath: 'quick-launch/index.html', canonical: 'https://www.contextmuse.com/quick-launch/' },
     { name: 'partners/index.html', relPath: 'partners/index.html', canonical: 'https://www.contextmuse.com/partners/' },
-    { name: 'cartography/index.html', relPath: 'cartography/index.html', canonical: 'https://www.contextmuse.com/cartography/' }
+    { name: 'cartography/index.html', relPath: 'cartography/index.html', canonical: 'https://www.contextmuse.com/cartography/' },
+    { name: 'contact/index.html', relPath: 'contact/index.html', canonical: 'https://www.contextmuse.com/contact/' }
 ];
 
 const pageTitles = new Set();

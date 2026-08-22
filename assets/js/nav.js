@@ -1,12 +1,13 @@
 /**
- * Context & Muse Navigation Dropdown Controller
- * Ensures exclusive dropdown state, click-outside-to-close, escape key support,
- * and clean desktop hover / mobile accordion coordination.
+ * Context & Muse Navigation Controller
+ * Handles semantic button-based mobile toggle, exclusive dropdown states,
+ * desktop hover bridges, and complete keyboard/ESC accessibility.
  */
 (() => {
     function initNav() {
+        const toggleBtn = document.getElementById('nav-toggle-btn');
+        const navLinks = document.getElementById('primary-nav-links');
         const dropdowns = Array.from(document.querySelectorAll('.nav-dropdown'));
-        if (!dropdowns.length) return;
 
         function closeAllDropdowns(except = null) {
             dropdowns.forEach(d => {
@@ -16,7 +17,28 @@
             });
         }
 
-        // 1. Mutual Exclusivity: Only 1 dropdown open at a time
+        function closeMobileNav() {
+            if (toggleBtn && navLinks) {
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                navLinks.classList.remove('is-open');
+            }
+        }
+
+        // 1. Mobile Menu Toggle Button
+        if (toggleBtn && navLinks) {
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+                const nextState = !isOpen;
+                toggleBtn.setAttribute('aria-expanded', String(nextState));
+                navLinks.classList.toggle('is-open', nextState);
+                if (!nextState) {
+                    closeAllDropdowns();
+                }
+            });
+        }
+
+        // 2. Mutual Exclusivity for Dropdowns
         dropdowns.forEach(dropdown => {
             dropdown.addEventListener('toggle', () => {
                 if (dropdown.open) {
@@ -24,30 +46,48 @@
                 }
             });
 
-            // Close when clicking any link inside
+            // Close dropdown and mobile menu when clicking any link inside
             const links = dropdown.querySelectorAll('.nav-dropdown-link');
             links.forEach(link => {
                 link.addEventListener('click', () => {
                     dropdown.open = false;
+                    closeMobileNav();
                 });
             });
         });
 
-        // 2. Close on outside click
+        // Close mobile nav when clicking direct top-level links
+        if (navLinks) {
+            const topLinks = navLinks.querySelectorAll('.nav-link:not(summary), .nav-cta');
+            topLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMobileNav();
+                });
+            });
+        }
+
+        // 3. Close on outside click
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.nav-dropdown')) {
                 closeAllDropdowns();
             }
-        });
-
-        // 3. Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeAllDropdowns();
+            if (navLinks && navLinks.classList.contains('is-open') && !e.target.closest('.navbar')) {
+                closeMobileNav();
             }
         });
 
-        // 4. Desktop Hover Management (with debounce to avoid jitter)
+        // 4. Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAllDropdowns();
+                closeMobileNav();
+                if (toggleBtn && toggleBtn.getAttribute('aria-expanded') === 'true') {
+                    toggleBtn.focus();
+                }
+            }
+        });
+
+        // 5. Desktop Hover Management (with debounce to avoid jitter)
         const desktopQuery = window.matchMedia('(min-width: 901px)');
         
         dropdowns.forEach(dropdown => {
@@ -64,7 +104,7 @@
                 if (!desktopQuery.matches) return;
                 closeTimer = setTimeout(() => {
                     dropdown.open = false;
-                }, 200);
+                }, 180);
             });
 
             // On summary click on desktop, keep it open or toggle cleanly
@@ -88,3 +128,4 @@
         initNav();
     }
 })();
+
