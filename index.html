@@ -47,45 +47,47 @@
             display: flex;
             align-items: center;
             background: radial-gradient(
-                circle at 75% 50%,
-                #fffdf8 0%,
-                #f8f2e9 45%,
-                #f3ede4 100%
+                circle at 72% 50%,
+                #FAF9F3 0%,
+                #F7F6EF 45%,
+                #F2EFE6 100%
             );
             border-bottom: 1px solid var(--border-light);
             padding: 135px 0 75px 0;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         .hero-container {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 1.12fr 0.88fr;
             gap: 3.5rem;
             align-items: center;
             width: 100%;
         }
 
         .hero-copy {
-            max-width: 660px;
+            max-width: 650px;
             position: relative;
             z-index: 2;
         }
 
         .hero-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 11.5px;
+            font-family: var(--font-sans);
+            font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
+            line-height: 1.2;
             display: block;
-            margin-bottom: 1rem;
+            margin-bottom: 1.15rem;
         }
 
         .hero-title {
             font-family: var(--font-serif) !important;
-            font-size: clamp(54px, 5.4vw, 84px) !important;
-            line-height: 0.95 !important;
+            font-size: clamp(52px, 5.2vw, 68px) !important;
+            line-height: 0.98 !important;
             letter-spacing: -0.035em !important;
             color: #0E1F1B !important;
             margin: 0 0 1.75rem 0 !important;
@@ -94,11 +96,11 @@
 
         .hero-subhead {
             font-family: var(--font-sans) !important;
-            font-size: 17.5px !important;
+            font-size: 17px !important;
             line-height: 1.65 !important;
             color: var(--text-secondary) !important;
             margin-bottom: 2rem !important;
-            max-width: 580px !important;
+            max-width: 550px !important;
         }
 
         .hero-btn-group {
@@ -118,12 +120,13 @@
 
         .hero-prism-img {
             width: 100%;
-            max-width: 560px;
+            max-width: 600px;
             height: auto;
             object-fit: contain;
             mix-blend-mode: multiply;
-            opacity: 0.95;
-            filter: contrast(1.04);
+            opacity: 0.98;
+            filter: contrast(1.02);
+            display: block;
         }
 
         /* ── SECTION HEADINGS ── */
@@ -132,18 +135,19 @@
             max-width: 800px;
         }
         .section-eyebrow {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
+            line-height: 1.2;
             display: block;
             margin-bottom: 0.5rem;
         }
         .section-title {
             font-family: var(--font-serif);
-            font-size: clamp(34px, 3.8vw, 48px);
+            font-size: clamp(34px, 3.5vw, 42px);
             color: var(--text-primary);
             margin: 0 0 0.75rem 0;
             font-weight: 400;
@@ -152,7 +156,8 @@
             text-wrap: balance;
         }
         .section-desc {
-            font-size: 1.05rem;
+            font-family: var(--font-sans);
+            font-size: 16px;
             color: var(--text-secondary);
             line-height: 1.6;
             margin: 0;
@@ -187,38 +192,40 @@
             box-shadow: 0 14px 32px rgba(16, 33, 29, 0.06);
         }
         .cap-num {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
+            line-height: 1.2;
             display: block;
             margin-bottom: 0.5rem;
         }
         .cap-title {
-            font-family: var(--font-serif);
-            font-size: 1.65rem;
+            font-family: var(--font-sans);
+            font-size: 20px;
             color: var(--text-primary);
             margin: 0 0 0.75rem 0;
-            font-weight: 500;
-            line-height: 1.2;
+            font-weight: 600;
+            line-height: 1.3;
         }
         .cap-text {
-            font-size: 14.5px;
+            font-family: var(--font-sans);
+            font-size: 15px;
             line-height: 1.6;
             color: var(--text-secondary);
             margin-bottom: 1.25rem;
         }
         .cap-examples {
-            font-family: var(--font-mono);
-            font-size: 11.5px;
+            font-family: var(--font-sans);
+            font-size: 13px;
             color: var(--text-primary);
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 4px;
             padding: 1rem 1.15rem;
-            line-height: 1.65;
+            line-height: 1.6;
             list-style: none;
             margin: 0 0 1.25rem 0;
             display: flex;
@@ -281,12 +288,13 @@
         }
         .proof-badge {
             display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 700;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            padding: 3px 9px;
+            line-height: 1.2;
+            padding: 4px 10px;
             border-radius: 3px;
             margin-bottom: 0.75rem;
         }
@@ -309,17 +317,19 @@
             border: 1px solid var(--border-light);
         }
         .proof-triad-item strong {
-            font-family: var(--font-mono);
-            font-size: 10px;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             color: var(--accent-teal);
             display: block;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.25rem;
         }
         .proof-triad-item p {
-            font-size: 13.5px;
-            line-height: 1.5;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            line-height: 1.55;
             color: var(--text-primary);
             margin: 0;
         }
@@ -364,42 +374,45 @@
             right: 20px;
             background: var(--accent-teal);
             color: #FAF9F5;
-            font-family: var(--font-mono);
-            font-size: 9.5px;
+            font-family: var(--font-sans);
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            padding: 3px 10px;
+            padding: 4px 10px;
             border-radius: 3px;
         }
         .ladder-meta {
-            font-family: var(--font-mono);
+            font-family: var(--font-sans);
             font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
+            line-height: 1.2;
             margin-bottom: 0.35rem;
             display: block;
         }
         .ladder-title {
-            font-family: var(--font-serif);
-            font-size: 1.75rem;
+            font-family: var(--font-sans);
+            font-size: 20px;
             color: var(--text-primary);
             margin: 0 0 0.35rem 0;
-            font-weight: 500;
-            line-height: 1.2;
+            font-weight: 600;
+            line-height: 1.3;
         }
         .ladder-price {
-            font-family: var(--font-mono);
-            font-size: 15px;
-            font-weight: 700;
+            font-family: var(--font-sans);
+            font-size: 16px;
+            font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.75rem;
             display: block;
+            line-height: 1.3;
         }
         .ladder-desc {
-            font-size: 14px;
+            font-family: var(--font-sans);
+            font-size: 14.5px;
             line-height: 1.55;
             color: var(--text-secondary);
             margin-bottom: 1.25rem;
@@ -414,9 +427,10 @@
             gap: 0.6rem;
         }
         .ladder-list li {
-            font-size: 13.5px;
+            font-family: var(--font-sans);
+            font-size: 14px;
             color: var(--text-primary);
-            line-height: 1.45;
+            line-height: 1.5;
             display: flex;
             align-items: flex-start;
             gap: 8px;
@@ -518,9 +532,9 @@
             margin-bottom: 1.25rem;
         }
         .process-node span {
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            font-weight: 600;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 700;
             color: var(--accent-teal);
         }
         .process-step:last-child .process-node {
@@ -530,15 +544,15 @@
             color: var(--accent-gold);
         }
         .step-name {
-            font-family: var(--font-serif);
-            font-size: 17px;
+            font-family: var(--font-sans);
+            font-size: 16px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
         .step-desc {
             font-family: var(--font-sans);
-            font-size: 13px;
+            font-size: 13.5px;
             line-height: 1.5;
             color: var(--text-secondary);
             max-width: 190px;
@@ -558,10 +572,11 @@
         }
         .founder-quote {
             font-family: var(--font-serif);
-            font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-            line-height: 1.6;
+            font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+            line-height: 1.55;
             color: var(--text-primary);
             font-style: italic;
+            font-weight: 400;
             border-left: 3px solid var(--accent-teal);
             padding-left: 1.5rem;
             margin: 0 0 1.75rem 0;
@@ -593,13 +608,13 @@
         }
 
         /* ── RESPONSIVE BREAKPOINTS ── */
-        @media (min-width: 768px) and (max-width: 1099px) {
+        @media (min-width: 960px) and (max-width: 1199px) {
             .hero-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1.1fr 0.9fr;
                 gap: 2.5rem;
             }
             .hero-prism-img {
-                max-width: 420px;
+                max-width: 480px;
             }
             .capabilities-grid {
                 grid-template-columns: 1fr;
@@ -635,18 +650,49 @@
             }
         }
 
+        @media (min-width: 768px) and (max-width: 959px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .hero-prism-img {
+                max-width: 480px;
+                margin: 0 auto;
+            }
+            .capabilities-grid, .proof-grid-duo, .ladder-grid, .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .proof-card-featured {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2.25rem;
+            }
+            .process-flow-container {
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 2.5rem;
+            }
+            .process-flow-container::before {
+                display: none;
+            }
+            .founder-grid, .creative-preview-grid, .final-cta-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
         @media (max-width: 767px) {
             .hero {
-                padding: 105px 0 50px 0;
+                padding: 110px 0 55px 0;
                 min-height: auto;
             }
             .hero-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
             .hero-title {
-                font-size: clamp(34px, 9vw, 44px);
-                line-height: 1.05;
+                font-size: clamp(34px, 9vw, 44px) !important;
+                line-height: 1.04 !important;
             }
             .hero-btn-group {
                 flex-direction: column;
@@ -658,7 +704,8 @@
                 box-sizing: border-box;
             }
             .hero-prism-img {
-                max-width: 100%;
+                max-width: min(100%, 390px);
+                margin: 0 auto;
             }
             .capabilities-grid, .proof-grid-duo, .ladder-grid, .products-grid {
                 grid-template-columns: 1fr;
@@ -754,7 +801,7 @@
                     </div>
                 </div>
                 <div class="hero-visual" aria-hidden="true">
-                    <img src="/assets/images/homepage-prism-user.png" class="hero-prism-img" alt="Refraction and structural prism artwork">
+                    <img src="/assets/images/contextmuse_hero_architectural.png" class="hero-prism-img" alt="Architectural systems organization structure transforming complex inputs into clear signal" width="1024" height="1024">
                 </div>
             </div>
         </header>
@@ -841,7 +888,7 @@
                         <h2 id="proof-heading" class="section-title">Systems Built for Real Operating Conditions</h2>
                         <p class="section-desc">Commercial websites, intake architecture, and custom tools solving concrete business bottlenecks.</p>
                     </div>
-                    <a href="/systems/client-builds/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">View All Client Builds &rarr;</a>
+                    <a href="/systems/client-builds/" style="font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-primary); text-decoration: none; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">View All Client Builds &rarr;</a>
                 </div>
 
                 <div class="proof-grid">
@@ -849,10 +896,10 @@
                     <div class="proof-card-featured">
                         <div>
                             <span class="proof-badge teal">Commercial Client Build</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                            <h3 style="font-family: var(--font-serif); font-size: 28px; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500; line-height: 1.2;">
                                 Lone Wolf Dumpsters
                             </h3>
-                            <p style="font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                            <p style="font-family: var(--font-sans); font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
                                 Multi-market waste management platform engineered around local search demand, contractor vs. homeowner quote triage, and automated quote routing.
                             </p>
 
@@ -872,19 +919,19 @@
                             </div>
 
                             <div style="background: rgba(15, 118, 110, 0.05); border-left: 2px solid var(--accent-teal); padding: 0.85rem 1.15rem; border-radius: 0 4px 4px 0; margin-bottom: 1.5rem;">
-                                <p style="font-family: var(--font-serif); font-size: 13.5px; font-style: italic; color: var(--text-primary); margin: 0 0 0.25rem 0;">
+                                <p style="font-family: var(--font-serif); font-size: 14.5px; font-style: italic; color: var(--text-primary); margin: 0 0 0.25rem 0; line-height: 1.5;">
                                     “Context &amp; Muse structured our entire service area setup and quote intake so we stop playing phone tag and start landing booked jobs straight from local search.”
                                 </p>
-                                <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary);">— Wayne, Founder, Lone Wolf Dumpsters</span>
+                                <span style="font-family: var(--font-sans); font-size: 12px; color: var(--text-secondary);">— Wayne, Founder, Lone Wolf Dumpsters</span>
                             </div>
 
                             <a href="/systems/client-builds/#lonewolf" class="btn btn-secondary" style="font-size: 13px;">Read Lone Wolf Case Study &rarr;</a>
                         </div>
 
                         <div style="background: #0E1F1B; border-radius: 6px; padding: 2.5rem 2rem; color: #FAF9F5; text-align: center; box-shadow: 0 8px 24px rgba(14,31,27,0.12);">
-                            <span style="background: #C5A059; color: #0E1F1B; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; display: inline-block; margin-bottom: 0.75rem;">Live Production System</span>
-                            <div style="font-family: var(--font-serif); font-size: 1.6rem; color: #FAF9F5;">lonewolfdumpsters.com</div>
-                            <div style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; margin-top: 0.5rem;">40+ DFW City Pages &bull; Quote Triage</div>
+                            <span style="background: #C5A059; color: #0E1F1B; font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 3px; display: inline-block; margin-bottom: 0.75rem;">Live Production System</span>
+                            <div style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 600; color: #FAF9F5;">lonewolfdumpsters.com</div>
+                            <div style="font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #C5A059; margin-top: 0.5rem;">40+ DFW City Pages &bull; Quote Triage</div>
                         </div>
                     </div>
 
@@ -894,10 +941,10 @@
                         <div class="proof-card-sub">
                             <div>
                                 <span class="proof-badge gold">Engineering Platform</span>
-                                <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                                <h3 style="font-family: var(--font-sans); font-size: 20px; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 600; line-height: 1.3;">
                                     INNcontrol Coils
                                 </h3>
-                                <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1rem;">
+                                <p style="font-family: var(--font-sans); font-size: 14.5px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1rem;">
                                     Commercial HVAC restoration web platform paired with responsive floorplan equipment mapping and instant proposal estimation software.
                                 </p>
 
@@ -924,10 +971,10 @@
                         <div class="proof-card-sub">
                             <div>
                                 <span class="proof-badge teal">Inventory &amp; Booking</span>
-                                <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                                <h3 style="font-family: var(--font-sans); font-size: 20px; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 600; line-height: 1.3;">
                                     EDR Party Rentals
                                 </h3>
-                                <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1rem;">
+                                <p style="font-family: var(--font-sans); font-size: 14.5px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1rem;">
                                     Event inventory catalog with date-based equipment availability, territory radius validation, and structured package quote intake.
                                 </p>
 
@@ -1049,41 +1096,41 @@
                     <!-- Product 1: Signal -->
                     <div class="product-card">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; color: #C5A059; margin-bottom: 1rem; text-transform: uppercase;">
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: 11px; font-weight: 700; color: #C5A059; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em;">
                                 <span>Diagnostic Engine</span>
                                 <span>Live Tool</span>
                             </div>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.65rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">
+                            <h3 style="font-family: var(--font-sans); font-size: 20px; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 600; line-height: 1.3;">
                                 Signal Diagnostic Engine
                             </h3>
-                            <p style="font-size: 14px; color: rgba(250, 249, 245, 0.75); line-height: 1.6; margin-bottom: 1.25rem;">
+                            <p style="font-family: var(--font-sans); font-size: 14.5px; color: rgba(250, 249, 245, 0.8); line-height: 1.6; margin-bottom: 1.25rem;">
                                 Forensic margin diagnostic that converts raw POS transactions, modifier leakage, and operational notes into prioritized management decisions.
                             </p>
                             <div class="product-card-visual">
                                 <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard Preview">
                             </div>
                         </div>
-                        <a href="/signal/" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.4); color: #FAF9F5; width: fit-content;">Explore Signal &rarr;</a>
+                        <a href="/signal/" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.5) !important; color: #FAF9F5 !important; width: fit-content;">Explore Signal &rarr;</a>
                     </div>
 
                     <!-- Product 2: GenSort -->
                     <div class="product-card">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; color: #C5A059; margin-bottom: 1rem; text-transform: uppercase;">
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: 11px; font-weight: 700; color: #C5A059; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em;">
                                 <span>In-Browser Utility</span>
                                 <span>Working Tool</span>
                             </div>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.65rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">
+                            <h3 style="font-family: var(--font-sans); font-size: 20px; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 600; line-height: 1.3;">
                                 GenSort Classifier
                             </h3>
-                            <p style="font-size: 14px; color: rgba(250, 249, 245, 0.75); line-height: 1.6; margin-bottom: 1.25rem;">
+                            <p style="font-family: var(--font-sans); font-size: 14.5px; color: rgba(250, 249, 245, 0.8); line-height: 1.6; margin-bottom: 1.25rem;">
                                 In-browser batch image sorting and classification utility running 100% locally with zero cloud upload requirements.
                             </p>
                             <div class="product-card-visual">
                                 <img src="/assets/images/gensort-library.webp" alt="GenSort Workspace Preview">
                             </div>
                         </div>
-                        <a href="/gensort/" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.4); color: #FAF9F5; width: fit-content;">Explore GenSort &rarr;</a>
+                        <a href="/gensort/" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.5) !important; color: #FAF9F5 !important; width: fit-content;">Explore GenSort &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -1097,7 +1144,7 @@
                 <div style="text-align: center; max-width: 720px; margin: 0 auto;">
                     <span class="section-eyebrow">THE METHOD</span>
                     <h2 id="approach-heading" class="section-title">How I Work</h2>
-                    <p style="font-size: 16px; color: var(--text-secondary); margin-top: 0.5rem;">
+                    <p style="font-family: var(--font-sans); font-size: 16px; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
                         A structured five-phase framework for diagnosing friction, isolating variables, and deploying durable digital systems.
                     </p>
                 </div>
@@ -1146,7 +1193,7 @@
                             &ldquo;I learned systems where failure has a cost — kitchens, production lines, and operations where the answer has to work at 7:30 on a Friday, not just look good in a presentation.&rdquo;
                         </blockquote>
 
-                        <div style="font-size: 15px; line-height: 1.7; color: var(--text-secondary); display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                        <div style="font-family: var(--font-sans); font-size: 15px; line-height: 1.65; color: var(--text-secondary); display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
                             <p>
                                 In high-pressure operations, an unoptimized workflow leads immediately to wasted prep, delayed service, and lost margins. That experience shapes every system Context &amp; Muse designs: it must be simple, reliable, and built around how humans actually behave.
                             </p>
@@ -1162,19 +1209,19 @@
                     </div>
 
                     <div style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem 2rem;">
-                        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">THE OPERATING DISCIPLINE</span>
+                        <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 1rem; line-height: 1.2;">THE OPERATING DISCIPLINE</span>
                         <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <div style="border-left: 2px solid var(--accent-teal); padding-left: 1rem;">
-                                <strong style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">Start with the actual mess.</strong>
-                                <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0; line-height: 1.5;">The friction, conflicting records, repeated work, and decisions people keep postponing.</p>
+                                <strong style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.25rem; line-height: 1.4;">Start with the actual mess.</strong>
+                                <p style="font-family: var(--font-sans); font-size: 13.5px; color: var(--text-secondary); margin: 0; line-height: 1.5;">The friction, conflicting records, repeated work, and decisions people keep postponing.</p>
                             </div>
                             <div style="border-left: 2px solid var(--accent-teal); padding-left: 1rem;">
-                                <strong style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">Accelerate judgment, don't replace it.</strong>
-                                <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Systems should help someone understand what matters and what to do next without replacing human accountability.</p>
+                                <strong style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.25rem; line-height: 1.4;">Accelerate judgment, don't replace it.</strong>
+                                <p style="font-family: var(--font-sans); font-size: 13.5px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Systems should help someone understand what matters and what to do next without replacing human accountability.</p>
                             </div>
                             <div style="border-left: 2px solid var(--accent-teal); padding-left: 1rem;">
-                                <strong style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">Build for real operating conditions.</strong>
-                                <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Incomplete data, changing priorities, tired people, and workflows that still function under stress.</p>
+                                <strong style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.25rem; line-height: 1.4;">Build for real operating conditions.</strong>
+                                <p style="font-family: var(--font-sans); font-size: 13.5px; color: var(--text-secondary); margin: 0; line-height: 1.5;">Incomplete data, changing priorities, tired people, and workflows that still function under stress.</p>
                             </div>
                         </div>
                     </div>
@@ -1190,24 +1237,24 @@
                 <div class="creative-preview-grid">
                     <div>
                         <span class="section-eyebrow">EXPLORATORY WING</span>
-                        <h2 id="creative-heading" class="section-title" style="font-size: 2.25rem;">Creative Practice</h2>
-                        <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.5rem;">
+                        <h2 id="creative-heading" class="section-title">Creative Practice</h2>
+                        <p style="font-family: var(--font-sans); font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.5rem;">
                             An exploratory wing examining literature, topological cartography, and symbolic systems. It represents another expression of the same systems-thinking discipline, kept distinct from commercial client production.
                         </p>
                         <a href="/creative/" class="btn btn-secondary">Explore Creative Practice &rarr;</a>
                     </div>
                     <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
                         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem;">
-                            <span style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary);">How to Explain Yourself to Wolves</span>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase;">Literature</span>
+                            <span style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--text-primary);">How to Explain Yourself to Wolves</span>
+                            <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 600; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em;">Literature</span>
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem;">
-                            <span style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary);">Self Cartography Engine</span>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase;">Topological System</span>
+                            <span style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--text-primary);">Self Cartography Engine</span>
+                            <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 600; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em;">Topological System</span>
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary);">Made of Reasons</span>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase;">Architectural Artifacts</span>
+                            <span style="font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--text-primary);">Made of Reasons</span>
+                            <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 600; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em;">Architectural Artifacts</span>
                         </div>
                     </div>
                 </div>
@@ -1225,13 +1272,13 @@
                         <h2 id="contact-heading" class="section-title">
                             If the workflow is messy, the website usually isn’t the only problem.
                         </h2>
-                        <p style="font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
+                        <p style="font-family: var(--font-sans); font-size: 16px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2rem;">
                             Send the website, conversion leak, or operational bottleneck you're trying to solve. I’ll review your setup and outline a practical next step.
                         </p>
 
                         <div style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; display: block; margin-bottom: 0.75rem;">HOW PROJECTS START &bull; MILESTONES</span>
-                            <ol style="padding-left: 1.2rem; margin: 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
+                            <span style="font-family: var(--font-sans); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.75rem; line-height: 1.2;">HOW PROJECTS START &bull; MILESTONES</span>
+                            <ol style="padding-left: 1.2rem; margin: 0; font-family: var(--font-sans); font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
                                 <li><strong>Scope:</strong> Confirm deliverables, timeline, and pricing in a written Scope of Work.</li>
                                 <li><strong>Agreement + Deposit:</strong> Work is scheduled upon receipt of signed agreement and deposit.</li>
                                 <li><strong>Build &amp; Staging:</strong> Development proceeds with direct founder communication.</li>
@@ -1239,7 +1286,7 @@
                             </ol>
                         </div>
 
-                        <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.5rem;">
+                        <div style="font-family: var(--font-sans); font-size: 13.5px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.5rem;">
                             <div>Direct Email: <a href="mailto:jayme@contextmuse.com?subject=Project%20Inquiry" style="color: var(--accent-teal); font-weight: 700; text-decoration: none;">jayme@contextmuse.com</a></div>
                             <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
                                 <span>WhatsApp:</span>
@@ -1255,7 +1302,7 @@
                             <input type="hidden" name="form_source" value="homepage_final_cta">
                             
                             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking to build?</label>
+                                <label for="form-service" style="font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); font-weight: 600;">What are you looking to build?</label>
                                 <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
                                     <option value="audit">Conversion Audit ($195 flat rate)</option>
                                     <option value="funnel-sprint">Funnel Sprint (From $750)</option>
@@ -1268,17 +1315,17 @@
                             </div>
 
                             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Your Name *</label>
+                                <label for="form-name" style="font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); font-weight: 600;">Your Name *</label>
                                 <input type="text" id="form-name" name="name" required placeholder="Name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
                             </div>
                             
                             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Email Address *</label>
+                                <label for="form-email" style="font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); font-weight: 600;">Email Address *</label>
                                 <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
                             </div>
 
                             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What is the current bottleneck or project goal? *</label>
+                                <label for="form-message" style="font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); font-weight: 600;">What is the current bottleneck or project goal? *</label>
                                 <textarea id="form-message" name="message" rows="4" required placeholder="Describe your current site, operational friction, or what you need built..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
                             </div>
 
