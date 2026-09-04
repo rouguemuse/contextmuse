@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import fs from 'fs';
+
+const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -316,3 +318,7 @@
     </footer>
 </body>
 </html>
+`;
+
+fs.writeFileSync('index.html', html, 'utf8');
+console.log('Successfully updated under-construction index.html with OG/Twitter/Footer tags');

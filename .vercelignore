@@ -9,8 +9,5 @@
 /exports/
 /backups/
 /data/
-**/*backup*
-**/*private*
-**/*draft*
 /scripts/
 /reports/
