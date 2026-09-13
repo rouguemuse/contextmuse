@@ -1099,18 +1099,18 @@ const previewHTML = `<!DOCTYPE html>
                     <div class="range-card">
                         <div>
                             <div class="range-card-header">
-                                <span>Storytelling System</span>
-                                <span class="range-card-badge dev">Project in Development</span>
+                                <span>Continuity Infrastructure</span>
+                                <span class="range-card-badge live">Live Platform</span>
                             </div>
                             <h3 class="range-card-title">Maps With Teeth</h3>
                             <p class="range-card-desc">
-                                Experimental geographic storytelling system and topological world-building platform exploring literature, symbolic maps, and narrative terrain.
+                                A portable continuity and barrier-first resource intelligence layer for people navigating complex institutional systems across unshared jurisdictions.
                             </p>
                             <div class="range-card-media">
-                                <img src="/assets/images/contextmuse_teeth_preview.png" alt="Maps With Teeth Storytelling System Preview" loading="lazy">
+                                <img src="/assets/images/contextmuse_teeth_preview.png" alt="Maps With Teeth Survivor Continuity Platform Preview" loading="lazy">
                             </div>
                         </div>
-                        <a href="/creative/" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.4) !important; color: #FAF9F5 !important; width: fit-content;">Explore Creative Practice &rarr;</a>
+                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.4) !important; color: #FAF9F5 !important; width: fit-content;">Visit mapswithteeth.org &rarr;</a>
                     </div>
                 </div>
             </div>

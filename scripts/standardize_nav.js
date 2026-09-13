@@ -22,6 +22,7 @@ const targetNav = `<nav class="navbar" aria-label="Main Navigation">
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
                     </div>
                 </details>
                 <details class="nav-dropdown" name="nav-dropdowns">
