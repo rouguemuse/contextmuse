@@ -1,0 +1,1393 @@
+import fs from 'fs';
+import path from 'path';
+
+const previewHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MVV7WNL42L');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context &amp; Muse — Websites, Workflow Systems &amp; Custom Tools (Preview)</title>
+    <meta name="description" content="Context &amp; Muse builds websites, customer journeys, and operational systems designed around how a business actually works. Independent studio by Jayme Volstad.">
+    <link rel="canonical" href="https://www.contextmuse.com/preview/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Context &amp; Muse — Websites, Workflow Systems &amp; Custom Tools">
+    <meta property="og:description" content="I build websites that do more than sit there. Websites, customer journeys, and operational systems designed around how a business actually works.">
+    <meta property="og:url" content="https://www.contextmuse.com/preview/">
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+    <meta property="og:image:width" content="2400">
+    <meta property="og:image:height" content="1260">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Context &amp; Muse — Websites, Workflow Systems &amp; Custom Tools">
+    <meta name="twitter:description" content="I build websites that do more than sit there. Websites, customer journeys, and operational systems designed around how a business actually works.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.9">
+
+    <style>
+        /* ==========================================================================
+           EDITORIAL SYSTEMS STUDIO HOMEPAGE ARCHITECTURE
+           ========================================================================== */
+
+        :root {
+            --bg-canvas: #FAF9F5;
+            --bg-card: #FFFFFF;
+            --bg-dark: #0E1F1B;
+            --border-subtle: #E8E5DC;
+            --border-dark: rgba(250, 249, 245, 0.12);
+            --text-heading: #0E1F1B;
+            --text-body: #3D4A46;
+            --text-muted: #6B7874;
+            --accent-teal: #0F766E;
+            --accent-gold: #C5A059;
+        }
+
+        .container {
+            max-width: min(1280px, calc(100% - 64px));
+            margin-inline: auto;
+            padding: 0;
+        }
+
+        /* ── HERO ── */
+        .hero-editorial {
+            position: relative;
+            min-height: 84vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(
+                circle at 74% 50%,
+                #FAF9F3 0%,
+                #F7F6EF 45%,
+                #F2EFE6 100%
+            );
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 140px 0 80px 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 680px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            line-height: 1.2;
+            display: block;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-headline {
+            font-family: var(--font-serif) !important;
+            font-size: clamp(44px, 5.2vw, 68px) !important;
+            line-height: 1.02 !important;
+            letter-spacing: -0.035em !important;
+            color: var(--text-heading) !important;
+            margin: 0 0 1.5rem 0 !important;
+            font-weight: 400 !important;
+        }
+
+        .hero-lead {
+            font-family: var(--font-sans) !important;
+            font-size: clamp(18px, 1.6vw, 21px) !important;
+            line-height: 1.5 !important;
+            color: var(--text-heading) !important;
+            font-weight: 500 !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        .hero-body {
+            font-family: var(--font-sans) !important;
+            font-size: 16px !important;
+            line-height: 1.65 !important;
+            color: var(--text-muted) !important;
+            margin-bottom: 2.25rem !important;
+            max-width: 600px !important;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-disciplines {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 1.25rem;
+            max-width: 600px;
+        }
+
+        .hero-artwork {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .hero-artwork-img {
+            width: 100%;
+            max-width: 580px;
+            height: auto;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            opacity: 0.98;
+            filter: contrast(1.02);
+            display: block;
+        }
+
+        /* ── OVERSIZED SELECTED WORK SHOWCASES ── */
+        .selected-work-section {
+            padding: 110px 0;
+            background: var(--bg-canvas);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .section-header-editorial {
+            margin-bottom: 4.5rem;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-headline-editorial {
+            font-family: var(--font-serif);
+            font-size: clamp(36px, 4vw, 52px);
+            font-weight: 400;
+            letter-spacing: -0.025em;
+            color: var(--text-heading);
+            margin: 0 0 1rem 0;
+            line-height: 1.1;
+        }
+
+        .section-subhead-editorial {
+            font-family: var(--font-sans);
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 720px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Showcase Item */
+        .showcase-item {
+            margin-bottom: 7rem;
+            padding-bottom: 7rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .showcase-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        .showcase-visual {
+            position: relative;
+        }
+
+        /* Editorial Browser Window */
+        .editorial-browser {
+            background: #10211D;
+            border: 1px solid rgba(16, 33, 29, 0.18);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(14, 31, 27, 0.12), 0 4px 12px rgba(14, 31, 27, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .editorial-browser:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 26px 60px rgba(14, 31, 27, 0.16), 0 6px 16px rgba(14, 31, 27, 0.08);
+        }
+
+        .editorial-browser-bar {
+            background: #142823;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(250, 249, 245, 0.25);
+        }
+
+        .browser-url-pill {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: rgba(250, 249, 245, 0.7);
+            background: rgba(0, 0, 0, 0.25);
+            padding: 3px 12px;
+            border-radius: 12px;
+            letter-spacing: 0.02em;
+        }
+
+        .editorial-browser-body {
+            position: relative;
+            background: #0E1F1B;
+        }
+
+        .editorial-browser-body img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Showcase Info Column */
+        .showcase-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .showcase-number-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .showcase-title {
+            font-family: var(--font-serif);
+            font-size: clamp(30px, 3vw, 40px);
+            font-weight: 400;
+            color: var(--text-heading);
+            margin: 0;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .showcase-subtitle {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-teal);
+            margin: 0;
+            letter-spacing: 0.02em;
+        }
+
+        .showcase-tagline {
+            font-family: var(--font-serif);
+            font-size: 19px;
+            font-style: italic;
+            color: var(--text-heading);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .showcase-narrative {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            background: #FFFFFF;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+        }
+
+        .narrative-block h4 {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .narrative-block p, .narrative-block ul {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            color: var(--text-body);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .narrative-block ul {
+            padding-left: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .narrative-block ul li {
+            font-size: 14px;
+        }
+
+        /* Pill tags */
+        .showcase-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .pill {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--text-heading);
+            background: rgba(15, 118, 110, 0.07);
+            border: 1px solid rgba(15, 118, 110, 0.18);
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .showcase-quote {
+            background: rgba(15, 118, 110, 0.05);
+            border-left: 3px solid var(--accent-teal);
+            padding: 1rem 1.25rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .showcase-quote p {
+            font-family: var(--font-serif);
+            font-size: 14.5px;
+            font-style: italic;
+            color: var(--text-heading);
+            margin: 0 0 0.35rem 0;
+            line-height: 1.5;
+        }
+
+        .showcase-quote span {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .showcase-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        /* ── SECTION: THEN WE SHOW RANGE ── */
+        .range-section {
+            padding: 110px 0;
+            background: #0E1F1B;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+        }
+
+        .range-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            margin-top: 3.5rem;
+        }
+
+        .range-card {
+            background: #142823;
+            border: 1px solid rgba(250, 249, 245, 0.1);
+            border-radius: 6px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1.5rem;
+            transition: all 0.25s ease;
+        }
+
+        .range-card:hover {
+            border-color: #C5A059;
+            transform: translateY(-2px);
+        }
+
+        .range-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #C5A059;
+        }
+
+        .range-card-badge {
+            background: rgba(197, 160, 89, 0.18);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            color: #C5A059;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .range-card-badge.dev {
+            background: rgba(250, 249, 245, 0.12);
+            border-color: rgba(250, 249, 245, 0.25);
+            color: #FAF9F5;
+        }
+
+        .range-card-title {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            color: #FAF9F5;
+            margin: 0.75rem 0 0.5rem 0;
+            font-weight: 500;
+        }
+
+        .range-card-desc {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: rgba(250, 249, 245, 0.75);
+            margin: 0 0 1.25rem 0;
+        }
+
+        .range-card-media {
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(250, 249, 245, 0.12);
+            background: #0E1F1B;
+        }
+
+        .range-card-media img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── SECTION: WHAT I DO (3 LINES) ── */
+        .capabilities-brief-section {
+            padding: 96px 0;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .brief-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+            margin-top: 3rem;
+            max-width: 900px;
+        }
+
+        .brief-row {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            align-items: baseline;
+            padding-bottom: 1.75rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .brief-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .brief-category {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            color: var(--text-heading);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brief-category .num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+
+        .brief-details {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        /* ── SECTION: ABOUT JAYME (DIRECT OPERATING DISCIPLINE) ── */
+        .about-founder-section {
+            padding: 100px 0;
+            background: var(--bg-canvas);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .about-founder-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-pullquote {
+            font-family: var(--font-serif);
+            font-size: clamp(22px, 2.2vw, 27px);
+            line-height: 1.45;
+            color: var(--text-heading);
+            font-style: italic;
+            border-left: 3px solid var(--accent-teal);
+            padding-left: 1.5rem;
+            margin: 0 0 1.75rem 0;
+        }
+
+        .about-text-narrative {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-body);
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .discipline-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 2.25rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+        }
+
+        .discipline-item {
+            border-left: 2px solid var(--accent-teal);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .discipline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .discipline-item strong {
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .discipline-item p {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── SECTION: START A PROJECT (INTAKE) ── */
+        .project-intake-section {
+            padding: 110px 0;
+            background: #FFFFFF;
+        }
+
+        .intake-layout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Responsive */
+        @media (max-width: 1080px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .hero-artwork-img {
+                max-width: 480px;
+                margin: 0 auto;
+            }
+            .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .range-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .brief-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .about-founder-grid, .intake-layout-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-editorial {
+                padding: 110px 0 50px 0;
+                min-height: auto;
+            }
+            .hero-headline {
+                font-size: clamp(34px, 9vw, 44px) !important;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-actions a {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+            .showcase-narrative {
+                padding: 1.25rem;
+            }
+            .discipline-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
+                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
+                <span>Context &amp; Muse</span>
+            </a>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                        <a href="/systems/" class="nav-dropdown-link">Featured Systems</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
+                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
+                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+        <!-- ==========================================================================
+             HERO
+             ========================================================================== -->
+        <header class="hero-editorial" id="portfolio-hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="hero-eyebrow">INDEPENDENT DESIGN &amp; SYSTEMS STUDIO</span>
+                    <h1 class="hero-headline">
+                        I build websites that do more than sit there.
+                    </h1>
+                    <p class="hero-lead">
+                        Websites, customer journeys, and operational systems designed around how a business actually works.
+                    </p>
+                    <p class="hero-body">
+                        From straightforward business sites to quoting engines, field tools, booking systems, internal software, and weird problems that don't fit neatly inside Squarespace.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#selected-work" class="btn btn-secondary">View Selected Work</a>
+                        <a href="/contact/" class="btn btn-primary">Start a Project</a>
+                    </div>
+                    <div class="hero-disciplines">
+                        Web Design &bull; UX &bull; Workflow Design &bull; Custom Tools &bull; Operational Systems
+                    </div>
+                </div>
+                <div class="hero-artwork" aria-hidden="true">
+                    <img src="/assets/images/contextmuse_hero_architectural.png" class="hero-artwork-img" alt="Architectural drafting blueprint visualizing system organization and flow" width="1024" height="1024">
+                </div>
+            </div>
+        </header>
+
+        <!-- ==========================================================================
+             SELECTED WORK (OVERSIZED EDITORIAL PORTFOLIO)
+             ========================================================================== -->
+        <section class="selected-work-section" id="selected-work" aria-labelledby="selected-work-heading">
+            <div class="container">
+                <div class="section-header-editorial">
+                    <span class="section-tag">PORTFOLIO</span>
+                    <h2 id="selected-work-heading" class="section-headline-editorial">Selected Work</h2>
+                    <p class="section-subhead-editorial">
+                        Real systems built for real operations. Each project solves a specific commercial bottleneck with clean digital architecture.
+                    </p>
+                </div>
+
+                <!-- 01: Lone Wolf Dumpsters -->
+                <article class="showcase-item" id="lonewolf-showcase">
+                    <div class="showcase-grid">
+                        <div class="showcase-visual">
+                            <div class="editorial-browser">
+                                <div class="editorial-browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot" style="background:#EF4444;"></span>
+                                        <span class="browser-dot" style="background:#F59E0B;"></span>
+                                        <span class="browser-dot" style="background:#10B981;"></span>
+                                    </div>
+                                    <span class="browser-url-pill">lonewolf-dumpsters.vercel.app</span>
+                                </div>
+                                <div class="editorial-browser-body" style="padding: 2.25rem 2rem; color: #FAF9F5; background: #0E1F1B;">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                                        <span style="background: #C5A059; color: #0E1F1B; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; letter-spacing:0.06em;">Local Search &bull; Multi-Market Engine</span>
+                                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250,249,245,0.6);">DFW Network (40+ Municipalities)</span>
+                                    </div>
+                                    
+                                    <!-- Embedded Hero UI Simulation -->
+                                    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.25rem;">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #0F766E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.4rem;">Service Area Node &bull; Plano, TX</div>
+                                        <h4 style="font-family: var(--font-serif); font-size: 20px; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 400;">Plano Roll-Off Dumpster Rental</h4>
+                                        <p style="font-family: var(--font-sans); font-size: 13px; color: rgba(250,249,245,0.75); line-height: 1.5; margin: 0 0 1rem 0;">
+                                            Contractor &amp; residential container drops with upfront flat pricing, driveway protection, and guaranteed delivery windows.
+                                        </p>
+                                        
+                                        <!-- Container Sizing Grid -->
+                                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 4px; padding: 0.75rem; text-align: center;">
+                                                <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #C5A059;">10 YARD</div>
+                                                <div style="font-size: 10.5px; color: rgba(250,249,245,0.6); margin-top: 2px;">Heavy Debris / Bath</div>
+                                            </div>
+                                            <div style="background: rgba(0,0,0,0.4); border: 1.5px solid #0F766E; border-radius: 4px; padding: 0.75rem; text-align: center;">
+                                                <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #FAF9F5;">15 YARD</div>
+                                                <div style="font-size: 10.5px; color: #0F766E; margin-top: 2px; font-weight: 600;">Most Popular</div>
+                                            </div>
+                                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 4px; padding: 0.75rem; text-align: center;">
+                                                <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #C5A059;">20 YARD</div>
+                                                <div style="font-size: 10.5px; color: rgba(250,249,245,0.6); margin-top: 2px;">Full Remodel / Roof</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Metrics / Operational Result Bar -->
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; border-top: 1px solid rgba(250,249,245,0.1); padding-top: 1.25rem;">
+                                        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.75rem 1rem; border-radius: 4px;">
+                                            <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: #C5A059;">40+</div>
+                                            <div style="font-family: var(--font-sans); font-size: 10.5px; color: rgba(250,249,245,0.6); text-transform: uppercase;">City Pages</div>
+                                        </div>
+                                        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.75rem 1rem; border-radius: 4px;">
+                                            <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: #0F766E;">Instant</div>
+                                            <div style="font-family: var(--font-sans); font-size: 10.5px; color: rgba(250,249,245,0.6); text-transform: uppercase;">Radius Check</div>
+                                        </div>
+                                        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.75rem 1rem; border-radius: 4px;">
+                                            <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: #FAF9F5;">Direct</div>
+                                            <div style="font-family: var(--font-sans); font-size: 10.5px; color: rgba(250,249,245,0.6); text-transform: uppercase;">Owner Routing</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="showcase-info">
+                            <div>
+                                <span class="showcase-number-meta">01 // CLIENT BUILD</span>
+                                <h3 class="showcase-title">Lone Wolf Dumpsters</h3>
+                                <div class="showcase-subtitle">Website + Local Search + Customer Intake</div>
+                            </div>
+
+                            <div class="showcase-narrative">
+                                <div class="narrative-block">
+                                    <h4>The Problem</h4>
+                                    <p>Customers needed to know three things quickly:</p>
+                                    <ul>
+                                        <li>Do you serve my area?</li>
+                                        <li>Which dumpster do I need?</li>
+                                        <li>What will it cost?</li>
+                                    </ul>
+                                </div>
+
+                                <div class="narrative-block">
+                                    <h4>The Build</h4>
+                                    <p>
+                                        A multi-market website combining service-area architecture, dumpster selection, quote intake, mobile conversion paths, and direct client routing.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="showcase-pills">
+                                <span class="pill">40+ Municipal Service-Area Pages</span>
+                                <span class="pill">Interactive Dumpster Sizing Guide</span>
+                                <span class="pill">Dynamic Quote Intake</span>
+                                <span class="pill">Direct Routing to Owner</span>
+                                <span class="pill">SEO &amp; Local Search Capture</span>
+                            </div>
+
+                            <div class="showcase-quote">
+                                <p>“Context &amp; Muse structured our entire service area setup and quote intake so we stop playing phone tag and start landing booked jobs straight from local search.”</p>
+                                <span>— Wayne, Founder, Lone Wolf Dumpsters</span>
+                            </div>
+
+                            <div class="showcase-actions">
+                                <a href="/systems/client-builds/#lonewolf" class="btn btn-secondary">Read Lone Wolf Case Study &rarr;</a>
+                                <a href="https://lonewolf-dumpsters.vercel.app/" target="_blank" rel="noopener" class="btn-text">Visit Live Website &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 02: INNcontrol Coils -->
+                <article class="showcase-item" id="inncontrol-showcase">
+                    <div class="showcase-grid">
+                        <div class="showcase-visual">
+                            <div class="editorial-browser">
+                                <div class="editorial-browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot" style="background:#EF4444;"></span>
+                                        <span class="browser-dot" style="background:#F59E0B;"></span>
+                                        <span class="browser-dot" style="background:#10B981;"></span>
+                                    </div>
+                                    <span class="browser-url-pill">inncontrolcoils.com</span>
+                                </div>
+                                <div class="editorial-browser-body">
+                                    <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils commercial HVAC platform interface" width="800" height="450" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="showcase-info">
+                            <div>
+                                <span class="showcase-number-meta">02 // CLIENT BUILD</span>
+                                <h3 class="showcase-title">INNcontrol Coils</h3>
+                                <div class="showcase-subtitle">Commercial Website + Field Operations Tool</div>
+                            </div>
+
+                            <p class="showcase-tagline">
+                                Turning a clipboard workflow into a field system.
+                            </p>
+
+                            <div class="showcase-narrative">
+                                <div class="narrative-block">
+                                    <h4>The Context</h4>
+                                    <p>Commercial HVAC restoration company serving multi-property hospitality and commercial real estate assets.</p>
+                                </div>
+
+                                <div class="narrative-block">
+                                    <h4>The Build</h4>
+                                    <ul>
+                                        <li><strong>Website:</strong> Clean, authoritative commercial site for property managers and mechanical engineers.</li>
+                                        <li><strong>Field System:</strong> On-site coil measurement and quoting tool that replaced handwritten clipboards and multi-day estimate delays.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="showcase-pills">
+                                <span class="pill">Commercial Website</span>
+                                <span class="pill">Field Quoting Tool</span>
+                                <span class="pill">Interactive Dimensional Sizing</span>
+                                <span class="pill">Technical Specification Library</span>
+                            </div>
+
+                            <div class="showcase-actions">
+                                <a href="/systems/client-builds/#inncontrol" class="btn btn-secondary">Read INNcontrol Case Study &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 03: EDR Party Rentals -->
+                <article class="showcase-item" id="edr-showcase">
+                    <div class="showcase-grid">
+                        <div class="showcase-visual">
+                            <div class="editorial-browser">
+                                <div class="editorial-browser-bar">
+                                    <div class="browser-dots">
+                                        <span class="browser-dot" style="background:#EF4444;"></span>
+                                        <span class="browser-dot" style="background:#F59E0B;"></span>
+                                        <span class="browser-dot" style="background:#10B981;"></span>
+                                    </div>
+                                    <span class="browser-url-pill">edrpartyrentals.com</span>
+                                </div>
+                                <div class="editorial-browser-body">
+                                    <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals bilingual inventory catalog and booking platform" width="800" height="450" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="showcase-info">
+                            <div>
+                                <span class="showcase-number-meta">03 // CLIENT BUILD</span>
+                                <h3 class="showcase-title">EDR Party Rentals</h3>
+                                <div class="showcase-subtitle">Bilingual Rental Experience + Inventory Workflow</div>
+                            </div>
+
+                            <p class="showcase-tagline">
+                                One website. Three problems solved.
+                            </p>
+
+                            <div class="showcase-narrative">
+                                <div class="narrative-block">
+                                    <h4>The Problem</h4>
+                                    <ul>
+                                        <li>Bilingual customer base needing seamless English and Spanish ordering.</li>
+                                        <li>Complex event inventory with varied availability and packages.</li>
+                                        <li>Manual delivery territory and mileage calculations during intake.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="narrative-block">
+                                    <h4>The Build</h4>
+                                    <p>
+                                        Full inventory catalog with dynamic quote builder, delivery radius checks, and instant English/Spanish toggle.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="showcase-pills">
+                                <span class="pill">Bilingual UI (EN / ES)</span>
+                                <span class="pill">Dynamic Inventory Catalog</span>
+                                <span class="pill">Event Package Builder</span>
+                                <span class="pill">Delivery Radius Validation</span>
+                                <span class="pill">Mobile-First Booking Flow</span>
+                            </div>
+
+                            <div class="showcase-actions">
+                                <a href="/systems/client-builds/#edr" class="btn btn-secondary">Read EDR Rentals Case Study &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             THEN WE SHOW RANGE (DIGITAL PRODUCTS & EXPERIMENTAL SYSTEMS)
+             ========================================================================== -->
+        <section class="range-section" id="range" aria-labelledby="range-heading">
+            <div class="container">
+                <div style="max-width: 760px;">
+                    <span class="section-tag" style="color: #C5A059;">THEN WE SHOW RANGE</span>
+                    <h2 id="range-heading" class="section-headline-editorial" style="color: #FAF9F5;">
+                        Not everything I build is a website.
+                    </h2>
+                    <p style="font-family: var(--font-sans); font-size: 17px; color: rgba(250, 249, 245, 0.75); line-height: 1.6; margin: 0;">
+                        Proprietary tools, diagnostic engines, and experimental systems that demonstrate software modeling, data extraction, and interface clarity.
+                    </p>
+                </div>
+
+                <div class="range-grid">
+                    <!-- Tile 1: Signal -->
+                    <div class="range-card">
+                        <div>
+                            <div class="range-card-header">
+                                <span>Forensic Diagnostic</span>
+                                <span class="range-card-badge">Working Tool</span>
+                            </div>
+                            <h3 class="range-card-title">Signal</h3>
+                            <p class="range-card-desc">
+                                Forensic margin diagnostic tool that converts raw POS transactions, modifier leakage, and operational notes into prioritized management decisions.
+                            </p>
+                            <div class="range-card-media">
+                                <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard" loading="lazy">
+                            </div>
+                        </div>
+                        <a href="/signal/" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.4) !important; color: #FAF9F5 !important; width: fit-content;">Explore Signal &rarr;</a>
+                    </div>
+
+                    <!-- Tile 2: GenSort -->
+                    <div class="range-card">
+                        <div>
+                            <div class="range-card-header">
+                                <span>Browser Utility</span>
+                                <span class="range-card-badge">Working Tool</span>
+                            </div>
+                            <h3 class="range-card-title">GenSort</h3>
+                            <p class="range-card-desc">
+                                Local image classification tool running 100% in-browser with zero cloud uploads, enabling fast visual sorting, metadata review, and dataset curation.
+                            </p>
+                            <div class="range-card-media">
+                                <img src="/assets/images/gensort-library.webp" alt="GenSort Workspace Preview" loading="lazy">
+                            </div>
+                        </div>
+                        <a href="/gensort/" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.4) !important; color: #FAF9F5 !important; width: fit-content;">Explore GenSort &rarr;</a>
+                    </div>
+
+                    <!-- Tile 3: Maps With Teeth -->
+                    <div class="range-card">
+                        <div>
+                            <div class="range-card-header">
+                                <span>Storytelling System</span>
+                                <span class="range-card-badge dev">Project in Development</span>
+                            </div>
+                            <h3 class="range-card-title">Maps With Teeth</h3>
+                            <p class="range-card-desc">
+                                Experimental geographic storytelling system and topological world-building platform exploring literature, symbolic maps, and narrative terrain.
+                            </p>
+                            <div class="range-card-media">
+                                <img src="/assets/images/contextmuse_teeth_preview.png" alt="Maps With Teeth Storytelling System Preview" loading="lazy">
+                            </div>
+                        </div>
+                        <a href="/creative/" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.4) !important; color: #FAF9F5 !important; width: fit-content;">Explore Creative Practice &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             WHAT I DO (3 HIGH-IMPACT LINES)
+             ========================================================================== -->
+        <section class="capabilities-brief-section" id="what-i-do" aria-labelledby="what-i-do-heading">
+            <div class="container">
+                <div>
+                    <span class="section-tag">CAPABILITIES</span>
+                    <h2 id="what-i-do-heading" class="section-headline-editorial">What I Do</h2>
+                    <p class="section-subhead-editorial">
+                        Three clear areas of technical production and systems architecture.
+                    </p>
+                </div>
+
+                <div class="brief-list">
+                    <div class="brief-row">
+                        <div class="brief-category">
+                            <span class="num">01.</span> Websites &amp; Digital Architecture
+                        </div>
+                        <div class="brief-details">
+                            Marketing sites, conversion funnels, landing pages, multi-location local SEO architectures, and bilingual customer builds.
+                        </div>
+                    </div>
+
+                    <div class="brief-row">
+                        <div class="brief-category">
+                            <span class="num">02.</span> Workflow &amp; Operational Tools
+                        </div>
+                        <div class="brief-details">
+                            Interactive quoting engines, mobile field tools, booking systems, delivery territory validators, and customer intake pipelines.
+                        </div>
+                    </div>
+
+                    <div class="brief-row">
+                        <div class="brief-category">
+                            <span class="num">03.</span> Custom Software &amp; Internal Tools
+                        </div>
+                        <div class="brief-details">
+                            Forensic data tools, diagnostic dashboards, client portals, in-browser classification utilities, and specialized web applications.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             ABOUT JAYME (DIRECT OPERATING DISCIPLINE)
+             ========================================================================== -->
+        <section class="about-founder-section" id="about-jayme" aria-labelledby="about-jayme-heading">
+            <div class="container">
+                <div class="about-founder-grid">
+                    <div>
+                        <span class="section-tag">DIRECT COLLABORATION</span>
+                        <h2 id="about-jayme-heading" class="section-headline-editorial">About Context &amp; Muse</h2>
+                        
+                        <blockquote class="about-pullquote">
+                            &ldquo;I learned systems where failure has a cost — kitchens, production lines, and high-pressure operations where the answer has to work at 7:30 on a Friday, not just look good in a presentation.&rdquo;
+                        </blockquote>
+
+                        <div class="about-text-narrative">
+                            <p>
+                                That background shapes every system Context &amp; Muse builds: simple, resilient, and engineered around how humans actually behave under stress. Moving into custom digital systems, automation, and software was not a career pivot — it was an expansion of that same operational discipline with modern tools.
+                            </p>
+                            <p>
+                                <strong>You work directly with founder and builder Jayme Volstad.</strong> No account managers, junior handoffs, or agency telephone.
+                            </p>
+                            <div style="margin-top: 1rem;">
+                                <a href="/about/" class="btn btn-secondary">Read Full Background &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="discipline-card">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 1.5rem;">THE OPERATING DISCIPLINE</span>
+                        
+                        <div class="discipline-item">
+                            <strong>Start with the actual mess.</strong>
+                            <p>The friction, conflicting records, repeated manual steps, and decisions people keep postponing.</p>
+                        </div>
+                        <div class="discipline-item">
+                            <strong>Accelerate judgment, don't replace it.</strong>
+                            <p>Systems should help someone understand what matters and what to do next without replacing human accountability.</p>
+                        </div>
+                        <div class="discipline-item">
+                            <strong>Build for real operating conditions.</strong>
+                            <p>Incomplete data, changing priorities, tired people, and workflows that still function under real pressure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             START A PROJECT (CONCISE INTAKE)
+             ========================================================================== -->
+        <section class="project-intake-section" id="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <div class="intake-layout-grid">
+                    <div>
+                        <span class="section-tag">START A PROJECT</span>
+                        <h2 id="contact-heading" class="section-headline-editorial">
+                            If the workflow is messy, the website usually isn't the only problem.
+                        </h2>
+                        <p style="font-family: var(--font-sans); font-size: 16px; line-height: 1.65; color: var(--text-muted); margin-bottom: 2rem;">
+                            Send the website, conversion leak, or operational bottleneck you're trying to solve. I’ll review your setup and outline a practical next step.
+                        </p>
+
+                        <div style="background: var(--bg-canvas); border: 1px solid var(--border-subtle); border-radius: 6px; padding: 1.75rem; margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.85rem;">HOW PROJECTS START &bull; MILESTONES</span>
+                            <ol style="padding-left: 1.25rem; margin: 0; font-family: var(--font-sans); font-size: 14px; color: var(--text-body); line-height: 1.6; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><strong>Scope:</strong> Confirm deliverables, timeline, and pricing in a clear written Scope of Work.</li>
+                                <li><strong>Agreement + Deposit:</strong> Work is scheduled upon receipt of signed agreement and deposit.</li>
+                                <li><strong>Build &amp; Staging:</strong> Development proceeds with direct founder communication.</li>
+                                <li><strong>Launch &amp; Transfer:</strong> Review on staging, final sign-off, live launch, and complete file transfer.</li>
+                            </ol>
+                        </div>
+
+                        <div style="font-family: var(--font-sans); font-size: 14px; color: var(--text-body); display: flex; flex-direction: column; gap: 0.5rem;">
+                            <div>Direct Email: <a href="mailto:jayme@contextmuse.com?subject=Project%20Inquiry" style="color: var(--accent-teal); font-weight: 700; text-decoration: none;">jayme@contextmuse.com</a></div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>WhatsApp:</span>
+                                <a href="https://wa.me/13468337291" data-whatsapp-offer="general" data-whatsapp-location="final_cta" style="color: var(--accent-teal); font-weight: 700; text-decoration: none;">+1 (346) 833-7291 &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intake Form -->
+                    <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.03);">
+                        <form id="hp-intake-form" action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                            <input type="text" name="_gotcha" style="display:none">
+                            <input type="hidden" name="form_source" value="preview_homepage_cta">
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                                <label for="form-service" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">What are you looking to build?</label>
+                                <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-subtle); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-canvas); box-sizing: border-box; color: var(--text-heading);">
+                                    <option value="custom-system" selected>Custom Website &amp; System Build</option>
+                                    <option value="conversion-audit">Conversion Leak Audit ($195 flat rate)</option>
+                                    <option value="funnel-sprint">Funnel Sprint (From $750)</option>
+                                    <option value="operational-tool">Operational Tool / Quoting Engine</option>
+                                    <option value="internal-software">Custom Internal Software / Portal</option>
+                                    <option value="general-inquiry">General Scope Inquiry</option>
+                                </select>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                                <label for="form-name" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">Your Name *</label>
+                                <input type="text" id="form-name" name="name" required placeholder="Name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-subtle); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-canvas); box-sizing: border-box;">
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                                <label for="form-email" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">Email Address *</label>
+                                <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-subtle); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-canvas); box-sizing: border-box;">
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                                <label for="form-message" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">What is the current bottleneck or project goal? *</label>
+                                <textarea id="form-message" name="message" rows="4" required placeholder="Describe your current site, operational friction, or what you need built..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-subtle); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-canvas); resize: vertical; box-sizing: border-box;"></textarea>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
+                                <button type="submit" id="hp-intake-submit-btn" class="btn btn-primary" style="width: 100%;">Start a Project &rarr;</button>
+                            </div>
+                        </form>
+
+                        <div id="hp-intake-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); font-weight: bold; text-align: center; font-size: 14px;">
+                            Thank you. Your details have been received. Jayme will review your project and respond within 24–48 hours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 0.75rem; display: flex; gap: 0.85rem; flex-wrap: wrap; align-items: center;">
+                    <a href="/services/">Ways to Work Together</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/systems/client-builds/">Client Builds</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/proof-of-work/">Proof of Work</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/partners/">Agency Partners</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/privacy/">Privacy Policy</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/terms/">Terms of Service</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="https://wa.me/13468337291" data-whatsapp-offer="general" data-whatsapp-location="footer" style="color: var(--accent-teal); display: inline-flex; align-items: center; gap: 4px;">WhatsApp &rarr;</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/nav.js" defer></script>
+    <script src="/assets/js/whatsapp.js" defer></script>
+    <script>
+        // Intake Form Handler
+        (function() {
+            const form = document.getElementById('hp-intake-form');
+            const select = document.getElementById('form-service');
+            const submitBtn = document.getElementById('hp-intake-submit-btn');
+            const successBox = document.getElementById('hp-intake-success');
+
+            const btnLabels = {
+                'custom-system': 'Discuss System Build →',
+                'conversion-audit': 'Book $195 Audit →',
+                'funnel-sprint': 'Start Funnel Sprint →',
+                'operational-tool': 'Scope Quoting / Tool →',
+                'internal-software': 'Scope Custom Software →',
+                'general-inquiry': 'Send Project Inquiry →'
+            };
+
+            function updateButtonText() {
+                if (select && submitBtn) {
+                    submitBtn.textContent = btnLabels[select.value] || 'Start a Project →';
+                }
+            }
+
+            if (select) {
+                select.addEventListener('change', updateButtonText);
+                updateButtonText();
+            }
+
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Sending...';
+                    }
+
+                    try {
+                        const formData = new FormData(form);
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (response.ok) {
+                            form.reset();
+                            form.style.display = 'none';
+                            if (successBox) successBox.style.display = 'block';
+                        } else {
+                            form.submit();
+                        }
+                    } catch (err) {
+                        form.submit();
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
+`;
+
+const previewDir = path.join(process.cwd(), 'preview');
+if (!fs.existsSync(previewDir)) {
+    fs.mkdirSync(previewDir, { recursive: true });
+}
+fs.writeFileSync(path.join(previewDir, 'index.html'), previewHTML, 'utf8');
+console.log('Successfully created preview/index.html');

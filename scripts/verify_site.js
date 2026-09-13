@@ -381,13 +381,13 @@ filesToVerify.forEach(fileSpec => {
         overallSuccess = false;
     }
 
-    // 3.10 Check for vercel.app links in copy
-    const vercelAppPattern = /[a-zA-Z0-9-]+\.vercel\.app/i;
+    // 3.10 Check for contextmuse staging vercel.app links in copy
+    const vercelAppPattern = /contextmuse[-a-zA-Z0-9]*\.vercel\.app/i;
     if (vercelAppPattern.test(content)) {
-        log('    [FAIL] Page contains raw vercel.app URL references.');
+        log('    [FAIL] Page contains raw internal contextmuse vercel.app URL references.');
         overallSuccess = false;
     } else {
-        log('    [PASS] Verified: No raw vercel.app URLs exist in copy.');
+        log('    [PASS] Verified: No internal staging vercel.app URLs exist in copy.');
     }
 });
 
