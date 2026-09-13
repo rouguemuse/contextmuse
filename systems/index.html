@@ -237,6 +237,12 @@
             color: var(--accent-teal);
             font-weight: bold;
         }
+        .tier-list.tier-list-examples li::before {
+            content: "•";
+            color: var(--accent-teal);
+            font-size: 1.15rem;
+            line-height: 0.9;
+        }
 
         /* ── INTAKE SECTION ── */
         .systems-intake {
@@ -398,72 +404,70 @@
             <div class="container">
                 <span class="hero-eyebrow" style="color: var(--accent-teal);">TRANSPARENT ENGAGEMENT SCOPES</span>
                 <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--text-primary); font-weight: 400; margin: 0 0 0.5rem 0;">
-                    Clear starting points.
+                    A practical place to start.
                 </h2>
                 <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 780px; margin: 0; line-height: 1.6;">
-                    Every project is scoped to your exact business constraints with zero forced ongoing retainers.
+                    Start with what your business needs now. Every project has a clear scope and agreed price.
                 </p>
 
                 <div class="tier-grid">
-                    <!-- Tier 1: Launch Site -->
+                    <!-- Card 1: Starter Website -->
                     <div class="tier-card">
                         <div>
                             <div class="tier-header">
-                                <h3 class="tier-title">Launch Site</h3>
-                                <span class="tier-price">From $1,500</span>
-                                <div class="tier-for">Typical project range: $1,500–$1,950. Clean, custom business website without technical baggage or plugin bloat.</div>
+                                <h3 class="tier-title">Starter Website</h3>
+                                <span class="tier-price">From $500</span>
+                                <div class="tier-for">A focused, custom one-page website.</div>
                             </div>
                             <ul class="tier-list">
-                                <li>Custom responsive design &amp; UI architecture</li>
-                                <li>Mobile-optimized layout and typography</li>
-                                <li>Lead capture &amp; contact intake forms</li>
-                                <li>SEO foundations &amp; analytics integration</li>
-                                <li>Complete deployment &amp; deliverables transfer</li>
-                                <li>Defined scope. Defined price. Defined launch.</li>
+                                <li>Mobile-friendly design</li>
+                                <li>Your services, photos, and contact details</li>
+                                <li>Contact form or booking link</li>
+                                <li>Basic search setup and launch</li>
                             </ul>
                         </div>
-                        <a href="#intake" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Start a Website &rarr;</a>
+                        <a href="#intake" data-service-target="starter-website" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Start a Website &rarr;</a>
                     </div>
 
-                    <!-- Tier 2: Custom Business System -->
+                    <!-- Card 2: Business Website -->
                     <div class="tier-card featured">
-                        <span class="tier-badge">Most Popular</span>
                         <div>
                             <div class="tier-header">
-                                <h3 class="tier-title">Custom Business System</h3>
-                                <span class="tier-price">From $4,500</span>
-                                <div class="tier-for">Typical project range: $4,500–$7,500+. Website and operational tools designed together around actual business workflows.</div>
+                                <h3 class="tier-title">Business Website</h3>
+                                <span class="tier-price">From $1,500</span>
+                                <div class="tier-for">More room to explain your business and help customers take the next step.</div>
                             </div>
                             <ul class="tier-list">
-                                <li>Custom intake systems, forms, &amp; lead routing</li>
-                                <li>CRM, automations, &amp; sales pipelines</li>
-                                <li>Booking, reservation, &amp; payment connections</li>
-                                <li>Interactive estimating &amp; quoting tools</li>
-                                <li>Internal workflow tools &amp; reporting analytics</li>
-                                <li>Purpose-built integrations</li>
+                                <li>Up to five core pages</li>
+                                <li>Clear service and pricing information</li>
+                                <li>Structured inquiry form</li>
+                                <li>Connection to your existing booking or payment service</li>
+                                <li>Basic search setup and launch</li>
                             </ul>
                         </div>
-                        <a href="#intake" class="btn btn-primary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; background: var(--accent-teal); border: 1px solid var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Discuss a System &rarr;</a>
+                        <a href="#intake" data-service-target="business-website" class="btn btn-primary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; background: var(--accent-teal); border: 1px solid var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Discuss Your Website &rarr;</a>
                     </div>
 
-                    <!-- Tier 3: Custom Software / Portal -->
+                    <!-- Card 3: Tools & Workflow Help -->
                     <div class="tier-card">
                         <div>
                             <div class="tier-header">
-                                <h3 class="tier-title">Custom Software / Portal</h3>
-                                <span class="tier-price">From $4,500</span>
-                                <div class="tier-for">Custom quoted based on scope. Authenticated portals, operational dashboards, and multi-user systems.</div>
+                                <h3 class="tier-title">Tools &amp; Workflow Help</h3>
+                                <span class="tier-price">Quoted by scope</span>
+                                <div class="tier-for">A focused solution for something that takes too much manual work.</div>
                             </div>
-                            <ul class="tier-list">
-                                <li>Employee portals &amp; client portals</li>
-                                <li>Operational dashboards &amp; internal business apps</li>
-                                <li>Custom workflow software &amp; auth engines</li>
-                                <li>Database-driven applications</li>
-                                <li>Multi-user specialized tools</li>
-                                <li>Dedicated discovery &amp; architecture spec</li>
+                            <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600;">Possible projects include:</div>
+                            <ul class="tier-list tier-list-examples" style="border-top: none; padding-top: 0; margin-top: 0; margin-bottom: 1.25rem;">
+                                <li>Quote calculators</li>
+                                <li>Customer intake flows</li>
+                                <li>Tracking dashboards</li>
+                                <li>Simple task automations</li>
                             </ul>
+                            <div style="font-family: var(--font-sans); font-size: 12.5px; color: var(--text-secondary); font-style: italic; margin-bottom: 1.5rem; line-height: 1.45;">
+                                Each project covers one agreed workflow or tool.
+                            </div>
                         </div>
-                        <a href="#intake" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Discuss Custom Software &rarr;</a>
+                        <a href="#intake" data-service-target="tools-workflow" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; text-align: center; text-decoration: none; padding: 0.8rem; border: 1px solid var(--text-primary); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; display: block;">Tell Me What You Need &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -506,11 +510,10 @@
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Project Scope</label>
                                 <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
+                                    <option value="starter-website">Starter Website (From $500)</option>
+                                    <option value="business-website" selected>Business Website (From $1,500)</option>
+                                    <option value="tools-workflow">Tools &amp; Workflow Help (Quoted by scope)</option>
                                     <option value="conversion-audit">Conversion Audit ($195 flat rate)</option>
-                                    <option value="launch-site">Launch Site (From $1,500)</option>
-                                    <option value="conversion-site">Conversion Site (From $2,750)</option>
-                                    <option value="custom-system" selected>Custom Business System (From $4,500)</option>
-                                    <option value="custom-software">Custom Software / Portal (Quoted)</option>
                                     <option value="custom">Custom Scope / Other</option>
                                 </select>
                             </div>
@@ -585,5 +588,16 @@
     </footer>
     <script src="/assets/js/nav.js" defer></script>
     <script src="/assets/js/whatsapp.js" defer></script>
+    <script>
+        document.querySelectorAll('[data-service-target]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var targetService = this.getAttribute('data-service-target');
+                var select = document.getElementById('form-service');
+                if (select && targetService) {
+                    select.value = targetService;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
