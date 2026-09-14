@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MVV7WNL42L');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Export Instructions (Toast) | Context &amp; Muse</title>
+    <meta name="description" content="Step-by-step Toast POS export instructions for Signal operational intelligence analysis. Export requirements, date ranges, and report specifications.">
+    <link rel="canonical" href="https://www.contextmuse.com/signal/export-instructions/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Signal Export Instructions (Toast) | Context &amp; Muse">
+    <meta property="og:description" content="Step-by-step Toast POS export instructions for Signal operational intelligence analysis.">
+    <meta property="og:url" content="https://www.contextmuse.com/signal/export-instructions/">
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.1">
+    
+    <style>
+        :root {
+            --bg-body: #FAF9F5;
+            --text-primary: #0E1F1B;
+            --text-secondary: #4A5568;
+            --border-light: rgba(16, 33, 29, 0.12);
+            --border-strong: rgba(16, 33, 29, 0.25);
+            --accent-teal: #0F766E;
+            --accent-gold: #C5A059;
+            --accent-crimson: #991B1B;
+        }
+
+        .guide-hero {
+            padding: 7rem 0 3.5rem;
+            background: #0E1F1B;
+            color: #FAF9F5;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .guide-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent-gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .guide-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: #FAF9F5;
+        }
+        .guide-sub {
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: rgba(250, 249, 245, 0.75);
+            max-width: 640px;
+            margin: 0;
+        }
+
+        .guide-section {
+            padding: 4rem 0 6rem;
+            background: var(--bg-body);
+        }
+        .guide-container {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .step-block {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.25rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(16, 33, 29, 0.02);
+            transition: border-color 0.2s ease;
+        }
+        .step-block:hover {
+            border-color: var(--border-strong);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.85rem;
+        }
+        .step-tag {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-teal);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .step-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .nav-callout {
+            background: rgba(15, 118, 110, 0.05);
+            border-left: 3px solid var(--accent-teal);
+            padding: 1rem 1.25rem;
+            border-radius: 0 4px 4px 0;
+            font-family: var(--font-mono);
+            font-size: 13.5px;
+            color: var(--text-primary);
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .report-category {
+            margin-top: 1.5rem;
+        }
+        .category-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+        .category-label.required {
+            background: rgba(153, 27, 27, 0.1);
+            color: var(--accent-crimson);
+            border: 1px solid rgba(153, 27, 27, 0.2);
+        }
+        .category-label.recommended {
+            background: rgba(15, 118, 110, 0.1);
+            color: var(--accent-teal);
+            border: 1px solid rgba(15, 118, 110, 0.2);
+        }
+        .category-label.optional {
+            background: rgba(74, 85, 104, 0.1);
+            color: #4A5568;
+            border: 1px solid rgba(74, 85, 104, 0.2);
+        }
+
+        .report-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.25rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1.5rem;
+        }
+        @media (max-width: 600px) {
+            .report-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        .report-list li {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            color: var(--text-primary);
+            padding-left: 1.25rem;
+            position: relative;
+        }
+        .report-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-teal);
+            font-weight: bold;
+        }
+
+        .critical-warning {
+            background: #FEF2F2;
+            border: 1px solid rgba(153, 27, 27, 0.2);
+            border-radius: 4px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+        .critical-warning-title {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-crimson);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .critical-warning-text {
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: #7F1D1D;
+            margin: 0;
+        }
+
+        .avoid-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        @media (max-width: 600px) {
+            .avoid-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .avoid-item {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: #991B1B;
+            background: rgba(153, 27, 27, 0.05);
+            padding: 6px 10px;
+            border-radius: 3px;
+        }
+
+        .cta-box {
+            background: #0E1F1B;
+            color: #FAF9F5;
+            border-radius: 6px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .cta-box h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 0 0 0.75rem 0;
+            color: #FAF9F5;
+        }
+        .cta-box p {
+            font-size: 14px;
+            color: rgba(250, 249, 245, 0.7);
+            max-width: 500px;
+            margin: 0 auto 1.5rem auto;
+            line-height: 1.6;
+        }
+        .btn-cta {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #0E1F1B;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-cta:hover {
+            background: #D4AF37;
+            transform: translateY(-1px);
+        }
+        .btn-secondary-link {
+            display: inline-block;
+            color: #FAF9F5;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            text-decoration: underline;
+            margin-left: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
+                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
+                <span>Context &amp; Muse</span>
+            </a>
+            <div class="nav-links">
+                <a href="/signal/" class="nav-link">Signal Home</a>
+                <a href="/signal/demo/" class="nav-link" style="color: var(--accent-teal); font-weight: 600;">Interactive Demo</a>
+                <a href="/signal/intake/" class="nav-cta btn-magnetic">Upload Exports</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="guide-hero">
+        <div class="container guide-container">
+            <span class="guide-eyebrow">Toast POS &bull; Official Ingestion Protocol</span>
+            <h1 class="guide-title">Signal Export Instructions (Toast)</h1>
+            <p class="guide-sub">
+                For the most accurate analysis, please export reports in CSV format whenever available.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Instructions Content -->
+    <main class="guide-section">
+        <div class="container guide-container">
+
+            <!-- Step 1 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-tag">Step 1</span>
+                    <h2 class="step-title">Open Toast Reports</h2>
+                </div>
+                <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 0.5rem 0;">
+                    Log in to your Toast Web dashboard (toasttab.com). In the main navigation, open the export center:
+                </p>
+                <div class="nav-callout">
+                    Navigate to: <strong>Reports &rarr; Exports</strong>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-tag">Step 2</span>
+                    <h2 class="step-title">Set Date Range</h2>
+                </div>
+                <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 0.75rem 0;">
+                    To filter out transient weather/holiday spikes and detect true structural margin leakage:
+                </p>
+                <div style="background: var(--bg-body); border: 1px solid var(--border-light); border-radius: 4px; padding: 1rem 1.25rem;">
+                    <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.08em; margin-bottom: 0.25rem;">Recommended Window</div>
+                    <div style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); font-weight: 600;">Last 90–120 days</div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-tag">Step 3</span>
+                    <h2 class="step-title">Export These Reports</h2>
+                </div>
+
+                <!-- Required -->
+                <div class="report-category">
+                    <span class="category-label required">Required</span>
+                    <ul class="report-list">
+                        <li>Product Mix</li>
+                        <li>Discounts / Comps / Voids</li>
+                        <li>Sales by Hour</li>
+                        <li>Labor Summary</li>
+                    </ul>
+                </div>
+
+                <!-- Recommended -->
+                <div class="report-category">
+                    <span class="category-label recommended">Recommended</span>
+                    <ul class="report-list">
+                        <li>Modifier Sales</li>
+                        <li>Hourly Labor</li>
+                        <li>Promo Redemptions</li>
+                        <li>Revenue Center Sales</li>
+                        <li>Guest Counts</li>
+                    </ul>
+                </div>
+
+                <!-- Deep Review -->
+                <div class="report-category">
+                    <span class="category-label optional">Deep Review (Optional)</span>
+                    <ul class="report-list">
+                        <li>KDS Ticket Times</li>
+                        <li>Manager Overrides</li>
+                        <li>Refund Reports</li>
+                        <li>Open Items / Special Requests</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-tag">Step 4</span>
+                    <h2 class="step-title">Export Format</h2>
+                </div>
+                
+                <div class="critical-warning">
+                    <div class="critical-warning-title">Important Requirement</div>
+                    <p class="critical-warning-text">
+                        Please export as: <strong>CSV FORMAT ONLY</strong>
+                    </p>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem;">Avoid:</div>
+                    <div class="avoid-grid">
+                        <div class="avoid-item">&times; Screenshots</div>
+                        <div class="avoid-item">&times; PDFs</div>
+                        <div class="avoid-item">&times; Printed Reports</div>
+                        <div class="avoid-item">&times; Manually Edited Spreadsheets</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-tag">Step 5</span>
+                    <h2 class="step-title">Upload</h2>
+                </div>
+                <p style="font-size: 15px; line-height: 1.6; color: var(--text-primary); margin: 0 0 1rem 0;">
+                    Compress all exported files into one ZIP folder and upload directly to Signal.
+                </p>
+                <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-teal); background: rgba(15, 118, 110, 0.05); padding: 8px 12px; border-radius: 4px; display: inline-block;">
+                    Filename example: <code>[RestaurantName]_Toast_Exports_90Days.zip</code>
+                </div>
+            </div>
+
+            <!-- CTA / Next Steps -->
+            <div class="cta-box">
+                <h3>Ready to Audit Your Data?</h3>
+                <p>Upload your compressed export file directly to our intake engine, or test the engine right now in our live browser demo.</p>
+                <div>
+                    <a href="/signal/intake/" class="btn-cta">Upload to Signal &rarr;</a>
+                    <a href="/signal/demo/" class="btn-secondary-link">Launch Interactive Demo &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer style="background:#0E1F1B; color:rgba(250,249,245,0.6); padding:3rem 0; font-family:var(--font-mono); font-size:11px; text-align:center; border-top:1px solid rgba(250,249,245,0.08);">
+        <div class="container">
+            <p style="margin:0 0 0.5rem 0;">Context &amp; Muse &bull; Signal Operational Intelligence</p>
+            <p style="margin:0; color:rgba(250,249,245,0.4);">Toast is a registered trademark of Toast, Inc. Signal is an independent diagnostic system.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

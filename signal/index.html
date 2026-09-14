@@ -31,6 +31,43 @@
     <meta name="twitter:description" content="Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.">
     <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
 
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Signal",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web-based",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Signal Snapshot",
+          "price": "195",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Signal Diagnostic",
+          "price": "595",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Ongoing Review",
+          "price": "195",
+          "priceCurrency": "USD",
+          "billingIncrement": "monthly"
+        }
+      ],
+      "creator": {
+        "@type": "Organization",
+        "name": "Context & Muse",
+        "url": "https://www.contextmuse.com/"
+      }
+    }
+    </script>
+
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -230,10 +267,12 @@
                         Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.
                     </p>
                     <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <a href="/signal/intake/" class="btn btn-primary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px;">Start a Signal Review &rarr;</a>
+                        <a href="/signal/demo/" class="btn btn-primary" style="background: var(--accent-gold); border-color: var(--accent-gold); color: #0E1F1B; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 700; border-radius: 3px;">Launch Interactive Demo &rarr;</a>
+                        <a href="/signal/intake/" class="btn btn-secondary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">Submit Your Exports &rarr;</a>
                         <a href="/signal/sample-reports/" class="btn btn-secondary" style="border-color: rgba(250,249,245,0.3); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">View Sample Diagnostic &rarr;</a>
                     </div>
-                    <div style="margin-top: 0.75rem;">
+                    <div style="margin-top: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+                        <a href="/signal/export-instructions/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-gold); text-decoration: underline; letter-spacing: 0.03em;">Toast Export Instructions (CSV) &rarr;</a>
                         <a href="https://github.com/rouguemuse/signal-ops-intelligence" style="font-family: var(--font-mono); font-size: 11px; color: rgba(250,249,245,0.5); text-decoration: none; letter-spacing: 0.03em;" target="_blank" rel="noopener">System architecture / GitHub &rarr;</a>
                     </div>
                     <div style="margin-top: 1rem;">

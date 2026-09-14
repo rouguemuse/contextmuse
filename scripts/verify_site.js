@@ -766,7 +766,7 @@ if (remoteUrl) {
         const testRedirects = [
             { source: '/systems/signal/', target: '/signal/' },
             { source: '/lab/', target: '/systems/' },
-            { source: '/contact/', target: '/' }
+            { source: '/jayme/', target: '/about/' }
         ];
 
         for (const tr of testRedirects) {

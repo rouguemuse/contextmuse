@@ -83,7 +83,7 @@
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 2.25rem 2rem;
+            padding: 1.75rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -99,6 +99,52 @@
             background: #142420;
             border: 1px solid rgba(197, 160, 89, 0.25);
             color: #FAF9F5;
+        }
+        .pow-card-media {
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            margin-bottom: 1.25rem;
+            background: #0E1F1B;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .pow-card-dark .pow-card-media {
+            border-color: rgba(250, 249, 245, 0.12);
+        }
+        .pow-browser-bar {
+            background: #142420;
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .pow-browser-dots {
+            display: flex;
+            gap: 5px;
+        }
+        .pow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+        .pow-dot.red { background: #EF4444; }
+        .pow-dot.yellow { background: #F59E0B; }
+        .pow-dot.green { background: #10B981; }
+        .pow-browser-url {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            color: rgba(250, 249, 245, 0.6);
+            background: rgba(0, 0, 0, 0.25);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .pow-card-media img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
         }
     </style>
 </head>
@@ -182,9 +228,48 @@
                 </div>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <!-- Card: Lone Wolf Dumpsters -->
+                    <div class="pow-card-custom">
+                        <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">lonewolf-dumpsters.vercel.app</span>
+                                </div>
+                                <img src="/assets/images/lonewolf-screenshot.webp" alt="Lone Wolf Dumpsters live website and contractor intake system" loading="lazy">
+                            </div>
+                            <span class="pow-capability-badge teal">Client Build</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Lone Wolf Dumpsters</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                                Multi-market website architecture featuring 40+ DFW municipal landing pages, dynamic dumpster sizing triage, and automated quote routing.
+                            </p>
+                            <ul style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                                <li>40+ Municipal SEO service area landing pages</li>
+                                <li>Contractor vs. residential triage logic</li>
+                                <li>Instant direct-to-owner quote notifications</li>
+                            </ul>
+                        </div>
+                        <a href="/systems/client-builds/#lonewolf" class="btn-magnetic" style="background: var(--text-primary); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; width: fit-content;">View Case Study &rarr;</a>
+                    </div>
+
                     <!-- Card: EDR Party Rentals -->
                     <div class="pow-card-custom">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">edrpartyrentals.com</span>
+                                </div>
+                                <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals bilingual inventory catalog and booking platform" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge teal">Client Build</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">EDR Party Rentals</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
@@ -202,6 +287,17 @@
                     <!-- Card: D2 Auto Detail -->
                     <div class="pow-card-custom">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">d2autodetail.com</span>
+                                </div>
+                                <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail automotive intake portal" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge teal">Service Concept</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">D2 Auto Detail</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
@@ -219,6 +315,17 @@
                     <!-- Card: McGregor's Comedy Club -->
                     <div class="pow-card-custom">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">mcgregorscomedy.com</span>
+                                </div>
+                                <img src="/assets/images/confidential_comedy_preview.png" alt="McGregor's Comedy Club events and ticketing portal" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge teal">Event Experience</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">McGregor's Comedy Club</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
@@ -231,23 +338,6 @@
                             </ul>
                         </div>
                         <a href="/systems/client-builds/#mcgregors" style="border: 1px solid var(--border-light); color: var(--text-primary); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; width: fit-content;">View Details &rarr;</a>
-                    </div>
-
-                    <!-- Card: Quick Launch Website Framework -->
-                    <div class="pow-card-custom">
-                        <div>
-                            <span class="pow-capability-badge teal">Productized Website</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Quick Launch Website Framework</h3>
-                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
-                                High-speed single-page business website framework for local service businesses that need immediate credibility and direct quote inquiries from $1,500.
-                            </p>
-                            <ul style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
-                                <li>Rapid production turnaround</li>
-                                <li>Mobile UX &amp; basic SEO metadata</li>
-                                <li>Integrated single-path lead qualification</li>
-                            </ul>
-                        </div>
-                        <a href="/custom/?service=quick-launch#intake" class="btn-magnetic" style="background: var(--text-primary); color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; width: fit-content;">Explore Quick Launch &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -268,6 +358,17 @@
                     <!-- Card: INNcontrol Coils -->
                     <div class="pow-card-custom pow-card-dark">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">inncontrolcoils.com</span>
+                                </div>
+                                <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils commercial HVAC platform interface" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge indigo" style="color: #A5B4FC;">Field Scoping &amp; Estimation</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">INNcontrol Coils</h3>
                             <p style="font-size: 14px; line-height: 1.6; margin-bottom: 1.25rem;">
@@ -285,6 +386,17 @@
                     <!-- Card: Signal -->
                     <div class="pow-card-custom pow-card-dark">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">contextmuse.com/signal</span>
+                                </div>
+                                <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard Preview" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge indigo" style="color: #A5B4FC;">Diagnostic Decision Support</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Signal Diagnostic Engine</h3>
                             <p style="font-size: 14px; line-height: 1.6; margin-bottom: 1.25rem;">
@@ -302,6 +414,17 @@
                     <!-- Card: Structured Intake Setup -->
                     <div class="pow-card-custom pow-card-dark">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">contextmuse.com/custom</span>
+                                </div>
+                                <img src="/assets/images/message-analysis-mockup.png" alt="Structured Intake and Email Routing Engine" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge indigo" style="color: #A5B4FC;">Lead Qualification</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Structured Intake Setup</h3>
                             <p style="font-size: 14px; line-height: 1.6; margin-bottom: 1.25rem;">
@@ -334,6 +457,17 @@
                     <!-- Card: MadeOfReasons -->
                     <div class="pow-card-custom">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">madeofreasons.com</span>
+                                </div>
+                                <img src="/assets/images/madeofreasons-screenshot.webp" alt="MadeOfReasons interactive web application interface" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge amber" style="background: rgba(197, 160, 89, 0.15); color: #9E7D3B; border-color: rgba(197, 160, 89, 0.3);">Relational Application</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">MadeOfReasons</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
@@ -353,6 +487,17 @@
                     <!-- Card: GenSort -->
                     <div class="pow-card-custom">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">contextmuse.com/gensort</span>
+                                </div>
+                                <img src="/assets/images/gensort-library.webp" alt="GenSort Workspace Preview" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge amber">Visual Intelligence</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">GenSort Visual Intelligence</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
@@ -372,6 +517,17 @@
                     <!-- Card: Maps With Teeth -->
                     <div class="pow-card-custom">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">mapswithteeth.org</span>
+                                </div>
+                                <img src="/assets/images/mapswithteeth-screenshot.webp" alt="Maps With Teeth Survivor Continuity Platform Preview" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge amber">Continuity Infrastructure</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Maps With Teeth</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
@@ -391,6 +547,17 @@
                     <!-- Card: Message & Record Analysis -->
                     <div class="pow-card-custom">
                         <div>
+                            <div class="pow-card-media">
+                                <div class="pow-browser-bar">
+                                    <div class="pow-browser-dots">
+                                        <span class="pow-dot red"></span>
+                                        <span class="pow-dot yellow"></span>
+                                        <span class="pow-dot green"></span>
+                                    </div>
+                                    <span class="pow-browser-url">contextmuse.com/systems</span>
+                                </div>
+                                <img src="/assets/images/message-analysis-mockup.png" alt="Message and Record Analysis Timeline Interface" loading="lazy">
+                            </div>
                             <span class="pow-capability-badge amber">Evidence Architecture</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Message &amp; Record Analysis</h3>
                             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">

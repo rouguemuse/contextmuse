@@ -33,6 +33,52 @@
     <meta name="twitter:description" content="Context &amp; Muse designs conversion-focused websites, intake systems, booking and routing workflows, dashboards, and custom tools for businesses that have outgrown generic software.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.contextmuse.com/#organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/",
+          "logo": "https://www.contextmuse.com/assets/images/contextmuse_logo.svg",
+          "description": "Context & Muse designs conversion-focused websites, intake systems, booking and routing workflows, dashboards, and custom tools for businesses.",
+          "founder": {
+            "@type": "Person",
+            "name": "Jayme Volstad",
+            "url": "https://jaymevolstad.com/",
+            "sameAs": [
+              "https://jaymevolstad.com/"
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.contextmuse.com/#website",
+          "url": "https://www.contextmuse.com/",
+          "name": "Context & Muse",
+          "publisher": {
+            "@id": "https://www.contextmuse.com/#organization"
+          }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://www.contextmuse.com/#service",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/",
+          "priceRange": "$$$",
+          "image": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+          "description": "Custom websites, operational workflows, intake engines, and custom business tools.",
+          "provider": {
+            "@id": "https://www.contextmuse.com/#organization"
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -284,6 +330,14 @@
             display: flex;
             flex-direction: column;
         }
+        .proof-featured-window img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top center;
+        }
         .proof-window-bar {
             background: #152522;
             padding: 10px 14px;
@@ -379,8 +433,9 @@
         }
         .proof-card-media img {
             width: 100%;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 16 / 10;
             object-fit: cover;
+            object-position: top center;
             display: block;
         }
         .proof-badge {
@@ -1023,26 +1078,7 @@
                                 <div class="proof-window-dot"></div>
                                 <span class="proof-window-url">lonewolf-dumpsters.vercel.app</span>
                             </div>
-                            <div class="proof-window-body">
-                                <span class="proof-window-tag">DFW Multi-Market Waste Management</span>
-                                <div style="font-family: var(--font-serif); font-size: 20px; font-weight: 500; color: #FAF9F5; line-height: 1.35;">
-                                    Local Search Capture &bull; Automated Contractor Triage Engine
-                                </div>
-                                <div class="proof-window-metrics">
-                                    <div class="pwm-item">
-                                        <strong>40+</strong>
-                                        <span>City Pages</span>
-                                    </div>
-                                    <div class="pwm-item">
-                                        <strong>Instant</strong>
-                                        <span>Quote Triage</span>
-                                    </div>
-                                    <div class="pwm-item">
-                                        <strong>Zero</strong>
-                                        <span>Phone Tag</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <img src="/assets/images/lonewolf-screenshot.webp" alt="Lone Wolf Dumpsters live website and contractor intake system" width="1440" height="900" loading="lazy">
                         </div>
                     </div>
 
@@ -1264,7 +1300,7 @@
                                 Portable continuity and barrier-first resource intelligence platform designed for navigating complex institutional systems across unshared jurisdictions.
                             </p>
                             <div class="product-card-visual">
-                                <img src="/assets/images/contextmuse_teeth_preview.png" alt="Maps With Teeth Platform Preview">
+                                <img src="/assets/images/mapswithteeth-screenshot.webp" alt="Maps With Teeth Platform Preview" width="1440" height="900" loading="lazy">
                             </div>
                         </div>
                         <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="btn btn-secondary" style="border-color: rgba(250, 249, 245, 0.5) !important; color: #FAF9F5 !important; width: fit-content;">Visit mapswithteeth.org &rarr;</a>
@@ -1338,7 +1374,7 @@
                                 Moving into custom digital systems, automation, and AI tooling was not a career pivot — it was an expansion of the same problem-solving discipline with modern tools.
                             </p>
                             <p>
-                                <strong>Direct Collaboration:</strong> You work directly with founder and systems designer Jayme Volstad. No account managers, junior handoffs, or agency telephone.
+                                <strong>Direct Collaboration:</strong> You work directly with founder and systems designer <a href="https://jaymevolstad.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Jayme Volstad</a>. No account managers, junior handoffs, or agency telephone.
                             </p>
                         </div>
 

@@ -373,12 +373,29 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Upload Exports / Spreadsheets</label>
+                            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                                <label class="form-label" style="margin-bottom: 0;">Upload Exports / Spreadsheets</label>
+                                <a href="/signal/export-instructions/" target="_blank" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); text-decoration: underline; font-weight: 500;">View Toast Export Guide ↗</a>
+                            </div>
+
+                            <!-- Toast Quick Reference Accordion -->
+                            <details style="background: rgba(15, 118, 110, 0.04); border: 1px solid var(--border-light); border-radius: 4px; padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 13px;">
+                                <summary style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em;">
+                                    Toast Export Quick Checklist (CSV Only)
+                                </summary>
+                                <div style="margin-top: 0.75rem; color: var(--text-secondary); line-height: 1.55;">
+                                    <p style="margin: 0 0 0.5rem 0;"><strong>Navigate:</strong> Toast Web &rarr; Reports &rarr; Exports &bull; <strong>Range:</strong> Last 90–120 days</p>
+                                    <p style="margin: 0 0 0.5rem 0;"><strong>Required (CSV):</strong> Product Mix, Discounts / Comps / Voids, Sales by Hour, Labor Summary</p>
+                                    <p style="margin: 0 0 0.5rem 0;"><strong>Recommended:</strong> Modifier Sales, Hourly Labor, Promo Redemptions, Revenue Center Sales, Guest Counts</p>
+                                    <p style="margin: 0; color: #991B1B; font-weight: 600;">Important: CSV FORMAT ONLY. Avoid PDFs, screenshots, or edited spreadsheets. Compress into one .zip file.</p>
+                                </div>
+                            </details>
+
                             <div class="file-dropzone" onclick="document.getElementById('b1-files').click()">
                                 <input type="file" id="b1-files" name="files" multiple style="display:none" onchange="handleFileSelect(this)">
                                 <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">📂</div>
                                 <div style="font-family: var(--font-mono); font-size: 12px; font-weight: bold; color: var(--accent-teal); margin-bottom: 0.25rem;" id="dropzone-text">Click to choose files or drop them here</div>
-                                <div style="font-size: 11px; color: var(--text-secondary);">CSV, XLSX, PDF, JSON up to 25MB</div>
+                                <div style="font-size: 11px; color: var(--text-secondary);">CSV, ZIP, XLSX, PDF up to 25MB</div>
                             </div>
                         </div>
 
@@ -396,11 +413,43 @@
                 <!-- Branch 2 Form -->
                 <div class="branch-panel" id="panel-2" role="tabpanel">
                     <h2 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem; font-weight: 500;">
-                        Guided Operational Scoping
+                        Signal Export Instructions &amp; Guided Scoping
                     </h2>
-                    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.55;">
-                        Tell me what’s happening in your business, and I will tell you the exact 2 or 3 standard reports to export.
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.55;">
+                        Follow our standard Toast protocol below to export your data in 3 minutes, or describe your problem and we will send tailored extraction notes.
                     </p>
+
+                    <!-- Built-in Toast Instructions Card -->
+                    <div style="background: #FAF9F5; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem;">
+                            <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin: 0; color: var(--text-primary);">Signal Export Instructions (Toast)</h3>
+                            <a href="/signal/export-instructions/" target="_blank" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-decoration: underline;">Open Full Page ↗</a>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 13.5px; line-height: 1.5;">
+                            <div>
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Step 1 — Open Toast Reports</div>
+                                <p style="margin: 0.25rem 0 0.75rem 0; color: var(--text-secondary);">Navigate to: <code>Reports &rarr; Exports</code></p>
+                                
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Step 2 — Set Date Range</div>
+                                <p style="margin: 0.25rem 0 0.75rem 0; color: var(--text-secondary);">Recommended: <strong>Last 90–120 days</strong></p>
+
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Step 4 — Export Format</div>
+                                <p style="margin: 0.25rem 0 0; color: #991B1B; font-weight: 600;">IMPORTANT: CSV FORMAT ONLY.<br><span style="font-weight: normal; color: var(--text-secondary); font-size: 12px;">Avoid screenshots, PDFs, printed reports, or manually edited sheets.</span></p>
+                            </div>
+                            <div>
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Step 3 — Export Reports</div>
+                                <p style="margin: 0.25rem 0 0.5rem 0; font-size: 12.5px;">
+                                    <strong>Required:</strong> Product Mix, Discounts / Comps / Voids, Sales by Hour, Labor Summary<br>
+                                    <strong>Recommended:</strong> Modifier Sales, Hourly Labor, Promo Redemptions, Revenue Center Sales, Guest Counts<br>
+                                    <strong>Deep Review:</strong> KDS Ticket Times, Manager Overrides, Refund Reports, Open Items
+                                </p>
+
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; margin-top: 0.75rem;">Step 5 — Upload</div>
+                                <p style="margin: 0.25rem 0 0; color: var(--text-secondary); font-size: 12.5px;">Compress all files into one ZIP folder and upload to Signal.</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <form action="https://formspree.io/f/xoqydgvw" method="POST">
                         <input type="hidden" name="branch" value="02_needs_report_guidance">
@@ -424,10 +473,10 @@
 
                         <div class="form-group">
                             <label class="form-label" for="b2-problem">What problem are you noticing?</label>
-                            <textarea id="b2-problem" name="problem_description" rows="5" class="form-textarea" required placeholder="e.g. Labor feels too high during shoulder hours, food cost doesn't match sales, servers are splitting checks weirdly..."></textarea>
+                            <textarea id="b2-problem" name="problem_description" rows="4" class="form-textarea" required placeholder="e.g. Labor feels too high during shoulder hours, food cost doesn't match sales, servers are splitting checks weirdly..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit">Request Export Instructions &rarr;</button>
+                        <button type="submit" class="btn-submit">Request Custom Scoping Call &rarr;</button>
                     </form>
                 </div>
 

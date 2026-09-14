@@ -17,31 +17,7 @@
       "destination": "/signal/sample-reports/",
       "permanent": true
     },
-    {
-      "source": "/evidence/:path*",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/records/:path*",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/private/:path*",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/legal/:path*",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/message-analysis/:path*",
-      "destination": "/",
-      "permanent": false
-    },
+
     {
       "source": "/creative-practice/how-to-explain-yourself-to-wolves/",
       "destination": "/creative/how-to-explain-yourself-to-wolves/",

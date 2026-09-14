@@ -1,0 +1,1164 @@
+[
+  {
+    "file": "404.html",
+    "title": "Page Not Found (404) | Context &amp; Muse",
+    "metaDesc": "The requested page could not be found. Return to Context &amp; Muse applied systems, products, and services.",
+    "canonical": null,
+    "robots": "noindex, follow",
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "This route does not exist."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "about/index.html",
+    "title": "About | Context &amp; Muse",
+    "metaDesc": "About Jayme Volstad — operational leader and systems builder. Context &amp; Muse turns fragmented information and unclear decisions into systems people can understand and use.",
+    "canonical": "https://www.contextmuse.com/about/",
+    "robots": null,
+    "ogTitle": "About | Context &amp; Muse",
+    "ogDesc": "About Jayme Volstad. Context &amp; Muse turns fragmented information, difficult workflows, and unclear decisions into systems people can understand and use.",
+    "ogUrl": "https://www.contextmuse.com/about/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "I build systems\r\n                        around the way\r\n                        people actually work."
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "AboutPage",
+            "@id": "https://www.contextmuse.com/about/#webpage",
+            "url": "https://www.contextmuse.com/about/",
+            "name": "About | Context & Muse",
+            "description": "About Jayme Volstad — operational leader and systems builder at Context & Muse.",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://www.contextmuse.com/#website",
+              "name": "Context & Muse",
+              "url": "https://www.contextmuse.com/"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://jaymevolstad.com/#person",
+            "name": "Jayme Volstad",
+            "jobTitle": "Founder & Systems Designer",
+            "url": "https://jaymevolstad.com/",
+            "sameAs": [
+              "https://jaymevolstad.com/"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Context & Muse",
+              "url": "https://www.contextmuse.com/"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "cartography/index.html",
+    "title": "Cartography V1 · Standalone Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse",
+    "metaDesc": "A standalone, full-screen explainable behavioral-pattern engine mapping subjective reflections into topological coordinate space without clinical diagnosis.",
+    "canonical": "https://www.contextmuse.com/cartography/",
+    "robots": null,
+    "ogTitle": "Cartography V1 · Standalone Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse",
+    "ogDesc": "A standalone, full-screen explainable behavioral-pattern engine mapping subjective reflections into topological coordinate space without clinical diagnosis.",
+    "ogUrl": "https://www.contextmuse.com/cartography/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Cartography V1 · Standalone Behavioral-Pattern &amp; Evidence Engine"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "case-studies/edr-party-rentals/index.html",
+    "title": "EDR Party Rentals Case Study · Systems &amp; UX | Context &amp; Muse",
+    "metaDesc": "How Context &amp; Muse transformed a complicated event rental catalog into a streamlined, inventory-aware booking system that resolves customer friction before manual triage.",
+    "canonical": "https://www.contextmuse.com/case-studies/edr-party-rentals/",
+    "robots": null,
+    "ogTitle": "EDR Party Rentals Case Study | Context &amp; Muse",
+    "ogDesc": "Making a complicated rental business feel simple to book. Inventory logic, mobile UX, bilingual flows, and smarter customer intake.",
+    "ogUrl": "https://www.contextmuse.com/case-studies/edr-party-rentals/",
+    "ogImage": "https://www.contextmuse.com/assets/images/edrpartyrentals-screenshot.webp",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "EDR Party Rentals"
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "EDR Party Rentals — Operations-First Website & Quote Flow",
+        "description": "Case study on how Context & Muse built an operations-first website, catalog, and quotation intake architecture for EDR Party Rentals.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Jayme Volstad",
+          "url": "https://jaymevolstad.com/"
+        }
+      }
+    ]
+  },
+  {
+    "file": "contact/index.html",
+    "title": "Start a Project · Contact &amp; Intake | Context &amp; Muse",
+    "metaDesc": "Start a project with Context &amp; Muse. Bring your website, conversion leak, or operational bottleneck for direct review and clear scoping.",
+    "canonical": "https://www.contextmuse.com/contact/",
+    "robots": null,
+    "ogTitle": "Start a Project · Contact &amp; Intake | Context &amp; Muse",
+    "ogDesc": "Direct collaboration with founder and systems designer Jayme Volstad. Start a project, request a conversion audit, or scope a custom system.",
+    "ogUrl": "https://www.contextmuse.com/contact/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Bring me the mess."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "creative/how-to-explain-yourself-to-wolves/index.html",
+    "title": "How to Explain Yourself to Wolves | Context &amp; Muse",
+    "metaDesc": "An allegorical memoir exploring explanation, translation failure, identity, memory, and the decision to stop explaining oneself. A project by Context &amp; Muse.",
+    "canonical": "https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/",
+    "robots": null,
+    "ogTitle": "How to Explain Yourself to Wolves | Context &amp; Muse",
+    "ogDesc": "An allegorical memoir exploring explanation, translation failure, identity, memory, and the decision to stop explaining oneself. A project by Context &amp; Muse.",
+    "ogUrl": "https://www.contextmuse.com/creative/how-to-explain-yourself-to-wolves/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "How to Explain Yourself to Wolves"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "creative/index.html",
+    "title": "Creative Practice | Context &amp; Muse",
+    "metaDesc": "Narrative systems, symbolic cartography, and human tools for invisible forces. Explore the Creative Practice of Context &amp; Muse.",
+    "canonical": "https://www.contextmuse.com/creative/",
+    "robots": null,
+    "ogTitle": "Creative Practice | Context &amp; Muse",
+    "ogDesc": "Narrative systems, symbolic cartography, and human tools for invisible forces. Explore the Creative Practice of Context &amp; Muse.",
+    "ogUrl": "https://www.contextmuse.com/creative/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Some problems need a system.Others need a language."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "creative/self-cartography/index.html",
+    "title": "Cartography V1 · Explainable Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse",
+    "metaDesc": "An explainable behavioral-pattern engine that turns subjective reflections into structured, evidence-backed patterns without diagnosing the user or moralizing behavior.",
+    "canonical": "https://www.contextmuse.com/creative/self-cartography/",
+    "robots": null,
+    "ogTitle": "Cartography V1 · Explainable Behavioral-Pattern &amp; Evidence Engine | Context &amp; Muse",
+    "ogDesc": "An explainable behavioral-pattern engine that turns subjective reflections into structured, evidence-backed patterns without diagnosing the user or moralizing behavior.",
+    "ogUrl": "https://www.contextmuse.com/creative/self-cartography/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Cartography V1"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "custom/index.html",
+    "title": "Custom Websites &amp; Operational Systems | Context &amp; Muse",
+    "metaDesc": "Customer-facing websites paired with custom operational machinery underneath—intake, inventory, scheduling, recommendations, and field service workflows.",
+    "canonical": "https://www.contextmuse.com/custom/",
+    "robots": null,
+    "ogTitle": "Custom Websites &amp; Operational Systems | Context &amp; Muse",
+    "ogDesc": "Customer-facing websites paired with custom operational machinery underneath—intake, inventory, scheduling, recommendations, and field service workflows.",
+    "ogUrl": "https://www.contextmuse.com/custom/",
+    "ogImage": "https://www.contextmuse.com/assets/images/signal-social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Systems built around the way your business actually works."
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Custom Business Systems & Software",
+        "provider": {
+          "@type": "Organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/"
+        },
+        "description": "Custom business workflows, quoting engines, intake portals, and internal tools engineered around exact operational requirements."
+      }
+    ]
+  },
+  {
+    "file": "cxm_gensort/index.html",
+    "title": "GenSort | Organize AI-Generated Images",
+    "metaDesc": "GenSort is a local-first desktop tool for organizing thousands of AI-generated images. Group variations, filter by metadata, and bulk organize your creations.",
+    "canonical": "https://www.contextmuse.com/cxm_gensort/",
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 0,
+    "h1s": [],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "dealsignal/index.html",
+    "title": "dealsignal",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 0,
+    "h1s": [],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "demo-restaurant-signal-report.html",
+    "title": "Signal Intelligence Brief | Demo Restaurant Group",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "Demo Restaurant Group"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "gensort/index.html",
+    "title": "GenSort | Visual &amp; Digital Asset Organization",
+    "metaDesc": "GenSort turns messy collections of visual and digital assets into searchable, comparable, structured libraries without forcing you to reorganize everything by hand.",
+    "canonical": "https://www.contextmuse.com/gensort/",
+    "robots": null,
+    "ogTitle": "GenSort | Visual &amp; Digital Asset Organization",
+    "ogDesc": "GenSort turns messy collections of visual and digital assets into searchable, comparable, structured libraries without forcing you to reorganize everything by hand.",
+    "ogUrl": "https://www.contextmuse.com/gensort/",
+    "ogImage": "https://www.contextmuse.com/assets/images/gensort-library.webp",
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "Turn the pile into a structure."
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "GenSort",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Web-based",
+        "description": "Sort, group, rank, and curate hundreds of generated images quickly. Free to sort, pay only on export.",
+        "creator": {
+          "@type": "Organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/"
+        }
+      }
+    ]
+  },
+  {
+    "file": "index.backup.html",
+    "title": "Websites, Workflow Systems &amp; Custom Tools | Context &amp; Muse",
+    "metaDesc": "Context &amp; Muse designs conversion-focused websites, intake systems, booking and routing workflows, dashboards, and custom tools for businesses that have outgrown generic software.",
+    "canonical": "https://www.contextmuse.com/",
+    "robots": null,
+    "ogTitle": "Websites, Workflow Systems &amp; Custom Tools | Context &amp; Muse",
+    "ogDesc": "Context &amp; Muse designs conversion-focused websites, intake systems, booking and routing workflows, dashboards, and custom tools for businesses that have outgrown generic software.",
+    "ogUrl": "https://www.contextmuse.com/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Clarity shapes perception.Perception changes everything."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "index.html",
+    "title": "Websites, Workflow Systems &amp; Custom Tools | Context &amp; Muse",
+    "metaDesc": "Context &amp; Muse designs conversion-focused websites, intake systems, booking and routing workflows, dashboards, and custom tools for businesses that have outgrown generic software.",
+    "canonical": "https://www.contextmuse.com/",
+    "robots": null,
+    "ogTitle": "Websites, Workflow Systems &amp; Custom Tools | Context &amp; Muse",
+    "ogDesc": "Context &amp; Muse designs conversion-focused websites, intake systems, booking and routing workflows, dashboards, and custom tools for businesses that have outgrown generic software.",
+    "ogUrl": "https://www.contextmuse.com/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Clarity shapes perception.Perception changes everything."
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.contextmuse.com/#organization",
+            "name": "Context & Muse",
+            "url": "https://www.contextmuse.com/",
+            "logo": "https://www.contextmuse.com/assets/images/contextmuse_logo.svg",
+            "description": "Context & Muse designs conversion-focused websites, intake systems, booking and routing workflows, dashboards, and custom tools for businesses.",
+            "founder": {
+              "@type": "Person",
+              "name": "Jayme Volstad",
+              "url": "https://jaymevolstad.com/",
+              "sameAs": [
+                "https://jaymevolstad.com/"
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.contextmuse.com/#website",
+            "url": "https://www.contextmuse.com/",
+            "name": "Context & Muse",
+            "publisher": {
+              "@id": "https://www.contextmuse.com/#organization"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://www.contextmuse.com/#service",
+            "name": "Context & Muse",
+            "url": "https://www.contextmuse.com/",
+            "priceRange": "$$$",
+            "image": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+            "description": "Custom websites, operational workflows, intake engines, and custom business tools.",
+            "provider": {
+              "@id": "https://www.contextmuse.com/#organization"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "inncontrol-v2/index.html",
+    "title": "INNcontrol Hospitality Services | Hotel HVAC Specialists",
+    "metaDesc": "INNcontrol delivers precision PTAC & HVAC cleaning for hotels across all 50 states. Lower energy costs. Happier guests.",
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "Your GuestsDeserveClean Air."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "istar-map/index.html",
+    "title": "Reasons, Written in Starlight",
+    "metaDesc": "A private constellation — each light holds a message meant only for you.",
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "Reasons,Written in Starlight"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "partials/footer.html",
+    "title": null,
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 0,
+    "h1s": [],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "partials/nav.html",
+    "title": null,
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 0,
+    "h1s": [],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "partners/index.html",
+    "title": "White-Label Production &amp; Agency Partnerships | Context &amp; Muse",
+    "metaDesc": "Confidential white-label design and build partnerships for creative agencies. Custom websites, interactive tools, and web production when your queue is full.",
+    "canonical": "https://www.contextmuse.com/partners/",
+    "robots": null,
+    "ogTitle": "White-Label Production &amp; Agency Partnerships | Context &amp; Muse",
+    "ogDesc": "Confidential white-label design and build partnerships for creative agencies. Custom websites, interactive tools, and web production when your queue is full.",
+    "ogUrl": "https://www.contextmuse.com/partners/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "When client demand peaks, you don't need headcount. You need execution."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "preview/index.html",
+    "title": "Context &amp; Muse — Websites, Workflow Systems &amp; Custom Tools (Preview)",
+    "metaDesc": "Context &amp; Muse builds websites, customer journeys, and operational systems designed around how a business actually works. Independent studio by Jayme Volstad.",
+    "canonical": "https://www.contextmuse.com/preview/",
+    "robots": null,
+    "ogTitle": "Context &amp; Muse — Websites, Workflow Systems &amp; Custom Tools",
+    "ogDesc": "I build websites that do more than sit there. Websites, customer journeys, and operational systems designed around how a business actually works.",
+    "ogUrl": "https://www.contextmuse.com/preview/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "I build websites that do more than sit there."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "privacy/index.html",
+    "title": "Privacy Policy | Context &amp; Muse",
+    "metaDesc": "Privacy Policy and data protection terms for Context &amp; Muse client operations and Signal audits.",
+    "canonical": "https://www.contextmuse.com/privacy/",
+    "robots": null,
+    "ogTitle": "Privacy Policy | Context &amp; Muse",
+    "ogDesc": "Privacy Policy and data protection terms for Context &amp; Muse client operations and Signal audits.",
+    "ogUrl": "https://www.contextmuse.com/privacy/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Privacy Policy"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "proof-of-work/index.html",
+    "title": "Proof of Work · Three Systems Capabilities &amp; Implementations | Context &amp; Muse",
+    "metaDesc": "A structured showcase of Digital Product Systems, Business Workflow Systems, and Web Experience &amp; Conversion builds by Context &amp; Muse.",
+    "canonical": "https://www.contextmuse.com/proof-of-work/",
+    "robots": null,
+    "ogTitle": "Proof of Work · Three Systems Capabilities &amp; Implementations | Context &amp; Muse",
+    "ogDesc": "A structured showcase of Digital Product Systems, Business Workflow Systems, and Web Experience &amp; Conversion builds by Context &amp; Muse.",
+    "ogUrl": "https://www.contextmuse.com/proof-of-work/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Proof of Work"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "proof-of-work.html",
+    "title": "Redirecting to Proof of Work...",
+    "metaDesc": null,
+    "canonical": "https://contextmuse.com/proof-of-work/",
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 0,
+    "h1s": [],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "quick-launch/index.html",
+    "title": "Launch Site Websites — From $1,500 | Context &amp; Muse",
+    "metaDesc": "Clean, custom-built business websites without unnecessary technical baggage or endless plugin/subscription maintenance. Defined scope. Defined price. Defined launch.",
+    "canonical": "https://www.contextmuse.com/quick-launch/",
+    "robots": null,
+    "ogTitle": "Launch Site Websites — From $1,500 | Context &amp; Muse",
+    "ogDesc": "Clean, custom-built business websites without unnecessary technical baggage or endless plugin maintenance.",
+    "ogUrl": "https://www.contextmuse.com/quick-launch/",
+    "ogImage": "https://www.contextmuse.com/assets/images/signal-social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "A clean, custom business website built to convert."
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Launch Site Websites",
+        "provider": {
+          "@type": "Organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/"
+        },
+        "description": "Clean, custom-built business websites without unnecessary technical baggage or subscription bloat.",
+        "offers": {
+          "@type": "Offer",
+          "price": "1500",
+          "priceCurrency": "USD"
+        }
+      }
+    ]
+  },
+  {
+    "file": "restaurant-builds/comedy-venue/index.html",
+    "title": "Comedy Club Ticketing &amp; Discovery Study | Context &amp; Muse",
+    "metaDesc": "Independent UX prototype examining show discovery, VIP table bookings, and drink minimum intake for performance venues.",
+    "canonical": "https://www.contextmuse.com/restaurant-builds/comedy-venue/",
+    "robots": null,
+    "ogTitle": "Comedy Club Ticketing &amp; Discovery Study | Context &amp; Muse",
+    "ogDesc": "Independent UX prototype examining show discovery, VIP table bookings, and drink minimum intake for performance venues.",
+    "ogUrl": "https://www.contextmuse.com/restaurant-builds/comedy-venue/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Comedy Club Ticketing &amp; Discovery Study"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "restaurant-builds/detroit-pizza/index.html",
+    "title": "Detroit Pizza Ordering UX Study | Context &amp; Muse",
+    "metaDesc": "Independent UX study on designing custom direct-ordering flows, visual modifiers, and checkout UX for high-volume pizzerias.",
+    "canonical": "https://www.contextmuse.com/restaurant-builds/detroit-pizza/",
+    "robots": null,
+    "ogTitle": "Detroit Pizza Ordering UX Study | Context &amp; Muse",
+    "ogDesc": "Independent UX study on designing custom direct-ordering flows, visual modifiers, and checkout UX for high-volume pizzerias.",
+    "ogUrl": "https://www.contextmuse.com/restaurant-builds/detroit-pizza/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Detroit-Style Pizza Ordering UX Study"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "restaurant-builds/events-venue/index.html",
+    "title": "Hospitality &amp; Venue Booking Concept Study | Context &amp; Muse",
+    "metaDesc": "Independent concept study examining event discovery calendars, room buyout intake flows, and ticket routing for multi-stage venues.",
+    "canonical": "https://www.contextmuse.com/restaurant-builds/events-venue/",
+    "robots": null,
+    "ogTitle": "Hospitality &amp; Venue Booking Concept Study | Context &amp; Muse",
+    "ogDesc": "Independent concept study examining event discovery calendars, room buyout intake flows, and ticket routing for multi-stage venues.",
+    "ogUrl": "https://www.contextmuse.com/restaurant-builds/events-venue/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Pub &amp; Live Events Venue Concept Study"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "restaurant-builds/index.html",
+    "title": "Hospitality UX &amp; Conversion Studies | Context &amp; Muse",
+    "metaDesc": "Independent hospitality interface studies, menu architecture, and conversion teardowns exploring direct ordering and venue workflows.",
+    "canonical": "https://www.contextmuse.com/restaurant-builds/",
+    "robots": null,
+    "ogTitle": "Hospitality UX &amp; Conversion Studies | Context &amp; Muse",
+    "ogDesc": "Independent hospitality interface studies, menu architecture, and conversion teardowns exploring direct ordering and venue workflows.",
+    "ogUrl": "https://www.contextmuse.com/restaurant-builds/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Hospitality Interface &amp; Funnel Concepts"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "restaurant-systems/index.html",
+    "title": "Restaurant Systems | Operational Consulting &amp; Workflow Design",
+    "metaDesc": "Operational systems, workflow design, and decision support for independent restaurants and hospitality operators.",
+    "canonical": "https://www.contextmuse.com/restaurant-systems/",
+    "robots": null,
+    "ogTitle": "Restaurant Systems | Operational Consulting &amp; Workflow Design",
+    "ogDesc": "Operational systems, workflow design, and decision support for independent restaurants and hospitality operators.",
+    "ogUrl": "https://www.contextmuse.com/restaurant-systems/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Restaurant Systems"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "restaurant-theory/index.html",
+    "title": "Restaurant Theory: The Menu Is an Interface | Context &amp; Muse",
+    "metaDesc": "An information-design study exploring menu architecture, price anchoring, visual weight bias, modifier friction, and decision load.",
+    "canonical": "https://www.contextmuse.com/restaurant-theory/",
+    "robots": null,
+    "ogTitle": "Restaurant Theory: The Menu Is an Interface | Context &amp; Muse",
+    "ogDesc": "An information-design study exploring menu architecture, price anchoring, visual weight bias, modifier friction, and decision load.",
+    "ogUrl": "https://www.contextmuse.com/restaurant-theory/",
+    "ogImage": "https://www.contextmuse.com/assets/images/menu_interface_theory.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "The Menu Is an Interface"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "rudyards-comedy/business-card/gallery.html",
+    "title": "SVG Branding Gallery - The Houston Comedy Club",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "Branding Asset Gallery"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "rudyards-comedy/business-card/index.html",
+    "title": "The Houston Comedy Club | Double-Sided Business Card",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "THE HOUSTON COMEDY CLUB"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "rudyards-comedy/index.html",
+    "title": "The Houston Comedy Club | Live Stand-Up in Houston",
+    "metaDesc": "Live stand-up comedy shows in Houston. Touring comedians, local showcases, and private events. Join the guest list for upcoming shows.",
+    "canonical": "https://www.contextmuse.com/rudyards-comedy/",
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "A BETTER ROOM FOR COMEDY"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "services/index.html",
+    "title": "Website &amp; Business Systems Services | Context &amp; Muse",
+    "metaDesc": "Context &amp; Muse creates lean, custom websites and business software with minimal maintenance, plugins, and technical overhead. Conversion Audits, Launch Sites, Custom Business Systems, and Custom Software.",
+    "canonical": "https://www.contextmuse.com/services/",
+    "robots": null,
+    "ogTitle": "Website &amp; Business Systems Services | Context &amp; Muse",
+    "ogDesc": "Context &amp; Muse creates lean, custom websites and business software with minimal unnecessary maintenance, subscriptions, plugins, and technical overhead.",
+    "ogUrl": "https://www.contextmuse.com/services/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Intentionally built digital systems.Zero maintenance circus."
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Commercial Studio Services",
+        "provider": {
+          "@type": "Organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/"
+        },
+        "serviceType": "Conversion Optimization, Web Development & Operational Engineering",
+        "description": "Conversion audits, funnel sprints, custom business tools, and agency white-label production partnerships."
+      }
+    ]
+  },
+  {
+    "file": "signal/index.html",
+    "title": "Signal | Operational Intelligence &amp; Decision Support",
+    "metaDesc": "Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.",
+    "canonical": "https://www.contextmuse.com/signal/",
+    "robots": null,
+    "ogTitle": "Signal | Operational Intelligence &amp; Decision Support",
+    "ogDesc": "Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.",
+    "ogUrl": "https://www.contextmuse.com/signal/",
+    "ogImage": "https://www.contextmuse.com/assets/images/signal-social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Find what is actually costing the business."
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Signal",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web-based",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Signal Snapshot",
+            "price": "195",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Signal Diagnostic",
+            "price": "595",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Ongoing Review",
+            "price": "195",
+            "priceCurrency": "USD",
+            "billingIncrement": "monthly"
+          }
+        ],
+        "creator": {
+          "@type": "Organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/"
+        }
+      }
+    ]
+  },
+  {
+    "file": "signal/intake/index.html",
+    "title": "Signal Intake · Bring Me the Mess | Context &amp; Muse",
+    "metaDesc": "Send your messy reports, POS exports, spreadsheets, or operational bottlenecks for prioritized diagnostic analysis.",
+    "canonical": "https://www.contextmuse.com/signal/intake/",
+    "robots": null,
+    "ogTitle": "Signal Intake · Bring Me the Mess | Context &amp; Muse",
+    "ogDesc": "Send your messy reports, POS exports, spreadsheets, or operational bottlenecks for prioritized diagnostic analysis.",
+    "ogUrl": "https://www.contextmuse.com/signal/intake/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Bring me the mess."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "signal/sample-reports/index.html",
+    "title": "Signal Sample Diagnostic Report | Context &amp; Muse",
+    "metaDesc": "View an anonymized sample of a Signal operational intelligence diagnostic brief, showing priority findings, financial exposure estimates, and floor validation plans.",
+    "canonical": "https://www.contextmuse.com/signal/sample-reports/",
+    "robots": null,
+    "ogTitle": "Signal Sample Diagnostic Report | Context &amp; Muse",
+    "ogDesc": "View an anonymized sample of a Signal operational intelligence diagnostic brief, showing priority findings, financial exposure estimates, and floor validation plans.",
+    "ogUrl": "https://www.contextmuse.com/signal/sample-reports/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Signal Sample Diagnostic"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "signal_restaurant_intelligence/index.html",
+    "title": "Restaurant Profit Priority Scan | Context &amp; Muse",
+    "metaDesc": "Stop guessing what to fix first. Context &amp; Muse analyzes sales, labor, menu mix, and purchasing data to rank the operational decisions with the highest financial impact.",
+    "canonical": "https://www.contextmuse.com/signal_restaurant_intelligence/",
+    "robots": null,
+    "ogTitle": "Restaurant Profit Priority Scan | Context &amp; Muse",
+    "ogDesc": "Stop guessing what to fix first. Context &amp; Muse analyzes sales, labor, menu mix, and purchasing data to rank the operational decisions with the highest financial impact.",
+    "ogUrl": "https://www.contextmuse.com/signal_restaurant_intelligence/",
+    "ogImage": "https://www.contextmuse.com/assets/images/signal-social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Stop guessing what to fix first."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "sixes-and-sevens/enquire.html",
+    "title": "Enquire - Eights & Aces",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "ENQUIRE"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "sixes-and-sevens/events.html",
+    "title": "Events - Eights & Aces",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "UPCOMING EVENTS"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "sixes-and-sevens/house.html",
+    "title": "The House - Eights & Aces",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "THE HOUSE"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "sixes-and-sevens/index.html",
+    "title": "Eights &amp; Aces | Context &amp; Muse",
+    "metaDesc": "Eights &amp; Aces interactive restaurant and venue preview by Context &amp; Muse.",
+    "canonical": "https://www.contextmuse.com/sixes-and-sevens/",
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "EIGHTS"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "sixes-and-sevens/pub.html",
+    "title": "The Pub - Eights & Aces",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "THE PUB"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "sixes-and-sevens/tables.html",
+    "title": "Tables - Eights & Aces",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "TABLES & GEAR"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "southern_smoke/index.html",
+    "title": "Southern Smoke Foundation",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 0,
+    "h1s": [],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "star-gift/index.html",
+    "title": "Interactive Star Gift | A private gift made from your words",
+    "metaDesc": null,
+    "canonical": null,
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 0,
+    "h1s": [],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "systems/client-builds/index.html",
+    "title": "Client Builds · Production Case Studies &amp; Systems | Context &amp; Muse",
+    "metaDesc": "Deep-dive production case studies: Lone Wolf Dumpsters multi-market lead engine, INNcontrol Coils HVAC estimation system, and EDR Party Rentals inventory engine.",
+    "canonical": "https://www.contextmuse.com/systems/client-builds/",
+    "robots": null,
+    "ogTitle": "Client Builds · Production Case Studies &amp; Systems | Context &amp; Muse",
+    "ogDesc": "Production systems built to solve real business constraints: Lone Wolf Dumpsters, INNcontrol Coils, and EDR Party Rentals.",
+    "ogUrl": "https://www.contextmuse.com/systems/client-builds/",
+    "ogImage": "https://www.contextmuse.com/og/context-muse-home-v3.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Systems that had to work outside the portfolio."
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "systems/index.html",
+    "title": "Custom Websites &amp; Systems — Projects from $1,500 | Context &amp; Muse",
+    "metaDesc": "Custom websites paired with operational machinery: booking intake, quoting flows, service-area architecture, CMS editing, and lead dispatch. Projects from $1,500.",
+    "canonical": "https://www.contextmuse.com/systems/",
+    "robots": null,
+    "ogTitle": "Custom Websites &amp; Systems — Projects from $1,500 | Context &amp; Muse",
+    "ogDesc": "Custom websites paired with operational machinery: booking intake, quoting flows, service-area architecture, CMS editing, and lead dispatch. Projects from $1,500.",
+    "ogUrl": "https://www.contextmuse.com/systems/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Websites paired with the operational machinery that makes them work."
+    ],
+    "schemaCount": 1,
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Websites & Operational Systems",
+        "provider": {
+          "@type": "Organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/"
+        },
+        "serviceType": "Web Design & Business Systems Engineering",
+        "description": "Custom websites, quoting engines, booking workflows, and operational tools designed around how a business actually works.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Website & System Packages",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Starter Website",
+              "price": "500",
+              "priceCurrency": "USD",
+              "description": "A focused, custom one-page website with mobile-friendly design, services, contact form or booking link."
+            },
+            {
+              "@type": "Offer",
+              "name": "Business Website",
+              "price": "1500",
+              "priceCurrency": "USD",
+              "description": "Up to five core pages, clear service and pricing information, customer inquiry flow, and launch setup."
+            },
+            {
+              "@type": "Offer",
+              "name": "Tools & Workflow Help",
+              "description": "Custom quoting and intake forms, customer routing, scheduling, and software integrations tailored to your process."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "file": "systems/resource-guide/index.html",
+    "title": "Resource Guide Compilation | Context &amp; Muse",
+    "metaDesc": "A structured resource-compilation system designed to turn fragmented public information into a searchable, validated directory. A project by Context &amp; Muse.",
+    "canonical": "https://www.contextmuse.com/systems/resource-guide/",
+    "robots": null,
+    "ogTitle": "Resource Guide Compilation | Context &amp; Muse",
+    "ogDesc": "A structured resource-compilation system designed to turn fragmented public information into a searchable, validated directory. A project by Context &amp; Muse.",
+    "ogUrl": "https://www.contextmuse.com/systems/resource-guide/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Resource Guide Compilation"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "systems/signal/index.html",
+    "title": "Signal | Restaurant Operational Intelligence &amp; Decision Support",
+    "metaDesc": "Signal turns restaurant POS exports and operating records into prioritized, plain-language findings that help operators identify margin leakage, workflow friction, and the next issues worth validating.",
+    "canonical": "https://www.contextmuse.com/systems/signal/",
+    "robots": null,
+    "ogTitle": "Signal | Restaurant Operational Intelligence &amp; Decision Support",
+    "ogDesc": "Signal turns restaurant POS exports and operating records into prioritized, plain-language findings that help operators identify margin leakage, workflow friction, and the next issues worth validating.",
+    "ogUrl": "https://www.contextmuse.com/systems/signal/",
+    "ogImage": "https://www.contextmuse.com/assets/images/signal-social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Signal"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "terms/index.html",
+    "title": "Terms of Service | Context &amp; Muse",
+    "metaDesc": "Terms of service and operating agreements for Context &amp; Muse client deliverables and Signal reviews.",
+    "canonical": "https://www.contextmuse.com/terms/",
+    "robots": null,
+    "ogTitle": "Terms of Service | Context &amp; Muse",
+    "ogDesc": "Terms of service and operating agreements for Context &amp; Muse client deliverables and Signal reviews.",
+    "ogUrl": "https://www.contextmuse.com/terms/",
+    "ogImage": "https://www.contextmuse.com/social-preview.jpg",
+    "twitterCard": "summary_large_image",
+    "h1Count": 1,
+    "h1s": [
+      "Terms of Service"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  },
+  {
+    "file": "tiktok-shop-roi-analyzer/index.html",
+    "title": "TikTok Shop Profit & Risk Analyzer | Context &amp; Muse",
+    "metaDesc": "TikTok Shop Profit &amp; Risk Analyzer — simulate creator economics, margin thresholds, and platform risk.",
+    "canonical": "https://www.contextmuse.com/tiktok-shop-roi-analyzer/",
+    "robots": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1Count": 1,
+    "h1s": [
+      "TikTok Shop Profit & Risk Analyzer"
+    ],
+    "schemaCount": 0,
+    "schemas": []
+  }
+]
