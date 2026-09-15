@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MVV7WNL42L');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contest Atlas · Submission Rules Engine &amp; Explainable Eligibility | Context &amp; Muse</title>
+    <meta name="description" content="Systems architecture case study on Contest Atlas: modeling complex literary submission guidelines into a deterministic, explainable rule evaluation engine.">
+    <link rel="canonical" href="https://www.contextmuse.com/work/contest-atlas/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Contest Atlas · Submission Rules Architecture | Context &amp; Muse">
+    <meta property="og:description" content="Explainable eligibility rules engine, deadline tracking, and manuscript-contest schema mapping.">
+    <meta property="og:url" content="https://www.contextmuse.com/work/contest-atlas/">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/contest-atlas-hero.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contest Atlas · Submission Rules Architecture | Context &amp; Muse">
+    <meta name="twitter:description" content="Explainable eligibility rules engine, deadline tracking, and manuscript-contest schema mapping.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/contest-atlas-hero.webp">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Contest Atlas: Explainable Submission Rules and Eligibility Engine",
+      "description": "Systems architecture case study on modeling ambiguous submission criteria into deterministic schema and rules logic.",
+      "image": "https://www.contextmuse.com/assets/images/contest-atlas-hero.webp",
+      "author": {
+        "@type": "Person",
+        "name": "Jayme Volstad",
+        "url": "https://jaymevolstad.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Context & Muse",
+        "url": "https://www.contextmuse.com"
+      }
+    }
+    </script>
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.7">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Navigation -->
+    <nav class="site-nav" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;">
+                <span>Context &amp; Muse</span>
+            </a>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns" open>
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Study Library</a>
+                        <a href="/work/revision-atlas/" class="nav-dropdown-link">Revision Atlas</a>
+                        <a href="/work/website-audit-system/" class="nav-dropdown-link">Website Audit System</a>
+                        <a href="/work/client-opportunity-engine/" class="nav-dropdown-link">Client Opportunity Engine</a>
+                        <a href="/work/contest-atlas/" class="nav-dropdown-link" style="color: var(--accent-teal); font-weight: 600;">Contest Atlas</a>
+                        <a href="/work/lone-wolf-dumpsters/" class="nav-dropdown-link">Lone Wolf Dumpsters</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
+                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
+                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+    <main id="main-content">
+        <!-- Header -->
+        <header class="cs-header">
+            <div class="container">
+                <div class="cs-meta-strip">
+                    <span class="cs-meta-tag status-dev">● In Active Development</span>
+                    <span class="cs-meta-tag">Systems Architecture &amp; Rules Logic</span>
+                    <span class="cs-meta-tag">Compliance &amp; Verification</span>
+                    <span>Studio Product Concept</span>
+                </div>
+                <h1 class="cs-headline">Modeling Ambiguous Submission Rules Into an Explainable Decision Engine</h1>
+                <p class="cs-lead">
+                    How Context &amp; Muse engineered the data schema and deterministic rules evaluation architecture for Contest Atlas—translating complex literary contest guidelines, eligibility constraints, and fee models into verified compliance trees.
+                </p>
+                <div class="cs-spec-grid">
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Domain</span>
+                        <span class="cs-spec-value">Rules Engines / Decision Logic / Publishing</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Core Challenge</span>
+                        <span class="cs-spec-value">High rate of accidental disqualification due to hidden criteria</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Architecture</span>
+                        <span class="cs-spec-value">Deterministic rule evaluation &amp; explainable pass/fail trees</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Status</span>
+                        <span class="cs-spec-value">Active Core Development &bull; Architecture Phase</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Preview Hero Visual -->
+        <div class="container">
+            <div class="cs-hero-preview">
+                <img src="/assets/images/contest-atlas-hero.webp" alt="Contest Atlas rules engine interface showing eligibility evaluation and manuscript compliance status" width="1200" height="750">
+                <div class="cs-hero-caption">
+                    <span>Fig 4.0: Contest Atlas Rules Architecture interface demonstrating granular rule evaluation with simulated data.</span>
+                    <span>Explainable Pass/Fail Logic &bull; Constraint Mapping</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body Content -->
+        <article class="cs-body-content">
+            <div class="container prose-container">
+                
+                <!-- 01: The Problem -->
+                <section class="cs-section">
+                    <span class="cs-section-num">01 / The Core Friction</span>
+                    <h2>The Complexity of Submission Guidelines</h2>
+                    <p>
+                        Submitting literary manuscripts, fellowship applications, or grant proposals is notoriously error-prone. Guidelines are buried in PDFs or web pages with subtle, easily missed constraints:
+                    </p>
+                    <ul>
+                        <li><strong>Hard Constraints:</strong> Word count limits (exact range vs. ceiling), blind judging requirements (zero identifying metadata anywhere in headers/footers), and prior publication clauses.</li>
+                        <li><strong>Temporal Constraints:</strong> Timezone-dependent closing timestamps, rolling evaluation cycles, and simultaneous submission policies.</li>
+                        <li><strong>Financial &amp; Fee Logic:</strong> Multi-entry discounts, early-bird tiers, and fee waiver prerequisites.</li>
+                    </ul>
+                    <div class="cs-question-box">
+                        <p>
+                            "How do we represent human-written submission rules in a formal schema that can deterministically verify a manuscript before the author pays an entry fee?"
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 02: Rule Schema Architecture -->
+                <section class="cs-section">
+                    <span class="cs-section-num">02 / Schema Design</span>
+                    <h2>Deterministic Rule Schema Architecture</h2>
+                    <p>
+                        Contest Atlas breaks every opportunity into a standardized JSON rule definition containing three distinct evaluation layers:
+                    </p>
+                    
+                    <div class="cs-pipeline">
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Layer 1</span>
+                            </div>
+                            <div class="cs-step-title">Author Eligibility</div>
+                            <div class="cs-step-desc">Evaluates regional eligibility, career stage, prior publication thresholds, and age or identity parameters.</div>
+                        </div>
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Layer 2</span>
+                            </div>
+                            <div class="cs-step-title">Document Properties</div>
+                            <div class="cs-step-desc">Validates exact word/page count, format extensions, typography constraints, and blind-reading metadata sanitization.</div>
+                        </div>
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Layer 3</span>
+                            </div>
+                            <div class="cs-step-title">Policy &amp; Rights</div>
+                            <div class="cs-step-desc">Checks simultaneous submission permissions, previous prize exclusivity, and copyright retention terms.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 03: Explainability -->
+                <section class="cs-section">
+                    <span class="cs-section-num">03 / System Explainability</span>
+                    <h2>Explainable Pass/Fail Tree</h2>
+                    <p>
+                        A core architectural requirement is <strong>100% Explainability</strong>. When an author tests a manuscript against an opportunity, the system never returns a black-box percentage. It returns an audited breakdown:
+                    </p>
+                    <div class="cs-tradeoff-grid">
+                        <div class="cs-tradeoff-card">
+                            <div class="cs-tradeoff-title">✅ Passed Rules</div>
+                            <div class="cs-tradeoff-body">Exact metric matches (e.g. "Manuscript is 4,250 words; required range is 2,000–5,000 words").</div>
+                        </div>
+                        <div class="cs-tradeoff-card">
+                            <div class="cs-tradeoff-title">⚠️ Fixable Disqualifiers</div>
+                            <div class="cs-tradeoff-body">Actionable adjustments (e.g. "Author name found on page 3 header; blind judging requires complete header removal").</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 04: Roadmap -->
+                <section class="cs-section">
+                    <span class="cs-section-num">04 / Development Roadmap</span>
+                    <h2>Current Status &amp; Future Milestones</h2>
+                    <p>
+                        Contest Atlas is in active core development:
+                    </p>
+                    <ul>
+                        <li><strong>Phase 1 (Complete):</strong> Core rule schema specification and deterministic validation parser.</li>
+                        <li><strong>Phase 2 (In Progress):</strong> Deadline countdown engine with timezone normalization and fee tier alerts.</li>
+                        <li><strong>Phase 3 (Upcoming):</strong> Automated document sanitizer and local manuscript package exporter.</li>
+                    </ul>
+                </section>
+
+                <!-- Next Steps Navigation -->
+                <section class="cs-section" style="margin-bottom: 0;">
+                    <div class="cs-next-nav">
+                        <a href="/work/lone-wolf-dumpsters/" class="cs-nav-card">
+                            <div class="cs-nav-eyebrow">Next Case Study</div>
+                            <div class="cs-nav-title">Lone Wolf Dumpsters &rarr;</div>
+                            <div class="cs-nav-desc">48-market commercial platform, sizing engine, and differentiated intake.</div>
+                        </a>
+                        <a href="/work/client-opportunity-engine/" class="cs-nav-card">
+                            <div class="cs-nav-eyebrow">Previous Case Study</div>
+                            <div class="cs-nav-title">Client Opportunity Engine &rarr;</div>
+                            <div class="cs-nav-desc">Lead qualification, decision support, and prototype generation.</div>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </article>
+    </main>
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 0.75rem; display: flex; gap: 0.85rem; flex-wrap: wrap; align-items: center;">
+                    <a href="/work/">Case Studies</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/services/">Ways to Work Together</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/systems/client-builds/">Client Builds</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/partners/">Agency Partners</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/privacy/">Privacy Policy</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/terms/">Terms of Service</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="https://wa.me/13468337291" data-whatsapp-offer="general" data-whatsapp-location="footer" style="color: var(--accent-teal); display: inline-flex; align-items: center; gap: 4px;">WhatsApp &rarr;</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+    <script src="/assets/js/whatsapp.js" defer></script>
+</body>
+</html>

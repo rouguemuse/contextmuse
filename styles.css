@@ -4841,3 +4841,470 @@ body.page-professional .btn {
         display: none !important;
     }
 }
+
+/* ==========================================================================
+   CASE STUDY LIBRARY & FLAGSHIP STANDARDS (/work/ & /work/*/)
+   ========================================================================== */
+.cs-header {
+    padding-top: clamp(2rem, 4vw, 3.5rem);
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.cs-meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.cs-meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 3px 8px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.cs-meta-tag.status-active {
+    background: rgba(77, 124, 15, 0.08);
+    border-color: rgba(77, 124, 15, 0.25);
+    color: #365314;
+}
+
+.cs-meta-tag.status-live {
+    background: rgba(15, 118, 110, 0.08);
+    border-color: rgba(15, 118, 110, 0.25);
+    color: var(--accent-teal);
+}
+
+.cs-meta-tag.status-dev {
+    background: rgba(197, 160, 89, 0.1);
+    border-color: rgba(197, 160, 89, 0.3);
+    color: #854d0e;
+}
+
+.cs-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+}
+
+.cs-lead {
+    font-size: clamp(1.125rem, 1.8vw, 1.35rem);
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 820px;
+    margin-bottom: 2rem;
+}
+
+.cs-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    padding: 1.5rem 0 0 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.cs-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.cs-spec-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+.cs-spec-value {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.cs-hero-preview {
+    margin: clamp(2rem, 4vw, 3rem) 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.cs-hero-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.cs-hero-caption {
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border-light);
+    font-family: var(--font-mono);
+    font-size: 0.78125rem;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.cs-body-content {
+    padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+}
+
+.cs-section {
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.cs-section-num {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--accent-teal);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.cs-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+}
+
+.cs-section h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.cs-section p {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+}
+
+.cs-section ul, .cs-section ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.cs-section li {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.cs-question-box {
+    background: var(--bg-panel);
+    border-left: 3px solid var(--brand-gold);
+    padding: 1.5rem 1.75rem;
+    margin: 1.75rem 0;
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+}
+
+.cs-question-box p {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+
+.cs-pipeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+}
+
+.cs-pipeline-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: 1.25rem;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.cs-pipeline-step:hover {
+    border-color: var(--border-dark);
+}
+
+.cs-step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.cs-step-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-teal);
+    background: rgba(15, 118, 110, 0.08);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.cs-step-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.cs-step-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+.cs-tradeoff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.cs-tradeoff-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+}
+
+.cs-tradeoff-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cs-tradeoff-body {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.cs-edge-case {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0;
+}
+
+.cs-edge-case-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+}
+
+.cs-edge-case-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.cs-next-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.cs-nav-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+}
+
+.cs-nav-card:hover {
+    border-color: var(--accent-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cs-nav-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.cs-nav-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.cs-nav-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   WORK INDEX (/work/)
+   ========================================================================== */
+.work-flagship-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    margin: 3rem 0;
+}
+
+.work-flagship-card {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: clamp(1.5rem, 2.5vw, 2.5rem);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+    align-items: center;
+}
+
+.work-flagship-card:hover {
+    border-color: var(--border-dark);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.work-card-media {
+    border-radius: calc(var(--radius-card) - 2px);
+    overflow: hidden;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-light);
+    aspect-ratio: 16/10;
+    position: relative;
+}
+
+.work-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.work-flagship-card:hover .work-card-media img {
+    transform: scale(1.02);
+}
+
+.work-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.work-card-meta {
+    font-family: var(--font-mono);
+    font-size: 0.78125rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.65rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.work-card-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.work-card-desc {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.work-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+}
+
+.work-card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 2px 7px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    color: var(--text-secondary);
+}
+
+.work-card-link {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--accent-teal);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.work-flagship-card:hover .work-card-link {
+    text-decoration: underline;
+}
+
+@media(max-width: 860px) {
+    .work-flagship-card {
+        grid-template-columns: 1fr;
+    }
+}
+

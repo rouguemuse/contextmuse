@@ -74,11 +74,6 @@
       "permanent": true
     },
     {
-      "source": "/work/",
-      "destination": "/systems/client-builds/",
-      "permanent": true
-    },
-    {
       "source": "/start/",
       "destination": "/custom/#intake",
       "permanent": true

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MVV7WNL42L');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision Atlas · Manuscript Transformation &amp; Structural Revision Workbench | Context &amp; Muse</title>
+    <meta name="description" content="A comprehensive case study on Revision Atlas: turning complex manuscript revision into an interactive, structured decision engine with non-destructive drafting and pacing analysis.">
+    <link rel="canonical" href="https://www.contextmuse.com/work/revision-atlas/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Revision Atlas · Structural Revision Workbench | Context &amp; Muse">
+    <meta property="og:description" content="Turning complex long-form manuscript revision into an interactive decision engine with non-destructive variant drafting and pacing analytics.">
+    <meta property="og:url" content="https://www.contextmuse.com/work/revision-atlas/">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/revision-atlas-hero.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Revision Atlas · Structural Revision Workbench | Context &amp; Muse">
+    <meta name="twitter:description" content="Turning complex long-form manuscript revision into an interactive decision engine with non-destructive variant drafting and pacing analytics.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/revision-atlas-hero.webp">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Revision Atlas: Turning Complex Manuscript Revision Into a Structured Decision Engine",
+      "description": "Architectural and product case study on building a non-destructive manuscript revision workbench for long-form narrative prose.",
+      "image": "https://www.contextmuse.com/assets/images/revision-atlas-hero.webp",
+      "author": {
+        "@type": "Person",
+        "name": "Jayme Volstad",
+        "url": "https://jaymevolstad.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Context & Muse",
+        "url": "https://www.contextmuse.com"
+      }
+    }
+    </script>
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.7">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Navigation -->
+    <nav class="site-nav" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;">
+                <span>Context &amp; Muse</span>
+            </a>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns" open>
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Study Library</a>
+                        <a href="/work/revision-atlas/" class="nav-dropdown-link" style="color: var(--accent-teal); font-weight: 600;">Revision Atlas</a>
+                        <a href="/work/website-audit-system/" class="nav-dropdown-link">Website Audit System</a>
+                        <a href="/work/client-opportunity-engine/" class="nav-dropdown-link">Client Opportunity Engine</a>
+                        <a href="/work/contest-atlas/" class="nav-dropdown-link">Contest Atlas</a>
+                        <a href="/work/lone-wolf-dumpsters/" class="nav-dropdown-link">Lone Wolf Dumpsters</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
+                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
+                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+    <main id="main-content">
+        <!-- Header -->
+        <header class="cs-header">
+            <div class="container">
+                <div class="cs-meta-strip">
+                    <span class="cs-meta-tag status-active">● Active Production System</span>
+                    <span class="cs-meta-tag">Product &amp; Systems Architecture</span>
+                    <span class="cs-meta-tag">Editorial Tooling</span>
+                    <span>Internal Tooling &amp; Practice</span>
+                </div>
+                <h1 class="cs-headline">Turning Long-Form Prose Into an Interactive Decision Engine</h1>
+                <p class="cs-lead">
+                    How Context &amp; Muse designed and built Revision Atlas—a structural revision environment that decomposes 80,000+ word manuscripts into queryable narrative units, dynamic pacing telemetry, and non-destructive variant drafting trees.
+                </p>
+                <div class="cs-spec-grid">
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Domain</span>
+                        <span class="cs-spec-value">Editorial Systems / Information Architecture</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Core Challenge</span>
+                        <span class="cs-spec-value">High cognitive load during multi-pass structural revisions</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Primary Output</span>
+                        <span class="cs-spec-value">Deterministic scene graphs &amp; non-destructive diff engine</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Data Privacy</span>
+                        <span class="cs-spec-value">100% Local / Zero Third-Party Model Training</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Preview Hero Visual -->
+        <div class="container">
+            <div class="cs-hero-preview">
+                <img src="/assets/images/revision-atlas-hero.webp" alt="Revision Atlas interactive manuscript inspection interface showing narrative flow and variant drafting workbench" width="1200" height="750">
+                <div class="cs-hero-caption">
+                    <span>Fig 1.0: Revision Atlas Workbench with simulated demonstration data.</span>
+                    <span>Local-First Ingestion &bull; Multi-Track Telemetry</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body Content -->
+        <article class="cs-body-content">
+            <div class="container prose-container">
+                
+                <!-- 01: The Problem -->
+                <section class="cs-section">
+                    <span class="cs-section-num">01 / The Core Friction</span>
+                    <h2>Why Word Processors Fail Complex Revision</h2>
+                    <p>
+                        Word processors were designed for linear document generation, not structural transformation. When revising a book-length manuscript (60,000 to 120,000 words), an author or editor faces severe cognitive fragmentation:
+                    </p>
+                    <ul>
+                        <li><strong>Invisible Cascading Effects:</strong> Changing a character's motivation in Chapter 4 silently invalidates dialogue cues and emotional tension in Chapters 9, 14, and 22.</li>
+                        <li><strong>Flat Document Blindness:</strong> A scrolling text canvas provides no structural overview of narrative momentum, rhythm shifts, or thematic density across the total narrative arc.</li>
+                        <li><strong>Destructive Experimentation:</strong> Testing three alternative endings requires duplicating sprawling files or cluttering margins with ambiguous track-changes comments.</li>
+                    </ul>
+                    <div class="cs-question-box">
+                        <p>
+                            "How do we give writers the structural rigor of a modern software IDE without turning prose into an engineering spreadsheet?"
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 02: Ingestion & Parsing -->
+                <section class="cs-section">
+                    <span class="cs-section-num">02 / Architecture & Ingestion</span>
+                    <h2>Deterministic Manuscript Chunking</h2>
+                    <p>
+                        Revision Atlas treats a manuscript as a hierarchical graph rather than a monolithic stream of text. The ingestion pipeline parses standard Markdown, plain text, and structured DOCX files into discrete, addressable units.
+                    </p>
+                    
+                    <div class="cs-pipeline">
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Step 1</span>
+                            </div>
+                            <div class="cs-step-title">Raw Ingestion</div>
+                            <div class="cs-step-desc">Normalizes typographic quotes, em-dashes, and scene breaks across file sources into a canonical AST.</div>
+                        </div>
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Step 2</span>
+                            </div>
+                            <div class="cs-step-title">Scene Graphing</div>
+                            <div class="cs-step-desc">Identifies temporal transitions, perspective shifts, and locations to bind paragraphs into cohesive scene nodes.</div>
+                        </div>
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Step 3</span>
+                            </div>
+                            <div class="cs-step-title">Metadata Indexing</div>
+                            <div class="cs-step-desc">Indexes entities, emotional velocity, dialogue ratios, and motif frequencies per segment.</div>
+                        </div>
+                    </div>
+
+                    <p>
+                        Every scene node maintains an immutable content hash. When edits occur, the system records localized deltas rather than rewriting the manuscript, enabling infinite branch histories without data corruption.
+                    </p>
+                </section>
+
+                <!-- 03: Telemetry & Analytics -->
+                <section class="cs-section">
+                    <span class="cs-section-num">03 / Visual Telemetry</span>
+                    <h2>Pacing, Density, and Motif Tracking</h2>
+                    <p>
+                        Rather than vague subjective feelings about whether the middle of a book "drags," Revision Atlas extracts deterministic telemetry from the prose:
+                    </p>
+                    <div class="cs-tradeoff-grid">
+                        <div class="cs-tradeoff-card">
+                            <div class="cs-tradeoff-title">⚡ Dialogue-to-Narrative Ratio</div>
+                            <div class="cs-tradeoff-body">Calculates kinetic rhythm by tracking the ratio of spoken dialogue versus interior exposition across consecutive scenes.</div>
+                        </div>
+                        <div class="cs-tradeoff-card">
+                            <div class="cs-tradeoff-title">📍 Motif &amp; Thread Continuity</div>
+                            <div class="cs-tradeoff-body">Traces symbolic objects, sensory anchors, and recurring questions across the timeline to detect abandoned threads.</div>
+                        </div>
+                    </div>
+                    <p>
+                        This diagnostic feedback is purely descriptive rather than prescriptive. The system never dictates how a writer should write; it illuminates what is already occurring on the page.
+                    </p>
+                </section>
+
+                <!-- 04: Non-Destructive Drafting -->
+                <section class="cs-section">
+                    <span class="cs-section-num">04 / Interaction Design</span>
+                    <h2>Non-Destructive Variant Drafting</h2>
+                    <p>
+                        A central innovation in Revision Atlas is the <strong>Variant Workbench</strong>. When an editor wishes to experiment with restructuring a crucial scene, they do not duplicate the file. Instead, they spin off a lightweight variant branch attached directly to that scene node.
+                    </p>
+                    <div class="cs-edge-case">
+                        <div class="cs-edge-case-title">Side-by-Side Dual Pane Comparison</div>
+                        <div class="cs-edge-case-desc">Presents original text alongside variant drafts with granular word-level and paragraph-level diff highlighting, allowing instant cherry-picking.</div>
+                    </div>
+                    <div class="cs-edge-case">
+                        <div class="cs-edge-case-title">Contextual Ripple Warning</div>
+                        <div class="cs-edge-case-desc">If a chosen variant alters key timeline facts, dependent downstream nodes are automatically flagged for manual review.</div>
+                    </div>
+                </section>
+
+                <!-- 05: Privacy & Ethical Guardrails -->
+                <section class="cs-section">
+                    <span class="cs-section-num">05 / Data Integrity</span>
+                    <h2>Privacy &amp; Authorial Autonomy</h2>
+                    <p>
+                        Creative manuscripts represent irreplaceable personal and commercial intellectual property. Revision Atlas was architected with strict boundary principles:
+                    </p>
+                    <ul>
+                        <li><strong>Local-First Storage:</strong> Manuscript drafts remain in private local storage or encrypted repositories.</li>
+                        <li><strong>No Automated Ghostwriting:</strong> The engine provides architectural clarity, indexing, and comparison tools—not generative auto-completion or algorithmic rewrites.</li>
+                        <li><strong>Zero Data Exhaust:</strong> No manuscript content is ever transmitted to commercial AI training pipelines.</li>
+                    </ul>
+                </section>
+
+                <!-- 06: Next Steps Navigation -->
+                <section class="cs-section" style="margin-bottom: 0;">
+                    <div class="cs-next-nav">
+                        <a href="/work/website-audit-system/" class="cs-nav-card">
+                            <div class="cs-nav-eyebrow">Next Case Study</div>
+                            <div class="cs-nav-title">Website Audit System &rarr;</div>
+                            <div class="cs-nav-desc">Deterministic visual evidence pipeline and interactive DOM issue inspection.</div>
+                        </a>
+                        <a href="/work/" class="cs-nav-card">
+                            <div class="cs-nav-eyebrow">Portfolio Index</div>
+                            <div class="cs-nav-title">All Case Studies &rarr;</div>
+                            <div class="cs-nav-desc">Explore product architectures, operational systems, and commercial builds.</div>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </article>
+    </main>
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 0.75rem; display: flex; gap: 0.85rem; flex-wrap: wrap; align-items: center;">
+                    <a href="/work/">Case Studies</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/services/">Ways to Work Together</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/systems/client-builds/">Client Builds</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/partners/">Agency Partners</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/privacy/">Privacy Policy</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/terms/">Terms of Service</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="https://wa.me/13468337291" data-whatsapp-offer="general" data-whatsapp-location="footer" style="color: var(--accent-teal); display: inline-flex; align-items: center; gap: 4px;">WhatsApp &rarr;</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+    <script src="/assets/js/whatsapp.js" defer></script>
+</body>
+</html>

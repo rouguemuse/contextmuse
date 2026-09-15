@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MVV7WNL42L');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Audit System · Deterministic Visual Evidence &amp; Diagnostics | Context &amp; Muse</title>
+    <meta name="description" content="Case study on Context & Muse's Website Audit System: capturing live multi-viewport rendering evidence, crop-relative DOM pins, and an interactive Evidence Drawer.">
+    <link rel="canonical" href="https://www.contextmuse.com/work/website-audit-system/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Website Audit System · Visual Diagnostics Pipeline | Context &amp; Muse">
+    <meta property="og:description" content="Multi-viewport rendering captures, crop-relative DOM pins, and interactive Evidence Drawers replacing vague PDF audit reports.">
+    <meta property="og:url" content="https://www.contextmuse.com/work/website-audit-system/">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/website-audit-hero.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Website Audit System · Visual Diagnostics Pipeline | Context &amp; Muse">
+    <meta name="twitter:description" content="Multi-viewport rendering captures, crop-relative DOM pins, and interactive Evidence Drawers replacing vague PDF audit reports.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/website-audit-hero.webp">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Website Audit System: Deterministic Visual Evidence Pipeline",
+      "description": "Architectural and UI case study on building an automated multi-viewport website audit and visual evidence inspection system.",
+      "image": "https://www.contextmuse.com/assets/images/website-audit-hero.webp",
+      "author": {
+        "@type": "Person",
+        "name": "Jayme Volstad",
+        "url": "https://jaymevolstad.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Context & Muse",
+        "url": "https://www.contextmuse.com"
+      }
+    }
+    </script>
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=2.7">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Navigation -->
+    <nav class="site-nav" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;">
+                <span>Context &amp; Muse</span>
+            </a>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns" open>
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Study Library</a>
+                        <a href="/work/revision-atlas/" class="nav-dropdown-link">Revision Atlas</a>
+                        <a href="/work/website-audit-system/" class="nav-dropdown-link" style="color: var(--accent-teal); font-weight: 600;">Website Audit System</a>
+                        <a href="/work/client-opportunity-engine/" class="nav-dropdown-link">Client Opportunity Engine</a>
+                        <a href="/work/contest-atlas/" class="nav-dropdown-link">Contest Atlas</a>
+                        <a href="/work/lone-wolf-dumpsters/" class="nav-dropdown-link">Lone Wolf Dumpsters</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
+                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
+                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
+            </div>
+        </div>
+    </nav>
+    <main id="main-content">
+        <!-- Header -->
+        <header class="cs-header">
+            <div class="container">
+                <div class="cs-meta-strip">
+                    <span class="cs-meta-tag status-active">● Active Production System</span>
+                    <span class="cs-meta-tag">Diagnostics &amp; Developer Tooling</span>
+                    <span class="cs-meta-tag">Visual Verification</span>
+                    <span>Commercial Diagnostics Engine</span>
+                </div>
+                <h1 class="cs-headline">Replacing Opinionated PDF Audits With Verifiable Visual Evidence</h1>
+                <p class="cs-lead">
+                    How Context &amp; Muse architected an automated multi-viewport capture and diagnostic engine that links technical findings directly to interactive visual bounding boxes, DOM nodes, and prioritized remediation sprints.
+                </p>
+                <div class="cs-spec-grid">
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Domain</span>
+                        <span class="cs-spec-value">Web Performance, UX &amp; Technical SEO</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Core Challenge</span>
+                        <span class="cs-spec-value">Generic 80-page automated PDF audits that clients ignore</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Key Innovation</span>
+                        <span class="cs-spec-value">Crop-relative DOM coordinate pins &amp; interactive Evidence Drawer</span>
+                    </div>
+                    <div class="cs-spec-item">
+                        <span class="cs-spec-label">Verification Mode</span>
+                        <span class="cs-spec-value">Multi-device real rendering (Desktop, Tablet, Mobile)</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Preview Hero Visual -->
+        <div class="container">
+            <div class="cs-hero-preview">
+                <img src="/assets/images/website-audit-hero.webp" alt="Website Audit System visual evidence interface showing DOM issue pin annotations and interactive drawer" width="1200" height="750">
+                <div class="cs-hero-caption">
+                    <span>Fig 2.0: Multi-viewport audit engine displaying crop-relative issue annotations and evidence panel.</span>
+                    <span>Deterministic Capture &bull; Automated Pinning</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body Content -->
+        <article class="cs-body-content">
+            <div class="container prose-container">
+                
+                <!-- 01: The Problem -->
+                <section class="cs-section">
+                    <span class="cs-section-num">01 / The Core Friction</span>
+                    <h2>The Flaw in Traditional Site Audits</h2>
+                    <p>
+                        Most digital agencies provide site audits generated by automated scrapers. These outputs suffer from two fatal flaws:
+                    </p>
+                    <ul>
+                        <li><strong>Disembodied Scorecards:</strong> A client receives a low score (e.g. "Performance: 48/100") without seeing where the layout shifts or broken contrast actually appears on their real mobile layout.</li>
+                        <li><strong>Unranked Noise:</strong> Hundreds of trivial warnings (missing alt tags on decorative icons) drown out critical conversion roadblocks (a sticky CTA overlapping the form submit button on mobile).</li>
+                    </ul>
+                    <div class="cs-question-box">
+                        <p>
+                            "How do we turn an audit into an undeniable visual evidence file that engineering and business stakeholders can instantly understand and act upon?"
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 02: Visual Evidence Pipeline -->
+                <section class="cs-section">
+                    <span class="cs-section-num">02 / The Pipeline</span>
+                    <h2>Automated Visual Evidence Pipeline</h2>
+                    <p>
+                        The Website Audit System executes a headless browser capture workflow across three standardized viewports: Mobile (390px), Tablet (768px), and Desktop (1440px).
+                    </p>
+                    
+                    <div class="cs-pipeline">
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Step 1</span>
+                            </div>
+                            <div class="cs-step-title">Multi-Viewport Render</div>
+                            <div class="cs-step-desc">Renders pages under strict network throttling and layout shift recording across all 3 viewports.</div>
+                        </div>
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Step 2</span>
+                            </div>
+                            <div class="cs-step-title">DOM Pin Calculation</div>
+                            <div class="cs-step-desc">Calculates exact viewport-relative bounding boxes for failing elements (broken touch targets, text overlaps).</div>
+                        </div>
+                        <div class="cs-pipeline-step">
+                            <div class="cs-step-header">
+                                <span class="cs-step-num">Step 3</span>
+                            </div>
+                            <div class="cs-step-title">Evidence Drawer Synthesis</div>
+                            <div class="cs-step-desc">Binds each finding to a visual crop, exact CSS selector, impact severity, and step-by-step fix recipe.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 03: Honest Uncertainty -->
+                <section class="cs-section">
+                    <span class="cs-section-num">03 / Diagnostic Integrity</span>
+                    <h2>Representing Honest Uncertainty</h2>
+                    <p>
+                        A major architectural decision was eliminating false certainty. Unlike generic tools that report fabricated revenue impact, the system categorizes findings with strict confidence tiers:
+                    </p>
+                    <div class="cs-tradeoff-grid">
+                        <div class="cs-tradeoff-card">
+                            <div class="cs-tradeoff-title">🔒 Verified Technical Defect</div>
+                            <div class="cs-tradeoff-body">Deterministic failures: missing canonicals, broken schema JSON, overlapping z-index elements, or failing tap targets.</div>
+                        </div>
+                        <div class="cs-tradeoff-card">
+                            <div class="cs-tradeoff-title">💡 Qualitative UX Friction</div>
+                            <div class="cs-tradeoff-body">Heuristic observations: ambiguous CTA copy, multi-column friction on mobile, or buried pricing tiers requiring user testing.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 04: Commercial Utility -->
+                <section class="cs-section">
+                    <span class="cs-section-num">04 / Deliverable Design</span>
+                    <h2>From Findings to a 5-Day Sprint</h2>
+                    <p>
+                        Instead of leaving clients with a laundry list of 100 theoretical fixes, the audit engine automatically groups items into a prioritized <strong>Remediation Matrix</strong>:
+                    </p>
+                    <ul>
+                        <li><strong>P0 Blockers:</strong> Broken lead forms, mobile overflow clipping, and indexing errors.</li>
+                        <li><strong>P1 Conversion Wins:</strong> Sticky mobile action bars, pricing clarity, and tap target expansion.</li>
+                        <li><strong>P2 Structural Optimizations:</strong> Font loading strategies, WebP compression, and semantic microdata.</li>
+                    </ul>
+                </section>
+
+                <!-- Next Steps Navigation -->
+                <section class="cs-section" style="margin-bottom: 0;">
+                    <div class="cs-next-nav">
+                        <a href="/work/client-opportunity-engine/" class="cs-nav-card">
+                            <div class="cs-nav-eyebrow">Next Case Study</div>
+                            <div class="cs-nav-title">Client Opportunity Engine &rarr;</div>
+                            <div class="cs-nav-desc">Lead qualification, decision support, and personalized prototype generation.</div>
+                        </a>
+                        <a href="/work/revision-atlas/" class="cs-nav-card">
+                            <div class="cs-nav-eyebrow">Previous Case Study</div>
+                            <div class="cs-nav-title">Revision Atlas &rarr;</div>
+                            <div class="cs-nav-desc">Structural manuscript revision and non-destructive variant drafting trees.</div>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </article>
+    </main>
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+            </div>
+            <div class="footer-copy">
+                <div style="margin-bottom: 0.75rem; display: flex; gap: 0.85rem; flex-wrap: wrap; align-items: center;">
+                    <a href="/work/">Case Studies</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/services/">Ways to Work Together</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/systems/client-builds/">Client Builds</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/partners/">Agency Partners</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/privacy/">Privacy Policy</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="/terms/">Terms of Service</a>
+                    <span style="color: var(--border-dark);">|</span>
+                    <a href="https://wa.me/13468337291" data-whatsapp-offer="general" data-whatsapp-location="footer" style="color: var(--accent-teal); display: inline-flex; align-items: center; gap: 4px;">WhatsApp &rarr;</a>
+                </div>
+                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
+    <script src="/assets/js/whatsapp.js" defer></script>
+</body>
+</html>
