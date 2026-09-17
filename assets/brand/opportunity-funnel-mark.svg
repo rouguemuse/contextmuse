@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22" fill="none">
+  <!-- The Opportunity Funnel: Inward Convergence -->
+  <!-- Top wide input pair -->
+  <rect x="0"  y="0"  width="9" height="9" rx="1.2" fill="#0E1F1B"/>
+  <rect x="15" y="0"  width="9" height="9" rx="1.2" fill="#0E1F1B"/>
+  <!-- Bottom converging pair -->
+  <rect x="4.5"  y="12" width="7" height="9" rx="1.2" fill="#0E1F1B"/>
+  <rect x="12.5" y="12" width="7" height="9" rx="1.2" fill="#2563EB"/>
+</svg>

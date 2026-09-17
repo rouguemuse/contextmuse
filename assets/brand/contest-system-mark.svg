@@ -1,0 +1,11 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 22" fill="none">
+  <!-- Contest Rules System: Boundary Rule Line + Evaluated Threshold Tile -->
+  <!-- 3 conformant tiles -->
+  <rect x="0"  y="0"  width="9" height="9" rx="1.2" fill="#0E1F1B"/>
+  <rect x="10.5" y="0" width="9" height="9" rx="1.2" fill="#0E1F1B"/>
+  <rect x="0"  y="12" width="9" height="9" rx="1.2" fill="#0E1F1B"/>
+  <!-- Crisp Threshold Boundary Rule Bar -->
+  <rect x="20.5" y="0" width="2" height="22" rx="0.8" fill="#0E1F1B"/>
+  <!-- Evaluated Rule Tile crossed over boundary -->
+  <rect x="23.5" y="12" width="4.5" height="9" rx="1.2" fill="#D97706"/>
+</svg>

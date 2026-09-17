@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 25" fill="none">
+  <!-- Signal: 3 Anchor Tiles + 1 Elevated Anomaly Tile -->
+  <!-- L-shaped baseline anchor -->
+  <rect x="0"  y="5"  width="9.5" height="9.5" rx="1.2" fill="#0E1F1B"/>
+  <rect x="0"  y="15.5" width="9.5" height="9.5" rx="1.2" fill="#0E1F1B"/>
+  <rect x="11.5" y="15.5" width="9.5" height="9.5" rx="1.2" fill="#0E1F1B"/>
+  <!-- Elevated Anomaly Tile popping into upper space -->
+  <rect x="11.5" y="0" width="9.5" height="9.5" rx="1.2" fill="#F59E0B"/>
+</svg>

@@ -1,0 +1,8 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
+  <!-- Website Audit System: 3 Solid Foundation Tiles + 1 Open Outlined Quadrant -->
+  <rect x="0"  y="0"  width="10" height="10" rx="1.2" fill="#0E1F1B"/>
+  <rect x="0"  y="12" width="10" height="10" rx="1.2" fill="#0E1F1B"/>
+  <rect x="12" y="12" width="10" height="10" rx="1.2" fill="#0E1F1B"/>
+  <!-- Open Inspected Quadrant -->
+  <rect x="13" y="1" width="8" height="8" rx="1.2" stroke="#E05252" stroke-width="2" fill="none"/>
+</svg>

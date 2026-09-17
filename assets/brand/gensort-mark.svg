@@ -1,0 +1,8 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
+  <!-- GenSort: 3 Outlined Quadrants + 1 Filled Sorted Quadrant -->
+  <rect x="1"  y="1"  width="8" height="8" rx="1.5" stroke="#7B4DFF" stroke-width="1.8" fill="none"/>
+  <rect x="1"  y="13" width="8" height="8" rx="1.5" stroke="#7B4DFF" stroke-width="1.8" fill="none"/>
+  <rect x="13" y="13" width="8" height="8" rx="1.5" stroke="#7B4DFF" stroke-width="1.8" fill="none"/>
+  <!-- Sorted / Classified Tile -->
+  <rect x="12" y="0" width="10" height="10" rx="1.5" fill="#7B4DFF"/>
+</svg>

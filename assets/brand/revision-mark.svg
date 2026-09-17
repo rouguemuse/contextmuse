@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 22" fill="none">
+  <!-- Revision Atlas: Branch / Version / Lineage Step -->
+  <!-- 3 base manuscript tiles -->
+  <rect x="0"  y="0"  width="10" height="10" rx="1.2" fill="#0E1F1B"/>
+  <rect x="12" y="0"  width="10" height="10" rx="1.2" fill="#0E1F1B"/>
+  <rect x="0"  y="12" width="10" height="10" rx="1.2" fill="#0E1F1B"/>
+  <!-- Branch tile visibly stepping outward on the right -->
+  <rect x="16" y="12" width="10" height="10" rx="1.2" fill="#C5A059"/>
+</svg>
