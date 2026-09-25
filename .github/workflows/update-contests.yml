@@ -1,0 +1,38 @@
+name: Automated Contest Directory Update
+
+on:
+  schedule:
+    # Runs every Monday at 04:00 UTC (Sunday night US time)
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+    # Allows manual 1-click trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  crawl-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Contest Directory Crawler
+        run: node wcsm/scripts/update-contests.js
+
+      - name: Commit and Push Updated Directory
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add wcsm/directory.js
+          if git diff --staged --quiet; then
+            echo "No changes in contest directory."
+          else
+            git commit -m "chore(contests): automated weekly contest directory update [skip ci]"
+            git push
+          fi

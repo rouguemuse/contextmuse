@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contest Atlas — Short-Form Submission, Eligibility & Deadline Control for Writers</title>
+  <link rel="stylesheet" href="atlas.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='2' y='2' width='9' height='9' rx='2' fill='%237b1e42'/><rect x='13' y='2' width='9' height='9' rx='2' fill='%23d95c43'/><rect x='2' y='13' width='9' height='9' rx='2' fill='%235c4d7d'/><rect x='13' y='13' width='9' height='9' rx='2' fill='%23d9822b'/></svg>">
+</head>
+<body>
+
+  <!-- WITHDRAWAL / ACCEPTANCE ADVISORY BANNER -->
+  <div id="withdrawal-advisory-banner" class="withdrawal-alert-banner" style="display: none; margin: 0; border-radius: 0;" role="alert">
+    <div class="flex-between">
+      <div>
+        <div class="withdrawal-alert-title">
+          <span>⚠️</span> <strong>Other Active Submissions Requiring Review</strong>
+        </div>
+        <div id="withdrawal-advisory-text" style="font-size: 0.82rem;">
+          A piece was recently marked Accepted/Winner. Please review its other active submissions for withdrawal compliance.
+        </div>
+      </div>
+      <button class="btn btn-sm btn-primary" onclick="App.openWithdrawalReviewModal()">Review Active Submissions</button>
+    </div>
+  </div>
+
+  <!-- APPLICATION HEADER -->
+  <header class="app-header">
+    <button class="brand-section" onclick="App.switchTab('deadlines')" title="Contest Atlas Home" aria-label="Contest Atlas Home">
+      <svg class="brand-mark-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="2" y="2" width="9" height="9" rx="2" class="brand-quad-1" />
+        <rect x="13" y="2" width="9" height="9" rx="2" class="brand-quad-2" />
+        <rect x="2" y="13" width="9" height="9" rx="2" class="brand-quad-3" />
+        <rect x="13" y="13" width="9" height="9" rx="2" class="brand-quad-4" />
+      </svg>
+      <div class="brand-titles">
+        <span class="brand-wordmark">Contest Atlas</span>
+        <span class="brand-subtitle">Short-Form Submission & Eligibility Control</span>
+      </div>
+    </button>
+
+    <!-- PRIMARY RESTRAINED NAVIGATION (Standardized SVGs & Strong Active States) -->
+    <nav class="primary-nav" aria-label="Primary Navigation">
+      <button class="nav-tab-btn active" data-tab="prepare" onclick="App.switchTab('prepare')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Prepare & Check</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="pieces" onclick="App.switchTab('pieces')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span>Pieces</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="opportunities" onclick="App.switchTab('opportunities')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <span>Opportunities</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="deadlines" onclick="App.switchTab('deadlines')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Deadlines</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="submissions" onclick="App.switchTab('submissions')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span>Submissions</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="bios" onclick="App.switchTab('bios')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Bios & Covers</span>
+      </button>
+    </nav>
+
+    <!-- HEADER UTILITY CLUSTER -->
+    <div class="header-actions">
+      <div id="header-tier-container">
+        <!-- Rendered by JS: Free Plan: X/3 or PRO LIFETIME -->
+      </div>
+      
+      <div class="utility-cluster">
+        <button class="btn-utility" onclick="App.openSearchModal()" title="Global Search (Ctrl+K)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>Search</span>
+        </button>
+        <button class="btn-utility" onclick="App.openAuthorProfileModal()" title="Author Identity & Anonymity Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Profile</span>
+        </button>
+        <button class="btn-utility" onclick="App.openBackupModal()" title="Backup, Restore & Data Security">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          <span>Backup</span>
+        </button>
+        <label for="theme-selector" class="sr-only" style="display:none;">Theme Selector</label>
+        <select class="form-select" id="theme-selector" style="width: auto; padding: 0.2rem 0.4rem; font-size: 0.74rem; min-height: 28px; border: none; background: transparent;" onchange="App.setTheme(this.value)">
+          <option value="dark">🌙 Dark</option>
+          <option value="light">☀️ Light</option>
+          <option value="system">💻 System</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="app-container">
+
+    <!-- COMPACT DASHBOARD WELCOME (35-40% smaller, sleek dark slate panel) -->
+    <div id="first-run-hero" class="welcome-hero" style="display: none; margin: 1rem 1.75rem 0 1.75rem;">
+      <div>
+        <div class="welcome-title">Submission Studio Quickstart</div>
+        <div class="welcome-tagline">
+          Evaluate pieces against contest guidelines, verify anonymity, and track deadlines. <strong>100% private on your device.</strong>
+        </div>
+      </div>
+      <div class="welcome-actions">
+        <button class="btn btn-primary btn-sm" onclick="App.openNewPieceModal()">+ Add Piece</button>
+        <button class="btn btn-sm" onclick="App.openNewOpportunityModal()">+ Add Opportunity</button>
+        <button class="btn btn-sm btn-ghost" onclick="App.loadDemoData()">Explore Demo</button>
+      </div>
+    </div>
+
+    <!-- 1. PREPARE & PACKAGE CHECK VIEW -->
+    <div id="view-prepare" class="view-panel active">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Eligibility & Package Check</h2>
+          <div class="section-subtitle">Evaluate a specific piece version against target opportunity guidelines before submitting.</div>
+        </div>
+        <div class="flex-between gap-2">
+          <button class="btn btn-sm btn-ghost" onclick="App.resetCheckSelections()">Clear Selections</button>
+          <button class="btn btn-sm btn-disabled" id="btn-mark-submitted" disabled onclick="App.initiateMarkAsSubmitted()">Mark as Submitted</button>
+        </div>
+      </div>
+
+      <!-- CONNECTED WORKFLOW FORM CARD -->
+      <div class="card" style="margin-bottom: 0.75rem;">
+        
+        <!-- STEPPER PIPELINE HEADER -->
+        <div class="stepper-header">
+          <div class="step-indicator active">
+            <span class="step-num">1</span>
+            <span>Select Piece</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-indicator active">
+            <span class="step-num">2</span>
+            <span>Choose Version / Cut</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-indicator active">
+            <span class="step-num">3</span>
+            <span>Target Opportunity</span>
+          </div>
+        </div>
+
+        <!-- CORE 3-STEP DROPDOWNS -->
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="check-select-piece">
+              <span class="badge-step">1</span> Piece
+            </label>
+            <select class="form-select" id="check-select-piece" onchange="App.onCheckPieceSelected(this.value)">
+              <option value="">-- Choose a Piece --</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="check-select-version">
+              <span class="badge-step">2</span> Version / Cut
+            </label>
+            <select class="form-select" id="check-select-version" onchange="App.runPackageCheck()">
+              <option value="">-- Choose a Version --</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="check-select-opp">
+              <span class="badge-step">3</span> Target Opportunity
+            </label>
+            <select class="form-select" id="check-select-opp" onchange="App.runPackageCheck()">
+              <option value="">-- Choose an Opportunity --</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- OPTIONAL SUBMISSION DETAILS SECTION -->
+        <div class="optional-details-wrapper">
+          <div class="optional-details-header">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Submission Package Details (Optional Additions)</span>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="check-select-bio" style="font-size: 0.72rem;">Bio Version</label>
+              <select class="form-select" id="check-select-bio" onchange="App.runPackageCheck()">
+                <option value="">-- None / Select Bio --</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="check-select-cover" style="font-size: 0.72rem;">Cover Note</label>
+              <select class="form-select" id="check-select-cover" onchange="App.runPackageCheck()">
+                <option value="">-- None / Select Cover Note --</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="check-fee-paid" style="font-size: 0.72rem;">Entry Fee Status</label>
+              <select class="form-select" id="check-fee-paid" onchange="App.runPackageCheck()">
+                <option value="unpaid">Fee Unpaid / Pending</option>
+                <option value="paid">Fee Paid / Receipt on file</option>
+                <option value="waived">Fee Waived / Free</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE DIAGNOSTIC RESULT (Compact & Directly Under Form) -->
+      <div id="package-check-output" aria-live="polite">
+        <div class="empty-state compact">
+          <div class="empty-icon">⚖️</div>
+          <div class="empty-text">Select a Piece, Version, and Opportunity above to evaluate word limits, anonymity rules, rights, and deadline state.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. PIECES LIBRARY VIEW -->
+    <div id="view-pieces" class="view-panel">
+      <div class="studio-layout">
+        <!-- PIECES SIDEBAR -->
+        <aside class="studio-sidebar" aria-label="Pieces List">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Pieces Library</span>
+            <button class="btn btn-sm btn-primary" onclick="App.openNewPieceModal()">+ New</button>
+          </div>
+          <div style="padding: 0.5rem;">
+            <label for="piece-filter-input" class="sr-only" style="display:none;">Filter Pieces</label>
+            <input type="text" class="form-input" id="piece-filter-input" placeholder="Filter pieces..." oninput="App.filterPiecesList(this.value)">
+          </div>
+          <ul class="sidebar-list" id="pieces-sidebar-list">
+            <!-- Rendered by JS -->
+          </ul>
+        </aside>
+
+        <!-- PIECE CONTENT & VERSIONS PANE -->
+        <section class="studio-content" id="piece-detail-pane">
+          <div class="empty-state">
+            <div class="empty-icon">📚</div>
+            <div class="empty-text">Select a piece from the library on the left or create a new one.</div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- 3. OPPORTUNITIES VIEW -->
+    <div id="view-opportunities" class="view-panel">
+      <div class="studio-layout">
+        <!-- OPPORTUNITIES SIDEBAR -->
+        <aside class="studio-sidebar" aria-label="Opportunities List">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Opportunities</span>
+            <div style="display: flex; gap: 0.35rem;">
+              <button class="btn btn-sm btn-ghost" onclick="App.openDirectoryModal()" title="Explore curated contest directory">🌐 Directory</button>
+              <button class="btn btn-sm btn-primary" onclick="App.openNewOpportunityModal()">+ New</button>
+            </div>
+          </div>
+          <div style="padding: 0.5rem;">
+            <label for="opp-filter-input" class="sr-only" style="display:none;">Filter Opportunities</label>
+            <input type="text" class="form-input" id="opp-filter-input" placeholder="Filter opportunities..." oninput="App.filterOpportunitiesList(this.value)">
+          </div>
+          <ul class="sidebar-list" id="opp-sidebar-list">
+            <!-- Rendered by JS -->
+          </ul>
+        </aside>
+
+        <!-- OPPORTUNITY DETAIL & RULES PANE -->
+        <section class="studio-content" id="opp-detail-pane">
+          <div class="empty-state">
+            <div class="empty-icon">🎯</div>
+            <div class="empty-text">Select an opportunity from the list or add a new contest/market.</div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- 4. DEADLINES & CALM DASHBOARD VIEW -->
+    <div id="view-deadlines" class="view-panel">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Deadlines & Spend Control</h2>
+          <div class="section-subtitle">Calm, clear submission timing with local timezone safety and submission budget summary.</div>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-sm btn-ghost" onclick="App.openDirectoryModal()">🌐 Browse Directory</button>
+          <button class="btn btn-sm btn-primary" onclick="App.openNewOpportunityModal()">+ Add Opportunity</button>
+        </div>
+      </div>
+
+      <!-- SPEND / BUDGET WIDGET -->
+      <div class="spend-widget" id="spend-summary-widget">
+        <div>
+          <div class="spend-label">Current Month Submission Spending</div>
+          <div id="spend-summary-text" class="text-sm text-muted">0 entries logged</div>
+        </div>
+        <div class="spend-amount" id="spend-summary-amount">$0.00</div>
+      </div>
+
+      <!-- DEADLINE CATEGORIES -->
+      <div class="card">
+        <div class="card-title text-saffron">
+          <span>🚨 Due Soon (Next 7 Days)</span>
+          <span id="count-due-soon" class="badge badge-attention">0</span>
+        </div>
+        <div class="deadline-grid" id="grid-due-soon">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>📅 Later This Month</span>
+          <span id="count-this-month" class="badge badge-neutral">0</span>
+        </div>
+        <div class="deadline-grid" id="grid-this-month">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>🗓️ Future Deadlines</span>
+          <span id="count-future" class="badge badge-neutral">0</span>
+        </div>
+        <div class="deadline-grid" id="grid-future">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>🔄 Rolling / Recurring Opportunities</span>
+          <span id="count-rolling" class="badge badge-neutral">0</span>
+        </div>
+        <div class="deadline-grid" id="grid-rolling">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title text-violet">
+          <span>⏳ Awaiting Results (Active Submissions)</span>
+          <span id="count-awaiting" class="badge badge-verify">0</span>
+        </div>
+        <div class="deadline-grid" id="grid-awaiting">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. SUBMISSIONS HISTORY VIEW -->
+    <div id="view-submissions" class="view-panel">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Submission History & Frozen Snapshots</h2>
+          <div class="section-subtitle">Immutable records of what was submitted, when, under which rules, and the results.</div>
+        </div>
+        <div class="flex-between gap-2">
+          <label for="sub-filter-input" class="sr-only" style="display:none;">Search Submissions</label>
+          <input type="text" class="form-input" id="sub-filter-input" placeholder="Search submissions..." style="width: 220px;" oninput="App.filterSubmissionsList(this.value)">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="atlas-table" id="submissions-table">
+            <thead>
+              <tr>
+                <th scope="col">Submitted Date</th>
+                <th scope="col">Piece & Version</th>
+                <th scope="col">Opportunity</th>
+                <th scope="col">Status / Outcome</th>
+                <th scope="col">Fee</th>
+                <th scope="col">Snapshot & Actions</th>
+              </tr>
+            </thead>
+            <tbody id="submissions-table-body">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. BIOS & COVER NOTES VIEW -->
+    <div id="view-bios" class="view-panel">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Bio & Cover Note Library</h2>
+          <div class="section-subtitle">Manage modular author biographies and reusable cover letters.</div>
+        </div>
+        <div class="flex-between gap-2">
+          <button class="btn btn-sm btn-primary" onclick="App.openNewBioModal()">+ New Bio</button>
+          <button class="btn btn-sm btn-saffron" onclick="App.openNewCoverModal()">+ New Cover Note</button>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- BIOS COLUMN -->
+        <div class="card">
+          <div class="card-title">
+            <span>Author Bios</span>
+            <button class="btn btn-sm" onclick="App.openNewBioModal()">+ Add</button>
+          </div>
+          <div id="bios-list-container" class="flex-column gap-2">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- COVER NOTES COLUMN -->
+        <div class="card">
+          <div class="card-title">
+            <span>Cover Note Templates</span>
+            <button class="btn btn-sm" onclick="App.openNewCoverModal()">+ Add</button>
+          </div>
+          <div id="covers-list-container" class="flex-column gap-2">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- MODAL: NEW / EDIT PIECE -->
+  <div id="modal-piece" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-piece-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-piece-title">Add New Piece</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-piece')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-piece" onsubmit="App.savePieceForm(event)">
+          <input type="hidden" id="piece-id">
+          <div class="form-group">
+            <label class="form-label" for="piece-title">Piece Title *</label>
+            <input type="text" class="form-input" id="piece-title" required placeholder="e.g. Glass Houses">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="piece-type">Piece Type</label>
+              <select class="form-select" id="piece-type">
+                <option value="Short Story">Short Story</option>
+                <option value="Flash Fiction">Flash Fiction</option>
+                <option value="Microfiction">Microfiction</option>
+                <option value="Personal Essay">Personal Essay</option>
+                <option value="Narrative Essay">Narrative Essay</option>
+                <option value="Creative Nonfiction">Creative Nonfiction</option>
+                <option value="Poetry">Poetry</option>
+                <option value="Excerpt">Excerpt</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Other">Other / Custom</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="piece-genre">Genre / Form</label>
+              <input type="text" class="form-input" id="piece-genre" placeholder="e.g. Literary, Speculative, Memoir">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="piece-pub-state">Publication Status</label>
+              <select class="form-select" id="piece-pub-state">
+                <option value="unpublished">Unpublished (Eligible for all)</option>
+                <option value="forthcoming">Forthcoming</option>
+                <option value="published">Previously Published</option>
+                <option value="selfPublished">Self-Published</option>
+                <option value="unknown">Unknown / Needs Verification</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="piece-rights-state">Rights Status</label>
+              <select class="form-select" id="piece-rights-state">
+                <option value="allRightsAvailable">All Rights Available</option>
+                <option value="firstRightsUnavailable">First Rights Unavailable (Reprints only)</option>
+                <option value="reprintRightsAvailable">Reprint Rights Available</option>
+                <option value="exclusivePeriod">Under Exclusive Period</option>
+                <option value="unknown">Unknown</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="piece-initial-content">Initial Text (Creates "Original Draft" version)</label>
+            <textarea class="form-textarea manuscript-editor" id="piece-initial-content" placeholder="Paste or draft initial manuscript text here..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="piece-tags">Tags & Themes (comma separated)</label>
+            <input type="text" class="form-input" id="piece-tags" placeholder="grief, family, sea, contest-ready">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-piece')">Cancel</button>
+        <button class="btn btn-primary" onclick="document.getElementById('form-piece').requestSubmit()">Save Piece</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW / EDIT OPPORTUNITY -->
+  <div id="modal-opportunity" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-opp-title">
+    <div class="modal-dialog lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-opp-title">Add Opportunity & Submission Rules</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-opportunity')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-opp" onsubmit="App.saveOpportunityForm(event)">
+          <input type="hidden" id="opp-id">
+          
+          <!-- IDENTITY -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="opp-name">Opportunity / Contest Name *</label>
+              <input type="text" class="form-input" id="opp-name" required placeholder="e.g. Starlight Review Fiction Prize">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="opp-org">Organization / Publication</label>
+              <input type="text" class="form-input" id="opp-org" placeholder="e.g. Starlight Literary Press">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="opp-type">Opportunity Type</label>
+              <select class="form-select" id="opp-type">
+                <option value="Writing Contest">Writing Contest</option>
+                <option value="Literary Magazine">Literary Magazine</option>
+                <option value="Anthology">Anthology</option>
+                <option value="Fellowship">Fellowship / Grant</option>
+                <option value="Prize">Prize</option>
+                <option value="Call for Submissions">Call for Submissions</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="opp-url">Submission URL / Website</label>
+              <input type="url" class="form-input" id="opp-url" placeholder="https://...">
+            </div>
+          </div>
+
+          <!-- EXACT DEADLINE & TIMEZONE -->
+          <div class="card" style="margin: 0.5rem 0 1rem 0; background-color: var(--bg-surface-elevated);">
+            <div class="card-title text-saffron">⏳ Deadline & Timezone Safety</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="opp-deadline-date">Deadline Date *</label>
+                <input type="date" class="form-input" id="opp-deadline-date" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="opp-deadline-time">Deadline Time</label>
+                <input type="time" class="form-input" id="opp-deadline-time" value="23:59">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="opp-timezone">Opportunity Timezone (IANA)</label>
+                <select class="form-select" id="opp-timezone">
+                  <option value="America/New_York">Eastern Time (America/New_York)</option>
+                  <option value="America/Chicago">Central Time (America/Chicago)</option>
+                  <option value="America/Denver">Mountain Time (America/Denver)</option>
+                  <option value="America/Los_Angeles">Pacific Time (America/Los_Angeles)</option>
+                  <option value="Europe/London">London / GMT (Europe/London)</option>
+                  <option value="Europe/Paris">Central European Time (Europe/Paris)</option>
+                  <option value="UTC">UTC</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="checkbox-label" for="opp-rolling">
+                <input type="checkbox" id="opp-rolling"> Rolling Deadline
+              </label>
+              <label class="checkbox-label" for="opp-annual">
+                <input type="checkbox" id="opp-annual"> Annual Recurring
+              </label>
+            </div>
+          </div>
+
+          <!-- FEES & PRIZES -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="opp-fee">Entry Fee ($ / Currency)</label>
+              <input type="number" step="0.01" class="form-input" id="opp-fee" value="0.00">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="opp-prize">Prize Amount ($)</label>
+              <input type="text" class="form-input" id="opp-prize" placeholder="e.g. $1,000 + Publication">
+            </div>
+          </div>
+
+          <!-- GUIDELINES ASSISTANT & RULES -->
+          <div class="card" style="margin: 0.5rem 0 1rem 0; border: 1px solid var(--brand-muted-violet); background: rgba(92, 77, 125, 0.08);">
+            <div class="card-title text-violet" style="margin-bottom: 0.5rem;">
+              <span>⚡ Smart Guidelines Auto-Extractor</span>
+              <button type="button" class="btn btn-sm btn-primary" onclick="App.runGuidelinesExtraction()">⚡ Auto-Extract & Fill</button>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.5rem;">
+              <label class="form-label" for="opp-raw-guidelines">Paste Website Guidelines or Entry Requirements</label>
+              <textarea class="form-textarea" id="opp-raw-guidelines" placeholder="Paste guidelines from website here (e.g. 'Submit unpublished short stories up to 3,500 words by Oct 31 at 11:59 PM EST. Entry fee $20. Winner receives $2,500. Blind judging: omit author name')..."></textarea>
+            </div>
+            <div id="guidelines-suggestion-box" style="display: none; padding: 0.75rem; background: var(--bg-surface-elevated); border: 1px solid var(--border-medium); border-radius: 6px; font-size: 0.8rem; margin-top: 0.5rem;">
+              <div class="flex-between mb-2">
+                <span class="text-violet font-semibold">Extracted Rules & Metadata:</span>
+                <button type="button" class="btn btn-xs btn-saffron" onclick="App.applyAllExtractedGuidelines()">Apply to All Fields</button>
+              </div>
+              <ul id="suggested-rules-list" style="padding-left: 1.25rem; line-height: 1.6;"></ul>
+            </div>
+          </div>
+
+          <!-- STRUCTURED RULES -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="opp-min-words">Min Word Count</label>
+              <input type="number" class="form-input" id="opp-min-words" placeholder="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="opp-max-words">Max Word Count</label>
+              <input type="number" class="form-input" id="opp-max-words" placeholder="e.g. 3000">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label class="checkbox-label" for="opp-blind">
+              <input type="checkbox" id="opp-blind" checked> Anonymous / Blind Judging Required
+            </label>
+            <label class="checkbox-label" for="opp-simultaneous">
+              <input type="checkbox" id="opp-simultaneous" checked> Simultaneous Submissions Allowed
+            </label>
+            <label class="checkbox-label" for="opp-unpublished-only">
+              <input type="checkbox" id="opp-unpublished-only" checked> Previously Unpublished Only
+            </label>
+          </div>
+
+          <div class="form-row mt-2">
+            <div class="form-group">
+              <label class="form-label" for="opp-req-format">Required Format</label>
+              <select class="form-select" id="opp-req-format">
+                <option value="Any Standard (DOCX / PDF / TXT)">Any Standard (DOCX / PDF / TXT)</option>
+                <option value="DOCX">DOCX (.docx)</option>
+                <option value="PDF">PDF (.pdf)</option>
+                <option value="TXT / Web Form">Direct Web Form / Plain Text</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="opp-req-bio">Bio Required?</label>
+              <select class="form-select" id="opp-req-bio">
+                <option value="optional">Optional / Not requested</option>
+                <option value="required">Required Bio</option>
+                <option value="prohibited">Prohibited (Blind)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="opp-req-cover">Cover Note Required?</label>
+              <select class="form-select" id="opp-req-cover">
+                <option value="optional">Optional</option>
+                <option value="required">Required</option>
+                <option value="prohibited">Prohibited</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-opportunity')">Cancel</button>
+        <button class="btn btn-primary" onclick="document.getElementById('form-opp').requestSubmit()">Save Opportunity</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DUPLICATE / CREATE CONTEST CUT VERSION -->
+  <div id="modal-branch-version" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-branch-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-branch-title">Duplicate as Contest Cut</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-branch-version')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-sm text-secondary mb-2">
+          Create a new named version with preserved parent lineage for tailored cuts (e.g. 2,000 words, anonymous, or specific prize edits).
+        </p>
+        <div class="form-group">
+          <label class="form-label" for="branch-version-name">New Version Name *</label>
+          <input type="text" class="form-input" id="branch-version-name" placeholder="e.g. Contest Cut — 2,000 Words">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="branch-version-note">Author Note / Purpose</label>
+          <textarea class="form-textarea" id="branch-version-note" placeholder="e.g. Trimmed opening scene and expanded resolution for Northshore Prize."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-branch-version')">Cancel</button>
+        <button class="btn btn-primary" onclick="App.confirmBranchVersion()">Create Cut</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: MARK AS SUBMITTED & CAPTURE FROZEN SNAPSHOT -->
+  <div id="modal-mark-submitted" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-submit-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title text-berry" id="modal-submit-title">📬 Confirm & Capture Submission</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-mark-submitted')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="snapshot-badge-bar">
+          <span>🔒 Creating Frozen Write-Protected Submission Snapshot</span>
+          <span class="font-mono" id="sub-modal-timestamp"></span>
+        </div>
+        <p class="text-sm text-secondary mb-4">
+          Once marked submitted, Contest Atlas will freeze an immutable snapshot of the exact manuscript content, bio, cover note, and opportunity rules.
+        </p>
+        <div class="form-group">
+          <label class="form-label" for="sub-method">Submission Method</label>
+          <select class="form-select" id="sub-method">
+            <option value="Submittable">Submittable</option>
+            <option value="Direct Web Portal">Direct Web Portal</option>
+            <option value="Email">Email</option>
+            <option value="Postal Mail">Postal Mail</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="sub-confirm-num">Confirmation / Tracking # (if any)</label>
+            <input type="text" class="form-input" id="sub-confirm-num" placeholder="e.g. SUB-9481024">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sub-fee-paid-val">Entry Fee Paid ($)</label>
+            <input type="number" step="0.01" class="form-input" id="sub-fee-paid-val" value="0.00">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sub-notes">Writer Submission Notes</label>
+          <textarea class="form-textarea" id="sub-notes" placeholder="e.g. Uploaded docx file without contact info. Received email confirmation."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-mark-submitted')">Cancel</button>
+        <button class="btn btn-primary" onclick="App.confirmCaptureSubmission()">Capture & Save Submission</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: VIEW FROZEN SUBMISSION SNAPSHOT -->
+  <div id="modal-view-snapshot" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="snapshot-modal-title">
+    <div class="modal-dialog lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="snapshot-modal-title">Frozen Submission Package Snapshot</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-view-snapshot')">✕</button>
+      </div>
+      <div class="modal-body" id="snapshot-modal-body">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-view-snapshot')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: AUTHOR PROFILE & ANONYMITY CONFIG -->
+  <div id="modal-author-profile" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-author-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-author-title">Author Profile & Anonymity Inspector Rules</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-author-profile')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-sm text-secondary mb-2">
+          Contest Atlas uses these values strictly on your device to inspect manuscripts for identifying information in blind judging submissions.
+        </p>
+        <div class="form-group">
+          <label class="form-label" for="profile-name">Legal / Real Name</label>
+          <input type="text" class="form-input" id="profile-name" placeholder="e.g. Jayme Volstad">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="profile-pen-names">Pen Names / Aliases (comma separated)</label>
+          <input type="text" class="form-input" id="profile-pen-names" placeholder="e.g. J. V. Sterling, Jane V.">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="profile-emails">Email Addresses (comma separated)</label>
+          <input type="text" class="form-input" id="profile-emails" placeholder="e.g. author@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="profile-phones">Phone Numbers</label>
+          <input type="text" class="form-input" id="profile-phones" placeholder="e.g. 555-0199">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="profile-location">City / State / Country (Residency)</label>
+          <input type="text" class="form-input" id="profile-location" placeholder="e.g. Seattle, WA, USA">
+        </div>
+
+        <!-- PRO LICENSE STATUS -->
+        <div class="card" style="margin-top: 1rem; background: var(--bg-surface-elevated); border: 1px solid var(--border-medium);">
+          <div class="flex-between">
+            <div>
+              <div class="font-semibold text-sm">Contest Atlas License</div>
+              <div id="profile-license-status-text" class="text-xs text-muted">Free Plan (3 Contests Max)</div>
+            </div>
+            <button type="button" id="profile-upgrade-btn" class="btn btn-xs btn-saffron" onclick="App.openProUpgradeModal('profile')">⚡ Upgrade to Pro ($19)</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-author-profile')">Cancel</button>
+        <button class="btn btn-primary" onclick="App.saveAuthorProfile()">Save Profile</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BACKUP & RESTORE -->
+  <div id="modal-backup" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-backup-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-backup-title">Data Backup, Safety Snapshots & Restore</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-backup')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-title">💾 Export Complete Database</div>
+          <p class="text-sm text-secondary mb-2">
+            Download an offline JSON backup including all pieces, versions, opportunities, snapshots, bios, and settings.
+          </p>
+          <button class="btn btn-primary" onclick="App.downloadFullBackup()">Download Backup JSON</button>
+        </div>
+
+        <div class="card mt-2">
+          <div class="card-title text-coral">🔄 Safe Database Restore</div>
+          <p class="text-sm text-secondary mb-2">
+            Contest Atlas will inspect the file, generate a safety snapshot before overwriting, and verify referential integrity.
+          </p>
+          <label for="restore-file-input" class="sr-only" style="display:none;">Select Backup File</label>
+          <input type="file" id="restore-file-input" accept=".json" class="form-input mb-2" onchange="App.handleRestoreFileSelect(event)">
+          <div id="restore-preview-box" style="display: none; padding: 0.75rem; background: var(--bg-surface-elevated); border: 1px solid var(--border-medium); border-radius: 6px; font-size: 0.8rem; margin-bottom: 0.75rem;">
+            <!-- Rendered by JS -->
+          </div>
+          <button class="btn btn-danger" id="btn-confirm-restore" style="display: none;" onclick="App.executeRestore()">Confirm & Restore Database</button>
+        </div>
+
+        <div class="card mt-2">
+          <div class="card-title text-muted">🧹 Reset / Demo Utilities</div>
+          <div class="flex-between">
+            <button class="btn btn-sm" onclick="App.loadDemoData()">Load Fictional Demo</button>
+            <button class="btn btn-sm" onclick="App.clearDemoDataPrompt()">Clear Demo Data</button>
+            <button class="btn btn-sm btn-danger" onclick="App.clearAllDataPrompt()">Clear All Data</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-backup')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: GLOBAL SEARCH -->
+  <div id="modal-search" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-search-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-search-title">🔍 Search Contest Atlas</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-search')">✕</button>
+      </div>
+      <div class="modal-body">
+        <label for="global-search-input" class="sr-only" style="display:none;">Search Query</label>
+        <input type="text" class="form-input" id="global-search-input" placeholder="Search pieces, versions, opportunities, bios, or notes..." oninput="App.performGlobalSearch(this.value)">
+        <div id="global-search-results" class="mt-4" style="max-height: 350px; overflow-y: auto;">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW / EDIT BIO -->
+  <div id="modal-bio" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-bio-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-bio-title">Add Author Bio</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-bio')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-bio" onsubmit="App.saveBioForm(event)">
+          <input type="hidden" id="bio-id">
+          <div class="form-group">
+            <label class="form-label" for="bio-name">Bio Label / Purpose *</label>
+            <input type="text" class="form-input" id="bio-name" required placeholder="e.g. 50-Word Standard Bio, 100-Word Literary Bio">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bio-target-words">Target Word Limit</label>
+            <input type="number" class="form-input" id="bio-target-words" placeholder="e.g. 50, 100, 150">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bio-text">Bio Text *</label>
+            <textarea class="form-textarea" id="bio-text" required placeholder="Write bio text here..." oninput="App.updateBioWordCount(this.value)"></textarea>
+            <div id="bio-word-count-display" class="text-sm text-muted mt-1">0 words</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-bio')">Cancel</button>
+        <button class="btn btn-primary" onclick="document.getElementById('form-bio').requestSubmit()">Save Bio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW / EDIT COVER NOTE -->
+  <div id="modal-cover" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-cover-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-cover-title">Add Cover Note Template</h3>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-cover')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-cover" onsubmit="App.saveCoverForm(event)">
+          <input type="hidden" id="cover-id">
+          <div class="form-group">
+            <label class="form-label" for="cover-name">Template Name *</label>
+            <input type="text" class="form-input" id="cover-name" required placeholder="e.g. Standard Short Fiction Cover, Essay Fellowship Cover">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cover-greeting">Salutation / Greeting</label>
+            <input type="text" class="form-input" id="cover-greeting" placeholder="Dear Editors of [Publication],">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cover-body">Cover Note Body *</label>
+            <textarea class="form-textarea" id="cover-body" required placeholder="Please consider my short story '[Title]' (X,XXX words) for the [Opportunity Name]..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cover-credits">Publication Credits / Background Snippet</label>
+            <textarea class="form-textarea" id="cover-credits" placeholder="My previous work has appeared or is forthcoming in..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cover-closing">Closing / Sign-off</label>
+            <input type="text" class="form-input" id="cover-closing" placeholder="Thank you for your time and consideration,\n[Author Name]">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="App.closeModal('modal-cover')">Cancel</button>
+        <button class="btn btn-primary" onclick="document.getElementById('form-cover').requestSubmit()">Save Cover Note</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PRO UPGRADE / LIFETIME ACCESS GATE ($19) -->
+  <div id="modal-pro-upgrade" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-pro-title">
+    <div class="modal-dialog" style="max-width: 640px;">
+      <div class="modal-header" style="border-bottom: none; padding-bottom: 0.25rem;">
+        <button class="btn-icon" aria-label="Close dialog" style="margin-left: auto;" onclick="App.closeModal('modal-pro-upgrade')">✕</button>
+      </div>
+      <div class="modal-body" style="padding-top: 0;">
+        
+        <!-- PRO PRICING HERO -->
+        <div class="pro-hero">
+          <div style="font-size: 1.8rem; margin-bottom: 0.25rem;">⚡</div>
+          <h2 class="pro-hero-title" id="modal-pro-title">Unlock Contest Atlas Pro</h2>
+          <p class="pro-hero-subtitle">
+            Never miss a deadline, blow a blind entry rule, or lose track of simultaneous submissions again.
+          </p>
+          
+          <div class="pro-pricing-tag">
+            <span class="pro-price-original">$29</span>
+            <span class="pro-price-current">$19</span>
+            <span class="pro-price-cadence">One-Time / Lifetime Access</span>
+          </div>
+          <div class="text-xs text-muted">Less than the cost of a single literary contest entry fee. No recurring subscriptions.</div>
+        </div>
+
+        <!-- FEATURE HIGHLIGHTS -->
+        <div class="pro-features-grid">
+          <div class="pro-feature-item">
+            <span class="pro-feature-icon">🚀</span>
+            <div>
+              <div class="pro-feature-title">Unlimited Contests & Markets</div>
+              <div class="pro-feature-desc">Track every competition, journal, and grant simultaneously with zero limits.</div>
+            </div>
+          </div>
+          <div class="pro-feature-item">
+            <span class="pro-feature-icon">🛡️</span>
+            <div>
+              <div class="pro-feature-title">Simultaneous Conflict Engine</div>
+              <div class="pro-feature-desc">Real-time alerts preventing conflicting submissions of the same piece version.</div>
+            </div>
+          </div>
+          <div class="pro-feature-item">
+            <span class="pro-feature-icon">🔔</span>
+            <div>
+              <div class="pro-feature-title">Acceptance & Withdrawal Control</div>
+              <div class="pro-feature-desc">Instant withdrawal notifications and templates when your piece wins or gets accepted.</div>
+            </div>
+          </div>
+          <div class="pro-feature-item">
+            <span class="pro-feature-icon">📸</span>
+            <div>
+              <div class="pro-feature-title">Immutable Snapshots & History</div>
+              <div class="pro-feature-desc">Preserve exact point-in-time proof of text, bio, cover note, and fee for every entry.</div>
+            </div>
+          </div>
+          <div class="pro-feature-item">
+            <span class="pro-feature-icon">💾</span>
+            <div>
+              <div class="pro-feature-title">Full Export & Report Generator</div>
+              <div class="pro-feature-desc">Download complete submission logs, financial summaries, and JSON database backups.</div>
+            </div>
+          </div>
+          <div class="pro-feature-item">
+            <span class="pro-feature-icon">🔒</span>
+            <div>
+              <div class="pro-feature-title">100% Offline & Private</div>
+              <div class="pro-feature-desc">Your manuscripts never leave your browser. Zero cloud tracking or lock-in.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRIMARY CALL TO ACTION -->
+        <div style="text-align: center; margin-top: 1rem;">
+          <button class="btn btn-saffron btn-lg" style="width: 100%; font-size: 1.05rem; padding: 0.85rem 1.5rem; font-weight: 700; box-shadow: 0 4px 14px rgba(217, 130, 43, 0.4);" onclick="App.startProCheckout()">
+            Unlock Lifetime Pro Access for $19 →
+          </button>
+          <div class="pro-guarantee-note">
+            💳 Instant activation • Works on desktop & mobile • 30-day money-back guarantee
+          </div>
+        </div>
+
+        <!-- LICENSE KEY ACTIVATION FORM -->
+        <div class="pro-activation-toggle">
+          <span class="text-muted">Already purchased? </span>
+          <button type="button" class="btn-link" style="background:none; border:none; color: var(--brand-warm-saffron); cursor:pointer; text-decoration: underline;" onclick="App.toggleLicenseInput()">
+            Enter License Key or Order ID
+          </button>
+          
+          <div id="license-input-wrapper" style="display: none; margin-top: 0.75rem;">
+            <div class="pro-activation-form">
+              <input type="text" class="form-input" id="license-key-input" placeholder="e.g. CA-PRO-XXXXXXXX or Stripe Email" style="text-align: center; font-family: var(--font-mono); font-size: 0.85rem;">
+              <button class="btn btn-primary" onclick="App.submitLicenseKey()">Activate</button>
+            </div>
+            <div id="license-error-msg" class="text-xs text-coral mt-1" style="display: none;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BROWSE CURATED CONTEST & FELLOWSHIP DIRECTORY -->
+  <div id="modal-contest-directory" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-dir-title">
+    <div class="modal-dialog" style="max-width: 840px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="modal-dir-title">Curated Contest & Market Directory</h3>
+          <div class="text-xs text-muted mt-1">Explore verified literary contests, flash prizes, journals, and fellowships. 1-click import into your local atlas.</div>
+        </div>
+        <button class="btn-icon" aria-label="Close dialog" onclick="App.closeModal('modal-contest-directory')">✕</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- SEARCH & FILTERS -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.65rem; margin-bottom: 1rem;">
+          <div>
+            <label for="dir-search-input" class="sr-only" style="display:none;">Search Directory</label>
+            <input type="text" class="form-input" id="dir-search-input" placeholder="Search by name, organization, or prize..." oninput="App.filterDirectoryList()">
+          </div>
+          <div>
+            <label for="dir-category-filter" class="sr-only" style="display:none;">Category Filter</label>
+            <select class="form-select" id="dir-category-filter" onchange="App.filterDirectoryList()">
+              <option value="all">All Categories</option>
+              <option value="Short Story">Short Story</option>
+              <option value="Flash Fiction">Flash Fiction</option>
+              <option value="Essay / Nonfiction">Essay / Nonfiction</option>
+              <option value="Fellowship">Fellowship / Grant</option>
+            </select>
+          </div>
+          <div>
+            <label for="dir-fee-filter" class="sr-only" style="display:none;">Fee Filter</label>
+            <select class="form-select" id="dir-fee-filter" onchange="App.filterDirectoryList()">
+              <option value="all">All Entry Fees</option>
+              <option value="free">Free Only ($0.00)</option>
+              <option value="paid">Paid Fees</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- DIRECTORY RESULTS LIST -->
+        <div id="dir-results-container" style="max-height: 480px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; padding-right: 0.25rem;">
+          <!-- Rendered by JS -->
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <span id="dir-count-text" class="text-xs text-muted" style="margin-right: auto;">Showing verified opportunities</span>
+        <button class="btn" onclick="App.closeModal('modal-contest-directory')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOAD SCRIPTS -->
+  <script src="db.js"></script>
+  <script src="directory.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

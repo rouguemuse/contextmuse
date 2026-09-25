@@ -92,6 +92,23 @@
       "source": "/method/",
       "destination": "/about/",
       "permanent": true
+    },
+    {
+      "source": "/contest-atlas/",
+      "destination": "/wcsm/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "wcsm.contextmuse.com"
+        }
+      ],
+      "destination": "/wcsm/:path*"
     }
   ],
   "headers": [
