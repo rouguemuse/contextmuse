@@ -6,17 +6,6 @@
       "has": [
         {
           "type": "host",
-          "value": "wcsm.contextmuse.com"
-        }
-      ],
-      "destination": "https://www.contextmuse.com/wcsm/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
           "value": "contextmuse.com"
         }
       ],
@@ -103,33 +92,6 @@
       "source": "/method/",
       "destination": "/about/",
       "permanent": true
-    },
-    {
-      "source": "/contest-atlas/",
-      "destination": "/wcsm/",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "wcsm.contextmuse.com"
-        }
-      ],
-      "destination": "/wcsm/index.html"
-    },
-    {
-      "source": "/:match*",
-      "has": [
-        {
-          "type": "host",
-          "value": "wcsm.contextmuse.com"
-        }
-      ],
-      "destination": "/wcsm/:match*"
     }
   ],
   "headers": [
