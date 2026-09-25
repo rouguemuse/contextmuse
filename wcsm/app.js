@@ -91,7 +91,7 @@ const App = {
     }
   },
 
-  // --- PRO TIER & COMMERCIAL GATING ($19 LIFETIME ACCESS) ---
+  // --- PRO TIER & COMMERCIAL GATING ($49 LIFETIME ACCESS) ---
   isPro() {
     return this.settings.isPro === true || localStorage.getItem('contest_atlas_pro') === 'true';
   },
@@ -113,7 +113,7 @@ const App = {
       const used = this.opportunities.length;
       const max = this.getMaxFreeOpportunities();
       el.innerHTML = `
-        <div class="pro-tier-pill" onclick="App.openProUpgradeModal('header')" title="Click to unlock unlimited contests ($19 Lifetime)">
+        <div class="pro-tier-pill" onclick="App.openProUpgradeModal('header')" title="Click to unlock unlimited contests ($49 Lifetime)">
           <span class="text-muted font-mono">${used}/${max} Contests</span>
           <span class="text-saffron font-bold">⚡ Upgrade</span>
         </div>
@@ -163,7 +163,7 @@ const App = {
     
     // In local dev preview, allow instant simulation:
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      const proceed = confirm("Contest Atlas Pro Checkout ($19 One-Time Lifetime Access)\n\nIn live production (wcsm.contextmuse.com), this redirects to your Stripe Checkout link.\n\nWould you like to simulate successful Stripe payment activation now?");
+      const proceed = confirm("Contest Atlas Pro Checkout ($49 One-Time Lifetime Access)\n\nIn live production (wcsm.contextmuse.com), this redirects to your Stripe Checkout link.\n\nWould you like to simulate successful Stripe payment activation now?");
       if (proceed) {
         this.activatePro('STRIPE_SIM_' + Date.now(), 'writer@example.com');
         this.closeModal('modal-pro-upgrade');
@@ -1181,7 +1181,7 @@ const App = {
             <div>
               <strong style="color: var(--brand-warm-saffron);">Free Plan:</strong> ${used}/${max} Contests
             </div>
-            <button class="btn btn-xs btn-saffron" style="padding: 0.2rem 0.45rem; font-size: 0.72rem;" onclick="App.openProUpgradeModal('opp_sidebar')">⚡ Unlock $19</button>
+            <button class="btn btn-xs btn-saffron" style="padding: 0.2rem 0.45rem; font-size: 0.72rem;" onclick="App.openProUpgradeModal('opp_sidebar')">⚡ Unlock $49</button>
           </div>
         </li>
       `;
