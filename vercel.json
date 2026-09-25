@@ -101,14 +101,24 @@
   ],
   "rewrites": [
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "wcsm.contextmuse.com"
         }
       ],
-      "destination": "/wcsm/:path*"
+      "destination": "/wcsm/index.html"
+    },
+    {
+      "source": "/:match*",
+      "has": [
+        {
+          "type": "host",
+          "value": "wcsm.contextmuse.com"
+        }
+      ],
+      "destination": "/wcsm/:match*"
     }
   ],
   "headers": [
