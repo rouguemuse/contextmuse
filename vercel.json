@@ -6,6 +6,17 @@
       "has": [
         {
           "type": "host",
+          "value": "wcsm.contextmuse.com"
+        }
+      ],
+      "destination": "https://www.contextmuse.com/wcsm/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
           "value": "contextmuse.com"
         }
       ],
