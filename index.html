@@ -14,14 +14,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Websites, Digital Products &amp; Operational Systems | Context &amp; Muse</title>
-    <meta name="description" content="Context &amp; Muse designs commercial websites, digital products, and operational systems for businesses outgrowing generic tools and disconnected workflows.">
+    <meta name="description" content="Context &amp; Muse designs custom commercial websites, operational workflows, quoting tools, client portals, and bespoke business software—without unnecessary subscriptions, plugin stacks, or technical overhead.">
     <link rel="canonical" href="https://www.contextmuse.com/">
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Websites, Digital Products &amp; Operational Systems | Context &amp; Muse">
-    <meta property="og:description" content="Context &amp; Muse designs commercial websites, digital products, and operational systems for businesses outgrowing generic tools and disconnected workflows.">
+    <meta property="og:description" content="Context &amp; Muse designs custom commercial websites, operational workflows, quoting tools, client portals, and bespoke business software—without unnecessary subscriptions, plugin stacks, or technical overhead.">
     <meta property="og:url" content="https://www.contextmuse.com/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
     <meta property="og:image:width" content="2400">
@@ -30,7 +30,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Websites, Digital Products &amp; Operational Systems | Context &amp; Muse">
-    <meta name="twitter:description" content="Context &amp; Muse designs commercial websites, digital products, and operational systems for businesses outgrowing generic tools and disconnected workflows.">
+    <meta name="twitter:description" content="Context &amp; Muse designs custom commercial websites, operational workflows, quoting tools, client portals, and bespoke business software—without unnecessary subscriptions, plugin stacks, or technical overhead.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Structured Data (JSON-LD) -->
@@ -83,33 +83,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.8">
+    <link rel="stylesheet" href="/styles.css?v=2.9">
 
     <style>
         /* ==========================================================================
-           HOMEPAGE COMMERCIAL BLUEPRINT ARCHITECTURE
+           HOMEPAGE ART-DIRECTED REFINEMENT & SPACING TOKENS
            ========================================================================== */
 
+        :root {
+            --space-section: clamp(4.5rem, 7vw, 6.75rem);
+            --space-section-compact: clamp(3rem, 5vw, 4.5rem);
+        }
+
         .container {
-            max-width: min(1240px, calc(100% - 64px));
+            max-width: 1220px;
             margin-inline: auto;
-            padding: 0;
+            padding-inline: clamp(1.25rem, 3.5vw, 2.5rem);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* ── SECTION 1. HERO ── */
         .hero {
             position: relative;
-            min-height: 78vh;
+            min-height: 82vh;
             display: flex;
             align-items: center;
             background: radial-gradient(
-                circle at 72% 50%,
+                circle at 75% 45%,
                 #FAF9F3 0%,
                 #F7F6EF 45%,
                 #F2EFE6 100%
             );
             border-bottom: 1px solid var(--border-light);
-            padding: 130px 0 70px 0;
+            padding: clamp(105px, 14vh, 140px) 0 clamp(55px, 8vh, 80px) 0;
             box-sizing: border-box;
             overflow: hidden;
         }
@@ -117,13 +124,13 @@
         .hero-container {
             display: grid;
             grid-template-columns: 1.15fr 0.85fr;
-            gap: 3.5rem;
+            gap: clamp(2.5rem, 4.5vw, 4.5rem);
             align-items: center;
             width: 100%;
         }
 
         .hero-copy {
-            max-width: 660px;
+            max-width: 640px;
             position: relative;
             z-index: 2;
         }
@@ -133,29 +140,30 @@
             font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
             line-height: 1.2;
-            display: block;
-            margin-bottom: 1rem;
+            display: inline-block;
+            margin-bottom: 1.15rem;
         }
 
         .hero-title {
             font-family: var(--font-serif) !important;
-            font-size: clamp(40px, 4.4vw, 56px) !important;
-            line-height: 1.08 !important;
+            font-size: clamp(38px, 4.3vw, 56px) !important;
+            line-height: 1.1 !important;
             letter-spacing: -0.025em !important;
             color: #0E1F1B !important;
-            margin: 0 0 1.25rem 0 !important;
+            margin: 0 0 1.35rem 0 !important;
             font-weight: 400 !important;
+            text-wrap: balance;
         }
 
         .hero-subhead {
             font-family: var(--font-sans) !important;
-            font-size: 16.5px !important;
-            line-height: 1.6 !important;
+            font-size: clamp(16px, 1.2vw, 17.5px) !important;
+            line-height: 1.65 !important;
             color: var(--text-secondary) !important;
-            margin-bottom: 0.85rem !important;
+            margin-bottom: 0.95rem !important;
             max-width: 580px !important;
         }
 
@@ -164,14 +172,14 @@
             font-size: 14.5px;
             line-height: 1.55;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.25rem;
             max-width: 540px;
         }
 
         .hero-btn-group {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1.15rem;
             flex-wrap: wrap;
         }
 
@@ -185,12 +193,12 @@
 
         .hero-prism-img {
             width: 100%;
-            max-width: 540px;
+            max-width: 490px;
             height: auto;
             object-fit: contain;
             mix-blend-mode: multiply;
             opacity: 0.98;
-            filter: contrast(1.02);
+            filter: contrast(1.03);
             display: block;
         }
 
@@ -214,7 +222,7 @@
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             color: var(--accent-teal);
             white-space: nowrap;
         }
@@ -223,7 +231,7 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.25rem;
             font-family: var(--font-sans);
             font-size: 13.5px;
             font-weight: 500;
@@ -238,171 +246,178 @@
 
         /* ── SECTION HEADINGS ── */
         .section-header {
-            margin-bottom: 3rem;
-            max-width: 800px;
+            margin-bottom: 3.25rem;
+            max-width: 780px;
         }
         .section-eyebrow {
             font-family: var(--font-mono);
             font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            line-height: 1.2;
+            margin-bottom: 0.65rem;
             display: block;
-            margin-bottom: 0.5rem;
         }
         .section-title {
             font-family: var(--font-serif);
-            font-size: clamp(32px, 3.5vw, 42px);
+            font-size: clamp(32px, 3.8vw, 46px);
             color: var(--text-primary);
-            margin: 0 0 0.75rem 0;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
             font-weight: 400;
-            line-height: 1.15;
-            letter-spacing: -0.015em;
+            margin-bottom: 0.85rem;
+            text-wrap: balance;
         }
         .section-desc {
             font-family: var(--font-sans);
-            font-size: 16px;
+            font-size: clamp(15.5px, 1.15vw, 17px);
+            line-height: 1.65;
             color: var(--text-secondary);
-            line-height: 1.6;
             margin: 0;
         }
 
-        /* ── SECTION 3. SELECTED WORK SHOWCASE ── */
+        /* ── SECTION 3. SELECTED WORK (AUTHENTIC PRODUCT SHOWCASE) ── */
         .selected-work-section {
-            padding: 96px 0;
-            background: var(--bg-paper);
+            padding: var(--space-section) 0;
             border-bottom: 1px solid var(--border-light);
+            background: var(--bg-paper);
         }
 
         .work-stack {
             display: flex;
             flex-direction: column;
-            gap: 4.5rem;
+            gap: 3.5rem;
         }
 
         .work-item {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 3.5rem;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3rem;
             align-items: center;
             background: #FFFFFF;
             border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 2.75rem;
-            box-shadow: 0 4px 20px rgba(16, 33, 29, 0.03);
-            transition: border-color 0.2s ease, transform 0.2s ease;
+            border-radius: 8px;
+            padding: 2.25rem;
+            box-shadow: 0 4px 20px rgba(14, 31, 27, 0.025);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .work-item.reverse {
+            grid-template-columns: 0.85fr 1.15fr;
         }
 
         .work-item:hover {
             border-color: var(--border-dark);
             transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.06);
-        }
-
-        .work-item.reverse {
-            grid-template-columns: 0.8fr 1.2fr;
+            box-shadow: 0 10px 32px rgba(14, 31, 27, 0.05);
         }
 
         .work-media {
+            border: 1px solid var(--border-light);
             border-radius: 6px;
             overflow: hidden;
-            border: 1px solid rgba(16, 33, 29, 0.08);
-            background: #0E1F1B;
-            box-shadow: 0 8px 24px rgba(14, 31, 27, 0.12);
+            background: var(--bg-panel);
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            aspect-ratio: 16 / 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .work-media img {
-            display: block;
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 10;
+            height: 100%;
             object-fit: cover;
+            display: block;
+            transition: transform 0.35s ease;
+        }
+
+        .work-item:hover .work-media img {
+            transform: scale(1.015);
         }
 
         .work-info {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            justify-content: center;
         }
 
         .work-badge {
-            display: inline-block;
             font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
             color: var(--accent-teal);
-            margin-bottom: 0.25rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.65rem;
+            display: block;
         }
 
         .work-title {
             font-family: var(--font-serif);
-            font-size: 28px;
+            font-size: clamp(24px, 2.5vw, 30px);
             color: var(--text-primary);
-            margin: 0;
-            font-weight: 500;
+            margin: 0 0 0.85rem 0;
+            font-weight: 400;
             line-height: 1.2;
         }
 
         .work-desc {
             font-family: var(--font-sans);
             font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.65;
             color: var(--text-secondary);
-            margin: 0;
+            margin-bottom: 1.35rem;
         }
 
         .work-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 0.45rem;
+            margin-bottom: 1.75rem;
         }
 
         .work-tag {
             font-family: var(--font-mono);
-            font-size: 10.5px;
-            font-weight: 600;
-            color: var(--text-secondary);
+            font-size: 11px;
             background: var(--bg-panel);
             border: 1px solid var(--border-light);
+            color: var(--text-secondary);
             padding: 3px 8px;
             border-radius: 3px;
-            letter-spacing: 0.03em;
         }
 
-        /* ── SECTION 4. WHAT I BUILD / CAPABILITIES ── */
+        /* ── SECTION 4. THREE CAPABILITIES ── */
         .capabilities-section {
-            padding: 96px 0;
-            background: #FFFFFF;
+            padding: var(--space-section) 0;
+            background: var(--bg-panel);
             border-bottom: 1px solid var(--border-light);
         }
 
         .capabilities-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
         .capability-card {
-            background: var(--bg-paper);
+            background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 2.5rem 2rem;
+            padding: 2.25rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 1.5rem;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 16px rgba(16, 33, 29, 0.02);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.015);
         }
 
         .capability-card:hover {
             border-color: var(--accent-teal);
             transform: translateY(-3px);
-            box-shadow: 0 14px 32px rgba(16, 33, 29, 0.06);
+            box-shadow: 0 10px 28px rgba(15, 118, 110, 0.05);
         }
 
         .cap-num {
@@ -410,27 +425,27 @@
             font-size: 11px;
             font-weight: 700;
             color: var(--accent-teal);
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
+            margin-bottom: 0.85rem;
             display: block;
-            margin-bottom: 0.5rem;
         }
 
         .cap-title {
             font-family: var(--font-serif);
             font-size: 24px;
             color: var(--text-primary);
-            margin: 0 0 0.75rem 0;
-            font-weight: 500;
+            margin: 0 0 0.85rem 0;
+            font-weight: 400;
             line-height: 1.25;
         }
 
         .cap-text {
             font-family: var(--font-sans);
             font-size: 14.5px;
-            color: var(--text-secondary);
             line-height: 1.6;
-            margin: 0 0 1.5rem 0;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
         }
 
         .cap-checklist {
@@ -439,7 +454,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.55rem;
             border-top: 1px solid var(--border-light);
             padding-top: 1.25rem;
         }
@@ -448,22 +463,23 @@
             font-family: var(--font-sans);
             font-size: 13.5px;
             color: var(--text-secondary);
+            line-height: 1.4;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .cap-checklist li::before {
-            content: "✓";
+            content: "•";
             color: var(--accent-teal);
-            font-weight: 700;
-            font-size: 12px;
+            font-weight: bold;
+            font-size: 14px;
         }
 
-        /* ── SECTION 5. HOW PROJECTS MOVE (PROCESS) ── */
+        /* ── SECTION 5. PROCESS FLOW ── */
         .process-section {
-            padding: 96px 0;
-            background: var(--bg-panel);
+            padding: var(--space-section) 0;
+            background: #FFFFFF;
             border-bottom: 1px solid var(--border-light);
         }
 
@@ -471,20 +487,19 @@
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 1.5rem;
-            position: relative;
             margin-top: 3.5rem;
+            position: relative;
         }
 
         .process-flow-container::before {
-            content: "";
+            content: '';
             position: absolute;
             top: 21px;
-            left: 8%;
-            right: 8%;
+            left: 5%;
+            right: 5%;
             height: 1px;
-            background: var(--border-dark);
-            z-index: 0;
-            opacity: 0.4;
+            background: var(--border-light);
+            z-index: 1;
         }
 
         .process-step {
@@ -493,7 +508,7 @@
             align-items: center;
             text-align: center;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .process-node {
@@ -531,94 +546,364 @@
             max-width: 190px;
         }
 
-        /* ── SECTION 6. WAYS TO WORK TOGETHER ── */
+        /* ── SECTION 6. FIVE CANONICAL PRICING OFFERS (INTENTIONAL 5-CARD GRID) ── */
         .ladder-section {
-            padding: 96px 0;
-            background: #FFFFFF;
+            padding: var(--space-section) 0;
+            background: var(--bg-paper);
             border-bottom: 1px solid var(--border-light);
         }
 
-        .ladder-grid {
+        .ladder-grid-five {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .ladder-row-top {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .ladder-row-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 820px;
+            margin-inline: auto;
+            width: 100%;
         }
 
         .ladder-card {
-            background: var(--bg-paper);
+            background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 2rem 1.5rem;
+            padding: 2.25rem 1.65rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 16px rgba(16, 33, 29, 0.02);
+            position: relative;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.015);
         }
 
         .ladder-card:hover {
-            border-color: var(--border-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(16, 33, 29, 0.05);
+            border-color: var(--accent-teal);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(15, 118, 110, 0.06);
+        }
+
+        .ladder-card.featured {
+            border: 2px solid var(--accent-teal);
+            background: #FFFFFF;
+            box-shadow: 0 8px 24px rgba(15, 118, 110, 0.07);
+        }
+
+        .ladder-stage-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-teal);
+            background: rgba(15, 118, 110, 0.08);
+            padding: 3px 9px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 0.85rem;
+            width: fit-content;
         }
 
         .ladder-title {
             font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 500;
+            font-size: 1.6rem;
             color: var(--text-primary);
-            margin: 0 0 0.5rem 0;
-            line-height: 1.25;
+            margin: 0 0 0.35rem 0;
+            font-weight: 400;
+            line-height: 1.2;
         }
 
         .ladder-price {
             font-family: var(--font-mono);
-            font-size: 14.5px;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: var(--accent-teal);
-            margin-bottom: 0.85rem;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
             display: block;
         }
 
-        .ladder-desc {
-            font-family: var(--font-sans);
-            font-size: 13px;
-            line-height: 1.55;
-            color: var(--text-secondary);
-            margin-bottom: 1.25rem;
-        }
-
-        .ladder-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.5rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.45rem;
-            border-top: 1px solid var(--border-light);
-            padding-top: 1rem;
-        }
-
-        .ladder-list li {
+        .ladder-price-sub {
             font-family: var(--font-sans);
             font-size: 12.5px;
             color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            margin-bottom: 1rem;
+            display: block;
         }
 
-        .ladder-list li::before {
-            content: "✓";
+        .ladder-result {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 1.15rem;
+        }
+
+        .ladder-meta-box {
+            background: rgba(16, 33, 29, 0.03);
+            border-left: 2.5px solid var(--accent-teal);
+            padding: 0.65rem 0.85rem;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 1.25rem;
+        }
+
+        .ladder-meta-label {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .ladder-meta-text {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .ladder-scope-box {
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.1rem;
+            margin-bottom: 1.75rem;
+            flex-grow: 1;
+        }
+
+        .ladder-scope-title {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-primary);
+            margin-bottom: 0.65rem;
+            display: block;
+        }
+
+        .ladder-scope-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .ladder-scope-list li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+        }
+
+        .ladder-scope-list li::before {
+            content: "•";
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 1.2;
+        }
+
+        .btn-ladder-cta {
+            background: var(--text-primary);
+            color: #FAF9F5 !important;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.8rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            transition: all 0.2s ease;
+            margin-top: auto;
+            border: 1px solid var(--text-primary);
+        }
+
+        .ladder-card.featured .btn-ladder-cta {
+            background: var(--accent-teal);
+            border-color: var(--accent-teal);
+        }
+
+        .btn-ladder-cta:hover {
+            background: var(--accent-teal);
+            border-color: var(--accent-teal);
+            transform: translateY(-1px);
+        }
+
+        /* ── SECTION 7. WHICH PATH FITS (DECISION MATRIX) ── */
+        .scoping-panel {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 3rem 2.5rem;
+            margin-top: 3.5rem;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.015);
+        }
+
+        .scoping-table-desktop {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .scoping-table-desktop th {
+            padding: 0.75rem 1rem 0.75rem 0;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             color: var(--accent-teal);
             font-weight: 700;
-            font-size: 11px;
+            border-bottom: 1.5px solid var(--border-light);
         }
 
-        /* ── SECTION 7. FOUNDER / ABOUT ── */
-        .founder-section {
-            padding: 96px 0;
+        .scoping-table-desktop td {
+            padding: 0.95rem 1rem 0.95rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--text-primary);
+        }
+
+        .scoping-cards-mobile {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .scoping-mobile-card {
             background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .scoping-mobile-card-sit {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        .scoping-mobile-card-rec {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+
+        /* ── SECTION 8. QUARTERLY CARE PLANS ── */
+        .care-section {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 3.5rem 3rem;
+            margin-top: 3.5rem;
+        }
+
+        .care-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .care-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.015);
+            transition: all 0.2s ease;
+        }
+
+        .care-card.featured {
+            border: 2px solid var(--accent-teal);
+        }
+
+        .care-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin: 0 0 0.25rem 0;
+            font-weight: 400;
+        }
+
+        .care-price {
+            font-family: var(--font-mono);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .care-equiv {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            display: block;
+            font-style: italic;
+        }
+
+        .care-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .care-list li {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .care-list li::before {
+            content: "✓";
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        /* ── SECTION 9. FOUNDER & PHILOSOPHY ── */
+        .founder-section {
+            padding: var(--space-section) 0;
+            background: #FFFFFF;
             border-bottom: 1px solid var(--border-light);
         }
 
@@ -626,46 +911,41 @@
             display: grid;
             grid-template-columns: 1.15fr 0.85fr;
             gap: 4rem;
-            align-items: center;
+            align-items: start;
         }
 
         .founder-quote {
             font-family: var(--font-serif);
-            font-size: clamp(1.25rem, 2.2vw, 1.55rem);
-            line-height: 1.5;
-            color: var(--text-primary);
+            font-size: clamp(20px, 2.2vw, 26px);
             font-style: italic;
-            font-weight: 400;
-            border-left: 3px solid var(--accent-teal);
-            padding-left: 1.5rem;
-            margin: 0 0 1.75rem 0;
+            color: var(--text-primary);
+            line-height: 1.35;
+            margin: 1.25rem 0 1.75rem 0;
+            padding-left: 1.25rem;
+            border-left: 2px solid var(--accent-teal);
         }
 
-        /* ── SECTION 8. CREATIVE PRACTICE STRIP ── */
+        /* ── SECTION 10. CREATIVE STRIP ── */
         .creative-strip {
-            padding: 32px 0;
-            background: #FFFFFF;
+            background: var(--bg-panel);
             border-bottom: 1px solid var(--border-light);
+            padding: 1.75rem 0;
             text-align: center;
-        }
-
-        .creative-strip p {
             font-family: var(--font-sans);
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-secondary);
-            margin: 0;
         }
 
         .creative-strip a {
-            color: var(--text-primary);
-            font-weight: 600;
-            text-decoration: underline;
-            margin-left: 6px;
+            color: var(--accent-teal);
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 0.4rem;
         }
 
-        /* ── SECTION 9. FINAL CTA ── */
+        /* ── SECTION 11. FINAL CTA / INTAKE ── */
         .final-cta-section {
-            padding: 96px 0;
+            padding: var(--space-section) 0;
             background: var(--bg-paper);
         }
 
@@ -676,11 +956,49 @@
             align-items: start;
         }
 
-        /* ── RESPONSIVE BREAKPOINTS ── */
+        /* ── WOLVES-INSPIRED RESTRAINED SCROLL MOTION ── */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        [data-delay="1"] { transition-delay: 0.06s; }
+        [data-delay="2"] { transition-delay: 0.12s; }
+        [data-delay="3"] { transition-delay: 0.18s; }
+        [data-delay="4"] { transition-delay: 0.24s; }
+        [data-delay="5"] { transition-delay: 0.30s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ── RESPONSIVE ART DIRECTION BREAKPOINTS ── */
+        @media (max-width: 1100px) {
+            .ladder-row-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .ladder-row-bottom {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
+        }
+
         @media (max-width: 1024px) {
             .hero-container {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
+                text-align: left;
             }
             .hero-prism-img {
                 max-width: 420px;
@@ -701,21 +1019,48 @@
             .process-flow-container::before {
                 display: none;
             }
-            .ladder-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
             .founder-grid, .final-cta-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
         }
 
-        @media (max-width: 640px) {
-            .ladder-grid {
+        @media (max-width: 768px) {
+            .ladder-row-top, .ladder-row-bottom {
                 grid-template-columns: 1fr;
             }
+            .care-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .scoping-table-desktop {
+                display: none;
+            }
+            .scoping-cards-mobile {
+                display: flex;
+            }
+            .scoping-panel {
+                padding: 2rem 1.5rem;
+            }
+            .care-section {
+                padding: 2.25rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .hero-btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-btn-group .btn {
+                width: 100%;
+                text-align: center;
+            }
             .work-item {
-                padding: 1.75rem;
+                padding: 1.5rem;
+            }
+            .btn-ladder-cta {
+                padding: 0.9rem 1rem;
             }
         }
     </style>
@@ -753,24 +1098,24 @@
              ========================================================================== -->
         <header class="hero" id="hero">
             <div class="container hero-container">
-                <div class="hero-copy">
-                    <span class="hero-eyebrow">WEBSITES &bull; DIGITAL PRODUCTS &bull; OPERATIONAL SYSTEMS</span>
+                <div class="hero-copy reveal-on-scroll">
+                    <span class="hero-eyebrow">LEAN WEBSITES &amp; INTENTIONAL SYSTEMS</span>
                     <h1 class="hero-title">
                         Lean websites and business systems,<br>built around how you actually work.
                     </h1>
                     <p class="hero-subhead">
-                        Context &amp; Muse designs and builds commercial websites, custom digital products, and operational systems for businesses that have outgrown generic tools and disconnected workflows.
+                        Context &amp; Muse designs and builds custom commercial websites, operational workflows, quoting calculators, client portals, and bespoke business software—without unnecessary subscriptions, plugin stacks, or technical overhead.
                     </p>
                     <p class="hero-support">
-                        Strategy, interface design, front-end development, business logic, and launch execution—built as one coherent system.
+                        Strategy, interface design, bespoke front-end development, business logic, and launch execution—built as one coherent system.
                     </p>
                     <div class="hero-btn-group">
                         <a href="/contact/" class="btn btn-primary">Start a Project &rarr;</a>
-                        <a href="#selected-work" class="btn btn-secondary">See Selected Work</a>
+                        <a href="#selected-work" class="btn btn-secondary">See Selected Work &darr;</a>
                     </div>
                 </div>
-                <div class="hero-visual" aria-hidden="true">
-                    <img src="/assets/images/contextmuse_hero_architectural.png" class="hero-prism-img" alt="Architectural systems organization structure transforming complex inputs into clear signal" width="1024" height="1024">
+                <div class="hero-visual reveal-on-scroll" data-delay="1" aria-hidden="true">
+                    <img src="/assets/images/contextmuse_hero_architectural.png" class="hero-prism-img" alt="Architectural systems organization structure transforming complex inputs into clear signal" width="1024" height="1024" fetchpriority="high">
                 </div>
             </div>
         </header>
@@ -782,15 +1127,15 @@
             <div class="container strip-inner">
                 <span class="strip-label">Selected capabilities</span>
                 <div class="strip-items">
-                    <span>React / Next.js</span>
+                    <span>Custom Web Design</span>
                     <span class="strip-dot">&bull;</span>
-                    <span>Responsive Product Design</span>
+                    <span>Business Logic &amp; Workflows</span>
                     <span class="strip-dot">&bull;</span>
                     <span>Conversion Architecture</span>
                     <span class="strip-dot">&bull;</span>
-                    <span>Operational Workflows</span>
+                    <span>Portals &amp; Internal Tools</span>
                     <span class="strip-dot">&bull;</span>
-                    <span>Custom Business Logic</span>
+                    <span>Zero-Plugin Custom Code</span>
                     <span class="strip-dot">&bull;</span>
                     <span>Production Deployment</span>
                 </div>
@@ -798,34 +1143,34 @@
         </section>
 
         <!-- ==========================================================================
-             SECTION 3: SELECTED WORK (PROVING THE CLAIM FIRST)
+             SECTION 3: SELECTED WORK (AUTHENTIC PRODUCT SHOWCASE)
              ========================================================================== -->
         <section class="selected-work-section" id="selected-work" aria-labelledby="selected-work-heading">
             <div class="container">
-                <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+                <div class="section-header reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
                     <div>
                         <span class="section-eyebrow">SELECTED WORK</span>
                         <h2 id="selected-work-heading" class="section-title">Built for real constraints, not portfolio theater.</h2>
-                        <p class="section-desc">A selection of commercial websites, internal systems, and purpose-built digital products designed around how people actually work.</p>
+                        <p class="section-desc">A selection of commercial websites, internal tools, and purpose-built digital products designed around how businesses actually operate.</p>
                     </div>
                     <a href="/work/" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-primary); text-decoration: none; border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px;">Explore All Case Studies &rarr;</a>
                 </div>
 
                 <div class="work-stack">
                     <!-- Project 1: Lone Wolf Dumpsters -->
-                    <div class="work-item">
+                    <div class="work-item reveal-on-scroll">
                         <div class="work-media">
-                            <img src="/assets/images/lonewolf-commercial-spread.webp" alt="Lone Wolf Dumpsters commercial website and booking platform" width="1400" height="875" loading="eager">
+                            <img src="/assets/images/lonewolf-commercial-spread.webp" alt="Lone Wolf Dumpsters commercial website and booking platform interface" width="1400" height="875" loading="lazy">
                         </div>
                         <div class="work-info">
                             <span class="work-badge">Commercial Website + Operational System</span>
                             <h3 class="work-title">Lone Wolf Dumpsters</h3>
                             <p class="work-desc">
-                                A high-conversion dumpster-rental platform combining transparent pricing, localized service-area architecture, lead intake, and editable operational content across 48 North Texas markets.
+                                A high-conversion commercial platform combining transparent tiered pricing, localized service-area radius logic, automated lead intake triage, and editable operational content across 48 North Texas markets.
                             </p>
                             <div class="work-tags">
                                 <span class="work-tag">Web Design</span>
-                                <span class="work-tag">Conversion</span>
+                                <span class="work-tag">Conversion Architecture</span>
                                 <span class="work-tag">Local SEO</span>
                                 <span class="work-tag">Lead Routing</span>
                                 <span class="work-tag">Business Logic</span>
@@ -837,12 +1182,12 @@
                     </div>
 
                     <!-- Project 2: Website Audit System -->
-                    <div class="work-item reverse">
+                    <div class="work-item reverse reveal-on-scroll">
                         <div class="work-info">
                             <span class="work-badge">Diagnostic Product</span>
                             <h3 class="work-title">Website Audit System</h3>
                             <p class="work-desc">
-                                A visual website diagnostic platform that replaces generic audit reports with rendered evidence, issue scoring, viewport comparison, and directly traceable recommendations.
+                                A visual website diagnostic platform that replaces generic audit reports with rendered evidence, multi-viewport comparison, quantitative issue scoring, and directly traceable recommendations.
                             </p>
                             <div class="work-tags">
                                 <span class="work-tag">Product Design</span>
@@ -855,30 +1200,53 @@
                             </div>
                         </div>
                         <div class="work-media">
-                            <img src="/assets/images/website-audit-evidence-spread.webp" alt="Website Audit System rendered diagnostics interface" width="1200" height="750" loading="eager">
+                            <img src="/assets/images/website-audit-evidence-spread.webp" alt="Website Audit System rendered diagnostics and evidence interface" width="1200" height="750" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Project 3: Revision Atlas -->
-                    <div class="work-item">
+                    <div class="work-item reveal-on-scroll">
                         <div class="work-media">
-                            <img src="/assets/images/revision-atlas-spread.webp" alt="Revision Atlas structural manuscript revision interface" width="1400" height="875" loading="eager">
+                            <img src="/assets/images/revision-atlas-spread.webp" alt="Revision Atlas structural manuscript revision interface" width="1400" height="875" loading="lazy">
                         </div>
                         <div class="work-info">
                             <span class="work-badge">Custom Digital Product</span>
                             <h3 class="work-title">Revision Atlas</h3>
                             <p class="work-desc">
-                                A local-first manuscript revision environment designed for long-form structural editing, version control, chapter-level analysis, and non-destructive drafting.
+                                A local-first manuscript revision workbench engineered for long-form narrative prose, structural version control, chapter-level pacing metrics, and non-destructive variant drafting.
                             </p>
                             <div class="work-tags">
                                 <span class="work-tag">Product Design</span>
                                 <span class="work-tag">Workflow Architecture</span>
-                                <span class="work-tag">Local-First Software</span>
+                                <span class="work-tag">Local-First IndexedDB</span>
                                 <span class="work-tag">Complex UI</span>
                             </div>
                             <div>
                                 <a href="/work/revision-atlas/" class="btn btn-secondary" style="font-size: 13px;">View Case Study &rarr;</a>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Contest Atlas (WCSM) -->
+                    <div class="work-item reverse reveal-on-scroll">
+                        <div class="work-info">
+                            <span class="work-badge">Rules Engine &amp; Submission Control</span>
+                            <h3 class="work-title">Contest Atlas (WCSM)</h3>
+                            <p class="work-desc">
+                                A deterministic rules engine and eligibility verification workbench for writers. Features 1-click guideline extraction, simultaneous submission conflict checking, immutable point-in-time snapshot archiving, and an automated weekly contest crawler.
+                            </p>
+                            <div class="work-tags">
+                                <span class="work-tag">Rules Engine</span>
+                                <span class="work-tag">Guideline Parsing</span>
+                                <span class="work-tag">Snapshot Archiving</span>
+                                <span class="work-tag">Offline-First Software</span>
+                            </div>
+                            <div>
+                                <a href="/wcsm/" class="btn btn-secondary" style="font-size: 13px;">Launch Live Application &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="work-media">
+                            <img src="/assets/images/contest-atlas-hero.webp" alt="Contest Atlas rules engine and submission tracking workbench" width="1400" height="875" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -890,68 +1258,68 @@
              ========================================================================== -->
         <section class="capabilities-section" id="capabilities" aria-labelledby="capabilities-heading">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal-on-scroll">
                     <span class="section-eyebrow">WHAT I BUILD</span>
                     <h2 id="capabilities-heading" class="section-title">Three capabilities. One integrated practice.</h2>
                     <p class="section-desc">
-                        Most business problems do not stop neatly at the edge of the website. I work across the public-facing experience and the systems underneath it so the whole thing functions together.
+                        Most business problems do not stop neatly at the edge of the website. I work across the public-facing experience and the operational machinery underneath it so the whole system stays aligned.
                     </p>
                 </div>
 
                 <div class="capabilities-grid">
                     <!-- Card 1: Websites & Commerce -->
-                    <div class="capability-card">
+                    <div class="capability-card reveal-on-scroll" data-delay="1">
                         <div>
                             <span class="cap-num">01 / WEBSITES &amp; COMMERCE</span>
                             <h3 class="cap-title">Websites &amp; Commerce</h3>
                             <p class="cap-text">
-                                High-performance commercial websites designed around clarity, conversion, mobile experience, and maintainable content.
+                                High-performance commercial websites designed around clarity, conversion, mobile experience, and maintainable, lean front-end code.
                             </p>
                             <ul class="cap-checklist">
-                                <li>Custom websites</li>
+                                <li>Custom bespoke websites</li>
                                 <li>Ecommerce experiences</li>
                                 <li>Conversion architecture</li>
-                                <li>CMS implementation</li>
-                                <li>SEO foundations</li>
-                                <li>Responsive front-end development</li>
+                                <li>Core SEO foundations</li>
+                                <li>Editable CMS when required</li>
+                                <li>Zero-bloat front-end performance</li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Card 2: Operational Systems -->
-                    <div class="capability-card">
+                    <div class="capability-card reveal-on-scroll" data-delay="2">
                         <div>
                             <span class="cap-num">02 / OPERATIONAL SYSTEMS</span>
                             <h3 class="cap-title">Operational Systems</h3>
                             <p class="cap-text">
-                                Internal tools and workflow systems that reduce repetitive work, improve intake, and make business processes easier to manage.
+                                Internal tools and workflow engines that eliminate manual friction, streamline intake, and make business processes easier to manage.
                             </p>
                             <ul class="cap-checklist">
-                                <li>Lead and intake systems</li>
-                                <li>Quote and pricing tools</li>
-                                <li>Admin interfaces</li>
-                                <li>Workflow automation</li>
-                                <li>CRM integration</li>
-                                <li>Routing and business logic</li>
+                                <li>Lead and intake triage engines</li>
+                                <li>Dynamic quoting &amp; pricing calculators</li>
+                                <li>Admin and staff interfaces</li>
+                                <li>Workflow automation logic</li>
+                                <li>CRM and payment connections</li>
+                                <li>Dispatch and routing rules</li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Card 3: Digital Products -->
-                    <div class="capability-card">
+                    <div class="capability-card reveal-on-scroll" data-delay="3">
                         <div>
                             <span class="cap-num">03 / DIGITAL PRODUCTS</span>
                             <h3 class="cap-title">Digital Products</h3>
                             <p class="cap-text">
-                                Purpose-built software for specialized workflows that off-the-shelf platforms do not handle well.
+                                Purpose-built software for specialized business workflows that off-the-shelf SaaS platforms do not solve well.
                             </p>
                             <ul class="cap-checklist">
-                                <li>Custom applications</li>
-                                <li>Client portals</li>
-                                <li>Decision tools</li>
-                                <li>Diagnostic systems</li>
-                                <li>Local-first software</li>
-                                <li>Complex interface systems</li>
+                                <li>Custom web applications</li>
+                                <li>Client &amp; employee portals</li>
+                                <li>Decision and scoping tools</li>
+                                <li>Diagnostic platforms</li>
+                                <li>Local-first browser software</li>
+                                <li>Complex responsive UI systems</li>
                             </ul>
                         </div>
                     </div>
@@ -964,132 +1332,366 @@
              ========================================================================== -->
         <section class="process-section" id="process" aria-labelledby="process-heading">
             <div class="container">
-                <div style="text-align: center; max-width: 760px; margin: 0 auto;">
+                <div class="reveal-on-scroll" style="text-align: center; max-width: 760px; margin: 0 auto;">
                     <span class="section-eyebrow">HOW PROJECTS MOVE</span>
                     <h2 id="process-heading" class="section-title">From problem to production without unnecessary ceremony.</h2>
                     <p style="font-family: var(--font-sans); font-size: 16px; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
-                        Projects are scoped around the actual business problem first, then designed and built around the simplest architecture that solves it well.
+                        Projects are scoped around the actual business constraint first, then designed and built around the simplest architecture that solves it permanently.
                     </p>
                 </div>
 
                 <div class="process-flow-container">
-                    <div class="process-step">
+                    <div class="process-step reveal-on-scroll" data-delay="1">
                         <div class="process-node"><span>01</span></div>
                         <h3 class="step-name">Understand</h3>
-                        <p class="step-desc">Business goals, constraints, users, existing systems, and what is actually creating friction.</p>
+                        <p class="step-desc">Business goals, constraints, customers, existing tools, and where operational friction occurs.</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step reveal-on-scroll" data-delay="2">
                         <div class="process-node"><span>02</span></div>
                         <h3 class="step-name">Architect</h3>
-                        <p class="step-desc">Define the experience, information structure, workflow logic, and technical approach before unnecessary complexity gets introduced.</p>
+                        <p class="step-desc">Define the interface hierarchy, information flow, business logic, and technical approach before building.</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step reveal-on-scroll" data-delay="3">
                         <div class="process-node"><span>03</span></div>
                         <h3 class="step-name">Build</h3>
-                        <p class="step-desc">Design and development happen together so the interface and underlying system stay aligned.</p>
+                        <p class="step-desc">Design and development happen in lockstep so the interface and underlying system stay aligned.</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step reveal-on-scroll" data-delay="4">
                         <div class="process-node"><span>04</span></div>
                         <h3 class="step-name">Verify</h3>
-                        <p class="step-desc">Test responsive behavior, workflows, edge cases, integrations, performance, and production readiness.</p>
+                        <p class="step-desc">Test responsive behavior across 375px–1440px+, edge cases, intake logic, performance, and accessibility.</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step reveal-on-scroll" data-delay="5">
                         <div class="process-node"><span>05</span></div>
                         <h3 class="step-name">Launch</h3>
-                        <p class="step-desc">Deploy, document, hand off, and establish what should happen next.</p>
+                        <p class="step-desc">Deploy, verify domain DNS/SSL, document handoff, and transition to ongoing quarterly care.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================================
-             SECTION 6: WAYS TO WORK TOGETHER (ENGAGEMENT MODELS)
+             SECTION 6: WAYS TO WORK TOGETHER (5 CANONICAL OFFERS IN INTENTIONAL GRID)
              ========================================================================== -->
         <section class="ladder-section" id="ways-to-work" aria-labelledby="ladder-heading">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal-on-scroll">
                     <span class="section-eyebrow">WAYS TO WORK TOGETHER</span>
                     <h2 id="ladder-heading" class="section-title">Clear scope. Predictable investment.</h2>
                     <p class="section-desc">
-                        Choose a focused engagement or start with a conversation and scope the right approach together.
+                        A natural progression from low-risk diagnosis to full custom software engineering.
+                    </p>
+                    <p style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); margin-top: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;">
+                        A deposit is required to reserve production capacity. Once work begins, the deposit becomes non-refundable and is applied toward the project total.
                     </p>
                 </div>
 
-                <div class="ladder-grid">
-                    <!-- Offer 1: Audit & Diagnostic -->
-                    <div class="ladder-card">
-                        <div>
-                            <h3 class="ladder-title">Audit &amp; Diagnostic</h3>
-                            <span class="ladder-price">$595 fixed</span>
-                            <div class="ladder-desc">For businesses that need clarity before committing to a rebuild or larger engagement.</div>
+                <!-- 5 Canonical Offers Grid (3 Top / 2 Centered Bottom) -->
+                <div class="ladder-grid-five">
+                    
+                    <!-- Row 1: 3 Foundation Offers -->
+                    <div class="ladder-row-top">
+                        
+                        <!-- Offer 1: Conversion Audit -->
+                        <div class="ladder-card reveal-on-scroll" data-delay="1" id="conversion-audit">
+                            <div>
+                                <span class="ladder-stage-badge">01 // DIAGNOSE</span>
+                                <h3 class="ladder-title">Conversion Audit</h3>
+                                <span class="ladder-price">$195</span>
+                                <span class="ladder-price-sub">Flat Rate Diagnostic</span>
+                                
+                                <div class="ladder-result">
+                                    Professional conversion &amp; UX diagnostic to identify exactly where leads are lost before rebuilding.
+                                </div>
+
+                                <div class="ladder-meta-box">
+                                    <span class="ladder-meta-label">Positioning &amp; Payment</span>
+                                    <p class="ladder-meta-text">100% credited toward a qualifying build booked within 30 days. Paid in full to initiate review.</p>
+                                </div>
+
+                                <div class="ladder-scope-box">
+                                    <span class="ladder-scope-title">What Is Evaluated</span>
+                                    <ul class="ladder-scope-list">
+                                        <li>Calls to action &amp; lead flow continuity</li>
+                                        <li>Mobile touch UX &amp; navigation friction</li>
+                                        <li>Messaging clarity &amp; trust signals</li>
+                                        <li>Form &amp; intake drop-off points</li>
+                                        <li>Technical or structural problems</li>
+                                        <li>Prioritized improvement roadmap</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="/custom/?service=audit#intake" class="btn-ladder-cta">Book Conversion Audit &rarr;</a>
                         </div>
-                        <div>
-                            <ul class="ladder-list">
-                                <li>UX and conversion review</li>
-                                <li>Technical observations</li>
-                                <li>Priority recommendations</li>
-                                <li>Clear next-step plan</li>
-                            </ul>
-                            <a href="/contact/?service=audit" class="btn btn-secondary" style="width: 100%; font-size: 13px;">Book an Audit &rarr;</a>
+
+                        <!-- Offer 2: Launch Site -->
+                        <div class="ladder-card reveal-on-scroll" data-delay="2" id="launch-site">
+                            <div>
+                                <span class="ladder-stage-badge">02 // LAUNCH</span>
+                                <h3 class="ladder-title">Launch Site</h3>
+                                <span class="ladder-price">From $1,500</span>
+                                <span class="ladder-price-sub">Typical: $1,500–$1,950</span>
+                                
+                                <div class="ladder-result">
+                                    Entry-level custom business website without unnecessary technical baggage or plugin bloat.
+                                </div>
+
+                                <div class="ladder-meta-box">
+                                    <span class="ladder-meta-label">Billing Schedule</span>
+                                    <p class="ladder-meta-text"><strong>50% deposit</strong> to reserve &amp; start &bull; <strong>50% final balance</strong> before deployment.</p>
+                                </div>
+
+                                <div class="ladder-scope-box">
+                                    <span class="ladder-scope-title">Included Scope</span>
+                                    <ul class="ladder-scope-list">
+                                        <li>Professional design &amp; mobile responsive UI</li>
+                                        <li>Lead capture &amp; contact intake flow</li>
+                                        <li>Core integrations &amp; SEO foundations</li>
+                                        <li>Performance optimization &amp; analytics</li>
+                                        <li>Complete deployment &amp; code transfer</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="/custom/?service=launch-site#intake" class="btn-ladder-cta">Start a Website &rarr;</a>
+                        </div>
+
+                        <!-- Offer 3: Conversion Site -->
+                        <div class="ladder-card reveal-on-scroll" data-delay="3" id="conversion-site">
+                            <div>
+                                <span class="ladder-stage-badge">03 // CONVERSION</span>
+                                <h3 class="ladder-title">Conversion Site</h3>
+                                <span class="ladder-price">From $2,750</span>
+                                <span class="ladder-price-sub">Typical: $2,750–$3,500</span>
+                                
+                                <div class="ladder-result">
+                                    High-performance commercial website engineered specifically around qualified lead generation and multi-market search.
+                                </div>
+
+                                <div class="ladder-meta-box">
+                                    <span class="ladder-meta-label">Billing Schedule</span>
+                                    <p class="ladder-meta-text"><strong>50% deposit</strong> to reserve &amp; start &bull; <strong>50% final balance</strong> before deployment.</p>
+                                </div>
+
+                                <div class="ladder-scope-box">
+                                    <span class="ladder-scope-title">Included Scope</span>
+                                    <ul class="ladder-scope-list">
+                                        <li>Multi-market local SEO architecture</li>
+                                        <li>Interactive service-area radius logic</li>
+                                        <li>Automated quote &amp; lead intake triage</li>
+                                        <li>High-contrast brand aesthetic &amp; copy hierarchy</li>
+                                        <li>100% bespoke code with zero plugin bloat</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="/custom/?service=conversion-site#intake" class="btn-ladder-cta">Discuss Conversion Site &rarr;</a>
                         </div>
                     </div>
 
-                    <!-- Offer 2: Commercial Website -->
-                    <div class="ladder-card">
-                        <div>
-                            <h3 class="ladder-title">Commercial Website</h3>
-                            <span class="ladder-price">From $2,800</span>
-                            <div class="ladder-desc">For service businesses and small teams that need a polished, high-performing website with a strong conversion path.</div>
-                        </div>
-                        <div>
-                            <ul class="ladder-list">
-                                <li>Responsive design</li>
-                                <li>Development</li>
-                                <li>CMS structure</li>
-                                <li>Core SEO setup</li>
-                                <li>Launch support</li>
-                            </ul>
-                            <a href="/contact/?service=website" class="btn btn-secondary" style="width: 100%; font-size: 13px;">Start a Website &rarr;</a>
-                        </div>
-                    </div>
+                    <!-- Row 2: 2 Advanced Systems Offers (Centered on Desktop) -->
+                    <div class="ladder-row-bottom">
+                        
+                        <!-- Offer 4: Custom Business System (Featured) -->
+                        <div class="ladder-card featured reveal-on-scroll" data-delay="1" id="custom-system">
+                            <div>
+                                <span class="ladder-stage-badge">04 // BUSINESS SYSTEM</span>
+                                <h3 class="ladder-title">Custom Business System</h3>
+                                <span class="ladder-price">From $4,500</span>
+                                <span class="ladder-price-sub">Typical: $4,500–$7,500+</span>
+                                
+                                <div class="ladder-result">
+                                    Customer-facing website and internal operational tools designed together around your actual business machinery.
+                                </div>
 
-                    <!-- Offer 3: Custom Business System -->
-                    <div class="ladder-card">
-                        <div>
-                            <h3 class="ladder-title">Custom Business System</h3>
-                            <span class="ladder-price">From $4,500</span>
-                            <div class="ladder-desc">For businesses that need functionality beyond a standard website.</div>
-                        </div>
-                        <div>
-                            <ul class="ladder-list">
-                                <li>Workflow design</li>
-                                <li>Business logic</li>
-                                <li>Custom interfaces</li>
-                                <li>Integrations</li>
-                                <li>Internal tools</li>
-                            </ul>
-                            <a href="/contact/?service=system" class="btn btn-primary" style="width: 100%; font-size: 13px;">Discuss a System &rarr;</a>
-                        </div>
-                    </div>
+                                <div class="ladder-meta-box">
+                                    <span class="ladder-meta-label">Billing Milestones</span>
+                                    <p class="ladder-meta-text"><strong>40% deposit</strong> to begin &bull; <strong>30%</strong> core system approval &bull; <strong>30%</strong> before launch.</p>
+                                </div>
 
-                    <!-- Offer 4: Ongoing Product & Web Support -->
-                    <div class="ladder-card">
-                        <div>
-                            <h3 class="ladder-title">Ongoing Support</h3>
-                            <span class="ladder-price">From $1,800/month</span>
-                            <div class="ladder-desc">For teams that need continued design, development, optimization, or product support without adding another full-time hire.</div>
+                                <div class="ladder-scope-box">
+                                    <span class="ladder-scope-title">Included Scope</span>
+                                    <ul class="ladder-scope-list">
+                                        <li>Custom quoting calculators &amp; dynamic pricing</li>
+                                        <li>Serial inventory &amp; reservation engines</li>
+                                        <li>CRM automations &amp; dispatch workflows</li>
+                                        <li>Booking &amp; payment/invoicing connections</li>
+                                        <li>Field scoping &amp; internal staff tools</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="/custom/?service=custom-system#intake" class="btn-ladder-cta">Discuss Custom System &rarr;</a>
                         </div>
-                        <div>
-                            <ul class="ladder-list">
-                                <li>Continued design sprints</li>
-                                <li>Feature development</li>
-                                <li>Conversion optimization</li>
-                                <li>Priority technical support</li>
-                            </ul>
-                            <a href="/contact/?service=support" class="btn btn-secondary" style="width: 100%; font-size: 13px;">Discuss Support &rarr;</a>
+
+                        <!-- Offer 5: Custom Software / Portal -->
+                        <div class="ladder-card reveal-on-scroll" data-delay="2" id="custom-software">
+                            <div>
+                                <span class="ladder-stage-badge">05 // CUSTOM SOFTWARE</span>
+                                <h3 class="ladder-title">Custom Software / Portal</h3>
+                                <span class="ladder-price">From $4,500</span>
+                                <span class="ladder-price-sub">Custom Quoted Based on Scope</span>
+                                
+                                <div class="ladder-result">
+                                    Bespoke software development for authenticated portals, diagnostic dashboards, and multi-user internal platforms.
+                                </div>
+
+                                <div class="ladder-meta-box">
+                                    <span class="ladder-meta-label">Billing Milestones</span>
+                                    <p class="ladder-meta-text"><strong>30% upfront</strong> &bull; <strong>30% prototype</strong> &bull; <strong>30% feature approval</strong> &bull; <strong>10%</strong> release.</p>
+                                </div>
+
+                                <div class="ladder-scope-box">
+                                    <span class="ladder-scope-title">Capabilities</span>
+                                    <ul class="ladder-scope-list">
+                                        <li>Employee portals &amp; client portals</li>
+                                        <li>Operational dashboards &amp; internal apps</li>
+                                        <li>Custom workflow software &amp; auth systems</li>
+                                        <li>Database-driven web applications</li>
+                                        <li>Specialized business decision tools</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="/custom/?service=custom-software#intake" class="btn-ladder-cta">Discuss Custom Software &rarr;</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Self-Selection Scoping Guide Panel -->
+                <div class="scoping-panel reveal-on-scroll">
+                    <div>
+                        <span class="section-eyebrow">GUIDANCE &amp; SCOPING</span>
+                        <h3 style="font-family: var(--font-serif); font-size: clamp(22px, 2.5vw, 28px); color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 400;">
+                            Which path fits your situation?
+                        </h3>
+                        <p style="font-family: var(--font-sans); font-size: 15px; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+                            You don't need to diagnose your own technical approach. Match your current situation to the recommended starting point:
+                        </p>
+                    </div>
+
+                    <!-- Desktop Decision Table -->
+                    <table class="scoping-table-desktop">
+                        <thead>
+                            <tr>
+                                <th>Current Situation</th>
+                                <th>Recommended Starting Point</th>
+                                <th style="text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>“My site gets traffic but isn’t converting into qualified leads.”</td>
+                                <td><strong>Conversion Audit</strong> — $195 fixed</td>
+                                <td style="text-align: right;"><a href="/custom/?service=audit#intake" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-decoration: none;">Get Audit &rarr;</a></td>
+                            </tr>
+                            <tr>
+                                <td>“I need a clean, professional custom site without plugin bloat.”</td>
+                                <td><strong>Launch Site</strong> — from $1,500</td>
+                                <td style="text-align: right;"><a href="/custom/?service=launch-site#intake" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-decoration: none;">Start Site &rarr;</a></td>
+                            </tr>
+                            <tr>
+                                <td>“I need a commercial website built around leads, bookings, or sales.”</td>
+                                <td><strong>Conversion Site</strong> — from $2,750</td>
+                                <td style="text-align: right;"><a href="/custom/?service=conversion-site#intake" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-decoration: none;">Discuss Build &rarr;</a></td>
+                            </tr>
+                            <tr>
+                                <td>“I need quoting tools, calculators, workflows, or operational systems.”</td>
+                                <td><strong>Custom Business System</strong> — from $4,500</td>
+                                <td style="text-align: right;"><a href="/custom/?service=custom-system#intake" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-decoration: none;">Discuss System &rarr;</a></td>
+                            </tr>
+                            <tr>
+                                <td>“I need a portal, dashboard, internal platform, or custom application.”</td>
+                                <td><strong>Custom Software / Portal</strong> — quoted</td>
+                                <td style="text-align: right;"><a href="/custom/?service=custom-software#intake" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-decoration: none;">Scope Project &rarr;</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Mobile Decision Cards (<768px) -->
+                    <div class="scoping-cards-mobile">
+                        <div class="scoping-mobile-card">
+                            <span class="scoping-mobile-card-sit">“My site gets traffic but isn’t converting.”</span>
+                            <span class="scoping-mobile-card-rec">Conversion Audit — $195</span>
+                            <a href="/custom/?service=audit#intake" class="btn btn-secondary" style="font-size: 12px; padding: 0.5rem 0.8rem; width: fit-content;">Book Audit &rarr;</a>
+                        </div>
+                        <div class="scoping-mobile-card">
+                            <span class="scoping-mobile-card-sit">“I need a clean custom site without plugin bloat.”</span>
+                            <span class="scoping-mobile-card-rec">Launch Site — from $1,500</span>
+                            <a href="/custom/?service=launch-site#intake" class="btn btn-secondary" style="font-size: 12px; padding: 0.5rem 0.8rem; width: fit-content;">Start Site &rarr;</a>
+                        </div>
+                        <div class="scoping-mobile-card">
+                            <span class="scoping-mobile-card-sit">“I need a site built around leads, bookings, or sales.”</span>
+                            <span class="scoping-mobile-card-rec">Conversion Site — from $2,750</span>
+                            <a href="/custom/?service=conversion-site#intake" class="btn btn-secondary" style="font-size: 12px; padding: 0.5rem 0.8rem; width: fit-content;">Discuss Build &rarr;</a>
+                        </div>
+                        <div class="scoping-mobile-card">
+                            <span class="scoping-mobile-card-sit">“I need quoting, calculators, or operational tools.”</span>
+                            <span class="scoping-mobile-card-rec">Custom Business System — from $4,500</span>
+                            <a href="/custom/?service=custom-system#intake" class="btn btn-primary" style="font-size: 12px; padding: 0.5rem 0.8rem; width: fit-content;">Discuss System &rarr;</a>
+                        </div>
+                        <div class="scoping-mobile-card">
+                            <span class="scoping-mobile-card-sit">“I need a portal, dashboard, or custom app.”</span>
+                            <span class="scoping-mobile-card-rec">Custom Software / Portal — quoted</span>
+                            <a href="/custom/?service=custom-software#intake" class="btn btn-secondary" style="font-size: 12px; padding: 0.5rem 0.8rem; width: fit-content;">Scope Project &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quarterly Care Plans -->
+                <div class="care-section reveal-on-scroll" id="care-plans">
+                    <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+                        <span class="section-eyebrow">KEEP IT HEALTHY &amp; IMPROVING</span>
+                        <h3 style="font-family: var(--font-serif); font-size: clamp(24px, 2.8vw, 32px); color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 400;">
+                            Quarterly Care Plans
+                        </h3>
+                        <p style="font-size: 15.5px; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+                            Ongoing care plans AFTER you own your build. Billed quarterly—never an endless monthly website-rental fee.
+                        </p>
+                    </div>
+
+                    <div class="care-grid">
+                        <!-- Essential Care -->
+                        <div class="care-card">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); margin-bottom: 0.5rem; display: block;">KEEP IT HEALTHY</span>
+                                <h4 class="care-title">Essential Care</h4>
+                                <span class="care-price">$375 / Quarter</span>
+                                <span class="care-equiv">Equivalent to ~$125/month, billed quarterly</span>
+                                
+                                <ul class="care-list">
+                                    <li>Standard Vercel hosting for business usage</li>
+                                    <li>Routine health scans &amp; uptime monitoring</li>
+                                    <li>Broken-link, form, &amp; CTA checks</li>
+                                    <li>Mobile, SSL, &amp; domain monitoring</li>
+                                    <li>Performance &amp; security dependency monitoring</li>
+                                    <li>Quarterly functional review &amp; minor fixes</li>
+                                    <li>Backups &amp; priority support</li>
+                                    <li>15% discount on additional Context &amp; Muse services</li>
+                                </ul>
+                            </div>
+                            <a href="/custom/?service=care-essential#intake" class="btn-ladder-cta" style="background: transparent; color: var(--text-primary) !important; border: 1.5px solid var(--text-primary);">Inquire Essential Care &rarr;</a>
+                        </div>
+
+                        <!-- Growth Care -->
+                        <div class="care-card featured">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); margin-bottom: 0.5rem; display: block;">KEEP IMPROVING IT</span>
+                                <h4 class="care-title">Growth Care</h4>
+                                <span class="care-price">$600 / Quarter</span>
+                                <span class="care-equiv">Equivalent to ~$200/month, billed quarterly</span>
+                                
+                                <ul class="care-list">
+                                    <li>Everything in Essential Care included</li>
+                                    <li>Quarterly conversion review &amp; analytics breakdown</li>
+                                    <li>Strategic check-in &amp; priority planning</li>
+                                    <li>Up to 2 hours of small site improvements per quarter</li>
+                                    <li>Small layout, content, or functionality tweaks</li>
+                                    <li>Continued priority support</li>
+                                    <li>15% discount on additional Context &amp; Muse services</li>
+                                </ul>
+                            </div>
+                            <a href="/custom/?service=care-growth#intake" class="btn-ladder-cta" style="background: var(--accent-teal); color: #FAF9F5 !important; border: 1.5px solid var(--accent-teal);">Inquire Growth Care &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -1098,7 +1700,7 @@
              ========================================================================== -->
         <section class="founder-section" id="about" aria-labelledby="founder-heading">
             <div class="container">
-                <div class="founder-grid">
+                <div class="founder-grid reveal-on-scroll">
                     <div>
                         <span class="section-eyebrow">ABOUT THE STUDIO</span>
                         <h2 id="founder-heading" class="section-title">Built by someone who thinks in systems.</h2>
@@ -1151,7 +1753,7 @@
              ========================================================================== -->
         <section class="final-cta-section" id="contact" aria-labelledby="contact-heading">
             <div class="container">
-                <div class="final-cta-grid">
+                <div class="final-cta-grid reveal-on-scroll">
                     <div>
                         <span class="section-eyebrow">START A PROJECT</span>
                         <h2 id="contact-heading" class="section-title">
@@ -1179,10 +1781,11 @@
                             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
                                 <label for="form-service" style="font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); font-weight: 600;">What are you looking to build?</label>
                                 <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="audit">Audit &amp; Diagnostic ($595 fixed)</option>
-                                    <option value="website">Commercial Website (From $2,800)</option>
+                                    <option value="audit">Conversion Audit ($195 fixed)</option>
+                                    <option value="launch-site">Launch Site (From $1,500)</option>
+                                    <option value="conversion-site">Conversion Site (From $2,750)</option>
                                     <option value="custom-system" selected>Custom Business System (From $4,500)</option>
-                                    <option value="support">Ongoing Support (From $1,800/mo)</option>
+                                    <option value="custom-software">Custom Software / Portal (Quoted)</option>
                                     <option value="custom">Custom Scope / General Inquiry</option>
                                 </select>
                             </div>
@@ -1258,10 +1861,11 @@
             const successBox = document.getElementById('hp-intake-success');
 
             const btnLabels = {
-                'audit': 'Book $595 Audit →',
-                'website': 'Start a Website →',
+                'audit': 'Book $195 Audit →',
+                'launch-site': 'Start Launch Site →',
+                'conversion-site': 'Discuss Conversion Site →',
                 'custom-system': 'Discuss Custom System →',
-                'support': 'Discuss Ongoing Support →',
+                'custom-software': 'Scope Custom Software →',
                 'custom': 'Send Project Inquiry →'
             };
 
@@ -1304,6 +1908,29 @@
                     } catch (err) {
                         form.submit();
                     }
+                });
+            }
+
+            // Wolves-inspired lightweight scroll observer
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-revealed');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    rootMargin: '0px 0px -40px 0px',
+                    threshold: 0.1
+                });
+
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+                    observer.observe(el);
+                });
+            } else {
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+                    el.classList.add('is-revealed');
                 });
             }
         })();
