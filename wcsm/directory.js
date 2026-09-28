@@ -2,7 +2,7 @@
  * Contest Atlas — directory.js
  * Curated Global Directory of Verified Literary Contests, Flash Prizes,
  * Nonfiction Awards, Top Journals, and Fellowships.
- * Last Automated Sync: 2026-09-25T02:26:05.542Z
+ * Last Automated Sync: 2026-09-28T10:17:46.462Z
  */
 
 window.CONTEST_DIRECTORY = [
