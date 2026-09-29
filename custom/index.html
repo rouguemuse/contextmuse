@@ -627,12 +627,13 @@
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
                                 <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="audit">Conversion Audit ($195 flat rate)</option>
-                                    <option value="launch-site">Launch Site (From $1,500)</option>
-                                    <option value="conversion-site">Conversion Site (From $2,750)</option>
-                                    <option value="custom-system" selected>Custom Business System (From $4,500)</option>
-                                    <option value="custom-software">Custom Software / Portal (Quoted)</option>
-                                    <option value="custom">Custom Scope / Not Sure Yet</option>
+                                    <option value="diagnostic">Business System Diagnostic ($395 fixed)</option>
+                                    <option value="quote-lead" selected>Quote + Lead System (From $2,500)</option>
+                                    <option value="custom-system">Custom Operations System (From $3,500)</option>
+                                    <option value="care-essential">Essential Care Plan ($375 / Qtr)</option>
+                                    <option value="care-growth">Growth Care Plan ($600 / Qtr)</option>
+                                    <option value="institutional-pilot">Institutional Pilot (Maps With Teeth)</option>
+                                    <option value="custom">Other / General Project Inquiry</option>
                                 </select>
                             </div>
 
@@ -759,23 +760,23 @@
             const successBox = document.getElementById('intake-success');
             
             const serviceMap = {
-                'audit': { value: 'audit', label: 'Conversion Audit ($195 flat rate)', btn: 'Request $195 Audit →' },
-                'conversion-audit': { value: 'audit', label: 'Conversion Audit ($195 flat rate)', btn: 'Request $195 Audit →' },
-                'launch-site': { value: 'launch-site', label: 'Launch Site (From $1,500)', btn: 'Discuss Launch Site →' },
-                'launch': { value: 'launch-site', label: 'Launch Site (From $1,500)', btn: 'Discuss Launch Site →' },
-                'conversion-site': { value: 'conversion-site', label: 'Conversion Site (From $2,750)', btn: 'Discuss Conversion Site →' },
-                'custom-system': { value: 'custom-system', label: 'Custom Business System (From $4,500)', btn: 'Discuss Custom System →' },
-                'custom-software': { value: 'custom-software', label: 'Custom Software / Portal (Quoted)', btn: 'Discuss Software / Portal →' },
-                'custom': { value: 'custom', label: 'Custom Scope / Not Sure Yet', btn: 'Send Project Details →' },
-                'general': { value: 'custom', label: 'Custom Scope / Not Sure Yet', btn: 'Send Project Details →' }
+                'diagnostic': { value: 'diagnostic', label: 'Business System Diagnostic ($395 fixed)', btn: 'Book $395 Diagnostic →' },
+                'audit': { value: 'diagnostic', label: 'Business System Diagnostic ($395 fixed)', btn: 'Book $395 Diagnostic →' },
+                'quote-lead': { value: 'quote-lead', label: 'Quote + Lead System (From $2,500)', btn: 'Discuss Quote & Lead System →' },
+                'custom-system': { value: 'custom-system', label: 'Custom Operations System (From $3,500)', btn: 'Discuss Custom System →' },
+                'care-essential': { value: 'care-essential', label: 'Essential Care Plan ($375 / Qtr)', btn: 'Inquire Essential Care →' },
+                'care-growth': { value: 'care-growth', label: 'Growth Care Plan ($600 / Qtr)', btn: 'Inquire Growth Care →' },
+                'institutional-pilot': { value: 'institutional-pilot', label: 'Institutional Pilot (Maps With Teeth)', btn: 'Discuss Institutional Pilot →' },
+                'custom': { value: 'custom', label: 'Other / General Project Inquiry', btn: 'Send Project Details →' }
             };
 
             const btnLabels = {
-                'audit': 'Request $195 Audit →',
-                'launch-site': 'Discuss Launch Site →',
-                'conversion-site': 'Discuss Conversion Site →',
+                'diagnostic': 'Book $395 Diagnostic →',
+                'quote-lead': 'Discuss Quote & Lead System →',
                 'custom-system': 'Discuss Custom System →',
-                'custom-software': 'Discuss Software / Portal →',
+                'care-essential': 'Inquire Essential Care →',
+                'care-growth': 'Inquire Growth Care →',
+                'institutional-pilot': 'Discuss Institutional Pilot →',
                 'custom': 'Send Project Details →'
             };
 

@@ -207,13 +207,13 @@
                             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
                                 <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="audit">Conversion Audit ($195 flat rate)</option>
-                                    <option value="funnel-sprint">Funnel Sprint (From $750)</option>
-                                    <option value="launch-site">Launch Site (From $1,500)</option>
-                                    <option value="conversion-site">Conversion Site (From $2,750)</option>
-                                    <option value="custom-system" selected>Custom Business System (From $4,500)</option>
-                                    <option value="custom-software">Custom Software / Portal (Quoted)</option>
-                                    <option value="custom">Custom Scope / Not Sure Yet</option>
+                                    <option value="diagnostic">Business System Diagnostic ($395 fixed)</option>
+                                    <option value="quote-lead" selected>Quote + Lead System (From $2,500)</option>
+                                    <option value="custom-system">Custom Operations System (From $3,500)</option>
+                                    <option value="care-essential">Essential Care Plan ($375 / Qtr)</option>
+                                    <option value="care-growth">Growth Care Plan ($600 / Qtr)</option>
+                                    <option value="institutional-pilot">Institutional Pilot (Maps With Teeth)</option>
+                                    <option value="custom">Other / General Project Inquiry</option>
                                 </select>
                             </div>
 
@@ -304,12 +304,12 @@
             const successBox = document.getElementById('contact-intake-success');
 
             const btnLabels = {
-                'audit': 'Book $195 Audit →',
-                'funnel-sprint': 'Start Funnel Sprint →',
-                'launch-site': 'Start Launch Site →',
-                'conversion-site': 'Start Conversion Site →',
+                'diagnostic': 'Book $395 Diagnostic →',
+                'quote-lead': 'Discuss Quote & Lead System →',
                 'custom-system': 'Discuss Custom System →',
-                'custom-software': 'Scope Custom Software →',
+                'care-essential': 'Inquire Essential Care →',
+                'care-growth': 'Inquire Growth Care →',
+                'institutional-pilot': 'Discuss Institutional Pilot →',
                 'custom': 'Send Project Details →'
             };
 
