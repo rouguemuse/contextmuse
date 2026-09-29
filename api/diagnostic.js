@@ -55,7 +55,7 @@ export default async function handler(req, res) {
     });
   }
 
-  // 4. Deterministic Analysis
+  // 4. Deterministic Analysis & Site Context Extraction
   let analysis;
   try {
     analysis = analyzePageEvidence(crawlResult.html, crawlResult.finalUrl, {
@@ -73,7 +73,7 @@ export default async function handler(req, res) {
   // 5. Synthesis (OpenAI with automatic deterministic fallback)
   let diagnostic;
   try {
-    diagnostic = await synthesizeWithOpenAI(analysis.evidenceList, analysis.meta, {
+    diagnostic = await synthesizeWithOpenAI(analysis.evidenceList, analysis.siteContext, analysis.meta, {
       businessType,
       goal
     });
@@ -82,14 +82,19 @@ export default async function handler(req, res) {
     diagnostic = {
       source: 'deterministic_emergency',
       quick_read_summary: `Diagnostic findings for ${crawlResult.finalUrl}`,
+      industry_context_note: null,
       most_important: analysis.evidenceList[0] || {
         title: 'Review complete',
-        observation: 'Analysis completed successfully.',
-        why_it_matters: 'Reviewing systems clarity is essential for conversion.',
-        what_could_improve: 'Align intake mechanisms to match high-intent customer requests.'
+        observed_fact: 'Analysis completed successfully.',
+        evidence: ['Page structure inspected.'],
+        inference: 'Reviewing systems clarity is essential for conversion.',
+        why_it_matters: 'Every friction point in customer intake reduces quote velocity.',
+        recommendation: 'Align intake mechanisms to match high-intent customer requests.',
+        confidence: 'HIGH'
       },
-      quick_wins: [],
       system_opportunities: [],
+      quick_wins: [],
+      worth_verifying: [],
       technical_notes: [],
       proof_key: 'quote_lead'
     };
@@ -103,9 +108,16 @@ export default async function handler(req, res) {
     targetUrl: crawlResult.finalUrl,
     scannedAt: new Date().toISOString(),
     summary: diagnostic.quick_read_summary,
+    industryContextNote: diagnostic.industry_context_note || null,
+    siteContext: {
+      companyName: analysis.siteContext.companyName,
+      effectiveIndustry: analysis.siteContext.effectiveIndustry,
+      audienceType: analysis.siteContext.audienceType
+    },
     mostImportant: diagnostic.most_important,
-    quickWins: diagnostic.quick_wins || [],
     systemOpportunities: diagnostic.system_opportunities || [],
+    quickWins: diagnostic.quick_wins || [],
+    worthVerifying: diagnostic.worth_verifying || [],
     technicalNotes: diagnostic.technical_notes || [],
     proofKey: diagnostic.proof_key || 'quote_lead',
     source: diagnostic.source,
