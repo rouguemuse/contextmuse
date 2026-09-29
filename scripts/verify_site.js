@@ -137,6 +137,7 @@ if (fs.existsSync(sitemapPath)) {
         'https://www.contextmuse.com/partners/',
         'https://www.contextmuse.com/services/',
         'https://www.contextmuse.com/services/quote-lead-systems/',
+        'https://www.contextmuse.com/website-system-check/',
         'https://www.contextmuse.com/case-studies/edr-party-rentals/',
         'https://www.contextmuse.com/cartography/',
         'https://www.contextmuse.com/contact/'
@@ -203,6 +204,7 @@ const filesToVerify = [
     { name: 'signal_restaurant_intelligence/index.html', relPath: 'signal_restaurant_intelligence/index.html', canonical: 'https://www.contextmuse.com/signal_restaurant_intelligence/' },
     { name: 'services/index.html', relPath: 'services/index.html', canonical: 'https://www.contextmuse.com/services/' },
     { name: 'services/quote-lead-systems/index.html', relPath: 'services/quote-lead-systems/index.html', canonical: 'https://www.contextmuse.com/services/quote-lead-systems/' },
+    { name: 'website-system-check/index.html', relPath: 'website-system-check/index.html', canonical: 'https://www.contextmuse.com/website-system-check/' },
     { name: 'custom/index.html', relPath: 'custom/index.html', canonical: 'https://www.contextmuse.com/custom/' },
     { name: 'quick-launch/index.html', relPath: 'quick-launch/index.html', canonical: 'https://www.contextmuse.com/quick-launch/' },
     { name: 'partners/index.html', relPath: 'partners/index.html', canonical: 'https://www.contextmuse.com/partners/' },
