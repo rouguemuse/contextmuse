@@ -1051,7 +1051,7 @@
             // Track submission
             let domainOnly = '';
             try { domainOnly = new URL(rawUrl).hostname; } catch(_) { domainOnly = 'invalid'; }
-            trackEvent('diagnostic_url_submitted', { target_domain: domainOnly });
+            trackEvent('diagnostic_submit', { target_domain: domainOnly });
 
             // UI State: Running
             submitBtn.disabled = true;
@@ -1075,12 +1075,12 @@
                 const data = await response.json();
 
                 if (!response.ok || !data.ok) {
-                    trackEvent('diagnostic_crawl_failed', { error_type: data.error || 'fetch_error' });
+                    trackEvent('diagnostic_failure', { error_type: data.error || 'fetch_error' });
                     throw new Error(data.error || 'Could not analyze website. Please confirm the URL is accessible.');
                 }
 
-                trackEvent('diagnostic_crawl_succeeded', { findings_count: data.evidenceCount || 0 });
-                trackEvent('diagnostic_results_viewed', { diagnostic_id: data.diagnosticId });
+                trackEvent('diagnostic_success', { findings_count: data.evidenceCount || 0 });
+                trackEvent('diagnostic_results_view', { diagnostic_id: data.diagnosticId });
 
                 // Render Results
                 renderDiagnosticResults(data);
@@ -1093,6 +1093,20 @@
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<span>Run Free System Check</span> <span aria-hidden="true">→</span>';
+            }
+        });
+
+        // Auto-run if query param is passed from homepage or external link
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const passedUrl = urlParams.get('url');
+            const passedBiz = urlParams.get('businessType') || urlParams.get('business_type') || urlParams.get('industry');
+            const passedGoal = urlParams.get('goal');
+            if (passedUrl) {
+                urlInput.value = passedUrl;
+                if (passedBiz) businessTypeInput.value = passedBiz;
+                if (passedGoal) improvementGoalInput.value = passedGoal;
+                form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
             }
         });
 

@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRoot = path.join(__dirname, '..');
+
+const indexHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -1185,4 +1193,7 @@
     })();
     </script>
 </body>
-</html>
+</html>`;
+
+fs.writeFileSync(path.join(projectRoot, 'index.html'), indexHtml, 'utf8');
+console.log('Successfully rebuilt index.html with new inbound funnel, verified INNcontrol operational screenshot, and canonical offers.');
