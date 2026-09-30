@@ -541,13 +541,13 @@ filesToVerify.forEach(fileSpec => {
         if (!gensortPass) overallSuccess = false;
     }
 
-    // Systems page: Ensure gensort-workspace.png is no longer referenced, and gensort-library.webp is referenced
+    // Systems page: Ensure $2,500 baseline is present and operational capabilities are detailed
     if (fileSpec.relPath === 'systems/index.html') {
         let systemsPass = true;
-        if (content.includes('$1,500')) {
-            log('    [PASS] Systems page lists projects from $1,500 baseline.');
+        if (content.includes('$2,500')) {
+            log('    [PASS] Systems page lists projects from $2,500 baseline.');
         } else {
-            log('    [FAIL] Systems page does not reference $1,500 baseline.');
+            log('    [FAIL] Systems page does not reference $2,500 baseline.');
             systemsPass = false;
         }
 

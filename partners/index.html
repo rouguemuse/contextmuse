@@ -269,18 +269,18 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
                         <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
                         <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                        <a href="/systems/" class="nav-dropdown-link">Featured Systems</a>
                     </div>
                 </details>
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
                         <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
-                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
-                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
                     </div>
@@ -290,8 +290,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
-                    </div>
+                        </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
@@ -439,10 +438,10 @@
                             <span class="p-card__tagline">CASE 02 // FIELD SERVICE ESTIMATION APP</span>
                             <h3 class="p-card__title">INNcontrol Coils</h3>
                             <p class="p-card__desc">
-                                Built an on-site responsive 2D visual floorplan mapper allowing field technicians to locate equipment, tag damage severity, attach diagnostic photos, and generate instant standardized repair ledgers.
+                                Engineered a commercial service platform allowing field technicians to record unit diagnostics, tag damage severity, and generate standardized repair ledgers on site.
                             </p>
                             <div class="p-card__pillars" style="margin-bottom: 1.5rem;">
-                                <span class="p-pillar-tag">Floorplan UI</span>
+                                <span class="p-pillar-tag">Service Platform</span>
                                 <span class="p-pillar-tag">Field Estimation</span>
                                 <span class="p-pillar-tag">Visual Audit Ledger</span>
                             </div>
@@ -457,7 +456,7 @@
                                 <span class="p-browser-dot"></span>
                                 <span class="p-browser-url">inncontrolcoils.com</span>
                             </div>
-                            <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils field scoping application">
+                            <img src="/assets/images/inncontrol-commercial-platform.webp" alt="INNcontrol Coils commercial PTAC web platform">
                         </div>
                     </article>
 
@@ -544,7 +543,7 @@
                             Landing page sitting in the queue? Client needs custom quoting logic nobody has time to code? Designer finished the mockups but developers are tapped out?
                         </blockquote>
                         <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                            Send the brief or project requirements. I’ll review the scope and reply within 24 hours with partner rates and availability.
+                            Send the brief or project requirements. I personally review every inquiry and will respond after reviewing the business and project context.
                         </p>
                         <div style="font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary);">
                             Confidential partner email: <a href="mailto:jayme@contextmuse.com" style="color: var(--accent-teal); font-weight: 700; text-decoration: none;">jayme@contextmuse.com</a>
@@ -553,9 +552,10 @@
 
                     <!-- Column 2: Form -->
                     <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
-                        <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <form id="partners-intake-form" action="/api/lead" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <input type="text" name="_gotcha" style="display:none">
-                            <input type="hidden" name="form_source" value="agency_partnership_inquiry">
+                            <input type="hidden" name="form_id" value="partners-intake">
+                            <input type="hidden" name="form_source" value="/partners/">
                             
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-type" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Partnership Type</label>
@@ -583,7 +583,7 @@
                             </div>
 
                             <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
-                                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; cursor: pointer;">
+                                <button type="submit" id="partners-submit-btn" class="btn-primary" style="width: 100%; justify-content: center; cursor: pointer;">
                                     Check Availability &rarr;
                                 </button>
                                 <div style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 0.25rem; flex-wrap: wrap;">
@@ -594,6 +594,12 @@
                                 </div>
                             </div>
                         </form>
+                        <div id="partners-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
+                            <strong>Thank you. Your agency inquiry has been securely recorded.</strong><br>
+                            <span style="font-family: var(--font-mono); font-size: 12px; margin-top: 0.35rem; display: inline-block;">Durable Reference ID: <strong id="partners-sub-id"></strong></span><br>
+                            <span style="display: inline-block; margin-top: 0.25rem;">Jayme personally reviews every inquiry and will respond after reviewing the business and project context.</span>
+                        </div>
+                        <div id="partners-error" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                     </div>
                 </div>
             </div>
@@ -632,5 +638,74 @@
     </footer>
     <script src="/assets/js/nav.js" defer></script>
     <script src="/assets/js/whatsapp.js" defer></script>
+    <script>
+        (function() {
+            var form = document.getElementById('partners-intake-form');
+            var submitBtn = document.getElementById('partners-submit-btn');
+            var successBox = document.getElementById('partners-success');
+            var errorBox = document.getElementById('partners-error');
+
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    if (errorBox) errorBox.style.display = 'none';
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Securing Submission...';
+                    }
+
+                    try {
+                        var formData = new FormData(form);
+                        var payload = Object.fromEntries(formData.entries());
+                        payload.form_id = 'partners-intake';
+                        payload.form_source = window.location.pathname;
+
+                        var response = await fetch('/api/lead', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(payload)
+                        });
+
+                        var data = await response.json().catch(function() { return {}; });
+
+                        if (response.ok && (data.success || data.ok) && data.submission_id) {
+                            form.reset();
+                            form.style.display = 'none';
+                            var subIdEl = document.getElementById('partners-sub-id');
+                            if (subIdEl) subIdEl.textContent = data.submission_id;
+                            if (successBox) successBox.style.display = 'block';
+                        } else {
+                            var msg = data.error || "We couldn't safely save your inquiry yet. Please try again.";
+                            if (errorBox) {
+                                errorBox.textContent = msg;
+                                errorBox.style.display = 'block';
+                            } else {
+                                alert(msg);
+                            }
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = 'Check Availability →';
+                            }
+                        }
+                    } catch (err) {
+                        var msg = 'Network communication failure. Your information is preserved—please retry or contact jayme@contextmuse.com.';
+                        if (errorBox) {
+                            errorBox.textContent = msg;
+                            errorBox.style.display = 'block';
+                        } else {
+                            alert(msg);
+                        }
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Check Availability →';
+                        }
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

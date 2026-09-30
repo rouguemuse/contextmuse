@@ -567,6 +567,338 @@
             border: 2px solid var(--forest-deep);
             background: #FFFFFF;
         }
+    
+        /* ── HERO CTA BUTTONS ── */
+        .btn-hero-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--text-primary);
+            color: #FAF9F5 !important;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.95rem 1.75rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid var(--text-primary);
+        }
+        .btn-hero-primary:hover {
+            background: var(--accent-teal);
+            border-color: var(--accent-teal);
+            transform: translateY(-1px);
+        }
+        .btn-hero-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: var(--text-primary) !important;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.95rem 1.6rem;
+            border-radius: 4px;
+            text-decoration: none;
+            border: 1px solid var(--border-dark);
+            transition: all 0.2s ease;
+        }
+        .btn-hero-secondary:hover {
+            background: rgba(16, 33, 29, 0.05);
+            transform: translateY(-1px);
+        }
+
+        /* ── PROBLEM RECOGNITION SECTION ── */
+        .problem-section {
+            padding: var(--space-section) 0;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+            margin-top: 2.75rem;
+        }
+        @media (max-width: 820px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .problem-card {
+            background: #FAF9F5;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .problem-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+        .problem-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+        .problem-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin: 0 0 0.65rem 0;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+        .problem-desc {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .problem-banner {
+            margin-top: 2.5rem;
+            background: radial-gradient(circle at 90% 20%, #FAF8F2 0%, #F4EFE2 100%);
+            border: 1px solid #DFD9C7;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            color: var(--text-primary);
+        }
+        .btn-problem-banner {
+            background: var(--text-primary);
+            color: #FAF9F5 !important;
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.75rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .btn-problem-banner:hover {
+            background: var(--accent-teal);
+            transform: translateY(-1px);
+        }
+
+        /* ── WHAT I BUILD SECTION ── */
+        .what-section {
+            padding: var(--space-section) 0;
+            background: var(--bg-paper);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .what-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+            margin-top: 2.75rem;
+        }
+        @media (max-width: 820px) {
+            .what-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .what-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.25rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .what-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+        .what-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .what-title {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            color: var(--text-primary);
+            margin: 0 0 0.65rem 0;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+        .what-desc {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0 0 1.25rem 0;
+        }
+        .what-example {
+            border-top: 1px solid var(--border-light);
+            padding-top: 0.9rem;
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .what-example-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .what-example-link {
+            color: var(--accent-teal);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .what-example-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ── HOW THIS WORKS SECTION ── */
+        .how-section {
+            padding: var(--space-section) 0;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 960px) {
+            .how-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 580px) {
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .how-card {
+            background: #FAF9F5;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .how-step-num {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 700;
+            color: rgba(15, 118, 110, 0.25);
+            line-height: 1;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .how-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin: 0 0 0.6rem 0;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+        .how-card-desc {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ── FINAL DECISIVE CTA SECTION ── */
+        .final-cta-section {
+            padding: var(--space-section) 0;
+            background: radial-gradient(circle at 50% 30%, #FAF8F2 0%, #F5F1E5 60%, #EFE9D8 100%);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .final-cta-box {
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+            background: #FFFFFF;
+            border: 2px solid var(--accent-teal);
+            border-radius: 12px;
+            padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+            box-shadow: 0 16px 40px rgba(16, 33, 29, 0.08);
+        }
+        .final-cta-title {
+            font-family: var(--font-serif);
+            font-size: clamp(28px, 3.8vw, 44px);
+            color: var(--text-primary);
+            margin: 0.5rem 0 1.25rem 0;
+            font-weight: 400;
+            line-height: 1.15;
+        }
+        .final-cta-desc {
+            font-family: var(--font-sans);
+            font-size: clamp(15px, 1.2vw, 17px);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            max-width: 660px;
+            margin: 0 auto 2.25rem auto;
+        }
+        .final-cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.25rem;
+        }
+        .final-cta-trust-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+            flex-wrap: wrap;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            color: var(--text-primary);
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .trust-icon {
+            color: var(--accent-teal);
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -613,7 +945,6 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
                     </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
@@ -642,9 +973,9 @@
                         <p style="font-family: var(--font-sans); font-size: 14.5px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
                             Strategy, interface design, bespoke front-end engineering, territory routing logic, and workflow automation—delivered as one coherent system without bloated subscription stacks.
                         </p>
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                            <a href="#selected-work" class="btn btn-secondary" style="font-size: 13px;">View Client Builds ↓</a>
-                            <a href="/services/" class="btn-secondary" style="font-size: 13px; padding: 0.8rem 1.4rem; text-decoration: none; border-radius: 4px; display: inline-block;">Explore Service Tiers &rarr;</a>
+                        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
+                            <a href="/contact/" class="btn-hero-primary" id="hero-primary-cta">Tell Me What’s Broken &rarr;</a>
+                            <a href="#selected-work" class="btn-hero-secondary">See the Work ↓</a>
                         </div>
                     </div>
 
@@ -689,7 +1020,7 @@
                     <span class="strip-dot">&bull;</span>
                     <span>Territory &amp; Radius Routing</span>
                     <span class="strip-dot">&bull;</span>
-                    <span>Floorplan Equipment Mappers</span>
+                    <span>Commercial Service Platforms</span>
                     <span class="strip-dot">&bull;</span>
                     <span>Parametric Cost Ledgers</span>
                     <span class="strip-dot">&bull;</span>
@@ -699,8 +1030,145 @@
         </section>
 
         <!-- ==========================================================================
-             SECTION 3: SELECTED WORK (ORDERED BY OPERATIONAL PROOF)
+             SECTION 3: PROBLEM RECOGNITION (WHERE FRICTION STARTS)
              ========================================================================== -->
+        <section class="problem-section" id="problems" aria-labelledby="problems-heading">
+            <div class="container">
+                <div class="section-header reveal-on-scroll" style="max-width: 780px;">
+                    <span class="section-eyebrow">WHERE OPERATIONAL FRICTION STARTS</span>
+                    <h2 id="problems-heading" class="section-title">Do any of these sound uncomfortably familiar?</h2>
+                    <p class="section-desc">
+                        Most businesses don’t need another generic template or a flashy redesign. They need to fix where their operations leak time, margin, and qualified customers.
+                    </p>
+                </div>
+
+                <div class="problem-grid">
+                    <!-- Problem 1 -->
+                    <div class="problem-card reveal-on-scroll" data-delay="1">
+                        <span class="problem-badge">01 // CONVERSION LEAK</span>
+                        <h3 class="problem-title">Your website exists, but doesn’t produce qualified leads</h3>
+                        <p class="problem-desc">
+                            Prospects arrive, get confused by vague scope or missing pricing, and bounce. Generic forms feel like black holes. Your staff burns hours answering repetitive preliminary questions by phone.
+                        </p>
+                    </div>
+
+                    <!-- Problem 2 -->
+                    <div class="problem-card reveal-on-scroll" data-delay="2">
+                        <span class="problem-badge">02 // OPERATIONAL CHAOS</span>
+                        <h3 class="problem-title">Quotes, sizing, and territory live in fragile spreadsheets</h3>
+                        <p class="problem-desc">
+                            Estimates depend on manual math and staff memory. Quotes take days to turn around, pricing calculations have errors, and jobs outside your profitable delivery radius get accepted by mistake.
+                        </p>
+                    </div>
+
+                    <!-- Problem 3 -->
+                    <div class="problem-card reveal-on-scroll" data-delay="3">
+                        <span class="problem-badge">03 // TOOL FRAGMENTATION</span>
+                        <h3 class="problem-title">Paying for five disconnected SaaS tools that don’t fit</h3>
+                        <p class="problem-desc">
+                            You pay recurring monthly fees for off-the-shelf software, yet your team still manually copy-pastes data between them because none match the way your actual service or workflow operates.
+                        </p>
+                    </div>
+
+                    <!-- Problem 4 -->
+                    <div class="problem-card reveal-on-scroll" data-delay="4">
+                        <span class="problem-badge">04 // UNKNOWN BOTTLENECK</span>
+                        <h3 class="problem-title">Feeling the operational drag, but not sure what to fix</h3>
+                        <p class="problem-desc">
+                            You know good revenue is slipping through the cracks and day-to-day operations feel heavier than they should, but it’s unclear whether the breakdown is messaging, intake logic, or an internal tool.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="problem-banner reveal-on-scroll">
+                    <div>
+                        <strong>Recognize your bottleneck?</strong> We don’t sell generic packages. We diagnose where the flow breaks and engineer the custom system that replaces it.
+                    </div>
+                    <a href="/contact/" class="btn-problem-banner">Tell Me What’s Broken &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 4: WHAT I BUILD (4 CANONICAL CATEGORIES)
+             ========================================================================== -->
+        <section class="what-section" id="capabilities" aria-labelledby="what-heading">
+            <div class="container">
+                <div class="section-header reveal-on-scroll" style="max-width: 800px;">
+                    <span class="section-eyebrow">SYSTEM TAXONOMY</span>
+                    <h2 id="what-heading" class="section-title">Four ways we solve the friction.</h2>
+                    <p class="section-desc">
+                        From low-risk diagnostics to complete custom web platforms and internal workflow systems.
+                    </p>
+                </div>
+
+                <div class="what-grid">
+                    <!-- Category 1 -->
+                    <div class="what-card reveal-on-scroll" data-delay="1">
+                        <div>
+                            <span class="what-badge">01 // COMMERCIAL PLATFORMS</span>
+                            <h3 class="what-title">Websites That Do a Job</h3>
+                            <p class="what-desc">
+                                High-conversion commercial web platforms engineered to clarify complex B2B offerings, filter out tire-kickers, and turn qualified visitors into committed inquiries.
+                            </p>
+                        </div>
+                        <div class="what-example">
+                            <span class="what-example-label">Verified Proof:</span>
+                            <a href="/systems/client-builds/#inncontrol" class="what-example-link">INNcontrol Coils nationwide hospitality platform &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Category 2 -->
+                    <div class="what-card reveal-on-scroll" data-delay="2">
+                        <div>
+                            <span class="what-badge">02 // INTAKE &amp; ROUTING</span>
+                            <h3 class="what-title">Quote + Lead Systems</h3>
+                            <p class="what-desc">
+                                Interactive sizing calculators, territory and radius validation, and structured CRM dispatch that turn messy customer inquiries into pre-qualified sales orders.
+                            </p>
+                        </div>
+                        <div class="what-example">
+                            <span class="what-example-label">Verified Proof:</span>
+                            <a href="/work/lone-wolf-dumpsters/" class="what-example-link">Lone Wolf 48-market quoting engine &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Category 3 -->
+                    <div class="what-card reveal-on-scroll" data-delay="3">
+                        <div>
+                            <span class="what-badge">03 // OPERATIONAL MACHINERY</span>
+                            <h3 class="what-title">Custom Operations Systems</h3>
+                            <p class="what-desc">
+                                Bespoke internal portals, operational estimation engines, calendar lockouts, and commercial service platforms that replace fragile spreadsheets and manual triage.
+                            </p>
+                        </div>
+                        <div class="what-example">
+                            <span class="what-example-label">Verified Proof:</span>
+                            <a href="/signal/" class="what-example-link">Restaurant POS intelligence &amp; Signal &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Category 4 -->
+                    <div class="what-card reveal-on-scroll" data-delay="4">
+                        <div>
+                            <span class="what-badge">04 // LOW-RISK ENTRY</span>
+                            <h3 class="what-title">Business System Diagnostic</h3>
+                            <p class="what-desc">
+                                A fixed-rate $395 architectural review evaluating your customer journey, pricing visibility, and operational bottlenecks. 100% credited toward a qualifying build.
+                            </p>
+                        </div>
+                        <div class="what-example">
+                            <span class="what-example-label">Entry Point:</span>
+                            <a href="/contact/?service=diagnostic" class="what-example-link">Start the $395 Diagnostic review &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 5: SELECTED WORK (ORDERED BY OPERATIONAL PROOF)
+             ========================================================================== -->============================================ -->
         <section class="selected-work-section" id="selected-work" aria-labelledby="selected-work-heading">
             <div class="container">
                 <div class="section-header reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
@@ -724,11 +1192,11 @@
                             <div class="proof-trio-box">
                                 <div class="proof-row">
                                     <span class="proof-lbl">Problem:</span>
-                                    <span class="proof-val">Prospects across 48 North Texas markets couldn't verify coverage or container sizing, generating 40+ manual dispatch callbacks per week.</span>
+                                    <span class="proof-val">Prospects across North Texas markets couldn't verify coverage or container sizing, requiring manual phone triage and dispatch territory verification.</span>
                                 </div>
                                 <div class="proof-row">
                                     <span class="proof-lbl">System:</span>
-                                    <span class="proof-val">Interactive volume calculator, real-time county territory qualification, and structured CRM lead routing with zero plugin bloat.</span>
+                                    <span class="proof-val">Interactive volume calculator, real-time county territory qualification, and structured CRM lead routing with custom lightweight code.</span>
                                 </div>
                                 <div class="proof-row">
                                     <span class="proof-lbl">Business Effect:</span>
@@ -745,20 +1213,20 @@
                     <!-- Proof 2: INNcontrol Coils (Authentic Operational Tool) -->
                     <div class="work-item reverse reveal-on-scroll" id="proof-inncontrol">
                         <div class="work-info">
-                            <span class="work-badge">02 // Custom Operations System &bull; Field Scoping &amp; Estimator</span>
+                            <span class="work-badge">02 // Commercial Web Platform &bull; B2B Hospitality Intake</span>
                             <h3 class="work-title">INNcontrol Coils</h3>
                             <div class="proof-trio-box">
                                 <div class="proof-row">
                                     <span class="proof-lbl">Problem:</span>
-                                    <span class="proof-val">Technicians surveyed 500-room hotel HVAC systems using paper clipboards and loose phone photos, taking 5 days to assemble complex restoration bids.</span>
+                                    <span class="proof-val">Nationwide commercial PTAC coil refurbishing service for volume hotel properties required an authoritative web presence and structured intake flow for hospitality property managers.</span>
                                 </div>
                                 <div class="proof-row">
                                     <span class="proof-lbl">System:</span>
-                                    <span class="proof-val">Tablet-first 2D floorplan equipment mapper, unit-level condition severity tagging, photo association, and parametric labor calculation engine.</span>
+                                    <span class="proof-val">High-conversion commercial web platform, national service scoping architecture, and structured technical inquiry engine.</span>
                                 </div>
                                 <div class="proof-row">
                                     <span class="proof-lbl">Business Effect:</span>
-                                    <span class="proof-val" style="color: var(--accent-teal); font-weight: 600;">Cut bid compilation from 5 days to 20 minutes on site and produced unassailable client verification ledgers for hotel general managers.</span>
+                                    <span class="proof-val" style="color: var(--accent-teal); font-weight: 600;">Positioned INNcontrol as a premier nationwide hotel mechanical partner and streamlined commercial property inquiry qualification.</span>
                                 </div>
                             </div>
                             <div>
@@ -766,17 +1234,47 @@
                             </div>
                         </div>
                         <div class="work-media">
-                            <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol operational floorplan equipment mapper and parametric estimation workbench" width="1440" height="900" loading="lazy">
+                            <img src="/assets/images/inncontrol-commercial-platform.webp" alt="INNcontrol Coils nationwide commercial PTAC coil refurbishing web platform and lead engine" width="1440" height="900" loading="lazy">
                         </div>
                     </div>
 
-                    <!-- Proof 3: Website Audit System -->
+                    
+                    <!-- Proof 3: Confidential Houston Restaurant Client -->
+                    <div class="work-item reveal-on-scroll" id="proof-restaurant">
+                        <div class="work-media">
+                            <img src="/assets/images/signal-priority-view.webp" alt="Confidential Houston Restaurant Toast POS operational intelligence dashboard and diagnostic pipeline" width="1200" height="750" loading="lazy">
+                        </div>
+                        <div class="work-info">
+                            <span class="work-badge">03 // Operational Intelligence &bull; High-Volume Hospitality</span>
+                            <h3 class="work-title">Confidential Houston Restaurant Client</h3>
+                            <div class="proof-trio-box">
+                                <div class="proof-row">
+                                    <span class="proof-lbl">Problem:</span>
+                                    <span class="proof-val">Independent multi-unit restaurant operation with high transaction volume suffered from fragmented sales data, inventory waste, and zero real-time visibility into high-margin menu items.</span>
+                                </div>
+                                <div class="proof-row">
+                                    <span class="proof-lbl">System:</span>
+                                    <span class="proof-val">Custom operational data pipeline analyzing Toast POS export streams and shift-level labor/cost ratios to produce deterministic management intelligence.</span>
+                                </div>
+                                <div class="proof-row">
+                                    <span class="proof-lbl">Business Effect:</span>
+                                    <span class="proof-val" style="color: var(--accent-teal); font-weight: 600;">Exposed high-variance menu items and shift bottlenecks, delivering actionable margin control without recurring enterprise software fees.</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                <a href="/signal/" class="btn btn-secondary" style="font-size: 12.5px;">Explore Signal Intelligence &rarr;</a>
+                                <a href="/restaurant-systems/" class="btn-secondary" style="font-size: 12.5px; padding: 0.6rem 1.1rem; text-decoration: none; display: inline-block;">Restaurant Systems Overview</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proof 4: Website Audit System -->
                     <div class="work-item reveal-on-scroll" id="proof-audit">
                         <div class="work-media">
                             <img src="/assets/images/website-audit-hero.webp" alt="Website Audit System visual diagnostics pipeline and DOM evidence drawer" width="1200" height="750" loading="lazy">
                         </div>
                         <div class="work-info">
-                            <span class="work-badge">03 // Diagnostics &amp; Developer Tooling</span>
+                            <span class="work-badge">04 // Diagnostics &amp; Developer Tooling</span>
                             <h3 class="work-title">Website Audit System</h3>
                             <div class="proof-trio-box">
                                 <div class="proof-row">
@@ -801,7 +1299,7 @@
                     <!-- Proof 4: EDR Party Rentals -->
                     <div class="work-item reverse reveal-on-scroll" id="proof-edr">
                         <div class="work-info">
-                            <span class="work-badge">04 // Inventory-Aware Booking &bull; Logistics System</span>
+                            <span class="work-badge">05 // Inventory-Aware Booking &bull; Logistics System</span>
                             <h3 class="work-title">EDR Party Rentals</h3>
                             <div class="proof-trio-box">
                                 <div class="proof-row">
@@ -830,8 +1328,57 @@
         </section>
 
         <!-- ==========================================================================
-             SECTION 4: COMMERCIAL PRICING LADDER (CANONICAL 3 OFFERS)
+             SECTION 6: HOW THIS WORKS (4-STEP WORKFLOW)
              ========================================================================== -->
+        <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
+            <div class="container">
+                <div class="section-header reveal-on-scroll" style="max-width: 800px;">
+                    <span class="section-eyebrow">ENGINEERING PROCESS</span>
+                    <h2 id="how-heading" class="section-title">How this works. Straightforward engineering.</h2>
+                    <p class="section-desc">
+                        No discovery call marathons, no generic pitch decks, and no surprise hourly invoices. A transparent, milestone-driven progression from diagnosis to launch.
+                    </p>
+                </div>
+
+                <div class="how-grid">
+                    <div class="how-card reveal-on-scroll" data-delay="1">
+                        <span class="how-step-num">01</span>
+                        <h3 class="how-card-title">Tell me what’s broken</h3>
+                        <p class="how-card-desc">
+                            Share your current website URL, describe where customer intake gets stuck, or outline the spreadsheet workflow eating your team’s hours.
+                        </p>
+                    </div>
+
+                    <div class="how-card reveal-on-scroll" data-delay="2">
+                        <span class="how-step-num">02</span>
+                        <h3 class="how-card-title">Identify the root cause</h3>
+                        <p class="how-card-desc">
+                            We inspect your customer flow and operational bottlenecks to determine whether the real issue is messaging ambiguity, missing qualification logic, or an internal tooling gap.
+                        </p>
+                    </div>
+
+                    <div class="how-card reveal-on-scroll" data-delay="3">
+                        <span class="how-step-num">03</span>
+                        <h3 class="how-card-title">Decide what’s worth building</h3>
+                        <p class="how-card-desc">
+                            If the problem needs diagnosis first, we start with the $395 Diagnostic (100% credited). If the build scope is clear, you get a fixed proposal with predictable milestones.
+                        </p>
+                    </div>
+
+                    <div class="how-card reveal-on-scroll" data-delay="4">
+                        <span class="how-step-num">04</span>
+                        <h3 class="how-card-title">Build the useful thing</h3>
+                        <p class="how-card-desc">
+                            We engineer bespoke code built around your exact operations—zero bloated plugins, complete client code and data ownership, and clean post-launch handoff.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 7: COMMERCIAL PRICING LADDER (CANONICAL 3 OFFERS)
+             ========================================================================== -->============= -->
         <section class="ladder-section" id="ways-to-work" aria-labelledby="ladder-heading">
             <div class="container">
                 <div class="section-header reveal-on-scroll" style="text-align: center; max-width: 800px; margin: 0 auto;">
@@ -903,11 +1450,11 @@
                                     <li>Multi-market local SEO &amp; radius qualification</li>
                                     <li>Automated triage &amp; structured CRM dispatch</li>
                                     <li>High-contrast brand aesthetic &amp; conversion copy</li>
-                                    <li>100% bespoke code with zero plugin bloat</li>
+                                    <li>Custom architecture designed for performance and reliability</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="/services/quote-lead-systems/" class="btn-ladder-cta" id="cta-quote-lead">Discuss a Quote &amp; Lead System &rarr;</a>
+                        <a href="/contact/?service=quote-lead" class="btn-ladder-cta" id="cta-quote-lead">Discuss a Quote &amp; Lead System &rarr;</a>
                     </div>
 
                     <!-- Offer 3: Custom Operations System -->
@@ -919,7 +1466,7 @@
                             <span class="ladder-price-sub">Complex Systems Custom Quoted</span>
                             
                             <div class="ladder-result">
-                                Bespoke internal tools, floorplan mappers, estimation engines, and client portals replacing manual spreadsheet workflows.
+                                Bespoke internal tools, operational estimation engines, workflow portals, and commercial service platforms replacing manual spreadsheet workflows.
                             </div>
 
                             <div class="ladder-meta-box">
@@ -930,7 +1477,7 @@
                             <div class="ladder-scope-box">
                                 <span class="ladder-scope-title">Included Scope</span>
                                 <ul class="ladder-scope-list">
-                                    <li>Interactive 2D floorplan &amp; equipment mappers</li>
+                                    <li>Operational estimation engines &amp; service platforms</li>
                                     <li>Parametric estimation &amp; ledger calculators</li>
                                     <li>B2B client portals &amp; administrative dashboards</li>
                                     <li>Custom logic, databases &amp; webhook integrations</li>
@@ -938,7 +1485,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <a href="/custom/?service=custom-system#intake" class="btn-ladder-cta" id="cta-ops-system">Discuss an Operations System &rarr;</a>
+                        <a href="/contact/?service=custom-system" class="btn-ladder-cta" id="cta-ops-system">Discuss an Operations System &rarr;</a>
                     </div>
                 </div>
 
@@ -959,90 +1506,45 @@
         </section>
 
         <!-- ==========================================================================
-             SECTION 5: TWO-PATH FINAL CTA & INTAKE
+             SECTION 8: DECISIVE CLOSING CTA
              ========================================================================== -->
-        <section class="two-path-section" id="contact" aria-labelledby="contact-heading">
+        <section class="final-cta-section" id="contact" aria-labelledby="final-cta-heading">
             <div class="container">
-                <div class="section-header reveal-on-scroll" style="text-align: center; max-width: 760px; margin: 0 auto;">
-                    <span class="section-eyebrow">CLEAR NEXT STEPS</span>
-                    <h2 id="contact-heading" class="section-title">Two ways to begin. Zero sales pressure.</h2>
-                    <p class="section-desc">Choose the path that fits where your business is right now.</p>
-                </div>
+                <div class="final-cta-box reveal-on-scroll">
+                    <span class="section-eyebrow" style="color: var(--accent-teal);">START A PROJECT · DIRECT INTAKE</span>
+                    <h2 id="final-cta-heading" class="final-cta-title">
+                        Ready to fix what’s broken in your business?
+                    </h2>
+                    <p class="final-cta-desc">
+                        Bring your website, quote bottleneck, or messy workflow. Jayme personally reviews every inquiry and will respond after reviewing the business and project context.
+                    </p>
 
-                <div class="two-path-grid reveal-on-scroll">
-                    <!-- Path A: Not Sure What You Need? -->
-                    <div class="path-card">
-                        <div>
-                            <span class="work-badge">PATH 01 // UNCERTAIN WHERE TO START?</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 24px; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
-                                Run the Free Website + System Check
-                            </h3>
-                            <p style="font-family: var(--font-sans); font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
-                                Get an instant, evidence-based diagnostic evaluating your messaging clarity, CTA visibility, customer friction points, and intake opportunities in seconds.
-                            </p>
-                            <ul style="font-family: var(--font-sans); font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; padding-left: 1.25rem; margin-bottom: 2rem;">
-                                <li>No email required to view findings</li>
-                                <li>Reveals visible drop-offs in your quote flow</li>
-                                <li>Directly grounded in captured page evidence</li>
-                            </ul>
-                        </div>
-                        <a href="/website-system-check/" class="btn btn-secondary" style="width: 100%; text-align: center; box-sizing: border-box;">
-                            Run Free Website Check &rarr;
+                    <div class="final-cta-actions">
+                        <a href="/contact/" class="btn-hero-primary" style="font-size: 14px; padding: 1.1rem 2rem;" id="final-primary-cta">
+                            Tell Me What’s Broken (Start Intake) &rarr;
+                        </a>
+                        <a href="/work/" class="btn-hero-secondary" style="font-size: 14px; padding: 1.1rem 2rem;">
+                            Explore All Case Studies &rarr;
                         </a>
                     </div>
 
-                    <!-- Path B: Ready to Build? -->
-                    <div class="path-card active-build">
-                        <div>
-                            <span class="work-badge" style="color: var(--forest-deep);">PATH 02 // READY TO BUILD?</span>
-                            <h3 style="font-family: var(--font-serif); font-size: 24px; color: var(--forest-deep); margin: 0 0 0.75rem 0; font-weight: 500;">
-                                Tell Me What’s Not Working
-                            </h3>
-                            <p style="font-family: var(--font-sans); font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
-                                Bring your website, messy spreadsheet workflow, or quote bottleneck. Jayme personally reviews your context without discovery calls or pitch decks.
-                            </p>
-
-                            <form id="hp-inquiry-form" action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 0.95rem;">
-                                <input type="hidden" name="form_source" value="homepage_direct_inquiry">
-                                
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                                    <input type="text" name="name" required placeholder="Your Name *" class="hero-diag-input">
-                                    <input type="email" name="email" required placeholder="Your Email *" class="hero-diag-input">
-                                </div>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                                    <input type="text" name="business" placeholder="Business Name" class="hero-diag-input">
-                                    <input type="url" name="website" placeholder="Website (https://...)" class="hero-diag-input">
-                                </div>
-                                <textarea name="what_is_not_working" required rows="3" placeholder="What is not working in your customer flow or business right now? *" class="hero-diag-input" style="resize: vertical;"></textarea>
-                                <textarea name="what_you_wish_happened" rows="2" placeholder="What do you wish happened instead?" class="hero-diag-input" style="resize: vertical;"></textarea>
-                                
-                                <select name="budget_tier" class="hero-diag-input">
-                                    <option value="">Select an engagement tier</option>
-                                    <option value="$395-diagnostic">Business System Diagnostic ($395 fixed)</option>
-                                    <option value="$2500-quote-lead">Quote + Lead System ($2,500 - $4,500)</option>
-                                    <option value="$3500-custom-system">Custom Operations System ($3,500+)</option>
-                                    <option value="custom">Complex Software / Custom Scope</option>
-                                </select>
-
-                                <button type="submit" id="hp-inquiry-btn" class="hero-diag-btn" style="background: var(--forest-deep); margin-top: 0.25rem;">
-                                    <span>Send Project Inquiry &rarr;</span>
-                                </button>
-                            </form>
-                            <div id="hp-inquiry-success" style="display: none; padding: 1rem; background: #FAF9F3; border: 1px solid var(--accent-teal); border-radius: 6px; margin-top: 1rem; text-align: center; font-size: 13.5px; color: var(--forest-deep);">
-                                <strong>Inquiry Received.</strong> Jayme will review your submission and reply directly with recommended scope within 1 business day.
-                            </div>
+                    <div class="final-cta-trust-grid">
+                        <div class="trust-item">
+                            <span class="trust-icon">✓</span>
+                            <span>Direct review with systems architect Jayme Volstad</span>
                         </div>
-
-                        <!-- What Happens Next Reassurance -->
-                        <div style="border-top: 1px solid var(--border-light); padding-top: 1rem; margin-top: 1.25rem;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">What Happens Next:</span>
-                            <ol style="font-family: var(--font-sans); font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding-left: 1.1rem; margin: 0;">
-                                <li>Jayme reviews your website and operational context.</li>
-                                <li>If the problem is clear, you receive a recommended scope.</li>
-                                <li>If investigation is needed, we start with the $395 Diagnostic (100% credited).</li>
-                                <li>No sales call required unless you want one.</li>
-                            </ol>
+                        <div class="trust-item">
+                            <span class="trust-icon">✓</span>
+                            <span>Direct fixed-scope proposals with clear milestones</span>
                         </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">✓</span>
+                            <span>Full client ownership of deployment, source code, and data</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; border-top: 1px solid var(--border-light); padding-top: 1.25rem; font-size: 13.5px; color: var(--text-secondary);">
+                        Prefer an instant automated review first? <a href="/website-system-check/" style="color: var(--accent-teal); font-weight: 600; text-decoration: none;">Run the Free Website + System Check &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -1065,7 +1567,7 @@
                     <div class="footer-col-title">Services</div>
                     <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
                     <a href="/website-system-check/" class="footer-link">Website + System Check</a>
-                    <a href="/custom/?service=diagnostic#intake" class="footer-link">Business System Diagnostic</a>
+                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
                     <a href="/systems/" class="footer-link">Custom Operations Systems</a>
                     <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
                 </div>
@@ -1120,6 +1622,12 @@
                 }
             });
         }
+
+        // Track Primary Conversion CTAs
+        const heroPrimary = document.getElementById('hero-primary-cta');
+        if (heroPrimary) heroPrimary.addEventListener('click', () => trackEvent('primary_cta_click', { location: 'hero' }));
+        const finalPrimary = document.getElementById('final-primary-cta');
+        if (finalPrimary) finalPrimary.addEventListener('click', () => trackEvent('primary_cta_click', { location: 'footer_closing' }));
 
         // Track Offer Clicks
         const ctaDiag = document.getElementById('cta-diag-395');

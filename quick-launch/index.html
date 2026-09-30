@@ -14,20 +14,20 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launch Site Websites — From $1,500 | Context &amp; Muse</title>
+    <title>Quote + Lead Systems — From $2,500 | Context &amp; Muse</title>
     <meta name="description" content="Clean, custom-built business websites without unnecessary technical baggage or endless plugin/subscription maintenance. Defined scope. Defined price. Defined launch.">
     <link rel="canonical" href="https://www.contextmuse.com/quick-launch/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.contextmuse.com/quick-launch/">
-    <meta property="og:title" content="Launch Site Websites — From $1,500 | Context &amp; Muse">
+    <meta property="og:title" content="Quote + Lead Systems — From $2,500 | Context &amp; Muse">
     <meta property="og:description" content="Clean, custom-built business websites without unnecessary technical baggage or endless plugin maintenance.">
     <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Launch Site Websites — From $1,500 | Context &amp; Muse">
+    <meta name="twitter:title" content="Quote + Lead Systems — From $2,500 | Context &amp; Muse">
     <meta name="twitter:description" content="Clean, custom-built business websites without unnecessary technical baggage or endless plugin/subscription maintenance.">
     <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
 
@@ -260,18 +260,18 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
                         <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
                         <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                        <a href="/systems/" class="nav-dropdown-link">Featured Systems</a>
                     </div>
                 </details>
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
                         <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
-                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
-                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
                     </div>
@@ -281,8 +281,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
-                    </div>
+                        </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
@@ -319,9 +318,9 @@
                             <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.25rem;">CORE BUILD PACKAGE</span>
                             <h2 style="font-family: var(--font-serif); font-size: 1.6rem; color: #0E1F1B; margin: 0 0 0.5rem; font-weight: 500;">Launch Site</h2>
                             <div class="ql-price-badge">
-                                <span class="ql-price-val">From $1,500</span>
+                                <span class="ql-price-val">From $2,500</span>
                             </div>
-                            <span style="font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary); display: block; margin-top: -0.5rem; margin-bottom: 0.5rem;">Typical project range: $1,500–$1,950</span>
+                            <span style="font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary); display: block; margin-top: -0.5rem; margin-bottom: 0.5rem;">Typical project range: $2,500–$4,500</span>
                         </div>
 
                         <p style="font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); margin: 0; border-top: 1px solid var(--border-light); padding-top: 1rem;">
@@ -559,19 +558,19 @@
                         Tell me about your business. I'll review your details, confirm scope, and tell you the exact next steps.
                     </p>
 
-                    <form action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <form id="quick-launch-intake-form" action="/api/lead" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                         <!-- Anti-spam -->
                         <input type="text" name="_gotcha" style="display: none;">
-                        
-                        <!-- Preselected package indicator -->
-                        <input type="hidden" name="service" value="launch-site-1500">
+                        <input type="hidden" name="form_id" value="quick-launch-intake">
+                        <input type="hidden" name="form_source" value="/quick-launch/">
+                        <input type="hidden" name="service" value="launch-site-2500">
 
                         <div style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 4px; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center;">
                             <div>
                                 <strong style="font-size: 14px; color: var(--text-primary);">Selected Package:</strong>
                                 <span style="font-size: 14px; color: var(--accent-teal); font-weight: 600; margin-left: 6px;">Launch Site Website</span>
                             </div>
-                            <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--text-primary);">From $1,500</span>
+                            <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--text-primary);">From $2,500</span>
                         </div>
 
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
@@ -614,7 +613,7 @@
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
-                            <button type="submit" class="btn-primary-teal" style="width: 100%; padding: 0.9rem; font-size: 15px; cursor: pointer;">
+                            <button type="submit" id="ql-submit-btn" class="btn-primary-teal" style="width: 100%; padding: 0.9rem; font-size: 15px; cursor: pointer;">
                                 Submit Website Inquiry &rarr;
                             </button>
                             <div style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 0.25rem; flex-wrap: wrap;">
@@ -628,6 +627,12 @@
                             No upfront payment required to inquire. I'll review and confirm scope first.
                         </span>
                     </form>
+                    <div id="ql-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
+                        <strong>Thank you. Your website inquiry has been securely recorded.</strong><br>
+                        <span style="font-family: var(--font-mono); font-size: 12px; margin-top: 0.35rem; display: inline-block;">Durable Reference ID: <strong id="ql-sub-id"></strong></span><br>
+                        <span style="display: inline-block; margin-top: 0.25rem;">Jayme personally reviews every inquiry and will respond after reviewing the business and project context.</span>
+                    </div>
+                    <div id="ql-error" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                 </div>
             </div>
         </section>
@@ -665,5 +670,74 @@
     </footer>
     <script src="/assets/js/nav.js" defer></script>
     <script src="/assets/js/whatsapp.js" defer></script>
+    <script>
+        (function() {
+            var form = document.getElementById('quick-launch-intake-form');
+            var submitBtn = document.getElementById('ql-submit-btn');
+            var successBox = document.getElementById('ql-success');
+            var errorBox = document.getElementById('ql-error');
+
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    if (errorBox) errorBox.style.display = 'none';
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Securing Submission...';
+                    }
+
+                    try {
+                        var formData = new FormData(form);
+                        var payload = Object.fromEntries(formData.entries());
+                        payload.form_id = 'quick-launch-intake';
+                        payload.form_source = window.location.pathname;
+
+                        var response = await fetch('/api/lead', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(payload)
+                        });
+
+                        var data = await response.json().catch(function() { return {}; });
+
+                        if (response.ok && (data.success || data.ok) && data.submission_id) {
+                            form.reset();
+                            form.style.display = 'none';
+                            var subIdEl = document.getElementById('ql-sub-id');
+                            if (subIdEl) subIdEl.textContent = data.submission_id;
+                            if (successBox) successBox.style.display = 'block';
+                        } else {
+                            var msg = data.error || "We couldn't safely save your inquiry yet. Please try again.";
+                            if (errorBox) {
+                                errorBox.textContent = msg;
+                                errorBox.style.display = 'block';
+                            } else {
+                                alert(msg);
+                            }
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = 'Submit Website Inquiry →';
+                            }
+                        }
+                    } catch (err) {
+                        var msg = 'Network communication failure. Your information is preserved—please retry or contact jayme@contextmuse.com.';
+                        if (errorBox) {
+                            errorBox.textContent = msg;
+                            errorBox.style.display = 'block';
+                        } else {
+                            alert(msg);
+                        }
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Submit Website Inquiry →';
+                        }
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

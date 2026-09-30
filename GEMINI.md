@@ -1,5 +1,8 @@
 # Constraint: Workspace Sandboxing Rules
 
+> [!IMPORTANT]
+> **Production lead backend is LOCKED. See `PRODUCTION_LOCKS.md`. Do not modify `api/lead*`, Supabase `lead-capture` architecture, `public.leads` schema, or form submission behavior during unrelated work.**
+
 ## 1. Read-Only Directories & Files
 The following directories and files are strictly read-only. You (the AI coding assistant) must NOT modify, rename, move, write to, or delete any files or folders inside these paths:
 

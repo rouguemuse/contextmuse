@@ -666,8 +666,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
-                    </div>
+                        </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
@@ -800,7 +799,10 @@
                                 If this quick check uncovered friction worth fixing, send me your context. I’ll personally review your website, intake workflow, and operations to tell you whether this looks like a messaging fix, an intake rebuild, or a custom system.
                             </p>
 
-                            <form id="diagnostic-inquiry-form" action="https://formspree.io/f/xoqydgvw" method="POST">
+                            <form id="diagnostic-inquiry-form" action="/api/lead" method="POST">
+                                <input type="text" name="_gotcha" style="display:none">
+                                <input type="hidden" name="form_id" value="diagnostic-inquiry">
+                                <input type="hidden" name="form_source" value="/website-system-check/">
                                 <input type="hidden" name="service" value="website_system_check_inquiry">
                                 <input type="hidden" name="scanned_website" id="inq-scanned-website">
                                 <input type="hidden" name="diagnostic_id" id="inq-diagnostic-id">
@@ -825,7 +827,7 @@
                                             <option value="">Select an option</option>
                                             <option value="$395-diagnostic">Business System Diagnostic ($395 fixed)</option>
                                             <option value="$2500-quote-lead">Quote + Lead System ($2,500 - $4,500)</option>
-                                            <option value="$3500-custom-system">Custom Operations System ($3,500+)</option>
+                                            <option value="$6500-custom-system">Custom Operations System ($6,500+)</option>
                                             <option value="exploring">Exploring options / Need guidance</option>
                                         </select>
                                     </div>
@@ -838,17 +840,21 @@
                                             <span>Request System Review →</span>
                                         </button>
                                         <div class="diag-helper-text">
-                                            Asynchronous review · No sales pitch · Direct answer within 1 business day
+                                            Asynchronous review · No sales pitch · Direct technical evaluation
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <div id="inquiry-success" style="display: none; padding: 1.5rem; background: #FAF9F3; border: 1px solid var(--accent-teal); border-radius: 8px; margin-top: 1.5rem; text-align: center;">
-                                <h4 style="font-family: var(--font-serif); font-size: 20px; color: var(--forest-deep); margin-bottom: 0.5rem;">Inquiry Received</h4>
+                                <h4 style="font-family: var(--font-serif); font-size: 20px; color: var(--forest-deep); margin-bottom: 0.5rem;">Inquiry Securely Recorded</h4>
+                                <div style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-teal); margin-bottom: 0.75rem;">
+                                    Durable Reference ID: <strong id="inq-sub-id"></strong>
+                                </div>
                                 <p style="font-family: var(--font-sans); font-size: 14.5px; color: var(--text-secondary); margin: 0;">
-                                    Thank you. Jayme will review your website and diagnostic findings, and reply directly with actionable recommendations within 1 business day.
+                                    Thank you. Jayme personally reviews every inquiry and will respond after reviewing the business and project context.
                                 </p>
                             </div>
+                            <div id="inquiry-error" style="display: none; padding: 1.25rem; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; border-radius: 8px; margin-top: 1.5rem; text-align: center; color: #DC2626; font-size: 13.5px;"></div>
                         </div>
                     </div>
                 </div>
@@ -980,8 +986,8 @@
                 </table>
 
                 <div style="margin-top: 2rem; text-align: center;">
-                    <a href="/custom/?service=diagnostic#intake" class="btn-magnetic" style="background: var(--forest-deep); color: #FFFFFF; padding: 0.9rem 1.75rem; border-radius: 6px; font-family: var(--font-mono); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; display: inline-block;">
-                        Book $395 Business System Diagnostic →
+                    <a href="/contact/?service=diagnostic" class="btn-magnetic" style="background: var(--forest-deep); color: #FFFFFF; padding: 0.9rem 1.75rem; border-radius: 6px; font-family: var(--font-mono); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; display: inline-block;">
+                        Start the $395 Diagnostic →
                     </a>
                 </div>
             </div>
@@ -1004,7 +1010,7 @@
                     <div class="footer-col-title">Services</div>
                     <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
                     <a href="/website-system-check/" class="footer-link">Website + System Check</a>
-                    <a href="/custom/?service=diagnostic#intake" class="footer-link">Business System Diagnostic</a>
+                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
                     <a href="/systems/" class="footer-link">Custom Operations Systems</a>
                     <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
                 </div>
@@ -1258,9 +1264,9 @@
                 proofContainer.innerHTML = `
                     <div class="relevant-proof-box">
                         <div class="proof-eyebrow">Relevant Live System Proof · Custom Operations</div>
-                        <h4 class="proof-title">INNcontrol Commercial Estimator &amp; Floorplan Mapper</h4>
+                        <h4 class="proof-title">INNcontrol Commercial Service Platform &amp; Estimator</h4>
                         <p class="proof-desc">
-                            Built an interactive 2D floorplan equipment mapper and estimation workbench for commercial HVAC engineering, eliminating clipboard paper surveys and speeding proposal turnaround from 5 days to 20 minutes.
+                            Engineered a commercial service platform and estimation workbench for hospitality HVAC refurbishment, replacing paper surveys with structured digital scoping and standardized proposal estimation.
                         </p>
                         <a href="/systems/client-builds/#inncontrol" class="btn-secondary" style="font-size: 12.5px; padding: 0.6rem 1.1rem; text-decoration: none; display: inline-block;">
                             View INNcontrol Case Study →
@@ -1273,7 +1279,7 @@
                         <div class="proof-eyebrow">Relevant Live System Proof · Sizing &amp; Territory Qualification</div>
                         <h4 class="proof-title">Lone Wolf Dumpsters · Territory Routing &amp; Sizing Engine</h4>
                         <p class="proof-desc">
-                            Replaced a generic contact form with an interactive volume calculator and real-time county territory validator. Increased lead qualification rate while eliminating 40+ manual dispatch emails per week.
+                            Replaced a generic contact form with an interactive volume calculator and real-time territory validator, automating lead qualification and dispatch territory routing.
                         </p>
                         <a href="/systems/client-builds/#lonewolf" class="btn-secondary" style="font-size: 12.5px; padding: 0.6rem 1.1rem; text-decoration: none; display: inline-block;">
                             See Quote + Lead System Architecture →
@@ -1393,35 +1399,68 @@
             window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
         });
 
-        // Asynchronous Lead Inquiry Form
+        // Asynchronous Lead Inquiry Form to /api/lead
         const inquiryForm = document.getElementById('diagnostic-inquiry-form');
         const inquirySuccess = document.getElementById('inquiry-success');
+        const inquiryError = document.getElementById('inquiry-error');
         if (inquiryForm) {
             inquiryForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const submitBtn = document.getElementById('inq-submit-btn');
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<span>Submitting Review Request...</span>';
+                if (inquiryError) inquiryError.style.display = 'none';
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span>Securing Review Request...</span>';
+                }
 
                 try {
                     const formData = new FormData(inquiryForm);
-                    const resp = await fetch(inquiryForm.action, {
+                    const payload = Object.fromEntries(formData.entries());
+                    payload.form_id = 'diagnostic-inquiry';
+                    payload.form_source = window.location.pathname;
+
+                    const resp = await fetch('/api/lead', {
                         method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
                     });
 
-                    if (resp.ok) {
-                        trackEvent('diagnostic_inquiry_submitted');
+                    const data = await resp.json().catch(() => ({}));
+
+                    if (resp.ok && (data.success || data.ok) && data.submission_id) {
+                        trackEvent('diagnostic_inquiry_submitted', { submission_id: data.submission_id });
                         inquiryForm.style.display = 'none';
-                        inquirySuccess.style.display = 'block';
+                        const subIdEl = document.getElementById('inq-sub-id');
+                        if (subIdEl) subIdEl.textContent = data.submission_id;
+                        if (inquirySuccess) inquirySuccess.style.display = 'block';
                     } else {
-                        throw new Error('Submission error');
+                        const msg = data.error || "We couldn't safely save your inquiry yet. Please try again.";
+                        if (inquiryError) {
+                            inquiryError.textContent = msg;
+                            inquiryError.style.display = 'block';
+                        } else {
+                            alert(msg);
+                        }
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = '<span>Request System Review →</span>';
+                        }
                     }
                 } catch(err) {
-                    alert('There was an error sending your inquiry. Please email jayme@contextmuse.com directly.');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Request System Review →</span>';
+                    const msg = 'Network communication failure. Your information is preserved—please retry or contact jayme@contextmuse.com.';
+                    if (inquiryError) {
+                        inquiryError.textContent = msg;
+                        inquiryError.style.display = 'block';
+                    } else {
+                        alert(msg);
+                    }
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<span>Request System Review →</span>';
+                    }
                 }
             });
         }

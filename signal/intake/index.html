@@ -260,18 +260,18 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
                         <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
                         <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                        <a href="/systems/" class="nav-dropdown-link">Featured Systems</a>
                     </div>
                 </details>
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
                         <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
-                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
-                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
                     </div>
@@ -281,8 +281,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
-                    </div>
+                        </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
@@ -341,7 +340,11 @@
                         Upload your raw exports. Accepted formats: `.csv`, `.xlsx`, `.pdf`, `.json`, or `.zip`.
                     </p>
 
-                    <form action="https://formspree.io/f/xoqydgvw" method="POST" enctype="multipart/form-data">
+                    <form id="signal-b1-form" data-signal-intake action="/api/lead/" method="POST">
+                        <input type="hidden" name="form_id" value="signal-branch-1">
+                        <input type="hidden" name="source_page" value="/signal/intake/">
+                        <input type="hidden" name="form_source" value="/signal/intake/">
+                        <input type="hidden" name="inquiry_type" value="signal">
                         <input type="hidden" name="branch" value="01_has_reports">
                         <input type="text" name="_gotcha" style="display:none">
 
@@ -408,6 +411,12 @@
 
                         <button type="submit" class="btn-submit">Submit for Signal Diagnostic Review &rarr;</button>
                     </form>
+                    <div id="b1-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
+                        <strong>Thank you. Your diagnostic submission has been securely recorded.</strong><br>
+                        <span style="font-family: var(--font-mono); font-size: 12px; margin-top: 0.35rem; display: inline-block;">Durable Reference ID: <strong id="b1-sub-id"></strong></span><br>
+                        <span style="display: inline-block; margin-top: 0.25rem;">Jayme personally reviews every inquiry and will respond after reviewing the business and project context.</span>
+                    </div>
+                    <div id="b1-error" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                 </div>
 
                 <!-- Branch 2 Form -->
@@ -451,7 +460,11 @@
                         </div>
                     </div>
 
-                    <form action="https://formspree.io/f/xoqydgvw" method="POST">
+                    <form id="signal-b2-form" data-signal-intake action="/api/lead/" method="POST">
+                        <input type="hidden" name="form_id" value="signal-branch-2">
+                        <input type="hidden" name="source_page" value="/signal/intake/">
+                        <input type="hidden" name="form_source" value="/signal/intake/">
+                        <input type="hidden" name="inquiry_type" value="signal">
                         <input type="hidden" name="branch" value="02_needs_report_guidance">
                         <input type="text" name="_gotcha" style="display:none">
 
@@ -478,6 +491,12 @@
 
                         <button type="submit" class="btn-submit">Request Custom Scoping Call &rarr;</button>
                     </form>
+                    <div id="b2-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
+                        <strong>Thank you. Your scoping request has been securely recorded.</strong><br>
+                        <span style="font-family: var(--font-mono); font-size: 12px; margin-top: 0.35rem; display: inline-block;">Durable Reference ID: <strong id="b2-sub-id"></strong></span><br>
+                        <span style="display: inline-block; margin-top: 0.25rem;">Jayme personally reviews every inquiry and will respond after reviewing the business and project context.</span>
+                    </div>
+                    <div id="b2-error" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                 </div>
 
                 <!-- Branch 3 Form -->
@@ -489,7 +508,11 @@
                         Not sure where the leak is? Select the symptoms you're experiencing to narrow the focus.
                     </p>
 
-                    <form action="https://formspree.io/f/xoqydgvw" method="POST">
+                    <form id="signal-b3-form" data-signal-intake action="/api/lead/" method="POST">
+                        <input type="hidden" name="form_id" value="signal-branch-3">
+                        <input type="hidden" name="source_page" value="/signal/intake/">
+                        <input type="hidden" name="form_source" value="/signal/intake/">
+                        <input type="hidden" name="inquiry_type" value="signal">
                         <input type="hidden" name="branch" value="03_exploratory">
                         <input type="text" name="_gotcha" style="display:none">
 
@@ -522,6 +545,12 @@
 
                         <button type="submit" class="btn-submit">Start Initial Mapping Conversation &rarr;</button>
                     </form>
+                    <div id="b3-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
+                        <strong>Thank you. Your mapping inquiry has been securely recorded.</strong><br>
+                        <span style="font-family: var(--font-mono); font-size: 12px; margin-top: 0.35rem; display: inline-block;">Durable Reference ID: <strong id="b3-sub-id"></strong></span><br>
+                        <span style="display: inline-block; margin-top: 0.25rem;">Jayme personally reviews every inquiry and will respond after reviewing the business and project context.</span>
+                    </div>
+                    <div id="b3-error" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                 </div>
             </div>
         </section>
@@ -628,6 +657,83 @@
                     container.insertBefore(badge, container.firstChild);
                 }
             }
+
+            // AJAX Lead Submission for all Signal Intake branches
+            document.querySelectorAll('form[data-signal-intake]').forEach(form => {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const branchNum = form.id.includes('b1') ? '1' : (form.id.includes('b2') ? '2' : '3');
+                    const errorBox = document.getElementById('b' + branchNum + '-error');
+                    const successBox = document.getElementById('b' + branchNum + '-success');
+                    const subIdEl = document.getElementById('b' + branchNum + '-sub-id');
+                    const submitBtn = form.querySelector('button[type="submit"]');
+
+                    if (errorBox) errorBox.style.display = 'none';
+                    let origBtnText = '';
+                    if (submitBtn) {
+                        origBtnText = submitBtn.textContent;
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Securing Submission...';
+                    }
+
+                    try {
+                        const formData = new FormData(form);
+                        const payload = Object.fromEntries(formData.entries());
+                        payload.source_page = window.location.pathname;
+                        payload.form_source = window.location.pathname;
+                        payload.inquiry_type = 'signal';
+
+                        // If file was attached, record its name and size in metadata without breaking JSON
+                        const fileInput = form.querySelector('input[type="file"]');
+                        if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                            payload.file_count = fileInput.files.length;
+                            payload.file_names = Array.from(fileInput.files).map(f => `${f.name} (${Math.round(f.size/1024)}KB)`).join(', ');
+                        }
+
+                        const response = await fetch('/api/lead/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const data = await response.json().catch(() => ({}));
+
+                        if (response.ok && (data.success || data.ok) && data.submission_id) {
+                            form.reset();
+                            form.style.display = 'none';
+                            if (subIdEl) subIdEl.textContent = data.submission_id;
+                            if (successBox) successBox.style.display = 'block';
+                        } else {
+                            const msg = data.error || "We couldn't safely save your inquiry yet. Please try again.";
+                            if (errorBox) {
+                                errorBox.textContent = msg;
+                                errorBox.style.display = 'block';
+                            } else {
+                                alert(msg);
+                            }
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = origBtnText || 'Submit Diagnostic Review →';
+                            }
+                        }
+                    } catch(err) {
+                        const msg = 'Network communication failure. Your information is preserved—please retry or contact jayme@contextmuse.com.';
+                        if (errorBox) {
+                            errorBox.textContent = msg;
+                            errorBox.style.display = 'block';
+                        } else {
+                            alert(msg);
+                        }
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = origBtnText || 'Submit Diagnostic Review →';
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>

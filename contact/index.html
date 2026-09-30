@@ -13,22 +13,22 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start a Project · Contact &amp; Intake | Context &amp; Muse</title>
-    <meta name="description" content="Start a project with Context &amp; Muse. Bring your website, conversion leak, or operational bottleneck for direct review and clear scoping.">
+    <title>Tell Me What's Broken · Project Inquiry &amp; Intake | Context &amp; Muse</title>
+    <meta name="description" content="Bring your website, quote bottleneck, or messy workflow. Jayme personally reviews your context and outlines a practical, evidence-based next step.">
     <link rel="canonical" href="https://www.contextmuse.com/contact/">
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Start a Project · Contact &amp; Intake | Context &amp; Muse">
-    <meta property="og:description" content="Direct collaboration with founder and systems designer Jayme Volstad. Start a project, request a conversion audit, or scope a custom system.">
+    <meta property="og:title" content="Tell Me What's Broken · Context &amp; Muse">
+    <meta property="og:description" content="Direct intake for commercial websites, quoting calculators, and custom operational software.">
     <meta property="og:url" content="https://www.contextmuse.com/contact/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Start a Project · Contact &amp; Intake | Context &amp; Muse">
-    <meta name="twitter:description" content="Direct collaboration with founder and systems designer Jayme Volstad. Start a project, request a conversion audit, or scope a custom system.">
+    <meta name="twitter:title" content="Tell Me What's Broken · Context &amp; Muse">
+    <meta name="twitter:description" content="Direct intake for commercial websites, quoting calculators, and custom operational software.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Structured Data (JSON-LD) -->
@@ -60,61 +60,291 @@
 
     <style>
         .contact-hero {
-            padding: 130px 0 60px;
+            padding: clamp(100px, 13vh, 140px) 0 50px;
             background: #0E1F1B;
             color: #FAF9F5;
             border-bottom: 1px solid rgba(250, 249, 245, 0.08);
         }
         .contact-section {
-            padding: 5rem 0;
+            padding: clamp(3rem, 5vw, 5.5rem) 0;
             background: var(--bg-paper);
         }
         .contact-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: clamp(2rem, 4vw, 4rem);
             align-items: start;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
+        }
+
+        /* ── INTAKE WIZARD STYLES ── */
+        .intake-container {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            box-shadow: 0 8px 30px rgba(16, 33, 29, 0.04);
+        }
+
+        .intake-progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+        }
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: color 0.2s ease;
+        }
+        .progress-step.active {
+            color: var(--accent-teal);
+        }
+        .progress-step.completed {
+            color: var(--text-primary);
+        }
+        .step-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(16, 33, 29, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .progress-step.active .step-circle {
+            background: var(--accent-teal);
+            color: #FFFFFF;
+        }
+        .progress-step.completed .step-circle {
+            background: var(--forest-deep);
+            color: #FFFFFF;
+        }
+
+        /* Problem Selection Grid */
+        .problem-options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+        }
+        .problem-card-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 1rem 1.15rem;
+            background: #FAF9F5;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .problem-card-label:hover {
+            border-color: var(--accent-teal);
+            background: #FFFFFF;
+            transform: translateY(-1px);
+        }
+        .problem-card-label input[type="radio"] {
+            margin-top: 3px;
+            accent-color: var(--accent-teal);
+            cursor: pointer;
+        }
+        .problem-card-label.selected {
+            border-color: var(--accent-teal);
+            background: rgba(15, 118, 110, 0.04);
+            box-shadow: 0 0 0 1px var(--accent-teal);
+        }
+        .problem-card-title {
+            font-family: var(--font-serif);
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .problem-card-desc {
+            font-family: var(--font-sans);
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            display: block;
+        }
+
+        /* Form Inputs */
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-bottom: 1.15rem;
+        }
+        .field-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+        .field-hint {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: -2px;
+            margin-bottom: 3px;
+        }
+        .field-input, .field-textarea, .field-select {
+            width: 100%;
+            padding: 0.8rem 0.95rem;
+            border: 1px solid var(--border-light);
+            border-radius: 5px;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            background: #FAF9F5;
+            color: var(--text-primary);
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+        .field-input:focus, .field-textarea:focus, .field-select:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(32, 78, 69, 0.1);
+        }
+
+        .btn-nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-light);
+        }
+        .btn-intake-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: var(--forest-deep);
+            color: #FFFFFF !important;
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.85rem 1.6rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .btn-intake-primary:hover:not(:disabled) {
+            background: var(--accent-teal);
+            transform: translateY(-1px);
+        }
+        .btn-intake-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .btn-intake-back {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-intake-back:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        /* Step Panels */
+        .intake-step-panel {
+            display: none;
+        }
+        .intake-step-panel.active {
+            display: block;
+            animation: fadeInStep 0.25s ease forwards;
+        }
+        @keyframes fadeInStep {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Pre-select Context Pill */
+        .context-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(15, 118, 110, 0.08);
+            color: var(--accent-teal);
+            border: 1px solid rgba(15, 118, 110, 0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navbar -->
-    <!-- Navbar -->
-    <nav class="navbar" aria-label="Main Navigation">
+    <!-- Universal Nav -->
+    <nav class="site-nav" aria-label="Main Navigation">
         <div class="container nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
-                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
+            <a href="/" class="logo">
+                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;">
                 <span>Context &amp; Muse</span>
             </a>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
             <div class="nav-links" id="primary-nav-links">
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                        <a href="/systems/" class="nav-dropdown-link">Featured Systems</a>
+                        <a href="/work/" class="nav-dropdown-link">Case Study Library</a>
+                        <a href="/work/lone-wolf-dumpsters/" class="nav-dropdown-link">Lone Wolf Dumpsters</a>
+                        <a href="/systems/client-builds/#inncontrol" class="nav-dropdown-link">INNcontrol Coils</a>
+                        <a href="/work/website-audit-system/" class="nav-dropdown-link">Website Audit System</a>
+                        <a href="/case-studies/edr-party-rentals/" class="nav-dropdown-link">EDR Party Rentals</a>
                     </div>
                 </details>
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
                         <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
-                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
-                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
                     </div>
@@ -124,12 +354,11 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
                     </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
+                <a href="/contact/" class="nav-cta btn-magnetic" style="background: var(--accent-teal); color: #fff;">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -138,12 +367,12 @@
         <!-- Hero -->
         <header class="contact-hero">
             <div class="container">
-                <span class="eyebrow" style="color: #C5A059; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.75rem;">START A PROJECT &bull; INTAKE</span>
+                <span class="eyebrow" style="color: #C5A059; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.75rem;">START A PROJECT &bull; DIRECT INTAKE</span>
                 <h1 style="font-family: var(--font-serif); font-size: clamp(2.4rem, 4.5vw, 3.6rem); color: #FAF9F5; margin: 0 0 1rem 0; font-weight: 400; line-height: 1.1;">
-                    Bring me the mess.
+                    Tell me what's broken.
                 </h1>
-                <p style="font-size: 1.15rem; line-height: 1.65; color: rgba(250, 249, 245, 0.8); max-width: 720px; margin: 0;">
-                    Direct collaboration with founder and systems designer Jayme Volstad. No account managers or outsourced junior staff.
+                <p style="font-size: 1.15rem; line-height: 1.65; color: rgba(250, 249, 245, 0.85); max-width: 720px; margin: 0;">
+                    Bring your website, quote bottleneck, or messy internal workflow. Jayme personally reviews your context without high-pressure sales calls or pitch decks.
                 </p>
             </div>
         </header>
@@ -152,40 +381,38 @@
         <section class="contact-section" id="intake-form-section">
             <div class="container">
                 <div class="contact-grid">
-                    <!-- Left: Process & Milestones -->
+                    
+                    <!-- Left: Reassurance, Process & Direct Channels -->
                     <div>
                         <span class="section-eyebrow">WHAT HAPPENS NEXT</span>
                         <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-primary); margin: 0.5rem 0 1.5rem 0; font-weight: 400;">
-                            A straightforward path from diagnosis to launch.
+                            Straightforward review. No sales maze.
                         </h2>
                         
                         <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem;">
                             <div style="border-left: 2.5px solid var(--accent-teal); padding-left: 1.25rem;">
-                                <strong style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">1. Tell me what you need</strong>
-                                <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">Share your current site, bottleneck, or project goals in the intake form.</p>
+                                <strong style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">1. Tell me what isn't working</strong>
+                                <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">Share the symptom, the operational bottleneck, or the system you want to replace.</p>
                             </div>
                             <div style="border-left: 2.5px solid var(--accent-teal); padding-left: 1.25rem;">
-                                <strong style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">2. I review the opportunity</strong>
-                                <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">I examine what exists, where conversion leaks happen, and what needs to be built.</p>
+                                <strong style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">2. I review the actual problem</strong>
+                                <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">I examine what exists, where friction occurs, and what is worth building.</p>
                             </div>
                             <div style="border-left: 2.5px solid var(--accent-teal); padding-left: 1.25rem;">
-                                <strong style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">3. You receive a clear recommendation</strong>
-                                <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">Defined scope, clear timeline, and straightforward pricing.</p>
+                                <strong style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-primary); display: block; margin-bottom: 0.25rem;">3. You receive a concrete recommendation</strong>
+                                <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">Direct written recommendation, defined scope, and predictable pricing after reviewing the business and project context.</p>
                             </div>
                         </div>
 
-                        <!-- Milestone Breakdown -->
-                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.75rem; box-shadow: 0 4px 14px rgba(0,0,0,0.02); margin-bottom: 2rem;">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.75rem;">HOW PROJECTS START &bull; MILESTONES</span>
-                            <ol style="padding-left: 1.25rem; margin: 0 0 1rem 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
-                                <li><strong>Scope:</strong> Confirm deliverables, timeline, and pricing in an approved Scope of Work.</li>
-                                <li><strong>Agreement + Deposit:</strong> Work is scheduled upon receipt of signed agreement and deposit.</li>
-                                <li><strong>Build &amp; Staging:</strong> Development proceeds according to approved milestones.</li>
-                                <li><strong>Launch &amp; Transfer:</strong> Final review on staging, payment completion, live deployment, and asset handoff.</li>
-                            </ol>
-                            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); border-top: 1px solid var(--border-light); padding-top: 0.75rem;">
-                                &bull; <strong>Deposit Policy:</strong> Reserves production capacity and is applied directly toward project total.
-                            </div>
+                        <!-- Honest Pricing Boundaries Reassurance -->
+                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; box-shadow: 0 4px 14px rgba(0,0,0,0.02); margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.65rem;">HONEST ENGAGEMENT BOUNDARIES</span>
+                            <ul style="padding-left: 1.15rem; margin: 0; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; display: flex; flex-direction: column; gap: 0.4rem;">
+                                <li><strong>$395 Diagnostic:</strong> 100% credited toward a qualifying build booked within 30 days.</li>
+                                <li><strong>Quote + Lead Systems:</strong> From $2,500 (multi-market typically $4,500+).</li>
+                                <li><strong>Custom Operations Systems:</strong> From $6,500 with milestone billing.</li>
+                                <li><strong>No Lock-In Retainers:</strong> Zero ongoing subscription seat fees for custom software.</li>
+                            </ul>
                         </div>
 
                         <!-- Direct Contact Channels -->
@@ -198,64 +425,269 @@
                         </div>
                     </div>
 
-                    <!-- Right: Complete Form -->
-                    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
-                        <form id="contact-intake-form" action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <!-- Right: Intelligent Progressive Intake Flow -->
+                    <div class="intake-container">
+                        
+                        <!-- Progress Header -->
+                        <div class="intake-progress-bar">
+                            <div class="progress-step active" id="prog-step-1">
+                                <span class="step-circle">1</span>
+                                <span>The Problem</span>
+                            </div>
+                            <div class="progress-step" id="prog-step-2">
+                                <span class="step-circle">2</span>
+                                <span>Context</span>
+                            </div>
+                            <div class="progress-step" id="prog-step-3">
+                                <span class="step-circle">3</span>
+                                <span>Details</span>
+                            </div>
+                        </div>
+
+                        <form id="intelligent-intake-form" action="/api/lead" method="POST">
                             <input type="text" name="_gotcha" style="display:none">
-                            <input type="hidden" name="form_source" value="contact_intake_page">
+                            <input type="hidden" name="form_source" value="/contact/">
+                            <input type="hidden" id="hidden-problem-type" name="problem_category" value="">
 
-                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
-                                <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="diagnostic">Business System Diagnostic ($395 fixed)</option>
-                                    <option value="quote-lead" selected>Quote + Lead System (From $2,500)</option>
-                                    <option value="custom-system">Custom Operations System (From $3,500)</option>
-                                    <option value="care-essential">Essential Care Plan ($375 / Qtr)</option>
-                                    <option value="care-growth">Growth Care Plan ($600 / Qtr)</option>
-                                    <option value="institutional-pilot">Institutional Pilot (Maps With Teeth)</option>
-                                    <option value="custom">Other / General Project Inquiry</option>
-                                </select>
+                            <!-- Context Pill (Shown if pre-selected via URL) -->
+                            <div id="url-context-pill" class="context-pill" style="display: none;">
+                                Focus: <span id="url-context-label"></span>
                             </div>
 
-                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-name" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Your Name *</label>
-                                <input type="text" id="form-name" name="name" required placeholder="Your full name" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-email" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Email Address *</label>
-                                <input type="email" id="form-email" name="email" required placeholder="name@business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
+                            <!-- ─────────────────────────────────────────
+                                 STEP 1: THE PROBLEM
+                                 ───────────────────────────────────────── -->
+                            <div class="intake-step-panel active" id="step-panel-1">
+                                <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin: 0 0 0.35rem 0; font-weight: 500;">
+                                    What do you need help with?
+                                </h3>
+                                <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
+                                    Select the condition that best matches your situation:
+                                </p>
+
+                                <div class="problem-options-grid">
+                                    <label class="problem-card-label" data-problem="website-conversion">
+                                        <input type="radio" name="problem_choice" value="website-conversion" required>
+                                        <div>
+                                            <span class="problem-card-title">My website isn't bringing in enough business</span>
+                                            <span class="problem-card-desc">The site exists, but visitors leave without booking, quoting, or inquiring.</span>
+                                        </div>
+                                    </label>
+
+                                    <label class="problem-card-label" data-problem="website-build">
+                                        <input type="radio" name="problem_choice" value="website-build">
+                                        <div>
+                                            <span class="problem-card-title">I need a commercial website built or rebuilt</span>
+                                            <span class="problem-card-desc">A custom site designed around customer action, clear services, and clean mobile UX.</span>
+                                        </div>
+                                    </label>
+
+                                    <label class="problem-card-label" data-problem="quote-lead">
+                                        <input type="radio" name="problem_choice" value="quote-lead">
+                                        <div>
+                                            <span class="problem-card-title">I need a quoting or lead intake system</span>
+                                            <span class="problem-card-desc">Upfront pricing calculators, territory routing, and automated CRM triage.</span>
+                                        </div>
+                                    </label>
+
+                                    <label class="problem-card-label" data-problem="operations-tool">
+                                        <input type="radio" name="problem_choice" value="operations-tool">
+                                        <div>
+                                            <span class="problem-card-title">A process is too manual / spreadsheet chaos</span>
+                                            <span class="problem-card-desc">Staff are doing repetitive manual work that purpose-built software should handle.</span>
+                                        </div>
+                                    </label>
+
+                                    <label class="problem-card-label" data-problem="restaurant-data">
+                                        <input type="radio" name="problem_choice" value="restaurant-data">
+                                        <div>
+                                            <span class="problem-card-title">I need restaurant operations or POS data review</span>
+                                            <span class="problem-card-desc">Kitchen throughput bottlenecks, overtime leaks, void patterns, or floor systems.</span>
+                                        </div>
+                                    </label>
+
+                                    <label class="problem-card-label" data-problem="diagnostic">
+                                        <input type="radio" name="problem_choice" value="diagnostic">
+                                        <div>
+                                            <span class="problem-card-title">I need an expert diagnostic review ($395 fixed)</span>
+                                            <span class="problem-card-desc">Find the exact friction before rebuilding. 100% credited toward a qualifying project.</span>
+                                        </div>
+                                    </label>
+
+                                    <label class="problem-card-label" data-problem="unknown">
+                                        <input type="radio" name="problem_choice" value="unknown">
+                                        <div>
+                                            <span class="problem-card-title">I'm not sure — I just know something isn't working</span>
+                                            <span class="problem-card-desc">Describe your symptoms in plain language and let's diagnose the root cause.</span>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="btn-nav-row" style="justify-content: flex-end;">
+                                    <button type="button" class="btn-intake-primary" id="btn-to-step-2">
+                                        <span>Continue &rarr;</span>
+                                    </button>
+                                </div>
                             </div>
 
-                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-website" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Current Website / Business (Optional)</label>
-                                <input type="text" id="form-website" name="website" placeholder="business.com" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box;">
+                            <!-- ─────────────────────────────────────────
+                                 STEP 2: ADAPTIVE OPERATIONAL CONTEXT
+                                 ───────────────────────────────────────── -->
+                            <div class="intake-step-panel" id="step-panel-2">
+                                <h3 id="step-2-title" style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin: 0 0 0.35rem 0; font-weight: 500;">
+                                    Tell me about the situation
+                                </h3>
+                                <p id="step-2-sub" style="font-size: 13.5px; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
+                                    Help me understand what is currently happening.
+                                </p>
+
+                                <!-- Adaptive Block A: Website / Conversion -->
+                                <div class="adaptive-block" id="block-website" style="display: none;">
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-web-url">Current Website URL</label>
+                                        <span class="field-hint">Leave blank if you don't currently have a live site.</span>
+                                        <input type="text" id="inp-web-url" name="current_website" placeholder="https://yourbusiness.com" class="field-input">
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-web-friction">What is the biggest point of friction?</label>
+                                        <span class="field-hint">e.g. Too many phone calls, customers confused about pricing, mobile form drops off.</span>
+                                        <textarea id="inp-web-friction" name="website_friction_points" rows="3" placeholder="Where do visitors seem to get stuck?" class="field-textarea"></textarea>
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-web-action">What action should a qualified visitor take?</label>
+                                        <input type="text" id="inp-web-action" name="desired_customer_action" placeholder="e.g. Request an exact quote, check territory coverage, book inspection" class="field-input">
+                                    </div>
+                                </div>
+
+                                <!-- Adaptive Block B: Quote + Lead Systems -->
+                                <div class="adaptive-block" id="block-quote-lead" style="display: none;">
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-quote-intake">How do inquiries and quotes currently arrive?</label>
+                                        <span class="field-hint">e.g. Phone tag, open contact box, emails, spreadsheet estimates.</span>
+                                        <textarea id="inp-quote-intake" name="current_quoting_method" rows="2" placeholder="Describe how inquiries arrive today..." class="field-textarea"></textarea>
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-quote-breakdown">Where does the quoting process break down?</label>
+                                        <span class="field-hint">e.g. Sizing confusion, out-of-territory requests, pricing surprises.</span>
+                                        <textarea id="inp-quote-breakdown" name="quote_breakdown_details" rows="3" placeholder="What wastes the most time during quoting?" class="field-textarea"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Adaptive Block C: Operations / Manual Workflows -->
+                                <div class="adaptive-block" id="block-operations" style="display: none;">
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-ops-manual">What specific tasks are staff repeating manually?</label>
+                                        <textarea id="inp-ops-manual" name="manual_staff_tasks" rows="3" placeholder="e.g. Re-typing data from email to spreadsheet, manual inventory checks..." class="field-textarea"></textarea>
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-ops-tools">What tools or spreadsheets are currently used?</label>
+                                        <input type="text" id="inp-ops-tools" name="current_tools_used" placeholder="e.g. Google Sheets, Excel, QuickBooks, disconnected tools" class="field-input">
+                                    </div>
+                                </div>
+
+                                <!-- Adaptive Block D: Restaurant Data & Systems -->
+                                <div class="adaptive-block" id="block-restaurant" style="display: none;">
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-rest-pos">What POS / KDS platform do you use?</label>
+                                        <input type="text" id="inp-rest-pos" name="restaurant_pos_platform" placeholder="e.g. Toast, Square, Clover, Aloha, Brink" class="field-input">
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-rest-bottleneck">Primary operational friction point</label>
+                                        <textarea id="inp-rest-bottleneck" name="restaurant_bottlenecks" rows="3" placeholder="e.g. Kitchen throughput delays at peak, line overtime, high walkout voids, 3rd-party margin loss" class="field-textarea"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Adaptive Block E: Diagnostic Review ($395) -->
+                                <div class="adaptive-block" id="block-diagnostic" style="display: none;">
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-diag-url">Website URL to Audit (Optional)</label>
+                                        <input type="text" id="inp-diag-url" name="diagnostic_target_url" placeholder="https://yourbusiness.com" class="field-input">
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-diag-symptoms">What feels most inefficient right now?</label>
+                                        <textarea id="inp-diag-symptoms" name="diagnostic_symptoms" rows="3" placeholder="Describe the symptom or inefficiency you want examined..." class="field-textarea"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Adaptive Block F: Unknown / General -->
+                                <div class="adaptive-block" id="block-unknown" style="display: none;">
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-gen-desc">Describe the problem in plain language *</label>
+                                        <textarea id="inp-gen-desc" name="plain_language_description" rows="4" placeholder="What happens right now vs. what do you wish happened?" class="field-textarea"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="btn-nav-row">
+                                    <button type="button" class="btn-intake-back" id="btn-back-to-1">&larr; Back</button>
+                                    <button type="button" class="btn-intake-primary" id="btn-to-step-3">
+                                        <span>Next Step &rarr;</span>
+                                    </button>
+                                </div>
                             </div>
 
-                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-budget" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Approximate Budget Range (Optional)</label>
-                                <select id="form-budget" name="budget_range" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
-                                    <option value="">Select a range (Optional)</option>
-                                    <option value="under_2k">&lt; $2,000</option>
-                                    <option value="2k_5k">$2,000 – $5,000</option>
-                                    <option value="5k_10k">$5,000 – $10,000</option>
-                                    <option value="10k_plus">$10,000+</option>
-                                    <option value="not_sure">Not sure yet / Needs diagnosis</option>
-                                </select>
-                            </div>
+                            <!-- ─────────────────────────────────────────
+                                 STEP 3: CONTACT & QUALIFICATION
+                                 ───────────────────────────────────────── -->
+                            <div class="intake-step-panel" id="step-panel-3">
+                                <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin: 0 0 0.35rem 0; font-weight: 500;">
+                                    Where should I send the recommendation?
+                                </h3>
+                                <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
+                                    Jayme personally reviews your context and replies directly.
+                                </p>
 
-                            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-                                <label for="form-message" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What do you need built or solved? *</label>
-                                <textarea id="form-message" name="message" rows="4" required placeholder="Describe your current bottleneck, what customers or staff struggle with, or your project goals..." style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); resize: vertical; box-sizing: border-box;"></textarea>
-                            </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-name">Your Name *</label>
+                                        <input type="text" id="inp-name" name="name" required placeholder="Full name" class="field-input">
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-email">Email Address *</label>
+                                        <input type="email" id="inp-email" name="email" required placeholder="you@business.com" class="field-input">
+                                    </div>
+                                </div>
 
-                            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
-                                <button type="submit" id="contact-intake-submit-btn" class="btn btn-primary" style="width: 100%;">Discuss Custom System &rarr;</button>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-business">Business Name (Optional)</label>
+                                        <input type="text" id="inp-business" name="business_name" placeholder="Business or project name" class="field-input">
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-site-universal">Website / Link (Optional)</label>
+                                        <input type="text" id="inp-site-universal" name="website" placeholder="business.com" class="field-input">
+                                    </div>
+                                </div>
+
+                                <div class="field-group">
+                                    <label class="field-label" for="inp-budget">Approximate Investment Range</label>
+                                    <span class="field-hint">Honest alignment helps determine whether a $395 diagnostic, a $2,500 lead system, or a custom build is appropriate.</span>
+                                    <select id="inp-budget" name="budget_range" class="field-select">
+                                        <option value="">Select a range (Optional)</option>
+                                        <option value="under_1000">Under $1,000 (Assessment / Diagnostic scope)</option>
+                                        <option value="1000_2500">$1,000 – $2,500 (Diagnostic + focused sprint)</option>
+                                        <option value="2500_5000">$2,500 – $5,000 (Quote + Lead System baseline)</option>
+                                        <option value="5000_10000">$5,000 – $10,000 (Multi-market / Custom Operations)</option>
+                                        <option value="10000_plus">$10,000+ (Complex Operational Infrastructure)</option>
+                                        <option value="not_sure">I don't know yet — advise me based on scope</option>
+                                    </select>
+                                </div>
+
+                                <div class="field-group">
+                                    <label class="field-label" for="inp-notes">Anything else I should know? (Optional)</label>
+                                    <textarea id="inp-notes" name="additional_context" rows="2" placeholder="Urgency, timeline considerations, or specific questions..." class="field-textarea"></textarea>
+                                </div>
+
+                                <div class="btn-nav-row">
+                                    <button type="button" class="btn-intake-back" id="btn-back-to-2">&larr; Back</button>
+                                    <button type="submit" class="btn-intake-primary" id="btn-submit-intake">
+                                        <span id="btn-submit-label">Send Project Inquiry &rarr;</span>
+                                    </button>
+                                </div>
                             </div>
                         </form>
 
-                        <div id="contact-intake-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); font-weight: bold; text-align: center; font-size: 14px;">
-                            Thank you. Your details have been received. Jayme will review your opportunity and respond within 24–48 hours.
+                        <div id="intake-error-msg" style="display: none; padding: 0.85rem; background: #FDF2F0; border: 1px solid #E6B5AA; border-radius: 5px; color: #942E1F; font-size: 13.5px; margin-top: 1rem;">
+                            There was an issue submitting your inquiry. Please try again or email Jayme directly at <a href="mailto:jayme@contextmuse.com" style="color: #942E1F; font-weight: bold;">jayme@contextmuse.com</a>.
                         </div>
                     </div>
                 </div>
@@ -296,71 +728,271 @@
 
     <script src="/assets/js/nav.js" defer></script>
     <script src="/assets/js/whatsapp.js" defer></script>
+    
+    <!-- Intelligent Intake Wizard Script -->
     <script>
-        (function() {
-            const form = document.getElementById('contact-intake-form');
-            const select = document.getElementById('form-service');
-            const submitBtn = document.getElementById('contact-intake-submit-btn');
-            const successBox = document.getElementById('contact-intake-success');
+    (function() {
+        // Analytics Helper (No PII)
+        function trackEvent(name, params = {}) {
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', name, params);
+            }
+        }
 
-            const btnLabels = {
-                'diagnostic': 'Book $395 Diagnostic →',
-                'quote-lead': 'Discuss Quote & Lead System →',
-                'custom-system': 'Discuss Custom System →',
-                'care-essential': 'Inquire Essential Care →',
-                'care-growth': 'Inquire Growth Care →',
-                'institutional-pilot': 'Discuss Institutional Pilot →',
-                'custom': 'Send Project Details →'
+        const form = document.getElementById('intelligent-intake-form');
+        const hiddenCategory = document.getElementById('hidden-problem-type');
+        const submitBtn = document.getElementById('btn-submit-intake');
+        const submitLabel = document.getElementById('btn-submit-label');
+        const errorBox = document.getElementById('intake-error-msg');
+
+        // Panels
+        const panel1 = document.getElementById('step-panel-1');
+        const panel2 = document.getElementById('step-panel-2');
+        const panel3 = document.getElementById('step-panel-3');
+
+        // Progress indicators
+        const prog1 = document.getElementById('prog-step-1');
+        const prog2 = document.getElementById('prog-step-2');
+        const prog3 = document.getElementById('prog-step-3');
+
+        // Navigation Buttons
+        const btnTo2 = document.getElementById('btn-to-step-2');
+        const btnBackTo1 = document.getElementById('btn-back-to-1');
+        const btnTo3 = document.getElementById('btn-to-step-3');
+        const btnBackTo2 = document.getElementById('btn-back-to-2');
+
+        // Adaptive Blocks
+        const adaptiveBlocks = {
+            'website-conversion': document.getElementById('block-website'),
+            'website-build': document.getElementById('block-website'),
+            'quote-lead': document.getElementById('block-quote-lead'),
+            'operations-tool': document.getElementById('block-operations'),
+            'restaurant-data': document.getElementById('block-restaurant'),
+            'diagnostic': document.getElementById('block-diagnostic'),
+            'unknown': document.getElementById('block-unknown')
+        };
+
+        const step2Titles = {
+            'website-conversion': 'Website Conversion Context',
+            'website-build': 'Website Build Requirements',
+            'quote-lead': 'Quote & Lead Routing Details',
+            'operations-tool': 'Workflow & Tooling Context',
+            'restaurant-data': 'Restaurant Operations Context',
+            'diagnostic': 'Business Diagnostic Scope',
+            'unknown': 'Describe What Is Happening'
+        };
+
+        let selectedProblem = 'quote-lead'; // default sensible start
+
+        function setStep(stepNum) {
+            // Update panels
+            [panel1, panel2, panel3].forEach((p, idx) => {
+                if (idx + 1 === stepNum) p.classList.add('active');
+                else p.classList.remove('active');
+            });
+
+            // Update progress
+            [prog1, prog2, prog3].forEach((prog, idx) => {
+                const s = idx + 1;
+                prog.classList.remove('active', 'completed');
+                if (s === stepNum) prog.classList.add('active');
+                else if (s < stepNum) prog.classList.add('completed');
+            });
+
+            // Track step transition
+            trackEvent('intake_step_completed', { completed_step: stepNum, problem_type: selectedProblem });
+
+            const targetSection = document.getElementById('intake-form-section');
+            if (targetSection) {
+                window.scrollTo({ top: targetSection.offsetTop - 60, behavior: 'smooth' });
+            }
+        }
+
+        function updateSelectedProblemUI(problemKey) {
+            selectedProblem = problemKey;
+            hiddenCategory.value = problemKey;
+
+            // Highlight radio card
+            document.querySelectorAll('.problem-card-label').forEach(label => {
+                const rad = label.querySelector('input[type="radio"]');
+                if (rad.value === problemKey) {
+                    rad.checked = true;
+                    label.classList.add('selected');
+                } else {
+                    label.classList.remove('selected');
+                }
+            });
+
+            // Show appropriate block in Step 2
+            Object.keys(adaptiveBlocks).forEach(k => {
+                if (adaptiveBlocks[k]) adaptiveBlocks[k].style.display = 'none';
+            });
+            if (adaptiveBlocks[problemKey]) {
+                adaptiveBlocks[problemKey].style.display = 'block';
+            }
+
+            // Update Step 2 Title
+            const titleEl = document.getElementById('step-2-title');
+            if (titleEl && step2Titles[problemKey]) {
+                titleEl.textContent = step2Titles[problemKey];
+            }
+
+            // Update Submit Button Label
+            if (problemKey === 'diagnostic') {
+                submitLabel.textContent = 'Start the $395 Diagnostic →';
+            } else {
+                submitLabel.textContent = 'Send Project Inquiry →';
+            }
+
+            trackEvent('intake_type_selected', { problem_type: problemKey });
+        }
+
+        // Radio change event
+        document.querySelectorAll('input[name="problem_choice"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                updateSelectedProblemUI(e.target.value);
+            });
+        });
+
+        // Click on whole card
+        document.querySelectorAll('.problem-card-label').forEach(card => {
+            card.addEventListener('click', () => {
+                const val = card.getAttribute('data-problem');
+                if (val) updateSelectedProblemUI(val);
+            });
+        });
+
+        // Navigation handlers
+        if (btnTo2) {
+            btnTo2.addEventListener('click', () => {
+                setStep(2);
+            });
+        }
+
+        if (btnBackTo1) {
+            btnBackTo1.addEventListener('click', () => {
+                setStep(1);
+            });
+        }
+
+        if (btnTo3) {
+            btnTo3.addEventListener('click', () => {
+                // Mirror website URL if entered in step 2 to step 3 field
+                const step2Url = document.getElementById('inp-web-url') || document.getElementById('inp-diag-url');
+                const step3Url = document.getElementById('inp-site-universal');
+                if (step2Url && step2Url.value && step3Url && !step3Url.value) {
+                    step3Url.value = step2Url.value;
+                }
+                setStep(3);
+            });
+        }
+
+        if (btnBackTo2) {
+            btnBackTo2.addEventListener('click', () => {
+                setStep(2);
+            });
+        }
+
+        // URL Query Parameter Handling (?service=diagnostic, etc.)
+        window.addEventListener('DOMContentLoaded', () => {
+            trackEvent('intake_started', { form_id: 'intelligent_intake_funnel' });
+
+            const params = new URLSearchParams(window.location.search);
+            const serviceParam = params.get('service') || params.get('ref');
+            const pill = document.getElementById('url-context-pill');
+            const pillLabel = document.getElementById('url-context-label');
+
+            const queryMap = {
+                'diagnostic': { key: 'diagnostic', label: 'Business System Diagnostic ($395)' },
+                'audit': { key: 'diagnostic', label: 'Business System Diagnostic ($395)' },
+                'quote-lead': { key: 'quote-lead', label: 'Quote + Lead System' },
+                'custom-system': { key: 'operations-tool', label: 'Custom Operations System' },
+                'restaurant': { key: 'restaurant-data', label: 'Restaurant Operations Review' },
+                'restaurant-data': { key: 'restaurant-data', label: 'Restaurant Operations Review' }
             };
 
-            function updateButtonText() {
-                if (select && submitBtn) {
-                    submitBtn.textContent = btnLabels[select.value] || 'Send Project Details →';
+            if (serviceParam && queryMap[serviceParam]) {
+                const target = queryMap[serviceParam];
+                updateSelectedProblemUI(target.key);
+                if (pill && pillLabel) {
+                    pillLabel.textContent = target.label;
+                    pill.style.display = 'inline-flex';
                 }
+                setStep(2);
+            } else {
+                updateSelectedProblemUI('quote-lead');
             }
+        });
 
-            if (select) {
-                // Check for URL query parameter (e.g. ?service=audit)
-                const urlParams = new URLSearchParams(window.location.search);
-                const serviceParam = urlParams.get('service');
-                if (serviceParam && btnLabels[serviceParam]) {
-                    select.value = serviceParam;
+        // Submission via AJAX with durable backend verification
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitLabel.textContent = 'Securing Submission...';
                 }
-                select.addEventListener('change', updateButtonText);
-                updateButtonText();
-            }
+                if (errorBox) errorBox.style.display = 'none';
 
-            if (form) {
-                form.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    if (submitBtn) {
-                        submitBtn.disabled = true;
-                        submitBtn.textContent = 'Sending...';
-                    }
+                try {
+                    const formData = new FormData(form);
+                    const payload = Object.fromEntries(formData.entries());
+                    payload.form_id = 'contact-wizard';
+                    payload.source_page = window.location.pathname;
+                    payload.form_source = window.location.pathname;
+                    payload.inquiry_type = 'contact';
+                    payload.service_interest = selectedProblem || 'custom-systems';
 
-                    try {
-                        const formData = new FormData(form);
-                        const response = await fetch(form.action, {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'Accept': 'application/json'
-                            }
+                    const response = await fetch('/api/lead/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await response.json().catch(() => ({}));
+
+                    if (response.ok && (data.success || data.ok) && data.submission_id) {
+                        trackEvent('intake_submitted', {
+                            problem_type: selectedProblem,
+                            submission_id: data.submission_id,
+                            has_budget_selected: Boolean(document.getElementById('inp-budget').value)
                         });
-
-                        if (response.ok) {
-                            form.reset();
-                            form.style.display = 'none';
-                            if (successBox) successBox.style.display = 'block';
+                        window.location.href = '/contact/success/?submission_id=' + encodeURIComponent(data.submission_id);
+                    } else {
+                        // Backend refused or database unconfigured - preserve user input!
+                        const errMsg = data.error || "We couldn't safely save your inquiry yet. Please try again.";
+                        if (errorBox) {
+                            errorBox.textContent = errMsg;
+                            errorBox.style.display = 'block';
+                            errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         } else {
-                            form.submit();
+                            alert(errMsg);
                         }
-                    } catch (err) {
-                        form.submit();
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitLabel.textContent = 'Send Project Inquiry →';
+                        }
                     }
-                });
-            }
-        })();
+                } catch(err) {
+                    // Network failure - preserve input completely
+                    const errMsg = 'Network communication failure. Your information is preserved below—please retry or contact jayme@contextmuse.com.';
+                    if (errorBox) {
+                        errorBox.textContent = errMsg;
+                        errorBox.style.display = 'block';
+                    } else {
+                        alert(errMsg);
+                    }
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitLabel.textContent = 'Send Project Inquiry →';
+                    }
+                }
+            });
+        }
+    })();
     </script>
 </body>
 </html>

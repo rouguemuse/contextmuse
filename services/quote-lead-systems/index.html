@@ -347,7 +347,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
                         <a href="/services/quote-lead-systems/" class="nav-dropdown-link" style="color: var(--accent-teal); font-weight: 600;">Quote + Lead Systems</a>
-                        <a href="/custom/?service=custom-system#intake" class="nav-dropdown-link">Custom Systems</a>
+                        <a href="/contact/?service=custom-system" class="nav-dropdown-link">Custom Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
                     </div>
@@ -357,8 +357,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
-                    </div>
+                        </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
@@ -428,7 +427,7 @@
                             <li><strong>Upfront pricing clarity:</strong> Dynamic calculators guide buyers through sizing, tonnage, and add-ons.</li>
                             <li><strong>Territory &amp; radius logic:</strong> Automatic zip code/county validation prevents out-of-zone wasted time.</li>
                             <li><strong>Structured lead data:</strong> Delivers clean, actionable specifications directly to email, SMS, or CRM.</li>
-                            <li><strong>Zero plugin bloat:</strong> 100% custom, lightweight code loading in under a second on mobile.</li>
+                            <li><strong>Lightweight architecture:</strong> Custom, streamlined code designed for fast mobile load times.</li>
                         </ul>
                     </div>
                 </div>
@@ -563,9 +562,9 @@
 
                     <!-- Direct Form -->
                     <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.02);">
-                        <form id="qls-intake-form" action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <form id="qls-intake-form" action="/api/lead" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <input type="text" name="_gotcha" style="display:none">
-                            <input type="hidden" name="form_source" value="quote_lead_systems_page">
+                            <input type="hidden" name="form_source" value="/services/quote-lead-systems/">
                             <input type="hidden" name="service_interest" value="Quote + Lead System (From $2,500)">
 
                             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
@@ -598,9 +597,12 @@
                             </div>
                         </form>
 
-                        <div id="qls-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); font-weight: bold; text-align: center; font-size: 14px;">
-                            Thank you. Your details have been received. Jayme will review your operational requirements and respond within 24–48 hours.
+                        <div id="qls-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
+                            <strong>Thank you. Your details have been securely recorded.</strong><br>
+                            <span style="font-family: var(--font-mono); font-size: 12px; margin-top: 0.35rem; display: inline-block;">Durable Reference ID: <strong id="qls-sub-id"></strong></span><br>
+                            <span style="display: inline-block; margin-top: 0.25rem;">Jayme personally reviews every inquiry and will respond after reviewing the business and project context.</span>
                         </div>
+                        <div id="qls-error" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                     </div>
                 </div>
             </div>
@@ -647,30 +649,61 @@
             if (form) {
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
+                    const errorBox = document.getElementById('qls-error');
+                    if (errorBox) errorBox.style.display = 'none';
                     if (submitBtn) {
                         submitBtn.disabled = true;
-                        submitBtn.textContent = 'Sending...';
+                        submitBtn.textContent = 'Securing Submission...';
                     }
 
                     try {
                         const formData = new FormData(form);
-                        const response = await fetch(form.action, {
+                        const payload = Object.fromEntries(formData.entries());
+                        payload.form_id = 'qls-intake';
+                        payload.form_source = window.location.pathname;
+
+                        const response = await fetch('/api/lead', {
                             method: 'POST',
-                            body: formData,
                             headers: {
+                                'Content-Type': 'application/json',
                                 'Accept': 'application/json'
-                            }
+                            },
+                            body: JSON.stringify(payload)
                         });
 
-                        if (response.ok) {
+                        const data = await response.json().catch(() => ({}));
+
+                        if (response.ok && (data.success || data.ok) && data.submission_id) {
                             form.reset();
                             form.style.display = 'none';
+                            const subIdEl = document.getElementById('qls-sub-id');
+                            if (subIdEl) subIdEl.textContent = data.submission_id;
                             if (successBox) successBox.style.display = 'block';
                         } else {
-                            form.submit();
+                            const msg = data.error || "We couldn't safely save your inquiry yet. Please try again.";
+                            if (errorBox) {
+                                errorBox.textContent = msg;
+                                errorBox.style.display = 'block';
+                            } else {
+                                alert(msg);
+                            }
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = 'Discuss a Quote &amp; Lead System &rarr;';
+                            }
                         }
                     } catch (err) {
-                        form.submit();
+                        const msg = 'Network communication failure. Your information is preserved—please retry or contact jayme@contextmuse.com.';
+                        if (errorBox) {
+                            errorBox.textContent = msg;
+                            errorBox.style.display = 'block';
+                        } else {
+                            alert(msg);
+                        }
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = 'Discuss a Quote &amp; Lead System &rarr;';
+                        }
                     }
                 });
             }

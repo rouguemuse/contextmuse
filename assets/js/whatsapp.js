@@ -13,11 +13,11 @@
     const DEFAULT_PHONE = '13468337291X';
 
     const OFFER_PREFILLS = {
-        'launch': "Hi Jayme, I'm interested in a Launch Site. My business is: ",
+        'launch': "Hi Jayme, I'm interested in a Quote + Lead System. My business is: ",
         'conversion': "Hi Jayme, I'm interested in a Conversion Site. My current website is: ",
-        'business_system': "Hi Jayme, I'm interested in a Custom Business System. I need my business to: ",
+        'business_system': "Hi Jayme, I'm interested in a Custom Operations System. I need my business to: ",
         'software': "Hi Jayme, I have a custom software/portal project. Here's what I need it to do: ",
-        'audit': "Hi Jayme, I'd like a $195 Conversion Audit. My website is: ",
+        'audit': "Hi Jayme, I'd like a $395 Business System Diagnostic. My website is: ",
         'funnel': "Hi Jayme, I'm interested in a Funnel Sprint. My current offer is: ",
         'agency': "Hi Jayme, I'm interested in exploring a white-label agency partnership with Context & Muse. Our agency is: ",
         'general': "Hi Jayme, I'm interested in a Context & Muse project. "

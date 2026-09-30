@@ -307,9 +307,9 @@
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
                         <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
-                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
-                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
                     </div>
@@ -319,8 +319,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="nav-dropdown-link">Maps With Teeth ↗</a>
-                    </div>
+                        </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
@@ -362,7 +361,7 @@
                             <div style="width: 24px;"></div>
                         </div>
                         <div class="browser-content" style="padding: 0; background: #000;">
-                            <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol custom client operational intake website" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                            <img src="/assets/images/inncontrol-commercial-platform.webp" alt="INNcontrol Coils commercial PTAC refurbishing web platform" style="width: 100%; height: auto; display: block; object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -422,7 +421,7 @@
                     <div class="offering-card">
                         <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem;">04 // BESPOKE MACHINERY</span>
                         <h3 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; color: var(--text-primary); margin: 0 0 0.5rem 0;">Operational &amp; Scoping Tools</h3>
-                        <p style="font-family: var(--font-sans); font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Interactive 2D floorplan unit mappers, parametric repair estimation engines, client visual audit ledgers, and custom command-line utilities.</p>
+                        <p style="font-family: var(--font-sans); font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">Commercial service platforms, operational estimation engines, client visual audit ledgers, and custom command-line utilities.</p>
                     </div>
                 </div>
 
@@ -489,12 +488,12 @@
                     <!-- INNcontrol -->
                     <div class="proof-card" id="inncontrol">
                         <div class="proof-img-container">
-                            <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils website interface">
+                            <img src="/assets/images/inncontrol-commercial-platform.webp" alt="INNcontrol Coils website interface">
                         </div>
                         <div class="proof-info">
                             <span class="proof-status">Production App</span>
                             <h3 class="proof-title">INNcontrol Coils</h3>
-                            <p class="proof-desc">Commercial service website paired with an interactive floorplan scoping and estimation tool.</p>
+                            <p class="proof-desc">Commercial service platform paired with an operational scoping and estimation tool.</p>
                             <div class="system-console" data-project="inncontrol">
                                 <div class="console-tabs">
                                     <button class="console-tab-btn active" data-tab="problem">Problem</button>
@@ -506,7 +505,7 @@
                                         HVAC coil refurbishing across 500-room properties was tracked on paper clipboards, delaying proposals by days.
                                     </div>
                                     <div class="console-panel" data-panel="backend">
-                                        Tablet-first 2D floorplan mapper letting techs plot equipment pins, tag defect severity, and attach photos on site.
+                                        Tablet-first commercial service platform letting technicians log unit diagnostics, tag defect severity, and record findings on site.
                                     </div>
                                     <div class="console-panel" data-panel="value">
                                         Cuts proposal turnaround from days to hours with an unassailable visual audit ledger that closes commercial contracts.
@@ -516,7 +515,7 @@
                             <div class="proof-tags" style="margin-top: 1rem;">
                                 <span class="proof-tag">Field Scoping</span>
                                 <span class="proof-tag">Estimation</span>
-                                <span class="proof-tag">Floorplan UI</span>
+                                <span class="proof-tag">Service Platform</span>
                             </div>
                         </div>
                     </div>
@@ -620,16 +619,16 @@
                             Selected: <span id="service-context-text">Custom Business System</span>
                         </div>
 
-                        <form id="custom-intake-form" action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <form id="custom-intake-form" action="/api/lead" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <input type="text" name="_gotcha" style="display:none">
-                            <input type="hidden" name="form_source" value="custom_systems_intake">
+                            <input type="hidden" name="form_source" value="/custom/">
                             
                             <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">What are you looking for?</label>
                                 <select id="form-service" name="service_type" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-paper); box-sizing: border-box; color: var(--text-primary);">
                                     <option value="diagnostic">Business System Diagnostic ($395 fixed)</option>
                                     <option value="quote-lead" selected>Quote + Lead System (From $2,500)</option>
-                                    <option value="custom-system">Custom Operations System (From $3,500)</option>
+                                    <option value="custom-system">Custom Operations System (From $6,500)</option>
                                     <option value="care-essential">Essential Care Plan ($375 / Qtr)</option>
                                     <option value="care-growth">Growth Care Plan ($600 / Qtr)</option>
                                     <option value="institutional-pilot">Institutional Pilot (Maps With Teeth)</option>
@@ -682,9 +681,12 @@
                             </div>
                         </form>
 
-                        <div id="intake-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); font-weight: bold; text-align: center; font-size: 14px;">
-                            Thank you. Your details have been received. Jayme will review your opportunity and respond within 24–48 hours.
+                        <div id="intake-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
+                            <strong>Thank you. Your details have been securely recorded.</strong><br>
+                            <span style="font-family: var(--font-mono); font-size: 12px; margin-top: 0.35rem; display: inline-block;">Durable Reference ID: <strong id="intake-sub-id"></strong></span><br>
+                            <span style="display: inline-block; margin-top: 0.25rem;">Jayme personally reviews every inquiry and will respond after reviewing the business and project context.</span>
                         </div>
+                        <div id="intake-error" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                     </div>
                 </div>
             </div>
@@ -763,7 +765,7 @@
                 'diagnostic': { value: 'diagnostic', label: 'Business System Diagnostic ($395 fixed)', btn: 'Book $395 Diagnostic →' },
                 'audit': { value: 'diagnostic', label: 'Business System Diagnostic ($395 fixed)', btn: 'Book $395 Diagnostic →' },
                 'quote-lead': { value: 'quote-lead', label: 'Quote + Lead System (From $2,500)', btn: 'Discuss Quote & Lead System →' },
-                'custom-system': { value: 'custom-system', label: 'Custom Operations System (From $3,500)', btn: 'Discuss Custom System →' },
+                'custom-system': { value: 'custom-system', label: 'Custom Operations System (From $6,500)', btn: 'Discuss Custom System →' },
                 'care-essential': { value: 'care-essential', label: 'Essential Care Plan ($375 / Qtr)', btn: 'Inquire Essential Care →' },
                 'care-growth': { value: 'care-growth', label: 'Growth Care Plan ($600 / Qtr)', btn: 'Inquire Growth Care →' },
                 'institutional-pilot': { value: 'institutional-pilot', label: 'Institutional Pilot (Maps With Teeth)', btn: 'Discuss Institutional Pilot →' },
@@ -771,7 +773,7 @@
             };
 
             const btnLabels = {
-                'diagnostic': 'Book $395 Diagnostic →',
+                'diagnostic': 'Start the $395 Diagnostic →',
                 'quote-lead': 'Discuss Quote & Lead System →',
                 'custom-system': 'Discuss Custom System →',
                 'care-essential': 'Inquire Essential Care →',
@@ -800,35 +802,66 @@
 
             updateButtonText();
 
-            // AJAX Form Submit
+            // AJAX Form Submit to /api/lead
             if (form) {
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
+                    const errorBox = document.getElementById('intake-error');
+                    if (errorBox) errorBox.style.display = 'none';
                     if (submitBtn) {
                         submitBtn.disabled = true;
-                        submitBtn.textContent = 'Sending...';
+                        submitBtn.textContent = 'Securing Submission...';
                     }
 
                     try {
                         const formData = new FormData(form);
-                        const response = await fetch(form.action, {
+                        const payload = Object.fromEntries(formData.entries());
+                        payload.form_id = 'custom-intake';
+                        payload.form_source = window.location.pathname;
+
+                        const response = await fetch('/api/lead', {
                             method: 'POST',
-                            body: formData,
                             headers: {
+                                'Content-Type': 'application/json',
                                 'Accept': 'application/json'
-                            }
+                            },
+                            body: JSON.stringify(payload)
                         });
 
-                        if (response.ok) {
+                        const data = await response.json().catch(() => ({}));
+
+                        if (response.ok && (data.success || data.ok) && data.submission_id) {
                             form.reset();
                             form.style.display = 'none';
                             if (contextPill) contextPill.style.display = 'none';
+                            const subIdEl = document.getElementById('intake-sub-id');
+                            if (subIdEl) subIdEl.textContent = data.submission_id;
                             if (successBox) successBox.style.display = 'block';
                         } else {
-                            form.submit();
+                            const msg = data.error || "We couldn't safely save your inquiry yet. Please try again.";
+                            if (errorBox) {
+                                errorBox.textContent = msg;
+                                errorBox.style.display = 'block';
+                            } else {
+                                alert(msg);
+                            }
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                updateButtonText();
+                            }
                         }
                     } catch (err) {
-                        form.submit();
+                        const msg = 'Network communication failure. Your information is preserved—please retry or contact jayme@contextmuse.com.';
+                        if (errorBox) {
+                            errorBox.textContent = msg;
+                            errorBox.style.display = 'block';
+                        } else {
+                            alert(msg);
+                        }
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            updateButtonText();
+                        }
                     }
                 });
             }

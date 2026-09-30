@@ -733,18 +733,18 @@
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
                         <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
                         <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                        <a href="/systems/" class="nav-dropdown-link">Featured Systems</a>
                     </div>
                 </details>
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
                         <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/custom/?service=audit#intake" class="nav-dropdown-link">Conversion Audit</a>
-                        <a href="/custom/?service=funnel-sprint#intake" class="nav-dropdown-link">Funnel Sprints</a>
-                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
                         <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
                         <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
                     </div>
@@ -888,7 +888,7 @@
                                     <span class="browser-url-pill">inncontrolcoils.com</span>
                                 </div>
                                 <div class="editorial-browser-body">
-                                    <img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils commercial HVAC platform interface" width="800" height="450" loading="lazy">
+                                    <img src="/assets/images/inncontrol-commercial-platform.webp" alt="INNcontrol Coils commercial PTAC platform interface" width="800" height="450" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -1198,15 +1198,16 @@
 
                     <!-- Intake Form -->
                     <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 2.5rem; box-shadow: 0 4px 18px rgba(0,0,0,0.03);">
-                        <form id="hp-intake-form" action="https://formspree.io/f/xoqydgvw" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <form id="hp-intake-form" action="/api/lead" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <input type="text" name="_gotcha" style="display:none">
-                            <input type="hidden" name="form_source" value="preview_homepage_cta">
+                            <input type="hidden" name="form_id" value="preview-homepage-intake">
+                            <input type="hidden" name="form_source" value="/preview/">
                             
                             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
                                 <label for="form-service" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">What are you looking to build?</label>
                                 <select id="form-service" name="service_interest" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--border-subtle); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; background: var(--bg-canvas); box-sizing: border-box; color: var(--text-heading);">
                                     <option value="custom-system" selected>Custom Website &amp; System Build</option>
-                                    <option value="conversion-audit">Conversion Leak Audit ($195 flat rate)</option>
+                                    <option value="conversion-audit">Business System Diagnostic ($395 fixed)</option>
                                     <option value="funnel-sprint">Funnel Sprint (From $750)</option>
                                     <option value="operational-tool">Operational Tool / Quoting Engine</option>
                                     <option value="internal-software">Custom Internal Software / Portal</option>
@@ -1235,7 +1236,7 @@
                         </form>
 
                         <div id="hp-intake-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); font-weight: bold; text-align: center; font-size: 14px;">
-                            Thank you. Your details have been received. Jayme will review your project and respond within 24–48 hours.
+                            Thank you. Your details have been received. Jayme personally reviews every inquiry and will respond after reviewing the business and project context.
                         </div>
                     </div>
                 </div>
@@ -1286,7 +1287,7 @@
 
             const btnLabels = {
                 'custom-system': 'Discuss System Build →',
-                'conversion-audit': 'Book $195 Audit →',
+                'conversion-audit': 'Start the $395 Diagnostic →',
                 'funnel-sprint': 'Start Funnel Sprint →',
                 'operational-tool': 'Scope Quoting / Tool →',
                 'internal-software': 'Scope Custom Software →',
@@ -1314,23 +1315,38 @@
 
                     try {
                         const formData = new FormData(form);
-                        const response = await fetch(form.action, {
+                        const payload = Object.fromEntries(formData.entries());
+                        payload.form_id = 'preview-homepage-intake';
+                        payload.form_source = window.location.pathname;
+
+                        const response = await fetch('/api/lead', {
                             method: 'POST',
-                            body: formData,
                             headers: {
+                                'Content-Type': 'application/json',
                                 'Accept': 'application/json'
-                            }
+                            },
+                            body: JSON.stringify(payload)
                         });
 
-                        if (response.ok) {
+                        const data = await response.json().catch(() => ({}));
+
+                        if (response.ok && (data.success || data.ok) && data.submission_id) {
                             form.reset();
                             form.style.display = 'none';
                             if (successBox) successBox.style.display = 'block';
                         } else {
-                            form.submit();
+                            alert(data.error || "We couldn't safely save your inquiry yet. Please try again.");
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                updateButtonText();
+                            }
                         }
                     } catch (err) {
-                        form.submit();
+                        alert('Network communication failure. Your information is preserved—please try again.');
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            updateButtonText();
+                        }
                     }
                 });
             }
