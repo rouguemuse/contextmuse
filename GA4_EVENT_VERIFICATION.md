@@ -11,9 +11,12 @@
 
 ## 1. Executive Summary & Verification Matrix
 
-| Event / Requirement | Status | Verification Criteria & Observed Behavior |
+| Requirement / Semantic Rule | Status | Production Verification Details |
 | :--- | :---: | :--- |
-| **`generate_lead`** | **PASS** | Fired **ONLY AFTER** `/api/lead` returns a genuine 200/201 durable persistence response with a real `submission_id`. Suppressed on page load, button click, validation errors, and invalid emails. Exactly one event fired per conversion. |
+| **`generate_lead`** | **PASS** | Fired **ONLY AFTER** `/api/lead` returns a genuine 200/201 durable persistence response with a real `submission_id` starting with `lead_` and `synthetic !== true`. Suppressed on page load, button click, validation errors, and invalid emails. Exactly one event fired per conversion. |
+| **HONEYPOT CONVERSION SUPPRESSION** | **PASS** | Bot/honeypot submissions trigger backend deceptive success (`sub_spm_...` token, `synthetic: true`), but the analytics gate strictly suppresses `generate_lead`. Exactly **0** events fired. |
+| **SIGNAL BUDGET SEMANTICS** | **PASS** | The Signal intake form does not collect a budget range; `budget_range` is **omitted entirely**. Service tier names (e.g. `diagnostic`, `snapshot`) are never substituted into `budget_range`. |
+| **SIGNAL TIMELINE SEMANTICS** | **PASS** | The Signal intake form does not collect a timeline; `timeline` is **omitted entirely**. Fabricated values like `immediate` are never sent. |
 | **`intake_started`** | **PASS** | Fired **ONCE** when user first meaningfully interacts with the form (`focusin`, `click`, `input`, or `change`). **Zero** events fired on initial page load. |
 | **`intake_step_completed`** | **PASS** | Fired sequentially upon successful forward advancement (Step 1 -> 2, Step 2 -> 3) in `contact-wizard`. Suppressed on initial load and back-navigation. |
 | **`cta_click`** | **PASS** | Fired on commercial high-intent CTAs (hero buttons, service bridges, quote launch links). Excludes ordinary navigation text links. |
@@ -24,7 +27,47 @@
 
 ## 2. Production Event Payloads (Live Captured)
 
-### 2.1 `intake_started`
+### 2.1 `generate_lead` (Post-Persistence Conversion)
+- **Honeypot Submission Check:**
+  - **Backend Response:** `201 Created` with `submission_id: sub_spm_f2c2b3dc`
+  - **GA4 `generate_lead` Events Emitted:** `0` (Verified: Blocked by `lead_` prefix requirement and synthetic check)
+  - **Status:** **`HONEYPOT CONVERSION SUPPRESSION: PASS`**
+
+- **Live Contact Wizard Submission:**
+  - **Live Durable Submission ID:** `lead_munoe71e_180263da4b45` (Persisted in Supabase `public.leads`)
+  - **Response Status:** `201 Created`
+  - **Event Frequency:** Exactly `1` (Verified: Double submit produces exactly 1 event)
+  - **Live Captured Payload:**
+```json
+{
+  "form_id": "contact-wizard",
+  "inquiry_type": "contact",
+  "service_interest": "quote-lead",
+  "budget_range": "2500_5000",
+  "lead_source": "/contact/"
+}
+```
+
+- **Live Signal Intake Submission:**
+  - **Live Durable Submission ID:** `lead_munoe8s4_5a12bf0b7d22` (Persisted in Supabase `public.leads`)
+  - **Response Status:** `201 Created`
+  - **Event Frequency:** Exactly `1`
+  - **Live Captured Payload:**
+```json
+{
+  "form_id": "signal-branch-2",
+  "inquiry_type": "signal",
+  "service_interest": "diagnostic",
+  "lead_source": "/signal/intake/"
+}
+```
+  - **Semantics Verified:**
+    - `budget_range`: OMITTED entirely (never substituted with "diagnostic") — **`SIGNAL BUDGET SEMANTICS: PASS`**
+    - `timeline`: OMITTED entirely (never fabricated with "immediate") — **`SIGNAL TIMELINE SEMANTICS: PASS`**
+
+---
+
+### 2.2 `intake_started`
 - **Trigger:** First user interaction (radio option select, text field focus, input) on an intake form.
 - **Initial Page Load Count:** `0` (Verified: Does NOT fire on load)
 - **Live Captured Payload (Contact Wizard):**
@@ -44,7 +87,7 @@
 
 ---
 
-### 2.2 `intake_step_completed`
+### 2.3 `intake_step_completed`
 - **Trigger:** Forward progression through multi-step intake wizard.
 - **Back-Navigation Count:** `0` (Verified: Suppressed when stepping backward)
 - **Live Captured Payload (Step 1 -> Step 2):**
@@ -63,43 +106,6 @@
   "step_number": 2,
   "step_name": "operational_context",
   "inquiry_type": "contact"
-}
-```
-
----
-
-### 2.3 `generate_lead` (Post-Persistence Conversion)
-- **Trigger:** Fired strictly **after** `/api/lead` returns a genuine persistent 200/201 response.
-- **Invalid Submission Count:** `0` (Verified: Invalid email blocked; `generate_lead` did NOT fire)
-- **Live Contact Wizard Submission:**
-  - **Live Durable Submission ID:** `lead_munj1uxq_040c42e4c4f2` (Verified in Supabase `public.leads`)
-  - **Response Status:** `201 Created`
-  - **Event Frequency:** Exactly `1`
-  - **Live Captured Payload:**
-```json
-{
-  "form_id": "contact-wizard",
-  "inquiry_type": "contact",
-  "service_interest": "quote-lead",
-  "budget_range": "not_specified",
-  "timeline": "not_specified",
-  "lead_source": "/contact/"
-}
-```
-
-- **Live Signal Intake Submission:**
-  - **Live Durable Submission ID:** `lead_munj2bqp_1fa2e727d6a6` (Verified in Supabase `public.leads`)
-  - **Response Status:** `201 Created`
-  - **Event Frequency:** Exactly `1`
-  - **Live Captured Payload:**
-```json
-{
-  "form_id": "signal-branch-2",
-  "inquiry_type": "signal",
-  "service_interest": "diagnostic",
-  "budget_range": "diagnostic",
-  "timeline": "immediate",
-  "lead_source": "/signal/intake/"
 }
 ```
 
@@ -143,8 +149,8 @@
 | `form_id` | **YES** | Whitelisted enum string (e.g. `contact-wizard`, `signal-branch-2`) | **VERIFIED** |
 | `inquiry_type` | **YES** | Whitelisted enum string (e.g. `contact`, `signal`) | **VERIFIED** |
 | `service_interest` | **YES** | Whitelisted categorization string | **VERIFIED** |
-| `budget_range` | **YES** | Whitelisted scope tier string | **VERIFIED** |
-| `timeline` | **YES** | Whitelisted timeframe string | **VERIFIED** |
+| `budget_range` | **YES** | Whitelisted scope tier string (only when genuinely collected) | **VERIFIED** |
+| `timeline` | **YES** | Whitelisted timeframe string (only when genuinely collected) | **VERIFIED** |
 | `lead_source` | **YES** | Cleaned pathname string (max 64 chars) | **VERIFIED** |
 
 ---
