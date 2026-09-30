@@ -962,15 +962,21 @@
                     const data = await response.json().catch(() => ({}));
 
                     if (response.ok && (data.success || data.ok) && data.submission_id) {
-                        if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
-                            window.CM_Analytics.trackGenerateLead({
-                                form_id: 'contact-wizard',
-                                inquiry_type: 'contact',
-                                service_interest: selectedProblem || 'custom-systems',
-                                budget_range: (document.getElementById('inp-budget') && document.getElementById('inp-budget').value) || '',
-                                timeline: '',
-                                lead_source: window.location.pathname
-                            });
+                        // Strict gate: Only genuine persisted non-synthetic leads fire GA4 conversion event
+                        if (typeof data.submission_id === 'string' && data.submission_id.startsWith('lead_') && data.synthetic !== true) {
+                            if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
+                                const leadPayload = {
+                                    form_id: 'contact-wizard',
+                                    inquiry_type: 'contact',
+                                    service_interest: selectedProblem || 'custom-systems',
+                                    lead_source: window.location.pathname
+                                };
+                                const budgetEl = document.getElementById('inp-budget');
+                                if (budgetEl && budgetEl.value && budgetEl.value.trim().length > 0) {
+                                    leadPayload.budget_range = budgetEl.value.trim();
+                                }
+                                window.CM_Analytics.trackGenerateLead(leadPayload);
+                            }
                         }
                         setTimeout(function() {
                             window.location.href = '/contact/success/?submission_id=' + encodeURIComponent(data.submission_id);

@@ -703,15 +703,16 @@
                         const data = await response.json().catch(() => ({}));
 
                         if (response.ok && (data.success || data.ok) && data.submission_id) {
-                            if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
-                                window.CM_Analytics.trackGenerateLead({
-                                    form_id: payload.form_id || ('signal-branch-' + branchNum),
-                                    inquiry_type: 'signal',
-                                    service_interest: payload.selected_tier || 'signal-diagnostic',
-                                    budget_range: payload.selected_tier || 'not_specified',
-                                    timeline: 'immediate',
-                                    lead_source: window.location.pathname
-                                });
+                            // Strict gate: Only genuine persisted non-synthetic leads fire GA4 conversion event
+                            if (typeof data.submission_id === 'string' && data.submission_id.startsWith('lead_') && data.synthetic !== true) {
+                                if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
+                                    window.CM_Analytics.trackGenerateLead({
+                                        form_id: payload.form_id || ('signal-branch-' + branchNum),
+                                        inquiry_type: 'signal',
+                                        service_interest: payload.selected_tier || 'diagnostic',
+                                        lead_source: window.location.pathname
+                                    });
+                                }
                             }
                             form.reset();
                             form.style.display = 'none';

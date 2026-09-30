@@ -1432,15 +1432,20 @@
                     const data = await resp.json().catch(() => ({}));
 
                     if (resp.ok && (data.success || data.ok) && data.submission_id) {
-                        if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
-                            window.CM_Analytics.trackGenerateLead({
-                                form_id: 'diagnostic-inquiry',
-                                inquiry_type: 'website_system_check',
-                                service_interest: 'website_system_check_inquiry',
-                                budget_range: payload.budget || 'not_specified',
-                                timeline: 'not_specified',
-                                lead_source: window.location.pathname
-                            });
+                        // Strict gate: Only genuine persisted non-synthetic leads fire GA4 conversion event
+                        if (typeof data.submission_id === 'string' && data.submission_id.startsWith('lead_') && data.synthetic !== true) {
+                            if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
+                                const leadPayload = {
+                                    form_id: 'diagnostic-inquiry',
+                                    inquiry_type: 'website_system_check',
+                                    service_interest: 'website_system_check_inquiry',
+                                    lead_source: window.location.pathname
+                                };
+                                if (payload.budget && payload.budget.trim().length > 0 && payload.budget !== 'not_specified') {
+                                    leadPayload.budget_range = payload.budget.trim();
+                                }
+                                window.CM_Analytics.trackGenerateLead(leadPayload);
+                            }
                         }
                         inquiryForm.style.display = 'none';
                         const subIdEl = document.getElementById('inq-sub-id');

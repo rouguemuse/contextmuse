@@ -18,7 +18,11 @@
         if (typeof val !== 'string') return '';
         var trimmed = val.trim();
         // Disallow emails, phone numbers, or lead persistence tokens
-        if (trimmed.includes('@') || EMAIL_REGEX.test(trimmed) || PHONE_REGEX.test(trimmed) || trimmed.startsWith('lead_')) {
+        if (trimmed.includes('@') || EMAIL_REGEX.test(trimmed) || PHONE_REGEX.test(trimmed) || trimmed.startsWith('lead_') || trimmed.startsWith('sub_spm_')) {
+            return '';
+        }
+        // Disallow placeholder strings
+        if (trimmed === 'not_specified' || trimmed === 'undefined' || trimmed === 'null') {
             return '';
         }
         // Disallow HTML tags or quotes
@@ -43,6 +47,7 @@
     var CM_Analytics = {
         /**
          * Fired ONLY after /api/lead has confirmed durable persistence
+         * Gate: response.ok && (data.success || data.ok) && submission_id.startsWith('lead_') && data.synthetic !== true
          */
         trackGenerateLead: function(rawParams) {
             if (!rawParams || typeof rawParams !== 'object') return;
@@ -53,17 +58,24 @@
                 var k = keys[i];
                 if (ALLOWED_LEAD_KEYS.has(k)) {
                     var val = cleanString(String(rawParams[k] || ''));
-                    if (val) {
+                    // Only include non-empty values; do not send placeholder strings
+                    if (val && val !== 'not_specified') {
                         cleanParams[k] = val;
                     }
                 }
             }
 
-            // Must have at least a form_id to track
+            // Semantic checks: Never fabricate budget_range from service tier names
+            if (cleanParams.budget_range && (cleanParams.budget_range === 'diagnostic' || cleanParams.budget_range === 'snapshot' || cleanParams.budget_range === 'ongoing')) {
+                delete cleanParams.budget_range;
+            }
+
+            // Must have a genuine form_id
             if (!cleanParams.form_id) {
                 cleanParams.form_id = 'lead-form';
             }
 
+            // Deduplication guards against double submits and rapid re-executions
             var now = Date.now();
             var rapidDedupKey = (cleanParams.inquiry_type || '') + ':' + (cleanParams.lead_source || '');
             if (now - lastLeadTime < 4000 && rapidDedupKey === lastLeadKey) {
@@ -149,7 +161,13 @@
                     if (response && response.ok) {
                         var clone = response.clone();
                         clone.json().then(function(data) {
-                            if (data && (data.success === true || data.ok === true) && data.submission_id) {
+                            // STRICT GATE: Real persisted leads only. Never synthetic or bot/honeypot leads
+                            if (data &&
+                                (data.success === true || data.ok === true) &&
+                                typeof data.submission_id === 'string' &&
+                                data.submission_id.indexOf('lead_') === 0 &&
+                                data.synthetic !== true) {
+
                                 var reqPayload = {};
                                 try {
                                     if (options && options.body && typeof options.body === 'string') {
@@ -160,18 +178,27 @@
                                 var formId = reqPayload.form_id || (window.location.pathname.indexOf('/contact') !== -1 ? 'contact-wizard' : 'lead-form');
                                 var inqType = reqPayload.inquiry_type || (window.location.pathname.indexOf('/contact') !== -1 ? 'contact' : (window.location.pathname.indexOf('/signal') !== -1 ? 'signal' : (window.location.pathname.indexOf('/website-system-check') !== -1 ? 'website_system_check' : 'general')));
                                 var service = reqPayload.service_interest || reqPayload.service || reqPayload.service_type || reqPayload.selected_tier || '';
-                                var budget = reqPayload.budget_range || reqPayload.budget || reqPayload.selected_tier || '';
-                                var timeline = reqPayload.timeline || '';
-                                var source = reqPayload.source_page || reqPayload.form_source || window.location.pathname;
 
-                                CM_Analytics.trackGenerateLead({
+                                var leadParams = {
                                     form_id: formId,
                                     inquiry_type: inqType,
                                     service_interest: service,
-                                    budget_range: budget,
-                                    timeline: timeline,
-                                    lead_source: source
-                                });
+                                    lead_source: reqPayload.source_page || reqPayload.form_source || window.location.pathname
+                                };
+
+                                // ONLY genuinely collected budget ranges (never substitute service tiers)
+                                var budget = reqPayload.budget_range || reqPayload.budget || '';
+                                if (budget && budget !== 'diagnostic' && budget !== 'snapshot' && budget !== 'ongoing' && budget !== 'not_specified') {
+                                    leadParams.budget_range = budget;
+                                }
+
+                                // ONLY genuinely collected timelines (never invent "immediate")
+                                var timeline = reqPayload.timeline || '';
+                                if (timeline && timeline !== 'immediate' && timeline !== 'not_specified') {
+                                    leadParams.timeline = timeline;
+                                }
+
+                                CM_Analytics.trackGenerateLead(leadParams);
                             }
                         }).catch(function() {});
                     }
@@ -224,7 +251,7 @@
             if (isNav && !isCommercialBtn) return;
 
             if (isCommercialBtn || isHighValueDest) {
-                var text = link.getAttribute('data-cta-name') || link.innerText.replace(/[←-↓↔↩-⇿⟵-⟿⤀-⥿]/g, '').trim() || 'CTA';
+                var text = link.getAttribute('data-cta-name') || link.innerText.replace(/[\u2190-\u2193\u2194\u21A9-\u21FF\u27F5-\u27FF\u2900-\u297F]/g, '').trim() || 'CTA';
                 if (text && text.length > 2 && text.length < 60) {
                     CM_Analytics.trackCtaClick(text, loc, link.pathname || href);
                 }
