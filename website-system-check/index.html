@@ -9,6 +9,7 @@
       gtag('js', new Date());
       gtag('config', 'G-MVV7WNL42L');
     </script>
+    <script src="/assets/js/analytics.js" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1431,7 +1432,16 @@
                     const data = await resp.json().catch(() => ({}));
 
                     if (resp.ok && (data.success || data.ok) && data.submission_id) {
-                        trackEvent('diagnostic_inquiry_submitted', { submission_id: data.submission_id });
+                        if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
+                            window.CM_Analytics.trackGenerateLead({
+                                form_id: 'diagnostic-inquiry',
+                                inquiry_type: 'website_system_check',
+                                service_interest: 'website_system_check_inquiry',
+                                budget_range: payload.budget || 'not_specified',
+                                timeline: 'not_specified',
+                                lead_source: window.location.pathname
+                            });
+                        }
                         inquiryForm.style.display = 'none';
                         const subIdEl = document.getElementById('inq-sub-id');
                         if (subIdEl) subIdEl.textContent = data.submission_id;

@@ -10,6 +10,7 @@
 
       gtag('config', 'G-MVV7WNL42L');
     </script>
+    <script src="/assets/js/analytics.js" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -702,6 +703,16 @@
                         const data = await response.json().catch(() => ({}));
 
                         if (response.ok && (data.success || data.ok) && data.submission_id) {
+                            if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
+                                window.CM_Analytics.trackGenerateLead({
+                                    form_id: payload.form_id || ('signal-branch-' + branchNum),
+                                    inquiry_type: 'signal',
+                                    service_interest: payload.selected_tier || 'signal-diagnostic',
+                                    budget_range: payload.selected_tier || 'not_specified',
+                                    timeline: 'immediate',
+                                    lead_source: window.location.pathname
+                                });
+                            }
                             form.reset();
                             form.style.display = 'none';
                             if (subIdEl) subIdEl.textContent = data.submission_id;

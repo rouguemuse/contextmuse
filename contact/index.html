@@ -10,6 +10,7 @@
 
       gtag('config', 'G-MVV7WNL42L');
     </script>
+    <script src="/assets/js/analytics.js" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -445,6 +446,7 @@
                         </div>
 
                         <form id="intelligent-intake-form" action="/api/lead" method="POST">
+                            <input type="hidden" name="form_id" value="contact-wizard">
                             <input type="text" name="_gotcha" style="display:none">
                             <input type="hidden" name="form_source" value="/contact/">
                             <input type="hidden" id="hidden-problem-type" name="problem_category" value="">
@@ -800,7 +802,7 @@
             });
 
             // Track step transition
-            trackEvent('intake_step_completed', { completed_step: stepNum, problem_type: selectedProblem });
+            // Step tracking handled on forward progression
 
             const targetSection = document.getElementById('intake-form-section');
             if (targetSection) {
@@ -865,6 +867,9 @@
         // Navigation handlers
         if (btnTo2) {
             btnTo2.addEventListener('click', () => {
+                if (window.CM_Analytics && window.CM_Analytics.trackIntakeStepCompleted) {
+                    window.CM_Analytics.trackIntakeStepCompleted('contact-wizard', 1, 'problem_selection', 'contact');
+                }
                 setStep(2);
             });
         }
@@ -883,6 +888,9 @@
                 if (step2Url && step2Url.value && step3Url && !step3Url.value) {
                     step3Url.value = step2Url.value;
                 }
+                if (window.CM_Analytics && window.CM_Analytics.trackIntakeStepCompleted) {
+                    window.CM_Analytics.trackIntakeStepCompleted('contact-wizard', 2, 'operational_context', 'contact');
+                }
                 setStep(3);
             });
         }
@@ -895,7 +903,6 @@
 
         // URL Query Parameter Handling (?service=diagnostic, etc.)
         window.addEventListener('DOMContentLoaded', () => {
-            trackEvent('intake_started', { form_id: 'intelligent_intake_funnel' });
 
             const params = new URLSearchParams(window.location.search);
             const serviceParam = params.get('service') || params.get('ref');
@@ -955,12 +962,19 @@
                     const data = await response.json().catch(() => ({}));
 
                     if (response.ok && (data.success || data.ok) && data.submission_id) {
-                        trackEvent('intake_submitted', {
-                            problem_type: selectedProblem,
-                            submission_id: data.submission_id,
-                            has_budget_selected: Boolean(document.getElementById('inp-budget').value)
-                        });
-                        window.location.href = '/contact/success/?submission_id=' + encodeURIComponent(data.submission_id);
+                        if (window.CM_Analytics && window.CM_Analytics.trackGenerateLead) {
+                            window.CM_Analytics.trackGenerateLead({
+                                form_id: 'contact-wizard',
+                                inquiry_type: 'contact',
+                                service_interest: selectedProblem || 'custom-systems',
+                                budget_range: (document.getElementById('inp-budget') && document.getElementById('inp-budget').value) || '',
+                                timeline: '',
+                                lead_source: window.location.pathname
+                            });
+                        }
+                        setTimeout(function() {
+                            window.location.href = '/contact/success/?submission_id=' + encodeURIComponent(data.submission_id);
+                        }, 150);
                     } else {
                         // Backend refused or database unconfigured - preserve user input!
                         const errMsg = data.error || "We couldn't safely save your inquiry yet. Please try again.";
