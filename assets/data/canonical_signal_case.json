@@ -37,9 +37,9 @@
   "canonicalFindings": [
     {
       "id": "F-01",
-      "title": "Peak-Period Throughput / Margin Leakage",
+      "title": "F-01: Friday and Saturday dinner is backing up the kitchen",
       "decisionPriority": "Investigate First",
-      "observed": "Kitchen overtime reached 318.5 hours ($6,846 overtime premium) across the 60-day period. 42 of 68 manager voids ($1,180 of $1,840 total void value, averaging $28.10) concentrated during Friday and Saturday dinner services between 6:00 PM and 8:30 PM, where check velocity dropped by 18% relative to midday baseline.",
+      "observed": "During Friday and Saturday dinner between 6:00 PM and 8:30 PM, table turn speed drops by 18%. In that exact same window, the kitchen logged 318.5 overtime hours ($6,846 extra pay) and managers comped or voided 42 entire checks ($1,180 total) because guests waited too long or meals came out cold.",
       "intersection": "Kitchen overtime payroll spikes co-occur precisely with full-ticket service recovery voids and ticket latency spikes during peak weekend dinner volume (6:00–8:30 PM), revealing that labor expenditure increases at the exact window where kitchen throughput deteriorates.",
       "inferred": "Kitchen line saturation during the weekend dinner peak creates compounding ticket delays exceeding 28 minutes, forcing front-of-house managers to execute full-ticket comp voids ($28.10 avg) to salvage guest relations while back-of-house staff burns premium overtime rates attempting to clear the backlog.",
       "confidence": "Moderate",
@@ -63,7 +63,7 @@
     },
     {
       "id": "F-02",
-      "title": "Promotion Structure Leakage",
+      "title": "F-02: The 10% promotion is giving away more than the $5 offer",
       "decisionPriority": "Execute Test Immediately",
       "observed": "Offer A ($5 off $50+) was redeemed 880 times, totaling $4,400 in discounts ($5.00 fixed discount, pre-discount check average $74.50). Offer B (10% off uncapped) was redeemed 940 times, totaling $7,900 in discounts ($8.40 average discount, pre-discount check average $84.00). Above $50, Offer B discounts scaled linearly ($100 check = $10 discount; $150 check = $15 discount).",
       "intersection": "Check-size distribution crossed with promotion redemption records establishes that Offer B cost $3,500 more than Offer A (+79.5% discount expense) while producing only $9.50 in higher gross check spend ($84.00 vs $74.50), yielding zero statistically meaningful expansion in high-margin dessert or beverage attachment.",
@@ -89,7 +89,7 @@
     },
     {
       "id": "F-03",
-      "title": "Modifier Pricing Erosion",
+      "title": "F-03: Some paid extras are being given away for free",
       "decisionPriority": "Plan Next Menu Cycle",
       "observed": "Four high-frequency menu modifiers (Add Bacon, Sub Truffle Fries, Extra Cheese, Gluten-Free Bun) appeared on 3,240 checks across 60 days. POS pricing: Bacon +$1.00 (ingredient + prep delta $1.75), Truffle Fries +$1.50 (cost delta $2.60), Extra Cheese +$0.50 (cost delta $0.95), GF Bun +$1.00 (cost delta $1.80). Base entrees maintain 68% gross margin, but modified entrees drop to 54–58% margin.",
       "intersection": "Cross-referencing food cost recipe sheets with item modifier sales reveals that the top selling entrees maintain healthy margins until specific high-volume customizations are selected, eroding up to 14% margin points per dish.",
@@ -115,7 +115,7 @@
     },
     {
       "id": "F-04",
-      "title": "Discount Procedure Leakage",
+      "title": "F-04: Shift meals are being entered as manager comps",
       "decisionPriority": "Investigate First",
       "observed": "Manager discount code 'MGR-COMP-99' was applied to 142 checks totaling $2,840. 82 of these transactions ($1,640) occurred between 3:30 PM and 4:30 PM or post-midnight closing, applied to single-item beverage and sandwich orders rather than full guest table checks.",
       "intersection": "Time-of-day clustering, item composition (single meal items), and check ownership demonstrate that managerial override codes are being utilized during shift turnover and closing rather than during dining service.",
