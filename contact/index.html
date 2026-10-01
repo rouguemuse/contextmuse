@@ -944,6 +944,8 @@
                 try {
                     const formData = new FormData(form);
                     const payload = Object.fromEntries(formData.entries());
+                    const attr = (window.CM_Analytics && window.CM_Analytics.getAttribution) ? window.CM_Analytics.getAttribution() : {};
+                    Object.assign(payload, attr);
                     payload.form_id = 'contact-wizard';
                     payload.source_page = window.location.pathname;
                     payload.form_source = window.location.pathname;

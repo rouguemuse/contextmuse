@@ -1148,6 +1148,10 @@
                 }
 
                 trackEvent('diagnostic_success', { findings_count: data.evidenceCount || 0 });
+                if (window.CM_Analytics && window.CM_Analytics.trackDiagnosticCompleted) {
+                    const attrData = window.CM_Analytics.getAttribution ? window.CM_Analytics.getAttribution() : {};
+                    window.CM_Analytics.trackDiagnosticCompleted('website_system_check', Object.assign({ findings_count: data.evidenceCount || 0 }, attrData));
+                }
                 trackEvent('diagnostic_results_view', { diagnostic_id: data.diagnosticId });
 
                 // Render Results
@@ -1164,17 +1168,63 @@
             }
         });
 
-        // Auto-run if query param is passed from homepage or external link
+        // Prepopulate URL and capture attribution from query params without auto-running scan
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const passedUrl = urlParams.get('url');
             const passedBiz = urlParams.get('businessType') || urlParams.get('business_type') || urlParams.get('industry');
             const passedGoal = urlParams.get('goal');
+            
+            // Capture and sanitize UTM parameters
+            const utmSource = urlParams.get('utm_source');
+            const utmCampaign = urlParams.get('utm_campaign');
+            const utmMedium = urlParams.get('utm_medium');
+            const utmContent = urlParams.get('utm_content');
+            const utmTerm = urlParams.get('utm_term');
+
+            if (utmSource || utmCampaign) {
+                const attrObj = {
+                    utm_source: utmSource ? utmSource.trim().slice(0, 64) : '',
+                    utm_medium: utmMedium ? utmMedium.trim().slice(0, 64) : '',
+                    utm_campaign: utmCampaign ? utmCampaign.trim().slice(0, 64) : '',
+                    utm_content: utmContent ? utmContent.trim().slice(0, 64) : '',
+                    utm_term: utmTerm ? utmTerm.trim().slice(0, 64) : '',
+                    referrer: document.referrer ? document.referrer.slice(0, 128) : ''
+                };
+                try {
+                    sessionStorage.setItem('cm_attribution', JSON.stringify(attrObj));
+                } catch (_) {}
+            }
+
             if (passedUrl) {
-                urlInput.value = passedUrl;
-                if (passedBiz) businessTypeInput.value = passedBiz;
-                if (passedGoal) improvementGoalInput.value = passedGoal;
-                form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+                // Sanitize URL safely
+                let sanitized = passedUrl.trim();
+                if (!/^https?:\/\//i.test(sanitized)) {
+                    sanitized = 'https://' + sanitized;
+                }
+                try {
+                    const parsed = new URL(sanitized);
+                    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+                        urlInput.value = parsed.href;
+                        
+                        // Show helpful non-invasive prepopulated status banner
+                        const helperBanner = document.createElement('div');
+                        helperBanner.id = 'prefill-ready-banner';
+                        helperBanner.style.cssText = 'background: rgba(15, 118, 110, 0.08); border: 1px solid var(--accent-teal); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--text-primary);';
+                        helperBanner.innerHTML = '<span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase;">Ready to check:</span> We pre-loaded your website URL below. Click <strong>Run Free System Check</strong> to start the analysis.';
+                        form.parentNode.insertBefore(helperBanner, form);
+
+                        // Focus the run check button for clear next step
+                        if (submitBtn) {
+                            submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }
+                } catch (_) {
+                    // Invalid URL format - ignore silently
+                }
+                if (passedBiz) businessTypeInput.value = passedBiz.trim().slice(0, 64);
+                if (passedGoal) improvementGoalInput.value = passedGoal.trim().slice(0, 128);
+                // DO NOT automatically submit - requires conscious user action
             }
         });
 
@@ -1417,6 +1467,8 @@
                 try {
                     const formData = new FormData(inquiryForm);
                     const payload = Object.fromEntries(formData.entries());
+                    const attr = (window.CM_Analytics && window.CM_Analytics.getAttribution) ? window.CM_Analytics.getAttribution() : {};
+                    Object.assign(payload, attr);
                     payload.form_id = 'diagnostic-inquiry';
                     payload.form_source = window.location.pathname;
 

@@ -64,25 +64,35 @@ async function verifyLive() {
     const reports = await fetchUrl('https://www.contextmuse.com/signal/sample-reports/');
     check('Sample Reports Synthetic Label live', reports.body.includes('Synthetic Demonstration Dataset'));
 
-    // 8. Homepage founder-led positioning
+    // 7. Homepage Phase 5 positioning & pricing
     const home = await fetchUrl('https://www.contextmuse.com/');
     check('Home Hero Title live', home.body.includes('I build systems around the way your business actually works.'));
-    check('Home Hero Subhead live', home.body.includes('I find where a business is losing time, money, or customers, then build the system that fixes it.'));
-    check('Home Founder-Led Statement live', home.body.includes('Context &amp; Muse is intentionally founder-led and independent.'));
-    check('Home Studio Label Purged', !home.body.includes('Applied systems studio') && !home.body.includes('Applied Systems Studio'));
+    check('Home Applied Systems Studio Eyebrow live', home.body.includes('Applied Systems Studio') || home.body.includes('applied systems studio'));
+    check('Home Pricing $6,500 Canonicalized', home.body.includes('From $6,500') && !home.body.includes('From $3,500'));
 
-    // 9. Services founder-led positioning
+    // 8. Services Phase 5 positioning
     const services = await fetchUrl('https://www.contextmuse.com/services/');
-    check('Services Hero Headline live', services.body.includes('I find where a business is losing time, money, or customers'));
-    check('Services Eyebrow live', services.body.includes('FOUNDER-LED'));
+    check('Services Hero Eyebrow live', services.body.includes('APPLIED SYSTEMS STUDIO') || services.body.includes('FOUNDER-LED'));
+    check('Services Pricing $6,500 Canonicalized', services.body.includes('$6,500') && services.body.includes('$375/quarter') && services.body.includes('$600/quarter'));
 
-    // 10. About founder-led positioning
+    // 9. About founder-led positioning
     check('About Hero Sub live', about.body.includes('Context &amp; Muse is intentionally founder-led and independent.'));
     check('About Practical Solutions Cap 04 live', about.body.includes('Build practical custom solutions'));
 
-    // 11. Restaurant Systems non-consulting titles
+    // 10. Restaurant Systems Phase 5 Stack-Neutral Architecture
     const rest = await fetchUrl('https://www.contextmuse.com/restaurant-systems/');
     check('Restaurant Systems Title clean', !rest.body.includes('Hospitality Consulting'));
+    check('Restaurant Systems Stack-Neutral live', rest.body.includes('Stack-Neutral Architecture') || rest.body.includes('STACK-NEUTRAL ARCHITECTURE'));
+    check('Restaurant Systems POS clarification live', rest.body.includes('rip and replace your Point of Sale'));
+
+    // 11. Website System Check Phase 5 Preload Banner
+    const wsc = await fetchUrl('https://www.contextmuse.com/website-system-check/');
+    check('Website System Check Preload logic live', wsc.body.includes('prefill-ready-banner') && wsc.body.includes('Ready to check:'));
+
+    // 12. Contact Phase 5 Diagnostics and Attribution
+    const contact = await fetchUrl('https://www.contextmuse.com/contact/');
+    check('Contact Diagnostic $395 live', contact.body.includes('$395 Diagnostic:') || contact.body.includes('$395 fixed'));
+    check('Contact Analytics Attribution live', contact.body.includes('getAttribution'));
 
     const allPassed = tests.every(t => t.pass);
     console.log('\n========================================');

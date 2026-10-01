@@ -1,0 +1,73 @@
+{
+  "version": "2026.1",
+  "last_updated": "2026-10-01",
+  "currency": "USD",
+  "canonical_rules": "All public pricing displays, intake dropdowns, and terms of service must strictly synchronize with this schema.",
+  "offers": {
+    "diagnostic": {
+      "id": "diagnostic",
+      "name": "Business System Diagnostic",
+      "price": 395,
+      "price_display": "$395",
+      "billing": "Fixed rate paid in full to initiate",
+      "credit_policy": "100% credited toward a qualifying build booked within 30 days",
+      "turnaround": "3 to 5 business days",
+      "scope": [
+        "Calls to action & lead qualification drop-offs",
+        "Mobile viewport UX & customer friction points",
+        "Spreadsheet & manual double-entry bottlenecks",
+        "Pricing clarity & territory qualification rules",
+        "Prioritized findings & recommended architecture roadmap"
+      ]
+    },
+    "quote_lead_system": {
+      "id": "quote-lead",
+      "name": "Quote + Lead System",
+      "price_single_market": 2500,
+      "price_multi_market": 4500,
+      "price_display": "From $2,500",
+      "price_sub": "Multi-Market Typically $4,500+",
+      "billing": "50% deposit to reserve & start • 50% final balance upon staging approval",
+      "scope": [
+        "Dynamic quoting & pricing calculators",
+        "Multi-market local SEO & radius qualification",
+        "Automated triage & structured CRM dispatch",
+        "High-contrast brand aesthetic & conversion copy",
+        "Custom architecture designed for performance and reliability"
+      ]
+    },
+    "custom_operations_system": {
+      "id": "custom-system",
+      "name": "Custom Operations System",
+      "price_starting": 6500,
+      "price_display": "From $6,500",
+      "price_sub": "Complex Systems Custom Quoted",
+      "billing": "Milestone-based: 40% deposit • 30% functional prototype • 30% deployment",
+      "scope": [
+        "Operational estimation engines & service platforms",
+        "Parametric estimation & ledger calculators",
+        "B2B client portals & administrative dashboards",
+        "Custom logic, databases & webhook integrations",
+        "Complete data ownership with zero recurring seats"
+      ]
+    },
+    "care_plans": {
+      "essential": {
+        "id": "care-essential",
+        "name": "Essential Care",
+        "price_per_quarter": 375,
+        "monthly_equivalent": 125,
+        "price_display": "$375/quarter (~$125/mo equivalent)",
+        "terms": "Quarterly billing, no lock-in contract"
+      },
+      "growth": {
+        "id": "care-growth",
+        "name": "Growth Care",
+        "price_per_quarter": 600,
+        "monthly_equivalent": 200,
+        "price_display": "$600/quarter (~$200/mo equivalent)",
+        "terms": "Quarterly billing, no lock-in contract"
+      }
+    }
+  }
+}

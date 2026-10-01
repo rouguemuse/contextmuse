@@ -139,6 +139,75 @@
                 contact_method: cleanString(String(contactMethod || 'unknown')),
                 cta_location: cleanString(String(ctaLocation || 'general'))
             });
+        },
+
+        /**
+         * Outbound & Campaign Funnel Observability Events
+         */
+        trackOutboundLandingView: function(params) {
+            params = params || {};
+            emitGtag('outbound_landing_view', {
+                utm_source: cleanString(String(params.utm_source || '')),
+                utm_medium: cleanString(String(params.utm_medium || '')),
+                utm_campaign: cleanString(String(params.utm_campaign || '')),
+                landing_page: window.location.pathname
+            });
+        },
+
+        trackDiagnosticStarted: function(diagnosticType, params) {
+            params = params || {};
+            var cleanObj = {
+                diagnostic_type: cleanString(String(diagnosticType || 'website_system_check')),
+                source_page: window.location.pathname
+            };
+            if (params.utm_source) cleanObj.utm_source = cleanString(String(params.utm_source));
+            if (params.utm_campaign) cleanObj.utm_campaign = cleanString(String(params.utm_campaign));
+            emitGtag('diagnostic_started', cleanObj);
+        },
+
+        trackDiagnosticCompleted: function(diagnosticType, params) {
+            params = params || {};
+            var cleanObj = {
+                diagnostic_type: cleanString(String(diagnosticType || 'website_system_check')),
+                findings_count: Number(params.findings_count) || 0
+            };
+            if (params.utm_source) cleanObj.utm_source = cleanString(String(params.utm_source));
+            if (params.utm_campaign) cleanObj.utm_campaign = cleanString(String(params.utm_campaign));
+            emitGtag('diagnostic_completed', cleanObj);
+        },
+
+        trackDiagnosticToConsultation: function(diagnosticId, params) {
+            params = params || {};
+            var cleanObj = {
+                diagnostic_id: cleanString(String(diagnosticId || '')),
+                source_page: window.location.pathname
+            };
+            if (params.utm_source) cleanObj.utm_source = cleanString(String(params.utm_source));
+            if (params.utm_campaign) cleanObj.utm_campaign = cleanString(String(params.utm_campaign));
+            emitGtag('diagnostic_to_consultation', cleanObj);
+        },
+
+        trackProjectIntakeStarted: function(formId, params) {
+            params = params || {};
+            var cleanObj = {
+                form_id: cleanString(String(formId || 'contact-wizard')),
+                source_page: window.location.pathname
+            };
+            if (params.inquiry_type) cleanObj.inquiry_type = cleanString(String(params.inquiry_type));
+            if (params.utm_source) cleanObj.utm_source = cleanString(String(params.utm_source));
+            if (params.utm_campaign) cleanObj.utm_campaign = cleanString(String(params.utm_campaign));
+            emitGtag('project_intake_started', cleanObj);
+        },
+
+        getAttribution: function() {
+            try {
+                var stored = sessionStorage.getItem('cm_attribution');
+                if (stored) {
+                    var parsed = JSON.parse(stored);
+                    if (parsed && typeof parsed === 'object') return parsed;
+                }
+            } catch (_) {}
+            return {};
         }
     };
 
@@ -222,6 +291,30 @@
     }
 
     function initAnalyticsListeners() {
+        // Capture and persist outbound campaign attribution across session
+        try {
+            var urlParams = new URLSearchParams(window.location.search);
+            var utmSource = urlParams.get('utm_source');
+            var utmCampaign = urlParams.get('utm_campaign');
+            var utmMedium = urlParams.get('utm_medium');
+            var utmContent = urlParams.get('utm_content');
+            var utmTerm = urlParams.get('utm_term');
+
+            if (utmSource || utmCampaign) {
+                var attr = {
+                    utm_source: cleanString(String(utmSource || '')),
+                    utm_medium: cleanString(String(utmMedium || '')),
+                    utm_campaign: cleanString(String(utmCampaign || '')),
+                    utm_content: cleanString(String(utmContent || '')),
+                    utm_term: cleanString(String(utmTerm || '')),
+                    referrer: cleanString(String(document.referrer || ''))
+                };
+                sessionStorage.setItem('cm_attribution', JSON.stringify(attr));
+                if (window.CM_Analytics && window.CM_Analytics.trackOutboundLandingView) {
+                    window.CM_Analytics.trackOutboundLandingView(attr);
+                }
+            }
+        } catch (_) {}
         // Direct Contact Clicks & Commercial CTAs
         document.addEventListener('click', function(e) {
             var link = e.target.closest('a');
