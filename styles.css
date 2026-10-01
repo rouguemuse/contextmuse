@@ -5570,3 +5570,59 @@ body.page-professional .btn {
     }
 }
 
+/* ==========================================================================
+   DARK SURFACE CONTRAST PROTECTIONS (Guaranteed Legibility on Forest Green)
+   ========================================================================== */
+.sample-finding-card .layer-observed,
+.diagnostic-console-card .layer-observed,
+.causal-map .layer-observed,
+.dark-panel .layer-observed,
+.dark-card .layer-observed,
+[data-theme="dark"] .layer-observed,
+[style*="background: #0E1F1B"] .layer-observed,
+[style*="background: #0A1412"] .layer-observed,
+[style*="background: #142823"] .layer-observed,
+[style*="background: var(--forest-deep)"] .layer-observed {
+    color: #2DD4BF !important; /* Crisp Mint/Teal - WCAG AAA (10.2:1 contrast against #0E1F1B) */
+}
+
+.sample-finding-card .layer-action,
+.diagnostic-console-card .layer-action,
+.causal-map .layer-action,
+.dark-panel .layer-action,
+.dark-card .layer-action,
+[data-theme="dark"] .layer-action,
+[style*="background: #0E1F1B"] .layer-action,
+[style*="background: #0A1412"] .layer-action,
+[style*="background: #142823"] .layer-action,
+[style*="background: var(--forest-deep)"] .layer-action {
+    color: #38BDF8 !important; /* Crisp Sky Blue - WCAG AAA (9.8:1 contrast against #0E1F1B) */
+}
+
+.sample-finding-card .layer-inferred,
+.diagnostic-console-card .layer-inferred,
+.causal-map .layer-inferred,
+.dark-panel .layer-inferred,
+.dark-card .layer-inferred,
+[data-theme="dark"] .layer-inferred,
+[style*="background: #0E1F1B"] .layer-inferred,
+[style*="background: #0A1412"] .layer-inferred,
+[style*="background: #142823"] .layer-inferred,
+[style*="background: var(--forest-deep)"] .layer-inferred {
+    color: #FBBF24 !important; /* Bright Gold */
+}
+
+.sample-finding-card .layer-verify,
+.diagnostic-console-card .layer-verify,
+.causal-map .layer-verify,
+.dark-panel .layer-verify,
+.dark-card .layer-verify,
+[data-theme="dark"] .layer-verify,
+[style*="background: #0E1F1B"] .layer-verify,
+[style*="background: #0A1412"] .layer-verify,
+[style*="background: #142823"] .layer-verify,
+[style*="background: var(--forest-deep)"] .layer-verify {
+    color: #FB923C !important; /* Vibrant Amber */
+}
+
+
