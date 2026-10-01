@@ -16,20 +16,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signal | Operational Intelligence &amp; Decision Support</title>
-    <meta name="description" content="Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.">
+    <meta name="description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Cross-analyzing operational signals to surface the few decisions worth investigating first.">
     <link rel="canonical" href="https://www.contextmuse.com/signal/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.contextmuse.com/signal/">
     <meta property="og:title" content="Signal | Operational Intelligence &amp; Decision Support">
-    <meta property="og:description" content="Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.">
+    <meta property="og:description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Cross-analyzing operational signals to surface the few decisions worth investigating first.">
     <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Signal | Operational Intelligence &amp; Decision Support">
-    <meta name="twitter:description" content="Signal turns operational data and workflow friction into prioritized findings, impact estimates, and practical recommendations.">
+    <meta name="twitter:description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Cross-analyzing operational signals to surface the few decisions worth investigating first.">
     <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
 
     <!-- Structured Data (JSON-LD) -->
@@ -72,7 +72,7 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
 
     <style>
@@ -84,7 +84,7 @@
         }
         .product-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 4rem;
             align-items: center;
         }
@@ -103,17 +103,276 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            background: rgba(45, 212, 191, 0.15);
-            color: var(--accent-teal, #C5A059);
-            padding: 4px 10px;
+            background: rgba(197, 160, 89, 0.15);
+            color: var(--accent-gold, #C5A059);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 5px 12px;
             border-radius: 4px;
-            margin-top: 1rem;
         }
-        .questions-section {
+        .signal-section {
             padding: 5.5rem 0;
-            background: var(--bg-paper);
             border-bottom: 1px solid var(--border-light);
         }
+        .bg-light-panel {
+            background: var(--bg-panel, #faf6f0);
+        }
+        .bg-paper-panel {
+            background: var(--bg-paper, #ffffff);
+        }
+        .bg-dark-panel {
+            background: #0D1614;
+            color: #FAF9F5;
+        }
+
+        /* Callout & Contrast Styles */
+        .contrast-callout {
+            background: rgba(15, 118, 110, 0.06);
+            border-left: 4px solid var(--accent-teal, #0F766E);
+            padding: 1.75rem 2rem;
+            border-radius: 0 6px 6px 0;
+            margin: 2.5rem 0;
+        }
+        .contrast-callout-text {
+            font-family: var(--font-serif);
+            font-size: clamp(1.25rem, 2vw, 1.55rem);
+            line-height: 1.45;
+            color: var(--text-primary);
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Signal Intersections Pills */
+        .intersection-tag-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1.25rem;
+        }
+        .intersection-tag {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            color: var(--forest-deep, #0E1F1B);
+            background: #EDE8DE;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(14, 31, 27, 0.1);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        /* Epistemic 4-Layer Architecture Grid */
+        .epistemic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        @media(max-width: 900px) {
+            .epistemic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 600px) {
+            .epistemic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .epistemic-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.6rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 14px rgba(16, 33, 29, 0.02);
+            position: relative;
+        }
+        .epistemic-layer-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.65rem;
+        }
+        .layer-observed { color: #0F766E; }
+        .layer-inferred { color: #8C6621; }
+        .layer-verify { color: #B45309; }
+        .layer-action { color: #1E40AF; }
+
+        .epistemic-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+            font-weight: 500;
+        }
+        .epistemic-card p {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* 5 Dimensions of Prioritization */
+        .dimension-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+        @media(max-width: 992px) {
+            .dimension-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media(max-width: 640px) {
+            .dimension-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .dimension-box {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.4rem 1.25rem;
+        }
+        .dimension-box strong {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--forest-deep);
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .dimension-box p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Sample Output Card */
+        .sample-finding-card {
+            background: #0E1F1B;
+            border: 1px solid rgba(250, 249, 245, 0.12);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+            color: #FAF9F5;
+            margin-top: 2.5rem;
+        }
+        .sample-finding-header {
+            background: #0A1412;
+            padding: 1.25rem 1.75rem;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .sample-priority-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: #FAF9F5;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sample-meta-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 1rem 1.75rem;
+            background: rgba(250, 249, 245, 0.03);
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+            font-family: var(--font-mono);
+            font-size: 11px;
+        }
+        @media(max-width: 768px) {
+            .sample-meta-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .sample-meta-item span {
+            color: rgba(250, 249, 245, 0.5);
+            display: block;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 9.5px;
+        }
+        .sample-meta-item strong {
+            color: #C5A059;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        .sample-body-grid {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .sample-layer-block {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 1.25rem;
+            padding-bottom: 1.15rem;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.06);
+            align-items: baseline;
+        }
+        @media(max-width: 600px) {
+            .sample-layer-block {
+                grid-template-columns: 1fr;
+                gap: 0.4rem;
+            }
+        }
+        .sample-layer-block:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .sample-layer-name {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .sample-layer-desc {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: rgba(250, 249, 245, 0.88);
+            margin: 0;
+        }
+        .sample-rationale-box {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(197, 160, 89, 0.08);
+            border-left: 3px solid #C5A059;
+            border-radius: 0 4px 4px 0;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            line-height: 1.55;
+            color: rgba(250, 249, 245, 0.85);
+        }
+
+        /* Validation Partner Offer Card */
+        .partner-offer-card {
+            background: #FFFFFF;
+            border: 2px solid var(--accent-teal);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 12px 30px rgba(16, 33, 29, 0.05);
+            margin-top: 2rem;
+        }
+
+        /* Questions Section */
         .questions-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -127,7 +386,7 @@
         }
         .question-box h3 {
             font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--text-primary);
             margin-top: 0;
             margin-bottom: 0.75rem;
@@ -140,11 +399,8 @@
             color: var(--text-secondary);
             margin: 0;
         }
-        .pricing-section {
-            background: var(--bg-panel, #faf6f0);
-            padding: 5.5rem 0;
-            border-bottom: 1px solid var(--border-light);
-        }
+
+        /* Pricing Grid */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -208,7 +464,6 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navbar -->
-    <!-- Navbar -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
             <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
@@ -245,7 +500,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
+                    </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
@@ -259,30 +514,30 @@
         <div class="container">
             <div class="product-grid">
                 <div>
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">01 // OPERATIONAL INTELLIGENCE SYSTEM</span>
-                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.5rem; color: #FAF9F5;">
-                        Find what is actually costing the business.
+                    <span class="eyebrow" style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">OPERATIONAL INTELLIGENCE SYSTEM · FOUNDER-LED</span>
+                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.25rem; color: #FAF9F5;">
+                        Signal turns fragmented restaurant reports into a prioritized decision queue.
                     </h1>
-                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: rgba(250,249,245,0.85); margin-bottom: 0.75rem;">
-                        Signal turns fragmented restaurant reports into a prioritized decision queue. It cross-analyzes signals across sales, labor, comps, voids, menu performance and timing, then weighs financial impact, confidence and implementation friction to surface the few decisions worth investigating first.
+                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: rgba(250,249,245,0.88); margin-bottom: 0.85rem;">
+                        It cross-analyzes operational signals, weighs financial impact, confidence, validation requirements, and implementation friction, then surfaces the few decisions worth investigating first.
                     </p>
                     <p style="font-family: var(--font-mono); font-size: 0.95rem; line-height: 1.5; color: var(--accent-gold); margin-bottom: 2rem;">
                         Not more reporting. Decision compression for operators already drowning in reports.
                     </p>
                     <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <a href="/signal/demo/" class="btn btn-primary" style="background: var(--accent-gold); border-color: var(--accent-gold); color: #0E1F1B; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 700; border-radius: 3px;">Launch Interactive Demo &rarr;</a>
-                        <a href="/signal/intake/" class="btn btn-secondary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">Submit Your Exports &rarr;</a>
-                        <a href="/signal/sample-reports/" class="btn btn-secondary" style="border-color: rgba(250,249,245,0.3); color: #FAF9F5; text-decoration: none; padding: 0.8rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">View Sample Diagnostic &rarr;</a>
+                        <a href="/signal/demo/" class="btn btn-primary" style="background: var(--accent-gold); border-color: var(--accent-gold); color: #0E1F1B; text-decoration: none; padding: 0.85rem 1.85rem; font-family: var(--font-sans); font-size: 14px; font-weight: 700; border-radius: 3px;">Launch Interactive Demo &rarr;</a>
+                        <a href="/signal/intake/" class="btn btn-secondary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.85rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">Submit Your Exports &rarr;</a>
+                        <a href="/signal/sample-reports/" class="btn btn-secondary" style="border-color: rgba(250,249,245,0.3); color: #FAF9F5; text-decoration: none; padding: 0.85rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">View Sample Diagnostic &rarr;</a>
                     </div>
-                    <div style="margin-top: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+                    <div style="margin-top: 1.25rem; display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
                         <a href="/signal/export-instructions/" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-gold); text-decoration: underline; letter-spacing: 0.03em;">Toast Export Instructions (CSV) &rarr;</a>
                     </div>
-                    <div style="margin-top: 1.5rem;">
-                        <span class="status-badge" style="background: rgba(197, 160, 89, 0.15); color: var(--accent-gold); border: 1px solid rgba(197, 160, 89, 0.3);">WORKING SYSTEM &bull; ACTIVE EXTERNAL VALIDATION</span>
+                    <div style="margin-top: 1.75rem;">
+                        <span class="status-badge">WORKING SYSTEM &bull; ACTIVE EXTERNAL VALIDATION</span>
                     </div>
-                    <div style="margin-top: 1.25rem; padding: 1.1rem 1.25rem; background: rgba(250, 249, 245, 0.04); border-left: 3px solid var(--accent-gold); border-radius: 0 4px 4px 0; max-width: 620px;">
-                        <p style="font-family: var(--font-sans); font-size: 0.92rem; line-height: 1.55; color: rgba(250, 249, 245, 0.85); margin: 0;">
-                            Signal is currently being validated across additional restaurant operating models, POS exports and report structures. I am accepting 3–5 referred restaurants for a limited <strong>Signal Validation Review</strong>: a small set of exports in exchange for several evidence-backed findings and candid operator feedback. Full diagnostics remain a paid service.
+                    <div style="margin-top: 1.25rem; padding: 1.15rem 1.35rem; background: rgba(250, 249, 245, 0.04); border-left: 3px solid var(--accent-gold); border-radius: 0 4px 4px 0; max-width: 620px;">
+                        <p style="font-family: var(--font-sans); font-size: 0.92rem; line-height: 1.55; color: rgba(250, 249, 245, 0.88); margin: 0;">
+                            Signal is currently being validated across additional restaurant operating models, POS exports, and report structures. I am accepting 3–5 referred restaurants for a limited <strong>Signal Validation Review</strong>: a small set of exports in exchange for several evidence-backed findings and candid operator feedback. Full diagnostics remain a paid service.
                         </p>
                     </div>
                 </div>
@@ -307,17 +562,17 @@
             </div>
 
             <!-- Operational Pipeline Strip -->
-            <div style="margin-top: 3.5rem; padding: 1.5rem; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(250, 249, 245, 0.08); border-radius: 6px;">
+            <div style="margin-top: 3.5rem; padding: 1.5rem; background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(250, 249, 245, 0.08); border-radius: 6px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-family: var(--font-mono); font-size: 10.5px; color: #C5A059; letter-spacing: 0.08em; text-transform: uppercase;">
-                    <span>RAW EXPORT</span>
+                    <span>RAW EXPORTS</span>
                     <span style="color: rgba(250,249,245,0.3);">&rarr;</span>
-                    <span>NORMALIZE</span>
+                    <span>CROSS-SIGNAL INTERSECTIONS</span>
                     <span style="color: rgba(250,249,245,0.3);">&rarr;</span>
-                    <span>FINDING</span>
+                    <span>4-LAYER EPISTEMIC AUDIT</span>
                     <span style="color: rgba(250,249,245,0.3);">&rarr;</span>
-                    <span>RECOMMENDATION</span>
+                    <span>PRIORITIZED DECISION QUEUE</span>
                     <span style="color: rgba(250,249,245,0.3);">&rarr;</span>
-                    <span>HUMAN VALIDATION</span>
+                    <span>FLOOR VERIFICATION</span>
                 </div>
             </div>
         </div>
@@ -325,25 +580,345 @@
 
     <!-- Page-Level Jump Navigation -->
     <nav class="sub-navbar" aria-label="Page Navigation">
-        <div class="container sub-nav-container" style="justify-content: center;">
-            <a href="#main-content" class="sub-nav-link">Details</a>
+        <div class="container sub-nav-container" style="justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+            <a href="#reporting-gap" class="sub-nav-link">The Step After Reporting</a>
+            <a href="#intersections" class="sub-nav-link">Cross-Signal Architecture</a>
+            <a href="#prioritization" class="sub-nav-link">Decision Prioritization</a>
+            <a href="#sample-output" class="sub-nav-link">Sample Output</a>
+            <a href="#validation" class="sub-nav-link">Validation Status</a>
+            <a href="#operator" class="sub-nav-link">Operator Roots</a>
             <a href="#pricing" class="sub-nav-link">Pricing</a>
-            <a href="/signal/intake/" class="sub-nav-link" style="color: var(--accent-teal); font-weight: bold;">Bring Me the Mess &rarr;</a>
+            <a href="/signal/demo/" class="sub-nav-link" style="color: var(--accent-gold); font-weight: bold;">Launch Demo &rarr;</a>
         </div>
     </nav>
 
     <main id="main-content">
-        <!-- Section I: Questions & Answers -->
-        <section class="questions-section">
+        <!-- Section I: The Step After Reporting -->
+        <section id="reporting-gap" class="signal-section bg-paper-panel">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3rem; text-align: center;">I // SYSTEM BOUNDARIES</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">I // MARKET POSITIONING</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1.25rem 0; font-weight: 400; max-width: 900px;">
+                    Restaurants already have dashboards. Signal is built for the step after reporting.
+                </h2>
+                <div style="max-width: 820px;">
+                    <p style="font-family: var(--font-sans); font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                        Independent restaurants, multi-unit groups, and hospitality managers are rarely short on reporting. They drown in POS shift summaries, labor percentage reports, discount spreadsheets, and schedule audits that live in isolated tabs and never speak to each other.
+                    </p>
+                    <p style="font-family: var(--font-sans); font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Signal asks what happens when signals from those dashboards intersect, which findings are financially meaningful, which are trustworthy, and which are actually worth acting on.
+                    </p>
+                </div>
+
+                <div class="contrast-callout">
+                    <p class="contrast-callout-text">
+                        <strong>A beautifully analyzed list of 25 problems is still 25 problems.</strong> Signal is designed to reduce the list.
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem; margin-top: 2rem;">
+                    <div style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">WHAT REPORTING DASHBOARDS DO</span>
+                        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                            Display historical metrics: sales totals, labor cost percentages, total comps, void counts, and item sales counts in separate silos. They tell you <em>what recorded</em>, but leave you to connect the dots across spreadsheets.
+                        </p>
+                    </div>
+                    <div style="background: #FFFFFF; border: 2px solid var(--forest-deep); border-radius: 6px; padding: 1.5rem; box-shadow: 0 4px 14px rgba(16, 33, 29, 0.04);">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--forest-deep); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">WHAT SIGNAL DOES</span>
+                        <p style="font-size: 14px; color: var(--text-primary); line-height: 1.6; margin: 0;">
+                            Cross-analyzes multiple operational files simultaneously, weighs exposure against implementation friction, and compresses dozens of potential issues into a prioritized decision queue with clear verification steps.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section II: Cross-Signal Architecture & Epistemic Separation -->
+        <section id="intersections" class="signal-section bg-light-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">II // CORE DIFFERENTIATION</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
+                    Looking at intersections, not isolated spreadsheets.
+                </h2>
+                <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); max-width: 840px; margin-bottom: 1.5rem;">
+                    Signal does not evaluate labor in a vacuum or count voids on an island. Operational breakdown in hospitality almost always happens at the seams between systems. Signal identifies where patterns across multiple operations collide:
+                </p>
+
+                <!-- Signal Intersections -->
+                <div class="intersection-tag-grid">
+                    <span class="intersection-tag">Labor Rosters &amp; Overtime</span>
+                    <span class="intersection-tag">Sales Velocity</span>
+                    <span class="intersection-tag">Check Voids</span>
+                    <span class="intersection-tag">Manager Comps</span>
+                    <span class="intersection-tag">Menu Performance</span>
+                    <span class="intersection-tag">Dayparts &amp; Shifts</span>
+                    <span class="intersection-tag">Turn &amp; Ticket Timing</span>
+                    <span class="intersection-tag">Staffing Allocation</span>
+                    <span class="intersection-tag">Operational Friction</span>
+                </div>
+
+                <!-- Epistemic 4-Layer Separation -->
+                <div style="margin-top: 3.5rem;">
+                    <div style="max-width: 820px;">
+                        <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">EPISTEMIC SEPARATION</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                            Separating evidence from hypothesis.
+                        </h3>
+                        <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin: 0;">
+                            Every explanation in Signal separates undisputed facts from operational inferences. Signal strictly avoids unsupported causal assertions. Instead, the system reports what the submitted data directly establishes, what the pattern is consistent with, and what requires operator verification on the floor.
+                        </p>
+                    </div>
+
+                    <div class="epistemic-grid">
+                        <!-- Layer 1 -->
+                        <div class="epistemic-card">
+                            <span class="epistemic-layer-label layer-observed">01 // OBSERVED</span>
+                            <h4>Direct Evidence</h4>
+                            <p>What the submitted records directly establish as empirical facts: timestamps, check amounts, void totals, roster hours, and modifier logs that exist without interpretation.</p>
+                        </div>
+                        <!-- Layer 2 -->
+                        <div class="epistemic-card">
+                            <span class="epistemic-layer-label layer-inferred">02 // INFERRED</span>
+                            <h4>Operational Pattern</h4>
+                            <p>What the combined evidence reasonably suggests. Statistical overlaps, temporal clusters, and recurring correlations labeled with explicit confidence ratings (Low, Moderate, High).</p>
+                        </div>
+                        <!-- Layer 3 -->
+                        <div class="epistemic-card">
+                            <span class="epistemic-layer-label layer-verify">03 // VERIFY</span>
+                            <h4>Operator Floor Check</h4>
+                            <p>What needs to be checked by an operator before accepting the explanation. Targeted, 15-minute floor audits to confirm whether operational reality matches the data pattern.</p>
+                        </div>
+                        <!-- Layer 4 -->
+                        <div class="epistemic-card">
+                            <span class="epistemic-layer-label layer-action">04 // ACTION CANDIDATE</span>
+                            <h4>Targeted Remedy</h4>
+                            <p>What may be worth changing if real-world validation supports it. Specific, low-friction adjustments to shift prep, line pacing, or POS button configuration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section III: Decision Prioritization (Friction vs Exposure) -->
+        <section id="prioritization" class="signal-section bg-paper-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">III // DECISION PRIORITIZATION</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
+                    Weighing financial exposure against operational disruption.
+                </h2>
+                <div style="max-width: 820px;">
+                    <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                        A theoretically large opportunity should not automatically rank first if the evidence is weak or the operational disruption required to act is too high. In a working restaurant, disrupting a functioning kitchen line or service rhythm for an unconfirmed hunch can cause more damage than the leak itself.
+                    </p>
+                    <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin: 0;">
+                        Signal exists to answer seven practical operational questions before any change is made:
+                    </p>
+                </div>
+
+                <!-- 7 Questions Strip -->
+                <div style="background: var(--forest-deep); color: #FAF9F5; padding: 1.75rem 2rem; border-radius: 6px; margin: 2rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem;">
+                    <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q1</span> <strong>What matters most?</strong></div>
+                    <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q2</span> <strong>What is the evidence?</strong></div>
+                    <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q3</span> <strong>How sure are we?</strong></div>
+                    <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q4</span> <strong>What needs human verification?</strong></div>
+                    <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q5</span> <strong>What is it likely worth?</strong></div>
+                    <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q6</span> <strong>How difficult is it to fix?</strong></div>
+                    <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q7</span> <strong>What should be checked first?</strong></div>
+                </div>
+
+                <!-- 5 Evaluation Dimensions -->
+                <div class="dimension-grid">
+                    <div class="dimension-box">
+                        <strong>1. Financial Exposure</strong>
+                        <p>Estimated dollar leak per month or service based on recorded check values and hours.</p>
+                    </div>
+                    <div class="dimension-box">
+                        <strong>2. Evidence Strength</strong>
+                        <p>Statistical confidence rated Low, Moderate, or High based on sample size and signal overlap.</p>
+                    </div>
+                    <div class="dimension-box">
+                        <strong>3. Human Validation</strong>
+                        <p>The exact floor observations required to confirm the pattern before changing policy.</p>
+                    </div>
+                    <div class="dimension-box">
+                        <strong>4. Implementation Friction</strong>
+                        <p>Rated Low, Moderate, or High reflecting staff retraining, menu changes, or kitchen pushback.</p>
+                    </div>
+                    <div class="dimension-box">
+                        <strong>5. Decision Priority</strong>
+                        <p>Final queue placement: balancing exposure, confidence, and friction to surface the immediate next step.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section IV: Sample Output Section -->
+        <section id="sample-output" class="signal-section bg-light-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">IV // SYSTEM OUTPUT</span>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 400;">
+                            How a prioritized finding is structured.
+                        </h2>
+                        <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin: 0; max-width: 650px;">
+                            Below is an authentic sample finding taken from the Signal Diagnostic engine, showing how raw operational data is synthesized into an actionable decision candidate.
+                        </p>
+                    </div>
+                    <a href="/signal/demo/" class="btn" style="background: var(--forest-deep); color: #FAF9F5; text-decoration: none; padding: 0.75rem 1.4rem; font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; border-radius: 4px;">Explore Live Interactive Demo &rarr;</a>
+                </div>
+
+                <!-- Structured Finding Card -->
+                <div class="sample-finding-card">
+                    <div class="sample-finding-header">
+                        <h3 class="sample-priority-title">
+                            <span style="font-family: var(--font-mono); font-size: 11px; background: #C5A059; color: #0E1F1B; padding: 3px 8px; border-radius: 3px; font-weight: 700; letter-spacing: 0.06em;">PRIORITY 01</span>
+                            Peak-period margin leakage
+                        </h3>
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250,249,245,0.6); letter-spacing: 0.05em; text-transform: uppercase;">Category: Throughput &amp; Kitchen Timing</span>
+                    </div>
+
+                    <!-- Meta Strip -->
+                    <div class="sample-meta-row">
+                        <div class="sample-meta-item">
+                            <span>Estimated Exposure</span>
+                            <strong>~$1,200 – $1,800 / mo</strong>
+                        </div>
+                        <div class="sample-meta-item">
+                            <span>Evidence Confidence</span>
+                            <strong style="color: #4ADE80;">Moderate (72%)</strong>
+                        </div>
+                        <div class="sample-meta-item">
+                            <span>Implementation Friction</span>
+                            <strong style="color: #FBBF24;">Moderate</strong>
+                        </div>
+                        <div class="sample-meta-item">
+                            <span>Decision Priority</span>
+                            <strong style="color: #F87171;">Rank 1 &bull; Investigate First</strong>
+                        </div>
+                    </div>
+
+                    <!-- 4 Layers of Proof -->
+                    <div class="sample-body-grid">
+                        <div class="sample-layer-block">
+                            <span class="sample-layer-name layer-observed">Observed</span>
+                            <p class="sample-layer-desc">
+                                A disproportionate share of void value (68%) and kitchen overtime (41%) clusters strictly within the same operating window: Friday and Saturday peak dinner services between 7:45 PM and 9:15 PM.
+                            </p>
+                        </div>
+                        <div class="sample-layer-block">
+                            <span class="sample-layer-name layer-inferred">Inferred</span>
+                            <p class="sample-layer-desc">
+                                The overlap is consistent with a peak-period line throughput bottleneck where ticket backup leads to table cancellations and comps. <em>However, the current POS records do not establish causation.</em>
+                            </p>
+                        </div>
+                        <div class="sample-layer-block">
+                            <span class="sample-layer-name layer-verify">Verify</span>
+                            <p class="sample-layer-desc">
+                                Compare void timestamps against ticket durations, floor staffing rosters, and void reason detail for the last 3 peak Saturday services to confirm whether kitchen delays preceded the check voids.
+                            </p>
+                        </div>
+                        <div class="sample-layer-block">
+                            <span class="sample-layer-name layer-action">Action Candidate</span>
+                            <p class="sample-layer-desc">
+                                If floor verification confirms the pacing bottleneck, adjust expo prep sequencing 30 minutes prior to peak rush and rebalance fry/grill ticket pacing rather than hiring additional staff.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Why Investigated First Box -->
+                    <div style="padding: 0 1.75rem 1.75rem;">
+                        <div class="sample-rationale-box">
+                            <strong>Why This Ranks First:</strong> High recurring monthly exposure with clear temporal concentration. While implementation friction is moderate (requires shift lead alignment), the verification step takes under 15 minutes of floor observation before any procedure is modified.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section V: Active Validation Status & Partner Offer -->
+        <section id="validation" class="signal-section bg-paper-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">V // ACTIVE VALIDATION STATUS</span>
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;">
+                    <span class="status-badge" style="background: rgba(15, 118, 110, 0.1); color: var(--accent-teal); border: 1px solid rgba(15, 118, 110, 0.25);">WORKING SYSTEM &bull; ACTIVE EXTERNAL VALIDATION</span>
+                </div>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1.25rem 0; font-weight: 400; max-width: 860px;">
+                    Operational system under active real-world validation.
+                </h2>
+                <div style="max-width: 820px;">
+                    <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                        Signal is fully operational and already produces founder-reviewed diagnostic outputs. The current development stage is focused on validating performance across:
+                    </p>
+                    <ul style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.7; color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li>Different restaurant operating models (fast-casual, high-volume full-service, bar-forward, multi-location)</li>
+                        <li>Different POS exports (Toast, Aloha, Square, Micros, Revel, Clover)</li>
+                        <li>Different report structures, column namings, and export granularities</li>
+                        <li>Incomplete or fragmented datasets (missing timecards or unconfigured void reason codes)</li>
+                        <li>Unusual operating conditions and messy real-world edge cases</li>
+                    </ul>
+                    <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin: 0;">
+                        This validation is specifically intended to identify where findings remain reliable, where confidence ratings should decrease, where conclusions require additional corroborating evidence, and where operator verification is strictly necessary.
+                    </p>
+                </div>
+
+                <!-- Validation Partner Offer Box -->
+                <div class="partner-offer-card">
+                    <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.5rem;">LIMITED COHORT INVITATION</span>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 500;">
+                        Signal Validation Reviews
+                    </h3>
+                    <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                        I am currently accepting <strong>3–5 referred restaurants</strong> for a limited Signal validation review. Participating operators provide a small set of standard operational exports they already control (e.g. 30 days of sales summaries, timecards, or void reports).
+                    </p>
+                    <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                        In return, Signal will produce a focused diagnostic summary returning:
+                    </p>
+                    <ul style="font-family: var(--font-sans); font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); padding-left: 1.25rem; margin-bottom: 1.5rem;">
+                        <li>What the records directly establish as verified facts</li>
+                        <li>What the combined signals reasonably suggest</li>
+                        <li>Estimated financial significance where data supports it</li>
+                        <li>What should be checked on the floor before altering shift procedures</li>
+                    </ul>
+                    <div style="background: rgba(15, 118, 110, 0.06); border-radius: 4px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 13px; color: var(--forest-deep); line-height: 1.5;">
+                        <strong>Engagement Boundary:</strong> This is a limited validation review, not the full paid Signal Diagnostic, and does not imply open-ended free consulting. The goal is to rigorously stress-test Signal across live operational structures while delivering immediate, genuine value to participating operators.
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <a href="/signal/intake/?tier=validation" class="btn btn-primary" style="background: var(--forest-deep); color: #FFFFFF; text-decoration: none; padding: 0.75rem 1.5rem; font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; border-radius: 4px;">Inquire About a Validation Review &rarr;</a>
+                        <a href="/signal/sample-reports/" style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-teal); text-decoration: underline;">Review Sample Diagnostic Format &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section VI: Restaurant Operator Differentiation -->
+        <section id="operator" class="signal-section bg-dark-panel">
+            <div class="container">
+                <div style="max-width: 800px;">
+                    <span class="eyebrow" style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VI // OPERATOR DIFFERENTIATION</span>
+                    <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: #FAF9F5; margin: 0 0 1.25rem 0; font-weight: 400;">
+                        Built from both sides of the screen.
+                    </h2>
+                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.7; color: rgba(250,249,245,0.85); margin-bottom: 1.25rem;">
+                        Signal is built by Jayme Volstad, an applied systems engineer with roughly two decades of direct restaurant operating experience across front-of-house service, back-of-house line execution, culinary production, shift management, team training, vendor purchasing, and POS service systems.
+                    </p>
+                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.7; color: rgba(250,249,245,0.85); margin: 0;">
+                        That background shapes the product around how restaurants actually operate when the kitchen is 40 tickets deep on a Friday night—not just how clean software reports appear inside a boardroom.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section VII: Questions & Answers -->
+        <section class="signal-section bg-paper-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3rem; text-align: center;">VII // SYSTEM BOUNDARIES</span>
                 
                 <div class="questions-grid">
                     <!-- Q1 -->
                     <div class="question-box">
                         <h3>What do I give you?</h3>
                         <p>
-                            You provide standard operational exports: transaction logs, point-of-sale (POS) spreadsheets, timecard reports, labor rosters, void reports, or scheduling audits covering 30 to 90 days. We accept raw CSV, Excel, or JSON dumps directly from your system.
+                            You provide standard operational exports: transaction logs, point-of-sale (POS) spreadsheets, timecard reports, labor rosters, void reports, or scheduling audits covering 30 to 90 days. We accept raw CSV, Excel, or JSON dumps directly from your system without requiring API access.
                         </p>
                     </div>
                     
@@ -351,7 +926,7 @@
                     <div class="question-box">
                         <h3>What does Signal analyze?</h3>
                         <p>
-                            We analyze operations across key risk areas: transaction comps/void patterns, throughput bottlenecks, scheduling vs. revenue timing, menu modifier anomalies, and high-frequency discount leaks.
+                            Signal cross-analyzes operations across key risk areas: transaction comps/void patterns, throughput bottlenecks, scheduling vs. revenue timing, menu modifier anomalies, and high-frequency discount leaks across shift windows.
                         </p>
                     </div>
 
@@ -374,11 +949,11 @@
             </div>
         </section>
 
-        <!-- Section II: Pricing -->
-        <section id="pricing" class="pricing-section">
+        <!-- Section VIII: Pricing Ladder -->
+        <section id="pricing" class="signal-section bg-light-panel">
             <div class="container">
                 <div style="text-align: center; margin-bottom: 3.5rem;">
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">II // PRICING LADDER</span>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">VIII // PRICING LADDER</span>
                     <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); font-weight: 500;">
                         Risk-Free Diagnostic Offers
                     </h2>
@@ -453,9 +1028,8 @@
                         </div>
                     </div>
                 </div>
-                </div>
 
-                <div class="rules-box" style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.75rem; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-top: 2rem;">
+                <div class="rules-box" style="background: var(--bg-paper); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.75rem; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-top: 2rem;">
                     <strong>Illustration of Impact:</strong> A daily leak of $24 in modifier omissions translates to $8,760 in lost profit annually. A single peak-hour checkout block resulting in one lost table turn can leak over $15,000 yearly across a standard operating calendar.
                 </div>
             </div>
@@ -463,7 +1037,6 @@
     </main>
 
     <!-- Footer -->
-    <!-- ── FOOTER ── -->
     <footer role="contentinfo">
         <div class="container footer-container">
             <div class="footer-logo-area">
