@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-MVV7WNL42L');
-    </script>
-    <script src="/assets/js/analytics.js" defer></script>
-
-    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signal | Operational Intelligence &amp; Decision Support</title>
-    <meta name="description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Cross-analyzing operational signals to surface the few decisions worth investigating first.">
+    <title>Signal | Operational Analysis for Independent Restaurants · Context &amp; Muse</title>
+    <meta name="description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Cross-analyzing sales, labor, comps, voids, and timing to surface the few decisions worth investigating first.">
     <link rel="canonical" href="https://www.contextmuse.com/signal/">
-
+    
     <!-- Open Graph -->
-    <meta property="og:type" content="website">
+    <meta property="og:title" content="Signal | Operational Analysis for Independent Restaurants · Context &amp; Muse">
+    <meta property="og:description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Decision compression for operators already drowning in reports.">
     <meta property="og:url" content="https://www.contextmuse.com/signal/">
-    <meta property="og:title" content="Signal | Operational Intelligence &amp; Decision Support">
-    <meta property="og:description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Cross-analyzing operational signals to surface the few decisions worth investigating first.">
-    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
-
-    <!-- Twitter Card -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/og-signal.png">
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Signal | Operational Intelligence &amp; Decision Support">
-    <meta name="twitter:description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Cross-analyzing operational signals to surface the few decisions worth investigating first.">
-    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+    <meta name="twitter:title" content="Signal | Operational Analysis for Independent Restaurants · Context &amp; Muse">
+    <meta name="twitter:description" content="Signal turns fragmented restaurant reports into a prioritized decision queue. Decision compression for operators already drowning in reports.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/og-signal.png">
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Schema.org SoftwareApplication Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -40,6 +28,8 @@
       "name": "Signal",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web-based",
+      "description": "Signal turns fragmented restaurant reports into a prioritized decision queue. It cross-analyzes operational signals across sales, labor, comps, voids, menu performance and timing to surface the few decisions worth investigating first.",
+      "url": "https://www.contextmuse.com/signal/",
       "offers": [
         {
           "@type": "Offer",
@@ -242,7 +232,7 @@
         .dimension-box strong {
             font-family: var(--font-mono);
             font-size: 11px;
-            color: var(--forest-deep);
+            color: var(--forest-deep, #0E1F1B);
             display: block;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
@@ -255,19 +245,276 @@
             margin: 0;
         }
 
-        /* Sample Output Card */
-        .sample-finding-card {
+        /* Three-Way Progressive Contrast (Report vs Dashboard vs Signal) */
+        .contrast-three-way {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        @media(max-width: 900px) {
+            .contrast-three-way {
+                grid-template-columns: 1fr;
+            }
+        }
+        .contrast-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.75rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .contrast-card.signal-featured {
+            border: 2px solid var(--forest-deep, #0E1F1B);
+            background: #FAF9F5;
+            box-shadow: 0 8px 24px rgba(14, 31, 27, 0.06);
+            position: relative;
+        }
+        .contrast-card-tag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .contrast-card-quote {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            line-height: 1.35;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        .contrast-card-desc {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Progressive Metaphor Banner */
+        .depth-metaphor-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            background: #0E1F1B;
+            border-radius: 8px;
+            padding: 1.75rem 1.5rem;
+            color: #FAF9F5;
+            margin: 2.5rem 0 3rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+        @media(max-width: 950px) {
+            .depth-metaphor-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 580px) {
+            .depth-metaphor-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+        .metaphor-step {
+            position: relative;
+            padding-right: 0.5rem;
+        }
+        .metaphor-level-tag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--accent-gold, #C5A059);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .metaphor-action {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #FFFFFF;
+            margin-bottom: 4px;
+        }
+        .metaphor-sub {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            color: rgba(250, 249, 245, 0.65);
+            letter-spacing: 0.04em;
+        }
+
+        /* Synthetic Scenario Card */
+        .scenario-card {
+            background: #FAF9F5;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--accent-gold, #C5A059);
+            border-radius: 0 6px 6px 0;
+            padding: 1.75rem 2rem;
+            margin-bottom: 3.5rem;
+        }
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .scenario-pill {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: #EDE8DE;
+            color: var(--forest-deep, #0E1F1B);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(14, 31, 27, 0.08);
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .scenario-item strong {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--forest-deep, #0E1F1B);
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        /* Level 0, 1, 2 Showcase Blocks */
+        .depth-block {
+            margin-bottom: 4rem;
+        }
+        .depth-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .depth-level-badge {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+        .badge-level-0 {
+            background: rgba(140, 102, 33, 0.12);
+            color: #8C6621;
+            border: 1px solid rgba(140, 102, 33, 0.3);
+        }
+        .badge-level-1 {
+            background: rgba(15, 118, 110, 0.1);
+            color: var(--accent-teal, #0F766E);
+            border: 1px solid rgba(15, 118, 110, 0.25);
+        }
+        .badge-level-2 {
+            background: rgba(197, 160, 89, 0.18);
+            color: var(--accent-gold, #C5A059);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+        }
+        .badge-ongoing {
+            background: rgba(30, 64, 175, 0.1);
+            color: #1E40AF;
+            border: 1px solid rgba(30, 64, 175, 0.25);
+        }
+        .depth-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+            font-weight: 500;
+        }
+        .depth-question {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .depth-meta-strip {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 0.85rem 1.25rem;
+            background: #FAF9F5;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 1.5rem;
+        }
+        .depth-meta-col strong {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--forest-deep, #0E1F1B);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* Level 0 Output Card */
+        .val-output-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.75rem 2rem;
+            box-shadow: 0 4px 14px rgba(16, 33, 29, 0.03);
+        }
+
+        /* Level 1 Dual Output (Priority 01 vs 04) */
+        .snapshot-dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+        }
+        @media(max-width: 850px) {
+            .snapshot-dual-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .snapshot-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.6rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .snapshot-card.rank-first {
+            border: 2px solid var(--forest-deep, #0E1F1B);
+            box-shadow: 0 8px 24px rgba(14, 31, 27, 0.05);
+        }
+
+        /* Level 2 Full Console Card */
+        .diagnostic-console-card {
             background: #0E1F1B;
             border: 1px solid rgba(250, 249, 245, 0.12);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
             color: #FAF9F5;
-            margin-top: 2.5rem;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
         }
-        .sample-finding-header {
+        .console-header-bar {
             background: #0A1412;
-            padding: 1.25rem 1.75rem;
+            padding: 1.25rem 2rem;
             border-bottom: 1px solid rgba(250, 249, 245, 0.1);
             display: flex;
             justify-content: space-between;
@@ -275,129 +522,188 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .sample-priority-title {
-            font-family: var(--font-serif);
-            font-size: 1.35rem;
-            color: #FAF9F5;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .sample-meta-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            padding: 1rem 1.75rem;
-            background: rgba(250, 249, 245, 0.03);
-            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
-            font-family: var(--font-mono);
-            font-size: 11px;
-        }
-        @media(max-width: 768px) {
-            .sample-meta-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        .sample-meta-item span {
-            color: rgba(250, 249, 245, 0.5);
-            display: block;
-            margin-bottom: 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-size: 9.5px;
-        }
-        .sample-meta-item strong {
-            color: #C5A059;
-            font-weight: 600;
-            font-size: 12px;
-        }
-        .sample-body-grid {
-            padding: 1.75rem;
+        .console-body {
+            padding: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 2rem;
         }
-        .sample-layer-block {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 1.25rem;
-            padding-bottom: 1.15rem;
-            border-bottom: 1px solid rgba(250, 249, 245, 0.06);
-            align-items: baseline;
-        }
-        @media(max-width: 600px) {
-            .sample-layer-block {
-                grid-template-columns: 1fr;
-                gap: 0.4rem;
-            }
-        }
-        .sample-layer-block:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        .sample-layer-name {
+        .console-section-heading {
             font-family: var(--font-mono);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
+            color: var(--accent-gold, #C5A059);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 0.85rem;
         }
-        .sample-layer-desc {
-            font-family: var(--font-sans);
-            font-size: 13.5px;
-            line-height: 1.6;
-            color: rgba(250, 249, 245, 0.88);
-            margin: 0;
-        }
-        .sample-rationale-box {
-            margin-top: 1.5rem;
-            padding: 1rem 1.5rem;
-            background: rgba(197, 160, 89, 0.08);
-            border-left: 3px solid #C5A059;
-            border-radius: 0 4px 4px 0;
-            font-family: var(--font-sans);
-            font-size: 13px;
-            line-height: 1.55;
-            color: rgba(250, 249, 245, 0.85);
-        }
-
-        /* Validation Partner Offer Card */
-        .partner-offer-card {
-            background: #FFFFFF;
-            border: 2px solid var(--accent-teal);
-            border-radius: 8px;
-            padding: 2.5rem;
-            box-shadow: 0 12px 30px rgba(16, 33, 29, 0.05);
-            margin-top: 2rem;
-        }
-
-        /* Questions Section */
-        .questions-grid {
+        .hypotheses-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
         }
-        @media(max-width: 768px) {
-            .questions-grid {
+        @media(max-width: 900px) {
+            .hypotheses-grid {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
             }
         }
-        .question-box h3 {
-            font-family: var(--font-serif);
-            font-size: 1.35rem;
-            color: var(--text-primary);
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
+        .hypothesis-box {
+            background: rgba(250, 249, 245, 0.03);
+            border: 1px solid rgba(250, 249, 245, 0.08);
+            border-radius: 6px;
+            padding: 1.25rem;
         }
-        .question-box p {
+        .hypothesis-box.supported {
+            border-color: #4ADE80;
+            background: rgba(74, 222, 128, 0.04);
+        }
+        .interventions-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            margin-top: 0.5rem;
+        }
+        .interventions-table th, .interventions-table td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+        }
+        .interventions-table th {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            color: rgba(250, 249, 245, 0.55);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Boundary / Takeaway Banners */
+        .takeaway-banner {
+            padding: 1.15rem 1.5rem;
+            border-radius: 6px;
             font-family: var(--font-sans);
-            font-size: 14.5px;
-            line-height: 1.65;
-            color: var(--text-secondary);
-            margin: 0;
+            font-size: 13.5px;
+            line-height: 1.55;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .takeaway-light {
+            background: rgba(14, 31, 27, 0.04);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+        }
+        .takeaway-dark {
+            background: rgba(197, 160, 89, 0.08);
+            border-left: 3px solid #C5A059;
+            color: #FAF9F5;
+        }
+
+        /* Comprehensive Comparison Table */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 2.5rem 0;
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: 0 4px 14px rgba(16, 33, 29, 0.02);
+        }
+        .depth-table {
+            width: 100%;
+            min-width: 820px;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+        .depth-table th, .depth-table td {
+            padding: 1.1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            text-align: left;
+        }
+        .depth-table th {
+            background: #FAF9F5;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--forest-deep, #0E1F1B);
+        }
+        .depth-table tr:hover td {
+            background: rgba(15, 118, 110, 0.02);
+        }
+        .depth-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+            width: 32%;
+        }
+        .check-yes {
+            color: var(--accent-teal, #0F766E);
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+        .check-no {
+            color: #A3A29E;
+            font-family: var(--font-mono);
+        }
+        .check-limit {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: #8C6621;
+        }
+
+        /* 5 Investigation Domains Grid */
+        .investigation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.75rem;
+            margin-top: 2.5rem;
+        }
+        .investigation-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .investigation-card.leverage-card {
+            border: 2px solid var(--accent-teal, #0F766E);
+            background: #FAF9F5;
+        }
+
+        /* Data Handoff Cards */
+        .handoff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        @media(max-width: 768px) {
+            .handoff-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .handoff-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2rem;
+        }
+        .handoff-privacy-note {
+            background: #FAF9F5;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--accent-teal, #0F766E);
+            border-radius: 0 6px 6px 0;
+            padding: 1.5rem 1.75rem;
+            margin-top: 2rem;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
         }
 
         /* Pricing Grid */
@@ -457,6 +763,34 @@
             font-size: 0.9rem;
             font-weight: 400;
             color: var(--text-secondary);
+        }
+
+        /* Q&A Section */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+        }
+        @media(max-width: 768px) {
+            .questions-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .question-box h3 {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        .question-box p {
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin: 0;
         }
     </style>
 </head>
@@ -580,20 +914,21 @@
 
     <!-- Page-Level Jump Navigation -->
     <nav class="sub-navbar" aria-label="Page Navigation">
-        <div class="container sub-nav-container" style="justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+        <div class="container sub-nav-container" style="justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
             <a href="#reporting-gap" class="sub-nav-link">The Step After Reporting</a>
             <a href="#intersections" class="sub-nav-link">Cross-Signal Architecture</a>
-            <a href="#prioritization" class="sub-nav-link">Decision Prioritization</a>
-            <a href="#sample-output" class="sub-nav-link">Sample Output</a>
+            <a href="#same-data-depth" class="sub-nav-link" style="color: var(--accent-gold); font-weight: 600;">Same Data · Different Depth</a>
+            <a href="#comparison" class="sub-nav-link">Level Comparison</a>
+            <a href="#capabilities" class="sub-nav-link">What Signal Investigates</a>
+            <a href="#data-handoff" class="sub-nav-link">How Data Gets to Signal</a>
             <a href="#validation" class="sub-nav-link">Validation Status</a>
-            <a href="#operator" class="sub-nav-link">Operator Roots</a>
             <a href="#pricing" class="sub-nav-link">Pricing</a>
-            <a href="/signal/demo/" class="sub-nav-link" style="color: var(--accent-gold); font-weight: bold;">Launch Demo &rarr;</a>
+            <a href="/signal/demo/" class="sub-nav-link" style="color: var(--accent-teal); font-weight: bold;">Launch Demo &rarr;</a>
         </div>
     </nav>
 
     <main id="main-content">
-        <!-- Section I: The Step After Reporting -->
+        <!-- Section I: The Step After Reporting & Progressive Contrast -->
         <section id="reporting-gap" class="signal-section bg-paper-panel">
             <div class="container">
                 <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">I // MARKET POSITIONING</span>
@@ -615,18 +950,51 @@
                     </p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem; margin-top: 2rem;">
-                    <div style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">WHAT REPORTING DASHBOARDS DO</span>
-                        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
-                            Display historical metrics: sales totals, labor cost percentages, total comps, void counts, and item sales counts in separate silos. They tell you <em>what recorded</em>, but leave you to connect the dots across spreadsheets.
-                        </p>
-                    </div>
-                    <div style="background: #FFFFFF; border: 2px solid var(--forest-deep); border-radius: 6px; padding: 1.5rem; box-shadow: 0 4px 14px rgba(16, 33, 29, 0.04);">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--forest-deep); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">WHAT SIGNAL DOES</span>
-                        <p style="font-size: 14px; color: var(--text-primary); line-height: 1.6; margin: 0;">
-                            Cross-analyzes multiple operational files simultaneously, weighs exposure against implementation friction, and compresses dozens of potential issues into a prioritized decision queue with clear verification steps.
-                        </p>
+                <!-- 3-Way Progressive Contrast -->
+                <div style="margin-top: 3.5rem;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">CRITICAL POSITIONING</span>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                        The difference between numbers, trends, and operational decisions.
+                    </h3>
+                    <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); max-width: 780px; margin: 0;">
+                        Most restaurant management software ends at retrospective reporting. Signal begins where traditional software stops: translating operational drift into prioritized interventions.
+                    </p>
+
+                    <div class="contrast-three-way">
+                        <!-- Card 1: Normal Report -->
+                        <div class="contrast-card">
+                            <div>
+                                <span class="contrast-card-tag" style="color: var(--text-secondary);">A NORMAL REPORT TELLS YOU:</span>
+                                <div class="contrast-card-quote">“Labor is 22%.”</div>
+                            </div>
+                            <p class="contrast-card-desc">
+                                A single, isolated historical metric. It records what happened in gross terms, but gives no operational context, daypart timing, or concurrent kitchen bottlenecks.
+                            </p>
+                        </div>
+
+                        <!-- Card 2: Better Dashboard -->
+                        <div class="contrast-card">
+                            <div>
+                                <span class="contrast-card-tag" style="color: var(--accent-teal);">A BETTER DASHBOARD TELLS YOU:</span>
+                                <div class="contrast-card-quote">“Labor increased 2.4 points.”</div>
+                            </div>
+                            <p class="contrast-card-desc">
+                                A directional trend line. It establishes that drift occurred over time, but leaves the operator guessing where it leaked, why it occurred, and what else broke simultaneously.
+                            </p>
+                        </div>
+
+                        <!-- Card 3: Signal -->
+                        <div class="contrast-card signal-featured">
+                            <div>
+                                <span class="contrast-card-tag" style="color: var(--forest-deep, #0E1F1B);">SIGNAL AIMS TO ANSWER:</span>
+                                <div class="contrast-card-quote" style="font-size: 1.15rem; line-height: 1.45; font-style: normal; font-weight: 500;">
+                                    “The increase is concentrated in Friday/Saturday 6–8 PM dinner rushes, overlaps a 68% void spike and 18% throughput drop, represents ~$1,500/mo exposure, and testing station deployment has lower friction than adding another shift employee.”
+                                </div>
+                            </div>
+                            <p class="contrast-card-desc" style="color: var(--forest-deep, #0E1F1B); font-weight: 500;">
+                                Intersectional, prioritized, epistemically verified, and friction-weighted before modifying operations.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -695,27 +1063,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Section III: Decision Prioritization (Friction vs Exposure) -->
-        <section id="prioritization" class="signal-section bg-paper-panel">
-            <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">III // DECISION PRIORITIZATION</span>
-                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
-                    Weighing financial exposure against operational disruption.
-                </h2>
-                <div style="max-width: 820px;">
-                    <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem;">
-                        A theoretically large opportunity should not automatically rank first if the evidence is weak or the operational disruption required to act is too high. In a working restaurant, disrupting a functioning kitchen line or service rhythm for an unconfirmed hunch can cause more damage than the leak itself.
-                    </p>
-                    <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin: 0;">
-                        Signal exists to answer seven practical operational questions before any change is made:
-                    </p>
-                </div>
-
-                <!-- 7 Questions Strip -->
-                <div style="background: var(--forest-deep); color: #FAF9F5; padding: 1.75rem 2rem; border-radius: 6px; margin: 2rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem;">
+                <!-- 7 Decision Questions Strip -->
+                <div style="background: var(--forest-deep, #0E1F1B); color: #FAF9F5; padding: 1.75rem 2rem; border-radius: 6px; margin: 3rem 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem;">
                     <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q1</span> <strong>What matters most?</strong></div>
                     <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q2</span> <strong>What is the evidence?</strong></div>
                     <div><span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); display: block;">Q3</span> <strong>How sure are we?</strong></div>
@@ -751,94 +1101,777 @@
             </div>
         </section>
 
-        <!-- Section IV: Sample Output Section -->
-        <section id="sample-output" class="signal-section bg-light-panel">
+        <!-- Section III: SAME DATA. DIFFERENT DEPTH. -->
+        <section id="same-data-depth" class="signal-section bg-paper-panel">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">IV // SYSTEM OUTPUT</span>
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
-                    <div>
-                        <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 400;">
-                            How a prioritized finding is structured.
-                        </h2>
-                        <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin: 0; max-width: 650px;">
-                            Below is an authentic sample finding taken from the Signal Diagnostic engine, showing how raw operational data is synthesized into an actionable decision candidate.
-                        </p>
-                    </div>
-                    <a href="/signal/demo/" class="btn" style="background: #0E1F1B; background-color: var(--forest-deep, #0E1F1B); color: #FAF9F5 !important; border: 1.5px solid #0E1F1B; text-decoration: none; padding: 0.75rem 1.4rem; font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; border-radius: 4px;">Explore Live Interactive Demo &rarr;</a>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">III // SAME DATA. DIFFERENT DEPTH.</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1.25rem 0; font-weight: 400; max-width: 900px;">
+                    One restaurant scenario. Three fundamentally different levels of investigation.
+                </h2>
+                <div style="max-width: 840px;">
+                    <p style="font-family: var(--font-sans); font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">
+                        Signal analysis tiers are not simply small, medium, and big report PDFs. They represent fundamentally distinct investigative depth. Higher levels discover what lower levels cannot, evaluate competing operational hypotheses, and model friction before any money is spent changing procedures.
+                    </p>
                 </div>
 
-                <!-- Structured Finding Card -->
-                <div class="sample-finding-card">
-                    <div class="sample-finding-header">
-                        <h3 class="sample-priority-title">
-                            <span style="font-family: var(--font-mono); font-size: 11px; background: #C5A059; color: #0E1F1B; padding: 3px 8px; border-radius: 3px; font-weight: 700; letter-spacing: 0.06em;">PRIORITY 01</span>
-                            Peak-period margin leakage
-                        </h3>
-                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250,249,245,0.6); letter-spacing: 0.05em; text-transform: uppercase;">Category: Throughput &amp; Kitchen Timing</span>
+                <!-- Progressive Visual Metaphor Strip -->
+                <div class="depth-metaphor-strip">
+                    <div class="metaphor-step">
+                        <span class="metaphor-level-tag">LEVEL 0 · VALIDATION</span>
+                        <div class="metaphor-action">Find the smoke</div>
+                        <div class="metaphor-sub">Detect &bull; 2–4 signals</div>
+                    </div>
+                    <div class="metaphor-step">
+                        <span class="metaphor-level-tag">LEVEL 1 · SNAPSHOT</span>
+                        <div class="metaphor-action">Decide which smoke matters</div>
+                        <div class="metaphor-sub">Prioritize &bull; Order of attention</div>
+                    </div>
+                    <div class="metaphor-step">
+                        <span class="metaphor-level-tag">LEVEL 2 · DIAGNOSTIC</span>
+                        <div class="metaphor-action">Investigate the fire before rebuilding</div>
+                        <div class="metaphor-sub">Diagnose &bull; Competing causes</div>
+                    </div>
+                    <div class="metaphor-step" style="border-left: 1px solid rgba(250,249,245,0.15); padding-left: 1rem;">
+                        <span class="metaphor-level-tag" style="color: #93C5FD;">MONITORING · ONGOING</span>
+                        <div class="metaphor-action" style="font-size: 1.05rem;">Verify it didn't rekindle</div>
+                        <div class="metaphor-sub">Track &bull; Longitudinal drift</div>
+                    </div>
+                </div>
+
+                <!-- The Synthetic Restaurant Baseline Scenario Card -->
+                <div class="scenario-card">
+                    <div class="scenario-header">
+                        <div>
+                            <span class="scenario-pill">SYNTHETIC RESTAURANT SCENARIO · MID-SIZE CASUAL DINING (120 SEATS)</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0.5rem 0 0 0; font-weight: 500;">
+                                Baseline Operating Context (90-Day Telemetry)
+                            </h3>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); background: #FAF9F5; padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border-light);">
+                            Illustrative Dataset &bull; Constant Across All 3 Levels
+                        </span>
+                    </div>
+                    <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem 0;">
+                        To demonstrate how analysis deepens without marketing exaggeration, here is how the exact same underlying operational records are treated as investigation advances:
+                    </p>
+                    <div class="scenario-grid">
+                        <div class="scenario-item">
+                            <strong>Sales Pacing</strong>
+                            ~$48,000 / week; overall top-line revenue appears stable.
+                        </div>
+                        <div class="scenario-item">
+                            <strong>Labor Metric</strong>
+                            Total labor sits at 34.2% (elevated against standard 31% target).
+                        </div>
+                        <div class="scenario-item">
+                            <strong>Overtime Pattern</strong>
+                            Overtime hours cluster heavily across Friday &amp; Saturday services.
+                        </div>
+                        <div class="scenario-item">
+                            <strong>Void Activity</strong>
+                            Elevated voids concentrated between 6:00 PM and 8:30 PM dinner rush.
+                        </div>
+                        <div class="scenario-item">
+                            <strong>Menu Dynamic</strong>
+                            High-volume signature entrees dominate weekend order share.
+                        </div>
+                        <div class="scenario-item">
+                            <strong>Comp Behavior</strong>
+                            Spike in manager meal and customer service recovery discounts.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== LEVEL 0 SHOWCASE ==================== -->
+                <div class="depth-block" id="level-0">
+                    <div class="depth-block-header">
+                        <div>
+                            <span class="depth-level-badge badge-level-0">LEVEL 0 // VALIDATION REVIEW</span>
+                            <h3 class="depth-title">“Can Signal find something worth investigating?”</h3>
+                            <p class="depth-question">Limited complimentary analysis &bull; 3–5 participating referred restaurants</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: #8C6621; font-weight: 700; text-transform: uppercase;">Engagement Type</span>
+                            <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--text-primary);">$0 &bull; Selective Cohort</div>
+                        </div>
                     </div>
 
-                    <!-- Meta Strip -->
-                    <div class="sample-meta-row">
-                        <div class="sample-meta-item">
-                            <span>Estimated Exposure</span>
-                            <strong>~$1,200 – $1,800 / mo</strong>
+                    <div class="depth-meta-strip">
+                        <div class="depth-meta-col">
+                            <strong>Core Question Answered</strong>
+                            “Is there something in my existing data that I should be looking at more closely?”
                         </div>
-                        <div class="sample-meta-item">
-                            <span>Evidence Confidence</span>
-                            <strong style="color: #4ADE80;">Moderate (72%)</strong>
+                        <div class="depth-meta-col">
+                            <strong>Data Required</strong>
+                            Small set of standard exports (30–60d sales summary, hourly sales, or void report). Does NOT need every report.
                         </div>
-                        <div class="sample-meta-item">
-                            <span>Implementation Friction</span>
-                            <strong style="color: #FBBF24;">Moderate</strong>
-                        </div>
-                        <div class="sample-meta-item">
-                            <span>Decision Priority</span>
-                            <strong style="color: #F87171;">Rank 1 &bull; Investigate First</strong>
+                        <div class="depth-meta-col">
+                            <strong>Deliverable Output</strong>
+                            2–4 prioritized observations with supporting evidence, suggested patterns, and floor verification checks.
                         </div>
                     </div>
 
-                    <!-- 4 Layers of Proof -->
-                    <div class="sample-body-grid">
-                        <div class="sample-layer-block">
-                            <span class="sample-layer-name layer-observed">Observed</span>
-                            <p class="sample-layer-desc">
-                                A disproportionate share of void value (68%) and kitchen overtime (41%) clusters strictly within the same operating window: Friday and Saturday peak dinner services between 7:45 PM and 9:15 PM.
-                            </p>
+                    <!-- Level 0 Visual Output Card -->
+                    <div class="val-output-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem;">
+                            <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #8C6621; text-transform: uppercase;">VALIDATION OBSERVATION 01</span>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">SYNTHETIC EXAMPLE</span>
                         </div>
-                        <div class="sample-layer-block">
-                            <span class="sample-layer-name layer-inferred">Inferred</span>
-                            <p class="sample-layer-desc">
-                                The overlap is consistent with a peak-period line throughput bottleneck where ticket backup leads to table cancellations and comps. <em>However, the current POS records do not establish causation.</em>
-                            </p>
+                        <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 500;">
+                            Peak dinner deserves a closer look.
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; font-size: 13.5px; line-height: 1.6;">
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #0F766E; text-transform: uppercase; display: block; margin-bottom: 3px;">Observed</strong>
+                                Friday and Saturday 6–8 PM contain a disproportionate amount of overtime (38%) and void value (54%) relative to their 22% share of weekly transactions.
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #8C6621; text-transform: uppercase; display: block; margin-bottom: 3px;">Pattern</strong>
+                                Two otherwise separate reports (payroll timecards and POS void log) are showing pressure during the exact same operating window.
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #B45309; text-transform: uppercase; display: block; margin-bottom: 3px;">Verify</strong>
+                                Check ticket times and void reasons during four peak weekend dinner services.
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--forest-deep, #0E1F1B); text-transform: uppercase; display: block; margin-bottom: 3px;">Why It Matters</strong>
+                                There may be a concentrated operational leak worth investigating rather than a general kitchen labor issue.
+                            </div>
                         </div>
-                        <div class="sample-layer-block">
-                            <span class="sample-layer-name layer-verify">Verify</span>
-                            <p class="sample-layer-desc">
-                                Compare void timestamps against ticket durations, floor staffing rosters, and void reason detail for the last 3 peak Saturday services to confirm whether kitchen delays preceded the check voids.
-                            </p>
+
+                        <!-- Level 0 Explicit Boundary -->
+                        <div class="takeaway-banner takeaway-light" style="margin-top: 1.5rem;">
+                            <div style="max-width: 680px;">
+                                <strong>Where Level 0 Stops:</strong> The Validation Review deliberately stops here. It does NOT include comprehensive root-cause modeling, deep financial exposure models, exhaustive cross-report analysis, implementation planning, ongoing monitoring, or unlimited follow-up.
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: #8C6621; margin-top: 4px; font-weight: 700;">
+                                    Takeaway: The Validation Review found the smoke.
+                                </div>
+                            </div>
+                            <a href="/signal/intake/?tier=validation" class="btn btn-primary" style="background: #0E1F1B; background-color: var(--forest-deep, #0E1F1B); color: #FFFFFF !important; border: 1.5px solid #0E1F1B; text-decoration: none; padding: 0.65rem 1.25rem; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: 4px; white-space: nowrap;">Participate in Validation &rarr;</a>
                         </div>
-                        <div class="sample-layer-block">
-                            <span class="sample-layer-name layer-action">Action Candidate</span>
-                            <p class="sample-layer-desc">
-                                If floor verification confirms the pacing bottleneck, adjust expo prep sequencing 30 minutes prior to peak rush and rebalance fry/grill ticket pacing rather than hiring additional staff.
-                            </p>
+                    </div>
+                </div>
+
+                <!-- ==================== LEVEL 1 SHOWCASE ==================== -->
+                <div class="depth-block" id="level-1">
+                    <div class="depth-block-header">
+                        <div>
+                            <span class="depth-level-badge badge-level-1">LEVEL 1 // SIGNAL SNAPSHOT</span>
+                            <h3 class="depth-title">“What deserves attention?”</h3>
+                            <p class="depth-question">Prioritizing where to look first across multiple competing signals</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Standard Investment</span>
+                            <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--text-primary);">$149 <span style="font-size: 11px; font-weight: 400; color: var(--text-secondary);">(Founding) / $195</span></div>
                         </div>
                     </div>
 
-                    <!-- Why Investigated First Box -->
-                    <div style="padding: 0 1.75rem 1.75rem;">
-                        <div class="sample-rationale-box">
-                            <strong>Why This Ranks First:</strong> High recurring monthly exposure with clear temporal concentration. While implementation friction is moderate (requires shift lead alignment), the verification step takes under 15 minutes of floor observation before any procedure is modified.
+                    <div class="depth-meta-strip">
+                        <div class="depth-meta-col">
+                            <strong>Core Question Answered</strong>
+                            “Where should I look first, what is the relative exposure, and how confident are we?”
+                        </div>
+                        <div class="depth-meta-col">
+                            <strong>Data Required</strong>
+                            Sales, labor, daypart/hourly performance, comps, voids, discounts, and menu mix (30–90 days).
+                        </div>
+                        <div class="depth-meta-col">
+                            <strong>Core Distinction</strong>
+                            <em>“Snapshot finds the signal. Diagnostic investigates why it exists.”</em>
+                        </div>
+                    </div>
+
+                    <!-- Level 1 Visual Output: Multi-Finding Prioritization -->
+                    <div class="snapshot-dual-grid">
+                        <!-- Priority 01 -->
+                        <div class="snapshot-card rank-first">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 11px; background: #C5A059; color: #0E1F1B; padding: 3px 8px; border-radius: 3px; font-weight: 700;">PRIORITY 01</span>
+                                    <span style="font-family: var(--font-mono); font-size: 10px; color: #E11D48; font-weight: 700; text-transform: uppercase;">Investigate First</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                                    Peak-period margin leakage
+                                </h4>
+                                <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem;">
+                                    Category: Throughput &amp; Kitchen Timing
+                                </div>
+                                <div style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.65rem;">
+                                    <div>
+                                        <strong style="color: #0F766E;">Observed:</strong> Friday/Saturday 6–8 PM accounts for $1,420 overtime premium, $890 void value, and 18% lower-than-baseline throughput. [SYNTHETIC EXAMPLE]
+                                    </div>
+                                    <div>
+                                        <strong style="color: #8C6621;">Inferred:</strong> The intersection is consistent with a peak-period throughput bottleneck.
+                                    </div>
+                                    <div>
+                                        <strong style="color: #B45309;">Verify:</strong> Compare ticket duration, staffing allocation, and void reason detail.
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 11px;">
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>~$1,200–$1,800/mo</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #0F766E;">Moderate (72%)</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">FRICTION</span><strong>Low–Moderate</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong style="color: #E11D48;">Rank 1 &bull; Act First</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Priority 04 -->
+                        <div class="snapshot-card">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 11px; background: #EDE8DE; color: var(--forest-deep, #0E1F1B); padding: 3px 8px; border-radius: 3px; font-weight: 700;">PRIORITY 04</span>
+                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); font-weight: 700; text-transform: uppercase;">Defer Pending Validation</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                                    Menu discount concentration
+                                </h4>
+                                <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem;">
+                                    Category: Menu Economics &amp; Promo Policy
+                                </div>
+                                <div style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.65rem;">
+                                    <div>
+                                        <strong style="color: #0F766E;">Observed:</strong> Signature entree discounts cluster during weeknight dinner specials ($1,100/mo exposure). [SYNTHETIC EXAMPLE]
+                                    </div>
+                                    <div>
+                                        <strong style="color: #8C6621;">Inferred:</strong> Promotional discounting may be cannibalizing full-margin guest check volume.
+                                    </div>
+                                    <div>
+                                        <strong style="color: #B45309;">Verify:</strong> Audit check server IDs, item margin mix, and repeat customer redemption patterns.
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 11px;">
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>~$1,100/mo</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #8C6621;">Low–Mod (48%)</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">FRICTION</span><strong style="color: #B45309;">High (Menu/Server)</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong>Rank 4 &bull; Defer</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Snapshot Takeaway -->
+                    <div class="takeaway-banner takeaway-light">
+                        <div style="max-width: 720px;">
+                            <strong>Why Priority 04 Ranks Lower Despite Similar Dollar Exposure:</strong> The estimated dollar impact is comparable (~$1,100 vs $1,400), but the evidence is weaker (48%), corrective action requires high operational friction (reprinting menus and retraining floor servers), and additional modifier data is needed. Signal does not simply sort by biggest dollar amount.
+                            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); margin-top: 4px; font-weight: 700;">
+                                Takeaway: The Snapshot tells you which smoke deserves attention first.
+                            </div>
+                        </div>
+                        <a href="/signal/intake/?tier=snapshot" class="btn" style="background: var(--text-primary); color: #FAF9F5; text-decoration: none; padding: 0.65rem 1.25rem; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: 4px; white-space: nowrap;">Start a Signal Snapshot &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- ==================== LEVEL 2 SHOWCASE ==================== -->
+                <div class="depth-block" id="level-2" style="margin-bottom: 2.5rem;">
+                    <div class="depth-block-header">
+                        <div>
+                            <span class="depth-level-badge badge-level-2">LEVEL 2 // SIGNAL DIAGNOSTIC</span>
+                            <h3 class="depth-title">“Why is it happening, what is it costing, and what should we do?”</h3>
+                            <p class="depth-question">Comprehensive operational, financial, and floor-validation investigation</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); font-weight: 700; text-transform: uppercase;">Comprehensive Diagnostic</span>
+                            <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--text-primary);">$595 <span style="font-size: 11px; font-weight: 400; color: var(--text-secondary);">&bull; Fixed One-Time</span></div>
+                        </div>
+                    </div>
+
+                    <div class="depth-meta-strip">
+                        <div class="depth-meta-col">
+                            <strong>Core Question Answered</strong>
+                            “What is most likely happening here, what is it worth, how sure are we, and what is the least disruptive useful thing to do next?”
+                        </div>
+                        <div class="depth-meta-col">
+                            <strong>Data Required</strong>
+                            Multi-report cross-analysis: check-level POS logs, timecards, station allocation, modifier data, ticket pacing timestamps, and comp reports.
+                        </div>
+                        <div class="depth-meta-col">
+                            <strong>Diagnostic Deliverable</strong>
+                            Full written brief: competing hypothesis audit, direct vs latent financial model, floor-validation protocols, and friction-ranked intervention testing plan.
+                        </div>
+                    </div>
+
+                    <!-- Level 2 Deep-Dive Console Card -->
+                    <div class="diagnostic-console-card">
+                        <div class="console-header-bar">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 2px;">
+                                    DEEP DIAGNOSTIC INVESTIGATION &bull; SAME PEAK-PERIOD FINDING
+                                </span>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: #FAF9F5; margin: 0; font-weight: 500;">
+                                    Diagnostic Question: Why is margin degrading during Friday/Saturday peak?
+                                </h4>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; background: rgba(197, 160, 89, 0.15); color: #C5A059; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(197, 160, 89, 0.3);">
+                                SYNTHETIC OPERATIONAL MODEL
+                            </span>
+                        </div>
+
+                        <div class="console-body">
+                            <!-- 1. Deep Observed Section -->
+                            <div>
+                                <div class="console-section-heading">01 // MULTI-REPORT OBSERVED FACTS (UNDISPUTED EMPIRICAL EVIDENCE)</div>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; font-size: 13px; line-height: 1.6; color: rgba(250, 249, 245, 0.88);">
+                                    <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
+                                        &bull; Overtime hours rise <strong>45 minutes before</strong> peak volume window begins.
+                                    </div>
+                                    <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
+                                        &bull; Void value clusters strictly in the latter half of service (<strong>7:45 PM – 9:15 PM</strong>).
+                                    </div>
+                                    <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
+                                        &bull; Transactions per labor hour deteriorate by <strong>24%</strong> during the rush window.
+                                    </div>
+                                    <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
+                                        &bull; One station role (grill/expo) absorbs <strong>78%</strong> of total kitchen overtime.
+                                    </div>
+                                    <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
+                                        &bull; Check volume remains high, but average table turn duration extends by <strong>19 minutes</strong>.
+                                    </div>
+                                    <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
+                                        &bull; Void and re-ring timestamps directly overlap the table turn pacing deterioration.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Competing Hypotheses -->
+                            <div>
+                                <div class="console-section-heading">02 // COMPETING OPERATIONAL HYPOTHESES (EVALUATING EXPLANATIONS)</div>
+                                <p style="font-size: 13px; color: rgba(250, 249, 245, 0.7); margin: 0 0 1rem 0;">
+                                    Signal explicitly compares plausible operational explanations rather than forcing a simplistic single cause:
+                                </p>
+                                <div class="hypotheses-grid">
+                                    <!-- Hypothesis A -->
+                                    <div class="hypothesis-box">
+                                        <div style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250, 249, 245, 0.5); text-transform: uppercase; margin-bottom: 4px;">HYPOTHESIS A</div>
+                                        <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">Line Understaffing</h5>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #FBBF24; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: WEAK / MODERATE</div>
+                                        <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.75); margin: 0;">
+                                            Gross labor hours are already elevated (+3.2 staff hours vs baseline). Adding more staff to an already congested kitchen line often worsens table pacing.
+                                        </p>
+                                    </div>
+
+                                    <!-- Hypothesis B -->
+                                    <div class="hypothesis-box supported">
+                                        <div style="font-family: var(--font-mono); font-size: 10.5px; color: #4ADE80; text-transform: uppercase; margin-bottom: 4px;">HYPOTHESIS B (STRONGEST FIT)</div>
+                                        <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">Throughput Pacing Bottleneck</h5>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #4ADE80; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: MODERATE / STRONG</div>
+                                        <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.85); margin: 0;">
+                                            Prep sequencing failure 30 min before rush causes expo line backup, ticket delays, customer walkouts, and subsequent voids despite increased staff presence.
+                                        </p>
+                                    </div>
+
+                                    <!-- Hypothesis C -->
+                                    <div class="hypothesis-box">
+                                        <div style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250, 249, 245, 0.5); text-transform: uppercase; margin-bottom: 4px;">HYPOTHESIS C</div>
+                                        <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">Employee Misconduct / Theft</h5>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #F87171; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: WEAK</div>
+                                        <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.75); margin: 0;">
+                                            While voids cluster, the re-ring timing, modifier logs, and table durations are consistent with ticket recovery, not pocketed cash or off-book transactions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. What to Verify & Estimated Financial Exposure -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                                <div>
+                                    <div class="console-section-heading">03 // FLOOR VERIFICATION SCRIPT</div>
+                                    <ul style="font-size: 13px; line-height: 1.65; color: rgba(250, 249, 245, 0.85); padding-left: 1.25rem; margin: 0;">
+                                        <li>Compare KDS ticket completion timestamps for grill vs saute vs pantry stations.</li>
+                                        <li>Review void reason details specifically for checks between 7:45 PM and 9:15 PM.</li>
+                                        <li>Compare station schedule deployment against planned floor roster.</li>
+                                        <li>Observe expo/kitchen handoff directly during two Friday and two Saturday peak rushes.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="console-section-heading">04 // FINANCIAL EXPOSURE MODEL [SYNTHETIC EXAMPLE]</div>
+                                    <div style="background: rgba(250, 249, 245, 0.03); border: 1px solid rgba(250, 249, 245, 0.08); border-radius: 4px; padding: 1rem 1.25rem; font-size: 12.5px; line-height: 1.6; color: rgba(250, 249, 245, 0.85);">
+                                        <div><strong>Measured Direct Exposure:</strong> $1,420 / mo (recorded voids + overtime premium)</div>
+                                        <div><strong>Estimated Latent Exposure:</strong> $380 / mo (lost turn pacing during peak demand)</div>
+                                        <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(250, 249, 245, 0.55); margin-top: 4px;">
+                                            Assumptions: 90-day baseline; $68.50 average guest check; 19 min pacing loss.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Intervention Friction & Recommended First Test -->
+                            <div>
+                                <div class="console-section-heading">05 // INTERVENTION COMPARISON &amp; RECOMMENDED FIRST TEST</div>
+                                <div style="overflow-x: auto;">
+                                    <table class="interventions-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Possible Intervention</th>
+                                                <th>Potential Impact</th>
+                                                <th>Implementation Friction</th>
+                                                <th>Evidence Support</th>
+                                                <th>Evaluation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Add another peak shift employee</strong></td>
+                                                <td>Moderate</td>
+                                                <td style="color: #F87171;">High (Payroll + Line Crowding)</td>
+                                                <td style="color: #FBBF24;">Weak</td>
+                                                <td>Premature; risks worsening congestion</td>
+                                            </tr>
+                                            <tr style="background: rgba(74, 222, 128, 0.06);">
+                                                <td><strong>Reallocate prep staging 30m prior to rush</strong></td>
+                                                <td style="color: #4ADE80;">Moderate–High</td>
+                                                <td style="color: #4ADE80;">Low (Schedule Adjustment)</td>
+                                                <td style="color: #4ADE80;">Strongest</td>
+                                                <td><strong>Recommended First Test &bull; Zero added payroll</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Restrict high-prep items during peak</strong></td>
+                                                <td>Uncertain</td>
+                                                <td style="color: #FBBF24;">Moderate (Guest Expectations)</td>
+                                                <td style="color: #FBBF24;">Requires Validation</td>
+                                                <td>Secondary test if staging rebalance fails</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="takeaway-banner takeaway-dark" style="margin-top: 1.5rem;">
+                                    <div style="max-width: 760px;">
+                                        <strong>The Recommended First Test:</strong> Test station deployment and pre-rush staging adjustments before adding labor. It addresses the stronger operational hypothesis, carries the lowest implementation friction, and can be validated over a single weekend without permanently inflating payroll.
+                                        <div style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; margin-top: 4px; font-weight: 700;">
+                                            Takeaway: The Diagnostic investigates the fire, compares explanations, and determines the smartest experiment before the restaurant spends money fixing it.
+                                        </div>
+                                    </div>
+                                    <a href="/signal/intake/?tier=diagnostic" class="btn btn-primary" style="background: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.65rem 1.25rem; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: 4px; border: 1px solid var(--accent-teal); white-space: nowrap;">Book a Signal Diagnostic &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== ONGOING REVIEW (MONITORING) ==================== -->
+                <div class="depth-block" id="level-ongoing" style="margin-top: 3.5rem;">
+                    <div class="depth-block-header">
+                        <div>
+                            <span class="depth-level-badge badge-ongoing">OPTIONAL POST-DIAGNOSTIC // ONGOING REVIEW</span>
+                            <h3 class="depth-title">“Did the intervention actually work?”</h3>
+                            <p class="depth-question">Scheduled longitudinal monitoring to verify reality agreed with the diagnostic</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: #1E40AF; font-weight: 700; text-transform: uppercase;">Recurring Monitoring</span>
+                            <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--text-primary);">$195 <span style="font-size: 11px; font-weight: 400; color: var(--text-secondary);">/ month</span></div>
+                        </div>
+                    </div>
+
+                    <div class="val-output-card" style="border-left: 4px solid #1E40AF;">
+                        <p style="font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin: 0 0 1rem 0;">
+                            A diagnostic tells you what to investigate and what low-friction change to test. Ongoing Review measures whether the operational improvement held up under real shift conditions over subsequent weeks and months.
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #1E40AF; text-transform: uppercase; display: block; margin-bottom: 2px;">Period Comparison</strong>
+                                Compares post-intervention periods against your diagnostic baseline.
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #1E40AF; text-transform: uppercase; display: block; margin-bottom: 2px;">Recurrence Detection</strong>
+                                Detects whether resolved bottlenecks began drifting back into old habits.
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #1E40AF; text-transform: uppercase; display: block; margin-bottom: 2px;">Emerging Signals</strong>
+                                Catches new operational friction as seasons, menus, or managers change.
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #1E40AF; text-transform: uppercase; display: block; margin-bottom: 2px;">Unintended Impact</strong>
+                                Confirms fixing line pacing didn't inadvertently disrupt front-of-house turns.
+                            </div>
+                        </div>
+                        <div class="takeaway-banner takeaway-light" style="margin-top: 1.25rem;">
+                            <div style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-primary);">
+                                <strong>“Diagnostic tells you what to investigate and change. Monitoring tells you whether reality agreed.”</strong>
+                            </div>
+                            <a href="/signal/intake/?tier=ongoing" class="btn" style="background: var(--text-primary); color: #FAF9F5; text-decoration: none; padding: 0.65rem 1.25rem; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: 4px; white-space: nowrap;">Start Ongoing Review &rarr;</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section V: Active Validation Status & Partner Offer -->
+        <!-- Section IV: Capability Progression Comparison Table -->
+        <section id="comparison" class="signal-section bg-light-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">IV // CAPABILITY PROGRESSION</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
+                    Comparing investigative capabilities across each level.
+                </h2>
+                <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); max-width: 800px; margin-bottom: 1.5rem;">
+                    Each tier addresses a fundamentally different operational problem. Notice how analytical depth expands from early signal identification to prioritized queueing, deep root-cause modeling, and longitudinal verification:
+                </p>
+
+                <!-- Comparison Table -->
+                <div class="comparison-table-wrapper">
+                    <table class="depth-table">
+                        <thead>
+                            <tr>
+                                <th>Analytical Capability</th>
+                                <th>Validation Review<br><span style="font-size: 9.5px; font-weight: 400; color: var(--text-secondary);">Level 0 &bull; Complimentary</span></th>
+                                <th>Signal Snapshot<br><span style="font-size: 9.5px; font-weight: 400; color: var(--text-secondary);">Level 1 &bull; $149 / $195</span></th>
+                                <th>Signal Diagnostic<br><span style="font-size: 9.5px; font-weight: 400; color: var(--text-secondary);">Level 2 &bull; $595 One-Time</span></th>
+                                <th>Ongoing Review<br><span style="font-size: 9.5px; font-weight: 400; color: var(--text-secondary);">Monitoring &bull; $195/mo</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Limited report set required (30–60d)</td>
+                                <td class="check-yes">&check; Yes (Partial)</td>
+                                <td class="check-yes">&check; Yes</td>
+                                <td class="check-yes">&check; Comprehensive</td>
+                                <td class="check-yes">&check; Recurring</td>
+                            </tr>
+                            <tr>
+                                <td>Cross-report signal intersections</td>
+                                <td class="check-limit">Limited (2–4 Signals)</td>
+                                <td class="check-yes">&check; Full Queue</td>
+                                <td class="check-yes">&check; Deep Multi-Source</td>
+                                <td class="check-yes">&check; Drift Tracking</td>
+                            </tr>
+                            <tr>
+                                <td>Prioritized findings decision queue</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-yes">&check; Yes (Full Queue)</td>
+                                <td class="check-yes">&check; Yes (Ranked Queue)</td>
+                                <td class="check-yes">&check; Trend Queue</td>
+                            </tr>
+                            <tr>
+                                <td>Observed &bull; Inferred &bull; Verify separation</td>
+                                <td class="check-yes">&check; Core Epistemology</td>
+                                <td class="check-yes">&check; Core Epistemology</td>
+                                <td class="check-yes">&check; Core Epistemology</td>
+                                <td class="check-yes">&check; Core Epistemology</td>
+                            </tr>
+                            <tr>
+                                <td>Targeted operator floor verification checks</td>
+                                <td class="check-limit">Top-Level Only</td>
+                                <td class="check-yes">&check; Included</td>
+                                <td class="check-yes">&check; Detailed Protocols</td>
+                                <td class="check-yes">&check; Re-Audit Scripts</td>
+                            </tr>
+                            <tr>
+                                <td>Estimated financial exposure ($ leak/mo)</td>
+                                <td class="check-limit">Rough / Supportable</td>
+                                <td class="check-yes">&check; Bracketed Model</td>
+                                <td class="check-yes">&check; Direct vs Latent</td>
+                                <td class="check-yes">&check; Variance vs Target</td>
+                            </tr>
+                            <tr>
+                                <td>Confidence &amp; evidence scoring</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-yes">&check; Low / Mod / High</td>
+                                <td class="check-yes">&check; Full Scoring Matrix</td>
+                                <td class="check-yes">&check; Longitudinal Trend</td>
+                            </tr>
+                            <tr>
+                                <td>Implementation friction weighting</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-yes">&check; Evaluated</td>
+                                <td class="check-yes">&check; Formally Ranked</td>
+                                <td class="check-no">&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td>Competing operational hypotheses analysis</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-yes">&check; Yes (Multi-Hypothesis)</td>
+                                <td class="check-no">&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td>Deep root-cause candidate investigation</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-yes">&check; Full Investigation</td>
+                                <td class="check-no">&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td>Intervention comparison &amp; experiment ranking</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-yes">&check; Recommended First Test</td>
+                                <td class="check-no">&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td>Full written diagnostic brief</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-yes">&check; Comprehensive Brief</td>
+                                <td class="check-limit">Monthly Delta Brief</td>
+                            </tr>
+                            <tr>
+                                <td>Period-over-period drift tracking</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-no">&mdash;</td>
+                                <td class="check-yes">&check; Ongoing Monthly</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section V: What Signal Can Investigate -->
+        <section id="capabilities" class="signal-section bg-paper-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">V // OPERATIONAL SCOPE</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
+                    What Signal can investigate when the required data exists.
+                </h2>
+                <div style="max-width: 820px;">
+                    <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Signal does not promise generic AI predictions or artificial certainty. Instead, it investigates five foundational operating domains by examining intersections across your real shift records. Importantly, Signal looks for both vulnerabilities and repeatable strengths:
+                    </p>
+                    <div style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); font-weight: 500; margin-bottom: 2rem;">
+                        “Signal looks for leaks AND leverage.”
+                    </div>
+                </div>
+
+                <div class="investigation-grid">
+                    <!-- Domain 1: Revenue Leakage -->
+                    <div class="investigation-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: #E11D48; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">01 // REVENUE LEAKAGE</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                                “Why does revenue leakage concentrate during one operating window even though overall weekly metrics look normal?”
+                            </h3>
+                            <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                                Investigates concentrated margin erosion that gets lost in weekly rollups: shift void spikes, recurring comp patterns, uncollected modifiers, and end-of-night cash-out discrepancies.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">
+                            <span style="color: var(--accent-teal); font-weight: 600;">Intersections:</span> Sales &bull; Voids &bull; Comps &bull; Timing &bull; Staffing
+                        </div>
+                    </div>
+
+                    <!-- Domain 2: Labor Efficiency -->
+                    <div class="investigation-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: #8C6621; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">02 // LABOR EFFICIENCY</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                                “Is labor actually too high, or is productivity collapsing during a specific two-hour window?”
+                            </h3>
+                            <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                                Distinguishes between genuine overstaffing and station deployment bottlenecks. Identifies when hours are being burned on pre-rush staging delays rather than floor execution.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">
+                            <span style="color: var(--accent-teal); font-weight: 600;">Intersections:</span> Labor &bull; Hourly Sales &bull; Transactions &bull; Daypart &bull; Role
+                        </div>
+                    </div>
+
+                    <!-- Domain 3: Menu Economics -->
+                    <div class="investigation-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: #0F766E; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">03 // MENU ECONOMICS</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                                “Is this genuinely a valuable best seller, or is sales volume disguising weak contribution?”
+                            </h3>
+                            <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                                Connects modifier customizations, discount cannibalization, and kitchen preparation friction to reveal the true net profitability of high-volume menu items.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">
+                            <span style="color: var(--accent-teal); font-weight: 600;">Intersections:</span> Item Volume &bull; Modifiers &bull; Discounts &bull; Food Cost
+                        </div>
+                    </div>
+
+                    <!-- Domain 4: Void / Comp Behavior -->
+                    <div class="investigation-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: #B45309; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">04 // VOID &amp; COMP BEHAVIOR</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                                “Is elevated activity suspicious, or is it more consistent with training, workflow, or service recovery?”
+                            </h3>
+                            <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                                Evaluates whether void patterns reflect POS button confusion, ticket pacing recovery, or employee compliance gaps, avoiding false theft accusations on honest kitchen friction.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">
+                            <span style="color: var(--accent-teal); font-weight: 600;">Intersections:</span> Void Reasons &bull; Servers &bull; Managers &bull; Re-Rings &bull; Timing
+                        </div>
+                    </div>
+
+                    <!-- Domain 5: Opportunity Windows (Leverage) -->
+                    <div class="investigation-card leverage-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--accent-teal); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">05 // OPPORTUNITY WINDOWS (LEVERAGE)</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                                “Where is the restaurant performing unusually well, and what conditions are present when it happens?”
+                            </h3>
+                            <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                                Signal does not only search for leaks. It surfaces unusually profitable dayparts, highly efficient shift configurations, high-conversion guest check mixes, and repeatable operating conditions worth expanding across your calendar.
+                            </p>
+                        </div>
+                        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">
+                            <span style="color: var(--accent-teal); font-weight: 600;">Intersections:</span> High-Margin Dayparts &bull; Shift Efficiency &bull; Repeatable Conditions
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section VI: How the Data Gets to Signal -->
+        <section id="data-handoff" class="signal-section bg-light-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VI // DATA ACCESS &amp; PRIVACY</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
+                    How the data gets to Signal.
+                </h2>
+                <p style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); max-width: 820px; margin-bottom: 1.5rem;">
+                    Signal requires no permanent software installations, no complex API webhooks, and no access to your banking or credit card processors. Data handoff is lightweight and flexible:
+                </p>
+
+                <div class="handoff-grid">
+                    <!-- Option 1: Send Exports -->
+                    <div class="handoff-card">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">OPTION 01</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                            Send your exports
+                        </h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem 0;">
+                            The restaurant exports its own standard shift reports, labor summaries, and check logs directly from Toast, Aloha, Square, Clover, or scheduling software, then uploads or emails the CSV/Excel files.
+                        </p>
+                        <a href="/signal/export-instructions/" style="font-family: var(--font-mono); font-size: 12px; color: var(--forest-deep, #0E1F1B); text-decoration: underline;">
+                            View Step-by-Step Toast Export Instructions &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Option 2: Let Me Pull Them -->
+                    <div class="handoff-card">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #8C6621; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">OPTION 02</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                            Let me pull them
+                        </h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem 0;">
+                            If you prefer not to spend time downloading report files, I can extract the needed reports directly using <strong>reporting-only or export-only user permissions</strong>, where supported by your POS platform.
+                        </p>
+                        <ul style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); padding-left: 1.25rem; margin: 0;">
+                            <li>Limited strictly to report generation (no manager, inventory, or operational control)</li>
+                            <li>Does not require unrestricted administrator access</li>
+                            <li>Can be revoked immediately after export files are retrieved</li>
+                            <li>Completely optional based on operator preference</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="handoff-privacy-note">
+                    <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal); display: block; margin-bottom: 4px;">PRIVACY &amp; ACCESS BOUNDARY</strong>
+                    <strong>I never need ongoing POS access to perform a Signal review.</strong> All data is handled confidentially, isolated per engagement, and never shared or sold.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section VII: Active Validation Status & Partner Offer -->
         <section id="validation" class="signal-section bg-paper-panel">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">V // ACTIVE VALIDATION STATUS</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VII // ACTIVE VALIDATION STATUS</span>
                 <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;">
                     <span class="status-badge" style="background: rgba(15, 118, 110, 0.1); color: var(--accent-teal); border: 1px solid rgba(15, 118, 110, 0.25);">WORKING SYSTEM &bull; ACTIVE EXTERNAL VALIDATION</span>
                 </div>
@@ -862,13 +1895,13 @@
                 </div>
 
                 <!-- Validation Partner Offer Box -->
-                <div class="partner-offer-card">
+                <div class="partner-offer-card" style="background: #FFFFFF; border: 2px solid var(--accent-teal); border-radius: 8px; padding: 2.5rem; box-shadow: 0 12px 30px rgba(16, 33, 29, 0.05); margin-top: 2.5rem;">
                     <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.5rem;">LIMITED COHORT INVITATION</span>
                     <h3 style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 500;">
                         Signal Validation Reviews
                     </h3>
                     <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem;">
-                        I am currently accepting <strong>3–5 referred restaurants</strong> for a limited Signal validation review. Participating operators provide a small set of standard operational exports they already control (e.g. 30 days of sales summaries, timecards, or void reports).
+                        I am currently accepting <strong>3–5 referred restaurants</strong> for a limited Signal validation review. Participating operators provide a small set of standard operational exports they already control (e.g. 30–60 days of sales summaries, timecards, or void reports).
                     </p>
                     <p style="font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem;">
                         In return, Signal will produce a focused diagnostic summary returning:
@@ -879,22 +1912,22 @@
                         <li>Estimated financial significance where data supports it</li>
                         <li>What should be checked on the floor before altering shift procedures</li>
                     </ul>
-                    <div style="background: rgba(15, 118, 110, 0.06); border-radius: 4px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 13px; color: var(--forest-deep); line-height: 1.5;">
+                    <div style="background: rgba(15, 118, 110, 0.06); border-radius: 4px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 13px; color: var(--forest-deep, #0E1F1B); line-height: 1.5;">
                         <strong>Engagement Boundary:</strong> This is a limited validation review, not the full paid Signal Diagnostic, and does not imply open-ended free consulting. The goal is to rigorously stress-test Signal across live operational structures while delivering immediate, genuine value to participating operators.
                     </div>
                     <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <a href="/signal/intake/?tier=validation" class="btn btn-primary" style="background: #0E1F1B; background-color: var(--forest-deep, #0E1F1B); color: #FFFFFF !important; border: 1.5px solid #0E1F1B; text-decoration: none; padding: 0.75rem 1.5rem; font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; border-radius: 4px;">Inquire About a Validation Review &rarr;</a>
-                        <a href="/signal/sample-reports/" style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-teal); text-decoration: underline;">Review Sample Diagnostic Format &rarr;</a>
+                        <a href="/signal/intake/?tier=validation" class="btn btn-primary" style="background: #0E1F1B; background-color: var(--forest-deep, #0E1F1B); color: #FFFFFF !important; border: 1.5px solid #0E1F1B; text-decoration: none; padding: 0.75rem 1.5rem; font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; border-radius: 4px;">Participate in Validation &rarr;</a>
+                        <span style="font-family: var(--font-sans); font-size: 12.5px; color: var(--text-secondary);">Useful analysis in exchange for helping Signal prove itself across more real restaurant environments.</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section VI: Restaurant Operator Differentiation -->
+        <!-- Section VIII: Restaurant Operator Differentiation -->
         <section id="operator" class="signal-section bg-dark-panel">
             <div class="container">
                 <div style="max-width: 800px;">
-                    <span class="eyebrow" style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VI // OPERATOR DIFFERENTIATION</span>
+                    <span class="eyebrow" style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VIII // OPERATOR DIFFERENTIATION</span>
                     <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: #FAF9F5; margin: 0 0 1.25rem 0; font-weight: 400;">
                         Built from both sides of the screen.
                     </h2>
@@ -908,54 +1941,73 @@
             </div>
         </section>
 
-        <!-- Section VII: Questions & Answers -->
+        <!-- Section IX: Questions & Answers -->
         <section class="signal-section bg-paper-panel">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3rem; text-align: center;">VII // SYSTEM BOUNDARIES</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3rem; text-align: center;">IX // SYSTEM QUESTIONS &amp; ANSWERS</span>
                 
                 <div class="questions-grid">
                     <!-- Q1 -->
                     <div class="question-box">
-                        <h3>What do I give you?</h3>
+                        <h3>What do I get at each level?</h3>
                         <p>
-                            You provide standard operational exports: transaction logs, point-of-sale (POS) spreadsheets, timecard reports, labor rosters, void reports, or scheduling audits covering 30 to 90 days. We accept raw CSV, Excel, or JSON dumps directly from your system without requiring API access.
+                            <strong>Validation Review (Level 0):</strong> 2–4 verified observations from a small export set to show whether deeper leaks exist.<br>
+                            <strong>Signal Snapshot (Level 1):</strong> A full prioritized decision queue balancing exposure against operational friction to establish what to look at first.<br>
+                            <strong>Signal Diagnostic (Level 2):</strong> A comprehensive root-cause brief evaluating competing hypotheses, financial exposure models, and recommended floor tests.<br>
+                            <strong>Ongoing Review:</strong> Monthly trend monitoring to verify improvements held up.
                         </p>
                     </div>
                     
                     <!-- Q2 -->
                     <div class="question-box">
-                        <h3>What does Signal analyze?</h3>
+                        <h3>What reports and data does each level require?</h3>
                         <p>
-                            Signal cross-analyzes operations across key risk areas: transaction comps/void patterns, throughput bottlenecks, scheduling vs. revenue timing, menu modifier anomalies, and high-frequency discount leaks across shift windows.
+                            Level 0 requires only 1–2 standard reports you already have (30–60d sales summary, hourly sales, or voids). Level 1 adds labor and menu mix data. Level 2 integrates check-level detail, timecards, modifier logs, and kitchen pacing timestamps. You can upload exports yourself or provide temporary reporting-only access.
                         </p>
                     </div>
 
                     <!-- Q3 -->
                     <div class="question-box">
-                        <h3>What do I receive?</h3>
+                        <h3>What kinds of questions can each level answer?</h3>
                         <p>
-                            You receive a clear, plain-language diagnostic audit. It lists prioritized operating issues, estimated financial impact and measurable improvement targets, and a floor-validation script to verify findings before changing active procedures.
+                            Level 0 answers <em>“Is there something in my data worth looking at?”</em> Level 1 answers <em>“Where should I look first?”</em> Level 2 answers <em>“Why is it happening, what is it costing, and what is the least disruptive useful thing to test first?”</em> Ongoing Review answers <em>“Did the change actually work?”</em>
                         </p>
                     </div>
 
                     <!-- Q4 -->
                     <div class="question-box">
-                        <h3>How much does it cost?</h3>
+                        <h3>What does the Diagnostic discover that the Snapshot cannot?</h3>
                         <p>
-                            Signal uses a transparent three-tier offer structure starting with the Signal Snapshot at $149 Founding Rate ($195 standard), scaling to $595 for comprehensive diagnostics, and $195/month for scheduled ongoing reviews.
+                            The Snapshot establishes <strong>which problems matter most</strong>. The Diagnostic investigates <strong>competing explanations</strong> (e.g. testing whether a rush slowdown is caused by understaffing, kitchen line bottlenecks, or menu friction), explicitly distinguishes correlation from causation, and designs targeted floor experiments before you alter staffing.
+                        </p>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="question-box">
+                        <h3>Why would I pay for the deeper Diagnostic?</h3>
+                        <p>
+                            Because in a working restaurant, acting on the wrong explanation can be far more expensive than the problem itself. Adding a cook to solve a throughput problem can overcrowd the line and inflate payroll without fixing ticket pacing. The Diagnostic models friction and evidence strength before you spend money altering procedures.
+                        </p>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="question-box">
+                        <h3>How does pricing and upgrading work?</h3>
+                        <p>
+                            Signal uses a transparent offer ladder: the Signal Snapshot is $149 Founding Rate ($195 standard), the Full Diagnostic is $595 fixed one-time, and Ongoing Review is $195/month. <strong>100% of your Snapshot fee is credited</strong> toward a Full Diagnostic booked within 30 days.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section VIII: Pricing Ladder -->
+        <!-- Section X: Pricing Ladder -->
         <section id="pricing" class="signal-section bg-light-panel">
             <div class="container">
                 <div style="text-align: center; margin-bottom: 3.5rem;">
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">VIII // PRICING LADDER</span>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">X // PRICING LADDER</span>
                     <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); font-weight: 500;">
-                        Risk-Free Diagnostic Offers
+                        Transparent Diagnostic Offers
                     </h2>
                 </div>
 
@@ -967,7 +2019,7 @@
                             <div class="price-val">$149<span class="price-period"> Founding Rate</span></div>
                             <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">$195 Standard</div>
                             <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                Focused review of one defined operational issue or check-discrepancy pattern. Surfaces top-level leaks and validation steps.
+                                Focused operational review across your core exports. Compresses multi-source data into a prioritized decision queue with confidence ratings and validation steps.
                             </p>
                         </div>
                         <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;">
@@ -990,7 +2042,7 @@
                             <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-primary); margin-top: 0.5rem; display: block;">SIGNAL DIAGNOSTIC</span>
                             <div class="price-val">$595<span class="price-period"> · one time</span></div>
                             <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                Comprehensive operational and data review. Delivers prioritized findings, impact estimates, validation plans, and recommended actions.
+                                Comprehensive operational and data review. Delivers prioritized findings, competing hypothesis analysis, financial models, validation plans, and recommended first tests.
                             </p>
                         </div>
                         <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;">
@@ -1012,7 +2064,7 @@
                             <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary);">ONGOING REVIEW</span>
                             <div class="price-val">$195<span class="price-period"> / month</span></div>
                             <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                Scheduled post-diagnostic review for drift, recurring issues, and changes in previously identified patterns.
+                                Scheduled post-diagnostic review for operational drift, recurring bottlenecks, and changes in previously validated patterns.
                             </p>
                         </div>
                         <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;">
