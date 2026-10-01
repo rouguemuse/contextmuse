@@ -847,9 +847,9 @@
             <div style="display: flex; align-items: center; gap: 12px;">
                 <span style="font-family: var(--font-mono); font-size: 11px; color: rgba(250, 249, 245, 0.5); text-transform: uppercase;">Intelligence Depth:</span>
                 <div class="tier-picker" role="radiogroup">
-                    <button class="tier-btn" id="tier-1-btn" onclick="setTier(1)">Tier 1: Scan</button>
-                    <button class="tier-btn active" id="tier-2-btn" onclick="setTier(2)">Tier 2: Audit</button>
-                    <button class="tier-btn" id="tier-3-btn" onclick="setTier(3)">Tier 3: Deep Review</button>
+                    <button class="tier-btn" id="tier-1-btn" onclick="setTier(1)">Level 0: Validation</button>
+                    <button class="tier-btn" id="tier-2-btn" onclick="setTier(2)">Level 1: Snapshot</button>
+                    <button class="tier-btn active" id="tier-3-btn" onclick="setTier(3)">Level 2: Diagnostic</button>
                 </div>
             </div>
             <div style="display: flex; align-items: center; gap: 1rem;">
@@ -884,7 +884,7 @@
                     <span style="font-size: 13px; color: var(--text-secondary);">No data exports handy?</span>
                     <button type="button" class="btn-sample" onclick="loadSyntheticSample()">
                         <span>⚡</span>
-                        <span>Load Synthetic Demonstration Dataset (90-Day Telemetry)</span>
+                        <span>Load Synthetic Demonstration Dataset (60-Day Telemetry)</span>
                     </button>
                 </div>
                 <div>
@@ -909,25 +909,25 @@
                             <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase;" id="brief-tier-label">Signal Audit &bull; Forensic Operational Brief</span>
                         </div>
                         <h2 class="brief-headline" id="brief-title">Confidential Restaurant Client</h2>
-                        <div class="brief-subline" id="brief-meta">Period: 90-Day Operational Window &bull; Synthetic Demonstration Dataset</div>
+                        <div class="brief-subline" id="brief-meta">Period: 60 Days Analyzed &bull; Synthetic Demonstration Dataset</div>
                     </div>
                     <div style="text-align: right;">
                         <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--text-secondary);">Status</div>
-                        <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-gold);">Synthetic Demonstration Dataset</div>
+                        <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-gold);">SYNTHETIC DEMONSTRATION DATA</div>
                     </div>
                 </div>
 
                 <!-- Demonstration Disclaimer Banner -->
                 <div style="background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.28); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
                     <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0;">Notice:</span>
-                    <span style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;">Synthetic Demonstration Dataset — values and records generated to simulate restaurant POS telemetry.</span>
+                    <span style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;">SYNTHETIC DEMONSTRATION DATA — values and records generated to simulate restaurant POS telemetry without compromising client confidentiality.</span>
                 </div>
 
                 <!-- 1. Operational State Assessment -->
                 <div class="state-assessment-box">
                     <h3>Operational State Assessment</h3>
                     <p id="state-assessment-text">
-                        This operation generated $312,450 in revenue across 90 days at a $33.17 average check. Labor ran at 22.0% ($68,739 total cost). Signal separates observed record evidence from operational inferences. While records establish that $4,890 in voids concentrate during peak hours alongside 319 overtime hours in kitchen roles, the data surfaces an urgent operational hypothesis rather than proven causality: peak line congestion is generating service recovery voids, requiring targeted floor verification before adjusting staffing or throttling tickets.
+                        This operation generated $312,450 in net revenue across 60 days at a $33.17 average check (9,420 checks). Labor ran at 22.0% ($68,739 total cost). Signal separates observed record evidence from operational inferences. While records establish that $1,840 in manager voids (68 voids, $27.06 average) concentrate during peak hours alongside 318.5 overtime hours in kitchen roles ($6,846 overtime premium), the data surfaces an urgent operational hypothesis: peak line congestion is generating service recovery voids, requiring targeted floor verification before adjusting staffing or throttling tickets.
                     </p>
                 </div>
 
@@ -935,27 +935,27 @@
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: baseline;">
                         <h3 style="font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin: 0;">Opportunity Stack (Cumulative Addressable Exposure)</h3>
-                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">Values based on measured period run-rate</span>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">Values based on measured 60-day run-rate</span>
                     </div>
                     <div class="stack-grid" id="stack-grid">
                         <div class="stack-card">
-                            <div class="stack-title">Confirmed Leakage</div>
-                            <div class="stack-val" style="color: var(--accent-crimson);" id="stack-confirmed">$26,450–$38,900</div>
-                            <div class="stack-note">Overtime premiums + direct voids + discount bleed</div>
+                            <div class="stack-title">Measured Direct Leak</div>
+                            <div class="stack-val" style="color: var(--accent-crimson);" id="stack-confirmed">$15,609 / 60d</div>
+                            <div class="stack-note">OT premium ($6,846) + voids ($1,840) + promo ($3,500) + mods ($2,443) + comp misuse ($1,640)</div>
                         </div>
                         <div class="stack-card">
-                            <div class="stack-title">Probable Exposure</div>
-                            <div class="stack-val" style="color: var(--accent-amber);" id="stack-probable">$14,200–$22,500</div>
-                            <div class="stack-note">Day-of-week staffing misalignment</div>
+                            <div class="stack-title">Modeled Exposure</div>
+                            <div class="stack-val" style="color: var(--accent-amber);" id="stack-probable">$21,000–$32,000</div>
+                            <div class="stack-note">Lost peak table turns &amp; station latency drag</div>
                         </div>
                         <div class="stack-card">
-                            <div class="stack-title">Recoverable Upside</div>
-                            <div class="stack-val" style="color: var(--accent-teal);" id="stack-recoverable">$11,500–$18,800</div>
-                            <div class="stack-note">Lunch combo attachment rate lift</div>
+                            <div class="stack-title">Immediate Recapture</div>
+                            <div class="stack-val" style="color: var(--accent-teal);" id="stack-recoverable">$35,650 / yr</div>
+                            <div class="stack-note">Promo capping ($21k) + 4 modifier re-pricing ($14.65k)</div>
                         </div>
                         <div class="stack-card featured">
                             <div class="stack-title" style="color: var(--accent-gold);">Total Addressable</div>
-                            <div class="stack-val" id="stack-total">$52,150–$80,200</div>
+                            <div class="stack-val" id="stack-total">$79,000–$110,000</div>
                             <div class="stack-note">Annualized net operating margin opportunity</div>
                         </div>
                     </div>
@@ -1289,27 +1289,29 @@
             document.getElementById('detected-streams-container').style.display = 'block';
             const streamPills = document.getElementById('stream-pills');
             streamPills.innerHTML = '';
-            ['Sales by day.csv (90 Days)', 'Day of week (totals).csv', 'Time of day (totals).csv', 'Check Discounts.csv', 'Void summary.csv', 'Labor cost by job.csv', 'payroll_export_demo.csv', 'Dining options summary.csv'].forEach(addStreamPill);
+            ['Sales by day.csv (60 Days)', 'Day of week (totals).csv', 'Time of day (totals).csv', 'Check Discounts.csv', 'Void summary.csv', 'Labor cost by job.csv', 'payroll_export_demo.csv', 'Menu item sales with modifiers.csv'].forEach(addStreamPill);
 
             const syntheticParsed = {
-                restaurantName: "Confidential Restaurant Client",
-                disclaimer: "Synthetic Demonstration Dataset — simulated operational telemetry for demonstration.",
+                restaurantName: "Mid-Size Casual Dining (120 Seats)",
+                disclaimer: "SYNTHETIC DEMONSTRATION DATA — simulated operational telemetry for demonstration.",
                 netSales: 312450.00,
                 totalOrders: 9420,
-                periodDays: 90,
+                periodDays: 60,
                 avgCheck: 33.17,
                 laborCost: 68739.00,
                 laborPercent: 22.00,
                 totalOTHours: 412.0,
                 kdsOTHours: 318.5,
-                kdsOTPay: 6845.50,
+                kdsOTPay: 6846.00,
                 kdsTotalPay: 18240.00,
                 voidAmount: 1840.00,
                 voidCount: 68,
                 avgVoidValue: 27.06,
-                totalDiscounts: 4250.00,
-                spend50save10Amount: 1180.00,
-                rewardDollars: 1240.00,
+                totalDiscounts: 12300.00,
+                spend50save10Amount: 7900.00,
+                spend50save5Amount: 4400.00,
+                modifierErosionAmount: 2443.00,
+                codeMisuseAmount: 1640.00,
                 peak4PMOrders: 820,
                 peak6PMOrders: 1740,
                 saturdaySales: 68400.00,
@@ -1416,171 +1418,143 @@
             document.getElementById('brief-title').textContent = data.restaurantName;
             document.getElementById('brief-meta').innerHTML = `Period: ${data.periodDays} Days Analyzed &bull; Average Check: $${data.avgCheck.toFixed(2)} &bull; Aggregate Labor: ${data.laborPercent.toFixed(1)}%`;
             
-            const tierNames = { 1: "Signal Scan &bull; Rapid Diagnostic Brief", 2: "Signal Audit &bull; Operational Intelligence Brief", 3: "Signal Deep Review &bull; Forensic Systems Audit" };
+            const tierNames = { 
+                1: "Level 0 // Validation Review &bull; Candidate Signals", 
+                2: "Level 1 // Snapshot Operational Brief &bull; Prioritized Decision Queue", 
+                3: "Level 2 // Diagnostic Operational Brief &bull; Full Epistemic Architecture" 
+            };
             document.getElementById('brief-tier-label').innerHTML = tierNames[tier];
 
             // 1. Operational State Assessment
             document.getElementById('state-assessment-text').innerHTML = 
-                `This operation generated <strong>${formatNum(data.netSales)}</strong> across ${data.periodDays} days at a <strong>${data.avgCheck.toFixed(2)}</strong> average check. Labor ran at ${data.laborPercent.toFixed(1)}%. ` +
-                `Signal separates observed record evidence from operational inferences. While records establish that <strong>${formatNum(data.voidAmount)} in voids</strong> concentrate during peak hours alongside <strong>${data.kdsOTHours.toFixed(0)} overtime hours</strong> in kitchen roles, the data does not prove causality on its own. It surfaces an urgent operational hypothesis: peak line congestion is generating service recovery voids, requiring targeted floor verification before adjusting staffing or throttling tickets.`;
+                `This operation generated <strong>${formatNum(data.netSales)}</strong> across ${data.periodDays} days at a <strong>${data.avgCheck.toFixed(2)}</strong> average check (${formatNum(data.totalOrders)} checks). Labor ran at ${data.laborPercent.toFixed(1)}% ($${formatNum(data.laborCost)}). ` +
+                `Signal separates observed record evidence from operational inferences. While records establish that <strong>$${formatNum(data.voidAmount)} in manager voids</strong> (${data.voidCount} voids, $${data.avgVoidValue.toFixed(2)} avg) concentrate during peak hours alongside <strong>${data.kdsOTHours.toFixed(1)} overtime hours</strong> in kitchen roles ($${formatNum(data.kdsOTPay)} premium), the data surfaces an urgent operational hypothesis: peak line congestion is generating service recovery voids, requiring targeted floor verification before adjusting staffing or throttling tickets.`;
 
             // 2. Opportunity Stack
-            const dailyRate = data.netSales / data.periodDays;
-            const annKdsOT = (data.kdsOTPay / data.periodDays) * 365;
-            const annVoids = (data.voidAmount / data.periodDays) * 365;
-            const annDiscounts = (data.totalDiscounts / data.periodDays) * 365;
-            const annLunchGap = ((data.dinnerAvgCheck - data.lunchAvgCheck) * data.lunchOrders / data.periodDays) * 365;
+            document.getElementById('stack-confirmed').textContent = `$15,609 / 60d`;
+            document.getElementById('stack-probable').textContent = `$21,000–$32,000`;
+            document.getElementById('stack-recoverable').textContent = `$35,650 / yr`;
+            document.getElementById('stack-total').textContent = `$79,000–$110,000`;
 
-            const confirmedLow = Math.round((annKdsOT + annVoids + annDiscounts) * 0.85);
-            const confirmedHigh = Math.round((annKdsOT + annVoids + annDiscounts) * 1.25);
-            const totalLow = Math.round((confirmedLow + annLunchGap * 0.7));
-            const totalHigh = Math.round((confirmedHigh + annLunchGap * 1.2 + 25000));
-
-            document.getElementById('stack-confirmed').textContent = `$${formatNum(confirmedLow)}–$${formatNum(confirmedHigh)}`;
-            document.getElementById('stack-probable').textContent = `$12,500–$21,000`;
-            document.getElementById('stack-recoverable').textContent = `$${formatNum(Math.round(annLunchGap * 0.75))}–$${formatNum(Math.round(annLunchGap * 1.25))}`;
-            document.getElementById('stack-total').textContent = `$${formatNum(totalLow)}–$${formatNum(totalHigh)}`;
-
-            // 3. Findings Roster (Synthesizing findings according to Tier)
+            // 3. Four Canonical Findings Roster (Universal Finding Schema)
             const allFindings = [
                 {
-                    id: "F_OVERTIME",
+                    id: "F-01",
                     rank: 1,
-                    category: "Peak-period margin leakage",
-                    title: "Overtime Staffing & Void Clustering Intersection",
+                    category: "Peak-Period Throughput / Labor Intersection",
+                    title: "F-01 — Peak-Period Throughput / Margin Leakage",
                     priority: "Investigate First",
-                    confidenceLevel: "Moderate confidence",
-                    observed: `Friday/Saturday 6–8 PM contains 42% of weekly full-check void value (${data.avgVoidValue.toFixed(2)} average void) while representing 27% of check volume. Overtime also concentrates in kitchen roles during the same operating window (${data.kdsOTHours.toFixed(0)} OT hours, ${formatNum(data.kdsOTPay)} premium pay out of ${formatNum(data.kdsTotalPay)} total pay).`,
-                    inferred: `The intersection is consistent with a peak-period throughput problem. The available records do not establish that kitchen delay caused the voids, but the co-occurrence suggests primary line fatigue degrades order velocity.`,
-                    verify: `Compare void timestamps against KDS ticket duration and void-reason detail for four peak services. Station GM at the pass between 6:00–7:00 PM on Friday to record fire-to-window times.`,
-                    actionCandidate: `Institute dynamic 3P delivery throttling during peak volume (5:45–7:00 PM) and test an intermediate morning prep shift to absorb prep hours currently burned at overtime rates.`,
-                    monthlyRange: `${formatNum(Math.round((annKdsOT + annVoids) / 12 * 0.85))}–${formatNum(Math.round((annKdsOT + annVoids) / 12 * 1.2))}`,
-                    annualRange: `${formatNum(Math.round((annKdsOT + annVoids) * 0.85))}–${formatNum(Math.round((annKdsOT + annVoids) * 1.2))}`,
-                    periodImpact: `${formatNum(data.kdsOTPay + data.voidAmount)} (${data.periodDays} days)`,
-                    basis: "Payroll punch records & hourly void timestamps",
-                    friction: "Low to moderate",
-                    decisionPriority: "Investigate first",
-                    decisionRationale: "High potential financial exposure, evidence available quickly, and validation requires little operational disruption."
+                    decisionPriority: "Investigate First",
+                    decisionRationale: "High potential financial exposure ($2,800–$4,500/mo), low-friction verification available in 48 hours.",
+                    confidenceLevel: "Moderate",
+                    confidenceRationale: "High confidence on POS void timestamps and payroll overtime hours; moderate confidence on direct causality between kitchen delay and voids until pass fire-to-window logs are audited on the floor.",
+                    observed: `Kitchen overtime reached ${data.kdsOTHours.toFixed(1)} hours ($${formatNum(data.kdsOTPay)} overtime premium) across the ${data.periodDays}-day period. 42 of 68 manager voids ($1,180 of $${formatNum(data.voidAmount)} total void value, averaging $28.10) concentrated during Friday and Saturday dinner services between 6:00 PM and 8:30 PM, where check velocity dropped by 18% relative to midday baseline.`,
+                    intersection: "Kitchen overtime payroll spikes co-occur precisely with full-ticket service recovery voids and ticket latency spikes during peak weekend dinner volume (6:00–8:30 PM), revealing that labor expenditure increases at the exact window where kitchen throughput deteriorates.",
+                    inferred: "Kitchen line saturation during the weekend dinner peak creates compounding ticket delays exceeding 28 minutes, forcing front-of-house managers to execute full-ticket comp voids ($28.10 avg) to salvage guest relations while back-of-house staff burns premium overtime rates attempting to clear the backlog.",
+                    verify: "Audit pass fire-to-window duration on 20 consecutive tickets between 6:30 PM and 7:30 PM on two consecutive Fridays. Cross-reference manager void approval reasons against KDS prep times for all comps over $25.",
+                    actionCandidate: "Test intermediate morning prep shift to remove 12 weekly overtime prep hours from peak dinner rush, and throttle delivery tablets during peak 6:30–7:30 PM rush.",
+                    candidateInterventions: [
+                        "A: Dynamic third-party delivery throttling when active KDS tickets exceed 16 orders.",
+                        "B: Shift 2.5 kitchen prep hours per day from peak evening line shift to a dedicated morning prep shift (8:00–10:30 AM) paid at standard time.",
+                        "C: Re-sequence station expeditor role and implement pre-printed bill presentations."
+                    ],
+                    signalDecision: "Test intermediate morning prep shift to remove 12 weekly overtime prep hours from peak dinner rush, and throttle delivery tablets during peak 6:30–7:30 PM rush.",
+                    measureNext: "Track Friday/Saturday kitchen overtime hours, pass fire-to-window ticket duration, and dinner rush void dollar volume over 30 days.",
+                    monthlyRange: "$2,800–$4,500 / mo",
+                    annualRange: "$33,600–$54,000 / yr",
+                    periodImpact: "$8,026 measured (60 days)",
+                    basis: "Payroll punch records ($6,846 OT) + hourly void log ($1,180) + modeled 1.2 lost turns / station",
+                    friction: "Low to Moderate"
                 },
                 {
-                    id: "F_VOIDS",
+                    id: "F-02",
                     rank: 2,
-                    category: "Comp & void severity profile",
-                    title: "Full-Ticket Emergency Service Recovery Voids",
-                    priority: "Investigate First",
-                    confidenceLevel: "High confidence (Record detail)",
-                    observed: `Total voids reached ${formatNum(data.voidAmount)} across ${data.voidCount} orders. The average void ticket is ${data.avgVoidValue.toFixed(2)}, which is ${Math.round((data.avgVoidValue / data.avgCheck) * 100)}% of the full average check size (${data.avgCheck.toFixed(2)}), rather than minor $4 side or beverage mistakes.`,
-                    inferred: `Staff is not voiding mistaken drinks; they are comping entire meals. This pattern is consistent with service recovery for walkouts or extreme ticket delays rather than standard cashier corrections.`,
-                    verify: `Pull manager void authorization log for the 20 highest-value checks; cross-reference table seat times, server initials, and guest comp notes.`,
-                    actionCandidate: `Institute a required manager comp policy with designated threshold reasons and configure automated alert when any check over $20 is voided.`,
-                    monthlyRange: `${formatNum(Math.round(annVoids / 12 * 0.85))}–${formatNum(Math.round(annVoids / 12 * 1.2))}`,
-                    annualRange: `${formatNum(Math.round(annVoids * 0.85))}–${formatNum(Math.round(annVoids * 1.2))}`,
-                    periodImpact: `${formatNum(data.voidAmount)} (${data.periodDays} days)`,
-                    basis: "POS Void Summary and check detail logs",
-                    friction: "Low",
-                    decisionPriority: "Investigate first",
-                    decisionRationale: "Direct cash margin loss with complete POS audit trail; zero capital cost to verify and address."
+                    category: "Promotion Economics & Discount Structure",
+                    title: "F-02 — Promotion Structure Leakage",
+                    priority: "Execute Test Immediately",
+                    decisionPriority: "Execute Test Immediately",
+                    decisionRationale: "Direct $1,750/mo unrecaptured discount leak; test requires single POS promotion rule toggle.",
+                    confidenceLevel: "High",
+                    confidenceRationale: "Complete POS transactional capture across 1,820 promotion checks with unambiguous dollar and check distribution data.",
+                    observed: "Offer A ($5 off $50+) was redeemed 880 times, totaling $4,400 in discounts ($5.00 fixed discount, pre-discount check average $74.50). Offer B (10% off uncapped) was redeemed 940 times, totaling $7,900 in discounts ($8.40 average discount, pre-discount check average $84.00). Above $50, Offer B discounts scaled linearly ($100 check = $10 discount; $150 check = $15 discount).",
+                    intersection: "Check-size distribution crossed with promotion redemption records establishes that Offer B cost $3,500 more than Offer A (+79.5% discount expense) while producing only $9.50 in higher gross check spend ($84.00 vs $74.50), yielding zero statistically meaningful expansion in high-margin dessert or beverage attachment.",
+                    inferred: "The uncapped 10% promotion is subsidizing high-spend diners who would have spent $75+ regardless. The additional $3,500 discount expense functions as margin transfer rather than demand generation.",
+                    verify: "Verify gross margin on items ordered by Offer B checks between $80 and $140. Check whether loyalty ID recurrence differs between Offer A and Offer B redeemers.",
+                    actionCandidate: "Cap Offer B at $5 maximum discount on purchases of $50+ for 30 days.",
+                    candidateInterventions: [
+                        "A: Cap Offer B at $5 maximum discount (Spend $50+, Save $5).",
+                        "B: Retain 10% discount but establish a $7.50 maximum discount cap.",
+                        "C: Restructure Offer B into a value-add promotion (Free appetizer with $60 spend) preserving clean cash margin."
+                    ],
+                    signalDecision: "Convert Offer B into a capped $5 discount on $50+ purchases for 30 days and monitor redemption rate and check-size distribution.",
+                    measureNext: "Redemption frequency, average check above $50, and total discount dollars over the next 30 days.",
+                    monthlyRange: "$1,750 / mo",
+                    annualRange: "$21,000 / yr",
+                    periodImpact: "$3,500 measured excess (60 days)",
+                    basis: "POS Check Discounts summary records comparing Offer B vs equivalent capped structure",
+                    friction: "Very Low"
                 },
                 {
-                    id: "F_DISCOUNTS",
+                    id: "F-03",
                     rank: 3,
-                    category: "Promotional margin drag",
-                    title: "Percentage Discount Drag ('Spend $50, Save 10%')",
-                    priority: "Execute Test",
-                    confidenceLevel: "High confidence (POS summary)",
-                    observed: `Discounts totaled ${formatNum(data.totalDiscounts)}. The percentage promotion 'Spend $50, save 10%' generated ${formatNum(data.spend50save10Amount)} in deductions, scaling linearly with check size ($100 check loses $10; $150 check loses $15).`,
-                    inferred: `High-spending guests do not require a $15 discount to convert. The promotion is cannibalizing clean margin on premium tables without lifting ordering frequency.`,
-                    verify: `Execute a 7-day promotional blackout test: temporarily disable the 10% threshold discount and measure check volume and average spend above $50.`,
-                    actionCandidate: `Convert the percentage discount to a flat savings structure ('Spend $50, save $5') or redirect discount budget to off-peak lunch loyalty credits.`,
-                    monthlyRange: `${formatNum(Math.round(annDiscounts / 12 * 0.9))}–${formatNum(Math.round(annDiscounts / 12 * 1.15))}`,
-                    annualRange: `${formatNum(Math.round(annDiscounts * 0.85))}–${formatNum(Math.round(annDiscounts * 1.2))}`,
-                    periodImpact: `${formatNum(data.totalDiscounts)} (${data.periodDays} days)`,
-                    basis: "POS Check Discounts summary records",
-                    friction: "Very low",
-                    decisionPriority: "Execute test immediately",
-                    decisionRationale: "Immediate margin recapture; test requires only a single POS promotion rule toggle."
+                    category: "Modifier Pricing & Margin Contribution",
+                    title: "F-03 — Modifier Pricing Erosion",
+                    priority: "Plan Next Menu Cycle",
+                    decisionPriority: "Plan Next Menu Cycle",
+                    decisionRationale: "Repricing 4 buttons in POS backend recovers $1,221/mo with zero menu redesign friction.",
+                    confidenceLevel: "High",
+                    confidenceRationale: "Recipe cost cards verified against vendor invoices and cross-matched with 3,240 POS modifier item lines.",
+                    observed: "Four high-frequency menu modifiers (Add Bacon, Sub Truffle Fries, Extra Cheese, Gluten-Free Bun) appeared on 3,240 checks across 60 days. POS pricing: Bacon +$1.00 (ingredient + prep delta $1.75), Truffle Fries +$1.50 (cost delta $2.60), Extra Cheese +$0.50 (cost delta $0.95), GF Bun +$1.00 (cost delta $1.80). Base entrees maintain 68% gross margin, but modified entrees drop to 54–58% margin.",
+                    intersection: "Cross-referencing food cost recipe sheets with item modifier sales reveals that the top selling entrees maintain healthy margins until specific high-volume customizations are selected, eroding up to 14% margin points per dish.",
+                    inferred: "Modifier prices were set historically without indexing against recent supplier ingredient inflation. Because these four modifications are selected on 34.4% of all specialty entree orders, modifier underpricing creates systemic margin leakage without driving incremental guest satisfaction.",
+                    verify: "Confirm latest bacon, dairy, and gluten-free bread line-item prices on current distributor invoices.",
+                    actionCandidate: "Reprice the 4 specific modifiers in POS backend without altering base menu item prices.",
+                    candidateInterventions: [
+                        "A (High-Friction): Completely re-engineer the entire modifier menu tree and pricing structure across all 48 entrees.",
+                        "B (Signal Recommended): Reprice only the 4 affected modifiers (+Bacon to $2.00, +Truffle Fries to $2.75, +Cheese to $1.00, +GF Bun to $2.00) in POS backend.",
+                        "C: Replace bulk modifier portions with standardized portion-control scoops."
+                    ],
+                    signalDecision: "The best answer is not always the biggest fix: Reprice the 4 specific modifiers in POS backend without altering base menu item prices; measure order volume and customer pushback for 30 days.",
+                    measureNext: "Modifier selection percentage on top 5 entrees and realized margin contribution over the subsequent 30-day billing cycle.",
+                    monthlyRange: "$1,221 / mo",
+                    annualRange: "$14,650 / yr",
+                    periodImpact: "$2,443 measured loss (60 days)",
+                    basis: "3,240 modifier instances multiplied by specific unit cost-to-price deficits",
+                    friction: "Very Low"
                 },
                 {
-                    id: "F_THROUGHPUT",
+                    id: "F-04",
                     rank: 4,
-                    category: "Station capacity constraint",
-                    title: "6:00 PM Kitchen Throughput Saturation Ceiling",
-                    priority: "Validate Next",
-                    confidenceLevel: "Moderate confidence",
-                    observed: `Order volume surges 112% between 4:00 PM (${formatNum(data.peak4PMOrders)} orders) and 6:00 PM (${formatNum(data.peak6PMOrders)} orders). Hourly order volume peaks at 1,740 items in this window, exceeding early-week daily volumes.`,
-                    inferred: `Kitchen throughput is physically constrained by primary cook surface capacity and assembly staging. Without station pacing, order spikes create compounding ticket-time delays.`,
-                    verify: `Time 10 consecutive food tickets at the expeditor station from 6:00 PM to 6:30 PM on two consecutive Fridays to establish true pass-latency.`,
-                    actionCandidate: `Enforce strict 4:00 PM prep completion cutoffs and configure automated 3P delivery pacing when line backlog exceeds 18 open tickets.`,
-                    monthlyRange: "$1,800–$3,200",
-                    annualRange: "$21,600–$38,400",
-                    periodImpact: "Throughput ceiling (Caps potential dinner volume)",
-                    basis: "Time-of-day hourly order volumes",
-                    friction: "Moderate",
-                    decisionPriority: "Validate next",
-                    decisionRationale: "High potential top-line unlock, but requires live observation to avoid disrupting kitchen rhythm."
-                },
-                {
-                    id: "F_LUNCH",
-                    rank: 5,
-                    category: "Daypart check size contraction",
-                    title: "Lunch Check Contraction & Beverage Attach Deficit",
-                    priority: "Plan Next Cycle",
-                    confidenceLevel: "Moderate confidence",
-                    observed: `Lunch average check (${data.lunchAvgCheck.toFixed(2)}) trails dinner (${data.dinnerAvgCheck.toFixed(2)}) by ${(data.dinnerAvgCheck - data.lunchAvgCheck).toFixed(2)} across ${formatNum(data.lunchOrders)} orders. Beverage attach is 31% at lunch vs. 68% at dinner.`,
-                    inferred: `Time-sensitive lunch diners avoid ordering separate sides or beverages due to perceived ordering friction or individual item pricing.`,
-                    verify: `Audit 50 lunch checks to confirm whether single-item ordering without beverage is concentrated in takeout vs. dine-in tables.`,
-                    actionCandidate: `Program a one-touch POS 'Express Lunch Bundle' (Entree + Beverage + Side) at an attractive check-lift price point.`,
-                    monthlyRange: `${formatNum(Math.round(annLunchGap / 12 * 0.85))}–${formatNum(Math.round(annLunchGap / 12 * 1.2))}`,
-                    annualRange: `${formatNum(Math.round(annLunchGap * 0.85))}–${formatNum(Math.round(annLunchGap * 1.2))}`,
-                    periodImpact: `${formatNum(Math.round((data.dinnerAvgCheck - data.lunchAvgCheck) * data.lunchOrders))} (${data.periodDays} days)`,
-                    basis: "Service daypart check averages",
-                    friction: "Low to moderate",
-                    decisionPriority: "Plan next menu update",
-                    decisionRationale: "Substantial margin opportunity requiring minimal staff retraining."
-                },
-                {
-                    id: "F_3P",
-                    rank: 6,
-                    category: "Channel distribution risk",
-                    title: "Third-Party Delivery Revenue Concentration & Commission Drag",
-                    priority: "Monitor & Optimize",
-                    confidenceLevel: "High confidence (Channel split)",
-                    observed: `Third-party delivery platforms represent ${formatNum(Math.round(data.thirdPartyDeliverySales))} (${((data.thirdPartyDeliverySales / data.netSales) * 100).toFixed(1)}% of total net sales), carrying 18–24% effective commission deductions.`,
-                    inferred: `The operation is relying on delivery marketplaces for volume, subsidizing third-party platforms rather than building direct customer relationships.`,
-                    verify: `Calculate net contribution margin on the top 5 delivery menu items after packaging, commissions, and labor allocation.`,
-                    actionCandidate: `Insert direct-ordering bounce-back incentives ($5 credit) in all delivery bags and align delivery menu pricing with packaging overhead.`,
-                    monthlyRange: "$2,200–$3,800 commission drag",
-                    annualRange: "$26,000–$45,000 commission drag",
-                    periodImpact: "Platform take-rate deductions",
-                    basis: "Dining option channel mix report",
-                    friction: "Moderate",
-                    decisionPriority: "Ongoing optimization",
-                    decisionRationale: "Channel re-balancing without abrupt revenue disruption."
-                },
-                {
-                    id: "F_WEEKDAY",
-                    rank: 7,
-                    category: "Labor scheduling variance",
-                    title: "Early-Weekday Scheduling Variance (Tuesday vs Saturday)",
-                    priority: "Audit Schedule",
-                    confidenceLevel: "High confidence (Time of week)",
-                    observed: `Tuesday net sales (${formatNum(Math.round(data.tuesdaySales))}) generate barely one-third of Saturday volume (${formatNum(Math.round(data.saturdaySales))}), while kitchen labor hours are reduced by only 18%.`,
-                    inferred: `Fixed shift templates are being applied across low-volume days, inflating early-week labor percentage to 33%+.`,
-                    verify: `Review Tuesday hourly covers between 11 AM and 4 PM against scheduled cook hours to verify station idle time.`,
-                    actionCandidate: `Stagger early-week kitchen call times and cross-train prep cooks to cover the line until dinner rush volume begins.`,
-                    monthlyRange: "$1,200–$2,100",
-                    annualRange: "$14,400–$25,200",
-                    periodImpact: "Early-week labor drag",
-                    basis: "Day-of-week sales & labor ledger",
-                    friction: "Low to moderate",
-                    decisionPriority: "Address in next schedule cycle",
-                    decisionRationale: "Predictable recurring variance addressable through scheduling adjustments."
+                    category: "Comp Code & Shift Procedure Governance",
+                    title: "F-04 — Discount Procedure Leakage",
+                    priority: "Investigate First",
+                    decisionPriority: "Investigate First",
+                    decisionRationale: "Zero-cost SOP correction separates procedural staff meal logging from intentional misconduct.",
+                    confidenceLevel: "Moderate",
+                    confidenceRationale: "Strong transactional pattern (time, item type, check size), but requires human floor confirmation that employees received these items as valid shift meals.",
+                    observed: "Manager discount code 'MGR-COMP-99' was applied to 142 checks totaling $2,840. 82 of these transactions ($1,640) occurred between 3:30 PM and 4:30 PM or post-midnight closing, applied to single-item beverage and sandwich orders rather than full guest table checks.",
+                    intersection: "Time-of-day clustering, item composition (single meal items), and check ownership demonstrate that managerial override codes are being utilized during shift turnover and closing rather than during dining service.",
+                    inferred: "Shift supervisors and lead servers are using the general manager comp code to record shift meals and employee break allowances because no designated employee meal code exists in the active POS configuration. This represents procedural shortcutting and training deficiency rather than intentional theft.",
+                    verify: "Interview shift managers regarding the protocol used when line cooks or servers order shift meals. Cross-check punch clock in/out times for servers on the 10 highest MGR-COMP-99 tickets.",
+                    actionCandidate: "Configure dedicated 'Shift Meal' discount key with preset operational limits and update manager SOPs.",
+                    candidateInterventions: [
+                        "A: Implement dedicated POS employee meal button with 50% discount cap and individual server PIN logging.",
+                        "B: Lock MGR-COMP-99 code to GM card swipe only.",
+                        "C: Issue disciplinary warning across front-of-house staff regarding unauthorized discount code usage."
+                    ],
+                    signalDecision: "Signal separates who touched the transaction from who caused the problem: Configure dedicated 'Shift Meal' discount key with preset operational limits, update manager SOPs, and reserve MGR-COMP-99 strictly for documented guest recovery.",
+                    measureNext: "Usage frequency of MGR-COMP-99 vs. new Shift Meal code, and total dollar comp volume over next 30 days.",
+                    monthlyRange: "$820 / mo",
+                    annualRange: "$9,840 / yr",
+                    periodImpact: "$1,640 measured shift comps (60 days)",
+                    basis: "82 off-peak shift-change comp transactions averaging $20.00",
+                    friction: "Low"
                 }
             ];
 
-            const visibleFindings = tier === 1 ? allFindings.slice(0, 3) : (tier === 2 ? allFindings.slice(0, 6) : allFindings);
+            const visibleFindings = tier === 1 ? allFindings.slice(0, 2) : allFindings;
 
-            // Render Findings Cards
+            // Render Findings Cards based on Tier Depth
             const container = document.getElementById('findings-container');
             container.innerHTML = '';
 
@@ -1590,75 +1564,162 @@
 
                 const pClass = f.priority.toLowerCase().includes('investigate') || f.priority.toLowerCase().includes('execute') ? 'fix-now' : (f.priority.toLowerCase().includes('validate') ? 'validate-next' : 'monitor');
 
-                card.innerHTML = `
-                    <div class="finding-header">
-                        <div>
-                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; letter-spacing: 0.08em;">PRIORITY 0${f.rank} &bull; ${f.category}</span>
-                            <h4 class="finding-title">${f.title}</h4>
-                        </div>
-                        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                            <span class="priority-badge ${pClass}">${f.priority}</span>
-                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); background: #FAF9F5; padding: 4px 8px; border-radius: 3px; border: 1px solid var(--border-light);">${f.confidenceLevel}</span>
-                        </div>
-                    </div>
-
-                    <!-- 4-Layer Epistemic Stack -->
-                    <div class="epistemic-stack">
-                        <!-- Layer 1: Observed -->
-                        <div class="epistemic-layer observed-layer">
-                            <div class="layer-header">
-                                <span class="layer-title">Observed</span>
-                                <span class="layer-subtitle">&mdash; What the supplied records directly establish</span>
+                if (tier === 1) {
+                    // Level 0: Validation Review Format
+                    card.innerHTML = `
+                        <div class="finding-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); text-transform: uppercase; font-weight: 700; letter-spacing: 0.08em;">CANDIDATE SIGNAL 0${f.rank} &bull; ${f.category}</span>
+                                <h4 class="finding-title">${f.title}</h4>
                             </div>
-                            <p class="layer-body">${f.observed}</p>
-                        </div>
-
-                        <!-- Layer 2: Inferred -->
-                        <div class="epistemic-layer inferred-layer">
-                            <div class="layer-header">
-                                <span class="layer-title">Inferred</span>
-                                <span class="layer-subtitle">&mdash; What multiple signals reasonably suggest (${f.confidenceLevel})</span>
-                            </div>
-                            <p class="layer-body">${f.inferred}</p>
-                        </div>
-
-                        <!-- Layer 3: Verify -->
-                        <div class="epistemic-layer verify-layer">
-                            <div class="layer-header">
-                                <span class="layer-title">Verify</span>
-                                <span class="layer-subtitle">&mdash; Floor check required before accepting the explanation</span>
-                            </div>
-                            <p class="layer-body">${f.verify}</p>
-                        </div>
-
-                        <!-- Layer 4: Action Candidate -->
-                        <div class="epistemic-layer action-layer">
-                            <div class="layer-header">
-                                <span class="layer-title">Action Candidate</span>
-                                <span class="layer-subtitle">&mdash; What may be worth changing if validation supports it</span>
-                            </div>
-                            <p class="layer-body">${f.actionCandidate}</p>
-                        </div>
-                    </div>
-
-                    <!-- Priority & Friction Matrix -->
-                    <div class="priority-logic-box">
-                        <div class="logic-grid">
-                            <div class="logic-field">
-                                <span class="logic-label">Estimated Exposure:</span>
-                                <span class="logic-value"><strong>${f.monthlyRange} monthly</strong> <span style="color: var(--text-secondary); font-size: 11.5px;">(${f.annualRange} annualized)</span></span>
-                            </div>
-                            <div class="logic-field">
-                                <span class="logic-label">Implementation Friction:</span>
-                                <span class="logic-value"><span class="friction-pill">${f.friction}</span></span>
-                            </div>
-                            <div class="logic-field full">
-                                <span class="logic-label">Decision Priority:</span>
-                                <span class="logic-value"><strong>${f.decisionPriority}</strong> &mdash; ${f.decisionRationale}</span>
+                            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                                <span class="priority-badge" style="background: rgba(197, 160, 89, 0.15); color: #8C6621; border: 1px solid rgba(197, 160, 89, 0.3);">Candidate Signal</span>
+                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); background: #FAF9F5; padding: 4px 8px; border-radius: 3px; border: 1px solid var(--border-light);">${f.confidenceLevel}</span>
                             </div>
                         </div>
-                    </div>
-                `;
+                        <div class="epistemic-stack">
+                            <div class="epistemic-layer observed-layer">
+                                <div class="layer-header"><span class="layer-title">Essential Facts Observed</span></div>
+                                <p class="layer-body">${f.observed}</p>
+                            </div>
+                            <div class="epistemic-layer inferred-layer">
+                                <div class="layer-header"><span class="layer-title">Basic Cross-Signal Pattern</span></div>
+                                <p class="layer-body">${f.intersection}</p>
+                            </div>
+                            <div class="epistemic-layer verify-layer">
+                                <div class="layer-header"><span class="layer-title">What to Verify on Floor</span></div>
+                                <p class="layer-body">${f.verify}</p>
+                            </div>
+                        </div>
+                        <div class="priority-logic-box">
+                            <div class="logic-grid">
+                                <div class="logic-field full">
+                                    <span class="logic-label">Rough Operational Significance:</span>
+                                    <span class="logic-value"><strong>${f.monthlyRange}</strong> &mdash; Candidate pattern warranting deeper investigation. (Full financial models and competing hypotheses available in Snapshot &amp; Diagnostic tiers).</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (tier === 2) {
+                    // Level 1: Snapshot Format
+                    card.innerHTML = `
+                        <div class="finding-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; letter-spacing: 0.08em;">DECISION QUEUE ITEM 0${f.rank} &bull; ${f.category}</span>
+                                <h4 class="finding-title">${f.title}</h4>
+                            </div>
+                            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                                <span class="priority-badge ${pClass}">${f.priority}</span>
+                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); background: #FAF9F5; padding: 4px 8px; border-radius: 3px; border: 1px solid var(--border-light);">${f.confidenceLevel}</span>
+                            </div>
+                        </div>
+                        <div class="epistemic-stack">
+                            <div class="epistemic-layer observed-layer">
+                                <div class="layer-header"><span class="layer-title">Observed Records</span></div>
+                                <p class="layer-body">${f.observed}</p>
+                            </div>
+                            <div class="epistemic-layer inferred-layer">
+                                <div class="layer-header"><span class="layer-title">Cross-Signal Intersection &amp; Inference</span></div>
+                                <p class="layer-body">${f.intersection} ${f.inferred}</p>
+                            </div>
+                            <div class="epistemic-layer verify-layer">
+                                <div class="layer-header"><span class="layer-title">Verification Requirement</span></div>
+                                <p class="layer-body">${f.verify}</p>
+                            </div>
+                            <div class="epistemic-layer action-layer">
+                                <div class="layer-header"><span class="layer-title">Recommended Candidate Action</span></div>
+                                <p class="layer-body">${f.actionCandidate}</p>
+                            </div>
+                        </div>
+                        <div class="priority-logic-box">
+                            <div class="logic-grid">
+                                <div class="logic-field">
+                                    <span class="logic-label">Estimated Exposure:</span>
+                                    <span class="logic-value"><strong>${f.monthlyRange}</strong> <span style="color: var(--text-secondary); font-size: 11.5px;">(${f.annualRange})</span></span>
+                                </div>
+                                <div class="logic-field">
+                                    <span class="logic-label">Implementation Friction:</span>
+                                    <span class="logic-value"><span class="friction-pill">${f.friction}</span></span>
+                                </div>
+                                <div class="logic-field full">
+                                    <span class="logic-label">Decision Priority:</span>
+                                    <span class="logic-value"><strong>${f.decisionPriority}</strong> &mdash; ${f.decisionRationale}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // Level 2: Full Diagnostic Format (Complete 12-Field Schema)
+                    card.innerHTML = `
+                        <div class="finding-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-transform: uppercase; font-weight: 700; letter-spacing: 0.08em;">DIAGNOSTIC FINDING 0${f.rank} &bull; ${f.category}</span>
+                                <h4 class="finding-title">${f.title}</h4>
+                            </div>
+                            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                                <span class="priority-badge ${pClass}">${f.priority}</span>
+                                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); background: #FAF9F5; padding: 4px 8px; border-radius: 3px; border: 1px solid var(--border-light);">${f.confidenceLevel} Confidence</span>
+                            </div>
+                        </div>
+                        <div class="epistemic-stack">
+                            <div class="epistemic-layer observed-layer">
+                                <div class="layer-header">
+                                    <span class="layer-title">01 // Observed</span>
+                                    <span class="layer-subtitle">&mdash; Established facts from submitted records</span>
+                                </div>
+                                <p class="layer-body">${f.observed}</p>
+                            </div>
+                            <div class="epistemic-layer" style="border-left: 3px solid var(--accent-teal); background: rgba(15, 118, 110, 0.03); padding: 1rem 1.25rem; border-radius: 4px; margin-bottom: 0.75rem;">
+                                <div class="layer-header">
+                                    <span class="layer-title" style="color: var(--accent-teal);">02 // Signal Intersection</span>
+                                    <span class="layer-subtitle">&mdash; Where discrete reports become meaningful together</span>
+                                </div>
+                                <p class="layer-body">${f.intersection}</p>
+                            </div>
+                            <div class="epistemic-layer inferred-layer">
+                                <div class="layer-header">
+                                    <span class="layer-title">03 // Inferred</span>
+                                    <span class="layer-subtitle">&mdash; Supported hypothesis (${f.confidenceLevel}: ${f.confidenceRationale})</span>
+                                </div>
+                                <p class="layer-body">${f.inferred}</p>
+                            </div>
+                            <div class="epistemic-layer verify-layer">
+                                <div class="layer-header">
+                                    <span class="layer-title">04 // Floor Verification Requirement</span>
+                                    <span class="layer-subtitle">&mdash; Mandatory human check before capital/policy commitments</span>
+                                </div>
+                                <p class="layer-body">${f.verify}</p>
+                            </div>
+                            <div class="epistemic-layer action-layer">
+                                <div class="layer-header">
+                                    <span class="layer-title">05 // Candidate Interventions</span>
+                                    <span class="layer-subtitle">&mdash; Structured intervention options</span>
+                                </div>
+                                <p class="layer-body">${f.candidateInterventions.join('<br>')}</p>
+                            </div>
+                        </div>
+                        <div class="priority-logic-box">
+                            <div class="logic-grid">
+                                <div class="logic-field">
+                                    <span class="logic-label">Financial Exposure:</span>
+                                    <span class="logic-value"><strong>${f.periodImpact}</strong> <span style="color: var(--text-secondary); font-size: 11.5px;">(${f.monthlyRange})</span></span>
+                                </div>
+                                <div class="logic-field">
+                                    <span class="logic-label">Implementation Friction:</span>
+                                    <span class="logic-value"><span class="friction-pill">${f.friction}</span></span>
+                                </div>
+                                <div class="logic-field full">
+                                    <span class="logic-label">Signal Decision:</span>
+                                    <span class="logic-value"><strong>Smallest defensible next move:</strong> ${f.signalDecision}</span>
+                                </div>
+                                <div class="logic-field full">
+                                    <span class="logic-label">Measure Next (30-Day Plan):</span>
+                                    <span class="logic-value" style="font-size: 12.5px; color: var(--text-secondary);">${f.measureNext}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
                 container.appendChild(card);
             });
 
@@ -1673,14 +1734,14 @@
                     <td>${f.monthlyRange}</td>
                     <td><strong style="color: var(--accent-crimson);">${f.annualRange}</strong></td>
                     <td style="font-size: 11px; color: var(--text-secondary);">${f.basis}</td>
-                    <td><span class="stream-pill" style="font-size: 10px;">${f.confidenceLevel.split(' ')[0]}</span></td>
+                    <td><span class="stream-pill" style="font-size: 10px;">${f.confidenceLevel}</span></td>
                 `;
                 tbody.appendChild(tr);
             });
 
             // Prepare Markdown for Export
             activeBriefMarkdown = generateMarkdownBrief(data, visibleFindings, tier);
-            document.getElementById('raw-json-code').textContent = JSON.stringify({ metadata: { restaurant: data.restaurantName, tier: tier, periodDays: data.periodDays }, metrics: data, findings: visibleFindings }, null, 2);
+            document.getElementById('raw-json-code').textContent = JSON.stringify({ metadata: { restaurant: data.restaurantName, tier: tier, periodDays: data.periodDays, classification: "SYNTHETIC DEMONSTRATION DATA" }, metrics: data, findings: visibleFindings }, null, 2);
 
             // Scroll smoothly down to the brief
             document.getElementById('brief-container').scrollIntoView({ behavior: 'smooth' });
@@ -1695,23 +1756,29 @@
             let md = `# Signal Operational Intelligence Brief\n`;
             md += `**Location:** ${data.restaurantName}\n`;
             md += `**Period:** ${data.periodDays} Days Analyzed\n`;
-            md += `**Classification:** Synthetic Demonstration Dataset\n`;
-            md += `**Notice:** Synthetic Demonstration Dataset — simulated operational telemetry for demonstration.\n\n`;
+            md += `**Classification:** SYNTHETIC DEMONSTRATION DATA\n`;
+            md += `**Notice:** SYNTHETIC DEMONSTRATION DATA — simulated operational telemetry for demonstration.\n\n`;
             md += `---\n\n## Operational State Assessment\n\n`;
             md += document.getElementById('state-assessment-text').innerText + `\n\n`;
             md += `---\n\n## Detailed Synthesized Findings\n\n`;
 
             findings.forEach(f => {
-                md += `### PRIORITY 0${f.rank} &bull; ${f.title}\n`;
-                md += `**Category:** ${f.category} | **Priority:** ${f.priority} | **Confidence:** ${f.confidenceLevel}\n\n`;
+                md += `### ${f.id} &bull; ${f.title}\n`;
+                md += `**Category:** ${f.category} | **Priority:** ${f.decisionPriority} | **Confidence:** ${f.confidenceLevel}\n\n`;
                 md += `* **Observed:** ${f.observed}\n`;
+                md += `* **Intersection:** ${f.intersection}\n`;
                 md += `* **Inferred:** ${f.inferred}\n`;
                 md += `* **Verify on Floor:** ${f.verify}\n`;
-                md += `* **Action Candidate:** ${f.actionCandidate}\n`;
-                md += `* **Estimated Exposure:** ${f.monthlyRange} monthly (${f.annualRange} annualized)\n`;
+                if (f.candidateInterventions) {
+                    md += `* **Candidate Interventions:**\n  - ${f.candidateInterventions.join('\n  - ')}\n`;
+                }
+                md += `* **Signal Decision:** ${f.signalDecision || f.actionCandidate}\n`;
+                if (f.measureNext) {
+                    md += `* **Measure Next (30-Day Target):** ${f.measureNext}\n`;
+                }
+                md += `* **Financial Exposure:** ${f.periodImpact} (${f.monthlyRange} monthly / ${f.annualRange} annualized)\n`;
                 md += `* **Measurement Basis:** ${f.basis}\n`;
-                md += `* **Implementation Friction:** ${f.friction}\n`;
-                md += `* **Decision Priority:** ${f.decisionPriority} — ${f.decisionRationale}\n\n`;
+                md += `* **Implementation Friction:** ${f.friction}\n\n`;
             });
 
             return md;

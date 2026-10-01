@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "datasetMetadata": {
+    "classification": "SYNTHETIC DEMONSTRATION DATA",
+    "notice": "SYNTHETIC DEMONSTRATION DATA — simulated operational telemetry for demonstration. Values and records generated to illustrate Signal analytical framework without exposing confidential client records.",
+    "concept": "Mid-size Casual Dining Restaurant (120 Seats)",
+    "analysisPeriodDays": 60,
+    "metrics": {
+      "netSales": 312450.00,
+      "totalOrders": 9420,
+      "avgCheck": 33.17,
+      "laborCost": 68739.00,
+      "laborPercent": 22.00,
+      "kitchenOvertimeHours": 318.5,
+      "overtimePremiumPay": 6846.00,
+      "totalKitchenPay": 18240.00,
+      "managerVoidCount": 68,
+      "managerVoidAmount": 1840.00,
+      "avgVoidValue": 27.06,
+      "totalDiscounts": 12300.00,
+      "discountPercentSales": 3.94,
+      "offerACappedCount": 880,
+      "offerACappedDiscounts": 4400.00,
+      "offerACappedAvgCheckPre": 74.50,
+      "offerACappedNetSales": 61160.00,
+      "offerBUncappedCount": 940,
+      "offerBUncappedDiscounts": 7900.00,
+      "offerBUncappedAvgCheckPre": 84.00,
+      "offerBUncappedNetSales": 71060.00,
+      "promoCostDifference": 3500.00,
+      "modifierErosionCount": 3240,
+      "modifierErosionExposure": 2443.00,
+      "codeMisuseCount": 82,
+      "codeMisuseExposure": 1640.00
+    }
+  },
+  "canonicalFindings": [
+    {
+      "id": "F-01",
+      "title": "Peak-Period Throughput / Margin Leakage",
+      "decisionPriority": "Investigate First",
+      "observed": "Kitchen overtime reached 318.5 hours ($6,846 overtime premium) across the 60-day period. 42 of 68 manager voids ($1,180 of $1,840 total void value, averaging $28.10) concentrated during Friday and Saturday dinner services between 6:00 PM and 8:30 PM, where check velocity dropped by 18% relative to midday baseline.",
+      "intersection": "Kitchen overtime payroll spikes co-occur precisely with full-ticket service recovery voids and ticket latency spikes during peak weekend dinner volume (6:00–8:30 PM), revealing that labor expenditure increases at the exact window where kitchen throughput deteriorates.",
+      "inferred": "Kitchen line saturation during the weekend dinner peak creates compounding ticket delays exceeding 28 minutes, forcing front-of-house managers to execute full-ticket comp voids ($28.10 avg) to salvage guest relations while back-of-house staff burns premium overtime rates attempting to clear the backlog.",
+      "confidence": "Moderate",
+      "confidenceRationale": "High confidence on POS void timestamps and payroll overtime hours; moderate confidence on direct causality between kitchen delay and voids until pass fire-to-window logs are audited on the floor.",
+      "financialExposure": {
+        "status": "Partially Measured",
+        "measured": "$8,026 over 60 days ($6,846 overtime premium + $1,180 peak void deductions)",
+        "estimatedRangeMonthly": "$2,800 – $4,500 / month",
+        "estimatedRangeAnnual": "$33,600 – $54,000 / year",
+        "basis": "Measured payroll OT premium ($6,846) + recorded peak voids ($1,180) plus modeled 1.2 lost table turns per peak station due to 11.4 min check settlement and kitchen backlog."
+      },
+      "verify": "Audit pass fire-to-window duration on 20 consecutive tickets between 6:30 PM and 7:30 PM on two consecutive Fridays. Cross-reference manager void approval reasons against KDS prep times for all comps over $25.",
+      "implementationFriction": "Low to Moderate",
+      "candidateInterventions": [
+        "A: Dynamic third-party delivery throttling when active KDS tickets exceed 16 orders.",
+        "B: Shift 2.5 kitchen prep hours per day from peak evening line shift to a dedicated morning prep shift (8:00–10:30 AM) paid at standard time.",
+        "C: Re-sequence station expeditor role and implement pre-printed bill presentations."
+      ],
+      "signalDecision": "Test intermediate morning prep shift to remove 12 weekly overtime prep hours from peak dinner rush, and throttle delivery tablets during peak 6:30–7:30 PM rush.",
+      "measureNext": "Track Friday/Saturday kitchen overtime hours, pass fire-to-window ticket duration, and dinner rush void dollar volume over 30 days."
+    },
+    {
+      "id": "F-02",
+      "title": "Promotion Structure Leakage",
+      "decisionPriority": "Execute Test Immediately",
+      "observed": "Offer A ($5 off $50+) was redeemed 880 times, totaling $4,400 in discounts ($5.00 fixed discount, pre-discount check average $74.50). Offer B (10% off uncapped) was redeemed 940 times, totaling $7,900 in discounts ($8.40 average discount, pre-discount check average $84.00). Above $50, Offer B discounts scaled linearly ($100 check = $10 discount; $150 check = $15 discount).",
+      "intersection": "Check-size distribution crossed with promotion redemption records establishes that Offer B cost $3,500 more than Offer A (+79.5% discount expense) while producing only $9.50 in higher gross check spend ($84.00 vs $74.50), yielding zero statistically meaningful expansion in high-margin dessert or beverage attachment.",
+      "inferred": "The uncapped 10% promotion is subsidizing high-spend diners who would have spent $75+ regardless. The additional $3,500 discount expense functions as margin transfer rather than demand generation.",
+      "confidence": "High",
+      "confidenceRationale": "Complete POS transactional capture across 1,820 promotion checks with unambiguous dollar and check distribution data.",
+      "financialExposure": {
+        "status": "Directly Measured",
+        "measured": "$3,500 incremental discount expense over 60 days ($1,750 / month)",
+        "estimatedRangeMonthly": "$1,750 – $2,100 / month",
+        "estimatedRangeAnnual": "$21,000 – $25,200 / year",
+        "basis": "Exact variance between 10% uncapped redemptions ($7,900 across 940 checks) vs. equivalent capped structure ($4,700 at $5 fixed)."
+      },
+      "verify": "Verify gross margin on items ordered by Offer B checks between $80 and $140. Check whether loyalty ID recurrence differs between Offer A and Offer B redeemers.",
+      "implementationFriction": "Low",
+      "candidateInterventions": [
+        "A: Cap Offer B at $5 maximum discount (Spend $50+, Save $5).",
+        "B: Retain 10% discount but establish a $7.50 maximum discount cap.",
+        "C: Restructure Offer B into a value-add promotion (Free appetizer with $60 spend) preserving clean cash margin."
+      ],
+      "signalDecision": "Convert Offer B into a capped $5 discount on $50+ purchases for 30 days and monitor redemption rate and check-size distribution.",
+      "measureNext": "Redemption frequency, average check above $50, and total discount dollars over the next 30 days."
+    },
+    {
+      "id": "F-03",
+      "title": "Modifier Pricing Erosion",
+      "decisionPriority": "Plan Next Menu Cycle",
+      "observed": "Four high-frequency menu modifiers (Add Bacon, Sub Truffle Fries, Extra Cheese, Gluten-Free Bun) appeared on 3,240 checks across 60 days. POS pricing: Bacon +$1.00 (ingredient + prep delta $1.75), Truffle Fries +$1.50 (cost delta $2.60), Extra Cheese +$0.50 (cost delta $0.95), GF Bun +$1.00 (cost delta $1.80). Base entrees maintain 68% gross margin, but modified entrees drop to 54–58% margin.",
+      "intersection": "Cross-referencing food cost recipe sheets with item modifier sales reveals that the top selling entrees maintain healthy margins until specific high-volume customizations are selected, eroding up to 14% margin points per dish.",
+      "inferred": "Modifier prices were set historically without indexing against recent supplier ingredient inflation. Because these four modifications are selected on 34.4% of all specialty entree orders, modifier underpricing creates systemic margin leakage without driving incremental guest satisfaction.",
+      "confidence": "High",
+      "confidenceRationale": "Recipe cost cards verified against vendor invoices and cross-matched with 3,240 POS modifier item lines.",
+      "financialExposure": {
+        "status": "Directly Measured",
+        "measured": "$2,443 direct contribution loss over 60 days ($1,221 / month)",
+        "estimatedRangeMonthly": "$1,220 – $1,450 / month",
+        "estimatedRangeAnnual": "$14,640 – $17,400 / year",
+        "basis": "3,240 modifier instances multiplied by specific unit cost-to-price deficits ($0.45 to $1.10 per item)."
+      },
+      "verify": "Confirm latest bacon, dairy, and gluten-free bread line-item prices on current distributor invoices.",
+      "implementationFriction": "Low",
+      "candidateInterventions": [
+        "A: High-friction option: Completely re-engineer the entire modifier menu tree and pricing structure across all 48 entrees.",
+        "B: Signal recommended option: Reprice only the 4 affected modifiers (+Bacon to $2.00, +Truffle Fries to $2.75, +Cheese to $1.00, +GF Bun to $2.00) in POS backend.",
+        "C: Replace bulk modifier portions with standardized portion-control scoops."
+      ],
+      "signalDecision": "Reprice the 4 specific modifiers in POS backend without altering base menu item prices; measure order volume and customer pushback for 30 days.",
+      "measureNext": "Modifier selection percentage on top 5 entrees and realized margin contribution over the subsequent 30-day billing cycle."
+    },
+    {
+      "id": "F-04",
+      "title": "Discount Procedure Leakage",
+      "decisionPriority": "Investigate First",
+      "observed": "Manager discount code 'MGR-COMP-99' was applied to 142 checks totaling $2,840. 82 of these transactions ($1,640) occurred between 3:30 PM and 4:30 PM or post-midnight closing, applied to single-item beverage and sandwich orders rather than full guest table checks.",
+      "intersection": "Time-of-day clustering, item composition (single meal items), and check ownership demonstrate that managerial override codes are being utilized during shift turnover and closing rather than during dining service.",
+      "inferred": "Shift supervisors and lead servers are using the general manager comp code to record shift meals and employee break allowances because no designated employee meal code exists in the active POS configuration. This represents procedural shortcutting and training deficiency rather than intentional theft.",
+      "confidence": "Moderate",
+      "confidenceRationale": "Strong transactional pattern (time, item type, check size), but requires human floor confirmation that employees received these items as valid shift meals.",
+      "financialExposure": {
+        "status": "Partially Measured",
+        "measured": "$1,640 over 60 days in miscoded shift transactions ($820 / month)",
+        "estimatedRangeMonthly": "$820 – $1,100 / month",
+        "estimatedRangeAnnual": "$9,840 – $13,200 / year",
+        "basis": "82 off-peak shift-change comp transactions averaging $20.00."
+      },
+      "verify": "Interview shift managers regarding the protocol used when line cooks or servers order shift meals. Cross-check punch clock in/out times for servers on the 10 highest MGR-COMP-99 tickets.",
+      "implementationFriction": "Low",
+      "candidateInterventions": [
+        "A: Implement dedicated POS employee meal button with 50% discount cap and individual server PIN logging.",
+        "B: Lock MGR-COMP-99 code to GM card swipe only.",
+        "C: Issue disciplinary warning across front-of-house staff regarding unauthorized discount code usage."
+      ],
+      "signalDecision": "Configure dedicated 'Shift Meal' discount key with preset operational limits, update manager SOPs, and reserve MGR-COMP-99 strictly for documented guest recovery.",
+      "measureNext": "Usage frequency of MGR-COMP-99 vs. new Shift Meal code, and total dollar comp volume over next 30 days."
+    }
+  ],
+  "evidenceLedger": [
+    {
+      "claimId": "CLM-01-01",
+      "findingId": "F-01",
+      "sourceReport": "Labor Summary / Payroll Export",
+      "fieldsUsed": "KDS Overtime Hours, Kitchen Overtime Pay Rate ($32.25/hr avg)",
+      "analysisPeriod": "60 Days",
+      "calculation": "318.5 OT hours * $21.50 OT premium differential ($6,846.00)",
+      "epistemicCategory": "OBSERVED",
+      "confidence": "High"
+    },
+    {
+      "claimId": "CLM-01-02",
+      "findingId": "F-01",
+      "sourceReport": "POS Void Summary Report",
+      "fieldsUsed": "Check ID, Void Timestamp, Void Amount, Manager Approval ID",
+      "analysisPeriod": "60 Days",
+      "calculation": "42 peak voids (Fri/Sat 18:00–20:30) / 68 total voids = 61.8% void count; $1,180 peak void value / $1,840 total = 64.1%",
+      "epistemicCategory": "OBSERVED",
+      "confidence": "High"
+    },
+    {
+      "claimId": "CLM-01-03",
+      "findingId": "F-01",
+      "sourceReport": "Cross-Signal Synthesis (Labor + Voids + Hourly Sales)",
+      "fieldsUsed": "Hourly Sales Velocity, Ticket Times, Void Timestamps",
+      "analysisPeriod": "60 Days",
+      "calculation": "Weekend peak ticket duration (28.6 min) vs. baseline weekday (14.2 min) co-occurs with 64.1% of voids and 71% of kitchen OT hours",
+      "epistemicCategory": "INFERRED",
+      "confidence": "Moderate"
+    },
+    {
+      "claimId": "CLM-02-01",
+      "findingId": "F-02",
+      "sourceReport": "POS Check Discounts Report",
+      "fieldsUsed": "Promo Name, Check Count, Pre-Discount Total, Discount Amount, Net Sales",
+      "analysisPeriod": "60 Days",
+      "calculation": "Offer A: 880 checks, $4,400 discount ($5.00/check). Offer B: 940 checks, $7,900 discount ($8.40/check). Delta = $3,500 incremental discount.",
+      "epistemicCategory": "OBSERVED",
+      "confidence": "High"
+    },
+    {
+      "claimId": "CLM-02-02",
+      "findingId": "F-02",
+      "sourceReport": "Check Detail Distribution Analysis",
+      "fieldsUsed": "Check Size Tiering, Category Attachment, Gross Margin",
+      "analysisPeriod": "60 Days",
+      "calculation": "Offer B pre-discount avg check ($84.00) vs Offer A ($74.50) = +$9.50 gross check lift, but additional discount ($3.40/check) leaves +$6.10 net check. Food cost on extra items ($3.80) reduces net contribution to +$2.30, insufficient to offset overall promo budget variance.",
+      "epistemicCategory": "DERIVED",
+      "confidence": "High"
+    },
+    {
+      "claimId": "CLM-03-01",
+      "findingId": "F-03",
+      "sourceReport": "Menu Item Sales & Modifier Breakdown",
+      "fieldsUsed": "Item Code, Modifier Code, Order Count, Retail Price",
+      "analysisPeriod": "60 Days",
+      "calculation": "3,240 total modified entree checks across 4 high-frequency modifiers: Bacon (1,420), Truffle Fries (860), Extra Cheese (960), GF Bun (640 - overlap exists).",
+      "epistemicCategory": "OBSERVED",
+      "confidence": "High"
+    },
+    {
+      "claimId": "CLM-03-02",
+      "findingId": "F-03",
+      "sourceReport": "Recipe Cost Card & Distributor Invoices",
+      "fieldsUsed": "Distributor Invoiced Unit Cost, Standard Portion Grams, Retail Price Delta",
+      "analysisPeriod": "60 Days",
+      "calculation": "Bacon (-$0.75 * 1420 = -$1065) + Truffle Fries (-$1.10 * 860 = -$946) + Extra Cheese (-$0.45 * 960 = -$432) = $2,443 net contribution erosion.",
+      "epistemicCategory": "DERIVED",
+      "confidence": "High"
+    },
+    {
+      "claimId": "CLM-04-01",
+      "findingId": "F-04",
+      "sourceReport": "POS Discount & Comp Detail",
+      "fieldsUsed": "Discount Code, Timestamp, Server ID, Manager Authorization, Items Comped",
+      "analysisPeriod": "60 Days",
+      "calculation": "Code 'MGR-COMP-99': 142 checks, $2,840 total. 82 checks ($1,640) executed during 15:30–16:30 or 00:00–01:30 shift turnover periods on single meal tickets.",
+      "epistemicCategory": "OBSERVED",
+      "confidence": "High"
+    },
+    {
+      "claimId": "CLM-04-02",
+      "findingId": "F-04",
+      "sourceReport": "Operational Synthesis (Punches vs Comps)",
+      "fieldsUsed": "Shift Punch Records, Check Timestamp, Items Comped",
+      "analysisPeriod": "60 Days",
+      "calculation": "Single meal items comped exactly match clock-in/out windows of BOH/FOH staff; lack of staff meal button indicates procedure omission rather than malicious theft.",
+      "epistemicCategory": "INFERRED",
+      "confidence": "Moderate"
+    }
+  ]
+}

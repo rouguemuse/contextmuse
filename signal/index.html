@@ -1214,13 +1214,13 @@
                 <div class="scenario-card">
                     <div class="scenario-header">
                         <div>
-                            <span class="scenario-pill">SYNTHETIC RESTAURANT SCENARIO · MID-SIZE CASUAL DINING (120 SEATS)</span>
+                            <span class="scenario-pill">SYNTHETIC DEMONSTRATION DATA &bull; MID-SIZE CASUAL DINING (120 SEATS)</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0.5rem 0 0 0; font-weight: 500;">
-                                Baseline Operating Context (90-Day Telemetry)
+                                Baseline Operating Context (60-Day Telemetry)
                             </h3>
                         </div>
                         <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); background: #FAF9F5; padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border-light);">
-                            Illustrative Dataset &bull; Constant Across All 3 Levels
+                            Canonical Dataset &bull; Constant Across All 3 Levels
                         </span>
                     </div>
                     <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem 0;">
@@ -1228,28 +1228,28 @@
                     </p>
                     <div class="scenario-grid">
                         <div class="scenario-item">
-                            <strong>Sales Pacing</strong>
-                            ~$48,000 / week; overall top-line revenue appears stable.
+                            <strong>Sales &amp; Volume</strong>
+                            $312,450.00 net sales across 9,420 checks ($33.17 avg check over 60 days).
                         </div>
                         <div class="scenario-item">
-                            <strong>Labor Metric</strong>
-                            Total labor sits at 34.2% (elevated against standard 31% target).
+                            <strong>Labor Cost</strong>
+                            Aggregate labor runs at 22.0% ($68,739 total payroll cost).
                         </div>
                         <div class="scenario-item">
-                            <strong>Overtime Pattern</strong>
-                            Overtime hours cluster heavily across Friday &amp; Saturday services.
+                            <strong>Kitchen Overtime</strong>
+                            318.5 kitchen overtime hours ($6,846.00 overtime premium) concentrated Friday &amp; Saturday.
                         </div>
                         <div class="scenario-item">
                             <strong>Void Activity</strong>
-                            Elevated voids concentrated between 6:00 PM and 8:30 PM dinner rush.
+                            68 manager voids ($1,840.00 void value, $27.06 avg) concentrated 6:00–8:30 PM.
                         </div>
                         <div class="scenario-item">
-                            <strong>Menu Dynamic</strong>
-                            High-volume signature entrees dominate weekend order share.
+                            <strong>Promotion Discrepancy</strong>
+                            $12,300 in discounts: $5 off $50+ (880 checks, $4,400) vs 10% uncapped (940 checks, $7,900).
                         </div>
                         <div class="scenario-item">
-                            <strong>Comp Behavior</strong>
-                            Spike in manager meal and customer service recovery discounts.
+                            <strong>Modifier Pricing</strong>
+                            4 high-frequency modifiers priced below incremental cost ($2,443 deficit across 3,240 checks).
                         </div>
                     </div>
                 </div>
@@ -1286,35 +1286,35 @@
                     <!-- Level 0 Visual Output Card -->
                     <div class="val-output-card">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem;">
-                            <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #8C6621; text-transform: uppercase;">VALIDATION OBSERVATION 01</span>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">SYNTHETIC EXAMPLE</span>
+                            <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #8C6621; text-transform: uppercase;">VALIDATION CANDIDATE SIGNAL 01 // F-01</span>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">SYNTHETIC DEMONSTRATION DATA</span>
                         </div>
                         <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 500;">
-                            Peak dinner deserves a closer look.
+                            F-01: Peak dinner throughput and margin leakage deserves a closer look.
                         </h4>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; font-size: 13.5px; line-height: 1.6;">
                             <div>
                                 <strong style="font-family: var(--font-mono); font-size: 11px; color: #0F766E; text-transform: uppercase; display: block; margin-bottom: 3px;">Observed</strong>
-                                Friday and Saturday 6–8 PM contain a disproportionate amount of overtime (38%) and void value (54%) relative to their 22% share of weekly transactions.
+                                Friday/Saturday 6–8:30 PM accounts for 318.5 kitchen overtime hours ($6,846 overtime premium) and 42 manager voids ($1,180 void value, $28.10 avg), while check velocity drops 18%.
                             </div>
                             <div>
                                 <strong style="font-family: var(--font-mono); font-size: 11px; color: #8C6621; text-transform: uppercase; display: block; margin-bottom: 3px;">Pattern</strong>
-                                Two otherwise separate reports (payroll timecards and POS void log) are showing pressure during the exact same operating window.
+                                Payroll timecards, KDS latency, and manager void logs surge during the exact same peak weekend dinner window.
                             </div>
                             <div>
                                 <strong style="font-family: var(--font-mono); font-size: 11px; color: #B45309; text-transform: uppercase; display: block; margin-bottom: 3px;">Verify</strong>
-                                Check ticket times and void reasons during four peak weekend dinner services.
+                                Time pass fire-to-window duration on 20 consecutive tickets and audit manager void reason logs across two peak services.
                             </div>
                             <div>
-                                <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--forest-deep, #0E1F1B); text-transform: uppercase; display: block; margin-bottom: 3px;">Why It Matters</strong>
-                                There may be a concentrated operational leak worth investigating rather than a general kitchen labor issue.
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--forest-deep, #0E1F1B); text-transform: uppercase; display: block; margin-bottom: 3px;">Rough Significance</strong>
+                                ~$2,800–$4,500/mo estimated exposure ($8,026 direct 60d measured loss) warranting deeper diagnostic investigation.
                             </div>
                         </div>
 
                         <!-- Level 0 Explicit Boundary -->
                         <div class="takeaway-banner takeaway-light" style="margin-top: 1.5rem;">
                             <div style="max-width: 680px;">
-                                <strong>Where Level 0 Stops:</strong> The Validation Review deliberately stops here. It does NOT include comprehensive root-cause modeling, deep financial exposure models, exhaustive cross-report analysis, implementation planning, ongoing monitoring, or unlimited follow-up.
+                                <strong>Where Level 0 Stops:</strong> The Validation Review deliberately stops here. It surfaces 2–4 candidate signals without pretending to complete root-cause modeling, deep financial models, or full action plans.
                                 <div style="font-family: var(--font-mono); font-size: 11px; color: #8C6621; margin-top: 4px; font-weight: 700;">
                                     Takeaway: The Validation Review found the smoke.
                                 </div>
@@ -1355,69 +1355,69 @@
 
                     <!-- Level 1 Visual Output: Multi-Finding Prioritization -->
                     <div class="snapshot-dual-grid">
-                        <!-- Priority 01 -->
+                        <!-- Priority 01: F-01 -->
                         <div class="snapshot-card rank-first">
                             <div>
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                                    <span style="font-family: var(--font-mono); font-size: 11px; background: #C5A059; color: #0E1F1B; padding: 3px 8px; border-radius: 3px; font-weight: 700;">PRIORITY 01</span>
+                                    <span style="font-family: var(--font-mono); font-size: 11px; background: #C5A059; color: #0E1F1B; padding: 3px 8px; border-radius: 3px; font-weight: 700;">PRIORITY 01 // F-01</span>
                                     <span style="font-family: var(--font-mono); font-size: 10px; color: #E11D48; font-weight: 700; text-transform: uppercase;">Investigate First</span>
                                 </div>
                                 <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
-                                    Peak-period margin leakage
+                                    Peak-Period Throughput / Margin Leakage
                                 </h4>
                                 <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem;">
-                                    Category: Throughput &amp; Kitchen Timing
+                                    Category: Throughput &amp; Labor Intersection
                                 </div>
                                 <div style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.65rem;">
                                     <div>
-                                        <strong style="color: #0F766E;">Observed:</strong> Friday/Saturday 6–8 PM accounts for $1,420 overtime premium, $890 void value, and 18% lower-than-baseline throughput. [SYNTHETIC EXAMPLE]
+                                        <strong style="color: #0F766E;">Observed:</strong> Friday/Saturday 6–8:30 PM accounts for 318.5 kitchen OT hours ($6,846 premium) and 42 manager voids ($1,180 void value). [SYNTHETIC DEMONSTRATION DATA]
                                     </div>
                                     <div>
-                                        <strong style="color: #8C6621;">Inferred:</strong> The intersection is consistent with a peak-period throughput bottleneck.
+                                        <strong style="color: #8C6621;">Inferred:</strong> Line congestion during rush creates compounding ticket delays forcing full-ticket comp voids while staff burns overtime.
                                     </div>
                                     <div>
-                                        <strong style="color: #B45309;">Verify:</strong> Compare ticket duration, staffing allocation, and void reason detail.
+                                        <strong style="color: #B45309;">Verify:</strong> Time pass fire-to-window duration on 20 consecutive tickets and cross-reference comp reasons.
                                     </div>
                                 </div>
                             </div>
                             <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 11px;">
-                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>~$1,200–$1,800/mo</strong></div>
-                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #0F766E;">Moderate (72%)</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>$2,800–$4,500/mo</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #0F766E;">Moderate</strong></div>
                                 <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">FRICTION</span><strong>Low–Moderate</strong></div>
-                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong style="color: #E11D48;">Rank 1 &bull; Act First</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong style="color: #E11D48;">Rank 1 &bull; Investigate First</strong></div>
                             </div>
                         </div>
 
-                        <!-- Priority 04 -->
+                        <!-- Priority 02: F-02 -->
                         <div class="snapshot-card">
                             <div>
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                                    <span style="font-family: var(--font-mono); font-size: 11px; background: #EDE8DE; color: var(--forest-deep, #0E1F1B); padding: 3px 8px; border-radius: 3px; font-weight: 700;">PRIORITY 04</span>
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); font-weight: 700; text-transform: uppercase;">Defer Pending Validation</span>
+                                    <span style="font-family: var(--font-mono); font-size: 11px; background: #EDE8DE; color: var(--forest-deep, #0E1F1B); padding: 3px 8px; border-radius: 3px; font-weight: 700;">PRIORITY 02 // F-02</span>
+                                    <span style="font-family: var(--font-mono); font-size: 10px; color: #0F766E; font-weight: 700; text-transform: uppercase;">Execute Test</span>
                                 </div>
                                 <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
-                                    Menu discount concentration
+                                    Promotion Structure Leakage
                                 </h4>
                                 <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem;">
-                                    Category: Menu Economics &amp; Promo Policy
+                                    Category: Promotion Economics &amp; Policy
                                 </div>
                                 <div style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.65rem;">
                                     <div>
-                                        <strong style="color: #0F766E;">Observed:</strong> Signature entree discounts cluster during weeknight dinner specials ($1,100/mo exposure). [SYNTHETIC EXAMPLE]
+                                        <strong style="color: #0F766E;">Observed:</strong> Offer B (10% uncapped) costs $3,500 more than Offer A ($5 off $50+) across 940 redemptions. [SYNTHETIC DEMONSTRATION DATA]
                                     </div>
                                     <div>
-                                        <strong style="color: #8C6621;">Inferred:</strong> Promotional discounting may be cannibalizing full-margin guest check volume.
+                                        <strong style="color: #8C6621;">Inferred:</strong> High-spending diners are subsidized without generating incremental margin or high-value add-on attachment.
                                     </div>
                                     <div>
-                                        <strong style="color: #B45309;">Verify:</strong> Audit check server IDs, item margin mix, and repeat customer redemption patterns.
+                                        <strong style="color: #B45309;">Verify:</strong> Check gross margin on items ordered by Offer B checks between $80 and $140.
                                     </div>
                                 </div>
                             </div>
                             <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-family: var(--font-mono); font-size: 11px;">
-                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>~$1,100/mo</strong></div>
-                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #8C6621;">Low–Mod (48%)</strong></div>
-                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">FRICTION</span><strong style="color: #B45309;">High (Menu/Server)</strong></div>
-                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong>Rank 4 &bull; Defer</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>$1,750/mo</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #0F766E;">High</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">FRICTION</span><strong style="color: #0F766E;">Very Low (POS Toggle)</strong></div>
+                                <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong style="color: #0F766E;">Rank 2 &bull; Execute Test</strong></div>
                             </div>
                         </div>
                     </div>
@@ -1425,7 +1425,7 @@
                     <!-- Snapshot Takeaway -->
                     <div class="takeaway-banner takeaway-light">
                         <div style="max-width: 720px;">
-                            <strong>Why Priority 04 Ranks Lower Despite Similar Dollar Exposure:</strong> The estimated dollar impact is comparable (~$1,100 vs $1,400), but the evidence is weaker (48%), corrective action requires high operational friction (reprinting menus and retraining floor servers), and additional modifier data is needed. Signal does not simply sort by biggest dollar amount.
+                            <strong>Why F-02 Ranks for Immediate Execution While F-01 Requires Verification First:</strong> F-02 ($1,750/mo exposure) carries High confidence and can be tested immediately with a single POS toggle (zero staff disruption). F-01 carries the largest financial exposure ($2,800–$4,500/mo) but requires verifying pass latency before adjusting kitchen shifts. Signal does not simply sort by biggest dollar amount—it weights conviction, exposure, and friction.
                             <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); margin-top: 4px; font-weight: 700;">
                                 Takeaway: The Snapshot tells you which smoke deserves attention first.
                             </div>
@@ -1468,14 +1468,14 @@
                         <div class="console-header-bar">
                             <div>
                                 <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 2px;">
-                                    DEEP DIAGNOSTIC INVESTIGATION &bull; SAME PEAK-PERIOD FINDING
+                                    DEEP DIAGNOSTIC INVESTIGATION &bull; F-01 PEAK-PERIOD THROUGHPUT
                                 </span>
                                 <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: #FAF9F5; margin: 0; font-weight: 500;">
                                     Diagnostic Question: Why is margin degrading during Friday/Saturday peak?
                                 </h4>
                             </div>
                             <span style="font-family: var(--font-mono); font-size: 10.5px; background: rgba(197, 160, 89, 0.15); color: #C5A059; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(197, 160, 89, 0.3);">
-                                SYNTHETIC OPERATIONAL MODEL
+                                SYNTHETIC DEMONSTRATION DATA
                             </span>
                         </div>
 
@@ -1485,22 +1485,22 @@
                                 <div class="console-section-heading">01 // MULTI-REPORT OBSERVED FACTS (UNDISPUTED EMPIRICAL EVIDENCE)</div>
                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; font-size: 13px; line-height: 1.6; color: rgba(250, 249, 245, 0.88);">
                                     <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
-                                        &bull; Overtime hours rise <strong>45 minutes before</strong> peak volume window begins.
+                                        &bull; Kitchen logged <strong>318.5 overtime hours</strong> ($6,846 overtime premium) across the 60-day window.
                                     </div>
                                     <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
-                                        &bull; Void value clusters strictly in the latter half of service (<strong>7:45 PM – 9:15 PM</strong>).
+                                        &bull; <strong>42 of 68 manager voids</strong> ($1,180 of $1,840 total void value) cluster strictly between 6:00 PM and 8:30 PM Friday/Saturday.
                                     </div>
                                     <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
-                                        &bull; Transactions per labor hour deteriorate by <strong>24%</strong> during the rush window.
+                                        &bull; Check velocity drops by <strong>18%</strong> relative to baseline despite full staffing presence.
                                     </div>
                                     <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
-                                        &bull; One station role (grill/expo) absorbs <strong>78%</strong> of total kitchen overtime.
+                                        &bull; Primary kitchen cook roles absorb <strong>78%</strong> of total overtime expenditure.
                                     </div>
                                     <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
-                                        &bull; Check volume remains high, but average table turn duration extends by <strong>19 minutes</strong>.
+                                        &bull; Average void check value is <strong>$28.10</strong> (85% of full check size), indicating full-meal comps rather than single drink errors.
                                     </div>
                                     <div style="background: rgba(250, 249, 245, 0.03); padding: 1rem; border-radius: 4px;">
-                                        &bull; Void and re-ring timestamps directly overlap the table turn pacing deterioration.
+                                        &bull; KDS ticket duration doubles from <strong>14.2 min to 28.6 min</strong> during the rush window.
                                     </div>
                                 </div>
                             </div>
@@ -1518,7 +1518,7 @@
                                         <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">Line Understaffing</h5>
                                         <div style="font-family: var(--font-mono); font-size: 10px; color: #FBBF24; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: WEAK / MODERATE</div>
                                         <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.75); margin: 0;">
-                                            Gross labor hours are already elevated (+3.2 staff hours vs baseline). Adding more staff to an already congested kitchen line often worsens table pacing.
+                                            Gross labor hours are already elevated (+318.5 OT hours). Adding more cooks to a fixed-surface kitchen line worsens station congestion.
                                         </p>
                                     </div>
 
@@ -1528,7 +1528,7 @@
                                         <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">Throughput Pacing Bottleneck</h5>
                                         <div style="font-family: var(--font-mono); font-size: 10px; color: #4ADE80; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: MODERATE / STRONG</div>
                                         <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.85); margin: 0;">
-                                            Prep sequencing failure 30 min before rush causes expo line backup, ticket delays, customer walkouts, and subsequent voids despite increased staff presence.
+                                            Prep sequencing deficit before rush causes expo line backup, ticket delays past 28 minutes, customer frustration, and full-ticket recovery voids.
                                         </p>
                                     </div>
 
@@ -1538,7 +1538,7 @@
                                         <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">Employee Misconduct / Theft</h5>
                                         <div style="font-family: var(--font-mono); font-size: 10px; color: #F87171; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: WEAK</div>
                                         <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.75); margin: 0;">
-                                            While voids cluster, the re-ring timing, modifier logs, and table durations are consistent with ticket recovery, not pocketed cash or off-book transactions.
+                                            While voids cluster, ticket times and guest comp notes are consistent with delayed table recovery rather than cashier manipulation.
                                         </p>
                                     </div>
                                 </div>
@@ -1549,19 +1549,20 @@
                                 <div>
                                     <div class="console-section-heading">03 // FLOOR VERIFICATION SCRIPT</div>
                                     <ul style="font-size: 13px; line-height: 1.65; color: rgba(250, 249, 245, 0.85); padding-left: 1.25rem; margin: 0;">
-                                        <li>Compare KDS ticket completion timestamps for grill vs saute vs pantry stations.</li>
-                                        <li>Review void reason details specifically for checks between 7:45 PM and 9:15 PM.</li>
-                                        <li>Compare station schedule deployment against planned floor roster.</li>
-                                        <li>Observe expo/kitchen handoff directly during two Friday and two Saturday peak rushes.</li>
+                                        <li>Audit pass fire-to-window duration on 20 consecutive tickets between 6:30 PM and 7:30 PM on two consecutive Fridays.</li>
+                                        <li>Review void reason details specifically for comps exceeding $25 during dinner rush.</li>
+                                        <li>Cross-reference punch in/out times against scheduled prep shifts.</li>
+                                        <li>Observe expeditor line pacing during peak 6:00–7:00 PM order surge.</li>
                                     </ul>
                                 </div>
                                 <div>
-                                    <div class="console-section-heading">04 // FINANCIAL EXPOSURE MODEL [SYNTHETIC EXAMPLE]</div>
+                                    <div class="console-section-heading">04 // FINANCIAL EXPOSURE MODEL [SYNTHETIC DEMONSTRATION DATA]</div>
                                     <div style="background: rgba(250, 249, 245, 0.03); border: 1px solid rgba(250, 249, 245, 0.08); border-radius: 4px; padding: 1rem 1.25rem; font-size: 12.5px; line-height: 1.6; color: rgba(250, 249, 245, 0.85);">
-                                        <div><strong>Measured Direct Exposure:</strong> $1,420 / mo (recorded voids + overtime premium)</div>
-                                        <div><strong>Estimated Latent Exposure:</strong> $380 / mo (lost turn pacing during peak demand)</div>
+                                        <div><strong>Measured Direct Exposure:</strong> $8,026 / 60d ($6,846 OT premium + $1,180 rush voids)</div>
+                                        <div><strong>Estimated Monthly Exposure:</strong> $2,800 – $4,500 / mo</div>
+                                        <div><strong>Annualized Exposure:</strong> $33,600 – $54,000 / yr</div>
                                         <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(250, 249, 245, 0.55); margin-top: 4px;">
-                                            Assumptions: 90-day baseline; $68.50 average guest check; 19 min pacing loss.
+                                            Assumptions: 60-day baseline ($312,450 net sales, 9,420 checks, $33.17 avg check); 1.2 lost turns per peak station.
                                         </div>
                                     </div>
                                 </div>
@@ -1583,25 +1584,25 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><strong>Add another peak shift employee</strong></td>
+                                                <td><strong>Add another peak shift line cook</strong></td>
                                                 <td>Moderate</td>
                                                 <td style="color: #F87171;">High (Payroll + Line Crowding)</td>
                                                 <td style="color: #FBBF24;">Weak</td>
                                                 <td>Premature; risks worsening congestion</td>
                                             </tr>
                                             <tr style="background: rgba(74, 222, 128, 0.06);">
-                                                <td><strong>Reallocate prep staging 30m prior to rush</strong></td>
-                                                <td style="color: #4ADE80;">Moderate–High</td>
+                                                <td><strong>Shift 2.5 prep hours to dedicated morning prep shift</strong></td>
+                                                <td style="color: #4ADE80;">High ($2,800–$4,500/mo)</td>
                                                 <td style="color: #4ADE80;">Low (Schedule Adjustment)</td>
                                                 <td style="color: #4ADE80;">Strongest</td>
-                                                <td><strong>Recommended First Test &bull; Zero added payroll</strong></td>
+                                                <td><strong>Recommended First Test &bull; Removes 12 OT hrs/wk</strong></td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Restrict high-prep items during peak</strong></td>
-                                                <td>Uncertain</td>
-                                                <td style="color: #FBBF24;">Moderate (Guest Expectations)</td>
-                                                <td style="color: #FBBF24;">Requires Validation</td>
-                                                <td>Secondary test if staging rebalance fails</td>
+                                                <td><strong>Dynamic 3P delivery throttling during peak</strong></td>
+                                                <td>Moderate</td>
+                                                <td style="color: #4ADE80;">Low (Tablet Setting)</td>
+                                                <td style="color: #4ADE80;">Moderate</td>
+                                                <td>Secondary test when line backlog exceeds 16 tickets</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1609,7 +1610,7 @@
 
                                 <div class="takeaway-banner takeaway-dark" style="margin-top: 1.5rem;">
                                     <div style="max-width: 760px;">
-                                        <strong>The Recommended First Test:</strong> Test station deployment and pre-rush staging adjustments before adding labor. It addresses the stronger operational hypothesis, carries the lowest implementation friction, and can be validated over a single weekend without permanently inflating payroll.
+                                        <strong>The Recommended First Test:</strong> Shift 2.5 kitchen prep hours per day from peak evening line shift to a dedicated morning prep shift (8:00–10:30 AM) paid at standard time. It addresses the stronger operational hypothesis, carries low friction, and absorbs prep hours currently burned at overtime rates.
                                         <div style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; margin-top: 4px; font-weight: 700;">
                                             Takeaway: The Diagnostic investigates the fire, compares explanations, and determines the smartest experiment before the restaurant spends money fixing it.
                                         </div>
@@ -1759,7 +1760,7 @@
                         <div class="contrast-card">
                             <div>
                                 <span class="contrast-card-tag" style="color: var(--text-secondary);">A TRADITIONAL REPORT SAYS:</span>
-                                <div class="contrast-card-quote" style="font-size: 1.15rem;">“Promotion A generated $4,200 in discounts. Promotion B generated $7,900.”</div>
+                                <div class="contrast-card-quote" style="font-size: 1.15rem;">“Offer A generated $4,400 in discounts (880 checks). Offer B generated $7,900 (940 checks).”</div>
                             </div>
                             <p class="contrast-card-desc">
                                 Shows total discount expense in isolated silos. No connection to check size distribution, party size, or add-on pacing.
@@ -1770,10 +1771,10 @@
                         <div class="contrast-card">
                             <div>
                                 <span class="contrast-card-tag" style="color: var(--accent-teal);">A BETTER DASHBOARD SAYS:</span>
-                                <div class="contrast-card-quote" style="font-size: 1.15rem;">“Promotion B costs $3,700 more than Promotion A.”</div>
+                                <div class="contrast-card-quote" style="font-size: 1.15rem;">“Offer B costs $3,500 more than Offer A (+79.5% discount expense).”</div>
                             </div>
                             <p class="contrast-card-desc">
-                                Identifies the arithmetic difference between the two programs, but leaves the operator blind as to whether that $3,700 bought profitable revenue.
+                                Identifies the arithmetic difference between the two programs, but leaves the operator blind as to whether that $3,500 bought profitable revenue.
                             </p>
                         </div>
 
@@ -1782,7 +1783,7 @@
                             <div>
                                 <span class="contrast-card-tag" style="color: var(--forest-deep, #0E1F1B);">SIGNAL ASKS:</span>
                                 <div class="contrast-card-quote" style="font-size: 1.15rem; font-style: normal; font-weight: 500;">
-                                    “What did the restaurant receive in exchange for that additional $3,700, and was it worth buying?”
+                                    “What did the restaurant receive in exchange for that additional $3,500, and was it worth buying?”
                                 </div>
                             </div>
                             <p class="contrast-card-desc" style="color: var(--forest-deep, #0E1F1B); font-weight: 500;">
@@ -1828,23 +1829,23 @@
                     <div class="val-output-card" style="margin-bottom: 2rem;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem;">
                             <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: #8C6621; text-transform: uppercase;">LEVEL 0 // VALIDATION REVIEW VERSION</span>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">SYNTHETIC EXAMPLE</span>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">SYNTHETIC DEMONSTRATION DATA</span>
                         </div>
                         <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 500;">
-                            Promotion structure warrants further review.
+                            F-02: Promotion structure warrants further review.
                         </h4>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; font-size: 13.5px; line-height: 1.6;">
                             <div>
                                 <strong style="font-family: var(--font-mono); font-size: 11px; color: #0F766E; text-transform: uppercase; display: block; margin-bottom: 3px;">Observed</strong>
-                                Both promotions begin with the same $5 discount at a $50 check, but the cost of the 10% promotion continues increasing as check size increases. Actual restaurant data shows that the uncapped offer produces substantially more discount dollars per redeemed order ($8.90 avg discount vs $5.00 flat).
+                                Offer A ($5 off $50+) generated $4,400 across 880 checks ($5.00 avg). Offer B (10% uncapped) generated $7,900 across 940 checks ($8.40 avg). Above $50, Offer B discounts scaled linearly without check cap.
                             </div>
                             <div>
                                 <strong style="font-family: var(--font-mono); font-size: 11px; color: #8C6621; text-transform: uppercase; display: block; margin-bottom: 3px;">Pattern</strong>
-                                There may be unnecessary discount leakage if higher-value customers would have spent similarly under the capped offer.
+                                There is a $3,500 discount cost divergence (+79.5%) without an obvious proportional surge in guest count.
                             </div>
                             <div>
                                 <strong style="font-family: var(--font-mono); font-size: 11px; color: #B45309; text-transform: uppercase; display: block; margin-bottom: 3px;">Verify</strong>
-                                Compare check-size distribution, item mix, and redemption behavior between the two promotions.
+                                Compare pre-discount check distribution, item mix, and repeat customer recurrence between the two promotions.
                             </div>
                             <div>
                                 <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--forest-deep, #0E1F1B); text-transform: uppercase; display: block; margin-bottom: 3px;">Finding</strong>
@@ -1857,30 +1858,30 @@
                     <div class="snapshot-card rank-first" style="margin-bottom: 2rem;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem;">
                             <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase;">LEVEL 1 // SNAPSHOT VERSION &bull; DECISION QUEUE RANKING</span>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: #E11D48; font-weight: 700; text-transform: uppercase;">PRIORITY 02 &bull; HIGH ACTION CANDIDATE</span>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: #0F766E; font-weight: 700; text-transform: uppercase;">PRIORITY 02 &bull; HIGH ACTION CANDIDATE</span>
                         </div>
                         <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
-                            Promotion Margin Leakage (Offer B vs Offer A)
+                            F-02: Promotion Margin Leakage (Offer B vs Offer A)
                         </h4>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin-bottom: 1.25rem;">
                             <div>
-                                <strong style="color: #0F766E;">Observed:</strong> The 10% offer costs an additional $3,700 per month compared with the capped structure across 940 redeemed checks. [SYNTHETIC EXAMPLE]
+                                <strong style="color: #0F766E;">Observed:</strong> The 10% offer costs an additional $3,500 across 940 redeemed checks over 60 days ($1,750 / mo). [SYNTHETIC DEMONSTRATION DATA]
                             </div>
                             <div>
-                                <strong style="color: #8C6621;">Inferred:</strong> The additional discount expense is not accompanied by a proportionate increase in check size ($78.20 avg pre-discount check for 10% vs $74.50 for $5-off; only +$3.70 gross spend for +$3.90 added discount cost).
+                                <strong style="color: #8C6621;">Inferred:</strong> Pre-discount check for Offer B ($84.00) vs Offer A ($74.50) yields +$9.50 gross spend, but discount delta (-$3.40) and food cost (-$3.80) leaves only +$2.30 net contribution, failing to justify $3,500 in excess discount expense.
                             </div>
                             <div>
-                                <strong style="color: #B45309;">Verify:</strong> Compare similar customers/orders and evaluate whether the uncapped offer produces incremental spending above the capped threshold.
+                                <strong style="color: #B45309;">Verify:</strong> Check gross margin on items ordered by Offer B checks between $80 and $140.
                             </div>
                             <div>
-                                <strong style="color: var(--forest-deep, #0E1F1B);">Decision Priority:</strong> <strong>Rank 2 (High).</strong> The potential financial benefit is measurable ($2,800–$4,200/mo) and changing or testing the promotion structure carries very low operational friction.
+                                <strong style="color: var(--forest-deep, #0E1F1B);">Decision Priority:</strong> <strong>Rank 2 (High).</strong> Measurable financial recapture ($1,750/mo) with very low implementation friction (single POS rule toggle).
                             </div>
                         </div>
                         <div style="border-top: 1px solid var(--border-light); padding-top: 0.85rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; font-family: var(--font-mono); font-size: 11px;">
-                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>~$2,800–$4,200/mo</strong></div>
-                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #0F766E;">Moderate (74%)</strong></div>
-                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">FRICTION</span><strong style="color: #0F766E;">Low (POS Rule Update)</strong></div>
-                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong style="color: #E11D48;">Rank 2 &bull; High Priority</strong></div>
+                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>$1,750/mo</strong></div>
+                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #0F766E;">High</strong></div>
+                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">FRICTION</span><strong style="color: #0F766E;">Very Low (POS Toggle)</strong></div>
+                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong style="color: #0F766E;">Rank 2 &bull; Execute Test</strong></div>
                         </div>
                     </div>
 
@@ -1896,7 +1897,7 @@
                                 </h4>
                             </div>
                             <span style="font-family: var(--font-mono); font-size: 10.5px; background: rgba(197, 160, 89, 0.15); color: #C5A059; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(197, 160, 89, 0.3);">
-                                SYNTHETIC EXAMPLE &bull; MULTI-SOURCE ANALYSIS
+                                SYNTHETIC DEMONSTRATION DATA
                             </span>
                         </div>
 
@@ -1911,7 +1912,7 @@
                                         <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">The 10% Offer Drives Larger Checks</h5>
                                         <div style="font-family: var(--font-mono); font-size: 10px; color: #FBBF24; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: WEAK / MODERATE</div>
                                         <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.75); margin: 0;">
-                                            Redeemed 10% checks show average gross spend of $78.20 vs $74.50 for $5-off. However, the +$3.70 spend gain is fully consumed by the +$3.90 added discount cost, producing negative net revenue per redemption.
+                                            Redeemed 10% checks show average gross spend of $84.00 vs $74.50 for $5-off. However, the +$9.50 gross spend gain produces only +$2.30 in net contribution after discount and food costs, failing to justify $3,500 in excess discount expense.
                                         </p>
                                     </div>
 
@@ -1962,23 +1963,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td><strong>Option 1: Replace 10% uncapped with flat $5 off $50+</strong></td>
-                                                <td>Potentially meaningful (~$3,700/mo)</td>
-                                                <td style="color: #4ADE80;">Very Low (POS update)</td>
-                                                <td style="color: #FBBF24;">Possible minor drop in redemption appeal</td>
-                                                <td>High upside, but may blunt promotional headline power</td>
-                                            </tr>
                                             <tr style="background: rgba(74, 222, 128, 0.06);">
-                                                <td><strong>Option 2: Cap the 10% discount at $7.50 maximum</strong></td>
-                                                <td style="color: #4ADE80;">Meaningful (~$2,900/mo)</td>
-                                                <td style="color: #4ADE80;">Low (POS discount rule)</td>
-                                                <td style="color: #4ADE80;">Negligible (82% of guests unaffected)</td>
-                                                <td><strong>Recommended First Test &bull; Lowest disruption</strong></td>
+                                                <td><strong>Option 1: Convert Offer B to capped $5 discount on $50+</strong></td>
+                                                <td style="color: #4ADE80;">$1,750 / mo ($21,000 / yr)</td>
+                                                <td style="color: #4ADE80;">Very Low (POS rule update)</td>
+                                                <td style="color: #4ADE80;">Negligible (82% unaffected)</td>
+                                                <td><strong>Signal Recommended Move &bull; Immediate recapture</strong></td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Option 3: Increase threshold to 10% off $75+ or $100+</strong></td>
-                                                <td>Variable (~$1,800/mo)</td>
+                                                <td><strong>Option 2: Cap the 10% discount at $7.50 maximum</strong></td>
+                                                <td style="color: #4ADE80;">~$1,450 / mo ($17,400 / yr)</td>
+                                                <td style="color: #4ADE80;">Low (POS discount rule)</td>
+                                                <td style="color: #4ADE80;">Negligible (Preserves 10% copy)</td>
+                                                <td>Secondary test if operator insists on retaining % headline</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Option 3: Increase threshold to 10% off $75+</strong></td>
+                                                <td>Variable (~$900/mo)</td>
                                                 <td style="color: #4ADE80;">Low</td>
                                                 <td style="color: #F87171;">Risk of lower table conversion on smaller parties</td>
                                                 <td>Secondary option if cap test shows no conversion dip</td>
@@ -1989,7 +1990,7 @@
 
                                 <div class="takeaway-banner takeaway-dark" style="margin-top: 1.5rem;">
                                     <div style="max-width: 760px;">
-                                        <strong>The Recommended First Test:</strong> Test Option 2 (capping the 10% offer at $7.50 max for a 3-week pilot). It preserves the high-converting “10% Off” headline for 82% of diners while eliminating runaway margin loss on large checks that would have ordered anyway.
+                                        <strong>The Recommended First Test:</strong> Convert Offer B into a capped $5 discount on $50+ purchases for 30 days and monitor redemption rate and check-size distribution. It eliminates margin transfer on large checks while preserving conversion.
                                         <div style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; margin-top: 4px; font-weight: 700;">
                                             Takeaway: Signal does not automatically kill promotions to save money—it tests how to preserve marketing leverage while plugging unearned margin leakage.
                                         </div>

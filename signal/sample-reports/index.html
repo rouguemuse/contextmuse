@@ -7,28 +7,27 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-MVV7WNL42L');
     </script>
     <script src="/assets/js/analytics.js" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signal Sample Diagnostic Report | Context &amp; Muse</title>
-    <meta name="description" content="View a sample of a Signal operational intelligence diagnostic brief using a Synthetic Demonstration Dataset, showing priority findings, financial exposure estimates, and floor validation plans.">
+    <title>Signal Canonical Diagnostic Sample Report | Context &amp; Muse</title>
+    <meta name="description" content="View the full canonical Signal Diagnostic Brief for a 120-seat casual dining restaurant, featuring four synthesized operational findings, epistemic evidence ledger, and 30-day measurement plan based on Synthetic Demonstration Data.">
     <link rel="canonical" href="https://www.contextmuse.com/signal/sample-reports/">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Signal Sample Diagnostic Report | Context &amp; Muse">
-    <meta property="og:description" content="View a sample of a Signal operational intelligence diagnostic brief using a Synthetic Demonstration Dataset, showing priority findings, financial exposure estimates, and floor validation plans.">
+    <meta property="og:title" content="Signal Canonical Diagnostic Sample Report | Context &amp; Muse">
+    <meta property="og:description" content="A comprehensive operational intelligence diagnostic brief: 60-day telemetry, 4 synthesized findings, financial exposure models, and 30-day floor validation plans using Synthetic Demonstration Data.">
     <meta property="og:url" content="https://www.contextmuse.com/signal/sample-reports/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Signal Sample Diagnostic Report | Context &amp; Muse">
-    <meta name="twitter:description" content="View a sample of a Signal operational intelligence diagnostic brief using a Synthetic Demonstration Dataset, showing priority findings, financial exposure estimates, and floor validation plans.">
+    <meta name="twitter:title" content="Signal Canonical Diagnostic Sample Report | Context &amp; Muse">
+    <meta name="twitter:description" content="A comprehensive operational intelligence diagnostic brief: 60-day telemetry, 4 synthesized findings, financial exposure models, and 30-day floor validation plans using Synthetic Demonstration Data.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
@@ -43,9 +42,13 @@
             --text-primary: #0E1F1B;
             --text-secondary: #4A5568;
             --border-light: rgba(16, 33, 29, 0.12);
+            --border-subtle: rgba(16, 33, 29, 0.08);
             --accent-teal: #0F766E;
-            --accent-teal-bright: #C5A059;
+            --accent-teal-bright: #2DD4BF;
+            --accent-gold: #C5A059;
+            --accent-gold-dark: #8C6621;
             --accent-red: #A83A32;
+            --code-bg: #142823;
         }
 
         .report-hero {
@@ -56,39 +59,40 @@
         }
         .report-badge {
             font-family: var(--font-mono);
-            font-size: 10.5px;
+            font-size: 11px;
             color: #C5A059;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             font-weight: 700;
             display: inline-block;
             margin-bottom: 1rem;
-            background: rgba(45, 212, 191, 0.12);
-            padding: 4px 10px;
-            border-radius: 3px;
+            background: rgba(197, 160, 89, 0.15);
+            padding: 5px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
         }
         .report-title {
             font-family: var(--font-serif);
-            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+            font-size: clamp(2.3rem, 4.2vw, 3.4rem);
             font-weight: 400;
-            line-height: 1.15;
+            line-height: 1.18;
             margin-bottom: 1.25rem;
             color: #FAF9F5;
         }
         .report-lead {
             font-size: 1.15rem;
             line-height: 1.65;
-            color: rgba(250, 249, 245, 0.75);
-            max-width: 760px;
+            color: rgba(250, 249, 245, 0.8);
+            max-width: 780px;
             margin-bottom: 2rem;
         }
 
         .report-section {
-            padding: 5rem 0;
+            padding: 4.5rem 0;
             background: var(--bg-body);
         }
         .report-container {
-            max-width: 860px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -96,7 +100,7 @@
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 8px;
-            padding: clamp(2rem, 5vw, 3.5rem);
+            padding: clamp(2rem, 5vw, 3.75rem);
             box-shadow: 0 10px 30px rgba(16, 33, 29, 0.04);
             margin-bottom: 3.5rem;
         }
@@ -105,98 +109,201 @@
             justify-content: space-between;
             align-items: flex-start;
             border-bottom: 2px solid var(--text-primary);
-            padding-bottom: 1.5rem;
-            margin-bottom: 2rem;
+            padding-bottom: 1.75rem;
+            margin-bottom: 2.25rem;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         .paper-id {
             font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 11.5px;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.06em;
+            line-height: 1.6;
         }
         
         .finding-card {
             border: 1px solid var(--border-light);
-            border-left: 4px solid var(--accent-teal);
+            border-left: 5px solid var(--accent-teal);
             background: #FAF9F5;
-            border-radius: 4px;
-            padding: 1.75rem;
-            margin-bottom: 2rem;
+            border-radius: 6px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
         }
         .finding-card.critical {
             border-left-color: var(--accent-red);
         }
+        .finding-card.moderate {
+            border-left-color: var(--accent-gold);
+        }
+        .finding-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
         .finding-title {
             font-family: var(--font-serif);
-            font-size: 1.35rem;
+            font-size: 1.55rem;
             color: var(--text-primary);
-            margin: 0 0 0.5rem 0;
+            margin: 0;
             font-weight: 500;
         }
-        .finding-meta {
+        .finding-priority-tag {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 3px 9px;
+            border-radius: 3px;
+        }
+        .tag-investigate {
+            background: rgba(168, 58, 50, 0.12);
+            color: var(--accent-red);
+            border: 1px solid rgba(168, 58, 50, 0.3);
+        }
+        .tag-test {
+            background: rgba(197, 160, 89, 0.18);
+            color: var(--accent-gold-dark);
+            border: 1px solid rgba(197, 160, 89, 0.35);
+        }
+        .tag-plan {
+            background: rgba(15, 118, 110, 0.12);
+            color: var(--accent-teal);
+            border: 1px solid rgba(15, 118, 110, 0.25);
+        }
+
+        .finding-meta-strip {
             font-family: var(--font-mono);
             font-size: 11px;
             color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: flex;
-            gap: 1rem;
+            gap: 1.25rem;
             flex-wrap: wrap;
-        }
-        .finding-body {
-            font-size: 14.5px;
-            line-height: 1.6;
-            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.75rem;
         }
         
-        .exposure-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-            margin: 2rem 0;
+        .field-group {
+            margin-bottom: 1.25rem;
         }
-        @media (max-width: 650px) {
-            .exposure-grid { grid-template-columns: 1fr; }
+        .field-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-teal);
+            display: block;
+            margin-bottom: 0.25rem;
         }
-        .exposure-box {
+        .field-value {
+            font-size: 14.5px;
+            line-height: 1.62;
+            color: var(--text-primary);
+        }
+
+        .exposure-box-styled {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
         }
-        .exposure-num {
+        .exposure-stat-label {
             font-family: var(--font-mono);
-            font-size: 1.8rem;
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        .exposure-stat-num {
+            font-family: var(--font-mono);
+            font-size: 1.45rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin: 0.25rem 0;
+        }
+
+        .queue-table, .matrix-table, .ledger-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            margin: 1.5rem 0 2.5rem;
+        }
+        .queue-table th, .matrix-table th, .ledger-table th {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--text-primary);
+            background: #FAF9F5;
+        }
+        .queue-table td, .matrix-table td, .ledger-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .queue-table tr:hover, .matrix-table tr:hover, .ledger-table tr:hover {
+            background: rgba(15, 118, 110, 0.02);
+        }
+
+        .callout-box {
+            background: rgba(15, 118, 110, 0.04);
+            border: 1px solid rgba(15, 118, 110, 0.2);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .callout-box strong {
+            color: var(--accent-teal);
+        }
+
+        .cta-box-paper {
+            background: #0E1F1B;
+            color: #FAF9F5;
+            border-radius: 6px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-top: 3.5rem;
         }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Signal Benchmark & Sample Reports",
-  "url": "https://www.contextmuse.com/signal/sample-reports/",
-  "provider": {
-    "@type": "Organization",
-    "name": "Context & Muse",
-    "url": "https://www.contextmuse.com/"
-  },
-  "description": "Example diagnostic reports and decision models demonstrating unit-economics leakage detection and priority rankings."
-}
+    {
+      "@context": "https://schema.org",
+      "@type": "Report",
+      "headline": "Signal Canonical Diagnostic Sample Brief",
+      "description": "Full diagnostic operational brief based on a 60-day Synthetic Demonstration Dataset, demonstrating the four-layer epistemic findings, exposure models, and floor validation plans.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Context & Muse",
+        "url": "https://www.contextmuse.com"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Jayme Volstad"
+      }
+    }
     </script>
 </head>
 <body>
+    <!-- Skip Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navbar -->
     <!-- Navbar -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
@@ -234,7 +341,7 @@
                     <div class="nav-dropdown-content">
                         <a href="/signal/" class="nav-dropdown-link">Signal</a>
                         <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
+                    </div>
                 </details>
                 <a href="/creative/" class="nav-link">Creative</a>
                 <a href="/about/" class="nav-link">About</a>
@@ -247,16 +354,16 @@
         <header class="report-hero">
             <div class="container">
                 <div style="margin-bottom: 1.5rem;">
-                    <a href="/signal/" style="font-family: var(--font-mono); font-size: 11px; text-decoration: none; color: #C5A059; font-weight: bold;">&larr; Back to Signal Overview</a>
+                    <a href="/signal/" style="font-family: var(--font-mono); font-size: 11px; text-decoration: none; color: #C5A059; font-weight: bold;">&larr; Back to Signal Product Overview</a>
                 </div>
-                <span class="report-badge">SYNTHETIC OPERATIONAL BRIEF</span>
-                <h1 class="report-title">Signal Sample Diagnostic</h1>
+                <span class="report-badge">SYNTHETIC DEMONSTRATION DATA &bull; CANONICAL DIAGNOSTIC BRIEF</span>
+                <h1 class="report-title">Signal Diagnostic Operational Brief</h1>
                 <p class="report-lead">
-                    A structured demonstration of the four-layer epistemic findings, financial exposure models, and floor-validation protocols generated from a Synthetic Demonstration Dataset.
+                    A comprehensive demonstration of Signal’s decision compression engine. Every finding is structured through an explicit 12-field epistemic schema, cross-analyzing multiple data reports without jumping to conclusions.
                 </p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="/signal/intake/?tier=diagnostic" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Book a Signal Diagnostic ($595) &rarr;</a>
-                    <a href="/signal/#pricing" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">View Engagement Ladder</a>
+                    <a href="/signal/demo/" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Open Interactive Demo</a>
                 </div>
             </div>
         </header>
@@ -264,87 +371,753 @@
         <section class="report-section">
             <div class="container report-container">
                 <div class="report-paper">
+                    
+                    <!-- 1. COVER & METADATA -->
                     <div class="paper-header">
                         <div>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.25rem;">SIGNAL INTELLIGENCE AUDIT</span>
-                            <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin: 0; color: var(--text-primary); font-weight: 500;">Synthetic Demonstration Dataset &bull; Hospitality Group</h2>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.35rem;">SIGNAL OPERATIONAL INTELLIGENCE &bull; DIAGNOSTIC LEVEL</span>
+                            <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin: 0 0 0.35rem 0; color: var(--text-primary); font-weight: 500;">
+                                Mid-Size Casual Dining (120 Seats)
+                            </h2>
+                            <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
+                                Client Ref: Confidential Client Scenario &bull; Audit ID: SIG-2026-CANONICAL
+                            </span>
                         </div>
-                        <div class="paper-id">
-                            <div>Audit ID: SIG-DEMO-2026</div>
-                            <div>Dataset: 90 Days POS &bull; 14,280 Checks</div>
+                        <div class="paper-id" style="text-align: right;">
+                            <div><strong>Classification:</strong> SYNTHETIC DEMONSTRATION DATA</div>
+                            <div><strong>Period:</strong> 60 Days Analyzed</div>
+                            <div><strong>Net Sales:</strong> $312,450.00 &bull; 9,420 Checks</div>
+                            <div><strong>Labor Ratio:</strong> 22.0% ($68,739.00)</div>
                         </div>
                     </div>
 
-                    <!-- Executive Summary -->
+                    <!-- NOTICE BANNER -->
+                    <div style="background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 4px; padding: 0.85rem 1.25rem; margin-bottom: 2.5rem; font-size: 12.5px; line-height: 1.5; color: var(--text-primary);">
+                        <strong>Source Notice:</strong> All metrics, transactions, and logs presented below originate from the frozen <strong>Synthetic Demonstration Dataset</strong>. Baseline operational figures ($312,450 net sales, 9,420 orders, $33.17 avg check, 318.5 kitchen OT hours, 68 manager voids) are maintained consistently across all Signal demo surfaces.
+                    </div>
+
+                    <!-- 2. EXECUTIVE DECISION QUEUE -->
+                    <div style="margin-bottom: 3.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">01 // Executive Decision Queue</span>
+                        <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
+                            Signal compresses raw reports into a prioritized queue. These are the few high-conviction decisions surfaced after cross-evaluating financial exposure, operational friction, and evidence certainty:
+                        </p>
+
+                        <div style="overflow-x: auto;">
+                            <table class="queue-table">
+                                <thead>
+                                    <tr>
+                                        <th>Finding</th>
+                                        <th>Decision Priority</th>
+                                        <th>Financial Exposure</th>
+                                        <th>Confidence</th>
+                                        <th>Friction</th>
+                                        <th>Signal Decision / First Move</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>F-01</strong><br><span style="font-size: 12px; color: var(--text-secondary);">Peak-Period Throughput</span></td>
+                                        <td><span class="finding-priority-tag tag-investigate">Investigate First</span></td>
+                                        <td><strong>$2,800–$4,500 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$8,026 60d measured</span></td>
+                                        <td>Moderate</td>
+                                        <td>Low–Mod</td>
+                                        <td>Shift 2.5 prep hours to morning; throttle 3P tablets during 6:30–7:30 PM peak line backlog.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-02</strong><br><span style="font-size: 12px; color: var(--text-secondary);">Promotion Structure</span></td>
+                                        <td><span class="finding-priority-tag tag-test">Execute Test</span></td>
+                                        <td><strong>$1,750 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$3,500 60d measured</span></td>
+                                        <td>High</td>
+                                        <td>Very Low</td>
+                                        <td>Cap Offer B at $5 discount on $50+ purchases for 30 days; evaluate redemption and check distribution.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-03</strong><br><span style="font-size: 12px; color: var(--text-secondary);">Modifier Erosion</span></td>
+                                        <td><span class="finding-priority-tag tag-plan">Plan Menu Update</span></td>
+                                        <td><strong>$1,221 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$2,443 60d measured</span></td>
+                                        <td>High</td>
+                                        <td>Very Low</td>
+                                        <td>Reprice only the 4 affected modifiers (+Bacon, +Truffle, +Cheese, +GF Bun) in POS backend; do not rebuild menu.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-04</strong><br><span style="font-size: 12px; color: var(--text-secondary);">Discount Procedure</span></td>
+                                        <td><span class="finding-priority-tag tag-investigate">Investigate First</span></td>
+                                        <td><strong>$820 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$1,640 60d measured</span></td>
+                                        <td>Moderate</td>
+                                        <td>Low</td>
+                                        <td>Create dedicated Shift Meal POS key with preset caps; separate procedural training from disciplinary action.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 3. DATA COVERAGE & LIMITATIONS -->
+                    <div style="margin-bottom: 3.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">02 // Data Coverage &amp; Epistemic Limitations</span>
+                        <div style="background: #FAF9F5; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; font-size: 13.5px; line-height: 1.65; color: var(--text-primary);">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 1rem;">
+                                <div>
+                                    <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--accent-teal); display: block; margin-bottom: 0.35rem;">Records Ingested</strong>
+                                    &bull; 60 Days POS Sales Summary by Day<br>
+                                    &bull; Hourly Order Volumes &amp; Daypart Split<br>
+                                    &bull; Check Discounts &amp; Comp Transaction Log<br>
+                                    &bull; Void Summary by Approval ID &amp; Timestamp<br>
+                                    &bull; Payroll Summary &amp; Labor Cost by Role
+                                </div>
+                                <div>
+                                    <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--accent-gold-dark); display: block; margin-bottom: 0.35rem;">Records Unavailable (Limitations)</strong>
+                                    &bull; Individual station KDS bump logs (fire-to-window times approximated from check print times)<br>
+                                    &bull; Guest-level loyalty IDs across non-promotional checks<br>
+                                    &bull; Real-time distributor inventory API feeds
+                                </div>
+                            </div>
+                            <p style="margin: 0; font-size: 12.5px; color: var(--text-secondary); border-top: 1px solid var(--border-subtle); padding-top: 0.75rem;">
+                                <em>Signal Rule:</em> We never present an inference as an established fact. Where records are absent, exposure ranges are modeled conservatively, and specific floor checks are prescribed before capital or operational commitments are made.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. CANONICAL FINDINGS (FULL 12-FIELD SCHEMA) -->
+                    <div style="margin-bottom: 3.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 1.5rem;">03 // Canonical Synthesized Findings</span>
+
+                        <!-- F-01 -->
+                        <div class="finding-card critical" id="f-01">
+                            <div class="finding-title-row">
+                                <h3 class="finding-title">F-01 — Peak-Period Throughput / Margin Leakage</h3>
+                                <span class="finding-priority-tag tag-investigate">Investigate First</span>
+                            </div>
+                            <div class="finding-meta-strip">
+                                <span>Finding ID: F-01</span>
+                                <span>Confidence: Moderate</span>
+                                <span>Implementation Friction: Low to Moderate</span>
+                                <span>Classification: Multi-Signal Intersection</span>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Observed</span>
+                                <div class="field-value">
+                                    Kitchen overtime reached 318.5 hours ($6,846 overtime premium) across the 60-day period. 42 of 68 manager voids ($1,180 of $1,840 total void value, averaging $28.10) concentrated during Friday and Saturday dinner services between 6:00 PM and 8:30 PM, where check velocity dropped by 18% relative to midday baseline.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Intersection</span>
+                                <div class="field-value">
+                                    Kitchen overtime payroll spikes co-occur precisely with full-ticket service recovery voids and ticket latency spikes during peak weekend dinner volume (6:00–8:30 PM), revealing that labor expenditure increases at the exact window where kitchen throughput deteriorates.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Inferred</span>
+                                <div class="field-value">
+                                    Kitchen line saturation during the weekend dinner peak creates compounding ticket delays exceeding 28 minutes, forcing front-of-house managers to execute full-ticket comp voids ($28.10 avg) to salvage guest relations while back-of-house staff burns premium overtime rates attempting to clear the backlog.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Confidence</span>
+                                <div class="field-value">
+                                    <strong>Moderate.</strong> High confidence on POS void timestamps and payroll overtime hours; moderate confidence on direct causality between kitchen delay and voids until pass fire-to-window logs are audited on the floor.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Financial Exposure</span>
+                                <div class="exposure-box-styled">
+                                    <div>
+                                        <div class="exposure-stat-label">Measured Direct Exposure</div>
+                                        <div class="exposure-stat-num" style="color: var(--accent-red);">$8,026 / 60d</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">$6,846 OT + $1,180 rush voids</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Estimated Monthly Leak</div>
+                                        <div class="exposure-stat-num">$2,800 – $4,500</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Includes 1.2 lost turns / station</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Annualized Risk</div>
+                                        <div class="exposure-stat-num">$33,600 – $54,000</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Uncapped line drag</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Verify on Floor</span>
+                                <div class="field-value">
+                                    Audit pass fire-to-window duration on 20 consecutive tickets between 6:30 PM and 7:30 PM on two consecutive Fridays. Cross-reference manager void approval reasons against KDS prep times for all comps over $25.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Implementation Friction</span>
+                                <div class="field-value">
+                                    <strong>Low to Moderate.</strong> Does not require kitchen layout redesign or expensive POS hardware upgrades.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Candidate Interventions</span>
+                                <div class="field-value">
+                                    &bull; <strong>Option A:</strong> Dynamic third-party delivery throttling when active KDS tickets exceed 16 orders.<br>
+                                    &bull; <strong>Option B:</strong> Shift 2.5 kitchen prep hours per day from peak evening line shift to a dedicated morning prep shift (8:00–10:30 AM) paid at standard time.<br>
+                                    &bull; <strong>Option C:</strong> Re-sequence station expeditor role and implement pre-printed bill presentations.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Signal Decision</span>
+                                <div class="field-value">
+                                    <strong>Smallest defensible next move:</strong> Test intermediate morning prep shift to remove 12 weekly overtime prep hours from peak dinner rush, and throttle delivery tablets during peak 6:30–7:30 PM rush.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Measure Next</span>
+                                <div class="field-value">
+                                    Track Friday/Saturday kitchen overtime hours, pass fire-to-window ticket duration, and dinner rush void dollar volume over 30 days.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- F-02 -->
+                        <div class="finding-card moderate" id="f-02">
+                            <div class="finding-title-row">
+                                <h3 class="finding-title">F-02 — Promotion Structure Leakage</h3>
+                                <span class="finding-priority-tag tag-test">Execute Test</span>
+                            </div>
+                            <div class="finding-meta-strip">
+                                <span>Finding ID: F-02</span>
+                                <span>Confidence: High</span>
+                                <span>Implementation Friction: Very Low</span>
+                                <span>Focus: Capped vs Uncapped Promotion Economics</span>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Observed</span>
+                                <div class="field-value">
+                                    Offer A ($5 off $50+) was redeemed 880 times, totaling $4,400 in discounts ($5.00 fixed discount, pre-discount check average $74.50). Offer B (10% off uncapped) was redeemed 940 times, totaling $7,900 in discounts ($8.40 average discount, pre-discount check average $84.00). Above $50, Offer B discounts scaled linearly ($100 check = $10 discount; $150 check = $15 discount).
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Intersection</span>
+                                <div class="field-value">
+                                    Check-size distribution crossed with promotion redemption records establishes that Offer B cost $3,500 more than Offer A (+79.5% discount expense) while producing only $9.50 in higher gross check spend ($84.00 vs $74.50), yielding zero statistically meaningful expansion in high-margin dessert or beverage attachment.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Inferred</span>
+                                <div class="field-value">
+                                    The uncapped 10% promotion is subsidizing high-spend diners who would have spent $75+ regardless. The additional $3,500 discount expense functions as margin transfer rather than demand generation.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Confidence</span>
+                                <div class="field-value">
+                                    <strong>High.</strong> Complete POS transactional capture across 1,820 promotion checks with unambiguous dollar and check distribution data.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Financial Exposure</span>
+                                <div class="exposure-box-styled">
+                                    <div>
+                                        <div class="exposure-stat-label">Measured Direct Exposure</div>
+                                        <div class="exposure-stat-num" style="color: var(--accent-gold-dark);">$3,500 / 60d</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Excess discount vs capped structure</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Monthly Impact</div>
+                                        <div class="exposure-stat-num">$1,750 / mo</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Direct unrecaptured discount leak</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Annualized Exposure</div>
+                                        <div class="exposure-stat-num">$21,000 / yr</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Fully recoverable with 1 POS setting</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Verify on Floor</span>
+                                <div class="field-value">
+                                    Verify gross margin on items ordered by Offer B checks between $80 and $140. Check whether loyalty ID recurrence differs between Offer A and Offer B redeemers.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Implementation Friction</span>
+                                <div class="field-value">
+                                    <strong>Very Low.</strong> Requires a single rule change in POS discount management software.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Candidate Interventions</span>
+                                <div class="field-value">
+                                    &bull; <strong>Option A:</strong> Cap Offer B at $5 maximum discount (Spend $50+, Save $5).<br>
+                                    &bull; <strong>Option B:</strong> Retain 10% discount but establish a $7.50 maximum discount cap.<br>
+                                    &bull; <strong>Option C:</strong> Restructure Offer B into a value-add promotion (Free appetizer with $60 spend) preserving clean cash margin.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Signal Decision</span>
+                                <div class="field-value">
+                                    <strong>Smallest defensible next move:</strong> Convert Offer B into a capped $5 discount on $50+ purchases for 30 days and monitor redemption rate and check-size distribution.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Measure Next</span>
+                                <div class="field-value">
+                                    Redemption frequency, average check above $50, and total discount dollars over the next 30 days.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- F-03 -->
+                        <div class="finding-card moderate" id="f-03">
+                            <div class="finding-title-row">
+                                <h3 class="finding-title">F-03 — Modifier Pricing Erosion</h3>
+                                <span class="finding-priority-tag tag-plan">Plan Menu Update</span>
+                            </div>
+                            <div class="finding-meta-strip">
+                                <span>Finding ID: F-03</span>
+                                <span>Confidence: High</span>
+                                <span>Implementation Friction: Very Low</span>
+                                <span>Principle: Right-Sized Intervention</span>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Observed</span>
+                                <div class="field-value">
+                                    Four high-frequency menu modifiers (Add Bacon, Sub Truffle Fries, Extra Cheese, Gluten-Free Bun) appeared on 3,240 checks across 60 days. POS pricing: Bacon +$1.00 (ingredient + prep delta $1.75), Truffle Fries +$1.50 (cost delta $2.60), Extra Cheese +$0.50 (cost delta $0.95), GF Bun +$1.00 (cost delta $1.80). Base entrees maintain 68% gross margin, but modified entrees drop to 54–58% margin.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Intersection</span>
+                                <div class="field-value">
+                                    Cross-referencing food cost recipe sheets with item modifier sales reveals that the top selling entrees maintain healthy margins until specific high-volume customizations are selected, eroding up to 14% margin points per dish.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Inferred</span>
+                                <div class="field-value">
+                                    Modifier prices were set historically without indexing against recent supplier ingredient inflation. Because these four modifications are selected on 34.4% of all specialty entree orders, modifier underpricing creates systemic margin leakage without driving incremental guest satisfaction.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Confidence</span>
+                                <div class="field-value">
+                                    <strong>High.</strong> Recipe cost cards verified against vendor invoices and cross-matched with 3,240 POS modifier item lines.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Financial Exposure</span>
+                                <div class="exposure-box-styled">
+                                    <div>
+                                        <div class="exposure-stat-label">Measured Direct Exposure</div>
+                                        <div class="exposure-stat-num" style="color: var(--accent-gold-dark);">$2,443 / 60d</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Direct contribution loss across 3,240 mods</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Monthly Impact</div>
+                                        <div class="exposure-stat-num">$1,221 / mo</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Pure gross profit margin deficit</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Annualized Recapture</div>
+                                        <div class="exposure-stat-num">$14,650 / yr</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Recoverable by changing 4 POS buttons</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Verify on Floor</span>
+                                <div class="field-value">
+                                    Confirm latest bacon, dairy, and gluten-free bread line-item prices on current distributor invoices.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Implementation Friction</span>
+                                <div class="field-value">
+                                    <strong>Very Low.</strong> No printed menu reprints required if entrees list "add-ons available at current pricing" or digital menus are used.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Candidate Interventions</span>
+                                <div class="field-value">
+                                    &bull; <strong>Option A (High-Friction):</strong> Completely re-engineer the entire modifier menu tree and pricing structure across all 48 entrees.<br>
+                                    &bull; <strong>Option B (Signal Recommended):</strong> Reprice only the 4 affected modifiers (+Bacon to $2.00, +Truffle Fries to $2.75, +Cheese to $1.00, +GF Bun to $2.00) in POS backend.<br>
+                                    &bull; <strong>Option C:</strong> Replace bulk modifier portions with standardized portion-control scoops.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Signal Decision</span>
+                                <div class="field-value">
+                                    <strong>The best answer is not always the biggest fix:</strong> Reprice the 4 specific modifiers in POS backend without altering base menu item prices; measure order volume and customer pushback for 30 days.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Measure Next</span>
+                                <div class="field-value">
+                                    Modifier selection percentage on top 5 entrees and realized margin contribution over the subsequent 30-day billing cycle.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- F-04 -->
+                        <div class="finding-card" id="f-04">
+                            <div class="finding-title-row">
+                                <h3 class="finding-title">F-04 — Discount Procedure Leakage</h3>
+                                <span class="finding-priority-tag tag-investigate">Investigate First</span>
+                            </div>
+                            <div class="finding-meta-strip">
+                                <span>Finding ID: F-04</span>
+                                <span>Confidence: Moderate</span>
+                                <span>Implementation Friction: Low</span>
+                                <span>Principle: Separate People Touching from People Causing</span>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Observed</span>
+                                <div class="field-value">
+                                    Manager discount code 'MGR-COMP-99' was applied to 142 checks totaling $2,840. 82 of these transactions ($1,640) occurred between 3:30 PM and 4:30 PM or post-midnight closing, applied to single-item beverage and sandwich orders rather than full guest table checks.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Intersection</span>
+                                <div class="field-value">
+                                    Time-of-day clustering, item composition (single meal items), and check ownership demonstrate that managerial override codes are being utilized during shift turnover and closing rather than during dining service.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Inferred</span>
+                                <div class="field-value">
+                                    Shift supervisors and lead servers are using the general manager comp code to record shift meals and employee break allowances because no designated employee meal code exists in the active POS configuration. This represents procedural shortcutting and training deficiency rather than intentional theft.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Confidence</span>
+                                <div class="field-value">
+                                    <strong>Moderate.</strong> Strong transactional pattern (time, item type, check size), but requires human floor confirmation that employees received these items as valid shift meals.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Financial Exposure</span>
+                                <div class="exposure-box-styled">
+                                    <div>
+                                        <div class="exposure-stat-label">Measured Direct Exposure</div>
+                                        <div class="exposure-stat-num" style="color: var(--accent-teal);">$1,640 / 60d</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">82 off-peak shift-change comp checks</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Monthly Impact</div>
+                                        <div class="exposure-stat-num">$820 / mo</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Discretionary code leakage</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Resolution Path</div>
+                                        <div class="exposure-stat-num" style="font-size: 1.15rem; color: var(--text-primary);">Procedure Fix</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Zero disciplinary disruption</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Verify on Floor</span>
+                                <div class="field-value">
+                                    Interview shift managers regarding the protocol used when line cooks or servers order shift meals. Cross-check punch clock in/out times for servers on the 10 highest MGR-COMP-99 tickets.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Implementation Friction</span>
+                                <div class="field-value">
+                                    <strong>Low.</strong> Adding a button and clarifying standard operating procedure requires zero capital expenditure.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Candidate Interventions</span>
+                                <div class="field-value">
+                                    &bull; <strong>Option A:</strong> Implement dedicated POS employee meal button with 50% discount cap and individual server PIN logging.<br>
+                                    &bull; <strong>Option B:</strong> Lock MGR-COMP-99 code to GM card swipe only.<br>
+                                    &bull; <strong>Option C:</strong> Issue disciplinary warning across front-of-house staff regarding unauthorized discount code usage.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Signal Decision</span>
+                                <div class="field-value">
+                                    <strong>Signal separates who touched the transaction from who caused the problem:</strong> Configure dedicated 'Shift Meal' discount key with preset operational limits, update manager SOPs, and reserve MGR-COMP-99 strictly for documented guest recovery.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">Measure Next</span>
+                                <div class="field-value">
+                                    Usage frequency of MGR-COMP-99 vs. new Shift Meal code, and total dollar comp volume over next 30 days.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 5. INTERVENTION PRIORITY MATRIX -->
+                    <div style="margin-bottom: 3.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">04 // Intervention Priority Matrix</span>
+                        <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
+                            Evaluating candidate operational moves by balancing annualized financial return against human implementation friction:
+                        </p>
+
+                        <div style="overflow-x: auto;">
+                            <table class="matrix-table">
+                                <thead>
+                                    <tr>
+                                        <th>Finding</th>
+                                        <th>Action Complexity</th>
+                                        <th>Reversibility</th>
+                                        <th>Staff Disruption</th>
+                                        <th>Annualized Return</th>
+                                        <th>Recommended Staging</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background: rgba(197, 160, 89, 0.04);">
+                                        <td><strong>F-02: Promo Cap</strong></td>
+                                        <td>POS setting change (5 min)</td>
+                                        <td>Immediate (toggle back)</td>
+                                        <td>None</td>
+                                        <td>$21,000 / yr</td>
+                                        <td><strong>Week 1 (Immediate)</strong></td>
+                                    </tr>
+                                    <tr style="background: rgba(197, 160, 89, 0.04);">
+                                        <td><strong>F-03: Reprice 4 Modifiers</strong></td>
+                                        <td>4 item price adjustments</td>
+                                        <td>Immediate</td>
+                                        <td>None</td>
+                                        <td>$14,650 / yr</td>
+                                        <td><strong>Week 1 (Immediate)</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-04: Shift Meal SOP</strong></td>
+                                        <td>Add POS key + 10-min huddle</td>
+                                        <td>High</td>
+                                        <td>Very Low</td>
+                                        <td>$9,840 / yr</td>
+                                        <td><strong>Week 2</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-01: Line &amp; Prep Resequencing</strong></td>
+                                        <td>Schedule adjustment + tablet throttling</td>
+                                        <td>High</td>
+                                        <td>Low to Moderate</td>
+                                        <td>$33,600 – $54,000 / yr</td>
+                                        <td><strong>Week 2–3 (Post floor audit)</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 6. WHAT TO TEST FIRST -->
+                    <div style="margin-bottom: 3.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">05 // What to Test First</span>
+                        
+                        <div class="callout-box">
+                            <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                                The Zero-Disruption 48-Hour Staging Protocol
+                            </h3>
+                            <p style="font-size: 14px; line-height: 1.65; color: var(--text-primary); margin: 0 0 1rem 0;">
+                                Rather than disrupting kitchen workflow or calling emergency manager meetings, operators should execute tests in order of least friction:
+                            </p>
+                            <ol style="font-size: 13.5px; line-height: 1.7; color: var(--text-secondary); margin: 0; padding-left: 1.25rem;">
+                                <li><strong>Day 1:</strong> Update the uncapped 10% POS rule to cap discount at $5 on checks above $50 (Finding F-02). Zero staff training required.</li>
+                                <li><strong>Day 1:</strong> Adjust prices on the 4 high-frequency modifiers (+Bacon to $2.00, +Truffle Fries to $2.75, +Cheese to $1.00, +GF Bun to $2.00) in POS backend (Finding F-03).</li>
+                                <li><strong>Day 3:</strong> Configure dedicated 'Staff Meal' discount key; communicate policy shift to lead supervisors at line huddle (Finding F-04).</li>
+                                <li><strong>Friday Evening:</strong> GM conducts 60-minute pass audit between 6:30 PM and 7:30 PM to verify pass ticket latency before adjusting prep call times (Finding F-01).</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- 7. 30-DAY MEASUREMENT PLAN -->
+                    <div style="margin-bottom: 3.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">06 // 30-Day Measurement Plan</span>
+                        
+                        <div style="overflow-x: auto;">
+                            <table class="queue-table">
+                                <thead>
+                                    <tr>
+                                        <th>Target Area</th>
+                                        <th>Baseline Metric (60d)</th>
+                                        <th>30-Day Evaluation Target</th>
+                                        <th>Data Source</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>F-01: Kitchen Overtime &amp; Voids</strong></td>
+                                        <td>159.2 hrs/mo OT ($3,423/mo premium); $590/mo peak voids</td>
+                                        <td>&lt; 90 hrs/mo OT; &lt; $200/mo peak rush voids</td>
+                                        <td>Weekly Payroll Export &bull; POS Void Log</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-02: Promotional Discount Ratio</strong></td>
+                                        <td>Offer B: $3,950/mo discount on $84.00 avg check</td>
+                                        <td>Offer B discount reduced to &lt; $2,350/mo with &ge; $78.00 avg check</td>
+                                        <td>POS Check Discounts Summary</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-03: Modifier Contribution</strong></td>
+                                        <td>-$1,221/mo margin deficit on 4 modified items</td>
+                                        <td>+$450/mo positive net margin delta on modified entrees</td>
+                                        <td>Menu Item Sales with Modifier Detail</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-04: MGR-COMP-99 Usage</strong></td>
+                                        <td>71 uses/mo ($1,420/mo), 58% off-peak shift transactions</td>
+                                        <td>&lt; 15 uses/mo, 100% attached to documented guest recovery</td>
+                                        <td>POS Comp Detail Report</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 8. EVIDENCE LEDGER & METHODOLOGY -->
                     <div style="margin-bottom: 2.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">Executive Summary</span>
-                        <p style="font-size: 15px; line-height: 1.65; color: var(--text-primary); margin: 0;">
-                            Analysis of 90 days of operational check transactions identified severe throughput compression during peak dinner shifts (18:30–20:30 Friday/Saturday). High ticket times trigger cascading modifier omissions and manager discount overrides. Resolving physical line bottlenecks and POS modifier bundling represents the highest ROI operational opportunity.
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">07 // Evidence Ledger &amp; Epistemic Traceability</span>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
+                            Signal enforces epistemic integrity: no finding is included without traceable source reports and explicit distinction between observed records and inferred hypotheses.
                         </p>
+
+                        <div style="overflow-x: auto;">
+                            <table class="ledger-table">
+                                <thead>
+                                    <tr>
+                                        <th>Claim ID</th>
+                                        <th>Finding</th>
+                                        <th>Source Report</th>
+                                        <th>Fields Used</th>
+                                        <th>Calculation Formula</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>CLM-01-01</strong></td>
+                                        <td>F-01</td>
+                                        <td>Labor &amp; Payroll Export</td>
+                                        <td>Kitchen OT Hours, Pay Rates</td>
+                                        <td>318.5 hrs * $21.50 differential = $6,846.00</td>
+                                        <td><span class="finding-priority-tag" style="background:#E6FFFA;color:#0F766E;">OBSERVED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLM-01-02</strong></td>
+                                        <td>F-01</td>
+                                        <td>POS Void Summary</td>
+                                        <td>Check ID, Timestamps, Void Amt</td>
+                                        <td>42 peak voids / 68 total = 61.8% of counts; $1,180 / $1,840 value = 64.1%</td>
+                                        <td><span class="finding-priority-tag" style="background:#E6FFFA;color:#0F766E;">OBSERVED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLM-01-03</strong></td>
+                                        <td>F-01</td>
+                                        <td>Cross-Signal Synthesis</td>
+                                        <td>Hourly Sales, Ticket Duration, Voids</td>
+                                        <td>Weekend ticket time (28.6m vs 14.2m) co-occurs with 64.1% of voids &amp; 71% of kitchen OT</td>
+                                        <td><span class="finding-priority-tag" style="background:#FEFCBF;color:#744210;">INFERRED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLM-02-01</strong></td>
+                                        <td>F-02</td>
+                                        <td>POS Discounts Report</td>
+                                        <td>Promo Name, Checks, Amounts</td>
+                                        <td>Offer A ($4,400 / 880 chk) vs Offer B ($7,900 / 940 chk). Delta = $3,500 excess</td>
+                                        <td><span class="finding-priority-tag" style="background:#E6FFFA;color:#0F766E;">OBSERVED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLM-02-02</strong></td>
+                                        <td>F-02</td>
+                                        <td>Check Size Distribution</td>
+                                        <td>Pre-Discount Avg Check, Item Mix</td>
+                                        <td>+$9.50 gross check lift - $3.40 discount delta - $3.80 food cost = +$2.30 net contribution</td>
+                                        <td><span class="finding-priority-tag" style="background:#EDF2F7;color:#2D3748;">DERIVED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLM-03-01</strong></td>
+                                        <td>F-03</td>
+                                        <td>Menu Item &amp; Modifiers</td>
+                                        <td>Modifier Order Count, Retail Price</td>
+                                        <td>3,240 checks with 4 specific modifiers (Bacon, Truffle, Cheese, GF Bun)</td>
+                                        <td><span class="finding-priority-tag" style="background:#E6FFFA;color:#0F766E;">OBSERVED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLM-03-02</strong></td>
+                                        <td>F-03</td>
+                                        <td>Distributor Invoice Deltas</td>
+                                        <td>Invoiced Unit Cost, Portion Cost</td>
+                                        <td>Bacon (-$0.75*1420) + Truffle (-$1.10*860) + Cheese (-$0.45*960) = -$2,443 net loss</td>
+                                        <td><span class="finding-priority-tag" style="background:#EDF2F7;color:#2D3748;">DERIVED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLM-04-01</strong></td>
+                                        <td>F-04</td>
+                                        <td>POS Comp Detail</td>
+                                        <td>Code, Timestamp, Items Comped</td>
+                                        <td>Code 'MGR-COMP-99': 142 checks ($2,840); 82 checks ($1,640) executed during shift shift turnover</td>
+                                        <td><span class="finding-priority-tag" style="background:#E6FFFA;color:#0F766E;">OBSERVED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLM-04-02</strong></td>
+                                        <td>F-04</td>
+                                        <td>Shift Punches vs Comps</td>
+                                        <td>Punch In/Out Times, Ticket Items</td>
+                                        <td>Single meals comped coincide with shift turnover; indicates procedure omission rather than theft</td>
+                                        <td><span class="finding-priority-tag" style="background:#FEFCBF;color:#744210;">INFERRED</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
-                    <!-- Exposure Estimates -->
-                    <div class="exposure-grid">
-                        <div class="exposure-box">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Estimated Monthly Leak</span>
-                            <div class="exposure-num" style="color: var(--accent-red);">$1,840 – $3,200</div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Primarily uncaptured modifiers &amp; peak table turn delays</span>
-                        </div>
-                        <div class="exposure-box">
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Primary Risk Area</span>
-                            <div class="exposure-num" style="font-size: 1.4rem; color: var(--accent-teal);">Peak Hour Throughput</div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Avg 11.4 min check settlement friction during peak rushes</span>
-                        </div>
-                    </div>
-
-                    <!-- Priority Finding 1 -->
-                    <div class="finding-card critical">
-                        <div class="finding-meta">
-                            <span>Finding 01 // CRITICAL</span>
-                            <span>Category: Menu Modifier Omissions</span>
-                            <span>Est. Exposure: $840/mo</span>
-                        </div>
-                        <h3 class="finding-title">Unenforced Customization Modifiers</h3>
-                        <div class="finding-body">
-                            <p style="margin-bottom: 0.75rem;">
-                                POS logs indicate 14.2% of high-volume specialty entrees contained freeform kitchen note modifications (e.g. "add bacon", "sub gluten-free crust") without corresponding chargeable button modifiers.
-                            </p>
-                            <strong>Floor Validation Plan:</strong>
-                            <p style="margin-top: 0.25rem; font-size: 13.5px; color: var(--text-secondary);">
-                                1. Audit line tickets at the pass during Friday dinner service.<br>
-                                2. Restructure POS menu categories with nested mandatory modifier prompts.<br>
-                                3. Track server-level modifier capture over a 14-day validation window.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Priority Finding 2 -->
-                    <div class="finding-card">
-                        <div class="finding-meta">
-                            <span>Finding 02 // MODERATE</span>
-                            <span>Category: Table Turn Friction</span>
-                            <span>Est. Exposure: $1,400/mo</span>
-                        </div>
-                        <h3 class="finding-title">Payment Settlement Bottleneck</h3>
-                        <div class="finding-body">
-                            <p style="margin-bottom: 0.75rem;">
-                                Timestamp analysis between "Check Printed" and "Check Closed" averaged 9.8 minutes between 19:00 and 21:00, compared to 3.2 minutes during lunch service. The delay reduces turn capacity by approximately 1.2 turns per peak station.
-                            </p>
-                            <strong>Recommended Action:</strong>
-                            <p style="margin-top: 0.25rem; font-size: 13.5px; color: var(--text-secondary);">
-                                Implement pay-at-table QR receipts or dedicated portable handheld terminals for floor staff during peak service windows.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- CTA Box inside Paper -->
-                    <div style="background: rgba(15, 118, 110, 0.05); border: 1px solid var(--accent-teal); border-radius: 6px; padding: 2rem; text-align: center; margin-top: 3rem;">
-                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; color: var(--text-primary); font-weight: 500;">Ready to uncover what’s leaking in your operations?</h3>
-                        <p style="font-size: 14px; color: var(--text-secondary); max-width: 550px; margin: 0 auto 1.5rem;">
-                            Send your raw POS exports or scheduling logs. Receive a complete prioritized diagnostic audit and actionable floor validation roadmap.
+                    <!-- CTA BOX -->
+                    <div class="cta-box-paper">
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.5rem;">NEXT ENGAGEMENT STEP</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; margin: 0 0 0.75rem 0; color: #FAF9F5; font-weight: 500;">
+                            Uncover What’s Leaking in Your Operations
+                        </h3>
+                        <p style="font-size: 14.5px; color: rgba(250, 249, 245, 0.8); max-width: 580px; margin: 0 auto 1.75rem; line-height: 1.6;">
+                            Upload 30 to 60 days of standard exports from your POS and payroll systems. Receive an operational diagnostic brief with prioritized findings, exposure models, and floor validation plans.
                         </p>
-                        <a href="/signal/intake/?tier=diagnostic" class="btn-magnetic" style="background: var(--accent-teal); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.8rem 1.75rem; border-radius: 4px; text-decoration: none; display: inline-block;">Start Your Signal Diagnostic ($595) &rarr;</a>
+                        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                            <a href="/signal/intake/?tier=diagnostic" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">Order Signal Diagnostic ($595) &rarr;</a>
+                            <a href="/signal/#pricing" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">View All Tiers ($0 / $195 / $595)</a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
