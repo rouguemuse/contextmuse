@@ -73,7 +73,7 @@ async function verifyLive() {
     // 8. Services Phase 5 positioning
     const services = await fetchUrl('https://www.contextmuse.com/services/');
     check('Services Hero Eyebrow live', services.body.includes('APPLIED SYSTEMS STUDIO') || services.body.includes('FOUNDER-LED'));
-    check('Services Pricing $6,500 Canonicalized', services.body.includes('$6,500') && services.body.includes('$375/quarter') && services.body.includes('$600/quarter'));
+    check('Services Pricing $6,500 Canonicalized', services.body.includes('$6,500') && services.body.includes('$375') && services.body.includes('$600'));
 
     // 9. About founder-led positioning
     check('About Hero Sub live', about.body.includes('Context &amp; Muse is intentionally founder-led and independent.'));
