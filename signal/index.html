@@ -792,6 +792,77 @@
             color: var(--text-secondary);
             margin: 0;
         }
+
+        /* Promotion Economics Flagship Showcase */
+        .divergence-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+        @media(max-width: 800px) {
+            .divergence-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 480px) {
+            .divergence-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+        .divergence-col {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+        }
+        .divergence-col.equal {
+            border-top: 3px solid var(--accent-teal, #0F766E);
+        }
+        .divergence-col.diverge {
+            border-top: 3px solid #E11D48;
+            background: rgba(225, 29, 72, 0.02);
+        }
+        .divergence-check-size {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+        .divergence-values {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--text-primary);
+        }
+        .divergence-gap {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+        .gap-zero { color: var(--accent-teal, #0F766E); }
+        .gap-leak { color: #E11D48; }
+
+        .cross-signal-metrics-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.25rem 0 2rem;
+        }
+        .cross-signal-pill {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            background: #FAF9F5;
+            color: var(--forest-deep, #0E1F1B);
+            border: 1px solid var(--border-light);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -917,7 +988,8 @@
         <div class="container sub-nav-container" style="justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
             <a href="#reporting-gap" class="sub-nav-link">The Step After Reporting</a>
             <a href="#intersections" class="sub-nav-link">Cross-Signal Architecture</a>
-            <a href="#same-data-depth" class="sub-nav-link" style="color: var(--accent-gold); font-weight: 600;">Same Data · Different Depth</a>
+            <a href="#same-data-depth" class="sub-nav-link">Same Data · Different Depth</a>
+            <a href="#promotion-economics" class="sub-nav-link" style="color: var(--accent-gold); font-weight: 600;">Promotion Economics</a>
             <a href="#comparison" class="sub-nav-link">Level Comparison</a>
             <a href="#capabilities" class="sub-nav-link">What Signal Investigates</a>
             <a href="#data-handoff" class="sub-nav-link">How Data Gets to Signal</a>
@@ -1596,7 +1668,342 @@
             </div>
         </section>
 
-        <!-- Section IV: Capability Progression Comparison Table -->
+        
+        <!-- Section IV: Promotion Economics Beyond the Discount Report (Flagship Cross-Signal Case) -->
+        <section id="promotion-economics" class="signal-section bg-light-panel">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">IV // FLAGSHIP OPERATIONAL AUDIT</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1.25rem 0; font-weight: 400; max-width: 900px;">
+                    Uncovering promotion economics hidden inside standard discount reports.
+                </h2>
+                <div style="max-width: 840px;">
+                    <p style="font-family: var(--font-sans); font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                        Discount reports usually show only three things: redemption counts, total discount dollars, and the sales volume attached to the promo code. But they fail to answer the single question that matters to the bottom line:
+                    </p>
+                    <div style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); font-weight: 500; margin-bottom: 1.5rem; line-height: 1.45;">
+                        “Is the additional discount expense from an uncapped promotion producing enough incremental value to justify itself?”
+                    </div>
+                </div>
+
+                <!-- Scenario Setup: The Divergence Model -->
+                <div class="scenario-card" style="margin-bottom: 2.5rem;">
+                    <div class="scenario-header">
+                        <div>
+                            <span class="scenario-pill">PROMOTION STRUCTURE EXPERIMENT &bull; SYNTHETIC DEMONSTRATION</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-primary); margin: 0.5rem 0 0 0; font-weight: 500;">
+                                Offer A ($5 Off $50+) vs. Offer B (10% Off Uncapped)
+                            </h3>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); background: #FAF9F5; padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border-light);">
+                            Threshold Behavior Demonstration
+                        </span>
+                    </div>
+                    <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem 0;">
+                        At exactly $50, both offers cost the restaurant identical discount dollars ($5.00). But as check size increases, the discount cost diverges dramatically:
+                    </p>
+
+                    <!-- Divergence Grid -->
+                    <div class="divergence-strip">
+                        <!-- $50 -->
+                        <div class="divergence-col equal">
+                            <div class="divergence-check-size">$50 Guest Check</div>
+                            <div class="divergence-values">
+                                <div><strong>Offer A ($5-off):</strong> $5.00</div>
+                                <div><strong>Offer B (10%):</strong> $5.00</div>
+                            </div>
+                            <div class="divergence-gap gap-zero">Divergence: $0.00 (Equal)</div>
+                        </div>
+                        <!-- $75 -->
+                        <div class="divergence-col diverge">
+                            <div class="divergence-check-size">$75 Guest Check</div>
+                            <div class="divergence-values">
+                                <div><strong>Offer A ($5-off):</strong> $5.00</div>
+                                <div><strong>Offer B (10%):</strong> $7.50</div>
+                            </div>
+                            <div class="divergence-gap gap-leak">Cost Gap: +$2.50 (+50%)</div>
+                        </div>
+                        <!-- $100 -->
+                        <div class="divergence-col diverge">
+                            <div class="divergence-check-size">$100 Guest Check</div>
+                            <div class="divergence-values">
+                                <div><strong>Offer A ($5-off):</strong> $5.00</div>
+                                <div><strong>Offer B (10%):</strong> $10.00</div>
+                            </div>
+                            <div class="divergence-gap gap-leak">Cost Gap: +$5.00 (+100%)</div>
+                        </div>
+                        <!-- $150 -->
+                        <div class="divergence-col diverge">
+                            <div class="divergence-check-size">$150 Guest Check</div>
+                            <div class="divergence-values">
+                                <div><strong>Offer A ($5-off):</strong> $5.00</div>
+                                <div><strong>Offer B (10%):</strong> $15.00</div>
+                            </div>
+                            <div class="divergence-gap gap-leak">Cost Gap: +$10.00 (+200%)</div>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+                        <strong>The Analytical Nuance:</strong> Signal does <em>not</em> automatically conclude that the capped $5 offer is superior simply because it is cheaper. Signal evaluates whether the uncapped 10% offer meaningfully increases average check size, changes menu mix, improves guest conversion, or attracts higher-value orders—versus simply giving away margin on orders customers would have placed anyway.
+                    </div>
+                </div>
+
+                <!-- Three-Way Contrast Callout -->
+                <div style="margin-bottom: 3.5rem;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">WHY THIS EXAMPLE MATTERS</span>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.65rem; color: var(--text-primary); margin: 0 0 1.25rem 0; font-weight: 500;">
+                        The gap between discount totals and commercial intelligence.
+                    </h3>
+                    
+                    <div class="contrast-three-way">
+                        <!-- Card 1 -->
+                        <div class="contrast-card">
+                            <div>
+                                <span class="contrast-card-tag" style="color: var(--text-secondary);">A TRADITIONAL REPORT SAYS:</span>
+                                <div class="contrast-card-quote" style="font-size: 1.15rem;">“Promotion A generated $4,200 in discounts. Promotion B generated $7,900.”</div>
+                            </div>
+                            <p class="contrast-card-desc">
+                                Shows total discount expense in isolated silos. No connection to check size distribution, party size, or add-on pacing.
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="contrast-card">
+                            <div>
+                                <span class="contrast-card-tag" style="color: var(--accent-teal);">A BETTER DASHBOARD SAYS:</span>
+                                <div class="contrast-card-quote" style="font-size: 1.15rem;">“Promotion B costs $3,700 more than Promotion A.”</div>
+                            </div>
+                            <p class="contrast-card-desc">
+                                Identifies the arithmetic difference between the two programs, but leaves the operator blind as to whether that $3,700 bought profitable revenue.
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="contrast-card signal-featured">
+                            <div>
+                                <span class="contrast-card-tag" style="color: var(--forest-deep, #0E1F1B);">SIGNAL ASKS:</span>
+                                <div class="contrast-card-quote" style="font-size: 1.15rem; font-style: normal; font-weight: 500;">
+                                    “What did the restaurant receive in exchange for that additional $3,700, and was it worth buying?”
+                                </div>
+                            </div>
+                            <p class="contrast-card-desc" style="color: var(--forest-deep, #0E1F1B); font-weight: 500;">
+                                Evaluates whether uncapped discounts drove incremental check expansion or subsidized regular dining habits.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cross-Analyzed Metrics Pills -->
+                <div style="margin-bottom: 3.5rem;">
+                    <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--forest-deep, #0E1F1B); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">
+                        WHAT SIGNAL CROSS-ANALYZES (WHERE POS DATA PERMITS):
+                    </span>
+                    <div class="cross-signal-metrics-grid">
+                        <span class="cross-signal-pill">Redemption Count &amp; Velocity</span>
+                        <span class="cross-signal-pill">Pre-Discount Check Size</span>
+                        <span class="cross-signal-pill">Final Settled Check Size</span>
+                        <span class="cross-signal-pill">Average Check by Promotion</span>
+                        <span class="cross-signal-pill">Item Category Mix</span>
+                        <span class="cross-signal-pill">Modifier &amp; Add-On Behavior</span>
+                        <span class="cross-signal-pill">Incremental Spend Above $50</span>
+                        <span class="cross-signal-pill">Discount Dollars vs Gross Sales</span>
+                        <span class="cross-signal-pill">Net Sales Contribution</span>
+                        <span class="cross-signal-pill">Food Cost &amp; Margin Mix</span>
+                        <span class="cross-signal-pill">Repeat Customer Retention</span>
+                        <span class="cross-signal-pill">Daypart Concentration</span>
+                        <span class="cross-signal-pill">Dine-In vs Takeout Channels</span>
+                        <span class="cross-signal-pill">Order Type &amp; Guest Counts</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PROMOTION EVIDENCE FRAMEWORK (ALL 3 LEVELS) ==================== -->
+                <div style="border-top: 1px solid var(--border-light); padding-top: 3rem;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">
+                        EVIDENCE FRAMEWORK &bull; THREE TIERS OF INVESTIGATION
+                    </span>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); margin: 0 0 2rem 0; font-weight: 500;">
+                        How Signal evaluates this promotion across Level 0, Level 1, and Level 2.
+                    </h3>
+
+                    <!-- 1. Validation Review Version -->
+                    <div class="val-output-card" style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: #8C6621; text-transform: uppercase;">LEVEL 0 // VALIDATION REVIEW VERSION</span>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">SYNTHETIC EXAMPLE</span>
+                        </div>
+                        <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 500;">
+                            Promotion structure warrants further review.
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; font-size: 13.5px; line-height: 1.6;">
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #0F766E; text-transform: uppercase; display: block; margin-bottom: 3px;">Observed</strong>
+                                Both promotions begin with the same $5 discount at a $50 check, but the cost of the 10% promotion continues increasing as check size increases. Actual restaurant data shows that the uncapped offer produces substantially more discount dollars per redeemed order ($8.90 avg discount vs $5.00 flat).
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #8C6621; text-transform: uppercase; display: block; margin-bottom: 3px;">Pattern</strong>
+                                There may be unnecessary discount leakage if higher-value customers would have spent similarly under the capped offer.
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: #B45309; text-transform: uppercase; display: block; margin-bottom: 3px;">Verify</strong>
+                                Compare check-size distribution, item mix, and redemption behavior between the two promotions.
+                            </div>
+                            <div>
+                                <strong style="font-family: var(--font-mono); font-size: 11px; color: var(--forest-deep, #0E1F1B); text-transform: uppercase; display: block; margin-bottom: 3px;">Finding</strong>
+                                The promotion structure is worth investigating. <em>(Deliberately stops here — does not conclude which promotion is superior yet).</em>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Snapshot Version -->
+                    <div class="snapshot-card rank-first" style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase;">LEVEL 1 // SNAPSHOT VERSION &bull; DECISION QUEUE RANKING</span>
+                            <span style="font-family: var(--font-mono); font-size: 10px; color: #E11D48; font-weight: 700; text-transform: uppercase;">PRIORITY 02 &bull; HIGH ACTION CANDIDATE</span>
+                        </div>
+                        <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                            Promotion Margin Leakage (Offer B vs Offer A)
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                            <div>
+                                <strong style="color: #0F766E;">Observed:</strong> The 10% offer costs an additional $3,700 per month compared with the capped structure across 940 redeemed checks. [SYNTHETIC EXAMPLE]
+                            </div>
+                            <div>
+                                <strong style="color: #8C6621;">Inferred:</strong> The additional discount expense is not accompanied by a proportionate increase in check size ($78.20 avg pre-discount check for 10% vs $74.50 for $5-off; only +$3.70 gross spend for +$3.90 added discount cost).
+                            </div>
+                            <div>
+                                <strong style="color: #B45309;">Verify:</strong> Compare similar customers/orders and evaluate whether the uncapped offer produces incremental spending above the capped threshold.
+                            </div>
+                            <div>
+                                <strong style="color: var(--forest-deep, #0E1F1B);">Decision Priority:</strong> <strong>Rank 2 (High).</strong> The potential financial benefit is measurable ($2,800–$4,200/mo) and changing or testing the promotion structure carries very low operational friction.
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 0.85rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; font-family: var(--font-mono); font-size: 11px;">
+                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">EST. EXPOSURE</span><strong>~$2,800–$4,200/mo</strong></div>
+                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">CONFIDENCE</span><strong style="color: #0F766E;">Moderate (74%)</strong></div>
+                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">FRICTION</span><strong style="color: #0F766E;">Low (POS Rule Update)</strong></div>
+                            <div><span style="color: var(--text-secondary); display: block; font-size: 9.5px;">DECISION</span><strong style="color: #E11D48;">Rank 2 &bull; High Priority</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Diagnostic Version -->
+                    <div class="diagnostic-console-card">
+                        <div class="console-header-bar">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 2px;">
+                                    LEVEL 2 // DIAGNOSTIC DEEP DIVE &bull; COMPETING HYPOTHESIS AUDIT
+                                </span>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: #FAF9F5; margin: 0; font-weight: 500;">
+                                    Diagnostic Question: Does uncapped 10% create incremental revenue, or subsidize existing spend?
+                                </h4>
+                            </div>
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; background: rgba(197, 160, 89, 0.15); color: #C5A059; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(197, 160, 89, 0.3);">
+                                SYNTHETIC EXAMPLE &bull; MULTI-SOURCE ANALYSIS
+                            </span>
+                        </div>
+
+                        <div class="console-body">
+                            <!-- Competing Hypotheses Grid -->
+                            <div>
+                                <div class="console-section-heading">COMPETING OPERATIONAL HYPOTHESES (TESTING ALTERNATIVE EXPLANATIONS)</div>
+                                <div class="hypotheses-grid">
+                                    <!-- Hypothesis A -->
+                                    <div class="hypothesis-box">
+                                        <div style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250, 249, 245, 0.5); text-transform: uppercase; margin-bottom: 4px;">HYPOTHESIS A</div>
+                                        <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">The 10% Offer Drives Larger Checks</h5>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #FBBF24; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: WEAK / MODERATE</div>
+                                        <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.75); margin: 0;">
+                                            Redeemed 10% checks show average gross spend of $78.20 vs $74.50 for $5-off. However, the +$3.70 spend gain is fully consumed by the +$3.90 added discount cost, producing negative net revenue per redemption.
+                                        </p>
+                                    </div>
+
+                                    <!-- Hypothesis B -->
+                                    <div class="hypothesis-box">
+                                        <div style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250, 249, 245, 0.5); text-transform: uppercase; margin-bottom: 4px;">HYPOTHESIS B</div>
+                                        <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">Attracts Higher-Value Guests Who Would Spend More Anyway</h5>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #4ADE80; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: MODERATE / STRONG</div>
+                                        <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.85); margin: 0;">
+                                            Guest party sizes and entrée counts on 10% redemptions mirror regular full-fare weekend guests, suggesting self-selection by high-spending diners rather than promo-driven expansion.
+                                        </p>
+                                    </div>
+
+                                    <!-- Hypothesis C -->
+                                    <div class="hypothesis-box">
+                                        <div style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250, 249, 245, 0.5); text-transform: uppercase; margin-bottom: 4px;">HYPOTHESIS C</div>
+                                        <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">Changes Menu Mix to High Margin</h5>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #F87171; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: WEAK</div>
+                                        <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.75); margin: 0;">
+                                            High-margin add-ons (appetizers, desserts, specialty drinks) do not increase on 10% checks. The extra dollar volume comes from premium steak and wine bottles where the absolute discount is largest.
+                                        </p>
+                                    </div>
+
+                                    <!-- Hypothesis D -->
+                                    <div class="hypothesis-box supported" style="grid-column: span 3;">
+                                        <div style="font-family: var(--font-mono); font-size: 10.5px; color: #4ADE80; text-transform: uppercase; margin-bottom: 4px;">HYPOTHESIS D (STRONGEST OPERATIONAL FIT)</div>
+                                        <h5 style="font-family: var(--font-serif); font-size: 1.15rem; color: #FAF9F5; margin: 0 0 0.5rem 0; font-weight: 500;">The Uncapped Structure Is Unnecessary Above $75</h5>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #4ADE80; margin-bottom: 0.65rem; font-weight: 700;">EVIDENCE: STRONG</div>
+                                        <p style="font-size: 12.5px; line-height: 1.55; color: rgba(250, 249, 245, 0.85); margin: 0;">
+                                            82% of all promo redemptions occur between $50 and $85, where the dollar variance between $5 and 10% is under $3.50. The uncapped discount only creates substantial margin loss on checks above $100, where guests have already decided to dine regardless of the promotion.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Intervention Evaluation Table -->
+                            <div>
+                                <div class="console-section-heading">INTERVENTION EVALUATION &amp; RECOMMENDED FIRST TEST</div>
+                                <div style="overflow-x: auto;">
+                                    <table class="interventions-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Possible Intervention</th>
+                                                <th>Financial Upside</th>
+                                                <th>Implementation Friction</th>
+                                                <th>Risk / Trade-Off</th>
+                                                <th>Evaluation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Option 1: Replace 10% uncapped with flat $5 off $50+</strong></td>
+                                                <td>Potentially meaningful (~$3,700/mo)</td>
+                                                <td style="color: #4ADE80;">Very Low (POS update)</td>
+                                                <td style="color: #FBBF24;">Possible minor drop in redemption appeal</td>
+                                                <td>High upside, but may blunt promotional headline power</td>
+                                            </tr>
+                                            <tr style="background: rgba(74, 222, 128, 0.06);">
+                                                <td><strong>Option 2: Cap the 10% discount at $7.50 maximum</strong></td>
+                                                <td style="color: #4ADE80;">Meaningful (~$2,900/mo)</td>
+                                                <td style="color: #4ADE80;">Low (POS discount rule)</td>
+                                                <td style="color: #4ADE80;">Negligible (82% of guests unaffected)</td>
+                                                <td><strong>Recommended First Test &bull; Lowest disruption</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Option 3: Increase threshold to 10% off $75+ or $100+</strong></td>
+                                                <td>Variable (~$1,800/mo)</td>
+                                                <td style="color: #4ADE80;">Low</td>
+                                                <td style="color: #F87171;">Risk of lower table conversion on smaller parties</td>
+                                                <td>Secondary option if cap test shows no conversion dip</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="takeaway-banner takeaway-dark" style="margin-top: 1.5rem;">
+                                    <div style="max-width: 760px;">
+                                        <strong>The Recommended First Test:</strong> Test Option 2 (capping the 10% offer at $7.50 max for a 3-week pilot). It preserves the high-converting “10% Off” headline for 82% of diners while eliminating runaway margin loss on large checks that would have ordered anyway.
+                                        <div style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; margin-top: 4px; font-weight: 700;">
+                                            Takeaway: Signal does not automatically kill promotions to save money—it tests how to preserve marketing leverage while plugging unearned margin leakage.
+                                        </div>
+                                    </div>
+                                    <a href="/signal/intake/?tier=diagnostic" class="btn btn-primary" style="background: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.65rem 1.25rem; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: 4px; border: 1px solid var(--accent-teal); white-space: nowrap;">Book a Signal Diagnostic &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section V: Capability Progression Comparison Table -->
         <section id="comparison" class="signal-section bg-light-panel">
             <div class="container">
                 <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">IV // CAPABILITY PROGRESSION</span>
@@ -1720,7 +2127,7 @@
         <!-- Section V: What Signal Can Investigate -->
         <section id="capabilities" class="signal-section bg-paper-panel">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">V // OPERATIONAL SCOPE</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VI // OPERATIONAL SCOPE</span>
                 <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
                     What Signal can investigate when the required data exists.
                 </h2>
@@ -1820,7 +2227,7 @@
         <!-- Section VI: How the Data Gets to Signal -->
         <section id="data-handoff" class="signal-section bg-light-panel">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VI // DATA ACCESS &amp; PRIVACY</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VII // DATA ACCESS &amp; PRIVACY</span>
                 <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
                     How the data gets to Signal.
                 </h2>
@@ -1871,7 +2278,7 @@
         <!-- Section VII: Active Validation Status & Partner Offer -->
         <section id="validation" class="signal-section bg-paper-panel">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VII // ACTIVE VALIDATION STATUS</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VIII // ACTIVE VALIDATION STATUS</span>
                 <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;">
                     <span class="status-badge" style="background: rgba(15, 118, 110, 0.1); color: var(--accent-teal); border: 1px solid rgba(15, 118, 110, 0.25);">WORKING SYSTEM &bull; ACTIVE EXTERNAL VALIDATION</span>
                 </div>
@@ -1927,7 +2334,7 @@
         <section id="operator" class="signal-section bg-dark-panel">
             <div class="container">
                 <div style="max-width: 800px;">
-                    <span class="eyebrow" style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">VIII // OPERATOR DIFFERENTIATION</span>
+                    <span class="eyebrow" style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.75rem;">IX // OPERATOR DIFFERENTIATION</span>
                     <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.7rem); line-height: 1.2; color: #FAF9F5; margin: 0 0 1.25rem 0; font-weight: 400;">
                         Built from both sides of the screen.
                     </h2>
@@ -1944,7 +2351,7 @@
         <!-- Section IX: Questions & Answers -->
         <section class="signal-section bg-paper-panel">
             <div class="container">
-                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3rem; text-align: center;">IX // SYSTEM QUESTIONS &amp; ANSWERS</span>
+                <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3rem; text-align: center;">X // SYSTEM QUESTIONS &amp; ANSWERS</span>
                 
                 <div class="questions-grid">
                     <!-- Q1 -->
@@ -2005,7 +2412,7 @@
         <section id="pricing" class="signal-section bg-light-panel">
             <div class="container">
                 <div style="text-align: center; margin-bottom: 3.5rem;">
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">X // PRICING LADDER</span>
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">XI // PRICING LADDER</span>
                     <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); font-weight: 500;">
                         Transparent Diagnostic Offers
                     </h2>
