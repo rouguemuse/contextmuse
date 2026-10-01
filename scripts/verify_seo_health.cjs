@@ -27,7 +27,8 @@ const nonIndexablePaths = new Set([
   '/sixes-and-sevens/house.html',
   '/sixes-and-sevens/tables.html',
   '/sixes-and-sevens/events.html',
-  '/sixes-and-sevens/enquire.html'
+  '/sixes-and-sevens/enquire.html',
+  '/systems/signal/'
 ]);
 
 // Read sitemap
@@ -129,9 +130,9 @@ for (const f of allFiles) {
 }
 
 console.log('--- AUDIT RESULTS ---');
-console.log('Indexable routes count:', indexableCount, '(target: 38)');
-console.log('Non-indexable routes count:', nonIndexableCount, '(target: 26)');
-console.log('Sitemap URLs count:', sitemapUrls.size, '(target: 38)');
+console.log('Indexable routes count:', indexableCount, '(target: 37)');
+console.log('Non-indexable routes count:', nonIndexableCount, '(target: 27)');
+console.log('Sitemap URLs count:', sitemapUrls.size, '(target: 37)');
 console.log('Indexable issues count:', indexableIssues.length);
 if (indexableIssues.length > 0) {
   indexableIssues.forEach(i => console.log('  [INDEXABLE ISSUE]', i));

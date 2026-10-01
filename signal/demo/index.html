@@ -847,9 +847,9 @@
             <div style="display: flex; align-items: center; gap: 12px;">
                 <span style="font-family: var(--font-mono); font-size: 11px; color: rgba(250, 249, 245, 0.5); text-transform: uppercase;">Intelligence Depth:</span>
                 <div class="tier-picker" role="radiogroup">
-                    <button class="tier-btn" id="tier-1-btn" onclick="setTier(1)">Level 0: Validation</button>
-                    <button class="tier-btn" id="tier-2-btn" onclick="setTier(2)">Level 1: Snapshot</button>
-                    <button class="tier-btn active" id="tier-3-btn" onclick="setTier(3)">Level 2: Diagnostic</button>
+                    <button class="tier-btn" id="tier-1-btn" onclick="setTier(1)">Snapshot ($195)</button>
+                    <button class="tier-btn active" id="tier-2-btn" onclick="setTier(2)">Diagnostic ($595)</button>
+                    <button class="tier-btn" id="tier-3-btn" onclick="setTier(3)">Deep Dive (From $1,250)</button>
                 </div>
             </div>
             <div style="display: flex; align-items: center; gap: 1rem;">
@@ -1419,9 +1419,9 @@
             document.getElementById('brief-meta').innerHTML = `Period: ${data.periodDays} Days Analyzed &bull; Average Check: $${data.avgCheck.toFixed(2)} &bull; Aggregate Labor: ${data.laborPercent.toFixed(1)}%`;
             
             const tierNames = { 
-                1: "Level 0 // Validation Review &bull; 2 Candidate Patterns", 
-                2: "Level 1 // Snapshot Review &bull; Prioritized Action List", 
-                3: "Level 2 // Diagnostic Review &bull; Full Operational Investigation" 
+                1: "Signal Snapshot ($195) &bull; Single Question Focus", 
+                2: "Signal Diagnostic ($595) &bull; Operational Discovery &amp; Action Plan", 
+                3: "Signal Deep Dive (From $1,250) &bull; Root-Cause Forensic Audit" 
             };
             document.getElementById('brief-tier-label').innerHTML = tierNames[tier];
 
@@ -1529,26 +1529,26 @@
                     title: "F-04: Shift meals are being entered as manager comps",
                     priority: "Process Fix",
                     decisionPriority: "Process Fix",
-                    decisionRationale: "Zero-cost fix; adds a dedicated button and clarifies SOP without staff write-ups.",
+                    decisionRationale: "Separate staff benefit meals from guest service recovery to restore reliable comp reporting.",
                     confidenceLevel: "Needs Validation",
-                    confidenceRationale: "Strong timing and ticket pattern, but requires quick floor confirmation from shift managers.",
+                    confidenceRationale: "Strong timing and ticket pattern, but requires human floor confirmation to verify whether these are authorized employee meals.",
                     observed: "Manager discount code 'MGR-COMP-99' was applied to 142 checks totaling $2,840. 82 of these transactions ($1,640) occurred between 3:30 PM and 4:30 PM or post-midnight closing, applied to single-item beverage and sandwich orders rather than full guest table checks.",
                     intersection: "Time-of-day clustering, item composition (single meal items), and check ownership demonstrate that managerial override codes are being utilized during shift turnover and closing rather than during dining service.",
-                    inferred: "Shift supervisors and lead servers are using the general manager comp code to record shift meals and employee break allowances because no designated employee meal code exists in the active POS configuration. This represents procedural shortcutting and training deficiency rather than intentional theft.",
-                    verify: "Ask your shift leads what button they press when a cook or dishwasher orders a meal during break. Compare clock-out times against the timestamps on the largest MGR-COMP-99 checks.",
+                    inferred: "Shift supervisors and lead servers are using the general manager comp code to record staff meals because no designated employee meal code exists in the active POS configuration.",
+                    verify: "Confirm with shift managers whether these 82 off-peak checks were authorized employee meals, and check written staff meal policy.",
                     actionCandidate: "Add a dedicated 'Staff Meal' button in the POS with preset limits; reserve MGR-COMP-99 strictly for guest service recovery.",
                     candidateInterventions: [
-                        "A: Implement dedicated POS employee meal button with 50% discount cap and individual server PIN logging.",
-                        "B: Lock MGR-COMP-99 code to GM card swipe only.",
-                        "C: Issue disciplinary warning across front-of-house staff regarding unauthorized discount code usage."
+                        "A: Configure dedicated 'Shift Meal' discount key in POS with preset limits and server PIN logging.",
+                        "B: Lock MGR-COMP-99 code strictly for documented guest recovery.",
+                        "C: Establish written employee meal policy with clear daily allowances."
                     ],
-                    signalDecision: "Configure dedicated 'Shift Meal' discount key in POS, update manager SOPs at next shift huddle, and reserve MGR-COMP-99 for guest service recovery.",
-                    measureNext: "Usage frequency of MGR-COMP-99 vs. new Shift Meal code, and total dollar comp volume over next 30 days.",
-                    monthlyRange: "$820 / mo",
-                    annualRange: "$9,840 / yr",
-                    periodImpact: "$1,640 in your records (60 days)",
-                    basis: "82 off-peak shift-change comp transactions averaging $20.00",
-                    friction: "Easy (15 min)"
+                    signalDecision: "Create a separate staff-meal code in the POS to separate legitimate employee benefits from guest service recovery.",
+                    measureNext: "Usage frequency of MGR-COMP-99 vs. new Shift Meal code, and total true guest-recovery comp volume over next 30 days.",
+                    monthlyRange: "Unknown until policy confirmed",
+                    annualRange: "Unknown",
+                    periodImpact: "$1,640 in manager comps match staff meal patterns (restores comp accuracy)",
+                    basis: "82 off-peak shift-change comp transactions averaging $20.00; if these are authorized meals, changing the code restores accurate reporting rather than recovering gross cash.",
+                    friction: "Very Easy (15 min)"
                 }
             ];
 

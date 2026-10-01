@@ -13,21 +13,21 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Signal Report | What We Found &amp; What to Do Next</title>
-    <meta name="description" content="See what an operator-facing Signal report looks like: what we found, what it may be costing, how confident we are, and what to check or change next. Based on demonstration restaurant data.">
+    <title>Sample Signal Reports | Four Genuine Operational Reports</title>
+    <meta name="description" content="Explore four genuine sample Signal reports across Snapshot ($195), Diagnostic ($595), Deep Dive (From $1,250), and Ongoing Review ($249/mo). Plain language and forensic rigor for restaurant operators.">
     <link rel="canonical" href="https://www.contextmuse.com/signal/sample-reports/">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Sample Signal Report | What We Found &amp; What to Do Next">
-    <meta property="og:description" content="See what an operator-facing Signal report looks like: what we found, what it may be costing, how confident we are, and what to check or change next. Based on demonstration restaurant data.">
+    <meta property="og:title" content="Sample Signal Reports | Four Genuine Operational Reports">
+    <meta property="og:description" content="Explore four genuine sample Signal reports across Snapshot ($195), Diagnostic ($595), Deep Dive (From $1,250), and Ongoing Review ($249/mo). Plain language and forensic rigor for restaurant operators.">
     <meta property="og:url" content="https://www.contextmuse.com/signal/sample-reports/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sample Signal Report | What We Found &amp; What to Do Next">
-    <meta name="twitter:description" content="See what an operator-facing Signal report looks like: what we found, what it may be costing, how confident we are, and what to check or change next. Based on demonstration restaurant data.">
+    <meta name="twitter:title" content="Sample Signal Reports | Four Genuine Operational Reports">
+    <meta name="twitter:description" content="Explore four genuine sample Signal reports across Snapshot ($195), Diagnostic ($595), Deep Dive (From $1,250), and Ongoing Review ($249/mo). Plain language and forensic rigor for restaurant operators.">
     <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
     <!-- Fonts & CSS -->
@@ -83,16 +83,100 @@
             font-size: 1.15rem;
             line-height: 1.65;
             color: rgba(250, 249, 245, 0.88);
-            max-width: 780px;
+            max-width: 820px;
             margin-bottom: 1.75rem;
         }
 
+        /* Sticky Switcher Bar */
+        .sample-nav-wrapper {
+            background: #10211D;
+            border-bottom: 2px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .sample-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(250, 249, 245, 0.1);
+        }
+        @media (max-width: 900px) {
+            .sample-tabs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 540px) {
+            .sample-tabs {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sample-tab-btn {
+            background: #0E1F1B;
+            border: none;
+            color: rgba(250, 249, 245, 0.72);
+            padding: 1.1rem 1.25rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border-bottom: 3px solid transparent;
+            text-decoration: none;
+        }
+        .sample-tab-btn:hover {
+            background: #142823;
+            color: #FAF9F5;
+        }
+        .sample-tab-btn.active {
+            background: #FFFFFF;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        .tab-tier-tag {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #C5A059;
+        }
+        .sample-tab-btn.active .tab-tier-tag {
+            color: var(--accent-teal);
+        }
+        .tab-restaurant-name {
+            font-family: var(--font-serif);
+            font-size: 1.12rem;
+            color: #FAF9F5;
+            font-weight: 500;
+        }
+        .sample-tab-btn.active .tab-restaurant-name {
+            color: var(--text-primary);
+        }
+        .tab-question-hint {
+            font-size: 12px;
+            color: rgba(250, 249, 245, 0.6);
+            line-height: 1.35;
+        }
+        .sample-tab-btn.active .tab-question-hint {
+            color: var(--text-secondary);
+        }
+
+        .sample-report-panel {
+            display: none;
+        }
+        .sample-report-panel.active {
+            display: block;
+        }
+
         .report-section {
-            padding: 4.5rem 0;
+            padding: 3.5rem 0 5rem;
             background: var(--bg-body);
         }
         .report-container {
-            max-width: 900px;
+            max-width: 940px;
             margin: 0 auto;
         }
 
@@ -236,7 +320,7 @@
         /* Certainty Labels Grid */
         .certainty-legend {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             background: #FAF9F5;
             border: 1px solid var(--border-light);
@@ -281,43 +365,36 @@
             border: 1px solid rgba(225, 29, 72, 0.3);
         }
 
-        /* Under the Hood Collapsible */
-        .how-we-got-here {
-            margin-top: 1.25rem;
-            background: #FFFFFF;
+        /* Hypotheses Grid */
+        .hypotheses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+        @media(max-width: 850px) {
+            .hypotheses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hypothesis-box {
+            background: #FAF9F5;
             border: 1px solid var(--border-light);
-            border-radius: 4px;
-            padding: 0.85rem 1.25rem;
-            font-size: 13px;
-            line-height: 1.6;
+            border-radius: 6px;
+            padding: 1.25rem;
         }
-        .how-we-got-here summary {
-            font-family: var(--font-mono);
-            font-size: 11.5px;
-            font-weight: 700;
-            color: var(--accent-teal);
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            user-select: none;
-        }
-        .how-we-got-here summary:hover {
-            color: var(--text-primary);
-        }
-        .how-we-got-here-content {
-            margin-top: 0.85rem;
-            padding-top: 0.85rem;
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
+        .hypothesis-box.supported {
+            border: 2px solid #0F766E;
+            background: #F0FDF4;
         }
 
-        .queue-table, .matrix-table, .ledger-table {
+        .queue-table, .matrix-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13.5px;
             margin: 1.5rem 0 2.5rem;
         }
-        .queue-table th, .matrix-table th, .ledger-table th {
+        .queue-table th, .matrix-table th {
             font-family: var(--font-mono);
             font-size: 11px;
             text-transform: uppercase;
@@ -328,25 +405,14 @@
             border-bottom: 2px solid var(--text-primary);
             background: #FAF9F5;
         }
-        .queue-table td, .matrix-table td, .ledger-table td {
+        .queue-table td, .matrix-table td {
             padding: 0.85rem 1rem;
             border-bottom: 1px solid var(--border-subtle);
             vertical-align: top;
             line-height: 1.5;
         }
-        .queue-table tr:hover, .matrix-table tr:hover, .ledger-table tr:hover {
+        .queue-table tr:hover, .matrix-table tr:hover {
             background: rgba(15, 118, 110, 0.02);
-        }
-
-        .callout-box {
-            background: rgba(15, 118, 110, 0.04);
-            border: 1px solid rgba(15, 118, 110, 0.2);
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-        .callout-box strong {
-            color: var(--accent-teal);
         }
 
         .cta-box-paper {
@@ -364,8 +430,8 @@
     {
       "@context": "https://schema.org",
       "@type": "Report",
-      "headline": "Sample Signal Report | Plain-Language Restaurant Review",
-      "description": "See what an operator-facing Signal report looks like: what we found, what it may be costing, how confident we are, and what to check or change next. Based on demonstration restaurant data.",
+      "headline": "Sample Signal Reports | Plain-Language Restaurant Review",
+      "description": "Explore four genuine sample Signal reports across Snapshot ($195), Diagnostic ($595), Deep Dive (From $1,250), and Ongoing Review ($249/mo).",
       "publisher": {
         "@type": "Organization",
         "name": "Context & Muse",
@@ -434,705 +500,748 @@
                 <div style="margin-bottom: 1.5rem;">
                     <a href="/signal/" style="font-family: var(--font-mono); font-size: 11px; text-decoration: none; color: #C5A059; font-weight: bold;">&larr; Back to Signal Product Overview</a>
                 </div>
-                <span class="report-badge">SAMPLE REPORT &bull; DEMONSTRATION RESTAURANT DATA</span>
-                <h1 class="report-title">Sample Signal Report</h1>
+                <span class="report-badge">SAMPLE REPORTS &bull; FOUR DIFFERENT RESTAURANT EXAMPLES</span>
+                <h1 class="report-title">Signal Sample Reports</h1>
                 <p class="report-lead">
-                    This sample shows what a Signal report looks like using demonstration restaurant data. It shows what we found, what it may be costing, how confident we are, and what we would recommend checking or changing next.
+                    Every Signal report is written in radical plain language for restaurant operators, GMs, and owners. No consulting jargon, no statistics lectures. Below are four genuinely different sample reports from four different restaurants, demonstrating our four distinct product depths.
                 </p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="/signal/intake/?tier=snapshot" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Get a Signal Snapshot ($149 / $195) &rarr;</a>
+                    <a href="/signal/intake/?tier=snapshot" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Get a Signal Snapshot ($195) &rarr;</a>
+                    <a href="/signal/intake/?tier=diagnostic" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Book a Diagnostic ($595)</a>
                     <a href="/signal/demo/" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none;">Open Interactive Demo</a>
                 </div>
             </div>
         </header>
 
+        <!-- Sticky Switcher Bar -->
+        <nav class="sample-nav-wrapper" aria-label="Sample Report Selector">
+            <div class="container" style="max-width: 1000px; padding: 0;">
+                <div class="sample-tabs" role="tablist">
+                    <button class="sample-tab-btn active" role="tab" aria-selected="true" aria-controls="report-snapshot" id="tab-snapshot" data-target="report-snapshot">
+                        <span class="tab-tier-tag">SNAPSHOT · $195</span>
+                        <span class="tab-restaurant-name">Oak &amp; Ember Kitchen</span>
+                        <span class="tab-question-hint">“Why are our discounts so high?”</span>
+                    </button>
+                    <button class="sample-tab-btn" role="tab" aria-selected="false" aria-controls="report-diagnostic" id="tab-diagnostic" data-target="report-diagnostic">
+                        <span class="tab-tier-tag">DIAGNOSTIC · $595</span>
+                        <span class="tab-restaurant-name">Juniper Street Pizza</span>
+                        <span class="tab-question-hint">“What are we missing?”</span>
+                    </button>
+                    <button class="sample-tab-btn" role="tab" aria-selected="false" aria-controls="report-deepdive" id="tab-deepdive" data-target="report-deepdive">
+                        <span class="tab-tier-tag">DEEP DIVE · FROM $1,250</span>
+                        <span class="tab-restaurant-name">Mercury Bar &amp; Grill</span>
+                        <span class="tab-question-hint">“Labor rose from 22% to 28%. Why?”</span>
+                    </button>
+                    <button class="sample-tab-btn" role="tab" aria-selected="false" aria-controls="report-ongoing" id="tab-ongoing" data-target="report-ongoing">
+                        <span class="tab-tier-tag">ONGOING · $249/MO</span>
+                        <span class="tab-restaurant-name">Northline Tacos</span>
+                        <span class="tab-question-hint">“Did the fixes hold up over time?”</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
         <section class="report-section">
             <div class="container report-container">
-                <div class="report-paper">
-                    
-                    <!-- 1. COVER & METADATA -->
-                    <div class="paper-header">
-                        <div>
-                            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.35rem;">SIGNAL SAMPLE REPORT</span>
-                            <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin: 0 0 0.35rem 0; color: var(--text-primary); font-weight: 500;">
-                                Mid-Size Casual Dining (120 Seats)
-                            </h2>
-                            <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
-                                Sample data only. This is not a real restaurant. &bull; Report ID: SIG-2026-DEMO
+
+                <!-- CERTAINTY EXPLAINER STRIP -->
+                <div style="margin-bottom: 2.5rem;">
+                    <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.35rem;">How to Read Our Certainty Labels</span>
+                    <div class="certainty-legend">
+                        <div class="certainty-legend-item">
+                            <span class="certainty-badge badge-verified">VERIFIED</span>
+                            <div>“We can calculate this directly from the records you provided.”</div>
+                        </div>
+                        <div class="certainty-legend-item">
+                            <span class="certainty-badge badge-modeled">MODELED</span>
+                            <div>“This is an estimate. We have enough information to calculate a useful range, but at least one assumption is involved.”</div>
+                        </div>
+                        <div class="certainty-legend-item">
+                            <span class="certainty-badge badge-opportunity">OPPORTUNITY</span>
+                            <div>“This is money the restaurant might gain if the change works. It is not money already lost.”</div>
+                        </div>
+                        <div class="certainty-legend-item">
+                            <span class="certainty-badge badge-validation">NEEDS VALIDATION</span>
+                            <div>“We found a real pattern, but we need another report or an in-store check before we can say why it is happening.”</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- REPORT A: SIGNAL SNAPSHOT ($195) — OAK & EMBER KITCHEN                    -->
+                <!-- ========================================================================= -->
+                <div class="sample-report-panel active" id="report-snapshot" role="tabpanel" aria-labelledby="tab-snapshot">
+                    <div class="report-paper">
+                        <div class="paper-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.35rem;">SIGNAL SNAPSHOT SAMPLE &bull; $195 FIXED</span>
+                                <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin: 0 0 0.35rem 0; color: var(--text-primary); font-weight: 500;">
+                                    Oak &amp; Ember Kitchen
+                                </h2>
+                                <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
+                                    Demonstration Restaurant Data &bull; Casual Steakhouse &bull; Report ID: SIG-SNAP-OEK
+                                </span>
+                            </div>
+                            <div class="paper-id" style="text-align: right;">
+                                <div><strong>Core Question:</strong> “Why are our discounts so high?”</div>
+                                <div><strong>Data Reviewed:</strong> 30 Days of Discount &amp; Promo Logs</div>
+                                <div><strong>Total Volume:</strong> 3,840 Checks Reviewed</div>
+                                <div><strong>Gross Sales:</strong> $142,800.00</div>
+                            </div>
+                        </div>
+
+                        <!-- Question Callout -->
+                        <div style="background: #FAF9F5; border-left: 4px solid var(--accent-teal); padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; display: block; margin-bottom: 2px;">THE OPERATOR'S QUESTION</span>
+                            <div style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); font-weight: 500;">
+                                “Why are our discounts so high?”
+                            </div>
+                            <p style="font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); margin: 0.5rem 0 0 0;">
+                                The owner noticed discount expense climbed to 7.8% of sales last month. The Snapshot was hired to answer this specific question, prove the dollar amount, and identify the exact fix.
+                            </p>
+                        </div>
+
+                        <!-- Finding -->
+                        <div class="finding-card critical">
+                            <div class="finding-title-row">
+                                <h3 class="finding-title">Two promotions are being stacked on the same guest bills</h3>
+                                <span class="finding-priority-tag tag-investigate">Priority 01 &bull; Immediate Action</span>
+                            </div>
+                            <div class="finding-meta-strip">
+                                <span>Finding ID: SNAP-01</span>
+                                <span>Certainty: <strong style="color: #0F766E;">VERIFIED (Calculated from POS)</strong></span>
+                                <span>How Hard to Fix: Very Easy (5-minute POS setting)</span>
+                                <span>Area: Discount Exclusivity</span>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">WHAT WE FOUND</span>
+                                <div class="field-value">
+                                    Two discount programs—a 15% VIP guest discount and a $10 Happy Hour voucher—were applied simultaneously to the exact same 218 guest checks over the 30-day review period.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">WHY IT MATTERS</span>
+                                <div class="field-value">
+                                    Promotions were designed to bring in new diners or fill empty early tables, not give away margin twice. Stacking both discounts allowed high-spending parties to take more than 28% off their total bill, reducing net margin on prime dining hours without driving extra guest counts.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">WHAT IT MAY BE COSTING</span>
+                                <div class="exposure-box-styled">
+                                    <div>
+                                        <div class="exposure-stat-label">Verified in POS Records</div>
+                                        <div class="exposure-stat-num" style="color: var(--accent-red);">$2,180.00 / 30d</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">218 checks &times; $10 overlapping voucher</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Annualized Money Lost</div>
+                                        <div class="exposure-stat-num">$26,160.00 / yr</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Direct profit loss if left unfixed</span>
+                                    </div>
+                                    <div>
+                                        <div class="exposure-stat-label">Recovery Speed</div>
+                                        <div class="exposure-stat-num" style="color: #0F766E;">Immediate</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Effective on next shift once toggled</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">HOW SURE ARE WE?</span>
+                                <div class="field-value">
+                                    <span class="certainty-badge badge-verified">VERIFIED</span> “We can calculate this directly from the records you provided.” Every dollar in this $2,180 finding comes from itemized check IDs where both discount button codes were recorded on the same receipt.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">WHAT TO CHECK</span>
+                                <div class="field-value">
+                                    For one Friday shift, go to the main bar terminal during the 5:00–7:00 PM Happy Hour transition. Test whether a server can apply the $10 Happy Hour voucher to a check that already has the 15% VIP discount applied without requiring a manager passcode.
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <span class="field-label">WHAT TO DO NEXT</span>
+                                <div class="field-value">
+                                    Open your POS backend manager portal under <code>Discounts &gt; Rules &gt; Combinability</code>. Set both the "15% VIP" discount and the "$10 HH Voucher" to "Exclusive." Once toggled, entering one promotion will automatically prevent or remove the other on the same bill.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Explicit Snapshot Boundary Box -->
+                        <div style="background: rgba(140, 102, 33, 0.08); border: 1px solid rgba(140, 102, 33, 0.25); border-radius: 6px; padding: 1.25rem 1.5rem; margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: #8C6621; text-transform: uppercase; display: block; margin-bottom: 4px;">
+                                ADDITIONAL ISSUE NOTICED &bull; OUTSIDE THIS SNAPSHOT
                             </span>
-                        </div>
-                        <div class="paper-id" style="text-align: right;">
-                            <div><strong>Classification:</strong> SYNTHETIC DEMONSTRATION DATA</div>
-                            <div><strong>Time Period:</strong> 60 Days Reviewed</div>
-                            <div><strong>Store Sales:</strong> $312,450.00 &bull; 9,420 Checks</div>
-                            <div><strong>Labor Cost:</strong> 22.0% ($68,739.00)</div>
-                        </div>
-                    </div>
-
-                    <!-- CERTAINTY EXPLAINER STRIP -->
-                    <div style="margin-bottom: 2rem;">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.35rem;">How to Read Our Certainty Labels</span>
-                        <div class="certainty-legend">
-                            <div class="certainty-legend-item">
-                                <span class="certainty-badge badge-verified">VERIFIED</span>
-                                <div>“We can calculate this directly from the records you provided.”</div>
-                            </div>
-                            <div class="certainty-legend-item">
-                                <span class="certainty-badge badge-modeled">MODELED</span>
-                                <div>“This is an estimate. We have enough information to calculate a useful range, but at least one assumption is involved.”</div>
-                            </div>
-                            <div class="certainty-legend-item">
-                                <span class="certainty-badge badge-opportunity">OPPORTUNITY</span>
-                                <div>“This is money the restaurant might gain if the change works. It is not money already lost.”</div>
-                            </div>
-                            <div class="certainty-legend-item">
-                                <span class="certainty-badge badge-validation">NEEDS VALIDATION</span>
-                                <div>“We found a real pattern, but we need another report or an in-store check before we can say why it is happening.”</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. EXECUTIVE SUMMARY -->
-                    <div style="margin-bottom: 3.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">01 // Executive Summary (What We Found Across Your Numbers)</span>
-                        <div style="font-size: 15px; line-height: 1.7; color: var(--text-primary); margin: 0 0 1.5rem 0; background: #FAF9F5; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem;">
-                            <p style="margin: 0 0 1rem 0;">
-                                <strong>The biggest problem appears during the Friday and Saturday dinner rush.</strong> Orders pile up during the busiest two-and-a-half hours (6:00 PM to 8:30 PM). That slowdown is creating kitchen backups, comped meals, and high overtime costs. Staff is burning overtime trying to clear the backlog, but tickets are still taking over 28 minutes to hit tables.
+                            <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 0.5rem 0;">
+                                While reviewing check-level logs, we noticed 4 kitchen modifications (extra bacon, side avocado, sub gluten-free bun) entered as unpriced kitchen notes across 340+ checks.
                             </p>
-                            <p style="margin: 0;">
-                                <strong>The first things I would fix are the kitchen slowdown and the way paid extras are set up in the POS.</strong> Those two changes appear to offer the clearest financial return. At the same time, you have two quick wins that can be fixed in 10 minutes inside your POS: putting a dollar cap on the 10% discount offer, and updating the prices of four commonly added menu extras that are currently priced below what the ingredients cost you.
+                            <p style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 0;">
+                                <strong>Why this was not analyzed:</strong> A Signal Snapshot strictly investigates the single question you paid us to answer. We do not inflate scope or add unrequested consulting hours. If you want a discovery review across your whole operation, that is what the Signal Diagnostic is built for.
                             </p>
                         </div>
 
-                        <!-- Prioritized Findings Table -->
-                        <div style="overflow-x: auto;">
+                        <!-- Snapshot Summary Banner -->
+                        <div class="cta-box-paper">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.5rem;">SNAPSHOT SUMMARY</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.75rem; margin: 0 0 0.75rem 0; color: #FAF9F5; font-weight: 500;">
+                                “You have one question. We dig into it.”
+                            </h3>
+                            <p style="font-size: 14.5px; color: rgba(250, 249, 245, 0.88); max-width: 620px; margin: 0 auto 1.5rem; line-height: 1.6;">
+                                The Snapshot answered the question ($2,180 in double-discounting), showed how to verify it on the floor, gave the exact 5-minute POS fix, and stopped. 100% of your $195 fee is credited toward a Diagnostic or Deep Dive booked within 30 days.
+                            </p>
+                            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                                <a href="/signal/intake/?tier=snapshot" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">Get a Signal Snapshot ($195) &rarr;</a>
+                                <button class="sample-switch-btn" data-target="report-diagnostic" style="background: transparent; border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; cursor: pointer;">See Next: Signal Diagnostic ($595) &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- REPORT B: SIGNAL DIAGNOSTIC ($595) — JUNIPER STREET PIZZA                 -->
+                <!-- ========================================================================= -->
+                <div class="sample-report-panel" id="report-diagnostic" role="tabpanel" aria-labelledby="tab-diagnostic">
+                    <div class="report-paper">
+                        <div class="paper-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-gold-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.35rem;">SIGNAL DIAGNOSTIC SAMPLE &bull; $595 ONE-TIME</span>
+                                <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin: 0 0 0.35rem 0; color: var(--text-primary); font-weight: 500;">
+                                    Juniper Street Pizza
+                                </h2>
+                                <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
+                                    Demonstration Restaurant Data &bull; Artisan Pizzeria (90 Seats) &bull; Report ID: SIG-DIAG-JSP
+                                </span>
+                            </div>
+                            <div class="paper-id" style="text-align: right;">
+                                <div><strong>Core Question:</strong> “What are we missing?”</div>
+                                <div><strong>Time Period:</strong> 60 Days Reviewed</div>
+                                <div><strong>Store Sales:</strong> $284,500.00 &bull; 8,940 Checks</div>
+                                <div><strong>Labor Cost:</strong> 23.4% ($66,573.00)</div>
+                            </div>
+                        </div>
+
+                        <!-- Executive Discovery Callout -->
+                        <div style="background: #FAF9F5; border-left: 4px solid var(--accent-gold); padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; display: block; margin-bottom: 2px;">THE OPERATOR'S MINDSET</span>
+                            <div style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); font-weight: 500;">
+                                “I did not tell Signal what was wrong. Signal found these things.”
+                            </div>
+                            <p style="font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); margin: 0.5rem 0 0 0;">
+                                The Diagnostic is broad discovery across the whole operation. We cross-analyzed check logs, hourly dayparts, timecards, modifier mix, voids, and comps to uncover 5 distinct patterns the owner didn't know to look for.
+                            </p>
+                        </div>
+
+                        <!-- Findings Summary Queue Table -->
+                        <div style="margin-bottom: 2.5rem; overflow-x: auto;">
                             <table class="queue-table">
                                 <thead>
                                     <tr>
                                         <th>Finding</th>
-                                        <th>Priority</th>
+                                        <th>What We Found</th>
                                         <th>What This May Be Costing</th>
                                         <th>How Sure Are We?</th>
                                         <th>How Hard to Fix</th>
-                                        <th>What to Do First</th>
+                                        <th>What to Do Next</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>F-01</strong><br><span style="font-size: 12px; color: var(--text-secondary);">Friday &amp; Saturday dinner is backing up the kitchen</span></td>
-                                        <td><span class="finding-priority-tag tag-investigate">Investigate First</span></td>
-                                        <td><strong>$2,800–$4,500 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$8,026 in your records (60d)</span></td>
-                                        <td><span class="certainty-badge badge-modeled">MODELED</span><br><span style="font-size: 11px; color: var(--text-secondary);">Needs in-store check</span></td>
-                                        <td>Low to Medium</td>
-                                        <td>Check line tickets Friday 6:30–7:30 PM; move 2.5 prep hours to morning.</td>
+                                        <td><strong>F-01</strong></td>
+                                        <td><strong>Unpriced Modifiers:</strong> 14% of specialty pizzas have extra toppings typed into freeform kitchen notes.</td>
+                                        <td><strong>~$1,840 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$22,080 / yr</span></td>
+                                        <td><span class="certainty-badge badge-modeled">MODELED</span><br><span style="font-size: 11px; color: var(--text-secondary);">Useful estimate</span></td>
+                                        <td>Very Easy</td>
+                                        <td>Program 5 modifier buttons in POS; instruct servers to use buttons instead of notes.</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>F-02</strong><br><span style="font-size: 12px; color: var(--text-secondary);">The 10% promotion is giving away more than the $5 offer</span></td>
-                                        <td><span class="finding-priority-tag tag-test">Change This Week</span></td>
-                                        <td><strong>$1,750 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$3,500 in your records (60d)</span></td>
+                                        <td><strong>F-02</strong></td>
+                                        <td><strong>Low Lunch Drink Attachment:</strong> Beverage attachment is 18.2% at lunch vs 64.5% at dinner.</td>
+                                        <td><strong>~$2,100 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">Potential margin gain</span></td>
+                                        <td><span class="certainty-badge badge-opportunity">OPPORTUNITY</span><br><span style="font-size: 11px; color: var(--text-secondary);">Upside if change works</span></td>
+                                        <td>Easy</td>
+                                        <td>Test a fixed-price lunch combo (slice + side salad + beverage) for two weeks.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-03</strong></td>
+                                        <td><strong>Sunday Morning Labor Timing Mismatch:</strong> 4 cooks clock in 2.25 hours before oven reaches bake temperature.</td>
+                                        <td><strong>$980 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$11,760 / yr</span></td>
+                                        <td><span class="certainty-badge badge-verified">VERIFIED</span><br><span style="font-size: 11px; color: var(--text-secondary);">Direct from timecards</span></td>
+                                        <td>Easy</td>
+                                        <td>Stagger Sunday morning punch-ins: 2 cooks move to 10:15 AM arrival.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-04</strong></td>
+                                        <td><strong>Staff Meals Miscoded as Manager Comps:</strong> $1,640 of employee meals rung under guest recovery comp code.</td>
+                                        <td><strong>Unknown Until Confirmed</strong><br><span style="font-size: 11px; color: var(--text-secondary);">Reporting fix, not cash</span></td>
+                                        <td><span class="certainty-badge badge-validation">NEEDS VALIDATION</span><br><span style="font-size: 11px; color: var(--text-secondary);">Confirm meal policy</span></td>
+                                        <td>Very Easy</td>
+                                        <td>Create dedicated "Staff Meal" button with 100% discount rule and daily cap.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F-05</strong></td>
+                                        <td><strong>Late-Night Bar Void Concentration:</strong> 74% of beer voids occur between 10:30 PM and midnight under one terminal.</td>
+                                        <td><strong>$620 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$7,440 / yr</span></td>
                                         <td><span class="certainty-badge badge-verified">VERIFIED</span><br><span style="font-size: 11px; color: var(--text-secondary);">Direct from records</span></td>
-                                        <td>Very Easy (5 min)</td>
-                                        <td>Put a $5 or $7.50 max cap on the 10% offer in your POS settings.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>F-03</strong><br><span style="font-size: 12px; color: var(--text-secondary);">Some paid extras are being given away for free</span></td>
-                                        <td><span class="finding-priority-tag tag-plan">Quick Win</span></td>
-                                        <td><strong>$1,221 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$2,443 in your records (60d)</span></td>
-                                        <td><span class="certainty-badge badge-verified">VERIFIED</span><br><span style="font-size: 11px; color: var(--text-secondary);">Direct from records</span></td>
-                                        <td>Very Easy (10 min)</td>
-                                        <td>Update prices on the 4 add-on buttons in your POS backend.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>F-04</strong><br><span style="font-size: 12px; color: var(--text-secondary);">Shift meals are being entered as manager comps</span></td>
-                                        <td><span class="finding-priority-tag tag-investigate">Process Fix</span></td>
-                                        <td><strong>$820 / mo</strong><br><span style="font-size: 11px; color: var(--text-secondary);">$1,640 in your records (60d)</span></td>
-                                        <td><span class="certainty-badge badge-validation">NEEDS VALIDATION</span><br><span style="font-size: 11px; color: var(--text-secondary);">Probable pattern</span></td>
-                                        <td>Easy (15 min)</td>
-                                        <td>Add a dedicated "Staff Meal" button; clarify rules at the next shift huddle.</td>
+                                        <td>Easy</td>
+                                        <td>Require specific void reason codes ("Foamy Keg" vs "Order Error") at bar terminal.</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
 
-                    <!-- 3. WHAT REPORTS WE LOOKED AT -->
-                    <div style="margin-bottom: 3.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">02 // What Reports We Looked At</span>
-                        <div style="background: #FAF9F5; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; font-size: 13.5px; line-height: 1.65; color: var(--text-primary);">
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 1rem;">
-                                <div>
-                                    <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--accent-teal); display: block; margin-bottom: 0.35rem;">Reports We Reviewed</strong>
-                                    &bull; 60 days of daily sales summaries<br>
-                                    &bull; Hourly order volumes &amp; daypart splits<br>
-                                    &bull; Check discounts and manager comp logs<br>
-                                    &bull; Void summary by approval ID &amp; timestamps<br>
-                                    &bull; Payroll records and kitchen overtime hours
-                                </div>
-                                <div>
-                                    <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--accent-gold-dark); display: block; margin-bottom: 0.35rem;">What We Did Not Have</strong>
-                                    &bull; Kitchen display bump times for individual stations<br>
-                                    &bull; Customer loyalty purchase history<br>
-                                    &bull; Live distributor ingredient price feeds
-                                </div>
-                            </div>
-                            <p style="margin: 0; font-size: 12.5px; color: var(--text-secondary); border-top: 1px solid var(--border-subtle); padding-top: 0.75rem;">
-                                <em>Our Rule:</em> If we don't have the exact data, we tell you it is an estimate and tell you how to double-check it on the floor before you change anything.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 4. THE FOUR DETAILED FINDINGS -->
-                    <div style="margin-bottom: 3.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 1.5rem;">03 // Detailed Findings &amp; Recommended Actions</span>
-
-                        <!-- F-01 -->
-                        <div class="finding-card critical" id="f-01">
+                        <!-- Detailed Finding Cards -->
+                        <!-- F-01 Detailed -->
+                        <div class="finding-card moderate">
                             <div class="finding-title-row">
-                                <h3 class="finding-title">F-01: Friday and Saturday dinner is backing up the kitchen</h3>
-                                <span class="finding-priority-tag tag-investigate">Investigate First</span>
+                                <h3 class="finding-title">F-01: Extras are being added to pizzas but not charged on the check</h3>
+                                <span class="finding-priority-tag tag-test">Priority 01 &bull; Quick Revenue Win</span>
                             </div>
                             <div class="finding-meta-strip">
                                 <span>Finding ID: F-01</span>
-                                <span>Certainty: <strong style="color: #92400E;">Modeled (Needs in-store check)</strong></span>
-                                <span>How Hard to Fix: Low to Medium</span>
-                                <span>Area: Dinner Rush &amp; Kitchen Overtime</span>
+                                <span>Certainty: <strong style="color: #92400E;">MODELED (Estimate with Useful Range)</strong></span>
+                                <span>How Hard to Fix: Very Easy (POS Button Addition)</span>
+                                <span>Area: Menu Modifiers</span>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">What We Found</span>
-                                <div class="field-value">
-                                    During Friday and Saturday dinner between 6:00 PM and 8:30 PM, table turn speed drops by 18%. In that exact same two-and-a-half-hour window, the kitchen logged 318.5 overtime hours ($6,846 in extra pay) and managers comped or voided 42 entire checks ($1,180 total) because guests waited too long or meals came out cold.
-                                </div>
+                                <span class="field-label">WHAT WE FOUND</span>
+                                <div class="field-value">About 14% of specialty pizza orders (780 tickets over 60 days) included an extra or substitution written into the kitchen notes—such as "extra mozzarella", "add pepperoni", or "sub gluten-free dough"—without any corresponding charge added to the guest check.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">Why It Matters</span>
-                                <div class="field-value">
-                                    Labor costs spike at the exact moment the kitchen slows down. Staff is burning overtime trying to catch up, but tickets are still taking over 28 minutes to hit tables. The restaurant is paying premium wages while guests are having bad experiences and walking away with free meals.
-                                </div>
+                                <span class="field-label">WHY IT MATTERS</span>
+                                <div class="field-value">The kitchen consumes the premium ingredients and prep time, but the bill never collects the money. Servers use freeform notes because they are faster than hunting through sub-menus.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">What It May Be Costing</span>
-                                <div class="exposure-box-styled">
-                                    <div>
-                                        <div class="exposure-stat-label">In Your Records</div>
-                                        <div class="exposure-stat-num" style="color: var(--accent-red);">$8,026 / 60d</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">$6,846 overtime + $1,180 rush voids</span>
-                                    </div>
-                                    <div>
-                                        <div class="exposure-stat-label">Estimated Monthly Loss</div>
-                                        <div class="exposure-stat-num">$2,800 – $4,500</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Includes 1 to 2 lost table turns per station</span>
-                                    </div>
-                                    <div>
-                                        <div class="exposure-stat-label">Yearly Risk</div>
-                                        <div class="exposure-stat-num">$33,600 – $54,000</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">If rush slowdown continues unfixed</span>
-                                    </div>
-                                </div>
+                                <span class="field-label">WHAT IT MAY BE COSTING</span>
+                                <div class="field-value"><strong>~$1,840.00 / month</strong> ($22,080.00 / year). Estimated from an average $2.35 menu charge across 780 unbilled modifiers.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">How Sure Are We?</span>
-                                <div class="field-value">
-                                    <span class="certainty-badge badge-modeled">MODELED</span> <strong>We know the overtime hours and void numbers are 100% accurate</strong> because they come straight from your payroll and POS. However, before assuming kitchen delays are the sole cause of the voids, an operator needs to watch the kitchen pass during a busy shift.
-                                </div>
+                                <span class="field-label">HOW SURE ARE WE?</span>
+                                <div class="field-value"><span class="certainty-badge badge-modeled">MODELED</span> “This is an estimate. We have enough information to calculate a useful range, but at least one assumption is involved.” We counted the exact note occurrences; the total dollar figure assumes standard modifier pricing.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">What to Check</span>
-                                <div class="field-value">
-                                    On the next two busy Fridays, have a manager stand at the kitchen pass between 6:30 PM and 7:30 PM for 20 tickets. Watch whether the saute or grill line is running out of prepped items and waiting on backups mid-rush.
-                                </div>
+                                <span class="field-label">WHAT TO CHECK</span>
+                                <div class="field-value">For one busy Friday dinner, compare 20 kitchen bump tickets with their corresponding final guest receipts. Check how many tickets show a topping note without a line-item price on the check.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">What to Do Next</span>
-                                <div class="field-value">
-                                    &bull; <strong>First move:</strong> Move 2.5 prep hours per day from the chaotic evening rush to a dedicated morning prep shift (8:00 AM – 10:30 AM) paid at regular pay instead of overtime.<br>
-                                    &bull; <strong>Second move:</strong> Temporarily pause or throttle delivery tablets if more than 16 active dine-in orders are on the line between 6:30 PM and 7:30 PM.
-                                </div>
+                                <span class="field-label">WHAT TO DO NEXT</span>
+                                <div class="field-value">Create top-level modifier buttons on the main ordering screen for the 5 most frequent additions (Extra Mozz, Add Pepperoni, Sub GF Crust, Add Ricotta, Extra Crispy). Remove server permission to type freeform kitchen notes without manager override.</div>
                             </div>
-
-                            <!-- Under the Hood (Collapsible) -->
-                            <details class="how-we-got-here">
-                                <summary>How we got here (Data sources, math &amp; calculations)</summary>
-                                <div class="how-we-got-here-content">
-                                    <div><strong>Source Reports:</strong> <code>labor_punch_records.csv</code>, <code>pos_void_log.csv</code>, hourly sales summary.</div>
-                                    <div><strong>Calculations:</strong> 318.5 OT hours &times; $21.50 OT pay differential = $6,846.00. 42 peak voids / 68 total voids = 61.8% of counts ($1,180.00 / $1,840.00 total value = 64.1%). Peak ticket times averaged 28.6 min vs 14.2 min weekday baseline.</div>
-                                    <div><strong>Ledger Reference:</strong> <code>CLM-01-01</code> (Observed), <code>CLM-01-02</code> (Observed), <code>CLM-01-03</code> (Inferred).</div>
-                                </div>
-                            </details>
                         </div>
 
-                        <!-- F-02 -->
-                        <div class="finding-card moderate" id="f-02">
+                        <!-- F-04 Detailed (Staff Meals Analytical Credibility Fix) -->
+                        <div class="finding-card">
                             <div class="finding-title-row">
-                                <h3 class="finding-title">F-02: The 10% promotion is giving away more than the $5 offer</h3>
-                                <span class="finding-priority-tag tag-test">Change This Week</span>
+                                <h3 class="finding-title">F-04: Staff meals are currently coded as manager comps</h3>
+                                <span class="finding-priority-tag tag-plan">Priority 02 &bull; Reporting Accuracy</span>
                             </div>
                             <div class="finding-meta-strip">
-                                <span>Finding ID: F-02</span>
-                                <span>Certainty: <strong style="color: #0F766E;">Certain (Verified from POS)</strong></span>
-                                <span>How Hard to Fix: Very Easy (5 minutes)</span>
-                                <span>Area: Promotion Settings &amp; Discounts</span>
+                                <span>Finding ID: F-04</span>
+                                <span>Certainty: <strong style="color: #9F1239;">NEEDS VALIDATION (Policy Check Needed)</strong></span>
+                                <span>How Hard to Fix: Very Easy (POS Button)</span>
+                                <span>Area: Comp Coding &amp; Reporting</span>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">What We Found</span>
-                                <div class="field-value">
-                                    The restaurant ran two offers: "$5 off when you spend $50+" and "10% off everything." Both offers give the exact same $5 discount on a $50 bill. But on larger checks, the 10% offer gave away substantially more money ($10 on a $100 check, $15 on a $150 check). Across 940 redemptions, the 10% offer gave away $7,900 in discounts compared to $4,400 across 880 redemptions for the $5 offer.
-                                </div>
+                                <span class="field-label">WHAT WE FOUND</span>
+                                <div class="field-value">$1,640 of transactions over 60 days sit inside the manager guest-recovery comp category. 92% of these comps occur strictly during shift change windows (3:30–4:30 PM and 10:30–11:00 PM) and consist of single-entree orders rung under manager approval passcodes.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">Why It Matters</span>
-                                <div class="field-value">
-                                    Customers using the 10% offer only spent $9.50 more on average than customers using the $5 offer ($84 vs $74.50), but took an extra $3.40 in discount. Once food cost on the extra items is factored in, the 10% offer only generated $2.30 in net contribution per table while burning $3,500 in extra discount expense. You gave away margin to guests who would have spent that money anyway.
-                                </div>
+                                <span class="field-label">WHY IT MATTERS</span>
+                                <div class="field-value">Current coding makes guest-recovery comp reporting unreliable. It appears that managers are comping food for dissatisfied diners when they are actually authorizing legitimate staff shift meals. This prevents the owner from knowing how much food is genuinely being given away to fix guest issues.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">What It May Be Costing</span>
-                                <div class="exposure-box-styled">
-                                    <div>
-                                        <div class="exposure-stat-label">In Your Records</div>
-                                        <div class="exposure-stat-num" style="color: var(--accent-gold-dark);">$3,500 / 60d</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Excess discount vs capped structure</span>
-                                    </div>
-                                    <div>
-                                        <div class="exposure-stat-label">Monthly Giveback</div>
-                                        <div class="exposure-stat-num">$1,750 / mo</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Unnecessary discount dollars</span>
-                                    </div>
-                                    <div>
-                                        <div class="exposure-stat-label">Annual Savings</div>
-                                        <div class="exposure-stat-num" style="color: var(--accent-teal);">$21,000 / yr</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Recaptured with 1 POS setting change</span>
-                                    </div>
-                                </div>
+                                <span class="field-label">WHAT IT MAY BE COSTING</span>
+                                <div class="field-value"><strong>Unknown until staff-meal policy and allowable amount are confirmed.</strong> If staff were entitled to these meals, the food cost was already incurred as an employee benefit. Changing the POS button will <em>not</em> put cash back into the restaurant's bank account—it only corrects reporting accuracy.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">How Sure Are We?</span>
-                                <div class="field-value">
-                                    <span class="certainty-badge badge-verified">VERIFIED</span> <strong>We calculated this directly from the 1,820 promotion checks in your POS records.</strong> Every discount dollar and pre-discount check size is recorded.
-                                </div>
+                                <span class="field-label">HOW SURE ARE WE?</span>
+                                <div class="field-value"><span class="certainty-badge badge-validation">NEEDS VALIDATION</span> “We found a real pattern, but we need another report or an in-store check before we can say why it is happening.” The timing and item patterns look identical to employee meals, but the GM must confirm whether staff meals are authorized.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">What to Check</span>
-                                <div class="field-value">
-                                    Check whether guests who redeem the 10% offer are regular diners or ordering higher-end specials that would have sold without a discount.
-                                </div>
+                                <span class="field-label">WHAT TO CHECK</span>
+                                <div class="field-value">Ask your general manager whether line cooks and servers receive authorized shift meals and what button managers currently use to ring them in.</div>
                             </div>
-
                             <div class="field-group">
-                                <span class="field-label">What to Do Next</span>
-                                <div class="field-value">
-                                    Change the 10% discount button in your POS to have a $5 or $7.50 maximum cap (or change it to "$5 off purchases of $50+"). Run it for 30 days and watch if order volume or check sizes drop. (Usually, they do not).
-                                </div>
+                                <span class="field-label">WHAT TO DO NEXT</span>
+                                <div class="field-value">Create a separate "Employee Shift Meal" non-revenue comp code in the POS. Set a daily cap (e.g. 1 entree per shift) so staff meals no longer distort guest-satisfaction comp reports.</div>
                             </div>
-
-                            <!-- Under the Hood (Collapsible) -->
-                            <details class="how-we-got-here">
-                                <summary>How we got here (Data sources, math &amp; calculations)</summary>
-                                <div class="how-we-got-here-content">
-                                    <div><strong>Source Reports:</strong> <code>pos_discount_detail.csv</code>, check distribution summary.</div>
-                                    <div><strong>Calculations:</strong> Offer B redemptions (940 checks &times; $8.40 avg discount = $7,900) vs Offer A (880 checks &times; $5.00 avg discount = $4,400). Delta = $3,500.00 excess discount. Pre-discount check lift of +$9.50 gross check minus $3.40 extra discount and $3.80 food cost leaves only +$2.30 net contribution.</div>
-                                    <div><strong>Ledger Reference:</strong> <code>CLM-02-01</code> (Observed), <code>CLM-02-02</code> (Derived).</div>
-                                </div>
-                            </details>
                         </div>
 
-                        <!-- F-03 -->
-                        <div class="finding-card moderate" id="f-03">
+                        <!-- Diagnostic Takeaway Banner -->
+                        <div class="cta-box-paper">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.5rem;">DIAGNOSTIC SUMMARY</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.75rem; margin: 0 0 0.75rem 0; color: #FAF9F5; font-weight: 500;">
+                                “You give us the operating data. We find the things you may not know to ask about.”
+                            </h3>
+                            <p style="font-size: 14.5px; color: rgba(250, 249, 245, 0.88); max-width: 620px; margin: 0 auto 1.5rem; line-height: 1.6;">
+                                The owner didn't know Sunday morning cooks were waiting 2 hours for the oven, or that modifiers were leaking $1,840/mo. The Diagnostic discovered both across existing records and separated real cash leaks from reporting errors.
+                            </p>
+                            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                                <a href="/signal/intake/?tier=diagnostic" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">Book a Signal Diagnostic ($595) &rarr;</a>
+                                <button class="sample-switch-btn" data-target="report-deepdive" style="background: transparent; border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; cursor: pointer;">See Next: Deep Dive (From $1,250) &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- REPORT C: SIGNAL DEEP DIVE (FROM $1,250) — MERCURY BAR & GRILL            -->
+                <!-- ========================================================================= -->
+                <div class="sample-report-panel" id="report-deepdive" role="tabpanel" aria-labelledby="tab-deepdive">
+                    <div class="report-paper">
+                        <div class="paper-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10.5px; color: #A83A32; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.35rem;">SIGNAL DEEP DIVE SAMPLE &bull; FROM $1,250 (+60-DAY VALIDATION)</span>
+                                <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin: 0 0 0.35rem 0; color: var(--text-primary); font-weight: 500;">
+                                    Mercury Bar &amp; Grill
+                                </h2>
+                                <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
+                                    Demonstration Restaurant Data &bull; High-Volume Bar &amp; Grill (160 Seats) &bull; Report ID: SIG-DEEP-MBG
+                                </span>
+                            </div>
+                            <div class="paper-id" style="text-align: right;">
+                                <div><strong>Known Problem:</strong> “Labor rose from 22% to 28%. Why?”</div>
+                                <div><strong>Time Period:</strong> 90 Days Cross-System Review</div>
+                                <div><strong>Investigation Scope:</strong> Single Operational Failure</div>
+                                <div><strong>Upgrade:</strong> +60-Day Operational Validation</div>
+                            </div>
+                        </div>
+
+                        <!-- Known Problem Callout -->
+                        <div style="background: #FAF9F5; border-left: 4px solid #A83A32; padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; display: block; margin-bottom: 2px;">THE KNOWN PROBLEM</span>
+                            <div style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); font-weight: 500;">
+                                “Labor rose from about 22% to 28%. Why?”
+                            </div>
+                            <p style="font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); margin: 0.5rem 0 0 0;">
+                                The owner already knew labor had drifted out of control by 6.1 percentage points ($4,850/mo excess cost). They did not need another broad scan of modifiers or drinks. The Deep Dive was hired to investigate <em>only</em> why labor increased, isolate the true root cause, and test the fix.
+                            </p>
+                        </div>
+
+                        <!-- Deep Dive Investigation Sections -->
+                        <div class="finding-card critical">
                             <div class="finding-title-row">
-                                <h3 class="finding-title">F-03: Some paid extras are being given away for free or below cost</h3>
-                                <span class="finding-priority-tag tag-plan">Quick Win</span>
+                                <h3 class="finding-title">Root Cause: Closing shift duration doubled due to manager overlap &amp; new closing checklist</h3>
+                                <span class="finding-priority-tag tag-investigate">Root Cause Isolated</span>
                             </div>
                             <div class="finding-meta-strip">
-                                <span>Finding ID: F-03</span>
-                                <span>Certainty: <strong style="color: #0F766E;">Certain (Verified from POS &amp; Recipes)</strong></span>
-                                <span>How Hard to Fix: Very Easy (10 minutes)</span>
-                                <span>Area: Menu Prices &amp; Add-Ons</span>
+                                <span>Finding ID: DEEP-01</span>
+                                <span>Certainty: <strong style="color: #0F766E;">VERIFIED (Calculated from Timecards &amp; Rosters)</strong></span>
+                                <span>Targeted Metric: Store Labor Cost (28.2% &rarr; 22.5%)</span>
+                                <span>Area: Closing Shift Execution</span>
+                            </div>
+
+                            <!-- Testing Competing Hypotheses -->
+                            <div class="field-group">
+                                <span class="field-label">WHAT EXPLANATIONS WE TESTED &amp; WHAT WAS RULED OUT</span>
+                                <div class="hypotheses-grid">
+                                    <div class="hypothesis-box">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #A83A32; font-weight: 700; text-transform: uppercase; margin-bottom: 2px;">RULED OUT BY DATA</div>
+                                        <h4 style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0 0 0.5rem 0; color: var(--text-primary);">Explanation 1: Sales Slump</h4>
+                                        <p style="font-size: 12.5px; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                                            Net sales held steady at $310,000+ with guest check counts within 0.8% of historical baseline. Lower sales did not mathematically inflate labor percentage.
+                                        </p>
+                                    </div>
+                                    <div class="hypothesis-box">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #A83A32; font-weight: 700; text-transform: uppercase; margin-bottom: 2px;">RULED OUT BY DATA</div>
+                                        <h4 style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0 0 0.5rem 0; color: var(--text-primary);">Explanation 2: Peak Dinner Rush Overstaffing</h4>
+                                        <p style="font-size: 12.5px; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                                            Dinner sales per labor hour (SPLH) averaged $86.20. Line cooks clocked out promptly within 15 minutes of orders dropping. Overtime did not occur on dinner shifts.
+                                        </p>
+                                    </div>
+                                    <div class="hypothesis-box supported">
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: #0F766E; font-weight: 700; text-transform: uppercase; margin-bottom: 2px;">CONFIRMED ROOT CAUSE</div>
+                                        <h4 style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0 0 0.5rem 0; color: var(--text-primary);">Explanation 3: Closing Shift Procedures</h4>
+                                        <p style="font-size: 12.5px; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                                            100% of the labor increase concentrated after 9:30 PM. Closing shifts expanded from 1.1h to 2.4h due to dual manager overlap and a new 14-step cleaning procedure.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="field-group">
-                                <span class="field-label">What We Found</span>
+                                <span class="field-label">WHAT WE FOUND (THE ROOT CAUSE)</span>
                                 <div class="field-value">
-                                    Four popular add-ons appeared on 3,240 guest orders: extra bacon, truffle fries upgrade, extra cheese, and gluten-free buns. The price charged to guests in the POS was set months ago and has not kept up with rising food prices:
-                                    <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem;">
-                                        <li><strong>Extra Bacon:</strong> Charged at +$1.00, but the portion costs you $1.75 to prepare.</li>
-                                        <li><strong>Truffle Fries Upgrade:</strong> Charged at +$1.50, but costs you $2.60.</li>
-                                        <li><strong>Extra Cheese:</strong> Charged at +$0.50, but costs you $0.95.</li>
-                                        <li><strong>Gluten-Free Bun:</strong> Charged at +$1.00, but costs you $1.80.</li>
+                                    The increase in labor is concentrated in closing shifts and is associated with manager overlap plus longer closing procedures after a menu change. Specifically:
+                                    <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+                                        <li>Two managers (one salaried GM and one hourly shift supervisor) were scheduled to close together every night, adding 18 redundant supervisory hours weekly.</li>
+                                        <li>A 14-step cleaning checklist instituted after the menu refresh required line cooks to deep-clean cold drawers nightly rather than on rotation, trapping 4 cooks on the clock until 1:15 AM.</li>
                                     </ul>
                                 </div>
                             </div>
 
                             <div class="field-group">
-                                <span class="field-label">Why It Matters</span>
+                                <span class="field-label">WHY IT MATTERS</span>
                                 <div class="field-value">
-                                    Your base entrees make a healthy 68% gross margin. But when guests add one of these four extras, the margin drops to 54–58%. Because these four add-ons are ordered on over a third of your specialty entrees, you are quietly losing money on your most popular dishes.
+                                    The restaurant was spending $4,850/month in non-revenue labor after the doors were locked. Adding more daytime staff or cutting dinner rush cooks would have harmed guest service without fixing the actual leak.
                                 </div>
                             </div>
 
                             <div class="field-group">
-                                <span class="field-label">What It May Be Costing</span>
+                                <span class="field-label">WHAT IT MAY BE COSTING</span>
                                 <div class="exposure-box-styled">
                                     <div>
-                                        <div class="exposure-stat-label">In Your Records</div>
-                                        <div class="exposure-stat-num" style="color: var(--accent-gold-dark);">$2,443 / 60d</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Direct profit loss on 3,240 extras</span>
+                                        <div class="exposure-stat-label">Monthly Excess Payroll</div>
+                                        <div class="exposure-stat-num" style="color: var(--accent-red);">$4,850.00 / mo</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">6.1 percentage points of labor drift</span>
                                     </div>
                                     <div>
-                                        <div class="exposure-stat-label">Monthly Profit Loss</div>
-                                        <div class="exposure-stat-num">$1,221 / mo</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Pure gross margin leak</span>
+                                        <div class="exposure-stat-label">Annualized Payroll Waste</div>
+                                        <div class="exposure-stat-num">$58,200.00 / yr</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">48.5 post-close hours per week</span>
                                     </div>
                                     <div>
-                                        <div class="exposure-stat-label">Annual Profit Gain</div>
-                                        <div class="exposure-stat-num" style="color: var(--accent-teal);">$14,650 / yr</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Recovered by updating 4 POS buttons</span>
+                                        <div class="exposure-stat-label">Target Recovery</div>
+                                        <div class="exposure-stat-num" style="color: #0F766E;">~22.5%</div>
+                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Historical operating standard</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="field-group">
-                                <span class="field-label">How Sure Are We?</span>
+                                <span class="field-label">HOW SURE ARE WE?</span>
                                 <div class="field-value">
-                                    <span class="certainty-badge badge-verified">VERIFIED</span> <strong>We compared the 3,240 itemized modifier lines from your POS against distributor invoice prices and recipe portion cards.</strong>
+                                    <span class="certainty-badge badge-verified">VERIFIED</span> “We can calculate this directly from the records you provided.” Calculated directly from timecard punch-out timestamps and shift station assignments.
                                 </div>
                             </div>
 
                             <div class="field-group">
-                                <span class="field-label">What to Check</span>
+                                <span class="field-label">CORRECTIVE TEST &amp; SUCCESS METRIC</span>
                                 <div class="field-value">
-                                    Verify current prices for bacon, dairy, and gluten-free bread on your latest distributor invoice to confirm our cost numbers match your current supplier rates.
+                                    &bull; <strong>Corrective Test:</strong> Stagger closing managers (hourly supervisor clocks out at 10:00 PM; sole closing manager handles cash-out and final lockup). Streamline kitchen closing checklist to daily essentials (45 min) and move drawer deep-cleans to Tuesday morning prep shifts.<br>
+                                    &bull; <strong>Target Closing Duration:</strong> 1.1 hours (cut from 2.4 hours).<br>
+                                    &bull; <strong>Success Metric:</strong> Store labor returns under 23.0% without failing health inspection logs.
                                 </div>
                             </div>
-
-                            <div class="field-group">
-                                <span class="field-label">What to Do Next</span>
-                                <div class="field-value">
-                                    Do not reprint or redesign the whole menu. Simply update the 4 modifier prices in your POS backend: Bacon to $2.00, Truffle Fries to $2.75, Extra Cheese to $1.00, and Gluten-Free Bun to $2.00.
-                                </div>
-                            </div>
-
-                            <!-- Under the Hood (Collapsible) -->
-                            <details class="how-we-got-here">
-                                <summary>How we got here (Data sources, math &amp; calculations)</summary>
-                                <div class="how-we-got-here-content">
-                                    <div><strong>Source Reports:</strong> <code>modifier_sales_log.csv</code>, distributor invoices, recipe cost cards.</div>
-                                    <div><strong>Calculations:</strong> Bacon (-$0.75 &times; 1,420 = -$1,065) + Truffle Fries (-$1.10 &times; 860 = -$946) + Extra Cheese (-$0.45 &times; 960 = -$432) = $2,443.00 net margin loss.</div>
-                                    <div><strong>Ledger Reference:</strong> <code>CLM-03-01</code> (Observed), <code>CLM-03-02</code> (Derived).</div>
-                                </div>
-                            </details>
                         </div>
 
-                        <!-- F-04 -->
-                        <div class="finding-card" id="f-04">
-                            <div class="finding-title-row">
-                                <h3 class="finding-title">F-04: Shift meals are being entered as manager comps</h3>
-                                <span class="finding-priority-tag tag-investigate">Process Fix</span>
-                            </div>
-                            <div class="finding-meta-strip">
-                                <span>Finding ID: F-04</span>
-                                <span>Certainty: <strong style="color: #92400E;">Probable (Needs quick check)</strong></span>
-                                <span>How Hard to Fix: Easy (15 minutes)</span>
-                                <span>Area: Staff Meal Policy &amp; POS Keys</span>
+                        <!-- 60-Day Validation Upgrade Output -->
+                        <div style="background: #FAF9F5; border: 2px solid var(--accent-teal); border-radius: 8px; padding: 2rem; margin-bottom: 2.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                                <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.1em;">
+                                    60-DAY OPERATIONAL VALIDATION UPGRADE &bull; FINAL OUTPUT
+                                </span>
+                                <span style="font-family: var(--font-mono); font-size: 10.5px; background: rgba(15, 118, 110, 0.12); color: var(--accent-teal); padding: 3px 8px; border-radius: 3px; font-weight: 700;">
+                                    TOTAL PACKAGE: FROM $1,650
+                                </span>
                             </div>
 
-                            <div class="field-group">
-                                <span class="field-label">What We Found</span>
-                                <div class="field-value">
-                                    A manager discount code named <code>MGR-COMP-99</code> was used 142 times for a total of $2,840. But 82 of those orders ($1,640) happened between 3:30 PM and 4:30 PM or after midnight closing, and almost all of them were for a single sandwich or beverage on a solo ticket.
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 1rem; border-radius: 6px;">
+                                    <strong style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); text-transform: uppercase; display: block; margin-bottom: 4px;">1. BASELINE</strong>
+                                    <div style="font-size: 1.35rem; font-weight: 700; color: #A83A32; font-family: var(--font-mono);">28.2% Labor</div>
+                                    <span style="font-size: 12px; color: var(--text-secondary);">Closing duration: 2.4 hours average</span>
+                                </div>
+                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 1rem; border-radius: 6px;">
+                                    <strong style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); text-transform: uppercase; display: block; margin-bottom: 4px;">2. CHANGE MADE</strong>
+                                    <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary); line-height: 1.4;">Manager de-overlap + 45-min closing checklist</div>
+                                    <span style="font-size: 12px; color: var(--text-secondary);">Implemented Day 1</span>
+                                </div>
+                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 1rem; border-radius: 6px;">
+                                    <strong style="font-family: var(--font-mono); font-size: 10.5px; color: #0F766E; text-transform: uppercase; display: block; margin-bottom: 4px;">3. 30-DAY RESULT</strong>
+                                    <div style="font-size: 1.35rem; font-weight: 700; color: #0F766E; font-family: var(--font-mono);">24.1% Labor</div>
+                                    <span style="font-size: 12px; color: var(--text-secondary);">Closing duration fell to 1.3h (-4.1%)</span>
+                                </div>
+                                <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: 1rem; border-radius: 6px;">
+                                    <strong style="font-family: var(--font-mono); font-size: 10.5px; color: #0F766E; text-transform: uppercase; display: block; margin-bottom: 4px;">4. 60-DAY RESULT</strong>
+                                    <div style="font-size: 1.35rem; font-weight: 700; color: #0F766E; font-family: var(--font-mono);">22.6% Labor</div>
+                                    <span style="font-size: 12px; color: var(--text-secondary);">Improvement held under full volume</span>
                                 </div>
                             </div>
 
-                            <div class="field-group">
-                                <span class="field-label">Why It Matters</span>
-                                <div class="field-value">
-                                    This does not look like theft. It looks like shift supervisors and line cooks are using the general manager emergency comp code to record their employee break meals because there is no "Staff Meal" button set up in the POS. When employee meals are mixed into manager comps, owners cannot see whether customer service comps are actually under control.
-                                </div>
+                            <div style="background: rgba(15, 118, 110, 0.06); border-radius: 4px; padding: 1rem 1.25rem; font-size: 13.5px; line-height: 1.6; color: var(--forest-deep, #0E1F1B);">
+                                <strong>Financial Effect:</strong> <strong>$4,850 / month recovered</strong> ($58,200 annualized). Zero kitchen line congestion during service.<br>
+                                <strong>What to Do Next:</strong> Lock the revised closing checklist into the permanent employee training manual; audit closing clock-outs quarterly.
                             </div>
-
-                            <div class="field-group">
-                                <span class="field-label">What It May Be Costing</span>
-                                <div class="exposure-box-styled">
-                                    <div>
-                                        <div class="exposure-stat-label">In Your Records</div>
-                                        <div class="exposure-stat-num" style="color: var(--accent-teal);">$1,640 / 60d</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">82 off-peak meal checks</span>
-                                    </div>
-                                    <div>
-                                        <div class="exposure-stat-label">Monthly Giveback</div>
-                                        <div class="exposure-stat-num">$820 / mo</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Unmonitored meal discounts</span>
-                                    </div>
-                                    <div>
-                                        <div class="exposure-stat-label">Resolution Path</div>
-                                        <div class="exposure-stat-num" style="font-size: 1.15rem; color: var(--text-primary);">Procedure Fix</div>
-                                        <span style="font-size: 11.5px; color: var(--text-secondary);">Zero staff friction or write-ups</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="field-group">
-                                <span class="field-label">How Sure Are We?</span>
-                                <div class="field-value">
-                                    <span class="certainty-badge badge-validation">NEEDS VALIDATION</span> <strong>The timing and single-item tickets strongly suggest employee shift meals</strong>, but an operator should ask a shift supervisor before taking any disciplinary action.
-                                </div>
-                            </div>
-
-                            <div class="field-group">
-                                <span class="field-label">What to Check</span>
-                                <div class="field-value">
-                                    Ask your shift leads what button they press when a cook or dishwasher orders a meal during break. Compare clock-out times against the timestamps on the largest <code>MGR-COMP-99</code> checks.
-                                </div>
-                            </div>
-
-                            <div class="field-group">
-                                <span class="field-label">What to Do Next</span>
-                                <div class="field-value">
-                                    &bull; Create a dedicated "Employee Shift Meal" button in the POS with preset rules (e.g. 50% discount or $10 daily allowance).<br>
-                                    &bull; Reserve the <code>MGR-COMP-99</code> code strictly for guest service recovery (like long waits or cold food).<br>
-                                    &bull; Train shift leads at the next team huddle. No disciplinary action needed.
-                                </div>
-                            </div>
-
-                            <!-- Under the Hood (Collapsible) -->
-                            <details class="how-we-got-here">
-                                <summary>How we got here (Data sources, math &amp; calculations)</summary>
-                                <div class="how-we-got-here-content">
-                                    <div><strong>Source Reports:</strong> <code>pos_discount_journal.csv</code>, employee shift punches.</div>
-                                    <div><strong>Calculations:</strong> <code>MGR-COMP-99</code>: 142 total checks ($2,840.00). 82 checks ($1,640.00) timed exactly with shift turnovers on single-cover checks ($20.00 average).</div>
-                                    <div><strong>Ledger Reference:</strong> <code>CLM-04-01</code> (Observed), <code>CLM-04-02</code> (Inferred).</div>
-                                </div>
-                            </details>
                         </div>
 
-                    </div>
-
-                    <!-- 5. WHAT TO FIX FIRST -->
-                    <div style="margin-bottom: 3.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">04 // What to Fix First (Zero-Friction Plan)</span>
-                        <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
-                            Fix the easy things first before touching kitchen operations or retraining staff:
-                        </p>
-
-                        <div style="overflow-x: auto;">
-                            <table class="matrix-table">
-                                <thead>
-                                    <tr>
-                                        <th>What to Change</th>
-                                        <th>How Hard Is It?</th>
-                                        <th>Can It Be Undone?</th>
-                                        <th>Staff Impact</th>
-                                        <th>What You Save Per Year</th>
-                                        <th>When to Do It</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr style="background: rgba(197, 160, 89, 0.04);">
-                                        <td><strong>F-02: Put a $5 cap on the 10% promo</strong></td>
-                                        <td>5 minutes in POS settings</td>
-                                        <td>Immediate (toggle back anytime)</td>
-                                        <td>None</td>
-                                        <td><strong>$21,000 / yr</strong></td>
-                                        <td><strong>Day 1 (Immediate)</strong></td>
-                                    </tr>
-                                    <tr style="background: rgba(197, 160, 89, 0.04);">
-                                        <td><strong>F-03: Reprice 4 menu extras</strong></td>
-                                        <td>10 minutes in POS backend</td>
-                                        <td>Immediate</td>
-                                        <td>None</td>
-                                        <td><strong>$14,650 / yr</strong></td>
-                                        <td><strong>Day 1 (Immediate)</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>F-04: Add dedicated "Staff Meal" button</strong></td>
-                                        <td>15 minutes in POS + 5-min huddle</td>
-                                        <td>Immediate</td>
-                                        <td>Very Low</td>
-                                        <td><strong>$9,840 / yr</strong></td>
-                                        <td><strong>Week 1</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>F-01: Fix dinner rush kitchen backup</strong></td>
-                                        <td>Move prep hours to morning + pause tablets during rush</td>
-                                        <td>Reversible</td>
-                                        <td>Low to Moderate</td>
-                                        <td><strong>$33,600 – $54,000 / yr</strong></td>
-                                        <td><strong>Week 2 (After floor check)</strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <!-- Deep Dive Summary Banner -->
+                        <div class="cta-box-paper">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.5rem;">DEEP DIVE SUMMARY</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.75rem; margin: 0 0 0.75rem 0; color: #FAF9F5; font-weight: 500;">
+                                “We already know something is wrong. Now we figure out why.”
+                            </h3>
+                            <p style="font-size: 14.5px; color: rgba(250, 249, 245, 0.88); max-width: 620px; margin: 0 auto 1.5rem; line-height: 1.6;">
+                                The Deep Dive is not another broad audit. It takes a known operational failure, tests competing theories, isolates the root cause, and verifies the 60-day recovery.
+                            </p>
+                            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                                <a href="/signal/intake/?tier=deepdive" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">Inquire About Deep Dive &rarr;</a>
+                                <button class="sample-switch-btn" data-target="report-ongoing" style="background: transparent; border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; cursor: pointer;">See Next: Ongoing Review ($249/mo) &rarr;</button>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- 6. WHAT TO WATCH NEXT -->
-                    <div style="margin-bottom: 3.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">05 // What to Watch Next (30-Day Check)</span>
-                        <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
-                            Track these 4 simple numbers over the next 30 days to see if the changes are working:
-                        </p>
+                <!-- ========================================================================= -->
+                <!-- REPORT D: ONGOING REVIEW ($249/MO) — NORTHLINE TACOS                      -->
+                <!-- ========================================================================= -->
+                <div class="sample-report-panel" id="report-ongoing" role="tabpanel" aria-labelledby="tab-ongoing">
+                    <div class="report-paper">
+                        <div class="paper-header">
+                            <div>
+                                <span style="font-family: var(--font-mono); font-size: 10.5px; color: #1E40AF; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.35rem;">ONGOING REVIEW SAMPLE &bull; $249 / MONTH</span>
+                                <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin: 0 0 0.35rem 0; color: var(--text-primary); font-weight: 500;">
+                                    Northline Tacos
+                                </h2>
+                                <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
+                                    Demonstration Restaurant Data &bull; Fast-Casual Taqueria (75 Seats) &bull; Report ID: SIG-ONGO-NLT
+                                </span>
+                            </div>
+                            <div class="paper-id" style="text-align: right;">
+                                <div><strong>Prerequisite:</strong> Completed Diagnostic &amp; Changes Made</div>
+                                <div><strong>Review Cycle:</strong> Month 3 Post-Diagnostic</div>
+                                <div><strong>Core Goal:</strong> Compare New Numbers vs Baseline</div>
+                                <div><strong>Monthly Fee:</strong> $249 / month</div>
+                            </div>
+                        </div>
 
-                        <div style="overflow-x: auto;">
+                        <!-- Ongoing Context Callout -->
+                        <div style="background: #FAF9F5; border-left: 4px solid #1E40AF; padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-bottom: 2rem;">
+                            <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; display: block; margin-bottom: 2px;">THE OPERATOR'S MINDSET</span>
+                            <div style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary); font-weight: 500;">
+                                “This tells me whether the fixes worked and whether anything is starting to drift again.”
+                            </div>
+                            <p style="font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); margin: 0.5rem 0 0 0;">
+                                Northline Tacos completed a full Diagnostic 90 days ago and made changes across modifiers, lunch attachments, and weekend comps. Ongoing Review does not perform another complete audit—it compares the new numbers against baseline to show what improved, what didn't change, what got worse, and what new thing to watch.
+                            </p>
+                        </div>
+
+                        <!-- Before vs Now Table -->
+                        <div style="overflow-x: auto; margin-bottom: 2.5rem;">
                             <table class="queue-table">
                                 <thead>
                                     <tr>
-                                        <th>Area</th>
-                                        <th>What It Looked Like Before</th>
-                                        <th>What You Want to See in 30 Days</th>
-                                        <th>Where to Check</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>F-01: Kitchen Overtime &amp; Voids</strong></td>
-                                        <td>160 hrs/mo overtime ($3,423/mo); $590/mo dinner voids</td>
-                                        <td>Under 90 hrs/mo overtime; under $200/mo dinner rush voids</td>
-                                        <td>Payroll export &amp; POS void log</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>F-02: 10% Discount Promotion</strong></td>
-                                        <td>$3,950/mo discount dollars on $84 average check</td>
-                                        <td>Discount under $2,350/mo while check stays above $78</td>
-                                        <td>POS discount report</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>F-03: Menu Extras Profit</strong></td>
-                                        <td>Losing $1,221/mo on the 4 popular add-ons</td>
-                                        <td>Positive profit contribution on all 4 add-ons</td>
-                                        <td>Menu sales with modifier detail</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>F-04: Manager Comps (MGR-COMP-99)</strong></td>
-                                        <td>71 uses/mo ($1,420/mo), mostly shift-change solo orders</td>
-                                        <td>Under 15 uses/mo, 100% attached to actual guest recovery</td>
-                                        <td>POS comp detail report</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- 7. WHAT THIS FINDING IS BASED ON -->
-                    <div style="margin-bottom: 2.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); display: block; margin-bottom: 0.5rem;">06 // What This Finding Is Based On</span>
-                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
-                            Every finding in this report links back to specific reports and numbers in your records:
-                        </p>
-
-                        <div style="overflow-x: auto;">
-                            <table class="ledger-table">
-                                <thead>
-                                    <tr>
-                                        <th>Item</th>
-                                        <th>Finding</th>
-                                        <th>Source Report</th>
-                                        <th>Fields Used</th>
-                                        <th>Calculation</th>
+                                        <th>Metric Monitored</th>
+                                        <th>Diagnostic Baseline (BEFORE)</th>
+                                        <th>Current 30 Days (NOW)</th>
                                         <th>Status</th>
+                                        <th>Operational Assessment</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>CLM-01-01</strong></td>
-                                        <td>F-01</td>
-                                        <td>Payroll Export</td>
-                                        <td>Kitchen OT Hours, Pay Rates</td>
-                                        <td>318.5 hrs &times; $21.50 OT pay differential = $6,846.00</td>
-                                        <td><span class="certainty-badge badge-verified">VERIFIED</span></td>
+                                        <td><strong>Modifier Leakage</strong></td>
+                                        <td>$1,840 / mo unbilled</td>
+                                        <td style="color: #0F766E; font-weight: 700; font-family: var(--font-mono);">$240 / mo</td>
+                                        <td><span class="certainty-badge badge-verified">IMPROVED</span></td>
+                                        <td>Fix held: Recaptured ~$1,600/mo. 3 of 4 POS stations fully compliant; only patio bar needs reminder.</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>CLM-01-02</strong></td>
-                                        <td>F-01</td>
-                                        <td>POS Void Summary</td>
-                                        <td>Check ID, Timestamps, Void Amt</td>
-                                        <td>42 peak voids / 68 total = 61.8% of counts; $1,180 / $1,840 value = 64.1%</td>
-                                        <td><span class="certainty-badge badge-verified">VERIFIED</span></td>
+                                        <td><strong>Lunch Drink Attachment</strong></td>
+                                        <td>18.2% attachment</td>
+                                        <td style="font-family: var(--font-mono);">19.1% attachment</td>
+                                        <td><span class="certainty-badge badge-modeled">UNCHANGED</span></td>
+                                        <td>Verbal prompt script failed to move the needle. Strategy shifted to printed $14 lunch combo menu.</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>CLM-01-03</strong></td>
-                                        <td>F-01</td>
-                                        <td>Sales &amp; Kitchen Overtime Match</td>
-                                        <td>Hourly Sales, Ticket Duration, Voids</td>
-                                        <td>Peak ticket time (28.6m vs 14.2m) co-occurs with 64.1% of voids &amp; 71% of kitchen OT</td>
-                                        <td><span class="certainty-badge badge-modeled">MODELED</span></td>
+                                        <td><strong>Weekend Dinner Discounts</strong></td>
+                                        <td>$3,800 / mo</td>
+                                        <td style="color: #A83A32; font-weight: 700; font-family: var(--font-mono);">$4,450 / mo</td>
+                                        <td><span class="certainty-badge badge-validation" style="background:#FFE4E6;color:#9F1239;">WORSE</span></td>
+                                        <td>Drifting higher: New Friday evening manager ringing discretionary "Guest Goodwill" manual comps.</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>CLM-02-01</strong></td>
-                                        <td>F-02</td>
-                                        <td>POS Discounts Report</td>
-                                        <td>Promo Name, Checks, Amounts</td>
-                                        <td>Offer A ($4,400 / 880 chk) vs Offer B ($7,900 / 940 chk). Delta = $3,500 excess</td>
-                                        <td><span class="certainty-badge badge-verified">VERIFIED</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>CLM-02-02</strong></td>
-                                        <td>F-02</td>
-                                        <td>Check Size Distribution</td>
-                                        <td>Pre-Discount Avg Check, Item Mix</td>
-                                        <td>+$9.50 gross check lift - $3.40 discount delta - $3.80 food cost = +$2.30 net contribution</td>
-                                        <td><span class="certainty-badge badge-verified">VERIFIED</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>CLM-03-01</strong></td>
-                                        <td>F-03</td>
-                                        <td>Menu Item &amp; Modifiers</td>
-                                        <td>Modifier Order Count, Retail Price</td>
-                                        <td>3,240 checks with 4 specific modifiers (Bacon, Truffle, Cheese, GF Bun)</td>
-                                        <td><span class="certainty-badge badge-verified">VERIFIED</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>CLM-03-02</strong></td>
-                                        <td>F-03</td>
-                                        <td>Distributor Invoice Deltas</td>
-                                        <td>Invoiced Unit Cost, Portion Cost</td>
-                                        <td>Bacon (-$0.75*1420) + Truffle (-$1.10*860) + Cheese (-$0.45*960) = -$2,443 net loss</td>
-                                        <td><span class="certainty-badge badge-verified">VERIFIED</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>CLM-04-01</strong></td>
-                                        <td>F-04</td>
-                                        <td>POS Comp Detail</td>
-                                        <td>Code, Timestamp, Items Comped</td>
-                                        <td>Code 'MGR-COMP-99': 142 checks ($2,840); 82 checks ($1,640) executed during shift turnover</td>
-                                        <td><span class="certainty-badge badge-verified">VERIFIED</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>CLM-04-02</strong></td>
-                                        <td>F-04</td>
-                                        <td>Shift Punches vs Comps</td>
-                                        <td>Punch In/Out Times, Ticket Items</td>
-                                        <td>Single meals comped coincide with shift turnover; indicates procedure omission rather than theft</td>
-                                        <td><span class="certainty-badge badge-validation">NEEDS VALIDATION</span></td>
+                                        <td><strong>Sunday Kitchen Close Duration</strong></td>
+                                        <td>1.1h close duration</td>
+                                        <td style="color: #8C6621; font-weight: 700; font-family: var(--font-mono);">2.1h close duration</td>
+                                        <td><span class="certainty-badge badge-opportunity" style="background:#FEF3C7;color:#92400E;">NEW WATCH</span></td>
+                                        <td>Creeping up: Sunday dish pit backlog is trapping line cooks on the clock past midnight.</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
 
-                    <!-- CTA BOX -->
-                    <div class="cta-box-paper">
-                        <span style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.5rem;">NEXT STEP</span>
-                        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; margin: 0 0 0.75rem 0; color: #FAF9F5; font-weight: 500;">
-                            Uncover What’s Leaking in Your Operations
-                        </h3>
-                        <p style="font-size: 14.5px; color: rgba(250, 249, 245, 0.88); max-width: 580px; margin: 0 auto 1.75rem; line-height: 1.6;">
-                            Upload 30 to 60 days of standard exports from your POS and payroll systems. We’ll show you what we found, what it may be costing, how confident we are, and what we would check or change next.
-                        </p>
-                        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                            <a href="/signal/intake/?tier=snapshot" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">Get a Signal Snapshot ($149 / $195) &rarr;</a>
-                            <a href="/signal/#pricing" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">View All Tiers ($0 / $195 / $595)</a>
+                        <!-- 4 Status Detail Cards -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem;">
+                            <!-- Improved Card -->
+                            <div style="background: #FAF9F5; border-top: 4px solid #0F766E; border-radius: 6px; padding: 1.5rem; border: 1px solid var(--border-light); border-top-width: 4px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #0F766E; text-transform: uppercase;">01 // IMPROVED</span>
+                                    <span style="font-family: var(--font-mono); font-size: 11px; color: #0F766E; font-weight: 700;">Recaptured $1,600/mo</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                                    Modifier Leakage
+                                </h4>
+                                <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 0.75rem 0;">
+                                    The new dedicated POS modifier buttons reduced uncharged extras from $1,840/mo down to $240/mo. Three front-of-house register terminals showed 98% button compliance.
+                                </p>
+                                <div style="font-size: 12.5px; color: var(--text-primary); font-family: var(--font-mono);">
+                                    Action: 5-minute shift reminder with patio bar staff to ensure outdoor POS terminal is updated.
+                                </div>
+                            </div>
+
+                            <!-- Unchanged Card -->
+                            <div style="background: #FAF9F5; border-top: 4px solid #8C6621; border-radius: 6px; padding: 1.5rem; border: 1px solid var(--border-light); border-top-width: 4px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #8C6621; text-transform: uppercase;">02 // UNCHANGED</span>
+                                    <span style="font-family: var(--font-mono); font-size: 11px; color: #8C6621; font-weight: 700;">Flat at 19.1%</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                                    Lunch Beverage Attachment
+                                </h4>
+                                <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 0.75rem 0;">
+                                    Verbal script prompting ("Can I get an agua fresca started?") produced negligible gain (18.2% &rarr; 19.1%). Fast-casual diners ignore verbal upsells during the midday rush.
+                                </p>
+                                <div style="font-size: 12.5px; color: var(--text-primary); font-family: var(--font-mono);">
+                                    Action: Drop verbal script. Roll out a bundled $14 Lunch Taco Combo that automatically includes a fountain drink.
+                                </div>
+                            </div>
+
+                            <!-- Worse Card -->
+                            <div style="background: #FAF9F5; border-top: 4px solid #A83A32; border-radius: 6px; padding: 1.5rem; border: 1px solid var(--border-light); border-top-width: 4px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #A83A32; text-transform: uppercase;">03 // WORSE</span>
+                                    <span style="font-family: var(--font-mono); font-size: 11px; color: #A83A32; font-weight: 700;">+$650/mo Drift</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                                    Weekend Dinner Discounts
+                                </h4>
+                                <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 0.75rem 0;">
+                                    Discounts rose from $3,800/mo to $4,450/mo. Cross-referencing manager IDs revealed a new Friday evening supervisor has been applying 20% manual comps to tables waiting past 15 minutes.
+                                </p>
+                                <div style="font-size: 12.5px; color: var(--text-primary); font-family: var(--font-mono);">
+                                    Action: Retrain new supervisor on ticket pacing escalation; cap discretionary table comps at $25/week.
+                                </div>
+                            </div>
+
+                            <!-- New Watch Card -->
+                            <div style="background: #FAF9F5; border-top: 4px solid #1E40AF; border-radius: 6px; padding: 1.5rem; border: 1px solid var(--border-light); border-top-width: 4px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #1E40AF; text-transform: uppercase;">04 // NEW THING TO WATCH</span>
+                                    <span style="font-family: var(--font-mono); font-size: 11px; color: #1E40AF; font-weight: 700;">+1.0 Hour Pacing</span>
+                                </div>
+                                <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 500;">
+                                    Sunday Kitchen Close Duration
+                                </h4>
+                                <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 0.75rem 0;">
+                                    While weekday closes averaged 1.1h, Sunday closing clock-outs crept to 2.1h. Cook timecards show they are waiting on the dish pit machine cycle before completing line sanitation.
+                                </p>
+                                <div style="font-size: 12.5px; color: var(--text-primary); font-family: var(--font-mono);">
+                                    Action: Add 1 part-time dish closer on Sunday nights from 9:30 PM to 11:30 PM to free up line cooks.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ongoing Summary Banner -->
+                        <div class="cta-box-paper">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: #C5A059; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; display: block; margin-bottom: 0.5rem;">ONGOING REVIEW SUMMARY</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.75rem; margin: 0 0 0.75rem 0; color: #FAF9F5; font-weight: 500;">
+                                “We compare the new numbers with the old ones and tell you what improved, what got worse, and what needs attention.”
+                            </h3>
+                            <p style="font-size: 14.5px; color: rgba(250, 249, 245, 0.88); max-width: 620px; margin: 0 auto 1.5rem; line-height: 1.6;">
+                                Ongoing Review protects your operational gains. It catches bad habits before they compound and shows you exactly what changed month to month.
+                            </p>
+                            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                                <a href="/signal/intake/?tier=ongoing" class="btn-magnetic btn-gold" style="background: #C5A059; color: #0E1F1B !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">Start Ongoing Review ($249/mo) &rarr;</a>
+                                <a href="/signal/#pricing" style="border: 1px solid rgba(250, 249, 245, 0.3); color: #FAF9F5; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.85rem 1.85rem; border-radius: 4px; text-decoration: none;">View Pricing Ladder</a>
+                            </div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </section>
     </main>
@@ -1166,5 +1275,46 @@
         </div>
     </footer>
     <script src="/assets/js/nav.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function activateReport(targetId) {
+                // Update tabs
+                document.querySelectorAll('.sample-tab-btn').forEach(function(btn) {
+                    var isTarget = btn.getAttribute('data-target') === targetId;
+                    btn.classList.toggle('active', isTarget);
+                    btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+                });
+                // Update panels
+                document.querySelectorAll('.sample-report-panel').forEach(function(panel) {
+                    panel.classList.toggle('active', panel.id === targetId);
+                });
+            }
+
+            document.querySelectorAll('.sample-tab-btn, .sample-switch-btn').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('data-target');
+                    if (targetId) {
+                        activateReport(targetId);
+                        var nav = document.querySelector('.sample-nav-wrapper');
+                        if (nav) {
+                            nav.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            // Handle URL Hash if present (e.g. #diagnostic, #deepdive, #ongoing, #snapshot)
+            var hash = window.location.hash.toLowerCase().replace('#', '');
+            if (hash) {
+                var target = 'report-' + hash;
+                if (document.getElementById(target)) {
+                    activateReport(target);
+                } else if (document.getElementById(hash)) {
+                    activateReport(hash);
+                }
+            }
+        });
+    </script>
 </body>
 </html>

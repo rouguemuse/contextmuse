@@ -641,9 +641,11 @@
 
             if (tier) {
                 const tierNames = {
-                    'snapshot': 'Signal Snapshot ($149 Founding Rate / $195 Standard)',
-                    'diagnostic': 'Signal Diagnostic ($595 One-Time)',
-                    'ongoing': 'Ongoing Review ($195 / month)'
+                    'snapshot': 'Signal Snapshot ($195)',
+                    'diagnostic': 'Signal Diagnostic ($595)',
+                    'deepdive': 'Signal Deep Dive (From $1,250)',
+                    'deepdive_validation': 'Deep Dive + 60-Day Validation (From $1,650 Total)',
+                    'ongoing': 'Ongoing Review ($249 / month)'
                 };
                 const tierLabel = tierNames[tier.toLowerCase()] || tier;
 

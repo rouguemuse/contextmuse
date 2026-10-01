@@ -488,7 +488,7 @@ if (!legacyPriceFound) {
     log('  [PASS] Verified: No deprecated legacy pricing mentions exist in indexable files.');
 }
 
-// Check consistency of pricing: GenSort (Snapshot Export: $195 is removed), Signal (Snapshot: $195, Diagnostic: $595, Ongoing Review: $195/mo)
+// Check consistency of pricing: GenSort (Snapshot Export: $195 is removed), Signal (Snapshot: $195, Diagnostic: $595, Deep Dive: $1,250, Ongoing Review: $249/mo)
 log('\n  Verifying GenSort and Signal pricing values in all index pages...');
 filesToVerify.forEach(fileSpec => {
     const filePath = path.join(projectRoot, fileSpec.relPath);
@@ -561,10 +561,10 @@ filesToVerify.forEach(fileSpec => {
         if (!systemsPass) overallSuccess = false;
     }
 
-    // Signal: If it has pricing, verify it specifies $195, $595, and $195/mo
+    // Signal: If it has pricing, verify it specifies $195, $595, $1,250, and $249/mo
     if (fileSpec.relPath === 'signal/index.html') {
-        if (content.includes('$195') && content.includes('$595') && content.includes('$195/mo') && content.includes('Signal Snapshot') && content.includes('Signal Diagnostic') && content.includes('Ongoing Review')) {
-            log('    [PASS] Signal page lists standard offers: Snapshot ($195), Diagnostic ($595), Ongoing ($195/mo).');
+        if (content.includes('$195') && content.includes('$595') && content.includes('$249') && content.includes('1,250') && content.includes('Signal Snapshot') && content.includes('Signal Diagnostic') && content.includes('Ongoing Review')) {
+            log('    [PASS] Signal page lists standard offers: Snapshot ($195), Diagnostic ($595), Deep Dive ($1,250), Ongoing ($249/mo).');
         } else {
             log('    [FAIL] Signal page does not list standard pricing elements correctly.');
             overallSuccess = false;

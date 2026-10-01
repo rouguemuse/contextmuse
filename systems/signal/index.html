@@ -18,6 +18,7 @@
     <title>Signal | Restaurant Operational Intelligence &amp; Decision Support</title>
     <meta name="description" content="Signal turns restaurant POS exports and operating records into prioritized, plain-language findings that help operators identify margin leakage, workflow friction, and the next issues worth validating.">
     <link rel="canonical" href="https://www.contextmuse.com/systems/signal/">
+    <meta name="robots" content="noindex, follow">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -59,8 +60,8 @@
         }
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
             margin: 3.5rem 0;
         }
         @media(max-width: 950px) {
@@ -265,14 +266,14 @@
 
         <!-- Section II: Pricing -->
         <section id="pricing" class="creative-section" style="background: var(--bg-panel); border-bottom: 1px solid var(--border-light); padding: 5.5rem 0;">
-            <div class="container" style="max-width: 960px;">
+            <div class="container" style="max-width: 1100px;">
                 <div style="text-align: center; margin-bottom: 3rem;">
                     <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">II // PRICING LADDER</span>
                     <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); font-weight: 500;">
-                        Risk-Free Offer Ladder
+                        Transparent Offer Ladder
                     </h2>
                     <p style="font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem;">
-                        Start small. Upgrade if needed. Monitor only when useful.
+                        Start focused. Diagnose site-wide. Dive deep into root causes. Monitor only when useful.
                     </p>
                 </div>
 
@@ -281,31 +282,45 @@
                     <div class="pricing-card">
                         <div>
                             <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal);">Signal Snapshot</span>
-                            <div class="price-val">$149<span class="price-period"> Founding</span></div>
-                            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1rem;">$195 Standard</div>
+                            <div class="price-val">$195</div>
                             <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                A rapid, focused outside read of one defined operational or check-discrepancy problem. Surfaces top-level leaks and immediate validation vectors.
+                                <em>“You have one question. We dig into it.”</em> A focused outside read of one defined operational or check-discrepancy problem. Surfaces verified facts and immediate next steps.
                             </p>
                         </div>
                         <div style="border-top: 1px solid var(--border-light); padding-top: 1rem; margin-top: 1rem;">
                             <span style="font-family: var(--font-mono); font-size: 8.5px; font-weight: bold; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.25rem;">Snapshot Credit</span>
-                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">100% of Snapshot fee may be applied to a Diagnostic booked within 30 days.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">100% of Snapshot fee credited toward a Diagnostic or Deep Dive booked within 30 days.</p>
                         </div>
                     </div>
 
                     <!-- Diagnostic -->
                     <div class="pricing-card card-featured">
-                        <span class="pricing-badge">Founding Operator Rate</span>
+                        <span class="pricing-badge">Comprehensive Diagnostic</span>
                         <div>
                             <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-primary); margin-top: 0.5rem; display: block;">Signal Diagnostic</span>
                             <div class="price-val">$595</div>
                             <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                Exhaustive, site-wide POS and operating review. Delivers prioritized findings, estimated exposures, and custom on-floor validation playbooks.
+                                <em>“You give us the operating data. We find the things you may not know to ask about.”</em> Exhaustive operational review across your core POS reports, modifier logs, and dayparts.
                             </p>
                         </div>
                         <div style="border-top: 1px solid var(--border-light); padding-top: 1rem; margin-top: 1rem;">
-                            <span style="font-family: var(--font-mono); font-size: 8.5px; font-weight: bold; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.25rem;">Baseline Review</span>
-                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Provides the baseline diagnostic framework required for ongoing review tracking.</p>
+                            <span style="font-family: var(--font-mono); font-size: 8.5px; font-weight: bold; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.25rem;">Diagnostic Framework</span>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Delivers prioritized findings, verified vs modeled numbers, and on-floor validation steps.</p>
+                        </div>
+                    </div>
+
+                    <!-- Deep Dive -->
+                    <div class="pricing-card">
+                        <div>
+                            <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal);">Signal Deep Dive</span>
+                            <div class="price-val" style="font-size: 2.1rem;">From $1,250</div>
+                            <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                                <em>“We already know something is wrong. Now we figure out why.”</em> Deep root-cause investigation into a known problem. Tests competing explanations and designs targeted fixes.
+                            </p>
+                        </div>
+                        <div style="border-top: 1px solid var(--border-light); padding-top: 1rem; margin-top: 1rem;">
+                            <span style="font-family: var(--font-mono); font-size: 8.5px; font-weight: bold; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.25rem;">Optional Upgrade</span>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Add 60-Day Validation (From $1,650 total) to measure Month 1 and Month 2 operational results.</p>
                         </div>
                     </div>
 
@@ -313,14 +328,14 @@
                     <div class="pricing-card">
                         <div>
                             <span style="font-family: var(--font-mono); font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary);">Ongoing Review</span>
-                            <div class="price-val">$195<span class="price-period">/mo</span></div>
+                            <div class="price-val">$249<span class="price-period">/mo</span></div>
                             <p style="font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                Monthly drift monitoring. Translates recurring sales summaries into delta audits to ensure margin leakage does not quietly return.
+                                <em>“We compare the new numbers with the old ones and tell you what improved, what got worse, and what needs attention.”</em> Monthly drift tracking and recurrence prevention.
                             </p>
                         </div>
                         <div style="border-top: 1px solid var(--border-light); padding-top: 1rem; margin-top: 1rem;">
-                            <span style="font-family: var(--font-mono); font-size: 8.5px; font-weight: bold; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.25rem;">Eligibility Requirement</span>
-                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Available after completion of a Signal Diagnostic or equivalent onboarding review.</p>
+                            <span style="font-family: var(--font-mono); font-size: 8.5px; font-weight: bold; color: var(--accent-teal); text-transform: uppercase; display: block; margin-bottom: 0.25rem;">Monitoring Service</span>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Scheduled monthly reviews comparing current performance to baseline diagnostic metrics.</p>
                         </div>
                     </div>
                 </div>
