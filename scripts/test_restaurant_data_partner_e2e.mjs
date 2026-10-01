@@ -129,39 +129,51 @@ async function runE2ETests() {
 
     await page.goto(`http://localhost:${PORT}/signal/restaurant-data-partner/`, { waitUntil: 'networkidle0' });
 
-    // 1.1 Verify page title and eyebrow
+    // 1.1 Verify page title and heading
     const title = await page.title();
     assert(title.includes('Restaurant Data Partner Program'), `Page title contains expected text (was: "${title}")`);
+    const h1Text = await page.$eval('h1.partner-title', el => el.textContent.trim());
+    assert(h1Text === 'Help build Signal. Get a useful restaurant analysis at no charge.', `H1 is "Help build Signal. Get a useful restaurant analysis at no charge." (was: "${h1Text}")`);
 
-    // 1.2 Verify Hero Single Clear CTA
+    // 1.2 Verify Hero CTAs
     const heroButtons = await page.$$eval('.hero-actions a', els => els.map(e => ({ text: e.textContent.trim(), href: e.getAttribute('href') })));
-    assert(heroButtons.length === 1, `Hero has exactly ONE CTA button (found ${heroButtons.length})`);
-    assert(heroButtons[0].text.includes('See if your restaurant is a fit'), `Hero button text is "See if your restaurant is a fit" (was: "${heroButtons[0]?.text}")`);
-    assert(heroButtons[0].href === '#partner-intake', `Hero button links to "#partner-intake" (was: "${heroButtons[0]?.href}")`);
+    assert(heroButtons.length === 2, `Hero has exactly 2 action links (found ${heroButtons.length})`);
+    assert(heroButtons[0].text.includes('Apply to become a Data Partner'), `Hero primary button is "Apply to become a Data Partner" (was: "${heroButtons[0]?.text}")`);
+    assert(heroButtons[0].href === '#partner-intake', `Primary button links to "#partner-intake" (was: "${heroButtons[0]?.href}")`);
+    assert(heroButtons[1].text.includes('See an example Signal report'), `Hero secondary link is "See an example Signal report" (was: "${heroButtons[1]?.text}")`);
+    assert(heroButtons[1].href.includes('/signal/sample-reports/'), `Secondary link points to sample reports (was: "${heroButtons[1]?.href}")`);
 
-    // 1.3 Verify no secondary link to paid Signal in hero
-    const heroHasPaidSignal = heroButtons.some(b => b.href.includes('/signal/'));
-    assert(!heroHasPaidSignal, 'Hero does NOT contain link to paid Signal');
+    // 1.3 Verify no link to paid Signal in hero
+    const heroHasPaidSignal = heroButtons.some(b => b.href.includes('#pricing'));
+    assert(!heroHasPaidSignal, 'Hero does NOT contain link to paid Signal pricing');
 
     // 1.4 Verify secondary link to paid Signal exists in commercial section at bottom
     const bottomCommercialLink = await page.$eval('.commercial-path-section a', el => ({ text: el.textContent.trim(), href: el.getAttribute('href') }));
-    assert(bottomCommercialLink.href.includes('/signal/'), `Bottom section links to paid Signal (${bottomCommercialLink.href})`);
+    assert(bottomCommercialLink.href.includes('/signal/#pricing'), `Bottom section links to paid Signal (${bottomCommercialLink.href})`);
 
     // 1.5 Verify copy requirements
     const pageText = await page.$eval('body', el => el.innerText);
-    assert(pageText.includes('Participation is selective. Not every restaurant will qualify.'), 'Contains "Participation is selective. Not every restaurant will qualify."');
-    assert(pageText.includes('at no charge in exchange for data that helps refine the analysis process') || pageText.includes('at no charge in exchange for access to useful real-world operating data'), 'Explains no-charge analysis in exchange for useful operating data + feedback');
-    assert(pageText.includes('You do not have to hand over the keys to your POS.'), 'Explains exports vs restricted access');
-    assert(pageText.includes('Unrestricted administrator access is not required'), 'Affirms unrestricted access is not required');
+    assert(pageText.includes('Built by Jayme Volstad, drawing on approximately 20 years working across restaurant operations'), 'Contains 20-year founder operational credibility note');
+    assert(pageText.includes('whether your available reports match what I’m currently testing'), 'Contains "whether your available reports match what I’m currently testing"');
+    assert(pageText.includes('Signal checks whether the pattern points toward configuration, training, workflow or individual activity—and identifies what needs to be verified on the floor.'), 'Contains disciplined epistemological pattern statement');
+    assert(pageText.includes('Standard exports (CSV, Excel workbooks, PDF summary sheets, or ZIP folders) are completely sufficient.'), 'Explains exports vs restricted access');
+    assert(pageText.includes('POS administrator access is completely unnecessary'), 'Affirms POS administrator access is completely unnecessary');
 
-    // 1.6 Fill and Submit Intake Form on Desktop
+    // 1.6 Verify accessible accordions work (keyboard & click)
+    const faqDetails = await page.$('details.faq-accordion');
+    assert(faqDetails !== null, 'FAQ accordion exists on page');
+    const initialOpen = await page.evaluate(el => el.open, faqDetails);
+    assert(!initialOpen, 'FAQ accordion starts closed');
+    await page.click('details.faq-accordion summary');
+    const afterClickOpen = await page.evaluate(el => el.open, faqDetails);
+    assert(afterClickOpen, 'FAQ accordion opens on click');
+
+    // 1.7 Fill and Submit Intake Form on Desktop
     console.log('Submitting Desktop intake form...');
     await page.type('#dp-restaurant', 'Desktop Test Bistro');
     await page.type('#dp-contact', 'Chef Sarah Desktop');
     await page.type('#dp-email', 'sarah.desktop@testbistro.com');
-    await page.select('#dp-locations', '2-3');
     await page.type('#dp-pos', 'Toast POS');
-    await page.type('#dp-history', '3 years');
     await page.type('#dp-interest', 'Evaluating margin erosion from weekday lunch discounts and modifier pricing.');
     await page.type('#dp-reports', 'Toast PMix CSV, modifier report, discount summary.');
     await page.type('#dp-notes', 'Desktop test execution.');
@@ -225,9 +237,7 @@ async function runE2ETests() {
     await mobilePage.type('#dp-restaurant', 'Mobile Test Trattoria');
     await mobilePage.type('#dp-contact', 'Marco Mobile Operator');
     await mobilePage.type('#dp-email', 'marco.mobile@testtrattoria.com');
-    await mobilePage.select('#dp-locations', '1');
     await mobilePage.type('#dp-pos', 'Square for Restaurants');
-    await mobilePage.type('#dp-history', '18 months');
     await mobilePage.type('#dp-interest', 'Modifier leakage on delivery apps vs dine-in.');
     await mobilePage.type('#dp-reports', 'Square CSV exports.');
     await mobilePage.type('#dp-notes', 'Mobile test run.');

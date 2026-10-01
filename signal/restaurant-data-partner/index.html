@@ -15,22 +15,22 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Data Partner Program | Signal · Context &amp; Muse</title>
-    <meta name="description" content="A collaborative pilot program providing independent restaurants with an agreed Signal operational diagnostic report at no charge in exchange for real operating data and feedback.">
+    <title>Help Build Signal · Restaurant Data Partner Program | Context &amp; Muse</title>
+    <meta name="description" content="Participate in the Signal Data Partner Program. Selected independent restaurants receive a focused operating-data analysis at no charge in exchange for real-world records and honest feedback.">
     <link rel="canonical" href="https://www.contextmuse.com/signal/restaurant-data-partner/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.contextmuse.com/signal/restaurant-data-partner/">
-    <meta property="og:title" content="Restaurant Data Partner Program | Signal · Context &amp; Muse">
-    <meta property="og:description" content="A collaborative pilot program providing independent restaurants with an agreed Signal operational diagnostic report at no charge in exchange for real operating data and feedback.">
-    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+    <meta property="og:title" content="Help Build Signal · Restaurant Data Partner Program | Context &amp; Muse">
+    <meta property="og:description" content="Selected independent restaurants receive a focused operating-data analysis at no charge in exchange for real-world operating records and honest feedback.">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/restaurant-data-partner-share.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Restaurant Data Partner Program | Signal · Context &amp; Muse">
-    <meta name="twitter:description" content="A collaborative pilot program providing independent restaurants with an agreed Signal operational diagnostic report at no charge in exchange for real operating data and feedback.">
-    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+    <meta name="twitter:title" content="Help Build Signal · Restaurant Data Partner Program | Context &amp; Muse">
+    <meta name="twitter:description" content="Selected independent restaurants receive a focused operating-data analysis at no charge in exchange for real-world operating records and honest feedback.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/restaurant-data-partner-share.png">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,9 +50,7 @@
             --accent-teal: #0F766E;
             --accent-teal-soft: rgba(15, 118, 110, 0.08);
             --accent-gold: #C5A059;
-            --accent-gold-soft: rgba(197, 160, 89, 0.12);
             --forest-deep: #0E1F1B;
-            --forest-panel: #142823;
         }
 
         body {
@@ -63,8 +61,9 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Hero */
         .partner-hero {
-            padding: 7rem 0 4.5rem;
+            padding: 6.5rem 0 3.75rem;
             background: linear-gradient(180deg, #FAF9F5 0%, #F4F1EA 100%);
             border-bottom: 1px solid var(--border-light);
         }
@@ -77,40 +76,34 @@
             letter-spacing: 0.14em;
             color: var(--accent-teal);
             display: inline-block;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .partner-title {
             font-family: var(--font-serif);
-            font-size: clamp(2.3rem, 4.5vw, 3.5rem);
+            font-size: clamp(2.1rem, 4vw, 3.25rem);
             font-weight: 400;
             line-height: 1.15;
             color: var(--text-primary);
-            max-width: 860px;
-            margin: 0 0 1.5rem 0;
+            max-width: 820px;
+            margin: 0 0 1.25rem 0;
             letter-spacing: -0.02em;
         }
 
         .partner-lead {
-            font-size: 1.18rem;
-            line-height: 1.65;
-            color: var(--text-secondary);
-            max-width: 780px;
-            margin: 0 0 1.5rem 0;
-        }
-
-        .partner-pitch {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-left: 3px solid var(--accent-teal);
-            border-radius: 6px;
-            padding: 1.5rem 1.75rem;
-            max-width: 780px;
-            margin: 0 0 2.25rem 0;
-            font-size: 1.02rem;
+            font-size: 1.12rem;
             line-height: 1.65;
             color: var(--text-primary);
-            box-shadow: 0 4px 16px rgba(16, 33, 29, 0.04);
+            max-width: 760px;
+            margin: 0 0 1.25rem 0;
+        }
+
+        .partner-sublead {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 760px;
+            margin: 0 0 2rem 0;
         }
 
         .hero-actions {
@@ -118,6 +111,7 @@
             align-items: center;
             gap: 1.5rem;
             flex-wrap: wrap;
+            margin-bottom: 1.5rem;
         }
 
         .btn-partner-primary {
@@ -127,10 +121,10 @@
             gap: 8px;
             background: var(--forest-deep);
             color: #FAF9F5 !important;
-            padding: 0.9rem 1.85rem;
+            padding: 0.85rem 1.75rem;
             border-radius: 4px;
             font-family: var(--font-sans);
-            font-size: 14px;
+            font-size: 14.5px;
             font-weight: 600;
             text-decoration: none;
             border: 1px solid var(--forest-deep);
@@ -144,22 +138,31 @@
             transform: translateY(-1px);
         }
 
-        .secondary-quiet-link {
+        .secondary-sample-link {
             font-family: var(--font-mono);
-            font-size: 12.5px;
-            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-teal);
             text-decoration: underline;
             text-underline-offset: 4px;
             transition: color 0.2s ease;
         }
 
-        .secondary-quiet-link:hover {
-            color: var(--accent-teal);
+        .secondary-sample-link:hover {
+            color: var(--forest-deep);
         }
 
-        /* Content Sections */
+        .hero-notice {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 760px;
+            line-height: 1.5;
+        }
+
+        /* Sections */
         .partner-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
             border-bottom: 1px solid var(--border-light);
         }
 
@@ -168,11 +171,11 @@
         }
 
         .section-header-compact {
-            margin-bottom: 3rem;
-            max-width: 780px;
+            margin-bottom: 2.25rem;
+            max-width: 760px;
         }
 
-        .section-header-compact .section-eyebrow {
+        .section-eyebrow {
             font-family: var(--font-mono);
             font-size: 10px;
             font-weight: 700;
@@ -180,12 +183,12 @@
             letter-spacing: 0.12em;
             color: var(--accent-teal);
             display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .section-header-compact h2 {
             font-family: var(--font-serif);
-            font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+            font-size: clamp(1.75rem, 3vw, 2.3rem);
             font-weight: 400;
             line-height: 1.22;
             color: var(--text-primary);
@@ -194,69 +197,76 @@
         }
 
         .section-header-compact p {
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.6;
             color: var(--text-secondary);
-            margin-top: 0.85rem;
+            margin-top: 0.65rem;
         }
 
-        /* 5-Category Grid */
-        .categories-grid {
+        /* Two-Card Exchange Grid */
+        .exchange-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin-bottom: 1.5rem;
         }
 
-        .category-card {
-            background: var(--bg-body);
+        @media (max-width: 768px) {
+            .exchange-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .exchange-card {
+            background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
-            padding: 1.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(16, 33, 29, 0.02);
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            transition: border-color 0.2s ease;
+            gap: 1rem;
         }
 
-        .partner-section.bg-alt .category-card {
-            background: #FAF9F5;
+        .exchange-card.highlight {
+            border-left: 3px solid var(--accent-teal);
         }
 
-        .category-num {
+        .exchange-tag {
             font-family: var(--font-mono);
             font-size: 10px;
             font-weight: 700;
-            color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            color: var(--accent-teal);
         }
 
-        .category-card h3 {
+        .exchange-card h3 {
             font-family: var(--font-serif);
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             font-weight: 500;
             color: var(--text-primary);
             margin: 0;
         }
 
-        .category-list {
+        .exchange-list {
             list-style: none;
             padding: 0;
-            margin: 0.5rem 0 0;
+            margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
-            font-size: 13.5px;
-            line-height: 1.5;
+            gap: 0.85rem;
+            font-size: 14px;
+            line-height: 1.55;
             color: var(--text-secondary);
         }
 
-        .category-list li {
+        .exchange-list li {
             position: relative;
-            padding-left: 1.15rem;
+            padding-left: 1.25rem;
         }
 
-        .category-list li::before {
+        .exchange-list li::before {
             content: "•";
             position: absolute;
             left: 0;
@@ -264,366 +274,235 @@
             font-weight: bold;
         }
 
-        /* Examples / Data vs Decisions */
-        .decisions-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 860px;
+        .access-reassurance-box {
+            background: #FAF9F5;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.15rem 1.5rem;
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.55;
         }
 
-        .decision-block {
+        /* Founder Credibility Note */
+        .credibility-box {
+            background: rgba(15, 118, 110, 0.05);
+            border: 1px solid rgba(15, 118, 110, 0.2);
+            border-left: 3px solid var(--accent-teal);
+            border-radius: 4px;
+            padding: 1.15rem 1.5rem;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        /* Process Flow */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .process-step {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.25rem 1.25rem 1.5rem;
+        }
+
+        .step-num {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        .process-step h4 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .process-step p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Example Card & Accordions */
+        .example-card {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 6px;
             padding: 2rem;
+            margin-bottom: 1.5rem;
             box-shadow: 0 4px 16px rgba(16, 33, 29, 0.02);
-        }
-
-        .decision-tag {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent-teal);
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-
-        .decision-block h3 {
-            font-family: var(--font-serif);
-            font-size: 1.45rem;
-            font-weight: 500;
-            margin: 0 0 1rem 0;
-            color: var(--text-primary);
         }
 
         .comparison-callout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.25rem;
             background: #FAF9F5;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-light);
             border-radius: 4px;
-            padding: 1rem 1.25rem;
-            margin-bottom: 1.25rem;
-            font-family: var(--font-mono);
-            font-size: 12.5px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
         }
 
-        @media(max-width: 600px) {
+        @media (max-width: 600px) {
             .comparison-callout {
                 grid-template-columns: 1fr;
             }
         }
 
         .callout-pill {
-            display: block;
+            font-family: var(--font-mono);
             font-size: 10px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            display: block;
             margin-bottom: 4px;
         }
 
         .callout-val {
+            font-size: 16px;
             font-weight: 600;
             color: var(--text-primary);
         }
 
         .callout-val.highlight {
-            color: var(--accent-teal);
-        }
-
-        .decision-text {
-            font-size: 0.98rem;
-            line-height: 1.65;
-            color: var(--text-secondary);
-            margin: 0;
+            color: #991B1B;
         }
 
         .decision-takeaway {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-subtle);
-            font-family: var(--font-mono);
-            font-size: 12px;
+            background: rgba(15, 118, 110, 0.06);
+            border-left: 3px solid var(--accent-teal);
+            padding: 0.85rem 1.15rem;
+            font-size: 13.5px;
             color: var(--text-primary);
+            line-height: 1.55;
+            border-radius: 0 4px 4px 0;
+            margin-top: 1rem;
         }
 
-        .decision-takeaway strong {
+        /* Accessible Details Accordion */
+        details.partner-accordion, details.faq-accordion {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            margin-bottom: 0.85rem;
+            overflow: hidden;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        details.partner-accordion[open], details.faq-accordion[open] {
+            border-color: var(--accent-teal);
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.04);
+        }
+
+        details.partner-accordion summary, details.faq-accordion summary {
+            padding: 1rem 1.25rem;
+            font-family: var(--font-sans);
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        details.partner-accordion summary::-webkit-details-marker, details.faq-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.partner-accordion summary::after, details.faq-accordion summary::after {
+            content: "▾";
+            font-size: 12px;
             color: var(--accent-teal);
+            transition: transform 0.2s ease;
         }
 
-        /* What you may receive */
-        .outputs-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 3rem;
-            align-items: start;
+        details.partner-accordion[open] summary::after, details.faq-accordion[open] summary::after {
+            transform: rotate(180deg);
         }
 
-        @media(max-width: 900px) {
-            .outputs-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+        details.partner-accordion .accordion-content, details.faq-accordion .accordion-content {
+            padding: 0 1.25rem 1.25rem;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 1rem;
         }
 
-        .outputs-list-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem 1.5rem;
+        /* Data Use Grid */
+        .data-use-box {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.75rem 2rem;
+            box-shadow: 0 4px 16px rgba(16, 33, 29, 0.02);
+        }
+
+        .data-use-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 14px;
-            color: var(--text-primary);
-        }
-
-        @media(max-width: 550px) {
-            .outputs-list-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .outputs-list-grid li {
-            position: relative;
-            padding-left: 1.25rem;
-            line-height: 1.5;
-        }
-
-        .outputs-list-grid li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-teal);
-            font-weight: bold;
-            font-family: var(--font-mono);
-        }
-
-        .highlight-banner {
-            background: #FAF9F5;
-            border: 1px solid var(--accent-gold);
-            border-left: 4px solid var(--accent-gold);
-            border-radius: 6px;
-            padding: 1.5rem 1.75rem;
-        }
-
-        .highlight-quote {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            line-height: 1.45;
-            color: var(--text-primary);
-            font-style: italic;
-            margin: 0 0 0.85rem 0;
-        }
-
-        .highlight-sub {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
             font-size: 13.5px;
             line-height: 1.6;
             color: var(--text-secondary);
-            margin: 0;
         }
 
-        /* Data Access */
-        .access-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        @media(max-width: 768px) {
-            .access-grid {
+        @media (max-width: 768px) {
+            .data-use-list {
                 grid-template-columns: 1fr;
+                gap: 1.25rem;
             }
         }
 
-        .access-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 2rem;
-        }
-
-        .access-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
+        .data-use-list strong {
             color: var(--text-primary);
-            margin: 0 0 0.5rem 0;
-            font-weight: 500;
-        }
-
-        .access-subtext {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--accent-teal);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
             display: block;
-            margin-bottom: 1.25rem;
+            margin-bottom: 2px;
+            font-family: var(--font-sans);
         }
 
-        .access-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            font-size: 13.5px;
-            color: var(--text-secondary);
-        }
-
-        .access-card li {
-            position: relative;
-            padding-left: 1.2rem;
-        }
-
-        .access-card li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent-teal);
-            font-weight: bold;
-        }
-
-        .access-principles-bar {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 1.5rem 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .principle-item {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-        }
-
-        .principle-item span {
-            color: var(--accent-teal);
-            font-weight: bold;
-        }
-
-        /* 4-Step Process */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        @media(max-width: 900px) {
-            .process-steps {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media(max-width: 550px) {
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .step-box {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 1.75rem 1.5rem;
-            position: relative;
-        }
-
-        .step-num {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-title {
-            font-family: var(--font-serif);
-            font-size: 1.35rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin: 0 0 0.75rem 0;
-        }
-
-        .step-desc {
-            font-size: 13.5px;
-            line-height: 1.55;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        /* Qualifies Section */
-        .qualify-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 2.25rem;
-            max-width: 820px;
-        }
-
-        .fits-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.25rem 0 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.85rem 1.5rem;
-            font-size: 14px;
-            color: var(--text-primary);
-        }
-
-        @media(max-width: 600px) {
-            .fits-list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .fits-list li {
-            position: relative;
-            padding-left: 1.25rem;
-            line-height: 1.5;
-        }
-
-        .fits-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-teal);
-            font-weight: bold;
-            font-family: var(--font-mono);
-        }
-
-        /* Intake Form Section */
+        /* Application Form */
         .intake-form-wrapper {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: 8px;
-            padding: 2.5rem 3rem;
-            max-width: 780px;
-            margin: 2rem 0;
-            box-shadow: 0 8px 30px rgba(16, 33, 29, 0.04);
-        }
-
-        @media(max-width: 650px) {
-            .intake-form-wrapper {
-                padding: 1.75rem 1.25rem;
-            }
+            padding: 2.25rem;
+            box-shadow: 0 4px 20px rgba(16, 33, 29, 0.04);
+            margin-bottom: 2.5rem;
         }
 
         .form-grid-2 {
@@ -632,91 +511,95 @@
             gap: 1.25rem;
         }
 
-        @media(max-width: 600px) {
+        @media (max-width: 600px) {
             .form-grid-2 {
                 grid-template-columns: 1fr;
             }
         }
 
         .partner-form-group {
-            margin-bottom: 1.35rem;
+            margin-bottom: 1.25rem;
         }
 
         .partner-form-label {
             display: block;
-            font-family: var(--font-sans);
-            font-size: 13.5px;
+            font-family: var(--font-mono);
+            font-size: 11.5px;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem;
         }
 
-        .partner-form-label span.req {
-            color: #A83A32;
+        .partner-form-label .req {
+            color: #DC2626;
         }
 
         .partner-form-hint {
+            display: block;
             font-size: 12px;
             color: var(--text-muted);
             margin-bottom: 0.4rem;
-            display: block;
         }
 
-        .partner-form-input, .partner-form-textarea, .partner-form-select {
+        .partner-form-input, .partner-form-select, .partner-form-textarea {
             width: 100%;
             padding: 0.75rem 0.9rem;
             border: 1px solid var(--border-light);
             border-radius: 4px;
             font-family: var(--font-sans);
-            font-size: 14px;
-            color: var(--text-primary);
+            font-size: 14.5px;
             background: #FAF9F5;
-            box-sizing: border-box;
+            color: var(--text-primary);
             transition: all 0.2s ease;
+            box-sizing: border-box;
         }
 
-        .partner-form-input:focus, .partner-form-textarea:focus, .partner-form-select:focus {
+        .partner-form-input:focus, .partner-form-select:focus, .partner-form-textarea:focus {
             outline: none;
             border-color: var(--accent-teal);
             background: #FFFFFF;
-            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
         }
 
         .btn-submit-partner {
             background: var(--forest-deep);
             color: #FAF9F5;
-            border: 1px solid var(--forest-deep);
-            padding: 0.95rem 2.25rem;
             font-family: var(--font-sans);
-            font-size: 14.5px;
+            font-size: 15px;
             font-weight: 600;
+            padding: 0.95rem 2rem;
+            border: 1px solid var(--forest-deep);
             border-radius: 4px;
             cursor: pointer;
-            transition: all 0.2s ease;
             width: 100%;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
         }
 
         .btn-submit-partner:hover {
             background: var(--accent-teal);
             border-color: var(--accent-teal);
+            color: #FFFFFF;
             transform: translateY(-1px);
         }
 
-        .btn-submit-partner:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        /* Quiet Commercial Path */
+        /* Commercial Path Box */
         .commercial-path-section {
-            padding: 4rem 0;
+            padding: 3rem 0 3.5rem;
             background: #F4F1EA;
             border-top: 1px solid var(--border-light);
         }
 
         .commercial-path-box {
-            max-width: 780px;
-            padding: 1.5rem 0;
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+            background: #FAF9F5;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 2rem;
         }
 
         .commercial-path-box h4 {
@@ -730,7 +613,7 @@
         .commercial-path-box p {
             font-size: 14px;
             color: var(--text-secondary);
-            margin: 0 0 0.85rem 0;
+            margin: 0 0 1.25rem 0;
             line-height: 1.55;
         }
 
@@ -825,371 +708,222 @@
     </nav>
 
     <main id="main-content">
-        <!-- Hero -->
+        <!-- 1. Hero / Introduction -->
         <header class="partner-hero">
             <div class="container">
                 <span class="partner-eyebrow">RESTAURANT DATA PARTNER PROGRAM</span>
-                <h1 class="partner-title">Let your restaurant data tell us where the money is actually going.</h1>
+                <h1 class="partner-title">Help build Signal. Get a useful restaurant analysis at no charge.</h1>
                 <p class="partner-lead">
-                    Signal analyzes real restaurant operating data to uncover pricing problems, discount leakage, modifier issues, item-mix patterns, process friction, and other places where revenue or margin may be quietly slipping away.
+                    I’m looking for a small group of restaurant operators willing to share operating reports and give honest feedback. In return, selected participants receive a focused analysis of their data, with findings and practical next steps.
                 </p>
-                <div class="partner-pitch">
-                    I am currently working with a small number of restaurants willing to share useful operating data and feedback. Selected Data Partners receive an agreed Signal report at no charge in exchange for data that helps refine the analysis process.
-                </div>
+                <p class="partner-sublead">
+                    Real restaurant records help me develop and test Signal against the messy patterns that sample data cannot capture. We agree on the scope and how your data may be used before you share it.
+                </p>
                 <div class="hero-actions">
-                    <a href="#partner-intake" class="btn-partner-primary">See if your restaurant is a fit &rarr;</a>
+                    <a href="#partner-intake" class="btn-partner-primary">Apply to become a Data Partner &rarr;</a>
+                    <a href="/signal/sample-reports/" class="secondary-sample-link">See an example Signal report ↗</a>
+                </div>
+                <div class="hero-notice">
+                    Participation is selective. The report scope is agreed beforehand based on whether your available reports match what I’m currently testing.
                 </div>
             </div>
         </header>
 
-        <!-- Section: What Signal Looks For -->
-        <section class="partner-section bg-alt">
+        <!-- 2. The Exchange (Two Compact Cards) -->
+        <section class="partner-section">
             <div class="container">
                 <div class="section-header-compact">
-                    <span class="section-eyebrow">OPERATIONAL FOCUS AREAS</span>
-                    <h2>What Signal looks for</h2>
+                    <span class="section-eyebrow">THE VALUE EXCHANGE</span>
+                    <h2>A practical, collaborative pilot</h2>
                     <p>
-                        Instead of generic summary dashboards that leave you wondering what to do next, Signal examines the underlying transactions to identify specific friction points and margin leaks.
+                        Selected Data Partners receive a focused diagnostic at no charge in exchange for data and feedback that helps refine the analysis process.
                     </p>
                 </div>
 
-                <div class="categories-grid">
-                    <!-- 1. Pricing -->
-                    <div class="category-card">
-                        <span class="category-num">01 // PRICING</span>
-                        <h3>Pricing</h3>
-                        <ul class="category-list">
-                            <li>Items priced inconsistently across channels or menus</li>
-                            <li>Modifier pricing that no longer makes sense against food cost</li>
-                            <li>Bundles or add-ons that inadvertently reduce overall margin</li>
+                <div class="exchange-grid">
+                    <!-- You provide -->
+                    <div class="exchange-card">
+                        <span class="exchange-tag">WHAT YOU PROVIDE</span>
+                        <h3>You provide</h3>
+                        <ul class="exchange-list">
+                            <li>Relevant restaurant operating reports.</li>
+                            <li>Context about how the operation actually works.</li>
+                            <li>Honest feedback on the findings.</li>
                         </ul>
                     </div>
 
-                    <!-- 2. Discounts & Comps -->
-                    <div class="category-card">
-                        <span class="category-num">02 // DISCOUNTS &amp; COMPS</span>
-                        <h3>Discounts &amp; Comps</h3>
-                        <ul class="category-list">
-                            <li>Discounts being used more broadly than originally intended</li>
-                            <li>Uncapped percentage discounts creating larger losses than fixed-dollar offers</li>
-                            <li>Comp patterns that indicate training or shift-level process problems</li>
+                    <!-- You receive -->
+                    <div class="exchange-card highlight">
+                        <span class="exchange-tag">WHAT YOU RECEIVE</span>
+                        <h3>You receive</h3>
+                        <ul class="exchange-list">
+                            <li>An agreed analysis at no charge.</li>
+                            <li>Findings tied to the available evidence.</li>
+                            <li>Practical next actions and questions to verify.</li>
                         </ul>
                     </div>
+                </div>
 
-                    <!-- 3. Menu & Item Mix -->
-                    <div class="category-card">
-                        <span class="category-num">03 // MENU &amp; ITEM MIX</span>
-                        <h3>Menu &amp; Item Mix</h3>
-                        <ul class="category-list">
-                            <li>High-volume items with unexpectedly weak margin contribution</li>
-                            <li>Add-ons that guests routinely buy but the restaurant underprices</li>
-                            <li>Items taking up significant kitchen effort without enough financial return</li>
-                        </ul>
+                <div class="access-reassurance-box">
+                    <strong>How data access works:</strong> Standard exports (CSV, Excel workbooks, PDF summary sheets, or ZIP folders) are completely sufficient. POS administrator access is completely unnecessary. If restricted export-only access is used, it is optional, platform-dependent, agreed in advance, and never requires sharing passwords or payment settings.
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Founder Credibility & Simple Process -->
+        <section class="partner-section bg-alt">
+            <div class="container">
+                <div class="section-header-compact">
+                    <span class="section-eyebrow">EXPERIENCE &amp; PROCESS</span>
+                    <h2>How the partnership works</h2>
+                </div>
+
+                <div class="credibility-box">
+                    Built by Jayme Volstad, drawing on approximately 20 years working across restaurant operations, from service and kitchen work to scheduling, purchasing, inventory and training.
+                </div>
+
+                <div class="process-grid">
+                    <div class="process-step">
+                        <span class="step-num">STEP 01</span>
+                        <h4>Fit</h4>
+                        <p>We check whether your available reports match what I’m currently testing.</p>
                     </div>
-
-                    <!-- 4. Operational Process -->
-                    <div class="category-card">
-                        <span class="category-num">04 // OPERATIONAL PROCESS</span>
-                        <h3>Operational Process</h3>
-                        <ul class="category-list">
-                            <li>Problems that appear financial on P&amp;Ls but are actually procedural</li>
-                            <li>Staff workflows creating unnecessary discounts, voids, or kitchen rework</li>
-                            <li>System configuration working against how the team actually runs service</li>
-                        </ul>
+                    <div class="process-step">
+                        <span class="step-num">STEP 02</span>
+                        <h4>Agreement</h4>
+                        <p>We agree on the specific scope and data-use terms before any records are shared.</p>
                     </div>
-
-                    <!-- 5. Opportunity Prioritization -->
-                    <div class="category-card">
-                        <span class="category-num">05 // PRIORITIZATION</span>
-                        <h3>Opportunity Prioritization</h3>
-                        <ul class="category-list">
-                            <li>What should be fixed immediately on the next schedule</li>
-                            <li>What should be monitored over the next 60 days before changing</li>
-                            <li>What looks suspicious on paper but is probably not worth rebuilding</li>
-                        </ul>
+                    <div class="process-step">
+                        <span class="step-num">STEP 03</span>
+                        <h4>Analysis</h4>
+                        <p>I review the data against shift reality, mapping verified patterns, exposure, and floor checks.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-num">STEP 04</span>
+                        <h4>Findings &amp; Feedback</h4>
+                        <p>You receive your report at no charge; you share honest feedback on what was useful or incomplete.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section: Show the Difference Between Data and Decisions -->
+        <!-- 4. What Signal Looks For: Grounded Example -->
         <section class="partner-section">
             <div class="container">
                 <div class="section-header-compact">
                     <span class="section-eyebrow">ANALYTICAL RIGOR</span>
-                    <h2>The point is not just finding numbers. It is deciding what they actually mean.</h2>
+                    <h2>The difference between raw totals and actionable findings</h2>
                     <p>
-                        A report that simply spits out totals leaves all the heavy lifting to the operator. Signal connects raw numbers to operational shift reality so you can make informed decisions.
+                        A report that merely lists totals leaves all the heavy lifting to the operator. Signal checks whether the pattern points toward configuration, training, workflow or individual activity—and identifies what needs to be verified on the floor.
                     </p>
                 </div>
 
-                <div class="decisions-stack">
-                    <!-- Example 1 -->
-                    <div class="decision-block">
-                        <span class="decision-tag">EXAMPLE 1 // PROMOTION ECONOMICS</span>
-                        <h3>Discount Structure: Cap vs. Percentage Leakage</h3>
-                        
-                        <div class="comparison-callout">
-                            <div>
-                                <span class="callout-pill">Structure A (Capped)</span>
-                                <span class="callout-val">$5 off orders of $50+</span>
-                            </div>
-                            <div>
-                                <span class="callout-pill">Structure B (Uncapped)</span>
-                                <span class="callout-val highlight">10% off with no cap</span>
-                            </div>
-                        </div>
+                <div class="example-card">
+                    <span class="section-eyebrow">EXAMPLE // PROMOTION ECONOMICS</span>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin: 0 0 0.5rem; font-weight: 500;">
+                        Discount Structure: Capped Dollar vs. Percentage Concession
+                    </h3>
+                    <p style="font-size: 14.5px; color: var(--text-secondary); margin: 0 0 1rem;">
+                        Two promotions may sound interchangeable operationally, but their financial impact diverges sharply depending on check sizes:
+                    </p>
 
-                        <p class="decision-text">
-                            Both promotions sound similar operationally and might seem interchangeable in marketing meetings. But on a $120 dinner check, the 10% discount gives away $12.00, whereas the $5 fixed reward preserves $7.00 of margin while delivering the same perceived goodwill to the guest. On large catering or party checks, uncapped discounts can erode hundreds of dollars in profit.
-                        </p>
-                        <div class="decision-takeaway">
-                            <strong>What Signal determines:</strong> Which promotion structures create unnecessary margin leakage versus which ones generate profitable incremental volume.
+                    <div class="comparison-callout">
+                        <div>
+                            <span class="callout-pill">Structure A (Capped)</span>
+                            <span class="callout-val">$5 off orders of $50+</span>
+                        </div>
+                        <div>
+                            <span class="callout-pill">Structure B (Uncapped)</span>
+                            <span class="callout-val highlight">10% off with no cap</span>
                         </div>
                     </div>
 
-                    <!-- Example 2 -->
-                    <div class="decision-block">
-                        <span class="decision-tag">EXAMPLE 2 // PRICING SURGERY</span>
-                        <h3>Modifier Pricing: Small Useful Tweaks Over Wholesale Overhauls</h3>
-                        <p class="decision-text">
-                            When margins compress, standard advice often suggests re-engineering the entire menu or raising all prices across the board. In reality, transaction logs often show that base entree pricing is completely sound—the leak is coming from 4 or 5 high-volume kitchen additions (bacon, extra avocado, double protein, dairy substitutions) that are either uncharged in kitchen notes or priced below ingredient cost.
-                        </p>
-                        <div class="decision-takeaway">
-                            <strong>What Signal determines:</strong> The smallest useful intervention—such as repricing a handful of high-frequency modifiers—rather than recommending disruptive menu overhauls.
-                        </div>
-                    </div>
+                    <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0 0 0.85rem;">
+                        On a $120 eligible dinner check, Structure A costs $7 less in direct discount expense than Structure B ($5 vs $12). On large party or catering checks, uncapped percentage discounts can quietly give away dozens of margin dollars per transaction.
+                    </p>
+                    <p style="font-size: 13.5px; color: var(--text-muted); font-style: italic; margin: 0 0 1rem; line-height: 1.5;">
+                        Note: Signal does not assume equal customer goodwill, incremental demand, or profitability. True margin analysis requires relevant cost information rather than naive assumptions.
+                    </p>
 
-                    <!-- Example 3 -->
-                    <div class="decision-block">
-                        <span class="decision-tag">EXAMPLE 3 // ROOT CAUSES</span>
-                        <h3>Discount Misuse: Person Problem vs. Process Problem</h3>
-                        <p class="decision-text">
-                            If audit logs show discounts or voids concentrating around a specific station, the instinctive reaction might be staff discipline. But if three servers across different shifts show the exact same pattern, the issue is almost never bad intent. It is usually an ambiguous POS screen layout, lack of a dedicated button for a split plate, or conflicting manager instructions during a rush.
-                        </p>
-                        <div class="decision-takeaway">
-                            <strong>What Signal determines:</strong> Distinguishes clearly between a <em>person problem</em> and a <em>process problem</em> so operators fix the underlying procedure rather than penalizing staff.
+                    <div class="decision-takeaway">
+                        <strong>What Signal determines:</strong> Identifies which discount setups create unintended margin concessions and highlights specific floor questions to verify before altering your menu or marketing.
+                    </div>
+                </div>
+
+                <!-- Expandable Accordion for More Examples -->
+                <details class="partner-accordion">
+                    <summary>More Examples: Modifier Pricing &amp; Station Audits</summary>
+                    <div class="accordion-content">
+                        <div style="margin-bottom: 1.25rem;">
+                            <strong style="color: var(--text-primary); display: block; margin-bottom: 4px;">Modifier Pricing (Targeted Tweaks vs. Wholesale Overhauls):</strong>
+                            When margins compress, operators often feel pressured to raise base menu prices across the board. In reality, transaction logs often reveal that entree pricing is completely sound—the quiet leakage comes from 4 or 5 high-frequency modifiers (extra protein, dairy substitutions, specialty sides) that are either uncharged in kitchen notes or priced below ingredient cost.
+                        </div>
+                        <div>
+                            <strong style="color: var(--text-primary); display: block; margin-bottom: 4px;">Station Discrepancies (Process vs. Person):</strong>
+                            If void or discount logs spike at a particular station, the intuitive reaction might be staff discipline. But if multiple staff members display the exact same pattern across different shifts, the issue is almost never bad intent. It is usually an ambiguous POS screen layout, missing split-item buttons, or conflicting shift instructions. Signal flags what to inspect on the floor before taking action.
                         </div>
                     </div>
+                </details>
+
+                <div style="margin-top: 1.5rem; text-align: left;">
+                    <a href="/signal/sample-reports/" class="secondary-sample-link">Explore full sample reports (Snapshot, Diagnostic, Deep Dive) &rarr;</a>
+                    <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); display: block; margin-top: 4px;">
+                        (Sample reports utilize synthetic demonstration datasets to protect client confidentiality.)
+                    </span>
                 </div>
             </div>
         </section>
 
-        <!-- Section: What a Restaurant May Receive -->
+        <!-- 5. Honest Data Use & Confidentiality -->
         <section class="partner-section bg-alt">
             <div class="container">
                 <div class="section-header-compact">
-                    <span class="section-eyebrow">PARTNERSHIP DELIVERABLES</span>
-                    <h2>What you may receive</h2>
+                    <span class="section-eyebrow">DATA GOVERNANCE</span>
+                    <h2>How your data is handled</h2>
                     <p>
-                        The exact scope of your report depends on your available data and the specific questions you want answered. We agree on the focus before any review begins.
+                        We treat operating records with strict professional discretion. Here is exactly what happens with your data:
                     </p>
                 </div>
 
-                <div class="outputs-container">
-                    <div>
-                        <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
-                            Depending on whether we examine check-level detail, modifier records, menu item mix, or labor schedules, your tailored brief may include:
-                        </p>
-                        <ul class="outputs-list-grid">
-                            <li>Discount &amp; comp analysis</li>
-                            <li>Pricing &amp; modifier analysis</li>
-                            <li>Item-mix &amp; margin patterns</li>
-                            <li>Revenue leakage calculations</li>
-                            <li>Operational process findings</li>
-                            <li>Prioritized recommendations</li>
-                            <li>Concrete shift-level examples</li>
-                            <li>Suggested next floor checks</li>
-                            <li>Areas where no action is needed</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <div class="highlight-banner">
-                            <p class="highlight-quote">
-                                “Sometimes the most valuable finding is that you do not need to rebuild something.”
-                            </p>
-                            <p class="highlight-sub">
-                                Signal does not manufacture artificial recommendations just to make a report feel heavier. If your pricing or discount usage is already disciplined, the report explicitly validates that so you can focus management attention elsewhere.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Data Access -->
-        <section class="partner-section">
-            <div class="container">
-                <div class="section-header-compact">
-                    <span class="section-eyebrow">DATA SECURITY &amp; PRIVACY</span>
-                    <h2>You do not have to hand over the keys to your POS.</h2>
-                    <p>
-                        Restaurants can provide exported reports, spreadsheets, PDFs, CSV files, or other relevant operating data directly. If exporting everything manually is inconvenient, I can also work from temporary, restricted export-only access to the relevant system when the platform supports it.
-                    </p>
-                </div>
-
-                <div class="access-grid">
-                    <!-- Option 1 -->
-                    <div class="access-card">
-                        <span class="access-subtext">PRIMARY METHOD // ZERO SYSTEM ACCESS</span>
-                        <h3>Option 1: Send exported reports</h3>
-                        <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 1.25rem;">
-                            You pull standard reports directly from your POS back-office and upload the raw files securely:
-                        </p>
-                        <ul>
-                            <li>Product mix and item sales summaries</li>
-                            <li>Discount, comp, and void audit logs</li>
-                            <li>Menu item and modifier configuration exports</li>
-                            <li>Modifier sales and kitchen modifier frequency</li>
-                            <li>Labor summaries or hourly sales when relevant</li>
-                        </ul>
-                    </div>
-
-                    <!-- Option 2 -->
-                    <div class="access-card">
-                        <span class="access-subtext">CONVENIENCE OPTION // RESTRICTED ACCESS</span>
-                        <h3>Option 2: Temporary restricted access</h3>
-                        <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 1.25rem;">
-                            Export-only or similarly limited access when supported by your platform (e.g. Toast, Square):
-                        </p>
-                        <ul>
-                            <li>Read-only or reporting-only role assignment</li>
-                            <li>No administrative privileges or payment settings</li>
-                            <li>Used solely to extract the agreed report files</li>
-                            <li>Revoked immediately after data extraction is complete</li>
-                            <li>No ongoing or background account connection</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="access-principles-bar">
-                    <div class="principle-item">
-                        <span>✕</span> Unrestricted administrator access is not required
-                    </div>
-                    <div class="principle-item">
-                        <span>✕</span> Permanent or ongoing access is not required
-                    </div>
-                    <div class="principle-item">
-                        <span>✓</span> Access can be limited and revoked afterward
-                    </div>
-                    <div class="principle-item">
-                        <span>✓</span> Exported files alone are entirely sufficient
-                    </div>
-                </div>
-
-                <p style="font-size: 13px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 1.5rem; text-align: center;">
-                    The specific data requested will depend on the question being analyzed and the restaurant's systems.
-                </p>
-            </div>
-        </section>
-
-        <!-- Section: How It Works -->
-        <section class="partner-section bg-alt">
-            <div class="container">
-                <div class="section-header-compact">
-                    <span class="section-eyebrow">SIMPLE 4-STEP COLLABORATION</span>
-                    <h2>How it works</h2>
-                    <p>
-                        The data partnership is a straightforward, collaborative process designed to respect your time and operational rhythm.
-                    </p>
-                </div>
-
-                <div class="process-steps">
-                    <div class="step-box">
-                        <span class="step-num">STEP 01</span>
-                        <h3 class="step-title">Fit</h3>
-                        <p class="step-desc">
-                            We confirm your restaurant and available data are a useful match for the current pilot stage.
-                        </p>
-                    </div>
-
-                    <div class="step-box">
-                        <span class="step-num">STEP 02</span>
-                        <h3 class="step-title">Data</h3>
-                        <p class="step-desc">
-                            You provide exports or temporary restricted access to pull the specific reports we agreed upon.
-                        </p>
-                    </div>
-
-                    <div class="step-box">
-                        <span class="step-num">STEP 03</span>
-                        <h3 class="step-title">Analysis</h3>
-                        <p class="step-desc">
-                            Signal reviews the data, models financial impact, and separates meaningful patterns from ordinary noise.
-                        </p>
-                    </div>
-
-                    <div class="step-box">
-                        <span class="step-num">STEP 04</span>
-                        <h3 class="step-title">Report &amp; Feedback</h3>
-                        <p class="step-desc">
-                            You receive the agreed report and tell me what was useful, confusing, incomplete, or wrong. Feedback is part of the partnership.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Why This Program Exists -->
-        <section class="partner-section">
-            <div class="container">
-                <div style="max-width: 800px;">
-                    <div class="section-header-compact">
-                        <span class="section-eyebrow">MOTIVATION &amp; GOALS</span>
-                        <h2>Why I am doing this</h2>
-                    </div>
-
-                    <p style="font-size: 1.12rem; line-height: 1.7; color: var(--text-primary); margin-bottom: 1.5rem;">
-                        Signal is currently in a pilot stage. Real restaurant operating data helps improve the analysis far more than synthetic examples can.
-                    </p>
-                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                        The goal is not to collect as much data as possible. The goal is to test whether Signal can consistently identify useful, defensible findings that restaurant operators can actually act on.
-                    </p>
-                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin: 0;">
-                        Your feedback helps improve both the analysis and the way the findings are communicated so they remain practical and grounded in shift reality.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Who Qualifies -->
-        <section class="partner-section bg-alt">
-            <div class="container">
-                <div class="section-header-compact">
-                    <span class="section-eyebrow">PARTNERSHIP FIT</span>
-                    <h2>Participation is selective. Not every restaurant will qualify.</h2>
-                    <p>
-                        Selected restaurants receive an agreed Signal operational diagnostic report at no charge in exchange for access to useful real-world operating data and feedback on the findings. Participation is intentionally limited: selection depends on operating structure, POS or reporting systems, available data, and whether the restaurant presents a mutual analytical fit.
-                    </p>
-                </div>
-
-                <div class="qualify-card">
-                    <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">POTENTIAL GOOD FITS INCLUDE</span>
-                    
-                    <ul class="fits-list">
-                        <li>Independent restaurants with active shift management</li>
-                        <li>Multi-unit operators seeking operational consistency</li>
-                        <li>Restaurants with meaningful historical POS data</li>
-                        <li>Businesses utilizing discounts, comps, modifiers, or promos</li>
-                        <li>Operators actively trying to understand margin leaks</li>
+                <div class="data-use-box">
+                    <ul class="data-use-list">
+                        <li>
+                            <strong>Scope agreed before transfer</strong>
+                            Submitting this preliminary form only indicates interest. The specific focus, questions, and data-use terms are agreed directly with you before any files are shared.
+                        </li>
+                        <li>
+                            <strong>Direct analytical purpose</strong>
+                            Your records are analyzed solely to deliver your agreed report and to test Signal’s anomaly detection logic against real-world operating edge cases.
+                        </li>
+                        <li>
+                            <strong>Private, non-public processing</strong>
+                            Analysis is conducted by Jayme using proprietary scripts and secure, non-public analytical APIs. Data is never sold, shared, or used to train third-party public AI models.
+                        </li>
+                        <li>
+                            <strong>Strict retention &amp; deletion</strong>
+                            Uploaded source files are kept during active analysis and removed from active storage within 30 days of report delivery per our privacy policy, unless you request otherwise.
+                        </li>
+                        <li>
+                            <strong>Generalized knowledge only</strong>
+                            Reusable knowledge developed for Signal consists of generalized operational rules and calculation logic—never raw customer transactions or identifiable restaurant data.
+                        </li>
+                        <li>
+                            <strong>No unauthorized case studies</strong>
+                            Any potential public reference or case study requires your separate, explicit written consent and complete anonymization beforehand.
+                        </li>
                     </ul>
-
-                    <p style="font-size: 13.5px; color: var(--text-muted); font-family: var(--font-mono); margin: 1.5rem 0 0; line-height: 1.5;">
-                        Note: You do not need to be a large operation or multi-million-dollar venue to qualify. Small, tightly run independent restaurants often yield the clearest analytical insights.
-                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section: Intake Form -->
+        <!-- 6. Application Form & Expandable FAQs -->
         <section id="partner-intake" class="partner-section" style="background: #FAF9F5;">
             <div class="container">
                 <div class="section-header-compact">
                     <span class="section-eyebrow">APPLY FOR DATA PARTNERSHIP</span>
-                    <h2>Interested in becoming a Data Partner?</h2>
+                    <h2>Apply to become a Data Partner</h2>
                     <p>
-                        Tell me a little about your restaurant, the systems you use, and what you would most like to understand.
+                        Tell me about your restaurant, the systems you use, and what you would most like to understand. Participation is selective based on whether your available reports match what I’m currently testing.
                     </p>
                 </div>
 
@@ -1220,37 +954,20 @@
                             </div>
 
                             <div class="partner-form-group">
-                                <label class="partner-form-label" for="dp-locations">Number of Locations</label>
-                                <select id="dp-locations" name="locations_count" class="partner-form-select">
-                                    <option value="1">1 location</option>
-                                    <option value="2-3">2–3 locations</option>
-                                    <option value="4-10">4–10 locations</option>
-                                    <option value="10+">10+ locations</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-grid-2">
-                            <div class="partner-form-group">
                                 <label class="partner-form-label" for="dp-pos">Primary POS System</label>
-                                <input type="text" id="dp-pos" name="operating_system" class="partner-form-input" placeholder="e.g. Toast, Aloha, Square, Clover">
-                            </div>
-
-                            <div class="partner-form-group">
-                                <label class="partner-form-label" for="dp-history">Years of Data Available</label>
-                                <input type="text" id="dp-history" name="data_history" class="partner-form-input" placeholder="e.g. 6 months, 2 years, 5+ years">
+                                <input type="text" id="dp-pos" name="operating_system" class="partner-form-input" placeholder="e.g. Toast, Square, Clover, Aloha">
                             </div>
                         </div>
 
                         <div class="partner-form-group">
                             <label class="partner-form-label" for="dp-interest">What would you most like to understand? <span class="req">*</span></label>
                             <span class="partner-form-hint">Describe the main question, friction point, or suspected leak you want analyzed.</span>
-                            <textarea id="dp-interest" name="concern" rows="3" class="partner-form-textarea" required placeholder="e.g. Are our happy hour discounts giving away margin without driving checks? Why are check averages declining on weekend lunches?"></textarea>
+                            <textarea id="dp-interest" name="concern" rows="3" class="partner-form-textarea" required placeholder="e.g. Are happy hour discounts giving away margin without driving extra checks? Why are weekend check averages slipping?"></textarea>
                         </div>
 
                         <div class="partner-form-group">
-                            <label class="partner-form-label" for="dp-reports">What reports or exports can you provide?</label>
-                            <span class="partner-form-hint">e.g. PMix CSVs, discount detail, void logs, hourly sales, or restricted Toast login.</span>
+                            <label class="partner-form-label" for="dp-reports">What reports or data can you provide?</label>
+                            <span class="partner-form-hint">e.g. Product mix CSVs, discount detail, void logs, hourly sales summaries.</span>
                             <input type="text" id="dp-reports" name="available_reports" class="partner-form-input" placeholder="e.g. Toast PMix and discount exports for the last 90 days">
                         </div>
 
@@ -1259,7 +976,7 @@
                             <textarea id="dp-notes" name="notes" rows="2" class="partner-form-textarea" placeholder="Any specific context, referral details, or timing considerations..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit-partner" id="dp-submit-btn">See if your restaurant is a fit &rarr;</button>
+                        <button type="submit" class="btn-submit-partner" id="dp-submit-btn">Apply to become a Data Partner &rarr;</button>
                     </form>
 
                     <div id="dp-success-box" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.75rem; border-radius: 6px; margin-top: 1rem; color: var(--forest-deep); text-align: center;">
@@ -1269,16 +986,58 @@
                             Reference ID: <strong id="dp-sub-id" style="font-family: var(--font-mono); color: var(--forest-deep);"></strong>
                         </p>
                         <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0; line-height: 1.55;">
-                            Jayme personally reviews every application to confirm analytical compatibility and will follow up within 1–2 business days.
+                            Jayme personally reviews every application to assess report compatibility and will follow up within 1–2 business days.
                         </p>
                     </div>
 
                     <div id="dp-error-box" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                 </div>
+
+                <!-- Expandable FAQs -->
+                <div style="max-width: 820px; margin: 0 auto;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); margin: 0 0 1rem; font-weight: 500;">
+                        Frequently Asked Questions
+                    </h3>
+
+                    <details class="faq-accordion">
+                        <summary>How much does the Data Partner analysis cost?</summary>
+                        <div class="accordion-content">
+                            Nothing. Selected Data Partners receive an agreed Signal analysis at no charge in exchange for useful real-world operating records and honest feedback on the findings.
+                        </div>
+                    </details>
+
+                    <details class="faq-accordion">
+                        <summary>What POS or back-office systems do you accept?</summary>
+                        <div class="accordion-content">
+                            Signal works with whatever format your software exports—including Toast, Square, Clover, Aloha, Revel, or custom spreadsheets. CSV, Excel, PDF summary sheets, and ZIP archives are all accepted.
+                        </div>
+                    </details>
+
+                    <details class="faq-accordion">
+                        <summary>Do I need to give you administrative access to my POS?</summary>
+                        <div class="accordion-content">
+                            No. Standard exported files you download yourself are completely sufficient. POS administrator access is completely unnecessary. If restricted export-only access is used, it is optional, platform-dependent, and agreed in advance. We never ask for passwords.
+                        </div>
+                    </details>
+
+                    <details class="faq-accordion">
+                        <summary>Can single-location independent restaurants qualify?</summary>
+                        <div class="accordion-content">
+                            Yes. You do not need to be a large multi-unit venue. Tightly run single-unit independent restaurants often yield the clearest analytical insights.
+                        </div>
+                    </details>
+
+                    <details class="faq-accordion">
+                        <summary>How long does the review take once records are shared?</summary>
+                        <div class="accordion-content">
+                            Typically 5 to 7 business days from the receipt of files and agreed focus area. Jayme will confirm delivery and discuss the timeline directly with you.
+                        </div>
+                    </details>
+                </div>
             </div>
         </section>
 
-        <!-- Commercial Path (Very Bottom) -->
+        <!-- 7. Commercial Path (Bottom) -->
         <section class="commercial-path-section">
             <div class="container">
                 <div class="commercial-path-box">
