@@ -15,6 +15,11 @@
     --brand-teal-light: #1A9089;   /* Vibrant Mid Teal */
     --brand-gold: #C5A059;         /* Warm Gold / Selective Clarity */
     
+    --forest-deep: #0E1F1B;
+    --forest-dark: #0E1F1B;
+    --forest-soft: #204E45;
+    --border-sand: #E5D9C3;
+    
     --accent-gold: #C5A059;       /* Selective gold for badges & milestones */
     --accent-lime: #4D7C0F;       /* Olive-lime for live/working status */
     --accent-teal: #0F766E;       /* Deep teal for links, primary interactions, structure */
@@ -273,7 +278,7 @@ a:hover {
 .btn-primary-teal,
 .btn-magnetic {
     background: var(--brand-forest, #0E1F1B);
-    color: #FAF9F5 !important;
+    color: #FAF9F5;
     border: 1.5px solid var(--brand-forest, #0E1F1B);
     box-shadow: 0 2px 8px rgba(14, 31, 27, 0.12);
 }
@@ -284,16 +289,34 @@ a:hover {
 .btn-magnetic:hover {
     background: var(--accent-teal, #0F766E);
     border-color: var(--accent-teal, #0F766E);
-    color: #FAF9F5 !important;
+    color: #FAF9F5;
     box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
     transform: translateY(-1px);
+}
+
+/* Gold Primary Accent Button (High contrast dark ink text on warm gold background) */
+.btn-gold,
+a[style*="#C5A059"],
+a[style*="var(--accent-gold)"],
+button[style*="#C5A059"],
+button[style*="var(--accent-gold)"] {
+    color: #0E1F1B !important;
+    font-weight: 700 !important;
+}
+
+a[style*="#C5A059"]:hover,
+a[style*="var(--accent-gold)"]:hover,
+button[style*="#C5A059"]:hover,
+button[style*="var(--accent-gold)"]:hover {
+    color: #0E1F1B !important;
+    filter: brightness(1.05);
 }
 
 /* 2. Secondary Outlined Button */
 .btn-secondary,
 .btn-secondary-cream {
     background: transparent;
-    color: var(--text-primary) !important;
+    color: var(--text-primary);
     border: 1.5px solid var(--border-dark, #C2BEB4);
 }
 
@@ -301,8 +324,31 @@ a:hover {
 .btn-secondary-cream:hover {
     background: rgba(15, 118, 110, 0.04);
     border-color: var(--accent-teal, #0F766E);
-    color: var(--accent-teal, #0F766E) !important;
+    color: var(--accent-teal, #0F766E);
     transform: translateY(-1px);
+}
+
+/* Secondary Button in Dark Theme Contexts */
+.product-hero .btn-secondary,
+.hero-dark .btn-secondary,
+.bg-dark .btn-secondary,
+.bg-dark-panel .btn-secondary,
+.results-header-strip .btn-secondary,
+.results-header-strip button.btn-secondary {
+    color: #FAF9F5 !important;
+    border-color: rgba(250, 249, 245, 0.4) !important;
+    background: transparent !important;
+}
+
+.product-hero .btn-secondary:hover,
+.hero-dark .btn-secondary:hover,
+.bg-dark .btn-secondary:hover,
+.bg-dark-panel .btn-secondary:hover,
+.results-header-strip .btn-secondary:hover,
+.results-header-strip button.btn-secondary:hover {
+    color: #FFFFFF !important;
+    border-color: var(--accent-gold, #C5A059) !important;
+    background: rgba(197, 160, 89, 0.12) !important;
 }
 
 /* 3. Text-Link CTA */
