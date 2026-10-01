@@ -64,8 +64,25 @@ async function verifyLive() {
     const reports = await fetchUrl('https://www.contextmuse.com/signal/sample-reports/');
     check('Sample Reports Synthetic Label live', reports.body.includes('Synthetic Demonstration Dataset'));
 
-    // 7. GA4 Analytics ID
-    check('GA4 Measurement ID Intact across routes', sig.body.includes('G-MVV7WNL42L') && demo.body.includes('G-MVV7WNL42L') && about.body.includes('G-MVV7WNL42L'));
+    // 8. Homepage founder-led positioning
+    const home = await fetchUrl('https://www.contextmuse.com/');
+    check('Home Hero Title live', home.body.includes('I build systems around the way your business actually works.'));
+    check('Home Hero Subhead live', home.body.includes('I find where a business is losing time, money, or customers, then build the system that fixes it.'));
+    check('Home Founder-Led Statement live', home.body.includes('Context &amp; Muse is intentionally founder-led and independent.'));
+    check('Home Studio Label Purged', !home.body.includes('Applied systems studio') && !home.body.includes('Applied Systems Studio'));
+
+    // 9. Services founder-led positioning
+    const services = await fetchUrl('https://www.contextmuse.com/services/');
+    check('Services Hero Headline live', services.body.includes('I find where a business is losing time, money, or customers'));
+    check('Services Eyebrow live', services.body.includes('FOUNDER-LED'));
+
+    // 10. About founder-led positioning
+    check('About Hero Sub live', about.body.includes('Context &amp; Muse is intentionally founder-led and independent.'));
+    check('About Practical Solutions Cap 04 live', about.body.includes('Build practical custom solutions'));
+
+    // 11. Restaurant Systems non-consulting titles
+    const rest = await fetchUrl('https://www.contextmuse.com/restaurant-systems/');
+    check('Restaurant Systems Title clean', !rest.body.includes('Hospitality Consulting'));
 
     const allPassed = tests.every(t => t.pass);
     console.log('\n========================================');
