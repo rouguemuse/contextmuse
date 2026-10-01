@@ -8,5 +8,9 @@ Disallow: /message-analysis/
 Disallow: /reports/
 Disallow: /backups/
 Disallow: /drafts/
+Disallow: /preview/
+Disallow: /partials/
+Disallow: /contact/success/
+Disallow: /brand/
 
 Sitemap: https://www.contextmuse.com/sitemap.xml
