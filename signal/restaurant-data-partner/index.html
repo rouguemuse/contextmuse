@@ -735,16 +735,26 @@
         }
 
         .commercial-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             font-family: var(--font-mono);
-            font-size: 12.5px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--accent-teal);
-            text-decoration: underline;
-            text-underline-offset: 3px;
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
         }
 
         .commercial-link:hover {
-            color: var(--forest-deep);
+            border-color: var(--accent-teal);
+            background: var(--accent-teal);
+            color: #FFFFFF !important;
+            transform: translateY(-1px);
         }
     </style>
 
@@ -1275,7 +1285,7 @@
                     <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">ALTERNATIVE SERVICE PATH</span>
                     <h4>Not looking for a Data Partnership?</h4>
                     <p>
-                        Signal is also available as a paid diagnostic service for restaurants that want analysis without participating in the pilot partnership.
+                        Signal is also available as a direct, confidential paid service ($195 Snapshot, $595 Diagnostic, or from $1,250 Deep Dive) for restaurants that prefer to purchase analysis on their own timeline without participating in the research pilot or feedback cycles.
                     </p>
                     <a href="/signal/#pricing" class="commercial-link">View Signal services and pilot pricing &rarr;</a>
                 </div>
