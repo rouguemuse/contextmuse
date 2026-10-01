@@ -130,9 +130,9 @@ for (const f of allFiles) {
 }
 
 console.log('--- AUDIT RESULTS ---');
-console.log('Indexable routes count:', indexableCount, '(target: 37)');
+console.log('Indexable routes count:', indexableCount, '(target: 38)');
 console.log('Non-indexable routes count:', nonIndexableCount, '(target: 27)');
-console.log('Sitemap URLs count:', sitemapUrls.size, '(target: 37)');
+console.log('Sitemap URLs count:', sitemapUrls.size, '(target: 38)');
 console.log('Indexable issues count:', indexableIssues.length);
 if (indexableIssues.length > 0) {
   indexableIssues.forEach(i => console.log('  [INDEXABLE ISSUE]', i));
