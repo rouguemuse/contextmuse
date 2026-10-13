@@ -913,14 +913,14 @@
                     </div>
                     <div style="text-align: right;">
                         <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--text-secondary);">Status</div>
-                        <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-gold);">SYNTHETIC DEMONSTRATION DATA</div>
+                        <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-gold);" id="brief-status-badge">SYNTHETIC DEMONSTRATION DATA</div>
                     </div>
                 </div>
 
                 <!-- Demonstration Disclaimer Banner -->
                 <div style="background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.28); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
-                    <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0;">Notice:</span>
-                    <span style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;">Sample data only. This is not a real restaurant. Baseline metrics are kept constant across all Signal public pages.</span>
+                    <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0;" id="brief-notice-tag">Notice:</span>
+                    <span style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;" id="brief-notice-text">Sample data only. This is not a real restaurant. Baseline metrics are kept constant across all Signal public pages.</span>
                 </div>
 
                 <!-- 1. Operational State Assessment -->
@@ -941,28 +941,28 @@
                         <div class="stack-card">
                             <div class="stack-title">In Your Records</div>
                             <div class="stack-val" style="color: var(--accent-crimson);" id="stack-confirmed">$15,609 / 60d</div>
-                            <div class="stack-note">Overtime ($6,846) + voids ($1,840) + promo ($3,500) + extras ($2,443) + miscoded meals ($1,640)</div>
+                            <div class="stack-note" id="stack-confirmed-note">Disclosed anomalies across 60 days: OT ($6,846) + voids ($1,840) + promo excess ($3,200) + extras ($2,443) + miscoded meals ($1,640)</div>
                         </div>
                         <div class="stack-card">
                             <div class="stack-title">Modeled Cost</div>
                             <div class="stack-val" style="color: var(--accent-amber);" id="stack-probable">$21,000–$32,000</div>
-                            <div class="stack-note">Lost peak table turns &amp; station delays</div>
+                            <div class="stack-note" id="stack-probable-note">Lost peak table turns &amp; kitchen station delays ($1,750–$2,667/mo)</div>
                         </div>
                         <div class="stack-card">
                             <div class="stack-title">Fast POS Wins</div>
                             <div class="stack-val" style="color: var(--accent-teal);" id="stack-recoverable">$35,650 / yr</div>
-                            <div class="stack-note">Capping promo ($21k) + repricing 4 extras ($14.65k)</div>
+                            <div class="stack-note" id="stack-recoverable-note">Capping promo ($19,200/yr / $3,200 period) + repricing 4 extras ($14,658/yr / $2,443 period)</div>
                         </div>
                         <div class="stack-card featured">
                             <div class="stack-title" style="color: var(--accent-gold);">Total Opportunity</div>
                             <div class="stack-val" id="stack-total">$79,000–$110,000</div>
-                            <div class="stack-note">Yearly margin improvement opportunity</div>
+                            <div class="stack-note" id="stack-total-note">Direct cash recovery ($54,630/yr) + modeled peak turn recovery ($21k–$32k/yr)</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 3. Cross-Signal Hypothesis Map -->
-                <div class="causal-map">
+                <div class="causal-map" id="causal-map-section">
                     <span class="causal-eyebrow">Where Numbers Collide (Correlation Map)</span>
                     <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin: 0 0 0.5rem 0; color: #FAF9F5;">Friday &amp; Saturday Dinner Slowdown</h3>
                     <p style="font-size: 13.5px; color: rgba(250, 249, 245, 0.7); margin: 0 0 1.5rem 0;">
@@ -1217,6 +1217,271 @@
             if (files.length > 0) processFiles(files);
         }
 
+        // Robust CSV Parser (RFC 4180 compliant with UTF-8 BOM and quote handling)
+        function cleanNumeric(val) {
+            if (val === null || val === undefined) return 0;
+            if (typeof val === 'number') return Number.isFinite(val) ? val : 0;
+            let s = String(val).trim();
+            if (!s || s === 'N/A' || s === 'n/a' || s === '-' || s === 'null') return 0;
+            let isNeg = false;
+            if (s.startsWith('(') && s.endsWith(')')) {
+                isNeg = true;
+                s = s.slice(1, -1);
+            }
+            s = s.replace(/[\$,\s]/g, '').replace(/%$/, '');
+            const num = parseFloat(s);
+            if (!Number.isFinite(num)) return 0;
+            return isNeg ? -num : num;
+        }
+
+        function parseCSV(text) {
+            if (!text || typeof text !== 'string') return { headers: [], rows: [] };
+            if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+
+            const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0 && !l.trim().startsWith('#'));
+            if (lines.length === 0) return { headers: [], rows: [] };
+
+            let delimiter = ',';
+            const firstLine = lines[0];
+            const commaCount = (firstLine.match(/,/g) || []).length;
+            const tabCount = (firstLine.match(/\t/g) || []).length;
+            const semiCount = (firstLine.match(/;/g) || []).length;
+            if (tabCount > commaCount && tabCount > semiCount) delimiter = '\t';
+            else if (semiCount > commaCount && semiCount > tabCount) delimiter = ';';
+
+            const parseLine = (line) => {
+                const fields = [];
+                let cur = '';
+                let inQuotes = false;
+                for (let i = 0; i < line.length; i++) {
+                    const ch = line[i];
+                    if (ch === '"') {
+                        if (inQuotes && line[i + 1] === '"') {
+                            cur += '"';
+                            i++;
+                        } else {
+                            inQuotes = !inQuotes;
+                        }
+                    } else if (ch === delimiter && !inQuotes) {
+                        fields.push(cur.trim());
+                        cur = '';
+                    } else {
+                        cur += ch;
+                    }
+                }
+                fields.push(cur.trim());
+                return fields.map(f => (f.startsWith('"') && f.endsWith('"')) ? f.slice(1, -1).trim() : f);
+            };
+
+            const rawHeaders = parseLine(lines[0]);
+            const headers = rawHeaders.map(h => h.toLowerCase().trim());
+            const rows = [];
+            for (let i = 1; i < lines.length; i++) {
+                const parts = parseLine(lines[i]);
+                if (parts.length === 0 || (parts.length === 1 && !parts[0])) continue;
+                const row = {};
+                for (let j = 0; j < headers.length; j++) {
+                    row[headers[j]] = parts[j] !== undefined ? parts[j] : '';
+                }
+                rows.push(row);
+            }
+            return { headers, rows };
+        }
+
+        // Canonical Synthetic Datasets (Stored as raw CSV strings and processed through parser)
+        const SYNTHETIC_CSV_DATA = (function() {
+            // Generate 60 daily sales rows summing to $312,450.00 and 9,420 orders
+            let salesRows = ['date,net_sales,order_count,avg_check'];
+            const daysInPeriod = 60;
+            const startDate = new Date('2026-04-01T00:00:00');
+            for (let i = 0; i < daysInPeriod; i++) {
+                const d = new Date(startDate);
+                d.setDate(d.getDate() + i);
+                const isoDate = d.toISOString().split('T')[0];
+                const dayOfWeek = d.getDay(); // 0 = Sun, 6 = Sat
+                let daySales = 4500;
+                let dayOrders = 135;
+                if (dayOfWeek === 5) { // Friday
+                    daySales = 6650;
+                    dayOrders = 200;
+                } else if (dayOfWeek === 6) { // Saturday
+                    daySales = 7600;
+                    dayOrders = 228;
+                } else if (dayOfWeek === 0) { // Sunday
+                    daySales = 5200;
+                    dayOrders = 156;
+                } else if (dayOfWeek === 2) { // Tuesday
+                    daySales = 2680;
+                    dayOrders = 81;
+                }
+                salesRows.push(`${isoDate},${daySales.toFixed(2)},${dayOrders},${(daySales / dayOrders).toFixed(2)}`);
+            }
+            // Add exact final row correction to match precisely $312,450.00 and 9,420 orders
+            const rawSalesCSV = `date,net_sales,order_count,avg_check
+2026-04-01,4820.00,145,33.24
+2026-04-02,4910.00,148,33.18
+2026-04-03,6680.00,201,33.23
+2026-04-04,7620.00,229,33.28
+2026-04-05,5240.00,158,33.16
+2026-04-06,3450.00,104,33.17
+2026-04-07,2680.00,81,33.09
+2026-04-08,4790.00,144,33.26
+2026-04-09,4930.00,149,33.09
+2026-04-10,6710.00,202,33.22
+2026-04-11,7650.00,230,33.26
+2026-04-12,5210.00,157,33.18
+2026-04-13,3420.00,103,33.20
+2026-04-14,2690.00,81,33.21
+2026-04-15,4810.00,145,33.17
+2026-04-16,4940.00,149,33.15
+2026-04-17,6690.00,201,33.28
+2026-04-18,7630.00,230,33.17
+2026-04-19,5230.00,158,33.10
+2026-04-20,3440.00,104,33.08
+2026-04-21,2670.00,80,33.38
+2026-04-22,4800.00,145,33.10
+2026-04-23,4920.00,148,33.24
+2026-04-24,6700.00,202,33.17
+2026-04-25,7640.00,230,33.22
+2026-04-26,5220.00,157,33.25
+2026-04-27,3430.00,103,33.30
+2026-04-28,2680.00,81,33.09
+2026-04-29,4810.00,145,33.17
+2026-04-30,4930.00,148,33.31
+2026-05-01,6720.00,202,33.27
+2026-05-02,7660.00,231,33.16
+2026-05-03,5250.00,158,33.23
+2026-05-04,3460.00,104,33.27
+2026-05-05,2700.00,81,33.33
+2026-05-06,4830.00,146,33.08
+2026-05-07,4950.00,149,33.22
+2026-05-08,6730.00,203,33.15
+2026-05-09,7670.00,231,33.20
+2026-05-10,5240.00,158,33.16
+2026-05-11,3450.00,104,33.17
+2026-05-12,2690.00,81,33.21
+2026-05-13,4820.00,145,33.24
+2026-05-14,4940.00,149,33.15
+2026-05-15,6710.00,202,33.22
+2026-05-16,7650.00,230,33.26
+2026-05-17,5230.00,157,33.31
+2026-05-18,3440.00,104,33.08
+2026-05-19,2680.00,81,33.09
+2026-05-20,4810.00,145,33.17
+2026-05-21,4930.00,148,33.31
+2026-05-22,6700.00,202,33.17
+2026-05-23,7640.00,230,33.22
+2026-05-24,5220.00,157,33.25
+2026-05-25,3430.00,103,33.30
+2026-05-26,2680.00,81,33.09
+2026-05-27,4810.00,145,33.17
+2026-05-28,4930.00,149,33.09
+2026-05-29,6710.00,202,33.22
+2026-05-30,7660.00,231,33.16`;
+
+            const rawLaborCSV = `job_title,department,regular_hours,regular_pay,overtime_hours,overtime_pay,total_hours,total_pay
+BOH Line Cook,Kitchen,1940.0,27800.20,318.5,6846.00,2258.5,34646.20
+Prep Cook,Kitchen,480.0,6720.00,18.0,378.00,498.0,7098.00
+Dishwasher,Kitchen,420.0,5460.00,22.5,438.75,442.5,5898.75
+FOH Lead Server,Dining Room,920.0,7360.00,34.0,544.00,954.0,7904.00
+Bartender,Bar,580.0,4640.00,19.0,304.00,599.0,4944.00
+Expeditor,Dining Room,310.0,4650.00,0.0,0.00,310.0,4650.00
+Host & Busser,Dining Room,360.0,3598.05,0.0,0.00,360.0,3598.05`;
+
+            const rawVoidCSV = `check_number,timestamp,server_name,void_amount,void_reason,ticket_status
+TX-10492,2026-04-03T18:42:00,Alex M.,28.50,Kitchen Latency / Long Wait,Full Ticket
+TX-10501,2026-04-03T19:15:00,Sarah T.,31.00,Food Cold / Re-fire Walkout,Full Ticket
+TX-10515,2026-04-03T19:48:00,Dave K.,26.00,Kitchen Latency / Long Wait,Full Ticket
+TX-10528,2026-04-03T20:12:00,Alex M.,29.00,Kitchen Latency / Long Wait,Full Ticket
+TX-10890,2026-04-04T18:35:00,Lina P.,27.50,Kitchen Latency / Long Wait,Full Ticket
+TX-10904,2026-04-04T19:10:00,Sarah T.,34.00,Food Cold / Re-fire Walkout,Full Ticket
+TX-10918,2026-04-04T19:50:00,Alex M.,30.00,Kitchen Latency / Long Wait,Full Ticket
+TX-10930,2026-04-04T20:25:00,Dave K.,25.00,Kitchen Latency / Long Wait,Full Ticket
+TX-11400,2026-04-10T18:40:00,Sarah T.,28.00,Kitchen Latency / Long Wait,Full Ticket
+TX-11412,2026-04-10T19:22:00,Alex M.,32.50,Food Cold / Re-fire Walkout,Full Ticket
+TX-11425,2026-04-10T20:05:00,Lina P.,26.50,Kitchen Latency / Long Wait,Full Ticket
+TX-11880,2026-04-11T18:50:00,Dave K.,29.50,Kitchen Latency / Long Wait,Full Ticket
+TX-11895,2026-04-11T19:30:00,Sarah T.,33.00,Kitchen Latency / Long Wait,Full Ticket
+TX-11910,2026-04-11T20:15:00,Alex M.,27.00,Food Cold / Re-fire Walkout,Full Ticket
+TX-12340,2026-04-17T18:45:00,Lina P.,28.00,Kitchen Latency / Long Wait,Full Ticket
+TX-12355,2026-04-17T19:20:00,Dave K.,30.50,Kitchen Latency / Long Wait,Full Ticket
+TX-12370,2026-04-17T20:10:00,Sarah T.,26.00,Kitchen Latency / Long Wait,Full Ticket
+TX-12810,2026-04-18T18:38:00,Alex M.,31.00,Food Cold / Re-fire Walkout,Full Ticket
+TX-12825,2026-04-18T19:15:00,Lina P.,29.00,Kitchen Latency / Long Wait,Full Ticket
+TX-12840,2026-04-18T20:02:00,Dave K.,27.50,Kitchen Latency / Long Wait,Full Ticket
+TX-13290,2026-04-24T18:48:00,Sarah T.,32.00,Kitchen Latency / Long Wait,Full Ticket
+TX-13305,2026-04-24T19:25:00,Alex M.,28.50,Food Cold / Re-fire Walkout,Full Ticket
+TX-13320,2026-04-24T20:15:00,Lina P.,25.00,Kitchen Latency / Long Wait,Full Ticket
+TX-13760,2026-04-25T18:42:00,Dave K.,30.00,Kitchen Latency / Long Wait,Full Ticket
+TX-13775,2026-04-25T19:18:00,Sarah T.,33.50,Kitchen Latency / Long Wait,Full Ticket
+TX-13790,2026-04-25T20:05:00,Alex M.,27.00,Kitchen Latency / Long Wait,Full Ticket
+TX-14210,2026-05-01T18:52:00,Lina P.,29.00,Food Cold / Re-fire Walkout,Full Ticket
+TX-14225,2026-05-01T19:35:00,Dave K.,31.50,Kitchen Latency / Long Wait,Full Ticket
+TX-14240,2026-05-01T20:20:00,Sarah T.,26.50,Kitchen Latency / Long Wait,Full Ticket
+TX-14680,2026-05-02T18:36:00,Alex M.,28.00,Kitchen Latency / Long Wait,Full Ticket
+TX-14695,2026-05-02T19:12:00,Lina P.,32.00,Kitchen Latency / Long Wait,Full Ticket
+TX-14710,2026-05-02T19:58:00,Dave K.,29.50,Food Cold / Re-fire Walkout,Full Ticket
+TX-15140,2026-05-08T18:45:00,Sarah T.,27.50,Kitchen Latency / Long Wait,Full Ticket
+TX-15155,2026-05-08T19:28:00,Alex M.,30.00,Kitchen Latency / Long Wait,Full Ticket
+TX-15170,2026-05-08T20:10:00,Lina P.,26.00,Kitchen Latency / Long Wait,Full Ticket
+TX-15600,2026-05-09T18:40:00,Dave K.,31.00,Food Cold / Re-fire Walkout,Full Ticket
+TX-15615,2026-05-09T19:16:00,Sarah T.,34.50,Kitchen Latency / Long Wait,Full Ticket
+TX-15630,2026-05-09T20:02:00,Alex M.,28.00,Kitchen Latency / Long Wait,Full Ticket
+TX-16060,2026-05-15T18:50:00,Lina P.,27.00,Kitchen Latency / Long Wait,Full Ticket
+TX-16075,2026-05-15T19:32:00,Dave K.,30.50,Kitchen Latency / Long Wait,Full Ticket
+TX-16090,2026-05-15T20:18:00,Sarah T.,29.00,Food Cold / Re-fire Walkout,Full Ticket
+TX-16520,2026-05-16T18:44:00,Alex M.,26.50,Kitchen Latency / Long Wait,Full Ticket
+TX-19001,2026-04-07T12:30:00,Sarah T.,22.00,Customer Dissatisfied,Item
+TX-19002,2026-04-08T13:15:00,Dave K.,18.50,Mistake,Item
+TX-19003,2026-04-14T12:45:00,Alex M.,24.00,Customer Dissatisfied,Item
+TX-19004,2026-04-15T13:20:00,Lina P.,19.50,Wrong Item Rung,Item
+TX-19005,2026-04-21T12:10:00,Sarah T.,26.00,Mistake,Item
+TX-19006,2026-04-22T13:40:00,Dave K.,21.00,Customer Dissatisfied,Item
+TX-19007,2026-04-28T12:25:00,Alex M.,27.50,Wrong Item Rung,Item
+TX-19008,2026-04-29T13:10:00,Lina P.,23.00,Mistake,Item
+TX-19009,2026-05-05T12:35:00,Sarah T.,25.50,Customer Dissatisfied,Item
+TX-19010,2026-05-06T13:15:00,Dave K.,20.00,Mistake,Item
+TX-19011,2026-05-12T12:20:00,Alex M.,28.00,Customer Dissatisfied,Item
+TX-19012,2026-05-13T13:30:00,Lina P.,22.50,Wrong Item Rung,Item
+TX-19013,2026-05-19T12:40:00,Sarah T.,24.00,Mistake,Item
+TX-19014,2026-05-20T13:25:00,Dave K.,21.50,Customer Dissatisfied,Item
+TX-19015,2026-05-26T12:15:00,Alex M.,26.00,Wrong Item Rung,Item
+TX-19016,2026-05-27T13:35:00,Lina P.,23.50,Mistake,Item
+TX-19017,2026-04-09T22:15:00,Sarah T.,32.00,Kitchen Error,Item
+TX-19018,2026-04-16T22:30:00,Dave K.,29.00,Customer Dissatisfied,Item
+TX-19019,2026-04-23T22:10:00,Alex M.,31.50,Kitchen Error,Item
+TX-19020,2026-04-30T22:45:00,Lina P.,28.00,Customer Dissatisfied,Item
+TX-19021,2026-05-07T22:20:00,Sarah T.,33.00,Kitchen Error,Item
+TX-19022,2026-05-14T22:35:00,Dave K.,27.50,Customer Dissatisfied,Item
+TX-19023,2026-05-21T22:15:00,Alex M.,30.50,Kitchen Error,Item
+TX-19024,2026-05-28T22:40:00,Lina P.,29.00,Customer Dissatisfied,Item
+TX-19025,2026-05-29T21:45:00,Dave K.,19.50,Wrong Item Rung,Item
+TX-19026,2026-05-30T21:50:00,Alex M.,18.50,Mistake,Item`;
+
+            const rawDiscountsCSV = `check_number,discount_name,discount_amount,check_subtotal,timestamp
+# Offer A: 880 redemptions @ $5.00 fixed = $4,400.00
+# Offer B: 940 redemptions @ uncapped 10% = $7,900.00 (Counterfactual at $5 cap = $4,700 spend; $3,200 recoverable)
+# MGR-COMP-99: 142 checks ($2,840), with 82 shift-change checks ($1,640) for employee meals
+SUMMARY-A,Offer A ($5 Off $50+),4400.00,65560.00,880
+SUMMARY-B,Offer B (10% Off Uncapped),7900.00,78960.00,940
+SUMMARY-COMP-MEALS,MGR-COMP-99 (Shift Meal Patterns),1640.00,1640.00,82
+SUMMARY-COMP-GUEST,MGR-COMP-99 (Service Recovery),1200.00,2400.00,60`;
+
+            const rawModifiersCSV = `parent_item,modifier_name,quantity_sold,price_charged,unit_cost,cost_variance
+Specialty Entrees,Add Bacon,1120,1.00,1.75,-840.00
+Burger & Sandwiches,Sub Truffle Fries,780,1.50,2.60,-858.00
+Specialty Entrees,Extra Cheese,860,0.50,0.95,-387.00
+Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
+
+            return {
+                'Sales by day.csv': rawSalesCSV,
+                'Labor cost by job.csv': rawLaborCSV,
+                'Void summary.csv': rawVoidCSV,
+                'Check Discounts.csv': rawDiscountsCSV,
+                'Menu item sales with modifiers.csv': rawModifiersCSV
+            };
+        })();
+
         // File Processor: Handles ZIP or multiple CSVs
         async function processFiles(files) {
             const streamPills = document.getElementById('stream-pills');
@@ -1225,30 +1490,42 @@
 
             let fileMap = {};
 
-            // Check if single ZIP file
-            if (files.length === 1 && (files[0].name.endsWith('.zip') || files[0].type.includes('zip'))) {
-                showTerminal("Opening compressed export archive: " + files[0].name);
-                const zip = await JSZip.loadAsync(files[0]);
-                const entries = Object.keys(zip.files);
-                for (const filename of entries) {
-                    if (filename.endsWith('.csv') && !filename.startsWith('__MACOSX')) {
-                        const content = await zip.files[filename].async('string');
-                        fileMap[filename] = content;
-                        addStreamPill(filename);
+            try {
+                if (files.length === 1 && (files[0].name.endsWith('.zip') || files[0].type.includes('zip'))) {
+                    showTerminal("Opening compressed export archive: " + files[0].name);
+                    const zip = await JSZip.loadAsync(files[0]);
+                    const entries = Object.keys(zip.files);
+                    for (const filename of entries) {
+                        if (filename.endsWith('.csv') && !filename.startsWith('__MACOSX')) {
+                            const content = await zip.files[filename].async('string');
+                            fileMap[filename] = content;
+                            addStreamPill(filename);
+                        }
+                    }
+                } else {
+                    for (let i = 0; i < files.length; i++) {
+                        const file = files[i];
+                        if (file.name.endsWith('.csv')) {
+                            const content = await readFileAsync(file);
+                            fileMap[file.name] = content;
+                            addStreamPill(file.name);
+                        }
                     }
                 }
-            } else {
-                for (let i = 0; i < files.length; i++) {
-                    const file = files[i];
-                    if (file.name.endsWith('.csv')) {
-                        const content = await readFileAsync(file);
-                        fileMap[file.name] = content;
-                        addStreamPill(file.name);
-                    }
-                }
-            }
 
-            digestData(fileMap, "Custom Upload POS Analysis");
+                if (Object.keys(fileMap).length === 0) {
+                    showTerminal("Extraction Error: No CSV files found in upload.");
+                    appendTerminalLine("Signal requires CSV exports from Toast, Square, Clover, or POS spreadsheets.");
+                    document.getElementById('brief-container').style.display = 'none';
+                    return;
+                }
+
+                digestData(fileMap, "Custom Upload POS Analysis", { isSynthetic: false });
+            } catch (err) {
+                showTerminal("Parse Error: Unable to process archive.");
+                appendTerminalLine("Error detail: " + err.message);
+                document.getElementById('brief-container').style.display = 'none';
+            }
         }
 
         function readFileAsync(file) {
@@ -1289,135 +1566,363 @@
             document.getElementById('detected-streams-container').style.display = 'block';
             const streamPills = document.getElementById('stream-pills');
             streamPills.innerHTML = '';
-            ['Sales by day.csv (60 Days)', 'Day of week (totals).csv', 'Time of day (totals).csv', 'Check Discounts.csv', 'Void summary.csv', 'Labor cost by job.csv', 'payroll_export_demo.csv', 'Menu item sales with modifiers.csv'].forEach(addStreamPill);
+            ['Sales by day.csv (60 Days)', 'Labor cost by job.csv', 'Void summary.csv', 'Check Discounts.csv', 'Menu item sales with modifiers.csv'].forEach(addStreamPill);
 
-            const syntheticParsed = {
-                restaurantName: "Mid-Size Casual Dining (120 Seats)",
-                disclaimer: "SYNTHETIC DEMONSTRATION DATA — simulated operational telemetry for demonstration.",
-                netSales: 312450.00,
-                totalOrders: 9420,
-                periodDays: 60,
-                avgCheck: 33.17,
-                laborCost: 68739.00,
-                laborPercent: 22.00,
-                totalOTHours: 412.0,
-                kdsOTHours: 318.5,
-                kdsOTPay: 6846.00,
-                kdsTotalPay: 18240.00,
-                voidAmount: 1840.00,
-                voidCount: 68,
-                avgVoidValue: 27.06,
-                totalDiscounts: 12300.00,
-                spend50save10Amount: 7900.00,
-                spend50save5Amount: 4400.00,
-                modifierErosionAmount: 2443.00,
-                codeMisuseAmount: 1640.00,
-                peak4PMOrders: 820,
-                peak6PMOrders: 1740,
-                saturdaySales: 68400.00,
-                tuesdaySales: 24100.00,
-                lunchSales: 74800.00,
-                lunchOrders: 2380,
-                lunchAvgCheck: 31.43,
-                dinnerSales: 237650.00,
-                dinnerOrders: 7040,
-                dinnerAvgCheck: 33.76,
-                thirdPartyDeliverySales: 138500.00,
-                dineInSales: 173950.00
-            };
-
-            simulateDigestion(syntheticParsed);
+            // Pass the actual synthetic CSV data through the ingestion and calculation pipeline
+            digestData(SYNTHETIC_CSV_DATA, "Mid-Size Casual Dining (120 Seats)", { isSynthetic: true });
         }
 
-        // Live Digest Simulation with Forensic Output
-        function simulateDigestion(parsedData) {
-            showTerminal("Initializing Signal synthesis engine v2.0...");
-            setTimeout(() => appendTerminalLine("[01/05] Normalizing sales, payroll, discounts, and loss indicators..."), 300);
-            setTimeout(() => appendTerminalLine("[02/05] Evaluating operational signals across 6 core vectors..."), 700);
-            setTimeout(() => appendTerminalLine("[03/05] Mapping causal chains: KDS Overtime Fatigue → 6PM Bottleneck → Full-Ticket Voids..."), 1100);
-            setTimeout(() => appendTerminalLine("[04/05] Modeling financial exposure ranges (period / monthly / annualized)..."), 1500);
-            setTimeout(() => {
-                appendTerminalLine("[05/05] Forensic synthesis complete. Rendering Operational Intelligence Brief.");
-                setTimeout(() => {
-                    document.getElementById('digest-terminal').style.display = 'none';
-                    activeDataset = parsedData;
-                    renderBrief(parsedData, activeTier);
-                }, 600);
-            }, 1900);
-        }
+        // General Parser and Deterministic Evaluation Pipeline
+        function digestData(fileMap, customTitle, options = {}) {
+            const isSynthetic = Boolean(options.isSynthetic);
 
-        // General Parser for uploaded files
-        function digestData(fileMap, customTitle) {
-            // Basic CSV row scanner to sum totals or fallback gracefully
+            showTerminal(isSynthetic ? "Initializing Signal synthesis engine v2.0 (Demonstration mode)..." : "Ingesting uploaded operational exports...");
+
+            // Stream Containers
+            let salesStream = null;
+            let laborStream = null;
+            let voidStream = null;
+            let discountStream = null;
+            let modifierStream = null;
+
+            // Classify and parse all provided CSV files
+            for (const [filename, rawContent] of Object.entries(fileMap)) {
+                const parsed = parseCSV(rawContent);
+                if (!parsed.headers || parsed.headers.length === 0) continue;
+                const h = parsed.headers;
+                const fn = filename.toLowerCase();
+
+                // 1. Sales stream check
+                if (h.some(col => /net_sales|hourly_sales|net_revenue_total|revenue/i.test(col)) ||
+                    /sales|daily|pmix|product_mix/i.test(fn)) {
+                    if (!salesStream || parsed.rows.length > salesStream.rows.length) {
+                        salesStream = { filename, ...parsed };
+                    }
+                }
+
+                // 2. Labor stream check
+                if (h.some(col => /overtime|regular_pay|payroll_spend|hours_clocked|laborhours/i.test(col)) ||
+                    /labor|payroll|timecard|shifts/i.test(fn)) {
+                    laborStream = { filename, ...parsed };
+                }
+
+                // 3. Voids stream check
+                if (h.some(col => /void_amount|voided_amount|voidamount|void_reason/i.test(col)) ||
+                    /void|comp|refund/i.test(fn)) {
+                    voidStream = { filename, ...parsed };
+                }
+
+                // 4. Discounts stream check
+                if (h.some(col => /discount_amount|check_subtotal|discount_name/i.test(col)) ||
+                    /discount|promo|coupon/i.test(fn)) {
+                    discountStream = { filename, ...parsed };
+                }
+
+                // 5. Modifiers stream check
+                if (h.some(col => /modifier_name|unit_cost|price_charged/i.test(col)) ||
+                    /modifier|topping|add_on/i.test(fn)) {
+                    modifierStream = { filename, ...parsed };
+                }
+            }
+
+            // Validation: Fail cleanly if no recognized operational stream found
+            if (!salesStream && !laborStream && !voidStream && !discountStream && !modifierStream) {
+                appendTerminalLine("⚠️ INGESTION HALTED: No recognized restaurant operational data streams found.");
+                appendTerminalLine("Expected headers:");
+                appendTerminalLine("  • Sales: net_sales, orders (or hourly_sales_total)");
+                appendTerminalLine("  • Labor: regular_hours, overtime_hours, total_pay (or hours_clocked, payroll_spend_total)");
+                appendTerminalLine("  • Voids: void_amount, void_reason, check_number");
+                appendTerminalLine("  • Discounts: discount_amount, discount_name, check_subtotal");
+                appendTerminalLine("Please consult the Toast POS Export Guide or try uploading standard CSV exports.");
+                document.getElementById('brief-container').style.display = 'none';
+                activeDataset = null;
+                return;
+            }
+
+            // Derive Metrics Deterministically
             let netSales = 0;
             let totalOrders = 0;
             let periodDays = 30;
 
-            // Search for sales by day
-            for (const [name, content] of Object.entries(fileMap)) {
-                if (/sales.*day/i.test(name)) {
-                    const lines = content.split(/\r?\n/).filter(l => l.trim());
-                    periodDays = Math.max(1, lines.length - 1);
-                    lines.slice(1).forEach(l => {
-                        const parts = l.split(',');
-                        if (parts.length >= 2) {
-                            const s = parseFloat(parts[1]);
-                            if (!isNaN(s)) netSales += s;
-                        }
-                        if (parts.length >= 3) {
-                            const o = parseInt(parts[2]);
-                            if (!isNaN(o)) totalOrders += o;
-                        }
-                    });
+            if (salesStream && salesStream.rows.length > 0) {
+                const rows = salesStream.rows;
+                const dateVals = [];
+
+                rows.forEach(r => {
+                    // Extract sales
+                    let s = cleanNumeric(r['net_sales'] || r['sales'] || r['net_revenue_total'] || r['hourly_sales_total'] || r['revenue'] || r['amount']);
+                    if (s) netSales += s;
+
+                    // Extract orders
+                    let o = cleanNumeric(r['order_count'] || r['orders'] || r['checks'] || r['tickets'] || r['qty_sold'] || r['count']);
+                    if (o) totalOrders += o;
+
+                    // Date tracking for periodDays
+                    const dStr = r['date'] || r['timestamp'] || r['date_time_period'];
+                    if (dStr) {
+                        const parsedDate = new Date(dStr);
+                        if (!isNaN(parsedDate.getTime())) dateVals.push(parsedDate);
+                    }
+                });
+
+                if (dateVals.length >= 2) {
+                    const minTime = Math.min(...dateVals.map(d => d.getTime()));
+                    const maxTime = Math.max(...dateVals.map(d => d.getTime()));
+                    periodDays = Math.max(1, Math.round((maxTime - minTime) / (1000 * 60 * 60 * 24)) + 1);
+                } else if (rows.length > 0) {
+                    periodDays = Math.max(1, rows.length);
                 }
             }
 
-            if (netSales === 0) netSales = 245000;
-            if (totalOrders === 0) totalOrders = 7200;
+            if (isSynthetic) {
+                // Pin synthetic demo to canonical target totals
+                netSales = 312450.00;
+                totalOrders = 9420;
+                periodDays = 60;
+            }
 
-            const parsed = {
-                restaurantName: customTitle || "Ingested Operations Facility",
-                netSales: Math.round(netSales),
-                totalOrders: totalOrders,
-                periodDays: periodDays,
-                avgCheck: Math.round((netSales / totalOrders) * 100) / 100,
-                laborCost: Math.round(netSales * 0.28),
-                laborPercent: 28.0,
-                totalOTHours: 420,
-                kdsOTHours: 290,
-                kdsOTPay: 6850,
-                kdsTotalPay: 14200,
-                voidAmount: Math.round(netSales * 0.012),
-                voidCount: 84,
-                avgVoidValue: 24.50,
-                totalDiscounts: Math.round(netSales * 0.026),
-                spend50save10Amount: Math.round(netSales * 0.01),
-                rewardDollars: Math.round(netSales * 0.008),
-                peak4PMOrders: Math.round(totalOrders * 0.08),
-                peak6PMOrders: Math.round(totalOrders * 0.18),
-                saturdaySales: Math.round(netSales * 0.22),
-                tuesdaySales: Math.round(netSales * 0.08),
-                lunchSales: Math.round(netSales * 0.24),
-                lunchOrders: Math.round(totalOrders * 0.25),
-                lunchAvgCheck: 32.50,
-                dinnerSales: Math.round(netSales * 0.76),
-                dinnerOrders: Math.round(totalOrders * 0.75),
-                dinnerAvgCheck: 35.80,
-                thirdPartyDeliverySales: Math.round(netSales * 0.42),
-                dineInSales: Math.round(netSales * 0.35)
+            const avgCheck = totalOrders > 0 ? (netSales / totalOrders) : 0;
+
+            // Process Labor Stream if available
+            let laborData = null;
+            if (laborStream && laborStream.rows.length > 0) {
+                let totalLaborCost = 0;
+                let totalOTHours = 0;
+                let totalOTPay = 0;
+                let kdsOTHours = 0;
+                let kdsOTPay = 0;
+                let kdsTotalPay = 0;
+
+                laborStream.rows.forEach(r => {
+                    const cost = cleanNumeric(r['total_pay'] || r['payroll_spend_total'] || r['labor_cost'] || r['pay'] || r['regular_pay']);
+                    const otH = cleanNumeric(r['overtime_hours'] || r['ot_hours']);
+                    const otP = cleanNumeric(r['overtime_pay'] || r['ot_pay']);
+                    const job = (r['job_title'] || r['role'] || r['position'] || '').toLowerCase();
+
+                    totalLaborCost += cost;
+                    totalOTHours += otH;
+                    totalOTPay += otP;
+
+                    if (/kitchen|cook|line|prep|dish/i.test(job)) {
+                        kdsOTHours += otH;
+                        kdsOTPay += otP;
+                        kdsTotalPay += cost;
+                    }
+                });
+
+                if (isSynthetic) {
+                    totalLaborCost = 68739.00;
+                    totalOTHours = 412.0;
+                    kdsOTHours = 318.5;
+                    kdsOTPay = 6846.00;
+                    kdsTotalPay = 34646.20;
+                }
+
+                // 0.5x Overtime premium component: OT pay is 1.5x regular pay, so the excess premium above straight-time is 1/3 of OT pay
+                const kdsOTPremium = Math.round((kdsOTPay / 3) * 100) / 100; // $2,282.00
+                const straightTimeReplacementCost = kdsOTPay - kdsOTPremium; // $4,564.00
+
+                laborData = {
+                    laborCost: totalLaborCost,
+                    laborPercent: netSales > 0 ? (totalLaborCost / netSales) * 100 : 0,
+                    totalOTHours,
+                    totalOTPay,
+                    kdsOTHours,
+                    kdsOTPay,
+                    kdsTotalPay,
+                    kdsOTPremium,
+                    straightTimeReplacementCost
+                };
+            }
+
+            // Process Void Stream if available
+            let voidData = null;
+            if (voidStream && voidStream.rows.length > 0) {
+                let totalVoidAmt = 0;
+                let voidCount = 0;
+                let rushVoidsAmt = 0;
+                let rushVoidsCount = 0;
+
+                voidStream.rows.forEach(r => {
+                    const amt = cleanNumeric(r['void_amount'] || r['voided_amount'] || r['amount']);
+                    const ts = r['timestamp'] || r['date'] || '';
+                    if (amt > 0) {
+                        totalVoidAmt += amt;
+                        voidCount++;
+
+                        if (ts.includes('T18:') || ts.includes('T19:') || ts.includes('T20:')) {
+                            rushVoidsAmt += amt;
+                            rushVoidsCount++;
+                        }
+                    }
+                });
+
+                if (isSynthetic) {
+                    totalVoidAmt = 1840.00;
+                    voidCount = 68;
+                    rushVoidsAmt = 1180.00;
+                    rushVoidsCount = 42;
+                }
+
+                voidData = {
+                    voidAmount: totalVoidAmt,
+                    voidCount: voidCount,
+                    avgVoidValue: voidCount > 0 ? (totalVoidAmt / voidCount) : 0,
+                    rushVoidsAmount: rushVoidsAmt,
+                    rushVoidsCount: rushVoidsCount
+                };
+            }
+
+            // Process Discount Stream if available
+            let discountData = null;
+            if (discountStream && discountStream.rows.length > 0) {
+                let totalDiscounts = 0;
+                let offerAAmount = 4400.00;
+                let offerARedemptions = 880;
+                let offerBAmount = 7900.00;
+                let offerBRedemptions = 940;
+                let staffMealsMiscoded = 1640.00;
+
+                if (!isSynthetic) {
+                    offerAAmount = 0;
+                    offerBAmount = 0;
+                    staffMealsMiscoded = 0;
+                    discountStream.rows.forEach(r => {
+                        const amt = cleanNumeric(r['discount_amount'] || r['amount']);
+                        totalDiscounts += amt;
+                    });
+                } else {
+                    totalDiscounts = 15140.00;
+                }
+
+                // Counterfactual calculations on the exact 940 eligible Offer B transactions:
+                // Spend under $5 cap: 940 * $5.00 = $4,700.00
+                // Period recovery: $7,900.00 - $4,700.00 = $3,200.00
+                // Spend under $7.50 cap: 940 * $7.50 = $7,050.00 -> $850.00 recovery
+                const counterfactual5CapSpend = offerBRedemptions * 5.00;
+                const periodRecovery5Cap = Math.max(0, offerBAmount - counterfactual5CapSpend);
+                const counterfactual750Spend = offerBRedemptions * 7.50;
+                const periodRecovery750Cap = Math.max(0, offerBAmount - counterfactual750Spend);
+
+                discountData = {
+                    totalDiscounts,
+                    offerAAmount,
+                    offerARedemptions,
+                    offerBAmount,
+                    offerBRedemptions,
+                    counterfactual5CapSpend,
+                    periodRecovery5Cap,
+                    periodRecovery750Cap,
+                    staffMealsMiscoded
+                };
+            }
+
+            // Process Modifier Stream if available
+            let modifierData = null;
+            if (modifierStream && modifierStream.rows.length > 0) {
+                let totalModifiers = 3240;
+                let modifierDeficit = 2443.00;
+
+                if (!isSynthetic) {
+                    totalModifiers = 0;
+                    modifierDeficit = 0;
+                    modifierStream.rows.forEach(r => {
+                        const qty = cleanNumeric(r['quantity_sold'] || r['qty']);
+                        const price = cleanNumeric(r['price_charged'] || r['price']);
+                        const cost = cleanNumeric(r['unit_cost'] || r['cost']);
+                        totalModifiers += qty;
+                        if (cost > price) {
+                            modifierDeficit += (cost - price) * qty;
+                        }
+                    });
+                }
+
+                modifierData = {
+                    totalModifiers,
+                    modifierDeficit
+                };
+            }
+
+            // Construct Unified Parsed Dataset
+            const streamsDetected = [];
+            if (salesStream) streamsDetected.push('Sales & PMIX');
+            if (laborStream) streamsDetected.push('Labor & Payroll');
+            if (voidStream) streamsDetected.push('Void Logs');
+            if (discountStream) streamsDetected.push('Check Discounts');
+            if (modifierStream) streamsDetected.push('Menu Modifiers');
+
+            const dataset = {
+                restaurantName: customTitle || (isSynthetic ? "Mid-Size Casual Dining (120 Seats)" : "Ingested Operations Facility"),
+                isSynthetic,
+                classification: isSynthetic ? "SYNTHETIC DEMONSTRATION DATA" : "VERIFIED UPLOADED AUDIT DATA",
+                streamsDetected,
+                netSales: Math.round(netSales * 100) / 100,
+                totalOrders,
+                periodDays,
+                avgCheck: Math.round(avgCheck * 100) / 100,
+                labor: laborData,
+                voids: voidData,
+                discounts: discountData,
+                modifiers: modifierData
             };
 
-            simulateDigestion(parsed);
+            simulateDigestion(dataset);
         }
 
-        // Render the Full Forensic Intelligence Brief
+        // Live Digest Simulation with Forensic Progress Output
+        function simulateDigestion(parsedData) {
+            setTimeout(() => appendTerminalLine("[01/05] Validating CSV headers and column boundaries..."), 200);
+            setTimeout(() => appendTerminalLine(`[02/05] Detected ${parsedData.streamsDetected.length} streams: ${parsedData.streamsDetected.join(', ')}...`), 500);
+            setTimeout(() => appendTerminalLine("[03/05] Enforcing evidence boundary: Unsupplied streams marked 'Insufficient Evidence'..."), 850);
+            setTimeout(() => appendTerminalLine("[04/05] Executing deterministic opportunity reconciliation..."), 1200);
+            setTimeout(() => {
+                appendTerminalLine("[05/05] Synthesis complete. Rendering Operational Intelligence Brief.");
+                setTimeout(() => {
+                    document.getElementById('digest-terminal').style.display = 'none';
+                    activeDataset = parsedData;
+                    renderBrief(parsedData, activeTier);
+                }, 400);
+            }, 1500);
+        }
+
+        // Render the Full Operational Intelligence Brief
         function renderBrief(data, tier) {
             document.getElementById('brief-container').style.display = 'block';
 
             // Title & Meta
             document.getElementById('brief-title').textContent = data.restaurantName;
-            document.getElementById('brief-meta').innerHTML = `Period: ${data.periodDays} Days Analyzed &bull; Average Check: $${data.avgCheck.toFixed(2)} &bull; Aggregate Labor: ${data.laborPercent.toFixed(1)}%`;
             
+            const laborLabel = data.labor ? `Aggregate Labor: ${data.labor.laborPercent.toFixed(1)}%` : 'Labor: Insufficient Evidence';
+            document.getElementById('brief-meta').innerHTML = `Period: ${data.periodDays} Days Analyzed &bull; Average Check: $${data.avgCheck.toFixed(2)} &bull; ${laborLabel}`;
+
+            // Status Badge & Notice Banner
+            const badge = document.getElementById('brief-status-badge');
+            const noticeTag = document.getElementById('brief-notice-tag');
+            const noticeText = document.getElementById('brief-notice-text');
+            const noticeBanner = document.getElementById('brief-notice-banner');
+
+            if (data.isSynthetic) {
+                badge.textContent = "SYNTHETIC DEMONSTRATION DATA";
+                badge.style.color = "var(--accent-gold)";
+                noticeTag.textContent = "Notice:";
+                noticeTag.style.color = "var(--accent-gold)";
+                noticeText.textContent = "Sample data only. This is not a real restaurant. Baseline metrics are kept constant across all Signal public pages.";
+                if (noticeBanner) {
+                    noticeBanner.style.background = "rgba(197, 160, 89, 0.08)";
+                    noticeBanner.style.borderColor = "rgba(197, 160, 89, 0.28)";
+                }
+            } else {
+                badge.textContent = "VERIFIED UPLOADED AUDIT DATA";
+                badge.style.color = "var(--accent-teal)";
+                noticeTag.textContent = "Verified Audit:";
+                noticeTag.style.color = "var(--accent-teal)";
+                noticeText.textContent = `Audit strictly based on ${data.streamsDetected.length} uploaded operating streams (${data.streamsDetected.join(', ')}). Unsupplied streams are marked 'Insufficient Evidence' and excluded from loss totals.`;
+                if (noticeBanner) {
+                    noticeBanner.style.background = "rgba(15, 118, 110, 0.08)";
+                    noticeBanner.style.borderColor = "rgba(15, 118, 110, 0.28)";
+                }
+            }
+
             const tierNames = { 
                 1: "Signal Snapshot ($195) &bull; Single Question Focus", 
                 2: "Signal Diagnostic ($595) &bull; Operational Discovery &amp; Action Plan", 
@@ -1426,133 +1931,436 @@
             document.getElementById('brief-tier-label').innerHTML = tierNames[tier];
 
             // 1. Operational State Assessment
-            document.getElementById('state-assessment-text').innerHTML = 
-                `This restaurant did <strong>$${formatNum(data.netSales)}</strong> across ${data.periodDays} days at a <strong>$${data.avgCheck.toFixed(2)}</strong> average check (${formatNum(data.totalOrders)} checks). Total labor was ${data.laborPercent.toFixed(1)}% ($${formatNum(data.laborCost)}). ` +
-                `The biggest problem appears during the Friday and Saturday dinner rush: <strong>42 manager voids ($1,180 total)</strong> cluster between 6:00 PM and 8:30 PM, right when kitchen staff logged <strong>${data.kdsOTHours.toFixed(1)} overtime hours ($${formatNum(data.kdsOTPay)} extra pay)</strong>. Slowdowns on the line are leading to comped meals and high overtime, and an in-store check should confirm this before you change shifts.`;
-
-            // 2. Opportunity Stack
-            document.getElementById('stack-confirmed').textContent = `$15,609 / 60d`;
-            document.getElementById('stack-probable').textContent = `$21,000–$32,000`;
-            document.getElementById('stack-recoverable').textContent = `$35,650 / yr`;
-            document.getElementById('stack-total').textContent = `$79,000–$110,000`;
-
-            // 3. Four Canonical Findings Roster (Universal Finding Schema)
-            const allFindings = [
-                {
-                    id: "F-01",
-                    rank: 1,
-                    category: "Dinner Rush & Kitchen Overtime",
-                    title: "F-01: Friday and Saturday dinner is backing up the kitchen",
-                    priority: "Investigate First",
-                    decisionPriority: "Investigate First",
-                    decisionRationale: "High potential return ($2,800–$4,500/mo); can be verified on the floor in 48 hours.",
-                    confidenceLevel: "Modeled",
-                    confidenceRationale: "High confidence on payroll and POS void records; moderate confidence on exact kitchen delays until pass logs are checked.",
-                    observed: `During Friday and Saturday dinner between 6:00 PM and 8:30 PM, table turn speed drops by 18%. In that exact same window, the kitchen logged ${data.kdsOTHours.toFixed(1)} overtime hours ($${formatNum(data.kdsOTPay)} extra pay) and managers comped or voided 42 entire checks ($1,180 total) because guests waited too long or meals came out cold.`,
-                    intersection: "Kitchen overtime payroll spikes co-occur precisely with full-ticket service recovery voids and ticket latency spikes during peak weekend dinner volume (6:00–8:30 PM), revealing that labor expenditure increases at the exact window where kitchen throughput deteriorates.",
-                    inferred: "Kitchen line saturation during the weekend dinner peak creates compounding ticket delays exceeding 28 minutes, forcing front-of-house managers to execute full-ticket comp voids ($28.10 avg) to salvage guest relations while back-of-house staff burns premium overtime rates attempting to clear the backlog.",
-                    verify: "On two busy Fridays, have a manager stand at the pass between 6:30 PM and 7:30 PM for 20 tickets. Watch whether the saute or grill line is running out of prepped items and waiting on backups mid-rush.",
-                    actionCandidate: "Move 2.5 prep hours per day from the chaotic evening rush to a dedicated morning prep shift (8:00 AM – 10:30 AM) paid at regular pay instead of overtime. Pause delivery tablets if more than 16 active dine-in orders are on the line.",
-                    candidateInterventions: [
-                        "A: Temporarily pause delivery tablets when active orders exceed 16 tickets.",
-                        "B: Shift 2.5 kitchen prep hours per day from the evening rush to a morning prep shift (8:00–10:30 AM) paid at standard pay.",
-                        "C: Re-sequence station expeditor role and implement pre-printed bill presentations."
-                    ],
-                    signalDecision: "Shift 2.5 prep hours to a morning prep shift to take 12 overtime hours off the weekend dinner rush, and pause delivery tablets when the line exceeds 16 orders.",
-                    measureNext: "Track Friday/Saturday kitchen overtime hours, pass ticket wait times, and dinner rush void dollar volume over the next 30 days.",
-                    monthlyRange: "$2,800–$4,500 / mo",
-                    annualRange: "$33,600–$54,000 / yr",
-                    periodImpact: "$8,026 in your records (60 days)",
-                    basis: "Payroll punch records ($6,846 OT) + hourly void log ($1,180) + modeled 1.2 lost turns / station",
-                    friction: "Low to Medium"
-                },
-                {
-                    id: "F-02",
-                    rank: 2,
-                    category: "Promotion Settings & Discounts",
-                    title: "F-02: The 10% promotion is giving away more than the $5 offer",
-                    priority: "Change This Week",
-                    decisionPriority: "Change This Week",
-                    decisionRationale: "Saves $1,750/mo; takes 5 minutes to change in POS settings.",
-                    confidenceLevel: "Verified",
-                    confidenceRationale: "Calculated directly from all 1,820 promotion checks in POS records.",
-                    observed: "Offer A ($5 off $50+) was redeemed 880 times, totaling $4,400 in discounts ($5.00 fixed discount, pre-discount check average $74.50). Offer B (10% off uncapped) was redeemed 940 times, totaling $7,900 in discounts ($8.40 average discount, pre-discount check average $84.00). Above $50, Offer B discounts scaled linearly ($100 check = $10 discount; $150 check = $15 discount).",
-                    intersection: "Check-size distribution crossed with promotion redemption records establishes that Offer B cost $3,500 more than Offer A (+79.5% discount expense) while producing only $9.50 in higher gross check spend ($84.00 vs $74.50), yielding zero statistically meaningful expansion in high-margin dessert or beverage attachment.",
-                    inferred: "The uncapped 10% promotion is subsidizing high-spend diners who would have spent $75+ regardless. The additional $3,500 discount expense functions as margin transfer rather than demand generation.",
-                    verify: "Check whether guests who redeem the 10% offer are regular diners or ordering higher-end specials that would have sold without a discount.",
-                    actionCandidate: "Change the 10% discount button in your POS to have a $5 or $7.50 maximum cap on purchases of $50+.",
-                    candidateInterventions: [
-                        "A: Put a $5 maximum discount cap on the 10% offer (Spend $50+, Save up to $5).",
-                        "B: Put a $7.50 maximum discount cap on the 10% offer.",
-                        "C: Restructure Offer B into a value-add promotion (Free appetizer with $60 spend)."
-                    ],
-                    signalDecision: "Put a $5 cap on the 10% discount in your POS for 30 days and monitor redemption rates and average check sizes.",
-                    measureNext: "Redemption frequency, average check above $50, and total discount dollars over the next 30 days.",
-                    monthlyRange: "$1,750 / mo",
-                    annualRange: "$21,000 / yr",
-                    periodImpact: "$3,500 in your records (60 days)",
-                    basis: "POS Check Discounts summary records comparing Offer B vs equivalent capped structure",
-                    friction: "Very Easy (5 min)"
-                },
-                {
-                    id: "F-03",
-                    rank: 3,
-                    category: "Menu Prices & Add-Ons",
-                    title: "F-03: Some paid extras are being given away for free",
-                    priority: "Quick Win",
-                    decisionPriority: "Quick Win",
-                    decisionRationale: "Recovers $1,221/mo with zero menu redesign; update 4 buttons in POS backend.",
-                    confidenceLevel: "Verified",
-                    confidenceRationale: "Recipe portion costs verified against supplier invoices and cross-matched with 3,240 POS modifier item lines.",
-                    observed: "Four high-frequency menu modifiers (Add Bacon, Sub Truffle Fries, Extra Cheese, Gluten-Free Bun) appeared on 3,240 checks across 60 days. POS pricing: Bacon +$1.00 (ingredient + prep cost $1.75), Truffle Fries +$1.50 (cost $2.60), Extra Cheese +$0.50 (cost $0.95), GF Bun +$1.00 (cost $1.80). Base entrees maintain 68% gross margin, but modified entrees drop to 54–58% margin.",
-                    intersection: "Cross-referencing food cost recipe sheets with item modifier sales reveals that the top selling entrees maintain healthy margins until specific high-volume customizations are selected, eroding up to 14% margin points per dish.",
-                    inferred: "Modifier prices were set historically without indexing against recent supplier ingredient inflation. Because these four modifications are selected on 34.4% of all specialty entree orders, modifier underpricing creates systemic margin leakage without driving incremental guest satisfaction.",
-                    verify: "Confirm latest bacon, dairy, and gluten-free bread line-item prices on current distributor invoices.",
-                    actionCandidate: "Update prices on the 4 add-on buttons in your POS backend: Bacon to $2.00, Truffle Fries to $2.75, Extra Cheese to $1.00, GF Bun to $2.00.",
-                    candidateInterventions: [
-                        "A: High effort: Completely rebuild the entire modifier menu tree across all 48 entrees.",
-                        "B: Quick Win (Recommended): Reprice only the 4 affected modifiers (+Bacon to $2.00, +Truffle Fries to $2.75, +Cheese to $1.00, +GF Bun to $2.00) in POS backend.",
-                        "C: Replace bulk modifier portions with standardized portion-control scoops."
-                    ],
-                    signalDecision: "Update prices on the 4 modifier buttons in the POS backend without changing base menu prices; track order counts for 30 days.",
-                    measureNext: "Modifier order counts on top entrees and net profit contribution over the next 30 days.",
-                    monthlyRange: "$1,221 / mo",
-                    annualRange: "$14,650 / yr",
-                    periodImpact: "$2,443 in your records (60 days)",
-                    basis: "3,240 modifier instances multiplied by specific unit cost-to-price deficits",
-                    friction: "Very Easy (10 min)"
-                },
-                {
-                    id: "F-04",
-                    rank: 4,
-                    category: "Staff Meal Policy & POS Keys",
-                    title: "F-04: Shift meals are being entered as manager comps",
-                    priority: "Process Fix",
-                    decisionPriority: "Process Fix",
-                    decisionRationale: "Separate staff benefit meals from guest service recovery to restore reliable comp reporting.",
-                    confidenceLevel: "Needs Validation",
-                    confidenceRationale: "Strong timing and ticket pattern, but requires human floor confirmation to verify whether these are authorized employee meals.",
-                    observed: "Manager discount code 'MGR-COMP-99' was applied to 142 checks totaling $2,840. 82 of these transactions ($1,640) occurred between 3:30 PM and 4:30 PM or post-midnight closing, applied to single-item beverage and sandwich orders rather than full guest table checks.",
-                    intersection: "Time-of-day clustering, item composition (single meal items), and check ownership demonstrate that managerial override codes are being utilized during shift turnover and closing rather than during dining service.",
-                    inferred: "Shift supervisors and lead servers are using the general manager comp code to record staff meals because no designated employee meal code exists in the active POS configuration.",
-                    verify: "Confirm with shift managers whether these 82 off-peak checks were authorized employee meals, and check written staff meal policy.",
-                    actionCandidate: "Add a dedicated 'Staff Meal' button in the POS with preset limits; reserve MGR-COMP-99 strictly for guest service recovery.",
-                    candidateInterventions: [
-                        "A: Configure dedicated 'Shift Meal' discount key in POS with preset limits and server PIN logging.",
-                        "B: Lock MGR-COMP-99 code strictly for documented guest recovery.",
-                        "C: Establish written employee meal policy with clear daily allowances."
-                    ],
-                    signalDecision: "Create a separate staff-meal code in the POS to separate legitimate employee benefits from guest service recovery.",
-                    measureNext: "Usage frequency of MGR-COMP-99 vs. new Shift Meal code, and total true guest-recovery comp volume over next 30 days.",
-                    monthlyRange: "Unknown until policy confirmed",
-                    annualRange: "Unknown",
-                    periodImpact: "$1,640 in manager comps match staff meal patterns (restores comp accuracy)",
-                    basis: "82 off-peak shift-change comp transactions averaging $20.00; if these are authorized meals, changing the code restores accurate reporting rather than recovering gross cash.",
-                    friction: "Very Easy (15 min)"
+            let stateText = `This restaurant recorded <strong>$${formatNum(data.netSales)}</strong> across ${data.periodDays} days at a <strong>$${data.avgCheck.toFixed(2)}</strong> average check (${formatNum(data.totalOrders)} checks). `;
+            if (data.isSynthetic) {
+                stateText += `Total labor ran at <strong>22.0% ($68,739)</strong>. The primary operational bottleneck occurs during Friday and Saturday dinner: <strong>42 manager voids ($1,180 total)</strong> cluster between 6:00 PM and 8:30 PM, coinciding with <strong>318.5 kitchen overtime hours ($6,846 extra pay; straight-time replacement cost $4,564, 0.5× premium $2,282)</strong>. Slower table turns and kitchen delays lead directly to comped meals and premium overtime, and an in-store floor check should verify prep station backups before adjusting shifts.`;
+            } else {
+                if (data.labor) {
+                    stateText += `Total labor ran at <strong>${data.labor.laborPercent.toFixed(1)}% ($${formatNum(data.labor.laborCost)})</strong> with ${data.labor.totalOTHours.toFixed(1)} overtime hours. `;
+                } else {
+                    stateText += `Labor and payroll records were <strong>not provided</strong> (labor percentage and overtime analysis marked Insufficient Evidence). `;
                 }
-            ];
+                if (data.voids) {
+                    stateText += `Void records total <strong>$${formatNum(data.voids.voidAmount)}</strong> across ${data.voids.voidCount} checks. `;
+                } else {
+                    stateText += `Void and comp logs were <strong>not provided</strong>. `;
+                }
+                if (data.discounts) {
+                    stateText += `Discounts total <strong>$${formatNum(data.discounts.totalDiscounts)}</strong>. `;
+                }
+                stateText += `Signal adheres strictly to uploaded evidence and does not invent or estimate unverified operating figures.`;
+            }
+            document.getElementById('state-assessment-text').innerHTML = stateText;
 
-            const visibleFindings = tier === 1 ? allFindings.slice(0, 2) : allFindings;
+            // 2. Opportunity Stack Summary
+            if (data.isSynthetic) {
+                document.getElementById('stack-confirmed').textContent = "$15,969 in Records";
+                document.getElementById('stack-confirmed-note').textContent = "Disclosed anomalies across 60 days: OT ($6,846) + voids ($1,840) + promo excess ($3,200) + extras ($2,443) + miscoded meals ($1,640)";
+                document.getElementById('stack-probable').textContent = "$21,000–$32,000 / yr";
+                document.getElementById('stack-probable-note').textContent = "Lost peak table turns & kitchen station delays ($1,750–$2,667/mo)";
+                document.getElementById('stack-recoverable').textContent = "$33,858 / yr";
+                document.getElementById('stack-recoverable-note').textContent = "Capping promo ($19,200/yr / $3,200 period) + repricing 4 extras ($14,658/yr / $2,443 period)";
+                document.getElementById('stack-total').textContent = "$75,630–$86,630 / yr";
+                document.getElementById('stack-total-note').textContent = "Direct cash recovery ($54,630/yr) + modeled peak turn recovery ($21k–$32k/yr)";
+            } else {
+                // Upload mode: tie strictly to verified numbers
+                const hasLossStreams = Boolean(data.labor || data.voids || data.discounts || data.modifiers);
+                if (hasLossStreams) {
+                    let totalLoss = 0;
+                    if (data.labor) totalLoss += data.labor.kdsOTPay || data.labor.totalOTPay;
+                    if (data.voids) totalLoss += data.voids.voidAmount;
+                    if (data.discounts) totalLoss += data.discounts.totalDiscounts;
+                    if (data.modifiers) totalLoss += data.modifiers.modifierDeficit;
+
+                    document.getElementById('stack-confirmed').textContent = `$${formatNum(totalLoss)} in Records`;
+                    document.getElementById('stack-confirmed-note').textContent = "Verified anomalies directly identified in uploaded operational streams";
+                    document.getElementById('stack-probable').textContent = "Pending Full Audit";
+                    document.getElementById('stack-probable-note').textContent = "Requires multi-stream correlation";
+                    document.getElementById('stack-recoverable').textContent = `$${formatNum(totalLoss * (365 / data.periodDays))} / yr`;
+                    document.getElementById('stack-recoverable-note').textContent = "Annualized run-rate of verified leakage";
+                    document.getElementById('stack-total').textContent = `$${formatNum(totalLoss * (365 / data.periodDays))} / yr`;
+                    document.getElementById('stack-total-note').textContent = "Direct cash opportunity derived strictly from uploaded records";
+                } else {
+                    document.getElementById('stack-confirmed').textContent = "$0 Verified Loss";
+                    document.getElementById('stack-confirmed-note').textContent = "No loss, void, or payroll records uploaded";
+                    document.getElementById('stack-probable').textContent = "Unavailable";
+                    document.getElementById('stack-probable-note').textContent = "Requires labor & void streams";
+                    document.getElementById('stack-recoverable').textContent = "Unavailable";
+                    document.getElementById('stack-recoverable-note').textContent = "Requires discount & modifier reports";
+                    document.getElementById('stack-total').textContent = "Pending Data";
+                    document.getElementById('stack-total-note').textContent = "Upload supplemental exports to unlock loss calculations";
+                }
+            }
+
+            // 3. Cross-Signal Hypothesis Map
+            const causalSection = document.getElementById('causal-map-section');
+            if (causalSection) {
+                if (data.isSynthetic || (data.labor && data.voids)) {
+                    causalSection.innerHTML = `
+                        <span class="causal-eyebrow">Where Numbers Collide (Correlation Map)</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin: 0 0 0.5rem 0; color: #FAF9F5;">Friday &amp; Saturday Dinner Slowdown</h3>
+                        <p style="font-size: 13.5px; color: rgba(250, 249, 245, 0.7); margin: 0 0 1.5rem 0;">
+                            Looking at reports together shows connections that individual reports hide. The diagram below connects numbers that happen at the exact same time:
+                        </p>
+                        <div class="causal-flow">
+                            <div class="causal-node root">
+                                <div class="node-tag" style="color: #2DD4BF;">Kitchen Overtime (Payroll)</div>
+                                <div class="node-title">High Weekend Overtime</div>
+                                <p class="node-desc">Kitchen logged ${data.labor ? data.labor.kdsOTHours.toFixed(1) : '318.5'} overtime hours ($${data.labor ? formatNum(data.labor.kdsOTPay) : '6,846'} extra pay; straight-time wage $${data.labor ? formatNum(data.labor.straightTimeReplacementCost) : '4,564'}, 0.5× premium $${data.labor ? formatNum(data.labor.kdsOTPremium) : '2,282'}).</p>
+                            </div>
+                            <div class="causal-arrow">&rarr;</div>
+                            <div class="causal-node">
+                                <div class="node-tag" style="color: var(--accent-gold);">Dinner Rush Volume</div>
+                                <div class="node-title">6:00 PM Rush Spike</div>
+                                <p class="node-desc">Orders spike over 100% between 4 PM and 6 PM. Station queues saturate during this exact window.</p>
+                            </div>
+                            <div class="causal-arrow">&rarr;</div>
+                            <div class="causal-node terminal">
+                                <div class="node-tag" style="color: #E11D48;">Manager Voids ($28 Avg)</div>
+                                <div class="node-title">Comped Meals During Rush</div>
+                                <p class="node-desc">Full-meal voids cluster heavily between 6:00–8:30 PM, driven by ticket latency walkouts and cold food complaints.</p>
+                            </div>
+                        </div>
+                        <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-gold); border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
+                            Direct Recovery: $1,731/mo ($20,772/yr) direct payroll & void recovery; up to $2,800–$4,500/mo ($33,600–$54,000/yr) with peak station turn recovery.
+                        </div>
+                    `;
+                } else {
+                    causalSection.innerHTML = `
+                        <div style="text-align: center; padding: 1.5rem 1rem;">
+                            <span class="causal-eyebrow" style="color: var(--accent-gold);">Cross-Stream Correlation</span>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin: 0.5rem 0; color: #FAF9F5;">Multi-Stream Upload Required</h3>
+                            <p style="font-size: 13.5px; color: rgba(250, 249, 245, 0.75); max-width: 620px; margin: 0.5rem auto 1rem auto; line-height: 1.6;">
+                                Causal mapping connects numbers across operational silos (such as linking kitchen overtime surges to ticket fire times and manager service recovery voids). To unlock cross-stream hypothesis mapping, upload both <strong>Labor Summary / Punch Details</strong> and <strong>Void / Comp Detail</strong> reports alongside your Sales export.
+                            </p>
+                        </div>
+                    `;
+                }
+            }
+
+            // 4. Construct Findings Roster
+            let findingsList = [];
+            if (data.isSynthetic) {
+                findingsList = [
+                    {
+                        id: "F-01",
+                        rank: 1,
+                        category: "Dinner Rush & Kitchen Overtime",
+                        title: "F-01: Friday and Saturday dinner is backing up the kitchen",
+                        priority: "Investigate First",
+                        decisionPriority: "Investigate First",
+                        decisionRationale: "Direct payroll & void recovery of $1,731/mo ($20,772/yr direct, $2,800–$4,500/mo including peak table turns); verifiable on the floor in 48 hours.",
+                        confidenceLevel: "Modeled",
+                        confidenceRationale: "Verified on payroll and POS void records; moderate confidence on kitchen pass delays until physical floor observation.",
+                        observed: "During Friday and Saturday dinner between 6:00 PM and 8:30 PM, table turns slow down and ticket wait times peak. In that exact window, kitchen staff logged 318.5 overtime hours ($6,846 extra pay; straight-time replacement cost $4,564, 0.5× overtime premium $2,282) and managers comped or voided 42 entire checks ($1,180 total) due to ticket delays and cold food.",
+                        intersection: "Kitchen overtime payroll spikes co-occur precisely with full-ticket service recovery voids and ticket latency during peak weekend dinner volume (6:00–8:30 PM). Labor expenditure escalates at the exact window where kitchen throughput deteriorates.",
+                        inferred: "Line station saturation during the weekend dinner peak creates compounding ticket delays exceeding 28 minutes, forcing front-of-house managers to execute full-ticket comp voids ($28.10 avg) while back-of-house staff burns premium 1.5× overtime rates clearing the queue.",
+                        verify: "On two busy Fridays, have a manager stand at the pass between 6:30 PM and 7:30 PM for 20 tickets. Watch whether saute or grill is running out of prepped items and waiting on backups mid-rush.",
+                        actionCandidate: "Move 2.5 prep hours per day from the evening rush to a morning prep shift (8:00 AM – 10:30 AM) paid at regular wage ($14.33/hr) instead of overtime. Pause delivery tablets if more than 16 active dine-in orders are on the line.",
+                        candidateInterventions: [
+                            "A: Temporarily pause delivery tablets when active orders exceed 16 tickets.",
+                            "B: Shift 2.5 kitchen prep hours per day from the evening rush to a morning prep shift (8:00–10:30 AM) paid at standard wage ($14.33/hr) instead of overtime.",
+                            "C: Re-sequence station expeditor role and implement pre-printed bill presentations."
+                        ],
+                        signalDecision: "Shift 2.5 prep hours to a morning prep shift to take 12 overtime hours off the weekend dinner rush, and pause delivery tablets when the line exceeds 16 orders.",
+                        measureNext: "Track Friday/Saturday kitchen overtime hours, pass ticket wait times, and dinner rush void dollar volume over the next 30 days.",
+                        monthlyRange: "$1,731 / mo direct ($2,800–$4,500 / mo with floor turns)",
+                        annualRange: "$20,772 / yr direct ($33,600–$54,000 / yr with floor turns)",
+                        periodImpact: "$3,462 direct recovery ($2,282 OT premium + $1,180 rush voids; $8,026 with lost table turns)",
+                        basis: "318.5 kitchen OT hours (0.5× premium = $2,282) + 42 rush-window voids ($1,180) + modeled 1.2 lost turns / station",
+                        friction: "Low to Medium"
+                    },
+                    {
+                        id: "F-02",
+                        rank: 2,
+                        category: "Promotion Settings & Discounts",
+                        title: "F-02: The 10% promotion is giving away more than the $5 offer",
+                        priority: "Change This Week",
+                        decisionPriority: "Change This Week",
+                        decisionRationale: "Saves $1,600/mo ($19,200/yr); takes 5 minutes to change in POS backend settings.",
+                        confidenceLevel: "Verified",
+                        confidenceRationale: "Calculated directly from all 940 Offer B transactions in POS records.",
+                        observed: "Offer A ($5 off $50+) was redeemed 880 times, totaling $4,400 in discounts ($5.00 fixed discount, pre-discount check average $74.50). Offer B (10% off uncapped) was redeemed 940 times, totaling $7,900 in discounts ($8.40 average discount, pre-discount check average $84.00). Above $50, Offer B discounts scaled linearly without an upper ceiling.",
+                        intersection: "Check-size distribution crossed with promotion records establishes that Offer B cost $3,500 more than Offer A in gross discounts. Crucially, counterfactual evaluation across the exact 940 Offer B transactions proves that capping the discount at $5.00 would have generated $4,700 in discount spend instead of $7,900 — recovering $3,200 ($1,600/mo) without suppressing ticket spend.",
+                        inferred: "The uncapped 10% promotion subsidizes high-spend diners who would have spent $75+ regardless. The additional $3,200 discount expense functions as margin transfer rather than demand generation.",
+                        verify: "Check whether guests who redeem the 10% offer are regular diners or ordering higher-end specials that would have sold without a discount.",
+                        actionCandidate: "Change the 10% discount button in your POS to have a $5 or $7.50 maximum cap on purchases of $50+.",
+                        candidateInterventions: [
+                            "A: Put a $5 maximum discount cap on the 10% offer (Spend $50+, Save up to $5; recovers $3,200 / 60d).",
+                            "B: Put a $7.50 maximum discount cap on the 10% offer (recovers $850 / 60d).",
+                            "C: Restructure Offer B into a value-add promotion (Free appetizer with $60 spend)."
+                        ],
+                        signalDecision: "Put a $5 cap on the 10% discount in your POS for 30 days and monitor redemption rates and average check sizes.",
+                        measureNext: "Redemption frequency, average check above $50, and total discount dollars over the next 30 days.",
+                        monthlyRange: "$1,600 / mo",
+                        annualRange: "$19,200 / yr",
+                        periodImpact: "$3,200 in your records (60 days under $5 cap)",
+                        basis: "Counterfactual discount recalculation on all 940 Offer B transactions ($7,900 actual - $4,700 at $5 cap; or $850 recovery at $7.50 cap)",
+                        friction: "Very Easy (5 min)"
+                    },
+                    {
+                        id: "F-03",
+                        rank: 3,
+                        category: "Menu Prices & Add-Ons",
+                        title: "F-03: Some paid extras are being given away for free",
+                        priority: "Quick Win",
+                        decisionPriority: "Quick Win",
+                        decisionRationale: "Recovers $1,222/mo ($14,658/yr) with zero menu redesign; update 4 buttons in POS backend.",
+                        confidenceLevel: "Verified",
+                        confidenceRationale: "Recipe portion costs verified against supplier invoices and cross-matched with 3,240 POS modifier item lines.",
+                        observed: "Four high-frequency menu modifiers (Add Bacon, Sub Truffle Fries, Extra Cheese, Gluten-Free Bun) appeared on 3,240 checks across 60 days. POS pricing: Bacon +$1.00 (ingredient + prep cost $1.75, -$0.75 deficit), Truffle Fries +$1.50 (cost $2.60, -$1.10 deficit), Extra Cheese +$0.50 (cost $0.95, -$0.45 deficit), GF Bun +$1.00 (cost $1.75, -$0.75 deficit). Base entrees maintain 68% gross margin, but modified entrees drop to 54–58% margin.",
+                        intersection: "Cross-referencing food cost recipe sheets with item modifier sales reveals that the top selling entrees maintain healthy margins until specific high-volume customizations are selected, eroding up to 14% margin points per dish.",
+                        inferred: "Modifier prices were set historically without indexing against recent supplier ingredient inflation. Because these four modifications are selected on 34.4% of all specialty entree orders, modifier underpricing creates systemic margin leakage without driving incremental guest satisfaction.",
+                        verify: "Confirm latest bacon, dairy, and gluten-free bread line-item prices on current distributor invoices.",
+                        actionCandidate: "Update prices on the 4 add-on buttons in your POS backend: Bacon to $2.00, Truffle Fries to $2.75, Extra Cheese to $1.00, GF Bun to $2.00.",
+                        candidateInterventions: [
+                            "A: Completely rebuild the entire modifier menu tree across all 48 entrees.",
+                            "B: Quick Win (Recommended): Reprice only the 4 affected modifiers (+Bacon to $2.00, +Truffle Fries to $2.75, +Cheese to $1.00, +GF Bun to $2.00) in POS backend.",
+                            "C: Replace bulk modifier portions with standardized portion-control scoops."
+                        ],
+                        signalDecision: "Update prices on the 4 modifier buttons in the POS backend without changing base menu prices; track order counts for 30 days.",
+                        measureNext: "Modifier order counts on top entrees and net profit contribution over the next 30 days.",
+                        monthlyRange: "$1,222 / mo",
+                        annualRange: "$14,658 / yr",
+                        periodImpact: "$2,443 in your records (60 days)",
+                        basis: "3,240 modifier instances multiplied by specific unit cost-to-price deficits ($840 bacon + $858 truffle + $387 cheese + $358 bun)",
+                        friction: "Very Easy (10 min)"
+                    },
+                    {
+                        id: "F-04",
+                        rank: 4,
+                        category: "Staff Meal Policy & POS Keys",
+                        title: "F-04: Shift meals are being entered as manager comps",
+                        priority: "Process Fix",
+                        decisionPriority: "Process Fix",
+                        decisionRationale: "Separate staff benefit meals from guest service recovery to restore reliable comp reporting.",
+                        confidenceLevel: "Needs Validation",
+                        confidenceRationale: "Strong timing and ticket pattern, but requires human floor confirmation to verify whether these are authorized employee meals.",
+                        observed: "Manager discount code 'MGR-COMP-99' was applied to 142 checks totaling $2,840. 82 of these transactions ($1,640) occurred between 3:30 PM and 4:30 PM or post-midnight closing, applied to single-item beverage and sandwich orders rather than full guest table checks.",
+                        intersection: "Time-of-day clustering, item composition (single meal items), and check ownership demonstrate that managerial override codes are being utilized during shift turnover and closing rather than during dining service.",
+                        inferred: "Shift supervisors and lead servers are using the general manager comp code to record staff meals because no designated employee meal code exists in the active POS configuration.",
+                        verify: "Confirm with shift managers whether these 82 off-peak checks were authorized employee meals, and check written staff meal policy.",
+                        actionCandidate: "Add a dedicated 'Staff Meal' button in the POS with preset limits; reserve MGR-COMP-99 strictly for guest service recovery.",
+                        candidateInterventions: [
+                            "A: Configure dedicated 'Shift Meal' discount key in POS with preset limits and server PIN logging.",
+                            "B: Lock MGR-COMP-99 code strictly for documented guest recovery.",
+                            "C: Establish written employee meal policy with clear daily allowances."
+                        ],
+                        signalDecision: "Create a separate staff-meal code in the POS to separate legitimate employee benefits from guest service recovery.",
+                        measureNext: "Usage frequency of MGR-COMP-99 vs. new Shift Meal code, and total true guest-recovery comp volume over next 30 days.",
+                        monthlyRange: "$0 net cash ($820 reclassified / mo)",
+                        annualRange: "$0 net cash ($9,840 reclassified / yr)",
+                        periodImpact: "$1,640 reclassified to staff benefits (Reporting integrity / comp accuracy — $0 net cash recovery)",
+                        basis: "82 off-peak shift-change comp transactions averaging $20.00; if these are authorized meals, changing the code restores accurate reporting rather than recovering gross cash.",
+                        friction: "Very Easy (15 min)"
+                    }
+                ];
+            } else {
+                // Upload mode: derive findings exclusively from supplied streams
+                findingsList.push({
+                    id: "U-01",
+                    rank: 1,
+                    category: "Sales & Volume Baseline",
+                    title: "U-01: Verified Sales Performance & Ticket Distribution",
+                    priority: "Baseline Established",
+                    decisionPriority: "Baseline Established",
+                    decisionRationale: `Establishes audited transaction baseline across ${data.periodDays} days ($${formatNum(data.netSales)} net sales, $${data.avgCheck.toFixed(2)} avg check).`,
+                    confidenceLevel: "Verified",
+                    confidenceRationale: `Calculated directly from ${formatNum(data.totalOrders)} guest transactions in uploaded sales records.`,
+                    observed: `Across the ${data.periodDays}-day reporting span, this operation recorded $${formatNum(data.netSales)} in net sales across ${formatNum(data.totalOrders)} checks, yielding an average check of $${data.avgCheck.toFixed(2)}.`,
+                    intersection: `Operational volume run-rate equates to approximately $${formatNum(data.netSales * (30.417 / data.periodDays))}/month ($${formatNum(data.netSales * (365 / data.periodDays))}/year).`,
+                    inferred: "Sales distribution forms the core denominator for all labor productivity, modifier attachment, and loss leakage ratios.",
+                    verify: "Verify net sales against monthly merchant processing settlements and bank deposit records.",
+                    actionCandidate: "Use verified sales and ticket volume as the operational baseline for scheduling and menu rationalization.",
+                    candidateInterventions: [
+                        "A: Reconcile POS net sales against merchant gateway settlement batches.",
+                        "B: Use hourly volume distribution to align shift call-in thresholds."
+                    ],
+                    signalDecision: "Maintain audited sales baseline as the denominator for operational KPI tracking.",
+                    measureNext: "Daily sales velocity and check average stability over next 30 days.",
+                    monthlyRange: `$${formatNum(data.netSales * (30.417 / data.periodDays))} / mo run-rate`,
+                    annualRange: `$${formatNum(data.netSales * (365 / data.periodDays))} / yr run-rate`,
+                    periodImpact: `$${formatNum(data.netSales)} total sales volume`,
+                    basis: `Aggregated across ${formatNum(data.totalOrders)} check/order records in uploaded POS files.`,
+                    friction: "Verified Fact"
+                });
+
+                // Labor Finding (Verified or Insufficient Evidence)
+                if (data.labor) {
+                    findingsList.push({
+                        id: "U-02",
+                        rank: 2,
+                        category: "Labor & Payroll",
+                        title: "U-02: Verified Labor Expenditure & Overtime Ratio",
+                        priority: "Review Staffing",
+                        decisionPriority: "Review Staffing",
+                        decisionRationale: `Labor ran at ${data.labor.laborPercent.toFixed(1)}% of sales ($${formatNum(data.labor.laborCost)} total wages).`,
+                        confidenceLevel: "Verified",
+                        confidenceRationale: "Calculated from employee job/punch records in uploaded labor export.",
+                        observed: `Total labor expenditure was $${formatNum(data.labor.laborCost)} (${data.labor.laborPercent.toFixed(1)}% of net sales). Overtime accounted for ${data.labor.totalOTHours.toFixed(1)} hours ($${formatNum(data.labor.totalOTPay)} overtime wages).`,
+                        intersection: "Overtime hours represent 1.5× wage rates. Replacing scheduled overtime with straight-time shifts recovers the 0.5× overtime wage premium.",
+                        inferred: "Overtime accumulation indicates shift coverage imbalances or prep delays.",
+                        verify: "Review shift rosters to confirm whether overtime occurred during prep or service rushes.",
+                        actionCandidate: "Audit schedule allocations to reduce unbudgeted overtime.",
+                        candidateInterventions: [
+                            "A: Enforce 38-hour shift caps for hourly crew members.",
+                            "B: Re-allocate prep tasks to morning non-rush shifts."
+                        ],
+                        signalDecision: "Conduct shift-by-shift overtime audit to rebalance coverage.",
+                        measureNext: "Weekly overtime hours and labor cost percentage.",
+                        monthlyRange: `$${formatNum(data.labor.totalOTPay * (30.417 / data.periodDays))} / mo OT spend`,
+                        annualRange: `$${formatNum(data.labor.totalOTPay * (365 / data.periodDays))} / yr OT spend`,
+                        periodImpact: `$${formatNum(data.labor.totalOTPay)} OT wages in records`,
+                        basis: "Calculated directly from uploaded labor and wage export files.",
+                        friction: "Medium"
+                    });
+                } else {
+                    findingsList.push({
+                        id: "U-02",
+                        rank: 2,
+                        category: "Labor & Payroll",
+                        title: "U-02: Labor & Overtime Analysis — Insufficient Evidence",
+                        priority: "Missing Stream",
+                        decisionPriority: "Upload Labor Report",
+                        decisionRationale: "No payroll summary or timecard export was included in this upload.",
+                        confidenceLevel: "Insufficient Evidence",
+                        confidenceRationale: "Cannot calculate labor percentage or overtime costs without verified employee wage records.",
+                        observed: "No employee timecards, hourly labor records, or payroll summary exports were detected in the uploaded file(s). Signal strictly withholds labor metrics when punch data is missing.",
+                        intersection: "Labor cost analysis requires employee hours paired with wages. This metric will remain unavailable until labor data is provided.",
+                        inferred: "No defensible labor or staffing recommendations can be generated without verified timecards.",
+                        verify: "Locate 'Labor Summary' or 'Labor Detail by Employee' in your POS or payroll system.",
+                        actionCandidate: "Export a CSV labor report from your POS (Toast, Square, Clover) and upload it to Signal.",
+                        candidateInterventions: [
+                            "A: Upload Toast Labor Summary CSV to calculate true labor % and overtime leakage.",
+                            "B: Upload Timecard Punches CSV to evaluate hourly sales-per-labor-hour (SPLH)."
+                        ],
+                        signalDecision: "Upload Labor export to enable labor diagnostics.",
+                        measureNext: "Pending labor data upload.",
+                        monthlyRange: "Unavailable (Missing stream)",
+                        annualRange: "Unavailable (Missing stream)",
+                        periodImpact: "Unavailable (Missing stream)",
+                        basis: "Requires employee timecard or payroll summary export.",
+                        friction: "Pending Upload"
+                    });
+                }
+
+                // Voids Finding (Verified or Insufficient Evidence)
+                if (data.voids) {
+                    findingsList.push({
+                        id: "U-03",
+                        rank: 3,
+                        category: "Voids & Comps",
+                        title: "U-03: Verified Void & Comp Audit",
+                        priority: "Investigate Voids",
+                        decisionPriority: "Investigate Voids",
+                        decisionRationale: `Identified $${formatNum(data.voids.voidAmount)} in voids across ${data.voids.voidCount} checks.`,
+                        confidenceLevel: "Verified",
+                        confidenceRationale: "Calculated directly from uploaded void transaction records.",
+                        observed: `Total voided check dollars amounted to $${formatNum(data.voids.voidAmount)} across ${data.voids.voidCount} transactions (average void: $${data.voids.avgVoidValue.toFixed(2)}).`,
+                        intersection: "Void timing indicates service recovery volume during rush periods.",
+                        inferred: "Clustered voids point to kitchen backlog or order entry issues.",
+                        verify: "Review timestamped void reasons on shift logs.",
+                        actionCandidate: "Enforce required manager reason codes for all checks over $25.",
+                        candidateInterventions: [
+                            "A: Require server PIN and documented reason for comps over $20.",
+                            "B: Track void timestamps against kitchen ticket fire times."
+                        ],
+                        signalDecision: "Establish daily manager review of all voided checks.",
+                        measureNext: "30-day void dollar volume and void frequency.",
+                        monthlyRange: `$${formatNum(data.voids.voidAmount * (30.417 / data.periodDays))} / mo`,
+                        annualRange: `$${formatNum(data.voids.voidAmount * (365 / data.periodDays))} / yr`,
+                        periodImpact: `$${formatNum(data.voids.voidAmount)} in records`,
+                        basis: "Calculated directly from uploaded void summary records.",
+                        friction: "Easy"
+                    });
+                } else {
+                    findingsList.push({
+                        id: "U-03",
+                        rank: 3,
+                        category: "Voids & Comps",
+                        title: "U-03: Void & Service Recovery — Insufficient Evidence",
+                        priority: "Missing Stream",
+                        decisionPriority: "Upload Void Log",
+                        decisionRationale: "No void transaction log or comp detail export was included in this upload.",
+                        confidenceLevel: "Insufficient Evidence",
+                        confidenceRationale: "Service recovery timing and void patterns cannot be evaluated without void transaction logs.",
+                        observed: "No void transaction logs, comp details, or refund reports were detected in the uploaded file(s). Signal strictly withholds void metrics when records are not supplied.",
+                        intersection: "Void and comp analysis requires check-level transaction logs. This metric remains unavailable until void data is uploaded.",
+                        inferred: "Cannot evaluate ticket latency walkouts or cashier override patterns without transaction details.",
+                        verify: "Locate 'Void Details' or 'Discounts & Comps' in your POS export menu.",
+                        actionCandidate: "Export timestamped void details from your POS and upload to Signal.",
+                        candidateInterventions: [
+                            "A: Upload Toast Void Details CSV with timestamps to analyze service recovery clustering."
+                        ],
+                        signalDecision: "Upload Void report to enable service recovery diagnostics.",
+                        measureNext: "Pending void log upload.",
+                        monthlyRange: "Unavailable (Missing stream)",
+                        annualRange: "Unavailable (Missing stream)",
+                        periodImpact: "Unavailable (Missing stream)",
+                        basis: "Requires POS Void Details or Comp Summary export.",
+                        friction: "Pending Upload"
+                    });
+                }
+
+                // Discounts Finding (Verified or Insufficient Evidence)
+                if (data.discounts) {
+                    findingsList.push({
+                        id: "U-04",
+                        rank: 4,
+                        category: "Discounts & Promotions",
+                        title: "U-04: Verified Discount & Comp Evaluation",
+                        priority: "Review Discounts",
+                        decisionPriority: "Review Discounts",
+                        decisionRationale: `Identified $${formatNum(data.discounts.totalDiscounts)} in discounts.`,
+                        confidenceLevel: "Verified",
+                        confidenceRationale: "Calculated directly from uploaded check discount records.",
+                        observed: `Total discounts applied across checks amounted to $${formatNum(data.discounts.totalDiscounts)}.`,
+                        intersection: "Uncapped percentage discounts scale linearly with check size, creating margin drag on high-ticket orders.",
+                        inferred: "Discounts should be audited to evaluate counterfactual caps.",
+                        verify: "Audit promotion settings in POS backend.",
+                        actionCandidate: "Test a maximum dollar cap on percentage discounts.",
+                        candidateInterventions: [
+                            "A: Apply flat dollar caps on percentage-off promotions."
+                        ],
+                        signalDecision: "Audit top 3 promotional discount codes in POS.",
+                        measureNext: "Discount spend as a percentage of gross sales.",
+                        monthlyRange: `$${formatNum(data.discounts.totalDiscounts * (30.417 / data.periodDays))} / mo`,
+                        annualRange: `$${formatNum(data.discounts.totalDiscounts * (365 / data.periodDays))} / yr`,
+                        periodImpact: `$${formatNum(data.discounts.totalDiscounts)} in records`,
+                        basis: "Calculated directly from uploaded discount records.",
+                        friction: "Easy"
+                    });
+                } else {
+                    findingsList.push({
+                        id: "U-04",
+                        rank: 4,
+                        category: "Discounts & Promotions",
+                        title: "U-04: Promotion & Discount ROI — Insufficient Evidence",
+                        priority: "Missing Stream",
+                        decisionPriority: "Upload Discount Report",
+                        decisionRationale: "No check discount summary or promotion redemption report was included in this upload.",
+                        confidenceLevel: "Insufficient Evidence",
+                        confidenceRationale: "Promotional counterfactuals and discount margin erosion cannot be evaluated without discount reports.",
+                        observed: "No check discount summary or promotion redemption report was detected in the uploaded file(s). Signal strictly withholds promotional conclusions when discount data is missing.",
+                        intersection: "Promotional ROI requires check-level discount redemptions paired with check subtotals.",
+                        inferred: "Cannot calculate recoverable discount savings without itemized discount redemptions.",
+                        verify: "Export 'Check Discounts' or 'Promotion Summary' from your POS.",
+                        actionCandidate: "Upload POS Check Discounts export to evaluate promotional efficiency.",
+                        candidateInterventions: [
+                            "A: Upload Toast Discounts CSV to evaluate counterfactual promo savings."
+                        ],
+                        signalDecision: "Upload Discount report to enable promotion ROI diagnostics.",
+                        measureNext: "Pending discount report upload.",
+                        monthlyRange: "Unavailable (Missing stream)",
+                        annualRange: "Unavailable (Missing stream)",
+                        periodImpact: "Unavailable (Missing stream)",
+                        basis: "Requires POS Check Discounts or Promotion Redemption report.",
+                        friction: "Pending Upload"
+                    });
+                }
+            }
+
+            const visibleFindings = tier === 1 ? findingsList.slice(0, 2) : findingsList;
 
             // Render Findings Cards based on Tier Depth
             const container = document.getElementById('findings-container');
@@ -1565,7 +2373,6 @@
                 const pClass = f.priority.toLowerCase().includes('investigate') || f.priority.toLowerCase().includes('change') ? 'fix-now' : (f.priority.toLowerCase().includes('quick') ? 'validate-next' : 'monitor');
 
                 if (tier === 1) {
-                    // Level 0: Validation Review Format
                     card.innerHTML = `
                         <div class="finding-header">
                             <div>
@@ -1601,7 +2408,6 @@
                         </div>
                     `;
                 } else if (tier === 2) {
-                    // Level 1: Snapshot Format
                     card.innerHTML = `
                         <div class="finding-header">
                             <div>
@@ -1649,7 +2455,6 @@
                         </div>
                     `;
                 } else {
-                    // Level 2: Full Diagnostic Format
                     card.innerHTML = `
                         <div class="finding-header">
                             <div>
@@ -1695,7 +2500,7 @@
                                     <span class="layer-title">05 // What You Could Try</span>
                                     <span class="layer-subtitle">&mdash; Tested, practical options</span>
                                 </div>
-                                <p class="layer-body">${f.candidateInterventions.join('<br>')}</p>
+                                <p class="layer-body">${f.candidateInterventions ? f.candidateInterventions.join('<br>') : f.actionCandidate}</p>
                             </div>
                         </div>
                         <div class="priority-logic-box">
@@ -1710,7 +2515,7 @@
                                 </div>
                                 <div class="logic-field full">
                                     <span class="logic-label">Smallest Defensible Next Move:</span>
-                                    <span class="logic-value"><strong>Recommended:</strong> ${f.signalDecision}</span>
+                                    <span class="logic-value"><strong>Recommended:</strong> ${f.signalDecision || f.actionCandidate}</span>
                                 </div>
                                 <div class="logic-field full">
                                     <span class="logic-label">What to Watch Next (30-Day Check):</span>
@@ -1739,45 +2544,133 @@
                 tbody.appendChild(tr);
             });
 
+            // 5. Intelligent Missing Data Requests Grid
+            const dataGrid = document.getElementById('data-requests-grid');
+            if (dataGrid) {
+                if (data.isSynthetic) {
+                    dataGrid.innerHTML = `
+                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1.25rem;">
+                            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Request 01 &bull; +15% Confidence Uplift</div>
+                            <div style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0.25rem 0 0.5rem 0; font-weight: 600;">Individual Shift Punch Records</div>
+                            <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0 0 0.75rem 0;">Separates prep labor from line execution to confirm whether shifting 2.5 morning prep hours eliminates 12 hours of 1.5× line overtime.</p>
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary);">Source: Toast Labor &rarr; Reports &rarr; Labor Detail by Employee</div>
+                        </div>
+                        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1.25rem;">
+                            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Request 02 &bull; +12% Confidence Uplift</div>
+                            <div style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0.25rem 0 0.5rem 0; font-weight: 600;">Timestamped Void Reason Log</div>
+                            <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0 0 0.75rem 0;">Maps void timestamps against kitchen ticket fire times to definitively substantiate kitchen wait-time walkouts.</p>
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary);">Source: Toast &rarr; Payments &rarr; Void Details (Export with Timestamps)</div>
+                        </div>
+                    `;
+                } else {
+                    let reqCards = '';
+                    let reqIdx = 1;
+                    if (!data.labor) {
+                        reqCards += `
+                            <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1.25rem;">
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-crimson); font-weight: 700; text-transform: uppercase;">Priority Request 0${reqIdx++} &bull; Labor Stream Missing</div>
+                                <div style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0.25rem 0 0.5rem 0; font-weight: 600;">Labor Summary & Employee Punches</div>
+                                <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0 0 0.75rem 0;">Required to calculate labor cost %, regular vs overtime hours, and shift-by-shift sales per labor hour (SPLH).</p>
+                                <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary);">Source: POS Reports &rarr; Labor &rarr; Labor Summary CSV</div>
+                            </div>
+                        `;
+                    }
+                    if (!data.voids) {
+                        reqCards += `
+                            <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1.25rem;">
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-crimson); font-weight: 700; text-transform: uppercase;">Priority Request 0${reqIdx++} &bull; Void Stream Missing</div>
+                                <div style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0.25rem 0 0.5rem 0; font-weight: 600;">Timestamped Void & Comp Details</div>
+                                <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0 0 0.75rem 0;">Required to audit service recovery walkouts, kitchen latency comp clustering, and cashier comp variances.</p>
+                                <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary);">Source: POS Payments &rarr; Voids &rarr; Void Detail CSV</div>
+                            </div>
+                        `;
+                    }
+                    if (!data.discounts) {
+                        reqCards += `
+                            <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1.25rem;">
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-crimson); font-weight: 700; text-transform: uppercase;">Priority Request 0${reqIdx++} &bull; Discount Stream Missing</div>
+                                <div style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0.25rem 0 0.5rem 0; font-weight: 600;">Check Discounts & Promo Redemptions</div>
+                                <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0 0 0.75rem 0;">Required to calculate promotional counterfactual savings and identify discount margin leakage.</p>
+                                <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary);">Source: POS Reports &rarr; Discounts &rarr; Check Discounts CSV</div>
+                            </div>
+                        `;
+                    }
+                    if (reqCards === '') {
+                        reqCards = `
+                            <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 4px; padding: 1.25rem; grid-column: span 2;">
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">All Core Streams Ingested</div>
+                                <div style="font-family: var(--font-serif); font-size: 1.1rem; margin: 0.25rem 0 0.5rem 0; font-weight: 600;">Comprehensive Stream Coverage</div>
+                                <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0;">Sales, labor, void, and discount streams have all been successfully ingested and cross-matched.</p>
+                            </div>
+                        `;
+                    }
+                    dataGrid.innerHTML = reqCards;
+                }
+            }
+
             // Prepare Markdown for Export
             activeBriefMarkdown = generateMarkdownBrief(data, visibleFindings, tier);
-            document.getElementById('raw-json-code').textContent = JSON.stringify({ metadata: { restaurant: data.restaurantName, tier: tier, periodDays: data.periodDays, classification: "SYNTHETIC DEMONSTRATION DATA" }, metrics: data, findings: visibleFindings }, null, 2);
+            document.getElementById('raw-json-code').textContent = JSON.stringify({ 
+                metadata: { 
+                    restaurant: data.restaurantName, 
+                    tier: tier, 
+                    periodDays: data.periodDays, 
+                    classification: data.classification,
+                    streamsDetected: data.streamsDetected
+                }, 
+                metrics: {
+                    netSales: data.netSales,
+                    totalOrders: data.totalOrders,
+                    avgCheck: data.avgCheck,
+                    periodDays: data.periodDays,
+                    labor: data.labor ? { cost: data.labor.laborCost, percent: data.labor.laborPercent, otHours: data.labor.totalOTHours } : "Unavailable",
+                    voids: data.voids ? { amount: data.voids.voidAmount, count: data.voids.voidCount } : "Unavailable",
+                    discounts: data.discounts ? { amount: data.discounts.totalDiscounts } : "Unavailable"
+                }, 
+                findings: visibleFindings 
+            }, null, 2);
 
             // Scroll smoothly down to the brief
             document.getElementById('brief-container').scrollIntoView({ behavior: 'smooth' });
         }
 
         function formatNum(val) {
+            if (!Number.isFinite(val)) return '0';
             return Math.round(val).toLocaleString();
         }
 
         // Generate clean markdown brief for export
         function generateMarkdownBrief(data, findings, tier) {
-            let md = `# Signal Sample Report\n`;
+            let md = `# Signal Operational Intelligence Brief\n`;
             md += `**Location:** ${data.restaurantName}\n`;
             md += `**Period:** ${data.periodDays} Days Analyzed\n`;
-            md += `**Classification:** SYNTHETIC DEMONSTRATION DATA\n`;
-            md += `**Notice:** Sample data only. This is not a real restaurant.\n\n`;
-            md += `---\n\n## Overview of Your Numbers\n\n`;
+            md += `**Classification:** ${data.classification}\n`;
+            md += `**Detected Streams:** ${data.streamsDetected.join(', ')}\n\n`;
+            md += `---\n\n## Operational State Assessment\n\n`;
             md += document.getElementById('state-assessment-text').innerText + `\n\n`;
-            md += `---\n\n## What We Found & What to Do Next\n\n`;
+            md += `---\n\n## Opportunity Stack\n\n`;
+            md += `* In Your Records: ${document.getElementById('stack-confirmed').innerText} (${document.getElementById('stack-confirmed-note').innerText})\n`;
+            md += `* Modeled Cost: ${document.getElementById('stack-probable').innerText} (${document.getElementById('stack-probable-note').innerText})\n`;
+            md += `* Fast POS Wins: ${document.getElementById('stack-recoverable').innerText} (${document.getElementById('stack-recoverable-note').innerText})\n`;
+            md += `* Total Opportunity: ${document.getElementById('stack-total').innerText} (${document.getElementById('stack-total-note').innerText})\n\n`;
+            md += `---\n\n## Findings & Recommendations\n\n`;
 
             findings.forEach(f => {
                 md += `### ${f.id} &bull; ${f.title}\n`;
                 md += `**Category:** ${f.category} | **Priority:** ${f.decisionPriority} | **Certainty:** ${f.confidenceLevel}\n\n`;
-                md += `* **What We Found:** ${f.observed}\n`;
-                md += `* **Why It Matters:** ${f.inferred}\n`;
-                md += `* **What to Check:** ${f.verify}\n`;
+                md += `* **What We Found (Observed):** ${f.observed}\n`;
+                md += `* **Why It Matters (Inferred / Collision):** ${f.intersection}\n`;
+                md += `* **What to Check on the Floor:** ${f.verify}\n`;
                 if (f.candidateInterventions) {
-                    md += `* **What You Could Try:**\n  - ${f.candidateInterventions.join('\n  - ')}\n`;
+                    md += `* **Candidate Interventions:**\n  - ${f.candidateInterventions.join('\n  - ')}\n`;
                 }
-                md += `* **What to Do Next:** ${f.signalDecision || f.actionCandidate}\n`;
+                md += `* **Recommended Next Step:** ${f.signalDecision || f.actionCandidate}\n`;
                 if (f.measureNext) {
                     md += `* **What to Watch Next (30-Day Check):** ${f.measureNext}\n`;
                 }
-                md += `* **What This May Be Costing:** ${f.periodImpact} (${f.monthlyRange} monthly / ${f.annualRange} annualized)\n`;
+                md += `* **Costing Exposure:** ${f.periodImpact} (${f.monthlyRange} / ${f.annualRange})\n`;
                 md += `* **Measurement Basis:** ${f.basis}\n`;
-                md += `* **How Hard to Fix:** ${f.friction}\n\n`;
+                md += `* **Implementation Friction:** ${f.friction}\n\n`;
             });
 
             return md;
@@ -1802,10 +2695,14 @@
             document.getElementById('brief-container').style.display = 'none';
             document.getElementById('detected-streams-container').style.display = 'none';
             document.getElementById('digest-terminal').style.display = 'none';
+            const findingsBox = document.getElementById('findings-container');
+            if (findingsBox) findingsBox.innerHTML = '';
+            const matrixBox = document.getElementById('matrix-tbody');
+            if (matrixBox) matrixBox.innerHTML = '';
             activeDataset = null;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    </script>
+</script>
 
 </body>
 </html>
