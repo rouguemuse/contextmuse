@@ -204,10 +204,10 @@ p {
 
 .eyebrow, .section-eyebrow, .technical-label {
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    text-transform: none;
+    letter-spacing: 0;
     color: var(--accent-teal);
     display: inline-block;
     margin-bottom: 0.75rem;
@@ -5749,7 +5749,11 @@ input[type="submit"] {
 .ladder-scope-title,
 .what-example-label {
     font-family: var(--font-sans) !important;
-    letter-spacing: 0.06em !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 1.4 !important;
 }
 
 .navbar,

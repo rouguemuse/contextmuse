@@ -920,6 +920,185 @@
             font-weight: bold;
         }
 
+        /* Calm layout: one scale, even rhythm, no chrome stacked on chrome. */
+        .hero {
+            padding: 128px 0 80px;
+            border-bottom: none;
+        }
+        .hero-grid-lead {
+            gap: 64px;
+            align-items: start;
+        }
+        .hero-copy > p {
+            font-size: 1.125rem !important;
+            line-height: 1.6 !important;
+            max-width: 38rem;
+            margin-bottom: 32px !important;
+        }
+        .hero-title {
+            margin-bottom: 16px;
+        }
+        .hero-subhead {
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+            line-height: 1.45;
+        }
+        .hero-diagnostic-card,
+        .problem-card,
+        .what-card,
+        .how-card,
+        .ladder-card,
+        .path-card,
+        .final-cta-box {
+            border-radius: 16px;
+            box-shadow: none;
+            padding: 32px;
+        }
+        .hero-diag-heading {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .hero-diag-desc,
+        .problem-desc,
+        .what-desc,
+        .how-card-desc,
+        .proof-val,
+        .ladder-result,
+        .ladder-scope-list li,
+        .problem-banner,
+        .final-cta-trust-grid {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+        }
+        .problem-section,
+        .what-section,
+        .selected-work-section,
+        .how-section,
+        .ladder-section,
+        .two-path-section,
+        .final-cta-section {
+            padding: 96px 0;
+            border-bottom: none;
+        }
+        .what-section,
+        .how-section,
+        .ladder-section {
+            background: #F6F6F4;
+        }
+        .problem-section,
+        .selected-work-section,
+        .two-path-section {
+            background: #FFFFFF;
+        }
+        .problem-grid,
+        .what-grid,
+        .ladder-grid-three {
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .how-grid {
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .problem-card,
+        .what-card,
+        .how-card,
+        .ladder-card,
+        .path-card {
+            background: #FFFFFF;
+        }
+        .problem-card:hover,
+        .what-card:hover,
+        .ladder-card:hover {
+            transform: none;
+            border-color: var(--border-light);
+        }
+        .problem-title,
+        .what-title,
+        .how-card-title,
+        .ladder-title,
+        .work-title {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .how-step-num {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-teal);
+            margin-bottom: 16px;
+        }
+        .credibility-strip {
+            background: #F6F6F4;
+            color: var(--text-secondary);
+            padding: 20px 0;
+            border: none;
+        }
+        .strip-items {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            gap: 16px;
+        }
+        .strip-dot {
+            color: #C8C8C4;
+        }
+        .work-stack {
+            gap: 80px;
+            margin-top: 48px;
+        }
+        .work-item,
+        .work-item.reverse {
+            background: transparent;
+            border: none;
+            padding: 0;
+            gap: 48px;
+            align-items: center;
+        }
+        .work-media img {
+            border-radius: 12px;
+            box-shadow: none;
+        }
+        .proof-row {
+            grid-template-columns: 1fr;
+            gap: 4px;
+        }
+        .proof-trio-box {
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .section-header a,
+        .ladder-section .section-header p {
+            font-family: var(--font-sans) !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0 !important;
+            text-transform: none !important;
+            border-bottom: none !important;
+        }
+        .ladder-card.featured {
+            border: 1px solid var(--text-primary);
+        }
+        .ladder-card.featured::before {
+            content: none;
+        }
+        .ladder-meta-box {
+            background: transparent;
+            border-left: none;
+            padding: 0;
+            margin-bottom: 24px;
+        }
+        .final-cta-box {
+            box-shadow: none;
+            border: 1px solid var(--border-light);
+        }
+        .section-header {
+            margin-bottom: 0;
+        }
+        .section-title {
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+
     </style>
 </head>
 <body>
@@ -988,7 +1167,7 @@
                             Find the expensive friction. Build the useful fix.
                         </p>
                         <p style="font-family: var(--font-sans); font-size: 14.5px; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
-                            Context &amp; Muse is an applied systems studio founder-led by Jayme Volstad. I find where websites, intake, quoting, and operations leak revenue or time, then build the smallest custom system that fixes the problem—delivering commercial websites, quote and lead engines, custom operational tools, workflow systems, diagnostics, and restaurant systems without agency runaround or bloated software subscriptions.
+                            I find where a business is losing time, money, or customers, then build the smallest system that fixes it.
                         </p>
                         <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
                             <a href="/contact/" class="btn-hero-primary" id="hero-primary-cta">Tell Me What’s Broken &rarr;</a>
@@ -998,7 +1177,7 @@
 
                     <!-- Right: Embedded Free Diagnostic Entry Point Card -->
                     <div class="hero-diagnostic-card reveal-on-scroll" data-delay="1" id="free-check">
-                        <span class="hero-diag-badge">Instant Inbound Diagnostic</span>
+                        <span class="hero-diag-badge">Free check</span>
                         <h2 class="hero-diag-heading">Free Website + System Check</h2>
                         <p class="hero-diag-desc">
                             Find the friction hiding in your website and customer flow. Enter your URL for a fast, evidence-based review of messaging, conversion leaks, and intake bottlenecks.
@@ -1052,7 +1231,7 @@
         <section class="problem-section" id="problems" aria-labelledby="problems-heading">
             <div class="container">
                 <div class="section-header reveal-on-scroll" style="max-width: 780px;">
-                    <span class="section-eyebrow">WHERE OPERATIONAL FRICTION STARTS</span>
+                    <span class="section-eyebrow">Where the friction starts</span>
                     <h2 id="problems-heading" class="section-title">Do any of these sound uncomfortably familiar?</h2>
                     <p class="section-desc">
                         Most businesses don’t need another generic template or a flashy redesign. They need to fix where their operations leak time, margin, and qualified customers.
@@ -1062,7 +1241,7 @@
                 <div class="problem-grid">
                     <!-- Problem 1 -->
                     <div class="problem-card reveal-on-scroll" data-delay="1">
-                        <span class="problem-badge">01 // CONVERSION LEAK</span>
+                        <span class="problem-badge">Leads</span>
                         <h3 class="problem-title">Your website exists, but doesn’t produce qualified leads</h3>
                         <p class="problem-desc">
                             Prospects arrive, get confused by vague scope or missing pricing, and bounce. Generic forms feel like black holes. Your staff burns hours answering repetitive preliminary questions by phone.
@@ -1071,7 +1250,7 @@
 
                     <!-- Problem 2 -->
                     <div class="problem-card reveal-on-scroll" data-delay="2">
-                        <span class="problem-badge">02 // OPERATIONAL CHAOS</span>
+                        <span class="problem-badge">Quoting</span>
                         <h3 class="problem-title">Quotes, sizing, and territory live in fragile spreadsheets</h3>
                         <p class="problem-desc">
                             Estimates depend on manual math and staff memory. Quotes take days to turn around, pricing calculations have errors, and jobs outside your profitable delivery radius get accepted by mistake.
@@ -1080,7 +1259,7 @@
 
                     <!-- Problem 3 -->
                     <div class="problem-card reveal-on-scroll" data-delay="3">
-                        <span class="problem-badge">03 // TOOL FRAGMENTATION</span>
+                        <span class="problem-badge">Tools</span>
                         <h3 class="problem-title">Paying for five disconnected SaaS tools that don’t fit</h3>
                         <p class="problem-desc">
                             You pay recurring monthly fees for off-the-shelf software, yet your team still manually copy-pastes data between them because none match the way your actual service or workflow operates.
@@ -1089,7 +1268,7 @@
 
                     <!-- Problem 4 -->
                     <div class="problem-card reveal-on-scroll" data-delay="4">
-                        <span class="problem-badge">04 // UNKNOWN BOTTLENECK</span>
+                        <span class="problem-badge">Unclear</span>
                         <h3 class="problem-title">Feeling the operational drag, but not sure what to fix</h3>
                         <p class="problem-desc">
                             You know good revenue is slipping through the cracks and day-to-day operations feel heavier than they should, but it’s unclear whether the breakdown is messaging, intake logic, or an internal tool.
@@ -1112,7 +1291,7 @@
         <section class="what-section" id="capabilities" aria-labelledby="what-heading">
             <div class="container">
                 <div class="section-header reveal-on-scroll" style="max-width: 800px;">
-                    <span class="section-eyebrow">SYSTEM TAXONOMY</span>
+                    <span class="section-eyebrow">What I build</span>
                     <h2 id="what-heading" class="section-title">What I build to solve the friction.</h2>
                     <p class="section-desc">
                         From low-risk diagnostics to complete custom web platforms and internal workflow systems.
@@ -1123,7 +1302,7 @@
                     <!-- Category 1 -->
                     <div class="what-card reveal-on-scroll" data-delay="1">
                         <div>
-                            <span class="what-badge">01 // COMMERCIAL PLATFORMS</span>
+                            <span class="what-badge">Websites</span>
                             <h3 class="what-title">Websites That Do a Job</h3>
                             <p class="what-desc">
                                 High-conversion commercial web platforms engineered to clarify complex B2B offerings, filter out tire-kickers, and turn qualified visitors into committed inquiries.
@@ -1138,7 +1317,7 @@
                     <!-- Category 2 -->
                     <div class="what-card reveal-on-scroll" data-delay="2">
                         <div>
-                            <span class="what-badge">02 // INTAKE &amp; ROUTING</span>
+                            <span class="what-badge">Quoting</span>
                             <h3 class="what-title">Quote + Lead Systems</h3>
                             <p class="what-desc">
                                 Interactive sizing calculators, territory and radius validation, and structured CRM dispatch that turn messy customer inquiries into pre-qualified sales orders.
@@ -1153,7 +1332,7 @@
                     <!-- Category 3 -->
                     <div class="what-card reveal-on-scroll" data-delay="3">
                         <div>
-                            <span class="what-badge">03 // OPERATIONAL MACHINERY</span>
+                            <span class="what-badge">Internal tools</span>
                             <h3 class="what-title">Custom Operations Systems</h3>
                             <p class="what-desc">
                                 Bespoke internal portals, operational estimation engines, calendar lockouts, and commercial service platforms that replace fragile spreadsheets and manual triage.
@@ -1168,7 +1347,7 @@
                     <!-- Category 4 -->
                     <div class="what-card reveal-on-scroll" data-delay="4">
                         <div>
-                            <span class="what-badge">04 // LOW-RISK ENTRY</span>
+                            <span class="what-badge">Start small</span>
                             <h3 class="what-title">Business System Diagnostic</h3>
                             <p class="what-desc">
                                 A fixed-rate $395 architectural review evaluating your customer journey, pricing visibility, and operational bottlenecks. 100% credited toward a qualifying build.
@@ -1185,12 +1364,12 @@
 
         <!-- ==========================================================================
              SECTION 5: SELECTED WORK (ORDERED BY OPERATIONAL PROOF)
-             ========================================================================== -->============================================ -->
+             ========================================================================== -->
         <section class="selected-work-section" id="selected-work" aria-labelledby="selected-work-heading">
             <div class="container">
                 <div class="section-header reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
                     <div>
-                        <span class="section-eyebrow">SELECTED PRODUCTION PROOF</span>
+                        <span class="section-eyebrow">Selected work</span>
                         <h2 id="selected-work-heading" class="section-title">Built for real business constraints.</h2>
                         <p class="section-desc">Commercial websites, internal scoping tools, and customer intake engines engineered to solve specific operational bottlenecks.</p>
                     </div>
@@ -1204,7 +1383,7 @@
                             <img src="/assets/images/lonewolf-commercial-spread.webp" alt="Lone Wolf Dumpsters commercial quoting and service area routing platform" width="1400" height="875" loading="lazy">
                         </div>
                         <div class="work-info">
-                            <span class="work-badge">01 // Quote + Lead System &bull; Multi-Market Logistics</span>
+                            <span class="work-badge">Quote and lead systems</span>
                             <h3 class="work-title">Lone Wolf Dumpsters</h3>
                             <div class="proof-trio-box">
                                 <div class="proof-row">
@@ -1230,7 +1409,7 @@
                     <!-- Proof 2: INNcontrol Coils (Authentic Operational Tool) -->
                     <div class="work-item reverse reveal-on-scroll" id="proof-inncontrol">
                         <div class="work-info">
-                            <span class="work-badge">02 // Commercial Web Platform &bull; B2B Hospitality Intake</span>
+                            <span class="work-badge">Commercial websites</span>
                             <h3 class="work-title">INNcontrol Coils</h3>
                             <div class="proof-trio-box">
                                 <div class="proof-row">
@@ -1259,24 +1438,24 @@
                     <!-- Proof 3: Confidential Houston Restaurant Client -->
                     <div class="work-item reveal-on-scroll" id="proof-restaurant">
                         <div class="work-media">
-                            <img src="/assets/images/signal-priority-view.webp" alt="Confidential Houston Restaurant Toast POS operational intelligence dashboard and diagnostic pipeline" width="1200" height="750" loading="lazy">
-                            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); margin-top: 0.5rem; text-align: center;">Synthetic Demonstration Dataset — values and records generated to simulate restaurant POS telemetry.</div>
+                            <img src="/assets/images/signal-priority-view.webp" alt="Signal report example using a synthetic restaurant dataset" width="1200" height="750" loading="lazy">
+                            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); margin-top: 0.5rem; text-align: center;">Example report. The numbers are synthetic, not a client's results.</div>
                         </div>
                         <div class="work-info">
-                            <span class="work-badge">03 // Operational Intelligence &bull; High-Volume Hospitality</span>
-                            <h3 class="work-title">Confidential Houston Restaurant Client</h3>
+                            <span class="work-badge">Restaurant reports</span>
+                            <h3 class="work-title">Signal</h3>
                             <div class="proof-trio-box">
                                 <div class="proof-row">
                                     <span class="proof-lbl">Problem:</span>
-                                    <span class="proof-val">Independent multi-unit restaurant operation with high transaction volume suffered from fragmented sales data, inventory waste, and zero real-time visibility into high-margin menu items.</span>
+                                    <span class="proof-val">Sales, labor, comps, and voids live in separate exports, so the operator can't see which issue is worth fixing first.</span>
                                 </div>
                                 <div class="proof-row">
                                     <span class="proof-lbl">System:</span>
-                                    <span class="proof-val">Custom operational data pipeline analyzing Toast POS export streams and shift-level labor/cost ratios to produce deterministic management intelligence.</span>
+                                    <span class="proof-val">Signal reads those reports and returns a short, ranked list of operating issues, with a confidence level on each one.</span>
                                 </div>
                                 <div class="proof-row">
-                                    <span class="proof-lbl">Business Effect:</span>
-                                    <span class="proof-val" style="color: var(--accent-teal); font-weight: 600;">Exposed high-variance menu items and shift bottlenecks, delivering actionable margin control without recurring enterprise software fees.</span>
+                                    <span class="proof-lbl">What you see:</span>
+                                    <span class="proof-val" style="color: var(--accent-teal); font-weight: 600;">A sample of the report shape. It is not a case study and it does not show a real restaurant's numbers.</span>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -1292,7 +1471,7 @@
                             <img src="/assets/images/website-audit-hero.webp" alt="Website Audit System visual diagnostics pipeline and DOM evidence drawer" width="1200" height="750" loading="lazy">
                         </div>
                         <div class="work-info">
-                            <span class="work-badge">04 // Diagnostics &amp; Developer Tooling</span>
+                            <span class="work-badge">Diagnostics</span>
                             <h3 class="work-title">Website Audit System</h3>
                             <div class="proof-trio-box">
                                 <div class="proof-row">
@@ -1317,7 +1496,7 @@
                     <!-- Proof 4: EDR Party Rentals -->
                     <div class="work-item reverse reveal-on-scroll" id="proof-edr">
                         <div class="work-info">
-                            <span class="work-badge">05 // Inventory-Aware Booking &bull; Logistics System</span>
+                            <span class="work-badge">Booking and inventory</span>
                             <h3 class="work-title">EDR Party Rentals</h3>
                             <div class="proof-trio-box">
                                 <div class="proof-row">
@@ -1351,7 +1530,7 @@
         <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
             <div class="container">
                 <div class="section-header reveal-on-scroll" style="max-width: 800px;">
-                    <span class="section-eyebrow">ENGINEERING PROCESS</span>
+                    <span class="section-eyebrow">How it works</span>
                     <h2 id="how-heading" class="section-title">How this works. Straightforward engineering.</h2>
                     <p class="section-desc">
                         No discovery call marathons, no generic pitch decks, and no surprise hourly invoices. A transparent, milestone-driven progression from diagnosis to launch.
@@ -1371,7 +1550,7 @@
                         <span class="how-step-num">02</span>
                         <h3 class="how-card-title">Identify the root cause</h3>
                         <p class="how-card-desc">
-                            We inspect your customer flow and operational bottlenecks to determine whether the real issue is messaging ambiguity, missing qualification logic, or an internal tooling gap.
+                            I inspect your customer flow and operational bottlenecks to determine whether the real issue is messaging ambiguity, missing qualification logic, or an internal tooling gap.
                         </p>
                     </div>
 
@@ -1379,7 +1558,7 @@
                         <span class="how-step-num">03</span>
                         <h3 class="how-card-title">Decide what’s worth building</h3>
                         <p class="how-card-desc">
-                            If the problem needs diagnosis first, we start with the $395 Diagnostic (100% credited). If the build scope is clear, you get a fixed proposal with predictable milestones.
+                            If the problem needs diagnosis first, I start with the $395 Diagnostic (100% credited). If the build scope is clear, you get a fixed proposal with predictable milestones.
                         </p>
                     </div>
 
@@ -1387,7 +1566,7 @@
                         <span class="how-step-num">04</span>
                         <h3 class="how-card-title">Build the useful thing</h3>
                         <p class="how-card-desc">
-                            We engineer bespoke code built around your exact operations—zero bloated plugins, complete client code and data ownership, and clean post-launch handoff.
+                            I build the system around your actual operations. No bloated plugins. You own the code and the data, and the handoff is clean.
                         </p>
                     </div>
                 </div>
@@ -1396,11 +1575,11 @@
 
         <!-- ==========================================================================
              SECTION 7: COMMERCIAL PRICING LADDER (CANONICAL 3 OFFERS)
-             ========================================================================== -->============= -->
+             ========================================================================== -->
         <section class="ladder-section" id="ways-to-work" aria-labelledby="ladder-heading">
             <div class="container">
                 <div class="section-header reveal-on-scroll" style="text-align: center; max-width: 800px; margin: 0 auto;">
-                    <span class="section-eyebrow">COMMERCIAL ENGAGEMENT TIERS</span>
+                    <span class="section-eyebrow">Ways to work together</span>
                     <h2 id="ladder-heading" class="section-title">Clear scope. Predictable investment.</h2>
                     <p class="section-desc">
                         Three fixed-scope engagement tiers designed around the exact operational friction in your business. No hidden fees, no vague retainers.
@@ -1416,7 +1595,7 @@
                     <!-- Offer 1: Business System Diagnostic -->
                     <div class="ladder-card reveal-on-scroll" data-delay="1" id="diagnostic">
                         <div>
-                            <span class="ladder-stage-badge">01 // DIAGNOSE</span>
+                            <span class="ladder-stage-badge">Diagnose</span>
                             <h3 class="ladder-title">Business System Diagnostic</h3>
                             <span class="ladder-price">$395</span>
                             <span class="ladder-price-sub">Fixed Rate Diagnostic Review</span>
@@ -1447,7 +1626,7 @@
                     <!-- Offer 2: Quote + Lead System (Featured) -->
                     <div class="ladder-card featured reveal-on-scroll" data-delay="2" id="quote-lead">
                         <div>
-                            <span class="ladder-stage-badge">02 // CONVERT &amp; ROUTE</span>
+                            <span class="ladder-stage-badge">Quote and route</span>
                             <h3 class="ladder-title">Quote + Lead System</h3>
                             <span class="ladder-price">From $2,500</span>
                             <span class="ladder-price-sub">Multi-Market Typically $4,500+</span>
@@ -1478,7 +1657,7 @@
                     <!-- Offer 3: Custom Operations System -->
                     <div class="ladder-card reveal-on-scroll" data-delay="3" id="custom-system">
                         <div>
-                            <span class="ladder-stage-badge">03 // OPERATIONALIZE</span>
+                            <span class="ladder-stage-badge">Build the system</span>
                             <h3 class="ladder-title">Custom Operations System</h3>
                             <span class="ladder-price">From $6,500</span>
                             <span class="ladder-price-sub">Complex Systems Custom Quoted</span>
@@ -1529,7 +1708,7 @@
         <section class="final-cta-section" id="contact" aria-labelledby="final-cta-heading">
             <div class="container">
                 <div class="final-cta-box reveal-on-scroll">
-                    <span class="section-eyebrow" style="color: var(--accent-teal);">START A PROJECT · DIRECT INTAKE</span>
+                    <span class="section-eyebrow" style="color: var(--accent-teal);">Start a project</span>
                     <h2 id="final-cta-heading" class="final-cta-title">
                         Ready to fix what’s broken in your business?
                     </h2>
