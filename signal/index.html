@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MVV7WNL42L');
+    </script>
+    <script src="/assets/js/analytics.js" defer></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signal | Operational Analysis for Independent Restaurants · Context &amp; Muse</title>
-    <meta name="description" content="Signal turns fragmented restaurant reports into a clear, prioritized action list. Cross-analyzing sales, labor, comps, voids, and timing to surface the few decisions worth tackling first.">
+    <title>Signal | Restaurant Operational Analysis | Context &amp; Muse</title>
+    <meta name="description" content="Signal turns fragmented restaurant reports into a prioritized action list. It cross-analyzes sales, labor, comps, voids, and timing to show what to fix first.">
     <link rel="canonical" href="https://www.contextmuse.com/signal/">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Signal | Operational Analysis for Independent Restaurants · Context &amp; Muse">
-    <meta property="og:description" content="Signal turns fragmented restaurant reports into a clear, prioritized action list. Clear answers for operators already drowning in reports.">
+    <meta property="og:title" content="Signal | Restaurant Operational Analysis | Context &amp; Muse">
+    <meta property="og:description" content="Signal turns fragmented restaurant reports into a prioritized action list. Clear answers for operators already drowning in reports.">
     <meta property="og:url" content="https://www.contextmuse.com/signal/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Signal | Operational Analysis for Independent Restaurants · Context &amp; Muse">
-    <meta name="twitter:description" content="Signal turns fragmented restaurant reports into a clear, prioritized action list. Clear answers for operators already drowning in reports.">
+    <meta name="twitter:title" content="Signal | Restaurant Operational Analysis | Context &amp; Muse">
+    <meta name="twitter:description" content="Signal turns fragmented restaurant reports into a prioritized action list. Clear answers for operators already drowning in reports.">
     <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
 
     <!-- Schema.org SoftwareApplication Markup -->
@@ -68,8 +79,8 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=4.4">
 
     <style>
         /* Existing Signal Theme Variables & Rules */
@@ -88,8 +99,8 @@
 
         .product-hero {
             padding: clamp(4rem, 6vw, 5.5rem) 0 3.5rem;
-            background: var(--bg-ink, #090a0f);
-            color: #FAF9F5;
+            background: #FFFFFF;
+            color: var(--text-primary);
             border-bottom: 1px solid var(--border-light);
         }
         .product-grid {
@@ -148,14 +159,14 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: #FAF9F5;
+            color: var(--text-primary);
         }
         .hero-trust-item strong {
             color: var(--accent-gold);
             font-weight: 600;
         }
         .hero-trust-sep {
-            color: rgba(250, 249, 245, 0.25);
+            color: var(--text-secondary);
         }
         @media(max-width: 768px) {
             .hero-trust-sep { display: none; }
@@ -529,11 +540,10 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Primary Navigation -->
-    <nav class="site-nav" role="navigation" aria-label="Main Navigation">
-        <div class="nav-container">
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
             <a href="/" class="logo">
-                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
+                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;">
                 <span>Context &amp; Muse</span>
             </a>
             <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
@@ -542,12 +552,35 @@
                 <span class="nav-toggle-bar"></span>
             </button>
             <div class="nav-links" id="primary-nav-links">
-                <a href="/services/">Services</a>
-                <a href="/restaurant-systems/">Restaurant Systems</a>
-                <a href="/signal/" class="active" aria-current="page">Signal</a>
-                <a href="/proof-of-work/">Proof of Work</a>
-                <a href="/about/">About</a>
-                <a href="/contact/" class="nav-btn">Get in Touch</a>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                    </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -557,23 +590,23 @@
         <div class="container">
             <div class="product-grid">
                 <div>
-                    <span class="eyebrow" style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">OPERATIONAL INTELLIGENCE SYSTEM · FOUNDER-LED</span>
-                    <h1 style="font-family: var(--font-serif); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.25rem; color: #FAF9F5;">
+                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;">Operational intelligence · Founder-led</span>
+                    <h1 style="font-family: var(--font-sans); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.25rem; color: var(--text-primary);">
                         Signal turns fragmented restaurant reports into a clear, prioritized action list.
                     </h1>
-                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: rgba(250,249,245,0.88); margin-bottom: 0.85rem;">
+                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 0.85rem;">
                         It connects patterns across your POS, labor, and discount records, weighs the money at stake and how sure we are, and tells you what to check and what to fix first.
                     </p>
-                    <p style="font-family: var(--font-mono); font-size: 0.95rem; line-height: 1.5; color: var(--accent-gold); margin-bottom: 2rem;">
+                    <p style="font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.5; color: var(--accent-teal); margin-bottom: 2rem;">
                         Not more reporting. Clear answers for operators already drowning in reports.
                     </p>
                     <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <a href="/signal/demo/" class="btn btn-primary btn-gold" style="background: var(--accent-gold); border-color: var(--accent-gold); color: #0E1F1B !important; text-decoration: none; padding: 0.85rem 1.85rem; font-family: var(--font-sans); font-size: 14px; font-weight: 700; border-radius: 3px;">Launch Interactive Demo &rarr;</a>
-                        <a href="/signal/intake/" class="btn btn-secondary" style="background: var(--accent-teal); border-color: var(--accent-teal); color: #FAF9F5; text-decoration: none; padding: 0.85rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">Submit Your Exports &rarr;</a>
-                        <a href="/signal/sample-reports/" class="btn btn-secondary" style="border-color: rgba(250,249,245,0.4); color: #FAF9F5 !important; text-decoration: none; padding: 0.85rem 1.75rem; font-family: var(--font-sans); font-size: 14px; font-weight: 600; border-radius: 3px; border: 1px solid;">View Sample Diagnostic &rarr;</a>
+                        <a href="/signal/demo/" class="btn btn-primary">Launch interactive demo →</a>
+                        <a href="/signal/intake/" class="btn btn-secondary">Submit your exports →</a>
+                        <a href="/signal/sample-reports/" class="btn btn-secondary">View sample diagnostic →</a>
                     </div>
                     <div style="margin-top: 1.25rem; display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
-                        <a href="/signal/export-instructions/" style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: #C5A059 !important; text-decoration: underline; letter-spacing: 0.03em;">Toast Export Instructions (CSV) &rarr;</a>
+                        <a href="/signal/export-instructions/" style="font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--accent-teal); text-decoration: underline;">Toast export instructions (CSV) →</a>
                     </div>
                     <div style="margin-top: 1.75rem;">
                         <span class="status-badge">WORKING SYSTEM &bull; ACTIVE EXTERNAL VALIDATION</span>
@@ -1519,32 +1552,40 @@
     </main>
 
     <!-- Standard Site Footer -->
-    <footer role="contentinfo">
+        <footer class="site-footer" role="contentinfo">
         <div class="container footer-container">
-            <div class="footer-logo-area">
+            <div class="footer-brand">
                 <a href="/" class="logo">
                     <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
                     <span>Context &amp; Muse</span>
                 </a>
-                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
+                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
             </div>
-            <div class="footer-copy">
-                <div style="margin-bottom: 0.75rem; display: flex; gap: 0.85rem; flex-wrap: wrap; align-items: center;">
-                    <a href="/services/">Ways to Work Together</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/systems/client-builds/">Client Builds</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/proof-of-work/">Proof of Work</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/partners/">Agency Partners</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/privacy/">Privacy Policy</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/terms/">Terms of Service</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="https://wa.me/13468337291" data-whatsapp-offer="audit" data-whatsapp-location="footer" style="color: var(--accent-teal); display: inline-flex; align-items: center; gap: 4px;">WhatsApp &rarr;</a>
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title">Services</div>
+                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
+                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
+                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
+                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
+                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
                 </div>
-                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+                <div class="footer-col">
+                    <div class="footer-col-title">Selected Work</div>
+                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
+                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
+                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
+                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
+                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">About</div>
+                    <a href="/about/" class="footer-link">About Jayme</a>
+                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
+                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
+                    <a href="/terms/" class="footer-link">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>

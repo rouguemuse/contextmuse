@@ -36,8 +36,8 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=4.4">
 
     <style>
         .legal-container {
@@ -285,32 +285,40 @@
 
     <!-- Footer -->
     <!-- ── FOOTER ── -->
-    <footer role="contentinfo">
+        <footer class="site-footer" role="contentinfo">
         <div class="container footer-container">
-            <div class="footer-logo-area">
+            <div class="footer-brand">
                 <a href="/" class="logo">
                     <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
                     <span>Context &amp; Muse</span>
                 </a>
-                <p>Applied Systems · Creative Practice · Austin, Texas.</p>
+                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
+                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
             </div>
-            <div class="footer-copy">
-                <div style="margin-bottom: 0.75rem; display: flex; gap: 0.85rem; flex-wrap: wrap; align-items: center;">
-                    <a href="/services/">Ways to Work Together</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/systems/client-builds/">Client Builds</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/proof-of-work/">Proof of Work</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/partners/">Agency Partners</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/privacy/">Privacy Policy</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="/terms/">Terms of Service</a>
-                    <span style="color: var(--border-dark);">|</span>
-                    <a href="https://wa.me/13468337291" data-whatsapp-offer="general" data-whatsapp-location="footer" style="color: var(--accent-teal); display: inline-flex; align-items: center; gap: 4px;">WhatsApp &rarr;</a>
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title">Services</div>
+                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
+                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
+                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
+                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
+                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
                 </div>
-                <p>&copy; 2026 Context &amp; Muse / Jayme Volstad. All rights reserved.</p>
+                <div class="footer-col">
+                    <div class="footer-col-title">Selected Work</div>
+                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
+                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
+                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
+                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
+                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">About</div>
+                    <a href="/about/" class="footer-link">About Jayme</a>
+                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
+                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
+                    <a href="/terms/" class="footer-link">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>

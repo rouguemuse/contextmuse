@@ -12,5 +12,8 @@ Disallow: /preview/
 Disallow: /partials/
 Disallow: /contact/success/
 Disallow: /brand/
+Disallow: /signal/demo/
+Disallow: /signal/export-instructions/
+Disallow: /systems/signal/
 
 Sitemap: https://www.contextmuse.com/sitemap.xml

@@ -13,7 +13,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Website + System Check · Find Friction in Your Customer Flow | Context &amp; Muse</title>
+    <title>Free Website + System Check · Context &amp; Muse</title>
     <meta name="description" content="Get a fast, evidence-first diagnostic of your website messaging, conversion leaks, and customer intake friction. No sales calls, no fluff.">
     <link rel="canonical" href="https://www.contextmuse.com/website-system-check/">
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
@@ -52,8 +52,8 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.9">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=4.4">
 
     <style>
         :root {
@@ -627,28 +627,24 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
-    <nav class="site-nav" aria-label="Main Navigation">
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
             <a href="/" class="logo">
                 <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;">
                 <span>Context &amp; Muse</span>
             </a>
             <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
             </button>
             <div class="nav-links" id="primary-nav-links">
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Study Library</a>
-                        <a href="/work/revision-atlas/" class="nav-dropdown-link">Revision Atlas</a>
-                        <a href="/work/website-audit-system/" class="nav-dropdown-link">Website Audit System</a>
-                        <a href="/work/client-opportunity-engine/" class="nav-dropdown-link">Client Opportunity Engine</a>
-                        <a href="/work/contest-atlas/" class="nav-dropdown-link">Contest Atlas</a>
-                        <a href="/work/lone-wolf-dumpsters/" class="nav-dropdown-link">Lone Wolf Dumpsters</a>
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
                         <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
                 <details class="nav-dropdown" name="nav-dropdowns">
@@ -996,13 +992,13 @@
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer" style="margin-top: 0;">
+        <footer class="site-footer" role="contentinfo">
         <div class="container footer-container">
             <div class="footer-brand">
-                <div class="logo">
+                <a href="/" class="logo">
                     <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
                     <span>Context &amp; Muse</span>
-                </div>
+                </a>
                 <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
                 <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
             </div>
@@ -1018,9 +1014,10 @@
                 <div class="footer-col">
                     <div class="footer-col-title">Selected Work</div>
                     <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
-                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
-                    <a href="/work/client-opportunity-engine/" class="footer-link">Opportunity Engine</a>
+                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
                     <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
+                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
+                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">About</div>
@@ -1533,5 +1530,6 @@
         }
     })();
     </script>
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

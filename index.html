@@ -13,7 +13,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Context &amp; Muse · Founder-Led Systems, Quote Engines &amp; Custom Software</title>
+    <title>Context &amp; Muse · Founder-Led Systems &amp; Custom Software</title>
     <meta name="description" content="I find where a business is losing time, money, or customers, then build the system that fixes it. Founder-led and independent custom software by Jayme Volstad.">
     <link rel="canonical" href="https://www.contextmuse.com/">
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
@@ -86,8 +86,8 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=3.0">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=4.4">
 
     <style>
         :root {
@@ -105,8 +105,8 @@
 
         /* ── HERO OVERHAUL WITH EMBEDDED DIAGNOSTIC ENTRY POINT ── */
         .hero {
-            padding: clamp(105px, 14vh, 140px) 0 clamp(40px, 6vh, 60px) 0;
-            background: radial-gradient(circle at 80% 30%, #FAF9F3 0%, #F5F3EB 45%, #EFECE2 100%);
+            padding: clamp(130px, 16vh, 170px) 0 clamp(64px, 8vh, 96px) 0;
+            background: #FFFFFF;
             border-bottom: 1px solid var(--border-light);
         }
 
@@ -123,30 +123,30 @@
         }
 
         .hero-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 600;
             color: var(--accent-teal);
-            letter-spacing: 0.14em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             display: inline-block;
             margin-bottom: 1rem;
         }
 
         .hero-title {
-            font-family: var(--font-serif);
-            font-size: clamp(34px, 4.2vw, 54px);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: #0E1F1B;
+            font-family: var(--font-sans);
+            font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+            color: var(--text-primary);
             margin: 0 0 1.25rem 0;
-            font-weight: 400;
+            font-weight: 700;
         }
 
         .hero-subhead {
             font-family: var(--font-sans);
-            font-size: clamp(16px, 1.2vw, 18px);
-            line-height: 1.65;
+            font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+            line-height: 1.45;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
@@ -154,10 +154,10 @@
         /* Embedded Diagnostic Card */
         .hero-diagnostic-card {
             background: #FFFFFF;
-            border: 1px solid var(--border-dark);
-            border-radius: 10px;
-            padding: clamp(1.5rem, 2.5vw, 2rem);
-            box-shadow: 0 12px 32px rgba(16, 33, 29, 0.08);
+            border: 1px solid rgba(17, 17, 13, 0.11);
+            border-radius: 32px;
+            padding: clamp(1.75rem, 2.5vw, 2.25rem);
+            box-shadow: none;
         }
 
         .hero-diag-badge {
@@ -195,13 +195,13 @@
 
         .hero-diag-input {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.9rem 1.15rem;
             font-family: var(--font-sans);
-            font-size: 14.5px;
+            font-size: 1rem;
             color: var(--text-primary);
-            background: #FAF9F5;
+            background: #FFFFFF;
             border: 1px solid var(--border-light);
-            border-radius: 5px;
+            border-radius: 999px;
             box-sizing: border-box;
             transition: all 0.2s ease;
         }
@@ -220,14 +220,14 @@
             width: 100%;
             padding: 0.95rem 1.5rem;
             background: var(--text-primary);
-            color: #FAF9F5;
-            font-family: var(--font-mono);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+            color: #FFFFFF;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-transform: none;
             border: none;
-            border-radius: 5px;
+            border-radius: 999px;
             cursor: pointer;
             transition: all 0.2s ease;
             text-decoration: none;
@@ -297,9 +297,9 @@
             grid-template-columns: 1.15fr 0.85fr;
             gap: clamp(2rem, 4vw, 3.5rem);
             align-items: center;
-            background: #FAF9F5;
+            background: var(--bg-panel);
             border: 1px solid var(--border-light);
-            border-radius: 8px;
+            border-radius: 24px;
             padding: clamp(1.5rem, 3vw, 2.5rem);
         }
         .work-item.reverse {
@@ -314,7 +314,7 @@
         .work-media img {
             width: 100%;
             height: auto;
-            border-radius: 6px;
+            border-radius: 16px;
             border: 1px solid var(--border-light);
             box-shadow: 0 8px 24px rgba(0,0,0,0.06);
             display: block;
@@ -394,7 +394,7 @@
         .ladder-card {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
-            border-radius: 8px;
+            border-radius: 24px;
             padding: 2.25rem 1.75rem;
             display: flex;
             flex-direction: column;
@@ -533,14 +533,14 @@
 
         .btn-ladder-cta {
             background: var(--text-primary);
-            color: #FAF9F5 !important;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 0.85rem 1.2rem;
-            border-radius: 4px;
+            color: #FFFFFF !important;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: -0.01em;
+            padding: 0.9rem 1.25rem;
+            border-radius: 999px;
             text-decoration: none;
             text-align: center;
             display: block;
@@ -576,9 +576,9 @@
         }
 
         .path-card {
-            background: var(--bg-paper);
+            background: var(--bg-panel);
             border: 1px solid var(--border-light);
-            border-radius: 8px;
+            border-radius: 24px;
             padding: 2.5rem 2rem;
             display: flex;
             flex-direction: column;
@@ -595,14 +595,14 @@
             align-items: center;
             justify-content: center;
             background: var(--text-primary);
-            color: #FAF9F5 !important;
-            font-family: var(--font-mono);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.95rem 1.75rem;
-            border-radius: 4px;
+            color: #FFFFFF !important;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-transform: none;
+            padding: 0.95rem 1.5rem;
+            border-radius: 999px;
             text-decoration: none;
             transition: all 0.2s ease;
             border: 1px solid var(--text-primary);
@@ -618,13 +618,13 @@
             justify-content: center;
             background: transparent;
             color: var(--text-primary) !important;
-            font-family: var(--font-mono);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.95rem 1.6rem;
-            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-transform: none;
+            padding: 0.95rem 1.5rem;
+            border-radius: 999px;
             text-decoration: none;
             border: 1px solid var(--border-dark);
             transition: all 0.2s ease;
@@ -652,9 +652,9 @@
             }
         }
         .problem-card {
-            background: #FAF9F5;
+            background: var(--bg-panel);
             border: 1px solid var(--border-light);
-            border-radius: 8px;
+            border-radius: 24px;
             padding: 2rem 1.75rem;
             display: flex;
             flex-direction: column;
@@ -691,9 +691,9 @@
         }
         .problem-banner {
             margin-top: 2.5rem;
-            background: radial-gradient(circle at 90% 20%, #FAF8F2 0%, #F4EFE2 100%);
-            border: 1px solid #DFD9C7;
-            border-radius: 8px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
             padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -706,14 +706,14 @@
         }
         .btn-problem-banner {
             background: var(--text-primary);
-            color: #FAF9F5 !important;
-            font-family: var(--font-mono);
-            font-size: 11.5px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.75rem 1.4rem;
-            border-radius: 4px;
+            color: #FFFFFF !important;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-transform: none;
+            padding: 0.8rem 1.35rem;
+            border-radius: 999px;
             text-decoration: none;
             white-space: nowrap;
             transition: all 0.2s ease;
@@ -743,7 +743,7 @@
         .what-card {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
-            border-radius: 8px;
+            border-radius: 24px;
             padding: 2.25rem 1.75rem;
             display: flex;
             flex-direction: column;
@@ -829,9 +829,9 @@
             }
         }
         .how-card {
-            background: #FAF9F5;
+            background: var(--bg-panel);
             border: 1px solid var(--border-light);
-            border-radius: 8px;
+            border-radius: 24px;
             padding: 2rem 1.5rem;
             display: flex;
             flex-direction: column;
@@ -865,7 +865,7 @@
         /* ── FINAL DECISIVE CTA SECTION ── */
         .final-cta-section {
             padding: var(--space-section) 0;
-            background: radial-gradient(circle at 50% 30%, #FAF8F2 0%, #F5F1E5 60%, #EFE9D8 100%);
+            background: var(--bg-panel);
             border-bottom: 1px solid var(--border-light);
         }
         .final-cta-box {
@@ -873,8 +873,8 @@
             margin: 0 auto;
             text-align: center;
             background: #FFFFFF;
-            border: 2px solid var(--accent-teal);
-            border-radius: 12px;
+            border: 1px solid rgba(17, 17, 13, 0.11);
+            border-radius: 32px;
             padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
             box-shadow: 0 16px 40px rgba(16, 33, 29, 0.08);
         }
@@ -926,28 +926,24 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navbar -->
-    <nav class="site-nav" aria-label="Main Navigation">
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
             <a href="/" class="logo">
                 <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;">
                 <span>Context &amp; Muse</span>
             </a>
             <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
             </button>
             <div class="nav-links" id="primary-nav-links">
                 <details class="nav-dropdown" name="nav-dropdowns">
                     <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
                     <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Study Library</a>
-                        <a href="/work/lone-wolf-dumpsters/" class="nav-dropdown-link">Lone Wolf Dumpsters</a>
-                        <a href="/systems/client-builds/#inncontrol" class="nav-dropdown-link">INNcontrol Coils</a>
-                        <a href="/work/website-audit-system/" class="nav-dropdown-link">Website Audit System</a>
-                        <a href="/case-studies/edr-party-rentals/" class="nav-dropdown-link">EDR Party Rentals</a>
-                        <a href="/work/revision-atlas/" class="nav-dropdown-link">Revision Atlas</a>
-                        <a href="/work/client-opportunity-engine/" class="nav-dropdown-link">Client Opportunity Engine</a>
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
                     </div>
                 </details>
                 <details class="nav-dropdown" name="nav-dropdowns">
@@ -1574,13 +1570,13 @@
     </main>
 
     <!-- ── FOOTER ── -->
-    <footer class="site-footer" style="margin-top: 0;">
+        <footer class="site-footer" role="contentinfo">
         <div class="container footer-container">
             <div class="footer-brand">
-                <div class="logo">
+                <a href="/" class="logo">
                     <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
                     <span>Context &amp; Muse</span>
-                </div>
+                </a>
                 <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
                 <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
             </div>
@@ -1612,6 +1608,7 @@
         </div>
     </footer>
 
+    <script src="/assets/js/nav.js" defer></script>
     <!-- Client-Side Analytics & Interaction Scripts -->
     <script>
     (function() {

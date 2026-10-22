@@ -27,11 +27,17 @@
     <meta property="og:url" content="https://www.contextmuse.com/signal/export-instructions/">
     <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Signal Export Instructions (Toast) | Context &amp; Muse">
+    <meta name="twitter:description" content="Step-by-step Toast POS export instructions for Signal operational intelligence analysis.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.1">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=4.4">
     
     <style>
         :root {
@@ -47,9 +53,9 @@
 
         .guide-hero {
             padding: 7rem 0 3.5rem;
-            background: #0E1F1B;
-            color: #FAF9F5;
-            border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+            background: #FFFFFF;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-light);
         }
         .guide-eyebrow {
             font-family: var(--font-mono);
@@ -67,13 +73,13 @@
             font-weight: 400;
             line-height: 1.15;
             margin-bottom: 1rem;
-            color: #FAF9F5;
+            color: var(--text-primary);
         }
         .guide-sub {
             font-family: var(--font-sans);
             font-size: 1.15rem;
             line-height: 1.6;
-            color: rgba(250, 249, 245, 0.75);
+            color: var(--text-secondary);
             max-width: 640px;
             margin: 0;
         }
@@ -296,10 +302,41 @@
                 <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
                 <span>Context &amp; Muse</span>
             </a>
-            <div class="nav-links">
-                <a href="/signal/" class="nav-link">Signal Home</a>
-                <a href="/signal/demo/" class="nav-link" style="color: var(--accent-teal); font-weight: 600;">Interactive Demo</a>
-                <a href="/signal/intake/" class="nav-cta btn-magnetic">Upload Exports</a>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -445,12 +482,44 @@
         </div>
     </main>
 
-    <footer style="background:#0E1F1B; color:rgba(250,249,245,0.6); padding:3rem 0; font-family:var(--font-mono); font-size:11px; text-align:center; border-top:1px solid rgba(250,249,245,0.08);">
-        <div class="container">
-            <p style="margin:0 0 0.5rem 0;">Context &amp; Muse &bull; Signal Operational Intelligence</p>
-            <p style="margin:0; color:rgba(250,249,245,0.4);">Toast is a registered trademark of Toast, Inc. Signal is an independent diagnostic system.</p>
+        <footer class="site-footer" role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
+                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
+            </div>
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title">Services</div>
+                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
+                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
+                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
+                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
+                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Selected Work</div>
+                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
+                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
+                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
+                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
+                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">About</div>
+                    <a href="/about/" class="footer-link">About Jayme</a>
+                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
+                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
+                    <a href="/terms/" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

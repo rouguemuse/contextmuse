@@ -71,7 +71,7 @@
             if (!e.target.closest('.nav-dropdown')) {
                 closeAllDropdowns();
             }
-            if (navLinks && navLinks.classList.contains('is-open') && !e.target.closest('.navbar')) {
+            if (navLinks && navLinks.classList.contains('is-open') && !e.target.closest('.navbar, .site-nav')) {
                 closeMobileNav();
             }
         });

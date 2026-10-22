@@ -24,12 +24,19 @@
     <meta property="og:title" content="Signal Engine &bull; Live Ingestion &amp; Diagnostic Interface">
     <meta property="og:description" content="Parse and digest raw POS exports into forensic operational intelligence.">
     <meta property="og:url" content="https://www.contextmuse.com/signal/demo/">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Signal Engine · Live Ingestion &amp; Diagnostic Interface">
+    <meta name="twitter:description" content="Parse and digest raw POS exports into forensic operational intelligence.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/signal-social-preview.jpg">
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=2.1">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=4.4">
 
     <!-- Client-side JSZip for unzipping Toast .zip export archives directly in browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -48,9 +55,9 @@
             --accent-gold: #C5A059;
             --accent-crimson: #991B1B;
             --accent-amber: #D97706;
-            --font-mono: 'IBM Plex Mono', monospace;
-            --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Newsreader', Georgia, serif;
+            --font-mono: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --font-serif: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
 
         body {
@@ -818,11 +825,41 @@
                 <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
                 <span>Context &amp; Muse</span>
             </a>
-            <div class="nav-links">
-                <a href="/signal/" class="nav-link">Signal Home</a>
-                <a href="/signal/sample-reports/" class="nav-link">Static Sample</a>
-                <a href="/signal/export-instructions/" class="nav-link">Toast Instructions</a>
-                <a href="/signal/intake/" class="nav-cta btn-magnetic">Submit Live Audit</a>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
+                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
+                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
+                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
+                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
+                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
+                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
+                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
+                    </div>
+                </details>
+                <details class="nav-dropdown" name="nav-dropdowns">
+                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
+                    <div class="nav-dropdown-content">
+                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
+                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
+                        </div>
+                </details>
+                <a href="/creative/" class="nav-link">Creative</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
             </div>
         </div>
     </nav>
@@ -2704,5 +2741,43 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
         }
 </script>
 
+        <footer class="site-footer" role="contentinfo">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
+                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
+            </div>
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title">Services</div>
+                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
+                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
+                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
+                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
+                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Selected Work</div>
+                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
+                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
+                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
+                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
+                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">About</div>
+                    <a href="/about/" class="footer-link">About Jayme</a>
+                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
+                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
+                    <a href="/terms/" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>
