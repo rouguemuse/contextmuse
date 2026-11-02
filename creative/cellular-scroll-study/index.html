@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d14">
+<meta name="description" content="An interactive Context & Muse motion study: four reversible scroll-driven states exploring the visual language of cellular biology.">
+<link rel="canonical" href="https://www.contextmuse.com/creative/cellular-scroll-study/">
+<link rel="icon" href="/assets/images/contextmuse_logo.svg">
+<title>Cellular / A Scroll-Controlled Study | Context & Muse</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--paper:#f2eee6;--amber:#c49e74;--ice:#9eb9c3;--deep:#090d14}
+*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:var(--deep);color:var(--paper);font-family:"DM Sans",sans-serif;overflow-x:hidden}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit}.skip{position:absolute;top:-5rem;left:1rem;background:var(--paper);color:var(--deep);z-index:99;padding:1rem}.skip:focus{top:1rem}
+.experience{height:440vh;position:relative}.stage{height:100svh;min-height:620px;position:sticky;top:0;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 70% 44%,#24202a 0%,#0b101c 42%,#090b10 81%)}
+.canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.88;z-index:-1}.glow{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;pointer-events:none;mix-blend-mode:screen}.glow.warm{right:12%;top:12%;height:44vw;max-height:550px;aspect-ratio:1;background:radial-gradient(#bf6f50,transparent 68%)}.glow.cool{right:-8%;bottom:-36%;height:48vw;max-height:580px;aspect-ratio:1;background:radial-gradient(#5b99a8,transparent 70%)}
+.portrait{position:absolute;right:5%;top:13%;height:80%;width:min(47vw,670px);opacity:.92;transform-origin:58% 48%;will-change:transform,opacity;pointer-events:none}.portrait svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(-18px 18px 70px #0009)}.portrait .bodyfill{fill:url(#skin)}.portrait .highlight{fill:none;stroke:#e7c4ad;stroke-width:1.5;opacity:.33}.portrait .grain-lines{stroke:#e3cfbd;stroke-width:1;opacity:.12;fill:none}.portrait .subject-back{fill:url(#coat)}
+.header{position:absolute;top:0;left:0;right:0;padding:clamp(20px,3vw,44px) clamp(22px,5vw,80px);display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:5;border-bottom:1px solid #ffffff18}.brand{font-size:14px;letter-spacing:.11em;font-weight:700;text-transform:uppercase;text-decoration:none;display:flex;gap:9px;align-items:center}.brand-mark{height:9px;width:9px;background:var(--amber);transform:rotate(45deg)}.tag,.header a.back{font:10px/1.5 "DM Mono",monospace;letter-spacing:.14em;text-decoration:none;text-transform:uppercase;color:#d2c7c0}.back:hover{text-decoration:underline}
+.copy{position:absolute;left:clamp(24px,7.3vw,120px);bottom:clamp(125px,16vh,220px);max-width:580px;z-index:4;transition:none}.phase{position:absolute;left:0;bottom:0;min-width:min(76vw,570px);max-width:570px;opacity:0;transform:translateY(23px);pointer-events:none;will-change:opacity,transform}.phase.active{opacity:1;transform:translateY(0)}.overline{font:10px/1.5 "DM Mono",monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:24px}.overline:before{content:"";display:inline-block;width:34px;height:1px;background:currentColor;vertical-align:middle;margin-right:13px}.phase h1,.phase h2{margin:0 0 22px;font:400 clamp(50px,6vw,99px)/.99 "Playfair Display",serif;letter-spacing:-.04em;text-wrap:balance}.phase em{font-weight:400;color:#d7b99f}.phase p{font:400 clamp(14px,1.2vw,18px)/1.8 "DM Sans",sans-serif;max-width:390px;color:#d2c6c3}
+.bottom{position:absolute;bottom:30px;left:clamp(22px,5vw,80px);right:clamp(22px,5vw,80px);z-index:7;display:flex;align-items:center;justify-content:space-between;gap:16px}.footnote,.scroll-note{font:10px/1.5 "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#c4b6b5}.steps{display:flex;gap:6px}.step{border:1px solid #ffffff40;background:#080e1580;color:#e6dddd;cursor:pointer;font:10px/1 "DM Mono",monospace;letter-spacing:.08em;padding:11px 13px}.step[aria-current="step"]{border-color:var(--amber);color:var(--amber);background:#3a2a2780}.step:hover{border-color:#fff}.progress{position:absolute;bottom:0;left:0;width:100%;height:3px;background:#ffffff24;z-index:7}.progress>span{height:100%;display:block;background:linear-gradient(90deg,#bd8d69,#92b8c2);width:0%}.index{position:absolute;right:4.7%;top:27%;font:400 clamp(115px,22vw,390px)/1 "Playfair Display",serif;letter-spacing:-.1em;color:#ffffff08;z-index:0;user-select:none}.label-vertical{position:absolute;right:25px;top:53%;writing-mode:vertical-rl;letter-spacing:.22em;font:10px "DM Mono",monospace;color:#d6d3d38a;z-index:3;text-transform:uppercase}
+.outro{background:var(--paper);color:#16202a;padding:clamp(80px,10vw,165px) 7%;min-height:70vh}.outro .overline{color:#8c684a}.outro-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:10%;align-items:start;max-width:1350px;margin:auto}.outro h2{margin:0;font:400 clamp(43px,5vw,83px)/1.1 "Playfair Display",serif;letter-spacing:-.035em}.outro h2 em{color:#916e57}.outro p{font:400 17px/1.75 "DM Sans",sans-serif;color:#47515b;margin:0 0 24px}.outro .notice{font:11px/1.7 "DM Mono",monospace;color:#69737b;border-top:1px solid #c9c7c3;padding-top:20px}.return{display:inline-block;color:#263c4f;text-decoration:none;border-bottom:1px solid #263c4f;margin-top:18px;font:12px "DM Mono",monospace;letter-spacing:.09em;padding-bottom:8px}
+@media(max-width:850px){.header .tag{display:none}.stage{min-height:550px}.portrait{width:85vw;height:72%;top:8%;right:-18%;opacity:.67}.copy{left:8%;bottom:150px;width:84%}.phase{min-width:0;max-width:min(92vw,520px)}.phase h1,.phase h2{font-size:clamp(47px,11vw,77px)}.phase p{font-size:14px;max-width:310px}.index{top:32%;right:4%}.bottom{bottom:26px;align-items:flex-end}.footnote{display:none}.steps{flex-wrap:wrap;max-width:300px}.step{padding:11px 10px}.scroll-note{max-width:80px;font-size:9px}.outro-grid{grid-template-columns:1fr;gap:42px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.experience{height:100svh}.phase{display:none!important}.phase:first-child{display:block!important;opacity:1!important;transform:none!important}.portrait{opacity:.75}.bottom .steps{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#afterword">Skip animation</a>
+<section class="experience" id="experience" aria-label="Four-phase reversible scroll animation">
+ <div class="stage" id="stage">
+  <div class="glow warm" id="warm"></div><div class="glow cool" id="cool"></div>
+  <canvas id="cells" class="canvas" aria-hidden="true"></canvas>
+  <div class="portrait" id="portrait" aria-hidden="true">
+   <svg viewBox="0 0 640 800" role="presentation" focusable="false">
+    <defs><linearGradient id="skin" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#d6b59c"/><stop offset=".42" stop-color="#806658"/><stop offset="1" stop-color="#1e2733"/></linearGradient><linearGradient id="coat" x1="0" x2=".8" y1="0" y2="1"><stop offset="0" stop-color="#242b33"/><stop offset=".65" stop-color="#10141e"/><stop offset="1" stop-color="#03070e"/></linearGradient><radialGradient id="veil"><stop offset="0" stop-color="#000" stop-opacity=".1"/><stop offset="1" stop-color="#000" stop-opacity=".7"/></radialGradient></defs>
+    <path class="subject-back" d="M78 785Q75 620 175 560Q210 540 260 520L285 475H410L445 525Q505 530 563 600Q595 655 600 785Z"/>
+    <path class="bodyfill" d="M235 385Q215 336 223 244Q229 119 335 106Q429 99 460 188Q486 254 457 340Q445 395 407 426L402 502Q376 557 327 569Q280 559 270 508L281 426Q248 410 235 385Z"/>
+    <path d="M221 247Q217 164 249 126Q295 75 364 91Q459 96 474 199Q458 180 439 161Q389 172 348 148Q282 187 231 174Z" fill="#15191f"/>
+    <path d="M246 276Q262 264 292 273M367 273Q396 266 420 274" class="highlight"/>
+    <path d="M300 363Q345 380 384 359" class="highlight"/>
+    <path d="M333 275Q317 345 334 348L357 345" class="grain-lines"/>
+    <path d="M259 429Q329 471 404 423" class="grain-lines"/>
+    <path d="M195 553Q290 612 326 619Q358 620 452 548" stroke="#c09b7b" stroke-opacity=".14" fill="none"/>
+    <path d="M80 785Q190 755 325 775Q453 750 600 786" fill="none" stroke="#fff" stroke-opacity=".05" stroke-width="24"/>
+    <path d="M0 0H640V800H0Z" fill="url(#veil)" opacity=".35"/>
+   </svg>
+  </div>
+  <header class="header"><a class="brand" href="/creative/"><i class="brand-mark"></i> CONTEXT &amp; MUSE</a><div class="tag">VISUAL SYSTEMS / EXPERIMENT 01</div><a class="back" href="/creative/">← Back to Creative</a></header>
+  <div class="copy">
+   <div class="phase active" data-phase="0"><span class="overline">01 / The human</span><h1>The art of<br><em>being alive.</em></h1><p>Every system begins somewhere. Here, the human face remains the anchor as an invisible world comes into view.</p></div>
+   <div class="phase" data-phase="1"><span class="overline">02 / Emergence</span><h2>Look closer.<br><em>Go deeper.</em></h2><p>Translucent structures begin to gather, tracing the delicate architecture beneath the visible surface.</p></div>
+   <div class="phase" data-phase="2"><span class="overline">03 / Immersion</span><h2>Life is<br><em>connected.</em></h2><p>Layers of organic forms drift through dimensional space. Each element moves as part of a larger system.</p></div>
+   <div class="phase" data-phase="3"><span class="overline">04 / Transition</span><h2>A different<br><em>perspective.</em></h2><p>The biological forms dissolve. The experience resolves into an editorial space ready for the next idea.</p></div>
+  </div>
+  <div class="index" id="phaseIndex" aria-hidden="true">01</div><div class="label-vertical">SCROLL / SCRUB / REVERSE</div>
+  <div class="bottom"><span class="footnote">INTERACTION STUDY / ANIMATION IS CONTROLLED BY SCROLL</span><nav class="steps" aria-label="Animation phases"><button class="step" data-go="0" aria-current="step">01</button><button class="step" data-go="1">02</button><button class="step" data-go="2">03</button><button class="step" data-go="3">04</button></nav><span class="scroll-note">SCROLL TO EXPLORE ↓</span></div><div class="progress" role="progressbar" aria-label="Animation progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progress"></span></div>
+ </div>
+</section>
+<section class="outro" id="afterword"><span class="overline">Creative practice / Interactive systems</span><div class="outro-grid"><h2>Motion with<br><em>meaning.</em></h2><div><p>An interaction study by Context &amp; Muse demonstrating four continuous, reversible scroll states: introduction, emergence, immersion, and transition.</p><p>Rather than relying on a pre-rendered video, this prototype uses lightweight Canvas drawing and CSS transforms. The imagery evolves in response to the visitor's scroll position.</p><p class="notice">Independent concept prototype. The subject is an illustrative placeholder, not a real physician or client endorsement. This is not a Blender/Cinema 4D production or scientifically validated cell model.</p><a class="return" href="/creative/">← RETURN TO THE CREATIVE PRACTICE</a></div></div></section>
+<script>
+(()=>{"use strict";
+const experience=document.getElementById("experience"),canvas=document.getElementById("cells"),ctx=canvas.getContext("2d"),portrait=document.getElementById("portrait"),warm=document.getElementById("warm"),cool=document.getElementById("cool"),progress=document.getElementById("progress"),progressTrack=document.querySelector(".progress"),index=document.getElementById("phaseIndex"),phases=[...document.querySelectorAll(".phase")],buttons=[...document.querySelectorAll(".step")];
+let W=0,H=0,dpr=1,current=-1,raf=0;
+const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
+const smooth=(a,b,x)=>{let t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
+function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=canvas.clientWidth;H=canvas.clientHeight;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw(getProgress())}
+function getProgress(){if(reduced.matches)return 0;let max=Math.max(1,experience.offsetHeight-window.innerHeight);return Math.max(0,Math.min(1,-experience.getBoundingClientRect().top/max))}
+function draw(p){if(!ctx)return;ctx.clearRect(0,0,W,H);let emergence=smooth(.13,.43,p),immersion=smooth(.39,.69,p),fade=1-smooth(.76,1,p);ctx.globalAlpha=1;const count=52;
+ for(let i=0;i<count;i++){let r=i*13.37,baseX=.72*W+Math.sin(r*1.7)*W*.3,baseY=.54*H+Math.cos(r*.73)*H*.34,depth=(i%7)/7,move=(p-.35)*W*(.05+.25*depth),x=baseX+move,y=baseY+Math.sin(i*1.4+p*6)*H*.025,rad=(8+(i%9)*8)*(1+immersion*.65);let a=(.04+depth*.17)*(emergence+immersion*.5)*fade;ctx.globalAlpha=a;let g=ctx.createRadialGradient(x,y,rad*.12,x,y,rad);g.addColorStop(0,i%3===0?"#e6c5a4":"#b9d8df");g.addColorStop(.4,i%3===0?"#bf8a68":"#6b9eab");g.addColorStop(1,"#09202b00");ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,rad,0,Math.PI*2);ctx.fill();ctx.lineWidth=.6;ctx.strokeStyle=i%3===0?"#f7cdab":"#b8d9e2";ctx.globalAlpha=a*.8;ctx.stroke();
+ if(immersion>.1&&i>0&&i%3===0){let j=i-1,px=.72*W+Math.sin(j*13.37*1.7)*W*.3+(p-.35)*W*(.05+.25*((j%7)/7)),py=.54*H+Math.cos(j*13.37*.73)*H*.34;ctx.strokeStyle="#a8c4c9";ctx.globalAlpha=a*.38*immersion;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(px,py);ctx.stroke()}}
+ ctx.globalAlpha=(emergence*.26+immersion*.2)*fade;for(let i=0;i<110;i++){let sx=((i*73.11)%100)/100*W,sy=((i*19.41)%100)/100*H,r=(i%5===0?1.5:.7);ctx.fillStyle=i%3===0?"#e7bba0":"#c2dfe7";ctx.beginPath();ctx.arc(sx+Math.sin(i+p*9)*15,sy+Math.cos(i*2+p*4)*17,r,0,6.284);ctx.fill()}ctx.globalAlpha=1}
+function render(){raf=0;let p=getProgress(),step=Math.min(3,Math.floor(Math.min(.999,p)*4));draw(p);portrait.style.transform="translate3d("+(p*4)+"%,"+(p*-4)+"%,0) scale("+(1+.13*smooth(.15,.75,p))+")";portrait.style.opacity=String(.95-.75*smooth(.7,.99,p));warm.style.opacity=String(.46-.2*p);cool.style.opacity=String(.15+.37*smooth(.25,.75,p));progress.style.width=(p*100).toFixed(2)+"%";progressTrack.setAttribute("aria-valuenow",String(Math.round(p*100)));if(step!==current){current=step;phases.forEach((n,i)=>{n.classList.toggle("active",i===step);n.setAttribute("aria-hidden",i===step?"false":"true")});buttons.forEach((b,i)=>{if(i===step)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current")});index.textContent="0"+(step+1)}}
+function schedule(){if(!raf)raf=requestAnimationFrame(render)}
+buttons.forEach(b=>b.addEventListener("click",()=>{let n=Number(b.dataset.go);if(!reduced.matches)window.scrollTo({top:experience.offsetTop+(experience.offsetHeight-innerHeight)*(n+.025)/4,behavior:"smooth"});else{current=-1;render()}}));
+window.addEventListener("scroll",schedule,{passive:true});window.addEventListener("resize",()=>{size();schedule()});reduced.addEventListener("change",()=>{size();schedule()});size();render();
+})();
+</script>
+</body></html>
