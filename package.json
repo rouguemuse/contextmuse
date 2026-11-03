@@ -9,7 +9,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync:shell": "node scripts/sync-site-shell.mjs",
-    "check:shell": "node scripts/sync-site-shell.mjs --check"
+    "check:shell": "node scripts/sync-site-shell.mjs --check",
+    "render:services": "node scripts/render-services-page.mjs",
+    "check:services": "node scripts/render-services-page.mjs --check",
+    "check:site-config": "node scripts/validate-site-config.mjs"
   },
   "repository": {
     "type": "git",
