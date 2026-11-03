@@ -12,7 +12,8 @@
     "check:shell": "node scripts/sync-site-shell.mjs --check",
     "render:services": "node scripts/render-services-page.mjs",
     "check:services": "node scripts/render-services-page.mjs --check",
-    "check:site-config": "node scripts/validate-site-config.mjs"
+    "check:site-config": "node scripts/validate-site-config.mjs",
+    "check:four-square": "node scripts/check-four-square.mjs"
   },
   "repository": {
     "type": "git",
