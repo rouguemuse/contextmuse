@@ -15,8 +15,8 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ways to Work Together | Context &amp; Muse</title>
-    <meta name="description" content="Explore fixed-scope engagement tiers for Context &amp; Muse: Business System Diagnostics, Quote + Lead Systems, Custom Operations Systems, and Quarterly Care.">
+    <title>Services, Website Packages &amp; Care | Context &amp; Muse</title>
+    <meta name="description" content="Clear small-business website pricing, hosting and monthly care. See custom systems, website audits, restaurant consulting, brand and creative services from Context &amp; Muse.">
     <link rel="canonical" href="https://www.contextmuse.com/services/">
 
     <!-- Open Graph -->
@@ -54,395 +54,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=4.4">
 
-    <style>
-        .services-hero {
-            padding: clamp(5rem, 8vw, 7.5rem) 0 4.5rem;
-            background: #FFFFFF;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .services-hero-copy {
-            max-width: 840px;
-        }
-        .services-hero-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-teal);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 1rem;
-        }
-        .services-hero h1 {
-            font-family: var(--font-sans);
-            font-size: clamp(2.75rem, 5.5vw, 4.5rem);
-            line-height: 1.08;
-            letter-spacing: -0.035em;
-            color: var(--text-primary);
-            margin: 0 0 1.25rem 0;
-            font-weight: 700;
-            text-wrap: balance;
-        }
-        .services-hero p {
-            font-family: var(--font-sans);
-            font-size: 1.125rem;
-            line-height: 1.65;
-            color: var(--text-secondary);
-            margin: 0 0 2rem 0;
-        }
-
-        /* ── FOUR-TIER PRICING LADDER SECTION ── */
-        .paths-section {
-            padding: var(--section-padding-y) 0;
-            background: #FFFFFF;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .section-header-center {
-            text-align: center;
-            max-width: 780px;
-            margin: 0 auto 4rem;
-        }
-        .section-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-teal);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2.4rem, 4vw, 4rem);
-            line-height: 1.12;
-            letter-spacing: -0.015em;
-            color: var(--text-primary);
-            margin: 0 0 0.75rem 0;
-            font-weight: 400;
-            text-wrap: balance;
-        }
-
-        .ladder-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 5rem;
-        }
-        @media (max-width: 1100px) {
-            .ladder-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-        @media (max-width: 700px) {
-            .ladder-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        .ladder-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-radius: 24px;
-            padding: 2.25rem 1.65rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.015);
-        }
-        .ladder-card:hover {
-            border-color: var(--accent-teal);
-            transform: translateY(-3px);
-            box-shadow: 0 16px 36px rgba(15, 118, 110, 0.06);
-        }
-        .ladder-card.featured {
-            background: #FFFFFF;
-            border: 2px solid var(--accent-teal);
-            box-shadow: 0 12px 30px rgba(15, 118, 110, 0.08);
-        }
-
-        .ladder-stage-badge {
-            font-family: var(--font-mono);
-            font-size: 9.5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent-teal);
-            background: rgba(15, 118, 110, 0.08);
-            padding: 3px 9px;
-            border-radius: 3px;
-            display: inline-block;
-            margin-bottom: 1rem;
-            width: fit-content;
-        }
-
-        .ladder-title {
-            font-family: var(--font-serif);
-            font-size: 1.65rem;
-            color: var(--text-primary);
-            margin: 0 0 0.25rem 0;
-            font-weight: 500;
-            line-height: 1.2;
-        }
-
-        .ladder-price {
-            font-family: var(--font-mono);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-            display: block;
-        }
-        .ladder-price-sub {
-            font-family: var(--font-sans);
-            font-size: 12.5px;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .ladder-result {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--text-primary);
-            font-weight: 500;
-            margin-bottom: 1.25rem;
-        }
-
-        .ladder-meta-box {
-            background: rgba(16, 33, 29, 0.03);
-            border-left: 2.5px solid var(--accent-teal);
-            padding: 0.65rem 0.85rem;
-            border-radius: 0 4px 4px 0;
-            margin-bottom: 1.25rem;
-        }
-        .ladder-meta-label {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            font-weight: 700;
-            color: var(--accent-teal);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-        .ladder-meta-text {
-            font-size: 12.5px;
-            color: var(--text-secondary);
-            line-height: 1.4;
-            margin: 0;
-        }
-
-        .ladder-scope-box {
-            border-top: 1px solid var(--border-light);
-            padding-top: 1.1rem;
-            margin-bottom: 1.75rem;
-            flex-grow: 1;
-        }
-        .ladder-scope-title {
-            font-family: var(--font-mono);
-            font-size: 9.5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-primary);
-            margin-bottom: 0.65rem;
-            display: block;
-        }
-        .ladder-scope-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        .ladder-scope-list li {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.4;
-            display: flex;
-            align-items: flex-start;
-            gap: 7px;
-        }
-        .ladder-scope-list li::before {
-            content: "•";
-            color: var(--accent-teal);
-            font-weight: bold;
-            font-size: 13px;
-            line-height: 1.2;
-        }
-
-        .btn-ladder-cta {
-            background: var(--text-primary);
-            color: #FAF9F5 !important;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 0.8rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            text-align: center;
-            display: block;
-            transition: all 0.2s ease;
-            margin-top: auto;
-            border: 1px solid var(--text-primary);
-        }
-        .ladder-card.featured .btn-ladder-cta {
-            background: var(--accent-teal);
-            border-color: var(--accent-teal);
-        }
-        .btn-ladder-cta:hover {
-            background: var(--accent-teal);
-            border-color: var(--accent-teal);
-            transform: translateY(-1px);
-        }
-
-        /* ── NOT SURE WHICH ONE YOU NEED SECTION ── */
-        .not-sure-panel {
-            background: var(--bg-paper);
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            padding: 3.5rem 3rem;
-            margin-bottom: 5rem;
-            display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        @media (max-width: 900px) {
-            .not-sure-panel {
-                grid-template-columns: 1fr;
-                padding: 2.5rem 2rem;
-                gap: 2rem;
-            }
-        }
-        .not-sure-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-            color: var(--text-primary);
-            margin: 0 0 1rem 0;
-            font-weight: 400;
-            line-height: 1.2;
-        }
-        .not-sure-desc {
-            font-size: 15.5px;
-            line-height: 1.65;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        .btn-not-sure {
-            background: var(--text-primary);
-            color: #FAF9F5 !important;
-            font-family: var(--font-mono);
-            font-size: 11.5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 0.95rem 1.8rem;
-            border-radius: 4px;
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-            transition: all 0.2s ease;
-            width: fit-content;
-        }
-        .btn-not-sure:hover {
-            background: var(--accent-teal);
-            transform: translateY(-1px);
-        }
-
-        /* ── QUARTERLY CARE PLANS ── */
-        .care-section {
-            background: var(--bg-paper);
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            padding: 3.5rem 3rem;
-            margin-bottom: 5rem;
-        }
-        .care-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            margin-top: 2.5rem;
-        }
-        @media (max-width: 850px) {
-            .care-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-        .care-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            padding: 2.25rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .care-card.featured {
-            border: 2px solid var(--accent-teal);
-        }
-        .care-title {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            color: var(--text-primary);
-            margin: 0 0 0.25rem 0;
-            font-weight: 500;
-        }
-        .care-price {
-            font-family: var(--font-mono);
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-            display: block;
-        }
-        .care-equiv {
-            font-family: var(--font-sans);
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            display: block;
-            font-style: italic;
-        }
-        .care-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 2rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.55rem;
-        }
-        .care-list li {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            line-height: 1.45;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-        .care-list li::before {
-            content: "✓";
-            color: var(--accent-teal);
-            font-weight: bold;
-            font-size: 12px;
-            line-height: 1.4;
-        }
-    </style>
-<style id="cxm-service-family-styles">
-.cxm-service-catalog{padding:75px 0 65px;background:#f6f6f4;border-bottom:1px solid #e6e6e3}.cxm-service-catalog .cxm-over{font:700 11px var(--font-mono);letter-spacing:.08em;color:var(--accent-teal);text-transform:uppercase}.cxm-service-catalog h2{font-size:clamp(32px,4vw,52px);font-weight:600;line-height:1.12;letter-spacing:-.035em;margin:12px 0}.cxm-service-catalog .cxm-desc{font-size:15px;color:var(--text-secondary);line-height:1.7;max-width:740px;margin:0 0 35px}.cxm-service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.cxm-service-tile{display:flex;flex-direction:column;background:#fff;border:1px solid #e1e2de;border-radius:4px;padding:28px;min-width:0}.cxm-service-tile>span{font:700 10px var(--font-mono);text-transform:uppercase;letter-spacing:.12em;color:var(--accent-teal)}.cxm-service-tile h3{font-size:21px;margin:18px 0 10px;font-weight:600;letter-spacing:-.015em}.cxm-service-tile p{font-size:13px;color:var(--text-secondary);line-height:1.68;margin:0 0 15px}.cxm-service-tile ul{padding-left:19px;color:#3f4642;font-size:12px;line-height:1.8;margin:0 0 23px;flex:1}.cxm-service-tile a{font:700 11px var(--font-mono);text-decoration:none;color:var(--accent-teal);align-self:start;border-bottom:1px solid var(--accent-teal);padding-bottom:5px}.cxm-service-highlight{margin-top:15px;padding:27px 29px;background:#102b25;color:#fff;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center;border-radius:4px}.cxm-service-highlight h3{font-size:22px;line-height:1.3;margin:7px 0 10px}.cxm-service-highlight p{font-size:13px;line-height:1.75;color:#d0e2da;margin:0}.cxm-service-highlight a{font:700 11px var(--font-mono);color:#f5ecdc;text-decoration:none;border-bottom:1px solid #dfd1b6;padding-bottom:5px;justify-self:end}.cxm-hosting-note{max-width:850px;margin:18px auto 38px;padding:20px 23px;border:1px solid #b6d0c9;background:#edf5f1;border-radius:4px;font-size:13px;line-height:1.8;color:#304139}.cxm-hosting-note strong{display:block;color:#14342d;margin-bottom:6px;font-size:14px}
-@media(max-width:900px){.cxm-service-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.cxm-service-catalog{padding:50px 0}.cxm-service-grid{grid-template-columns:1fr}.cxm-service-highlight{grid-template-columns:1fr}.cxm-service-highlight a{justify-self:start}}
+    <style id="cxm-v2-services-styles">
+.cm-services,.cm-hero{--cm-ink:#11110d;--cm-muted:#62635c;--cm-line:#deded8;--cm-panel:#f7f7f4;--cm-forest:#0e1f1b;--cm-teal:#0f766e;--cm-gold:#c5a059;color:var(--cm-ink)}
+.cm-services *, .cm-hero *{box-sizing:border-box}
+.cm-services a:focus-visible,.cm-hero a:focus-visible{outline:3px solid var(--cm-teal);outline-offset:4px}
+.cm-kicker,.cm-mono{font-family:var(--font-mono,monospace);font-weight:700;letter-spacing:.11em;line-height:1.5;text-transform:uppercase;font-size:10px}
+.cm-kicker{color:var(--cm-teal)}
+.cm-hero{background:#f7f7f3;border-bottom:1px solid var(--cm-line);padding:clamp(70px,8vw,120px) 0 clamp(42px,5vw,74px)}
+.cm-hero-layout{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(30px,5vw,90px);align-items:stretch}
+.cm-breadcrumb{display:flex;gap:11px;align-items:center;font:600 10px var(--font-mono,monospace);color:var(--cm-muted);letter-spacing:.05em;margin-bottom:clamp(30px,5vw,60px)}
+.cm-breadcrumb a{color:var(--cm-muted);text-decoration:none}.cm-breadcrumb a:hover{text-decoration:underline}
+.cm-hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(43px,5.2vw,79px);line-height:1.05;letter-spacing:-.04em;margin:14px 0 26px;max-width:780px}
+.cm-hero h1 em{color:#92554d;font-weight:400}
+.cm-hero-copy>p{font-size:17px;line-height:1.75;color:var(--cm-muted);max-width:590px}
+.cm-hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.cm-action{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;padding:13px 17px;border:1px solid var(--cm-forest);font:700 11px var(--font-mono,monospace);text-decoration:none;white-space:normal;line-height:1.3;min-height:48px;transition:background .15s,color .15s,border .15s}
+.cm-action-dark{background:var(--cm-forest);color:#fff}.cm-action-dark:hover{background:#204940;color:#fff}
+.cm-action-light{background:transparent;color:var(--cm-forest)}.cm-action-light:hover{background:#e8eeea;color:var(--cm-forest)}
+.cm-hero-side{padding:29px;background:#102b25;color:#f4f6f3;display:flex;flex-direction:column;gap:20px;border:1px solid #345049;min-width:0}
+.cm-hero-side>.cm-mono{color:#b5d0be}.cm-hero-paths{border-top:1px solid #ffffff2b}.cm-hero-paths a{display:grid;grid-template-columns:25px 1fr 20px;gap:4px 8px;align-items:center;padding:16px 0;text-decoration:none;color:#fff;border-bottom:1px solid #ffffff2b}
+.cm-hero-paths a:hover{color:#d8c5a0}.cm-hero-paths a>span{font:10px var(--font-mono,monospace);color:#aac2b9}.cm-hero-paths strong{font-size:15px;font-weight:600}.cm-hero-paths small{grid-column:2;grid-row:2;font-size:11px;color:#c2d4cb}.cm-hero-paths b{grid-column:3;grid-row:1/3;font-size:20px;font-weight:400}
+.cm-hero-rail-link{font:600 11px var(--font-mono,monospace);color:#e1d3b9;text-decoration:none}
+.cm-services{background:#fff}.cm-section{padding:clamp(66px,7vw,112px) 0}.cm-section-toned{background:#f7f7f4}.cm-section-head{border-top:0}
+.cm-header-row{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:32px}.cm-header-row>div{flex:1}.cm-header-row>p{max-width:410px;font-size:14px;line-height:1.7;color:var(--cm-muted);margin:0 0 7px}
+.cm-header-row h2,.cm-lab-row h2,.cm-close-grid h2{font:400 clamp(35px,4vw,60px)/1.1 Georgia,serif;letter-spacing:-.035em;margin:12px 0 0}
+.cm-tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.cm-tier{border:1px solid var(--cm-line);padding:25px;display:flex;flex-direction:column;min-width:0;background:#fff}
+.cm-tier.is-featured{border:2px solid var(--cm-forest);padding:24px;box-shadow:0 10px 35px #0e1f1b0a}
+.cm-tier-top{min-height:22px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.cm-tier-top>.cm-mono{color:var(--cm-teal);font-size:9px}
+.cm-recommend{font:700 9px var(--font-mono,monospace);letter-spacing:.06em;background:#e5eee8;color:#0e1f1b;padding:6px}
+.cm-tier h3{font:400 29px Georgia,serif;margin:26px 0 9px}
+.cm-price{font-size:clamp(34px,3vw,50px);letter-spacing:-.05em;font-weight:700}.cm-price span{font:11px var(--font-mono,monospace);color:var(--cm-muted);letter-spacing:0}
+.cm-subtitle{font-size:13px;color:var(--cm-teal);font-weight:700;margin:12px 0 5px}.cm-intro{font-size:12.5px;line-height:1.8;color:var(--cm-muted);min-height:64px}
+.cm-tier-features{padding-top:20px;margin-top:14px;border-top:1px solid var(--cm-line)}.cm-tier-features>.cm-mono,.cm-excludes>.cm-mono{color:var(--cm-teal);font-size:9px}
+.cm-tier ul,.cm-family ul{padding-left:19px;margin:10px 0 22px}.cm-tier li,.cm-family li{margin-bottom:10px;font-size:12px;line-height:1.6}.cm-excludes{border-top:1px solid var(--cm-line);padding-top:17px;margin-top:auto}.cm-excludes li{color:var(--cm-muted);font-size:11.5px}
+.cm-tier>.cm-action{margin-top:16px}
+.cm-disclaimer{border-top:1px solid var(--cm-line);padding-top:22px;margin:25px 0 0;color:var(--cm-muted);font-size:12px;line-height:1.8}.cm-disclaimer a{color:var(--cm-teal);text-underline-offset:2px}
+.cm-terms{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;padding:28px;background:#ebefe9;margin-top:18px;border-left:3px solid var(--cm-teal)}.cm-terms strong{font-size:15px}.cm-terms p{font-size:12px;color:var(--cm-muted);line-height:1.7;margin:10px 0 0}
+.cm-terms-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:center}.cm-terms-grid span{display:flex;flex-direction:column;gap:8px}.cm-terms-grid b{font:700 22px var(--font-sans,sans-serif)}.cm-terms-grid small{font-size:10px;line-height:1.6;color:var(--cm-muted)}
+.cm-family-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.cm-family-grid-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cm-family{display:flex;flex-direction:column;min-width:0;padding:25px;border:1px solid var(--cm-line);background:#fff}
+.cm-family-top{display:flex;align-items:center;gap:12px}.cm-family-icon{border:1px solid var(--cm-line);width:35px;height:35px;display:grid;place-items:center;font-size:20px;color:var(--cm-teal)}.cm-family .cm-mono{color:var(--cm-teal);font-size:9px}
+.cm-family h3{font:400 26px/1.15 Georgia,serif;margin:25px 0 12px;letter-spacing:-.02em}.cm-family>p{font-size:12px;line-height:1.7;color:var(--cm-muted);margin:0}.cm-family li{font-size:11px;color:#343934}.cm-family ul{margin-bottom:20px}
+.cm-inline-link{font:700 11px var(--font-mono,monospace);color:var(--cm-teal);text-decoration:none;border-bottom:1px solid #a0c2b8;padding-bottom:6px;align-self:flex-start;margin-top:auto}.cm-inline-link:hover{color:var(--cm-forest);border-color:var(--cm-forest)}
+.cm-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.cm-proof-card{background:#fff;border:1px solid var(--cm-line);display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.cm-proof-visual{height:205px;display:block;background:#d8dbd6;overflow:hidden}.cm-proof-visual img{height:100%;width:100%;object-fit:cover;display:block;transition:transform .25s}.cm-proof-visual:hover img{transform:scale(1.02)}
+.cm-proof-copy{padding:23px;display:flex;flex-direction:column;flex:1}.cm-proof-copy>.cm-mono{color:var(--cm-teal);font-size:9px}.cm-proof-copy h3{font:400 27px Georgia,serif;margin:15px 0 10px}.cm-proof-copy p{font-size:12px;color:var(--cm-muted);line-height:1.7;margin-bottom:20px}
+.cm-custom-strip{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-top:15px;background:#0e1f1b;color:#fff;padding:30px}.cm-custom-strip .cm-kicker{color:#a8cfba}.cm-custom-strip h3{font:400 30px Georgia,serif;margin:9px 0}.cm-custom-strip p{font-size:12px;color:#d0dbd5;max-width:620px;line-height:1.7;margin:0}.cm-custom-strip .cm-action{color:white;border-color:#e2ece6}.cm-custom-strip .cm-action:hover{color:#0e1f1b}
+.cm-narrative{margin-top:14px;padding:31px;background:#f8f5ed;display:flex;align-items:center;justify-content:space-between;gap:30px}.cm-narrative h3{font:400 32px Georgia,serif;margin:12px 0}.cm-narrative p{font-size:12px;line-height:1.7;color:var(--cm-muted);max-width:620px}.cm-narrative>.cm-action{flex-shrink:0}
+.cm-section-lab{background:#f0eee8}.cm-lab-row{display:flex;justify-content:space-between;align-items:center;gap:32px}.cm-lab-row>div{max-width:700px}.cm-lab-row p{color:var(--cm-muted);font-size:13px;line-height:1.7}
+.cm-section-close{background:#fff}.cm-close-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:8vw;align-items:center}.cm-close-grid p{max-width:720px;color:var(--cm-muted);font-size:14px;line-height:1.7}.cm-close-actions{display:flex;flex-direction:column;align-items:stretch;gap:12px}.cm-close-actions .cm-inline-link{margin-top:5px}
+@media(max-width:1120px){.cm-family-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cm-tiers{gap:10px}.cm-tier{padding:19px}.cm-tier.is-featured{padding:18px}.cm-tier h3{font-size:25px}}
+@media(max-width:820px){.cm-hero-layout{grid-template-columns:1fr}.cm-hero{padding-top:70px}.cm-hero-side{max-width:none}.cm-header-row{align-items:start;flex-direction:column;gap:9px}.cm-header-row>p{max-width:650px}.cm-tiers,.cm-proof-grid{grid-template-columns:1fr}.cm-tier{padding:24px}.cm-tier.is-featured{padding:23px}.cm-intro{min-height:0}.cm-proof-card{display:grid;grid-template-columns:40% 60%}.cm-proof-visual{height:100%;min-height:190px}.cm-terms{grid-template-columns:1fr}.cm-narrative,.cm-lab-row,.cm-custom-strip{flex-direction:column;align-items:flex-start}.cm-narrative>.cm-action{flex-shrink:1}}
+@media(max-width:550px){.cm-hero h1{font-size:43px}.cm-hero-copy>p{font-size:15px}.cm-section{padding:55px 0}.cm-family-grid,.cm-family-grid-three{grid-template-columns:1fr}.cm-proof-card{display:flex}.cm-proof-visual{height:200px}.cm-terms-grid{grid-template-columns:1fr;gap:12px}.cm-terms-grid span{border-bottom:1px solid #cfd9cf;padding:8px 0}.cm-tier h3{font-size:29px}.cm-header-row h2{font-size:38px}.cm-narrative h3{font-size:30px}.cm-hero-paths strong{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.cm-services *,.cm-hero *{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -476,265 +141,85 @@
 <!-- CXM:SHARED_NAV_END -->
 
     <!-- Hero Section -->
-    <header class="services-hero">
-        <div class="container">
-            <div class="services-hero-copy">
-                <span class="services-hero-eyebrow">APPLIED SYSTEMS STUDIO &bull; WAYS TO WORK TOGETHER</span>
-                <h1>Find the expensive friction.<br> Build the useful fix.</h1>
-                <p>
-                    Context &amp; Muse is intentionally founder-led and independent. Direct collaboration with Jayme Volstad, transparent scope, and custom software engineering for businesses that have outgrown generic templates, manual quote bottlenecks, and disconnected tools.
-                </p>
-                <div>
-                    <a href="#pricing-ladder" class="btn btn-primary" style="background: var(--text-primary); border-color: var(--text-primary); color: #FAF9F5; padding: 0.85rem 1.6rem; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; text-decoration: none; display: inline-block;">Explore Pricing &amp; Offers &darr;</a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- CXM:GENERATED_SERVICES_START -->
+<header class="cm-hero">
+ <div class="container cm-hero-layout">
+  <div class="cm-hero-copy">
+   <div class="cm-breadcrumb"><a href="/">THE FOUR-SQUARE</a><span>/</span><a href="/services/">BUILD</a><span>/</span>SERVICES</div>
+   <span class="cm-kicker">CONTEXT &amp; MUSE / WAYS TO WORK TOGETHER</span>
+   <h1>Build the useful thing.<br><em>Keep it working.</em></h1>
+   <p>Maybe you need a straightforward website. Maybe customers can't book, quotes live in spreadsheets, or reports aren't telling you what to fix. We make both the visible experience and the underlying workflow easier to use.</p>
+   <div class="cm-hero-actions"><a class="cm-action cm-action-dark" href="#websites">Compare website packages <span aria-hidden="true">↓</span></a><a class="cm-action cm-action-light" href="/contact/">Describe your project <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <aside class="cm-hero-side" aria-label="Browse service paths"><span class="cm-mono">CHOOSE THE PROBLEM / 04 PATHWAYS</span>
+   <div class="cm-hero-paths">
+   <a href="#websites"><span>01</span><strong>I need a website.</strong><small>Design, hosting, ongoing care</small><b aria-hidden="true">↗</b></a>
+   <a href="#decisions"><span>02</span><strong>I need clear answers.</strong><small>Reports, audits, priorities</small><b aria-hidden="true">↗</b></a>
+   <a href="#operations"><span>03</span><strong>I need the work to flow.</strong><small>Booking, systems, automation</small><b aria-hidden="true">↗</b></a>
+   <a href="#creative-services"><span>04</span><strong>I need to make it compelling.</strong><small>Brand, content, creative systems</small><b aria-hidden="true">↗</b></a>
+   </div>
+   <a class="cm-hero-rail-link" href="/work/">Or see the real work first →</a>
+  </aside>
+ </div>
+</header>
+<main id="main-content" class="cm-services">
+<section class="cm-section cm-section-head" id="websites">
+ <div class="container">
+  <div class="cm-header-row"><div><span class="cm-kicker">01 / THE WEBSITE BUILDS</span><h2>A useful website.<br>Without mystery pricing.</h2></div><p>Fixed-scope packages for normal small-business marketing websites. You own the deliverable. Hosting and ongoing care are separate.</p></div>
+  <div class="cm-tiers"><article class="cm-tier" id="site-launch"><div class="cm-tier-top"><span class="cm-mono">WEBSITE BUILD / Launch</span></div><h3>Launch</h3><div class="cm-price">$1,500<span> / one-time</span></div><p class="cm-subtitle">A professional place to send people.</p><p class="cm-intro">One focused page that introduces your business, explains the offer, and makes getting in touch simple.</p><div class="cm-tier-features"><span class="cm-mono">INCLUDED</span><ul><li>1 responsive landing page, up to 6 sections</li><li>1 standard contact form or booking link</li><li>Click-to-call, map or social links</li><li>Basic titles, descriptions and page headings</li><li>Domain connection and deployment setup</li><li>Up to 2 consolidated revision rounds</li></ul></div><div class="cm-excludes"><span class="cm-mono">SCOPE BOUNDARIES</span><ul><li>Client-supplied text, logo and photos</li><li>No blog, CMS, payment processing or custom calculations</li><li>Hosting and maintenance billed separately</li></ul></div><a class="cm-action cm-action-light" href="/contact/?service=website-launch">Ask About Launch <span aria-hidden="true">↗</span></a></article><article class="cm-tier is-featured" id="site-business"><div class="cm-tier-top"><span class="cm-mono">WEBSITE BUILD / Business</span><span class="cm-recommend">RECOMMENDED</span></div><h3>Business</h3><div class="cm-price">$2,950<span> / one-time</span></div><p class="cm-subtitle">A credible site with room to grow.</p><p class="cm-intro">A complete small-business website that answers customer questions and turns interest into inquiries.</p><div class="cm-tier-features"><span class="cm-mono">INCLUDED</span><ul><li>Up to 5 responsive pages using 3 page layouts</li><li>1 standard inquiry/contact form with notification</li><li>Service detail pages, proof and clear CTAs</li><li>Foundational on-page SEO and analytics setup</li><li>Mobile, performance and accessibility checks</li><li>Up to 2 consolidated revision rounds</li></ul></div><div class="cm-excludes"><span class="cm-mono">SCOPE BOUNDARIES</span><ul><li>Client-supplied copy and assets; copywriting quoted separately</li><li>No booking engine, payments, database or custom lead-routing</li><li>Hosting and maintenance billed separately</li></ul></div><a class="cm-action cm-action-dark" href="/contact/?service=website-business">Discuss a Business Site <span aria-hidden="true">↗</span></a></article><article class="cm-tier" id="site-growth"><div class="cm-tier-top"><span class="cm-mono">WEBSITE BUILD / Growth</span></div><h3>Growth</h3><div class="cm-price">$4,950<span> / one-time</span></div><p class="cm-subtitle">Content and campaigns without a redesign.</p><p class="cm-intro">An expanded site for businesses publishing content, marketing services, or supporting multiple customer journeys.</p><div class="cm-tier-features"><span class="cm-mono">INCLUDED</span><ul><li>Up to 10 responsive pages and 5 reusable layouts</li><li>1 simple blog or CMS collection with editor training</li><li>Up to 2 standard forms and 3 conversion events</li><li>Expanded SEO information architecture, not page-network production</li><li>Editorial content templates and launch QA</li><li>Up to 3 consolidated revision rounds</li></ul></div><div class="cm-excludes"><span class="cm-mono">SCOPE BOUNDARIES</span><ul><li>Client-supplied content; migration and content production quoted</li><li>No custom database, 48-city SEO networks, booking inventory or integrations</li><li>Hosting and maintenance billed separately</li></ul></div><a class="cm-action cm-action-light" href="/contact/?service=website-growth">Plan a Growth Site <span aria-hidden="true">↗</span></a></article></div>
+  <p class="cm-disclaimer"><strong>Where the line is:</strong> Contact forms and existing booking links are standard. Custom pricing logic, inventory availability, databases, payment flows, ZIP qualification and large multi-market page networks are <a href="#operations">custom systems</a>, not included in these prices.</p>
+ </div>
+</section>
+<section class="cm-section cm-section-toned" id="care-plans">
+ <div class="container">
+  <div class="cm-header-row"><div><span class="cm-kicker">02 / HOSTING &amp; MAINTENANCE</span><h2>Keep the site healthy.<br>Not an unlimited retainer.</h2></div><p>Pick only the amount of support you need. Each plan covers one standard marketing site, not a custom application.</p></div>
+  <div class="cm-tiers"><article class="cm-tier" id="care-hosting"><div class="cm-tier-top"><span class="cm-mono">MONTHLY CARE / Managed Hosting</span></div><h3>Managed Hosting</h3><div class="cm-price">$39<span> / month</span></div><p class="cm-subtitle">Keep a standard site online.</p><p class="cm-intro">For a simple brochure site requiring little hands-on work.</p><div class="cm-tier-features"><span class="cm-mono">INCLUDED</span><ul><li>Managed deployment hosting and SSL</li><li>Domain connection oversight and basic deployment administration</li><li>Automated uptime alerts</li><li>Hosting-related support response within 2 business days</li></ul></div><div class="cm-excludes"><span class="cm-mono">SCOPE BOUNDARIES</span><ul><li>No content edits, custom feature repairs or SEO work</li><li>Domain registration, email inboxes and paid platform extras are separate</li><li>No 24/7 monitoring or incident response</li></ul></div><a class="cm-action cm-action-light" href="/contact/?service=hosting">Discuss this plan <span aria-hidden="true">↗</span></a></article><article class="cm-tier is-featured" id="care-essential"><div class="cm-tier-top"><span class="cm-mono">MONTHLY CARE / Essential Care</span><span class="cm-recommend">RECOMMENDED</span></div><h3>Essential Care</h3><div class="cm-price">$129<span> / month</span></div><p class="cm-subtitle">Hosting plus defined site checks.</p><p class="cm-intro">Routine oversight of a standard business website, without an unlimited support promise.</p><div class="cm-tier-features"><span class="cm-mono">INCLUDED</span><ul><li>Everything in Managed Hosting</li><li>Monthly links, primary contact form, SSL and key-page check</li><li>Routine security/dependency review where applicable</li><li>Up to 20 minutes of small corrective maintenance per month</li><li>Issue acknowledgement within 2 business days</li></ul></div><div class="cm-excludes"><span class="cm-mono">SCOPE BOUNDARIES</span><ul><li>No client-requested design/content edits</li><li>No rollover of unused minutes</li><li>No custom application, database, booking or payment system coverage</li></ul></div><a class="cm-action cm-action-dark" href="/contact/?service=care-essential">Discuss this plan <span aria-hidden="true">↗</span></a></article><article class="cm-tier" id="care-growth"><div class="cm-tier-top"><span class="cm-mono">MONTHLY CARE / Growth Care</span></div><h3>Growth Care</h3><div class="cm-price">$249<span> / month</span></div><p class="cm-subtitle">Maintenance, edits and visibility.</p><p class="cm-intro">For a site that needs small regular changes, with workload under control.</p><div class="cm-tier-features"><span class="cm-mono">INCLUDED</span><ul><li>Everything in Essential Care</li><li>Up to 60 minutes of client-requested content edits per month</li><li>Concise monthly analytics and conversion-health summary</li><li>Issue acknowledgement within 1 business day</li><li>Approved small edits scheduled within 5 business days</li></ul></div><div class="cm-excludes"><span class="cm-mono">SCOPE BOUNDARIES</span><ul><li>60 minutes is the total content-edit allowance; no rollover</li><li>New pages, layouts, copywriting, campaigns, redesigns and integrations quoted</li><li>No custom application or always-on support</li></ul></div><a class="cm-action cm-action-light" href="/contact/?service=care-growth">Discuss this plan <span aria-hidden="true">↗</span></a></article></div>
+  <div class="cm-terms"><div><strong>Before you subscribe</strong><p>Hosting is not editing. Maintenance is not a redesign. Work outside the stated allowance is quoted and approved first.</p></div><div class="cm-terms-grid"><span><b>$100/hr</b><small>Approved extras, 30-minute increments</small></span><span><b>30 days</b><small>Cancellation notice</small></span><span><b>Client-owned</b><small>Domain and approved site files</small></span></div></div>
+  <p class="cm-disclaimer">Third-party subscriptions, domain renewal, email hosting, paid APIs, high-usage overages and custom application support are separate. “Response” means acknowledgement during business days. Existing care contracts are not automatically changed.</p>
+ </div>
+</section>
+<section class="cm-section" id="decisions">
+ <div class="container">
+  <div class="cm-header-row"><div><span class="cm-kicker">03 / AUDITS &amp; DECISIONS</span><h2>You already have reports.<br>What do they mean?</h2></div><p>Bring the information you already collect. We turn it into a clear set of priorities, not another dashboard you won't use.</p></div>
+  <div class="cm-family-grid">
+   <article class="cm-family"><div class="cm-family-top"><span class="cm-family-icon" aria-hidden="true">↗</span><span class="cm-mono">FREE ENTRY</span></div><h3>Website + System Check</h3><p>Get a first-pass look at website messaging, customer pathways, and visible friction.</p><ul><li>Evidence-first automated review</li><li>No email required to see the result</li><li>Start with observable issues</li></ul><a href="/website-system-check/" class="cm-inline-link">Run the free check <span aria-hidden="true">↗</span></a></article>
+   <article class="cm-family"><div class="cm-family-top"><span class="cm-family-icon" aria-hidden="true">◫</span><span class="cm-mono">FIXED REVIEW</span></div><h3>Business System Diagnostic</h3><p>A defined review of customer journeys, intake and operational constraints.</p><ul><li>$395 fixed price</li><li>Current offer: qualifying build credit within 30 days</li><li>Prioritized recommendations and next actions</li></ul><a href="/contact/?service=diagnostic" class="cm-inline-link">Discuss a diagnostic <span aria-hidden="true">↗</span></a></article>
+   <article class="cm-family"><div class="cm-family-top"><span class="cm-family-icon" aria-hidden="true">◎</span><span class="cm-mono">SCOPED ANALYSIS</span></div><h3>Reports to Decisions</h3><p>Have spreadsheets, POS exports or campaign reports? We'll interpret the existing information and rank actions.</p><ul><li>Review supplied records and gaps</li><li>Rank findings by potential significance</li><li>Document evidence, uncertainties and action plan</li></ul><a href="/contact/" class="cm-inline-link">Scope a data readout <span aria-hidden="true">↗</span></a></article>
+   <article class="cm-family"><div class="cm-family-top"><span class="cm-family-icon" aria-hidden="true">▤</span><span class="cm-mono">EVIDENCE AUDIT</span></div><h3>Website &amp; UX Audit</h3><p>Go beyond an automated score with an evidence-backed usability and conversion review.</p><ul><li>Page-specific observations</li><li>Implementation-oriented repairs</li><li>Clear distinction between fact and inference</li></ul><a href="/work/website-audit-system/" class="cm-inline-link">View the audit system <span aria-hidden="true">↗</span></a></article>
+  </div>
+ </div>
+</section>
+<section class="cm-section cm-section-toned" id="operations">
+ <div class="container">
+  <div class="cm-header-row"><div><span class="cm-kicker">04 / SYSTEMS THAT DO WORK</span><h2>When a website<br>needs to do more.</h2></div><p>These aren't standard website upgrades. They're software and workflow engagements with their own rules, integrations, testing and support requirements.</p></div>
+  <div class="cm-proof-grid">
+   <article class="cm-proof-card"><a class="cm-proof-visual" href="/work/lone-wolf-dumpsters/"><img src="/assets/images/lonewolf-screenshot.webp" alt="Lone Wolf Dumpsters portfolio preview" loading="lazy" width="900" height="600"></a><div class="cm-proof-copy"><span class="cm-mono">LOCAL SEO + QUALIFICATION</span><h3>Lone Wolf Dumpsters</h3><p>ZIP and territory qualification, sizing, differentiated customer intake and a 48-market landing-page network.</p><a class="cm-inline-link" href="/work/lone-wolf-dumpsters/">See the system <span aria-hidden="true">↗</span></a></div></article>
+   <article class="cm-proof-card"><a class="cm-proof-visual" href="/case-studies/edr-party-rentals/"><img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals portfolio preview" loading="lazy" width="900" height="600"></a><div class="cm-proof-copy"><span class="cm-mono">BOOKING + INVENTORY</span><h3>EDR Party Rentals</h3><p>Date and delivery qualification, bilingual catalog, package logic and finite-asset reservation workflow.</p><a class="cm-inline-link" href="/case-studies/edr-party-rentals/">See the system <span aria-hidden="true">↗</span></a></div></article>
+   <article class="cm-proof-card"><a class="cm-proof-visual" href="/systems/client-builds/#inncontrol"><img src="/assets/images/inncontrol-screenshot.webp" alt="INNcontrol Coils portfolio preview" loading="lazy" width="900" height="600"></a><div class="cm-proof-copy"><span class="cm-mono">PRIVATE OPERATIONAL TOOLS</span><h3>INNcontrol Coils</h3><p>Commercial website paired with private field-scoping and estimation tools. Client-restricted features are not publicly exposed.</p><a class="cm-inline-link" href="/systems/client-builds/#inncontrol">See the system <span aria-hidden="true">↗</span></a></div></article>
+  </div>
+  <div class="cm-custom-strip"><div><span class="cm-kicker">CUSTOM SYSTEM ENGAGEMENT</span><h3>From $6,500 for scoped operations builds</h3><p>Qualifying flows, booking or inventory logic, internal portals, calculators, reporting, or integrations. Complex projects require a proposal rather than a fixed website package.</p></div><a class="cm-action cm-action-light" href="/systems/">Explore custom systems <span aria-hidden="true">↗</span></a></div>
+ </div>
+</section>
+<section class="cm-section" id="creative-services">
+ <div class="container">
+  <div class="cm-header-row"><div><span class="cm-kicker">05 / BRAND + HOSPITALITY + CONTENT</span><h2>Useful things need<br>a clear point of view.</h2></div><p>Not every project needs custom software. Sometimes the value is a brand that holds together, a document that communicates, or an experienced reading of service operations.</p></div>
+  <div class="cm-family-grid cm-family-grid-three">
+   <article class="cm-family"><div class="cm-family-top"><span class="cm-family-icon" aria-hidden="true">✳</span><span class="cm-mono">CREATIVE SYSTEMS</span></div><h3>Brand + business documents</h3><p>Business identities, proposal decks, branded documents, service menus and reusable content systems.</p><ul><li>Brand direction and coherent assets</li><li>Editable business documents and templates</li><li>Scoped copy and presentation work</li></ul><a href="/creative/" class="cm-inline-link">Explore creative work <span aria-hidden="true">↗</span></a></article>
+   <article class="cm-family"><div class="cm-family-top"><span class="cm-family-icon" aria-hidden="true">▦</span><span class="cm-mono">MARKETING</span></div><h3>Social content systems</h3><p>Campaign assets, content structures and publishing workflows, with responsibilities agreed upfront.</p><ul><li>Creative strategy and templates</li><li>Production-ready graphics and messaging</li><li>Posting, ad spend and community management quoted separately</li></ul><a href="/contact/?service=marketing" class="cm-inline-link">Discuss a content system <span aria-hidden="true">↗</span></a></article>
+   <article class="cm-family"><div class="cm-family-top"><span class="cm-family-icon" aria-hidden="true">⌁</span><span class="cm-mono">OPERATIONS EXPERIENCE</span></div><h3>Restaurant + hospitality consulting</h3><p>A perspective grounded in staffing, service, menus, margins, POS workflows and guest behavior.</p><ul><li>Menu and margin questions</li><li>Operational reviews and prioritized actions</li><li>Catering and restaurant system builds</li></ul><a href="/restaurant-systems/" class="cm-inline-link">Explore hospitality services <span aria-hidden="true">↗</span></a></article>
+  </div>
+  <div class="cm-narrative"><div><span class="cm-mono">BOOKS + STORYTELLING</span><h3>Bring an unusual idea into the world.</h3><p>Visual worlds for books, author sites, narrative identities and interactive creative experiences. Scoped as creative projects, not standard marketing websites.</p></div><a class="cm-action cm-action-light" href="/creative/">See the creative practice <span aria-hidden="true">↗</span></a></div>
+ </div>
+</section>
+<section class="cm-section cm-section-lab">
+ <div class="container cm-lab-row"><div><span class="cm-kicker">PRODUCTS ARE NOT CUSTOM SERVICES</span><h2>Need something ready-made?</h2><p>Signal, GenSort, reusable templates, calculators, experimental interfaces and Field Notes live in The Lab. Only available products are offered for purchase; experiments are clearly labeled.</p></div><a class="cm-action cm-action-dark" href="/lab/">Explore The Lab <span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="cm-section cm-section-close">
+ <div class="container"><div class="cm-close-grid"><div><span class="cm-kicker">YOUR NEXT MOVE</span><h2>Not sure where to start?</h2><p>If you have a specific build in mind, tell us. If you're not sure which problem matters most, start with the free website check or a focused diagnostic. Nobody needs to buy a full system just to ask a question.</p></div><div class="cm-close-actions"><a class="cm-action cm-action-dark" href="/contact/">Tell us what you need <span aria-hidden="true">↗</span></a><a class="cm-action cm-action-light" href="/website-system-check/">Run free website check <span aria-hidden="true">↗</span></a><a href="/" class="cm-inline-link">← Back to the four-square home</a></div></div></div>
+</section>
+</main>
+<!-- CXM:GENERATED_SERVICES_END -->
 
-    <main id="main-content">
-
-<section class="cxm-service-catalog" id="service-families">
-<div class="container"><span class="cxm-over">What we can help you do</span><h2>Different problems. Practical ways forward.</h2><p class="cxm-desc">Need customers to book, answers from existing reports, a reliable site, or a system your team will actually use? Choose the kind of outcome you need. Every custom engagement is scoped before work begins.</p>
-<div class="cxm-service-grid">
-<article class="cxm-service-tile" id="service-web"><span>01 / Websites &amp; digital presence</span><h3>Get found. Get inquiries. Stay online.</h3><p>From a focused branded website to a fully qualified customer journey.</p><ul><li>Website design, local search and service-area pages</li><li>Hosting setup, migrations and domain configuration</li><li>Tiered site maintenance and conversion improvements</li><li>Booking, quote and inquiry funnels</li></ul><a href="#care-plans">See hosting &amp; care options ↗</a></article>
-<article class="cxm-service-tile" id="service-decisions"><span>02 / Audits &amp; decisions</span><h3>Understand the numbers and what to do next.</h3><p>Bring the existing reports. We help identify reliable patterns, limitations and priorities.</p><ul><li>Reports-to-Decisions review of supplied exports</li><li>Website UX, conversion and content evidence audits</li><li>Restaurant labor, POS and margin reviews</li><li>Ranked recommendations with clear next actions</li></ul><a href="/website-system-check/">Start with a free website check ↗</a></article>
-<article class="cxm-service-tile" id="service-systems"><span>03 / Custom operations</span><h3>Build around the way work really happens.</h3><p>Small focused fixes through database-driven operational tools.</p><ul><li>Reservation, availability and inventory systems</li><li>Customer portals, dashboards and approval flows</li><li>Workflow automation and integrations</li><li>Custom calculators and business tools</li></ul><a href="/systems/client-builds/">See working system examples ↗</a></article>
-<article class="cxm-service-tile" id="service-creative"><span>04 / Brand &amp; content</span><h3>Make your business recognizable and clear.</h3><p>Design systems people can use, rather than one-off graphics they can't update.</p><ul><li>Brand identity, art direction and visual guidelines</li><li>Editable branded proposals, business decks and documents</li><li>Social graphics, campaign kits and content workflows</li><li>Web and presentation storytelling</li></ul><a href="/creative/">Explore creative capabilities ↗</a></article>
-<article class="cxm-service-tile" id="service-hospitality"><span>05 / Restaurant &amp; hospitality</span><h3>Find the friction that slows down service.</h3><p>Consulting and systems informed by actual restaurant operations.</p><ul><li>Menu costing, margin and purchasing reviews</li><li>Labor, service-flow and POS analysis</li><li>Catering, event and ordering workflows</li><li>Operational reports, controls and custom builds</li></ul><a href="/restaurant-systems/">Explore restaurant work ↗</a></article>
-<article class="cxm-service-tile" id="service-creative-worlds"><span>06 / Creative worlds</span><h3>Bring a book or unusual idea to life.</h3><p>Visual storytelling, immersive interactions and author-facing digital systems.</p><ul><li>Book identity and editorial concepts</li><li>Interactive story and portfolio experiences</li><li>Creative strategy, visual worlds and keyframes</li><li>Reusable visual and digital assets</li></ul><a href="/creative/interaction-lab/">Explore interactive experiments ↗</a></article>
-</div>
-<div class="cxm-service-highlight"><div><span class="cxm-over" style="color:#a6d8c5">Need a tool rather than a custom project?</span><h3>Templates, ready-made calculators and products live in The Lab.</h3><p>Browse practical tools at your own pace. The custom work listed above is priced by scope; products should have verified purchase, delivery and licensing before they are offered for sale.</p></div><a href="/lab/">Explore The Lab ↗</a></div>
-</div></section>
-        <section class="paths-section" id="pricing-ladder">
-            <div class="container">
-                
-                <!-- Section Header -->
-                <div class="section-header-center">
-                    <span class="section-eyebrow">AUTHORITATIVE PRICING LADDER</span>
-                    <h2 class="section-title">Clear Paths to Clarity</h2>
-                    <p style="font-size: 16px; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
-                        A natural progression from low-risk diagnosis to full custom software engineering.
-                    </p>
-                    <p style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-teal); margin-top: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">
-                        A deposit is required to reserve production capacity. Once work begins, the deposit becomes non-refundable and is applied toward the project total.
-                    </p>
-                </div>
-
-                <!-- Free First-Pass Diagnostic Callout Banner -->
-                <div style="background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 24px; padding: 1.5rem 2rem; margin-bottom: 3.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
-                    <div>
-                        <span style="font-family: var(--font-sans); font-size: 10.5px; font-weight: 700; color: var(--accent-teal); letter-spacing: 0.06em; display: block; margin-bottom: 0.25rem;">Free automated tool</span>
-                        <h3 style="font-family: var(--font-sans); font-size: 20px; color: var(--text-primary); margin: 0 0 0.35rem 0; font-weight: 600;">Looking for an immediate first-pass check?</h3>
-                        <p style="font-family: var(--font-sans); font-size: 14px; color: var(--text-secondary); margin: 0; max-width: 600px;">
-                            Run the free, evidence-based diagnostic to spot visible messaging ambiguity, conversion leaks, and intake friction in seconds.
-                        </p>
-                    </div>
-                    <a href="/website-system-check/" class="btn-ladder-cta" style="margin: 0; background: var(--text-primary); border-color: var(--text-primary); white-space: nowrap;">
-                        Run Free Website Check &rarr;
-                    </a>
-                </div>
-
-                <!-- 3 Primary Offers Grid -->
-                <div class="ladder-grid">
-                    
-                    <!-- Tier 1: Business System Diagnostic (DIAGNOSE) -->
-                    <div class="ladder-card" id="diagnostic">
-                        <div>
-                            <span class="ladder-stage-badge">01 // DIAGNOSE</span>
-                            <h3 class="ladder-title">Business System Diagnostic</h3>
-                            <span class="ladder-price">$395</span>
-                            <span class="ladder-price-sub">Fixed Rate Diagnostic Review</span>
-                            
-                            <div class="ladder-result">
-                                Low-friction review of your existing website, intake flow, and operational bottlenecks before investing in a full rebuild.
-                            </div>
-
-                            <div class="ladder-meta-box">
-                                <span class="ladder-meta-label">Positioning &amp; Payment</span>
-                                <p class="ladder-meta-text"><strong>100% credited</strong> toward a qualifying build booked within 30 days. Paid in full to initiate review.</p>
-                            </div>
-
-                            <div class="ladder-scope-box">
-                                <span class="ladder-scope-title">What Is Evaluated</span>
-                                <ul class="ladder-scope-list">
-                                    <li>Calls to action &amp; lead qualification drop-offs</li>
-                                    <li>Mobile touch UX &amp; customer friction points</li>
-                                    <li>Spreadsheet &amp; manual double-entry bottlenecks</li>
-                                    <li>Pricing clarity &amp; territory qualification rules</li>
-                                    <li>Prioritized findings &amp; recommended architecture</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <a href="/contact/?service=diagnostic" class="btn-ladder-cta">Start the $395 Diagnostic &rarr;</a>
-                    </div>
-
-                    <!-- Tier 2: Quote + Lead System (CONVERT & ROUTE) -->
-                    <div class="ladder-card featured" id="quote-lead">
-                        <div>
-                            <span class="ladder-stage-badge">02 // CONVERT &amp; ROUTE</span>
-                            <h3 class="ladder-title">Quote + Lead System</h3>
-                            <span class="ladder-price">From $2,500</span>
-                            <span class="ladder-price-sub">Multi-Market Typically $4,500+</span>
-                            
-                            <div class="ladder-result">
-                                Commercial website and intake engine with upfront dynamic pricing, territory/radius validation, and structured lead dispatch.
-                            </div>
-
-                            <div class="ladder-meta-box">
-                                <span class="ladder-meta-label">Billing Schedule</span>
-                                <p class="ladder-meta-text"><strong>50% deposit</strong> to reserve &amp; start &bull; <strong>50% final balance</strong> upon staging approval before launch.</p>
-                            </div>
-
-                            <div class="ladder-scope-box">
-                                <span class="ladder-scope-title">Included Scope</span>
-                                <ul class="ladder-scope-list">
-                                    <li>Dynamic quoting &amp; pricing calculators</li>
-                                    <li>Multi-market local SEO &amp; radius qualification</li>
-                                    <li>Automated triage &amp; structured CRM dispatch</li>
-                                    <li>High-contrast brand aesthetic &amp; conversion copy</li>
-                                    <li>Custom architecture designed for performance and reliability</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <a href="/services/quote-lead-systems/" class="btn-ladder-cta">Discuss a Quote &amp; Lead System &rarr;</a>
-                    </div>
-
-                    <!-- Tier 3: Custom Operations System (OPERATIONALIZE) -->
-                    <div class="ladder-card" id="custom-system">
-                        <div>
-                            <span class="ladder-stage-badge">03 // OPERATIONALIZE</span>
-                            <h3 class="ladder-title">Custom Operations System</h3>
-                            <span class="ladder-price">From $6,500</span>
-                            <span class="ladder-price-sub">Complex Systems Custom Quoted</span>
-                            
-                            <div class="ladder-result">
-                                Replaces spreadsheets, manual calculations, and disconnected tools with purpose-built internal applications and portals.
-                            </div>
-
-                            <div class="ladder-meta-box">
-                                <span class="ladder-meta-label">Billing Milestones</span>
-                                <p class="ladder-meta-text"><strong>40% deposit</strong> to begin &bull; <strong>30%</strong> core prototype milestone &bull; <strong>30%</strong> before launch.</p>
-                            </div>
-
-                            <div class="ladder-scope-box">
-                                <span class="ladder-scope-title">Capabilities</span>
-                                <ul class="ladder-scope-list">
-                                    <li>Custom estimation &amp; calculation engines</li>
-                                    <li>Client &amp; employee internal portals</li>
-                                    <li>Dispatch, reservation, &amp; inventory logic</li>
-                                    <li>Database-driven applications &amp; auth systems</li>
-                                    <li>Specialized business decision tools</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <a href="/contact/?service=custom-system" class="btn-ladder-cta">Discuss a Custom System &rarr;</a>
-                    </div>
-
-                </div>
-
-                <!-- Self-Selection Scoping Guide Table -->
-                <div class="not-sure-panel" style="flex-direction: column; align-items: stretch;">
-                    <div style="margin-bottom: 1.5rem;">
-                        <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.4rem;">GUIDANCE &amp; SCOPING</span>
-                        <h3 class="not-sure-title">Which path fits your situation?</h3>
-                        <p class="not-sure-desc">
-                            You don't need to diagnose your own technical problem. Match your current situation to the recommended starting point below:
-                        </p>
-                    </div>
-
-                    <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 13.5px; text-align: left;">
-                            <thead>
-                                <tr style="border-bottom: 1px solid var(--border-light);">
-                                    <th style="padding: 0.75rem 1rem 0.75rem 0; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Current Situation</th>
-                                    <th style="padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600;">Best Starting Point</th>
-                                    <th style="padding: 0.75rem 0 0.75rem 1rem; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600; text-align: right;">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.85rem 1rem 0.85rem 0; color: var(--text-primary);">“My website or business process is leaking leads or stuck in manual work.”</td>
-                                    <td style="padding: 0.85rem 1rem; font-weight: 600; color: var(--text-primary);">Business System Diagnostic — $395</td>
-                                    <td style="padding: 0.85rem 0 0.85rem 1rem; text-align: right;"><a href="/contact/?service=diagnostic" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; font-weight: bold; text-decoration: none;">Get Diagnostic &rarr;</a></td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.85rem 1rem 0.85rem 0; color: var(--text-primary);">“I need a commercial website with upfront quoting, territory routing, and lead triage.”</td>
-                                    <td style="padding: 0.85rem 1rem; font-weight: 600; color: var(--text-primary);">Quote + Lead System — from $2,500</td>
-                                    <td style="padding: 0.85rem 0 0.85rem 1rem; text-align: right;"><a href="/services/quote-lead-systems/" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; font-weight: bold; text-decoration: none;">Explore System &rarr;</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 0.85rem 1rem 0.85rem 0; color: var(--text-primary);">“I need an internal operational tool, calculator, portal, or custom software.”</td>
-                                    <td style="padding: 0.85rem 1rem; font-weight: 600; color: var(--text-primary);">Custom Operations System — from $6,500</td>
-                                    <td style="padding: 0.85rem 0 0.85rem 1rem; text-align: right;"><a href="/contact/?service=custom-system" style="color: var(--accent-teal); font-family: var(--font-mono); font-size: 11px; font-weight: bold; text-decoration: none;">Scope Project &rarr;</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Quarterly Care Plans -->
-                <div class="care-section" id="care-plans">
-                    <div style="text-align: center; max-width: 680px; margin: 0 auto;">
-                        <span class="section-eyebrow">KEEP IT HEALTHY &amp; IMPROVING</span>
-                        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-primary); margin: 0 0 0.5rem 0; font-weight: 400;">Quarterly Care Plans</h2>
-                        <p style="font-size: 15.5px; color: var(--text-secondary); margin: 0; line-height: 1.6;">
-                            Ongoing care plans AFTER you own your build. Billed quarterly—never a monthly website-rental fee.
-                        </p>
-                    </div>
-
-                    <div class="cxm-hosting-note" id="hosting"><strong>Hosting, maintenance and improvements are separate responsibilities.</strong>Essential and Growth Care are the existing published plans and include specified hosting support. Standalone hosting, application hosting, platform usage, content publishing and major changes require separate scope and pricing. Clients retain control of their own domain and business data. The tiers below are the current published rates; revised rates are under review, not silently applied to existing clients.</div>
-                    <div class="care-grid">
-                        <!-- Essential Care -->
-                        <div class="care-card">
-                            <div>
-                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); margin-bottom: 0.5rem; display: block;">KEEP IT HEALTHY</span>
-                                <h3 class="care-title">Essential Care</h3>
-                                <span class="care-price">$375 / Quarter</span>
-                                <span class="care-equiv">Equivalent to ~$125/month, billed quarterly</span>
-                                
-                                <ul class="care-list">
-                                    <li>Standard Vercel hosting for business usage</li>
-                                    <li>Routine health scans &amp; uptime checks</li>
-                                    <li>Broken-link, form, &amp; CTA checks</li>
-                                    <li>Mobile, SSL, &amp; domain monitoring</li>
-                                    <li>Performance &amp; security dependency monitoring</li>
-                                    <li>Quarterly functional review &amp; minor fixes</li>
-                                    <li>Backups &amp; priority support</li>
-                                    <li>15% discount on additional Context &amp; Muse services</li>
-                                </ul>
-                            </div>
-                            <a href="/custom/?service=care-essential#intake" class="btn-ladder-cta" style="background: transparent; color: var(--text-primary) !important; border: 1.5px solid var(--text-primary);">Inquire Essential Care &rarr;</a>
-                        </div>
-
-                        <!-- Growth Care -->
-                        <div class="care-card featured">
-                            <div>
-                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); margin-bottom: 0.5rem; display: block;">KEEP IMPROVING IT</span>
-                                <h3 class="care-title">Growth Care</h3>
-                                <span class="care-price">$600 / Quarter</span>
-                                <span class="care-equiv">Equivalent to ~$200/month, billed quarterly</span>
-                                
-                                <ul class="care-list">
-                                    <li>Everything in Essential Care included</li>
-                                    <li>Quarterly conversion review &amp; analytics breakdown</li>
-                                    <li>Strategic check-in &amp; priority planning</li>
-                                    <li>Up to 2 hours of small site improvements per quarter</li>
-                                    <li>Small layout, content, or functionality tweaks</li>
-                                    <li>Continued priority support</li>
-                                    <li>15% discount on additional Context &amp; Muse services</li>
-                                </ul>
-                            </div>
-                            <a href="/custom/?service=care-growth#intake" class="btn-ladder-cta" style="background: var(--accent-teal); color: #FAF9F5 !important; border: 1.5px solid var(--accent-teal);">Inquire Growth Care &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </main>
 
     <!-- ── FOOTER ── -->
         <!-- CXM:SHARED_FOOTER_START -->
