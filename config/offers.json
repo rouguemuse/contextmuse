@@ -177,7 +177,7 @@
         "type": "scoped"
       },
       "promise": "Domain and hosting setup, SSL, deployment management, and continuity terms defined by plan. Hosting alone does not silently include unlimited edits or 24/7 support.",
-      "href": "/services/#care",
+      "href": "/services/#care-plans",
       "cta": "Ask About Hosting"
     },
     {
@@ -195,7 +195,7 @@
         "monthly_equivalent": 125
       },
       "promise": "Existing website lists business Vercel hosting, uptime and SSL checks, links/forms/CTAs checks, routine review and minor fixes, and backups.",
-      "href": "/services/#care",
+      "href": "/services/#care-plans",
       "cta": "Discuss Essential Care"
     },
     {
@@ -213,7 +213,7 @@
         "monthly_equivalent": 200
       },
       "promise": "Everything in Essential plus conversion/analytics check-in and up to two hours of small improvements per quarter.",
-      "href": "/services/#care",
+      "href": "/services/#care-plans",
       "cta": "Discuss Growth Care"
     },
     {
