@@ -25,7 +25,7 @@
       "id": "lab",
       "label": "The Lab",
       "headline": "Explore tools and ideas.",
-      "href": "/creative/",
+      "href": "/lab/",
       "summary": "Products, experiments, and field notes."
     },
     {
@@ -42,7 +42,7 @@
       "href": "/work/",
       "children": [
         {
-          "label": "Case Studies & Demos",
+          "label": "See All Work",
           "href": "/work/"
         },
         {
@@ -50,7 +50,7 @@
           "href": "/systems/client-builds/"
         },
         {
-          "label": "Interaction Lab",
+          "label": "Interactive Case Studies",
           "href": "/creative/interaction-lab/"
         }
       ]
@@ -60,15 +60,19 @@
       "href": "/services/",
       "children": [
         {
-          "label": "All Services & Care",
+          "label": "Services & Pricing",
           "href": "/services/"
+        },
+        {
+          "label": "Website Hosting & Care",
+          "href": "/services/#care"
         },
         {
           "label": "Quote + Lead Systems",
           "href": "/services/quote-lead-systems/"
         },
         {
-          "label": "Restaurant Systems",
+          "label": "Restaurant Consulting",
           "href": "/restaurant-systems/"
         },
         {
@@ -79,27 +83,27 @@
     },
     {
       "label": "Lab",
-      "href": "/creative/",
+      "href": "/lab/",
       "children": [
         {
-          "label": "Creative Practice",
-          "href": "/creative/"
+          "label": "Explore the Lab",
+          "href": "/lab/"
         },
         {
-          "label": "Interaction Lab",
+          "label": "Products & Tools",
+          "href": "/lab/#products"
+        },
+        {
+          "label": "Templates & Calculators",
+          "href": "/lab/#templates"
+        },
+        {
+          "label": "Creative Experiments",
           "href": "/creative/interaction-lab/"
         },
         {
-          "label": "Signal",
-          "href": "/signal/"
-        },
-        {
-          "label": "GenSort",
-          "href": "/gensort/"
-        },
-        {
-          "label": "Menu Is an Interface",
-          "href": "/restaurant-theory/"
+          "label": "Field Notes / AI Tips",
+          "href": "/field-notes/"
         }
       ]
     },
@@ -117,8 +121,12 @@
       "title": "Explore",
       "links": [
         {
-          "label": "Selected Work",
+          "label": "The Work",
           "href": "/work/"
+        },
+        {
+          "label": "Client Builds",
+          "href": "/systems/client-builds/"
         },
         {
           "label": "Creative Practice",
@@ -127,10 +135,6 @@
         {
           "label": "Interaction Lab",
           "href": "/creative/interaction-lab/"
-        },
-        {
-          "label": "About",
-          "href": "/about/"
         }
       ]
     },
@@ -138,8 +142,12 @@
       "title": "Services",
       "links": [
         {
-          "label": "Services & Care",
+          "label": "Services & Pricing",
           "href": "/services/"
+        },
+        {
+          "label": "Website Hosting & Care",
+          "href": "/services/#care"
         },
         {
           "label": "Quote + Lead Systems",
@@ -156,8 +164,20 @@
       ]
     },
     {
-      "title": "Products",
+      "title": "The Lab",
       "links": [
+        {
+          "label": "Products & Tools",
+          "href": "/lab/#products"
+        },
+        {
+          "label": "Templates & Calculators",
+          "href": "/lab/#templates"
+        },
+        {
+          "label": "Field Notes & AI Tips",
+          "href": "/field-notes/"
+        },
         {
           "label": "Signal",
           "href": "/signal/"
@@ -165,18 +185,18 @@
         {
           "label": "GenSort",
           "href": "/gensort/"
-        },
-        {
-          "label": "Website Audit Case Study",
-          "href": "/work/website-audit-system/"
         }
       ]
     },
     {
-      "title": "Connect",
+      "title": "Company",
       "links": [
         {
-          "label": "Project Inquiry",
+          "label": "About",
+          "href": "/about/"
+        },
+        {
+          "label": "Start a Project",
           "href": "/contact/"
         },
         {
@@ -196,19 +216,9 @@
   ],
   "future_navigation_not_yet_live": [
     {
-      "label": "Field Notes",
-      "href": "/field-notes/",
-      "reason": "Publish archive and subscription integration first"
-    },
-    {
-      "label": "Lab Hub",
-      "href": "/lab/",
-      "reason": "Create consolidated hub before replacing Creative link"
-    },
-    {
-      "label": "Start Here",
+      "label": "Start Here Guided Path",
       "href": "/start/",
-      "reason": "Build two-click route finder and verify inquiry mapping"
+      "reason": "Needs verified problem-routing experience before being published"
     }
   ]
 }
