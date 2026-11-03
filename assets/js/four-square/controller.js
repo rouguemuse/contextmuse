@@ -16,6 +16,7 @@ const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
 const state={active:null,project:"lonewolf",step:0,buildMode:"websites",tier:null,lab:"products",need:null};
 let siteConfig=null;
 let offersConfig=null;
+let offersStatus="loading";
 let isRestoring=false;
 
 const encodeText=(value)=>String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
@@ -151,7 +152,8 @@ function renderBuild(){
   if(!offersConfig){
     byId("fs-plan-list").replaceChildren();
     const area=byId("fs-plan-detail");
-    area.innerHTML='<div class="fs-micro">PRICING UNAVAILABLE</div><h3>Open the current Services page.</h3><p>Unable to load the authoritative offer configuration. No package prices are shown until the source is available.</p><a class="fs-plan-cta" href="/services/">Services &amp; pricing ↗</a>';
+    if(offersStatus==="loading")area.innerHTML='<div class="fs-micro">SERVICE CATALOG</div><h3>Reading the current scope.</h3><p>Loading offers from the shared configuration.</p>';
+    else area.innerHTML='<div class="fs-micro">PRICING UNAVAILABLE</div><h3>Open the Services page.</h3><p>Unable to load the authoritative offer configuration. No package prices are shown until the source is available.</p><a class="fs-plan-cta" href="/services/">Services &amp; pricing ↗</a>';
     return;
   }
   const plans=getBuildPlans();
@@ -264,8 +266,8 @@ async function loadConfigurations(){
   ]);
   if(site.status==="fulfilled"){siteConfig=site.value;renderQuadrants()}
   else console.warn("Four-square site configuration was unavailable. Static labels remain in place.",site.reason);
-  if(offers.status==="fulfilled"){offersConfig=offers.value}
-  else console.warn("Four-square offers configuration was unavailable. See the Services page.",offers.reason);
+  if(offers.status==="fulfilled"){offersConfig=offers.value;offersStatus="ready"}
+  else{offersStatus="error";console.warn("Four-square offers configuration was unavailable. See the Services page.",offers.reason)}
   renderBuild();
 }
 function restore(){
