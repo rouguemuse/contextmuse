@@ -427,6 +427,7 @@
                         </div>
 
                         <form id="intelligent-intake-form" action="/api/lead" method="POST">
+                            <input type="hidden" id="requested-offer" name="requested_offer" value="">
                             <input type="hidden" name="form_id" value="contact-wizard">
                             <input type="text" name="_gotcha" style="display:none">
                             <input type="hidden" name="form_source" value="/contact/">
@@ -880,11 +881,20 @@
                 'quote-lead': { key: 'quote-lead', label: 'Quote + Lead System' },
                 'custom-system': { key: 'operations-tool', label: 'Custom Operations System' },
                 'restaurant': { key: 'restaurant-data', label: 'Restaurant Operations Review' },
-                'restaurant-data': { key: 'restaurant-data', label: 'Restaurant Operations Review' }
+                'restaurant-data': { key: 'restaurant-data', label: 'Restaurant Operations Review' },
+                'website-launch': { key: 'website-build', label: 'Launch Website · proposed $1,500' },
+                'website-business': { key: 'website-build', label: 'Business Website · proposed $2,950' },
+                'website-growth': { key: 'website-build', label: 'Growth Website · proposed $4,950' },
+                'hosting': { key: 'website-build', label: 'Managed Hosting · proposed $39/month' },
+                'care-essential': { key: 'website-build', label: 'Essential Care · proposed $129/month' },
+                'care-growth': { key: 'website-build', label: 'Growth Care · proposed $249/month' },
+                'marketing': { key: 'unknown', label: 'Social Content & Marketing Systems' }
             };
 
             if (serviceParam && queryMap[serviceParam]) {
                 const target = queryMap[serviceParam];
+                const requestedOffer = document.getElementById('requested-offer');
+                if (requestedOffer) requestedOffer.value = serviceParam;
                 updateSelectedProblemUI(target.key);
                 if (pill && pillLabel) {
                     pillLabel.textContent = target.label;
