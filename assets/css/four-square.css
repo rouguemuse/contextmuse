@@ -187,3 +187,5 @@ body.four-square-page .four-square{--fs-cream:#f7f6f1;--fs-paper:#fffcf7;--fs-in
 }
 @media(max-width:420px){.four-square .fs-grid.is-expanded>.fs-quad.is-active{min-height:0}.four-square .fs-plan-options{grid-template-columns:1fr}.four-square .fs-plan-option{min-height:70px;flex-direction:row;align-items:center}.four-square .fs-lab-cards,.four-square .fs-need-list{grid-template-columns:1fr}.four-square .fs-need-option{min-height:56px}.four-square .fs-proof-meta,.four-square .fs-proof-walkthrough{padding-left:14px;padding-right:14px}.four-square .fs-proof-walkthrough{margin-left:14px;margin-right:14px}.four-square .fs-proof-meta{padding-top:17px}.four-square .fs-quad-detail{padding-left:13px;padding-right:13px}}
 @media(prefers-reduced-motion:reduce){.four-square *, .four-square *::before,.four-square *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+@media(max-width:700px){.four-square .fs-grid.is-expanded>.fs-quad:not(.is-active){order:1}}
