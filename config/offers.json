@@ -1,0 +1,404 @@
+{
+  "schema_version": "1.0",
+  "effective_review_date": "2026-11-03",
+  "rules": {
+    "one_source": "This is the editorial and pricing source of truth. Page-specific hardcoded pricing must be migrated and checked against these records.",
+    "public_pricing": "Only offers with status existing_public have already-listed price figures. Verify final scope/terms before migrating page copy.",
+    "new_offers": "Proposed offers must show 'Request a scope' or 'Custom quote', not invented dollar figures.",
+    "hosting": "Client retains control of domain and business accounts. Platform fees, support coverage, backups, change requests, and incident SLAs must be spelled out in each signed scope.",
+    "data": "Report reviews require customer-supplied existing reports or authorized data access. No invented financial savings or guaranteed outcomes.",
+    "email": "Newsletter signup needs separate subscriber storage, affirmative consent, unsubscribe, and actual send pipeline. Never send subscribers to the sales-lead endpoint.",
+    "protected": "Do not change api/lead.js or any lead-backend locked components without explicit UNLOCK LEAD BACKEND instruction."
+  },
+  "families": [
+    {
+      "id": "web",
+      "title": "Websites, Hosting & Care",
+      "pitch": "A website that does its job, and support that keeps it working.",
+      "examples": [
+        "Business websites",
+        "Local search and quote funnels",
+        "Website hosting",
+        "Tiered maintenance",
+        "Booking and inquiry flows"
+      ],
+      "href": "/services/"
+    },
+    {
+      "id": "insights",
+      "title": "Audits & Decision Intelligence",
+      "pitch": "Turn the reports you already have into a prioritized next-move list.",
+      "examples": [
+        "Website and UX audits",
+        "Report-to-Decisions reviews",
+        "Restaurant profit and workflow diagnostics"
+      ],
+      "href": "/services/"
+    },
+    {
+      "id": "systems",
+      "title": "Operations & Automation",
+      "pitch": "Replace disconnected steps with clear, reliable workflows.",
+      "examples": [
+        "Reservation and inventory systems",
+        "Custom portals and dashboards",
+        "Workflow integrations",
+        "Custom calculators"
+      ],
+      "href": "/services/"
+    },
+    {
+      "id": "creative",
+      "title": "Brand, Content & Creative",
+      "pitch": "Build a coherent visual world, from a proposal to an interactive story.",
+      "examples": [
+        "Branded business documents",
+        "Brand identities",
+        "Social content systems",
+        "Book and creative-world development"
+      ],
+      "href": "/services/"
+    },
+    {
+      "id": "hospitality",
+      "title": "Restaurant & Hospitality",
+      "pitch": "Design around how actual service, staffing, menus, and POS systems behave.",
+      "examples": [
+        "Operational consulting",
+        "Menu and margin systems",
+        "Restaurant systems implementation",
+        "Catering and event intake"
+      ],
+      "href": "/restaurant-systems/"
+    }
+  ],
+  "offers": [
+    {
+      "id": "free-website-check",
+      "family": "insights",
+      "name": "Free Website + System Check",
+      "status": "existing_public",
+      "kind": "diagnostic",
+      "position": "entry",
+      "price": {
+        "type": "free",
+        "amount": 0,
+        "currency": "USD"
+      },
+      "promise": "An evidence-first website and customer-flow check.",
+      "href": "/website-system-check/",
+      "cta": "Run the Free Check"
+    },
+    {
+      "id": "business-diagnostic",
+      "family": "insights",
+      "name": "Business System Diagnostic",
+      "status": "existing_public",
+      "kind": "consulting",
+      "position": "entry",
+      "price": {
+        "type": "fixed",
+        "amount": 395,
+        "currency": "USD"
+      },
+      "details": "Current site says the $395 fee is credited toward a qualifying build within 30 days; verify terms consistently.",
+      "href": "/contact/?service=diagnostic",
+      "cta": "Request a Diagnostic"
+    },
+    {
+      "id": "report-to-decisions",
+      "family": "insights",
+      "name": "Reports to Decisions",
+      "status": "proposed_unpriced",
+      "kind": "analysis",
+      "position": "entry",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Review customer-supplied business, operations, or marketing reports. Deliver ranked findings, limitations, and action priorities; avoid implying live-system integration.",
+      "href": "/contact/",
+      "cta": "Discuss a Data Readout"
+    },
+    {
+      "id": "website-ux-audit",
+      "family": "insights",
+      "name": "Website & UX Evidence Audit",
+      "status": "proposed_unpriced",
+      "kind": "audit",
+      "position": "entry",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "A deeper evidence-backed review of usability, conversion, accessibility, and content hierarchy.",
+      "href": "/work/website-audit-system/",
+      "cta": "See Audit Examples"
+    },
+    {
+      "id": "business-website",
+      "family": "web",
+      "name": "Business Website Design & Launch",
+      "status": "existing_public",
+      "kind": "build",
+      "position": "build",
+      "price": {
+        "type": "starting_at",
+        "amount": 2500,
+        "currency": "USD"
+      },
+      "source": "/quick-launch/",
+      "promise": "A scoped responsive site, clear customer journey, and launch.",
+      "href": "/quick-launch/",
+      "cta": "Explore Website Builds"
+    },
+    {
+      "id": "quote-lead",
+      "family": "web",
+      "name": "Quote + Lead System",
+      "status": "existing_public",
+      "kind": "build",
+      "position": "build",
+      "price": {
+        "type": "starting_at",
+        "amount": 2500,
+        "currency": "USD"
+      },
+      "note": "Site currently describes multi-market implementations as $4,500+; qualify separately.",
+      "href": "/services/quote-lead-systems/",
+      "cta": "Explore Lead Systems"
+    },
+    {
+      "id": "website-hosting",
+      "family": "web",
+      "name": "Managed Website Hosting",
+      "status": "proposed_unpriced",
+      "kind": "recurring",
+      "position": "care",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Domain and hosting setup, SSL, deployment management, and continuity terms defined by plan. Hosting alone does not silently include unlimited edits or 24/7 support.",
+      "href": "/services/#care",
+      "cta": "Ask About Hosting"
+    },
+    {
+      "id": "care-essential",
+      "family": "web",
+      "name": "Essential Care",
+      "status": "existing_public",
+      "kind": "recurring",
+      "position": "care",
+      "price": {
+        "type": "recurring",
+        "amount": 375,
+        "currency": "USD",
+        "interval": "quarter",
+        "monthly_equivalent": 125
+      },
+      "promise": "Existing website lists business Vercel hosting, uptime and SSL checks, links/forms/CTAs checks, routine review and minor fixes, and backups.",
+      "href": "/services/#care",
+      "cta": "Discuss Essential Care"
+    },
+    {
+      "id": "care-growth",
+      "family": "web",
+      "name": "Growth Care",
+      "status": "existing_public",
+      "kind": "recurring",
+      "position": "care",
+      "price": {
+        "type": "recurring",
+        "amount": 600,
+        "currency": "USD",
+        "interval": "quarter",
+        "monthly_equivalent": 200
+      },
+      "promise": "Everything in Essential plus conversion/analytics check-in and up to two hours of small improvements per quarter.",
+      "href": "/services/#care",
+      "cta": "Discuss Growth Care"
+    },
+    {
+      "id": "advanced-app-support",
+      "family": "systems",
+      "name": "Application & Integration Support",
+      "status": "proposed_unpriced",
+      "kind": "recurring",
+      "position": "care",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Higher-complexity database, integration, incident, or managed application work with defined response expectations.",
+      "href": "/contact/",
+      "cta": "Scope Ongoing Support"
+    },
+    {
+      "id": "operations-build",
+      "family": "systems",
+      "name": "Custom Operations System",
+      "status": "existing_public",
+      "kind": "build",
+      "position": "build",
+      "price": {
+        "type": "starting_at",
+        "amount": 6500,
+        "currency": "USD"
+      },
+      "href": "/systems/",
+      "cta": "Explore Operations Systems"
+    },
+    {
+      "id": "reservations-inventory",
+      "family": "systems",
+      "name": "Booking & Inventory Systems",
+      "status": "proposed_unpriced",
+      "kind": "build",
+      "position": "build",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Availability rules, booking flows, and staff-managed inventory, scoped to actual workflows.",
+      "href": "/case-studies/edr-party-rentals/",
+      "cta": "See a Reservation Build"
+    },
+    {
+      "id": "automations-portals",
+      "family": "systems",
+      "name": "Portals, Dashboards & Automations",
+      "status": "proposed_unpriced",
+      "kind": "build",
+      "position": "build",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Client/staff portals, reporting dashboards, and connected workflows with clear ownership and controls.",
+      "href": "/systems/client-builds/",
+      "cta": "Explore Client Systems"
+    },
+    {
+      "id": "custom-calculators",
+      "family": "systems",
+      "name": "Custom Calculators & Decision Tools",
+      "status": "proposed_unpriced",
+      "kind": "build",
+      "position": "build",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Estimator, pricing, conversion, scenario, or resource calculators custom-built for the business.",
+      "href": "/work/",
+      "cta": "Discuss a Calculator"
+    },
+    {
+      "id": "brand-systems",
+      "family": "creative",
+      "name": "Brand Identity & Visual Systems",
+      "status": "proposed_unpriced",
+      "kind": "creative",
+      "position": "build",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Direction, identity and reusable asset systems.",
+      "href": "/creative/",
+      "cta": "Explore Creative Work"
+    },
+    {
+      "id": "branded-documents",
+      "family": "creative",
+      "name": "Branded Business Documents",
+      "status": "proposed_unpriced",
+      "kind": "creative",
+      "position": "entry",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Editable proposals, one-pagers, capabilities decks, service menus, pitch decks, and documentation templates.",
+      "href": "/contact/",
+      "cta": "Discuss Business Documents"
+    },
+    {
+      "id": "social-content",
+      "family": "creative",
+      "name": "Social Content & Marketing Systems",
+      "status": "proposed_unpriced",
+      "kind": "creative",
+      "position": "care",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Creative direction, reusable graphics, campaigns and content workflows. Full community management or ad spend must be separately scoped.",
+      "href": "/contact/",
+      "cta": "Discuss Social Content"
+    },
+    {
+      "id": "book-creative-worlds",
+      "family": "creative",
+      "name": "Books & Creative Worlds",
+      "status": "proposed_unpriced",
+      "kind": "creative",
+      "position": "build",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Visual identity, storytelling, author sites, interactive experiences and generative concept development for book and creative projects.",
+      "href": "/creative/",
+      "cta": "Explore Narrative Work"
+    },
+    {
+      "id": "restaurant-consulting",
+      "family": "hospitality",
+      "name": "Restaurant Systems Consulting",
+      "status": "proposed_unpriced",
+      "kind": "consulting",
+      "position": "entry",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Menus, service flow, training, staffing, and operational workflow diagnosis grounded in hospitality practice.",
+      "href": "/restaurant-systems/",
+      "cta": "Explore Restaurant Consulting"
+    },
+    {
+      "id": "restaurant-builds",
+      "family": "hospitality",
+      "name": "Restaurant Operational Builds",
+      "status": "proposed_unpriced",
+      "kind": "build",
+      "position": "build",
+      "price": {
+        "type": "scoped"
+      },
+      "promise": "Catering intake, menu and modifiers, reporting, labor and POS-adjacent workflow tools.",
+      "href": "/restaurant-systems/",
+      "cta": "Explore Restaurant Builds"
+    }
+  ],
+  "lab_not_services": [
+    {
+      "id": "signal",
+      "name": "Signal",
+      "type": "product",
+      "href": "/signal/",
+      "note": "The restaurant analysis offering has its own product pricing and intake; reconcile its live tiers before centralizing figures."
+    },
+    {
+      "id": "gensort",
+      "name": "GenSort",
+      "type": "product",
+      "href": "/gensort/"
+    },
+    {
+      "id": "templates",
+      "name": "Templates & Calculators",
+      "type": "proposed_collection",
+      "href": null,
+      "note": "List only downloadable products with verified files, licenses and functioning checkout."
+    },
+    {
+      "id": "field-notes",
+      "name": "Field Notes",
+      "type": "editorial",
+      "href": null,
+      "note": "Publish a real archive and opt-in system before presenting an email subscribe control."
+    }
+  ]
+}
