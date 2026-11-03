@@ -58,6 +58,7 @@ const excluded=new Set([".git",".vercel","node_modules","partials","archive","qa
 const standalone=new Set(["creative/interaction-lab/index.html","creative/cellular-scroll-study/index.html"]);
 const navRe=/<nav\b[^>]*class="[^"]*\bnavbar\b[^"]*"[^>]*>[\s\S]*?<\/nav>/i;
 const footerRe=/<footer\b[^>]*class="[^"]*\bsite-footer\b[^"]*"[^>]*>[\s\S]*?<\/footer>/i;
+const legacyCreativeFooterRe=/<footer\b[^>]*role="contentinfo"[^>]*>[\s\S]*?<\/footer>/i;
 const navMarked=/<!-- CXM:SHARED_NAV_START -->[\s\S]*?<!-- CXM:SHARED_NAV_END -->/i;
 const footerMarked=/<!-- CXM:SHARED_FOOTER_START -->[\s\S]*?<!-- CXM:SHARED_FOOTER_END -->/i;
 function allHtml(dir){let out=[];for(const e of fs.readdirSync(dir,{withFileTypes:true})){if(e.isDirectory()&&!excluded.has(e.name))out.push(...allHtml(path.join(dir,e.name)));else if(e.isFile()&&e.name.endsWith(".html"))out.push(path.join(dir,e.name))}return out}
@@ -66,10 +67,10 @@ for(const file of allHtml(root)){
  const relative=path.relative(root,file).replaceAll(path.sep,"/");
  if(standalone.has(relative))continue;
  let text=fs.readFileSync(file,"utf8"),old=text;
- if(!navRe.test(text)||!footerRe.test(text)){skipped++;continue}
+ if(!navRe.test(text)||(!footerRe.test(text)&&!(relative==="creative/self-cartography/index.html"&&legacyCreativeFooterRe.test(text)))){skipped++;continue}
  checked++;
  text=(navMarked.test(text)?text.replace(navMarked,nav):text.replace(navRe,nav));
- text=(footerMarked.test(text)?text.replace(footerMarked,footer):text.replace(footerRe,footer));
+ text=(footerMarked.test(text)?text.replace(footerMarked,footer):footerRe.test(text)?text.replace(footerRe,footer):text.replace(legacyCreativeFooterRe,footer));
  if(!text.includes('/assets/js/nav.js'))text=text.replace('</body>','<script src="/assets/js/nav.js" defer></script>\n</body>');
  if(text!==old){changed++;if(!checking)fs.writeFileSync(file,text,"utf8");console.log((checking?"DRIFT ":"SYNC  ")+relative)}
  if(!text.includes("/assets/js/nav.js"))missingScripts.push(relative);
