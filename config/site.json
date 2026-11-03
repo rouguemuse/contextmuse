@@ -42,10 +42,6 @@
       "href": "/work/",
       "children": [
         {
-          "label": "See All Work",
-          "href": "/work/"
-        },
-        {
           "label": "Client Builds",
           "href": "/systems/client-builds/"
         },
@@ -59,10 +55,6 @@
       "label": "Services",
       "href": "/services/",
       "children": [
-        {
-          "label": "Services & Pricing",
-          "href": "/services/"
-        },
         {
           "label": "Website Hosting & Care",
           "href": "/services/#care-plans"
@@ -85,10 +77,6 @@
       "label": "Lab",
       "href": "/lab/",
       "children": [
-        {
-          "label": "Explore the Lab",
-          "href": "/lab/"
-        },
         {
           "label": "Products & Tools",
           "href": "/lab/#products"
