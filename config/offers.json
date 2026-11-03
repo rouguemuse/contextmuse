@@ -370,6 +370,67 @@
       "promise": "Catering intake, menu and modifiers, reporting, labor and POS-adjacent workflow tools.",
       "href": "/restaurant-systems/",
       "cta": "Explore Restaurant Builds"
+    },
+    {
+      "id": "signal-snapshot",
+      "family": "hospitality",
+      "name": "Signal Snapshot",
+      "status": "existing_public",
+      "kind": "productized_analysis",
+      "position": "entry",
+      "price": {
+        "type": "fixed",
+        "amount": 195,
+        "currency": "USD"
+      },
+      "href": "/signal/",
+      "cta": "Explore Signal Snapshot"
+    },
+    {
+      "id": "signal-diagnostic",
+      "family": "hospitality",
+      "name": "Signal Diagnostic",
+      "status": "existing_public",
+      "kind": "productized_analysis",
+      "position": "analysis",
+      "price": {
+        "type": "fixed",
+        "amount": 595,
+        "currency": "USD"
+      },
+      "href": "/signal/",
+      "cta": "Explore Signal Diagnostic"
+    },
+    {
+      "id": "signal-deep-dive",
+      "family": "hospitality",
+      "name": "Signal Deep Dive",
+      "status": "existing_public",
+      "kind": "productized_analysis",
+      "position": "analysis",
+      "price": {
+        "type": "starting_at",
+        "amount": 1250,
+        "currency": "USD"
+      },
+      "href": "/signal/",
+      "cta": "Explore Signal Deep Dive"
+    },
+    {
+      "id": "signal-ongoing",
+      "family": "hospitality",
+      "name": "Signal Ongoing Review",
+      "status": "existing_public",
+      "kind": "recurring_analysis",
+      "position": "care",
+      "price": {
+        "type": "recurring",
+        "amount": 249,
+        "currency": "USD",
+        "interval": "month"
+      },
+      "href": "/signal/",
+      "cta": "Explore Ongoing Review"
     }
   ],
   "lab_not_services": [
@@ -378,7 +439,7 @@
       "name": "Signal",
       "type": "product",
       "href": "/signal/",
-      "note": "The restaurant analysis offering has its own product pricing and intake; reconcile its live tiers before centralizing figures."
+      "note": "Current published product analysis rates are recorded as offers signal-snapshot, signal-diagnostic, signal-deep-dive, and signal-ongoing. Signal remains a productized analysis path, not generic consulting."
     },
     {
       "id": "gensort",
