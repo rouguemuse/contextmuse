@@ -137,7 +137,7 @@
       "id": "business-website",
       "family": "web",
       "name": "Business Website Design & Launch",
-      "status": "existing_public",
+      "status": "legacy_public_replaced_in_proposal",
       "kind": "build",
       "position": "build",
       "price": {
@@ -148,7 +148,8 @@
       "source": "/quick-launch/",
       "promise": "A scoped responsive site, clear customer journey, and launch.",
       "href": "/quick-launch/",
-      "cta": "Explore Website Builds"
+      "cta": "Explore Website Builds",
+      "note": "Current Quick Launch page advertises a $2,500 one-page website. Proposed Launch/Business/Growth packages replace that single offer after approval and a route migration."
     },
     {
       "id": "quote-lead",
@@ -170,11 +171,14 @@
       "id": "website-hosting",
       "family": "web",
       "name": "Managed Website Hosting",
-      "status": "proposed_unpriced",
+      "status": "proposed_pending_approval",
       "kind": "recurring",
       "position": "care",
       "price": {
-        "type": "scoped"
+        "type": "recurring",
+        "amount": 39,
+        "currency": "USD",
+        "interval": "month"
       },
       "promise": "Domain and hosting setup, SSL, deployment management, and continuity terms defined by plan. Hosting alone does not silently include unlimited edits or 24/7 support.",
       "href": "/services/#care-plans",
@@ -184,7 +188,7 @@
       "id": "care-essential",
       "family": "web",
       "name": "Essential Care",
-      "status": "existing_public",
+      "status": "legacy_public_replaced_in_proposal",
       "kind": "recurring",
       "position": "care",
       "price": {
@@ -196,13 +200,14 @@
       },
       "promise": "Existing website lists business Vercel hosting, uptime and SSL checks, links/forms/CTAs checks, routine review and minor fixes, and backups.",
       "href": "/services/#care-plans",
-      "cta": "Discuss Essential Care"
+      "cta": "Discuss Essential Care",
+      "note": "Public $375/quarter remains on current live site until proposal approved."
     },
     {
       "id": "care-growth",
       "family": "web",
       "name": "Growth Care",
-      "status": "existing_public",
+      "status": "legacy_public_replaced_in_proposal",
       "kind": "recurring",
       "position": "care",
       "price": {
@@ -214,7 +219,8 @@
       },
       "promise": "Everything in Essential plus conversion/analytics check-in and up to two hours of small improvements per quarter.",
       "href": "/services/#care-plans",
-      "cta": "Discuss Growth Care"
+      "cta": "Discuss Growth Care",
+      "note": "Public $600/quarter remains on current live site until proposal approved."
     },
     {
       "id": "advanced-app-support",
@@ -461,5 +467,166 @@
       "href": null,
       "note": "Publish a real archive and opt-in system before presenting an email subscribe control."
     }
-  ]
+  ],
+  "proposal_status": "draft_pending_owner_approval",
+  "website_packages": [
+    {
+      "id": "launch",
+      "label": "Launch",
+      "subtitle": "A professional place to send people.",
+      "price": 1500,
+      "unit": "one-time",
+      "description": "One focused page that introduces your business, explains the offer, and makes getting in touch simple.",
+      "features": [
+        "1 responsive landing page, up to 6 sections",
+        "1 standard contact form or booking link",
+        "Click-to-call, map or social links",
+        "Basic titles, descriptions and page headings",
+        "Domain connection and deployment setup",
+        "Up to 2 consolidated revision rounds"
+      ],
+      "limits": [
+        "Client-supplied text, logo and photos",
+        "No blog, CMS, payment processing or custom calculations",
+        "Hosting and maintenance billed separately"
+      ],
+      "cta": "Ask About Launch",
+      "href": "/contact/?service=website-launch"
+    },
+    {
+      "id": "business",
+      "label": "Business",
+      "subtitle": "A credible site with room to grow.",
+      "price": 2950,
+      "unit": "one-time",
+      "description": "A complete small-business website that answers customer questions and turns interest into inquiries.",
+      "features": [
+        "Up to 5 responsive pages using 3 page layouts",
+        "1 standard inquiry/contact form with notification",
+        "Service detail pages, proof and clear CTAs",
+        "Foundational on-page SEO and analytics setup",
+        "Mobile, performance and accessibility checks",
+        "Up to 2 consolidated revision rounds"
+      ],
+      "limits": [
+        "Client-supplied copy and assets; copywriting quoted separately",
+        "No booking engine, payments, database or custom lead-routing",
+        "Hosting and maintenance billed separately"
+      ],
+      "cta": "Discuss a Business Site",
+      "href": "/contact/?service=website-business",
+      "featured": true
+    },
+    {
+      "id": "growth",
+      "label": "Growth",
+      "subtitle": "Content and campaigns without a redesign.",
+      "price": 4950,
+      "unit": "one-time",
+      "description": "An expanded site for businesses publishing content, marketing services, or supporting multiple customer journeys.",
+      "features": [
+        "Up to 10 responsive pages and 5 reusable layouts",
+        "1 simple blog or CMS collection with editor training",
+        "Up to 2 standard forms and 3 conversion events",
+        "Expanded SEO information architecture, not page-network production",
+        "Editorial content templates and launch QA",
+        "Up to 3 consolidated revision rounds"
+      ],
+      "limits": [
+        "Client-supplied content; migration and content production quoted",
+        "No custom database, 48-city SEO networks, booking inventory or integrations",
+        "Hosting and maintenance billed separately"
+      ],
+      "cta": "Plan a Growth Site",
+      "href": "/contact/?service=website-growth"
+    }
+  ],
+  "care_packages": [
+    {
+      "id": "hosting",
+      "label": "Managed Hosting",
+      "price": 39,
+      "interval": "month",
+      "subtitle": "Keep a standard site online.",
+      "description": "For a simple brochure site requiring little hands-on work.",
+      "features": [
+        "Managed deployment hosting and SSL",
+        "Domain connection oversight and basic deployment administration",
+        "Automated uptime alerts",
+        "Hosting-related support response within 2 business days"
+      ],
+      "exclusions": [
+        "No content edits, custom feature repairs or SEO work",
+        "Domain registration, email inboxes and paid platform extras are separate",
+        "No 24/7 monitoring or incident response"
+      ],
+      "href": "/contact/?service=hosting"
+    },
+    {
+      "id": "essential",
+      "label": "Essential Care",
+      "price": 129,
+      "interval": "month",
+      "subtitle": "Hosting plus defined site checks.",
+      "description": "Routine oversight of a standard business website, without an unlimited support promise.",
+      "features": [
+        "Everything in Managed Hosting",
+        "Monthly links, primary contact form, SSL and key-page check",
+        "Routine security/dependency review where applicable",
+        "Up to 20 minutes of small corrective maintenance per month",
+        "Issue acknowledgement within 2 business days"
+      ],
+      "exclusions": [
+        "No client-requested design/content edits",
+        "No rollover of unused minutes",
+        "No custom application, database, booking or payment system coverage"
+      ],
+      "href": "/contact/?service=care-essential",
+      "featured": true
+    },
+    {
+      "id": "growth",
+      "label": "Growth Care",
+      "price": 249,
+      "interval": "month",
+      "subtitle": "Maintenance, edits and visibility.",
+      "description": "For a site that needs small regular changes, with workload under control.",
+      "features": [
+        "Everything in Essential Care",
+        "Up to 60 minutes of client-requested content edits per month",
+        "Concise monthly analytics and conversion-health summary",
+        "Issue acknowledgement within 1 business day",
+        "Approved small edits scheduled within 5 business days"
+      ],
+      "exclusions": [
+        "60 minutes is the total content-edit allowance; no rollover",
+        "New pages, layouts, copywriting, campaigns, redesigns and integrations quoted",
+        "No custom application or always-on support"
+      ],
+      "href": "/contact/?service=care-growth"
+    }
+  ],
+  "website_service_terms": {
+    "status": "proposed_pending_approval",
+    "billing": "One-time build prices; 50% deposit / 50% before launch unless a written agreement states otherwise.",
+    "scope": "One website, one approved scope. Revisions are consolidated review rounds, not unlimited requests.",
+    "client_assets": "Client supplies approved text, logos, photos, and legal language. Copywriting, photography, asset sourcing, and licenses quoted separately.",
+    "extra_page": "Additional standard page from $200 using an existing approved layout and client-supplied content. New custom page layouts from $350; subject to quote.",
+    "care_extras": "Out-of-scope work $100/hour in 30-minute increments with written approval; standalone changes minimum $75.",
+    "care_billing": "Monthly in advance; 30 days notice for cancellation; existing customer contracts not automatically changed.",
+    "ownership": "Client owns deliverable website files and original content according to project contract. Domain and third-party accounts should be client-controlled.",
+    "unsupported": "Custom apps, booking inventory, authentication, database recovery, payment gateways, and integrations require separately scoped care.",
+    "backups": "Static-site source/redeploy recovery is different from database/upload backups. Never promise backup coverage without a tested restore process.",
+    "fees": "Payment processing, domain renewal, email, paid APIs, third-party licenses, and overage usage are separate.",
+    "response": "Response time means acknowledgement during standard business days, not guaranteed completion.",
+    "changes": "Final prices and terms require owner approval before public release."
+  },
+  "care_billing_replaces": {
+    "existing_public_plans": [
+      "$375/quarter Essential Care",
+      "$600/quarter Growth Care"
+    ],
+    "state": "proposed_only",
+    "note": "Do not silently modify existing agreements or the public site until approved."
+  }
 }
