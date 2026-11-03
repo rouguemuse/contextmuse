@@ -450,50 +450,30 @@
 
     <!-- Navbar -->
     <!-- Navbar -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="container nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
-                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
-                <span>Context &amp; Muse</span>
-            </a>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <div class="nav-links" id="primary-nav-links">
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
-                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
-                        <a href="/systems/" class="nav-dropdown-link">Websites &amp; Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
-                </details>
-                <a href="/creative/" class="nav-link">Creative</a>
-                <a href="/about/" class="nav-link">About</a>
-                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
-            </div>
-        </div>
-    </nav>
+    <!-- CXM:SHARED_NAV_START -->
+<nav class="navbar cxm-shared-nav" aria-label="Main Navigation">
+  <div class="container nav-container">
+    <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;text-decoration:none"><img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0"><span>Context &amp; Muse</span></a>
+    <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+    <div class="nav-links" id="primary-nav-links">
+      <details class="nav-dropdown" name="nav-dropdowns">
+        <summary class="nav-link">Work <span class="nav-dropdown-arrow" aria-hidden="true">▾</span></summary>
+        <div class="nav-dropdown-content"><a class="nav-dropdown-link" href="/work/">Work Overview</a><a class="nav-dropdown-link" href="/work/">See All Work</a><a class="nav-dropdown-link" href="/systems/client-builds/">Client Builds</a><a class="nav-dropdown-link" href="/creative/interaction-lab/">Interactive Case Studies</a></div>
+      </details>
+      <details class="nav-dropdown" name="nav-dropdowns">
+        <summary class="nav-link">Services <span class="nav-dropdown-arrow" aria-hidden="true">▾</span></summary>
+        <div class="nav-dropdown-content"><a class="nav-dropdown-link" href="/services/">Services Overview</a><a class="nav-dropdown-link" href="/services/">Services &amp; Pricing</a><a class="nav-dropdown-link" href="/services/#care-plans">Website Hosting &amp; Care</a><a class="nav-dropdown-link" href="/services/quote-lead-systems/">Quote + Lead Systems</a><a class="nav-dropdown-link" href="/restaurant-systems/">Restaurant Consulting</a><a class="nav-dropdown-link" href="/website-system-check/">Free Website + System Check</a></div>
+      </details>
+      <details class="nav-dropdown" name="nav-dropdowns">
+        <summary class="nav-link">Lab <span class="nav-dropdown-arrow" aria-hidden="true">▾</span></summary>
+        <div class="nav-dropdown-content"><a class="nav-dropdown-link" href="/lab/">Lab Overview</a><a class="nav-dropdown-link" href="/lab/">Explore the Lab</a><a class="nav-dropdown-link" href="/lab/#products">Products &amp; Tools</a><a class="nav-dropdown-link" href="/lab/#templates">Templates &amp; Calculators</a><a class="nav-dropdown-link" href="/creative/interaction-lab/">Creative Experiments</a><a class="nav-dropdown-link" href="/field-notes/">Field Notes / AI Tips</a></div>
+      </details>
+      <a class="nav-link" href="/about/">About</a>
+      <a class="nav-cta btn-magnetic" href="/contact/">Start a Project</a>
+    </div>
+  </div>
+</nav>
+<!-- CXM:SHARED_NAV_END -->
 
     <!-- Hero Section -->
     <header class="services-hero">
@@ -757,43 +737,19 @@
     </main>
 
     <!-- ── FOOTER ── -->
-        <footer class="site-footer" role="contentinfo">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="/" class="logo">
-                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
-                    <span>Context &amp; Muse</span>
-                </a>
-                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
-                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
-            </div>
-            <div class="footer-links-grid">
-                <div class="footer-col">
-                    <div class="footer-col-title">Services</div>
-                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
-                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
-                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
-                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
-                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Selected Work</div>
-                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
-                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
-                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
-                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
-                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">About</div>
-                    <a href="/about/" class="footer-link">About Jayme</a>
-                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/terms/" class="footer-link">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        <!-- CXM:SHARED_FOOTER_START -->
+<footer class="site-footer cxm-shared-footer" role="contentinfo">
+  <div class="container footer-container">
+    <div class="footer-brand"><a class="logo" href="/"><img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px"><span>Context &amp; Muse</span></a><p class="footer-tagline">Practical systems, thoughtful design, useful decisions. Founder-led and independent.</p><div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div></div>
+    <div class="footer-links-grid">
+      <div class="footer-col"><div class="footer-col-title">Explore</div><a class="footer-link" href="/work/">The Work</a><a class="footer-link" href="/systems/client-builds/">Client Builds</a><a class="footer-link" href="/creative/">Creative Practice</a><a class="footer-link" href="/creative/interaction-lab/">Interaction Lab</a></div>
+      <div class="footer-col"><div class="footer-col-title">Services</div><a class="footer-link" href="/services/">Services &amp; Pricing</a><a class="footer-link" href="/services/#care-plans">Website Hosting &amp; Care</a><a class="footer-link" href="/services/quote-lead-systems/">Quote + Lead Systems</a><a class="footer-link" href="/restaurant-systems/">Restaurant Systems</a><a class="footer-link" href="/website-system-check/">Free Website + System Check</a></div>
+      <div class="footer-col"><div class="footer-col-title">The Lab</div><a class="footer-link" href="/lab/#products">Products &amp; Tools</a><a class="footer-link" href="/lab/#templates">Templates &amp; Calculators</a><a class="footer-link" href="/field-notes/">Field Notes &amp; AI Tips</a><a class="footer-link" href="/signal/">Signal</a><a class="footer-link" href="/gensort/">GenSort</a></div>
+      <div class="footer-col"><div class="footer-col-title">Company</div><a class="footer-link" href="/about/">About</a><a class="footer-link" href="/contact/">Start a Project</a><a class="footer-link" href="/partners/">Agency Partners</a><a class="footer-link" href="/privacy/">Privacy</a><a class="footer-link" href="/terms/">Terms</a></div>
+    </div>
+  </div>
+</footer>
+<!-- CXM:SHARED_FOOTER_END -->
     <script src="/assets/js/nav.js" defer></script>
     <script src="/assets/js/whatsapp.js" defer></script>
 </body>
