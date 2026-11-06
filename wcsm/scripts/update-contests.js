@@ -5,9 +5,13 @@
  * Runs via GitHub Actions to update `directory.js` on a weekly schedule.
  */
 
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+import fs from 'node:fs';
+import path from 'node:path';
+import https from 'node:https';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Helper to fetch JSON or HTML over HTTPS
 function fetchUrl(url) {
@@ -23,31 +27,39 @@ function fetchUrl(url) {
 }
 
 async function runContestCrawler() {
-  console.log('🚀 Starting Contest Atlas directory update...');
+  const isDryRun = process.argv.includes('--dry-run') || process.env.DRY_RUN === 'true';
+  console.log(`🚀 Starting Contest Atlas directory update${isDryRun ? ' (DRY RUN)' : ''}...`);
 
   const directoryPath = path.join(__dirname, '..', 'directory.js');
-  let currentDirectory = [];
-
-  // Read existing directory if present
-  if (fs.existsSync(directoryPath)) {
-    const fileContent = fs.readFileSync(directoryPath, 'utf8');
-    const jsonMatch = fileContent.match(/window\.CONTEST_DIRECTORY\s*=\s*(\[[\s\S]*\]);/);
-    if (jsonMatch) {
-      try {
-        currentDirectory = eval(jsonMatch[1]);
-        console.log(`Loaded ${currentDirectory.length} existing opportunities from directory.js`);
-      } catch (e) {
-        console.warn('Could not parse existing directory, using base dataset');
-      }
-    }
+  if (!fs.existsSync(directoryPath)) {
+    throw new Error(`Directory file not found at ${directoryPath}`);
   }
+
+  const fileContent = fs.readFileSync(directoryPath, 'utf8');
+  const jsonMatch = fileContent.match(/window\.CONTEST_DIRECTORY\s*=\s*(\[[\s\S]*\]);/);
+  if (!jsonMatch) {
+    throw new Error('Could not locate window.CONTEST_DIRECTORY array in directory.js');
+  }
+
+  let currentDirectory;
+  try {
+    currentDirectory = JSON.parse(jsonMatch[1]);
+  } catch (e) {
+    throw new Error(`Could not parse existing directory JSON: ${e.message}`);
+  }
+
+  if (!Array.isArray(currentDirectory) || currentDirectory.length === 0) {
+    throw new Error('Parsed contest directory is empty or invalid; aborting to prevent data loss.');
+  }
+
+  console.log(`Loaded ${currentDirectory.length} existing opportunities from directory.js`);
 
   // Update deadlines to roll over to current/upcoming year dynamically
   const currentYear = new Date().getFullYear();
   const updatedList = currentDirectory.map(item => {
     if (item.annualRecurring && item.deadlineDate) {
       const parts = item.deadlineDate.split('-');
-      if (parseInt(parts[0]) < currentYear) {
+      if (parseInt(parts[0], 10) < currentYear) {
         item.deadlineDate = `${currentYear}-${parts[1]}-${parts[2]}`;
       }
     }
@@ -64,6 +76,11 @@ async function runContestCrawler() {
 
 window.CONTEST_DIRECTORY = ${JSON.stringify(updatedList, null, 2)};
 `;
+
+  if (isDryRun) {
+    console.log(`🧪 [DRY RUN] Validated ${updatedList.length} verified opportunities without modifying directory.js.`);
+    return;
+  }
 
   fs.writeFileSync(directoryPath, outputCode, 'utf8');
   console.log(`✅ Successfully updated directory.js with ${updatedList.length} verified opportunities.`);
