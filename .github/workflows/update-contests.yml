@@ -32,6 +32,11 @@ jobs:
           git add wcsm/directory.js
           if git diff --staged --quiet; then
             echo "No changes in contest directory."
+          elif [ "${GITHUB_REF}" != "refs/heads/main" ]; then
+            echo "Validation run on non-main branch (${GITHUB_REF}); verified directory output without committing."
+            git diff --staged --stat
+            git reset HEAD wcsm/directory.js
+            git checkout -- wcsm/directory.js
           else
             git commit -m "chore(contests): automated weekly contest directory update [skip ci]"
             git push
