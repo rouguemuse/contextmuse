@@ -17,7 +17,6 @@
       "destination": "/signal/sample-reports/",
       "permanent": true
     },
-
     {
       "source": "/creative-practice/how-to-explain-yourself-to-wolves/",
       "destination": "/creative/how-to-explain-yourself-to-wolves/",
@@ -82,16 +81,40 @@
       "source": "/portfolio/",
       "destination": "/systems/client-builds/",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/work",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/build",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/build/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/lab",
+      "destination": "/index.html"
     },
     {
       "source": "/lab/",
-      "destination": "/systems/",
-      "permanent": true
+      "destination": "/index.html"
+    },
+    {
+      "source": "/method",
+      "destination": "/index.html"
     },
     {
       "source": "/method/",
-      "destination": "/about/",
-      "permanent": true
+      "destination": "/index.html"
     }
   ],
   "headers": [
