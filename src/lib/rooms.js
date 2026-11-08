@@ -1,0 +1,48 @@
+export const ROOMS = [
+  {
+    id: 'work',
+    num: '01',
+    verb: 'INSPECT',
+    title: 'The Work',
+    path: '/work',
+    color: '#2C3335',
+    text: '#EDE9E0',
+    foot: 'Client builds & digital products.',
+    blurb: 'Completed websites, custom software, and interactive products—showing both the design and the working implementation.',
+  },
+  {
+    id: 'build',
+    num: '02',
+    verb: 'ASSEMBLE',
+    title: 'Custom Builds',
+    path: '/build',
+    color: '#DFDACE',
+    text: '#23282A',
+    foot: 'Websites, tools & custom software.',
+    blurb: 'See what I can create for your business—from custom websites and quoting engines to internal tools built around how you work.',
+  },
+  {
+    id: 'lab',
+    num: '03',
+    verb: 'EXPERIMENT',
+    title: 'The Lab',
+    path: '/lab',
+    color: '#D9A62E',
+    text: '#1A1E1F',
+    foot: 'Original products, AI & instruments.',
+    blurb: 'Original digital products, AI applications, and working interactive instruments built to test ideas in real code.',
+  },
+  {
+    id: 'method',
+    num: '04',
+    verb: 'CONNECT',
+    title: 'The Method',
+    path: '/method',
+    color: '#17504A',
+    text: '#EDE9E0',
+    foot: 'How I work, scope & pricing.',
+    blurb: 'How I connect design and engineering around the actual problem—with clear scope, upfront pricing, and ways to engage.',
+  },
+];
+
+export const roomById = (id) => ROOMS.find((r) => r.id === id);

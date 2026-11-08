@@ -1,0 +1,49 @@
+name: Verify SPA Build & Product Integrity
+
+on:
+  push:
+    branches: [main, 'release/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Build SPA, Verify Lead Backend & Protected Routes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Verify Reproducible SPA Build
+        run: npm run build:spa
+
+      - name: Verify Protected Product Routes & Assets Exist
+        run: |
+          test -f index.html
+          test -f signal/index.html
+          test -f signal/demo/index.html
+          test -f signal/intake/index.html
+          test -f signal/sample-reports/index.html
+          test -f signal/restaurant-data-partner/index.html
+          test -f cxm_gensort/index.html
+          test -f gensort/index.html
+          test -f wcsm/index.html
+          test -f api/lead.js
+          test -f api/diagnostic.js
+
+      - name: Run Lead Backend Unit Suite
+        run: npm run test:lead
