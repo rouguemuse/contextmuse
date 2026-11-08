@@ -31,20 +31,20 @@ export default function HeroPanel({ onEnterRoom }) {
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#D9A62E]" />
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.13em] sm:tracking-widest text-[#D9A62E] font-bold">
-            Independent Design &amp; Development Studio
+            CONTEXT &amp; MUSE / INDEPENDENT DESIGN &amp; DEVELOPMENT
           </span>
         </div>
 
         {/* Approved Two-Part Editorial Headline */}
-        <h1 className="font-display text-[clamp(1.95rem,3.4vw,3.25rem)] font-black uppercase leading-[0.96] tracking-tight text-[#EDE9E0]">
-          <span className="block">I design what people&nbsp;see.</span>
-          <span className="block text-[#D9A62E] mt-1.5">I build what makes it&nbsp;work.</span>
+        <h1 className="font-display text-[clamp(1.55rem,2.8vw,2.75rem)] font-black uppercase leading-[1.02] tracking-tight text-[#EDE9E0]">
+          <span className="block">CONCEPT TO PRODUCT.</span>
+          <span className="block text-[#D9A62E] mt-1.5">GIVING IDEAS FORM.</span>
         </h1>
 
         {/* Approved Supporting Copy */}
         <div className="max-w-xl">
           <p className="text-sm sm:text-base text-[#DFDACE]/90 leading-relaxed font-sans">
-            Custom websites, digital products, and intelligent software. From visual identity and user experience to quoting engines, operational tools, and AI-powered workflows, I create solutions built around the actual problem.
+            Websites, visual identities, digital products, and custom software. Thoughtfully designed, fully realized.
           </p>
         </div>
 
