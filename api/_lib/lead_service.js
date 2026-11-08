@@ -72,12 +72,12 @@ function normalizeInquiryType(rawType, formId, sourcePage) {
   }
 
   const combined = `${formId || ''} ${sourcePage || ''} ${rawType || ''}`.toLowerCase();
-  if (combined.includes('quote') || combined.includes('dumpster') || combined.includes('pricing')) return 'quote';
-  if (combined.includes('custom') || combined.includes('bespoke') || combined.includes('portal')) return 'custom';
-  if (combined.includes('system') || combined.includes('diagnostic') || combined.includes('audit') || combined.includes('check')) return 'systems';
+  if (combined.includes('quote') || combined.includes('dumpster') || combined.includes('pricing') || combined.includes('website')) return 'quote';
+  if (combined.includes('custom') || combined.includes('bespoke') || combined.includes('portal') || combined.includes('brand') || combined.includes('content') || combined.includes('template')) return 'custom';
+  if (combined.includes('system') || combined.includes('diagnostic') || combined.includes('audit') || combined.includes('check') || combined.includes('apps') || combined.includes('tools')) return 'systems';
   if (combined.includes('signal') || combined.includes('restaurant') || combined.includes('pos')) return 'signal';
   if (combined.includes('partner') || combined.includes('agency')) return 'partner';
-  if (combined.includes('contact') || combined.includes('wizard')) return 'contact';
+  if (combined.includes('contact') || combined.includes('wizard') || combined.includes('not sure')) return 'contact';
 
   return 'other'; // Mandatory catch-all for unknown forms
 }

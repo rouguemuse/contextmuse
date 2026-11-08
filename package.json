@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build:spa": "node scripts/build-spa.mjs",
+    "build:gensort": "node scripts/build-gensort.mjs",
     "lint": "eslint src --quiet",
     "test:lead": "node scripts/test_lead_backend.mjs",
     "test:signal": "node scripts/test_demo_custom_uploads.cjs"

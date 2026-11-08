@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useBrief } from '@/lib/BriefContext';
 import {
   X,
@@ -10,36 +9,44 @@ import {
   ArrowRight,
   Mail,
   Link as LinkIcon,
-  Compass,
   AlertCircle,
   Loader2,
 } from 'lucide-react';
 
-const PROBLEM_RECOGNITION = [
+const PROJECT_CATEGORIES = [
   {
-    id: 'Leads',
-    label: 'Leads',
-    prompt: 'Visitors land on our site, get confused, or leave without inquiring.',
+    id: 'Website',
+    label: 'Website',
+    inquiryType: 'quote',
+    formId: 'qls-intake-form',
   },
   {
-    id: 'Quoting',
-    label: 'Quoting',
-    prompt: 'Customers have to call or wait on manual spreadsheets just to get a price or size.',
+    id: 'Brand & Design',
+    label: 'Brand & Design',
+    inquiryType: 'custom',
+    formId: 'custom-intake-form',
   },
   {
-    id: 'Tools',
-    label: 'Tools',
-    prompt: 'Our team is re-typing notes across disconnected forms, clipboards, or spreadsheets.',
+    id: 'Content & Templates',
+    label: 'Content & Templates',
+    inquiryType: 'custom',
+    formId: 'custom-intake-form',
   },
   {
-    id: 'Unclear',
-    label: 'Unclear',
-    prompt: 'Something in our website or workflow is costing us time, and we want a clear diagnosis.',
+    id: 'Apps & Tools',
+    label: 'Apps & Tools',
+    inquiryType: 'systems',
+    formId: 'systems-intake-form',
+  },
+  {
+    id: 'Not Sure',
+    label: 'Not Sure',
+    inquiryType: 'contact',
+    formId: 'contact-wizard',
   },
 ];
 
 export default function BriefDrawer() {
-  const navigate = useNavigate();
   const {
     brief,
     isOpen,
@@ -74,19 +81,23 @@ export default function BriefDrawer() {
   };
 
   const resolveLeadRouting = () => {
-    const pType = (brief.inquiry.projectType || '').toLowerCase();
-    const prob = (selectedProblem || '').toLowerCase();
-    if (pType.includes('diagnostic') || prob === 'unclear') {
-      return { formId: 'diagnostic-inquiry-form', inquiryType: 'diagnostic' };
+    const matched = PROJECT_CATEGORIES.find(
+      (c) =>
+        c.id.toLowerCase() === (selectedProblem || '').toLowerCase() ||
+        c.id.toLowerCase() === (brief.inquiry.projectType || '').toLowerCase()
+    );
+    if (matched) {
+      return { formId: matched.formId, inquiryType: matched.inquiryType };
     }
-    if (pType.includes('quote') || prob === 'leads' || prob === 'quoting') {
+    const pType = (brief.inquiry.projectType || '').toLowerCase();
+    if (pType.includes('website') || pType.includes('quote')) {
       return { formId: 'qls-intake-form', inquiryType: 'quote' };
     }
-    if (pType.includes('system') || pType.includes('operations') || prob === 'tools') {
-      return { formId: 'systems-intake-form', inquiryType: 'systems' };
-    }
-    if (pType.includes('custom')) {
+    if (pType.includes('brand') || pType.includes('content') || pType.includes('template') || pType.includes('custom')) {
       return { formId: 'custom-intake-form', inquiryType: 'custom' };
+    }
+    if (pType.includes('app') || pType.includes('tool') || pType.includes('system') || pType.includes('operations')) {
+      return { formId: 'systems-intake-form', inquiryType: 'systems' };
     }
     return { formId: 'contact-wizard', inquiryType: 'contact' };
   };
@@ -95,15 +106,7 @@ export default function BriefDrawer() {
     const next = selectedProblem === item.id ? '' : item.id;
     setSelectedProblem(next);
     setSubmitError('');
-    if (next && !brief.inquiry.notes.includes(`[Focus: ${item.id}]`)) {
-      const prefix = `[Focus: ${item.id}] ${item.prompt}\n\n`;
-      updateInquiry('notes', `${prefix}${brief.inquiry.notes || ''}`.trim());
-    }
-  };
-
-  const handleGoToFreeCheck = () => {
-    closeBrief();
-    navigate('/lab#audit');
+    updateInquiry('projectType', next || 'Not Sure');
   };
 
   const handleSubmit = async (e) => {
@@ -162,8 +165,9 @@ export default function BriefDrawer() {
       _gotcha: honeypot,
       is_test: isTestSubmission,
       answers_json: {
+        project_category: selectedProblem || null,
         problem_focus: selectedProblem || null,
-        project_type: brief.inquiry.projectType || 'custom-system',
+        project_type: selectedProblem || brief.inquiry.projectType || 'Not Sure',
         timeline: brief.inquiry.timeline || '1-3-months',
         reference_url: trimmedUrl || null,
         saved_projects: brief.savedProjects,
@@ -318,30 +322,31 @@ export default function BriefDrawer() {
                   START A PROJECT
                 </span>
                 <h3 className="font-display text-base font-bold uppercase text-[#EDE9E0]">
-                  What are you looking to design, build, or improve?
+                  What are you looking to create?
                 </h3>
                 <p className="font-sans text-xs text-[#DFDACE]/90 leading-snug">
-                  Whether you need a custom website, a quoting engine, a web application, or a $395 diagnostic first, share a few details below. You don’t need a finished spec.
+                  Whether you want to build a website, shape brand and visual design, create blogs, templates, digital publications, or informational materials, or develop custom apps and tools, share a few details below. You don’t need a finished spec.
                 </p>
               </div>
 
-              {/* Compact Problem Recognition Selector (Decision #14) */}
+              {/* Project Category Selector */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/70">
-                  <span>Where is the friction? (Optional quick-tag)</span>
+                  <span>Project category (Optional)</span>
                   {selectedProblem && (
                     <span className="text-[#D9A62E] font-bold">Selected: {selectedProblem}</span>
                   )}
                 </div>
-                <div className="grid grid-cols-4 gap-1.5">
-                  {PROBLEM_RECOGNITION.map((item) => {
+                <div className="flex flex-wrap gap-1.5">
+                  {PROJECT_CATEGORIES.map((item) => {
                     const active = selectedProblem === item.id;
                     return (
                       <button
                         key={item.id}
                         type="button"
+                        data-project-category={item.id}
                         onClick={() => handleSelectProblem(item)}
-                        className={`py-1.5 px-2 rounded border font-mono text-xs font-bold uppercase tracking-wider transition-all ${
+                        className={`py-1.5 px-2.5 rounded border font-mono text-xs font-bold uppercase tracking-wider transition-all ${
                           active
                             ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617]'
                             : 'border-[#DFDACE]/20 bg-[#181B1C] text-[#EDE9E0] hover:border-[#D9A62E]/60'
@@ -352,27 +357,6 @@ export default function BriefDrawer() {
                     );
                   })}
                 </div>
-              </div>
-
-              {/* Free Check vs Paid $395 Diagnostic Distinction (Decision #14) */}
-              <div className="rounded-lg border border-[#DFDACE]/15 bg-[#181B1C] p-3 space-y-1.5 text-xs">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#D9A62E] font-bold">
-                     Two Ways to Diagnose First
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleGoToFreeCheck}
-                    className="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-[#D9A62E] hover:underline"
-                  >
-                    <Compass className="h-3 w-3" />
-                    <span>Run Free Website + System Check →</span>
-                  </button>
-                </div>
-                <p className="text-[11px] text-[#DFDACE]/80 leading-snug">
-                  <strong>Free Website + System Check:</strong> Instant interactive inspection in The Lab to spot surface bottlenecks.{' '}
-                  <strong className="text-[#EDE9E0]">$395 Business System Diagnostic:</strong> Written founder-led architecture review &amp; priority fix plan (100% credited toward a qualifying build within 30 days).
-                </p>
               </div>
 
               <form onSubmit={handleSubmit} noValidate className="space-y-3">
@@ -438,7 +422,7 @@ export default function BriefDrawer() {
 
                 <div>
                   <label className="block font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/70 mb-1">
-                    What would you like to make easier—or make possible? *
+                    Project details &amp; what you want to create *
                   </label>
                   <textarea
                     rows={3}
@@ -449,7 +433,7 @@ export default function BriefDrawer() {
                       setSubmitError('');
                       updateInquiry('notes', e.target.value);
                     }}
-                    placeholder="Describe what’s getting stuck, what you want to create, or what you wish worked differently..."
+                    placeholder="Describe your website, brand design, blog, templates, digital publication, informational materials, custom app, or other project..."
                     className="w-full bg-[#181B1C] border border-[#DFDACE]/20 px-3 py-2 text-xs text-[#EDE9E0] rounded focus:border-[#D9A62E] focus:outline-none font-sans"
                   />
                 </div>

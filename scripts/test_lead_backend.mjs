@@ -138,6 +138,38 @@ async function runTests() {
   }, '127.0.0.1', 'Mozilla/5.0');
   assert(newSubSameEmail.success === true && newSubSameEmail.submission_id !== unknownSub.submission_id, 'Legitimate second inquiry from same email is preserved as separate lead');
 
+  // Test 7b: BriefDrawer 5 Project Categories compatibility (Website / Brand & Design / Content & Templates / Apps & Tools / Not Sure)
+  const categoryCases = [
+    { category: 'Website', form_id: 'qls-intake-form', inquiry_type: 'quote', expected: 'quote' },
+    { category: 'Brand & Design', form_id: 'custom-intake-form', inquiry_type: 'custom', expected: 'custom' },
+    { category: 'Content & Templates', form_id: 'custom-intake-form', inquiry_type: 'custom', expected: 'custom' },
+    { category: 'Apps & Tools', form_id: 'systems-intake-form', inquiry_type: 'systems', expected: 'systems' },
+    { category: 'Not Sure', form_id: 'contact-wizard', inquiry_type: 'contact', expected: 'contact' },
+  ];
+  for (const c of categoryCases) {
+    const catRes = await processLeadSubmission({
+      is_test: true,
+      form_id: c.form_id,
+      source_page: '/',
+      inquiry_type: c.inquiry_type,
+      name: '[TEST] Category Visitor',
+      email: 'category-test@example.com',
+      message: `Looking to create a project in category: ${c.category} (blogs, templates, digital publications, websites, apps).`,
+      answers_json: {
+        project_category: c.category,
+        project_type: c.category,
+      },
+    }, '127.0.0.1', 'Mozilla/5.0');
+    const savedCat = getMockLeads().find(l => l.id === catRes.submission_id);
+    assert(
+      catRes.success === true &&
+        savedCat &&
+        savedCat.inquiry_type === c.expected &&
+        savedCat.answers_json?.answers_json?.project_category === c.category,
+      `BriefDrawer category "${c.category}" persists with inquiry_type="${c.expected}"`
+    );
+  }
+
   // Test 8: Rate limiting
   const testIp = '198.51.100.99';
   for (let i = 0; i < 10; i++) {
