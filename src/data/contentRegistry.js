@@ -435,15 +435,15 @@ export const ADDITIONAL_REGISTRY_ENTRIES = [
   {
     id: 'design-intelligence-01',
     aliases: ['design-intelligence'],
-    title: 'Design Intelligence Experiment 01: Locomotive Token Extraction',
-    subtitle: 'Measured Plumb-Line Alignment (24px → 0px) & Before/After Viewport Comparison',
+    title: 'Design Intelligence Studies 01–03: Plaidis, Linear & Stripe Token Extraction',
+    subtitle: 'Comparative CSS/DOM Token Extraction, Shared Specimen Slider & Plumb-Line Verification',
     year: '2026',
     sector: 'Design systems research & empirical UI verification',
-    role: 'Token Extraction, Quintic Motion Calibration, Multi-Viewport Verification',
+    role: 'Token Extraction, Shared Specimen Architecture, Multi-Viewport Verification',
     plainSentence:
-      'Extracts grid, typographic scale, and quintic easing tokens from Locomotive (locomotive.ca) and measures their structural impact on ContextMuse across desktop and mobile viewports.',
+      'Extracts verified CSS variables and computed DOM tokens from Plaidis (Locomotive), Linear, and Stripe and compares their perceptual and structural impact on an identical neutral interface specimen.',
     summary:
-      'An empirical design-systems experiment evaluating whether structured token extraction (12-column hairline grid, tight uppercase display tracking, and 450ms/200ms quintic hover choreography) measurably improves alignment while preserving product authenticity.',
+      'An empirical three-study design-systems comparison evaluating how Plaidis (editorial grid & quintic choreography), Linear (dark-mode border luminance & fractional Inter Variable weights), and Stripe (light-weight Söhne typography & navy-tinted elevation) transform the same shared specimen alongside ContextMuse Entrance before/after captures.',
     contentType: 'experiment',
     maturityStatus: 'case-study',
     visibility: 'public',
