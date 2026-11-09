@@ -201,6 +201,19 @@ export default function SiteHeader() {
                     <ArrowUpLeft className="h-3.5 w-3.5 text-[#D9A62E]" />
                   </button>
                 )}
+
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={() => {
+                    setRoomsOpen(false);
+                    navigate('/lab/design-intelligence');
+                  }}
+                  className="mt-1.5 flex w-full items-center justify-between border border-[#D9A62E]/40 bg-[#141617] px-3 py-2 font-mono text-[10.5px] uppercase tracking-wider text-[#D9A62E] transition-colors hover:bg-[#D9A62E] hover:text-[#141617] font-bold"
+                >
+                  <span>Case Study 01: Design Intelligence</span>
+                  <span>→</span>
+                </button>
               </div>
             )}
           </div>

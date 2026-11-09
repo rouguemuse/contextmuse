@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import RoomShell from '@/components/room/RoomShell';
 import RoomHeading from '@/components/room/RoomHeading';
 import FlagshipShowcase from '@/components/work/FlagshipShowcase';
@@ -11,7 +12,26 @@ import { roomById } from '@/lib/rooms';
 
 export default function Work() {
   const room = roomById('work');
-  const [openProjectId, setOpenProjectId] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [openProjectId, setOpenProjectId] = useState(
+    () => searchParams.get('case') || null
+  );
+
+  useEffect(() => {
+    const requestedCase = searchParams.get('case');
+    if (requestedCase && getProjectById(requestedCase)) {
+      setOpenProjectId(requestedCase);
+    }
+  }, [searchParams]);
+
+  const handleCloseCaseStudy = () => {
+    setOpenProjectId(null);
+    if (searchParams.has('case')) {
+      const next = new URLSearchParams(searchParams);
+      next.delete('case');
+      setSearchParams(next, { replace: true });
+    }
+  };
 
   const selectedProject = openProjectId ? getProjectById(openProjectId) : null;
 
@@ -44,7 +64,7 @@ export default function Work() {
         {selectedProject && (
           <ProofViewer
             item={selectedProject}
-            onClose={() => setOpenProjectId(null)}
+            onClose={handleCloseCaseStudy}
           />
         )}
       </div>

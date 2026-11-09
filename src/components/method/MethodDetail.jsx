@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { FileCheck } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { FileCheck, ArrowUpRight } from 'lucide-react';
 import { METHOD_CASES } from '@/components/method/methodData';
 import MethodArtifact from '@/components/method/MethodArtifact';
 
+const CASE_TO_PROJECT_ID = {
+  'lone-wolf': 'lone-wolf-dumpsters',
+  inncontrol: 'inncontrol-coils',
+};
+
 export default function MethodDetail({ stage }) {
+  const navigate = useNavigate();
   const [selectedCase, setSelectedCase] = useState('lone-wolf');
   const evidence = stage.evidenceGrounded[selectedCase];
+  const targetProjectId = CASE_TO_PROJECT_ID[selectedCase] || 'lone-wolf-dumpsters';
 
   return (
     <div className="bg-[#FAF8F5] text-[#23282A] border border-[#23282A]/15 border-t-[3px] border-t-[#17504A] p-6 sm:p-8 shadow-sm space-y-6">
@@ -42,6 +50,25 @@ export default function MethodDetail({ stage }) {
                 {c.name}
               </button>
             ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-3 pt-1 font-mono text-[11px]">
+            <button
+              type="button"
+              onClick={() => navigate(`/work?case=${targetProjectId}`)}
+              className="inline-flex items-center gap-1 font-bold text-[#17504A] hover:text-[#23282A] underline underline-offset-4"
+            >
+              <span>Open {METHOD_CASES.find((c) => c.id === selectedCase)?.name} Case Study</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </button>
+            <span className="text-[#23282A]/30">•</span>
+            <button
+              type="button"
+              onClick={() => navigate('/lab/design-intelligence')}
+              className="inline-flex items-center gap-1 text-[#23282A]/75 hover:text-[#17504A] underline underline-offset-4"
+            >
+              <span>Design Intelligence Case Study 01</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </button>
           </div>
         </div>
       </div>
@@ -80,13 +107,21 @@ export default function MethodDetail({ stage }) {
               </div>
             </div>
 
-            <div className="border-t border-[#23282A]/12 pt-3 flex items-center justify-between">
+            <div className="border-t border-[#23282A]/12 pt-3 flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <FileCheck className="h-4 w-4 text-[#17504A]" />
                 <span className="font-mono text-[11px] font-bold text-[#23282A]">
                   Artifact: {evidence?.realArtifact}
                 </span>
               </div>
+              <button
+                type="button"
+                onClick={() => navigate(`/work?case=${targetProjectId}`)}
+                className="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-[#17504A] hover:text-[#23282A] underline underline-offset-4"
+              >
+                <span>Inspect Full Case Dossier</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </button>
             </div>
           </div>
 
