@@ -13,86 +13,147 @@ import TemplateGallery from '@/components/builds/TemplateGallery';
 import useBoard, { BOARD_W, BOARD_H } from '@/hooks/useBoard';
 import { roomById } from '@/lib/rooms';
 import { useBrief } from '@/lib/BriefContext';
-import { ChevronDown, ChevronUp, Layers } from 'lucide-react';
+import {
+  Layout,
+  StickyNote,
+  GitBranch,
+  FilePlus2,
+  X,
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+} from 'lucide-react';
 
-const HINTS = {
-  select:
-    'Select mode — drag corner handles to resize. Drag top handle to move. Double-click to edit text.',
-  pen: 'Pen tool active — sketch freehand notes or arrows directly over the canvas.',
-  highlighter:
-    'Highlighter active (18% translucent) — draw emphasis over text or diagrams without obscuring copy.',
-  highlight:
-    'Highlight mode — click any piece to toggle yellow accent banner. Esc stops.',
-  connect:
-    'Connect mode — click two steps sequentially to create or toggle a connection arrow.',
-  box: 'Box tool — click & drag a rectangle to group or isolate components.',
-  circle: 'Circle tool — click & drag a circle around a focal point.',
-};
+function getInitialZoom() {
+  if (typeof window === 'undefined') return 0.75;
+  const w = window.innerWidth;
+  if (w < 420) return 0.48;
+  if (w < 768) return 0.58;
+  if (w < 1100) return 0.68;
+  return 0.75;
+}
 
 export default function Builds() {
   const room = roomById('build');
   const board = useBoard();
-  const { addWhiteboardClip, updateInquiry, openBrief, brief } = useBrief();
+  const { addWhiteboardClip, updateInquiry, openBrief, openPageMarkup, brief } = useBrief();
 
-  // Active entry mode: 'map' (default) | 'describe' | 'show'
-  const [entryMode, setEntryMode] = useState('map');
+  // Check if visitor already has real (non-starter) work on their board
+  const hasUserContent = useMemo(() => {
+    const hasUserPieces = board.pieces.some((p) => !p.isStarter);
+    const hasDrawings = (board.drawings || []).length > 0;
+    const hasConstraints = Boolean((board.constraints || '').trim());
+    return hasUserPieces || hasDrawings || hasConstraints;
+  }, [board.pieces, board.drawings, board.constraints]);
 
-  // Progressive disclosure for templates gallery
+  // Progressive disclosure: Whiteboard only opens when chosen (or if visitor already has saved user work)
+  const [isWhiteboardOpen, setIsWhiteboardOpen] = useState(() => {
+    return board.pieces.some((p) => !p.isStarter) || (board.drawings || []).length > 0;
+  });
+
+  // Track active starter choice ('blank' | 'website' | 'ideas' | 'process')
+  const [starterMode, setStarterMode] = useState('blank');
+
+  // Progressive disclosure for secondary drawers inside whiteboard
+  const [showLibrary, setShowLibrary] = useState(false);
   const [showTemplates, setShowTemplates] = useState(false);
+  const [showSnapshot, setShowSnapshot] = useState(false);
+  const [attachNotice, setAttachNotice] = useState('');
 
   // Canvas interaction state
   const [tool, setTool] = useState('select');
   const [selected, setSelected] = useState(null);
   const [linkStart, setLinkStart] = useState(null);
-  const [zoom, setZoom] = useState(0.75);
+  const [zoom, setZoom] = useState(getInitialZoom);
   const [snapping, setSnapping] = useState(true);
   const [review, setReview] = useState(false);
   const shotInput = useRef(null);
   const cascade = useRef(0);
   const canvasRef = useRef(null);
 
+  // Place new pieces near the top-left visible area so mobile and desktop users see them immediately
   const spot = useCallback(() => {
     const n = cascade.current;
     cascade.current += 1;
-    return { x: 120 + (n % 6) * 48, y: 380 + (n % 5) * 42 };
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const baseX = isMobile ? 24 : 50;
+    const baseY = isMobile ? 64 : 80;
+    return {
+      x: baseX + (n % 4) * (isMobile ? 24 : 44),
+      y: baseY + (n % 5) * (isMobile ? 32 : 40),
+    };
   }, []);
 
-  // Compute live step metrics for the entry methods bar
-  const stepCount = useMemo(() => {
-    return board.pieces.filter((p) => p.type === 'step').length;
+  // Only include non-starter pieces when serializing for an inquiry
+  const userPieces = useMemo(() => {
+    return board.pieces.filter((p) => !p.isStarter);
   }, [board.pieces]);
 
+  const stepCount = useMemo(() => {
+    return userPieces.filter((p) => p.type === 'step').length;
+  }, [userPieces]);
+
   const bottleneckCount = useMemo(() => {
-    return board.pieces.filter(
+    return userPieces.filter(
       (p) =>
         p.stepState === 'bottleneck' ||
         (p.type === 'step' && p.highlight) ||
         (p.label && /bottleneck|friction|delay|stuck/i.test(p.label))
     ).length;
-  }, [board.pieces]);
+  }, [userPieces]);
 
-  // Handle deliberate workflow reset with confirmation guard
-  const handleResetWorkflow = useCallback(() => {
-    const hasUserWork = board.pieces.some((p) => !p.isStarter) || board.pieces.length !== 4;
-    if (hasUserWork) {
-      const confirmed = window.confirm(
-        'Resetting to the starter workflow will replace your current workspace with the sample demonstration steps. Do you want to proceed?'
-      );
-      if (!confirmed) return;
-    }
-    board.loadStarterWorkflow();
-  }, [board]);
+  const handleOpenWhiteboard = useCallback(() => {
+    setIsWhiteboardOpen(true);
+    setTimeout(() => {
+      canvasRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+  }, []);
+
+  // Handle starter selection (Blank Board, Sketch a Website, Collect Ideas, Map a Process)
+  const handleSelectStarter = useCallback(
+    (mode) => {
+      if (hasUserContent) {
+        const confirmed = window.confirm(
+          'Switching starter layouts will replace the current items on your board (you can Undo with Ctrl+Z). Continue?'
+        );
+        if (!confirmed) return;
+      }
+      setStarterMode(mode);
+      setSelected(null);
+      setLinkStart(null);
+      if (mode === 'blank') {
+        board.loadBlankBoard();
+      } else if (mode === 'website') {
+        board.loadWebsiteSketchStarter();
+      } else if (mode === 'ideas') {
+        board.loadIdeaCollectionStarter();
+      } else if (mode === 'process') {
+        board.loadStarterWorkflow();
+      }
+    },
+    [board, hasUserContent]
+  );
 
   // Handle deliberate board clear with confirmation guard
   const handleClearBoard = useCallback(() => {
-    if (board.pieces.length > 0) {
+    if (board.pieces.length > 0 || (board.drawings || []).length > 0) {
       const confirmed = window.confirm(
-        'Are you sure you want to clear all elements from your board? This can be undone with Ctrl+Z.'
+        'Clear everything from your whiteboard? You can undo this with the Undo button or Ctrl+Z.'
       );
       if (!confirmed) return;
     }
     board.clearAll();
+    setStarterMode('blank');
   }, [board]);
+
+  // Fit board zoom to current screen width
+  const handleFitBoard = useCallback(() => {
+    if (typeof window === 'undefined') return;
+    const vw = Math.max(280, window.innerWidth - 48);
+    const targetContentWidth = 720;
+    const fitted = Math.max(0.38, Math.min(1, Number((vw / targetContentWidth).toFixed(2))));
+    setZoom(fitted);
+  }, []);
 
   // Handle updates from BoardPiece
   const changeText = useCallback(
@@ -104,7 +165,7 @@ export default function Builds() {
       if (fitMode != null) changes.fitMode = fitMode;
       board.updatePiece(id, changes);
     },
-    [board.updatePiece]
+    [board]
   );
 
   const changeImage = useCallback(
@@ -115,7 +176,7 @@ export default function Builds() {
         isStarter: false,
       });
     },
-    [board.updatePiece]
+    [board]
   );
 
   const deletePiece = useCallback(
@@ -123,7 +184,7 @@ export default function Builds() {
       board.removePiece(id);
       setSelected(null);
     },
-    [board.removePiece]
+    [board]
   );
 
   const handleIntent = useCallback(
@@ -184,35 +245,7 @@ export default function Builds() {
     return () => window.removeEventListener('keydown', onKey);
   }, [selected, deletePiece, board]);
 
-  // Mode 2: Describe It handler
-  const handleDescribeSubmit = (text, destination) => {
-    if (destination === 'inquiry') {
-      const existingNotes = brief?.inquiry?.notes ? `${brief.inquiry.notes}\n\n` : '';
-      updateInquiry({
-        notes: `${existingNotes}[Client Description]\n${text}`.trim(),
-      });
-      openBrief();
-    } else {
-      // Place as a memo on the canvas
-      const { x, y } = spot();
-      const id = board.addPiece({
-        type: 'note',
-        x,
-        y,
-        w: 320,
-        h: 160,
-        label: 'OPERATIONAL MEMO',
-        text,
-        highlight: true,
-        isStarter: false,
-      });
-      setSelected(id);
-      setEntryMode('map');
-      canvasRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Mode 3: Show It upload handler
+  // Upload image files onto board
   const handleUploadFiles = (files) => {
     files.forEach((f) => {
       const r = new FileReader();
@@ -222,9 +255,9 @@ export default function Builds() {
           type: 'shot',
           x,
           y,
-          w: 380,
-          h: 260,
-          label: `REF / ${f.name.slice(0, 18).toUpperCase()}`,
+          w: 320,
+          h: 220,
+          label: `IMAGE / ${f.name.slice(0, 18).toUpperCase()}`,
           text: f.name,
           fileUri: r.result,
           fitMode: 'contain',
@@ -235,15 +268,50 @@ export default function Builds() {
       };
       r.readAsDataURL(f);
     });
-    setEntryMode('map');
-    setTool('pen');
-    canvasRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setIsWhiteboardOpen(true);
+    setTool('select');
   };
 
-  // Piece addition helpers
+  // Primary & Secondary Piece Addition Helpers
+  const addTextBox = (initialText) => {
+    const { x, y } = spot();
+    const textVal = typeof initialText === 'string' ? initialText : '';
+    const id = board.addPiece({
+      type: 'text',
+      x,
+      y,
+      w: 280,
+      h: 150,
+      label: 'TEXT NOTE',
+      text: textVal,
+      highlight: false,
+      isStarter: false,
+    });
+    setSelected(id);
+    setTool('select');
+  };
+
+  const addNote = () => {
+    const { x, y } = spot();
+    const id = board.addPiece({
+      type: 'note',
+      x,
+      y,
+      w: 240,
+      h: 150,
+      label: 'STICKY NOTE',
+      text: '',
+      highlight: false,
+      isStarter: false,
+    });
+    setSelected(id);
+    setTool('select');
+  };
+
   const handleAddStep = () => {
     const id = board.addStep();
     setSelected(id);
+    setTool('select');
   };
 
   const addPage = () => {
@@ -253,50 +321,35 @@ export default function Builds() {
       x,
       y,
       w: 320,
-      h: 200,
-      label: 'CONTAINER FRAME',
-      text: 'Frame Content / Architecture notes',
+      h: 190,
+      label: 'PAGE SECTION',
+      text: '',
       columns: null,
       fitMode: 'cover',
       highlight: false,
       isStarter: false,
     });
     setSelected(id);
+    setTool('select');
   };
 
-  // Direct text addition from BoardComposer
-  const addText = (text) => {
-    const { x, y } = spot();
-    const id = board.addPiece({
-      type: 'page',
-      x,
-      y,
-      w: 320,
-      h: 170,
-      label: 'TEXT NOTE / REQUIREMENT',
-      text: text || 'Key requirement or note...',
-      highlight: false,
-      isStarter: false,
-    });
-    setSelected(id);
-  };
-
-  // Direct reference link addition from BoardComposer
   const addLink = (url) => {
     const { x, y } = spot();
+    const cleanUrl = typeof url === 'string' ? url : '';
     const id = board.addPiece({
       type: 'link',
       x,
       y,
       w: 280,
-      h: 115,
+      h: 130,
       label: 'REFERENCE LINK',
-      text: url,
-      url,
+      text: cleanUrl,
+      url: cleanUrl || 'https://',
       highlight: false,
       isStarter: false,
     });
     setSelected(id);
+    setTool('select');
   };
 
   const addRow = () => {
@@ -305,20 +358,21 @@ export default function Builds() {
       type: 'row',
       x,
       y,
-      w: 680,
+      w: 620,
       h: 180,
-      label: '3-CARD WORKFLOW GROUP',
-      text: 'Three-column sequential row',
+      label: '3-COLUMN SECTION',
+      text: 'Three-column row',
       columns: [
-        { id: 'c1', label: 'Step 01: Intake', text: 'Order received via email or web' },
-        { id: 'c2', label: 'Step 02: Verification', text: 'Operational rules evaluation' },
-        { id: 'c3', label: 'Step 03: Fulfillment', text: 'Automated invoice & calendar lock' },
+        { id: 'c1', label: 'Column 01', text: '' },
+        { id: 'c2', label: 'Column 02', text: '' },
+        { id: 'c3', label: 'Column 03', text: '' },
       ],
       fitMode: 'cover',
       highlight: false,
       isStarter: false,
     });
     setSelected(id);
+    setTool('select');
   };
 
   const addTwoSquares = () => {
@@ -327,19 +381,20 @@ export default function Builds() {
       type: 'row',
       x,
       y,
-      w: 520,
+      w: 500,
       h: 175,
-      label: '2-COLUMN COMPARISON (BEFORE ↔ AFTER)',
+      label: '2-COLUMN COMPARISON',
       text: 'Two-column comparison group',
       columns: [
-        { id: 'c1', label: 'Current Process / Friction', text: 'Manual bottleneck or existing pain point' },
-        { id: 'c2', label: 'Target Solution / Automation', text: 'Desired software behavior or outcome' },
+        { id: 'c1', label: 'Current / Before', text: '' },
+        { id: 'c2', label: 'Goal / After', text: '' },
       ],
       fitMode: 'cover',
       highlight: false,
       isStarter: false,
     });
     setSelected(id);
+    setTool('select');
   };
 
   const addCta = () => {
@@ -350,34 +405,19 @@ export default function Builds() {
       y,
       w: 240,
       h: 64,
-      label: 'ACTION CTA',
-      text: 'PRIMARY ACTION ↗',
+      label: 'ACTION BUTTON',
+      text: 'Get Started ↗',
       highlight: false,
       isStarter: false,
     });
     setSelected(id);
-  };
-
-  const addNote = () => {
-    const { x, y } = spot();
-    const id = board.addPiece({
-      type: 'note',
-      x,
-      y,
-      w: 240,
-      h: 140,
-      label: 'MEMO',
-      text: 'Constraint or engineering assumption...',
-      highlight: false,
-      isStarter: false,
-    });
-    setSelected(id);
+    setTool('select');
   };
 
   const createShape = (typeOrBox, maybeBox) => {
     const isObj = typeof typeOrBox === 'object' && typeOrBox !== null;
     const shapeType = isObj ? typeOrBox.shape || 'box' : typeOrBox;
-    const box = isObj ? typeOrBox : maybeBox || { x: 140, y: 140, w: 220, h: 140 };
+    const box = isObj ? typeOrBox : maybeBox || { x: 80, y: 100, w: 220, h: 140 };
     board.addPiece({
       type: 'shape',
       shape: shapeType,
@@ -385,14 +425,13 @@ export default function Builds() {
       y: box.y,
       w: box.w,
       h: box.h,
-      label: shapeType === 'circle' ? 'FOCUS CIRCLE' : 'GROUP CONTAINER',
+      label: shapeType === 'circle' ? 'FOCUS CIRCLE' : 'GROUP BOX',
       text: '',
       highlight: false,
       isStarter: false,
     });
   };
 
-  // Place item from BoardLibrary (Stickers & Wireframe Parts Bin)
   const placeItem = (item, dropX, dropY) => {
     const fallback = spot();
     const x = typeof dropX === 'number' ? dropX : fallback.x;
@@ -402,7 +441,7 @@ export default function Builds() {
       variant: item.variant,
       x,
       y,
-      w: item.w || 280,
+      w: item.w || 260,
       h: item.h || 150,
       label: item.label || item.title || 'COMPONENT',
       text: item.desc || item.label || '',
@@ -412,84 +451,86 @@ export default function Builds() {
     setSelected(id);
   };
 
-  // Render full board (pieces + links + hand-drawn pen & 18% highlighter strokes) to PNG dataUrl
-  const renderBoardDataUrl = useCallback(() => {
-    try {
-      const canvas = document.createElement('canvas');
-      canvas.width = BOARD_W;
-      canvas.height = BOARD_H;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return null;
+  // Render user content on board to PNG dataUrl (excluding unedited starter pieces)
+  const renderBoardDataUrl = useCallback(
+    (piecesToRender) => {
+      try {
+        const list = piecesToRender || userPieces;
+        const canvas = document.createElement('canvas');
+        canvas.width = 1200;
+        canvas.height = 800;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return null;
 
-      ctx.fillStyle = '#EDE9E0';
-      ctx.fillRect(0, 0, BOARD_W, BOARD_H);
+        ctx.fillStyle = '#EDE9E0';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#23282A';
-      ctx.font = 'bold 22px monospace';
-      ctx.fillText('CONTEXTMUSE / SYSTEM WORKFLOW SPECIFICATION', 40, 50);
+        ctx.fillStyle = '#23282A';
+        ctx.font = 'bold 20px monospace';
+        ctx.fillText('CONTEXTMUSE / WHITEBOARD SKETCH & NOTES', 32, 42);
 
-      // Draw links
-      (board.links || []).forEach((l) => {
-        const from = board.pieces.find((p) => p.id === l.from);
-        const to = board.pieces.find((p) => p.id === l.to);
-        if (!from || !to) return;
-        ctx.beginPath();
-        ctx.moveTo(from.x + from.w / 2, from.y + from.h / 2);
-        ctx.lineTo(to.x + to.w / 2, to.y + to.h / 2);
-        ctx.strokeStyle = from.stepState === 'bottleneck' ? '#E53935' : '#17504A';
-        ctx.lineWidth = 3;
-        ctx.stroke();
-      });
+        const activeIds = new Set(list.map((p) => p.id));
+        (board.links || []).forEach((l) => {
+          if (!activeIds.has(l.from) || !activeIds.has(l.to)) return;
+          const from = list.find((p) => p.id === l.from);
+          const to = list.find((p) => p.id === l.to);
+          if (!from || !to) return;
+          ctx.beginPath();
+          ctx.moveTo(from.x + from.w / 2, from.y + from.h / 2);
+          ctx.lineTo(to.x + to.w / 2, to.y + to.h / 2);
+          ctx.strokeStyle = from.stepState === 'bottleneck' ? '#E53935' : '#17504A';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+        });
 
-      // Draw pieces
-      board.pieces.forEach((p) => {
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        const isBottleneck = p.stepState === 'bottleneck';
-        ctx.fillStyle = isBottleneck ? '#FFF5F5' : p.type === 'note' ? '#E7C25A' : '#FFFFFF';
-        ctx.strokeStyle = isBottleneck ? '#E53935' : '#23282A';
-        ctx.lineWidth = isBottleneck ? 2.5 : 1.5;
-        ctx.fillRect(0, 0, p.w, p.h);
-        ctx.strokeRect(0, 0, p.w, p.h);
-        ctx.fillStyle = isBottleneck ? '#C62828' : '#23282A';
-        ctx.font = 'bold 11px monospace';
-        ctx.fillText((p.label || p.variant || p.type || 'STEP').toUpperCase().slice(0, 32), 12, 22);
-        ctx.font = '11px sans-serif';
-        ctx.fillStyle = '#333333';
-        const lines = (p.text || p.url || '').split('\n');
-        lines.forEach((l, idx) => ctx.fillText(l.slice(0, 40), 12, 42 + idx * 16));
-        ctx.restore();
-      });
+        list.forEach((p) => {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          const isBottleneck = p.stepState === 'bottleneck';
+          ctx.fillStyle = isBottleneck ? '#FFF5F5' : p.type === 'note' ? '#E7C25A' : '#FFFFFF';
+          ctx.strokeStyle = isBottleneck ? '#E53935' : '#23282A';
+          ctx.lineWidth = isBottleneck ? 2.5 : 1.5;
+          ctx.fillRect(0, 0, p.w, p.h);
+          ctx.strokeRect(0, 0, p.w, p.h);
+          ctx.fillStyle = isBottleneck ? '#C62828' : '#23282A';
+          ctx.font = 'bold 11px monospace';
+          ctx.fillText((p.label || p.variant || p.type || 'ITEM').toUpperCase().slice(0, 32), 12, 22);
+          ctx.font = '11px sans-serif';
+          ctx.fillStyle = '#333333';
+          const lines = (p.text || p.url || '').split('\n');
+          lines.forEach((l, idx) => ctx.fillText(l.slice(0, 42), 12, 42 + idx * 16));
+          ctx.restore();
+        });
 
-      // Draw freehand strokes
-      (board.drawings || []).forEach((stroke) => {
-        if (!stroke.points || stroke.points.length < 2) return;
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(stroke.points[0].x, stroke.points[0].y);
-        for (let i = 1; i < stroke.points.length; i++) {
-          ctx.lineTo(stroke.points[i].x, stroke.points[i].y);
-        }
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        if (stroke.tool === 'highlighter') {
-          ctx.strokeStyle = 'rgba(217, 166, 46, 0.18)';
-          ctx.lineWidth = stroke.size || 20;
-        } else {
-          ctx.strokeStyle = stroke.color || '#23282A';
-          ctx.lineWidth = stroke.size || 3;
-        }
-        ctx.stroke();
-        ctx.restore();
-      });
+        (board.drawings || []).forEach((stroke) => {
+          if (!stroke.points || stroke.points.length < 2) return;
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(stroke.points[0].x, stroke.points[0].y);
+          for (let i = 1; i < stroke.points.length; i++) {
+            ctx.lineTo(stroke.points[i].x, stroke.points[i].y);
+          }
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          if (stroke.tool === 'highlighter') {
+            ctx.strokeStyle = 'rgba(217, 166, 46, 0.18)';
+            ctx.lineWidth = stroke.size || 20;
+          } else {
+            ctx.strokeStyle = stroke.color || '#23282A';
+            ctx.lineWidth = stroke.size || 3;
+          }
+          ctx.stroke();
+          ctx.restore();
+        });
 
-      return canvas.toDataURL('image/png');
-    } catch {
-      return null;
-    }
-  }, [board.pieces, board.links, board.drawings]);
+        return canvas.toDataURL('image/png');
+      } catch {
+        return null;
+      }
+    },
+    [userPieces, board.links, board.drawings]
+  );
 
-  // Export helpers
   const exportJson = () => {
     const data = {
       pieces: board.pieces,
@@ -502,16 +543,16 @@ export default function Builds() {
     const str = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data, null, 2));
     const a = document.createElement('a');
     a.href = str;
-    a.download = `contextmuse-workflow-${Date.now().toString(36)}.json`;
+    a.download = `contextmuse-whiteboard-${Date.now().toString(36)}.json`;
     a.click();
   };
 
   const exportPng = () => {
-    const dataUrl = renderBoardDataUrl();
+    const dataUrl = renderBoardDataUrl(board.pieces);
     if (!dataUrl) return;
     const a = document.createElement('a');
     a.href = dataUrl;
-    a.download = `contextmuse-workflow-${Date.now().toString(36)}.png`;
+    a.download = `contextmuse-whiteboard-${Date.now().toString(36)}.png`;
     a.click();
   };
 
@@ -523,7 +564,7 @@ export default function Builds() {
       const data = JSON.parse(await file.text());
       board.load(data);
     } catch {
-      alert('Unable to parse board export file.');
+      alert('Unable to read board file.');
     }
   };
 
@@ -531,29 +572,52 @@ export default function Builds() {
     if (template.seedPieces) {
       board.loadTemplate(template.id);
     }
-    setEntryMode('map');
+    setIsWhiteboardOpen(true);
     canvasRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Attach full whiteboard snapshot + structured notes to Inquiry Brief and open drawer
+  // Attach ONLY user-created or user-edited pieces + drawings to Inquiry Brief (never unedited sample data!)
   const handleIncludeWithInquiry = () => {
-    const dataUrl = renderBoardDataUrl();
+    const activeUserPieces = board.pieces.filter((p) => !p.isStarter);
+    const activeDrawings = board.drawings || [];
+    const activeConstraints = (board.constraints || '').trim();
+
+    if (activeUserPieces.length === 0 && activeDrawings.length === 0 && !activeConstraints) {
+      setAttachNotice(
+        'Add a note, text box, or sketch (or edit one of the example cards) before attaching the board to your inquiry.'
+      );
+      setTimeout(() => setAttachNotice(''), 6000);
+      return;
+    }
+
+    setAttachNotice('');
+    const dataUrl = renderBoardDataUrl(activeUserPieces);
+    const activeIds = new Set(activeUserPieces.map((p) => p.id));
+    const activeLinks = (board.links || []).filter(
+      (l) => activeIds.has(l.from) && activeIds.has(l.to)
+    );
+
     const summaryLines = [
-      `=== WHITEBOARD SPECIFICATION (${board.pieces.length} Elements, ${bottleneckCount} Bottlenecks) ===`,
-      ...board.pieces.map(
+      `=== WHITEBOARD SKETCH (${activeUserPieces.length} Item(s)${
+        activeDrawings.length ? `, ${activeDrawings.length} Drawing Stroke(s)` : ''
+      }) ===`,
+      ...activeUserPieces.map(
         (p, idx) =>
-          `  ${idx + 1}. [${(p.type || 'step').toUpperCase()}] ${p.label || p.variant || ''}: ${
+          `  ${idx + 1}. [${(p.type || 'note').toUpperCase()}] ${p.label || p.variant || ''}: ${
             p.text || p.url || ''
           }`
       ),
-      ...(board.drawings?.length
-        ? [`  + ${board.drawings.length} freehand sketch/highlight stroke(s)`]
+      ...(activeDrawings.length
+        ? [`  + ${activeDrawings.length} freehand sketch/highlight stroke(s)`]
         : []),
+      ...(activeConstraints ? [`  Notes: ${activeConstraints}`] : []),
     ];
     const summaryText = summaryLines.join('\n');
 
     addWhiteboardClip({
-      title: `Workflow Map (${stepCount} Steps, ${bottleneckCount} Bottlenecks)`,
+      title: `Whiteboard Sketch (${activeUserPieces.length} item${
+        activeUserPieces.length === 1 ? '' : 's'
+      })`,
       note: summaryText,
       dataUrl,
       source: 'whiteboard',
@@ -562,11 +626,11 @@ export default function Builds() {
         source: 'whiteboard',
         stepCount,
         bottleneckCount,
-        piecesCount: board.pieces.length,
-        linksCount: (board.links || []).length,
-        drawingsCount: (board.drawings || []).length,
-        constraints: board.constraints || {},
-        pieces: board.pieces.map((p) => ({
+        piecesCount: activeUserPieces.length,
+        linksCount: activeLinks.length,
+        drawingsCount: activeDrawings.length,
+        constraints: activeConstraints,
+        pieces: activeUserPieces.map((p) => ({
           id: p.id,
           type: p.type,
           variant: p.variant || null,
@@ -580,7 +644,7 @@ export default function Builds() {
 
     const existingNotes = brief?.inquiry?.notes ? `${brief.inquiry.notes}\n\n` : '';
     updateInquiry({
-      projectType: brief?.inquiry?.projectType || 'Apps & Tools',
+      projectType: brief?.inquiry?.projectType || 'Custom Build',
       notes: `${existingNotes}${summaryText}`.trim(),
     });
     openBrief();
@@ -588,159 +652,319 @@ export default function Builds() {
 
   return (
     <RoomShell room={room}>
-      <div className="flex min-h-full flex-col gap-6 px-4 pb-14 pt-7 sm:px-8 sm:pb-16 sm:pt-9 lg:px-10 max-w-7xl mx-auto w-full">
+      <div className="flex min-h-full flex-col gap-4 pb-14 pt-6 sm:pb-16 sm:pt-8 max-w-7xl mx-auto w-full overflow-x-hidden">
         {/* Room Header */}
-        <RoomHeading
-          num={room.num}
-          verb={room.verb}
-          badge="Custom Websites, Quoting Engines & Business Tools"
-          title="Custom Builds."
-          watermark={room.num}
-          sub="Software designed around your business instead of forcing your team or customers to adapt to generic templates. Sketch your workflow, describe what you need, or start from a proven blueprint."
-        />
+        <div className="px-4 sm:px-8">
+          <RoomHeading
+            num={room.num}
+            verb={room.verb}
+            badge="Custom Websites, Business Tools & Thoughtful Software"
+            title="Custom Builds."
+            watermark={room.num}
+            sub="Tell me what you want to build in plain language, or open the optional whiteboard to sketch a rough layout, drop in screenshots, or map out how your business works."
+          />
+        </div>
 
         {/* ============================================================
-            1. THREE DIFFERENTIATED ENTRY METHODS (ZERO FORM FATIGUE)
+            1. PRIMARY NORMAL INQUIRY + OPTIONAL "RATHER SHOW ME?" ENTRY
             ============================================================ */}
         <BuildEntryMethods
-          activeMode={entryMode}
-          onSelectMode={setEntryMode}
-          onDescribeSubmit={handleDescribeSubmit}
-          onUploadFiles={handleUploadFiles}
-          onRestoreStarter={handleResetWorkflow}
-          stepCount={stepCount}
-          bottleneckCount={bottleneckCount}
+          isWhiteboardOpen={isWhiteboardOpen}
+          onOpenWhiteboard={handleOpenWhiteboard}
+          onOpenPageMarkup={openPageMarkup}
         />
 
         {/* ============================================================
-            2. CENTRAL VISUAL WORKSPACE (THE ACTIVE CANVAS)
+            2. OPTIONAL VISUAL WHITEBOARD (SHOWN WHEN CHOSEN)
             ============================================================ */}
-        <section ref={canvasRef} className="space-y-3">
-          {/* Canvas Toolbar */}
-          <BoardToolbar
-            tool={tool}
-            setTool={(t) => {
-              setTool(t);
-              setLinkStart(null);
-            }}
-            zoom={zoom}
-            setZoom={setZoom}
-            snapping={snapping}
-            setSnapping={setSnapping}
-            onAddStep={handleAddStep}
-            onResetWorkflow={handleResetWorkflow}
-            onAddPage={addPage}
-            onAddRow={addRow}
-            onAddTwoSquares={addTwoSquares}
-            onAddNote={addNote}
-            onAddCta={addCta}
-            onScreenshots={() => shotInput.current?.click()}
-            onUndo={board.undo}
-            onRedo={board.redo}
-            canUndo={board.canUndo}
-            canRedo={board.canRedo}
-            onClearDrawings={board.clearDrawings}
-            hasDrawings={board.drawings && board.drawings.length > 0}
-            hint={HINTS[tool]}
-          />
-
-          {/* Restored Text & Reference Link Composer */}
-          <BoardComposer onAddText={addText} onAddLink={addLink} />
-
-          {/* Interactive Canvas */}
-          <BoardCanvas
-            pieces={board.pieces}
-            links={board.links}
-            drawings={board.drawings}
-            selected={selected}
-            linkStart={linkStart}
-            zoom={zoom}
-            tool={tool}
-            snapping={snapping}
-            onCreateShape={createShape}
-            onPlace={placeItem}
-            onSelect={setSelected}
-            onIntent={handleIntent}
-            onMove={board.moveTo}
-            onResize={board.resizePiece}
-            onDuplicate={board.duplicatePiece}
-            onUngroup={board.ungroupRow}
-            onToggleCollapse={board.toggleCollapsePiece}
-            onSettle={board.settle}
-            onChangeText={changeText}
-            onChangeImage={changeImage}
-            onHighlight={board.toggleHighlight}
-            onDelete={deletePiece}
-            onAddStroke={board.addDrawingStroke}
-            onSetStepState={board.setPieceState}
-          />
-
-          {/* Restored Parts Bin / Stickers Library */}
-          <BoardLibrary onPlace={(item) => placeItem(item)} />
-
-          {/* Canvas Footer (Save State, Inquiry Attachment & Export) */}
-          <BoardFooter
-            saved={board.saved}
-            onSave={board.saveNow}
-            onExport={exportJson}
-            onExportPng={exportPng}
-            onImport={importJson}
-            onReview={() => setReview(true)}
-            onClear={handleClearBoard}
-            onIncludeWithInquiry={handleIncludeWithInquiry}
-            onAttachToBrief={handleIncludeWithInquiry}
-          />
-        </section>
-
-        {/* ============================================================
-            3. CORE DELIVERABLE: LIVE PROJECT SNAPSHOT
-            ============================================================ */}
-        <ProjectSnapshot
-          pieces={board.pieces}
-          links={board.links}
-          constraints={board.constraints}
-          onUpdateConstraints={board.updateConstraints}
-          onExportPng={exportPng}
-          onExportJson={exportJson}
-        />
-
-        {/* ============================================================
-            4. PROGRESSIVE DISCLOSURE: OPTIONAL STARTER BLUEPRINTS
-            ============================================================ */}
-        <section className="mt-4 border border-[#23282A]/20 bg-[#DFDACE]/40 rounded-xl p-5 transition-all">
-          <div
-            onClick={() => setShowTemplates(!showTemplates)}
-            className="flex items-center justify-between cursor-pointer select-none group"
+        {isWhiteboardOpen && (
+          <section
+            ref={canvasRef}
+            data-testid="whiteboard-workspace-section"
+            className="mx-auto max-w-[1440px] w-full px-4 sm:px-8 pt-2 space-y-3 animate-fadeIn"
           >
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded border border-[#23282A]/20 bg-[#EDE9E0] text-[#17504A] group-hover:border-[#17504A] transition-colors">
-                <Layers className="h-4 w-4" />
-              </div>
-              <div>
-                <h3 className="font-display text-sm font-bold uppercase tracking-tight text-[#23282A] group-hover:text-[#17504A] transition-colors">
-                  Prefer a pre-built architecture? Explore 4 Starter Blueprints
-                </h3>
-                <p className="font-mono text-[11.5px] text-[#23282A]/70">
-                  Load operational patterns for quoting engines, parametric diagnostic surveys, and booking triage.
-                </p>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              className="flex items-center gap-1.5 px-3.5 py-1.5 font-mono text-xs font-bold uppercase tracking-wider rounded border border-[#23282A]/30 text-[#23282A] group-hover:bg-[#23282A] group-hover:text-[#EDE9E0] transition-colors"
+            {/* Welcoming Starting State Selector: 4 Clear Choices */}
+            <div
+              data-testid="whiteboard-starting-choices"
+              className="rounded-xl border-2 border-[#23282A] bg-[#DFDACE] p-4 sm:p-5 shadow-[4px_4px_0_#23282A]"
             >
-              <span>{showTemplates ? 'Hide Blueprints' : 'Browse Blueprints'}</span>
-              {showTemplates ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
-            </button>
-          </div>
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                <div>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#17504A] font-bold">
+                    Visual Whiteboard — Choose How You Want to Start
+                  </span>
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-[#23282A]">
+                    Start with a blank board or load a simple example layout
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  data-testid="close-whiteboard-btn"
+                  onClick={() => setIsWhiteboardOpen(false)}
+                  className="min-h-[40px] inline-flex items-center gap-1.5 rounded-lg border border-[#23282A]/25 bg-[#EDE9E0] px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#23282A] hover:bg-[#23282A] hover:text-[#EDE9E0] transition-colors"
+                >
+                  <X className="h-3.5 w-3.5" />
+                  <span>Hide Whiteboard</span>
+                </button>
+              </div>
 
-          {showTemplates && (
-            <div className="mt-6 pt-6 border-t border-[#23282A]/15 animate-in fade-in duration-200">
-              <TemplateGallery onSelectStartingPoint={handleSelectTemplate} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                {/* Choice 1: Blank Board */}
+                <button
+                  type="button"
+                  data-testid="starter-choice-blank"
+                  onClick={() => handleSelectStarter('blank')}
+                  className={`min-h-[56px] text-left rounded-lg p-3 border-2 transition-all flex items-start gap-2.5 ${
+                    starterMode === 'blank' && board.pieces.length === 0
+                      ? 'bg-[#23282A] text-[#EDE9E0] border-[#23282A] shadow-sm'
+                      : 'bg-[#EDE9E0] text-[#23282A] border-[#23282A]/20 hover:border-[#23282A]'
+                  }`}
+                >
+                  <FilePlus2 className="h-4 w-4 text-[#D9A62E] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-mono text-xs font-bold uppercase tracking-wider">
+                      Blank Board
+                    </div>
+                    <div className="font-sans text-[11px] opacity-80 leading-snug mt-0.5">
+                      Start fresh with an empty space
+                    </div>
+                  </div>
+                </button>
+
+                {/* Choice 2: Sketch a Website */}
+                <button
+                  type="button"
+                  data-testid="starter-choice-website"
+                  onClick={() => handleSelectStarter('website')}
+                  className={`min-h-[56px] text-left rounded-lg p-3 border-2 transition-all flex items-start gap-2.5 ${
+                    starterMode === 'website' && board.pieces.length > 0
+                      ? 'bg-[#23282A] text-[#EDE9E0] border-[#23282A] shadow-sm'
+                      : 'bg-[#EDE9E0] text-[#23282A] border-[#23282A]/20 hover:border-[#23282A]'
+                  }`}
+                >
+                  <Layout className="h-4 w-4 text-[#D9A62E] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-mono text-xs font-bold uppercase tracking-wider">
+                      Sketch a Website
+                    </div>
+                    <div className="font-sans text-[11px] opacity-80 leading-snug mt-0.5">
+                      Rough out a top message, sections &amp; button
+                    </div>
+                  </div>
+                </button>
+
+                {/* Choice 3: Collect Ideas */}
+                <button
+                  type="button"
+                  data-testid="starter-choice-ideas"
+                  onClick={() => handleSelectStarter('ideas')}
+                  className={`min-h-[56px] text-left rounded-lg p-3 border-2 transition-all flex items-start gap-2.5 ${
+                    starterMode === 'ideas' && board.pieces.length > 0
+                      ? 'bg-[#23282A] text-[#EDE9E0] border-[#23282A] shadow-sm'
+                      : 'bg-[#EDE9E0] text-[#23282A] border-[#23282A]/20 hover:border-[#23282A]'
+                  }`}
+                >
+                  <StickyNote className="h-4 w-4 text-[#D9A62E] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-mono text-xs font-bold uppercase tracking-wider">
+                      Collect Ideas
+                    </div>
+                    <div className="font-sans text-[11px] opacity-80 leading-snug mt-0.5">
+                      Jot sticky notes, goals &amp; links you like
+                    </div>
+                  </div>
+                </button>
+
+                {/* Choice 4: Map a Process */}
+                <button
+                  type="button"
+                  data-testid="starter-choice-process"
+                  onClick={() => handleSelectStarter('process')}
+                  className={`min-h-[56px] text-left rounded-lg p-3 border-2 transition-all flex items-start gap-2.5 ${
+                    starterMode === 'process' && board.pieces.length > 0
+                      ? 'bg-[#23282A] text-[#EDE9E0] border-[#23282A] shadow-sm'
+                      : 'bg-[#EDE9E0] text-[#23282A] border-[#23282A]/20 hover:border-[#23282A]'
+                  }`}
+                >
+                  <GitBranch className="h-4 w-4 text-[#D9A62E] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-mono text-xs font-bold uppercase tracking-wider">
+                      Map a Process
+                    </div>
+                    <div className="font-sans text-[11px] opacity-80 leading-snug mt-0.5">
+                      Show step-by-step how work moves today
+                    </div>
+                  </div>
+                </button>
+              </div>
+
+              {board.pieces.some((p) => p.isStarter) && (
+                <div
+                  data-testid="starter-example-banner"
+                  className="mt-3 rounded-lg border border-[#17504A]/30 bg-[#17504A]/10 px-3.5 py-2 text-xs font-sans text-[#23282A] flex flex-wrap items-center justify-between gap-2"
+                >
+                  <span>
+                    <strong>Note:</strong> Cards labeled <strong>Example</strong> are sample placeholders. Edit any card to make it yours — unedited examples are never included with your inquiry.
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectStarter('blank')}
+                    className="font-mono text-[11px] font-bold uppercase underline text-[#17504A]"
+                  >
+                    Switch to Blank Board
+                  </button>
+                </div>
+              )}
+
+              {attachNotice && (
+                <div
+                  data-testid="attach-board-notice"
+                  className="mt-3 rounded-lg border border-[#D9A62E] bg-[#23282A] text-[#EDE9E0] px-4 py-2.5 text-xs font-sans flex items-center justify-between gap-2"
+                >
+                  <span>{attachNotice}</span>
+                  <button
+                    type="button"
+                    onClick={() => setAttachNotice('')}
+                    className="font-mono text-xs text-[#D9A62E] underline"
+                  >
+                    Dismiss
+                  </button>
+                </div>
+              )}
             </div>
-          )}
-        </section>
+
+            {/* Simplified Primary Toolbar + Progressive "More Tools" Drawer */}
+            <BoardToolbar
+              tool={tool}
+              onTool={(t) => {
+                setTool(t);
+                setLinkStart(null);
+              }}
+              zoom={zoom}
+              onZoomIn={() => setZoom((z) => Math.min(1.5, Number((z + 0.1).toFixed(2))))}
+              onZoomOut={() => setZoom((z) => Math.max(0.35, Number((z - 0.1).toFixed(2))))}
+              onZoomReset={() => setZoom(getInitialZoom())}
+              onFitBoard={handleFitBoard}
+              snapToGrid={snapping}
+              onToggleSnap={() => setSnapping((s) => !s)}
+              canUndo={board.canUndo}
+              canRedo={board.canRedo}
+              onUndo={board.undo}
+              onRedo={board.redo}
+              onAddText={() => addTextBox('')}
+              onAddNote={addNote}
+              onAddImage={() => shotInput.current?.click()}
+              onAddStep={handleAddStep}
+              onAddPageFrame={addPage}
+              onAddTwoColRow={addTwoSquares}
+              onAddThreeColRow={addRow}
+              onAddCta={addCta}
+              onAddRefLink={() => addLink('')}
+              onClearAll={handleClearBoard}
+              onOpenReview={() => setReview(true)}
+              onIncludeWithInquiry={handleIncludeWithInquiry}
+              showLibrary={showLibrary}
+              onToggleLibrary={() => setShowLibrary((v) => !v)}
+              showTemplates={showTemplates}
+              onToggleTemplates={() => setShowTemplates((v) => !v)}
+              hasUserContent={hasUserContent}
+            />
+
+            {/* Quick Text & Reference Link Composer */}
+            <BoardComposer onAddText={addTextBox} onAddLink={addLink} />
+
+            {/* Interactive Canvas */}
+            <BoardCanvas
+              pieces={board.pieces}
+              links={board.links}
+              drawings={board.drawings}
+              selected={selected}
+              linkStart={linkStart}
+              zoom={zoom}
+              tool={tool}
+              snapping={snapping}
+              onCreateShape={createShape}
+              onPlace={placeItem}
+              onSelect={setSelected}
+              onIntent={handleIntent}
+              onMove={board.moveTo}
+              onResize={board.resizePiece}
+              onDuplicate={board.duplicatePiece}
+              onUngroup={board.ungroupRow}
+              onToggleCollapse={board.toggleCollapsePiece}
+              onSettle={board.settle}
+              onChangeText={changeText}
+              onChangeImage={changeImage}
+              onHighlight={board.toggleHighlight}
+              onDelete={deletePiece}
+              onAddStroke={board.addDrawingStroke}
+              onSetStepState={board.setPieceState}
+              onQuickAddText={() => addTextBox('')}
+              onQuickAddNote={addNote}
+              onQuickStartDraw={() => setTool('pen')}
+              onQuickAddImage={() => shotInput.current?.click()}
+            />
+
+            {/* Optional UI Stickers & Wireframe Parts Bin (Progressive Disclosure) */}
+            {showLibrary && <BoardLibrary onPlace={(item) => placeItem(item)} />}
+
+            {/* Optional Starter Blueprints Gallery (Progressive Disclosure) */}
+            {showTemplates && (
+              <div className="rounded-xl border border-[#23282A]/20 bg-[#DFDACE] p-4 sm:p-5">
+                <TemplateGallery onSelectStartingPoint={handleSelectTemplate} />
+              </div>
+            )}
+
+            {/* Canvas Footer (Save Status, Attach to Inquiry & Export) */}
+            <BoardFooter
+              saved={board.saved}
+              onSave={board.saveNow}
+              onExport={exportJson}
+              onExportPng={exportPng}
+              onImport={importJson}
+              onReview={() => setReview(true)}
+              onClear={handleClearBoard}
+              onIncludeWithInquiry={handleIncludeWithInquiry}
+              onAttachToBrief={handleIncludeWithInquiry}
+            />
+
+            {/* Progressive Disclosure for Project Snapshot Summary (Only shown when user has content and chooses to inspect) */}
+            {hasUserContent && (
+              <div className="pt-2">
+                <button
+                  type="button"
+                  data-testid="toggle-project-snapshot"
+                  onClick={() => setShowSnapshot((s) => !s)}
+                  className="min-h-[44px] w-full flex items-center justify-between rounded-lg border border-[#23282A]/25 bg-[#DFDACE]/70 px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-[#23282A] hover:bg-[#DFDACE] transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-[#17504A]" />
+                    <span>
+                      Written Summary of Your Board ({userPieces.length} item{userPieces.length === 1 ? '' : 's'})
+                    </span>
+                  </span>
+                  <span className="flex items-center gap-1 text-[#17504A]">
+                    <span>{showSnapshot ? 'Hide Summary' : 'View Written Summary'}</span>
+                    {showSnapshot ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  </span>
+                </button>
+
+                {showSnapshot && (
+                  <div className="mt-3">
+                    <ProjectSnapshot
+                      pieces={userPieces}
+                      links={board.links}
+                      constraints={board.constraints}
+                      onUpdateConstraints={board.updateConstraints}
+                      onExportPng={exportPng}
+                      onExportJson={exportJson}
+                    />
+                  </div>
+                )}
+              </div>
+            )}
+          </section>
+        )}
       </div>
 
       {/* Hidden file input for toolbar image uploads */}

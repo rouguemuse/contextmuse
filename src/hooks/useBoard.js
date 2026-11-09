@@ -15,12 +15,12 @@ export const DEFAULT_WORKFLOW_PIECES = [
     type: 'step',
     stepNumber: 1,
     stepState: 'normal',
-    x: 80,
-    y: 120,
+    x: 40,
+    y: 80,
     w: 280,
     h: 170,
-    label: '01 / CUSTOMER INTAKE',
-    text: 'Customer submits order or service request through website or email.',
+    label: '01 / CUSTOMER INTAKE (EXAMPLE)',
+    text: 'Example: Customer submits order or service request through website or email.',
     parentId: null,
     highlight: false,
     collapsed: false,
@@ -31,11 +31,11 @@ export const DEFAULT_WORKFLOW_PIECES = [
     type: 'step',
     stepNumber: 2,
     stepState: 'bottleneck',
-    x: 440,
-    y: 120,
+    x: 360,
+    y: 80,
     w: 300,
     h: 170,
-    label: '02 / MANUAL VERIFICATION',
+    label: '02 / MANUAL VERIFICATION (EXAMPLE)',
     text: 'Example: Staff manually cross-checks sizing, pricing spreadsheets, and schedule availability across separate files.',
     parentId: null,
     highlight: true,
@@ -47,12 +47,12 @@ export const DEFAULT_WORKFLOW_PIECES = [
     type: 'step',
     stepNumber: 3,
     stepState: 'normal',
-    x: 820,
-    y: 120,
+    x: 700,
+    y: 80,
     w: 280,
     h: 170,
-    label: '03 / ORDER FULFILLMENT',
-    text: 'Confirmation email, invoice, and calendar booking dispatched back to customer.',
+    label: '03 / ORDER FULFILLMENT (EXAMPLE)',
+    text: 'Example: Confirmation email, invoice, and calendar booking dispatched back to customer.',
     parentId: null,
     highlight: false,
     collapsed: false,
@@ -61,12 +61,12 @@ export const DEFAULT_WORKFLOW_PIECES = [
   {
     id: 'note_hint',
     type: 'note',
-    x: 440,
-    y: 330,
+    x: 40,
+    y: 280,
     w: 300,
     h: 130,
-    label: 'STARTER GUIDE',
-    text: 'Tip: Click any step to change its state (e.g. Bottleneck vs Automation). Connect steps using Connect on the toolbar.',
+    label: 'EXAMPLE GUIDE',
+    text: 'Example starter: Edit any box above to make it part of your project. Unedited example boxes are never sent with your inquiry.',
     parentId: null,
     highlight: true,
     collapsed: false,
@@ -79,9 +79,131 @@ export const DEFAULT_WORKFLOW_LINKS = [
   { id: 'lk_2_3', from: 'step_2', to: 'step_3' },
 ];
 
+export const DEFAULT_WEBSITE_SKETCH_PIECES = [
+  {
+    id: 'web_hero',
+    type: 'page',
+    x: 40,
+    y: 70,
+    w: 580,
+    h: 190,
+    label: 'HERO SECTION (EXAMPLE)',
+    text: 'Example headline: What is the first thing visitors should understand when they land on your page?',
+    parentId: null,
+    highlight: false,
+    collapsed: false,
+    isStarter: true,
+  },
+  {
+    id: 'web_features',
+    type: 'row',
+    x: 40,
+    y: 280,
+    w: 580,
+    h: 190,
+    label: 'KEY SECTIONS / OFFERINGS (EXAMPLE)',
+    text: '',
+    columns: [
+      { label: '01 / WHAT YOU OFFER', text: 'Example: Main service, product, or interactive tool.' },
+      { label: '02 / WHY IT WORKS', text: 'Example: Proof, before/after results, or simple explanation.' },
+    ],
+    parentId: null,
+    highlight: false,
+    collapsed: false,
+    isStarter: true,
+  },
+  {
+    id: 'web_cta',
+    type: 'cta',
+    x: 40,
+    y: 490,
+    w: 260,
+    h: 100,
+    label: 'MAIN ACTION BUTTON (EXAMPLE)',
+    text: 'Example: Book a Quote / Get Started',
+    parentId: null,
+    highlight: true,
+    collapsed: false,
+    isStarter: true,
+  },
+  {
+    id: 'web_note',
+    type: 'note',
+    x: 330,
+    y: 490,
+    w: 290,
+    h: 120,
+    label: 'EXAMPLE SKETCH',
+    text: 'Example starter: Click any text to edit it, or drag boxes to rearrange. Unedited examples are excluded from your inquiry.',
+    parentId: null,
+    highlight: false,
+    collapsed: false,
+    isStarter: true,
+  },
+];
+
+export const DEFAULT_COLLECT_IDEAS_PIECES = [
+  {
+    id: 'idea_note_1',
+    type: 'note',
+    x: 40,
+    y: 80,
+    w: 250,
+    h: 170,
+    label: 'IDEA / WISH #1 (EXAMPLE)',
+    text: 'Example: Write down a feature, frustration, or rough thought here.',
+    parentId: null,
+    highlight: true,
+    collapsed: false,
+    isStarter: true,
+  },
+  {
+    id: 'idea_note_2',
+    type: 'note',
+    x: 310,
+    y: 80,
+    w: 250,
+    h: 170,
+    label: 'IDEA / WISH #2 (EXAMPLE)',
+    text: 'Example: Another piece of the puzzle or something customers ask for.',
+    parentId: null,
+    highlight: false,
+    collapsed: false,
+    isStarter: true,
+  },
+  {
+    id: 'idea_text_1',
+    type: 'text',
+    x: 40,
+    y: 270,
+    w: 300,
+    h: 160,
+    label: 'MAIN GOAL (EXAMPLE)',
+    text: 'Example: What would make this project a big win for you?',
+    parentId: null,
+    highlight: false,
+    collapsed: false,
+    isStarter: true,
+  },
+  {
+    id: 'idea_ref_1',
+    type: 'link',
+    x: 360,
+    y: 270,
+    w: 280,
+    h: 150,
+    label: 'INSPIRATION LINK (EXAMPLE)',
+    text: 'https://example.com — Paste a site or tool you like',
+    parentId: null,
+    highlight: false,
+    collapsed: false,
+    isStarter: true,
+  },
+];
+
 export const seed = () => ({
-  pieces: DEFAULT_WORKFLOW_PIECES,
-  links: DEFAULT_WORKFLOW_LINKS,
+  pieces: [],
+  links: [],
   drawings: [],
   constraints: '',
 });
@@ -114,7 +236,7 @@ export function migrateV2Board(v2Raw) {
           columns: Array.isArray(p.columns) ? p.columns : null,
           fitMode: p.fitMode || 'cover',
           stepState: p.stepState || (p.highlight ? 'bottleneck' : 'normal'),
-          isStarter: false, // Migrated legacy content is real visitor work
+          isStarter: Boolean(p.isStarter),
         }))
       : [];
 
@@ -143,11 +265,20 @@ export function migrateV2Board(v2Raw) {
   }
 }
 
+function isUneditedStarterBoard(parsed) {
+  if (!parsed || !Array.isArray(parsed.pieces)) return false;
+  const hasDrawings = Array.isArray(parsed.drawings) && parsed.drawings.length > 0;
+  const hasConstraints = typeof parsed.constraints === 'string' && parsed.constraints.trim().length > 0;
+  if (hasDrawings || hasConstraints) return false;
+  if (parsed.pieces.length === 0) return false;
+  return parsed.pieces.every((p) => p.isStarter === true);
+}
+
 /**
  * Discovers and initializes board state with priority order:
- * 1. Saved v3 board in localStorage
+ * 1. Saved v3 board in localStorage (if it has user content; if it's only unedited legacy default starter items, start clean)
  * 2. Automatic, nondestructive migration from saved v2 board
- * 3. Fresh starter workflow
+ * 3. Fresh blank board (visitor chooses Blank, Sketch a Website, Collect Ideas, or Map a Process)
  */
 function loadInitialBoard() {
   try {
@@ -155,6 +286,9 @@ function loadInitialBoard() {
     if (rawV3) {
       const parsed = JSON.parse(rawV3);
       if (Array.isArray(parsed.pieces) && Array.isArray(parsed.links)) {
+        if (isUneditedStarterBoard(parsed) && !parsed._userChoseStarter) {
+          return seed();
+        }
         return {
           pieces: parsed.pieces,
           links: parsed.links,
@@ -173,7 +307,9 @@ function loadInitialBoard() {
     if (rawV2) {
       const migrated = migrateV2Board(rawV2);
       if (migrated && (migrated.pieces.length > 0 || migrated.links.length > 0 || migrated.drawings.length > 0)) {
-        // Save to v3 immediately while preserving v2 intact
+        if (isUneditedStarterBoard(migrated)) {
+          return seed();
+        }
         try {
           localStorage.setItem(STORAGE_KEY_V3, JSON.stringify(migrated));
         } catch {
@@ -207,7 +343,6 @@ export default function useBoard() {
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY_V3, JSON.stringify(board));
-      // Keep v2 synchronized for backward compatibility without destroying legacy fields
       localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(board));
       setSaved(true);
     } catch (err) {
@@ -223,10 +358,10 @@ export default function useBoard() {
       parentId: null,
       highlight: false,
       collapsed: false,
-      w: 280,
-      h: 160,
-      x: 100,
-      y: 100,
+      w: 260,
+      h: 150,
+      x: 40,
+      y: 80,
       isStarter: false,
       ...partial,
     };
@@ -244,18 +379,18 @@ export default function useBoard() {
       const existingSteps = prev.pieces.filter((p) => p.type === 'step');
       const nextNum = existingSteps.length + 1;
       const lastStep = existingSteps[existingSteps.length - 1];
-      const nextX = lastStep ? Math.min(BOARD_W - 320, lastStep.x + 360) : 100;
-      const nextY = lastStep ? lastStep.y : 120;
+      const nextX = lastStep ? Math.min(BOARD_W - 320, lastStep.x + 320) : 40;
+      const nextY = lastStep ? lastStep.y : 80;
 
       createdStep = {
         id: uid('step'),
         type: 'step',
         stepNumber: nextNum,
         stepState: partial.stepState || 'normal',
-        x: partial.x || nextX,
-        y: partial.y || nextY,
-        w: partial.w || 280,
-        h: partial.h || 170,
+        x: partial.x ?? nextX,
+        y: partial.y ?? nextY,
+        w: partial.w || 270,
+        h: partial.h || 165,
         label: partial.label || `0${nextNum} / PROCESS STEP`,
         text: partial.text || 'Describe what happens at this step...',
         parentId: null,
@@ -290,7 +425,7 @@ export default function useBoard() {
                 ...p,
                 stepState,
                 highlight: stepState === 'bottleneck',
-                isStarter: false, // User explicitly set state
+                isStarter: false,
               }
             : p
         ),
@@ -306,7 +441,13 @@ export default function useBoard() {
           ? {
               ...p,
               ...changes,
-              isStarter: false, // Any edit marks piece as user content
+              label:
+                typeof changes.label === 'string'
+                  ? changes.label
+                  : p.isStarter && typeof p.label === 'string'
+                  ? p.label.replace(/\s*\(EXAMPLE\)\s*/gi, '')
+                  : p.label,
+              isStarter: false, // Any edit marks piece as real user content
             }
           : p
       ),
@@ -334,6 +475,7 @@ export default function useBoard() {
                 h: Math.max(50, Math.round(h)),
                 x: x != null ? Math.max(0, Math.round(x)) : p.x,
                 y: y != null ? Math.max(0, Math.round(y)) : p.y,
+                isStarter: false,
               }
             : p
         ),
@@ -461,7 +603,9 @@ export default function useBoard() {
       pushHistory(prev);
       return {
         ...prev,
-        pieces: prev.pieces.map((p) => (p.id === id ? { ...p, highlight: !p.highlight } : p)),
+        pieces: prev.pieces.map((p) =>
+          p.id === id ? { ...p, highlight: !p.highlight, isStarter: false } : p
+        ),
       };
     });
   }, [pushHistory]);
@@ -515,13 +659,46 @@ export default function useBoard() {
     });
   }, [pushHistory]);
 
+  const loadBlankBoard = useCallback(() => {
+    pushHistory(board);
+    setBoard({
+      pieces: [],
+      links: [],
+      drawings: [],
+      constraints: '',
+    });
+  }, [board, pushHistory]);
+
+  const loadWebsiteSketchStarter = useCallback(() => {
+    pushHistory(board);
+    setBoard({
+      pieces: JSON.parse(JSON.stringify(DEFAULT_WEBSITE_SKETCH_PIECES)),
+      links: [],
+      drawings: [],
+      constraints: '',
+      _userChoseStarter: true,
+    });
+  }, [board, pushHistory]);
+
+  const loadIdeaCollectionStarter = useCallback(() => {
+    pushHistory(board);
+    setBoard({
+      pieces: JSON.parse(JSON.stringify(DEFAULT_COLLECT_IDEAS_PIECES)),
+      links: [],
+      drawings: [],
+      constraints: '',
+      _userChoseStarter: true,
+    });
+  }, [board, pushHistory]);
+
   const loadStarterWorkflow = useCallback(() => {
     pushHistory(board);
     setBoard({
-      pieces: DEFAULT_WORKFLOW_PIECES,
-      links: DEFAULT_WORKFLOW_LINKS,
+      pieces: JSON.parse(JSON.stringify(DEFAULT_WORKFLOW_PIECES)),
+      links: JSON.parse(JSON.stringify(DEFAULT_WORKFLOW_LINKS)),
       drawings: [],
       constraints: '',
+      _userChoseStarter: true,
     });
   }, [board, pushHistory]);
 
@@ -531,25 +708,25 @@ export default function useBoard() {
 
     setBoard((prev) => {
       pushHistory(prev);
-      let startX = 80;
-      let startY = 120;
+      let startX = 40;
+      let startY = 80;
       const createdPieces = tmpl.seedPieces.map((sp, idx) => {
-        const x = startX + (idx % 3) * 360;
-        const y = startY + Math.floor(idx / 3) * 240;
+        const x = startX + (idx % 3) * 320;
+        const y = startY + Math.floor(idx / 3) * 220;
         return {
           id: uid('p'),
           type: sp.type === 'page' ? 'step' : sp.type,
           stepState: idx === 1 ? 'bottleneck' : 'normal',
           x,
           y,
-          w: sp.w || 300,
-          h: sp.h || 180,
+          w: sp.w || 280,
+          h: sp.h || 170,
           label: sp.label || `NODE / ${idx + 1}`,
           text: sp.text || '',
           parentId: null,
           highlight: idx === 1,
           collapsed: false,
-          isStarter: false,
+          isStarter: true, // Templates also start as example content until edited or included
         };
       });
 
@@ -568,6 +745,7 @@ export default function useBoard() {
         links: createdLinks,
         drawings: [],
         constraints: `Template Blueprint: ${tmpl.title}`,
+        _userChoseStarter: true,
       };
     });
   }, [pushHistory]);
@@ -598,7 +776,6 @@ export default function useBoard() {
 
   const load = useCallback((data) => {
     if (!data) return;
-    // Check if input is legacy format needing migration
     const migrated = data._migratedFromV2 ? data : migrateV2Board(data) || data;
     if (migrated && Array.isArray(migrated.pieces)) {
       pushHistory(board);
@@ -647,6 +824,9 @@ export default function useBoard() {
     toggleLink,
     addDrawingStroke,
     clearDrawings,
+    loadBlankBoard,
+    loadWebsiteSketchStarter,
+    loadIdeaCollectionStarter,
     loadStarterWorkflow,
     loadTemplate,
     undo,

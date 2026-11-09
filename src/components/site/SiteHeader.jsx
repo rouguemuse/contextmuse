@@ -56,8 +56,8 @@ export default function SiteHeader() {
 
   return (
     <header className="relative z-40 shrink-0 border-b border-[#DFDACE]/15 bg-[#23282A] text-[#EDE9E0]">
-      <div className="flex items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
-        <div className="flex items-center gap-3 sm:gap-5">
+      <div className="flex items-center justify-between gap-1.5 sm:gap-3 px-2.5 py-2.5 sm:px-6">
+        <div className="flex items-center gap-2 sm:gap-5 min-w-0 shrink">
           <Logo />
           {activeRoom && (
             <div
@@ -76,14 +76,14 @@ export default function SiteHeader() {
           )}
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Mark Up This Page Toggle */}
           <button
             type="button"
             onClick={() => setPageMarkupActive(!pageMarkupActive)}
             aria-pressed={pageMarkupActive}
             title="See something you'd like for your project? Mark up this page."
-            className={`flex items-center gap-1.5 border px-2.5 py-1.5 text-xs font-mono uppercase tracking-wider transition-colors ${
+            className={`flex items-center gap-1.5 border px-2 py-1.5 sm:px-2.5 text-xs font-mono uppercase tracking-wider transition-colors ${
               pageMarkupActive
                 ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
                 : 'border-[#DFDACE]/25 bg-[#1F2325] text-[#DFDACE]/85 hover:border-[#D9A62E] hover:text-[#D9A62E]'
@@ -104,7 +104,7 @@ export default function SiteHeader() {
               aria-haspopup="true"
               aria-label="Four Rooms navigation"
               data-active-path={currentPath}
-              className={`group flex items-center gap-2 border px-2.5 py-1.5 sm:px-3 text-xs font-mono uppercase tracking-wider transition-colors ${
+              className={`group flex items-center gap-1.5 sm:gap-2 border px-2 py-1.5 sm:px-3 text-xs font-mono uppercase tracking-wider transition-colors ${
                 roomsOpen || activeRoom
                   ? 'border-[#D9A62E]/70 bg-[#1B1F21] text-[#EDE9E0]'
                   : 'border-[#DFDACE]/25 bg-[#1F2325] text-[#DFDACE]/85 hover:border-[#D9A62E] hover:text-[#EDE9E0]'
@@ -208,7 +208,7 @@ export default function SiteHeader() {
           {/* Quick Access to My Ideas */}
           <button
             onClick={openBrief}
-            className="group flex items-center gap-2 border border-[#DFDACE]/25 bg-[#1F2325] px-3 py-1.5 text-xs font-mono transition-colors hover:border-[#D9A62E] hover:text-[#D9A62E]"
+            className="group flex items-center gap-1.5 sm:gap-2 border border-[#DFDACE]/25 bg-[#1F2325] px-2 py-1.5 sm:px-3 text-xs font-mono transition-colors hover:border-[#D9A62E] hover:text-[#D9A62E]"
             aria-label="Open my ideas"
           >
             <Lightbulb className="h-3.5 w-3.5 text-[#D9A62E]" />

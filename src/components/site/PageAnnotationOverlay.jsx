@@ -364,18 +364,19 @@ export default function PageAnnotationOverlay() {
       {pageMarkupActive && (
         <div
           data-page-markup-toolbar
-          className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-4xl bg-[#1B1F21] text-[#EDE9E0] border-2 border-[#D9A62E] rounded-xl p-3 shadow-2xl space-y-2.5"
+          className="fixed bottom-3 left-1/2 -translate-x-1/2 z-50 w-[96vw] max-w-4xl bg-[#1B1F21] text-[#EDE9E0] border-2 border-[#D9A62E] rounded-xl p-2.5 sm:p-3 shadow-2xl space-y-2 max-h-[42vh] overflow-y-auto"
         >
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex flex-wrap items-center gap-1.5">
               <span className="font-mono text-[10px] uppercase tracking-wider bg-[#D9A62E] text-[#141617] font-bold px-2 py-1 rounded">
-                Mark Up This Page ({currentPath})
+                Mark Up ({currentPath})
               </span>
 
               <button
                 type="button"
+                data-testid="markup-tool-highlighter"
                 onClick={() => setTool('highlighter')}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded font-mono text-xs uppercase tracking-wider transition-colors ${
+                className={`min-h-[44px] flex items-center gap-1.5 px-3 py-1.5 rounded font-mono text-xs uppercase tracking-wider transition-colors ${
                   tool === 'highlighter'
                     ? 'bg-[#D9A62E] text-[#141617] font-bold'
                     : 'bg-[#23282A] text-[#EDE9E0] hover:border-[#D9A62E] border border-[#DFDACE]/20'
@@ -388,8 +389,9 @@ export default function PageAnnotationOverlay() {
 
               <button
                 type="button"
+                data-testid="markup-tool-pen"
                 onClick={() => setTool('pen')}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded font-mono text-xs uppercase tracking-wider transition-colors ${
+                className={`min-h-[44px] flex items-center gap-1.5 px-3 py-1.5 rounded font-mono text-xs uppercase tracking-wider transition-colors ${
                   tool === 'pen'
                     ? 'bg-[#D9A62E] text-[#141617] font-bold'
                     : 'bg-[#23282A] text-[#EDE9E0] hover:border-[#D9A62E] border border-[#DFDACE]/20'
@@ -397,27 +399,29 @@ export default function PageAnnotationOverlay() {
                 title="Freehand Sketch Pen"
               >
                 <PenTool className="h-3.5 w-3.5" />
-                <span>Sketch Pen</span>
+                <span>Pen</span>
               </button>
 
               <button
                 type="button"
+                data-testid="markup-undo-btn"
                 onClick={handleUndo}
                 disabled={!hasAnnotations}
-                className="p-1.5 rounded bg-[#23282A] border border-[#DFDACE]/20 text-[#EDE9E0] hover:text-[#D9A62E] disabled:opacity-30"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded bg-[#23282A] border border-[#DFDACE]/20 text-[#EDE9E0] hover:text-[#D9A62E] disabled:opacity-30"
                 title="Undo last stroke or note"
               >
-                <Undo2 className="h-3.5 w-3.5" />
+                <Undo2 className="h-4 w-4" />
               </button>
 
               <button
                 type="button"
+                data-testid="markup-clear-btn"
                 onClick={handleClearPage}
                 disabled={!hasAnnotations}
-                className="p-1.5 rounded bg-[#23282A] border border-[#DFDACE]/20 text-[#EDE9E0] hover:text-red-400 disabled:opacity-30"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded bg-[#23282A] border border-[#DFDACE]/20 text-[#EDE9E0] hover:text-red-400 disabled:opacity-30"
                 title="Clear page markup"
               >
-                <Trash2 className="h-3.5 w-3.5" />
+                <Trash2 className="h-4 w-4" />
               </button>
             </div>
 
@@ -429,26 +433,28 @@ export default function PageAnnotationOverlay() {
                     closePageMarkup();
                     navigate('/build');
                   }}
-                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-[#DFDACE]/25 bg-[#23282A] text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E] font-mono text-[11px] uppercase tracking-wider transition-colors"
+                  className="min-h-[44px] flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#DFDACE]/25 bg-[#23282A] text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E] font-mono text-[11px] uppercase tracking-wider transition-colors"
                 >
                   <Layout className="h-3.5 w-3.5 text-[#D9A62E]" />
-                  <span>Open the whiteboard</span>
+                  <span>Open Whiteboard</span>
                 </button>
               )}
 
               <button
                 type="button"
+                data-testid="markup-include-inquiry-btn"
                 onClick={handleIncludeWithInquiry}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#D9A62E] text-[#141617] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#e0b240] transition-colors shadow"
+                className="min-h-[44px] flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-[#D9A62E] text-[#141617] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#e0b240] transition-colors shadow"
               >
                 <Send className="h-3.5 w-3.5" />
-                <span>Include these notes with my inquiry.</span>
+                <span>Include with Inquiry</span>
               </button>
 
               <button
                 type="button"
+                data-testid="markup-close-btn"
                 onClick={closePageMarkup}
-                className="p-1.5 rounded bg-[#23282A] text-[#DFDACE]/70 hover:text-white border border-[#DFDACE]/20"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded bg-[#23282A] text-[#DFDACE]/70 hover:text-white border border-[#DFDACE]/20"
                 title="Exit page markup mode"
               >
                 <X className="h-4 w-4" />
@@ -457,10 +463,11 @@ export default function PageAnnotationOverlay() {
           </div>
 
           {/* Quick Page Note Input */}
-          <div className="flex items-center gap-2 pt-1 border-t border-[#DFDACE]/15">
+          <div className="flex items-center gap-2 pt-1.5 border-t border-[#DFDACE]/15">
             <StickyNote className="h-4 w-4 text-[#D9A62E] shrink-0" />
             <input
               type="text"
+              data-testid="markup-quick-note-input"
               value={quickNoteText}
               onChange={(e) => setQuickNoteText(e.target.value)}
               onKeyDown={(e) => {
@@ -469,14 +476,15 @@ export default function PageAnnotationOverlay() {
                   handleAddNote(quickNoteText);
                 }
               }}
-              placeholder="Add a note about something on this page (e.g. 'We want a sizing calculator like this')..."
-              className="flex-1 bg-[#141617] border border-[#DFDACE]/25 px-3 py-1.5 rounded text-xs font-sans text-[#EDE9E0] focus:outline-none focus:border-[#D9A62E]"
+              placeholder="Pin a note to this page (e.g. 'We want something like this')..."
+              className="flex-1 min-h-[44px] min-w-0 bg-[#141617] border border-[#DFDACE]/25 px-3 py-1.5 rounded text-xs font-sans text-[#EDE9E0] focus:outline-none focus:border-[#D9A62E]"
             />
             <button
               type="button"
+              data-testid="markup-pin-note-btn"
               onClick={() => handleAddNote(quickNoteText)}
               disabled={!quickNoteText.trim()}
-              className="flex items-center gap-1 px-3 py-1.5 rounded bg-[#17504A] text-[#EDE9E0] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#1e665e] disabled:opacity-40 transition-colors shrink-0"
+              className="min-h-[44px] flex items-center gap-1 px-3.5 py-1.5 rounded bg-[#17504A] text-[#EDE9E0] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#1e665e] disabled:opacity-40 transition-colors shrink-0"
             >
               <Plus className="h-3.5 w-3.5 text-[#D9A62E]" />
               <span>Pin Note</span>

@@ -4,6 +4,7 @@ import { PIECE_MIME } from '@/components/builds/buildLibrary';
 import Connections from '@/components/builds/Connections';
 import BoardPiece from '@/components/builds/BoardPiece';
 import DrawingOverlay from '@/components/builds/DrawingOverlay';
+import { Type, StickyNote, PenTool, Image as ImageIcon } from 'lucide-react';
 
 export default function BoardCanvas({
   pieces,
@@ -30,10 +31,15 @@ export default function BoardCanvas({
   onPlace,
   onAddStroke,
   onSetStepState,
+  onQuickAddText,
+  onQuickAddNote,
+  onQuickStartDraw,
+  onQuickAddImage,
 }) {
   const [drag, setDrag] = useState(null);
   const [draft, setDraft] = useState(null);
   const drawingShape = tool === 'box' || tool === 'circle';
+  const isDrawingTool = drawingShape || tool === 'pen' || tool === 'highlighter';
 
   const at = (e) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -94,6 +100,7 @@ export default function BoardCanvas({
   const rest = pieces.filter((p) => p.type !== 'page' && p.type !== 'row');
   const ordered = [...pagesAndRows, ...rest];
   const current = pieces.find((p) => p.id === selected);
+  const isEmpty = pieces.length === 0 && drawings.length === 0;
 
   const offsetFor = (piece) => {
     if (!drag) return null;
@@ -102,7 +109,6 @@ export default function BoardCanvas({
 
   const handleDrag = useCallback(
     (id, dx, dy) => {
-      // Optional snapping
       if (snapping) {
         dx = Math.round(dx / 12) * 12;
         dy = Math.round(dy / 12) * 12;
@@ -135,43 +141,49 @@ export default function BoardCanvas({
 
   return (
     <div className="relative border border-[#23282A]/25 bg-[#C9C3B2] shadow-inner rounded-sm overflow-hidden">
-      {/* Board Top Status & Layout Controls Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#23282A]/15 bg-[#DFDACE] px-3 py-1.5 text-xs font-mono text-[#23282A]">
-        <div className="flex items-center gap-2">
-          <span className="font-bold text-[#17504A]">LAYOUT EDITOR</span>
-          <span className="text-[#23282A]/50">|</span>
-          <span className="text-[#23282A]/70 hidden sm:inline">
-            Drag corner handles to resize. Drag from top grip to move. Click × to delete.
+      {/* Board Top Status & Contextual Action Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#23282A]/15 bg-[#DFDACE] px-3 py-2 text-xs font-mono text-[#23282A]">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="font-bold text-[#17504A]">WHITEBOARD</span>
+          <span className="text-[#23282A]/40">|</span>
+          <span className="text-[#23282A]/75 text-[11px]">
+            {isDrawingTool
+              ? 'Drawing active: drag across the board to sketch. Tap "Select / Move" when done.'
+              : 'Tap any text to edit. Drag top bar to move. Drag corner square to resize.'}
           </span>
         </div>
         {current && (
-          <div className="flex items-center gap-2">
-            <span className="bg-[#23282A] text-white px-2 py-0.5 text-[10px] uppercase font-bold rounded">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="bg-[#23282A] text-white px-2 py-1 text-[10px] uppercase font-bold rounded">
               Selected: {current.type}
             </span>
             {current.type === 'row' && (
               <button
+                type="button"
                 onClick={() => onUngroup(current.id)}
-                className="bg-[#17504A] text-white px-2 py-0.5 text-[10px] uppercase tracking-wider rounded font-bold hover:bg-[#23282A] transition-colors"
+                className="min-h-[34px] bg-[#17504A] text-white px-2.5 py-1 text-[10px] uppercase tracking-wider rounded font-bold hover:bg-[#23282A] transition-colors"
               >
-                Ungroup Columns
+                Split Columns
               </button>
             )}
             <button
+              type="button"
               onClick={() => onDuplicate(current.id)}
-              className="border border-[#23282A]/30 px-2 py-0.5 text-[10px] uppercase tracking-wider hover:bg-[#D9A62E] transition-colors rounded"
+              className="min-h-[34px] border border-[#23282A]/30 px-2.5 py-1 text-[10px] uppercase tracking-wider hover:bg-[#D9A62E] transition-colors rounded"
             >
               Duplicate
             </button>
             <button
+              type="button"
               onClick={() => onHighlight(current.id)}
-              className="border border-[#23282A]/30 px-2 py-0.5 text-[10px] uppercase tracking-wider hover:bg-[#D9A62E] transition-colors rounded"
+              className="min-h-[34px] border border-[#23282A]/30 px-2.5 py-1 text-[10px] uppercase tracking-wider hover:bg-[#D9A62E] transition-colors rounded"
             >
-              {current.highlight ? 'Clear Highlight' : 'Highlight'}
+              {current.highlight ? 'Unmark' : 'Mark Important'}
             </button>
             <button
+              type="button"
               onClick={() => onDelete(current.id)}
-              className="border border-red-400 bg-red-100 text-red-900 px-2 py-0.5 text-[10px] uppercase tracking-wider hover:bg-red-200 transition-colors rounded font-bold"
+              className="min-h-[34px] border border-red-400 bg-red-100 text-red-900 px-2.5 py-1 text-[10px] uppercase tracking-wider hover:bg-red-200 transition-colors rounded font-bold"
             >
               × Delete
             </button>
@@ -179,14 +191,84 @@ export default function BoardCanvas({
         )}
       </div>
 
+      {/* Calm, Obvious First-Action Guidance When Board Is Blank */}
+      {isEmpty && !isDrawingTool && (
+        <div
+          data-testid="empty-board-guidance"
+          className="pointer-events-none absolute inset-x-4 top-14 z-20 flex justify-center"
+        >
+          <div className="pointer-events-auto max-w-xl w-full rounded-xl border-2 border-[#23282A]/25 bg-[#FAF8F5]/95 backdrop-blur-xs p-4 sm:p-5 shadow-md text-[#23282A]">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-[#17504A] font-bold">
+              Blank Board — Ready for Your Ideas
+            </div>
+            <h4 className="mt-1 font-display text-lg sm:text-xl font-bold text-[#23282A]">
+              Start anywhere — there&apos;s no wrong way to use this space.
+            </h4>
+            <p className="mt-1 font-sans text-xs sm:text-sm text-[#23282A]/75 leading-relaxed">
+              Add a note or text box, sketch freehand, or drop in a screenshot. You can move or undo anything, and click <strong>Attach to Inquiry</strong> when you&apos;re ready.
+            </p>
+            <div className="mt-3.5 flex flex-wrap gap-2">
+              {onQuickAddNote && (
+                <button
+                  type="button"
+                  data-testid="empty-board-add-note"
+                  onClick={onQuickAddNote}
+                  className="min-h-[44px] inline-flex items-center gap-1.5 rounded-lg bg-[#D9A62E] text-[#141617] px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#e5b43c] transition-colors"
+                >
+                  <StickyNote className="h-3.5 w-3.5" />
+                  <span>+ Add a Sticky Note</span>
+                </button>
+              )}
+              {onQuickAddText && (
+                <button
+                  type="button"
+                  data-testid="empty-board-add-text"
+                  onClick={onQuickAddText}
+                  className="min-h-[44px] inline-flex items-center gap-1.5 rounded-lg border border-[#23282A]/30 bg-[#EDE9E0] text-[#23282A] px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:border-[#23282A] transition-colors"
+                >
+                  <Type className="h-3.5 w-3.5" />
+                  <span>+ Add Text Box</span>
+                </button>
+              )}
+              {onQuickStartDraw && (
+                <button
+                  type="button"
+                  data-testid="empty-board-start-draw"
+                  onClick={onQuickStartDraw}
+                  className="min-h-[44px] inline-flex items-center gap-1.5 rounded-lg border border-[#23282A]/30 bg-[#EDE9E0] text-[#23282A] px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:border-[#23282A] transition-colors"
+                >
+                  <PenTool className="h-3.5 w-3.5" />
+                  <span>Draw Freehand</span>
+                </button>
+              )}
+              {onQuickAddImage && (
+                <button
+                  type="button"
+                  data-testid="empty-board-add-image"
+                  onClick={onQuickAddImage}
+                  className="min-h-[44px] inline-flex items-center gap-1.5 rounded-lg border border-[#23282A]/30 bg-[#EDE9E0] text-[#23282A] px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:border-[#23282A] transition-colors"
+                >
+                  <ImageIcon className="h-3.5 w-3.5" />
+                  <span>Add Image</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div
-        className="no-scrollbar overflow-auto overscroll-contain p-3"
-        style={{ height: 'clamp(400px, 60vh, 640px)' }}
+        data-testid="board-scroll-container"
+        className={`no-scrollbar overflow-auto overscroll-contain p-2 sm:p-3 ${
+          isDrawingTool ? 'touch-none' : 'touch-pan-x touch-pan-y'
+        }`}
+        style={{ height: 'clamp(420px, 62vh, 660px)' }}
       >
         <div style={{ width: BOARD_W * zoom, height: BOARD_H * zoom }}>
           <div
+            data-testid="board-surface"
             className={`dotgrid relative origin-top-left shadow-[4px_4px_0_rgba(35,40,42,0.12)] border border-[#23282A]/20 ${
-              drawingShape ? 'cursor-crosshair touch-none' : ''
+              isDrawingTool ? 'cursor-crosshair touch-none' : ''
             }`}
             style={{
               width: BOARD_W,
@@ -213,7 +295,7 @@ export default function BoardCanvas({
                 selected={selected === piece.id || linkStart === piece.id}
                 pending={linkStart === piece.id}
                 offset={offsetFor(piece)}
-                drawMode={drawingShape || tool === 'pen' || tool === 'highlighter'}
+                drawMode={isDrawingTool}
                 onSelect={onSelect}
                 onDrag={handleDrag}
                 onDragEnd={endDrag}
