@@ -184,7 +184,10 @@ export default function BriefDrawer() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+    <div
+      onClick={closeBrief}
+      className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm animate-in fade-in duration-200"
+    >
       <div
         className="relative flex h-full w-full max-w-xl flex-col bg-[#EDE9E0] text-[#23282A] shadow-2xl border-l-2 border-[#23282A] font-sans overflow-hidden"
         onClick={(e) => e.stopPropagation()}
