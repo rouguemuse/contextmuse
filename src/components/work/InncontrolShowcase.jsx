@@ -44,7 +44,7 @@ export default function InncontrolShowcase({ onOpenCaseStudy }) {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
           <button
             onClick={() => onOpenCaseStudy('inncontrol-coils')}
             className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono font-bold uppercase tracking-wider rounded bg-[#FF6B00] text-white hover:bg-[#e05e00] transition-colors"
@@ -63,6 +63,16 @@ export default function InncontrolShowcase({ onOpenCaseStudy }) {
             <ExternalLink className="h-3.5 w-3.5" />
           </a>
 
+          <a
+            href="/inncontrol-v2/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded border border-emerald-500/40 bg-emerald-950/30 text-emerald-300 hover:border-emerald-400 hover:text-white transition-colors"
+          >
+            <span>Operator HUD</span>
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+
           <button
             onClick={handleSave}
             title={saved ? 'Saved in My Ideas' : 'Save to My Ideas'}
@@ -72,7 +82,11 @@ export default function InncontrolShowcase({ onOpenCaseStudy }) {
                 : 'border-[#DFDACE]/25 text-[#EDE9E0] hover:border-[#FF6B00] hover:text-[#FF6B00]'
             }`}
           >
-            {saved ? <BookmarkCheck className="h-4 w-4 text-[#FF6B00]" /> : <Bookmark className="h-4 w-4" />}
+            {saved ? (
+              <BookmarkCheck className="h-4 w-4 text-[#FF6B00]" />
+            ) : (
+              <Bookmark className="h-4 w-4" />
+            )}
           </button>
         </div>
       </div>
@@ -131,7 +145,14 @@ export default function InncontrolShowcase({ onOpenCaseStudy }) {
                 <LayoutDashboard className="h-3.5 w-3.5" />
                 <span>03 / Operator Readiness &amp; Status HUD</span>
               </span>
-              <span className="text-[10px] text-[#DFDACE]/50">Internal Tooling</span>
+              <a
+                href="/inncontrol-v2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] text-emerald-400 underline hover:text-white"
+              >
+                Open /inncontrol-v2/ →
+              </a>
             </div>
 
             <p className="text-[11px] text-[#DFDACE]/80 font-sans leading-relaxed">

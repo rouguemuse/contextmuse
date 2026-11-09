@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SiteHeader from '@/components/site/SiteHeader';
 import SiteFooter from '@/components/site/SiteFooter';
+import PageAnnotationOverlay from '@/components/site/PageAnnotationOverlay';
 import HeroPanel from '@/components/home/HeroPanel';
 import RoomTile from '@/components/home/RoomTile';
 import { ROOMS } from '@/lib/rooms';
@@ -21,7 +22,7 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.25 }}
-      className="flex min-h-screen flex-col bg-ink text-bone font-sans"
+      className="relative flex min-h-screen flex-col bg-ink text-bone font-sans"
     >
       <SiteHeader />
 
@@ -46,6 +47,7 @@ export default function Home() {
         </section>
       </main>
 
+      <PageAnnotationOverlay />
       <SiteFooter />
     </motion.div>
   );

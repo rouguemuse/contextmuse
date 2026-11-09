@@ -1,556 +1,509 @@
 import React, { useState } from 'react';
-import { useBrief } from '@/lib/BriefContext';
+import { useNavigate } from 'react-router-dom';
 import {
   X,
   Trash2,
+  Send,
   Download,
-  FileText,
+  Bookmark,
+  ShieldAlert,
+  Layout,
+  Sparkles,
   CheckCircle2,
-  ArrowRight,
-  Mail,
-  Link as LinkIcon,
-  AlertCircle,
-  Loader2,
+  Lightbulb,
+  Highlighter,
 } from 'lucide-react';
+import { useBrief } from '@/lib/BriefContext';
 
-const PROJECT_CATEGORIES = [
-  {
-    id: 'Website',
-    label: 'Website',
-    inquiryType: 'quote',
-    formId: 'qls-intake-form',
-  },
-  {
-    id: 'Brand & Design',
-    label: 'Brand & Design',
-    inquiryType: 'custom',
-    formId: 'custom-intake-form',
-  },
-  {
-    id: 'Content & Templates',
-    label: 'Content & Templates',
-    inquiryType: 'custom',
-    formId: 'custom-intake-form',
-  },
-  {
-    id: 'Apps & Tools',
-    label: 'Apps & Tools',
-    inquiryType: 'systems',
-    formId: 'systems-intake-form',
-  },
-  {
-    id: 'Not Sure',
-    label: 'Not Sure',
-    inquiryType: 'contact',
-    formId: 'contact-wizard',
-  },
+const PROJECT_TYPES = [
+  'Website',
+  'Brand & Design',
+  'Content & Templates',
+  'Apps & Tools',
+  'Not Sure',
+];
+
+const BUDGET_RANGES = [
+  'Under $2k (Diagnostic / Starter)',
+  '$2k – $5k (Focused Tool / Web System)',
+  '$5k – $12k (Full Custom Build)',
+  '$12k+ (Multi-System / Retainer)',
+  'Open / Let’s Discuss',
 ];
 
 export default function BriefDrawer() {
+  const navigate = useNavigate();
   const {
     brief,
-    isOpen,
+    totalCount,
+    isDrawerOpen,
     closeBrief,
-    removeProject,
-    clearTemplate,
+    openPageMarkup,
+    toggleSaveProject,
     removeAuditFinding,
     removeWhiteboardClip,
+    removeLabClipping,
     updateInquiry,
     clearBrief,
-    totalCount,
-    exportDossier,
-    exportMarkdown,
   } = useBrief();
 
-  const [activeTab, setActiveTab] = useState('inquiry'); // 'inquiry' | 'dossier'
   const [submitted, setSubmitted] = useState(false);
-  const [submissionId, setSubmissionId] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-  const [honeypot, setHoneypot] = useState('');
-  const [attachedUrl, setAttachedUrl] = useState('');
-  const [selectedProblem, setSelectedProblem] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [includeSavedItems, setIncludeSavedItems] = useState(true);
 
-  if (!isOpen) return null;
+  if (!isDrawerOpen) return null;
 
-  const isValidEmail = (email) => {
-    if (typeof email !== 'string') return false;
-    const re =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
-    return re.test(email.trim()) && email.trim().length <= 255;
+  const generateMarkdownDossier = () => {
+    const lines = [
+      '# CONTEXT & MUSE — PROJECT INQUIRY & SAVED IDEAS',
+      `Generated: ${new Date().toLocaleDateString()}`,
+      '',
+      '## 1. INQUIRY DETAILS',
+      `- **Name:** ${brief.inquiry.name || 'Not specified'}`,
+      `- **Email:** ${brief.inquiry.email || 'Not specified'}`,
+      `- **What are you looking to create?:** ${brief.inquiry.projectType || 'Not specified'}`,
+      `- **Budget Range:** ${brief.inquiry.budget || 'Not specified'}`,
+      `- **Notes:** ${brief.inquiry.notes || 'None'}`,
+      '',
+    ];
+
+    if (includeSavedItems && brief.savedProjects.length > 0) {
+      lines.push('## 2. SAVED REFERENCE SYSTEMS (THE WORK)');
+      brief.savedProjects.forEach((p, idx) => {
+        lines.push(`${idx + 1}. **${p.title}** (${p.subtitle})`);
+      });
+      lines.push('');
+    }
+
+    if (includeSavedItems && brief.auditFindings.length > 0) {
+      lines.push('## 3. PINNED DIAGNOSTIC FINDINGS (AUDIT)');
+      brief.auditFindings.forEach((f, idx) => {
+        lines.push(`${idx + 1}. **[${f.pillar}] ${f.title}** (${f.severity})`);
+        lines.push(`   - Target: ${f.url || 'Sample'}`);
+        lines.push(`   - Recommended Fix: ${f.fix}`);
+      });
+      lines.push('');
+    }
+
+    if (includeSavedItems && brief.whiteboardClips.length > 0) {
+      lines.push('## 4. WHITEBOARD & PAGE MARKUP SNAPSHOTS');
+      brief.whiteboardClips.forEach((c, idx) => {
+        lines.push(
+          `${idx + 1}. **[${(c.source || 'whiteboard').toUpperCase()}] ${c.title}** — ${c.note}`
+        );
+      });
+      lines.push('');
+    }
+
+    if (includeSavedItems && brief.labClippings.length > 0) {
+      lines.push('## 5. WORKBENCH EXPERIMENT CLIPPINGS');
+      brief.labClippings.forEach((c, idx) => {
+        lines.push(`${idx + 1}. **${c.tool}** — ${c.summary}`);
+      });
+      lines.push('');
+    }
+
+    return lines.join('\n');
   };
 
-  const resolveLeadRouting = () => {
-    const matched = PROJECT_CATEGORIES.find(
-      (c) =>
-        c.id.toLowerCase() === (selectedProblem || '').toLowerCase() ||
-        c.id.toLowerCase() === (brief.inquiry.projectType || '').toLowerCase()
-    );
-    if (matched) {
-      return { formId: matched.formId, inquiryType: matched.inquiryType };
-    }
-    const pType = (brief.inquiry.projectType || '').toLowerCase();
-    if (pType.includes('website') || pType.includes('quote')) {
-      return { formId: 'qls-intake-form', inquiryType: 'quote' };
-    }
-    if (pType.includes('brand') || pType.includes('content') || pType.includes('template') || pType.includes('custom')) {
-      return { formId: 'custom-intake-form', inquiryType: 'custom' };
-    }
-    if (pType.includes('app') || pType.includes('tool') || pType.includes('system') || pType.includes('operations')) {
-      return { formId: 'systems-intake-form', inquiryType: 'systems' };
-    }
-    return { formId: 'contact-wizard', inquiryType: 'contact' };
-  };
-
-  const handleSelectProblem = (item) => {
-    const next = selectedProblem === item.id ? '' : item.id;
-    setSelectedProblem(next);
-    setSubmitError('');
-    updateInquiry('projectType', next || 'Not Sure');
+  const handleExportDossier = () => {
+    const md = generateMarkdownDossier();
+    const blob = new Blob([md], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `contextmuse-project-ideas-${Date.now()}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isSubmitting) return;
+    setSubmitting(true);
+    setSubmitError(null);
 
-    setSubmitError('');
-
-    const trimmedName = (brief.inquiry.name || '').trim();
-    const trimmedEmail = (brief.inquiry.email || '').trim();
-    const trimmedNotes = (brief.inquiry.notes || '').trim();
-    const trimmedUrl = (attachedUrl || '').trim();
-
-    if (!trimmedName) {
-      setSubmitError('Please provide your name.');
-      return;
-    }
-
-    if (!trimmedEmail || !isValidEmail(trimmedEmail)) {
-      setSubmitError('Please provide a valid email address so I can respond to your inquiry.');
-      return;
-    }
-
-    if (!trimmedNotes) {
-      setSubmitError('Please share a brief description of what you would like to build or improve.');
-      return;
-    }
-
-    const fullMessage =
-      trimmedUrl && !trimmedNotes.includes(trimmedUrl)
-        ? `${trimmedNotes}\n\nReference Link: ${trimmedUrl}`
-        : trimmedNotes;
-
-    if (trimmedUrl && !trimmedNotes.includes(trimmedUrl)) {
-      updateInquiry('notes', fullMessage);
-    }
-
-    const { formId, inquiryType } = resolveLeadRouting();
-    const rawPath = typeof window !== 'undefined' ? window.location.pathname : '/';
-    const sourcePage = rawPath === '/' ? '/' : rawPath.endsWith('/') ? rawPath : `${rawPath}/`;
-
-    const isTestSubmission =
-      trimmedEmail.toLowerCase().endsWith('@example.com') ||
-      trimmedName.toUpperCase().includes('[TEST]');
+    const dossierText = generateMarkdownDossier();
+    const serializedClips = includeSavedItems
+      ? brief.whiteboardClips.map((c) => ({
+          id: c.id,
+          title: c.title,
+          note: c.note,
+          source: c.source || 'whiteboard',
+          pagePath: c.pagePath || null,
+          snapshot: c.snapshot || null,
+          hasVisualSnapshot: Boolean(c.dataUrl),
+          addedAt: c.addedAt,
+        }))
+      : [];
 
     const payload = {
-      form_id: formId,
-      source_page: sourcePage,
-      inquiry_type: inquiryType,
-      name: trimmedName,
-      email: trimmedEmail,
-      company: (brief.inquiry.organization || '').trim() || undefined,
-      website: trimmedUrl || undefined,
-      timeline: brief.inquiry.timeline || undefined,
-      message: fullMessage,
-      _gotcha: honeypot,
-      is_test: isTestSubmission,
+      name: brief.inquiry.name,
+      email: brief.inquiry.email,
+      source: 'contextmuse_brief_drawer',
+      category: brief.inquiry.projectType || 'General Inquiry',
+      budget_band: brief.inquiry.budget || 'Not specified',
+      message: `${brief.inquiry.notes || ''}\n\n---\n${dossierText}`.trim(),
       answers_json: {
-        project_category: selectedProblem || null,
-        problem_focus: selectedProblem || null,
-        project_type: selectedProblem || brief.inquiry.projectType || 'Not Sure',
-        timeline: brief.inquiry.timeline || '1-3-months',
-        reference_url: trimmedUrl || null,
-        saved_projects: brief.savedProjects,
-        active_template: brief.activeTemplate,
-        saved_audit_findings: brief.savedAuditFindings,
-        whiteboard_clips: brief.whiteboardClips,
+        project_type: brief.inquiry.projectType,
+        budget: brief.inquiry.budget,
+        notes: brief.inquiry.notes,
+        include_saved_items: includeSavedItems,
+        saved_projects: includeSavedItems
+          ? brief.savedProjects.map((p) => ({ id: p.id, title: p.title }))
+          : [],
+        audit_findings: includeSavedItems ? brief.auditFindings : [],
+        whiteboard_clips: serializedClips,
+        whiteboard_snapshots: serializedClips.filter((c) => c.source !== 'page-markup'),
+        page_annotations: serializedClips.filter((c) => c.source === 'page-markup'),
+        lab_clippings: includeSavedItems ? brief.labClippings : [],
       },
     };
 
-    setIsSubmitting(true);
     try {
-      const res = await fetch('/api/lead/', {
+      const response = await fetch('/api/lead/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json().catch(() => ({}));
+      const result = await response.json().catch(() => ({}));
 
-      if (res.ok && (data.success || data.ok) && data.submission_id) {
-        setSubmissionId(data.submission_id);
-        setSubmitted(true);
-      } else {
-        setSubmitError(
-          data.error ||
-            "We couldn't safely save your inquiry yet. Please check your details and try again."
-        );
+      if (!response.ok || result.ok === false) {
+        throw new Error(result.message || 'Unable to submit inquiry right now.');
       }
-    } catch {
+
+      setSubmitted(true);
+    } catch (err) {
       setSubmitError(
-        "We couldn't reach the inquiry server. Please try again or export your dossier below."
+        err.message || 'Submission failed. You can also download your summary below.'
       );
     } finally {
-      setIsSubmitting(false);
+      setSubmitting(false);
     }
   };
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex justify-end bg-black/60 backdrop-blur-sm transition-opacity"
-      onClick={closeBrief}
-    >
+    <div className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
       <div
-        className="relative flex h-full w-full max-w-xl flex-col bg-[#23282A] text-[#EDE9E0] shadow-2xl border-l border-[#DFDACE]/20 animate-in slide-in-from-right duration-300"
+        className="relative flex h-full w-full max-w-xl flex-col bg-[#EDE9E0] text-[#23282A] shadow-2xl border-l-2 border-[#23282A] font-sans overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-[#DFDACE]/15 px-6 py-4">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#D9A62E] font-bold">
-              05 / MY IDEAS
-            </span>
-            <h2 className="font-display text-lg font-bold uppercase tracking-tight">
-              My Ideas &amp; Inquiry
-            </h2>
-            <span className="rounded-full bg-[#D9A62E] px-2 py-0.5 font-mono text-xs font-bold text-[#23282A]">
-              {totalCount} {totalCount === 1 ? 'item' : 'items'}
-            </span>
+        {/* Top Header */}
+        <div className="flex items-center justify-between border-b-2 border-[#23282A] bg-[#23282A] px-6 py-4 text-[#EDE9E0]">
+          <div className="flex items-center gap-2.5">
+            <Lightbulb className="h-5 w-5 text-[#D9A62E]" />
+            <div>
+              <h2 className="font-display text-lg font-extrabold uppercase tracking-wider">
+                Start a Project
+              </h2>
+              <p className="font-mono text-[11px] text-[#EDE9E0]/70">
+                Tell me what you have in mind • {totalCount} saved item
+                {totalCount === 1 ? '' : 's'}
+              </p>
+            </div>
           </div>
           <button
             onClick={closeBrief}
-            className="rounded p-1 text-[#DFDACE]/60 hover:bg-[#DFDACE]/10 hover:text-[#EDE9E0] transition-colors"
-            aria-label="Close my ideas drawer"
+            className="rounded p-1.5 text-[#EDE9E0]/70 hover:bg-white/10 hover:text-white transition-colors"
+            aria-label="Close drawer"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        {/* Direct Contact Strip */}
-        <div className="bg-[#17504A]/40 border-b border-[#17504A] px-6 py-2 flex items-center justify-between text-xs font-mono text-[#EDE9E0]/85">
-          <span className="flex items-center gap-1.5">
-            <Mail className="h-3.5 w-3.5 text-[#D9A62E]" />
-            Context &amp; Muse • jayme@contextmuse.com
-          </span>
-          <span className="text-[#D9A62E]">Independent Design &amp; Development Studio</span>
-        </div>
-
-        {/* Tab Navigation */}
-        <div className="flex border-b border-[#DFDACE]/15 bg-[#1F2325]">
-          <button
-            onClick={() => setActiveTab('inquiry')}
-            className={`flex-1 py-3 text-xs font-mono uppercase tracking-wider transition-colors ${
-              activeTab === 'inquiry'
-                ? 'border-b-2 border-[#D9A62E] text-[#D9A62E] font-bold bg-[#23282A]'
-                : 'text-[#DFDACE]/60 hover:text-[#EDE9E0]'
-            }`}
-          >
-            Start a Project (Inquiry)
-          </button>
-          <button
-            onClick={() => setActiveTab('dossier')}
-            className={`flex-1 py-3 text-xs font-mono uppercase tracking-wider transition-colors ${
-              activeTab === 'dossier'
-                ? 'border-b-2 border-[#D9A62E] text-[#D9A62E] font-bold bg-[#23282A]'
-                : 'text-[#DFDACE]/60 hover:text-[#EDE9E0]'
-            }`}
-          >
-            Saved Examples &amp; Notes ({totalCount})
-          </button>
-        </div>
-
-        {/* Content Body */}
-        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
-          {submitted ? (
-            <div className="py-8 text-center space-y-4">
-              <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#17504A] text-[#D9A62E]">
-                <CheckCircle2 className="h-8 w-8" />
-              </div>
-              <h3 className="font-display text-xl font-bold uppercase tracking-tight">
-                Inquiry Received &amp; Saved
-              </h3>
-              {submissionId && (
-                <div className="inline-block rounded border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 font-mono text-xs text-emerald-300">
-                  Reference ID: <span className="font-bold">{submissionId}</span>
-                </div>
-              )}
-              <p className="text-sm text-[#DFDACE]/80 leading-relaxed max-w-md mx-auto">
-                Your inquiry and saved reference items have been recorded. You can also download a local copy of your dossier below or email <a href="mailto:jayme@contextmuse.com" className="text-[#D9A62E] underline">jayme@contextmuse.com</a> directly.
-              </p>
-              <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
-                <button
-                  onClick={exportDossier}
-                  className="flex items-center justify-center gap-2 bg-[#D9A62E] px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-[#23282A] hover:bg-[#c49425] transition-colors rounded"
-                >
-                  <Download className="h-4 w-4" /> Download JSON
-                </button>
-                <button
-                  onClick={exportMarkdown}
-                  className="flex items-center justify-center gap-2 border border-[#DFDACE]/30 px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-[#EDE9E0] hover:bg-[#DFDACE]/10 transition-colors rounded"
-                >
-                  <FileText className="h-4 w-4" /> Export Markdown
-                </button>
-              </div>
+        {/* Scrollable Content */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+          {/* Quick Entry Paths: Mark up this page OR Open the whiteboard */}
+          <div className="rounded-lg border border-[#23282A]/20 bg-white/70 p-3.5 space-y-2">
+            <span className="font-mono text-[10px] uppercase tracking-wider font-bold text-[#17504A] block">
+              Rather show than tell? Attach visual notes:
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <button
+                type="button"
                 onClick={() => {
-                  setSubmitted(false);
-                  setSubmitError('');
+                  closeBrief();
+                  openPageMarkup();
                 }}
-                className="mt-6 text-xs font-mono text-[#DFDACE]/60 underline hover:text-[#D9A62E]"
+                className="flex items-center justify-between gap-2 px-3 py-2 rounded border border-[#23282A]/25 bg-[#EDE9E0] hover:bg-[#23282A] hover:text-[#EDE9E0] font-mono text-[11px] font-bold uppercase tracking-wider transition-colors"
               >
-                ← Return to edit
+                <span className="flex items-center gap-1.5">
+                  <Highlighter className="h-3.5 w-3.5 text-[#D9A62E]" />
+                  <span>Mark up this page</span>
+                </span>
+                <span>→</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  closeBrief();
+                  navigate('/build');
+                }}
+                className="flex items-center justify-between gap-2 px-3 py-2 rounded border border-[#23282A]/25 bg-[#EDE9E0] hover:bg-[#23282A] hover:text-[#EDE9E0] font-mono text-[11px] font-bold uppercase tracking-wider transition-colors"
+              >
+                <span className="flex items-center gap-1.5">
+                  <Layout className="h-3.5 w-3.5 text-[#17504A]" />
+                  <span>Open the whiteboard</span>
+                </span>
+                <span>→</span>
               </button>
             </div>
-          ) : activeTab === 'inquiry' ? (
-            <div className="space-y-3.5">
-              {/* Core Prompt */}
-              <div className="border border-[#17504A] bg-[#17504A]/20 p-3.5 rounded-lg space-y-1">
-                <span className="font-mono text-[11px] uppercase tracking-widest text-[#D9A62E] font-bold">
-                  START A PROJECT
-                </span>
-                <h3 className="font-display text-base font-bold uppercase text-[#EDE9E0]">
-                  What are you looking to create?
-                </h3>
-                <p className="font-sans text-xs text-[#DFDACE]/90 leading-snug">
-                  Whether you want to build a website, shape brand and visual design, create blogs, templates, digital publications, or informational materials, or develop custom apps and tools, share a few details below. You don’t need a finished spec.
+          </div>
+
+          {/* 1. Primary Inquiry Form */}
+          <div className="space-y-4">
+            {submitted ? (
+              <div className="rounded-lg border-2 border-[#17504A] bg-[#17504A]/10 p-5 text-center space-y-3">
+                <CheckCircle2 className="h-8 w-8 text-[#17504A] mx-auto" />
+                <h4 className="font-display text-lg font-bold uppercase text-[#17504A]">
+                  Project Inquiry Received
+                </h4>
+                <p className="text-xs text-[#23282A]/80 leading-relaxed">
+                  Thank you! Your project details
+                  {includeSavedItems && totalCount > 0 ? ' and attached notes/snapshots' : ''} have
+                  been saved. You can also download a Markdown copy for your records below.
                 </p>
-              </div>
-
-              {/* Project Category Selector */}
-              <div className="space-y-1.5">
-                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/70">
-                  <span>Project category (Optional)</span>
-                  {selectedProblem && (
-                    <span className="text-[#D9A62E] font-bold">Selected: {selectedProblem}</span>
-                  )}
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {PROJECT_CATEGORIES.map((item) => {
-                    const active = selectedProblem === item.id;
-                    return (
-                      <button
-                        key={item.id}
-                        type="button"
-                        data-project-category={item.id}
-                        onClick={() => handleSelectProblem(item)}
-                        className={`py-1.5 px-2.5 rounded border font-mono text-xs font-bold uppercase tracking-wider transition-all ${
-                          active
-                            ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617]'
-                            : 'border-[#DFDACE]/20 bg-[#181B1C] text-[#EDE9E0] hover:border-[#D9A62E]/60'
-                        }`}
-                      >
-                        {item.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <form onSubmit={handleSubmit} noValidate className="space-y-3">
-                {/* Honeypot trap for spam protection */}
-                <input
-                  type="text"
-                  name="_gotcha"
-                  value={honeypot}
-                  onChange={(e) => setHoneypot(e.target.value)}
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  className="hidden"
-                />
-
-                {submitError && (
-                  <div
-                    role="alert"
-                    className="flex items-start gap-2.5 rounded border border-red-400/50 bg-red-950/40 p-3 text-xs text-red-200"
+                <div className="flex justify-center gap-2 pt-2">
+                  <button
+                    onClick={handleExportDossier}
+                    className="flex items-center gap-1.5 bg-[#23282A] text-[#EDE9E0] px-4 py-2 text-xs font-mono uppercase tracking-wider rounded hover:bg-[#17504A] transition-colors"
                   >
-                    <AlertCircle className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
-                    <span>{submitError}</span>
-                  </div>
-                )}
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <Download className="h-3.5 w-3.5 text-[#D9A62E]" />
+                    <span>Download Copy (.MD)</span>
+                  </button>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="px-3 py-2 text-xs font-mono uppercase underline text-[#23282A]/70 hover:text-[#23282A]"
+                  >
+                    Edit Inquiry
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid gap-3 sm:grid-cols-2">
                   <div>
-                    <label className="block font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/70 mb-1">
+                    <label className="block font-mono text-[10px] uppercase tracking-wider text-[#23282A]/70 mb-1 font-bold">
                       Your Name *
                     </label>
                     <input
                       type="text"
-                      name="name"
                       required
                       value={brief.inquiry.name}
-                      onChange={(e) => {
-                        setSubmitError('');
-                        updateInquiry('name', e.target.value);
-                      }}
-                      placeholder="e.g. Alex Morgan"
-                      className="w-full bg-[#181B1C] border border-[#DFDACE]/20 px-3 py-2 text-xs text-[#EDE9E0] rounded focus:border-[#D9A62E] focus:outline-none"
+                      onChange={(e) => updateInquiry({ name: e.target.value })}
+                      placeholder="Jane Doe"
+                      className="w-full border border-[#23282A]/30 bg-white px-3 py-2 text-xs focus:border-[#17504A] focus:outline-none rounded-sm"
                     />
                   </div>
-
                   <div>
-                    <label className="block font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/70 mb-1">
+                    <label className="block font-mono text-[10px] uppercase tracking-wider text-[#23282A]/70 mb-1 font-bold">
                       Email Address *
                     </label>
                     <input
                       type="email"
-                      name="email"
                       required
                       value={brief.inquiry.email}
-                      onChange={(e) => {
-                        setSubmitError('');
-                        updateInquiry('email', e.target.value);
-                      }}
-                      placeholder="alex@company.com"
-                      className="w-full bg-[#181B1C] border border-[#DFDACE]/20 px-3 py-2 text-xs text-[#EDE9E0] rounded focus:border-[#D9A62E] focus:outline-none"
+                      onChange={(e) => updateInquiry({ email: e.target.value })}
+                      placeholder="jane@company.com"
+                      className="w-full border border-[#23282A]/30 bg-white px-3 py-2 text-xs focus:border-[#17504A] focus:outline-none rounded-sm"
                     />
+                  </div>
+                </div>
+
+                {/* Project Category Chips */}
+                <div>
+                  <label className="block font-mono text-[10px] uppercase tracking-wider text-[#23282A]/70 mb-1.5 font-bold">
+                    What are you looking to create?
+                  </label>
+                  <div className="flex flex-wrap gap-1.5">
+                    {PROJECT_TYPES.map((type) => {
+                      const active = brief.inquiry.projectType === type;
+                      return (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => updateInquiry({ projectType: active ? '' : type })}
+                          className={`px-2.5 py-1.5 text-xs font-mono rounded-sm border transition-colors ${
+                            active
+                              ? 'bg-[#17504A] text-[#EDE9E0] border-[#17504A] font-bold'
+                              : 'bg-white text-[#23282A] border-[#23282A]/25 hover:border-[#23282A]'
+                          }`}
+                        >
+                          {type}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/70 mb-1">
-                    Project details &amp; what you want to create *
+                  <label className="block font-mono text-[10px] uppercase tracking-wider text-[#23282A]/70 mb-1 font-bold">
+                    Estimated Budget Range (Optional)
+                  </label>
+                  <select
+                    value={brief.inquiry.budget}
+                    onChange={(e) => updateInquiry({ budget: e.target.value })}
+                    className="w-full border border-[#23282A]/30 bg-white px-3 py-2 text-xs focus:border-[#17504A] focus:outline-none rounded-sm"
+                  >
+                    <option value="">Select a range...</option>
+                    {BUDGET_RANGES.map((b) => (
+                      <option key={b} value={b}>
+                        {b}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[10px] uppercase tracking-wider text-[#23282A]/70 mb-1 font-bold">
+                    Tell me a bit about what you want to make or improve
                   </label>
                   <textarea
-                    rows={3}
-                    name="message"
-                    required
+                    rows={4}
                     value={brief.inquiry.notes}
-                    onChange={(e) => {
-                      setSubmitError('');
-                      updateInquiry('notes', e.target.value);
-                    }}
-                    placeholder="Describe your website, brand design, blog, templates, digital publication, informational materials, custom app, or other project..."
-                    className="w-full bg-[#181B1C] border border-[#DFDACE]/20 px-3 py-2 text-xs text-[#EDE9E0] rounded focus:border-[#D9A62E] focus:outline-none font-sans"
+                    onChange={(e) => updateInquiry({ notes: e.target.value })}
+                    placeholder="Whether you have a rough idea, an existing website to refresh, or a workflow you want to simplify..."
+                    className="w-full border border-[#23282A]/30 bg-white p-3 text-xs focus:border-[#17504A] focus:outline-none rounded-sm leading-relaxed"
                   />
                 </div>
 
-                {/* Supporting Option: Prefer to show me? */}
-                <div className="bg-[#181B1C] p-3.5 rounded border border-white/5 space-y-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#D9A62E] font-bold block">
-                    Prefer to show me? (Optional)
-                  </span>
-                  <div className="flex items-center gap-2">
-                    <LinkIcon className="h-3.5 w-3.5 text-[#DFDACE]/60" />
+                {totalCount > 0 && (
+                  <label className="flex items-center gap-2 cursor-pointer pt-1">
                     <input
-                      type="url"
-                      name="website"
-                      value={attachedUrl}
-                      onChange={(e) => setAttachedUrl(e.target.value)}
-                      placeholder="Add a link to your current website, form, or document..."
-                      className="w-full bg-black/40 border border-white/10 px-2 py-1 text-xs text-[#EDE9E0] rounded focus:border-[#D9A62E] focus:outline-none font-mono"
+                      type="checkbox"
+                      checked={includeSavedItems}
+                      onChange={(e) => setIncludeSavedItems(e.target.checked)}
+                      className="rounded border-[#23282A]/40 text-[#17504A] focus:ring-[#17504A]"
                     />
-                  </div>
-                  {totalCount > 0 && (
-                    <div className="pt-1 text-[11px] font-mono text-emerald-400">
-                      ✓ {totalCount} saved items from My Ideas will be included automatically.
-                    </div>
-                  )}
-                </div>
-
-                {/* Primary Action Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full mt-2 flex items-center justify-center gap-2 bg-[#D9A62E] py-3 text-xs font-mono font-bold uppercase tracking-wider text-[#23282A] hover:bg-[#c49425] disabled:opacity-60 disabled:cursor-not-allowed transition-colors rounded shadow-md"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      <span>Sending Inquiry...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Tell me about it</span>
-                      <ArrowRight className="h-4 w-4" />
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
-          ) : (
-            /* Saved Items Dossier Tab */
-            <>
-              {totalCount === 0 && (
-                <div className="py-12 text-center text-[#DFDACE]/50 space-y-3">
-                  <p className="font-mono text-xs uppercase tracking-widest">
-                    Your ideas collection is currently empty
-                  </p>
-                  <p className="text-xs leading-relaxed max-w-sm mx-auto">
-                    Explore <strong>The Work</strong> to save relevant case studies, test your site in <strong>The Lab</strong> to pin diagnostic findings, or sketch your workflow in <strong>Custom Builds</strong>.
-                  </p>
-                </div>
-              )}
-
-              {/* Starter Blueprint */}
-              {brief.activeTemplate && (
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-[#D9A62E]">
-                      Selected Starting Blueprint
+                    <span className="text-xs text-[#23282A]/80 font-medium">
+                      Include my {totalCount} saved note{totalCount === 1 ? '' : 's'} / whiteboard
+                      snapshot{totalCount === 1 ? '' : 's'} with this inquiry
                     </span>
-                    <button
-                      onClick={clearTemplate}
-                      className="text-[11px] font-mono text-red-400 hover:underline"
-                    >
-                      Remove
-                    </button>
+                  </label>
+                )}
+
+                {submitError && (
+                  <div className="rounded border border-red-600/40 bg-red-500/10 px-3 py-2 text-xs text-red-800 font-mono">
+                    {submitError}
                   </div>
-                  <div className="rounded border border-[#D9A62E]/40 bg-[#D9A62E]/10 p-3.5">
-                    <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <span className="inline-block rounded bg-[#D9A62E] px-1.5 py-0.5 font-mono text-[10px] font-bold text-[#23282A]">
-                          {brief.activeTemplate.badge}
-                        </span>
-                        <h4 className="mt-1 font-display text-sm font-bold text-[#EDE9E0]">
-                          {brief.activeTemplate.title}
-                        </h4>
+                )}
+
+                <div className="flex flex-wrap items-center gap-2 pt-2">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="flex-1 flex items-center justify-center gap-2 bg-[#17504A] text-[#EDE9E0] px-5 py-3 font-mono text-xs uppercase tracking-wider font-bold rounded-sm hover:bg-[#23282A] transition-colors shadow-md disabled:opacity-60"
+                  >
+                    <Send className="h-3.5 w-3.5 text-[#D9A62E]" />
+                    <span>{submitting ? 'Sending Inquiry…' : 'Send Project Inquiry'}</span>
+                  </button>
+
+                  {totalCount > 0 && (
+                    <button
+                      type="button"
+                      onClick={handleExportDossier}
+                      className="flex items-center gap-1.5 border border-[#23282A] bg-white px-3.5 py-3 font-mono text-xs uppercase tracking-wider hover:bg-[#23282A] hover:text-[#EDE9E0] transition-colors rounded-sm"
+                      title="Download saved ideas as Markdown"
+                    >
+                      <Download className="h-3.5 w-3.5" />
+                      <span>Export .MD</span>
+                    </button>
+                  )}
+                </div>
+              </form>
+            )}
+          </div>
+
+          {/* 2. Saved Items & Snapshots Section */}
+          {totalCount > 0 && (
+            <div className="border-t-2 border-[#23282A]/15 pt-5 space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="font-mono text-xs uppercase tracking-wider font-bold text-[#17504A]">
+                  Attached Notes, Markup &amp; Reference Ideas ({totalCount})
+                </h3>
+                <button
+                  onClick={clearBrief}
+                  className="text-[11px] font-mono text-red-700 hover:underline"
+                >
+                  Clear All
+                </button>
+              </div>
+
+              {/* Whiteboard & Page Markup Snapshots */}
+              {brief.whiteboardClips.length > 0 && (
+                <div className="space-y-2">
+                  <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider font-bold text-[#23282A]/70">
+                    <Layout className="h-3.5 w-3.5 text-[#17504A]" />
+                    <span>Whiteboard &amp; Page Markup ({brief.whiteboardClips.length})</span>
+                  </div>
+                  <div className="space-y-2">
+                    {brief.whiteboardClips.map((c) => (
+                      <div
+                        key={c.id}
+                        className="rounded border border-[#23282A]/20 bg-white p-3 shadow-sm space-y-2"
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="px-1.5 py-0.5 rounded bg-[#17504A] text-[#EDE9E0] font-mono text-[9px] font-bold uppercase">
+                                {c.source === 'page-markup' ? 'Page Markup' : 'Whiteboard'}
+                              </span>
+                              <span className="font-display text-sm font-bold">{c.title}</span>
+                            </div>
+                            <p className="text-xs text-[#23282A]/75 mt-1 whitespace-pre-line line-clamp-4 font-mono">
+                              {c.note}
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => removeWhiteboardClip(c.id)}
+                            className="text-[#23282A]/40 hover:text-red-600 p-1 shrink-0"
+                            title="Remove snapshot"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                        {c.dataUrl && (
+                          <div className="rounded border border-[#23282A]/15 overflow-hidden bg-[#141617]">
+                            <img
+                              src={c.dataUrl}
+                              alt={c.title}
+                              className="w-full h-28 object-cover block"
+                            />
+                          </div>
+                        )}
                       </div>
-                      <span className="font-mono text-[10px] text-[#DFDACE]/60">
-                        {brief.activeTemplate.readiness}
-                      </span>
-                    </div>
+                    ))}
                   </div>
                 </div>
               )}
 
-              {/* Saved Projects */}
+              {/* Saved Reference Projects */}
               {brief.savedProjects.length > 0 && (
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-[#DFDACE]/70">
-                      Saved Work Examples ({brief.savedProjects.length})
-                    </span>
+                  <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider font-bold text-[#17504A]">
+                    <Bookmark className="h-3.5 w-3.5" />
+                    <span>Saved Reference Projects ({brief.savedProjects.length})</span>
                   </div>
                   <div className="space-y-2">
                     {brief.savedProjects.map((p) => (
                       <div
                         key={p.id}
-                        className="flex items-center justify-between rounded border border-[#DFDACE]/15 bg-[#1F2325] p-3"
+                        className="flex items-center justify-between gap-3 rounded border border-[#23282A]/20 bg-white p-3 shadow-sm"
                       >
                         <div>
-                          <h4 className="font-display text-xs font-bold text-[#EDE9E0]">{p.title}</h4>
-                          <p className="text-[11px] text-[#DFDACE]/60 line-clamp-1">{p.subtitle}</p>
+                          <div className="font-display text-sm font-bold">{p.title}</div>
+                          <div className="font-mono text-[11px] text-[#23282A]/60">
+                            {p.subtitle}
+                          </div>
                         </div>
                         <button
-                          onClick={() => removeProject(p.id)}
-                          className="p-1 text-[#DFDACE]/40 hover:text-red-400 transition-colors"
+                          onClick={() => toggleSaveProject(p)}
+                          className="text-[#23282A]/40 hover:text-red-600 p-1"
                           title="Remove from ideas"
                         >
-                          <Trash2 className="h-3.5 w-3.5" />
+                          <Trash2 className="h-4 w-4" />
                         </button>
                       </div>
                     ))}
@@ -558,69 +511,31 @@ export default function BriefDrawer() {
                 </div>
               )}
 
-              {/* Saved Audit Diagnostic Findings */}
-              {brief.savedAuditFindings.length > 0 && (
+              {/* Pinned Audit Findings */}
+              {brief.auditFindings.length > 0 && (
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-[#DFDACE]/70">
-                      Diagnostic Findings ({brief.savedAuditFindings.length})
-                    </span>
+                  <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider font-bold text-[#991B1B]">
+                    <ShieldAlert className="h-3.5 w-3.5" />
+                    <span>Pinned Diagnostic Findings ({brief.auditFindings.length})</span>
                   </div>
                   <div className="space-y-2">
-                    {brief.savedAuditFindings.map((f) => (
+                    {brief.auditFindings.map((f) => (
                       <div
                         key={f.id}
-                        className="rounded border border-[#DFDACE]/15 bg-[#1F2325] p-3 text-xs space-y-1.5"
+                        className="flex items-start justify-between gap-3 rounded border border-[#23282A]/20 bg-white p-3 shadow-sm"
                       >
-                        <div className="flex items-start justify-between gap-2">
-                          <span
-                            className={`rounded px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase ${
-                              f.severity === 'High Priority'
-                                ? 'bg-red-900/60 text-red-200 border border-red-500/40'
-                                : 'bg-[#17504A] text-[#D9A62E]'
-                            }`}
-                          >
-                            {f.severity}
-                          </span>
-                          <button
-                            onClick={() => removeAuditFinding(f.id)}
-                            className="p-1 text-[#DFDACE]/40 hover:text-red-400 transition-colors"
-                            title="Remove finding"
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                          </button>
-                        </div>
-                        <p className="font-bold text-[#EDE9E0]">{f.issue}</p>
-                        <p className="text-[11px] text-[#DFDACE]/70 leading-relaxed">
-                          Rec: {f.recommendation}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Saved Whiteboard Clips */}
-              {brief.whiteboardClips.length > 0 && (
-                <div className="space-y-2">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-[#DFDACE]/70">
-                    Whiteboard Notes &amp; Crops ({brief.whiteboardClips.length})
-                  </span>
-                  <div className="space-y-2">
-                    {brief.whiteboardClips.map((c) => (
-                      <div
-                        key={c.id}
-                        className="flex items-center justify-between rounded border border-[#DFDACE]/15 bg-[#1F2325] p-3 text-xs"
-                      >
-                        <div className="flex items-center gap-2">
-                          {c.dataUrl && (
-                            <img src={c.dataUrl} alt="crop" className="h-8 w-8 object-cover rounded border border-[#DFDACE]/20" />
-                          )}
-                          <p className="text-[#EDE9E0] line-clamp-1">{c.text || c.title}</p>
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2">
+                            <span className="rounded bg-[#23282A] px-1.5 py-0.5 font-mono text-[9px] uppercase text-[#D9A62E]">
+                              {f.pillar}
+                            </span>
+                            <span className="font-display text-xs font-bold">{f.title}</span>
+                          </div>
+                          <p className="text-xs text-[#23282A]/75 leading-snug">{f.fix}</p>
                         </div>
                         <button
-                          onClick={() => removeWhiteboardClip(c.id)}
-                          className="p-1 text-[#DFDACE]/40 hover:text-red-400 transition-colors"
+                          onClick={() => removeAuditFinding(f.id)}
+                          className="text-[#23282A]/40 hover:text-red-600 p-1"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
@@ -629,38 +544,38 @@ export default function BriefDrawer() {
                   </div>
                 </div>
               )}
-            </>
-          )}
-        </div>
 
-        {/* Footer Actions */}
-        <div className="border-t border-[#DFDACE]/15 bg-[#1C2022] p-4 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <button
-              onClick={exportDossier}
-              disabled={totalCount === 0}
-              className="flex items-center gap-1.5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider border border-[#DFDACE]/20 text-[#EDE9E0] hover:bg-[#DFDACE]/10 disabled:opacity-40 transition-colors rounded"
-              title="Download structured JSON"
-            >
-              <Download className="h-3 w-3" /> JSON
-            </button>
-            <button
-              onClick={exportMarkdown}
-              disabled={totalCount === 0}
-              className="flex items-center gap-1.5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider border border-[#DFDACE]/20 text-[#EDE9E0] hover:bg-[#DFDACE]/10 disabled:opacity-40 transition-colors rounded"
-              title="Export formatted Markdown"
-            >
-              <FileText className="h-3 w-3" /> Markdown
-            </button>
-          </div>
-
-          {totalCount > 0 && (
-            <button
-              onClick={clearBrief}
-              className="text-[11px] font-mono text-[#DFDACE]/50 hover:text-red-400 transition-colors"
-            >
-              Reset Ideas
-            </button>
+              {/* Lab Clippings */}
+              {brief.labClippings.length > 0 && (
+                <div className="space-y-2">
+                  <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider font-bold text-[#23282A]/70">
+                    <Sparkles className="h-3.5 w-3.5 text-[#D9A62E]" />
+                    <span>Lab Clippings ({brief.labClippings.length})</span>
+                  </div>
+                  <div className="space-y-2">
+                    {brief.labClippings.map((c) => (
+                      <div
+                        key={c.id}
+                        className="flex items-start justify-between gap-3 rounded border border-[#23282A]/20 bg-white p-3 shadow-sm"
+                      >
+                        <div>
+                          <div className="font-mono text-[10px] uppercase text-[#17504A] font-bold">
+                            {c.tool}
+                          </div>
+                          <p className="text-xs text-[#23282A]/80 mt-0.5">{c.summary}</p>
+                        </div>
+                        <button
+                          onClick={() => removeLabClipping(c.id)}
+                          className="text-[#23282A]/40 hover:text-red-600 p-1"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>

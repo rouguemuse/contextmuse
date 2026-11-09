@@ -96,18 +96,52 @@ export default function BoardToolbar({
         )}
 
         {/* Secondary Layout Items */}
-        <button onClick={onAddNote} title="Add sticky memo" className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}>
-          <StickyNote className="h-3.5 w-3.5" /> Note
+        <button
+          onClick={onAddNote}
+          title="Add sticky memo"
+          className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}
+        >
+          <StickyNote className="h-3.5 w-3.5" /> + Sticky Note
         </button>
-        <button onClick={onScreenshots} title="Attach screenshot or sketch" className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}>
+        <button
+          onClick={onScreenshots}
+          title="Attach screenshot or sketch"
+          className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}
+        >
           <Camera className="h-3.5 w-3.5" /> Image
         </button>
-        <button onClick={onAddPage} title="Add container frame" className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}>
+        <button
+          onClick={onAddPage}
+          title="Add container frame"
+          className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}
+        >
           <Square className="h-3.5 w-3.5" /> Frame
         </button>
-        <button onClick={onAddRow} title="Add 3-column row" className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}>
+        <button
+          onClick={onAddRow}
+          title="Add 3-column row"
+          className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}
+        >
           <Split className="h-3.5 w-3.5 text-[#D9A62E]" /> 3-Col
         </button>
+        {onAddTwoSquares && (
+          <button
+            onClick={onAddTwoSquares}
+            title="Add 2-column comparison block"
+            className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}
+          >
+            <Layers className="h-3.5 w-3.5 text-[#D9A62E]" /> + Compare
+          </button>
+        )}
+        {onAddCta && (
+          <button
+            onClick={onAddCta}
+            title="Add action button / CTA"
+            className={`${baseBtn} hover:bg-bone hover:text-[#23282A]`}
+          >
+            <ArrowUpRight className="h-3.5 w-3.5 text-[#D9A62E]" /> + CTA
+          </button>
+        )}
 
         {onResetWorkflow && (
           <button

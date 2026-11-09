@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ArrowUpLeft, ChevronDown, Lightbulb } from 'lucide-react';
+import { ArrowUpLeft, ChevronDown, Lightbulb, Highlighter } from 'lucide-react';
 import Logo from '@/components/site/Logo';
 import { useBrief } from '@/lib/BriefContext';
 import { ROOMS } from '@/lib/rooms';
 import { useTransitionCoordinator } from '@/lib/TransitionContext';
 
 export default function SiteHeader() {
-  const { totalCount, openBrief } = useBrief();
+  const { totalCount, openBrief, pageMarkupActive, setPageMarkupActive } = useBrief();
   const location = useLocation();
   const navigate = useNavigate();
   const { startTransition } = useTransitionCoordinator();
@@ -66,7 +66,9 @@ export default function SiteHeader() {
             >
               <span
                 className="inline-block h-2 w-2 rounded-full"
-                style={{ backgroundColor: activeRoom.color === '#23282A' ? '#D9A62E' : activeRoom.color }}
+                style={{
+                  backgroundColor: activeRoom.color === '#23282A' ? '#D9A62E' : activeRoom.color,
+                }}
               />
               <span className="text-[10px] text-[#D9A62E] font-bold">{activeRoom.num}</span>
               <span className="font-semibold">{activeRoom.title}</span>
@@ -74,7 +76,25 @@ export default function SiteHeader() {
           )}
         </div>
 
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Mark Up This Page Toggle */}
+          <button
+            type="button"
+            onClick={() => setPageMarkupActive(!pageMarkupActive)}
+            aria-pressed={pageMarkupActive}
+            title="See something you'd like for your project? Mark up this page."
+            className={`flex items-center gap-1.5 border px-2.5 py-1.5 text-xs font-mono uppercase tracking-wider transition-colors ${
+              pageMarkupActive
+                ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
+                : 'border-[#DFDACE]/25 bg-[#1F2325] text-[#DFDACE]/85 hover:border-[#D9A62E] hover:text-[#D9A62E]'
+            }`}
+          >
+            <Highlighter className="h-3.5 w-3.5 text-[#D9A62E] shrink-0" style={pageMarkupActive ? { color: '#141617' } : undefined} />
+            <span className="hidden md:inline">
+              {pageMarkupActive ? 'Marking Up Page' : 'Mark up this page'}
+            </span>
+          </button>
+
           {/* Compact Four Rooms Control */}
           <div className="relative" ref={menuRef}>
             <button
@@ -96,8 +116,12 @@ export default function SiteHeader() {
                   return (
                     <span
                       key={room.id}
-                      className={`h-1.5 w-1.5 transition-transform ${isCurrent ? 'scale-125 ring-1 ring-[#D9A62E]' : 'opacity-80'}`}
-                      style={{ backgroundColor: room.color === '#23282A' ? '#EDE9E0' : room.color }}
+                      className={`h-1.5 w-1.5 transition-transform ${
+                        isCurrent ? 'scale-125 ring-1 ring-[#D9A62E]' : 'opacity-80'
+                      }`}
+                      style={{
+                        backgroundColor: room.color === '#23282A' ? '#EDE9E0' : room.color,
+                      }}
                     />
                   );
                 })}
@@ -144,7 +168,9 @@ export default function SiteHeader() {
                         }`}
                       >
                         <div className="flex items-center justify-between gap-1 font-mono text-[10px] uppercase tracking-wider opacity-80">
-                          <span>{room.num} · {room.verb}</span>
+                          <span>
+                            {room.num} · {room.verb}
+                          </span>
                           {isCurrent && (
                             <span className="bg-[#23282A]/85 px-1.5 py-0.5 text-[9px] font-bold text-[#D9A62E]">
                               Active

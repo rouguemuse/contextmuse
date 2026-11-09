@@ -3,7 +3,9 @@ import RoomShell from '@/components/room/RoomShell';
 import RoomHeading from '@/components/room/RoomHeading';
 import BuildEntryMethods from '@/components/builds/BuildEntryMethods';
 import BoardToolbar from '@/components/builds/BoardToolbar';
+import BoardComposer from '@/components/builds/BoardComposer';
 import BoardCanvas from '@/components/builds/BoardCanvas';
+import BoardLibrary from '@/components/builds/BoardLibrary';
 import BoardFooter from '@/components/builds/BoardFooter';
 import BoardReview from '@/components/builds/BoardReview';
 import ProjectSnapshot from '@/components/builds/ProjectSnapshot';
@@ -11,23 +13,14 @@ import TemplateGallery from '@/components/builds/TemplateGallery';
 import useBoard, { BOARD_W, BOARD_H } from '@/hooks/useBoard';
 import { roomById } from '@/lib/rooms';
 import { useBrief } from '@/lib/BriefContext';
-import {
-  ChevronDown,
-  ChevronUp,
-  Layers,
-  Workflow,
-  Sparkles,
-  RotateCcw,
-  FileText,
-  CheckCircle2,
-} from 'lucide-react';
+import { ChevronDown, ChevronUp, Layers } from 'lucide-react';
 
 const HINTS = {
   select:
     'Select mode — drag corner handles to resize. Drag top handle to move. Double-click to edit text.',
   pen: 'Pen tool active — sketch freehand notes or arrows directly over the canvas.',
   highlighter:
-    'Highlighter active — draw semi-transparent emphasis over text or diagrams.',
+    'Highlighter active (18% translucent) — draw emphasis over text or diagrams without obscuring copy.',
   highlight:
     'Highlight mode — click any piece to toggle yellow accent banner. Esc stops.',
   connect:
@@ -39,7 +32,7 @@ const HINTS = {
 export default function Builds() {
   const room = roomById('build');
   const board = useBoard();
-  const { addWhiteboardClip, updateInquiry, openBrief } = useBrief();
+  const { addWhiteboardClip, updateInquiry, openBrief, brief } = useBrief();
 
   // Active entry mode: 'map' (default) | 'describe' | 'show'
   const [entryMode, setEntryMode] = useState('map');
@@ -172,12 +165,14 @@ export default function Builds() {
         if (selected) {
           deletePiece(selected);
         }
-      } else if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
         if (e.shiftKey) {
           board.redo();
         } else {
           board.undo();
         }
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
+        board.redo();
       } else if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
         if (selected) {
           e.preventDefault();
@@ -192,11 +187,10 @@ export default function Builds() {
   // Mode 2: Describe It handler
   const handleDescribeSubmit = (text, destination) => {
     if (destination === 'inquiry') {
-      updateInquiry('notes', (prev) =>
-        prev
-          ? `${prev}\n\n[Client Description]\n${text}`
-          : `[Client Description]\n${text}`
-      );
+      const existingNotes = brief?.inquiry?.notes ? `${brief.inquiry.notes}\n\n` : '';
+      updateInquiry({
+        notes: `${existingNotes}[Client Description]\n${text}`.trim(),
+      });
       openBrief();
     } else {
       // Place as a memo on the canvas
@@ -242,7 +236,7 @@ export default function Builds() {
       r.readAsDataURL(f);
     });
     setEntryMode('map');
-    setTool('pen'); // Automatically enable pen for quick markup
+    setTool('pen');
     canvasRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -264,6 +258,41 @@ export default function Builds() {
       text: 'Frame Content / Architecture notes',
       columns: null,
       fitMode: 'cover',
+      highlight: false,
+      isStarter: false,
+    });
+    setSelected(id);
+  };
+
+  // Direct text addition from BoardComposer
+  const addText = (text) => {
+    const { x, y } = spot();
+    const id = board.addPiece({
+      type: 'page',
+      x,
+      y,
+      w: 320,
+      h: 170,
+      label: 'TEXT NOTE / REQUIREMENT',
+      text: text || 'Key requirement or note...',
+      highlight: false,
+      isStarter: false,
+    });
+    setSelected(id);
+  };
+
+  // Direct reference link addition from BoardComposer
+  const addLink = (url) => {
+    const { x, y } = spot();
+    const id = board.addPiece({
+      type: 'link',
+      x,
+      y,
+      w: 280,
+      h: 115,
+      label: 'REFERENCE LINK',
+      text: url,
+      url,
       highlight: false,
       isStarter: false,
     });
@@ -292,6 +321,43 @@ export default function Builds() {
     setSelected(id);
   };
 
+  const addTwoSquares = () => {
+    const { x, y } = spot();
+    const id = board.addPiece({
+      type: 'row',
+      x,
+      y,
+      w: 520,
+      h: 175,
+      label: '2-COLUMN COMPARISON (BEFORE ↔ AFTER)',
+      text: 'Two-column comparison group',
+      columns: [
+        { id: 'c1', label: 'Current Process / Friction', text: 'Manual bottleneck or existing pain point' },
+        { id: 'c2', label: 'Target Solution / Automation', text: 'Desired software behavior or outcome' },
+      ],
+      fitMode: 'cover',
+      highlight: false,
+      isStarter: false,
+    });
+    setSelected(id);
+  };
+
+  const addCta = () => {
+    const { x, y } = spot();
+    const id = board.addPiece({
+      type: 'cta',
+      x,
+      y,
+      w: 240,
+      h: 64,
+      label: 'ACTION CTA',
+      text: 'PRIMARY ACTION ↗',
+      highlight: false,
+      isStarter: false,
+    });
+    setSelected(id);
+  };
+
   const addNote = () => {
     const { x, y } = spot();
     const id = board.addPiece({
@@ -308,35 +374,120 @@ export default function Builds() {
     setSelected(id);
   };
 
-  const createShape = (type, box) => {
+  const createShape = (typeOrBox, maybeBox) => {
+    const isObj = typeof typeOrBox === 'object' && typeOrBox !== null;
+    const shapeType = isObj ? typeOrBox.shape || 'box' : typeOrBox;
+    const box = isObj ? typeOrBox : maybeBox || { x: 140, y: 140, w: 220, h: 140 };
     board.addPiece({
-      type,
+      type: 'shape',
+      shape: shapeType,
       x: box.x,
       y: box.y,
       w: box.w,
       h: box.h,
-      label: type === 'circle' ? 'FOCUS CIRCLE' : 'GROUP CONTAINER',
+      label: shapeType === 'circle' ? 'FOCUS CIRCLE' : 'GROUP CONTAINER',
       text: '',
       highlight: false,
       isStarter: false,
     });
   };
 
-  const placeItem = (item) => {
-    const { x, y } = spot();
+  // Place item from BoardLibrary (Stickers & Wireframe Parts Bin)
+  const placeItem = (item, dropX, dropY) => {
+    const fallback = spot();
+    const x = typeof dropX === 'number' ? dropX : fallback.x;
+    const y = typeof dropY === 'number' ? dropY : fallback.y;
     const id = board.addPiece({
-      type: item.type || 'page',
+      type: item.kind || item.type || 'ui',
+      variant: item.variant,
       x,
       y,
       w: item.w || 280,
       h: item.h || 150,
-      label: item.title || 'COMPONENT',
-      text: item.desc || '',
+      label: item.label || item.title || 'COMPONENT',
+      text: item.desc || item.label || '',
       highlight: false,
       isStarter: false,
     });
     setSelected(id);
   };
+
+  // Render full board (pieces + links + hand-drawn pen & 18% highlighter strokes) to PNG dataUrl
+  const renderBoardDataUrl = useCallback(() => {
+    try {
+      const canvas = document.createElement('canvas');
+      canvas.width = BOARD_W;
+      canvas.height = BOARD_H;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return null;
+
+      ctx.fillStyle = '#EDE9E0';
+      ctx.fillRect(0, 0, BOARD_W, BOARD_H);
+
+      ctx.fillStyle = '#23282A';
+      ctx.font = 'bold 22px monospace';
+      ctx.fillText('CONTEXTMUSE / SYSTEM WORKFLOW SPECIFICATION', 40, 50);
+
+      // Draw links
+      (board.links || []).forEach((l) => {
+        const from = board.pieces.find((p) => p.id === l.from);
+        const to = board.pieces.find((p) => p.id === l.to);
+        if (!from || !to) return;
+        ctx.beginPath();
+        ctx.moveTo(from.x + from.w / 2, from.y + from.h / 2);
+        ctx.lineTo(to.x + to.w / 2, to.y + to.h / 2);
+        ctx.strokeStyle = from.stepState === 'bottleneck' ? '#E53935' : '#17504A';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      });
+
+      // Draw pieces
+      board.pieces.forEach((p) => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        const isBottleneck = p.stepState === 'bottleneck';
+        ctx.fillStyle = isBottleneck ? '#FFF5F5' : p.type === 'note' ? '#E7C25A' : '#FFFFFF';
+        ctx.strokeStyle = isBottleneck ? '#E53935' : '#23282A';
+        ctx.lineWidth = isBottleneck ? 2.5 : 1.5;
+        ctx.fillRect(0, 0, p.w, p.h);
+        ctx.strokeRect(0, 0, p.w, p.h);
+        ctx.fillStyle = isBottleneck ? '#C62828' : '#23282A';
+        ctx.font = 'bold 11px monospace';
+        ctx.fillText((p.label || p.variant || p.type || 'STEP').toUpperCase().slice(0, 32), 12, 22);
+        ctx.font = '11px sans-serif';
+        ctx.fillStyle = '#333333';
+        const lines = (p.text || p.url || '').split('\n');
+        lines.forEach((l, idx) => ctx.fillText(l.slice(0, 40), 12, 42 + idx * 16));
+        ctx.restore();
+      });
+
+      // Draw freehand strokes
+      (board.drawings || []).forEach((stroke) => {
+        if (!stroke.points || stroke.points.length < 2) return;
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(stroke.points[0].x, stroke.points[0].y);
+        for (let i = 1; i < stroke.points.length; i++) {
+          ctx.lineTo(stroke.points[i].x, stroke.points[i].y);
+        }
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        if (stroke.tool === 'highlighter') {
+          ctx.strokeStyle = 'rgba(217, 166, 46, 0.18)';
+          ctx.lineWidth = stroke.size || 20;
+        } else {
+          ctx.strokeStyle = stroke.color || '#23282A';
+          ctx.lineWidth = stroke.size || 3;
+        }
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      return canvas.toDataURL('image/png');
+    } catch {
+      return null;
+    }
+  }, [board.pieces, board.links, board.drawings]);
 
   // Export helpers
   const exportJson = () => {
@@ -356,53 +507,8 @@ export default function Builds() {
   };
 
   const exportPng = () => {
-    const canvas = document.createElement('canvas');
-    canvas.width = BOARD_W;
-    canvas.height = BOARD_H;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    ctx.fillStyle = '#EDE9E0';
-    ctx.fillRect(0, 0, BOARD_W, BOARD_H);
-
-    ctx.fillStyle = '#23282A';
-    ctx.font = 'bold 22px monospace';
-    ctx.fillText('CONTEXTMUSE / SYSTEM WORKFLOW SPECIFICATION', 40, 50);
-
-    // Draw links
-    board.links.forEach((l) => {
-      const from = board.pieces.find((p) => p.id === l.from);
-      const to = board.pieces.find((p) => p.id === l.to);
-      if (!from || !to) return;
-      ctx.beginPath();
-      ctx.moveTo(from.x + from.w / 2, from.y + from.h / 2);
-      ctx.lineTo(to.x + to.w / 2, to.y + to.h / 2);
-      ctx.strokeStyle = from.stepState === 'bottleneck' ? '#E53935' : '#17504A';
-      ctx.lineWidth = 3;
-      ctx.stroke();
-    });
-
-    // Draw pieces
-    board.pieces.forEach((p) => {
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      const isBottleneck = p.stepState === 'bottleneck';
-      ctx.fillStyle = isBottleneck ? '#FFF5F5' : '#FFFFFF';
-      ctx.strokeStyle = isBottleneck ? '#E53935' : '#23282A';
-      ctx.lineWidth = isBottleneck ? 2.5 : 1.5;
-      ctx.fillRect(0, 0, p.w, p.h);
-      ctx.strokeRect(0, 0, p.w, p.h);
-      ctx.fillStyle = isBottleneck ? '#C62828' : '#23282A';
-      ctx.font = 'bold 11px monospace';
-      ctx.fillText((p.label || 'STEP').slice(0, 32), 12, 22);
-      ctx.font = '11px sans-serif';
-      ctx.fillStyle = '#333333';
-      const lines = (p.text || '').split('\n');
-      lines.forEach((l, idx) => ctx.fillText(l.slice(0, 40), 12, 42 + idx * 16));
-      ctx.restore();
-    });
-
-    const dataUrl = canvas.toDataURL('image/png');
+    const dataUrl = renderBoardDataUrl();
+    if (!dataUrl) return;
     const a = document.createElement('a');
     a.href = dataUrl;
     a.download = `contextmuse-workflow-${Date.now().toString(36)}.png`;
@@ -427,6 +533,57 @@ export default function Builds() {
     }
     setEntryMode('map');
     canvasRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Attach full whiteboard snapshot + structured notes to Inquiry Brief and open drawer
+  const handleIncludeWithInquiry = () => {
+    const dataUrl = renderBoardDataUrl();
+    const summaryLines = [
+      `=== WHITEBOARD SPECIFICATION (${board.pieces.length} Elements, ${bottleneckCount} Bottlenecks) ===`,
+      ...board.pieces.map(
+        (p, idx) =>
+          `  ${idx + 1}. [${(p.type || 'step').toUpperCase()}] ${p.label || p.variant || ''}: ${
+            p.text || p.url || ''
+          }`
+      ),
+      ...(board.drawings?.length
+        ? [`  + ${board.drawings.length} freehand sketch/highlight stroke(s)`]
+        : []),
+    ];
+    const summaryText = summaryLines.join('\n');
+
+    addWhiteboardClip({
+      title: `Workflow Map (${stepCount} Steps, ${bottleneckCount} Bottlenecks)`,
+      note: summaryText,
+      dataUrl,
+      source: 'whiteboard',
+      pagePath: '/build',
+      snapshot: {
+        source: 'whiteboard',
+        stepCount,
+        bottleneckCount,
+        piecesCount: board.pieces.length,
+        linksCount: (board.links || []).length,
+        drawingsCount: (board.drawings || []).length,
+        constraints: board.constraints || {},
+        pieces: board.pieces.map((p) => ({
+          id: p.id,
+          type: p.type,
+          variant: p.variant || null,
+          label: p.label || '',
+          text: p.text || '',
+          url: p.url || null,
+          stepState: p.stepState || null,
+        })),
+      },
+    });
+
+    const existingNotes = brief?.inquiry?.notes ? `${brief.inquiry.notes}\n\n` : '';
+    updateInquiry({
+      projectType: brief?.inquiry?.projectType || 'Apps & Tools',
+      notes: `${existingNotes}${summaryText}`.trim(),
+    });
+    openBrief();
   };
 
   return (
@@ -458,7 +615,7 @@ export default function Builds() {
         {/* ============================================================
             2. CENTRAL VISUAL WORKSPACE (THE ACTIVE CANVAS)
             ============================================================ */}
-        <section ref={canvasRef} className="space-y-2">
+        <section ref={canvasRef} className="space-y-3">
           {/* Canvas Toolbar */}
           <BoardToolbar
             tool={tool}
@@ -474,7 +631,9 @@ export default function Builds() {
             onResetWorkflow={handleResetWorkflow}
             onAddPage={addPage}
             onAddRow={addRow}
+            onAddTwoSquares={addTwoSquares}
             onAddNote={addNote}
+            onAddCta={addCta}
             onScreenshots={() => shotInput.current?.click()}
             onUndo={board.undo}
             onRedo={board.redo}
@@ -484,6 +643,9 @@ export default function Builds() {
             hasDrawings={board.drawings && board.drawings.length > 0}
             hint={HINTS[tool]}
           />
+
+          {/* Restored Text & Reference Link Composer */}
+          <BoardComposer onAddText={addText} onAddLink={addLink} />
 
           {/* Interactive Canvas */}
           <BoardCanvas
@@ -513,7 +675,10 @@ export default function Builds() {
             onSetStepState={board.setPieceState}
           />
 
-          {/* Canvas Footer (Save State & Export) */}
+          {/* Restored Parts Bin / Stickers Library */}
+          <BoardLibrary onPlace={(item) => placeItem(item)} />
+
+          {/* Canvas Footer (Save State, Inquiry Attachment & Export) */}
           <BoardFooter
             saved={board.saved}
             onSave={board.saveNow}
@@ -522,14 +687,8 @@ export default function Builds() {
             onImport={importJson}
             onReview={() => setReview(true)}
             onClear={handleClearBoard}
-            onAttachToBrief={() => {
-              addWhiteboardClip({
-                type: 'whiteboard-summary',
-                title: `Workflow Map (${stepCount} Steps, ${bottleneckCount} Bottlenecks)`,
-                text: `${stepCount} steps mapped with ${board.links.length} directional connections.`,
-              });
-              openBrief();
-            }}
+            onIncludeWithInquiry={handleIncludeWithInquiry}
+            onAttachToBrief={handleIncludeWithInquiry}
           />
         </section>
 
@@ -598,13 +757,15 @@ export default function Builds() {
         className="hidden"
       />
 
-      {/* Full Sheet Review Modal */}
-      <BoardReview
-        open={review}
-        pieces={board.pieces}
-        links={board.links}
-        onClose={() => setReview(false)}
-      />
+      {review && (
+        <BoardReview
+          pieces={board.pieces}
+          links={board.links}
+          onClose={() => setReview(false)}
+          onExportJson={exportJson}
+          onExportPng={exportPng}
+        />
+      )}
     </RoomShell>
   );
 }

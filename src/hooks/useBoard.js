@@ -203,21 +203,17 @@ export default function useBoard() {
     futureRef.current = [];
   }, []);
 
-  // Debounced auto-save to localStorage
+  // Immediate auto-save to localStorage on every board change
   useEffect(() => {
-    setSaved(false);
-    const t = setTimeout(() => {
-      try {
-        localStorage.setItem(STORAGE_KEY_V3, JSON.stringify(board));
-        // Keep v2 synchronized for backward compatibility without destroying legacy fields
-        localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(board));
-        setSaved(true);
-      } catch (err) {
-        console.warn('Storage quota exceeded or error saving board:', err);
-        setSaved(false);
-      }
-    }, 400);
-    return () => clearTimeout(t);
+    try {
+      localStorage.setItem(STORAGE_KEY_V3, JSON.stringify(board));
+      // Keep v2 synchronized for backward compatibility without destroying legacy fields
+      localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(board));
+      setSaved(true);
+    } catch (err) {
+      console.warn('Storage quota exceeded or error saving board:', err);
+      setSaved(false);
+    }
   }, [board]);
 
   const addPiece = useCallback((partial) => {

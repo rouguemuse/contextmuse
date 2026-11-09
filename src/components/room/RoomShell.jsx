@@ -2,11 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SiteHeader from '@/components/site/SiteHeader';
 import SiteFooter from '@/components/site/SiteFooter';
+import PageAnnotationOverlay from '@/components/site/PageAnnotationOverlay';
 
 export default function RoomShell({ room, children }) {
   return (
     <div
-      className="flex min-h-screen flex-col text-[#EDE9E0]"
+      className="relative flex min-h-screen flex-col text-[#EDE9E0]"
       style={{ backgroundColor: room.color }}
     >
       <SiteHeader />
@@ -26,6 +27,7 @@ export default function RoomShell({ room, children }) {
         </motion.div>
       </main>
 
+      <PageAnnotationOverlay />
       <SiteFooter />
     </div>
   );

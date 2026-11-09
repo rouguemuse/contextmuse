@@ -3,7 +3,7 @@ import RoomShell from '@/components/room/RoomShell';
 import RoomHeading from '@/components/room/RoomHeading';
 import FlagshipShowcase from '@/components/work/FlagshipShowcase';
 import InncontrolShowcase from '@/components/work/InncontrolShowcase';
-import RevisionAtlasShowcase from '@/components/work/RevisionAtlasShowcase';
+import SignalShowcase from '@/components/work/SignalShowcase';
 import SecondaryGallery from '@/components/work/SecondaryGallery';
 import ProofViewer from '@/components/work/ProofViewer';
 import { getProjectById } from '@/data/projects';
@@ -28,16 +28,16 @@ export default function Work() {
           sub="Completed client builds, original digital products, and functional prototypes—demonstrating how visual design, user experience, and custom engineering work together."
         />
 
-        {/* Level 1: Flagship Showcase (Lone Wolf Dumpsters) */}
+        {/* Level 1: Flagship Showcase (Wolf Ridge Dumpsters) */}
         <FlagshipShowcase onOpenCaseStudy={(id) => setOpenProjectId(id)} />
 
-        {/* Level 2A: Supporting System (INNcontrol Coils - Engineering Precision) */}
+        {/* Level 2A: Supporting System (INNcontrol Coils - Commercial Platform + Operator HUD) */}
         <InncontrolShowcase onOpenCaseStudy={(id) => setOpenProjectId(id)} />
 
-        {/* Level 2B: Supporting System (Revision Atlas - Manuscript Architecture) */}
-        <RevisionAtlasShowcase onOpenCaseStudy={(id) => setOpenProjectId(id)} />
+        {/* Level 2B: Live Software Product (Signal Operational Intelligence + GenSort + Self-Cartography) */}
+        <SignalShowcase onOpenCaseStudy={(id) => setOpenProjectId(id)} />
 
-        {/* Level 3: Tertiary Systems Archive & Creative Practice */}
+        {/* Level 3: Complete Work & Product Index */}
         <SecondaryGallery onOpenCaseStudy={(id) => setOpenProjectId(id)} />
 
         {/* Interactive Case Study Walkthrough Modal */}

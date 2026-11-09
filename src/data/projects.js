@@ -318,9 +318,9 @@ export const PROJECTS = [
   // 04: REVISION ATLAS
   {
     id: 'revision-atlas',
-    tier: 'featured',
-    evidenceType: 'screenshot',
-    liveUrl: 'https://www.contextmuse.com/work/revision-atlas/',
+    tier: 'demonstration',
+    evidenceType: 'case-study',
+    liveUrl: null,
     mediaUrl: '/assets/images/revision-atlas-cover.webp',
     coverStyle: 'parchment',
     coverColor: '#DFDACE',
@@ -855,19 +855,20 @@ export const PROJECTS = [
     id: 'website-audit-system',
     tier: 'demonstration',
     evidenceType: 'case-study',
+    liveUrl: '/website-system-check/',
     coverStyle: 'charcoal',
     coverColor: '#23282A',
     coverTextColor: '#EDE9E0',
     illustrationType: 'interactive-demo',
-    title: 'Website Audit System',
-    subtitle: 'Evidence-First DOM Diagnostic & Coordinate Triage',
+    title: 'Website + System Check',
+    subtitle: 'Multi-Viewport Responsive & 4-Pillar Structural Diagnostic',
     year: '2024–2025',
     sector: 'Conversion diagnostics & UX engineering',
     role: 'Diagnostic Framework, Coordinate Pin Engine, Priority Scoring',
     plainSentence:
-      'Pins actionable conversion critiques directly to DOM elements with 4-pillar severity scoring instead of bloated 60-page PDF audits.',
+      'Inspects desktop, tablet, and mobile viewports side-by-side and pins actionable conversion critiques to 4 structural pillars.',
     summary:
-      'Replaces vague agency PDF audits with visual DOM coordinate pins anchored to real website bottlenecks across Message, Paths, Proof, and Intake.',
+      'Replaces vague agency PDF audits with multi-viewport inspection and structured diagnostic pins across Message, Paths, Proof, and Intake.',
     originalBrand: {
       name: 'Audit Pin Framework',
       primary: '#991B1B',
@@ -879,7 +880,7 @@ export const PROJECTS = [
       needed:
         'Clients receive bloated 80-page agency PDF audits full of fluff metrics that clients cannot act on or understand.',
       built:
-        'A DOM coordinate pinning layer that evaluates sites across 4 structural pillars and saves findings directly into actionable project briefs.',
+        'A multi-viewport inspection workbench and 4-pillar diagnostic layer that saves findings directly into actionable project briefs.',
       enables:
         'Auditors and business owners can identify exact conversion bottlenecks and export prioritized fix milestones.',
     },
@@ -911,7 +912,7 @@ export const PROJECTS = [
       ],
       limitations: 'External websites with aggressive iframe security headers require URL snapshot analysis.',
       groupedTech: [
-        { group: 'Inspection', items: ['DOM element inspector: calculates element bounding rects'] },
+        { group: 'Inspection', items: ['Multi-viewport preview & DOM element inspector'] },
         { group: 'Dossier', items: ['4-Pillar diagnostic schema: Message, Paths, Proof, Intake'] },
       ],
     },
@@ -919,12 +920,278 @@ export const PROJECTS = [
       { tool: 'DOM coordinate anchoring', enables: 'Attaches critiques directly to visual elements on real sites' },
       { tool: '4-Pillar diagnostic schema', enables: 'Categorizes findings into Message, Paths, Proof, and Intake' },
     ],
-    artifacts: ['Visual DOM Annotation Pin Layer', '4-Pillar Structural Ledger', 'Direct-to-Brief Exporter'],
+    artifacts: ['Multi-Viewport Inspector (/website-system-check/)', '4-Pillar Structural Ledger', 'Direct-to-Brief Exporter'],
     tags: {
       visitorNeeds: ['Website Audit', 'UX Diagnostics', 'Conversion Analysis'],
       capabilities: ['Data Cleanup', 'Workflow Engine'],
-      evidenceTypes: ['Diagnostic Tool', 'Methodology'],
+      evidenceTypes: ['Working Application', 'Diagnostic Tool'],
       technologies: ['DOM Inspection', 'React', 'Diagnostic Schema'],
+    },
+  },
+
+  // 11: SIGNAL — RESTAURANT OPERATIONAL INTELLIGENCE
+  {
+    id: 'signal-ops',
+    tier: 'featured',
+    evidenceType: 'interactive-demo',
+    liveUrl: '/signal/demo/',
+    productUrl: '/signal/',
+    mediaUrl: '/assets/images/signal-social-preview.jpg',
+    coverStyle: 'charcoal',
+    coverColor: '#23282A',
+    coverTextColor: '#EDE9E0',
+    illustrationType: 'interactive-demo',
+    title: 'Signal',
+    subtitle: 'Restaurant Operational Intelligence & Multi-Report POS Triage',
+    year: '2025–2026',
+    sector: 'Hospitality operations & decision intelligence',
+    role: 'Product Architecture, Deterministic Ingestion, Signal Triage Engine',
+    plainSentence:
+      'Ingests fragmented restaurant POS exports (sales, labor, comps, voids, and kitchen timing) and turns them into a ranked, evidence-backed operational action list.',
+    summary:
+      'Restaurant operators drown in disconnected POS spreadsheets while margin leaks go unnoticed. Signal cross-analyzes operational exports across labor, comps, voids, and daypart velocity to surface the top decisions worth tackling first.',
+    originalBrand: {
+      name: 'Signal Ops Ledger',
+      primary: '#111618',
+      accent: '#D9A62E',
+      surface: '#1A2023',
+      text: '#F3EFE6',
+    },
+    overview: {
+      needed:
+        'General managers and multi-unit operators receive dozens of separate POS CSV exports every week—sales mix, labor punches, comp logs, and kitchen ticket times—without a unified way to see how those signals interact.',
+      built:
+        'A 3-stage operational intelligence workbench (/signal/ and /signal/demo/) that ingests raw exports or sample restaurant datasets, cross-references anomalies across categories, and outputs a ranked action dossier.',
+      enables:
+        'Operators can immediately see which shift, menu category, or comp pattern is driving margin erosion and export a concrete manager action plan.',
+    },
+    tangibleOutput: {
+      title: 'Prioritized Operational Action Dossier',
+      description:
+        'A ranked diagnostic brief linking cross-report anomalies (such as Friday late-shift ticket lag correlating with unapproved server comps) to concrete operational fixes.',
+      previewText:
+        'Signal #01 [HIGH IMPACT] · Friday PM Bar Comps + Kitchen Ticket Lag · Cross-checked across Sales, Comp & KDS logs · Recommended Action: Re-stage prep station & require manager comp code',
+    },
+    howItsBuilt: {
+      requirements: [
+        'Must accept messy real-world POS CSV/XLSX exports without requiring custom IT integrations.',
+        'Must cross-analyze signals across separate operational domains (Labor × Sales × Comps × Pacing) rather than repeating single-chart vanity metrics.',
+        'Must provide an interactive browser demo (/signal/demo/) with realistic multi-concept restaurant presets and custom file upload.',
+      ],
+      flowDiagram: {
+        steps: [
+          { from: 'Report Ingestion', label: 'Parses POS exports (Sales, Labor, Comps, Voids, Kitchen Timing)' },
+          { from: 'Cross-Signal Correlation', label: 'Detects compound operational leaks across shifts and stations' },
+          { from: 'Priority Ranking', label: 'Scores findings by operational urgency and controllability' },
+          { from: 'Operator Action Plan', label: 'Outputs a clear briefing for GMs and kitchen leads' },
+        ],
+      },
+      keyDecisions: [
+        {
+          decision: 'Action List Over Another Dashboard',
+          rationale:
+            'Restaurant operators do not have time to interpret 40 charts before Friday dinner service; they need the top 3 prioritized actions.',
+        },
+        {
+          decision: 'Zero-Integration File Ingestion',
+          rationale:
+            'Working directly from standard POS exports allows immediate diagnostic clarity without months of POS vendor API approvals.',
+        },
+      ],
+      limitations:
+        'Designed for operational decision support and diagnostic triage rather than real-time point-of-sale transaction processing.',
+      groupedTech: [
+        { group: 'Ingestion & Parsing', items: ['Client-side CSV/XLSX parser', 'Multi-concept sample dataset engine'] },
+        { group: 'Analysis Engine', items: ['Cross-report signal correlation rules', '3-Stage interactive diagnostic walkthrough (/signal/demo/)'] },
+      ],
+    },
+    implementationTable: [
+      { tool: '3-Stage Interactive Workbench (/signal/demo/)', enables: 'Lets operators test sample concepts or upload exports and inspect ranked signals live' },
+      { tool: 'Cross-report correlation engine', enables: 'Connects kitchen ticket delays, comp spikes, and labor overtime into a single root-cause finding' },
+      { tool: 'Tiered diagnostic workflow (/signal/)', enables: 'Supports Snapshot, Diagnostic, and Deep Dive operational engagements' },
+    ],
+    artifacts: [
+      'Signal Product Platform (/signal/)',
+      '3-Stage Interactive Diagnostic Workbench (/signal/demo/)',
+      'Cross-Report POS Signal Correlation Engine',
+      'Prioritized GM Action Brief Exporter',
+    ],
+    tags: {
+      visitorNeeds: ['Operational Analytics', 'Data Cleanup', 'Hospitality Systems', 'Workflow Tool'],
+      capabilities: ['Data Cleanup', 'Workflow Engine'],
+      evidenceTypes: ['Working Application', 'Interactive System', 'Production System'],
+      technologies: ['JavaScript', 'CSV/XLSX Ingestion', 'Operational Heuristics', 'Interactive Demo'],
+    },
+  },
+
+  // 12: SELF-CARTOGRAPHY — BEHAVIORAL PATTERN ENGINE
+  {
+    id: 'self-cartography',
+    tier: 'featured',
+    evidenceType: 'interactive-demo',
+    liveUrl: '/cartography/',
+    mediaUrl: '/assets/images/self_cartography_mockup.jpg',
+    coverStyle: 'teal',
+    coverColor: '#17504A',
+    coverTextColor: '#EDE9E0',
+    illustrationType: 'interactive-demo',
+    title: 'Self-Cartography',
+    subtitle: 'Explainable Behavioral-Pattern & Topological Reflection Engine',
+    year: '2025–2026',
+    sector: 'Interactive reflection tools & explainable scoring systems',
+    role: 'System Architecture, Topological Coordinate Engine, Explainable Heuristics',
+    plainSentence:
+      'A standalone, full-screen behavioral-pattern engine that maps structured reflections into topological coordinate space with transparent, non-clinical scoring.',
+    summary:
+      'Built as an interactive companion system (/cartography/), Self-Cartography translates multi-step subjective responses into an explainable spatial map—showing exactly how each reflection shifts coordinates without black-box labels.',
+    originalBrand: {
+      name: 'Cartography Topological Void',
+      primary: '#050B0A',
+      accent: '#C5A059',
+      surface: '#0E1F1B',
+      text: '#FAF9F5',
+    },
+    overview: {
+      needed:
+        'Most online assessments act like opaque quizzes that hand out rigid labels without showing how answers relate or allowing the user to inspect the underlying logic.',
+      built:
+        'A standalone full-screen application (/cartography/) with multi-dimension reflection prompts, live topological canvas rendering, and an explainable breakdown of every pattern weight.',
+      enables:
+        'Visitors can complete a guided reflection session, inspect how their responses map across relational axes, and export their personal field record locally.',
+    },
+    tangibleOutput: {
+      title: 'Topological Coordinate Map & Pattern Dossier',
+      description:
+        'An interactive spatial plot and transparent vector breakdown showing primary behavioral territories, tension axes, and reflection notes.',
+      previewText:
+        'Cartography V1 · Territory: High-Autonomy Vigilance · Explainable Vector Trace: 100% client-side deterministic calculation',
+    },
+    howItsBuilt: {
+      requirements: [
+        '100% transparent, explainable scoring with zero clinical diagnosis claims.',
+        'Complete local-first privacy: reflection state never leaves the user’s browser unless explicitly exported.',
+        'Responsive topological canvas rendering that updates smoothly across desktop and mobile.',
+      ],
+      flowDiagram: {
+        steps: [
+          { from: 'Scenario Prompts', label: 'Captures nuanced responses across relational and autonomy scenarios' },
+          { from: 'Vector Weighting', label: 'Applies transparent, inspectable weights across topological axes' },
+          { from: 'Canvas Projection', label: 'Plots coordinates and territory contours on an interactive map' },
+          { from: 'Field Dossier', label: 'Generates a downloadable summary of patterns and reflection notes' },
+        ],
+      },
+      keyDecisions: [
+        {
+          decision: 'Explainable Heuristics Over Black-Box AI',
+          rationale:
+            'Users exploring personal behavioral patterns deserve to see the exact mathematical relationship between their answers and the resulting map.',
+        },
+      ],
+      limitations:
+        'Designed for personal reflection and narrative exploration; explicitly non-clinical and non-diagnostic.',
+      groupedTech: [
+        { group: 'Engine', items: ['Deterministic vector scoring engine', 'Interactive HTML5 topological canvas'] },
+        { group: 'Privacy', items: ['Zero-server client-side state', 'Portable JSON/Markdown reflection export'] },
+      ],
+    },
+    implementationTable: [
+      { tool: 'Topological coordinate engine (/cartography/)', enables: 'Maps multi-step responses into an interactive 2D spatial landscape' },
+      { tool: 'Explainable weight inspector', enables: 'Shows exactly which prompts contributed to each behavioral axis' },
+    ],
+    artifacts: [
+      'Standalone Cartography V1 Application (/cartography/)',
+      'Interactive Topological Canvas Renderer',
+      'Explainable Vector Weight Breakdown',
+    ],
+    tags: {
+      visitorNeeds: ['Interactive Experience', 'Explainable Systems', 'Creative Practice'],
+      capabilities: ['Workflow Engine'],
+      evidenceTypes: ['Working Application', 'Interactive System'],
+      technologies: ['HTML5 Canvas', 'JavaScript', 'Local-First Architecture'],
+    },
+  },
+
+  // 13: WRITING CONTEST SUBMISSION MANAGER (WCSM)
+  {
+    id: 'wcsm',
+    tier: 'demonstration',
+    evidenceType: 'interactive-demo',
+    liveUrl: '/wcsm/',
+    mediaUrl: '/assets/images/contest-atlas-cover.webp',
+    coverStyle: 'parchment',
+    coverColor: '#DFDACE',
+    coverTextColor: '#23282A',
+    illustrationType: 'interactive-demo',
+    title: 'Writing Contest Submission Manager',
+    subtitle: 'Automated Literary Contest Directory, Deadline Crawler & Submission Tracker',
+    year: '2025–2026',
+    sector: 'Editorial tools & automated data directories',
+    role: 'Data Pipeline, Automated Verification Crawler, Submission Tracker UI',
+    plainSentence:
+      'Tracks 60+ vetted fiction, poetry, and essay contests with automated weekly deadline verification, fee filtering, and a local submission log.',
+    summary:
+      'Writers waste hours cross-checking outdated contest directories and losing track of simultaneous submissions. WCSM combines an automated weekly verification crawler with a clean searchable directory and personal submission tracker at /wcsm/.',
+    originalBrand: {
+      name: 'Editorial Index Ledger',
+      primary: '#1C1917',
+      accent: '#B45309',
+      surface: '#F5F5F4',
+      text: '#1C1917',
+    },
+    overview: {
+      needed:
+        'Static literary contest lists go stale within weeks as submission windows open, close, or shift deadlines.',
+      built:
+        'A live searchable directory (/wcsm/) backed by a scheduled GitHub Actions verification crawler that checks contest URLs weekly and flags deadline changes.',
+      enables:
+        'Writers can filter contests by genre, entry fee, prize amount, and open window, and track their own submissions locally.',
+    },
+    tangibleOutput: {
+      title: 'Verified Contest Index & Personal Submission Ledger',
+      description:
+        'A filterable directory of 60+ literary contests showing verified deadlines, entry fees, prize amounts, and submission status.',
+      previewText:
+        '60+ Vetted Contests · Weekly Automated Crawler Verification · Filter by Genre, Fee-Free, & Open Deadlines (/wcsm/)',
+    },
+    howItsBuilt: {
+      requirements: [
+        'Must automatically audit contest URLs on a weekly schedule to prevent dead links and stale deadlines.',
+        'Must allow instant filtering by genre, entry fee, prize tier, and deadline proximity.',
+      ],
+      flowDiagram: {
+        steps: [
+          { from: 'Weekly Crawler', label: 'GitHub Actions workflow fetches contest pages and extracts deadline updates' },
+          { from: 'Structured Index', label: 'Normalizes prizes, entry fees, genres, and open windows into JSON' },
+          { from: 'Filter & Track UI', label: 'Provides instant search and local submission tracking at /wcsm/' },
+        ],
+      },
+      keyDecisions: [
+        {
+          decision: 'Scheduled Static JSON Pipeline',
+          rationale:
+            'Running the crawler on a weekly schedule keeps the user-facing application instantaneous and zero-cost to host.',
+        },
+      ],
+      limitations: 'Submission status tracking is stored locally in the user’s browser for privacy.',
+      groupedTech: [
+        { group: 'Automation', items: ['Weekly GitHub Actions verification crawler', 'Automated deadline parser'] },
+        { group: 'Frontend', items: ['Instant multi-facet filter & search UI (/wcsm/)', 'Local submission status ledger'] },
+      ],
+    },
+    implementationTable: [
+      { tool: 'Automated weekly contest crawler', enables: 'Keeps deadlines, prize amounts, and open windows accurate without manual upkeep' },
+      { tool: 'Searchable directory & tracker (/wcsm/)', enables: 'Lets writers filter 60+ vetted contests and log submissions in one place' },
+    ],
+    artifacts: [
+      'Live Contest Directory & Tracker (/wcsm/)',
+      'Weekly GitHub Actions Verification Pipeline',
+      '60+ Vetted Contest Dataset',
+    ],
+    tags: {
+      visitorNeeds: ['Editorial Systems', 'Data Cleanup', 'Workflow Tool'],
+      capabilities: ['Data Cleanup', 'Workflow Engine'],
+      evidenceTypes: ['Working Application', 'Automated Pipeline'],
+      technologies: ['JavaScript', 'GitHub Actions', 'Automated Crawling', 'Local-First'],
     },
   },
 ];
