@@ -22,8 +22,11 @@ export const contrastRatio = (a, b) => {
 
 function Swatch({ label, value, onChange }) {
   return (
-    <label className="flex flex-1 items-center gap-2 border border-[#DFDACE]/25 px-2.5 py-1.5 rounded bg-[#141617] cursor-pointer">
-      <span className="relative block h-6 w-6 rounded border border-white/20 shrink-0" style={{ backgroundColor: value }}>
+    <label className="flex flex-1 items-center gap-2.5 border border-[#23282A]/20 px-3 py-2 bg-white cursor-pointer">
+      <span
+        className="relative block h-6 w-6 border border-[#23282A]/25 shrink-0"
+        style={{ backgroundColor: value }}
+      >
         <input
           type="color"
           value={value}
@@ -33,8 +36,8 @@ function Swatch({ label, value, onChange }) {
         />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-mono text-[9px] uppercase text-[#DFDACE]/60">{label}</span>
-        <span className="mt-1 font-mono text-[11px] font-bold text-[#EDE9E0] uppercase">{value}</span>
+        <span className="font-mono text-[9px] uppercase text-[#23282A]/60 font-semibold">{label}</span>
+        <span className="mt-1 font-mono text-[11px] font-bold text-[#23282A] uppercase">{value}</span>
       </span>
     </label>
   );
@@ -47,67 +50,69 @@ export default function ContrastTool() {
   const verdict = ratio >= 7 ? 'AAA Pass' : ratio >= 4.5 ? 'AA Pass' : ratio >= 3 ? 'AA Large Only' : 'Fails WCAG';
 
   return (
-    <div id="tool-contrast" className="bg-[#1C2022] border border-[#DFDACE]/25 rounded-lg p-5 text-[#EDE9E0] space-y-4 font-sans shadow-lg flex flex-col justify-between">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFDACE]/15 pb-3">
-        <div className="flex items-center gap-2">
-          <Eye className="h-4 w-4 text-[#D9A62E]" />
-          <div>
-            <h3 className="font-display text-base font-extrabold uppercase tracking-tight text-[#EDE9E0]">
-              Color Contrast & Readability Utility
-            </h3>
-            <span className="font-mono text-[10px] text-[#DFDACE]/60">
-              Live WCAG Ratio Calculator
-            </span>
-          </div>
+    <div
+      id="tool-contrast"
+      className="h-full bg-[#FAF8F5] border border-[#23282A]/15 p-5 sm:p-6 text-[#23282A] space-y-5 font-sans shadow-sm flex flex-col justify-between"
+    >
+      <div className="space-y-4">
+        <div className="border-b border-[#23282A]/12 pb-3">
+          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#9A6F0B] font-bold block">
+            Live WCAG Ratio Calculator
+          </span>
+          <h3 className="font-display text-lg font-black uppercase tracking-tight text-[#23282A] mt-0.5">
+            Color Contrast &amp; Readability Utility
+          </h3>
         </div>
 
-        <span className="rounded bg-[#D9A62E] text-[#1C2022] px-2 py-0.5 font-mono text-[9px] font-bold uppercase">
-          Working Tool
-        </span>
-      </div>
+        <p className="text-xs text-[#23282A]/75 font-sans leading-relaxed">
+          Test foreground and background color pairs against WCAG readability standards to verify typographic legibility.
+        </p>
 
-      <p className="text-xs text-[#DFDACE]/80 font-sans leading-relaxed">
-        Test foreground and background color pairs against WCAG standards to see if typography holds up or collapses.
-      </p>
-
-      {/* Live Swatch Preview */}
-      <div
-        className="flex min-h-[100px] items-center justify-center px-4 py-6 rounded border border-[#DFDACE]/20 shadow-inner transition-colors duration-200"
-        style={{ backgroundColor: bg, color: fg }}
-      >
-        <span className="text-center font-display text-2xl font-extrabold uppercase tracking-tight">
-          Make it readable.
-        </span>
-      </div>
-
-      {/* Interactive Controls */}
-      <div className="flex flex-wrap items-stretch gap-2">
-        <Swatch label="Text" value={fg} onChange={setFg} />
-        <Swatch label="Ground" value={bg} onChange={setBg} />
-        <button
-          onClick={() => {
-            setFg(bg);
-            setBg(fg);
-          }}
-          className="flex items-center gap-1.5 border border-[#DFDACE]/25 bg-[#141617] text-[#EDE9E0] px-3 py-1 text-xs font-mono uppercase tracking-wider rounded hover:bg-[#D9A62E] hover:text-[#1C2022] transition-colors"
+        {/* Live Swatch Preview */}
+        <div
+          className="flex min-h-[140px] items-center justify-center px-4 py-8 border border-[#23282A]/15 transition-colors duration-200"
+          style={{ backgroundColor: bg, color: fg }}
         >
-          <ArrowLeftRight className="h-3 w-3" />
-          <span>Swap</span>
-        </button>
-      </div>
-
-      <div className="flex items-center justify-between border-t border-[#DFDACE]/15 pt-3">
-        <div className="flex items-baseline gap-2">
-          <span className="font-mono text-xs text-[#DFDACE]/60">Calculated Ratio:</span>
-          <span className="font-display text-xl font-extrabold text-[#D9A62E]">
-            {ratio.toFixed(2)}:1
+          <span className="text-center font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
+            Make it readable.
           </span>
         </div>
-        <span className={`px-2 py-0.5 font-mono text-[10px] font-bold rounded uppercase ${
-          ratio >= 4.5 ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/40' : 'bg-red-950/80 text-red-300 border border-red-500/40'
-        }`}>
-          {verdict}
-        </span>
+      </div>
+
+      <div className="space-y-4">
+        {/* Interactive Controls */}
+        <div className="flex flex-wrap items-stretch gap-2">
+          <Swatch label="Text" value={fg} onChange={setFg} />
+          <Swatch label="Ground" value={bg} onChange={setBg} />
+          <button
+            onClick={() => {
+              setFg(bg);
+              setBg(fg);
+            }}
+            className="flex items-center gap-1.5 border border-[#23282A]/20 bg-[#23282A] text-[#EDE9E0] px-3.5 py-2 text-xs font-mono uppercase tracking-wider font-bold hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
+          >
+            <ArrowLeftRight className="h-3 w-3" />
+            <span>Swap</span>
+          </button>
+        </div>
+
+        <div className="flex items-center justify-between border-t border-[#23282A]/12 pt-3">
+          <div className="flex items-baseline gap-2">
+            <span className="font-mono text-xs text-[#23282A]/65">Contrast Ratio:</span>
+            <span className="font-display text-xl font-black text-[#23282A]">
+              {ratio.toFixed(2)}:1
+            </span>
+          </div>
+          <span
+            className={`px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wider ${
+              ratio >= 4.5
+                ? 'bg-[#17504A] text-[#EDE9E0]'
+                : 'bg-[#8B1E1E] text-[#EDE9E0]'
+            }`}
+          >
+            {verdict}
+          </span>
+        </div>
       </div>
     </div>
   );

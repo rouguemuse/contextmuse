@@ -99,52 +99,55 @@ export default function LabPromptCard({ onSelectTool }) {
   };
 
   return (
-    <div className="bg-[#EDE9E0] text-[#23282A] border border-[#23282A]/20 rounded-lg p-5 sm:p-6 shadow-md font-sans">
-      <div className="flex items-center justify-between border-b border-[#23282A]/15 pb-3">
-        <div className="flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-[#17504A]" />
-          <span className="font-mono text-xs uppercase tracking-wider text-[#17504A] font-bold">
-            Workbench Prompt • Creative Spark
+    <div className="h-full bg-[#FAF8F5] text-[#23282A] border border-[#23282A]/15 p-5 sm:p-6 shadow-sm font-sans flex flex-col justify-between">
+      <div>
+        <div className="flex items-center justify-between border-b border-[#23282A]/12 pb-3">
+          <div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#9A6F0B] font-bold block">
+              Design &amp; Systems Notebook
+            </span>
+            <h3 className="font-display text-lg font-black uppercase tracking-tight text-[#23282A] mt-0.5">
+              Workbench Prompts
+            </h3>
+          </div>
+          <span className="font-mono text-[10px] text-[#23282A]/60">
+            {String(currentIdx + 1).padStart(2, '0')} / {String(LAB_PROMPTS.length).padStart(2, '0')}
           </span>
         </div>
-        <span className="font-mono text-[10px] text-[#23282A]/60">
-          Prompt {String(currentIdx + 1).padStart(2, '0')} / {String(LAB_PROMPTS.length).padStart(2, '0')}
-        </span>
-      </div>
 
-      {/* Stable Height Prompt Content Container to Prevent Layout Jitter */}
-      <div className="mt-4 min-h-[170px] flex flex-col justify-between">
-        <div>
-          <h3 className="font-display text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-[#23282A] leading-snug">
-            “{currentPrompt.q}”
-          </h3>
-          <p className="mt-2 text-xs sm:text-[13px] text-[#23282A]/80 font-sans leading-relaxed">
-            {currentPrompt.context}
-          </p>
-        </div>
-
-        {/* Directly Connected Tool Badge */}
-        {currentPrompt.toolHint && (
-          <div className="mt-3 flex items-center justify-between">
-            <button
-              onClick={() => onSelectTool && onSelectTool(currentPrompt.toolTarget)}
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#17504A] hover:underline"
-            >
-              <span>→ {currentPrompt.toolHint}</span>
-              <ExternalLink className="h-3 w-3" />
-            </button>
+        {/* Stable Height Prompt Content Container */}
+        <div className="mt-4 min-h-[140px] flex flex-col justify-between">
+          <div>
+            <p className="font-display text-lg sm:text-xl font-extrabold uppercase tracking-tight text-[#23282A] leading-snug">
+              “{currentPrompt.q}”
+            </p>
+            <p className="mt-2 text-xs text-[#23282A]/75 font-sans leading-relaxed">
+              {currentPrompt.context}
+            </p>
           </div>
-        )}
+
+          {currentPrompt.toolHint && (
+            <div className="mt-3">
+              <button
+                onClick={() => onSelectTool && onSelectTool(currentPrompt.toolTarget)}
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#17504A] hover:underline"
+              >
+                <span>→ {currentPrompt.toolHint}</span>
+                <ExternalLink className="h-3 w-3" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Answer & Persistence Input */}
-      <form onSubmit={handleSave} className="mt-4 space-y-2 border-t border-[#23282A]/10 pt-3">
+      <form onSubmit={handleSave} className="mt-4 space-y-2.5 border-t border-[#23282A]/12 pt-3">
         <textarea
           rows={2}
           value={currentAnswer}
           onChange={(e) => handleAnswerChange(e.target.value)}
           placeholder="Jot down what comes to mind, or an idea to test..."
-          className="w-full bg-white/80 border border-[#23282A]/20 p-2.5 text-xs text-[#23282A] rounded focus:border-[#17504A] focus:outline-none font-sans"
+          className="w-full bg-white border border-[#23282A]/20 p-2.5 text-xs text-[#23282A] focus:border-[#23282A] focus:outline-none font-sans"
         />
 
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -153,7 +156,7 @@ export default function LabPromptCard({ onSelectTool }) {
               type="button"
               onClick={handlePrev}
               disabled={historyIndex <= 0}
-              className="flex items-center gap-1 font-mono text-[11px] text-[#23282A]/70 uppercase tracking-wider hover:text-[#23282A] disabled:opacity-30 disabled:pointer-events-none py-1 px-2 border border-[#23282A]/20 rounded"
+              className="flex items-center gap-1 font-mono text-[11px] text-[#23282A]/70 uppercase tracking-wider hover:text-[#23282A] disabled:opacity-30 disabled:pointer-events-none py-1.5 px-2.5 border border-[#23282A]/20"
             >
               <ArrowLeft className="h-3 w-3" />
               <span>Back</span>
@@ -162,22 +165,22 @@ export default function LabPromptCard({ onSelectTool }) {
             <button
               type="button"
               onClick={handleNext}
-              className="flex items-center gap-1.5 font-mono text-[11px] text-[#23282A] font-bold uppercase tracking-wider hover:bg-[#23282A] hover:text-[#EDE9E0] py-1 px-3 border border-[#23282A]/40 rounded transition-colors"
+              className="flex items-center gap-1.5 font-mono text-[11px] text-[#23282A] font-bold uppercase tracking-wider hover:bg-[#23282A] hover:text-[#EDE9E0] py-1.5 px-3 border border-[#23282A]/30 transition-colors"
             >
               <Shuffle className="h-3 w-3" />
-              <span>Next prompt</span>
+              <span>Next Prompt</span>
             </button>
           </div>
 
           <button
             type="submit"
             disabled={!currentAnswer.trim()}
-            className="flex items-center gap-1.5 bg-[#17504A] text-[#EDE9E0] px-3 py-1 font-mono text-[11px] uppercase tracking-wider font-bold rounded hover:bg-[#23282A] disabled:opacity-40 transition-colors"
+            className="flex items-center gap-1.5 bg-[#23282A] text-[#EDE9E0] px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider font-bold hover:bg-[#D9A62E] hover:text-[#141617] disabled:opacity-40 transition-colors"
           >
             {savedNotice ? (
               <>
                 <Check className="h-3 w-3" />
-                <span>Saved to My Ideas!</span>
+                <span>Saved to My Ideas</span>
               </>
             ) : (
               <>

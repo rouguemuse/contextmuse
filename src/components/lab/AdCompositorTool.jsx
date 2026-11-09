@@ -120,103 +120,100 @@ export default function AdCompositorTool() {
   };
 
   return (
-    <div id="tool-ad-compositor" className="bg-[#1C2022] border border-[#DFDACE]/25 rounded-lg p-5 text-[#EDE9E0] space-y-4 font-sans shadow-lg">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFDACE]/15 pb-3">
-        <div className="flex items-center gap-2">
-          <Layers className="h-4 w-4 text-[#D9A62E]" />
+    <div
+      id="tool-ad-compositor"
+      className="h-full bg-[#FAF8F5] border border-[#23282A]/15 p-5 sm:p-6 text-[#23282A] space-y-4 font-sans shadow-sm flex flex-col justify-between"
+    >
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#23282A]/12 pb-3">
           <div>
-            <h3 className="font-display text-base font-extrabold uppercase tracking-tight text-[#EDE9E0]">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#9A6F0B] font-bold block">
+              HTML5 Canvas Layering Utility
+            </span>
+            <h3 className="font-display text-lg font-black uppercase tracking-tight text-[#23282A] mt-0.5">
               Ad Layer Compositor
             </h3>
-            <span className="font-mono text-[10px] text-[#DFDACE]/60">
-              Interactive HTML5 Canvas Layering Utility
-            </span>
           </div>
-        </div>
 
-        <div className="flex items-center gap-2">
-          <span className="rounded bg-[#D9A62E] text-[#1C2022] px-2 py-0.5 font-mono text-[9px] font-bold uppercase">
-            Working Tool
-          </span>
           <button
             onClick={handleExport}
-            className="flex items-center gap-1 bg-[#23282A] text-[#EDE9E0] hover:text-[#D9A62E] px-2.5 py-1 text-xs font-mono rounded border border-[#DFDACE]/20 transition-colors"
+            className="flex items-center gap-1.5 bg-[#23282A] text-[#EDE9E0] hover:bg-[#D9A62E] hover:text-[#141617] px-3 py-1.5 text-xs font-mono uppercase tracking-wider font-bold transition-colors"
           >
             <Download className="h-3 w-3" />
-            <span>Export</span>
+            <span>Export PNG</span>
           </button>
         </div>
-      </div>
 
-      <p className="text-xs text-[#DFDACE]/80 font-sans leading-relaxed">
-        Assemble image, typography, opacity, and blur layers into a finished ad on an interactive HTML5 canvas.
-      </p>
+        <p className="text-xs text-[#23282A]/75 font-sans leading-relaxed">
+          Assemble image, typography, opacity, and blur layers into a finished composition on an interactive HTML5 canvas.
+        </p>
 
-      {/* Mood Quick Preset Switcher (Connects to the prompt: Make the same image feel calm, then urgent) */}
-      <div className="flex items-center gap-2 bg-[#141617] p-2 rounded border border-[#DFDACE]/10">
-        <span className="font-mono text-[10px] text-[#DFDACE]/60 uppercase font-bold">
-          Emotional Stance:
-        </span>
-        <button
-          onClick={() => handleMoodToggle('calm')}
-          className={`px-2.5 py-1 font-mono text-xs rounded uppercase font-bold transition-colors ${
-            mood === 'calm'
-              ? 'bg-[#123F38] text-[#EDE9E0] border border-emerald-500/40'
-              : 'text-[#DFDACE]/70 hover:text-[#EDE9E0]'
-          }`}
-        >
-          Calm & Structured
-        </button>
-        <button
-          onClick={() => handleMoodToggle('urgent')}
-          className={`px-2.5 py-1 font-mono text-xs rounded uppercase font-bold transition-colors ${
-            mood === 'urgent'
-              ? 'bg-[#8B1E1E] text-[#EDE9E0] border border-red-500/40'
-              : 'text-[#DFDACE]/70 hover:text-[#EDE9E0]'
-          }`}
-        >
-          Urgent / High-Priority
-        </button>
-      </div>
+        {/* Mood Quick Preset Switcher */}
+        <div className="flex flex-wrap items-center gap-2 bg-[#EDE9E0]/70 p-2 border border-[#23282A]/12">
+          <span className="font-mono text-[10px] text-[#23282A]/65 uppercase font-bold px-1">
+            Preset Stance:
+          </span>
+          <button
+            onClick={() => handleMoodToggle('calm')}
+            className={`px-2.5 py-1 font-mono text-[11px] uppercase font-bold transition-colors ${
+              mood === 'calm'
+                ? 'bg-[#23282A] text-[#EDE9E0]'
+                : 'text-[#23282A]/70 hover:text-[#23282A]'
+            }`}
+          >
+            Calm &amp; Structured
+          </button>
+          <button
+            onClick={() => handleMoodToggle('urgent')}
+            className={`px-2.5 py-1 font-mono text-[11px] uppercase font-bold transition-colors ${
+              mood === 'urgent'
+                ? 'bg-[#8B1E1E] text-[#EDE9E0]'
+                : 'text-[#23282A]/70 hover:text-[#23282A]'
+            }`}
+          >
+            Urgent / High-Priority
+          </button>
+        </div>
 
-      {/* Canvas Viewport */}
-      <div className="flex justify-center bg-[#141617] p-3 rounded border border-[#DFDACE]/15 overflow-hidden">
-        <canvas
-          ref={canvasRef}
-          width={580}
-          height={320}
-          className="w-full max-w-[580px] h-auto shadow-2xl rounded"
-        />
+        {/* Canvas Viewport */}
+        <div className="flex justify-center bg-[#141617] p-3 border border-[#23282A]/15 overflow-hidden">
+          <canvas
+            ref={canvasRef}
+            width={580}
+            height={320}
+            className="w-full max-w-[580px] h-auto"
+          />
+        </div>
       </div>
 
       {/* Interactive Controls */}
-      <div className="grid gap-3 sm:grid-cols-2 text-xs">
+      <div className="grid gap-3 sm:grid-cols-2 text-xs pt-2">
         <div>
-          <label className="block font-mono text-[10px] uppercase text-[#DFDACE]/70 mb-1">
+          <label className="block font-mono text-[10px] uppercase text-[#23282A]/65 mb-1 font-semibold">
             Headline Layer:
           </label>
           <input
             type="text"
             value={headline}
             onChange={(e) => setHeadline(e.target.value)}
-            className="w-full bg-[#141617] border border-[#DFDACE]/25 px-2.5 py-1.5 rounded text-xs text-[#EDE9E0] font-sans"
+            className="w-full bg-white border border-[#23282A]/20 px-2.5 py-1.5 text-xs text-[#23282A] font-sans focus:border-[#23282A] focus:outline-none"
           />
         </div>
 
         <div>
-          <label className="block font-mono text-[10px] uppercase text-[#DFDACE]/70 mb-1">
+          <label className="block font-mono text-[10px] uppercase text-[#23282A]/65 mb-1 font-semibold">
             Subline Layer:
           </label>
           <input
             type="text"
             value={subline}
             onChange={(e) => setSubline(e.target.value)}
-            className="w-full bg-[#141617] border border-[#DFDACE]/25 px-2.5 py-1.5 rounded text-xs text-[#EDE9E0] font-sans"
+            className="w-full bg-white border border-[#23282A]/20 px-2.5 py-1.5 text-xs text-[#23282A] font-sans focus:border-[#23282A] focus:outline-none"
           />
         </div>
 
         <div>
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase text-[#DFDACE]/70 mb-1">
+          <div className="flex items-center justify-between font-mono text-[10px] uppercase text-[#23282A]/65 mb-1 font-semibold">
             <span>Tint Layer Opacity:</span>
             <span>{Math.round(tintOpacity * 100)}%</span>
           </div>
@@ -227,12 +224,12 @@ export default function AdCompositorTool() {
             step="0.05"
             value={tintOpacity}
             onChange={(e) => setTintOpacity(Number(e.target.value))}
-            className="w-full accent-[#D9A62E]"
+            className="w-full accent-[#23282A]"
           />
         </div>
 
         <div>
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase text-[#DFDACE]/70 mb-1">
+          <div className="flex items-center justify-between font-mono text-[10px] uppercase text-[#23282A]/65 mb-1 font-semibold">
             <span>Atmospheric Blur:</span>
             <span>{blurAmount}px</span>
           </div>
@@ -243,7 +240,7 @@ export default function AdCompositorTool() {
             step="1"
             value={blurAmount}
             onChange={(e) => setBlurAmount(Number(e.target.value))}
-            className="w-full accent-[#D9A62E]"
+            className="w-full accent-[#23282A]"
           />
         </div>
       </div>
