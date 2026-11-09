@@ -6,113 +6,139 @@ import PageAnnotationOverlay from '@/components/site/PageAnnotationOverlay';
 import { useBrief } from '@/lib/BriefContext';
 import {
   ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   CheckCircle2,
+  ChevronDown,
+  ChevronUp,
   Columns,
-  Eye,
   FileCode2,
-  Layers,
   Maximize2,
-  Minimize2,
   Monitor,
   MoveHorizontal,
   Play,
   Ruler,
   Scale,
-  ShieldAlert,
   Smartphone,
   Sparkles,
-  Terminal,
   X,
 } from 'lucide-react';
 
-const VIEWPORT_MODES = [
+const MAIN_VIEWPORT_MODES = [
   {
     id: 'desktop',
-    label: 'Desktop (1440 × 900)',
-    shortLabel: 'Desktop 1440×900',
+    label: 'Desktop',
+    fullLabel: 'Desktop (1440 × 900)',
     icon: Monitor,
     beforeSrc: '/assets/images/design-intelligence/exp01_before_desktop.png',
     afterSrc: '/assets/images/design-intelligence/exp01_after_desktop.png',
-    viewportText: '1440 × 900 CSS px (2880 × 1800 @ 2x DPR parity)',
+    naturalWidth: 2880,
+    naturalHeight: 1800,
     aspectClass: 'aspect-[1440/900]',
-    isFullPageScroll: false,
-    plumbLinePct: (40 / 1440) * 100, // 2.777%
-    beforePlumbHeroPct: (48 / 1440) * 100, // 3.333%
-    beforePlumbHeaderPct: (24 / 1440) * 100, // 1.667%
-    caption:
-      'Captured at identical 1440×900 CSS viewport dimensions and identical 2x deviceScaleFactor (2880×1800 native PNGs) so sharpness is 1:1. Drag the handle or use Arrow Left/Right keys to inspect the 40px left plumb line, zero-radius CTAs, 2px room overlines, and Room 02 on-palette Quoting chip.',
+    maxWidthClass: 'max-w-[1040px]',
+    viewportText: '1440 × 900 CSS px (2880 × 1800 @ 2x DPR)',
+    plumbLinePct: (40 / 1440) * 100,
+    beforePlumbHeroPct: (48 / 1440) * 100,
   },
   {
     id: 'mobile',
-    label: 'Mobile Above-Fold (390 × 844)',
-    shortLabel: 'Mobile 390×844',
+    label: 'Mobile',
+    fullLabel: 'Mobile (390 × 844)',
     icon: Smartphone,
     beforeSrc: '/assets/images/design-intelligence/exp01_before_mobile.png',
     afterSrc: '/assets/images/design-intelligence/exp01_after_mobile.png',
-    viewportText: '390 × 844 CSS px (780 × 1688 @ 2x DPR parity)',
+    naturalWidth: 780,
+    naturalHeight: 1688,
     aspectClass: 'aspect-[390/844]',
-    isFullPageScroll: false,
-    plumbLinePct: (20 / 390) * 100, // 5.128%
-    beforePlumbHeroPct: (24 / 390) * 100,
-    beforePlumbHeaderPct: (16 / 390) * 100,
-    caption:
-      'Captured at identical 390×844 CSS viewport dimensions and identical 2x deviceScaleFactor (780×1688 native PNGs). Notice the unified 20px left plumb line across header, headline, and full-width zero-radius CTAs with right-aligned directional arrows.',
-  },
-  {
-    id: 'mobile-full',
-    label: 'Mobile Full-Page (390 × 1824 / 1901)',
-    shortLabel: 'Mobile Full Scroll',
-    icon: Columns,
-    beforeSrc: '/assets/images/design-intelligence/exp01_before_mobile_full.png',
-    afterSrc: '/assets/images/design-intelligence/exp01_after_mobile_full.png',
-    viewportText: '390px CSS width @ 2x DPR (780×3648 Before / 780×3802 After)',
-    aspectClass: '',
-    isFullPageScroll: true,
+    maxWidthClass: 'max-w-[300px]',
+    viewportText: '390 × 844 CSS px (780 × 1688 @ 2x DPR)',
     plumbLinePct: (20 / 390) * 100,
     beforePlumbHeroPct: (24 / 390) * 100,
-    beforePlumbHeaderPct: (16 / 390) * 100,
-    caption:
-      'Unscaled top-anchored full-page mobile comparison. Because vertical spacing and border weights changed in Experiment 01, total document height increased by +77px (1824px → 1901px); both captures are anchored at y=0 without vertical stretching.',
   },
 ];
 
-const FOCUS_CALLOUTS = [
+const INSPECTOR_MODES = [
+  ...MAIN_VIEWPORT_MODES,
   {
-    id: 'all',
-    label: '50 / 50 Split Overview',
-    sliderPos: 50,
-    mode: 'desktop',
-    showPlumb: false,
-    description: 'Balanced 50% split comparing Baseline (52e179d) on the left and Experiment 01 (195921a) on the right.',
+    id: 'mobile-full',
+    label: 'Mobile Full-Page',
+    fullLabel: 'Mobile Full-Page (390 × 1824 / 1901)',
+    icon: Columns,
+    beforeSrc: '/assets/images/design-intelligence/exp01_before_mobile_full.png',
+    afterSrc: '/assets/images/design-intelligence/exp01_after_mobile_full.png',
+    naturalWidth: 780,
+    naturalHeight: 3802,
+    isFullPageScroll: true,
+    viewportText: '390px CSS width @ 2x DPR (780×3648 Before / 780×3802 After)',
+    plumbLinePct: (20 / 390) * 100,
+    beforePlumbHeroPct: (24 / 390) * 100,
+  },
+];
+
+const ALL_PRELOAD_PAIRS = [
+  [
+    '/assets/images/design-intelligence/exp01_before_desktop.png',
+    '/assets/images/design-intelligence/exp01_after_desktop.png',
+  ],
+  [
+    '/assets/images/design-intelligence/exp01_before_mobile.png',
+    '/assets/images/design-intelligence/exp01_after_mobile.png',
+  ],
+  [
+    '/assets/images/design-intelligence/exp01_before_mobile_full.png',
+    '/assets/images/design-intelligence/exp01_after_mobile_full.png',
+  ],
+  [
+    '/assets/images/design-intelligence/exp01_after_desktop_hover_build.png',
+    '/assets/images/design-intelligence/exp01_after_desktop_hover_build.png',
+  ],
+];
+
+const THREE_FINDINGS = [
+  {
+    num: '01',
+    title: 'Structural alignment',
+    metric: '24px → 0px left-edge drift',
+    body: 'On the baseline entrance, horizontal padding stepped inward and outward between the header (24px), hero headline and CTAs (48px), and footer (24px), while 4px rounded buttons clashed with the sharp 2×2 room grid. Standardizing outer container margins and 0px border-2 CTA geometry locked the logo, headline, primary CTA, and footer onto a single 40px desktop (20px mobile) plumb line with 0px variance.',
   },
   {
-    id: 'plumb',
-    label: '01 / Left Plumb Line (24px → 0px Variance)',
-    sliderPos: 12,
-    mode: 'desktop',
-    showPlumb: true,
-    description:
-      'Enabling the 40px Plumb Guide reveals how the header logo (24px), hero headline/CTAs (48px), and footer (24px) previously stepped in and out by 24px. In 195921a, all four anchor cleanly at x = 40px.',
+    num: '02',
+    title: 'Typography and visual consistency',
+    metric: 'Fluid scale & on-palette tokens',
+    body: 'Fixed-breakpoint room headings, thin 1px dividers, and an off-palette Tailwind red badge (02 Quoting in Room 02) weakened hierarchy across the four quadrants. Introducing fluid clamp(1.65rem, 2.15vw, 2.125rem) display sizing, 2px structural overlines, and ContextMuse #D9A62E mustard tokens unified the grid while reverting experimental line-width rules that caused a 3-line mobile orphan.',
   },
   {
-    id: 'cta',
-    label: '02 / Zero-Radius CTAs & Overlines',
-    sliderPos: 36,
-    mode: 'desktop',
-    showPlumb: false,
-    description:
-      'Compare the Hero CTAs and 01 / INSPECT divider: 4px rounded buttons with drop shadows were replaced by 0px border-2 architectural framing and 2px room overlines.',
+    num: '03',
+    title: 'Interaction refinement',
+    metric: '450ms enter / 200ms leave',
+    body: 'Room tiles previously used a uniform 300ms transition with a brightness(1.05) filter that washed out each room’s pigment on hover. Removing the brightness filter and applying asymmetric Ease-Out Quint timing (450ms entry, 200ms release) preserved exact surface saturation while directing motion into the internal room motifs, directional arrows, and 3px bottom rules.',
+  },
+];
+
+const FIVE_STAGES = [
+  {
+    step: '01',
+    name: 'Reference',
+    summary: 'Select a high-craft specimen (locomotive.ca) to study structural proportions and choreography rather than visual style.',
   },
   {
-    id: 'chip',
-    label: '03 / Room 02 Quoting Chip (Off-Palette Red → Mustard)',
-    sliderPos: 82,
-    mode: 'desktop',
-    showPlumb: false,
-    description:
-      'In Room 02 (Custom Builds, top-right quadrant), slide across "02 Quoting" to see the off-palette Tailwind red badge (bg-red-100 text-red-900) replaced by ContextMuse #D9A62E mustard and #23282A ink.',
+    step: '02',
+    name: 'Extraction',
+    summary: 'Query computed DOM and CSS tokens (40px grid margins, 2px rules, 450ms/200ms quintic easing) into a reference dossier.',
+  },
+  {
+    step: '03',
+    name: 'Evaluation',
+    summary: 'Audit the ContextMuse baseline (52e179d) to isolate measurable alignment drift, token outliers, and hover washout.',
+  },
+  {
+    step: '04',
+    name: 'Refinement',
+    summary: 'Apply targeted changes on an isolated branch (195921a) and revert any rule that degrades mobile line wrapping.',
+  },
+  {
+    step: '05',
+    name: 'Verification',
+    summary: 'Confirm 0px plumb-line variance in headless Chromium and run the 11-check functional non-regression smoke suite.',
   },
 ];
 
@@ -185,48 +211,153 @@ const SMOKE_CHECKS = [
   },
 ];
 
+// Cache decoded image status across mounts so mode switches are instantaneous
+const decodedUrlCache = new Set();
+
+function preloadAndDecodePair(beforeSrc, afterSrc) {
+  if (decodedUrlCache.has(beforeSrc) && decodedUrlCache.has(afterSrc)) {
+    return Promise.resolve();
+  }
+  const decodeOne = (src) =>
+    new Promise((resolve) => {
+      if (decodedUrlCache.has(src)) {
+        resolve();
+        return;
+      }
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = src;
+      const done = () => {
+        decodedUrlCache.add(src);
+        resolve();
+      };
+      if (img.complete && img.naturalWidth > 0) {
+        if (typeof img.decode === 'function') {
+          img.decode().then(done).catch(done);
+        } else {
+          done();
+        }
+      } else {
+        img.onload = () => {
+          if (typeof img.decode === 'function') {
+            img.decode().then(done).catch(done);
+          } else {
+            done();
+          }
+        };
+        img.onerror = done;
+      }
+    });
+
+  return Promise.all([decodeOne(beforeSrc), decodeOne(afterSrc)]).then(() => undefined);
+}
+
 export default function DesignIntelligenceCaseStudy() {
   const { openBrief, updateInquiry } = useBrief();
+
+  // Main stage state (Desktop / Mobile only — clean, stable, zero-glitch)
   const [viewportModeId, setViewportModeId] = useState('desktop');
-  const [sliderPos, setSliderPos] = useState(50); // 0 to 100 (% of BEFORE image visible from left)
-  const [activeCallout, setActiveCallout] = useState('all');
-  const [showPlumbGuides, setShowPlumbGuides] = useState(false);
+  const [pendingModeId, setPendingModeId] = useState(null);
+  const [sliderPos, setSliderPos] = useState(50);
+
+  // Detail Inspector modal state (houses Full-Page Mobile, Side-by-Side, Plumb Guides, Zoom, & Hover Capture)
   const [inspectorOpen, setInspectorOpen] = useState(false);
+  const [inspectorModeId, setInspectorModeId] = useState('desktop');
   const [inspectorView, setInspectorView] = useState('side-by-side'); // 'side-by-side' | 'slider' | 'hover'
   const [inspectorZoom, setInspectorZoom] = useState(1);
+  const [showPlumbGuides, setShowPlumbGuides] = useState(false);
+
+  // Optional Research & Technical Evidence disclosure
+  const [evidenceOpen, setEvidenceOpen] = useState(false);
   const [simulatingHover, setSimulatingHover] = useState(false);
 
-  const sliderContainerRef = useRef(null);
-  const isDraggingRef = useRef(false);
+  const activeStageRef = useRef(null);
+  const inspectorStageRef = useRef(null);
+  const isDraggingMainRef = useRef(false);
+  const isDraggingInspectorRef = useRef(false);
 
-  const activeMode = VIEWPORT_MODES.find((m) => m.id === viewportModeId) || VIEWPORT_MODES[0];
+  const activeMode = MAIN_VIEWPORT_MODES.find((m) => m.id === viewportModeId) || MAIN_VIEWPORT_MODES[0];
+  const activeInspectorMode = INSPECTOR_MODES.find((m) => m.id === inspectorModeId) || INSPECTOR_MODES[0];
 
-  const updatePositionFromClientX = useCallback((clientX) => {
-    const el = sliderContainerRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
+  // Preload and decode all comparison images on mount so switching is instant and never flashes
+  useEffect(() => {
+    ALL_PRELOAD_PAIRS.forEach(([b, a]) => {
+      preloadAndDecodePair(b, a);
+    });
+  }, []);
+
+  // Switch main viewport mode only after target pair is decoded in memory
+  const handleSelectMainMode = useCallback(
+    (nextModeId) => {
+      if (nextModeId === viewportModeId && !pendingModeId) return;
+      const target = MAIN_VIEWPORT_MODES.find((m) => m.id === nextModeId);
+      if (!target) return;
+
+      if (decodedUrlCache.has(target.beforeSrc) && decodedUrlCache.has(target.afterSrc)) {
+        setPendingModeId(null);
+        setViewportModeId(nextModeId);
+        return;
+      }
+
+      setPendingModeId(nextModeId);
+      preloadAndDecodePair(target.beforeSrc, target.afterSrc).then(() => {
+        setViewportModeId(nextModeId);
+        setPendingModeId(null);
+      });
+    },
+    [viewportModeId, pendingModeId]
+  );
+
+  const handleSelectInspectorMode = useCallback((nextModeId) => {
+    const target = INSPECTOR_MODES.find((m) => m.id === nextModeId);
+    if (!target) return;
+    preloadAndDecodePair(target.beforeSrc, target.afterSrc).then(() => {
+      setInspectorModeId(nextModeId);
+    });
+  }, []);
+
+  const updatePosFromClientX = useCallback((clientX, containerEl) => {
+    if (!containerEl) return;
+    const rect = containerEl.getBoundingClientRect();
     if (rect.width <= 0) return;
     const rawPct = ((clientX - rect.left) / rect.width) * 100;
     const clamped = Math.max(0, Math.min(100, rawPct));
     setSliderPos(clamped);
   }, []);
 
-  const handlePointerDown = (e) => {
-    // Allow left-click or touch/pen
+  const handleMainPointerDown = (e) => {
     if (e.button !== undefined && e.button !== 0) return;
-    isDraggingRef.current = true;
+    isDraggingMainRef.current = true;
     e.currentTarget.setPointerCapture?.(e.pointerId);
-    updatePositionFromClientX(e.clientX);
+    updatePosFromClientX(e.clientX, activeStageRef.current);
   };
 
-  const handlePointerMove = (e) => {
-    if (!isDraggingRef.current) return;
-    updatePositionFromClientX(e.clientX);
+  const handleMainPointerMove = (e) => {
+    if (!isDraggingMainRef.current) return;
+    updatePosFromClientX(e.clientX, activeStageRef.current);
   };
 
-  const handlePointerUp = (e) => {
-    if (!isDraggingRef.current) return;
-    isDraggingRef.current = false;
+  const handleMainPointerUp = (e) => {
+    if (!isDraggingMainRef.current) return;
+    isDraggingMainRef.current = false;
+    e.currentTarget.releasePointerCapture?.(e.pointerId);
+  };
+
+  const handleInspectorPointerDown = (e) => {
+    if (e.button !== undefined && e.button !== 0) return;
+    isDraggingInspectorRef.current = true;
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+    updatePosFromClientX(e.clientX, inspectorStageRef.current);
+  };
+
+  const handleInspectorPointerMove = (e) => {
+    if (!isDraggingInspectorRef.current) return;
+    updatePosFromClientX(e.clientX, inspectorStageRef.current);
+  };
+
+  const handleInspectorPointerUp = (e) => {
+    if (!isDraggingInspectorRef.current) return;
+    isDraggingInspectorRef.current = false;
     e.currentTarget.releasePointerCapture?.(e.pointerId);
   };
 
@@ -247,7 +378,6 @@ export default function DesignIntelligenceCaseStudy() {
     }
   };
 
-  // Close full-resolution modal on Escape
   useEffect(() => {
     if (!inspectorOpen) return;
     const onKey = (e) => {
@@ -257,11 +387,10 @@ export default function DesignIntelligenceCaseStudy() {
     return () => window.removeEventListener('keydown', onKey);
   }, [inspectorOpen]);
 
-  const applyCallout = (callout) => {
-    setActiveCallout(callout.id);
-    setViewportModeId(callout.mode);
-    setSliderPos(callout.sliderPos);
-    setShowPlumbGuides(callout.showPlumb);
+  const openDetailInspector = (initialMode = viewportModeId, initialView = 'side-by-side') => {
+    setInspectorModeId(initialMode);
+    setInspectorView(initialView);
+    setInspectorOpen(true);
   };
 
   const handleInquireAboutDesignSystem = () => {
@@ -280,1144 +409,632 @@ export default function DesignIntelligenceCaseStudy() {
 
       <main className="flex-1">
         {/* ============================================================
-            HERO / CASE STUDY HEADER (UNDERSTANDABLE IN < 2 MINUTES)
-            ============================================================ */}
-        <section className="border-b border-[#DFDACE]/15 bg-[#23282A] px-5 py-8 sm:px-8 sm:py-12 lg:px-10">
-          <div className="mx-auto max-w-7xl space-y-6">
-            {/* Breadcrumb & Early Experiment Classification */}
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-                <Link
-                  to="/lab"
-                  className="inline-flex items-center gap-1.5 text-[#DFDACE]/75 hover:text-[#D9A62E] transition-colors"
-                >
-                  <ArrowLeft className="h-3.5 w-3.5" />
-                  <span>03 / THE LAB</span>
-                </Link>
-                <span className="text-[#DFDACE]/35">/</span>
-                <span className="rounded-none bg-[#D9A62E] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#141617]">
-                  Early R&amp;D Experiment · Not a Commercial Product
-                </span>
-                <span className="rounded-none border border-[#DFDACE]/25 bg-[#1B1F21] px-2 py-0.5 text-[10px] uppercase tracking-wider text-[#EDE9E0]">
-                  Experiment 01 of Design Intelligence Library
-                </span>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] text-[#DFDACE]/75">
-                <span className="border border-[#DFDACE]/20 bg-[#1B1F21] px-2.5 py-1">
-                  Baseline Commit: <strong className="text-[#EDE9E0]">52e179d</strong>
-                </span>
-                <span className="border border-[#D9A62E]/45 bg-[#1B1F21] px-2.5 py-1">
-                  Experiment Commit: <strong className="text-[#D9A62E]">195921a</strong>
-                </span>
-              </div>
-            </div>
-
-            {/* Title & Executive Summary */}
-            <div className="grid gap-8 lg:grid-cols-12 items-end">
-              <div className="lg:col-span-8 space-y-4">
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-[#D9A62E]">
-                  DESIGN INTELLIGENCE CASE STUDY · REFERENCE EXTRACTION &amp; CONTROLLED REFINEMENT
-                </p>
-                <h1 className="font-display text-3xl sm:text-5xl font-black uppercase leading-[1.02] tracking-[-0.02em] text-[#EDE9E0]">
-                  Translating Measured Design Tokens Into Structural Polish.
-                </h1>
-                <p className="max-w-3xl text-sm sm:text-base text-[#DFDACE]/90 leading-relaxed">
-                  Can a web product study an award-winning reference site for transferable structural and motion
-                  principles—without copying its aesthetic, layout, or branding? In this controlled experiment on the
-                  ContextMuse four-room entrance, we extracted computed grid, typography, and easing tokens from{' '}
-                  <strong className="text-[#EDE9E0]">Locomotive (locomotive.ca/en)</strong> and tested three targeted
-                  refinements on an isolated Git branch (<code className="font-mono text-[#D9A62E]">195921a</code>)
-                  against our production candidate baseline (<code className="font-mono text-[#EDE9E0]">52e179d</code>).
-                </p>
-              </div>
-
-              {/* 2-Minute Executive Scorecard */}
-              <div className="lg:col-span-4 border-2 border-[#DFDACE]/20 bg-[#1B1F21] p-4 sm:p-5 space-y-3 font-mono text-xs">
-                <div className="flex items-center justify-between border-b border-[#DFDACE]/15 pb-2">
-                  <span className="text-[#D9A62E] font-bold uppercase tracking-wider">
-                    Verified Experiment Summary
-                  </span>
-                  <span className="text-[10px] text-[#DFDACE]/60">2-Min Read · 2x DPR Parity</span>
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <div className="text-[10px] uppercase text-[#DFDACE]/60">Desktop Plumb Drift</div>
-                    <div className="text-base font-bold text-[#EDE9E0]">24px → 0px</div>
-                    <div className="text-[10px] text-emerald-400">All 4 anchors at x=40px</div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase text-[#DFDACE]/60">Mobile Plumb Drift</div>
-                    <div className="text-base font-bold text-[#EDE9E0]">8px → 0px</div>
-                    <div className="text-[10px] text-emerald-400">All 4 anchors at x=20px</div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase text-[#DFDACE]/60">Asymmetric Easing</div>
-                    <div className="text-base font-bold text-[#EDE9E0]">450ms / 200ms</div>
-                    <div className="text-[10px] text-[#D9A62E]">Ease-Out Quint (no washout)</div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase text-[#DFDACE]/60">Functional Smoke</div>
-                    <div className="text-base font-bold text-[#EDE9E0]">11 / 11 PASS</div>
-                    <div className="text-[10px] text-[#DFDACE]/70">Non-regression only (not aesthetic proof)</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================
-            SECTION 01: INTERACTIVE BEFORE / AFTER IMAGE SLIDER
+            SECTION A: THE EXPERIMENT & INTERACTIVE BEFORE/AFTER SLIDER
             ============================================================ */}
         <section
           id="interactive-comparison"
-          className="border-b border-[#DFDACE]/15 bg-[#1B1F21] px-5 py-10 sm:px-8 sm:py-14 lg:px-10"
+          className="border-b border-[#DFDACE]/15 bg-[#1B1F21] px-5 py-8 sm:px-8 sm:py-12 lg:px-10"
         >
-          <div className="mx-auto max-w-7xl space-y-6">
-            {/* Section Title & Controls Bar */}
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-5">
-              <div>
-                <div className="font-mono text-xs font-bold uppercase tracking-widest text-[#D9A62E]">
-                  01 / GENUINE VISUAL EVIDENCE (BASELINE 52e179d VS. EXPERIMENT 195921a)
-                </div>
-                <h2 className="mt-1 font-display text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#EDE9E0]">
-                  Interactive Before &amp; After Viewport Comparison
-                </h2>
-                <p className="mt-1 text-xs sm:text-sm text-[#DFDACE]/80 max-w-2xl">
-                  Drag the comparison divider with mouse or touch, or focus the handle and press{' '}
-                  <kbd className="border border-[#DFDACE]/30 bg-[#23282A] px-1.5 py-0.5 font-mono text-[11px]">←</kbd>{' '}
-                  /{' '}
-                  <kbd className="border border-[#DFDACE]/30 bg-[#23282A] px-1.5 py-0.5 font-mono text-[11px]">→</kbd>{' '}
-                  (<kbd className="border border-[#DFDACE]/30 bg-[#23282A] px-1.5 py-0.5 font-mono text-[11px]">Shift</kbd>{' '}
-                  for 10% steps). Zero cropping or artificial post-processing applied.
-                </p>
+          <div className="mx-auto max-w-6xl space-y-6">
+            {/* Compact Header & Narrative Intro */}
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#DFDACE]/75">
+                <Link
+                  to="/lab"
+                  className="inline-flex items-center gap-1.5 hover:text-[#D9A62E] transition-colors"
+                >
+                  <ArrowLeft className="h-3.5 w-3.5" />
+                  <span>The Lab / Design Intelligence Experiment 01</span>
+                </Link>
+                <span className="text-[#D9A62E]">Early R&amp;D Experiment · Baseline 52e179d → 195921a</span>
               </div>
 
-              {/* Viewport Mode Switcher & Full-Res Inspector Button */}
-              <div className="flex flex-wrap items-center gap-2">
-                <div
-                  role="group"
-                  aria-label="Viewport comparison mode"
-                  className="inline-flex flex-wrap border border-[#DFDACE]/25 bg-[#23282A] p-1"
-                >
-                  {VIEWPORT_MODES.map((m) => {
-                    const Icon = m.icon;
-                    const active = m.id === viewportModeId;
-                    return (
-                      <button
-                        key={m.id}
-                        type="button"
-                        onClick={() => setViewportModeId(m.id)}
-                        aria-pressed={active}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-wider transition-colors ${
-                          active
-                            ? 'bg-[#D9A62E] text-[#141617]'
-                            : 'text-[#EDE9E0] hover:text-[#D9A62E]'
-                        }`}
-                      >
-                        <Icon className="h-3.5 w-3.5" />
-                        <span>{m.shortLabel}</span>
-                      </button>
-                    );
-                  })}
-                </div>
+              <h1 className="font-display text-3xl sm:text-5xl font-black tracking-tight text-[#EDE9E0] leading-[1.05]">
+                Can design intelligence improve an AI-built website?
+              </h1>
+
+              <p className="max-w-3xl text-sm sm:text-base text-[#DFDACE]/90 leading-relaxed">
+                We analyzed an external reference specimen (<strong className="text-[#EDE9E0]">Locomotive</strong>),
+                extracted measurable structural, typographic, and motion principles, and applied targeted refinements to
+                the ContextMuse four-room entrance on an isolated branch—preserving its own layout, copy, and identity.
+              </p>
+            </div>
+
+            {/* Streamlined Primary Controls: Desktop / Mobile + Open Detail Inspector */}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-y border-[#DFDACE]/15 py-3">
+              <div
+                role="group"
+                aria-label="Viewport comparison mode"
+                className="inline-flex border border-[#DFDACE]/25 bg-[#23282A] p-1"
+              >
+                {MAIN_VIEWPORT_MODES.map((m) => {
+                  const Icon = m.icon;
+                  const active = m.id === viewportModeId;
+                  return (
+                    <button
+                      key={m.id}
+                      type="button"
+                      data-mode-btn={m.id}
+                      onClick={() => handleSelectMainMode(m.id)}
+                      aria-pressed={active}
+                      className={`flex items-center gap-2 px-4 py-1.5 font-mono text-xs font-bold transition-colors ${
+                        active
+                          ? 'bg-[#D9A62E] text-[#141617]'
+                          : 'text-[#EDE9E0] hover:text-[#D9A62E]'
+                      }`}
+                    >
+                      <Icon className="h-3.5 w-3.5" />
+                      <span>{m.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="hidden md:inline text-xs text-[#DFDACE]/70">
+                  Drag handle or use <kbd className="border border-[#DFDACE]/25 bg-[#23282A] px-1.5 py-0.5 font-mono text-[11px]">←</kbd>{' '}
+                  <kbd className="border border-[#DFDACE]/25 bg-[#23282A] px-1.5 py-0.5 font-mono text-[11px]">→</kbd> keys
+                </span>
 
                 <button
                   type="button"
-                  onClick={() => setShowPlumbGuides((v) => !v)}
-                  aria-pressed={showPlumbGuides}
-                  className={`flex items-center gap-1.5 border px-3 py-2 font-mono text-xs font-bold uppercase tracking-wider transition-colors ${
-                    showPlumbGuides
-                      ? 'border-emerald-400 bg-emerald-950/60 text-emerald-300'
-                      : 'border-[#DFDACE]/25 bg-[#23282A] text-[#EDE9E0] hover:border-[#D9A62E]'
-                  }`}
-                >
-                  <Ruler className="h-3.5 w-3.5" />
-                  <span>{showPlumbGuides ? 'Plumb Guide: ON' : 'Plumb Guide: OFF'}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setInspectorOpen(true)}
-                  className="flex items-center gap-1.5 border-2 border-[#D9A62E] bg-[#23282A] px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E] hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
+                  onClick={() => openDetailInspector(viewportModeId, 'side-by-side')}
+                  className="inline-flex items-center gap-2 border border-[#D9A62E] bg-[#23282A] px-3.5 py-1.5 font-mono text-xs font-bold text-[#D9A62E] hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
                 >
                   <Maximize2 className="h-3.5 w-3.5" />
-                  <span>Full-Image Detail Inspector</span>
+                  <span>Open Detail Inspector</span>
                 </button>
               </div>
             </div>
 
-            {/* Guided Inspection Presets */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-              {FOCUS_CALLOUTS.map((callout) => {
-                const isSelected = activeCallout === callout.id && viewportModeId === callout.mode;
-                return (
-                  <button
-                    key={callout.id}
-                    type="button"
-                    onClick={() => applyCallout(callout)}
-                    className={`text-left p-3 border transition-colors ${
-                      isSelected
-                        ? 'border-[#D9A62E] bg-[#23282A] text-[#EDE9E0]'
-                        : 'border-[#DFDACE]/15 bg-[#23282A]/50 text-[#DFDACE]/80 hover:border-[#DFDACE]/40'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-2 font-mono text-[11px] font-bold uppercase text-[#D9A62E]">
-                      <span>{callout.label}</span>
-                      <span>{callout.sliderPos}%</span>
-                    </div>
-                    <p className="mt-1 text-xs leading-snug text-[#DFDACE]/85">{callout.description}</p>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Quick Slider Position Bar & Readout */}
-            <div className="flex flex-wrap items-center justify-between gap-3 bg-[#23282A] border border-[#DFDACE]/15 px-4 py-2.5 font-mono text-xs">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 bg-[#1B1F21] border border-[#DFDACE]/30 px-2.5 py-1 text-[#EDE9E0] font-bold">
+            {/* GLITCH-FREE STAGE CONTAINER
+                Both Desktop (1440×900) and Mobile (390×844) frames stay mounted in dedicated
+                aspect-locked containers so image sources never swap across aspect ratios and
+                outer stage height never jumps on desktop. */}
+            <div className="border border-[#DFDACE]/20 bg-[#141617]">
+              {/* Unobtrusive Before / After Header Bar (never obscures screenshot header or logo) */}
+              <div className="flex items-center justify-between border-b border-[#DFDACE]/15 bg-[#181B1D] px-4 py-2 font-mono text-xs">
+                <div className="flex items-center gap-2 font-bold text-[#EDE9E0]">
                   <span className="h-2 w-2 rounded-full bg-[#DFDACE]" />
-                  LEFT: BEFORE (Baseline 52e179d) · {Math.round(sliderPos)}%
-                </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#1B1F21] border border-[#D9A62E]/50 px-2.5 py-1 text-[#D9A62E] font-bold">
-                  <span className="h-2 w-2 rounded-full bg-[#D9A62E]" />
-                  RIGHT: AFTER (Experiment 195921a) · {Math.round(100 - sliderPos)}%
-                </span>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-[#DFDACE]/60 mr-1 hidden sm:inline">Quick Split:</span>
-                {[
-                  { label: 'All After (0%)', pos: 0 },
-                  { label: '25%', pos: 25 },
-                  { label: '50 / 50', pos: 50 },
-                  { label: '75%', pos: 75 },
-                  { label: 'All Before (100%)', pos: 100 },
-                ].map((preset) => (
-                  <button
-                    key={preset.pos}
-                    type="button"
-                    onClick={() => setSliderPos(preset.pos)}
-                    className={`px-2 py-1 text-[11px] uppercase border transition-colors ${
-                      Math.round(sliderPos) === preset.pos
-                        ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
-                        : 'border-[#DFDACE]/20 bg-[#1B1F21] text-[#DFDACE]/80 hover:border-[#D9A62E]'
-                    }`}
-                  >
-                    {preset.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* THE DRAGGABLE BEFORE / AFTER STAGE */}
-            <div className="flex justify-center bg-[#141617] border-2 border-[#DFDACE]/20 p-3 sm:p-6 overflow-hidden">
-              <div
-                ref={sliderContainerRef}
-                data-slider-stage="true"
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-                style={{ touchAction: 'pan-y' }}
-                className={`relative select-none overflow-hidden border border-[#DFDACE]/25 shadow-2xl cursor-ew-resize ${
-                  activeMode.id === 'desktop'
-                    ? 'w-full max-w-[1280px] aspect-[1440/900]'
-                    : activeMode.id === 'mobile'
-                    ? 'w-full max-w-[420px] aspect-[390/844]'
-                    : 'w-full max-w-[420px]'
-                }`}
-              >
-                {/* LAYER 1 (BASE): AFTER IMAGE (Experiment 195921a) */}
-                <img
-                  src={activeMode.afterSrc}
-                  alt={`AFTER (Experiment 195921a) — ${activeMode.label}`}
-                  draggable={false}
-                  className={
-                    activeMode.isFullPageScroll
-                      ? 'block w-full h-auto select-none pointer-events-none'
-                      : 'block w-full h-full object-fill select-none pointer-events-none'
-                  }
-                />
-
-                {/* LAYER 2 (CLIPPED OVERLAY): BEFORE IMAGE (Baseline 52e179d) */}
-                <div
-                  aria-hidden="true"
-                  style={{
-                    clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
-                  }}
-                  className={`absolute inset-0 pointer-events-none ${
-                    activeMode.isFullPageScroll ? 'bg-[#141617] flex flex-col justify-between' : ''
-                  }`}
-                >
-                  <img
-                    src={activeMode.beforeSrc}
-                    alt={`BEFORE (Baseline 52e179d) — ${activeMode.label}`}
-                    draggable={false}
-                    className={
-                      activeMode.isFullPageScroll
-                        ? 'block w-full h-auto select-none pointer-events-none'
-                        : 'block w-full h-full object-fill select-none pointer-events-none'
-                    }
-                  />
-                  {activeMode.isFullPageScroll && (
-                    <div className="border-t border-dashed border-[#DFDACE]/30 bg-[#141617] px-3 py-2 font-mono text-[10px] text-[#DFDACE]/70">
-                      Baseline 52e179d document ends at 1824px CSS height (vs. 1901px After — +77px from vertical rhythm
-                      refinements; neither capture is stretched).
-                    </div>
-                  )}
+                  <span>BEFORE · Baseline (52e179d)</span>
                 </div>
+                <div className="hidden sm:block text-[11px] text-[#DFDACE]/60">
+                  {activeMode.fullLabel} · {Math.round(sliderPos)}% / {Math.round(100 - sliderPos)}%
+                </div>
+                <div className="flex items-center gap-2 font-bold text-[#D9A62E]">
+                  <span>AFTER · Refined (195921a)</span>
+                  <span className="h-2 w-2 rounded-full bg-[#D9A62E]" />
+                </div>
+              </div>
 
-                {/* OPTIONAL MEASURED PLUMB-LINE GUIDES */}
-                {showPlumbGuides && (
-                  <div className="pointer-events-none absolute inset-0 z-10">
-                    {/* After Unified Plumb Line (x = 40px desktop / 20px mobile) */}
-                    <div
-                      style={{ left: `${activeMode.plumbLinePct}%` }}
-                      className="absolute top-0 bottom-0 border-l-2 border-dashed border-emerald-400/90"
-                    >
-                      <span className="absolute bottom-10 left-1.5 whitespace-nowrap bg-emerald-950/95 border border-emerald-400 px-1.5 py-0.5 font-mono text-[10px] font-bold text-emerald-300">
-                        AFTER Plumb: {activeMode.id === 'desktop' ? '40px (0px drift)' : '20px (0px drift)'}
-                      </span>
-                    </div>
-
-                    {/* Before Hero Drift Line (x = 48px desktop / 24px mobile) */}
-                    {sliderPos > activeMode.beforePlumbHeroPct && (
-                      <div
-                        style={{ left: `${activeMode.beforePlumbHeroPct}%` }}
-                        className="absolute top-0 bottom-0 border-l border-dotted border-rose-400/90"
-                      >
-                        <span className="absolute bottom-3 left-1.5 whitespace-nowrap bg-rose-950/95 border border-rose-400 px-1.5 py-0.5 font-mono text-[10px] font-bold text-rose-200">
-                          BEFORE Hero: {activeMode.id === 'desktop' ? '48px (+24px step)' : '24px (+8px step)'}
-                        </span>
-                      </div>
-                    )}
+              <div className="relative flex items-center justify-center p-3 sm:p-5 lg:h-[690px]">
+                {pendingModeId && (
+                  <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 z-40 bg-[#141617]/95 border border-[#D9A62E] px-3 py-1 font-mono text-xs text-[#D9A62E]">
+                    Preparing comparison…
                   </div>
                 )}
 
-                {/* PERSISTENT TOP-LEFT "BEFORE" AND TOP-RIGHT "AFTER" BADGES */}
-                <div className="pointer-events-none absolute top-3 left-3 z-20 flex items-center gap-1.5 bg-[#141617]/90 backdrop-blur-sm border border-[#DFDACE]/40 px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#EDE9E0] shadow-md">
-                  <span className="h-2 w-2 rounded-full bg-[#DFDACE]" />
-                  <span>BEFORE · 52e179d</span>
-                </div>
+                {MAIN_VIEWPORT_MODES.map((mode) => {
+                  const isActive = mode.id === viewportModeId;
+                  return (
+                    <div
+                      key={mode.id}
+                      ref={isActive ? activeStageRef : null}
+                      data-slider-stage={isActive ? 'true' : undefined}
+                      data-stage-mode={mode.id}
+                      onPointerDown={isActive ? handleMainPointerDown : undefined}
+                      onPointerMove={isActive ? handleMainPointerMove : undefined}
+                      onPointerUp={isActive ? handleMainPointerUp : undefined}
+                      onPointerCancel={isActive ? handleMainPointerUp : undefined}
+                      style={{ touchAction: 'pan-y' }}
+                      className={`${
+                        isActive ? 'block' : 'hidden'
+                      } relative w-full ${mode.maxWidthClass} ${mode.aspectClass} select-none overflow-hidden border border-[#DFDACE]/25 bg-[#1B1F21] shadow-2xl cursor-ew-resize`}
+                    >
+                      {/* LAYER 1 (BASE): AFTER IMAGE (Experiment 195921a) — Explicit 100% locked box */}
+                      <img
+                        src={mode.afterSrc}
+                        alt={isActive ? `AFTER (Experiment 195921a) — ${mode.fullLabel}` : ''}
+                        width={mode.naturalWidth}
+                        height={mode.naturalHeight}
+                        decoding="sync"
+                        loading="eager"
+                        draggable={false}
+                        className="absolute inset-0 block h-full w-full object-contain select-none pointer-events-none"
+                      />
 
-                <div className="pointer-events-none absolute top-3 right-3 z-20 flex items-center gap-1.5 bg-[#141617]/90 backdrop-blur-sm border border-[#D9A62E] px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#D9A62E] shadow-md">
-                  <span className="h-2 w-2 rounded-full bg-[#D9A62E]" />
-                  <span>AFTER · 195921a</span>
-                </div>
+                      {/* LAYER 2 (CLIPPED OVERLAY): BEFORE IMAGE (Baseline 52e179d) — Identical positioning & scale */}
+                      <div
+                        aria-hidden="true"
+                        style={{
+                          clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
+                        }}
+                        className="absolute inset-0 pointer-events-none"
+                      >
+                        <img
+                          src={mode.beforeSrc}
+                          alt={isActive ? `BEFORE (Baseline 52e179d) — ${mode.fullLabel}` : ''}
+                          width={mode.naturalWidth}
+                          height={mode.naturalHeight}
+                          decoding="sync"
+                          loading="eager"
+                          draggable={false}
+                          className="absolute inset-0 block h-full w-full object-contain select-none pointer-events-none"
+                        />
+                      </div>
 
-                {/* ACCESSIBLE SLIDER DIVIDER & FOCUSABLE HANDLE */}
-                <div
-                  style={{ left: `${sliderPos}%` }}
-                  className="absolute top-0 bottom-0 z-30 -ml-px w-0.5 bg-[#D9A62E] shadow-[0_0_12px_rgba(0,0,0,0.9)]"
-                >
-                  <div
-                    role="slider"
-                    tabIndex={0}
-                    aria-label={`Before and after comparison slider (${activeMode.label})`}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                    aria-valuenow={Math.round(sliderPos)}
-                    aria-valuetext={`${Math.round(sliderPos)}% Before (Baseline 52e179d), ${Math.round(
-                      100 - sliderPos
-                    )}% After (Experiment 195921a)`}
-                    onKeyDown={handleSliderKeyDown}
-                    className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9E0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141617] transition-transform hover:scale-105"
-                  >
-                    <MoveHorizontal className="h-5 w-5 stroke-[2.5]" />
-                  </div>
-                </div>
+                      {/* Accessible Slider Handle (rendered only on active mode so there is a single [role="slider"] in the main stage) */}
+                      {isActive && (
+                        <div
+                          style={{ left: `${sliderPos}%` }}
+                          className="absolute top-0 bottom-0 z-30 -ml-px w-0.5 bg-[#D9A62E] shadow-[0_0_12px_rgba(0,0,0,0.9)]"
+                        >
+                          <div
+                            role="slider"
+                            tabIndex={0}
+                            aria-label={`Before and after comparison slider (${mode.fullLabel})`}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-valuenow={Math.round(sliderPos)}
+                            aria-valuetext={`${Math.round(sliderPos)}% Before (Baseline 52e179d), ${Math.round(
+                              100 - sliderPos
+                            )}% After (Experiment 195921a)`}
+                            onKeyDown={handleSliderKeyDown}
+                            className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9E0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141617] transition-transform hover:scale-105"
+                          >
+                            <MoveHorizontal className="h-5 w-5 stroke-[2.5]" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
-            </div>
-
-            {/* Viewport Caption & Technical Provenance Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-[#DFDACE]/75 bg-[#23282A]/70 border border-[#DFDACE]/15 px-4 py-3">
-              <div>
-                <strong className="text-[#D9A62E]">Active Capture:</strong> {activeMode.viewportText} —{' '}
-                {activeMode.caption}
-              </div>
-              <button
-                type="button"
-                onClick={() => setInspectorOpen(true)}
-                className="shrink-0 underline text-[#D9A62E] hover:text-[#EDE9E0] font-bold"
-              >
-                Inspect 1:1 Unscaled Side-by-Side →
-              </button>
             </div>
           </div>
         </section>
 
         {/* ============================================================
-            SECTION 02: THE THREE PRINCIPAL REFINEMENTS
-            (MEASURED FACTS VS. SUBJECTIVE DESIGN JUDGMENTS)
+            SECTION B: WHAT CHANGED (THREE CONCISE FINDINGS)
             ============================================================ */}
         <section
-          id="three-refinements"
+          id="what-changed"
           className="border-b border-[#DFDACE]/15 bg-[#EDE9E0] text-[#23282A] px-5 py-12 sm:px-8 sm:py-16 lg:px-10"
         >
-          <div className="mx-auto max-w-7xl space-y-8">
-            <div className="border-b-2 border-[#23282A]/20 pb-5 flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <div>
-                <div className="font-mono text-xs font-bold uppercase tracking-widest text-[#17504A]">
-                  02 / CONTROLLED INTERVENTION &amp; EPISTEMIC SEPARATION
-                </div>
-                <h2 className="mt-1 font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#23282A]">
-                  Three Principal Refinements: Measured Facts vs. Design Judgments
-                </h2>
+          <div className="mx-auto max-w-6xl space-y-8">
+            <div className="space-y-2">
+              <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#17504A]">
+                02 / What Changed
               </div>
-              <p className="font-mono text-xs text-[#23282A]/75 max-w-md">
-                Rigorous design evaluation separates what can be objectively measured in the DOM from what remains an
-                editorial or aesthetic judgment.
-              </p>
+              <h2 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#23282A]">
+                Three targeted refinements, measured before and after.
+              </h2>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-3">
-              {/* REFINEMENT 1: STRUCTURAL ALIGNMENT */}
-              <article className="flex flex-col justify-between border-2 border-[#23282A] bg-[#DFDACE]/60 p-6 shadow-[4px_4px_0_rgba(35,40,42,0.12)]">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-[#23282A]/20 pb-3 font-mono text-xs">
-                    <span className="font-bold uppercase tracking-wider text-[#17504A]">Refinement 01</span>
-                    <span className="bg-[#23282A] text-[#EDE9E0] px-2 py-0.5 text-[10px] font-bold">
-                      24px → 0px Variance
-                    </span>
-                  </div>
-
-                  <h3 className="font-display text-xl font-black uppercase tracking-tight text-[#23282A]">
-                    Structural Alignment &amp; Plumb Line
-                  </h3>
-
-                  <p className="text-sm leading-relaxed text-[#23282A]/90">
-                    Standardized outer horizontal padding across <code className="font-mono text-xs">SiteHeader</code>,{' '}
-                    <code className="font-mono text-xs">HeroPanel</code>, and{' '}
-                    <code className="font-mono text-xs">SiteFooter</code> (<code className="font-mono text-xs">px-5 sm:px-8 lg:px-10</code>)
-                    and unified the primary/secondary hero CTAs to <code className="font-mono text-xs">0px</code> corner
-                    radius (<code className="font-mono text-xs">rounded-none border-2</code>).
-                  </p>
-
-                  {/* Measured Facts Box */}
-                  <div className="border-l-4 border-[#17504A] bg-[#EDE9E0] p-3.5 space-y-1.5 text-xs">
-                    <div className="font-mono font-bold uppercase tracking-wider text-[#17504A]">
-                      Measured Facts (getBoundingClientRect)
+              {THREE_FINDINGS.map((item) => (
+                <article
+                  key={item.num}
+                  className="flex flex-col justify-between border-2 border-[#23282A] bg-[#DFDACE]/65 p-6"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between border-b border-[#23282A]/20 pb-3 font-mono text-xs">
+                      <span className="font-bold text-[#17504A]">Finding {item.num}</span>
+                      <span className="bg-[#23282A] text-[#EDE9E0] px-2.5 py-0.5 font-bold">
+                        {item.metric}
+                      </span>
                     </div>
-                    <ul className="space-y-1 font-mono text-[11.5px] text-[#23282A]/90">
-                      <li>
-                        • <strong>Desktop (1440×900) Before:</strong> Logo <code className="font-bold">x=24px</code>, Hero H1{' '}
-                        <code className="font-bold">x=48px</code>, Primary CTA <code className="font-bold">x=48px</code>, Footer{' '}
-                        <code className="font-bold">x=24px</code> (<strong>24px horizontal variance</strong>).
-                      </li>
-                      <li>
-                        • <strong>Desktop (1440×900) After:</strong> Logo, Hero H1, Primary CTA, and Footer all at{' '}
-                        <code className="font-bold">x=40px</code> (<strong>0px variance</strong>).
-                      </li>
-                      <li>
-                        • <strong>Mobile (390×844):</strong> Variance reduced from <strong>8px</strong> (<code className="font-bold">16px</code> vs{' '}
-                        <code className="font-bold">24px</code>) to <strong>0px</strong> (all at <code className="font-bold">x=20px</code>).
-                      </li>
-                      <li>
-                        • <strong>CTA Geometry:</strong> Computed <code className="font-bold">borderRadius</code> changed from{' '}
-                        <code className="font-bold">4px</code> to <code className="font-bold">0px</code>.
-                      </li>
-                    </ul>
+
+                    <h3 className="font-display text-xl font-black tracking-tight text-[#23282A]">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm leading-relaxed text-[#23282A]/90">{item.body}</p>
                   </div>
-                </div>
-
-                {/* Subjective Judgment Box */}
-                <div className="mt-4 border-t border-[#23282A]/20 pt-3.5 text-xs text-[#23282A]/80">
-                  <span className="font-mono font-bold uppercase tracking-wider text-[#23282A] block mb-1">
-                    Subjective Design Judgment:
-                  </span>
-                  Eliminating the 24px indent step and matching the 0px CTA corners to the 2×2 room quadrant grid makes
-                  the left viewport column read as a single architectural frame rather than floating elements.
-                </div>
-              </article>
-
-              {/* REFINEMENT 2: TYPOGRAPHY & COMPONENT CONSISTENCY */}
-              <article className="flex flex-col justify-between border-2 border-[#23282A] bg-[#DFDACE]/60 p-6 shadow-[4px_4px_0_rgba(35,40,42,0.12)]">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-[#23282A]/20 pb-3 font-mono text-xs">
-                    <span className="font-bold uppercase tracking-wider text-[#17504A]">Refinement 02</span>
-                    <span className="bg-[#23282A] text-[#EDE9E0] px-2 py-0.5 text-[10px] font-bold">
-                      Palette &amp; Scale Parity
-                    </span>
-                  </div>
-
-                  <h3 className="font-display text-xl font-black uppercase tracking-tight text-[#23282A]">
-                    Typography &amp; Component Consistency
-                  </h3>
-
-                  <p className="text-sm leading-relaxed text-[#23282A]/90">
-                    Replaced fixed-breakpoint room heading jumps with fluid scaling, upgraded room blurbs and overlines,
-                    corrected the off-palette Room 02 quoting chip, and self-corrected two experimental rules that hurt
-                    mobile line wrapping.
-                  </p>
-
-                  {/* Measured Facts Box */}
-                  <div className="border-l-4 border-[#17504A] bg-[#EDE9E0] p-3.5 space-y-1.5 text-xs">
-                    <div className="font-mono font-bold uppercase tracking-wider text-[#17504A]">
-                      Measured Facts (getComputedStyle)
-                    </div>
-                    <ul className="space-y-1 font-mono text-[11.5px] text-[#23282A]/90">
-                      <li>
-                        • <strong>Room Headings:</strong> Fluid <code className="font-bold">clamp(1.65rem, 2.15vw, 2.125rem)</code>{' '}
-                        (<code className="font-bold">30.96px</code> / <code className="font-bold">31.58px</code> line-height at 1440px, ratio <code className="font-bold">1.02</code>).
-                      </li>
-                      <li>
-                        • <strong>Room Blurbs:</strong> Increased from <code className="font-bold">12px</code> (<code className="font-bold">opacity: 0.85</code>) to{' '}
-                        <code className="font-bold">13px</code> / <code className="font-bold">17.55px</code> (<code className="font-bold">1.35</code> ratio, <code className="font-bold">opacity: 0.90</code>).
-                      </li>
-                      <li>
-                        • <strong>Off-Palette Chip Fixed:</strong> Room 02 <code className="font-bold">02 Quoting</code> changed from Tailwind red (<code className="font-bold">bg-red-100/90 text-red-900</code>) to ContextMuse <code className="font-bold">#D9A62E</code> / <code className="font-bold">#23282A</code>.
-                      </li>
-                      <li>
-                        • <strong>Documented Reversion:</strong> Reverted a <code className="font-bold">48ch</code> hero measure that caused a 3-line orphan (<code className="font-bold">&quot;realized.&quot;</code>) on 390px mobile.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Subjective Judgment Box */}
-                <div className="mt-4 border-t border-[#23282A]/20 pt-3.5 text-xs text-[#23282A]/80">
-                  <span className="font-mono font-bold uppercase tracking-wider text-[#23282A] block mb-1">
-                    Subjective Design Judgment:
-                  </span>
-                  Bringing the <code className="font-mono">02 Quoting</code> chip into the core mustard/charcoal palette
-                  and strengthening room overlines from <code className="font-mono">1px</code> to{' '}
-                  <code className="font-mono">2px</code> reduces visual noise across the four quadrants.
-                </div>
-              </article>
-
-              {/* REFINEMENT 3: INTERACTION BEHAVIOR */}
-              <article className="flex flex-col justify-between border-2 border-[#23282A] bg-[#DFDACE]/60 p-6 shadow-[4px_4px_0_rgba(35,40,42,0.12)]">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-[#23282A]/20 pb-3 font-mono text-xs">
-                    <span className="font-bold uppercase tracking-wider text-[#17504A]">Refinement 03</span>
-                    <span className="bg-[#23282A] text-[#EDE9E0] px-2 py-0.5 text-[10px] font-bold">
-                      450ms Enter / 200ms Leave
-                    </span>
-                  </div>
-
-                  <h3 className="font-display text-xl font-black uppercase tracking-tight text-[#23282A]">
-                    Interaction Behavior &amp; Surface Fidelity
-                  </h3>
-
-                  <p className="text-sm leading-relaxed text-[#23282A]/90">
-                    Removed <code className="font-mono text-xs">hover:brightness-105</code> filter washout on room
-                    quadrants, implemented asymmetric Ease-Out Quint timing, and connected tile hover state directly to
-                    internal room motifs and cues.
-                  </p>
-
-                  {/* Measured Facts Box */}
-                  <div className="border-l-4 border-[#17504A] bg-[#EDE9E0] p-3.5 space-y-1.5 text-xs">
-                    <div className="font-mono font-bold uppercase tracking-wider text-[#17504A]">
-                      Measured Facts (CSS Custom Properties &amp; DOM)
-                    </div>
-                    <ul className="space-y-1 font-mono text-[11.5px] text-[#23282A]/90">
-                      <li>
-                        • <strong>Surface Filter:</strong> Computed <code className="font-bold">filter: none</code> on hover (previously{' '}
-                        <code className="font-bold">brightness(1.05)</code> across entire tile).
-                      </li>
-                      <li>
-                        • <strong>Easing Curve:</strong> <code className="font-bold">cubic-bezier(0.23, 1, 0.32, 1)</code> (Ease-Out Quint).
-                      </li>
-                      <li>
-                        • <strong>Asymmetric Timing:</strong> Hover entry duration <code className="font-bold">450ms</code> (<code className="font-bold">--duration-enter</code>) vs. hover release <code className="font-bold">200ms</code> (<code className="font-bold">--duration-leave</code>).
-                      </li>
-                      <li>
-                        • <strong>Bottom Rule:</strong> Increased from <code className="font-bold">2px</code> (<code className="font-bold">opacity: 0.60</code>) to <code className="font-bold">3px</code> (<code className="font-bold">opacity: 0.85</code>) with <code className="font-bold">2px</code> cue underline.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Subjective Judgment Box */}
-                <div className="mt-4 border-t border-[#23282A]/20 pt-3.5 text-xs text-[#23282A]/80">
-                  <span className="font-mono font-bold uppercase tracking-wider text-[#23282A] block mb-1">
-                    Subjective Design Judgment:
-                  </span>
-                  Preserving exact pigment saturation on hover while animating internal structural motifs with a slower
-                  entry (450ms) and crisp release (200ms) feels more deliberate than brightening the whole tile.
-                </div>
-              </article>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
         {/* ============================================================
-            SECTION 03: SEPARATELY LABELED INTERACTIVE HOVER COMPARISON
-            (BECAUSE STATIC SLIDERS CANNOT DEMONSTRATE MOTION TIMING)
+            SECTION C: FROM EXPERIMENT TO DESIGN INTELLIGENCE
+            + COMPACT 5-STAGE PROCESS
+            + OPTIONAL "VIEW RESEARCH & TECHNICAL EVIDENCE" DISCLOSURE
             ============================================================ */}
         <section
-          id="hover-motion-comparison"
-          className="border-b border-[#DFDACE]/15 bg-[#23282A] px-5 py-12 sm:px-8 sm:py-16 lg:px-10"
+          id="from-experiment-to-design-intelligence"
+          className="bg-[#17504A] text-[#EDE9E0] px-5 py-12 sm:px-8 sm:py-16 lg:px-10"
         >
-          <div className="mx-auto max-w-7xl space-y-6">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-5">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-[#D9A62E]/20 border border-[#D9A62E] px-2.5 py-0.5 font-mono text-[11px] font-bold uppercase tracking-wider text-[#D9A62E]">
-                  <Play className="h-3 w-3" />
-                  <span>INTERACTIVE COMPONENT REPRODUCTIONS (NOT RECORDED SESSIONS) · LIVE DOM &amp; CSS</span>
+          <div className="mx-auto max-w-6xl space-y-8">
+            <div className="grid gap-6 lg:grid-cols-12 items-end">
+              <div className="lg:col-span-8 space-y-2">
+                <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
+                  03 / From Experiment to Design Intelligence
                 </div>
-                <h2 className="mt-2 font-display text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#EDE9E0]">
-                  Why Static Sliders Aren’t Enough: Live Hover &amp; Timing Reproductions
+                <h2 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#EDE9E0]">
+                  Turning reference analysis into a reusable design system workflow.
                 </h2>
-                <p className="mt-1 text-xs sm:text-sm text-[#DFDACE]/80 max-w-3xl">
-                  A static screenshot slider cannot convey <code className="font-mono text-[#D9A62E]">450ms</code>{' '}
-                  quintic entry vs. <code className="font-mono text-[#D9A62E]">200ms</code> release timing. The two cards
-                  on the left are <strong>interactive JSX/CSS component reproductions</strong> mounted directly from
-                  commits <code className="font-mono text-[#EDE9E0]">52e179d</code> and{' '}
-                  <code className="font-mono text-[#D9A62E]">195921a</code> (explicitly distinguished from the original
-                  recorded Playwright screenshot on the right).
+                <p className="text-sm sm:text-base text-[#EDE9E0]/90 leading-relaxed max-w-3xl">
+                  Rather than prompting AI for generic styling or imitating another agency’s look, this prototype tests a
+                  repeatable Design Intelligence Library: extracting measurable layout and interaction tolerances from
+                  strong references, applying them in context, and verifying that existing product workflows remain intact.
                 </p>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setSimulatingHover((v) => !v)}
-                aria-pressed={simulatingHover}
-                className={`shrink-0 flex items-center gap-2 border-2 px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider transition-colors ${
-                  simulatingHover
-                    ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617]'
-                    : 'border-[#D9A62E] bg-[#1B1F21] text-[#D9A62E] hover:bg-[#D9A62E] hover:text-[#141617]'
-                }`}
-              >
-                <Sparkles className="h-4 w-4" />
-                <span>{simulatingHover ? 'Release Simulated Hover' : 'Simulate Simultaneous Hover'}</span>
-              </button>
-            </div>
-
-            <div className="grid gap-6 lg:grid-cols-12 items-stretch">
-              {/* LIVE TILE A: BASELINE (52e179d) HOVER BEHAVIOR */}
-              <div className="lg:col-span-4 flex flex-col space-y-2">
-                <div className="flex items-center justify-between font-mono text-xs text-[#DFDACE]/75">
-                  <span className="font-bold uppercase text-[#EDE9E0]">Reproduction A · Baseline (52e179d)</span>
-                  <span>300ms uniform · brightness(1.05)</span>
-                </div>
-
-                <div
-                  className={`group relative flex flex-1 flex-col justify-between p-6 bg-[#DFDACE] text-[#23282A] transition-all duration-300 select-none cursor-pointer ${
-                    simulatingHover ? 'brightness-105' : 'hover:brightness-105'
-                  }`}
+              <div className="lg:col-span-4 flex lg:justify-end">
+                <button
+                  type="button"
+                  onClick={handleInquireAboutDesignSystem}
+                  className="inline-flex items-center gap-2 bg-[#D9A62E] text-[#141617] px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#e3b13b] transition-colors"
                 >
-                  <div>
-                    <div className="flex items-center justify-between border-b border-current/20 pb-2.5 font-mono text-xs">
-                      <span className="font-bold tracking-widest uppercase">02 / ASSEMBLE</span>
-                      <ArrowUpRight
-                        className={`h-4 w-4 transition-transform duration-300 ${
-                          simulatingHover
-                            ? 'translate-x-0.5 -translate-y-0.5 opacity-100'
-                            : 'opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100'
-                        }`}
-                      />
-                    </div>
-                    <div className="mt-4">
-                      <h3 className="font-display text-2xl sm:text-3xl font-black uppercase tracking-tight leading-none">
-                        Custom Builds
-                      </h3>
-                      <p className="mt-2 text-xs opacity-85 font-sans leading-snug">
-                        See what I can create for your business—from custom websites and quoting engines to internal
-                        tools built around how you work.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Baseline Motif with off-palette red chip */}
-                  <div className="my-5 pt-2">
-                    <div className="space-y-1.5 font-mono text-[10px]">
-                      <div className="flex items-center gap-1.5">
-                        <span className="px-2 py-0.5 rounded bg-white/80 text-[#23282A] font-bold border border-[#23282A]/20">
-                          01 Website
-                        </span>
-                        <span className="opacity-50">→</span>
-                        <span className="px-2 py-0.5 rounded bg-red-100/90 text-red-900 font-bold border border-red-300">
-                          02 Quoting
-                        </span>
-                        <span className="opacity-50">→</span>
-                        <span className="px-2 py-0.5 rounded bg-[#17504A] text-white font-bold">
-                          03 Workflow
-                        </span>
-                      </div>
-                      <div className="opacity-70 uppercase tracking-wider text-[9px]">
-                        WEBSITES • QUOTING ENGINES • INTERNAL TOOLS
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between border-t border-current/15 pt-2.5 font-mono text-[11px] opacity-80 group-hover:opacity-100 font-bold uppercase tracking-wider">
-                    <span>Shape a Custom Build</span>
-                    <span
-                      className={`transition-transform duration-300 ${
-                        simulatingHover ? 'translate-x-1' : 'group-hover:translate-x-1'
-                      }`}
-                    >
-                      →
-                    </span>
-                  </div>
-
-                  <span
-                    className={`pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left bg-current transition-transform duration-300 opacity-60 ${
-                      simulatingHover ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    }`}
-                  />
-                </div>
-              </div>
-
-              {/* LIVE TILE B: REFINED (195921a) QUINTIC HOVER BEHAVIOR */}
-              <div className="lg:col-span-4 flex flex-col space-y-2">
-                <div className="flex items-center justify-between font-mono text-xs text-[#D9A62E]">
-                  <span className="font-bold uppercase">Reproduction B · Experiment (195921a)</span>
-                  <span>450ms enter / 200ms leave · Quint</span>
-                </div>
-
-                <div
-                  style={{
-                    transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
-                    transitionDuration: simulatingHover ? '450ms' : '200ms',
-                  }}
-                  className="group relative flex flex-1 flex-col justify-between p-6 bg-[#DFDACE] text-[#23282A] select-none cursor-pointer border border-[#D9A62E]/40"
-                >
-                  <div>
-                    <div
-                      style={{
-                        transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
-                        transitionDuration: simulatingHover ? '450ms' : undefined,
-                      }}
-                      className={`flex items-center justify-between border-b-2 pb-2.5 font-mono text-xs transition-colors duration-200 group-hover:duration-500 ${
-                        simulatingHover
-                          ? 'border-current/55'
-                          : 'border-current/25 group-hover:border-current/55'
-                      }`}
-                    >
-                      <span className="font-bold tracking-[0.14em] uppercase">02 / ASSEMBLE</span>
-                      <ArrowUpRight
-                        style={{
-                          transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
-                          transitionDuration: simulatingHover ? '450ms' : undefined,
-                        }}
-                        className={`h-4 w-4 transition-transform duration-200 group-hover:duration-500 ${
-                          simulatingHover
-                            ? 'translate-x-1 -translate-y-1 opacity-100'
-                            : 'opacity-75 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100'
-                        }`}
-                      />
-                    </div>
-                    <div className="mt-4">
-                      <h3 className="font-display text-[clamp(1.65rem,2.15vw,2.125rem)] font-black uppercase tracking-[-0.02em] leading-[1.02]">
-                        Custom Builds
-                      </h3>
-                      <p className="mt-2.5 text-[13px] opacity-90 font-sans leading-[1.35] max-w-[42ch]">
-                        See what I can create for your business—from custom websites and quoting engines to internal
-                        tools built around how you work.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Refined Motif with on-palette #D9A62E chip & hover fill */}
-                  <div className="my-5 pt-2">
-                    <div className="space-y-2 font-mono text-[10px]">
-                      <div className="flex items-center gap-1.5">
-                        <span className="px-2 py-0.5 bg-[#EDE9E0] text-[#23282A] font-bold border border-[#23282A]/25">
-                          01 Website
-                        </span>
-                        <span
-                          className={`transition-transform duration-200 group-hover:duration-500 ${
-                            simulatingHover ? 'translate-x-0.5 opacity-90' : 'opacity-50 group-hover:translate-x-0.5'
-                          }`}
-                        >
-                          →
-                        </span>
-                        <span
-                          style={{
-                            transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
-                            transitionDuration: simulatingHover ? '450ms' : undefined,
-                          }}
-                          className={`px-2 py-0.5 text-[#23282A] font-bold border border-[#D9A62E] transition-colors duration-200 group-hover:duration-500 ${
-                            simulatingHover ? 'bg-[#D9A62E]' : 'bg-[#D9A62E]/30 group-hover:bg-[#D9A62E]'
-                          }`}
-                        >
-                          02 Quoting
-                        </span>
-                        <span
-                          className={`transition-transform duration-200 group-hover:duration-500 ${
-                            simulatingHover ? 'translate-x-0.5 opacity-90' : 'opacity-50 group-hover:translate-x-0.5'
-                          }`}
-                        >
-                          →
-                        </span>
-                        <span className="px-2 py-0.5 bg-[#17504A] text-[#EDE9E0] font-bold border border-[#17504A]">
-                          03 Workflow
-                        </span>
-                      </div>
-                      <div className="opacity-75 uppercase tracking-wider text-[9.5px]">
-                        WEBSITES • QUOTING ENGINES • INTERNAL TOOLS
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`flex items-center justify-between border-t pt-2.5 font-mono text-[11px] font-bold uppercase tracking-wider transition-colors duration-200 group-hover:duration-500 ${
-                      simulatingHover
-                        ? 'border-current/55 opacity-100'
-                        : 'border-current/20 opacity-85 group-hover:border-current/55 group-hover:opacity-100'
-                    }`}
-                  >
-                    <span
-                      className={
-                        simulatingHover
-                          ? 'underline decoration-2 underline-offset-4'
-                          : 'group-hover:underline decoration-2 underline-offset-4'
-                      }
-                    >
-                      Shape a Custom Build
-                    </span>
-                    <span
-                      style={{
-                        transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
-                      }}
-                      className={`transition-transform duration-200 group-hover:duration-500 ${
-                        simulatingHover ? 'translate-x-1.5' : 'group-hover:translate-x-1.5'
-                      }`}
-                    >
-                      →
-                    </span>
-                  </div>
-
-                  <span
-                    style={{
-                      transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
-                    }}
-                    className={`pointer-events-none absolute bottom-0 left-0 h-[3px] w-full origin-left bg-current transition-transform duration-200 group-hover:duration-500 opacity-85 ${
-                      simulatingHover ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    }`}
-                  />
-                </div>
-              </div>
-
-              {/* AUTHENTIC CAPTURED HOVER SCREENSHOT (exp01_after_desktop_hover_build.png) */}
-              <div className="lg:col-span-4 flex flex-col justify-between border border-[#DFDACE]/20 bg-[#1B1F21] p-4 space-y-3">
-                <div className="space-y-1">
-                  <div className="font-mono text-xs font-bold uppercase text-[#D9A62E]">
-                    Recorded Hover Capture (195921a)
-                  </div>
-                  <p className="text-xs text-[#DFDACE]/80">
-                    Unedited Playwright capture (<code className="font-mono">exp01_after_desktop_hover_build.png</code>)
-                    taken 500ms after hovering <code className="font-mono">[data-room-id=&quot;build&quot;]</code>.
-                  </p>
-                </div>
-
-                <div className="overflow-hidden border border-[#DFDACE]/20 bg-[#141617]">
-                  <img
-                    src="/assets/images/design-intelligence/exp01_after_desktop_hover_build.png"
-                    alt="Recorded hover state on Room 02 (Custom Builds) in commit 195921a"
-                    className="w-full h-auto block"
-                    loading="lazy"
-                  />
-                </div>
-
-                <div className="flex items-center justify-between font-mono text-[11px] text-[#DFDACE]/70 pt-1">
-                  <span>1440×900 @ 2x DPR</span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setInspectorView('hover');
-                      setInspectorOpen(true);
-                    }}
-                    className="text-[#D9A62E] underline font-bold hover:text-[#EDE9E0]"
-                  >
-                    Inspect Full Capture →
-                  </button>
-                </div>
+                  <span>Start a Project</span>
+                  <span>→</span>
+                </button>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* ============================================================
-            SECTION 04: THE 5-STAGE METHODOLOGY & FUTURE LIBRARY VISION
-            (REFERENCE → EXTRACTION → EVALUATION → REFINEMENT → VERIFICATION)
-            ============================================================ */}
-        <section
-          id="methodology-pipeline"
-          className="border-b border-[#DFDACE]/15 bg-[#17504A] text-[#EDE9E0] px-5 py-12 sm:px-8 sm:py-16 lg:px-10"
-        >
-          <div className="mx-auto max-w-7xl space-y-10">
-            <div className="max-w-3xl space-y-3">
-              <div className="font-mono text-xs font-bold uppercase tracking-widest text-[#D9A62E]">
-                03 / TRANSFERABLE PRINCIPLES, NOT IMITATION
-              </div>
-              <h2 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight">
-                The 5-Stage Design Intelligence Workflow
-              </h2>
-              <p className="text-sm sm:text-base text-[#EDE9E0]/90 leading-relaxed">
-                Instead of asking AI to &ldquo;make a website look cool&rdquo; or copying another studio’s layout,
-                Design Intelligence treats high-craft websites as measurable engineering specimens—extracting objective
-                proportions and motion curves while preserving ContextMuse’s own architecture, copy, and palette.
-              </p>
-            </div>
-
-            {/* 5-Stage Pipeline Grid */}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {[
-                {
-                  step: '01',
-                  name: 'REFERENCE',
-                  subtitle: 'Select Specimen',
-                  detail:
-                    'Inspected locomotive.ca/en at 1440×900 and 390×844 for grid discipline, overline framing, and hover choreography—not for its layout, fonts, or #312DFB palette.',
-                },
-                {
-                  step: '02',
-                  name: 'EXTRACTION',
-                  subtitle: 'Measure DOM & CSS',
-                  detail:
-                    'Queried getComputedStyle, cssRules, and getBoundingClientRect. Separated Directly Measured values (--grid-margin: 40px, 0.45s/0.2s quint) from Inferred patterns and Runtime shaders.',
-                },
-                {
-                  step: '03',
-                  name: 'EVALUATION',
-                  subtitle: 'Diagnose Drift',
-                  detail:
-                    'Measured ContextMuse baseline (52e179d) against the extracted principles: identified a 24px left plumb-line step, mixed 4px/0px corners, brightness washout, and a red chip outlier.',
-                },
-                {
-                  step: '04',
-                  name: 'REFINEMENT',
-                  subtitle: 'Controlled Edits',
-                  detail:
-                    'Applied 3 scoped refinements on isolated branch 195921a across 5 files. Self-corrected and reverted a 48ch hero width that caused a 3rd-line orphan on mobile.',
-                },
-                {
-                  step: '05',
-                  name: 'VERIFICATION',
-                  subtitle: 'Measure & Smoke Test',
-                  detail:
-                    'Re-measured DOM coordinates (0px plumb variance on desktop & mobile) and executed the 11-check functional non-regression smoke suite.',
-                },
-              ].map((stage) => (
+            {/* Compact 5-Stage Process Illustration */}
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {FIVE_STAGES.map((stage) => (
                 <div
                   key={stage.step}
-                  className="flex flex-col justify-between border-2 border-[#EDE9E0]/25 bg-[#123F3A] p-4 space-y-3"
+                  className="border border-[#EDE9E0]/25 bg-[#123F3A] p-4 space-y-1.5"
                 >
-                  <div>
-                    <div className="flex items-center justify-between font-mono text-xs text-[#D9A62E] font-bold">
-                      <span>STAGE {stage.step}</span>
-                      <span>→</span>
-                    </div>
-                    <h3 className="mt-2 font-display text-lg font-black uppercase tracking-tight text-[#EDE9E0]">
-                      {stage.name}
-                    </h3>
-                    <div className="font-mono text-[11px] text-[#DFDACE]/75">{stage.subtitle}</div>
-                    <p className="mt-2.5 text-xs leading-relaxed text-[#EDE9E0]/90">{stage.detail}</p>
+                  <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
+                    <span>{stage.step}</span>
+                    <span>→</span>
                   </div>
+                  <h3 className="font-display text-base font-black uppercase tracking-tight text-[#EDE9E0]">
+                    {stage.name}
+                  </h3>
+                  <p className="text-xs leading-relaxed text-[#EDE9E0]/85">{stage.summary}</p>
                 </div>
               ))}
             </div>
 
-            {/* Future Vision: Reusable Design Intelligence Library */}
-            <div className="border-2 border-[#D9A62E]/60 bg-[#0F3530] p-6 sm:p-8 space-y-5">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#EDE9E0]/15 pb-4">
+            {/* Optional Disclosure: View Research & Technical Evidence */}
+            <div className="border-2 border-[#EDE9E0]/25 bg-[#123F3A]">
+              <button
+                type="button"
+                onClick={() => setEvidenceOpen((v) => !v)}
+                aria-expanded={evidenceOpen}
+                aria-controls="research-technical-evidence"
+                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-[#0F3530] transition-colors"
+              >
                 <div>
-                  <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#D9A62E]">
-                    ROADMAP CONCEPT · EARLY EXPERIMENT TOWARD A REUSABLE SYSTEM
-                  </span>
-                  <h3 className="mt-1 font-display text-xl sm:text-2xl font-black uppercase tracking-tight text-[#EDE9E0]">
-                    How This Methodology Scales Into a Design Intelligence Library
-                  </h3>
-                </div>
-                <span className="border border-[#D9A62E] bg-[#17504A] px-3 py-1 font-mono text-[11px] font-bold uppercase text-[#D9A62E]">
-                  Status: Experimental Prototype (v0.1)
-                </span>
-              </div>
-
-              <p className="text-sm text-[#EDE9E0]/90 leading-relaxed max-w-4xl">
-                This experiment is the first entry (<code className="font-mono text-[#D9A62E]">design-intelligence/references/locomotive.md</code>)
-                in a structured methodology designed to help engineering-led builds achieve consistent editorial and
-                structural polish without generic templates:
-              </p>
-
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-xs">
-                <div className="border border-[#EDE9E0]/20 bg-[#17504A]/60 p-4 space-y-1.5">
-                  <div className="font-mono font-bold text-[#D9A62E] uppercase">1. Multi-Reference Profiles</div>
-                  <p className="text-[#EDE9E0]/85 leading-relaxed">
-                    Structured markdown dossiers documenting measured grid tracks, type scales, and motion curves across
-                    distinct editorial, industrial, and product references.
-                  </p>
-                </div>
-                <div className="border border-[#EDE9E0]/20 bg-[#17504A]/60 p-4 space-y-1.5">
-                  <div className="font-mono font-bold text-[#D9A62E] uppercase">2. Curated Principle Sets</div>
-                  <p className="text-[#EDE9E0]/85 leading-relaxed">
-                    Distilling cross-site rules—such as plumb-line alignment, asymmetric hover easing, and fluid
-                    clamp() ratios—into reusable diagnostic checklists.
-                  </p>
-                </div>
-                <div className="border border-[#EDE9E0]/20 bg-[#17504A]/60 p-4 space-y-1.5">
-                  <div className="font-mono font-bold text-[#D9A62E] uppercase">3. Context-Aware Application</div>
-                  <p className="text-[#EDE9E0]/85 leading-relaxed">
-                    Applying structural tolerances using the target project’s own brand tokens and copy, while reverting
-                    any rule that degrades readability or mobile wrapping.
-                  </p>
-                </div>
-                <div className="border border-[#EDE9E0]/20 bg-[#17504A]/60 p-4 space-y-1.5">
-                  <div className="font-mono font-bold text-[#D9A62E] uppercase">4. Automated Verification</div>
-                  <p className="text-[#EDE9E0]/85 leading-relaxed">
-                    Pairing bounding-box geometry assertions (plumb-line variance, line-wrap counts) with functional
-                    smoke tests before human visual review.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================
-            SECTION 05: VERIFICATION AUDIT (11/11 SMOKE CHECKS),
-            EPISTEMIC BOUNDARIES & REFERENCE ATTRIBUTION
-            ============================================================ */}
-        <section
-          id="verification-and-attribution"
-          className="bg-[#1B1F21] text-[#EDE9E0] px-5 py-12 sm:px-8 sm:py-16 lg:px-10"
-        >
-          <div className="mx-auto max-w-7xl space-y-8">
-            <div className="grid gap-8 lg:grid-cols-12 items-start">
-              {/* Left 7 Cols: 11/11 Smoke Check Breakdown */}
-              <div className="lg:col-span-7 space-y-4">
-                <div className="border-b border-[#DFDACE]/15 pb-3">
-                  <div className="font-mono text-xs font-bold uppercase tracking-widest text-[#D9A62E]">
-                    04 / VERIFIED TEST OUTPUT (LAUNCH_STABILIZATION_SMOKE.MJS)
+                  <div className="font-display text-base sm:text-lg font-bold text-[#EDE9E0]">
+                    View Research &amp; Technical Evidence
                   </div>
-                  <h2 className="mt-1 font-display text-2xl font-black uppercase tracking-tight">
-                    What the 11 / 11 Automated Smoke Checks Covered
-                  </h2>
-                  <p className="mt-1 text-xs text-[#DFDACE]/80">
-                    Verified directly against the execution log (<code className="font-mono">task-3424.log</code>) on
-                    commit <code className="font-mono text-[#D9A62E]">195921a</code>.
+                  <p className="text-xs text-[#DFDACE]/80 mt-0.5">
+                    Measured DOM coordinates, interactive hover reproductions, 11/11 smoke test log, commit provenance,
+                    and reference attribution.
                   </p>
                 </div>
+                <span className="shrink-0 inline-flex items-center gap-1.5 border border-[#D9A62E] bg-[#17504A] px-3 py-1.5 font-mono text-xs font-bold text-[#D9A62E]">
+                  <span>{evidenceOpen ? 'Hide Evidence' : 'Expand Evidence'}</span>
+                  {evidenceOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                </span>
+              </button>
 
-                <div className="divide-y divide-[#DFDACE]/10 border border-[#DFDACE]/20 bg-[#23282A]">
-                  {SMOKE_CHECKS.map((chk) => (
-                    <div key={chk.num} className="p-3 sm:px-4 flex items-start justify-between gap-3 text-xs">
-                      <div className="space-y-0.5">
-                        <div className="font-mono font-bold text-[#EDE9E0]">
-                          <span className="text-[#D9A62E] mr-2">#{chk.num}</span>
-                          {chk.name}
-                        </div>
-                        <p className="text-[#DFDACE]/75 text-[11.5px]">{chk.covered}</p>
-                      </div>
-                      <span className="shrink-0 inline-flex items-center gap-1 bg-emerald-950/80 border border-emerald-500/40 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-300">
-                        <CheckCircle2 className="h-3 w-3" />
-                        {chk.status}
+              {evidenceOpen && (
+                <div
+                  id="research-technical-evidence"
+                  className="border-t border-[#EDE9E0]/20 bg-[#1B1F21] text-[#EDE9E0] p-5 sm:p-8 space-y-10"
+                >
+                  {/* 1. Measured Values vs. Subjective Design Judgment */}
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#DFDACE]/15 pb-3">
+                      <h3 className="font-display text-xl font-bold text-[#EDE9E0]">
+                        1. Measured DOM Values vs. Subjective Design Judgments
+                      </h3>
+                      <span className="font-mono text-xs text-[#D9A62E]">
+                        Playwright getBoundingClientRect &amp; getComputedStyle
                       </span>
                     </div>
-                  ))}
-                </div>
-              </div>
 
-              {/* Right 5 Cols: Epistemic Disclaimer, Git Provenance & Reference Attribution */}
-              <div className="lg:col-span-5 space-y-6">
-                {/* Explicit Non-Exaggeration / Epistemic Boundary Card */}
-                <div className="border-2 border-[#D9A62E] bg-[#23282A] p-5 space-y-3">
-                  <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
-                    <Scale className="h-4 w-4" />
-                    <span>What Automated Tests Prove—And What They Do Not</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-[#EDE9E0]/90 leading-relaxed">
-                    Passing <strong>11/11 automated smoke checks</strong> proves <strong>functional non-regression</strong>:
-                    routing, room transitions, interactive tools, lead capture (<code className="font-mono">/api/lead/</code>),
-                    and mobile zero-overflow constraints (<code className="font-mono">390/390px</code>) remained intact
-                    after modifying the layout and motion tokens.
-                  </p>
-                  <p className="text-xs text-[#DFDACE]/80 leading-relaxed border-t border-[#DFDACE]/15 pt-2.5">
-                    <strong>Epistemic Boundary:</strong> Automated functional and bounding-box tests do{' '}
-                    <strong className="text-[#EDE9E0]">not</strong> prove improved aesthetics, user preference,
-                    conversion lift, or independent design quality. Those require human visual inspection and real-world
-                    audience evaluation.
-                  </p>
-                </div>
+                    <div className="grid gap-4 lg:grid-cols-3 text-xs">
+                      <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
+                        <div className="font-mono font-bold text-[#D9A62E]">
+                          Structural Plumb Line (Measured Fact)
+                        </div>
+                        <p className="text-[#DFDACE]/90 leading-relaxed">
+                          Desktop (1440×900) Before: Logo <code className="font-mono">x=24px</code>, Hero H1{' '}
+                          <code className="font-mono">x=48px</code>, Primary CTA <code className="font-mono">x=48px</code>,
+                          Footer <code className="font-mono">x=24px</code> (24px variance). After: all four anchor at{' '}
+                          <code className="font-mono">x=40px</code> (0px variance). Mobile (390×844): reduced from 8px
+                          variance to 0px (all at <code className="font-mono">x=20px</code>).
+                        </p>
+                        <p className="text-[#DFDACE]/70 border-t border-[#DFDACE]/15 pt-2">
+                          <strong>Subjective Judgment:</strong> Aligning the left edge and matching 0px CTA corners to
+                          the room grid makes the left column read as one architectural frame.
+                        </p>
+                      </div>
 
-                {/* Git Commit & File Provenance */}
-                <div className="border border-[#DFDACE]/20 bg-[#23282A] p-5 space-y-3 font-mono text-xs">
-                  <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-[#EDE9E0]">
-                    <FileCode2 className="h-4 w-4 text-[#D9A62E]" />
-                    <span>Artifact &amp; Repository Provenance</span>
-                  </div>
-                  <ul className="space-y-2 text-[11.5px] text-[#DFDACE]/85">
-                    <li>
-                      <strong className="text-[#D9A62E]">Baseline Commit:</strong>{' '}
-                      <code>52e179dc0136e72c9b07a0ba5d80cdb7f9f6d765</code> (<code>release/candidate-preview</code>)
-                    </li>
-                    <li>
-                      <strong className="text-[#D9A62E]">Experiment Commit:</strong>{' '}
-                      <code>195921ae478a5318ddaa2b16abb2c7a2ea58ae24</code> (
-                      <code>experiment/design-intelligence-01-locomotive</code>)
-                    </li>
-                    <li>
-                      <strong className="text-[#D9A62E]">Reference Dossier:</strong>{' '}
-                      <code>design-intelligence/references/locomotive.md</code>
-                    </li>
-                    <li>
-                      <strong className="text-[#D9A62E]">Experiment Record:</strong>{' '}
-                      <code>design-intelligence/experiments/experiment-01-locomotive.md</code>
-                    </li>
-                    <li>
-                      <strong className="text-[#D9A62E]">Modified Components (5):</strong>{' '}
-                      <code>src/index.css</code>, <code>SiteHeader.jsx</code>, <code>SiteFooter.jsx</code>,{' '}
-                      <code>HeroPanel.jsx</code>, <code>RoomTile.jsx</code>
-                    </li>
-                  </ul>
-                </div>
+                      <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
+                        <div className="font-mono font-bold text-[#D9A62E]">
+                          Typography &amp; Palette (Measured Fact)
+                        </div>
+                        <p className="text-[#DFDACE]/90 leading-relaxed">
+                          Room headings use <code className="font-mono">clamp(1.65rem, 2.15vw, 2.125rem)</code> (30.96px
+                          at 1440px, 1.02 line-height ratio). Room blurbs increased from 12px to 13px (1.35 line-height).
+                          Room 02 <code className="font-mono">02 Quoting</code> chip changed from{' '}
+                          <code className="font-mono">bg-red-100/90</code> to <code className="font-mono">#D9A62E</code>.
+                        </p>
+                        <p className="text-[#DFDACE]/70 border-t border-[#DFDACE]/15 pt-2">
+                          <strong>Documented Reversion:</strong> A 48ch hero measure was tested and reverted after it
+                          caused a 3-line orphan (&ldquo;realized.&rdquo;) on 390px mobile.
+                        </p>
+                      </div>
 
-                {/* Locomotive Attribution & Non-Endorsement Notice */}
-                <div className="border border-[#DFDACE]/20 bg-[#16191B] p-5 space-y-2.5 text-xs text-[#DFDACE]/80">
-                  <div className="font-mono font-bold uppercase tracking-wider text-[#EDE9E0]">
-                    Reference Attribution &amp; Independence Notice
-                  </div>
-                  <p className="leading-relaxed">
-                    <strong>Reference Credit:</strong>{' '}
-                    <a
-                      href="https://locomotive.ca/en"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#D9A62E] underline hover:text-[#EDE9E0]"
-                    >
-                      Locomotive (locomotive.ca)
-                    </a>{' '}
-                    was inspected as an external reference specimen for grid margin proportions, structural overline
-                    framing, and asymmetric cubic-bezier transition timing.
-                  </p>
-                  <p className="leading-relaxed text-[11.5px] text-[#DFDACE]/70">
-                    Locomotive is an independent agency and is not affiliated with, endorsing, or collaborating on
-                    ContextMuse. No proprietary fonts, media, copy, or source code from Locomotive are reused in
-                    ContextMuse.
-                  </p>
-                </div>
-
-                {/* CTA Card */}
-                <div className="border-2 border-[#DFDACE]/25 bg-[#23282A] p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div>
-                    <div className="font-display text-base font-black uppercase text-[#EDE9E0]">
-                      Want this level of care on your product or site?
+                      <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
+                        <div className="font-mono font-bold text-[#D9A62E]">
+                          Hover Timing &amp; Surface Fidelity (Measured Fact)
+                        </div>
+                        <p className="text-[#DFDACE]/90 leading-relaxed">
+                          Computed <code className="font-mono">filter: none</code> on hover (replacing{' '}
+                          <code className="font-mono">brightness(1.05)</code>). Transition curve set to{' '}
+                          <code className="font-mono">cubic-bezier(0.23, 1, 0.32, 1)</code> with{' '}
+                          <code className="font-mono">450ms</code> entry and <code className="font-mono">200ms</code>{' '}
+                          release durations.
+                        </p>
+                        <p className="text-[#DFDACE]/70 border-t border-[#DFDACE]/15 pt-2">
+                          <strong>Subjective Judgment:</strong> Preserving exact background pigment while animating
+                          internal motifs feels more deliberate than brightening the entire tile.
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xs text-[#DFDACE]/75 mt-0.5">
-                      Share your project or mark up this page to include notes with your inquiry.
-                    </p>
                   </div>
-                  <button
-                    type="button"
-                    onClick={handleInquireAboutDesignSystem}
-                    className="shrink-0 bg-[#D9A62E] text-[#141617] px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#e3b13b] transition-colors"
-                  >
-                    Start a Project →
-                  </button>
+
+                  {/* 2. Interactive Component Reproductions vs. Recorded Hover Screenshot */}
+                  <div id="hover-motion-comparison" className="space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#DFDACE]/15 pb-3">
+                      <div>
+                        <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-[#D9A62E]">
+                          <Play className="h-3.5 w-3.5" />
+                          <span>INTERACTIVE COMPONENT REPRODUCTIONS (NOT RECORDED SESSIONS)</span>
+                        </div>
+                        <h3 className="font-display text-xl font-bold text-[#EDE9E0] mt-0.5">
+                          2. Live Hover Timing Reproductions vs. Recorded Playwright Capture
+                        </h3>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setSimulatingHover((v) => !v)}
+                        aria-pressed={simulatingHover}
+                        className={`shrink-0 inline-flex items-center gap-2 border px-3.5 py-2 font-mono text-xs font-bold transition-colors ${
+                          simulatingHover
+                            ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617]'
+                            : 'border-[#D9A62E] bg-[#23282A] text-[#D9A62E] hover:bg-[#D9A62E] hover:text-[#141617]'
+                        }`}
+                      >
+                        <Sparkles className="h-3.5 w-3.5" />
+                        <span>{simulatingHover ? 'Release Simulated Hover' : 'Simulate Simultaneous Hover'}</span>
+                      </button>
+                    </div>
+
+                    <div className="grid gap-5 lg:grid-cols-3 items-stretch">
+                      {/* Reproduction A: Baseline 52e179d */}
+                      <div className="flex flex-col space-y-2">
+                        <div className="flex items-center justify-between font-mono text-xs text-[#DFDACE]/80">
+                          <span className="font-bold text-[#EDE9E0]">Reproduction A · Baseline (52e179d)</span>
+                          <span>300ms · brightness(1.05)</span>
+                        </div>
+                        <div
+                          className={`group relative flex flex-1 flex-col justify-between p-5 bg-[#DFDACE] text-[#23282A] transition-all duration-300 select-none cursor-pointer ${
+                            simulatingHover ? 'brightness-105' : 'hover:brightness-105'
+                          }`}
+                        >
+                          <div>
+                            <div className="flex items-center justify-between border-b border-current/20 pb-2 font-mono text-xs">
+                              <span className="font-bold tracking-widest uppercase">02 / ASSEMBLE</span>
+                              <ArrowUpRight
+                                className={`h-4 w-4 transition-transform duration-300 ${
+                                  simulatingHover
+                                    ? 'translate-x-0.5 -translate-y-0.5 opacity-100'
+                                    : 'opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100'
+                                }`}
+                              />
+                            </div>
+                            <h4 className="mt-3 font-display text-2xl font-black uppercase tracking-tight">
+                              Custom Builds
+                            </h4>
+                            <p className="mt-1.5 text-xs opacity-85 leading-snug">
+                              Custom websites, quoting engines, and internal tools built around how you work.
+                            </p>
+                          </div>
+
+                          <div className="my-4 flex items-center gap-1.5 font-mono text-[10px]">
+                            <span className="px-2 py-0.5 rounded bg-white/80 text-[#23282A] font-bold border border-[#23282A]/20">
+                              01 Website
+                            </span>
+                            <span>→</span>
+                            <span className="px-2 py-0.5 rounded bg-red-100/90 text-red-900 font-bold border border-red-300">
+                              02 Quoting
+                            </span>
+                            <span>→</span>
+                            <span className="px-2 py-0.5 rounded bg-[#17504A] text-white font-bold">
+                              03 Workflow
+                            </span>
+                          </div>
+
+                          <div className="flex items-center justify-between border-t border-current/15 pt-2 font-mono text-xs font-bold">
+                            <span>Shape a Custom Build</span>
+                            <span>→</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Reproduction B: Experiment 195921a */}
+                      <div className="flex flex-col space-y-2">
+                        <div className="flex items-center justify-between font-mono text-xs text-[#D9A62E]">
+                          <span className="font-bold">Reproduction B · Experiment (195921a)</span>
+                          <span>450ms enter / 200ms leave</span>
+                        </div>
+                        <div
+                          style={{
+                            transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+                            transitionDuration: simulatingHover ? '450ms' : '200ms',
+                          }}
+                          className="group relative flex flex-1 flex-col justify-between p-5 bg-[#DFDACE] text-[#23282A] select-none cursor-pointer border border-[#D9A62E]/40"
+                        >
+                          <div>
+                            <div
+                              className={`flex items-center justify-between border-b-2 pb-2 font-mono text-xs transition-colors duration-200 group-hover:duration-500 ${
+                                simulatingHover
+                                  ? 'border-current/55'
+                                  : 'border-current/25 group-hover:border-current/55'
+                              }`}
+                            >
+                              <span className="font-bold tracking-[0.14em] uppercase">02 / ASSEMBLE</span>
+                              <ArrowUpRight
+                                className={`h-4 w-4 transition-transform duration-200 group-hover:duration-500 ${
+                                  simulatingHover
+                                    ? 'translate-x-1 -translate-y-1 opacity-100'
+                                    : 'opacity-75 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100'
+                                }`}
+                              />
+                            </div>
+                            <h4 className="mt-3 font-display text-2xl font-black uppercase tracking-tight">
+                              Custom Builds
+                            </h4>
+                            <p className="mt-1.5 text-xs opacity-90 leading-snug">
+                              Custom websites, quoting engines, and internal tools built around how you work.
+                            </p>
+                          </div>
+
+                          <div className="my-4 flex items-center gap-1.5 font-mono text-[10px]">
+                            <span className="px-2 py-0.5 bg-[#EDE9E0] text-[#23282A] font-bold border border-[#23282A]/25">
+                              01 Website
+                            </span>
+                            <span>→</span>
+                            <span
+                              className={`px-2 py-0.5 text-[#23282A] font-bold border border-[#D9A62E] transition-colors duration-200 group-hover:duration-500 ${
+                                simulatingHover ? 'bg-[#D9A62E]' : 'bg-[#D9A62E]/30 group-hover:bg-[#D9A62E]'
+                              }`}
+                            >
+                              02 Quoting
+                            </span>
+                            <span>→</span>
+                            <span className="px-2 py-0.5 bg-[#17504A] text-[#EDE9E0] font-bold border border-[#17504A]">
+                              03 Workflow
+                            </span>
+                          </div>
+
+                          <div className="flex items-center justify-between border-t border-current/25 pt-2 font-mono text-xs font-bold">
+                            <span className={simulatingHover ? 'underline' : 'group-hover:underline'}>
+                              Shape a Custom Build
+                            </span>
+                            <span>→</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Recorded Playwright Hover Screenshot */}
+                      <div className="flex flex-col justify-between border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
+                        <div className="flex items-center justify-between font-mono text-xs">
+                          <span className="font-bold text-[#D9A62E]">Original Recorded Capture (195921a)</span>
+                          <span className="text-[#DFDACE]/70">500ms hover</span>
+                        </div>
+                        <img
+                          src="/assets/images/design-intelligence/exp01_after_desktop_hover_build.png"
+                          alt="Recorded hover state on Room 02 (Custom Builds) in commit 195921a"
+                          className="w-full h-auto block border border-[#DFDACE]/20"
+                          loading="lazy"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => openDetailInspector('desktop', 'hover')}
+                          className="text-left font-mono text-xs font-bold text-[#D9A62E] underline hover:text-[#EDE9E0]"
+                        >
+                          Open Full Capture in Detail Inspector →
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 3. Smoke Suite & Attribution */}
+                  <div className="grid gap-6 lg:grid-cols-12 items-start">
+                    <div className="lg:col-span-7 space-y-3">
+                      <h3 className="font-display text-lg font-bold text-[#EDE9E0]">
+                        3. Functional Non-Regression Suite (11 / 11 PASS)
+                      </h3>
+                      <div className="divide-y divide-[#DFDACE]/10 border border-[#DFDACE]/20 bg-[#23282A]">
+                        {SMOKE_CHECKS.map((chk) => (
+                          <div key={chk.num} className="p-2.5 sm:px-3.5 flex items-start justify-between gap-3 text-xs">
+                            <div>
+                              <span className="font-mono font-bold text-[#D9A62E] mr-2">#{chk.num}</span>
+                              <span className="font-semibold text-[#EDE9E0]">{chk.name}</span>
+                              <p className="text-[#DFDACE]/75 mt-0.5">{chk.covered}</p>
+                            </div>
+                            <span className="shrink-0 inline-flex items-center gap-1 bg-emerald-950/80 border border-emerald-500/40 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-300">
+                              <CheckCircle2 className="h-3 w-3" />
+                              {chk.status}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="lg:col-span-5 space-y-4 text-xs">
+                      <div className="border border-[#D9A62E] bg-[#23282A] p-4 space-y-2">
+                        <div className="flex items-center gap-2 font-mono font-bold text-[#D9A62E]">
+                          <Scale className="h-4 w-4" />
+                          <span>What Automated Tests Prove—And What They Do Not</span>
+                        </div>
+                        <p className="text-[#EDE9E0]/90 leading-relaxed">
+                          Passing 11/11 smoke checks proves functional non-regression across routing, room transitions,
+                          interactive tools, <code className="font-mono">/api/lead/</code> submission, and 390px mobile
+                          overflow constraints. Automated checks do <strong>not</strong> prove improved aesthetics, user
+                          preference, conversion lift, or design quality.
+                        </p>
+                      </div>
+
+                      <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2 font-mono">
+                        <div className="flex items-center gap-2 font-bold text-[#EDE9E0]">
+                          <FileCode2 className="h-4 w-4 text-[#D9A62E]" />
+                          <span>Repository Provenance</span>
+                        </div>
+                        <ul className="space-y-1 text-[#DFDACE]/85">
+                          <li>• Baseline: 52e179d (release/candidate-preview)</li>
+                          <li>• Experiment: 195921a (experiment/design-intelligence-01-locomotive)</li>
+                          <li>• Dossier: design-intelligence/references/locomotive.md</li>
+                          <li>• Report: design-intelligence/experiments/experiment-01-locomotive.md</li>
+                        </ul>
+                      </div>
+
+                      <div className="border border-[#DFDACE]/20 bg-[#16191B] p-4 space-y-1.5 text-[#DFDACE]/80">
+                        <div className="font-mono font-bold text-[#EDE9E0]">
+                          Reference Attribution &amp; Independence Notice
+                        </div>
+                        <p className="leading-relaxed">
+                          <a
+                            href="https://locomotive.ca/en"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#D9A62E] underline hover:text-[#EDE9E0]"
+                          >
+                            Locomotive (locomotive.ca)
+                          </a>{' '}
+                          was studied as an independent external reference for transferable structural and motion
+                          principles. Locomotive is not affiliated with, endorsing, or collaborating on ContextMuse, and
+                          no proprietary code, fonts, or assets were reused.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
       </main>
 
       {/* ============================================================
-          FULL-IMAGE DETAIL INSPECTOR MODAL (1:1 UNCROPPED & ZOOMABLE)
+          DETAIL INSPECTOR MODAL
+          Houses Desktop, Mobile, Full-Page Mobile, Plumb Guides, Zoom,
+          Side-by-Side view, and Recorded Hover Capture
           ============================================================ */}
       {inspectorOpen && (
         <div
@@ -1428,13 +1045,31 @@ export default function DesignIntelligenceCaseStudy() {
         >
           {/* Modal Header */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFDACE]/20 bg-[#23282A] px-4 py-3 sm:px-6">
-            <div className="flex items-center gap-3">
-              <span className="bg-[#D9A62E] text-[#141617] px-2 py-0.5 font-mono text-[10px] font-bold uppercase">
-                Full-Image Inspector
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="bg-[#D9A62E] text-[#141617] px-2 py-0.5 font-mono text-xs font-bold">
+                Detail Inspector
               </span>
-              <h3 className="font-display text-sm sm:text-base font-bold uppercase text-[#EDE9E0]">
-                {activeMode.label} — Uncropped Baseline (52e179d) vs. Experiment (195921a)
-              </h3>
+
+              {/* Viewport Mode Selector inside Inspector (includes Full-Page Mobile) */}
+              <div className="inline-flex border border-[#DFDACE]/25 bg-[#1B1F21] p-0.5 font-mono text-xs">
+                {INSPECTOR_MODES.map((m) => (
+                  <button
+                    key={m.id}
+                    type="button"
+                    onClick={() => {
+                      handleSelectInspectorMode(m.id);
+                      if (inspectorView === 'hover') setInspectorView('side-by-side');
+                    }}
+                    className={`px-2.5 py-1 transition-colors ${
+                      inspectorModeId === m.id && inspectorView !== 'hover'
+                        ? 'bg-[#D9A62E] text-[#141617] font-bold'
+                        : 'text-[#EDE9E0] hover:text-[#D9A62E]'
+                    }`}
+                  >
+                    {m.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
@@ -1451,6 +1086,17 @@ export default function DesignIntelligenceCaseStudy() {
               </button>
               <button
                 type="button"
+                onClick={() => setInspectorView('slider')}
+                className={`px-2.5 py-1 border ${
+                  inspectorView === 'slider'
+                    ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
+                    : 'border-[#DFDACE]/25 text-[#EDE9E0]'
+                }`}
+              >
+                Interactive Slider
+              </button>
+              <button
+                type="button"
                 onClick={() => setInspectorView('hover')}
                 className={`px-2.5 py-1 border ${
                   inspectorView === 'hover'
@@ -1458,24 +1104,39 @@ export default function DesignIntelligenceCaseStudy() {
                     : 'border-[#DFDACE]/25 text-[#EDE9E0]'
                 }`}
               >
-                Recorded Hover (Room 02)
+                Hover Capture
               </button>
 
-              <span className="text-[#DFDACE]/30">|</span>
+              {inspectorView === 'slider' && (
+                <button
+                  type="button"
+                  onClick={() => setShowPlumbGuides((v) => !v)}
+                  className={`flex items-center gap-1 px-2.5 py-1 border ${
+                    showPlumbGuides
+                      ? 'border-emerald-400 bg-emerald-950/70 text-emerald-300 font-bold'
+                      : 'border-[#DFDACE]/25 text-[#EDE9E0]'
+                  }`}
+                >
+                  <Ruler className="h-3.5 w-3.5" />
+                  <span>Plumb Guide</span>
+                </button>
+              )}
 
-              <button
-                type="button"
-                onClick={() => setInspectorZoom((z) => (z === 1 ? 1.5 : 1))}
-                className="px-2.5 py-1 border border-[#DFDACE]/25 text-[#EDE9E0] hover:border-[#D9A62E]"
-              >
-                Zoom: {inspectorZoom === 1 ? '100% (Fit)' : '150% (Detail)'}
-              </button>
+              {inspectorView === 'side-by-side' && (
+                <button
+                  type="button"
+                  onClick={() => setInspectorZoom((z) => (z === 1 ? 1.5 : 1))}
+                  className="px-2.5 py-1 border border-[#DFDACE]/25 text-[#EDE9E0] hover:border-[#D9A62E]"
+                >
+                  Zoom: {inspectorZoom === 1 ? '100%' : '150%'}
+                </button>
+              )}
 
               <button
                 type="button"
                 onClick={() => setInspectorOpen(false)}
                 aria-label="Close full-image inspector"
-                className="ml-2 flex items-center gap-1 border border-[#DFDACE]/30 bg-[#1B1F21] px-3 py-1 text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E]"
+                className="ml-1 flex items-center gap-1 border border-[#DFDACE]/30 bg-[#1B1F21] px-3 py-1 text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E]"
               >
                 <X className="h-4 w-4" />
                 <span>Close (Esc)</span>
@@ -1485,39 +1146,162 @@ export default function DesignIntelligenceCaseStudy() {
 
           {/* Modal Body */}
           <div className="flex-1 overflow-auto p-4 sm:p-6">
-            {inspectorView === 'side-by-side' ? (
+            {inspectorView === 'side-by-side' && (
               <div
                 style={{
                   transform: `scale(${inspectorZoom})`,
                   transformOrigin: 'top left',
                 }}
-                className="grid gap-6 lg:grid-cols-2 items-start mx-auto max-w-[1800px]"
+                className="mx-auto max-w-[1760px]"
               >
-                <div className="space-y-2 border border-[#DFDACE]/25 bg-[#1B1F21] p-3">
-                  <div className="flex items-center justify-between font-mono text-xs font-bold text-[#EDE9E0]">
-                    <span>BEFORE · Baseline Commit 52e179d</span>
-                    <span className="text-[#DFDACE]/60">{activeMode.viewportText}</span>
-                  </div>
-                  <img
-                    src={activeMode.beforeSrc}
-                    alt={`Full uncropped BEFORE (${activeMode.label})`}
-                    className="w-full h-auto block border border-[#DFDACE]/15"
-                  />
-                </div>
+                {INSPECTOR_MODES.map((m) => {
+                  const isCurrent = m.id === inspectorModeId;
+                  return (
+                    <div
+                      key={m.id}
+                      data-inspector-sbs-mode={m.id}
+                      className={`${isCurrent ? 'grid' : 'hidden'} gap-6 lg:grid-cols-2 items-start`}
+                    >
+                      <div className="space-y-2 border border-[#DFDACE]/25 bg-[#1B1F21] p-3">
+                        <div className="flex items-center justify-between font-mono text-xs font-bold text-[#EDE9E0]">
+                          <span>BEFORE · Baseline 52e179d</span>
+                          <span className="text-[#DFDACE]/60">{m.viewportText}</span>
+                        </div>
+                        <img
+                          src={m.beforeSrc}
+                          alt={isCurrent ? `Full uncropped BEFORE (${m.fullLabel})` : ''}
+                          width={m.naturalWidth}
+                          height={m.isFullPageScroll ? 3648 : m.naturalHeight}
+                          decoding="sync"
+                          className="w-full h-auto block border border-[#DFDACE]/15"
+                        />
+                      </div>
 
-                <div className="space-y-2 border border-[#D9A62E]/50 bg-[#1B1F21] p-3">
-                  <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
-                    <span>AFTER · Experiment Commit 195921a</span>
-                    <span className="text-[#DFDACE]/60">{activeMode.viewportText}</span>
-                  </div>
-                  <img
-                    src={activeMode.afterSrc}
-                    alt={`Full uncropped AFTER (${activeMode.label})`}
-                    className="w-full h-auto block border border-[#D9A62E]/25"
-                  />
-                </div>
+                      <div className="space-y-2 border border-[#D9A62E]/50 bg-[#1B1F21] p-3">
+                        <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
+                          <span>AFTER · Experiment 195921a</span>
+                          <span className="text-[#DFDACE]/60">{m.viewportText}</span>
+                        </div>
+                        <img
+                          src={m.afterSrc}
+                          alt={isCurrent ? `Full uncropped AFTER (${m.fullLabel})` : ''}
+                          width={m.naturalWidth}
+                          height={m.naturalHeight}
+                          decoding="sync"
+                          className="w-full h-auto block border border-[#D9A62E]/25"
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            ) : (
+            )}
+
+            {inspectorView === 'slider' && (
+              <div className="flex flex-col items-center space-y-4">
+                {INSPECTOR_MODES.map((m) => {
+                  const isCurrent = m.id === inspectorModeId;
+                  return (
+                    <div
+                      key={m.id}
+                      ref={isCurrent ? inspectorStageRef : null}
+                      data-inspector-slider-stage={isCurrent ? 'true' : undefined}
+                      data-inspector-slider-mode={m.id}
+                      onPointerDown={isCurrent ? handleInspectorPointerDown : undefined}
+                      onPointerMove={isCurrent ? handleInspectorPointerMove : undefined}
+                      onPointerUp={isCurrent ? handleInspectorPointerUp : undefined}
+                      onPointerCancel={isCurrent ? handleInspectorPointerUp : undefined}
+                      style={{ touchAction: 'pan-y' }}
+                      className={`${
+                        isCurrent ? 'block' : 'hidden'
+                      } relative select-none overflow-hidden border border-[#DFDACE]/25 bg-[#141617] shadow-2xl cursor-ew-resize ${
+                        m.id === 'desktop'
+                          ? 'w-full max-w-[1200px] aspect-[1440/900]'
+                          : m.id === 'mobile'
+                          ? 'w-full max-w-[400px] aspect-[390/844]'
+                          : 'w-full max-w-[400px]'
+                      }`}
+                    >
+                      <img
+                        src={m.afterSrc}
+                        alt={isCurrent ? `AFTER (${m.fullLabel})` : ''}
+                        width={m.naturalWidth}
+                        height={m.naturalHeight}
+                        decoding="sync"
+                        draggable={false}
+                        className={
+                          m.isFullPageScroll
+                            ? 'block w-full h-auto select-none pointer-events-none'
+                            : 'absolute inset-0 block w-full h-full object-contain select-none pointer-events-none'
+                        }
+                      />
+
+                      <div
+                        aria-hidden="true"
+                        style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
+                        className={`absolute inset-0 pointer-events-none ${
+                          m.isFullPageScroll ? 'bg-[#141617] flex flex-col justify-between' : ''
+                        }`}
+                      >
+                        <img
+                          src={m.beforeSrc}
+                          alt={isCurrent ? `BEFORE (${m.fullLabel})` : ''}
+                          width={m.naturalWidth}
+                          height={m.isFullPageScroll ? 3648 : m.naturalHeight}
+                          decoding="sync"
+                          draggable={false}
+                          className={
+                            m.isFullPageScroll
+                              ? 'block w-full h-auto select-none pointer-events-none'
+                              : 'absolute inset-0 block w-full h-full object-contain select-none pointer-events-none'
+                          }
+                        />
+                        {m.isFullPageScroll && (
+                          <div className="border-t border-dashed border-[#DFDACE]/30 bg-[#141617] px-3 py-2 font-mono text-[10px] text-[#DFDACE]/70">
+                            Baseline 52e179d ends at 1824px CSS height vs. 1901px After (+77px from vertical rhythm;
+                            neither image is stretched).
+                          </div>
+                        )}
+                      </div>
+
+                      {showPlumbGuides && (
+                        <div className="pointer-events-none absolute inset-0 z-10">
+                          <div
+                            style={{ left: `${m.plumbLinePct}%` }}
+                            className="absolute top-0 bottom-0 border-l-2 border-dashed border-emerald-400/90"
+                          >
+                            <span className="absolute bottom-10 left-1.5 whitespace-nowrap bg-emerald-950/95 border border-emerald-400 px-1.5 py-0.5 font-mono text-[10px] font-bold text-emerald-300">
+                              AFTER Plumb: {m.id === 'desktop' ? '40px (0px drift)' : '20px (0px drift)'}
+                            </span>
+                          </div>
+                          {sliderPos > m.beforePlumbHeroPct && (
+                            <div
+                              style={{ left: `${m.beforePlumbHeroPct}%` }}
+                              className="absolute top-0 bottom-0 border-l border-dotted border-rose-400/90"
+                            >
+                              <span className="absolute bottom-3 left-1.5 whitespace-nowrap bg-rose-950/95 border border-rose-400 px-1.5 py-0.5 font-mono text-[10px] font-bold text-rose-200">
+                                BEFORE Hero: {m.id === 'desktop' ? '48px (+24px)' : '24px (+8px)'}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      <div
+                        style={{ left: `${sliderPos}%` }}
+                        className="absolute top-0 bottom-0 z-30 -ml-px w-0.5 bg-[#D9A62E]"
+                      >
+                        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl">
+                          <MoveHorizontal className="h-4 w-4 stroke-[2.5]" />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {inspectorView === 'hover' && (
               <div className="mx-auto max-w-5xl space-y-3 border border-[#D9A62E]/50 bg-[#1B1F21] p-4">
                 <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
                   <span>RECORDED HOVER STATE · Room 02 Custom Builds (Commit 195921a)</span>
