@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     outDir: ".spa-dist",
     emptyOutDir: true,
+    sourcemap: "hidden",
     rollupOptions: {
       input: "spa.html",
     },

@@ -681,6 +681,8 @@ export default function Builds() {
           <section
             ref={canvasRef}
             data-testid="whiteboard-workspace-section"
+            data-whiteboard="true"
+            data-clarity-mask="true"
             className="mx-auto max-w-[1440px] w-full px-4 sm:px-8 pt-2 space-y-3 animate-fadeIn"
           >
             {/* Welcoming Starting State Selector: 4 Clear Choices */}

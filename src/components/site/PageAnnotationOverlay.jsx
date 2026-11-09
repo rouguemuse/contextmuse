@@ -311,6 +311,8 @@ export default function PageAnnotationOverlay() {
           ============================================================ */}
       {(pageMarkupActive || hasAnnotations) && (
         <div
+          data-whiteboard="true"
+          data-clarity-mask="true"
           className={`absolute inset-x-0 top-0 z-30 overflow-hidden ${
             pageMarkupActive ? 'pointer-events-auto' : 'pointer-events-none'
           }`}

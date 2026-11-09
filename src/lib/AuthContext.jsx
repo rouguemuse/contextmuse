@@ -4,20 +4,34 @@ import { appParams } from '@/lib/app-params';
 
 const AuthContext = createContext();
 
+const hasConfiguredAppId = Boolean(
+  appParams.appId &&
+  String(appParams.appId).trim() &&
+  String(appParams.appId).trim() !== 'undefined'
+);
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoadingAuth, setIsLoadingAuth] = useState(true);
-  const [isLoadingPublicSettings, setIsLoadingPublicSettings] = useState(true);
+  const [isLoadingAuth, setIsLoadingAuth] = useState(hasConfiguredAppId);
+  const [isLoadingPublicSettings, setIsLoadingPublicSettings] = useState(hasConfiguredAppId);
   const [authError, setAuthError] = useState(null);
-  const [authChecked, setAuthChecked] = useState(false);
+  const [authChecked, setAuthChecked] = useState(!hasConfiguredAppId);
   const [appPublicSettings, setAppPublicSettings] = useState(null); // Contains only { id, public_settings }
 
   useEffect(() => {
-    checkAppState();
+    if (hasConfiguredAppId) {
+      checkAppState();
+    }
   }, []);
 
   const checkAppState = async () => {
+    if (!hasConfiguredAppId) {
+      setIsLoadingPublicSettings(false);
+      setIsLoadingAuth(false);
+      setAuthChecked(true);
+      return;
+    }
     try {
       setIsLoadingPublicSettings(true);
       setAuthError(null);

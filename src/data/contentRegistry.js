@@ -37,8 +37,8 @@ export function resolveEntryId(rawId) {
 
 /**
  * Metadata and typed relationship overlay for the 13 core records in src/data/projects.js
- * plus additional canonical records (interactive Lab utilities, R&D experiments, articles,
- * and private drafts that must never be publicly exposed).
+ * plus additional canonical public records (interactive Lab utilities, R&D experiments,
+ * and articles).
  */
 export const REGISTRY_METADATA = {
   'lone-wolf-dumpsters': {
@@ -429,7 +429,7 @@ export const REGISTRY_METADATA = {
 
 /**
  * Additional Canonical Records Not Previously in PROJECTS
- * (R&D Experiments, Interactive Lab Instruments, Articles, and Private Drafts)
+ * (R&D Experiments, Interactive Lab Instruments, and Articles)
  */
 export const ADDITIONAL_REGISTRY_ENTRIES = [
   {
@@ -729,62 +729,6 @@ export const ADDITIONAL_REGISTRY_ENTRIES = [
         note: 'Illustrates barrier-first prerequisite mapping across institutional handoffs.',
       },
     ],
-  },
-
-  // =========================================================================
-  // PRIVATE / UNPUBLISHED RECORDS (visibility: 'private')
-  // Explicitly registered so the system prevents accidental public exposure.
-  // =========================================================================
-  {
-    id: 'dealsignal-draft',
-    title: 'DealSignal Internal Prototype',
-    subtitle: 'Unpublished Deal Flow Scoring Draft',
-    year: '2025',
-    sector: 'Internal R&D',
-    plainSentence: 'Unpublished internal prototype — not for public index exposure.',
-    summary: 'Private workspace draft.',
-    contentType: 'experiment',
-    maturityStatus: 'draft',
-    visibility: 'private',
-    featuredInWork: false,
-    featuredInLab: false,
-    canonicalDestination: null,
-    canonicalTagIds: ['prob:data-hygiene', 'cap:explainable-scoring'],
-    relationships: [],
-  },
-  {
-    id: 'southern-smoke-draft',
-    title: 'Southern Smoke Concept Sandbox',
-    subtitle: 'Private Client Concept Study',
-    year: '2025',
-    sector: 'Hospitality concept draft',
-    plainSentence: 'Private concept study — restricted from public directory.',
-    summary: 'Private client sandbox.',
-    contentType: 'published-concept',
-    maturityStatus: 'draft',
-    visibility: 'private',
-    featuredInWork: false,
-    featuredInLab: false,
-    canonicalDestination: null,
-    canonicalTagIds: ['ind:hospitality-food'],
-    relationships: [],
-  },
-  {
-    id: 'tiktok-roi-draft',
-    title: 'TikTok Shop ROI Analyzer Draft',
-    subtitle: 'Unpublished Calculator Sandbox',
-    year: '2025',
-    sector: 'E-commerce analytics draft',
-    plainSentence: 'Unpublished sandbox calculator — restricted from public index.',
-    summary: 'Private calculator draft.',
-    contentType: 'interactive-tool',
-    maturityStatus: 'draft',
-    visibility: 'private',
-    featuredInWork: false,
-    featuredInLab: false,
-    canonicalDestination: null,
-    canonicalTagIds: ['prob:sizing-pricing', 'cap:quote-sizing-engine'],
-    relationships: [],
   },
 ];
 

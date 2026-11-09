@@ -138,6 +138,9 @@ export default function BriefDrawer() {
       : [];
 
     const payload = {
+      form_id: 'brief-drawer',
+      source_page: typeof window !== 'undefined' ? window.location.pathname : '/',
+      inquiry_type: brief.inquiry.projectType || 'contact',
       name: brief.inquiry.name,
       email: brief.inquiry.email,
       source: 'contextmuse_brief_drawer',
@@ -189,6 +192,7 @@ export default function BriefDrawer() {
       className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm animate-in fade-in duration-200"
     >
       <div
+        data-clarity-mask="true"
         className="relative flex h-full w-full max-w-xl flex-col bg-[#EDE9E0] text-[#23282A] shadow-2xl border-l-2 border-[#23282A] font-sans overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >

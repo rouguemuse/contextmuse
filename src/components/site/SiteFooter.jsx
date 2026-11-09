@@ -1,10 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useBrief } from '@/lib/BriefContext';
 import { Lightbulb, Mail, X, ExternalLink, FolderSearch, CheckCircle2 } from 'lucide-react';
 
 export default function SiteFooter() {
   const { totalCount, openBrief } = useBrief();
   const [acqOpen, setAcqOpen] = useState(false);
+  const [consent, setConsent] = useState(() => {
+    try {
+      return window.localStorage.getItem('cm_analytics_consent') === 'denied' ? 'denied' : 'granted';
+    } catch {
+      return 'granted';
+    }
+  });
+
+  useEffect(() => {
+    const handleSync = (e) => {
+      if (e?.detail?.consent) setConsent(e.detail.consent);
+    };
+    window.addEventListener('cm:consent-changed', handleSync);
+    return () => window.removeEventListener('cm:consent-changed', handleSync);
+  }, []);
+
+  const toggleConsent = () => {
+    const next = consent === 'denied' ? 'granted' : 'denied';
+    setConsent(next);
+    if (window.CM_Analytics && typeof window.CM_Analytics.setConsent === 'function') {
+      window.CM_Analytics.setConsent(next);
+    } else {
+      try {
+        window.localStorage.setItem('cm_analytics_consent', next);
+      } catch {}
+    }
+  };
 
   return (
     <>
@@ -23,7 +50,27 @@ export default function SiteFooter() {
           </a>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+          <a
+            href="/privacy/"
+            className="text-[11px] text-[#DFDACE]/50 hover:text-[#EDE9E0] transition-colors"
+          >
+            Privacy
+          </a>
+          <a
+            href="/terms/"
+            className="text-[11px] text-[#DFDACE]/50 hover:text-[#EDE9E0] transition-colors"
+          >
+            Terms
+          </a>
+          <button
+            type="button"
+            onClick={toggleConsent}
+            title="Toggle optional privacy-safe analytics (never captures form text, contact details, or whiteboard content)"
+            className="text-[11px] text-[#DFDACE]/50 hover:text-[#D9A62E] transition-colors"
+          >
+            Analytics: {consent === 'denied' ? 'Off' : 'On'}
+          </button>
           <button
             type="button"
             onClick={() => setAcqOpen(true)}

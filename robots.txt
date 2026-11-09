@@ -12,6 +12,15 @@ Disallow: /preview/
 Disallow: /partials/
 Disallow: /contact/success/
 Disallow: /brand/
+Disallow: /dealsignal/
+Disallow: /star-gift/
+Disallow: /istar-map/
+Disallow: /tiktok-shop-roi-analyzer/
+Disallow: /twenty-minute-override/
+Disallow: /southern_smoke/
+Disallow: /sixes-and-sevens/
+Disallow: /rudyards-comedy/
+Disallow: /qa_output/
 Disallow: /signal/demo/
 Disallow: /signal/export-instructions/
 Disallow: /systems/signal/

@@ -3,10 +3,31 @@ import { appParams } from '@/lib/app-params';
 
 const { appId, token, functionsVersion, appBaseUrl } = appParams;
 
-export const base44 = createClient({
-  appId,
-  token,
-  functionsVersion,
-  serverUrl: '',
-  appBaseUrl
-});
+const hasConfiguredAppId = Boolean(
+  appId &&
+  String(appId).trim() &&
+  String(appId).trim() !== 'undefined' &&
+  String(appId).trim() !== 'null'
+);
+
+export const base44 = hasConfiguredAppId
+  ? createClient({
+      appId,
+      token,
+      functionsVersion,
+      serverUrl: '',
+      appBaseUrl,
+    })
+  : {
+      app: {
+        getPublicSettings: async () => null,
+      },
+      auth: {
+        me: async () => null,
+        logout: () => {},
+        redirectToLogin: () => {},
+      },
+      appLogs: {
+        logUserInApp: async () => {},
+      },
+    };

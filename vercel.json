@@ -85,52 +85,56 @@
   ],
   "rewrites": [
     {
+      "source": "/(dealsignal|star-gift|istar-map|tiktok-shop-roi-analyzer|twenty-minute-override|southern_smoke|sixes-and-sevens|rudyards-comedy|preview|qa_output|brand|partials|docs)(/.*)?",
+      "destination": "/404.html"
+    },
+    {
       "source": "/work",
-      "destination": "/index.html"
+      "destination": "/work/index.html"
     },
     {
       "source": "/work/",
-      "destination": "/index.html"
+      "destination": "/work/index.html"
     },
     {
       "source": "/build",
-      "destination": "/index.html"
+      "destination": "/build/index.html"
     },
     {
       "source": "/build/",
-      "destination": "/index.html"
+      "destination": "/build/index.html"
     },
     {
       "source": "/lab",
-      "destination": "/index.html"
+      "destination": "/lab/index.html"
     },
     {
       "source": "/lab/",
-      "destination": "/index.html"
+      "destination": "/lab/index.html"
     },
     {
       "source": "/lab/design-intelligence",
-      "destination": "/index.html"
+      "destination": "/lab/design-intelligence/index.html"
     },
     {
       "source": "/lab/design-intelligence/",
-      "destination": "/index.html"
+      "destination": "/lab/design-intelligence/index.html"
     },
     {
       "source": "/design-intelligence",
-      "destination": "/index.html"
+      "destination": "/design-intelligence/index.html"
     },
     {
       "source": "/design-intelligence/",
-      "destination": "/index.html"
+      "destination": "/design-intelligence/index.html"
     },
     {
       "source": "/method",
-      "destination": "/index.html"
+      "destination": "/method/index.html"
     },
     {
       "source": "/method/",
-      "destination": "/index.html"
+      "destination": "/method/index.html"
     }
   ],
   "headers": [
@@ -152,7 +156,7 @@
       ]
     },
     {
-      "source": "/(evidence|records|private|legal|message-analysis|drafts|reports)/(.*)",
+      "source": "/(evidence|records|private|legal|message-analysis|drafts|reports|dealsignal|star-gift|istar-map|tiktok-shop-roi-analyzer|twenty-minute-override|southern_smoke|sixes-and-sevens|rudyards-comedy|preview|qa_output|brand|partials|docs)/(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
