@@ -61,7 +61,7 @@ export default function HeroPanel({ onEnterRoom }) {
 
           <button
             onClick={openBrief}
-            className="flex items-center justify-center gap-1.5 sm:gap-2 border border-[#DFDACE]/25 bg-[#23282A]/80 text-[#EDE9E0] px-2.5 py-3 sm:px-5 sm:py-3.5 2xl:px-7 2xl:py-4 font-mono text-[10.5px] sm:text-xs 2xl:text-[clamp(0.75rem,0.45vw+0.45rem,0.92rem)] uppercase tracking-wider whitespace-nowrap rounded hover:border-[#D9A62E] hover:text-[#D9A62E] transition-colors"
+            className="flex items-center justify-center gap-1.5 sm:gap-2 border border-[#DFDACE]/30 bg-[#2C3335]/85 text-[#EDE9E0] px-2.5 py-3 sm:px-5 sm:py-3.5 2xl:px-7 2xl:py-4 font-mono text-[10.5px] sm:text-xs 2xl:text-[clamp(0.75rem,0.45vw+0.45rem,0.92rem)] uppercase tracking-wider whitespace-nowrap rounded hover:border-[#D9A62E] hover:text-[#D9A62E] transition-colors"
           >
             <span>Start a Project</span>
             <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
@@ -71,7 +71,7 @@ export default function HeroPanel({ onEnterRoom }) {
 
       {/* 3 Core Capability Pillars */}
       <div className="pt-4 mt-5 sm:pt-6 sm:mt-7 xl:pt-[clamp(1.5rem,2.4vh,2.5rem)] xl:mt-[clamp(1.75rem,3vh,3.25rem)] border-t border-[#DFDACE]/15 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 2xl:gap-6 text-xs font-sans text-[#DFDACE]/80">
-        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/10 bg-[#181B1D]/55 p-2.5 sm:p-3 2xl:p-4">
+        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-2.5 sm:p-3 2xl:p-4">
           <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
           <div className="min-w-0">
             <strong className="block text-[#EDE9E0] font-mono text-[10.5px] sm:text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">
@@ -83,7 +83,7 @@ export default function HeroPanel({ onEnterRoom }) {
           </div>
         </div>
 
-        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/10 bg-[#181B1D]/55 p-2.5 sm:p-3 2xl:p-4">
+        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-2.5 sm:p-3 2xl:p-4">
           <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
           <div className="min-w-0">
             <strong className="block text-[#EDE9E0] font-mono text-[10.5px] sm:text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">
@@ -95,7 +95,7 @@ export default function HeroPanel({ onEnterRoom }) {
           </div>
         </div>
 
-        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/10 bg-[#181B1D]/55 p-2.5 sm:p-3 2xl:p-4">
+        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-2.5 sm:p-3 2xl:p-4">
           <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
           <div className="min-w-0">
             <strong className="block text-[#EDE9E0] font-mono text-[10.5px] sm:text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">

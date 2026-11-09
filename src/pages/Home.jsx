@@ -27,17 +27,17 @@ export default function Home() {
       <SiteHeader />
 
       <main className="flex-1 flex flex-col">
-        {/* Primary Split-Screen Entrance: Editorial Hero + Connected 2×2 Room Quadrants */}
-        <section className="relative flex-1 flex flex-col w-full bg-[#141617]">
+        {/* Primary Split-Screen Architecture: Editorial Hero + Connected 2×2 Room Quadrants */}
+        <section className="relative flex-1 flex flex-col w-full bg-ink">
           <div className="flex-1 grid grid-cols-1 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] 2xl:grid-cols-[minmax(520px,0.82fr)_minmax(0,1.18fr)] xl:items-stretch min-h-[560px] xl:min-h-[640px]">
             {/* Left Column: Editorial Statement, CTAs, Signals */}
-            <div className="flex flex-col border-b xl:border-b-0 xl:border-r border-[#DFDACE]/15">
+            <div className="flex flex-col border-b xl:border-b-0 xl:border-r border-[#DFDACE]/15 bg-ink">
               <HeroPanel onEnterRoom={pick} />
             </div>
 
             {/* Right Column: 2×2 Connected Room Quadrant */}
-            <div className="w-full h-full bg-[#181B1C]">
-              <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 gap-px bg-[#DFDACE]/15 h-full w-full">
+            <div className="w-full h-full bg-[#6F7573]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 gap-px bg-[#6F7573] h-full w-full">
                 {ROOMS.map((room, i) => (
                   <RoomTile key={room.id} room={room} index={i} onPick={pick} />
                 ))}

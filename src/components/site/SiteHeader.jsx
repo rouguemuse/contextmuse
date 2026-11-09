@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ArrowUpLeft, ChevronDown, Lightbulb, Highlighter } from 'lucide-react';
+import { ChevronDown, Lightbulb, Highlighter } from 'lucide-react';
 import Logo from '@/components/site/Logo';
 import { useBrief } from '@/lib/BriefContext';
 import { ROOMS } from '@/lib/rooms';
@@ -45,13 +45,6 @@ export default function SiteHeader() {
     setRoomsOpen(false);
     if (currentPath === room.path) return;
     startTransition(room, rect, navigate);
-  };
-
-  const handleReturnEntrance = () => {
-    setRoomsOpen(false);
-    if (currentPath !== '/') {
-      navigate('/');
-    }
   };
 
   return (
@@ -147,7 +140,7 @@ export default function SiteHeader() {
               >
                 <div className="mb-2 flex items-center justify-between px-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#DFDACE]/60">
                   <span>Select Working Room</span>
-                  <span>{activeRoom ? `Room ${activeRoom.num}` : 'Entrance'}</span>
+                  <span>{activeRoom ? `Room ${activeRoom.num}` : 'All Rooms'}</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-1.5">
@@ -190,18 +183,6 @@ export default function SiteHeader() {
                   })}
                 </div>
 
-                {currentPath !== '/' && (
-                  <button
-                    type="button"
-                    role="menuitem"
-                    onClick={handleReturnEntrance}
-                    className="mt-2 flex w-full items-center justify-between border border-[#DFDACE]/20 bg-[#23282A] px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-[#EDE9E0] transition-colors hover:border-[#D9A62E] hover:text-[#D9A62E]"
-                  >
-                    <span>Four-Quadrant Entrance</span>
-                    <ArrowUpLeft className="h-3.5 w-3.5 text-[#D9A62E]" />
-                  </button>
-                )}
-
                 <button
                   type="button"
                   role="menuitem"
@@ -209,7 +190,7 @@ export default function SiteHeader() {
                     setRoomsOpen(false);
                     navigate('/lab/design-intelligence');
                   }}
-                  className="mt-1.5 flex w-full items-center justify-between border border-[#D9A62E]/40 bg-[#141617] px-3 py-2 font-mono text-[10.5px] uppercase tracking-wider text-[#D9A62E] transition-colors hover:bg-[#D9A62E] hover:text-[#141617] font-bold"
+                  className="mt-2 flex w-full items-center justify-between border border-[#D9A62E]/40 bg-[#23282A] px-3 py-2 font-mono text-[10.5px] uppercase tracking-wider text-[#D9A62E] transition-colors hover:bg-[#D9A62E] hover:text-[#141617] font-bold"
                 >
                   <span>Case Study 01: Design Intelligence</span>
                   <span>→</span>
