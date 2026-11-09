@@ -374,6 +374,14 @@
     if (typeof origFetch === 'function') {
         window.fetch = function(url, options) {
             var urlStr = (typeof url === 'string') ? url : (url && url.url ? url.url : '');
+            if (
+                getStoredConsent() !== 'granted' &&
+                (urlStr.indexOf('clarity.ms') !== -1 ||
+                    urlStr.indexOf('google-analytics.com') !== -1 ||
+                    urlStr.indexOf('googletagmanager.com') !== -1)
+            ) {
+                return Promise.resolve(new Response(null, { status: 204 }));
+            }
             var isLeadApi = urlStr.indexOf('/api/lead') !== -1;
             
             var promise = origFetch.apply(this, arguments);
@@ -461,6 +469,27 @@
                 return true;
             }
             return origSendBeacon(url, data);
+        };
+    }
+
+    if (typeof XMLHttpRequest !== 'undefined' && XMLHttpRequest.prototype) {
+        var origXhrOpen = XMLHttpRequest.prototype.open;
+        var origXhrSend = XMLHttpRequest.prototype.send;
+        XMLHttpRequest.prototype.open = function(method, url) {
+            this.__cm_url = String(url || '');
+            return origXhrOpen.apply(this, arguments);
+        };
+        XMLHttpRequest.prototype.send = function() {
+            var u = this.__cm_url || '';
+            if (
+                getStoredConsent() !== 'granted' &&
+                (u.indexOf('clarity.ms') !== -1 ||
+                    u.indexOf('google-analytics.com') !== -1 ||
+                    u.indexOf('googletagmanager.com') !== -1)
+            ) {
+                return;
+            }
+            return origXhrSend.apply(this, arguments);
         };
     }
 
