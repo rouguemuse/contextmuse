@@ -16,13 +16,13 @@ import { useBrief } from '@/lib/BriefContext';
 export default function SignalShowcase({ onOpenCaseStudy }) {
   const { isProjectSaved, toggleSaveProject } = useBrief();
   const savedSignal = isProjectSaved('signal-ops');
-  const savedGensort = isProjectSaved('gensort-studio');
+  const savedGensort = isProjectSaved('gensort') || isProjectSaved('gensort-studio');
 
   return (
     <section id="signal-and-products" className="space-y-8 border-t border-[#DFDACE]/15 pt-10">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-4">
-        <div>
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-4">
+        <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-1.5 font-mono text-xs">
             <span className="rounded bg-[#D9A62E] text-[#141617] px-2 py-0.5 font-bold uppercase tracking-wider text-[10px]">
               Live Software Product
@@ -183,7 +183,7 @@ export default function SignalShowcase({ onOpenCaseStudy }) {
                   </a>
                   <button
                     type="button"
-                    onClick={() => onOpenCaseStudy('gensort-studio')}
+                    onClick={() => onOpenCaseStudy('gensort')}
                     className="text-[#DFDACE]/70 hover:text-white text-[10px] underline"
                   >
                     Case Study

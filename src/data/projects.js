@@ -1196,6 +1196,18 @@ export const PROJECTS = [
   },
 ];
 
-export const getProjectById = (id) => PROJECTS.find((p) => p.id === id);
+const PROJECT_ID_ALIASES = {
+  'gensort-studio': 'gensort',
+  'website-system-check': 'website-audit-system',
+  'contest-atlas': 'wcsm',
+  'lone-wolf': 'lone-wolf-dumpsters',
+  inncontrol: 'inncontrol-coils',
+};
+
+export const getProjectById = (id) => {
+  if (!id) return undefined;
+  const canonicalId = PROJECT_ID_ALIASES[id] || id;
+  return PROJECTS.find((p) => p.id === canonicalId);
+};
 export const getProjectsByTier = (tier) =>
   tier === 'all' ? PROJECTS : PROJECTS.filter((p) => p.tier === tier);

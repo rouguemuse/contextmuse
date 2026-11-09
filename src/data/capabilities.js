@@ -34,7 +34,7 @@ export const CAPABILITIES = [
       'Differentiated intake paths for distinct buyer personas',
       'Webhook delivery straight into driver or staff schedules',
     ],
-    relatedProjectIds: ['lone-wolf-dumpsters', 'edr-party-rentals', 'client-opportunity-engine'],
+    relatedProjectIds: ['lone-wolf-dumpsters', 'edr-party-rentals', 'inncontrol-coils'],
   },
   {
     id: 'data-normalization',
@@ -48,7 +48,7 @@ export const CAPABILITIES = [
       'Visual TableDocket comparing raw strings against verified ISO records',
       'Deterministic output ready for direct SQL, accounting, or CRM import',
     ],
-    relatedProjectIds: ['data-normalization-engine', 'revision-atlas'],
+    relatedProjectIds: ['gensort', 'signal-ops', 'revision-atlas', 'wcsm'],
   },
   {
     id: 'branded-ad-generator',
@@ -62,7 +62,7 @@ export const CAPABILITIES = [
       'Real-time opacity, typography spacing, and color controls',
       'Direct high-resolution web asset export without external licenses',
     ],
-    relatedProjectIds: ['ad-layer-assembler', 'made-of-reasons'],
+    relatedProjectIds: ['made-of-reasons', 'self-cartography'],
   },
 ];
 

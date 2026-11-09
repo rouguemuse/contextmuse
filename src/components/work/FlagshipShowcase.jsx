@@ -96,8 +96,8 @@ export default function FlagshipShowcase({ onOpenCaseStudy }) {
   return (
     <section id="flagship-lone-wolf" className="space-y-8">
       {/* Header Strip */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-5">
-        <div>
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-5">
+        <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs">
             <span className="rounded bg-[#D9A62E] text-[#141617] px-2 py-0.5 font-bold uppercase tracking-wider text-[10px]">
               Flagship Showcase
@@ -118,7 +118,7 @@ export default function FlagshipShowcase({ onOpenCaseStudy }) {
         </div>
 
         {/* Primary Actions */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
           <button
             onClick={() => onOpenCaseStudy('lone-wolf-dumpsters')}
             className="flex items-center gap-1.5 px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider rounded bg-[#D9A62E] text-[#141617] hover:bg-[#e0b240] transition-colors"

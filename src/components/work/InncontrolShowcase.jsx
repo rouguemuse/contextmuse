@@ -26,8 +26,8 @@ export default function InncontrolShowcase({ onOpenCaseStudy }) {
   return (
     <section id="inncontrol-coils" className="space-y-6 border-t border-[#DFDACE]/15 pt-10">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-4">
-        <div>
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-4">
+        <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-1.5 font-mono text-xs">
             <span className="rounded bg-[#0F2B48] text-[#FF6B00] border border-[#FF6B00]/40 px-2 py-0.5 font-bold uppercase tracking-wider text-[10px]">
               Commercial Platform + Internal Ops

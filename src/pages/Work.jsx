@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import RoomShell from '@/components/room/RoomShell';
 import RoomHeading from '@/components/room/RoomHeading';
 import FlagshipShowcase from '@/components/work/FlagshipShowcase';
@@ -12,6 +12,7 @@ import { roomById } from '@/lib/rooms';
 
 export default function Work() {
   const room = roomById('work');
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [openProjectId, setOpenProjectId] = useState(
     () => searchParams.get('case') || null
@@ -23,6 +24,18 @@ export default function Work() {
       setOpenProjectId(requestedCase);
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (location.pathname === '/index' || location.hash === '#content-index') {
+      const timer = setTimeout(() => {
+        const el = document.getElementById('content-index');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname, location.hash]);
 
   const handleCloseCaseStudy = () => {
     setOpenProjectId(null);
@@ -65,6 +78,7 @@ export default function Work() {
           <ProofViewer
             item={selectedProject}
             onClose={handleCloseCaseStudy}
+            onSelectRelated={(id) => setOpenProjectId(id)}
           />
         )}
       </div>

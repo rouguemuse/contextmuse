@@ -21,6 +21,10 @@ import {
 import { useBrief } from '@/lib/BriefContext';
 import { useNavigate } from 'react-router-dom';
 import {
+  getCuratedRelationships,
+  getTagSuggestedEntries,
+} from '@/data/contentRegistry';
+import {
   ReservationIllustration,
   DumpsterSizingDemo,
   ManuscriptMatrixIllustration,
@@ -30,7 +34,7 @@ import {
   InncontrolOpsIllustration,
 } from '@/components/work/FunctionalIllustrations';
 
-export default function ProofViewer({ item, onClose }) {
+export default function ProofViewer({ item, onClose, onSelectRelated }) {
   const { isProjectSaved, toggleSaveProject, openBrief } = useBrief();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'how-its-built'
@@ -54,6 +58,8 @@ export default function ProofViewer({ item, onClose }) {
 
   if (!item) return null;
 
+  const curatedRelationships = getCuratedRelationships(item.id);
+  const tagSuggestedRelationships = getTagSuggestedEntries(item.id, { limit: 2 });
   const saved = isProjectSaved(item.id);
   const brand = item.originalBrand || {
     name: 'Standard Interface',
@@ -453,6 +459,92 @@ export default function ProofViewer({ item, onClose }) {
                           </p>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Connected Work & Relationships */}
+                {(curatedRelationships.length > 0 || tagSuggestedRelationships.length > 0) && (
+                  <div className="bg-[#181B1C] border border-[#DFDACE]/15 p-5 rounded-xl space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2.5">
+                      <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold">
+                        Connected Work &amp; Shared Patterns
+                      </span>
+                      <span className="font-mono text-[10px] text-[#DFDACE]/50">
+                        Curated links vs. tag-inferred suggestions
+                      </span>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {curatedRelationships.length > 0 && (
+                        <div className="space-y-2">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400 block">
+                            Curated Relationships ({curatedRelationships.length})
+                          </span>
+                          <div className="space-y-1.5">
+                            {curatedRelationships.map((rel) => (
+                              <button
+                                key={`${rel.type}-${rel.target.id}`}
+                                type="button"
+                                onClick={() => {
+                                  if (rel.target.hasCaseDossier && onSelectRelated) {
+                                    onSelectRelated(rel.target.id);
+                                  } else if (rel.target.liveDestination) {
+                                    onClose();
+                                    navigate(rel.target.liveDestination);
+                                  }
+                                }}
+                                className="w-full text-left rounded-lg border border-[#DFDACE]/15 bg-[#121415] hover:border-[#D9A62E]/60 px-3 py-2 transition-colors flex items-center justify-between gap-2"
+                              >
+                                <div className="min-w-0">
+                                  <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-[#D9A62E] block">
+                                    {rel.typeMeta?.label} • {rel.target.contentTypeMeta?.shortLabel}
+                                  </span>
+                                  <span className="font-sans text-xs font-semibold text-[#EDE9E0] truncate block">
+                                    {rel.target.title}
+                                  </span>
+                                </div>
+                                <ArrowRight className="h-3.5 w-3.5 text-[#DFDACE]/50 shrink-0" />
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {tagSuggestedRelationships.length > 0 && (
+                        <div className="space-y-2">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#DFDACE]/60 block">
+                            Suggested by Shared Tags ({tagSuggestedRelationships.length})
+                          </span>
+                          <div className="space-y-1.5">
+                            {tagSuggestedRelationships.map((sug) => (
+                              <button
+                                key={sug.target.id}
+                                type="button"
+                                onClick={() => {
+                                  if (sug.target.hasCaseDossier && onSelectRelated) {
+                                    onSelectRelated(sug.target.id);
+                                  } else if (sug.target.liveDestination) {
+                                    onClose();
+                                    navigate(sug.target.liveDestination);
+                                  }
+                                }}
+                                className="w-full text-left rounded-lg border border-[#DFDACE]/10 bg-[#121415]/70 hover:border-[#DFDACE]/35 px-3 py-2 transition-colors flex items-center justify-between gap-2"
+                              >
+                                <div className="min-w-0">
+                                  <span className="font-mono text-[9px] uppercase tracking-wider text-[#DFDACE]/55 block truncate">
+                                    Shared: {sug.sharedTags.map((t) => t.label).join(', ')}
+                                  </span>
+                                  <span className="font-sans text-xs font-semibold text-[#EDE9E0] truncate block">
+                                    {sug.target.title}
+                                  </span>
+                                </div>
+                                <ArrowRight className="h-3.5 w-3.5 text-[#DFDACE]/40 shrink-0" />
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
