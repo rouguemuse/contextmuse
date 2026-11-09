@@ -14,7 +14,8 @@
     "build:gensort": "node scripts/build-gensort.mjs",
     "lint": "eslint src --quiet",
     "test:lead": "node scripts/test_lead_backend.mjs",
-    "test:signal": "node scripts/test_demo_custom_uploads.cjs"
+    "test:signal": "node scripts/test_demo_custom_uploads.cjs",
+    "test:design-intelligence": "node scripts/verify_design_intelligence_case_study.mjs"
   },
   "dependencies": {
     "@base44/sdk": "^0.8.54",

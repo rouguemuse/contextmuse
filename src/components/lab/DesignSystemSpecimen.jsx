@@ -143,27 +143,27 @@ export default function DesignSystemSpecimen({
     ? {
         backgroundColor: '#FFFFFF',
         borderBottom: '1px solid #E4E4E7',
-        padding: isMobile ? '12px 16px' : '12px 24px',
+        padding: isMobile ? '10px 12px' : '12px 24px',
       }
     : isPlaidis
     ? {
         backgroundColor: '#23282A',
         color: '#EDE9E0',
         borderBottom: '2px solid #23282A',
-        padding: isMobile ? '12px 20px' : '12px 40px',
+        padding: isMobile ? '10px 12px' : '12px 40px',
       }
     : isLinear
     ? {
         backgroundImage: 'linear-gradient(rgba(11, 11, 11, 0.88) 0%, rgba(15, 16, 17, 0.78) 100%)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
         backdropFilter: 'blur(20px)',
-        padding: isMobile ? '12px 24px' : '12px 46px',
+        padding: isMobile ? '10px 12px' : '12px 46px',
       }
     : {
         // Stripe
         backgroundColor: '#FFFFFF',
         borderBottom: '1px solid #E5EDF5',
-        padding: isMobile ? '12px 16px' : '12px 48px',
+        padding: isMobile ? '10px 12px' : '12px 48px',
       };
 
   // Main content padding
@@ -186,9 +186,9 @@ export default function DesignSystemSpecimen({
       }
     : isPlaidis
     ? {
-        fontSize: isMobile ? '20px' : '24.5px',
+        fontSize: isMobile ? '17.5px' : '22.5px',
         fontWeight: 800,
-        lineHeight: 1.15,
+        lineHeight: 1.2,
         letterSpacing: '-0.02em',
         color: '#23282A',
         textTransform: 'uppercase',
@@ -483,9 +483,12 @@ export default function DesignSystemSpecimen({
         {/* =================================================================
             1. SPECIMEN HEADER BAR (Identical DOM & content across all variants)
             ================================================================= */}
-        <div style={headerStyle} className="flex items-center justify-between gap-2 shrink-0">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="flex items-center gap-2 font-mono text-[11px] font-bold tracking-wider">
+        <div style={headerStyle} className="flex items-center justify-between gap-1.5 shrink-0">
+          <div className="flex items-center gap-2 min-w-0">
+            <div
+              style={{ fontSize: isMobile ? '10px' : '11px' }}
+              className="flex items-center gap-1.5 font-mono font-bold tracking-wider shrink-0"
+            >
               <span
                 style={{
                   backgroundColor: isNeutral
@@ -497,7 +500,7 @@ export default function DesignSystemSpecimen({
                     : '#533AFD',
                   borderRadius: isPlaidis ? '0px' : isLinear ? '9999px' : '3px',
                 }}
-                className="inline-block h-2.5 w-2.5 shrink-0"
+                className="inline-block h-2 w-2 shrink-0"
               />
               <span className="truncate">CM // SPECIMEN-04</span>
             </div>
@@ -511,9 +514,9 @@ export default function DesignSystemSpecimen({
                   : isLinear
                   ? '#8A8F98'
                   : '#50617A',
-                fontSize: isMobile ? '11px' : isLinear ? '12.5px' : '13px',
+                fontSize: isMobile ? '9.5px' : isLinear ? '12.5px' : '13px',
               }}
-              className="flex items-center gap-3 sm:gap-4 pl-3 border-l border-current/15"
+              className={`flex items-center ${isMobile ? 'gap-1.5 pl-2' : 'gap-4 pl-3'} border-l border-current/15 shrink-0`}
             >
               <span>Overview</span>
               <span>Pipelines</span>
@@ -521,12 +524,12 @@ export default function DesignSystemSpecimen({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 shrink-0">
             <span
               style={{
                 fontFamily: 'ui-monospace, "Berkeley Mono", "SourceCodePro", SFMono-Regular, monospace',
-                fontSize: '10px',
-                padding: '2px 7px',
+                fontSize: isMobile ? '9px' : '10px',
+                padding: isMobile ? '1.5px 5px' : '2px 7px',
                 borderRadius: isPlaidis ? '0px' : isLinear ? '9999px' : '4px',
                 backgroundColor: isNeutral
                   ? '#F4F4F5'
@@ -558,22 +561,21 @@ export default function DesignSystemSpecimen({
           className="flex-1 flex flex-col justify-between gap-2.5 sm:gap-3.5 min-h-0 overflow-hidden"
         >
           {/* HERO SECTION */}
-          <div
-            style={
-              isPlaidis
-                ? { borderTop: '2px solid #23282A', paddingTop: isMobile ? '8px' : '10px' }
-                : undefined
-            }
-            className="space-y-1.5"
-          >
+          <div className="space-y-1.5">
             {/* Eyebrow + Telemetry Mesh Pill */}
-            <div className="flex flex-wrap items-center justify-between gap-2">
+            <div
+              style={{
+                borderBottom: isPlaidis ? '1px solid rgba(35, 40, 42, 0.35)' : '1px solid transparent',
+                paddingBottom: '4px',
+              }}
+              className="flex flex-wrap items-center justify-between gap-2"
+            >
               <span
                 style={{
                   fontFamily: 'ui-monospace, "Berkeley Mono", "SourceCodePro", monospace',
                   fontSize: '10.5px',
                   fontWeight: isStripe ? 500 : 600,
-                  letterSpacing: isPlaidis ? '0.14em' : '0.06em',
+                  letterSpacing: isPlaidis && !isMobile ? '0.14em' : '0.06em',
                   color: isNeutral
                     ? '#52525B'
                     : isPlaidis
