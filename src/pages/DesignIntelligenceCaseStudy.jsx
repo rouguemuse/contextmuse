@@ -35,14 +35,14 @@ const VIEWPORT_MODES = [
     icon: Monitor,
     beforeSrc: '/assets/images/design-intelligence/exp01_before_desktop.png',
     afterSrc: '/assets/images/design-intelligence/exp01_after_desktop.png',
-    viewportText: '1440 × 900 px (16:10 aspect ratio)',
+    viewportText: '1440 × 900 CSS px (2880 × 1800 @ 2x DPR parity)',
     aspectClass: 'aspect-[1440/900]',
     isFullPageScroll: false,
     plumbLinePct: (40 / 1440) * 100, // 2.777%
     beforePlumbHeroPct: (48 / 1440) * 100, // 3.333%
     beforePlumbHeaderPct: (24 / 1440) * 100, // 1.667%
     caption:
-      'Captured at identical 1440×900 CSS viewport dimensions. Drag the handle or use Arrow Left/Right keys to inspect the 40px left plumb line, zero-radius CTAs, 2px room overlines, and Room 02 on-palette Quoting chip.',
+      'Captured at identical 1440×900 CSS viewport dimensions and identical 2x deviceScaleFactor (2880×1800 native PNGs) so sharpness is 1:1. Drag the handle or use Arrow Left/Right keys to inspect the 40px left plumb line, zero-radius CTAs, 2px room overlines, and Room 02 on-palette Quoting chip.',
   },
   {
     id: 'mobile',
@@ -51,14 +51,14 @@ const VIEWPORT_MODES = [
     icon: Smartphone,
     beforeSrc: '/assets/images/design-intelligence/exp01_before_mobile.png',
     afterSrc: '/assets/images/design-intelligence/exp01_after_mobile.png',
-    viewportText: '390 × 844 px (iPhone 14/15 viewport)',
+    viewportText: '390 × 844 CSS px (780 × 1688 @ 2x DPR parity)',
     aspectClass: 'aspect-[390/844]',
     isFullPageScroll: false,
     plumbLinePct: (20 / 390) * 100, // 5.128%
     beforePlumbHeroPct: (24 / 390) * 100,
     beforePlumbHeaderPct: (16 / 390) * 100,
     caption:
-      'Captured at identical 390×844 CSS viewport dimensions. Notice the unified 20px left plumb line across header, headline, and full-width zero-radius CTAs with right-aligned directional arrows.',
+      'Captured at identical 390×844 CSS viewport dimensions and identical 2x deviceScaleFactor (780×1688 native PNGs). Notice the unified 20px left plumb line across header, headline, and full-width zero-radius CTAs with right-aligned directional arrows.',
   },
   {
     id: 'mobile-full',
@@ -67,7 +67,7 @@ const VIEWPORT_MODES = [
     icon: Columns,
     beforeSrc: '/assets/images/design-intelligence/exp01_before_mobile_full.png',
     afterSrc: '/assets/images/design-intelligence/exp01_after_mobile_full.png',
-    viewportText: '390px width · Full vertical document (1824px Before / 1901px After)',
+    viewportText: '390px CSS width @ 2x DPR (780×3648 Before / 780×3802 After)',
     aspectClass: '',
     isFullPageScroll: true,
     plumbLinePct: (20 / 390) * 100,
@@ -338,7 +338,7 @@ export default function DesignIntelligenceCaseStudy() {
                   <span className="text-[#D9A62E] font-bold uppercase tracking-wider">
                     Verified Experiment Summary
                   </span>
-                  <span className="text-[10px] text-[#DFDACE]/60">2-Min Read</span>
+                  <span className="text-[10px] text-[#DFDACE]/60">2-Min Read · 2x DPR Parity</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
@@ -359,7 +359,7 @@ export default function DesignIntelligenceCaseStudy() {
                   <div>
                     <div className="text-[10px] uppercase text-[#DFDACE]/60">Functional Smoke</div>
                     <div className="text-base font-bold text-[#EDE9E0]">11 / 11 PASS</div>
-                    <div className="text-[10px] text-[#DFDACE]/70">Non-regression verified</div>
+                    <div className="text-[10px] text-[#DFDACE]/70">Non-regression only (not aesthetic proof)</div>
                   </div>
                 </div>
               </div>
@@ -547,7 +547,9 @@ export default function DesignIntelligenceCaseStudy() {
                   style={{
                     clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
                   }}
-                  className="absolute inset-0 pointer-events-none"
+                  className={`absolute inset-0 pointer-events-none ${
+                    activeMode.isFullPageScroll ? 'bg-[#141617] flex flex-col justify-between' : ''
+                  }`}
                 >
                   <img
                     src={activeMode.beforeSrc}
@@ -559,6 +561,12 @@ export default function DesignIntelligenceCaseStudy() {
                         : 'block w-full h-full object-fill select-none pointer-events-none'
                     }
                   />
+                  {activeMode.isFullPageScroll && (
+                    <div className="border-t border-dashed border-[#DFDACE]/30 bg-[#141617] px-3 py-2 font-mono text-[10px] text-[#DFDACE]/70">
+                      Baseline 52e179d document ends at 1824px CSS height (vs. 1901px After — +77px from vertical rhythm
+                      refinements; neither capture is stretched).
+                    </div>
+                  )}
                 </div>
 
                 {/* OPTIONAL MEASURED PLUMB-LINE GUIDES */}
@@ -848,17 +856,18 @@ export default function DesignIntelligenceCaseStudy() {
               <div>
                 <div className="inline-flex items-center gap-2 bg-[#D9A62E]/20 border border-[#D9A62E] px-2.5 py-0.5 font-mono text-[11px] font-bold uppercase tracking-wider text-[#D9A62E]">
                   <Play className="h-3 w-3" />
-                  <span>SEPARATELY LABELED INTERACTIVE HOVER COMPARISON · LIVE DOM &amp; CSS</span>
+                  <span>INTERACTIVE COMPONENT REPRODUCTIONS (NOT RECORDED SESSIONS) · LIVE DOM &amp; CSS</span>
                 </div>
                 <h2 className="mt-2 font-display text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#EDE9E0]">
-                  Why Static Sliders Aren’t Enough: Live Hover &amp; Timing Sandbox
+                  Why Static Sliders Aren’t Enough: Live Hover &amp; Timing Reproductions
                 </h2>
                 <p className="mt-1 text-xs sm:text-sm text-[#DFDACE]/80 max-w-3xl">
                   A static screenshot slider cannot convey <code className="font-mono text-[#D9A62E]">450ms</code>{' '}
-                  quintic entry vs. <code className="font-mono text-[#D9A62E]">200ms</code> release timing. Hover directly
-                  over the two live <strong className="text-[#EDE9E0]">Room 02 (Custom Builds)</strong> tiles below—or
-                  click <strong>&ldquo;Simulate Hover State&rdquo;</strong> on touch devices—to compare actual runtime
-                  behavior alongside the captured hover screenshot.
+                  quintic entry vs. <code className="font-mono text-[#D9A62E]">200ms</code> release timing. The two cards
+                  on the left are <strong>interactive JSX/CSS component reproductions</strong> mounted directly from
+                  commits <code className="font-mono text-[#EDE9E0]">52e179d</code> and{' '}
+                  <code className="font-mono text-[#D9A62E]">195921a</code> (explicitly distinguished from the original
+                  recorded Playwright screenshot on the right).
                 </p>
               </div>
 
@@ -881,7 +890,7 @@ export default function DesignIntelligenceCaseStudy() {
               {/* LIVE TILE A: BASELINE (52e179d) HOVER BEHAVIOR */}
               <div className="lg:col-span-4 flex flex-col space-y-2">
                 <div className="flex items-center justify-between font-mono text-xs text-[#DFDACE]/75">
-                  <span className="font-bold uppercase text-[#EDE9E0]">Live Tile A · Baseline (52e179d)</span>
+                  <span className="font-bold uppercase text-[#EDE9E0]">Reproduction A · Baseline (52e179d)</span>
                   <span>300ms uniform · brightness(1.05)</span>
                 </div>
 
@@ -956,7 +965,7 @@ export default function DesignIntelligenceCaseStudy() {
               {/* LIVE TILE B: REFINED (195921a) QUINTIC HOVER BEHAVIOR */}
               <div className="lg:col-span-4 flex flex-col space-y-2">
                 <div className="flex items-center justify-between font-mono text-xs text-[#D9A62E]">
-                  <span className="font-bold uppercase">Live Tile B · Experiment (195921a)</span>
+                  <span className="font-bold uppercase">Reproduction B · Experiment (195921a)</span>
                   <span>450ms enter / 200ms leave · Quint</span>
                 </div>
 
