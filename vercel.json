@@ -109,6 +109,22 @@
       "destination": "/index.html"
     },
     {
+      "source": "/lab/design-intelligence",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/lab/design-intelligence/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/design-intelligence",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/design-intelligence/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/method",
       "destination": "/index.html"
     },

@@ -317,6 +317,35 @@ export default function Lab() {
               <BarrierMapTool />
             </div>
           </div>
+
+          {/* Row 4: Design Intelligence Experiment 01 Case Study & Before/After Demo */}
+          <div className="rounded-xl border-2 border-[#23282A] bg-[#1B1F21] text-[#EDE9E0] p-6 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-3xl">
+              <div className="flex flex-wrap items-center gap-2 font-mono text-[10px]">
+                <span className="bg-[#D9A62E] text-[#141617] px-2 py-0.5 font-bold uppercase tracking-wider">
+                  Early R&amp;D Experiment 01
+                </span>
+                <span className="border border-[#DFDACE]/30 px-2 py-0.5 text-[#DFDACE]/80 uppercase">
+                  Baseline 52e179d → Experiment 195921a
+                </span>
+              </div>
+              <h3 className="font-display text-xl sm:text-2xl font-black uppercase tracking-tight text-[#EDE9E0]">
+                Design Intelligence Case Study: Locomotive Token Extraction &amp; Before/After Slider
+              </h3>
+              <p className="text-xs sm:text-sm text-[#DFDACE]/85 leading-relaxed">
+                Interactive desktop (1440×900) and mobile (390×844) before-and-after comparison slider, live quintic
+                hover timing sandbox (450ms enter / 200ms leave), and measured DOM plumb-line verification (24px → 0px
+                variance).
+              </p>
+            </div>
+            <a
+              href="/lab/design-intelligence"
+              className="shrink-0 inline-flex items-center gap-2 bg-[#D9A62E] text-[#141617] px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#e3b13b] transition-colors"
+            >
+              <span>Open Interactive Case Study</span>
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </div>
       </div>
     </RoomShell>

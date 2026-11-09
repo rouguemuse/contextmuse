@@ -15,6 +15,7 @@ import Work from '@/pages/Work';
 import Builds from '@/pages/Builds';
 import Lab from '@/pages/Lab';
 import Method from '@/pages/Method';
+import DesignIntelligenceCaseStudy from '@/pages/DesignIntelligenceCaseStudy';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -47,6 +48,8 @@ const AuthenticatedApp = () => {
         <Route path="/work" element={<Work />} />
         <Route path="/build" element={<Builds />} />
         <Route path="/lab" element={<Lab />} />
+        <Route path="/lab/design-intelligence" element={<DesignIntelligenceCaseStudy />} />
+        <Route path="/design-intelligence" element={<DesignIntelligenceCaseStudy />} />
         <Route path="/method" element={<Method />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
