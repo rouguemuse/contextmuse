@@ -549,6 +549,20 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         mobileValue: 'Preserves 300-weight hierarchy while expanding primary/secondary CTAs to full 358px column width',
         evidence: 'Synthesized from uniform 300-weight heading declarations, dual-tone .hds-heading--inline blocks, and indigo shadow tints.',
       },
+      {
+        category: 'Specimen DOM Parity & Hybrid Polarity Adaptation',
+        tokenName: 'Stacked h3/p, 48px Padding & #0D1738 Ledger',
+        classification: 'D',
+        classificationLabel: 'Class D · Deliberate Adaptation',
+        desktopValue: 'Stacked <h3> + <p> (for 85-node DOM parity); 48px horizontal padding; #0D1738 dark ledger; SF Pro/system sans fallback',
+        mobileValue: 'Inline-flex compact CTAs (preserving specimen layout parity); 16px horizontal padding; 22px wt 300 h3',
+        evidence: 'Deliberate specimen adaptation: keeps <h3> and <p> stacked (instead of .hds-heading--inline) and keeps mobile CTAs inline-flex to preserve exact 85-node DOM parity across all 4 variants.',
+      },
+    ],
+    transferAdaptations: [
+      'Stacked Heading & Lead for DOM Parity (Class D): On stripe.com, .hds-heading--inline places the #061B31 heading and #64748D subdued lead inline within one block. On the shared specimen, <h3> and <p> remain stacked block elements so all four variants maintain identical 85-node DOM structure and split-slider alignment.',
+      'Hybrid Light/Dark Section Composition (Class D): Combines Stripe’s light subdued canvas (--hds-color-core-neutral-25: #F8FAFD) and #FFFFFF cards with its dark enterprise section surface (--hds-color-core-neutralDark-990: #0D1738) on the bottom telemetry ledger to showcase both HDS polarities in one frame.',
+      'Font Fallback & Compact Specimen Controls (Class D): Because proprietary Söhne Variable (sohne-var) binaries are not bundled, the specimen falls back to local SF Pro Display / system sans at font-weight: 300, and keeps mobile CTAs inline-flex rather than full-width 358px stacked bars so the 3-card grid and ledger never clip.',
     ],
     colorSwatches: [
       {

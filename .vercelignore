@@ -12,7 +12,8 @@ brand/
 qa_output/
 partials/
 docs/
-design-intelligence/
+/design-intelligence/experiments/
+/design-intelligence/references/
 scripts/
 src/
 .agents/

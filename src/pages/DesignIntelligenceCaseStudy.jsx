@@ -661,6 +661,44 @@ export default function DesignIntelligenceCaseStudy() {
                   })}
                 </div>
 
+                {/* Simple Original / Split / Transformed Comparison Mode (Preserves Existing Slider Engine) */}
+                <div
+                  role="group"
+                  aria-label="Comparison view mode"
+                  className="inline-flex border border-[#DFDACE]/25 bg-[#23282A] p-1 font-mono text-xs"
+                >
+                  {[
+                    { id: 'original', label: 'Original', targetPos: 100, isCurrent: Math.round(sliderPos) === 100 },
+                    {
+                      id: 'split',
+                      label: 'Split',
+                      targetPos: 50,
+                      isCurrent: Math.round(sliderPos) > 0 && Math.round(sliderPos) < 100,
+                    },
+                    {
+                      id: 'transformed',
+                      label: 'Transformed',
+                      targetPos: 0,
+                      isCurrent: Math.round(sliderPos) === 0,
+                    },
+                  ].map((modeOpt) => (
+                    <button
+                      key={modeOpt.id}
+                      type="button"
+                      data-comparison-view={modeOpt.id}
+                      onClick={() => setSliderPos(modeOpt.targetPos)}
+                      aria-pressed={modeOpt.isCurrent}
+                      className={`px-3 py-1.5 font-bold transition-colors ${
+                        modeOpt.isCurrent
+                          ? 'bg-[#D9A62E] text-[#141617]'
+                          : 'text-[#EDE9E0] hover:text-[#D9A62E]'
+                      }`}
+                    >
+                      {modeOpt.label}
+                    </button>
+                  ))}
+                </div>
+
                 {/* On Study 01 (Plaidis / Locomotive), let visitors toggle between the Shared Specimen and the Original ContextMuse Entrance Capture */}
                 {activeStudyId === 'plaidis' && (
                   <div
@@ -870,6 +908,19 @@ export default function DesignIntelligenceCaseStudy() {
                   );
                 })}
               </div>
+
+              {/* Explicit Synthetic Demonstration Data & Structural Parity Notice */}
+              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#DFDACE]/15 bg-[#181B1D] px-4 py-2 font-mono text-[11px] text-[#DFDACE]/75">
+                <span>
+                  <strong className="text-[#D9A62E]">Synthetic Demonstration Specimen:</strong> Metrics (
+                  <code className="font-mono">1,420 req/s</code>, <code className="font-mono">18.4 ms</code>,{' '}
+                  <code className="font-mono">100.0%</code>, <code className="font-mono">RT-4091..4093</code>) are
+                  illustrative fixture data held constant across all studies—not live operational telemetry.
+                </span>
+                <span className="text-[#DFDACE]/60">
+                  DOM Parity: 85 / 85 identical nodes · 100% text parity
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -946,7 +997,7 @@ export default function DesignIntelligenceCaseStudy() {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
-                    02 / Extracted Design Tokens (Distinguishing Declared vs. Computed vs. Inferred)
+                    02 / Extracted Design Tokens (Declared vs. Computed vs. Inferred vs. Deliberate Adaptation)
                   </div>
                   <p className="text-xs text-[#DFDACE]/75 mt-0.5">
                     Source: <code className="font-mono text-[#EDE9E0]">{activeStudy.sourceUrl}</code> ·{' '}
@@ -964,6 +1015,9 @@ export default function DesignIntelligenceCaseStudy() {
                   </span>
                   <span className="border border-amber-500/40 bg-amber-950/60 px-2 py-0.5 text-amber-300 font-bold">
                     Class C: Inferred Pattern
+                  </span>
+                  <span className="border border-purple-500/40 bg-purple-950/60 px-2 py-0.5 text-purple-300 font-bold">
+                    Class D: Deliberate Adaptation
                   </span>
                 </div>
               </div>
@@ -995,7 +1049,9 @@ export default function DesignIntelligenceCaseStudy() {
                                 ? 'border-emerald-500/40 bg-emerald-950/60 text-emerald-300'
                                 : row.classification === 'B'
                                 ? 'border-sky-500/40 bg-sky-950/60 text-sky-300'
-                                : 'border-amber-500/40 bg-amber-950/60 text-amber-300'
+                                : row.classification === 'C'
+                                ? 'border-amber-500/40 bg-amber-950/60 text-amber-300'
+                                : 'border-purple-500/40 bg-purple-950/60 text-purple-300'
                             }`}
                           >
                             {row.classificationLabel}
@@ -1015,6 +1071,25 @@ export default function DesignIntelligenceCaseStudy() {
                   </tbody>
                 </table>
               </div>
+
+              {/* Deliberate Specimen & Transfer Adaptations Callout (Class D) */}
+              {activeStudy.transferAdaptations && (
+                <div className="border border-purple-500/35 bg-[#1B1F21] p-4 space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                    <span className="font-bold text-purple-300 uppercase tracking-wider">
+                      Deliberate Specimen &amp; Transfer Adaptations Beyond 1:1 Token Substitution (Class D)
+                    </span>
+                    <span className="text-[#DFDACE]/65 text-[11px]">
+                      Preserving 85-node DOM parity, split-slider alignment &amp; font-license boundaries
+                    </span>
+                  </div>
+                  <ul className="space-y-1.5 text-xs text-[#DFDACE]/85 leading-relaxed list-disc pl-4">
+                    {activeStudy.transferAdaptations.map((adaptation) => (
+                      <li key={adaptation}>{adaptation}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             {/* Color Swatches with Accessible Contrast Ratios */}
@@ -1151,13 +1226,13 @@ export default function DesignIntelligenceCaseStudy() {
                     <tr>
                       <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Display Typography</td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        Tight <code className="font-mono">1.00–1.02</code> line-height, uppercase architectural statements
+                        Reference <code className="font-mono">LocomotiveNew</code> wt <code className="font-mono">400</code> (<code className="font-mono">1.00–1.10</code> lh); specimen adaptation <code className="font-mono">800</code> uppercase (<code className="font-mono">Class D</code>)
                       </td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">Inter Variable</code> weight <code className="font-mono">510</code>, <code className="font-mono">-0.022em</code> tracking, <code className="font-mono">&quot;cv01&quot;, &quot;ss03&quot;</code>
+                        <code className="font-mono">Inter Variable</code> weight <code className="font-mono">510</code>, <code className="font-mono">-0.022em</code> tracking, <code className="font-mono">&quot;cv01&quot;, &quot;ss03&quot;</code> (system fallback)
                       </td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">sohne-var</code> light weight <code className="font-mono">300</code>, <code className="font-mono">-0.02em</code> tracking, inline <code className="font-mono">#64748D</code> lead
+                        <code className="font-mono">sohne-var</code> light weight <code className="font-mono">300</code>, <code className="font-mono">-0.02em</code> tracking, <code className="font-mono">#64748D</code> lead (stacked on specimen, <code className="font-mono">Class D</code>)
                       </td>
                     </tr>
                     <tr>

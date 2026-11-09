@@ -85,10 +85,6 @@
   ],
   "rewrites": [
     {
-      "source": "/(dealsignal|star-gift|istar-map|tiktok-shop-roi-analyzer|twenty-minute-override|southern_smoke|sixes-and-sevens|rudyards-comedy|preview|qa_output|brand|partials|docs)(/.*)?",
-      "destination": "/404.html"
-    },
-    {
       "source": "/work",
       "destination": "/work/index.html"
     },

@@ -14,11 +14,13 @@
 
 ## 1. Epistemic & Confidence Classification Schema
 
-Every token documented in this study is assigned one of three evidentiary classifications:
+Every token and specimen treatment documented in this study is assigned one of four evidentiary classifications:
 
 - **Class A — Explicitly Declared CSS Variable / Design Token (`HIGH — Declared`):** Extracted verbatim from `:root`, `[data-theme]`, or `.hds-color-mode` CSS custom property declarations in production stylesheets.
 - **Class B — Computed Style Observed in Rendered DOM (`HIGH — Computed`):** Measured via `window.getComputedStyle(el)` and `el.getBoundingClientRect()` on live rendered elements at `1440×900` and `390×844`.
 - **Class C — Inferred Design-System Pattern (`MEDIUM — Inferred`):** Structural, perceptual, or choreographic relationships synthesized from multiple Class A and Class B measurements. Runtime-only shaders, WebGL canvases, or proprietary binary font tables are explicitly marked as non-extracted rather than invented.
+- **Class D — Deliberate Specimen & Transfer Adaptation (`ADAPTED — Specimen/ContextMuse`):** Intentional layout, scale, font-fallback, or palette adaptations applied when transferring reference principles onto the shared `85`-node synthetic specimen or ContextMuse's 4-room architecture (e.g., ContextMuse `#EDE9E0`/`#23282A`/`#D9A62E`/`#17504A` pigments and `800`-weight uppercase specimen heading in Study 01, open left/right card borders, `28px–29px` stage-fitted display headings vs. `48px–110px` marketing H1s, stacked `<h3>`+`<p>` DOM parity vs. Stripe's inline `.hds-heading--inline`, and local/system font fallbacks where proprietary licensed webfont binaries `LocomotiveNew`, `HelveticaNowDisplay`, `Berkeley Mono`, and `Söhne Variable` are not bundled).
+- **Synthetic Specimen Fixture Disclosure:** All operational metrics displayed inside the shared comparison specimen (`1,420 req/s`, `18.4 ms`, `100.0%`, `14 / 14 gates active`, `RT-4091..4093`) are synthetic demonstration fixture values held constant across all four states to test visual-system legibility and hierarchy—not live production telemetry.
 
 ---
 

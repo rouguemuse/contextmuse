@@ -153,9 +153,15 @@ async function main() {
       referenceDossierExists: fs.existsSync(path.join(REPO_ROOT, study.referenceDossierPath)),
       experimentReportExists: fs.existsSync(path.join(REPO_ROOT, study.experimentReportPath)),
       epistemicClassesPresent: Array.from(classesPresent).sort(),
-      hasAllThreeClasses: classesPresent.has('A') && classesPresent.has('B') && classesPresent.has('C'),
+      hasAllFourClasses:
+        classesPresent.has('A') && classesPresent.has('B') && classesPresent.has('C') && classesPresent.has('D'),
+      transferAdaptationsCount: Array.isArray(study.transferAdaptations) ? study.transferAdaptations.length : 0,
       analyticalQuestionsCount: study.analyticalQuestions.length,
     };
+
+    if (!report.provenanceAudit[study.id].hasAllFourClasses) {
+      throw new Error(`Study ${study.id} is missing one of Class A/B/C/D in tokenBreakdown`);
+    }
 
     for (const swatch of study.colorSwatches) {
       report.wcagAudit.totalSwatches += 1;
@@ -248,6 +254,9 @@ async function main() {
             elementCount: neutralEl.querySelectorAll('*').length,
             identicalTagSequence: neutralTags === studyTags,
             identicalTextContent: neutralText === studyText,
+            hasSyntheticLabel:
+              neutralText.includes('01 / Synthetic Interface Specimen') &&
+              neutralText.includes('Synthetic Telemetry Ledger (Demo)'),
           };
         };
 
@@ -259,10 +268,14 @@ async function main() {
 
       report.specimenStructuralParity[studyId] = parity;
       if (
+        parity.desktop.elementCount !== 85 ||
         !parity.desktop.identicalTagSequence ||
         !parity.desktop.identicalTextContent ||
+        !parity.desktop.hasSyntheticLabel ||
+        parity.mobile.elementCount !== 85 ||
         !parity.mobile.identicalTagSequence ||
-        !parity.mobile.identicalTextContent
+        !parity.mobile.identicalTextContent ||
+        !parity.mobile.hasSyntheticLabel
       ) {
         throw new Error(`Specimen structural/content parity failed for ${studyId}: ${JSON.stringify(parity)}`);
       }
@@ -272,15 +285,37 @@ async function main() {
       await stageEl.scrollIntoViewIfNeeded();
       await page.waitForTimeout(150);
 
-      // Center slider at 50%
-      const box = await stageEl.boundingBox();
-      if (box) {
-        await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5);
-        await page.mouse.down();
-        await page.mouse.up();
+      // Test Original / Transformed / Split mode buttons while preserving accessible slider
+      await page.click('[data-comparison-view="original"]');
+      await page.waitForTimeout(80);
+      const originalBtnVal = Number(await handleEl.getAttribute('aria-valuenow'));
+      if (originalBtnVal !== 100) {
+        throw new Error(`Expected Original button to set slider to 100, got ${originalBtnVal}`);
       }
-      await page.waitForTimeout(100);
+      if (SHOULD_CAPTURE) {
+        const beforeName = `study_${studyId}_specimen_before_neutral_1440.png`;
+        saveScreenshot(await stageEl.screenshot(), beforeName);
+        report.screenshotsCaptured.push(beforeName);
+      }
 
+      await page.click('[data-comparison-view="transformed"]');
+      await page.waitForTimeout(80);
+      const transformedBtnVal = Number(await handleEl.getAttribute('aria-valuenow'));
+      if (transformedBtnVal !== 0) {
+        throw new Error(`Expected Transformed button to set slider to 0, got ${transformedBtnVal}`);
+      }
+      if (SHOULD_CAPTURE) {
+        const afterName = `study_${studyId}_specimen_after_tokens_1440.png`;
+        saveScreenshot(await stageEl.screenshot(), afterName);
+        report.screenshotsCaptured.push(afterName);
+      }
+
+      await page.click('[data-comparison-view="split"]');
+      await page.waitForTimeout(80);
+      const splitBtnVal = Number(await handleEl.getAttribute('aria-valuenow'));
+      if (splitBtnVal !== 50) {
+        throw new Error(`Expected Split button to set slider to 50, got ${splitBtnVal}`);
+      }
       if (SHOULD_CAPTURE) {
         const splitName = `study_${studyId}_specimen_split_1440.png`;
         saveScreenshot(await stageEl.screenshot(), splitName);
@@ -290,29 +325,16 @@ async function main() {
       // Test WAI-ARIA keyboard keys on slider handle
       await handleEl.focus();
       await page.keyboard.press('End');
-      await page.waitForTimeout(80);
+      await page.waitForTimeout(60);
       const endVal = Number(await handleEl.getAttribute('aria-valuenow'));
-      if (SHOULD_CAPTURE) {
-        const beforeName = `study_${studyId}_specimen_before_neutral_1440.png`;
-        saveScreenshot(await stageEl.screenshot(), beforeName);
-        report.screenshotsCaptured.push(beforeName);
-      }
 
       await page.keyboard.press('Home');
-      await page.waitForTimeout(80);
+      await page.waitForTimeout(60);
       const homeVal = Number(await handleEl.getAttribute('aria-valuenow'));
-      if (SHOULD_CAPTURE) {
-        const afterName = `study_${studyId}_specimen_after_tokens_1440.png`;
-        saveScreenshot(await stageEl.screenshot(), afterName);
-        report.screenshotsCaptured.push(afterName);
-      }
 
-      // Reset to 50% and test ArrowRight, ArrowLeft, ArrowUp, ArrowDown, PageUp, PageDown
-      if (box) {
-        await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5);
-        await page.mouse.down();
-        await page.mouse.up();
-      }
+      // Reset to 50% via Split button and test ArrowRight, ArrowLeft, ArrowUp, ArrowDown, PageUp, PageDown
+      await page.click('[data-comparison-view="split"]');
+      await page.waitForTimeout(60);
       await handleEl.focus();
       await page.keyboard.press('ArrowRight');
       const arrowRightVal = Number(await handleEl.getAttribute('aria-valuenow'));
@@ -328,6 +350,9 @@ async function main() {
       const pageDownVal = Number(await handleEl.getAttribute('aria-valuenow'));
 
       report.sliderAndKeyboardAudit[studyId] = {
+        originalBtnVal,
+        transformedBtnVal,
+        splitBtnVal,
         endVal,
         homeVal,
         arrowRightVal,

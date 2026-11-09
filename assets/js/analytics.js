@@ -447,10 +447,26 @@
         return 'section';
     }
 
+    // Block unload/pagehide beacons to GA4 or Clarity when consent is not granted
+    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+        var origSendBeacon = navigator.sendBeacon.bind(navigator);
+        navigator.sendBeacon = function(url, data) {
+            var u = String(url || '');
+            if (
+                getStoredConsent() !== 'granted' &&
+                (u.indexOf('clarity.ms') !== -1 ||
+                    u.indexOf('google-analytics.com') !== -1 ||
+                    u.indexOf('googletagmanager.com') !== -1)
+            ) {
+                return true;
+            }
+            return origSendBeacon(url, data);
+        };
+    }
+
     function initAnalyticsListeners() {
         ensureGa4Loaded();
         ensureClarityLoaded();
-        syncGoogleConsentMode(getStoredConsent());
         applyPrivacyMasks();
 
         try {
