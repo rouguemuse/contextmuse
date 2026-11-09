@@ -1,7 +1,7 @@
 # Design Intelligence Reference Profile — Locomotive (`locomotive.ca/en`)
 
 - **Reference URL:** `https://locomotive.ca/en`
-- **Extraction Date:** 2026-11-08
+- **Original Inspection Date:** `2026-04-12` (initial DOM/CSS token extraction & homepage transfer study); **Automated Verification Timestamp:** `2026-11-08` (Playwright headless verification pass; host machine clock set to Nov 2026)
 - **Viewports Inspected:**
   - **Desktop:** `1440 × 900` (`deviceScaleFactor: 2`, `scrollHeight: 6598px`)
   - **Mobile:** `390 × 844` (`deviceScaleFactor: 2`, `scrollHeight: 5438px`)

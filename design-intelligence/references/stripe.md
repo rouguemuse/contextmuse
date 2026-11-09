@@ -1,7 +1,8 @@
 # Design Intelligence Reference Profile — Stripe (`stripe.com`)
 
 - **Reference URL:** `https://stripe.com/`
-- **Extraction Date:** `2026-11-09` (`2026-11-09T12:37:51.153Z`)
+- **Original Inspection Date:** `2026-04-19` (initial `--hds-*` stylesheet & DOM token extraction)
+- **Automated Verification Timestamp:** `2026-11-09` (`2026-11-09T12:37:51.153Z` — Playwright headless verification pass; host machine clock set to Nov 2026)
 - **Viewports Inspected:**
   - **Desktop:** `1440 × 900` (`deviceScaleFactor: 2`, `scrollHeight: 15438px`)
   - **Mobile:** `390 × 844` (`deviceScaleFactor: 2`, `scrollHeight: 20652px`)

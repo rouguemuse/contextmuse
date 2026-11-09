@@ -1212,9 +1212,22 @@ export default function DesignIntelligenceCaseStudy() {
                   </thead>
                   <tbody className="divide-y divide-[#DFDACE]/10">
                     <tr>
-                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Surface Polarity</td>
+                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Inspection &amp; Verification</td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        Editorial Bone (<code className="font-mono">#EDE9E0</code>) &amp; Charcoal (<code className="font-mono">#23282A</code>) / Reference <code className="font-mono">#000000</code>
+                        Original inspection <code className="font-mono">2026-04-12</code> · Automated verification <code className="font-mono">2026-11-08</code>
+                      </td>
+                      <td className="py-3 px-4 text-[#DFDACE]/90">
+                        Original inspection <code className="font-mono">2026-04-19</code> · Automated verification <code className="font-mono">2026-11-09</code>
+                      </td>
+                      <td className="py-3 px-4 text-[#DFDACE]/90">
+                        Original inspection <code className="font-mono">2026-04-19</code> · Automated verification <code className="font-mono">2026-11-09</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Surface Polarity &amp; Accents</td>
+                      <td className="py-3 px-4 text-[#DFDACE]/90">
+                        <strong>Observed Source (<code className="font-mono">Class A</code>):</strong> Monochrome <code className="font-mono">#000000</code> / <code className="font-mono">#FFFFFF</code> (<code className="font-mono">21.00:1</code>) + <code className="font-mono">#312DFB</code> ultramarine (<code className="font-mono">7.24:1</code>).{' '}
+                        <strong>ContextMuse Adaptation (<code className="font-mono">Class D</code>):</strong> Bone <code className="font-mono">#EDE9E0</code> &amp; Charcoal <code className="font-mono">#23282A</code> (<code className="font-mono">12.31:1</code>) + <code className="font-mono">#D9A62E</code> gold &amp; <code className="font-mono">#17504A</code> forest.
                       </td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
                         Obsidian Dark (<code className="font-mono">#08090A</code> canvas, <code className="font-mono">#0F1011</code> panels, <code className="font-mono">#141516</code> ledger)
@@ -1224,9 +1237,10 @@ export default function DesignIntelligenceCaseStudy() {
                       </td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Display Typography</td>
+                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Display &amp; UI Typography</td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        Reference <code className="font-mono">LocomotiveNew</code> wt <code className="font-mono">400</code> (<code className="font-mono">1.00–1.10</code> lh); specimen adaptation <code className="font-mono">800</code> uppercase (<code className="font-mono">Class D</code>)
+                        <strong>Observed Source (<code className="font-mono">Class A/B</code>):</strong> <code className="font-mono">LocomotiveNew</code> wt <code className="font-mono">400</code> (<code className="font-mono">70px–110px</code>, <code className="font-mono">1.00–1.10</code> lh) + <code className="font-mono">HelveticaNowDisplay</code> wt <code className="font-mono">400</code> (<code className="font-mono">15px–26px</code>, <code className="font-mono">-0.02em</code>).{' '}
+                        <strong>Adaptation (<code className="font-mono">Class D</code>):</strong> ContextMuse <code className="font-mono">Chivo</code> + <code className="font-mono">JetBrains Mono</code>; specimen <code className="font-mono">800</code> uppercase (<code className="font-mono">22.5px</code>/<code className="font-mono">17.5px</code>) with system fallback.
                       </td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
                         <code className="font-mono">Inter Variable</code> weight <code className="font-mono">510</code>, <code className="font-mono">-0.022em</code> tracking, <code className="font-mono">&quot;cv01&quot;, &quot;ss03&quot;</code> (system fallback)
@@ -1238,7 +1252,8 @@ export default function DesignIntelligenceCaseStudy() {
                     <tr>
                       <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Depth &amp; Borders</td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">0px</code> radius, <code className="font-mono">2px solid</code> top overlines, <code className="font-mono">box-shadow: none</code>
+                        <strong>Observed Source (<code className="font-mono">Class B</code>):</strong> <code className="font-mono">0px</code> radius, <code className="font-mono">2px solid</code> desktop (<code className="font-mono">1px</code> mobile) top overlines, <code className="font-mono">box-shadow: none</code>.{' '}
+                        <strong>Specimen Adaptation (<code className="font-mono">Class D</code>):</strong> Open left/right card borders (<code className="font-mono">2px</code> top / <code className="font-mono">1px</code> bottom rules).
                       </td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
                         <code className="font-mono">8px–12px</code> radius, <code className="font-mono">1px rgba(255,255,255,0.08)</code> ring, <code className="font-mono">0px</code> drop shadow
@@ -1248,15 +1263,16 @@ export default function DesignIntelligenceCaseStudy() {
                       </td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Primary Action CTA</td>
+                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Primary CTA &amp; Motion Curves</td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">0px</code> square bar, <code className="font-mono">2px</code> border, <code className="font-mono">450ms/200ms</code> quintic hover
+                        <strong>Primary (<code className="font-mono">:root</code> / <code className="font-mono">.c-featured-links_visual</code>, <code className="font-mono">Class A/B</code>):</strong> <code className="font-mono">0.45s</code> enter / <code className="font-mono">0.2s</code> leave <code className="font-mono">cubic-bezier(0.23, 1, 0.32, 1)</code> (Ease-Out Quint; transferred to specimen &amp; <code className="font-mono">RoomTile</code>).{' '}
+                        <strong>Secondary UI (<code className="font-mono">Class B</code>):</strong> <code className="font-mono">cubic-bezier(0.215, 0.61, 0.355, 1)</code> (Ease-Out Cubic) at <code className="font-mono">0.15s</code> (<code className="font-mono">select</code>), <code className="font-mono">0.2s</code> (<code className="font-mono">.c-header</code>), <code className="font-mono">0.3s</code> (<code className="font-mono">html</code> bg / labels).
                       </td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">32px</code> pill (<code className="font-mono">9999px</code>), monochrome <code className="font-mono">#E5E5E6</code> (<code className="font-mono">15.83:1</code> AAA), <code className="font-mono">160ms</code>
+                        <code className="font-mono">32px</code> pill (<code className="font-mono">9999px</code>), monochrome <code className="font-mono">#E5E5E6</code> (<code className="font-mono">15.83:1</code> AAA), <code className="font-mono">160ms cubic-bezier(0.25, 0.46, 0.45, 0.94)</code>
                       </td>
                       <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">48px</code> (<code className="font-mono">44px</code> mobile), <code className="font-mono">#533AFD</code> violet (<code className="font-mono">6.19:1</code> AA), <code className="font-mono">4px</code> radius, <code className="font-mono">300ms</code>
+                        <code className="font-mono">48px</code> (<code className="font-mono">44px</code> mobile), <code className="font-mono">#533AFD</code> violet (<code className="font-mono">6.19:1</code> AA), <code className="font-mono">4px</code> radius, <code className="font-mono">300ms cubic-bezier(0.25, 1, 0.5, 1)</code>
                       </td>
                     </tr>
                   </tbody>
@@ -1409,14 +1425,14 @@ export default function DesignIntelligenceCaseStudy() {
                     <div className="grid gap-4 lg:grid-cols-3 text-xs">
                       <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
                         <div className="font-mono font-bold text-[#D9A62E]">
-                          Study 01 · Plumb Line &amp; Quintic Easing (Measured Fact)
+                          Study 01 · Plumb Line &amp; Dual Motion Curves (Measured Fact)
                         </div>
                         <p className="text-[#DFDACE]/90 leading-relaxed">
                           Desktop (1440×900) Before: Logo <code className="font-mono">x=24px</code>, Hero H1{' '}
                           <code className="font-mono">x=48px</code>, Primary CTA <code className="font-mono">x=48px</code>,
                           Footer <code className="font-mono">x=24px</code> (24px variance). After: all four anchor at{' '}
-                          <code className="font-mono">x=40px</code> (0px variance). Hover curve set to{' '}
-                          <code className="font-mono">cubic-bezier(0.23, 1, 0.32, 1)</code> (<code className="font-mono">450ms</code>/<code className="font-mono">200ms</code>).
+                          <code className="font-mono">x=40px</code> (0px variance). Source CSS declares primary{' '}
+                          <code className="font-mono">cubic-bezier(0.23, 1, 0.32, 1)</code> (<code className="font-mono">450ms</code> enter / <code className="font-mono">200ms</code> leave on <code className="font-mono">:root</code> &amp; <code className="font-mono">.c-featured-links_visual</code>) plus secondary UI <code className="font-mono">cubic-bezier(0.215, 0.61, 0.355, 1)</code> (<code className="font-mono">150ms</code> <code className="font-mono">select</code>, <code className="font-mono">200ms</code> <code className="font-mono">.c-header</code>, <code className="font-mono">300ms</code> <code className="font-mono">html</code> bg/labels).
                         </p>
                         <p className="text-[#DFDACE]/70 border-t border-[#DFDACE]/15 pt-2">
                           <strong>Subjective Judgment:</strong> Aligning the left edge and matching 0px CTA corners to

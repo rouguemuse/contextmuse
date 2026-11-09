@@ -1,7 +1,8 @@
 # Design Intelligence Reference Profile — Linear (`linear.app`)
 
 - **Reference URL:** `https://linear.app/`
-- **Extraction Date:** `2026-11-09` (`2026-11-09T12:37:39.587Z`)
+- **Original Inspection Date:** `2026-04-19` (initial stylesheet AST & DOM token extraction)
+- **Automated Verification Timestamp:** `2026-11-09` (`2026-11-09T12:37:39.587Z` — Playwright headless verification pass; host machine clock set to Nov 2026)
 - **Viewports Inspected:**
   - **Desktop:** `1440 × 900` (`deviceScaleFactor: 2`, `scrollHeight: 9960px`)
   - **Mobile:** `390 × 844` (`deviceScaleFactor: 2`, `scrollHeight: 5906px`)
