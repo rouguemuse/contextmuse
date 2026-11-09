@@ -5,24 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Google Tag (gtag.js) + Privacy-Safe Consent Mode v2 + Microsoft Clarity + CM_Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       (function() {
-        var consentState = 'granted';
+        var consentState = 'denied';
         try {
-          if (window.localStorage && window.localStorage.getItem('cm_analytics_consent') === 'denied') {
-            consentState = 'denied';
+          if (window.localStorage && window.localStorage.getItem('cm_analytics_consent') === 'granted') {
+            consentState = 'granted';
           }
         } catch (_) {}
+        window['ga-disable-G-MVV7WNL42L'] = (consentState !== 'granted');
         gtag('consent', 'default', {
           analytics_storage: consentState,
           ad_storage: 'denied',
           ad_user_data: 'denied',
           ad_personalization: 'denied'
         });
-        if (consentState !== 'denied') {
+        if (consentState === 'granted') {
+          window.__cm_ga4_configured = true;
+          var gs = document.createElement('script');
+          gs.async = true;
+          gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L';
+          var firstScript = document.getElementsByTagName('script')[0];
+          firstScript.parentNode.insertBefore(gs, firstScript);
+          gtag('js', new Date());
+          gtag('config', 'G-MVV7WNL42L', {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false
+          });
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -30,12 +42,6 @@
           })(window, document, "clarity", "script", "zaubakunby");
         }
       })();
-      gtag('js', new Date());
-      gtag('config', 'G-MVV7WNL42L', {
-        anonymize_ip: true,
-        allow_google_signals: false,
-        allow_ad_personalization_signals: false
-      });
     </script>
     <script src="/assets/js/analytics.js" defer></script>
 
@@ -124,7 +130,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,400..900;1,75..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/spa-C2tGmDo_.js"></script>
+    <script type="module" crossorigin src="/assets/spa-sNAVIR40.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/spa-C6yMXDqt.css">
   </head>
   <body>

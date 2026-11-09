@@ -143,6 +143,20 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         mobileValue: '4-column compact index rhythm without decorative cards or drop shadows',
         evidence: 'Synthesized from repeated Class A/B observations across header, overlines, and interactive index rows.',
       },
+      {
+        category: 'ContextMuse & Specimen Transfer Adaptations',
+        tokenName: 'Palette, Open-Ledger Borders & Scale Calibration',
+        classification: 'D',
+        classificationLabel: 'Class D · Deliberate Adaptation',
+        desktopValue: 'ContextMuse #EDE9E0/#23282A/#D9A62E/#17504A palette; open left/right card borders; 22.5px wt 800 uppercase h3; system sans fallback',
+        mobileValue: '17.5px wt 800 uppercase h3 (2-line parity); 20px body padding; open top/bottom ruled metric rows',
+        evidence: 'Deliberate transfer adaptations: applies Locomotive grid/border/motion rules onto ContextMuse pigments without bundling proprietary LocomotiveNew/HelveticaNowDisplay font binaries.',
+      },
+    ],
+    transferAdaptations: [
+      'Palette Substitution (Class D): Retains ContextMuse pigments (#EDE9E0 bone, #DFDACE sand, #23282A charcoal, #D9A62E mustard, #17504A forest) alongside Locomotive’s declared #312DFB accent rather than copying locomotive.ca’s #000000/#FFFFFF monochrome canvas.',
+      'Open-Ledger Card Geometry (Class D): Removes left and right card borders (borderLeft/Right: none) and replaces 6px cards with 2px solid top overlines and 1px bottom dividers to translate Locomotive’s .c-section-overline_inner pattern onto the 3-card specimen grid.',
+      'Typography Fallback & Uppercase Calibration (Class D): Because proprietary LocomotiveNew and HelveticaNowDisplay font binaries are not redistributed, the specimen renders local/system neo-grotesque fallbacks and sets the specimen h3 at 22.5px desktop / 17.5px mobile (weight 800, uppercase) to maintain single-line desktop and two-line mobile split-slider alignment.',
     ],
     colorSwatches: [
       {
@@ -152,7 +166,7 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         fgHex: '#FFFFFF',
         contrastRatio: '21.00:1',
         wcagLevel: 'AAA',
-        usage: 'High-contrast reference surface & display typography (Class A)',
+        usage: 'High-contrast reference surface & display typography on locomotive.ca/en (Class A)',
       },
       {
         name: 'Navigation Ultramarine Accent',
@@ -161,7 +175,7 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         fgHex: '#FFFFFF',
         contrastRatio: '7.24:1',
         wcagLevel: 'AAA',
-        usage: 'Declared navigation & interactive accent surface (Class A)',
+        usage: 'Declared navigation & interactive accent surface on locomotive.ca/en (Class A)',
       },
       {
         name: 'ContextMuse Editorial Bone',
@@ -170,7 +184,7 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         fgHex: '#23282A',
         contrastRatio: '12.31:1',
         wcagLevel: 'AAA',
-        usage: 'Primary transferred specimen canvas & 2px structural ink (Class B)',
+        usage: 'Transferred specimen canvas & 2px structural ink (Class D · ContextMuse Adaptation)',
       },
       {
         name: 'ContextMuse Architectural Charcoal',
@@ -179,7 +193,7 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         fgHex: '#EDE9E0',
         contrastRatio: '12.31:1',
         wcagLevel: 'AAA',
-        usage: 'Header, primary structural CTA & dark quadrant surface (Class B)',
+        usage: 'Header, primary structural CTA & dark ledger surface (Class D · ContextMuse Adaptation)',
       },
       {
         name: 'ContextMuse Mustard Signal',
@@ -188,7 +202,7 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         fgHex: '#141617',
         contrastRatio: '8.16:1',
         wcagLevel: 'AAA',
-        usage: 'Replaced off-palette Tailwind red badge in Room 02 & active indicators (Class B)',
+        usage: 'Replaced off-palette Tailwind red badge in Room 02 & active indicators (Class D · ContextMuse Adaptation)',
       },
       {
         name: 'ContextMuse Forest Signal',
@@ -197,7 +211,7 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         fgHex: '#EDE9E0',
         contrastRatio: '7.59:1',
         wcagLevel: 'AAA',
-        usage: 'Verified status badge and Section C structural surface (Class B)',
+        usage: 'Verified status badge and Section C structural surface (Class D · ContextMuse Adaptation)',
       },
     ],
     analyticalQuestions: [
@@ -332,6 +346,20 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
         mobileValue: 'Maintains identical 4-step dark surface hierarchy and monochrome CTA restraint on mobile',
         evidence: 'Synthesized from --shadow-* variable aliasing, surface luminance stepping, and fractional font-weight declarations.',
       },
+      {
+        category: 'Specimen Stage & Font Fallback Adaptations',
+        tokenName: '46px Outer Inset, 29px h3 & System Fallbacks',
+        classification: 'D',
+        classificationLabel: 'Class D · Deliberate Adaptation',
+        desktopValue: '46px horizontal body padding; 29px h3 (scaled from 64px hero H1); Inter/SF Pro fallback + ui-monospace',
+        mobileValue: '24px horizontal body padding; 22px h3 (scaled from 38px mobile H1); translucent pill status badges',
+        evidence: 'Deliberate specimen adaptation: scales 64px marketing H1 to 29px to fit the 1040×650 stage without scrolling and uses system monospace fallback in place of proprietary Berkeley Mono.',
+      },
+    ],
+    transferAdaptations: [
+      'Stage-Fitted Display Scale (Class D): Scales Linear’s 64px desktop / 38px mobile marketing H1 down to 29px desktop / 22px mobile (preserving font-weight: 510 and -0.022em tracking) so the hero, 3-card grid, and ledger fit inside the fixed 1040×650 desktop and 390×844 mobile specimen frames.',
+      'Outer Horizontal Padding Transfer (Class D): Applies Linear’s declared --homepage-outer-padding (46px desktop) and --page-padding-inline (24px mobile) to the specimen container rather than the neutral control’s 24px/16px padding.',
+      'Font Binary Fallback (Class D): Declares "Inter Variable" ("cv01", "ss03") and "Berkeley Mono" first in CSS, falling back cleanly to local Inter / SF Pro Display and ui-monospace without bundling licensed font binaries.',
     ],
     colorSwatches: [
       {

@@ -109,7 +109,7 @@ export function initObservability() {
       replaysOnErrorSampleRate: 0,
       beforeSend(event) {
         try {
-          if (window.localStorage && window.localStorage.getItem('cm_analytics_consent') === 'denied') {
+          if (!window.localStorage || window.localStorage.getItem('cm_analytics_consent') !== 'granted') {
             return null;
           }
         } catch {}
@@ -137,7 +137,7 @@ export function initObservability() {
     getCapturedBuffer: () => syntheticCapturedEvents.slice(),
     captureSyntheticError: (rawErrorOrMessage) => {
       try {
-        if (window.localStorage && window.localStorage.getItem('cm_analytics_consent') === 'denied') {
+        if (!window.localStorage || window.localStorage.getItem('cm_analytics_consent') !== 'granted') {
           return null;
         }
       } catch {}
@@ -172,7 +172,7 @@ export function initObservability() {
 
 export function vercelAnalyticsBeforeSend(event) {
   try {
-    if (typeof window !== 'undefined' && window.localStorage && window.localStorage.getItem('cm_analytics_consent') === 'denied') {
+    if (typeof window !== 'undefined' && (!window.localStorage || window.localStorage.getItem('cm_analytics_consent') !== 'granted')) {
       return null;
     }
   } catch {}

@@ -586,7 +586,7 @@ export default function DesignSystemSpecimen({
                 }}
                 className="uppercase"
               >
-                01 / Empirical Interface Specimen
+                01 / Synthetic Interface Specimen
               </span>
 
               <span
@@ -602,7 +602,7 @@ export default function DesignSystemSpecimen({
                     : '#64748D',
                 }}
               >
-                12-Node Telemetry Mesh · 99.98%
+                Synthetic Demo Fixture · Mock Data
               </span>
             </div>
 
@@ -796,7 +796,7 @@ export default function DesignSystemSpecimen({
                 }}
                 className="uppercase"
               >
-                Active Verification Ledger
+                Synthetic Telemetry Ledger (Demo)
               </span>
               <span
                 style={{
@@ -811,7 +811,7 @@ export default function DesignSystemSpecimen({
                     : '#839BC8',
                 }}
               >
-                3 Live Nodes · 99.98% SLA
+                3 Mock Rows · Synthetic Data
               </span>
             </div>
 

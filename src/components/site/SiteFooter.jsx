@@ -7,9 +7,9 @@ export default function SiteFooter() {
   const [acqOpen, setAcqOpen] = useState(false);
   const [consent, setConsent] = useState(() => {
     try {
-      return window.localStorage.getItem('cm_analytics_consent') === 'denied' ? 'denied' : 'granted';
+      return window.localStorage.getItem('cm_analytics_consent') === 'granted' ? 'granted' : 'denied';
     } catch {
-      return 'granted';
+      return 'denied';
     }
   });
 
@@ -65,11 +65,12 @@ export default function SiteFooter() {
           </a>
           <button
             type="button"
+            data-testid="analytics-consent-toggle"
             onClick={toggleConsent}
             title="Toggle optional privacy-safe analytics (never captures form text, contact details, or whiteboard content)"
             className="text-[11px] text-[#DFDACE]/50 hover:text-[#D9A62E] transition-colors"
           >
-            Analytics: {consent === 'denied' ? 'Off' : 'On'}
+            Analytics: {consent === 'granted' ? 'On' : 'Off'}
           </button>
           <button
             type="button"
