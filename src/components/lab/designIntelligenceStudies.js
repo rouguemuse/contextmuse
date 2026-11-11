@@ -156,7 +156,7 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
     transferAdaptations: [
       'Palette Substitution (Class D): Retains ContextMuse pigments (#EDE9E0 bone, #DFDACE sand, #23282A charcoal, #D9A62E mustard, #17504A forest) alongside Locomotive’s declared #312DFB accent rather than copying locomotive.ca’s #000000/#FFFFFF monochrome canvas.',
       'Open-Ledger Card Geometry (Class D): Removes left and right card borders (borderLeft/Right: none) and replaces 6px cards with 2px solid top overlines and 1px bottom dividers to translate Locomotive’s .c-section-overline_inner pattern onto the 3-card specimen grid.',
-      'Typography Fallback & Uppercase Calibration (Class D): Because proprietary LocomotiveNew and HelveticaNowDisplay font binaries are not redistributed, the specimen renders local/system neo-grotesque fallbacks and sets the specimen h3 at 22.5px desktop / 17.5px mobile (weight 800, uppercase) to maintain single-line desktop and two-line mobile split-slider alignment.',
+      'Typography Fallback & Uppercase Calibration (Class D): Because proprietary LocomotiveNew and HelveticaNowDisplay font binaries are not redistributed, the specimen renders local/system neo-grotesque fallbacks and sets the specimen h3 at 22.5px desktop / 17.5px mobile (weight 800, uppercase) to keep the heading to one line on desktop and two on mobile, like the other variants.',
     ],
     colorSwatches: [
       {
@@ -252,7 +252,7 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
     subtitle: 'Obsidian Luminance Stepping, 1px Translucent Hairlines & Fractional Variable Typography',
     sourceUrl: 'https://linear.app/',
     sourceDomain: 'linear.app',
-    inspectedAt: 'Original inspection 2026-04-19 · Automated verification 2026-11-09T12:37:39.587Z (1440×900 & 390×844 @ 2x DPR)',
+    inspectedAt: 'Original inspection 2026-04-19 · Automated verification 2026-11-09T12:37:39.587Z · Reference captures re-shot 2026-11-11 after hero render (1440×900 & 390×844 @ 2x DPR)',
     referenceDossierPath: 'design-intelligence/references/linear.md',
     experimentReportPath: 'design-intelligence/experiments/token-extraction-study-report.md',
     themePolarity: 'Dark-First Obsidian (--color-bg-primary: #08090A / --color-text-primary: #F7F8F8)',
@@ -348,17 +348,17 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
       },
       {
         category: 'Specimen Stage & Font Fallback Adaptations',
-        tokenName: '46px Outer Inset, 29px h3 & System Fallbacks',
+        tokenName: 'Shared 40px Inset, 29px h3 & System Fallbacks',
         classification: 'D',
         classificationLabel: 'Class D · Deliberate Adaptation',
-        desktopValue: '46px horizontal body padding; 29px h3 (scaled from 64px hero H1); Inter/SF Pro fallback + ui-monospace',
-        mobileValue: '24px horizontal body padding; 22px h3 (scaled from 38px mobile H1); translucent pill status badges',
+        desktopValue: 'Shared 40px specimen inset (Linear 46px outer padding recorded, not applied); 29px h3 (scaled from 64px hero H1); Inter/SF Pro fallback + ui-monospace',
+        mobileValue: 'Shared 20px specimen inset (Linear 24px recorded, not applied); 22px h3 (scaled from 38px mobile H1); translucent pill status badges',
         evidence: 'Deliberate specimen adaptation: scales 64px marketing H1 to 29px to fit the 1040×650 stage without scrolling and uses system monospace fallback in place of proprietary Berkeley Mono.',
       },
     ],
     transferAdaptations: [
       'Stage-Fitted Display Scale (Class D): Scales Linear’s 64px desktop / 38px mobile marketing H1 down to 29px desktop / 22px mobile (preserving font-weight: 510 and -0.022em tracking) so the hero, 3-card grid, and ledger fit inside the fixed 1040×650 desktop and 390×844 mobile specimen frames.',
-      'Outer Horizontal Padding Transfer (Class D): Applies Linear’s declared --homepage-outer-padding (46px desktop) and --page-padding-inline (24px mobile) to the specimen container rather than the neutral control’s 24px/16px padding.',
+      'Outer Padding Held Constant (Class D): Linear declares --homepage-outer-padding (46px desktop) and --page-padding-inline (24px mobile). The specimen does not apply them: every variant shares one 40px desktop / 20px mobile inset so the Original / Split / Transformed comparison keeps a single left edge. The 46px / 24px values remain recorded as observed evidence.',
       'Font Binary Fallback (Class D): Declares "Inter Variable" ("cv01", "ss03") and "Berkeley Mono" first in CSS, falling back cleanly to local Inter / SF Pro Display and ui-monospace without bundling licensed font binaries.',
     ],
     colorSwatches: [
@@ -551,16 +551,16 @@ export const DESIGN_INTELLIGENCE_STUDIES = [
       },
       {
         category: 'Specimen DOM Parity & Hybrid Polarity Adaptation',
-        tokenName: 'Stacked h3/p, 48px Padding & #0D1738 Ledger',
+        tokenName: 'Stacked h3/p, Shared Inset & #0D1738 Ledger',
         classification: 'D',
         classificationLabel: 'Class D · Deliberate Adaptation',
-        desktopValue: 'Stacked <h3> + <p> (for 85-node DOM parity); 48px horizontal padding; #0D1738 dark ledger; SF Pro/system sans fallback',
-        mobileValue: 'Inline-flex compact CTAs (preserving specimen layout parity); 16px horizontal padding; 22px wt 300 h3',
+        desktopValue: 'Stacked <h3> + <p> (for 85-node DOM parity); shared 40px specimen inset (Stripe outer margin not applied); #0D1738 dark ledger; SF Pro/system sans fallback',
+        mobileValue: 'Inline-flex compact CTAs (preserving specimen layout parity); shared 20px specimen inset; 22px wt 300 h3',
         evidence: 'Deliberate specimen adaptation: keeps <h3> and <p> stacked (instead of .hds-heading--inline) and keeps mobile CTAs inline-flex to preserve exact 85-node DOM parity across all 4 variants.',
       },
     ],
     transferAdaptations: [
-      'Stacked Heading & Lead for DOM Parity (Class D): On stripe.com, .hds-heading--inline places the #061B31 heading and #64748D subdued lead inline within one block. On the shared specimen, <h3> and <p> remain stacked block elements so all four variants maintain identical 85-node DOM structure and split-slider alignment.',
+      'Stacked Heading & Lead for DOM Parity (Class D): On stripe.com, .hds-heading--inline places the #061B31 heading and #64748D subdued lead inline within one block. On the shared specimen, <h3> and <p> remain stacked block elements so all four variants maintain identical 85-node DOM structure; horizontal alignment comes from the shared specimen inset, while fonts and type scale still change line lengths across the split.',
       'Hybrid Light/Dark Section Composition (Class D): Combines Stripe’s light subdued canvas (--hds-color-core-neutral-25: #F8FAFD) and #FFFFFF cards with its dark enterprise section surface (--hds-color-core-neutralDark-990: #0D1738) on the bottom telemetry ledger to showcase both HDS polarities in one frame.',
       'Font Fallback & Compact Specimen Controls (Class D): Because proprietary Söhne Variable (sohne-var) binaries are not bundled, the specimen falls back to local SF Pro Display / system sans at font-weight: 300, and keeps mobile CTAs inline-flex rather than full-width 358px stacked bars so the 3-card grid and ledger never clip.',
     ],

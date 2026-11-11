@@ -110,6 +110,14 @@ export default function DesignSystemSpecimen({
   const isLinear = variant === 'linear';
   const isStripe = variant === 'stripe';
 
+  // Controlled variable: every variant shares the same horizontal inset so the
+  // Original / Split / Transformed comparison lines up on one left plumb line.
+  // Study-specific outer margins (Locomotive 40px, Linear 46px, Stripe 48px) are
+  // documented in the study data but deliberately NOT applied here.
+  const FRAME_INSET_X = isMobile ? 20 : 40;
+  const FRAME_PADDING_HEADER = `${isMobile ? 10 : 12}px ${FRAME_INSET_X}px`;
+  const FRAME_PADDING_BODY = `${isMobile ? 16 : 22}px ${FRAME_INSET_X}px`;
+
   // Outer canvas style
   const canvasStyle = isNeutral
     ? {
@@ -143,37 +151,31 @@ export default function DesignSystemSpecimen({
     ? {
         backgroundColor: '#FFFFFF',
         borderBottom: '1px solid #E4E4E7',
-        padding: isMobile ? '10px 12px' : '12px 24px',
+        padding: FRAME_PADDING_HEADER,
       }
     : isPlaidis
     ? {
         backgroundColor: '#23282A',
         color: '#EDE9E0',
         borderBottom: '2px solid #23282A',
-        padding: isMobile ? '10px 12px' : '12px 40px',
+        padding: FRAME_PADDING_HEADER,
       }
     : isLinear
     ? {
         backgroundImage: 'linear-gradient(rgba(11, 11, 11, 0.88) 0%, rgba(15, 16, 17, 0.78) 100%)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
         backdropFilter: 'blur(20px)',
-        padding: isMobile ? '10px 12px' : '12px 46px',
+        padding: FRAME_PADDING_HEADER,
       }
     : {
         // Stripe
         backgroundColor: '#FFFFFF',
         borderBottom: '1px solid #E5EDF5',
-        padding: isMobile ? '10px 12px' : '12px 48px',
+        padding: FRAME_PADDING_HEADER,
       };
 
-  // Main content padding
-  const bodyPaddingStyle = isNeutral
-    ? { padding: isMobile ? '16px 16px' : '22px 24px' }
-    : isPlaidis
-    ? { padding: isMobile ? '16px 20px' : '22px 40px' }
-    : isLinear
-    ? { padding: isMobile ? '16px 24px' : '22px 46px' }
-    : { padding: isMobile ? '16px 16px' : '22px 48px' };
+  // Main content padding: one shared inset for every variant (see FRAME_INSET_* above)
+  const bodyPaddingStyle = { padding: FRAME_PADDING_BODY };
 
   // Display Headline style (calibrated so single-line desktop / two-line mobile wrapping stays aligned across the split slider)
   const headlineStyle = isNeutral

@@ -898,7 +898,8 @@ export default function DesignIntelligenceCaseStudy() {
                                   )}% After (${activeStudy.selectorLabel} Tokens Applied)`
                             }
                             onKeyDown={handleSliderKeyDown}
-                            className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9E0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141617] transition-transform motion-reduce:transition-none hover:scale-105"
+                            style={{ translate: `${-sliderPos}% -50%` }}
+                            className="absolute top-1/2 flex h-11 w-11 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9E0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141617] transition-transform motion-reduce:transition-none hover:scale-105"
                           >
                             <MoveHorizontal className="h-5 w-5 stroke-[2.5]" />
                           </div>
@@ -2092,7 +2093,8 @@ export default function DesignIntelligenceCaseStudy() {
                           aria-valuenow={Math.round(sliderPos)}
                           aria-valuetext={`${Math.round(sliderPos)}% Before, ${Math.round(100 - sliderPos)}% After`}
                           onKeyDown={handleSliderKeyDown}
-                          className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9E0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141617]"
+                          style={{ translate: `${-sliderPos}% -50%` }}
+                            className="absolute top-1/2 flex h-11 w-11 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9E0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141617]"
                         >
                           <MoveHorizontal className="h-4 w-4 stroke-[2.5]" />
                         </div>
