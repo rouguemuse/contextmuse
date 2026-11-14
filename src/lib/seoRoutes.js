@@ -139,9 +139,9 @@ export const SPA_ROUTE_SEO = {
   '/lab/design-intelligence/': {
     path: '/lab/design-intelligence/',
     outputFile: 'lab/design-intelligence/index.html',
-    title: 'Design Intelligence Studies 01–03 · Plaidis, Linear & Stripe Token Extraction | Context & Muse',
+    title: 'Design Intelligence · From Visual Reference to Measurable Design Decisions | Context & Muse',
     description:
-      'Empirical design-systems case study extracting CSS/DOM tokens from Plaidis (Locomotive), Linear, and Stripe with interactive before/after specimen comparison.',
+      'Design is not a collection of preferences. It is a system of relationships. CSSOM and DOM token extraction across Plaidis / Locomotive, Linear, and Stripe on an 85-node specimen.',
     canonical: 'https://www.contextmuse.com/lab/design-intelligence/',
     ogType: 'article',
     ogImage: 'https://www.contextmuse.com/assets/images/design-intelligence/study_plaidis_overview_1440.png',
@@ -155,9 +155,9 @@ export const SPA_ROUTE_SEO = {
           '@id': 'https://www.contextmuse.com/lab/design-intelligence/#article',
           url: 'https://www.contextmuse.com/lab/design-intelligence/',
           headline:
-            'Design Intelligence Studies 01–03: Plaidis, Linear & Stripe Token Extraction',
+            'Design Intelligence: From Visual Reference to Measurable Design Decisions',
           description:
-            'Empirical design-systems case study extracting CSS/DOM tokens from Plaidis (Locomotive), Linear, and Stripe with interactive before/after specimen comparison.',
+            'Empirical design engineering case study measuring Plaidis / Locomotive, Linear, and Stripe using CSSOM and DOM inspection, an 85-node controlled specimen, and Context & Muse production transfer.',
           author: {
             '@type': 'Person',
             name: 'Jayme Volstad',
@@ -172,9 +172,9 @@ export const SPA_ROUTE_SEO = {
   '/design-intelligence/': {
     path: '/design-intelligence/',
     outputFile: 'design-intelligence/index.html',
-    title: 'Design Intelligence Studies 01–03 · Plaidis, Linear & Stripe Token Extraction | Context & Muse',
+    title: 'Design Intelligence · From Visual Reference to Measurable Design Decisions | Context & Muse',
     description:
-      'Empirical design-systems case study extracting CSS/DOM tokens from Plaidis (Locomotive), Linear, and Stripe with interactive before/after specimen comparison.',
+      'Design is not a collection of preferences. It is a system of relationships. CSSOM and DOM token extraction across Plaidis / Locomotive, Linear, and Stripe on an 85-node specimen.',
     canonical: 'https://www.contextmuse.com/lab/design-intelligence/',
     ogType: 'article',
     ogImage: 'https://www.contextmuse.com/assets/images/design-intelligence/study_plaidis_overview_1440.png',
@@ -188,9 +188,9 @@ export const SPA_ROUTE_SEO = {
           '@id': 'https://www.contextmuse.com/lab/design-intelligence/#article',
           url: 'https://www.contextmuse.com/lab/design-intelligence/',
           headline:
-            'Design Intelligence Studies 01–03: Plaidis, Linear & Stripe Token Extraction',
+            'Design Intelligence: From Visual Reference to Measurable Design Decisions',
           description:
-            'Empirical design-systems case study extracting CSS/DOM tokens from Plaidis (Locomotive), Linear, and Stripe with interactive before/after specimen comparison.',
+            'Empirical design engineering case study measuring Plaidis / Locomotive, Linear, and Stripe using CSSOM and DOM inspection, an 85-node controlled specimen, and Context & Muse production transfer.',
           author: {
             '@type': 'Person',
             name: 'Jayme Volstad',

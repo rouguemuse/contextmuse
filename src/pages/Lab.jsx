@@ -166,7 +166,7 @@ export default function Lab() {
             {/* Neutral Presentation Frame for Authentic GenSort Screenshots */}
             <div className="grid gap-6 md:grid-cols-2">
               <figure className="bg-[#EDE9E0]/55 border border-[#23282A]/12 p-3 sm:p-4 space-y-3">
-                <div className="overflow-hidden border border-[#23282A]/15 bg-[#141617] aspect-[16/10]">
+                <div className="overflow-hidden border border-[#23282A]/15 bg-[#141617] aspect-[4/3]">
                   <img
                     src="/assets/images/gensort-library.webp"
                     alt="GenSort Studio Library Grid and AI Metadata Inspector"
@@ -181,7 +181,7 @@ export default function Lab() {
               </figure>
 
               <figure className="bg-[#EDE9E0]/55 border border-[#23282A]/12 p-3 sm:p-4 space-y-3">
-                <div className="overflow-hidden border border-[#23282A]/15 bg-[#141617] aspect-[16/10]">
+                <div className="overflow-hidden border border-[#23282A]/15 bg-[#141617] aspect-[4/3]">
                   <img
                     src="/assets/images/gensort-compare.webp"
                     alt="GenSort Studio Side-by-Side Compare and Parameter Diff"
@@ -235,7 +235,7 @@ export default function Lab() {
                   <div>
                     {/* Consistent Neutral Preview Frame */}
                     <div className="bg-[#EDE9E0]/60 border-b border-[#23282A]/12 p-3 sm:p-4">
-                      <div className="overflow-hidden border border-[#23282A]/15 bg-[#141617] aspect-[16/9]">
+                      <div className="overflow-hidden border border-[#23282A]/15 bg-[#141617] aspect-[4/3]">
                         <img
                           src={app.image}
                           alt={app.imageAlt}
@@ -370,17 +370,19 @@ export default function Lab() {
           <article className="bg-[#FAF8F5] border border-[#23282A]/15 border-l-4 border-l-[#D9A62E] p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-sm">
             <div className="space-y-2.5 max-w-3xl">
               <div className="flex flex-wrap items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.12em] text-[#23282A]/65">
-                <span className="text-[#9A6F0B] font-bold">Experiment 01</span>
+                <span className="text-[#9A6F0B] font-bold">Research 001 · Studies 01–03</span>
                 <span>•</span>
-                <span>Baseline 52e179d → Experiment 195921a</span>
+                <span>Plaidis / Locomotive · Linear · Stripe → Context &amp; Muse (52e179d → 195921a)</span>
               </div>
               <h3 className="font-display text-xl sm:text-2xl font-black uppercase tracking-tight text-[#23282A]">
-                Design Intelligence Case Study: Locomotive Token Extraction &amp; Before/After Slider
+                Design Intelligence: From Visual Reference to Measurable Design Decisions
               </h3>
               <p className="text-xs sm:text-sm text-[#23282A]/80 leading-relaxed">
-                Interactive desktop (1440×900) and mobile (390×844) before-and-after comparison slider, live quintic
-                hover timing sandbox (450ms enter / 200ms leave), and measured DOM plumb-line verification (24px → 0px
-                variance).
+                “Design is not a collection of preferences. It is a system of relationships.” An interactive 7-part
+                case study comparing extracted CSSOM and DOM tokens from Plaidis / Locomotive, Linear, and Stripe on a
+                shared 85-node neutral specimen (desktop 1440×900 &amp; mobile 390×844), alongside the verified Context
+                &amp; Muse production transfer (0px desktop plumb drift, 18/18 WCAG 2.1 contrast swatches, 11/11 smoke
+                gates).
               </p>
             </div>
             <a

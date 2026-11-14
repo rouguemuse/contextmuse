@@ -137,13 +137,13 @@ export default function Method() {
 
           {/* Stable Stage Detail Container */}
           <div className="min-h-[420px]">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={stage.key}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.22, ease: 'easeOut' }}
+                initial={{ opacity: 0, x: 6 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -6 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
               >
                 <MethodDetail
                   stage={stage}

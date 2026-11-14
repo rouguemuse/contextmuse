@@ -59,7 +59,7 @@
     },
     {
       "source": "/pricing/",
-      "destination": "/signal/",
+      "destination": "/method/#ways-to-work-together",
       "permanent": true
     },
     {

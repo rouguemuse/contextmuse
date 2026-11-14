@@ -257,53 +257,48 @@
   "description": "Diagnostic assessment intake for restaurant operators and business owners initiating a Signal margin and workflow evaluation."
 }
     </script>
+    <link rel="stylesheet" href="/assets/css/v2-shell.css">
 </head>
-<body>
+<body class="cm-v2-shell-page cm-v2-signal-surface">
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navbar -->
-    <!-- Navbar -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="container nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
-                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
-                <span>Context &amp; Muse</span>
+    <header class="cm-v2-header" role="banner">
+        <div class="cm-v2-header-inner">
+            <div class="cm-v2-brand-group">
+                <a href="/" class="cm-v2-brand" aria-label="Context &amp; Muse Home">
+                    <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;display:block;filter:brightness(1.2);">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <span class="cm-v2-context-pill">
+                    <span class="cm-v2-context-dot" aria-hidden="true"></span>
+                    <span class="cm-v2-context-num">03 · The Lab</span>
+                    <span>/ Signal Product Suite</span>
+                </span>
+            </div>
+            <nav class="cm-v2-room-links" aria-label="Primary Four-Room Navigation">
+                <a href="/work/" class="cm-v2-room-link"><span class="cm-v2-room-num">01</span><span>The Work</span></a>
+                <a href="/build/" class="cm-v2-room-link"><span class="cm-v2-room-num">02</span><span>The Build</span></a>
+                <a href="/lab/" class="cm-v2-room-link is-active"><span class="cm-v2-room-num">03</span><span>The Lab</span></a>
+                <a href="/method/" class="cm-v2-room-link"><span class="cm-v2-room-num">04</span><span>The Method</span></a>
+                <a href="/method/#pricing" class="cm-v2-room-link"><span>Pricing</span></a>
+                <a href="/signal/intake/" class="cm-v2-cta">Start Signal Review &rarr;</a>
+            </nav>
+        </div>
+    </header>
+    <nav class="cm-v2-subbar" aria-label="Signal Product Suite Navigation">
+        <div class="cm-v2-subbar-inner">
+            <a href="/signal/" class="cm-v2-subbar-brand">
+                <span class="cm-v2-subbar-dot" aria-hidden="true"></span>
+                <span>Signal &bull; Restaurant Operational Intelligence</span>
             </a>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <div class="nav-links" id="primary-nav-links">
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
-                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
-                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
-                </details>
-                <a href="/creative/" class="nav-link">Creative</a>
-                <a href="/about/" class="nav-link">About</a>
-                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
+            <div class="cm-v2-subbar-links">
+                <a href="/signal/" class="cm-v2-subbar-link">Overview</a>
+                <a href="/signal/#pricing" class="cm-v2-subbar-link">Pricing</a>
+                <a href="/signal/demo/" class="cm-v2-subbar-link">Interactive Demo</a>
+                <a href="/signal/sample-reports/" class="cm-v2-subbar-link">Sample Reports</a>
+                <a href="/signal/export-instructions/" class="cm-v2-subbar-link">Export Guide</a>
+                <a href="/signal/restaurant-data-partner/" class="cm-v2-subbar-link">Data Partner Pilot</a>
+                <a href="/signal/intake/" class="cm-v2-subbar-cta" aria-current="page">Submit Exports &rarr;</a>
             </div>
         </div>
     </nav>
@@ -587,44 +582,29 @@
     </main>
 
     <!-- ── FOOTER ── -->
-        <footer class="site-footer" role="contentinfo">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="/" class="logo">
-                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
-                    <span>Context &amp; Muse</span>
-                </a>
-                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
-                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
+    <footer class="cm-v2-footer" role="contentinfo">
+        <div class="cm-v2-footer-inner">
+            <div class="cm-v2-footer-left">
+                <span style="color: var(--cm-v2-bone); font-weight: 700;">Context &amp; Muse</span>
+                <span>&bull;</span>
+                <span>Jayme Volstad &middot; Founder-Led Studio &middot; Austin, TX</span>
+                <span>&bull;</span>
+                <a href="mailto:jayme@contextmuse.com" class="cm-v2-mail">jayme@contextmuse.com</a>
             </div>
-            <div class="footer-links-grid">
-                <div class="footer-col">
-                    <div class="footer-col-title">Services</div>
-                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
-                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
-                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
-                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
-                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Selected Work</div>
-                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
-                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
-                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
-                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
-                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">About</div>
-                    <a href="/about/" class="footer-link">About Jayme</a>
-                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/terms/" class="footer-link">Terms of Service</a>
-                </div>
+            <div class="cm-v2-footer-right">
+                <a href="/">Home</a>
+                <a href="/work/">01 Work</a>
+                <a href="/build/">02 Build</a>
+                <a href="/lab/">03 Lab</a>
+                <a href="/method/">04 Method</a>
+                <a href="/signal/">Signal</a>
+                <a href="/website-system-check/">Website Check</a>
+                <a href="/privacy/">Privacy</a>
+                <a href="/terms/">Terms</a>
+                <span style="color: rgba(223, 218, 206, 0.45);">&copy; 2026</span>
             </div>
         </div>
     </footer>
-    <script src="/assets/js/nav.js" defer></script>
     <script>
         function selectBranch(num) {
             for (let i = 1; i <= 3; i++) {

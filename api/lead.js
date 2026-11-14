@@ -80,14 +80,23 @@ function normalizeLeadMetadata(rawBody, refererHeader) {
   ]);
 
   let resolvedType = null;
-  if (typeof rawType === 'string' && recognizedTypes.has(rawType.toLowerCase().trim())) {
-    resolvedType = rawType.toLowerCase().trim();
+  const rType = typeof rawType === 'string' ? rawType.toLowerCase().trim() : '';
+  if (rType && recognizedTypes.has(rType)) {
+    resolvedType = rType;
+  } else if (rType === 'website') {
+    resolvedType = 'quote';
+  } else if (rType === 'brand & design' || rType === 'content & templates' || rType === 'custom build') {
+    resolvedType = 'custom';
+  } else if (rType === 'apps & tools') {
+    resolvedType = 'systems';
+  } else if (rType === 'not sure') {
+    resolvedType = 'contact';
   } else {
     const fId = formId.toLowerCase();
     const sPage = sourcePage.toLowerCase();
 
     // Map by form_id first
-    if (fId.includes('contact') || fId === 'contact-wizard' || fId === 'intelligent-intake-form') {
+    if (fId.includes('contact') || fId === 'contact-wizard' || fId === 'intelligent-intake-form' || fId === 'brief-drawer') {
       resolvedType = 'contact';
     } else if (fId.includes('diagnostic') || fId.includes('system-check') || fId === 'diagnostic-inquiry-form') {
       resolvedType = 'diagnostic';
@@ -99,23 +108,25 @@ function normalizeLeadMetadata(rawBody, refererHeader) {
       resolvedType = 'restaurant';
     } else if (fId.includes('partner')) {
       resolvedType = 'partner';
-    } else if (fId.includes('custom') || fId.includes('systems') || fId.includes('operations')) {
+    } else if (fId.includes('custom') || fId.includes('build')) {
+      resolvedType = 'custom';
+    } else if (fId.includes('systems') || fId.includes('operations')) {
       resolvedType = 'systems';
     }
     // Fall back to source_page
-    else if (sPage.includes('/contact/')) {
+    else if (sPage.includes('/contact')) {
       resolvedType = 'contact';
-    } else if (sPage.includes('/signal/')) {
+    } else if (sPage.includes('/signal')) {
       resolvedType = 'signal';
-    } else if (sPage.includes('/website-system-check/')) {
+    } else if (sPage.includes('/website-system-check')) {
       resolvedType = 'diagnostic';
     } else if (sPage.includes('/quote') || sPage.includes('/services/quote')) {
       resolvedType = 'quote';
-    } else if (sPage.includes('/systems/')) {
+    } else if (sPage.includes('/systems')) {
       resolvedType = 'systems';
-    } else if (sPage.includes('/custom/')) {
+    } else if (sPage.includes('/custom') || sPage.includes('/build')) {
       resolvedType = 'custom';
-    } else if (sPage.includes('/partners/')) {
+    } else if (sPage.includes('/partners')) {
       resolvedType = 'partner';
     } else if (sPage.includes('/restaurant')) {
       resolvedType = 'restaurant';
@@ -250,6 +261,70 @@ export default async function handler(req, res) {
 
   // 3. Normalize & Enrich Lead Attribution Metadata
   const normalizedPayload = normalizeLeadMetadata(body, req.headers['referer']);
+
+  // 3b. Pre-validate required fields before mock or upstream proxy execution
+  const honeypot = normalizedPayload._gotcha || normalizedPayload.website_url_honeypot || normalizedPayload.fax_number;
+  if (!honeypot || String(honeypot).trim().length === 0) {
+    const rawEmail = typeof normalizedPayload.email === 'string' ? normalizedPayload.email.trim() : '';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!rawEmail || rawEmail.length > 254 || !emailRegex.test(rawEmail)) {
+      return res.status(400).json({
+        success: false,
+        ok: false,
+        field: 'email',
+        code: 'VALIDATION_FAILED',
+        error: 'Please provide a valid email address so I can respond to your inquiry.'
+      });
+    }
+
+    const rawName = typeof normalizedPayload.name === 'string' ? normalizedPayload.name.trim() : '';
+    if (!rawName) {
+      return res.status(400).json({
+        success: false,
+        ok: false,
+        field: 'name',
+        code: 'VALIDATION_FAILED',
+        error: 'Please provide your name.'
+      });
+    }
+
+    const extractedMessage = (
+      normalizedPayload.message ||
+      normalizedPayload.plain_language_description ||
+      normalizedPayload.problem_description ||
+      normalizedPayload.operational_friction ||
+      normalizedPayload.additional_context ||
+      normalizedPayload.concern ||
+      normalizedPayload.symptom ||
+      normalizedPayload.context ||
+      ''
+    ).toString().trim();
+
+    const hasSavedItems = Boolean(
+      (Array.isArray(normalizedPayload.selected_project_Slugs) && normalizedPayload.selected_project_Slugs.length > 0) ||
+        (Array.isArray(normalizedPayload.answers_json?.saved_projects) && normalizedPayload.answers_json.saved_projects.length > 0) ||
+        (Array.isArray(normalizedPayload.answers_json?.whiteboard_clips) && normalizedPayload.answers_json.whiteboard_clips.length > 0) ||
+        (Array.isArray(normalizedPayload.answers_json?.audit_findings) && normalizedPayload.answers_json.audit_findings.length > 0) ||
+        (Array.isArray(normalizedPayload.answers_json?.lab_clippings) && normalizedPayload.answers_json.lab_clippings.length > 0)
+    );
+    const hasStructuredContext = Boolean(
+      normalizedPayload.export_summary ||
+        normalizedPayload.pos_system ||
+        normalizedPayload.scanned_website ||
+        normalizedPayload.Audit_URL_Target ||
+        hasSavedItems
+    );
+
+    if (!extractedMessage && !hasStructuredContext) {
+      return res.status(400).json({
+        success: false,
+        ok: false,
+        field: 'message',
+        code: 'VALIDATION_FAILED',
+        error: 'Please include a brief description of what you want to make or improve, or attach saved ideas.'
+      });
+    }
+  }
 
   // 4. Process Lead (Mock mode for local unit tests, Live proxy in production)
   if (isMockMode) {

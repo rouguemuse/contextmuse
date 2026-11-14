@@ -487,7 +487,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                       {entry.mediaUrl && (
                         <div className="lg:col-span-5">
                           <figure className="bg-[#181B1D] border border-[#DFDACE]/15 p-3 space-y-2">
-                            <div className="overflow-hidden border border-[#DFDACE]/15 bg-[#0A0C0D] aspect-[16/10]">
+                            <div className="overflow-hidden border border-[#DFDACE]/15 bg-[#0A0C0D] aspect-[4/3]">
                               <img
                                 src={entry.mediaUrl}
                                 alt={`${entry.title} authentic preview`}

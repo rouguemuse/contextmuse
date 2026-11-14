@@ -260,6 +260,32 @@ export async function processLeadSubmission(rawBody, clientIp, userAgent) {
     ''
   ).toString().trim().slice(0, 10000) || null;
 
+  const hasSavedItems = Boolean(
+    (Array.isArray(rawBody.selected_project_Slugs) && rawBody.selected_project_Slugs.length > 0) ||
+      (Array.isArray(rawBody.answers_json?.saved_projects) && rawBody.answers_json.saved_projects.length > 0) ||
+      (Array.isArray(rawBody.answers_json?.whiteboard_clips) && rawBody.answers_json.whiteboard_clips.length > 0) ||
+      (Array.isArray(rawBody.answers_json?.audit_findings) && rawBody.answers_json.audit_findings.length > 0) ||
+      (Array.isArray(rawBody.answers_json?.lab_clippings) && rawBody.answers_json.lab_clippings.length > 0)
+  );
+  const hasStructuredContext = Boolean(
+    rawBody.export_summary ||
+      rawBody.pos_system ||
+      rawBody.scanned_website ||
+      rawBody.Audit_URL_Target ||
+      hasSavedItems
+  );
+
+  if (!message && !hasStructuredContext) {
+    return {
+      success: false,
+      ok: false,
+      status: 400,
+      field: 'message',
+      code: 'VALIDATION_FAILED',
+      error: 'Please include a brief description of what you want to make or improve, or attach saved ideas.'
+    };
+  }
+
   // UTM tracking
   const utmSource = typeof rawBody.utm_source === 'string' ? rawBody.utm_source.slice(0, 128) : null;
   const utmMedium = typeof rawBody.utm_medium === 'string' ? rawBody.utm_medium.slice(0, 128) : null;

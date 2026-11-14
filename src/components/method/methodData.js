@@ -95,7 +95,7 @@ export const STAGES = [
         focalProblem:
           'Internal check-ins fail if they require desktop logins or complex menus during a busy field morning.',
         observedReality:
-          'Designed a mobile-first step wizard (`scott-daily.html`) that pairs seamlessly with the visual operator readiness dashboard (`rpg-dashboard.html`).',
+          'Designed a mobile-first daily check-in wizard that pairs seamlessly with the visual operator readiness and objective status dashboard.',
         realArtifact: 'Mobile Check-In Wizard & Status HUD Prototype',
         keyFinding:
           'Thumb-friendly progression lets operators log morning priorities and evening debriefs in under two minutes.',

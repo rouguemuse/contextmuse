@@ -114,6 +114,30 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
     openBrief();
   };
 
+  const handleNavigateDestination = (dest) => {
+    if (!dest) return;
+    onClose();
+    if (/^https?:\/\//i.test(dest)) {
+      window.open(dest, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    const cleanPath = dest.split(/[?#]/)[0].replace(/\/+$/, '') || '/';
+    const spaPaths = new Set([
+      '/',
+      '/work',
+      '/build',
+      '/lab',
+      '/lab/design-intelligence',
+      '/design-intelligence',
+      '/method',
+    ]);
+    if (spaPaths.has(cleanPath)) {
+      navigate(dest);
+    } else {
+      window.location.assign(dest);
+    }
+  };
+
   const renderInteractiveDemo = () => {
     switch (item.illustrationType) {
       case 'inncontrol-ops':
@@ -361,11 +385,11 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
 
                     <div className="p-3 sm:p-5 bg-[#0A0C0D]">
                       {hasRealScreenshot && !demoMode ? (
-                        <div className="relative rounded overflow-hidden border border-white/10">
+                        <div className="relative rounded overflow-hidden border border-white/10 aspect-[4/3] bg-[#0A0C0D]">
                           <img
                             src={item.mediaUrl}
                             alt={`${item.title} interface preview`}
-                            className="w-full h-auto object-cover max-h-[500px] block"
+                            className="w-full h-full object-cover object-top block"
                             loading="eager"
                           />
                         </div>
@@ -490,8 +514,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                                   if (rel.target.hasCaseDossier && onSelectRelated) {
                                     onSelectRelated(rel.target.id);
                                   } else if (rel.target.liveDestination) {
-                                    onClose();
-                                    navigate(rel.target.liveDestination);
+                                    handleNavigateDestination(rel.target.liveDestination);
                                   }
                                 }}
                                 className="w-full text-left rounded-lg border border-[#DFDACE]/15 bg-[#121415] hover:border-[#D9A62E]/60 px-3 py-2 transition-colors flex items-center justify-between gap-2"
@@ -525,8 +548,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                                   if (sug.target.hasCaseDossier && onSelectRelated) {
                                     onSelectRelated(sug.target.id);
                                   } else if (sug.target.liveDestination) {
-                                    onClose();
-                                    navigate(sug.target.liveDestination);
+                                    handleNavigateDestination(sug.target.liveDestination);
                                   }
                                 }}
                                 className="w-full text-left rounded-lg border border-[#DFDACE]/10 bg-[#121415]/70 hover:border-[#DFDACE]/35 px-3 py-2 transition-colors flex items-center justify-between gap-2"

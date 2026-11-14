@@ -48,7 +48,11 @@ export default function Builds() {
 
   // Progressive disclosure: Whiteboard only opens when chosen (or if visitor already has saved user work)
   const [isWhiteboardOpen, setIsWhiteboardOpen] = useState(() => {
-    return board.pieces.some((p) => !p.isStarter) || (board.drawings || []).length > 0;
+    return (
+      board.pieces.some((p) => !p.isStarter) ||
+      (board.drawings || []).length > 0 ||
+      Boolean((board.constraints || '').trim())
+    );
   });
 
   // Track active starter choice ('blank' | 'website' | 'ideas' | 'process')
@@ -985,11 +989,16 @@ export default function Builds() {
 
       {review && (
         <BoardReview
+          open={review}
           pieces={board.pieces}
           links={board.links}
           onClose={() => setReview(false)}
           onExportJson={exportJson}
           onExportPng={exportPng}
+          onIncludeWithInquiry={() => {
+            setReview(false);
+            handleIncludeWithInquiry();
+          }}
         />
       )}
     </RoomShell>

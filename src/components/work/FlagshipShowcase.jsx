@@ -180,11 +180,11 @@ export default function FlagshipShowcase({ onOpenCaseStudy }) {
           </div>
 
           {/* Interface Image (crops baked-in outer frame & browser bar so only the dark Wolf Ridge viewport fills the chrome) */}
-          <div className="relative bg-[#0A0C0D] overflow-hidden">
+          <div className="relative bg-[#0A0C0D] overflow-hidden aspect-[4/3]">
             <img
               src="/assets/images/lonewolf-screenshot.webp"
               alt="Wolf Ridge Dumpsters Production Interface"
-              className="w-[106.2%] max-w-none -ml-[3.1%] -mt-[5.15%] -mb-[2.4%] h-auto block"
+              className="w-[106.2%] max-w-none -ml-[3.1%] -mt-[5.15%] -mb-[2.4%] h-full object-cover object-top block"
               loading="eager"
             />
           </div>

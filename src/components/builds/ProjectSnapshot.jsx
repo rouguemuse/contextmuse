@@ -214,10 +214,12 @@ export default function ProjectSnapshot({
     // 1. Add structured clip to BriefContext
     addWhiteboardClip({
       type: 'project-snapshot',
+      source: 'whiteboard',
+      pagePath: '/build',
       title: isUneditedStarter
         ? 'Sample Workflow (Unedited Demo)'
         : `Workflow Specification (${steps.length} Steps, ${bottlenecks.length} Bottlenecks)`,
-      text: structuredText,
+      note: structuredText,
     });
 
     // 2. Pre-fill inquiry notes if empty or append

@@ -38,7 +38,14 @@ export default function AuditLauncherCard() {
         </div>
 
         <p className="text-xs text-[#23282A]/75 font-sans leading-relaxed">
-          Evaluates website hierarchy, conversion friction, and intake systems across Message, Paths, Proof, and Intake.
+          Evaluates live website hierarchy, conversion friction, and intake systems across Message, Paths, Proof, and Intake. Companion to our{' '}
+          <a
+            href="/lab/design-intelligence"
+            className="font-mono text-[11px] font-bold text-[#17504A] underline hover:text-[#23282A]"
+          >
+            Design Intelligence
+          </a>{' '}
+          token-extraction and 85-node specimen study.
         </p>
 
         {/* Mini Preview Bar */}

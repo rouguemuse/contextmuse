@@ -10,6 +10,7 @@ const defaultState = {
   inquiry: {
     name: '',
     email: '',
+    company: '',
     projectType: '',
     budget: '',
     notes: '',
@@ -112,7 +113,7 @@ export function BriefProvider({ children }) {
         {
           id: `wb-${Date.now()}`,
           title: clip.title || 'Whiteboard Snapshot',
-          note: clip.note || '',
+          note: clip.note || clip.text || '',
           dataUrl: clip.dataUrl || null,
           source: clip.source || 'whiteboard',
           pagePath: clip.pagePath || null,
@@ -152,11 +153,24 @@ export function BriefProvider({ children }) {
     }));
   }, []);
 
-  const updateInquiry = useCallback((patch) => {
-    setBrief((prev) => ({
-      ...prev,
-      inquiry: { ...prev.inquiry, ...patch },
-    }));
+  const updateInquiry = useCallback((patchOrKey, maybeValueOrUpdater) => {
+    setBrief((prev) => {
+      if (typeof patchOrKey === 'string') {
+        const nextVal =
+          typeof maybeValueOrUpdater === 'function'
+            ? maybeValueOrUpdater(prev.inquiry[patchOrKey])
+            : maybeValueOrUpdater;
+        return {
+          ...prev,
+          inquiry: { ...prev.inquiry, [patchOrKey]: nextVal },
+        };
+      }
+      if (!patchOrKey || typeof patchOrKey !== 'object') return prev;
+      return {
+        ...prev,
+        inquiry: { ...prev.inquiry, ...patchOrKey },
+      };
+    });
   }, []);
 
   const clearBrief = useCallback(() => {

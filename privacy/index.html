@@ -37,43 +37,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=4.4">
+    <link rel="stylesheet" href="/assets/css/v2-shell.css">
 
     <style>
         .legal-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 120px 2rem 80px;
+            flex: 1;
+            width: 100%;
+            max-width: 840px;
+            margin: 2.5rem auto 4rem;
+            padding: 2.5rem 2rem;
+            background-color: #FAF8F5;
+            border: 1px solid rgba(35, 40, 42, 0.15);
+            border-top: 4px solid #17504A;
+            box-sizing: border-box;
         }
         .legal-header h1 {
-            font-family: var(--font-serif);
-            font-size: 2.8rem;
-            color: var(--text-primary);
+            font-family: var(--cm-v2-font-display);
+            font-size: 2.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: #23282A;
+            margin-top: 0;
             margin-bottom: 0.5rem;
         }
         .legal-meta {
-            font-family: var(--font-mono);
+            font-family: var(--cm-v2-font-mono);
             font-size: 11px;
-            color: var(--text-secondary);
+            color: rgba(35, 40, 42, 0.65);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--border-light);
+            letter-spacing: 0.08em;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(35, 40, 42, 0.12);
             padding-bottom: 1rem;
         }
         .legal-content h2 {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            color: var(--text-primary);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
+            font-family: var(--cm-v2-font-display);
+            font-size: 1.35rem;
+            color: #23282A;
+            margin-top: 2.25rem;
+            margin-bottom: 0.85rem;
+            font-weight: 700;
         }
         .legal-content p, .legal-content li {
-            font-family: var(--font-sans);
+            font-family: var(--cm-v2-font-sans);
             font-size: 14.5px;
-            line-height: 1.65;
-            color: var(--text-secondary);
-            margin-bottom: 1.25rem;
+            line-height: 1.68;
+            color: rgba(35, 40, 42, 0.85);
+            margin-bottom: 1.15rem;
         }
         .legal-content ul {
             padding-left: 1.5rem;
@@ -97,55 +108,24 @@
 }
     </script>
 </head>
-<body>
+<body class="cm-v2-shell-page">
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navbar -->
-    <!-- Navbar -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="container nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
+    <header class="cm-v2-header" role="banner">
+        <div class="cm-v2-header-inner">
+            <a href="/" class="cm-v2-brand">
                 <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
                 <span>Context &amp; Muse</span>
             </a>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <div class="nav-links" id="primary-nav-links">
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
-                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
-                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
-                </details>
-                <a href="/creative/" class="nav-link">Creative</a>
-                <a href="/about/" class="nav-link">About</a>
-                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
-            </div>
+            <nav class="cm-v2-room-links" aria-label="Four Rooms Navigation">
+                <a href="/work/" class="cm-v2-room-link"><span class="cm-v2-room-num">01</span> <span>The Work</span></a>
+                <a href="/build/" class="cm-v2-room-link"><span class="cm-v2-room-num">02</span> <span>Custom Builds</span></a>
+                <a href="/lab/" class="cm-v2-room-link"><span class="cm-v2-room-num">03</span> <span>The Lab</span></a>
+                <a href="/method/" class="cm-v2-room-link"><span class="cm-v2-room-num">04</span> <span>The Method</span></a>
+                <a href="/build/" class="cm-v2-cta">Start a Project</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <main id="main-content" class="legal-container">
         <div class="legal-header">
@@ -233,45 +213,24 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <!-- ── FOOTER ── -->
-        <footer class="site-footer" role="contentinfo">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="/" class="logo">
-                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
-                    <span>Context &amp; Muse</span>
-                </a>
-                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
-                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
+    <footer class="cm-v2-footer" role="contentinfo">
+        <div class="cm-v2-footer-inner">
+            <div class="cm-v2-footer-left">
+                <strong style="color: #EDE9E0;">Context &amp; Muse</strong>
+                <span>&bull;</span>
+                <span>&copy; 2026 Context &amp; Muse</span>
+                <span>&bull;</span>
+                <a href="mailto:jayme@contextmuse.com" class="cm-v2-mail">jayme@contextmuse.com</a>
             </div>
-            <div class="footer-links-grid">
-                <div class="footer-col">
-                    <div class="footer-col-title">Services</div>
-                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
-                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
-                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
-                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
-                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Selected Work</div>
-                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
-                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
-                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
-                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
-                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">About</div>
-                    <a href="/about/" class="footer-link">About Jayme</a>
-                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/terms/" class="footer-link">Terms of Service</a>
-                </div>
+            <div class="cm-v2-footer-right">
+                <a href="/work/">The Work</a>
+                <a href="/build/">Custom Builds</a>
+                <a href="/lab/">The Lab</a>
+                <a href="/method/">The Method</a>
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/terms/">Terms of Service</a>
             </div>
         </div>
     </footer>
-    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

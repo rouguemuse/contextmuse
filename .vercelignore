@@ -1,4 +1,21 @@
 # Exclude unapproved prototypes, internal sandboxes, hidden sourcemaps, and non-public build/source folders from deployed output
+.env
+.env.*
+*.db
+*.sqlite
+*.sqlite3
+*.log
+private/
+records/
+evidence/
+legal/
+message-analysis/
+reports/
+backups/
+drafts/
+exports/
+data/
+scratch/
 dealsignal/
 star-gift/
 istar-map/

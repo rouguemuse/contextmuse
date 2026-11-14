@@ -1,5 +1,30 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  ArrowLeft,
+  ArrowRight,
+  Sliders,
+  Layers,
+  CheckCircle2,
+  Eye,
+  Compass,
+  Sparkles,
+  ChevronDown,
+  ChevronUp,
+  Terminal,
+  Ruler,
+  Activity,
+  ExternalLink,
+  Maximize2,
+  X,
+  Columns,
+  ShieldCheck,
+  BookOpen,
+  Scale,
+  Cpu,
+  Search,
+} from 'lucide-react';
+import { useBrief } from '@/lib/BriefContext';
 import SiteHeader from '@/components/site/SiteHeader';
 import SiteFooter from '@/components/site/SiteFooter';
 import PageAnnotationOverlay from '@/components/site/PageAnnotationOverlay';
@@ -8,469 +33,505 @@ import {
   DESIGN_INTELLIGENCE_STUDIES,
   STUDY_BY_ID,
 } from '@/components/lab/designIntelligenceStudies';
-import { useBrief } from '@/lib/BriefContext';
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  CheckCircle2,
-  ChevronDown,
-  ChevronUp,
-  Columns,
-  Eye,
-  FileCode2,
-  Layers,
-  Maximize2,
-  Monitor,
-  MoveHorizontal,
-  Play,
-  Ruler,
-  Scale,
-  Smartphone,
-  Sparkles,
-  X,
-} from 'lucide-react';
 
-const MAIN_VIEWPORT_MODES = [
+/**
+ * Curated Cross-System Architectural Comparison (Section 04)
+ * Reconciled against design-intelligence/references/{locomotive,linear,stripe}.md
+ * and docs/design-intelligence-final-pass-corrected-summary.md
+ */
+const CROSS_SYSTEM_COMPARISON = [
   {
-    id: 'desktop',
-    label: 'Desktop',
-    fullLabel: 'Desktop (1440 × 900)',
-    icon: Monitor,
-    beforeSrc: '/assets/images/design-intelligence/exp01_before_desktop.png',
-    afterSrc: '/assets/images/design-intelligence/exp01_after_desktop.png',
-    naturalWidth: 2880,
-    naturalHeight: 1800,
-    aspectClass: 'aspect-[1440/900]',
-    maxWidthClass: 'max-w-[1040px]',
-    viewportText: '1440 × 900 CSS px (2880 × 1800 @ 2x DPR)',
-    plumbLinePct: (40 / 1440) * 100,
-    beforePlumbHeroPct: (48 / 1440) * 100,
+    dimension: 'Primary Philosophy',
+    contextMuse: 'Architectural Four-Room Editorial & Diagnostic Proof',
+    plaidis: 'Swiss Editorial Grid & Asymmetric Quintic Choreography',
+    linear: 'Luminance-Stepped Obsidian Surfaces & High-Density Precision',
+    stripe: 'Scale-Over-Weight Light Display Type & Navy-Tinted Elevation',
   },
   {
-    id: 'mobile',
-    label: 'Mobile',
-    fullLabel: 'Mobile (390 × 844)',
-    icon: Smartphone,
-    beforeSrc: '/assets/images/design-intelligence/exp01_before_mobile.png',
-    afterSrc: '/assets/images/design-intelligence/exp01_after_mobile.png',
-    naturalWidth: 780,
-    naturalHeight: 1688,
-    aspectClass: 'aspect-[390/844]',
-    maxWidthClass: 'max-w-[300px]',
-    viewportText: '390 × 844 CSS px (780 × 1688 @ 2x DPR)',
-    plumbLinePct: (20 / 390) * 100,
-    beforePlumbHeroPct: (24 / 390) * 100,
+    dimension: 'Surface Polarity & Canvas',
+    contextMuse: '#23282A Charcoal / #EDE9E0 Bone / #D9A62E Gold / #17504A Teal',
+    plaidis: '#000000 & #FFFFFF High-Contrast + #312DFB (--menu-color-bg)',
+    linear: '#08090A → #0F1011 → #141516 → #191A1B (Dark-First Stepped)',
+    stripe: '#FFFFFF & #F8FAFD Daylight + #0D1738 Enterprise Dark Mode',
   },
-];
-
-const INSPECTOR_MODES = [
-  ...MAIN_VIEWPORT_MODES,
   {
-    id: 'mobile-full',
-    label: 'Mobile Full-Page',
-    fullLabel: 'Mobile Full-Page (390 × 1824 / 1901)',
-    icon: Columns,
-    beforeSrc: '/assets/images/design-intelligence/exp01_before_mobile_full.png',
-    afterSrc: '/assets/images/design-intelligence/exp01_after_mobile_full.png',
-    naturalWidth: 780,
-    naturalHeight: 3802,
-    isFullPageScroll: true,
-    viewportText: '390px CSS width @ 2x DPR (780×3648 Before / 780×3802 After)',
-    plumbLinePct: (20 / 390) * 100,
-    beforePlumbHeroPct: (24 / 390) * 100,
+    dimension: 'Display & UI Typography',
+    contextMuse: 'Chivo (900 uppercase display) + Inter body + JetBrains Mono',
+    plaidis: 'LocomotiveNew (70–110px, wt 400) + HelveticaNowDisplay (15px/26px)',
+    linear: 'Inter Variable ("cv01","ss03", fractional wt 510/590) + Berkeley Mono',
+    stripe: 'Söhne Variable (sohne-var "ss01", light wt 300 headings & body)',
+  },
+  {
+    dimension: 'Desktop Grid & Outer Margin',
+    contextMuse: '12-Col / 4-Room Split · 40px outer plumb line (0px desktop drift)',
+    plaidis: '12 × 95px cols, 20px gutter, 40px outer margin (1360px container)',
+    linear: '12 cols, 1024px max-width, 46px outer + 32px inset (x = 78px H1)',
+    stripe: '1264px max-width (--hds-space-layout-content-maxWidth), x = 104–208px',
+  },
+  {
+    dimension: 'Elevation & Border Mechanism',
+    contextMuse: '1px–2px structural rules (#23282A/15 & #EDE9E0/15), zero-radius framing',
+    plaidis: '2px solid desktop / 1px mobile overlines, 0px radius, zero drop shadow',
+    linear: '--shadow-low..high aliased to 0px; 1px rgba(255,255,255,0.08) hairlines',
+    stripe: '6px bento radius, 1px #E5EDF5 border + 0 16px 32px rgba(50,50,93,0.12)',
+  },
+  {
+    dimension: 'Primary CTA Geometry',
+    contextMuse: '44px–48px height, 0px radius, #D9A62E gold or #EDE9E0 fill',
+    plaidis: '325px × 48px (.c-button.-full), 2px solid currentColor, 0px radius',
+    linear: '32px height, 0 12px pad, 9999px pill, #E5E5E6 fill / #08090A ink',
+    stripe: '48px desktop / 44px mobile, 4px radius, #533AFD (--hds-color-core-brand-600)',
+  },
+  {
+    dimension: 'Signature Motion Curve',
+    contextMuse: '450ms enter / 200ms leave · cubic-bezier(0.23, 1, 0.32, 1)',
+    plaidis: '450ms enter / 200ms leave · cubic-bezier(0.23, 1, 0.32, 1) (Ease-Out Quint)',
+    linear: '100ms quick / 250ms regular · cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+    stripe: '300ms cubic-bezier(0.25, 1, 0.5, 1) button & card elevation transitions',
   },
 ];
 
-const ALL_PRELOAD_PAIRS = [
-  [
-    '/assets/images/design-intelligence/exp01_before_desktop.png',
-    '/assets/images/design-intelligence/exp01_after_desktop.png',
-  ],
-  [
-    '/assets/images/design-intelligence/exp01_before_mobile.png',
-    '/assets/images/design-intelligence/exp01_after_mobile.png',
-  ],
-  [
-    '/assets/images/design-intelligence/exp01_before_mobile_full.png',
-    '/assets/images/design-intelligence/exp01_after_mobile_full.png',
-  ],
-  [
-    '/assets/images/design-intelligence/exp01_after_desktop_hover_build.png',
-    '/assets/images/design-intelligence/exp01_after_desktop_hover_build.png',
-  ],
-  [
-    '/assets/images/design-intelligence/linear_ref_desktop_above_fold.png',
-    '/assets/images/design-intelligence/stripe_ref_desktop_above_fold.png',
-  ],
-  [
-    '/assets/images/design-intelligence/linear_ref_mobile_above_fold.png',
-    '/assets/images/design-intelligence/stripe_ref_mobile_above_fold.png',
-  ],
+/**
+ * Three Reference Philosophy Cards (Section 02)
+ * Visually echoes the editorial composition while grounding every claim in Class A/B/C/D evidence.
+ */
+const SYSTEM_PHILOSOPHY_CARDS = [
+  {
+    id: 'plaidis',
+    studyNum: 'STUDY 01',
+    name: 'Plaidis / Locomotive',
+    domain: 'locomotive.ca/en',
+    pillarTag: 'STRUCTURE / MOTION',
+    cardBg: '#EDE9E0',
+    cardText: '#23282A',
+    cardMuted: 'rgba(35, 40, 42, 0.72)',
+    cardBorder: 'rgba(35, 40, 42, 0.18)',
+    accentBar: '#23282A',
+    badgeBg: 'rgba(35, 40, 42, 0.08)',
+    thesis:
+      'Exposes the architectural grid through 2px structural overlines, zero-radius framing, and asymmetric quintic motion.',
+    measuredTokens: [
+      { label: 'Grid & Margin (Class A/B)', value: '12 × 95px cols · 20px gutter · 40px desktop / 20px mobile margin' },
+      { label: 'Type Scale (Class A/B)', value: 'LocomotiveNew 70px/110px (wt 400) + HelveticaNow 26px UI / 15px base' },
+      { label: 'Choreography (Class A)', value: '450ms enter / 200ms leave · cubic-bezier(0.23, 1, 0.32, 1)' },
+    ],
+    inferredPattern:
+      'Class C Inferred Rule: Making hover entry 2.25× longer than exit (450ms vs 200ms) gives initiation physical weight while release snaps back without lag.',
+    adaptationSummary:
+      'Class D Adaptation: Transferred the 40px plumb line, 2px overlines, and 450ms/200ms Ease-Out Quint curve into Context & Muse while retaining Chivo, JetBrains Mono, and the #23282A / #EDE9E0 / #D9A62E / #17504A palette.',
+  },
+  {
+    id: 'linear',
+    studyNum: 'STUDY 02',
+    name: 'Linear',
+    domain: 'linear.app',
+    pillarTag: 'DENSITY / SURFACES',
+    cardBg: '#08090A',
+    cardText: '#F7F8F8',
+    cardMuted: '#8A8F98',
+    cardBorder: 'rgba(255, 255, 255, 0.12)',
+    accentBar: '#5E6AD2',
+    badgeBg: 'rgba(255, 255, 255, 0.07)',
+    thesis:
+      'Replaces dark-mode drop shadows with stepped obsidian luminance and fractional variable-font weights that prevent text halation.',
+    measuredTokens: [
+      { label: 'Surface Stack (Class A)', value: '#08090A → #0F1011 → #141516 → #191A1B + 1px rgba(255,255,255,0.08)' },
+      { label: 'Typography (Class A/B)', value: 'Inter Variable ("cv01","ss03") wt 510/590 · 13px–15px UI · -0.022em H1' },
+      { label: 'Shadow Aliasing (Class A)', value: '--shadow-tiny..high aliased to 0px transparent; 32px #E5E5E6 pill CTA' },
+    ],
+    inferredPattern:
+      'Class C Inferred Rule: Standard 600/700 bold weights bloom on #08090A canvases; custom 510/590 axis weights preserve crisp glyph apertures at 13px–15px density.',
+    adaptationSummary:
+      'Class D Adaptation: Scaled the 64px marketing H1 to 29px inside the 1040×650 specimen stage and held the outer inset at 40px/20px so split-slider plumb lines remain exact.',
+  },
+  {
+    id: 'stripe',
+    studyNum: 'STUDY 03',
+    name: 'Stripe',
+    domain: 'stripe.com',
+    pillarTag: 'LIGHT / HIERARCHY',
+    cardBg: '#FFFFFF',
+    cardText: '#061B31',
+    cardMuted: '#50617A',
+    cardBorder: '#E5EDF5',
+    accentBar: '#533AFD',
+    badgeBg: '#F8FAFD',
+    thesis:
+      'Builds high-key institutional clarity through light 300-weight variable display type, deep navy ink contrast, and indigo-tinted elevation.',
+    measuredTokens: [
+      { label: 'HDS Palette (Class A)', value: '#FFFFFF & #F8FAFD canvas · #061B31 ink (17.37:1) · #533AFD brand-600' },
+      { label: 'Light Display (Class A/B)', value: 'sohne-var ("ss01") weight 300 across 48px H1, 32px H2, 26px H3 & 16px body' },
+      { label: 'Tinted Depth (Class A/B)', value: '0px 16px 32px rgba(50,50,93,0.12) · 4px button / 6px bento card radii' },
+    ],
+    inferredPattern:
+      'Class C Inferred Rule: Setting 48px–32px headings at weight 300 avoids heavy sans-serif congestion, relying on scale and #061B31 vs #64748D ink contrast for hierarchy.',
+    adaptationSummary:
+      'Class D Adaptation: Kept <h3> and <p> stacked (rather than .hds-heading--inline) to preserve 85-node DOM parity, and paired #F8FAFD upper cards with #0D1738 dark navy on the bottom ledger.',
+  },
 ];
 
+/**
+ * Context & Muse Production Refinements (Section 05)
+ */
 const THREE_FINDINGS = [
   {
     num: '01',
-    title: 'Structural alignment',
-    metric: '24px → 0px left-edge drift',
-    body: 'On the baseline entrance, horizontal padding stepped inward and outward between the header (24px), hero headline and CTAs (48px), and footer (24px), while 4px rounded buttons clashed with the sharp 2×2 room grid. Standardizing outer container margins and 0px border-2 CTA geometry locked the logo, headline, primary CTA, and footer onto a single 40px desktop (20px mobile) plumb line with 0px variance.',
+    category: 'Structural Alignment',
+    metric: '24px → 0px',
+    metricLabel: 'Desktop Left-Edge Drift',
+    whatWasMeasured:
+      'On desktop (1440×900), bounding-box inspection of the baseline Context & Muse homepage (52e179d) revealed that the header brand mark (x = 40px) and the hero H1 / primary CTA (x = 64px) sat on two different vertical axes—creating a 24px horizontal step.',
+    whatChanged:
+      'Established a shared --grid-margin token (40px desktop, 20px mobile) and unified container padding across SiteHeader, HeroPanel, and SiteFooter.',
+    whatImproved:
+      'All four primary desktop structural anchors (logo, hero H1, primary CTA, and footer copyright) now lock to x = 40px with 0px desktop drift. On mobile (390×844), header and hero align to x = 20px while room tiles preserve 24px (p-6) internal touch cushioning.',
+    classification: 'Class B Measured → Class D Production Transfer',
   },
   {
     num: '02',
-    title: 'Typography and visual consistency',
-    metric: 'Fluid scale & on-palette tokens',
-    body: 'Fixed-breakpoint room headings, thin 1px dividers, and an off-palette Tailwind red badge (02 Quoting in Room 02) weakened hierarchy across the four quadrants. Introducing fluid clamp(1.65rem, 2.15vw, 2.125rem) display sizing, 2px structural overlines, and ContextMuse #D9A62E mustard tokens unified the grid while reverting experimental line-width rules that caused a 3-line mobile orphan.',
+    category: 'Typography & Visual Consistency',
+    metric: '2px Overlines & #D9A62E',
+    metricLabel: 'Scale & Palette Discipline',
+    whatWasMeasured:
+      'Hero copy jumped abruptly between breakpoints, room dividers used low-contrast 1px borders without structural overlines, and the 04 / METHOD room introduced an off-palette emerald (#10B981) hover state.',
+    whatChanged:
+      'Introduced a fluid display scale (clamp(2.25rem, 3.8vw, 3.75rem) at 1.05 line-height), added 2px solid structural top overlines on room headers, and replaced #10B981 with Context & Muse’s #D9A62E muted gold.',
+    whatImproved:
+      'Clearer hierarchy between Chivo display statements and JetBrains Mono index labels, stronger quadrant separation, and strict adherence to the 4-color Context & Muse brand palette (#23282A, #EDE9E0, #D9A62E, #17504A).',
+    classification: 'Class A/B Measured → Class D Production Transfer',
   },
   {
     num: '03',
-    title: 'Interaction refinement',
-    metric: '450ms enter / 200ms leave',
-    body: 'Room tiles previously used a uniform 300ms transition with a brightness(1.05) filter that washed out each room’s pigment on hover. Removing the brightness filter and applying asymmetric Ease-Out Quint timing (450ms entry, 200ms release) preserved exact surface saturation while directing motion into the internal room motifs, directional arrows, and 3px bottom rules.',
+    category: 'Interaction Choreography',
+    metric: '450ms / 200ms',
+    metricLabel: 'Asymmetric Enter / Leave',
+    whatWasMeasured:
+      'Room tiles previously used a uniform 300ms transition paired with filter: brightness(1.05) on hover, which washed out the deep charcoal (#23282A) and forest (#17504A) pigments equally on entry and exit.',
+    whatChanged:
+      'Removed the brightness filter and implemented Plaidis / Locomotive’s asymmetric Ease-Out Quint choreography: 450ms on pointer enter and 200ms on pointer leave using cubic-bezier(0.23, 1, 0.32, 1).',
+    whatImproved:
+      'Hovering a room quadrant initiates with deliberate, weighted deceleration (450ms) and releases crisply (200ms) when moving across the grid—preserving 100% pigment fidelity across all four rooms.',
+    classification: 'Class A Measured → Class D Production Transfer',
   },
 ];
 
+/**
+ * Context & Muse Preserved Brand Identity Tokens (Section 05)
+ */
+const PRESERVED_BRAND_SWATCHES = [
+  {
+    hex: '#23282A',
+    name: 'Architectural Charcoal',
+    role: 'Primary Hero & 01 / WORK Room Surface',
+    textHex: '#EDE9E0',
+    contrast: '11.9:1 AAA',
+  },
+  {
+    hex: '#EDE9E0',
+    name: 'Warm Editorial Bone',
+    role: 'Case Study Canvas & 02 / BUILD Room Surface',
+    textHex: '#23282A',
+    contrast: '11.9:1 AAA',
+  },
+  {
+    hex: '#D9A62E',
+    name: 'Muted Signal Gold',
+    role: '03 / LAB Room Surface & Primary Interactive Accent',
+    textHex: '#141617',
+    contrast: '8.4:1 AAA',
+  },
+  {
+    hex: '#17504A',
+    name: 'Deep Forest Teal',
+    role: '04 / METHOD Room Surface & Structural Counterweight',
+    textHex: '#EDE9E0',
+    contrast: '7.8:1 AAA',
+  },
+];
+
+/**
+ * Five-Stage Methodology Pipeline (Section 01)
+ */
 const FIVE_STAGES = [
   {
-    step: '01',
-    name: 'Reference',
-    summary: 'Select high-craft specimens (Plaidis/Locomotive, Linear, Stripe) to study structural proportions, luminance, and choreography.',
+    stage: '01',
+    name: 'Reference Selection',
+    desc: 'Select three contrasting production systems—Plaidis/Locomotive (editorial structure & motion), Linear (stepped dark-mode density), and Stripe (high-key light display & dimensional elevation).',
   },
   {
-    step: '02',
-    name: 'Extraction',
-    summary: 'Query declared CSS variables (--hds-*, --color-*) and computed DOM styles into verifiable reference dossiers.',
+    stage: '02',
+    name: 'CSSOM & DOM Extraction',
+    desc: 'Inspect accessible same-origin stylesheets and computed DOM nodes at 1440×900 and 390×844 (@ 2x DPR) using getComputedStyle() and getBoundingClientRect().',
   },
   {
-    step: '03',
-    name: 'Evaluation',
-    summary: 'Transfer each extracted token system onto an identical neutral specimen to isolate hierarchy, contrast, and density shifts.',
+    stage: '03',
+    name: 'Controlled Specimen Test',
+    desc: 'Apply each extracted token system to an identical 85-node neutral interface specimen so every visual difference is attributable to tokens rather than changing copy or markup.',
   },
   {
-    step: '04',
-    name: 'Refinement',
-    summary: 'Apply targeted architectural improvements on an isolated branch (195921a) and revert rules that degrade mobile wrapping.',
+    stage: '04',
+    name: 'Selective Production Transfer',
+    desc: 'Translate verified structural alignment (40px plumb line), 2px overlines, and asymmetric motion curves (450ms/200ms) into Context & Muse without importing external brand palettes.',
   },
   {
-    step: '05',
-    name: 'Verification',
-    summary: 'Confirm WCAG 2.1 luminance ratios, 0px plumb-line variance in headless Chromium, and run the 11-check non-regression suite.',
+    stage: '05',
+    name: 'Technical Verification',
+    desc: 'Run deterministic Playwright checks for plumb-line coordinates (0px desktop drift), 85/85 DOM parity, 18/18 WCAG 2.1 contrast ratios, and 11/11 route non-regression gates.',
+  },
+];
+
+/**
+ * Technical Verification Pillars (Section 06)
+ */
+const VERIFICATION_PILLARS = [
+  {
+    metric: '0px',
+    unit: 'Desktop Plumb Drift',
+    scope: '1440×900 Homepage Alignment Check',
+    detail:
+      'Verified x = 40px left-edge alignment across SiteHeader logo, HeroPanel H1, primary CTA, and SiteFooter (reduced from 24px drift in 52e179d). On mobile (390×844), header and hero align at x = 20px while room tiles retain 24px (p-6) internal padding.',
+    status: 'VERIFIED · DESKTOP & MOBILE LOGGED',
+  },
+  {
+    metric: '85 / 85',
+    unit: 'Identical DOM Nodes',
+    scope: '4 Specimen Variants × 2 Viewports',
+    detail:
+      'Every specimen variant (neutral, plaidis, linear, stripe) renders the exact same 85 HTML elements (1 section, 38 div, 32 span, 4 p, 4 h3, 4 button, 1 header, 1 footer) and identical textContent across desktop and mobile.',
+    status: 'VERIFIED · ZERO MARKUP DRIFT',
+  },
+  {
+    metric: '18 / 18',
+    unit: 'WCAG 2.1 Contrast Swatches',
+    scope: '6 Swatches × 3 Reference Studies',
+    detail:
+      'Computed relative luminance ratios (L1 + 0.05) / (L2 + 0.05) verified against rendered RGB styles across all 18 token pairs, including explicit documentation of Linear’s muted #62666D (3.45:1) quaternary telemetry boundary.',
+    status: 'VERIFIED · DETERMINISTIC LUMINANCE',
+  },
+  {
+    metric: '11 / 11',
+    unit: 'Functional Smoke Gates',
+    scope: 'Multi-Route & Interactive Control Suite',
+    detail:
+      'Automated headless browser verification across /, /work, /build, /lab, /method, /website-system-check/, and /lab/design-intelligence at 390×844, 768×1024, 1440×900, and 1920×1080 with zero console or page errors.',
+    status: 'VERIFIED · 11/11 GATES PASSING',
   },
 ];
 
 const SMOKE_CHECKS = [
-  {
-    num: '01',
-    name: 'Homepage 4-Quadrant Entrance & Clean Header',
-    status: 'PASS',
-    covered: 'Verified 4 room tiles (work, build, lab, method), no duplicated navbar, and Four Rooms control active.',
-  },
-  {
-    num: '02',
-    name: 'Primary CTA Room Entry ("Explore the Work" → /work)',
-    status: 'PASS',
-    covered: 'Verified clicking primary CTA transitions to /work without duplicated RoomRail and renders flagship portfolio.',
-  },
-  {
-    num: '03',
-    name: 'Logo Home Anchor, RoomTile Entry & Four Rooms Switcher',
-    status: 'PASS',
-    covered: 'Verified switching to /build via popover, returning to / via logo, entering /lab via tile, and returning via popover.',
-  },
-  {
-    num: '04',
-    name: 'Trailing-Slash Path Normalization (/work/, /build/, /lab/, /method/)',
-    status: 'PASS',
-    covered: 'Verified direct deep-link navigation with trailing slashes resolves active room state cleanly.',
-  },
-  {
-    num: '05',
-    name: 'Room 02 (/build) Whiteboard & Template Blueprints Intact',
-    status: 'PASS',
-    covered: 'Verified Custom Builds workspace and progressive-disclosure starter blueprints render without error.',
-  },
-  {
-    num: '06',
-    name: 'Room 03 (/lab) Website Audit & Workbench Tools Intact',
-    status: 'PASS',
-    covered: 'Verified GenSort Studio spotlight, Contrast tool, and TableDocket utilities mount cleanly.',
-  },
-  {
-    num: '07',
-    name: 'Room 04 (/method) Commercial Pricing & Founder Identity Intact',
-    status: 'PASS',
-    covered: 'Verified $395 / From $2,500 / From $6,500 pricing tiers and Jayme Volstad founder attribution.',
-  },
-  {
-    num: '08',
-    name: 'GenSort Discoverability (Acquisition Modal + /cxm_gensort/index.html)',
-    status: 'PASS',
-    covered: 'Verified footer Acquisition modal and standalone /cxm_gensort/index.html application HTTP 200.',
-  },
-  {
-    num: '09',
-    name: 'BriefDrawer Categories, Heading & Direct POST to /api/lead/',
-    status: 'PASS',
-    covered: 'Verified 5 inquiry categories, "What are you looking to create?" heading, and 200 OK POST to /api/lead/.',
-  },
-  {
-    num: '10',
-    name: 'Mobile Viewport (390×844) Zero Horizontal Overflow & Zero Broken Assets',
-    status: 'PASS',
-    covered: 'Verified scrollWidth === 390 and 0 broken images across /, /work, /build, /lab, /method, and /cxm_gensort/.',
-  },
-  {
-    num: '11',
-    name: 'Zero Runtime Console or Page Errors Across Entire Suite',
-    status: 'PASS',
-    covered: 'Verified consoleErrors = 0 and pageErrors = 0 across all desktop and mobile transitions.',
-  },
+  { id: '01', check: 'Entrance quad layout & 4-room CSS grid geometry (1440×900 & 390×844)', status: 'PASS' },
+  { id: '02', check: 'Desktop x = 40px plumb-line alignment (Header Logo, Hero H1, Primary CTA, Footer)', status: 'PASS' },
+  { id: '03', check: 'Mobile x = 20px outer margin alignment (Header Logo, Hero H1, Primary CTA)', status: 'PASS' },
+  { id: '04', check: '85-node DOM & textContent parity across Neutral, Plaidis, Linear & Stripe specimens', status: 'PASS' },
+  { id: '05', check: '18/18 WCAG 2.1 relative-luminance contrast swatches verified against computed RGB', status: 'PASS' },
+  { id: '06', check: 'Interactive comparison mode buttons (Original / Split / Transformed) & keyboard slider', status: 'PASS' },
+  { id: '07', check: 'Detail Inspector modal open, Tab focus trap, Escape dismissal & trigger focus restore', status: 'PASS' },
+  { id: '08', check: 'Primary route navigation (/ → /work, /build, /lab, /method, /website-system-check/)', status: 'PASS' },
+  { id: '09', check: 'Project Brief drawer open/close state & pre-filled context handoff', status: 'PASS' },
+  { id: '10', check: 'Responsive layout integrity across 390×844, 768×1024, 1440×900 & 1920×1080 (0px overflow)', status: 'PASS' },
+  { id: '11', check: 'Zero runtime console.error or uncaught pageerror exceptions across all routes', status: 'PASS' },
 ];
 
-// Cache decoded image status across mounts so mode switches are instantaneous
-const decodedUrlCache = new Set();
-
-function preloadAndDecodePair(beforeSrc, afterSrc) {
-  if (decodedUrlCache.has(beforeSrc) && decodedUrlCache.has(afterSrc)) {
-    return Promise.resolve();
-  }
-  const decodeOne = (src) =>
-    new Promise((resolve) => {
-      if (!src || decodedUrlCache.has(src)) {
-        resolve();
-        return;
-      }
-      const img = new Image();
-      img.decoding = 'async';
-      img.src = src;
-      const done = () => {
-        decodedUrlCache.add(src);
-        resolve();
-      };
-      if (img.complete && img.naturalWidth > 0) {
-        if (typeof img.decode === 'function') {
-          img.decode().then(done).catch(done);
-        } else {
-          done();
-        }
-      } else {
-        img.onload = () => {
-          if (typeof img.decode === 'function') {
-            img.decode().then(done).catch(done);
-          } else {
-            done();
-          }
-        };
-        img.onerror = done;
-      }
-    });
-
-  return Promise.all([decodeOne(beforeSrc), decodeOne(afterSrc)]).then(() => undefined);
-}
+const CLASSIFICATION_BADGE_STYLES = {
+  A: 'bg-[#17504A]/15 text-[#17504A] border-[#17504A]/35',
+  B: 'bg-[#23282A]/10 text-[#23282A] border-[#23282A]/30',
+  C: 'bg-[#9A6F0B]/15 text-[#7A5605] border-[#9A6F0B]/35',
+  D: 'bg-[#533AFD]/12 text-[#3B27BA] border-[#533AFD]/30',
+};
 
 export default function DesignIntelligenceCaseStudy() {
-  const { openBrief, updateInquiry } = useBrief();
+  const { openBrief } = useBrief();
 
-  // Active Study State: 'plaidis' | 'linear' | 'stripe'
+  // Active study selector ('plaidis' | 'linear' | 'stripe')
   const [activeStudyId, setActiveStudyId] = useState('plaidis');
+  // For Study 01 ('plaidis'), allow switching between the shared 85-node neutral specimen
+  // and the preserved ContextMuse homepage before/after screenshot comparison (52e179d → 195921a)
+  const [study01Surface, setStudy01Surface] = useState('specimen'); // 'specimen' | 'entrance'
 
-  // Comparison Surface Mode:
-  // - 'specimen': Shared Neutral Specimen vs. Token-Applied Specimen (works identically across Plaidis, Linear, Stripe)
-  // - 'contextmuse-home': Original ContextMuse 52e179d → 195921a screenshot slider (available on Study 01 Plaidis/Locomotive)
-  const [comparisonSurface, setComparisonSurface] = useState('specimen');
+  // Comparison stage controls
+  const [activeViewport, setActiveViewport] = useState('desktop'); // 'desktop' | 'mobile'
+  const [comparisonMode, setComparisonMode] = useState('split'); // 'original' | 'split' | 'transformed'
+  const [sliderPercent, setSliderPercent] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
 
-  // Main stage state (Desktop / Mobile — clean, stable, zero-glitch)
-  const [viewportModeId, setViewportModeId] = useState('desktop');
-  const [pendingModeId, setPendingModeId] = useState(null);
-  const [sliderPos, setSliderPos] = useState(50);
+  // Interactive hover reproduction sandbox (Section 05)
+  const [hoverReproductionMode, setHoverReproductionMode] = useState('after'); // 'before' | 'after' | 'captured'
+  const [hoveringRoom, setHoveringRoom] = useState(false);
 
-  // Detail Inspector modal state
-  const [inspectorOpen, setInspectorOpen] = useState(false);
-  const [inspectorModeId, setInspectorModeId] = useState('desktop');
-  const [inspectorView, setInspectorView] = useState('side-by-side'); // 'side-by-side' | 'slider' | 'reference' | 'hover'
-  const [inspectorZoom, setInspectorZoom] = useState(1);
-  const [showPlumbGuides, setShowPlumbGuides] = useState(false);
-
-  // Optional Research & Technical Evidence disclosure
+  // Progressive disclosure toggles
+  const [questionsOpen, setQuestionsOpen] = useState(false);
   const [evidenceOpen, setEvidenceOpen] = useState(false);
-  const [simulatingHover, setSimulatingHover] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
 
-  const activeStageRef = useRef(null);
-  const inspectorStageRef = useRef(null);
-  const inspectorDialogRef = useRef(null);
-  const inspectorCloseBtnRef = useRef(null);
+  // Detail Inspector modal
+  const [inspectorOpen, setInspectorOpen] = useState(false);
+  const [loadedUrls, setLoadedUrls] = useState({});
+
+  const sliderContainerRef = useRef(null);
+  const sliderHandleRef = useRef(null);
   const inspectorTriggerRef = useRef(null);
-  const isDraggingMainRef = useRef(false);
-  const isDraggingInspectorRef = useRef(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return undefined;
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(Boolean(mq.matches));
-    const onChange = (e) => setReducedMotion(Boolean(e.matches));
-    if (typeof mq.addEventListener === 'function') {
-      mq.addEventListener('change', onChange);
-      return () => mq.removeEventListener('change', onChange);
-    }
-    return undefined;
-  }, []);
+  const inspectorCloseBtnRef = useRef(null);
+  const inspectorDialogRef = useRef(null);
 
   const activeStudy = STUDY_BY_ID[activeStudyId] || DESIGN_INTELLIGENCE_STUDIES[0];
-  const activeMode = MAIN_VIEWPORT_MODES.find((m) => m.id === viewportModeId) || MAIN_VIEWPORT_MODES[0];
-  const activeInspectorMode = INSPECTOR_MODES.find((m) => m.id === inspectorModeId) || INSPECTOR_MODES[0];
 
-  // Determine whether the main stage is showing the recorded ContextMuse homepage PNGs or the Shared Neutral Specimen
-  const isHomepageCaptureMode = activeStudyId === 'plaidis' && comparisonSurface === 'contextmuse-home';
-
-  // Preload and decode all comparison images on mount so switching is instant and never flashes
+  // Preload all reference and production comparison images so switching is glitch-free
   useEffect(() => {
-    ALL_PRELOAD_PAIRS.forEach(([b, a]) => {
-      preloadAndDecodePair(b, a);
+    const urlsToPreload = [
+      '/assets/images/design-intelligence/exp01_before_desktop.png',
+      '/assets/images/design-intelligence/exp01_after_desktop.png',
+      '/assets/images/design-intelligence/exp01_before_mobile.png',
+      '/assets/images/design-intelligence/exp01_after_mobile.png',
+      '/assets/images/design-intelligence/exp01_after_desktop_hover_build.png',
+      '/assets/images/design-intelligence/cs_4x3_exp01_before_desktop.png',
+      '/assets/images/design-intelligence/cs_4x3_exp01_after_desktop.png',
+      '/assets/images/design-intelligence/cs_4x3_exp01_mobile_comparison.png',
+      ...DESIGN_INTELLIGENCE_STUDIES.flatMap((s) => [
+        s.referenceCaptures.desktop,
+        s.referenceCaptures.mobile,
+      ]),
+    ];
+
+    urlsToPreload.forEach((url) => {
+      const img = new Image();
+      img.onload = () => {
+        setLoadedUrls((prev) => (prev[url] ? prev : { ...prev, [url]: true }));
+      };
+      img.src = url;
     });
   }, []);
 
-  const handleSelectStudy = useCallback((nextStudyId) => {
-    if (!STUDY_BY_ID[nextStudyId]) return;
-    setActiveStudyId(nextStudyId);
-    // Linear and Stripe always compare on the shared neutral specimen
-    if (nextStudyId !== 'plaidis') {
-      setComparisonSurface('specimen');
+  const handleInquireAboutDesignSystem = () => {
+    openBrief({
+      initialPath: 'custom',
+      initialNeed: 'Design Intelligence & System Architecture',
+      sourceContext: 'Design Intelligence Case Study (/lab/design-intelligence)',
+    });
+  };
+
+  // Synchronize mode buttons with slider percentage
+  const selectComparisonMode = (mode) => {
+    setComparisonMode(mode);
+    if (mode === 'original') {
+      setSliderPercent(100);
+    } else if (mode === 'transformed') {
+      setSliderPercent(0);
+    } else {
+      setSliderPercent(50);
+    }
+  };
+
+  const selectStudy = (studyId) => {
+    setActiveStudyId(studyId);
+    setComparisonMode('split');
+    setSliderPercent(50);
+  };
+
+  const updateSliderFromClientX = useCallback((clientX) => {
+    if (!sliderContainerRef.current) return;
+    const rect = sliderContainerRef.current.getBoundingClientRect();
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+    const pct = Math.round((x / rect.width) * 100);
+    setSliderPercent(pct);
+    if (pct >= 98) {
+      setComparisonMode('original');
+    } else if (pct <= 2) {
+      setComparisonMode('transformed');
+    } else {
+      setComparisonMode('split');
     }
   }, []);
 
-  // Switch main viewport mode only after target pair is decoded in memory
-  const handleSelectMainMode = useCallback(
-    (nextModeId) => {
-      if (nextModeId === viewportModeId && !pendingModeId) return;
-      const target = MAIN_VIEWPORT_MODES.find((m) => m.id === nextModeId);
-      if (!target) return;
-
-      if (decodedUrlCache.has(target.beforeSrc) && decodedUrlCache.has(target.afterSrc)) {
-        setPendingModeId(null);
-        setViewportModeId(nextModeId);
-        return;
-      }
-
-      setPendingModeId(nextModeId);
-      preloadAndDecodePair(target.beforeSrc, target.afterSrc).then(() => {
-        setViewportModeId(nextModeId);
-        setPendingModeId(null);
-      });
+  const handlePointerMove = useCallback(
+    (e) => {
+      if (!isDragging) return;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      updateSliderFromClientX(clientX);
     },
-    [viewportModeId, pendingModeId]
+    [isDragging, updateSliderFromClientX]
   );
 
-  const handleSelectInspectorMode = useCallback((nextModeId) => {
-    const target = INSPECTOR_MODES.find((m) => m.id === nextModeId);
-    if (!target) return;
-    preloadAndDecodePair(target.beforeSrc, target.afterSrc).then(() => {
-      setInspectorModeId(nextModeId);
-    });
-  }, []);
-
-  const updatePosFromClientX = useCallback((clientX, containerEl) => {
-    if (!containerEl) return;
-    const rect = containerEl.getBoundingClientRect();
-    if (rect.width <= 0) return;
-    const rawPct = ((clientX - rect.left) / rect.width) * 100;
-    const clamped = Math.max(0, Math.min(100, rawPct));
-    setSliderPos(clamped);
-  }, []);
-
-  const handleMainPointerDown = (e) => {
-    if (e.button !== undefined && e.button !== 0) return;
-    isDraggingMainRef.current = true;
-    e.currentTarget.setPointerCapture?.(e.pointerId);
-    updatePosFromClientX(e.clientX, activeStageRef.current);
-  };
-
-  const handleMainPointerMove = (e) => {
-    if (!isDraggingMainRef.current) return;
-    updatePosFromClientX(e.clientX, activeStageRef.current);
-  };
-
-  const handleMainPointerUp = (e) => {
-    if (!isDraggingMainRef.current) return;
-    isDraggingMainRef.current = false;
-    e.currentTarget.releasePointerCapture?.(e.pointerId);
-  };
-
-  const handleInspectorPointerDown = (e) => {
-    if (e.button !== undefined && e.button !== 0) return;
-    isDraggingInspectorRef.current = true;
-    e.currentTarget.setPointerCapture?.(e.pointerId);
-    updatePosFromClientX(e.clientX, inspectorStageRef.current);
-  };
-
-  const handleInspectorPointerMove = (e) => {
-    if (!isDraggingInspectorRef.current) return;
-    updatePosFromClientX(e.clientX, inspectorStageRef.current);
-  };
-
-  const handleInspectorPointerUp = (e) => {
-    if (!isDraggingInspectorRef.current) return;
-    isDraggingInspectorRef.current = false;
-    e.currentTarget.releasePointerCapture?.(e.pointerId);
-  };
-
-  const handleSliderKeyDown = (e) => {
-    const step = e.shiftKey ? 10 : 2;
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
-      e.preventDefault();
-      setSliderPos((prev) => Math.max(0, prev - step));
-    } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      setSliderPos((prev) => Math.min(100, prev + step));
-    } else if (e.key === 'PageDown') {
-      e.preventDefault();
-      setSliderPos((prev) => Math.max(0, prev - 10));
-    } else if (e.key === 'PageUp') {
-      e.preventDefault();
-      setSliderPos((prev) => Math.min(100, prev + 10));
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      setSliderPos(0);
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      setSliderPos(100);
-    }
-  };
-
-  const closeDetailInspector = useCallback(() => {
-    setInspectorOpen(false);
-    const triggerEl = inspectorTriggerRef.current;
-    if (triggerEl && typeof triggerEl.focus === 'function') {
-      setTimeout(() => {
-        triggerEl.focus();
-      }, 0);
-    }
+  const handlePointerUp = useCallback(() => {
+    setIsDragging(false);
   }, []);
 
   useEffect(() => {
-    if (!inspectorOpen) return undefined;
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    if (isDragging) {
+      window.addEventListener('mousemove', handlePointerMove);
+      window.addEventListener('mouseup', handlePointerUp);
+      window.addEventListener('touchmove', handlePointerMove, { passive: true });
+      window.addEventListener('touchend', handlePointerUp);
+    }
+    return () => {
+      window.removeEventListener('mousemove', handlePointerMove);
+      window.removeEventListener('mouseup', handlePointerUp);
+      window.removeEventListener('touchmove', handlePointerMove);
+      window.removeEventListener('touchend', handlePointerUp);
+    };
+  }, [isDragging, handlePointerMove, handlePointerUp]);
 
-    const focusTimer = setTimeout(() => {
-      inspectorCloseBtnRef.current?.focus();
-    }, 0);
+  // Keyboard support for the split comparison handle (WAI-ARIA slider pattern)
+  const handleSliderKeyDown = (e) => {
+    const step = e.shiftKey ? 10 : 2;
+    let next = sliderPercent;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      next = Math.max(0, sliderPercent - step);
+    } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      next = Math.min(100, sliderPercent + step);
+    } else if (e.key === 'PageDown') {
+      e.preventDefault();
+      next = Math.max(0, sliderPercent - 10);
+    } else if (e.key === 'PageUp') {
+      e.preventDefault();
+      next = Math.min(100, sliderPercent + 10);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      next = 0;
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      next = 100;
+    } else {
+      return;
+    }
+    setSliderPercent(next);
+    if (next >= 98) setComparisonMode('original');
+    else if (next <= 2) setComparisonMode('transformed');
+    else setComparisonMode('split');
+  };
 
-    const onKey = (e) => {
+  // Focus trap & Escape handler for the Detail Inspector modal
+  const closeInspector = useCallback(() => {
+    setInspectorOpen(false);
+    requestAnimationFrame(() => {
+      if (inspectorTriggerRef.current) {
+        inspectorTriggerRef.current.focus();
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!inspectorOpen) return;
+
+    const focusTimer = requestAnimationFrame(() => {
+      if (inspectorCloseBtnRef.current) {
+        inspectorCloseBtnRef.current.focus();
+      }
+    });
+
+    const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         e.preventDefault();
-        closeDetailInspector();
+        closeInspector();
         return;
       }
       if (e.key === 'Tab' && inspectorDialogRef.current) {
-        const focusable = Array.from(
-          inspectorDialogRef.current.querySelectorAll(
-            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-          )
-        ).filter((el) => el.offsetParent !== null);
-
-        if (focusable.length === 0) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
+        const focusables = inspectorDialogRef.current.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
         if (e.shiftKey && document.activeElement === first) {
           e.preventDefault();
           last.focus();
@@ -480,1675 +541,1912 @@ export default function DesignIntelligenceCaseStudy() {
         }
       }
     };
-    window.addEventListener('keydown', onKey);
+
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      clearTimeout(focusTimer);
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener('keydown', onKey);
+      cancelAnimationFrame(focusTimer);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [inspectorOpen, closeDetailInspector]);
+  }, [inspectorOpen, closeInspector]);
 
-  const openDetailInspector = (initialMode = viewportModeId, initialView = 'side-by-side') => {
-    inspectorTriggerRef.current = document.activeElement;
-    setInspectorModeId(initialMode);
-    setInspectorView(initialView);
-    setInspectorOpen(true);
-  };
+  const entranceImages = {
+    desktop: {
+      before: '/assets/images/design-intelligence/exp01_before_desktop.png',
+      after: '/assets/images/design-intelligence/exp01_after_desktop.png',
+      label: '1440 × 900 Desktop Entrance Quad (52e179d → 195921a)',
+    },
+    mobile: {
+      before: '/assets/images/design-intelligence/exp01_before_mobile.png',
+      after: '/assets/images/design-intelligence/exp01_after_mobile.png',
+      label: '390 × 844 Mobile Entrance Viewport (52e179d → 195921a)',
+    },
+  }[activeViewport];
 
-  const handleInquireAboutDesignSystem = () => {
-    updateInquiry({
-      projectType: 'Brand & Design',
-      notes: `Interested in ContextMuse Design Intelligence & UI/Design-System refinement (reviewed the ${activeStudy.shortName} study in the 3-System Token Extraction Case Study).`,
-    });
-    openBrief();
-  };
+  const isEntranceComparisonActive =
+    activeStudyId === 'plaidis' && study01Surface === 'contextmuse-home';
+
+  const effectiveClipPercent =
+    comparisonMode === 'original'
+      ? 100
+      : comparisonMode === 'transformed'
+      ? 0
+      : sliderPercent;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#1B1F21] text-[#EDE9E0] font-sans selection:bg-[#D9A62E] selection:text-[#141617]">
+    <div className="min-h-screen flex flex-col w-full max-w-full overflow-x-hidden bg-[#EDE9E0] text-[#23282A] selection:bg-[#D9A62E] selection:text-[#141617]">
       <SiteHeader />
       <PageAnnotationOverlay />
 
       <main className="flex-1">
-        {/* ============================================================
-            SECTION A: THREE-STUDY SELECTOR & INTERACTIVE BEFORE/AFTER SLIDER
-            ============================================================ */}
-        <section
-          id="interactive-comparison"
-          className="border-b border-[#DFDACE]/15 bg-[#1B1F21] px-5 py-8 sm:px-8 sm:py-12 lg:px-10"
-        >
-          <div className="mx-auto max-w-6xl space-y-6">
-            {/* Compact Header & Narrative Intro */}
-            <div className="space-y-3">
-              <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#DFDACE]/75">
-                <Link
-                  to="/lab"
-                  className="inline-flex items-center gap-1.5 hover:text-[#D9A62E] transition-colors"
-                >
-                  <ArrowLeft className="h-3.5 w-3.5" />
-                  <span>The Lab / Design Intelligence Token Extraction Study</span>
-                </Link>
-                <span className="text-[#D9A62E]">
-                  3 Comparative Studies · Plaidis (Locomotive) · Linear · Stripe
+      {/* =====================================================================
+          EDITORIAL HERO BANNER — WORKING TITLE, OPENING THESIS & METRIC STRIP
+          ===================================================================== */}
+      <section className="bg-[#23282A] text-[#EDE9E0] border-b-2 border-[#141617] pt-8 pb-12 sm:pt-12 sm:pb-16 px-5 sm:px-10">
+        <div className="max-w-[1360px] mx-auto">
+          {/* Top Breadcrumb & Classification Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#EDE9E0]/15">
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                to="/lab"
+                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-[#EDE9E0]/75 hover:text-[#D9A62E] transition-colors"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                <span>03 / LAB</span>
+              </Link>
+              <span className="text-[#EDE9E0]/30 font-mono text-xs">/</span>
+              <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#D9A62E] font-bold">
+                CONTEXT &amp; MUSE / RESEARCH 001
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#EDE9E0]/80">
+                DESIGN SYSTEMS · FRONT-END ARCHITECTURE
+              </span>
+              <span className="hidden sm:inline-block font-mono text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 bg-[#17504A] text-[#EDE9E0] border border-[#EDE9E0]/20">
+                VERIFIED CASE STUDY
+              </span>
+            </div>
+          </div>
+
+          {/* Working Title & Opening Thesis */}
+          <div className="pt-8 sm:pt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <div className="lg:col-span-8 space-y-5">
+              <div className="inline-flex flex-wrap items-center gap-2.5">
+                <span className="font-mono text-xs uppercase tracking-[0.16em] text-[#D9A62E] font-bold">
+                  Design Intelligence
+                </span>
+                <span className="text-[#EDE9E0]/40">—</span>
+                <span className="font-sans text-sm sm:text-base italic text-[#EDE9E0]/85">
+                  From visual reference to measurable design decisions.
                 </span>
               </div>
 
-              <h1 className="font-display text-3xl sm:text-5xl font-black tracking-tight text-[#EDE9E0] leading-[1.05]">
-                How do verified design-system tokens transform the same interface?
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-[3.5rem] font-black tracking-tight text-[#EDE9E0] leading-[1.04]">
+                “Design is not a collection of preferences. It is a system of relationships.”
               </h1>
 
-              <p className="max-w-3xl text-sm sm:text-base text-[#DFDACE]/90 leading-relaxed">
-                We inspected three distinct external reference systems—
-                <strong className="text-[#EDE9E0]">Plaidis (Locomotive)</strong>,{' '}
-                <strong className="text-[#EDE9E0]">Linear</strong>, and{' '}
-                <strong className="text-[#EDE9E0]">Stripe</strong>—using headless Chromium developer tools to extract
-                declared CSS variables and computed DOM styles. Select any study below to inspect its verified token
-                evidence and drag the comparison slider to evaluate how its visual system reshapes an identical neutral
-                specimen interface.
+              <p className="text-base sm:text-lg text-[#EDE9E0]/82 font-sans max-w-3xl leading-relaxed">
+                An investigation into how three contrasting reference systems—
+                <strong className="text-[#EDE9E0] font-semibold">Plaidis / Locomotive</strong>,{' '}
+                <strong className="text-[#EDE9E0] font-semibold">Linear</strong>, and{' '}
+                <strong className="text-[#EDE9E0] font-semibold">Stripe</strong>—were examined using
+                CSSOM and DOM measurements, translated onto an identical 85-node interface specimen,
+                and evaluated for selective production transfer into Context &amp; Muse.
               </p>
             </div>
 
-            {/* ============================================================
-                THREE-STUDY SELECTOR BAR: PLAIDIS / LINEAR / STRIPE
-                ============================================================ */}
-            <div
-              role="group"
-              aria-label="Design system study selector"
-              className="grid gap-2.5 sm:grid-cols-3"
-            >
-              {DESIGN_INTELLIGENCE_STUDIES.map((study) => {
-                const isSelected = study.id === activeStudyId;
-                return (
-                  <button
-                    key={study.id}
-                    type="button"
-                    data-study-btn={study.id}
-                    onClick={() => handleSelectStudy(study.id)}
-                    aria-pressed={isSelected}
-                    className={`group flex flex-col justify-between border p-4 text-left transition-colors ${
-                      isSelected
-                        ? 'border-[#D9A62E] bg-[#23282A] ring-1 ring-[#D9A62E]'
-                        : 'border-[#DFDACE]/20 bg-[#16191B] hover:border-[#DFDACE]/45 hover:bg-[#1E2225]'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-2 font-mono text-[11px]">
-                      <span
-                        className={`font-bold uppercase tracking-wider ${
-                          isSelected ? 'text-[#D9A62E]' : 'text-[#DFDACE]/70'
-                        }`}
-                      >
-                        {study.selectorSub}
-                      </span>
-                      <span
-                        className={`px-2 py-0.5 text-[10px] font-bold ${
-                          isSelected
-                            ? 'bg-[#D9A62E] text-[#141617]'
-                            : 'border border-[#DFDACE]/20 text-[#DFDACE]/65'
-                        }`}
-                      >
-                        {study.sourceDomain}
-                      </span>
-                    </div>
-
-                    <div className="mt-2">
-                      <div className="font-display text-lg sm:text-xl font-black tracking-tight text-[#EDE9E0] flex items-center justify-between">
-                        <span>{study.selectorLabel}</span>
-                        <span
-                          style={{ backgroundColor: study.accentHex }}
-                          className="inline-block h-2.5 w-2.5 border border-[#EDE9E0]/30"
-                        />
-                      </div>
-                      <p className="mt-1 text-xs text-[#DFDACE]/75 line-clamp-2 leading-snug">
-                        {study.subtitle}
-                      </p>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Active Study Metadata Strip */}
-            <div className="flex flex-wrap items-center justify-between gap-3 border border-[#DFDACE]/15 bg-[#16191B] px-4 py-2.5 text-xs">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="bg-[#D9A62E] text-[#141617] px-2 py-0.5 font-mono text-[11px] font-bold">
-                  ACTIVE STUDY {activeStudy.num}
-                </span>
-                <span className="font-bold text-[#EDE9E0]">{activeStudy.name}</span>
-                <span className="hidden lg:inline text-[#DFDACE]/40">·</span>
-                <a
-                  href={activeStudy.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-[11px] text-[#D9A62E] underline hover:text-[#EDE9E0] inline-flex items-center gap-1"
-                >
-                  <span>{activeStudy.sourceUrl}</span>
-                  <ArrowUpRight className="h-3 w-3" />
-                </a>
-              </div>
-
-              <div className="font-mono text-[11px] text-[#DFDACE]/70">
-                Inspected: {activeStudy.inspectedAt}
-              </div>
-            </div>
-
-            {/* Streamlined Primary Controls: Desktop / Mobile + Specimen Mode + Open Detail Inspector */}
-            <div className="flex flex-wrap items-center justify-between gap-3 border-y border-[#DFDACE]/15 py-3">
-              <div className="flex flex-wrap items-center gap-3">
-                <div
-                  role="group"
-                  aria-label="Viewport comparison mode"
-                  className="inline-flex border border-[#DFDACE]/25 bg-[#23282A] p-1"
-                >
-                  {MAIN_VIEWPORT_MODES.map((m) => {
-                    const Icon = m.icon;
-                    const active = m.id === viewportModeId;
-                    return (
-                      <button
-                        key={m.id}
-                        type="button"
-                        data-mode-btn={m.id}
-                        onClick={() => handleSelectMainMode(m.id)}
-                        aria-pressed={active}
-                        className={`flex items-center gap-2 px-4 py-1.5 font-mono text-xs font-bold transition-colors ${
-                          active
-                            ? 'bg-[#D9A62E] text-[#141617]'
-                            : 'text-[#EDE9E0] hover:text-[#D9A62E]'
-                        }`}
-                      >
-                        <Icon className="h-3.5 w-3.5" />
-                        <span>{m.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Simple Original / Split / Transformed Comparison Mode (Preserves Existing Slider Engine) */}
-                <div
-                  role="group"
-                  aria-label="Comparison view mode"
-                  className="inline-flex border border-[#DFDACE]/25 bg-[#23282A] p-1 font-mono text-xs"
-                >
-                  {[
-                    { id: 'original', label: 'Original', targetPos: 100, isCurrent: Math.round(sliderPos) === 100 },
-                    {
-                      id: 'split',
-                      label: 'Split',
-                      targetPos: 50,
-                      isCurrent: Math.round(sliderPos) > 0 && Math.round(sliderPos) < 100,
-                    },
-                    {
-                      id: 'transformed',
-                      label: 'Transformed',
-                      targetPos: 0,
-                      isCurrent: Math.round(sliderPos) === 0,
-                    },
-                  ].map((modeOpt) => (
-                    <button
-                      key={modeOpt.id}
-                      type="button"
-                      data-comparison-view={modeOpt.id}
-                      onClick={() => setSliderPos(modeOpt.targetPos)}
-                      aria-pressed={modeOpt.isCurrent}
-                      className={`px-3 py-1.5 font-bold transition-colors ${
-                        modeOpt.isCurrent
-                          ? 'bg-[#D9A62E] text-[#141617]'
-                          : 'text-[#EDE9E0] hover:text-[#D9A62E]'
-                      }`}
-                    >
-                      {modeOpt.label}
-                    </button>
-                  ))}
-                </div>
-
-                {/* On Study 01 (Plaidis / Locomotive), let visitors toggle between the Shared Specimen and the Original ContextMuse Entrance Capture */}
-                {activeStudyId === 'plaidis' && (
-                  <div
-                    role="group"
-                    aria-label="Study 01 comparison target"
-                    className="inline-flex border border-[#DFDACE]/25 bg-[#23282A] p-1 font-mono text-xs"
-                  >
-                    <button
-                      type="button"
-                      data-surface-btn="specimen"
-                      onClick={() => setComparisonSurface('specimen')}
-                      aria-pressed={comparisonSurface === 'specimen'}
-                      className={`px-3 py-1.5 font-bold transition-colors ${
-                        comparisonSurface === 'specimen'
-                          ? 'bg-[#17504A] text-[#EDE9E0]'
-                          : 'text-[#DFDACE]/80 hover:text-[#D9A62E]'
-                      }`}
-                    >
-                      Shared Neutral Specimen
-                    </button>
-                    <button
-                      type="button"
-                      data-surface-btn="contextmuse-home"
-                      onClick={() => setComparisonSurface('contextmuse-home')}
-                      aria-pressed={comparisonSurface === 'contextmuse-home'}
-                      className={`px-3 py-1.5 font-bold transition-colors ${
-                        comparisonSurface === 'contextmuse-home'
-                          ? 'bg-[#17504A] text-[#EDE9E0]'
-                          : 'text-[#DFDACE]/80 hover:text-[#D9A62E]'
-                      }`}
-                    >
-                      ContextMuse Entrance (52e179d → 195921a)
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              <div className="flex items-center gap-3">
-                <span className="hidden md:inline text-xs text-[#DFDACE]/70">
-                  Drag handle or use{' '}
-                  <kbd className="border border-[#DFDACE]/25 bg-[#23282A] px-1.5 py-0.5 font-mono text-[11px]">←</kbd>{' '}
-                  <kbd className="border border-[#DFDACE]/25 bg-[#23282A] px-1.5 py-0.5 font-mono text-[11px]">→</kbd>{' '}
-                  keys
-                </span>
-
-                <button
-                  type="button"
-                  onClick={() => openDetailInspector(viewportModeId, 'side-by-side')}
-                  className="inline-flex items-center gap-2 border border-[#D9A62E] bg-[#23282A] px-3.5 py-1.5 font-mono text-xs font-bold text-[#D9A62E] hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
-                >
-                  <Maximize2 className="h-3.5 w-3.5" />
-                  <span>Open Detail Inspector</span>
-                </button>
-              </div>
-            </div>
-
-            {/* ============================================================
-                GLITCH-FREE STAGE CONTAINER
-                Supports both the Shared Neutral vs. Token-Applied Specimen
-                across all 3 studies AND the ContextMuse Entrance PNG slider
-                ============================================================ */}
-            <div className="border border-[#DFDACE]/20 bg-[#141617]">
-              {/* Unobtrusive Before / After Header Bar */}
-              <div className="flex items-center justify-between border-b border-[#DFDACE]/15 bg-[#181B1D] px-4 py-2 font-mono text-xs">
-                <div className="flex items-center gap-2 font-bold text-[#EDE9E0]">
-                  <span className="h-2 w-2 rounded-full bg-[#DFDACE]" />
-                  <span>
-                    {isHomepageCaptureMode
-                      ? 'BEFORE · Baseline (52e179d)'
-                      : 'BEFORE · Original Neutral Specimen'}
-                  </span>
-                </div>
-                <div className="hidden sm:block text-[11px] text-[#DFDACE]/60">
-                  {activeStudy.selectorLabel} · {activeMode.fullLabel} · {Math.round(sliderPos)}% /{' '}
-                  {Math.round(100 - sliderPos)}%
-                </div>
-                <div className="flex items-center gap-2 font-bold text-[#D9A62E]">
-                  <span>
-                    {isHomepageCaptureMode
-                      ? 'AFTER · Refined (195921a)'
-                      : `AFTER · ${activeStudy.selectorLabel} Tokens Applied`}
-                  </span>
-                  <span className="h-2 w-2 rounded-full bg-[#D9A62E]" />
-                </div>
-              </div>
-
-              <div className="relative flex items-center justify-center p-3 sm:p-5 lg:h-[690px]">
-                {pendingModeId && (
-                  <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 z-40 bg-[#141617]/95 border border-[#D9A62E] px-3 py-1 font-mono text-xs text-[#D9A62E]">
-                    Preparing comparison…
-                  </div>
-                )}
-
-                {MAIN_VIEWPORT_MODES.map((mode) => {
-                  const isActive = mode.id === viewportModeId;
-                  return (
-                    <div
-                      key={mode.id}
-                      ref={isActive ? activeStageRef : null}
-                      data-slider-stage={isActive ? 'true' : undefined}
-                      data-stage-mode={mode.id}
-                      data-stage-study={activeStudyId}
-                      onPointerDown={isActive ? handleMainPointerDown : undefined}
-                      onPointerMove={isActive ? handleMainPointerMove : undefined}
-                      onPointerUp={isActive ? handleMainPointerUp : undefined}
-                      onPointerCancel={isActive ? handleMainPointerUp : undefined}
-                      style={{ touchAction: 'pan-y' }}
-                      className={`${
-                        isActive ? 'block' : 'hidden'
-                      } relative w-full ${mode.maxWidthClass} ${mode.aspectClass} select-none overflow-hidden border border-[#DFDACE]/25 bg-[#1B1F21] shadow-2xl cursor-ew-resize`}
-                    >
-                      {isHomepageCaptureMode ? (
-                        <>
-                          {/* LAYER 1 (BASE): AFTER IMAGE (Experiment 195921a) */}
-                          <img
-                            src={mode.afterSrc}
-                            alt={isActive ? `AFTER (Experiment 195921a) — ${mode.fullLabel}` : ''}
-                            width={mode.naturalWidth}
-                            height={mode.naturalHeight}
-                            decoding="sync"
-                            loading="eager"
-                            draggable={false}
-                            className="absolute inset-0 block h-full w-full object-contain select-none pointer-events-none"
-                          />
-
-                          {/* LAYER 2 (CLIPPED OVERLAY): BEFORE IMAGE (Baseline 52e179d) */}
-                          <div
-                            aria-hidden="true"
-                            style={{
-                              clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
-                            }}
-                            className="absolute inset-0 pointer-events-none"
-                          >
-                            <img
-                              src={mode.beforeSrc}
-                              alt={isActive ? `BEFORE (Baseline 52e179d) — ${mode.fullLabel}` : ''}
-                              width={mode.naturalWidth}
-                              height={mode.naturalHeight}
-                              decoding="sync"
-                              loading="eager"
-                              draggable={false}
-                              className="absolute inset-0 block h-full w-full object-contain select-none pointer-events-none"
-                            />
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          {/* LAYER 1 (BASE): AFTER — TOKEN-APPLIED SHARED SPECIMEN */}
-                          <div className="absolute inset-0 pointer-events-none">
-                            <DesignSystemSpecimen
-                              variant={activeStudyId}
-                              viewport={mode.id}
-                              simulatingHover={simulatingHover}
-                              reducedMotion={reducedMotion}
-                            />
-                          </div>
-
-                          {/* LAYER 2 (CLIPPED OVERLAY): BEFORE — ORIGINAL NEUTRAL SPECIMEN */}
-                          <div
-                            aria-hidden="true"
-                            style={{
-                              clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
-                            }}
-                            className="absolute inset-0 pointer-events-none"
-                          >
-                            <DesignSystemSpecimen
-                              variant="neutral"
-                              viewport={mode.id}
-                              simulatingHover={simulatingHover}
-                              reducedMotion={reducedMotion}
-                            />
-                          </div>
-                        </>
-                      )}
-
-                      {/* Accessible Slider Handle */}
-                      {isActive && (
-                        <div
-                          style={{ left: `${sliderPos}%` }}
-                          className="absolute top-0 bottom-0 z-30 -ml-px w-0.5 bg-[#D9A62E] shadow-[0_0_12px_rgba(0,0,0,0.9)]"
-                        >
-                          <div
-                            role="slider"
-                            tabIndex={0}
-                            aria-orientation="horizontal"
-                            aria-label={`Before and after comparison slider (${activeStudy.selectorLabel} — ${mode.fullLabel})`}
-                            aria-valuemin={0}
-                            aria-valuemax={100}
-                            aria-valuenow={Math.round(sliderPos)}
-                            aria-valuetext={
-                              isHomepageCaptureMode
-                                ? `${Math.round(sliderPos)}% Before (Baseline 52e179d), ${Math.round(
-                                    100 - sliderPos
-                                  )}% After (Experiment 195921a)`
-                                : `${Math.round(sliderPos)}% Before (Neutral Specimen), ${Math.round(
-                                    100 - sliderPos
-                                  )}% After (${activeStudy.selectorLabel} Tokens Applied)`
-                            }
-                            onKeyDown={handleSliderKeyDown}
-                            style={{ translate: `${-sliderPos}% -50%` }}
-                            className="absolute top-1/2 flex h-11 w-11 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9E0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141617] transition-transform motion-reduce:transition-none hover:scale-105"
-                          >
-                            <MoveHorizontal className="h-5 w-5 stroke-[2.5]" />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Explicit Synthetic Demonstration Data & Structural Parity Notice */}
-              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#DFDACE]/15 bg-[#181B1D] px-4 py-2 font-mono text-[11px] text-[#DFDACE]/75">
-                <span>
-                  <strong className="text-[#D9A62E]">Synthetic Demonstration Specimen:</strong> Metrics (
-                  <code className="font-mono">1,420 req/s</code>, <code className="font-mono">18.4 ms</code>,{' '}
-                  <code className="font-mono">100.0%</code>, <code className="font-mono">RT-4091..4093</code>) are
-                  illustrative fixture data held constant across all studies—not live operational telemetry.
-                </span>
-                <span className="text-[#DFDACE]/60">
-                  DOM Parity: 85 / 85 identical nodes · 100% text parity
-                </span>
-              </div>
+            {/* Primary Hero Actions */}
+            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end justify-end">
+              <a
+                href="#interactive-comparison"
+                className="inline-flex items-center justify-center gap-2.5 bg-[#D9A62E] text-[#141617] px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.14em] hover:bg-[#EDE9E0] transition-colors w-full sm:w-auto lg:w-full max-w-xs"
+              >
+                <Sliders className="h-3.5 w-3.5" />
+                <span>Inspect 85-Node Specimen</span>
+              </a>
+              <a
+                href="#what-changed"
+                className="inline-flex items-center justify-center gap-2.5 bg-transparent text-[#EDE9E0] border border-[#EDE9E0]/30 px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.14em] hover:border-[#D9A62E] hover:text-[#D9A62E] transition-colors w-full sm:w-auto lg:w-full max-w-xs"
+              >
+                <Eye className="h-3.5 w-3.5" />
+                <span>See Context &amp; Muse Transfer</span>
+              </a>
             </div>
           </div>
-        </section>
 
-        {/* ============================================================
-            SECTION A2: VERIFIED TOKEN BREAKDOWN, CONTRAST SWATCHES &
-            5-QUESTION ANALYTICAL SUBSTANCE FOR ACTIVE STUDY
-            ============================================================ */}
-        <section
-          id="token-extraction-breakdown"
-          className="border-b border-[#DFDACE]/15 bg-[#16191B] text-[#EDE9E0] px-5 py-12 sm:px-8 sm:py-16 lg:px-10"
-        >
-          <div className="mx-auto max-w-6xl space-y-12">
-            {/* Study Breakdown Header */}
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-6">
-              <div className="space-y-2 max-w-3xl">
-                <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
-                  Study {activeStudy.num} Dossier · Verified Token Observations &amp; Analytical Substance
-                </div>
-                <h2 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#EDE9E0]">
-                  {activeStudy.name}
-                </h2>
-                <p className="text-sm sm:text-base text-[#DFDACE]/85 leading-relaxed">
-                  {activeStudy.executiveSummary}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={() => openDetailInspector(viewportModeId, 'reference')}
-                  className="inline-flex items-center gap-2 border border-[#DFDACE]/30 bg-[#23282A] px-3.5 py-2 font-mono text-xs font-bold text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E] transition-colors"
-                >
-                  <Eye className="h-3.5 w-3.5 text-[#D9A62E]" />
-                  <span>Inspect Reference Capture ({activeStudy.sourceDomain})</span>
-                </button>
-              </div>
+          {/* Three Architectural Metric Callouts (Matching Reference Composition) */}
+          <div className="mt-10 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-[#EDE9E0]/20">
+            <div className="pt-2 border-t border-[#D9A62E]/50 sm:border-t-0">
+              <span className="font-display text-3xl sm:text-4xl font-black text-[#D9A62E] tracking-tight block">
+                03
+              </span>
+              <span className="font-sans text-sm font-bold text-[#EDE9E0] mt-1 block">
+                Reference systems
+              </span>
+              <p className="font-mono text-[11px] text-[#EDE9E0]/65 mt-1 leading-relaxed">
+                Plaidis / Locomotive (structure &amp; motion), Linear (stepped dark surfaces), and Stripe (light display &amp; elevation).
+              </p>
             </div>
 
-            {/* 4-Pillar System Profile: Hierarchy, Density, Visual Emphasis, Readability */}
-            <div className="space-y-3">
-              <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#DFDACE]/70">
-                01 / Visual-System Effect on Shared Specimen (Hierarchy, Density, Emphasis &amp; Readability)
+            <div className="pt-2 border-t border-[#EDE9E0]/20 sm:border-t-0 sm:border-l sm:border-[#EDE9E0]/15 sm:pl-6">
+              <span className="font-display text-3xl sm:text-4xl font-black text-[#D9A62E] tracking-tight block">
+                85
+              </span>
+              <span className="font-sans text-sm font-bold text-[#EDE9E0] mt-1 block">
+                Identical DOM nodes
+              </span>
+              <p className="font-mono text-[11px] text-[#EDE9E0]/65 mt-1 leading-relaxed">
+                Shared neutral baseline holding HTML structure, text copy, and outer plumb inset (40px / 20px) strictly constant.
+              </p>
+            </div>
+
+            <div className="pt-2 border-t border-[#EDE9E0]/20 sm:border-t-0 sm:border-l sm:border-[#EDE9E0]/15 sm:pl-6">
+              <span className="font-display text-3xl sm:text-4xl font-black text-[#D9A62E] tracking-tight block">
+                02
+              </span>
+              <span className="font-sans text-sm font-bold text-[#EDE9E0] mt-1 block">
+                Viewports tested
+              </span>
+              <p className="font-mono text-[11px] text-[#EDE9E0]/65 mt-1 leading-relaxed">
+                1440×900 desktop &amp; 390×844 mobile @ 2x DPR for token extraction, plus 768×1024 &amp; 1920×1080 responsive gates.
+              </p>
+            </div>
+          </div>
+
+          {/* Seven-Section Editorial Index Bar */}
+          <nav
+            aria-label="Case study sections"
+            className="mt-8 pt-4 border-t border-[#EDE9E0]/15 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-[0.13em]"
+          >
+            <span className="text-[#EDE9E0]/45">INDEX:</span>
+            <a href="#the-question" className="text-[#EDE9E0]/80 hover:text-[#D9A62E] transition-colors">
+              01. The Question
+            </a>
+            <a href="#three-systems" className="text-[#EDE9E0]/80 hover:text-[#D9A62E] transition-colors">
+              02. Three Systems
+            </a>
+            <a href="#interactive-comparison" className="text-[#D9A62E] font-bold hover:underline">
+              03. Controlled Experiment
+            </a>
+            <a href="#token-extraction-breakdown" className="text-[#EDE9E0]/80 hover:text-[#D9A62E] transition-colors">
+              04. Measurements
+            </a>
+            <a href="#what-changed" className="text-[#EDE9E0]/80 hover:text-[#D9A62E] transition-colors">
+              05. Applying Research
+            </a>
+            <a href="#verification" className="text-[#EDE9E0]/80 hover:text-[#D9A62E] transition-colors">
+              06. Verification
+            </a>
+            <a href="#implications" className="text-[#EDE9E0]/80 hover:text-[#D9A62E] transition-colors">
+              07. Implications
+            </a>
+          </nav>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          SECTION 01 — THE QUESTION: VISUAL IMITATION VS. STRUCTURAL UNDERSTANDING
+          ===================================================================== */}
+      <section
+        id="the-question"
+        className="py-12 sm:py-16 px-5 sm:px-10 max-w-[1360px] mx-auto border-b border-[#23282A]/15"
+      >
+        <div className="border-t-2 border-[#23282A] pt-3 mb-8 flex flex-wrap items-center justify-between gap-2">
+          <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#23282A] font-bold">
+            01 / THE QUESTION
+          </span>
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#23282A]/65">
+            METHODOLOGY &amp; EPISTEMIC BOUNDARIES
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-7 space-y-4">
+            <h2 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#23282A] leading-[1.08]">
+              How can we study the underlying mechanics of sophisticated interfaces instead of copying their visible appearance?
+            </h2>
+            <p className="text-sm sm:text-base text-[#23282A]/80 font-sans leading-relaxed">
+              When teams admire a reference interface, the default impulse is visual imitation:
+              borrowing surface colors, mimicking hero layouts, or copying decorative chrome without
+              understanding why the original system felt cohesive. When those surface traits are
+              pasted onto different content, hierarchy breaks down.
+            </p>
+            <p className="text-sm sm:text-base text-[#23282A]/80 font-sans leading-relaxed">
+              <strong className="font-bold text-[#23282A]">Design Intelligence</strong> replaces
+              surface imitation with empirical measurement. By inspecting live CSS Object Model
+              (<code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">cssRules</code>)
+              declarations and computed DOM geometry (
+              <code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">getComputedStyle</code>,{' '}
+              <code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">getBoundingClientRect</code>
+              ), we isolate the proportional relationships—type ratios, column track equations,
+              luminance steps, contrast floors, and transition curves—that actually produce clarity.
+            </p>
+          </div>
+
+          {/* Contrast Box: Visual Imitation vs. Structural Understanding */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+            <div className="bg-[#FAF8F5] border border-[#23282A]/15 p-5">
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#7A5605] font-bold block">
+                SURFACE IMITATION (FRAGILE)
+              </span>
+              <p className="text-xs text-[#23282A]/75 font-sans mt-2 leading-relaxed">
+                Copies visible colors, font names, or screenshot compositions without measuring the
+                grid math, contrast ratios, or content density constraints that support them.
+              </p>
+            </div>
+            <div className="bg-[#23282A] text-[#EDE9E0] border border-[#23282A] p-5">
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#D9A62E] font-bold block">
+                STRUCTURAL UNDERSTANDING (TRANSFERABLE)
+              </span>
+              <p className="text-xs text-[#EDE9E0]/85 font-sans mt-2 leading-relaxed">
+                Measures declared tokens (`Class A`) and rendered DOM geometry (`Class B`),
+                synthesizes structural rules (`Class C`), and tests them on neutral content before
+                adapting (`Class D`) into production.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 5-Stage Pipeline Strip */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {FIVE_STAGES.map((s) => (
+            <div
+              key={s.stage}
+              className="bg-[#FAF8F5] border border-[#23282A]/15 p-4 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between border-b border-[#23282A]/10 pb-2 mb-2.5">
+                  <span className="font-mono text-xs font-bold text-[#9A6F0B]">
+                    STAGE {s.stage}
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#23282A]/50">
+                    PIPELINE
+                  </span>
+                </div>
+                <h3 className="font-display text-sm font-black uppercase tracking-tight text-[#23282A]">
+                  {s.name}
+                </h3>
+                <p className="text-xs text-[#23282A]/75 font-sans mt-1.5 leading-relaxed">
+                  {s.desc}
+                </p>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {[
-                  { label: 'Hierarchy', data: activeStudy.comparisonMetrics.hierarchy },
-                  { label: 'Component Density', data: activeStudy.comparisonMetrics.density },
-                  { label: 'Visual Emphasis', data: activeStudy.comparisonMetrics.visualEmphasis },
-                  { label: 'Readability & Contrast', data: activeStudy.comparisonMetrics.readability },
-                ].map((metric) => (
-                  <div
-                    key={metric.label}
-                    className="border border-[#DFDACE]/20 bg-[#1B1F21] p-4 flex flex-col justify-between space-y-2"
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* =====================================================================
+          SECTION 02 — THREE SYSTEMS, THREE PHILOSOPHIES
+          ===================================================================== */}
+      <section
+        id="three-systems"
+        className="py-12 sm:py-16 px-5 sm:px-10 max-w-[1360px] mx-auto border-b border-[#23282A]/15"
+      >
+        <div className="border-t-2 border-[#23282A] pt-3 mb-8 flex flex-wrap items-center justify-between gap-2">
+          <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#23282A] font-bold">
+            02 / THREE SYSTEMS, THREE PHILOSOPHIES
+          </span>
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#23282A]/65">
+            MEASURED TOKENS (CLASS A/B) · INFERRED RULES (CLASS C) · ADAPTATIONS (CLASS D)
+          </span>
+        </div>
+
+        <div className="max-w-3xl mb-8">
+          <h2 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#23282A] leading-[1.08]">
+            Three contrasting visual systems measured under identical viewport conditions.
+          </h2>
+          <p className="text-sm sm:text-base text-[#23282A]/80 font-sans mt-3 leading-relaxed">
+            Rather than studying similar websites, we selected three references that solve
+            hierarchy through fundamentally different mechanisms: exposed editorial grid rules and
+            asymmetric motion (<strong className="font-semibold">Plaidis / Locomotive</strong>),
+            stepped dark-mode luminance and compact variable typography (
+            <strong className="font-semibold">Linear</strong>), and high-key light display scale
+            with indigo-tinted elevation (<strong className="font-semibold">Stripe</strong>).
+          </p>
+        </div>
+
+        {/* Three Architectural Philosophy Cards (Echoing Reference Mockup Triptych) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {SYSTEM_PHILOSOPHY_CARDS.map((card) => {
+            const isSelected = activeStudyId === card.id;
+            return (
+              <article
+                key={card.id}
+                style={{
+                  backgroundColor: card.cardBg,
+                  color: card.cardText,
+                  borderColor: isSelected ? '#D9A62E' : card.cardBorder,
+                }}
+                className={`border-2 p-6 flex flex-col justify-between transition-all ${
+                  isSelected ? 'ring-2 ring-[#D9A62E] shadow-md' : ''
+                }`}
+              >
+                <div>
+                  {/* Top Signature Accent Bar & Study Number */}
+                  <div className="flex items-center justify-between gap-3 mb-5">
+                    <div
+                      style={{ backgroundColor: card.accentBar }}
+                      className="h-2 w-24 rounded-full"
+                    />
+                    <span
+                      style={{ color: card.cardMuted }}
+                      className="font-mono text-[11px] uppercase tracking-[0.16em] font-bold"
+                    >
+                      {card.studyNum} · {card.domain}
+                    </span>
+                  </div>
+
+                  {/* System Title & Thesis */}
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h3 className="font-display text-2xl sm:text-3xl font-black tracking-tight">
+                      {card.name}
+                    </h3>
+                    {isSelected && (
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] px-2 py-0.5 bg-[#D9A62E] text-[#141617] font-bold">
+                        ACTIVE IN STAGE
+                      </span>
+                    )}
+                  </div>
+
+                  <p
+                    style={{ color: card.cardMuted }}
+                    className="text-xs sm:text-sm font-sans mt-2.5 leading-relaxed"
                   >
-                    <div className="space-y-1">
-                      <div className="font-mono text-[10.5px] uppercase tracking-wider text-[#D9A62E] font-bold">
-                        {metric.label}
+                    {card.thesis}
+                  </p>
+
+                  {/* Measured Source Tokens (Class A/B) */}
+                  <div
+                    style={{ borderColor: card.cardBorder }}
+                    className="mt-5 pt-4 border-t space-y-2.5"
+                  >
+                    <span
+                      style={{ color: card.cardMuted }}
+                      className="font-mono text-[10px] uppercase tracking-[0.15em] font-bold block"
+                    >
+                      VERIFIED SOURCE MEASUREMENTS (CLASS A / B)
+                    </span>
+                    {card.measuredTokens.map((t) => (
+                      <div
+                        key={t.label}
+                        style={{ backgroundColor: card.badgeBg }}
+                        className="p-2.5 text-xs font-mono"
+                      >
+                        <span
+                          style={{ color: card.cardMuted }}
+                          className="text-[10px] uppercase tracking-wider block"
+                        >
+                          {t.label}
+                        </span>
+                        <span className="font-bold block mt-0.5 leading-snug">{t.value}</span>
                       </div>
-                      <div className="font-display text-base font-bold text-[#EDE9E0]">
-                        {metric.data.scoreLabel}
-                      </div>
+                    ))}
+                  </div>
+
+                  {/* Inferred Structural Pattern (Class C) & Adaptation (Class D) */}
+                  <div
+                    style={{ borderColor: card.cardBorder }}
+                    className="mt-4 pt-3 border-t space-y-2 text-xs font-sans leading-relaxed"
+                  >
+                    <p style={{ color: card.cardMuted }}>{card.inferredPattern}</p>
+                    <p style={{ color: card.cardMuted }}>{card.adaptationSummary}</p>
+                  </div>
+                </div>
+
+                {/* Bottom Pillar Footer & Load in Specimen Action */}
+                <div
+                  style={{ borderColor: card.cardBorder }}
+                  className="mt-6 pt-3 border-t flex items-center justify-between gap-3"
+                >
+                  <span
+                    style={{ color: card.cardMuted }}
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] font-bold"
+                  >
+                    {card.pillarTag}
+                  </span>
+                  <a
+                    href="#interactive-comparison"
+                    onClick={() => {
+                      selectStudy(card.id);
+                      if (card.id === 'plaidis') setStudy01Surface('specimen');
+                    }}
+                    className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] font-bold px-3 py-1.5 bg-[#D9A62E] text-[#141617] hover:opacity-90 transition-opacity"
+                  >
+                    <span>Load Specimen</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* =====================================================================
+          SECTION 03 — THE CONTROLLED EXPERIMENT (SHARED 85-NODE SPECIMEN)
+          ===================================================================== */}
+      <section
+        id="interactive-comparison"
+        className="py-12 sm:py-16 px-5 sm:px-10 max-w-[1360px] mx-auto border-b border-[#23282A]/15"
+      >
+        <div className="border-t-2 border-[#23282A] pt-3 mb-6 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#23282A] font-bold">
+              03 / THE CONTROLLED EXPERIMENT
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] px-2 py-0.5 bg-[#D9A62E]/25 text-[#23282A] font-bold">
+              85-NODE INTERACTIVE SPECIMEN
+            </span>
+          </div>
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#23282A]/65">
+            HOLDING CONTENT &amp; DOM CONSTANT TO ISOLATE TOKEN EFFECTS
+          </span>
+        </div>
+
+        {/* Editorial Explanation of Why 85 Identical Nodes Matter */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-7">
+          <div className="lg:col-span-8">
+            <h2 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#23282A] leading-[1.08]">
+              How do verified design-system tokens transform the exact same interface?
+            </h2>
+            <p className="text-sm sm:text-base text-[#23282A]/80 font-sans mt-2.5 leading-relaxed">
+              Comparing two screenshots with different headlines, images, and layouts confounds
+              visual judgment. Below, the <strong className="font-semibold text-[#23282A]">Neutral Baseline</strong> and
+              all three reference treatments (<strong className="font-semibold text-[#23282A]">Plaidis</strong>,{' '}
+              <strong className="font-semibold text-[#23282A]">Linear</strong>, and{' '}
+              <strong className="font-semibold text-[#23282A]">Stripe</strong>) render the exact same{' '}
+              <strong className="font-semibold text-[#23282A]">85 HTML elements</strong>, identical text
+              strings, and a shared <code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">40px</code> desktop /{' '}
+              <code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">20px</code> mobile horizontal plumb inset—so
+              dragging the split handle isolates the exact consequence of each token system.
+            </p>
+          </div>
+
+          <div className="lg:col-span-4 bg-[#FAF8F5] border border-[#23282A]/15 p-4 font-mono text-xs space-y-1.5">
+            <div className="flex items-center justify-between text-[#23282A]/65">
+              <span>DOM PARITY CONTRACT:</span>
+              <span className="text-[#17504A] font-bold">85 / 85 NODES</span>
+            </div>
+            <p className="text-[11px] text-[#23282A]/80 leading-relaxed">
+              1 &lt;section&gt; · 1 &lt;header&gt; · 38 &lt;div&gt; · 32 &lt;span&gt; · 4 &lt;h3&gt; · 4 &lt;p&gt; · 4 &lt;button&gt; · 1 &lt;footer&gt;
+            </p>
+          </div>
+        </div>
+
+        {/* 1. Reference Study Selector Bar (Study 01 / Study 02 / Study 03) */}
+        <div
+          role="group"
+          aria-label="Select reference design system study"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-5"
+        >
+          {DESIGN_INTELLIGENCE_STUDIES.map((study) => {
+            const isActive = activeStudyId === study.id;
+            return (
+              <button
+                key={study.id}
+                type="button"
+                data-study-btn={study.id}
+                onClick={() => selectStudy(study.id)}
+                aria-pressed={isActive}
+                className={`text-left p-3.5 sm:p-4 border transition-all flex items-center justify-between gap-3 ${
+                  isActive
+                    ? 'bg-[#23282A] text-[#EDE9E0] border-[#23282A] shadow-sm'
+                    : 'bg-[#FAF8F5] text-[#23282A] border-[#23282A]/15 hover:border-[#23282A]/45'
+                }`}
+              >
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`font-mono text-[10px] uppercase tracking-[0.16em] font-bold ${
+                        isActive ? 'text-[#D9A62E]' : 'text-[#9A6F0B]'
+                      }`}
+                    >
+                      {study.selectorSub}
+                    </span>
+                  </div>
+                  <div className="font-display text-base sm:text-lg font-black uppercase tracking-tight mt-0.5 truncate">
+                    {study.selectorLabel}
+                  </div>
+                  <div
+                    className={`font-mono text-[11px] truncate mt-0.5 ${
+                      isActive ? 'text-[#EDE9E0]/70' : 'text-[#23282A]/60'
+                    }`}
+                  >
+                    Source: {study.sourceDomain}
+                  </div>
+                </div>
+                <span
+                  className="w-3 h-8 shrink-0 border border-current/20"
+                  style={{ backgroundColor: study.accentHex }}
+                  aria-hidden="true"
+                />
+              </button>
+            );
+          })}
+        </div>
+
+        {/* 2. Unified Stage Control Bar */}
+        <div className="bg-[#FAF8F5] border border-[#23282A]/20 p-3.5 sm:p-4 mb-4 flex flex-wrap items-center justify-between gap-3">
+          {/* Left: Study 01 Surface Switcher OR Active Study Provenance */}
+          <div className="flex flex-wrap items-center gap-2 min-w-0 max-w-full">
+            {activeStudyId === 'plaidis' ? (
+              <div
+                role="group"
+                aria-label="Study 01 comparison surface"
+                className="flex flex-wrap border border-[#23282A]/20 bg-[#EDE9E0] p-0.5 max-w-full"
+              >
+                <button
+                  type="button"
+                  data-surface-btn="specimen"
+                  onClick={() => setStudy01Surface('specimen')}
+                  aria-pressed={study01Surface === 'specimen'}
+                  className={`px-2.5 sm:px-3 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold transition-colors ${
+                    study01Surface === 'specimen'
+                      ? 'bg-[#23282A] text-[#EDE9E0]'
+                      : 'text-[#23282A]/75 hover:text-[#23282A]'
+                  }`}
+                >
+                  Shared Neutral Specimen (85 Nodes)
+                </button>
+                <button
+                  type="button"
+                  data-surface-btn="contextmuse-home"
+                  onClick={() => setStudy01Surface('contextmuse-home')}
+                  aria-pressed={study01Surface === 'contextmuse-home'}
+                  className={`px-2.5 sm:px-3 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold transition-colors ${
+                    study01Surface === 'contextmuse-home'
+                      ? 'bg-[#23282A] text-[#D9A62E]'
+                      : 'text-[#23282A]/75 hover:text-[#23282A]'
+                  }`}
+                >
+                  ContextMuse Entrance (52e179d → 195921a)
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 font-mono text-xs text-[#23282A] min-w-0">
+                <Layers className="h-3.5 w-3.5 text-[#9A6F0B] shrink-0" />
+                <span className="font-bold uppercase tracking-wider truncate">
+                  {activeStudy.name}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Right: Viewport Toggle + Mode Toggle + Detail Inspector Trigger */}
+          <div className="flex flex-wrap items-center gap-2 min-w-0 max-w-full">
+            {/* Viewport Selector */}
+            <div
+              role="group"
+              aria-label="Viewport size"
+              className="flex flex-wrap border border-[#23282A]/20 bg-[#EDE9E0] p-0.5 max-w-full"
+            >
+              <button
+                type="button"
+                data-mode-btn="desktop"
+                onClick={() => setActiveViewport('desktop')}
+                aria-pressed={activeViewport === 'desktop'}
+                className={`px-2.5 sm:px-3 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold transition-colors ${
+                  activeViewport === 'desktop'
+                    ? 'bg-[#23282A] text-[#EDE9E0]'
+                    : 'text-[#23282A]/75 hover:text-[#23282A]'
+                }`}
+              >
+                Desktop (1440×900)
+              </button>
+              <button
+                type="button"
+                data-mode-btn="mobile"
+                onClick={() => setActiveViewport('mobile')}
+                aria-pressed={activeViewport === 'mobile'}
+                className={`px-2.5 sm:px-3 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold transition-colors ${
+                  activeViewport === 'mobile'
+                    ? 'bg-[#23282A] text-[#EDE9E0]'
+                    : 'text-[#23282A]/75 hover:text-[#23282A]'
+                }`}
+              >
+                Mobile (390×844)
+              </button>
+            </div>
+
+            {/* Comparison Mode Buttons: Original | Split | Transformed */}
+            <div
+              role="group"
+              aria-label="Comparison view mode"
+              className="flex flex-wrap border border-[#23282A]/20 bg-[#EDE9E0] p-0.5 max-w-full"
+            >
+              <button
+                type="button"
+                data-comparison-view="original"
+                onClick={() => selectComparisonMode('original')}
+                aria-pressed={comparisonMode === 'original'}
+                className={`px-2.5 sm:px-3 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold transition-colors ${
+                  comparisonMode === 'original'
+                    ? 'bg-[#23282A] text-[#EDE9E0]'
+                    : 'text-[#23282A]/75 hover:text-[#23282A]'
+                }`}
+              >
+                Original
+              </button>
+              <button
+                type="button"
+                data-comparison-view="split"
+                onClick={() => selectComparisonMode('split')}
+                aria-pressed={comparisonMode === 'split'}
+                className={`px-2.5 sm:px-3 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold transition-colors ${
+                  comparisonMode === 'split'
+                    ? 'bg-[#D9A62E] text-[#141617]'
+                    : 'text-[#23282A]/75 hover:text-[#23282A]'
+                }`}
+              >
+                Split ({effectiveClipPercent}%)
+              </button>
+              <button
+                type="button"
+                data-comparison-view="transformed"
+                onClick={() => selectComparisonMode('transformed')}
+                aria-pressed={comparisonMode === 'transformed'}
+                className={`px-2.5 sm:px-3 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold transition-colors ${
+                  comparisonMode === 'transformed'
+                    ? 'bg-[#23282A] text-[#EDE9E0]'
+                    : 'text-[#23282A]/75 hover:text-[#23282A]'
+                }`}
+              >
+                Transformed
+              </button>
+            </div>
+
+            {/* Detail Inspector Modal Button */}
+            <button
+              ref={inspectorTriggerRef}
+              type="button"
+              onClick={() => setInspectorOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#23282A] bg-[#FAF8F5] hover:bg-[#23282A] hover:text-[#EDE9E0] font-mono text-[11px] uppercase tracking-wider font-bold transition-colors"
+            >
+              <Maximize2 className="h-3 w-3" />
+              <span>Open Detail Inspector</span>
+            </button>
+          </div>
+        </div>
+
+        {/* 3. Primary Interactive Comparison Viewport */}
+        <div className="bg-[#181B1D] border-2 border-[#23282A] p-3 sm:p-5 shadow-md">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[#EDE9E0]/15 font-mono text-[11px] text-[#EDE9E0]/80">
+            <div className="flex items-center gap-2">
+              <Columns className="h-3.5 w-3.5 text-[#D9A62E]" />
+              <span>
+                {isEntranceComparisonActive
+                  ? entranceImages.label
+                  : `${activeStudy.shortName} Token Transfer on Shared 85-Node Neutral Specimen (${
+                      activeViewport === 'desktop' ? '1440×900 Desktop' : '390×844 Mobile'
+                    })`}
+              </span>
+            </div>
+            <div className="flex items-center gap-3 text-[10px] uppercase tracking-wider">
+              <span className="text-[#EDE9E0]/65">
+                LEFT:{' '}
+                <strong className="text-[#EDE9E0]">
+                  {isEntranceComparisonActive ? 'BASELINE (52e179d)' : 'NEUTRAL BASELINE'}
+                </strong>
+              </span>
+              <span className="text-[#D9A62E]">|</span>
+              <span className="text-[#D9A62E]">
+                RIGHT:{' '}
+                <strong>
+                  {isEntranceComparisonActive
+                    ? 'REFINED (195921a)'
+                    : `${activeStudy.shortName.toUpperCase()} TOKENS`}
+                </strong>
+              </span>
+            </div>
+          </div>
+
+          {/* Interactive Split Container */}
+          <div
+            ref={sliderContainerRef}
+            data-slider-stage="true"
+            onMouseDown={(e) => {
+              if (e.target === sliderHandleRef.current) return;
+              setIsDragging(true);
+              updateSliderFromClientX(e.clientX);
+            }}
+            onTouchStart={(e) => {
+              setIsDragging(true);
+              if (e.touches && e.touches[0]) {
+                updateSliderFromClientX(e.touches[0].clientX);
+              }
+            }}
+            className={`relative select-none overflow-hidden mx-auto border border-[#EDE9E0]/20 cursor-ew-resize ${
+              activeViewport === 'mobile' ? 'max-w-[390px]' : 'w-full'
+            }`}
+          >
+            {isEntranceComparisonActive ? (
+              /* Preserved ContextMuse Entrance Before/After Image Comparison */
+              <div
+                className="relative w-full bg-[#141617]"
+                style={{
+                  aspectRatio: activeViewport === 'desktop' ? '1440 / 900' : '390 / 844',
+                }}
+              >
+                <img
+                  src={entranceImages.after}
+                  alt="Refined ContextMuse entrance after Study 01 token transfer (195921a)"
+                  className="block w-full h-full object-cover object-top"
+                  draggable={false}
+                />
+                <div
+                  className="absolute inset-0 overflow-hidden"
+                  style={{
+                    clipPath: `inset(0 ${100 - effectiveClipPercent}% 0 0)`,
+                  }}
+                >
+                  <img
+                    src={entranceImages.before}
+                    alt="Baseline ContextMuse entrance before token transfer (52e179d)"
+                    className="block w-full h-full object-cover object-top"
+                    draggable={false}
+                  />
+                </div>
+              </div>
+            ) : (
+              /* Live 85-Node Shared Specimen Comparison (Both desktop & mobile kept mounted for instant switching & DOM parity verification) */
+              <div className="relative w-full">
+                {/* Desktop Specimen Pair */}
+                <div className={activeViewport === 'desktop' ? 'block' : 'hidden'}>
+                  <DesignSystemSpecimen variant={activeStudy.id} viewport="desktop" />
+                  <div
+                    className="absolute inset-0 overflow-hidden pointer-events-none"
+                    style={{
+                      clipPath: `inset(0 ${100 - effectiveClipPercent}% 0 0)`,
+                    }}
+                  >
+                    <DesignSystemSpecimen variant="neutral" viewport="desktop" />
+                  </div>
+                </div>
+
+                {/* Mobile Specimen Pair */}
+                <div className={activeViewport === 'mobile' ? 'block' : 'hidden'}>
+                  <DesignSystemSpecimen variant={activeStudy.id} viewport="mobile" />
+                  <div
+                    className="absolute inset-0 overflow-hidden pointer-events-none"
+                    style={{
+                      clipPath: `inset(0 ${100 - effectiveClipPercent}% 0 0)`,
+                    }}
+                  >
+                    <DesignSystemSpecimen variant="neutral" viewport="mobile" />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Vertical Split Divider & Accessible Handle */}
+            <div
+              style={{ left: `${effectiveClipPercent}%` }}
+              className="absolute top-0 bottom-0 w-0.5 bg-[#D9A62E] shadow-[0_0_12px_rgba(217,166,46,0.9)] z-20 pointer-events-none"
+            >
+              <button
+                ref={sliderHandleRef}
+                type="button"
+                role="slider"
+                aria-label="Comparison split percentage"
+                aria-orientation="horizontal"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={effectiveClipPercent}
+                aria-valuetext={`${effectiveClipPercent}% original baseline, ${
+                  100 - effectiveClipPercent
+                }% transformed`}
+                onKeyDown={handleSliderKeyDown}
+                onMouseDown={(e) => {
+                  e.stopPropagation();
+                  setIsDragging(true);
+                }}
+                className="pointer-events-auto absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-[#D9A62E] text-[#141617] border-2 border-[#141617] shadow-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#EDE9E0]"
+              >
+                <Sliders className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Corner Status Pills */}
+            <div className="absolute top-3 left-3 z-10 pointer-events-none bg-[#141617]/85 text-[#EDE9E0] border border-[#EDE9E0]/20 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+              {isEntranceComparisonActive ? 'BEFORE · 52e179d' : 'ORIGINAL · NEUTRAL SPECIMEN'}
+            </div>
+            <div className="absolute top-3 right-3 z-10 pointer-events-none bg-[#141617]/85 text-[#D9A62E] border border-[#D9A62E]/40 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider font-bold">
+              {isEntranceComparisonActive
+                ? 'AFTER · 195921a'
+                : `TRANSFORMED · ${activeStudy.shortName.toUpperCase()}`}
+            </div>
+          </div>
+
+          {/* Caption Bar Below Stage */}
+          <div className="mt-3 pt-2.5 border-t border-[#EDE9E0]/15 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-[#EDE9E0]/70">
+            <span>
+              Drag the handle, click anywhere on the stage, or use{' '}
+              <kbd className="px-1.5 py-0.5 bg-[#23282A] text-[#EDE9E0] border border-[#EDE9E0]/20">
+                ←
+              </kbd>{' '}
+              /{' '}
+              <kbd className="px-1.5 py-0.5 bg-[#23282A] text-[#EDE9E0] border border-[#EDE9E0]/20">
+                →
+              </kbd>{' '}
+              arrow keys ({effectiveClipPercent}% split).
+            </span>
+            <span>{activeStudy.inspectedAt}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          SECTION 04 — WHAT THE MEASUREMENTS REVEALED
+          ===================================================================== */}
+      <section
+        id="token-extraction-breakdown"
+        className="py-12 sm:py-16 px-5 sm:px-10 max-w-[1360px] mx-auto border-b border-[#23282A]/15"
+      >
+        <div className="border-t-2 border-[#23282A] pt-3 mb-8 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#23282A] font-bold">
+              04 / WHAT THE MEASUREMENTS REVEALED
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] px-2.5 py-0.5 bg-[#23282A] text-[#D9A62E] font-bold">
+              ACTIVE DOSSIER: {activeStudy.shortName.toUpperCase()}
+            </span>
+          </div>
+          <a
+            href={activeStudy.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-mono text-xs text-[#17504A] hover:underline font-bold"
+          >
+            <span>Reference: {activeStudy.sourceUrl}</span>
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        </div>
+
+        {/* Cross-System Architectural Synthesis Matrix */}
+        <div className="mb-10 bg-[#FAF8F5] border border-[#23282A]/20 p-5 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-[#23282A]/15">
+            <div>
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9A6F0B] font-bold block">
+                SYNTHESIS ACROSS ALL SYSTEMS
+              </span>
+              <h2 className="font-display text-lg sm:text-xl font-black uppercase tracking-tight text-[#23282A]">
+                Cross-System Architectural Comparison Matrix
+              </h2>
+            </div>
+            <span className="font-mono text-[11px] text-[#23282A]/65">
+              Measured at 1440×900 &amp; 390×844 (@ 2x DPR)
+            </span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse font-sans text-xs">
+              <thead>
+                <tr className="border-b-2 border-[#23282A] font-mono text-[10px] uppercase tracking-wider text-[#23282A]/75 bg-[#EDE9E0]/60">
+                  <th className="py-2.5 px-3">Dimension</th>
+                  <th className="py-2.5 px-3 bg-[#D9A62E]/15 text-[#23282A]">Context &amp; Muse (195921a)</th>
+                  <th className="py-2.5 px-3">Study 01 · Plaidis / Locomotive</th>
+                  <th className="py-2.5 px-3">Study 02 · Linear</th>
+                  <th className="py-2.5 px-3">Study 03 · Stripe</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#23282A]/12">
+                {CROSS_SYSTEM_COMPARISON.map((row) => (
+                  <tr key={row.dimension} className="hover:bg-[#EDE9E0]/40">
+                    <td className="py-2.5 px-3 font-mono font-bold text-[11px] text-[#23282A] whitespace-nowrap">
+                      {row.dimension}
+                    </td>
+                    <td className="py-2.5 px-3 font-mono text-[11px] bg-[#D9A62E]/10 text-[#23282A] font-medium">
+                      {row.contextMuse}
+                    </td>
+                    <td className="py-2.5 px-3 font-mono text-[11px] text-[#23282A]/85">
+                      {row.plaidis}
+                    </td>
+                    <td className="py-2.5 px-3 font-mono text-[11px] text-[#23282A]/85">
+                      {row.linear}
+                    </td>
+                    <td className="py-2.5 px-3 font-mono text-[11px] text-[#23282A]/85">
+                      {row.stripe}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Active Study Switcher Pills inside Section 04 */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div>
+            <h3 className="font-display text-xl sm:text-2xl font-black uppercase tracking-tight text-[#23282A]">
+              {activeStudy.name}
+            </h3>
+            <p className="text-sm text-[#23282A]/80 font-sans mt-1 max-w-3xl leading-relaxed">
+              {activeStudy.executiveSummary}
+            </p>
+          </div>
+          <div className="flex items-center gap-1.5 font-mono text-[11px]">
+            <span className="text-[#23282A]/60 mr-1 uppercase">Inspect Dossier:</span>
+            {DESIGN_INTELLIGENCE_STUDIES.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => selectStudy(s.id)}
+                className={`px-2.5 py-1 uppercase font-bold border transition-colors ${
+                  activeStudyId === s.id
+                    ? 'bg-[#23282A] text-[#D9A62E] border-[#23282A]'
+                    : 'bg-[#FAF8F5] text-[#23282A]/75 border-[#23282A]/20 hover:border-[#23282A]'
+                }`}
+              >
+                {s.shortName}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 1. Four-Pillar Measured Effect Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {[
+            { key: 'hierarchy', label: '01 / HIERARCHY', data: activeStudy.comparisonMetrics.hierarchy },
+            { key: 'density', label: '02 / DENSITY & RHYTHM', data: activeStudy.comparisonMetrics.density },
+            { key: 'visualEmphasis', label: '03 / VISUAL EMPHASIS', data: activeStudy.comparisonMetrics.visualEmphasis },
+            { key: 'readability', label: '04 / READABILITY & CONTRAST', data: activeStudy.comparisonMetrics.readability },
+          ].map((pillar) => (
+            <div
+              key={pillar.key}
+              className="bg-[#FAF8F5] border border-[#23282A]/15 p-4 flex flex-col justify-between"
+            >
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9A6F0B] font-bold block">
+                  {pillar.label}
+                </span>
+                <h4 className="font-display text-sm font-black uppercase tracking-tight text-[#23282A] mt-1">
+                  {pillar.data.scoreLabel}
+                </h4>
+                <p className="text-xs text-[#23282A]/75 font-sans mt-2 leading-relaxed">
+                  {pillar.data.summary}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* 2. Evidence Classification Legend + Token Breakdown Table */}
+        <div className="bg-[#FAF8F5] border border-[#23282A]/20 p-5 sm:p-6 mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-[#23282A]/15">
+            <div>
+              <h4 className="font-display text-base sm:text-lg font-black uppercase tracking-tight text-[#23282A]">
+                Extracted Token &amp; Rule Classification ({activeStudy.shortName})
+              </h4>
+              <p className="text-xs text-[#23282A]/70 font-sans mt-0.5">
+                Every value is tagged by provenance so measured source facts are never conflated
+                with inferred rules or specimen adaptations.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 font-mono text-[10px]">
+              <span className={`px-2 py-0.5 border font-bold ${CLASSIFICATION_BADGE_STYLES.A}`}>
+                Class A · Declared CSS Token
+              </span>
+              <span className={`px-2 py-0.5 border font-bold ${CLASSIFICATION_BADGE_STYLES.B}`}>
+                Class B · Computed DOM Style
+              </span>
+              <span className={`px-2 py-0.5 border font-bold ${CLASSIFICATION_BADGE_STYLES.C}`}>
+                Class C · Inferred Pattern
+              </span>
+              <span className={`px-2 py-0.5 border font-bold ${CLASSIFICATION_BADGE_STYLES.D}`}>
+                Class D · Deliberate Adaptation
+              </span>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse font-sans text-xs">
+              <thead>
+                <tr className="border-b-2 border-[#23282A] font-mono text-[10px] uppercase tracking-wider text-[#23282A]/70">
+                  <th className="py-2.5 pr-3">Category</th>
+                  <th className="py-2.5 px-3">Selector / CSS Variable</th>
+                  <th className="py-2.5 px-3">Class</th>
+                  <th className="py-2.5 px-3">Desktop (1440×900)</th>
+                  <th className="py-2.5 px-3">Mobile (390×844)</th>
+                  <th className="py-2.5 pl-3">Provenance &amp; Evidence</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#23282A]/10">
+                {activeStudy.tokenBreakdown.map((row, idx) => (
+                  <tr key={idx} className="align-top hover:bg-[#EDE9E0]/50">
+                    <td className="py-3 pr-3 font-bold text-[#23282A] whitespace-nowrap">
+                      {row.category}
+                    </td>
+                    <td className="py-3 px-3 font-mono text-[11px] text-[#17504A] font-medium">
+                      {row.tokenName}
+                    </td>
+                    <td className="py-3 px-3 whitespace-nowrap">
+                      <span
+                        className={`inline-block font-mono text-[10px] px-2 py-0.5 border font-bold ${
+                          CLASSIFICATION_BADGE_STYLES[row.classification] ||
+                          CLASSIFICATION_BADGE_STYLES.B
+                        }`}
+                      >
+                        {row.classificationLabel}
+                      </span>
+                    </td>
+                    <td className="py-3 px-3 font-mono text-[11px] text-[#23282A]/90">
+                      {row.desktopValue}
+                    </td>
+                    <td className="py-3 px-3 font-mono text-[11px] text-[#23282A]/85">
+                      {row.mobileValue}
+                    </td>
+                    <td className="py-3 pl-3 text-xs text-[#23282A]/75 leading-relaxed">
+                      {row.evidence}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Deliberate Specimen Transfer Adaptations (Class D Callout) */}
+          {activeStudy.transferAdaptations && activeStudy.transferAdaptations.length > 0 && (
+            <div className="mt-5 pt-4 border-t border-[#23282A]/15 bg-[#EDE9E0]/65 p-4">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold text-[#3B27BA]">
+                  CLASS D · DELIBERATE SPECIMEN TRANSFER ADAPTATIONS ({activeStudy.shortName})
+                </span>
+                <span className="font-mono text-[10px] text-[#23282A]/65">
+                  Explains every difference between raw reference values and the 85-node specimen
+                </span>
+              </div>
+              <ul className="space-y-1.5 text-xs text-[#23282A]/85 font-sans list-disc list-inside leading-relaxed">
+                {activeStudy.transferAdaptations.map((note, idx) => (
+                  <li key={idx}>{note}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {/* 3. Live Rendered Color Swatches & WCAG 2.1 Contrast Verification */}
+        <div className="mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div>
+              <h4 className="font-display text-base sm:text-lg font-black uppercase tracking-tight text-[#23282A]">
+                Rendered Color Swatches &amp; Deterministic WCAG 2.1 Contrast ({activeStudy.shortName})
+              </h4>
+              <p className="text-xs text-[#23282A]/70 font-sans">
+                Each swatch renders the actual extracted foreground/background hex pair with its
+                computed relative-luminance contrast ratio.
+              </p>
+            </div>
+            <span className="font-mono text-[11px] text-[#17504A] font-bold">
+              6 / 6 SWATCHES VERIFIED IN {activeStudy.shortName.toUpperCase()} (18 / 18 TOTAL)
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            {activeStudy.colorSwatches.map((swatch, idx) => (
+              <div
+                key={idx}
+                data-contrast-swatch={swatch.name}
+                className="bg-[#FAF8F5] border border-[#23282A]/15 p-3.5 flex flex-col justify-between gap-3"
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    style={{
+                      backgroundColor: swatch.bgHex,
+                      color: swatch.fgHex,
+                    }}
+                    className="w-14 h-14 shrink-0 border border-[#23282A]/25 flex flex-col items-center justify-center font-mono text-xs font-bold shadow-inner"
+                  >
+                    <span>Aa</span>
+                    <span className="text-[9px] opacity-85">{swatch.contrastRatio}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="font-display text-xs font-black uppercase text-[#23282A] truncate">
+                        {swatch.name}
+                      </span>
+                      <span className="font-mono text-[9px] px-1.5 py-0.5 bg-[#23282A] text-[#D9A62E] font-bold">
+                        {swatch.wcagLevel}
+                      </span>
                     </div>
-                    <p className="text-xs leading-relaxed text-[#DFDACE]/80 border-t border-[#DFDACE]/10 pt-2">
-                      {metric.data.summary}
+                    <div className="font-mono text-[10px] text-[#17504A] truncate mt-0.5">
+                      {swatch.token}
+                    </div>
+                    <div className="font-mono text-[10px] text-[#23282A]/75 mt-0.5">
+                      BG <strong className="text-[#23282A]">{swatch.bgHex}</strong> · FG{' '}
+                      <strong className="text-[#23282A]">{swatch.fgHex}</strong>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-[11px] text-[#23282A]/75 font-sans border-t border-[#23282A]/10 pt-2 leading-snug">
+                  {swatch.usage}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 4. Progressive Disclosure: 5 Analytical Evaluation Questions & Reference Dossier Provenance */}
+        <div className="bg-[#FAF8F5] border border-[#23282A]/20">
+          <button
+            type="button"
+            onClick={() => setQuestionsOpen(!questionsOpen)}
+            aria-expanded={questionsOpen}
+            className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left hover:bg-[#EDE9E0]/50 transition-colors"
+          >
+            <div>
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9A6F0B] font-bold block">
+                DEEP TECHNICAL DOSSIER · {activeStudy.referenceDossierPath}
+              </span>
+              <h4 className="font-display text-base sm:text-lg font-black uppercase tracking-tight text-[#23282A] mt-0.5">
+                Five Analytical Evaluation Questions ({activeStudy.shortName})
+              </h4>
+            </div>
+            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#23282A] shrink-0">
+              <span>{questionsOpen ? 'Hide Technical Q&A' : 'Expand 5-Question Analysis'}</span>
+              {questionsOpen ? (
+                <ChevronUp className="h-4 w-4" />
+              ) : (
+                <ChevronDown className="h-4 w-4" />
+              )}
+            </div>
+          </button>
+
+          {questionsOpen && (
+            <div className="p-5 sm:p-6 border-t border-[#23282A]/15 space-y-4 bg-[#FAF8F5]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {activeStudy.analyticalQuestions.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className={`border border-[#23282A]/15 p-4 bg-[#EDE9E0]/35 ${
+                      idx === activeStudy.analyticalQuestions.length - 1 ? 'md:col-span-2' : ''
+                    }`}
+                  >
+                    <h5 className="font-mono text-xs font-bold text-[#23282A] uppercase tracking-wider">
+                      {item.q}
+                    </h5>
+                    <p className="text-xs sm:text-sm text-[#23282A]/80 font-sans mt-2 leading-relaxed">
+                      {item.a}
                     </p>
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Verified Token Extraction Breakdown Table (Distinguishing Class A, Class B, Class C) */}
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
-                    02 / Extracted Design Tokens (Declared vs. Computed vs. Inferred vs. Deliberate Adaptation)
-                  </div>
-                  <p className="text-xs text-[#DFDACE]/75 mt-0.5">
-                    Source: <code className="font-mono text-[#EDE9E0]">{activeStudy.sourceUrl}</code> ·{' '}
-                    {activeStudy.inspectedAt} · Dossier:{' '}
-                    <code className="font-mono text-[#EDE9E0]">{activeStudy.referenceDossierPath}</code>
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-2 font-mono text-[10.5px]">
-                  <span className="border border-emerald-500/40 bg-emerald-950/60 px-2 py-0.5 text-emerald-300 font-bold">
-                    Class A: Declared CSS Token
-                  </span>
-                  <span className="border border-sky-500/40 bg-sky-950/60 px-2 py-0.5 text-sky-300 font-bold">
-                    Class B: Computed DOM Style
-                  </span>
-                  <span className="border border-amber-500/40 bg-amber-950/60 px-2 py-0.5 text-amber-300 font-bold">
-                    Class C: Inferred Pattern
-                  </span>
-                  <span className="border border-purple-500/40 bg-purple-950/60 px-2 py-0.5 text-purple-300 font-bold">
-                    Class D: Deliberate Adaptation
-                  </span>
-                </div>
-              </div>
-
-              <div className="overflow-x-auto border border-[#DFDACE]/20 bg-[#1B1F21]">
-                <table className="w-full text-left border-collapse text-xs">
-                  <thead>
-                    <tr className="border-b border-[#DFDACE]/20 bg-[#23282A] font-mono text-[11px] uppercase tracking-wider text-[#DFDACE]/80">
-                      <th className="py-3 px-4">Token Category &amp; Selector</th>
-                      <th className="py-3 px-4">Epistemic Class</th>
-                      <th className="py-3 px-4">Observed Desktop (1440×900)</th>
-                      <th className="py-3 px-4">Observed Mobile (390×844)</th>
-                      <th className="py-3 px-4">Verification Evidence</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[#DFDACE]/10">
-                    {activeStudy.tokenBreakdown.map((row) => (
-                      <tr key={row.category} className="hover:bg-[#23282A]/50 transition-colors">
-                        <td className="py-3.5 px-4 align-top">
-                          <div className="font-bold text-[#EDE9E0]">{row.category}</div>
-                          <code className="font-mono text-[11px] text-[#D9A62E] block mt-0.5">
-                            {row.tokenName}
-                          </code>
-                        </td>
-                        <td className="py-3.5 px-4 align-top whitespace-nowrap">
-                          <span
-                            className={`inline-block font-mono text-[10px] font-bold px-2 py-0.5 border ${
-                              row.classification === 'A'
-                                ? 'border-emerald-500/40 bg-emerald-950/60 text-emerald-300'
-                                : row.classification === 'B'
-                                ? 'border-sky-500/40 bg-sky-950/60 text-sky-300'
-                                : row.classification === 'C'
-                                ? 'border-amber-500/40 bg-amber-950/60 text-amber-300'
-                                : 'border-purple-500/40 bg-purple-950/60 text-purple-300'
-                            }`}
-                          >
-                            {row.classificationLabel}
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4 align-top font-mono text-[11px] text-[#EDE9E0]/95">
-                          {row.desktopValue}
-                        </td>
-                        <td className="py-3.5 px-4 align-top font-mono text-[11px] text-[#DFDACE]/85">
-                          {row.mobileValue}
-                        </td>
-                        <td className="py-3.5 px-4 align-top text-[#DFDACE]/80 leading-relaxed">
-                          {row.evidence}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Deliberate Specimen & Transfer Adaptations Callout (Class D) */}
-              {activeStudy.transferAdaptations && (
-                <div className="border border-purple-500/35 bg-[#1B1F21] p-4 space-y-2">
-                  <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
-                    <span className="font-bold text-purple-300 uppercase tracking-wider">
-                      Deliberate Specimen &amp; Transfer Adaptations Beyond 1:1 Token Substitution (Class D)
-                    </span>
-                    <span className="text-[#DFDACE]/65 text-[11px]">
-                      Preserving 85-node DOM parity, split-slider alignment &amp; font-license boundaries
-                    </span>
-                  </div>
-                  <ul className="space-y-1.5 text-xs text-[#DFDACE]/85 leading-relaxed list-disc pl-4">
-                    {activeStudy.transferAdaptations.map((adaptation) => (
-                      <li key={adaptation}>{adaptation}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            {/* Color Swatches with Accessible Contrast Ratios */}
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
-                    03 / Extracted Color Swatches &amp; Measured WCAG 2.1 Luminance Contrast Ratios
-                  </div>
-                  <p className="text-xs text-[#DFDACE]/75 mt-0.5">
-                    Every foreground/background pairing is evaluated using relative luminance (WCAG 2.1 AA requires 4.5:1
-                    for normal text, 3.0:1 for large text; AAA requires 7.0:1).
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {activeStudy.colorSwatches.map((swatch) => (
-                  <div
-                    key={swatch.name}
-                    data-contrast-swatch={swatch.name}
-                    className="border border-[#DFDACE]/20 bg-[#1B1F21] overflow-hidden flex flex-col justify-between"
-                  >
-                    {/* Live Rendered Swatch Preview */}
-                    <div
-                      style={{ backgroundColor: swatch.bgHex, color: swatch.fgHex }}
-                      className="p-4 border-b border-[#DFDACE]/15 flex items-center justify-between gap-3"
-                    >
-                      <div>
-                        <div className="font-mono text-[10px] uppercase tracking-wider opacity-80">
-                          {swatch.token}
-                        </div>
-                        <div className="font-display text-base font-bold mt-0.5">
-                          {swatch.name}
-                        </div>
-                      </div>
-                      <span
-                        style={{
-                          borderColor: swatch.fgHex,
-                          color: swatch.fgHex,
-                        }}
-                        className="border px-2 py-0.5 font-mono text-xs font-bold shrink-0"
-                      >
-                        {swatch.contrastRatio}
-                      </span>
-                    </div>
-
-                    {/* Swatch Metadata */}
-                    <div className="p-3.5 space-y-2 text-xs">
-                      <div className="flex items-center justify-between font-mono text-[11px]">
-                        <span className="text-[#DFDACE]/80">
-                          BG <strong className="text-[#EDE9E0]">{swatch.bgHex}</strong> · FG{' '}
-                          <strong className="text-[#EDE9E0]">{swatch.fgHex}</strong>
-                        </span>
-                        <span
-                          className={`px-2 py-0.5 text-[10px] font-bold border ${
-                            swatch.wcagLevel === 'AAA'
-                              ? 'border-emerald-500/40 bg-emerald-950/70 text-emerald-300'
-                              : swatch.wcagLevel === 'AA'
-                              ? 'border-sky-500/40 bg-sky-950/70 text-sky-300'
-                              : 'border-amber-500/40 bg-amber-950/70 text-amber-300'
-                          }`}
-                        >
-                          WCAG {swatch.wcagLevel}
-                        </span>
-                      </div>
-                      <p className="text-[#DFDACE]/75 leading-snug">{swatch.usage}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="pt-3 border-t border-[#23282A]/10 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-[#23282A]/65">
+                <span>Reference Dossier: {activeStudy.referenceDossierPath}</span>
+                <span>Experiment Report: {activeStudy.experimentReportPath}</span>
               </div>
             </div>
+          )}
+        </div>
+      </section>
 
-            {/* Phase 4: Five Analytical Substance Questions */}
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#DFDACE]/15 pb-3">
-                <div>
-                  <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
-                    04 / Analytical Substance — {activeStudy.shortName} Design System Evaluation
-                  </div>
-                  <p className="text-xs text-[#DFDACE]/75 mt-0.5">
-                    Separating directly measured DOM &amp; accessibility evidence from plausible perceptual effects and
-                    methodological limitations.
-                  </p>
-                </div>
-                <span className="font-mono text-[11px] text-[#DFDACE]/70">
-                  No affiliate relationship · No conversion claims without A/B testing
-                </span>
-              </div>
+      {/* =====================================================================
+          SECTION 05 — APPLYING THE RESEARCH (CONTEXT & MUSE PRODUCTION INTERVENTION)
+          ===================================================================== */}
+      <section
+        id="what-changed"
+        className="py-12 sm:py-16 px-5 sm:px-10 max-w-[1360px] mx-auto border-b border-[#23282A]/15"
+      >
+        <div className="border-t-2 border-[#23282A] pt-3 mb-8 flex flex-wrap items-center justify-between gap-2">
+          <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#23282A] font-bold">
+            05 / APPLYING THE RESEARCH
+          </span>
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#17504A] font-bold">
+            PRODUCTION INTERVENTION · COMMIT 52e179d → 195921a
+          </span>
+        </div>
 
-              <div className="grid gap-4 lg:grid-cols-2">
-                {activeStudy.analyticalQuestions.map((item, idx) => (
-                  <div
-                    key={item.q}
-                    className={`border border-[#DFDACE]/20 bg-[#1B1F21] p-5 space-y-2 ${
-                      idx === 4 ? 'lg:col-span-2 border-l-4 border-l-[#D9A62E]' : ''
-                    }`}
-                  >
-                    <h3 className="font-display text-base font-bold text-[#EDE9E0]">{item.q}</h3>
-                    <p className="text-xs sm:text-sm leading-relaxed text-[#DFDACE]/85">{item.a}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Cross-System Synthesis Matrix (Comparing All 3 Studies Side-by-Side) */}
-            <div className="space-y-4 pt-2">
-              <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
-                05 / Cross-System Comparative Matrix (Plaidis vs. Linear vs. Stripe on Identical Specimen)
-              </div>
-              <div className="overflow-x-auto border border-[#DFDACE]/20 bg-[#1B1F21]">
-                <table className="w-full text-left border-collapse text-xs">
-                  <thead>
-                    <tr className="border-b border-[#DFDACE]/20 bg-[#23282A] font-mono text-[11px] uppercase tracking-wider text-[#DFDACE]/80">
-                      <th className="py-3 px-4">System Dimension</th>
-                      <th className="py-3 px-4">Study 01 · Plaidis (Locomotive)</th>
-                      <th className="py-3 px-4">Study 02 · Linear (linear.app)</th>
-                      <th className="py-3 px-4">Study 03 · Stripe (stripe.com)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[#DFDACE]/10">
-                    <tr>
-                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Inspection &amp; Verification</td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        Original inspection <code className="font-mono">2026-04-12</code> · Automated verification <code className="font-mono">2026-11-08</code>
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        Original inspection <code className="font-mono">2026-04-19</code> · Automated verification <code className="font-mono">2026-11-09</code>
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        Original inspection <code className="font-mono">2026-04-19</code> · Automated verification <code className="font-mono">2026-11-09</code>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Surface Polarity &amp; Accents</td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <strong>Observed Source (<code className="font-mono">Class A</code>):</strong> Monochrome <code className="font-mono">#000000</code> / <code className="font-mono">#FFFFFF</code> (<code className="font-mono">21.00:1</code>) + <code className="font-mono">#312DFB</code> ultramarine (<code className="font-mono">7.24:1</code>).{' '}
-                        <strong>ContextMuse Adaptation (<code className="font-mono">Class D</code>):</strong> Bone <code className="font-mono">#EDE9E0</code> &amp; Charcoal <code className="font-mono">#23282A</code> (<code className="font-mono">12.31:1</code>) + <code className="font-mono">#D9A62E</code> gold &amp; <code className="font-mono">#17504A</code> forest.
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        Obsidian Dark (<code className="font-mono">#08090A</code> canvas, <code className="font-mono">#0F1011</code> panels, <code className="font-mono">#141516</code> ledger)
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        Daylight White (<code className="font-mono">#FFFFFF</code> / <code className="font-mono">#F8FAFD</code>) + Dark Navy (<code className="font-mono">#0D1738</code>)
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Display &amp; UI Typography</td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <strong>Observed Source (<code className="font-mono">Class A/B</code>):</strong> <code className="font-mono">LocomotiveNew</code> wt <code className="font-mono">400</code> (<code className="font-mono">70px–110px</code>, <code className="font-mono">1.00–1.10</code> lh) + <code className="font-mono">HelveticaNowDisplay</code> wt <code className="font-mono">400</code> (<code className="font-mono">15px–26px</code>, <code className="font-mono">-0.02em</code>).{' '}
-                        <strong>Adaptation (<code className="font-mono">Class D</code>):</strong> ContextMuse <code className="font-mono">Chivo</code> + <code className="font-mono">JetBrains Mono</code>; specimen <code className="font-mono">800</code> uppercase (<code className="font-mono">22.5px</code>/<code className="font-mono">17.5px</code>) with system fallback.
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">Inter Variable</code> weight <code className="font-mono">510</code>, <code className="font-mono">-0.022em</code> tracking, <code className="font-mono">&quot;cv01&quot;, &quot;ss03&quot;</code> (system fallback)
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">sohne-var</code> light weight <code className="font-mono">300</code>, <code className="font-mono">-0.02em</code> tracking, <code className="font-mono">#64748D</code> lead (stacked on specimen, <code className="font-mono">Class D</code>)
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Depth &amp; Borders</td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <strong>Observed Source (<code className="font-mono">Class B</code>):</strong> <code className="font-mono">0px</code> radius, <code className="font-mono">2px solid</code> desktop (<code className="font-mono">1px</code> mobile) top overlines, <code className="font-mono">box-shadow: none</code>.{' '}
-                        <strong>Specimen Adaptation (<code className="font-mono">Class D</code>):</strong> Open left/right card borders (<code className="font-mono">2px</code> top / <code className="font-mono">1px</code> bottom rules).
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">8px–12px</code> radius, <code className="font-mono">1px rgba(255,255,255,0.08)</code> ring, <code className="font-mono">0px</code> drop shadow
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">6px</code> card / <code className="font-mono">4px</code> CTA radius, <code className="font-mono">1px #E5EDF5</code>, <code className="font-mono">0 16px 32px rgba(50,50,93,0.12)</code>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-4 font-mono font-bold text-[#D9A62E]">Primary CTA &amp; Motion Curves</td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <strong>Primary (<code className="font-mono">:root</code> / <code className="font-mono">.c-featured-links_visual</code>, <code className="font-mono">Class A/B</code>):</strong> <code className="font-mono">0.45s</code> enter / <code className="font-mono">0.2s</code> leave <code className="font-mono">cubic-bezier(0.23, 1, 0.32, 1)</code> (Ease-Out Quint; transferred to specimen &amp; <code className="font-mono">RoomTile</code>).{' '}
-                        <strong>Secondary UI (<code className="font-mono">Class B</code>):</strong> <code className="font-mono">cubic-bezier(0.215, 0.61, 0.355, 1)</code> (Ease-Out Cubic) at <code className="font-mono">0.15s</code> (<code className="font-mono">select</code>), <code className="font-mono">0.2s</code> (<code className="font-mono">.c-header</code>), <code className="font-mono">0.3s</code> (<code className="font-mono">html</code> bg / labels).
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">32px</code> pill (<code className="font-mono">9999px</code>), monochrome <code className="font-mono">#E5E5E6</code> (<code className="font-mono">15.83:1</code> AAA), <code className="font-mono">160ms cubic-bezier(0.25, 0.46, 0.45, 0.94)</code>
-                      </td>
-                      <td className="py-3 px-4 text-[#DFDACE]/90">
-                        <code className="font-mono">48px</code> (<code className="font-mono">44px</code> mobile), <code className="font-mono">#533AFD</code> violet (<code className="font-mono">6.19:1</code> AA), <code className="font-mono">4px</code> radius, <code className="font-mono">300ms cubic-bezier(0.25, 1, 0.5, 1)</code>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10">
+          <div className="lg:col-span-7 space-y-3">
+            <h2 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#23282A] leading-[1.08]">
+              Transferring structural discipline into Context &amp; Muse without erasing brand identity.
+            </h2>
+            <p className="text-sm sm:text-base text-[#23282A]/80 font-sans leading-relaxed">
+              The goal of studying external systems is not to make Context &amp; Muse look like
+              Locomotive, Linear, or Stripe. Instead, we transferred <strong className="font-semibold text-[#23282A]">three structural mechanisms</strong>—a
+              single <code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">40px</code> desktop plumb line,{' '}
+              <code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">2px solid</code> section overlines, and{' '}
+              <code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">450ms / 200ms</code> Ease-Out Quint
+              choreography—into the four-room homepage while keeping Context &amp; Muse’s
+              architectural palette and typography completely intact.
+            </p>
           </div>
-        </section>
 
-        {/* ============================================================
-            SECTION B: WHAT CHANGED ON CONTEXTMUSE (THREE CONCISE FINDINGS)
-            ============================================================ */}
-        <section
-          id="what-changed"
-          className="border-b border-[#DFDACE]/15 bg-[#EDE9E0] text-[#23282A] px-5 py-12 sm:px-8 sm:py-16 lg:px-10"
-        >
-          <div className="mx-auto max-w-6xl space-y-8">
-            <div className="space-y-2">
-              <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#17504A]">
-                02 / Baseline Production Experiment (Study 01 Applied to ContextMuse)
-              </div>
-              <h2 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#23282A]">
-                Three targeted refinements, measured before and after.
-              </h2>
+          {/* Preserved Context & Muse Brand Palette & Typography Strip */}
+          <div className="lg:col-span-5 bg-[#FAF8F5] border border-[#23282A]/20 p-5">
+            <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-[#23282A]/15">
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9A6F0B] font-bold">
+                PRESERVED DESTINATION IDENTITY
+              </span>
+              <span className="font-mono text-[10px] text-[#23282A]/65">
+                Chivo + JetBrains Mono
+              </span>
             </div>
-
-            <div className="grid gap-6 lg:grid-cols-3">
-              {THREE_FINDINGS.map((item) => (
-                <article
-                  key={item.num}
-                  className="flex flex-col justify-between border-2 border-[#23282A] bg-[#DFDACE]/65 p-6"
+            <div className="grid grid-cols-2 gap-2.5">
+              {PRESERVED_BRAND_SWATCHES.map((s) => (
+                <div
+                  key={s.hex}
+                  style={{ backgroundColor: s.hex, color: s.textHex }}
+                  className="p-3 border border-[#23282A]/20 flex flex-col justify-between"
                 >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between border-b border-[#23282A]/20 pb-3 font-mono text-xs">
-                      <span className="font-bold text-[#17504A]">Finding {item.num}</span>
-                      <span className="bg-[#23282A] text-[#EDE9E0] px-2.5 py-0.5 font-bold">
-                        {item.metric}
-                      </span>
-                    </div>
-
-                    <h3 className="font-display text-xl font-black tracking-tight text-[#23282A]">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-sm leading-relaxed text-[#23282A]/90">{item.body}</p>
+                  <div className="flex items-center justify-between font-mono text-[11px] font-bold">
+                    <span>{s.hex}</span>
+                    <span className="text-[9px] opacity-80">{s.contrast}</span>
                   </div>
-                </article>
+                  <div className="mt-2">
+                    <span className="font-display text-xs font-black uppercase block">
+                      {s.name}
+                    </span>
+                    <span className="font-mono text-[9px] opacity-80 block mt-0.5">
+                      {s.role}
+                    </span>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* ============================================================
-            SECTION C: FROM EXPERIMENT TO DESIGN INTELLIGENCE
-            + COMPACT 5-STAGE PROCESS
-            + OPTIONAL "VIEW RESEARCH & TECHNICAL EVIDENCE" DISCLOSURE
-            ============================================================ */}
-        <section
-          id="from-experiment-to-design-intelligence"
-          className="bg-[#17504A] text-[#EDE9E0] px-5 py-12 sm:px-8 sm:py-16 lg:px-10"
-        >
-          <div className="mx-auto max-w-6xl space-y-8">
-            <div className="grid gap-6 lg:grid-cols-12 items-end">
-              <div className="lg:col-span-8 space-y-2">
-                <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#D9A62E]">
-                  03 / From Experiment to Design Intelligence
+        {/* Three Production Refinements Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+          {THREE_FINDINGS.map((item) => (
+            <article
+              key={item.num}
+              className="bg-[#FAF8F5] border border-[#23282A]/20 p-6 flex flex-col justify-between shadow-sm"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-[#23282A]/12">
+                  <span className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-[#9A6F0B]">
+                    {item.num} / {item.category}
+                  </span>
+                  <span className="font-mono text-[10px] bg-[#23282A] text-[#D9A62E] px-2 py-0.5 font-bold">
+                    {item.metricLabel}
+                  </span>
                 </div>
-                <h2 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#EDE9E0]">
-                  Turning reference analysis into a reusable design system workflow.
-                </h2>
-                <p className="text-sm sm:text-base text-[#EDE9E0]/90 leading-relaxed max-w-3xl">
-                  Rather than prompting AI for generic styling or imitating another company’s layout, this study tests a
-                  repeatable Design Intelligence Library: extracting measurable layout, luminance, and interaction
-                  tolerances from strong references, evaluating them on a neutral specimen, and verifying that product
-                  workflows remain intact.
+
+                <div className="mb-4">
+                  <span className="font-display text-3xl sm:text-4xl font-black text-[#23282A] tracking-tight block">
+                    {item.metric}
+                  </span>
+                </div>
+
+                <div className="space-y-3 text-xs sm:text-sm font-sans leading-relaxed">
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#23282A]/55 font-bold block">
+                      What Was Measured (52e179d):
+                    </span>
+                    <p className="text-[#23282A]/80 mt-0.5">{item.whatWasMeasured}</p>
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#23282A]/55 font-bold block">
+                      What Changed:
+                    </span>
+                    <p className="text-[#23282A]/80 mt-0.5">{item.whatChanged}</p>
+                  </div>
+                  <div className="pt-2 border-t border-[#23282A]/10">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#17504A] font-bold block">
+                      Verified Result (195921a):
+                    </span>
+                    <p className="text-[#23282A] font-medium mt-0.5">{item.whatImproved}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 pt-2.5 border-t border-[#23282A]/10 font-mono text-[10px] text-[#23282A]/60">
+                {item.classification}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Verified Production Before / After Visual Evidence Plates */}
+        <div className="bg-[#181B1D] text-[#EDE9E0] border-2 border-[#23282A] p-5 sm:p-6 mb-10">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-[#EDE9E0]/15">
+            <div>
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#D9A62E] font-bold block">
+                VERIFIED PRODUCTION SCREENSHOT EVIDENCE (1440×900 &amp; 390×844)
+              </span>
+              <h3 className="font-display text-lg sm:text-xl font-black uppercase tracking-tight text-[#EDE9E0] mt-0.5">
+                Context &amp; Muse Four-Room Homepage: Baseline (52e179d) vs. Refined (195921a)
+              </h3>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <a
+                href="#interactive-comparison"
+                onClick={() => {
+                  selectStudy('plaidis');
+                  setStudy01Surface('contextmuse-home');
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#D9A62E] text-[#141617] font-mono text-[11px] uppercase tracking-wider font-bold hover:bg-[#EDE9E0] transition-colors"
+              >
+                <Sliders className="h-3.5 w-3.5" />
+                <span>Compare in Interactive Split Stage</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+            <figure className="lg:col-span-5 bg-[#141617] border border-[#EDE9E0]/15 p-3">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-[#EDE9E0]/70 pb-2 mb-2 border-b border-[#EDE9E0]/10">
+                <span>BEFORE · COMMIT 52e179d (1440×900)</span>
+                <span className="text-amber-400">24px Plumb Drift</span>
+              </div>
+              <img
+                src="/assets/images/design-intelligence/exp01_before_desktop.png"
+                alt="Context and Muse homepage baseline commit 52e179d showing 24px left-edge drift"
+                className="w-full h-auto border border-[#EDE9E0]/10"
+              />
+              <figcaption className="font-mono text-[10px] text-[#EDE9E0]/65 mt-2 leading-relaxed">
+                Logo at x = 40px while Hero H1 and CTA sit at x = 64px; 1px room rules; 300ms brightness(1.05) hover.
+              </figcaption>
+            </figure>
+
+            <figure className="lg:col-span-5 bg-[#141617] border border-[#D9A62E]/40 p-3">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-[#EDE9E0]/70 pb-2 mb-2 border-b border-[#EDE9E0]/10">
+                <span className="text-[#D9A62E] font-bold">AFTER · COMMIT 195921a (1440×900)</span>
+                <span className="text-[#D9A62E] font-bold">0px Desktop Drift</span>
+              </div>
+              <img
+                src="/assets/images/design-intelligence/exp01_after_desktop.png"
+                alt="Context and Muse homepage refined commit 195921a with 0px desktop alignment drift"
+                className="w-full h-auto border border-[#EDE9E0]/10"
+              />
+              <figcaption className="font-mono text-[10px] text-[#EDE9E0]/65 mt-2 leading-relaxed">
+                Unified x = 40px desktop plumb line across header, hero, CTA, and footer; 2px overlines; #D9A62E discipline.
+              </figcaption>
+            </figure>
+
+            <figure className="lg:col-span-2 bg-[#141617] border border-[#EDE9E0]/15 p-3">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-[#EDE9E0]/70 pb-2 mb-2 border-b border-[#EDE9E0]/10">
+                <span>MOBILE · 390×844</span>
+              </div>
+              <img
+                src="/assets/images/design-intelligence/exp01_after_mobile.png"
+                alt="Context and Muse mobile viewport 390x844 after refinement"
+                className="w-full h-auto border border-[#EDE9E0]/10 max-h-[260px] object-cover object-top mx-auto"
+              />
+              <figcaption className="font-mono text-[10px] text-[#EDE9E0]/65 mt-2 leading-relaxed">
+                x = 20px header &amp; hero outer margin; room tiles retain 24px (p-6) touch inset.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        {/* Interactive Hover Timing Reproduction Sandbox */}
+        <div className="bg-[#FAF8F5] border border-[#23282A]/20 p-5 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-[#23282A]/15">
+            <div>
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9A6F0B] font-bold block">
+                INTERACTIVE CHOREOGRAPHY SPECIMEN
+              </span>
+              <h3 className="font-display text-lg sm:text-xl font-black uppercase tracking-tight text-[#23282A]">
+                Hover Timing Sandbox: 300ms Brightness Filter vs. 450ms / 200ms Ease-Out Quint
+              </h3>
+            </div>
+            <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
+              <button
+                type="button"
+                onClick={() => setHoverReproductionMode('before')}
+                className={`px-3 py-1.5 uppercase font-bold border transition-colors ${
+                  hoverReproductionMode === 'before'
+                    ? 'bg-[#23282A] text-[#EDE9E0] border-[#23282A]'
+                    : 'bg-[#EDE9E0] text-[#23282A]/75 border-[#23282A]/20'
+                }`}
+              >
+                Reproduction A · Baseline (300ms + Brightness)
+              </button>
+              <button
+                type="button"
+                onClick={() => setHoverReproductionMode('after')}
+                className={`px-3 py-1.5 uppercase font-bold border transition-colors ${
+                  hoverReproductionMode === 'after'
+                    ? 'bg-[#D9A62E] text-[#141617] border-[#23282A]'
+                    : 'bg-[#EDE9E0] text-[#23282A]/75 border-[#23282A]/20'
+                }`}
+              >
+                Reproduction B · Refined (450ms Enter / 200ms Leave)
+              </button>
+              <button
+                type="button"
+                onClick={() => setHoverReproductionMode('captured')}
+                className={`px-3 py-1.5 uppercase font-bold border transition-colors ${
+                  hoverReproductionMode === 'captured'
+                    ? 'bg-[#23282A] text-[#D9A62E] border-[#23282A]'
+                    : 'bg-[#EDE9E0] text-[#23282A]/75 border-[#23282A]/20'
+                }`}
+              >
+                Recorded Capture (195921a)
+              </button>
+            </div>
+          </div>
+
+          {hoverReproductionMode === 'captured' ? (
+            <div className="bg-[#141617] p-4 border border-[#23282A]">
+              <img
+                src="/assets/images/design-intelligence/exp01_after_desktop_hover_build.png"
+                alt="Recorded Playwright hover state on 02 / BUILD room tile (commit 195921a)"
+                className="w-full max-h-[380px] object-contain mx-auto"
+              />
+              <p className="font-mono text-[11px] text-[#EDE9E0]/75 text-center mt-3">
+                Playwright capture of 02 / BUILD room tile hovered in commit 195921a: 2px top
+                overline, #D9A62E badge, and zero pigment washout.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div className="md:col-span-7">
+                <div
+                  onMouseEnter={() => setHoveringRoom(true)}
+                  onMouseLeave={() => setHoveringRoom(false)}
+                  style={{
+                    transitionProperty: 'transform, border-color, box-shadow, filter',
+                    transitionDuration:
+                      hoverReproductionMode === 'before'
+                        ? '300ms'
+                        : hoveringRoom
+                        ? '450ms'
+                        : '200ms',
+                    transitionTimingFunction:
+                      hoverReproductionMode === 'before'
+                        ? 'cubic-bezier(0.4, 0, 0.2, 1)'
+                        : 'cubic-bezier(0.23, 1, 0.32, 1)',
+                    filter:
+                      hoverReproductionMode === 'before' && hoveringRoom
+                        ? 'brightness(1.06)'
+                        : 'none',
+                  }}
+                  className="cursor-pointer bg-[#23282A] text-[#EDE9E0] p-6 border-t-2 border-[#D9A62E] border-x border-b border-[#23282A] select-none"
+                >
+                  <div className="flex items-center justify-between font-mono text-xs text-[#D9A62E]">
+                    <span>01 / WORK · INTERACTIVE ROOM TILE SPECIMEN</span>
+                    <span>{hoveringRoom ? 'POINTER ENTER (ACTIVE)' : 'HOVER THIS TILE →'}</span>
+                  </div>
+                  <h4 className="font-display text-2xl font-black uppercase tracking-tight mt-3">
+                    Production Systems &amp; Flagship Proofs
+                  </h4>
+                  <p className="text-xs text-[#EDE9E0]/75 font-sans mt-2 leading-relaxed">
+                    Move your cursor into and out of this surface to feel the difference between
+                    symmetric 300ms easing and asymmetric 450ms enter / 200ms leave deceleration.
+                  </p>
+                  <div className="mt-5 pt-3 border-t border-[#EDE9E0]/15 flex items-center justify-between font-mono text-[11px]">
+                    <span className="text-[#EDE9E0]/70">
+                      {hoverReproductionMode === 'before'
+                        ? '300ms symmetric · filter: brightness(1.06)'
+                        : '450ms enter / 200ms leave · cubic-bezier(0.23, 1, 0.32, 1)'}
+                    </span>
+                    <span
+                      style={{
+                        transform: hoveringRoom ? 'translateX(6px)' : 'translateX(0px)',
+                        transitionDuration:
+                          hoverReproductionMode === 'before'
+                            ? '300ms'
+                            : hoveringRoom
+                            ? '450ms'
+                            : '200ms',
+                        transitionTimingFunction:
+                          hoverReproductionMode === 'before'
+                            ? 'ease'
+                            : 'cubic-bezier(0.23, 1, 0.32, 1)',
+                      }}
+                      className="inline-flex items-center gap-1 text-[#D9A62E] font-bold"
+                    >
+                      <span>ENTER ROOM</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="md:col-span-5 space-y-2.5 font-mono text-xs">
+                <div className="p-3 bg-[#EDE9E0] border border-[#23282A]/15">
+                  <span className="text-[10px] uppercase tracking-wider text-[#23282A]/60 block">
+                    ACTIVE TIMING SPECIFICATION:
+                  </span>
+                  <span className="font-bold text-[#23282A] block mt-0.5">
+                    {hoverReproductionMode === 'before'
+                      ? 'Enter: 300ms | Leave: 300ms | Curve: ease-in-out'
+                      : 'Enter: 450ms | Leave: 200ms | Curve: cubic-bezier(0.23, 1, 0.32, 1)'}
+                  </span>
+                </div>
+                <p className="font-sans text-xs text-[#23282A]/75 leading-relaxed">
+                  Because pointer exit (`200ms`) is more than twice as fast as pointer entry
+                  (`450ms`), moving across adjacent room tiles never leaves a trailing highlight on
+                  the previous quadrant.
                 </p>
               </div>
+            </div>
+          )}
+        </div>
+      </section>
 
-              <div className="lg:col-span-4 flex lg:justify-end">
-                <button
-                  type="button"
-                  onClick={handleInquireAboutDesignSystem}
-                  className="inline-flex items-center gap-2 bg-[#D9A62E] text-[#141617] px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#e3b13b] transition-colors"
-                >
-                  <span>Start a Project</span>
-                  <span>→</span>
-                </button>
+      {/* =====================================================================
+          SECTION 06 — VERIFICATION (TECHNICAL NON-REGRESSION vs. BUSINESS OUTCOMES)
+          ===================================================================== */}
+      <section
+        id="verification"
+        className="py-12 sm:py-16 px-5 sm:px-10 max-w-[1360px] mx-auto border-b border-[#23282A]/15"
+      >
+        <div className="border-t-2 border-[#23282A] pt-3 mb-8 flex flex-wrap items-center justify-between gap-2">
+          <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#23282A] font-bold">
+            06 / VERIFICATION
+          </span>
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#17504A] font-bold">
+            DETERMINISTIC DOM, LUMINANCE &amp; SMOKE-TEST LEDGER
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
+          <div className="lg:col-span-7">
+            <h2 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#23282A] leading-[1.08]">
+              Technical verification proves structural integrity—not unproven business outcomes.
+            </h2>
+            <p className="text-sm sm:text-base text-[#23282A]/80 font-sans mt-3 leading-relaxed">
+              Every quantitative figure on this page is backed by an automated Playwright and Node
+              verification script (<code className="font-mono text-xs bg-[#23282A]/10 px-1.5 py-0.5">scripts/verify_design_intelligence_case_study.mjs</code>).
+              Just as importantly, we state the exact boundary of each check so technical
+              non-regression is never misrepresented as a conversion or behavioral claim.
+            </p>
+          </div>
+
+          {/* Epistemic Scope Callout */}
+          <div className="lg:col-span-5 bg-[#23282A] text-[#EDE9E0] p-5 border border-[#23282A]">
+            <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.15em] text-[#D9A62E] font-bold">
+              <Scale className="h-4 w-4" />
+              <span>EPISTEMOLOGICAL BOUNDARY</span>
+            </div>
+            <p className="text-xs text-[#EDE9E0]/85 font-sans mt-2 leading-relaxed">
+              Passing `11/11` smoke tests, `0px` desktop plumb-line drift, `85/85` DOM parity, and
+              `18/18` WCAG contrast checks proves that the token extractions and production
+              refinements render accurately without layout or runtime regressions. It does{' '}
+              <strong className="text-[#EDE9E0] underline">not</strong> prove subjective aesthetic
+              superiority, user comprehension, or conversion lift—which require controlled user
+              testing.
+            </p>
+          </div>
+        </div>
+
+        {/* Four Verification Pillars Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {VERIFICATION_PILLARS.map((v) => (
+            <div
+              key={v.unit}
+              className="bg-[#FAF8F5] border border-[#23282A]/20 p-5 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 pb-2.5 mb-3 border-b border-[#23282A]/12">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#17504A] font-bold">
+                    {v.status}
+                  </span>
+                  <CheckCircle2 className="h-4 w-4 text-[#17504A] shrink-0" />
+                </div>
+                <span className="font-display text-3xl font-black text-[#23282A] tracking-tight block">
+                  {v.metric}
+                </span>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#9A6F0B] mt-0.5 block">
+                  {v.unit}
+                </span>
+                <p className="text-xs text-[#23282A]/75 font-sans mt-2.5 leading-relaxed">
+                  {v.detail}
+                </p>
+              </div>
+              <div className="mt-4 pt-2 border-t border-[#23282A]/10 font-mono text-[10px] text-[#23282A]/55">
+                {v.scope}
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Compact 5-Stage Process Illustration */}
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {FIVE_STAGES.map((stage) => (
-                <div
-                  key={stage.step}
-                  className="border border-[#EDE9E0]/25 bg-[#123F3A] p-4 space-y-1.5"
-                >
-                  <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
-                    <span>{stage.step}</span>
-                    <span>→</span>
-                  </div>
-                  <h3 className="font-display text-base font-black uppercase tracking-tight text-[#EDE9E0]">
-                    {stage.name}
-                  </h3>
-                  <p className="text-xs leading-relaxed text-[#EDE9E0]/85">{stage.summary}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Optional Disclosure: View Research & Technical Evidence */}
-            <div className="border-2 border-[#EDE9E0]/25 bg-[#123F3A]">
-              <button
-                type="button"
-                onClick={() => setEvidenceOpen((v) => !v)}
-                aria-expanded={evidenceOpen}
-                aria-controls="research-technical-evidence"
-                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-[#0F3530] transition-colors"
-              >
-                <div>
-                  <div className="font-display text-base sm:text-lg font-bold text-[#EDE9E0]">
-                    View Research &amp; Technical Evidence
-                  </div>
-                  <p className="text-xs text-[#DFDACE]/80 mt-0.5">
-                    Measured DOM coordinates, interactive hover reproductions, 11/11 smoke test log, commit provenance,
-                    and reference attribution across Plaidis (Locomotive), Linear, and Stripe.
-                  </p>
-                </div>
-                <span className="shrink-0 inline-flex items-center gap-1.5 border border-[#D9A62E] bg-[#17504A] px-3 py-1.5 font-mono text-xs font-bold text-[#D9A62E]">
-                  <span>{evidenceOpen ? 'Hide Evidence' : 'Expand Evidence'}</span>
-                  {evidenceOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+        {/* Expandable 11/11 Smoke-Test Ledger */}
+        <div className="bg-[#FAF8F5] border border-[#23282A]/20">
+          <button
+            type="button"
+            onClick={() => setEvidenceOpen(!evidenceOpen)}
+            aria-expanded={evidenceOpen}
+            className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left hover:bg-[#EDE9E0]/50 transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <Terminal className="h-4 w-4 text-[#17504A] shrink-0" />
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#17504A] font-bold block">
+                  AUTOMATED PLAYWRIGHT VERIFICATION LOG
                 </span>
-              </button>
-
-              {evidenceOpen && (
-                <div
-                  id="research-technical-evidence"
-                  className="border-t border-[#EDE9E0]/20 bg-[#1B1F21] text-[#EDE9E0] p-5 sm:p-8 space-y-10"
-                >
-                  {/* 1. Measured Values vs. Subjective Design Judgment */}
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#DFDACE]/15 pb-3">
-                      <h3 className="font-display text-xl font-bold text-[#EDE9E0]">
-                        1. Measured DOM Values vs. Subjective Design Judgments
-                      </h3>
-                      <span className="font-mono text-xs text-[#D9A62E]">
-                        Playwright getBoundingClientRect &amp; getComputedStyle
-                      </span>
-                    </div>
-
-                    <div className="grid gap-4 lg:grid-cols-3 text-xs">
-                      <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
-                        <div className="font-mono font-bold text-[#D9A62E]">
-                          Study 01 · Plumb Line &amp; Dual Motion Curves (Measured Fact)
-                        </div>
-                        <p className="text-[#DFDACE]/90 leading-relaxed">
-                          Desktop (1440×900) Before: Logo <code className="font-mono">x=24px</code>, Hero H1{' '}
-                          <code className="font-mono">x=48px</code>, Primary CTA <code className="font-mono">x=48px</code>,
-                          Footer <code className="font-mono">x=24px</code> (24px variance). After: all four anchor at{' '}
-                          <code className="font-mono">x=40px</code> (0px variance). Source CSS declares primary{' '}
-                          <code className="font-mono">cubic-bezier(0.23, 1, 0.32, 1)</code> (<code className="font-mono">450ms</code> enter / <code className="font-mono">200ms</code> leave on <code className="font-mono">:root</code> &amp; <code className="font-mono">.c-featured-links_visual</code>) plus secondary UI <code className="font-mono">cubic-bezier(0.215, 0.61, 0.355, 1)</code> (<code className="font-mono">150ms</code> <code className="font-mono">select</code>, <code className="font-mono">200ms</code> <code className="font-mono">.c-header</code>, <code className="font-mono">300ms</code> <code className="font-mono">html</code> bg/labels).
-                        </p>
-                        <p className="text-[#DFDACE]/70 border-t border-[#DFDACE]/15 pt-2">
-                          <strong>Subjective Judgment:</strong> Aligning the left edge and matching 0px CTA corners to
-                          the room grid makes the left column read as one architectural frame.
-                        </p>
-                      </div>
-
-                      <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
-                        <div className="font-mono font-bold text-[#D9A62E]">
-                          Study 02 · Linear Luminance &amp; Variable Axes (Measured Fact)
-                        </div>
-                        <p className="text-[#DFDACE]/90 leading-relaxed">
-                          49 accessible stylesheets declare <code className="font-mono">--color-bg-primary: #08090a</code>,{' '}
-                          <code className="font-mono">--color-text-primary: #f7f8f8</code> (<code className="font-mono">18.73:1</code> AAA),{' '}
-                          <code className="font-mono">--font-weight-medium: 510</code>, <code className="font-mono">--font-weight-semibold: 590</code>, and alias{' '}
-                          <code className="font-mono">--shadow-low..high</code> to <code className="font-mono">0px transparent</code>.
-                        </p>
-                        <p className="text-[#DFDACE]/70 border-t border-[#DFDACE]/15 pt-2">
-                          <strong>Subjective Judgment:</strong> Stepped dark-mode surfaces bounded by 8% white hairlines
-                          read as cleaner than dark drop shadows, though <code className="font-mono">13px</code> copy increases density.
-                        </p>
-                      </div>
-
-                      <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
-                        <div className="font-mono font-bold text-[#D9A62E]">
-                          Study 03 · Stripe HDS Scale &amp; Tinted Elevation (Measured Fact)
-                        </div>
-                        <p className="text-[#DFDACE]/90 leading-relaxed">
-                          946 <code className="font-mono">--hds-*</code> variables declare <code className="font-mono">--hds-color-core-brand-600: #533afd</code> (<code className="font-mono">6.19:1</code> AA),{' '}
-                          <code className="font-mono">--hds-color-core-neutral-990: #061b31</code> (<code className="font-mono">17.37:1</code> AAA),{' '}
-                          <code className="font-mono">sohne-var</code> at <code className="font-mono">font-weight: 300</code>, and{' '}
-                          <code className="font-mono">0px 16px 32px rgba(50,50,93,0.12)</code> elevation.
-                        </p>
-                        <p className="text-[#DFDACE]/70 border-t border-[#DFDACE]/15 pt-2">
-                          <strong>Subjective Judgment:</strong> Light 300-weight headings and navy-tinted shadows create
-                          editorial openness, though <code className="font-mono">#64748D</code> (<code className="font-mono">4.75:1</code>) sits close to the AA floor.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 2. Interactive Component Reproductions vs. Recorded Hover Screenshot */}
-                  <div id="hover-motion-comparison" className="space-y-4">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#DFDACE]/15 pb-3">
-                      <div>
-                        <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-[#D9A62E]">
-                          <Play className="h-3.5 w-3.5" />
-                          <span>INTERACTIVE COMPONENT REPRODUCTIONS (NOT RECORDED SESSIONS)</span>
-                        </div>
-                        <h3 className="font-display text-xl font-bold text-[#EDE9E0] mt-0.5">
-                          2. Live Hover Timing Reproductions vs. Recorded Playwright Capture
-                        </h3>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => setSimulatingHover((v) => !v)}
-                        aria-pressed={simulatingHover}
-                        className={`shrink-0 inline-flex items-center gap-2 border px-3.5 py-2 font-mono text-xs font-bold transition-colors ${
-                          simulatingHover
-                            ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617]'
-                            : 'border-[#D9A62E] bg-[#23282A] text-[#D9A62E] hover:bg-[#D9A62E] hover:text-[#141617]'
-                        }`}
-                      >
-                        <Sparkles className="h-3.5 w-3.5" />
-                        <span>{simulatingHover ? 'Release Simulated Hover' : 'Simulate Simultaneous Hover'}</span>
-                      </button>
-                    </div>
-
-                    <div className="grid gap-5 lg:grid-cols-3 items-stretch">
-                      {/* Reproduction A: Baseline 52e179d */}
-                      <div className="flex flex-col space-y-2">
-                        <div className="flex items-center justify-between font-mono text-xs text-[#DFDACE]/80">
-                          <span className="font-bold text-[#EDE9E0]">Reproduction A · Baseline (52e179d)</span>
-                          <span>300ms · brightness(1.05)</span>
-                        </div>
-                        <div
-                          className={`group relative flex flex-1 flex-col justify-between p-5 bg-[#DFDACE] text-[#23282A] transition-all duration-300 select-none cursor-pointer ${
-                            simulatingHover ? 'brightness-105' : 'hover:brightness-105'
-                          }`}
-                        >
-                          <div>
-                            <div className="flex items-center justify-between border-b border-current/20 pb-2 font-mono text-xs">
-                              <span className="font-bold tracking-widest uppercase">02 / ASSEMBLE</span>
-                              <ArrowUpRight
-                                className={`h-4 w-4 transition-transform duration-300 ${
-                                  simulatingHover
-                                    ? 'translate-x-0.5 -translate-y-0.5 opacity-100'
-                                    : 'opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100'
-                                }`}
-                              />
-                            </div>
-                            <h4 className="mt-3 font-display text-2xl font-black uppercase tracking-tight">
-                              Custom Builds
-                            </h4>
-                            <p className="mt-1.5 text-xs opacity-85 leading-snug">
-                              Custom websites, quoting engines, and internal tools built around how you work.
-                            </p>
-                          </div>
-
-                          <div className="my-4 flex items-center gap-1.5 font-mono text-[10px]">
-                            <span className="px-2 py-0.5 rounded bg-white/80 text-[#23282A] font-bold border border-[#23282A]/20">
-                              01 Website
-                            </span>
-                            <span>→</span>
-                            <span className="px-2 py-0.5 rounded bg-red-100/90 text-red-900 font-bold border border-red-300">
-                              02 Quoting
-                            </span>
-                            <span>→</span>
-                            <span className="px-2 py-0.5 rounded bg-[#17504A] text-white font-bold">
-                              03 Workflow
-                            </span>
-                          </div>
-
-                          <div className="flex items-center justify-between border-t border-current/15 pt-2 font-mono text-xs font-bold">
-                            <span>Shape a Custom Build</span>
-                            <span>→</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Reproduction B: Experiment 195921a */}
-                      <div className="flex flex-col space-y-2">
-                        <div className="flex items-center justify-between font-mono text-xs text-[#D9A62E]">
-                          <span className="font-bold">Reproduction B · Experiment (195921a)</span>
-                          <span>450ms enter / 200ms leave</span>
-                        </div>
-                        <div
-                          style={{
-                            transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
-                            transitionDuration: reducedMotion ? '0ms' : simulatingHover ? '450ms' : '200ms',
-                          }}
-                          className="group relative flex flex-1 flex-col justify-between p-5 bg-[#DFDACE] text-[#23282A] select-none cursor-pointer border border-[#D9A62E]/40 motion-reduce:transition-none"
-                        >
-                          <div>
-                            <div
-                              className={`flex items-center justify-between border-b-2 pb-2 font-mono text-xs transition-colors duration-200 group-hover:duration-500 ${
-                                simulatingHover
-                                  ? 'border-current/55'
-                                  : 'border-current/25 group-hover:border-current/55'
-                              }`}
-                            >
-                              <span className="font-bold tracking-[0.14em] uppercase">02 / ASSEMBLE</span>
-                              <ArrowUpRight
-                                className={`h-4 w-4 transition-transform duration-200 group-hover:duration-500 ${
-                                  simulatingHover
-                                    ? 'translate-x-1 -translate-y-1 opacity-100'
-                                    : 'opacity-75 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100'
-                                }`}
-                              />
-                            </div>
-                            <h4 className="mt-3 font-display text-2xl font-black uppercase tracking-tight">
-                              Custom Builds
-                            </h4>
-                            <p className="mt-1.5 text-xs opacity-90 leading-snug">
-                              Custom websites, quoting engines, and internal tools built around how you work.
-                            </p>
-                          </div>
-
-                          <div className="my-4 flex items-center gap-1.5 font-mono text-[10px]">
-                            <span className="px-2 py-0.5 bg-[#EDE9E0] text-[#23282A] font-bold border border-[#23282A]/25">
-                              01 Website
-                            </span>
-                            <span>→</span>
-                            <span
-                              className={`px-2 py-0.5 text-[#23282A] font-bold border border-[#D9A62E] transition-colors duration-200 group-hover:duration-500 ${
-                                simulatingHover ? 'bg-[#D9A62E]' : 'bg-[#D9A62E]/30 group-hover:bg-[#D9A62E]'
-                              }`}
-                            >
-                              02 Quoting
-                            </span>
-                            <span>→</span>
-                            <span className="px-2 py-0.5 bg-[#17504A] text-[#EDE9E0] font-bold border border-[#17504A]">
-                              03 Workflow
-                            </span>
-                          </div>
-
-                          <div className="flex items-center justify-between border-t border-current/25 pt-2 font-mono text-xs font-bold">
-                            <span className={simulatingHover ? 'underline' : 'group-hover:underline'}>
-                              Shape a Custom Build
-                            </span>
-                            <span>→</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Recorded Playwright Hover Screenshot */}
-                      <div className="flex flex-col justify-between border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2">
-                        <div className="flex items-center justify-between font-mono text-xs">
-                          <span className="font-bold text-[#D9A62E]">Original Recorded Capture (195921a)</span>
-                          <span className="text-[#DFDACE]/70">500ms hover</span>
-                        </div>
-                        <img
-                          src="/assets/images/design-intelligence/exp01_after_desktop_hover_build.png"
-                          alt="Recorded hover state on Room 02 (Custom Builds) in commit 195921a"
-                          className="w-full h-auto block border border-[#DFDACE]/20"
-                          loading="lazy"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => openDetailInspector('desktop', 'hover')}
-                          className="text-left font-mono text-xs font-bold text-[#D9A62E] underline hover:text-[#EDE9E0]"
-                        >
-                          Open Full Capture in Detail Inspector →
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 3. Smoke Suite & Attribution */}
-                  <div className="grid gap-6 lg:grid-cols-12 items-start">
-                    <div className="lg:col-span-7 space-y-3">
-                      <h3 className="font-display text-lg font-bold text-[#EDE9E0]">
-                        3. Functional Non-Regression Suite (11 / 11 PASS)
-                      </h3>
-                      <div className="divide-y divide-[#DFDACE]/10 border border-[#DFDACE]/20 bg-[#23282A]">
-                        {SMOKE_CHECKS.map((chk) => (
-                          <div key={chk.num} className="p-2.5 sm:px-3.5 flex items-start justify-between gap-3 text-xs">
-                            <div>
-                              <span className="font-mono font-bold text-[#D9A62E] mr-2">#{chk.num}</span>
-                              <span className="font-semibold text-[#EDE9E0]">{chk.name}</span>
-                              <p className="text-[#DFDACE]/75 mt-0.5">{chk.covered}</p>
-                            </div>
-                            <span className="shrink-0 inline-flex items-center gap-1 bg-emerald-950/80 border border-emerald-500/40 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-300">
-                              <CheckCircle2 className="h-3 w-3" />
-                              {chk.status}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="lg:col-span-5 space-y-4 text-xs">
-                      <div className="border border-[#D9A62E] bg-[#23282A] p-4 space-y-2">
-                        <div className="flex items-center gap-2 font-mono font-bold text-[#D9A62E]">
-                          <Scale className="h-4 w-4" />
-                          <span>What Automated Tests Prove—And What They Do Not</span>
-                        </div>
-                        <p className="text-[#EDE9E0]/90 leading-relaxed">
-                          Passing 11/11 smoke checks proves functional non-regression across routing, room transitions,
-                          interactive tools, <code className="font-mono">/api/lead/</code> submission, and 390px mobile
-                          overflow constraints. Automated checks do <strong>not</strong> prove improved aesthetics, user
-                          preference, conversion lift, or design quality.
-                        </p>
-                      </div>
-
-                      <div className="border border-[#DFDACE]/20 bg-[#23282A] p-4 space-y-2 font-mono">
-                        <div className="flex items-center gap-2 font-bold text-[#EDE9E0]">
-                          <FileCode2 className="h-4 w-4 text-[#D9A62E]" />
-                          <span>Repository Provenance &amp; Dossiers</span>
-                        </div>
-                        <ul className="space-y-1 text-[#DFDACE]/85">
-                          <li>• Baseline: 52e179d (release/candidate-preview)</li>
-                          <li>• Experiment 01: 195921a (experiment/design-intelligence-01-locomotive)</li>
-                          <li>• Study 01 Dossier: design-intelligence/references/locomotive.md</li>
-                          <li>• Study 02 Dossier: design-intelligence/references/linear.md</li>
-                          <li>• Study 03 Dossier: design-intelligence/references/stripe.md</li>
-                          <li>• Extraction Report: design-intelligence/experiments/token-extraction-study-report.md</li>
-                        </ul>
-                      </div>
-
-                      <div className="border border-[#DFDACE]/20 bg-[#16191B] p-4 space-y-1.5 text-[#DFDACE]/80">
-                        <div className="font-mono font-bold text-[#EDE9E0]">
-                          Reference Attribution &amp; Independence Notice
-                        </div>
-                        <p className="leading-relaxed">
-                          <a
-                            href="https://locomotive.ca/en"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#D9A62E] underline hover:text-[#EDE9E0]"
-                          >
-                            Locomotive (locomotive.ca)
-                          </a>
-                          ,{' '}
-                          <a
-                            href="https://linear.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#D9A62E] underline hover:text-[#EDE9E0]"
-                          >
-                            Linear (linear.app)
-                          </a>
-                          , and{' '}
-                          <a
-                            href="https://stripe.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#D9A62E] underline hover:text-[#EDE9E0]"
-                          >
-                            Stripe (stripe.com)
-                          </a>{' '}
-                          were inspected as independent external references for transferable structural, typographic,
-                          and luminance principles. None of these companies are affiliated with, endorsing, or
-                          collaborating on ContextMuse, and no proprietary layouts, brand marks, or licensed font
-                          binaries were reused.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <h3 className="font-display text-base sm:text-lg font-black uppercase tracking-tight text-[#23282A]">
+                  11 / 11 Functional &amp; Structural Non-Regression Gates
+                </h3>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#23282A] shrink-0">
+              <span>{evidenceOpen ? 'Collapse Gate Log' : 'Inspect All 11 Gates'}</span>
+              {evidenceOpen ? (
+                <ChevronUp className="h-4 w-4" />
+              ) : (
+                <ChevronDown className="h-4 w-4" />
               )}
             </div>
-          </div>
-        </section>
-      </main>
+          </button>
 
-      {/* ============================================================
-          DETAIL INSPECTOR MODAL
-          Houses Desktop, Mobile, Full-Page Mobile, Plumb Guides, Zoom,
-          Side-by-Side view, Reference Captures, and Hover Capture
-          ============================================================ */}
-      {inspectorOpen && (
-        <div
-          ref={inspectorDialogRef}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Full-Image Before and After Detail Inspector"
-          className="fixed inset-0 z-50 flex flex-col bg-[#141617]/95 backdrop-blur-md"
-        >
-          {/* Modal Header */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFDACE]/20 bg-[#23282A] px-4 py-3 sm:px-6">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="bg-[#D9A62E] text-[#141617] px-2 py-0.5 font-mono text-xs font-bold">
-                Detail Inspector · {activeStudy.selectorLabel}
-              </span>
-
-              {/* Viewport Mode Selector inside Inspector */}
-              <div className="inline-flex border border-[#DFDACE]/25 bg-[#1B1F21] p-0.5 font-mono text-xs">
-                {(isHomepageCaptureMode ? INSPECTOR_MODES : MAIN_VIEWPORT_MODES).map((m) => (
-                  <button
-                    key={m.id}
-                    type="button"
-                    onClick={() => {
-                      handleSelectInspectorMode(m.id);
-                      if (inspectorView === 'hover') setInspectorView('side-by-side');
-                    }}
-                    className={`px-2.5 py-1 transition-colors ${
-                      inspectorModeId === m.id && inspectorView !== 'hover'
-                        ? 'bg-[#D9A62E] text-[#141617] font-bold'
-                        : 'text-[#EDE9E0] hover:text-[#D9A62E]'
-                    }`}
+          {evidenceOpen && (
+            <div className="p-5 sm:p-6 border-t border-[#23282A]/15 bg-[#181B1D] text-[#EDE9E0]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 font-mono text-xs">
+                {SMOKE_CHECKS.map((gate) => (
+                  <div
+                    key={gate.id}
+                    className="flex items-center justify-between gap-3 p-2.5 bg-[#23282A] border border-[#EDE9E0]/10"
                   >
-                    {m.label}
-                  </button>
+                    <span className="text-[#EDE9E0]/85 text-[11px]">
+                      <strong className="text-[#D9A62E] mr-2">[{gate.id}]</strong>
+                      {gate.check}
+                    </span>
+                    <span className="px-2 py-0.5 bg-[#17504A] text-[#EDE9E0] text-[10px] font-bold shrink-0">
+                      {gate.status}
+                    </span>
+                  </div>
                 ))}
               </div>
             </div>
+          )}
+        </div>
+      </section>
 
-            <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-              <button
-                type="button"
-                onClick={() => setInspectorView('side-by-side')}
-                className={`px-2.5 py-1 border ${
-                  inspectorView === 'side-by-side'
-                    ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
-                    : 'border-[#DFDACE]/25 text-[#EDE9E0]'
-                }`}
-              >
-                Side-by-Side
-              </button>
-              <button
-                type="button"
-                onClick={() => setInspectorView('slider')}
-                className={`px-2.5 py-1 border ${
-                  inspectorView === 'slider'
-                    ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
-                    : 'border-[#DFDACE]/25 text-[#EDE9E0]'
-                }`}
-              >
-                Interactive Slider
-              </button>
-              <button
-                type="button"
-                onClick={() => setInspectorView('reference')}
-                className={`px-2.5 py-1 border ${
-                  inspectorView === 'reference'
-                    ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
-                    : 'border-[#DFDACE]/25 text-[#EDE9E0]'
-                }`}
-              >
-                Reference Capture
-              </button>
-              <button
-                type="button"
-                onClick={() => setInspectorView('hover')}
-                className={`px-2.5 py-1 border ${
-                  inspectorView === 'hover'
-                    ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
-                    : 'border-[#DFDACE]/25 text-[#EDE9E0]'
-                }`}
-              >
-                Hover Capture
-              </button>
+      {/* =====================================================================
+          SECTION 07 — IMPLICATIONS & CONTEXTUAL ROUTE TO WEBSITE AUDIT SYSTEM
+          ===================================================================== */}
+      <section
+        id="implications"
+        className="py-12 sm:py-16 px-5 sm:px-10 max-w-[1360px] mx-auto"
+      >
+        <div className="border-t-2 border-[#23282A] pt-3 mb-8 flex flex-wrap items-center justify-between gap-2">
+          <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#23282A] font-bold">
+            07 / IMPLICATIONS
+          </span>
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#23282A]/65">
+            WHAT THIS METHODOLOGY DEMONSTRATES &amp; WHERE IT CONNECTS
+          </span>
+        </div>
 
-              {inspectorView === 'slider' && isHomepageCaptureMode && (
-                <button
-                  type="button"
-                  onClick={() => setShowPlumbGuides((v) => !v)}
-                  className={`flex items-center gap-1 px-2.5 py-1 border ${
-                    showPlumbGuides
-                      ? 'border-emerald-400 bg-emerald-950/70 text-emerald-300 font-bold'
-                      : 'border-[#DFDACE]/25 text-[#EDE9E0]'
-                  }`}
-                >
-                  <Ruler className="h-3.5 w-3.5" />
-                  <span>Plumb Guide</span>
-                </button>
-              )}
+        <div className="max-w-3xl mb-8">
+          <h2 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#23282A] leading-[1.08]">
+            Four principles for design engineering and front-end systems architecture.
+          </h2>
+        </div>
 
-              {inspectorView === 'side-by-side' && (
-                <button
-                  type="button"
-                  onClick={() => setInspectorZoom((z) => (z === 1 ? 1.5 : 1))}
-                  className="px-2.5 py-1 border border-[#DFDACE]/25 text-[#EDE9E0] hover:border-[#D9A62E]"
-                >
-                  Zoom: {inspectorZoom === 1 ? '100%' : '150%'}
-                </button>
-              )}
+        {/* Four Design Engineering Implications */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          {[
+            {
+              num: '01',
+              title: 'Visual Judgment Backed by Evidence',
+              body: 'Aesthetic intuition and empirical measurement reinforce each other. Inspecting CSSOM declarations and bounding-box geometry turns vague impressions ("this feels cleaner") into testable specifications.',
+            },
+            {
+              num: '02',
+              title: 'Systems of Relationships, Not Loose Tokens',
+              body: 'A hex code or font weight means little in isolation. Linear’s 510 weight exists because of #08090A dark-mode halation; Stripe’s 300 weight works because of 48px scale and #061B31 navy contrast.',
+            },
+            {
+              num: '03',
+              title: 'Controlled Comparison Isolates Consequences',
+              body: 'Holding an 85-node DOM tree, copy, and outer plumb line constant proves exactly how typography, surface polarity, and border mechanics alter perceived density and hierarchy.',
+            },
+            {
+              num: '04',
+              title: 'Transfer Preserves Destination Identity',
+              body: 'Successful adaptation transfers structural mechanics—plumb-line alignment, overline rules, and asymmetric motion curves—without overwriting the destination brand’s palette or voice.',
+            },
+          ].map((imp) => (
+            <div
+              key={imp.num}
+              className="bg-[#FAF8F5] border border-[#23282A]/15 p-5 flex flex-col justify-between"
+            >
+              <div>
+                <span className="font-mono text-xs font-bold text-[#9A6F0B] block">
+                  IMPLICATION {imp.num}
+                </span>
+                <h3 className="font-display text-base font-black uppercase tracking-tight text-[#23282A] mt-1.5">
+                  {imp.title}
+                </h3>
+                <p className="text-xs text-[#23282A]/80 font-sans mt-2 leading-relaxed">
+                  {imp.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-              <button
-                ref={inspectorCloseBtnRef}
-                type="button"
-                onClick={closeDetailInspector}
-                aria-label="Close full-image inspector"
-                className="ml-1 flex items-center gap-1 border border-[#DFDACE]/30 bg-[#1B1F21] px-3 py-1 text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A62E]"
+        {/* Related Diagnostic Work & Project Inquiry Bridge */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          {/* Contextual Route to Website Audit System */}
+          <div className="lg:col-span-7 bg-[#FAF8F5] border-2 border-[#23282A] p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-[#23282A]/15">
+                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#17504A] font-bold">
+                  COMPANION DIAGNOSTIC SYSTEM · 01 / WORK &amp; 03 / LAB
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 bg-[#23282A]/10 text-[#23282A] font-bold">
+                  DISTINCT METHODOLOGICAL SCOPE
+                </span>
+              </div>
+
+              <h3 className="font-display text-xl sm:text-2xl font-black uppercase tracking-tight text-[#23282A]">
+                Website Audit System: Live Multi-Viewport Conversion &amp; Structural Diagnostics
+              </h3>
+
+              <p className="text-xs sm:text-sm text-[#23282A]/80 font-sans mt-2.5 leading-relaxed">
+                Where <strong className="font-semibold text-[#23282A]">Design Intelligence</strong>{' '}
+                extracts design-system tokens from external references and evaluates them on a
+                controlled 85-node specimen, the{' '}
+                <strong className="font-semibold text-[#23282A]">Website Audit System</strong>{' '}
+                applies automated Playwright DOM inspection to diagnose live client websites across
+                four operational pillars: <strong className="font-mono text-xs">01 / Message</strong>,{' '}
+                <strong className="font-mono text-xs">02 / Paths</strong>,{' '}
+                <strong className="font-mono text-xs">03 / Proof</strong>, and{' '}
+                <strong className="font-mono text-xs">04 / Intake</strong>.
+              </p>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-[#23282A]/15 flex flex-wrap items-center gap-3">
+              <a
+                href="/website-system-check/"
+                className="inline-flex items-center gap-2 bg-[#23282A] text-[#EDE9E0] px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
               >
-                <X className="h-4 w-4" />
-                <span>Close (Esc)</span>
-              </button>
+                <Search className="h-3.5 w-3.5" />
+                <span>Launch Live Website Audit</span>
+              </a>
+              <Link
+                to="/work?case=website-audit-system"
+                className="inline-flex items-center gap-2 bg-transparent text-[#23282A] border border-[#23282A]/35 px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider hover:border-[#23282A] transition-colors"
+              >
+                <span>Read Audit System Case Study</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                to="/work"
+                className="inline-flex items-center gap-1.5 font-mono text-xs text-[#17504A] hover:underline font-bold ml-auto"
+              >
+                <span>View All 01 / WORK Proofs →</span>
+              </Link>
             </div>
           </div>
 
-          {/* Modal Body */}
-          <div className="flex-1 overflow-auto p-4 sm:p-6">
-            {inspectorView === 'side-by-side' && (
-              <div
-                style={{
-                  transform: `scale(${inspectorZoom})`,
-                  transformOrigin: 'top left',
-                }}
-                className="mx-auto max-w-[1760px]"
+          {/* Invitation to Discuss a Project */}
+          <div className="lg:col-span-5 bg-[#23282A] text-[#EDE9E0] border-2 border-[#23282A] p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#D9A62E] font-bold block">
+                DESIGN ENGINEERING &amp; FRONT-END ARCHITECTURE
+              </span>
+              <h3 className="font-display text-xl sm:text-2xl font-black uppercase tracking-tight text-[#EDE9E0] mt-2">
+                Need measurable design-system rigor on your product or web architecture?
+              </h3>
+              <p className="text-xs sm:text-sm text-[#EDE9E0]/80 font-sans mt-2.5 leading-relaxed">
+                Whether you are consolidating a multi-surface design system, refining an existing
+                production interface, or building a custom front-end application, we scope every
+                engagement around verifiable engineering deliverables.
+              </p>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-[#EDE9E0]/15 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={handleInquireAboutDesignSystem}
+                className="inline-flex items-center gap-2 bg-[#D9A62E] text-[#141617] px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.14em] hover:bg-[#EDE9E0] transition-colors"
               >
-                {isHomepageCaptureMode ? (
-                  INSPECTOR_MODES.map((m) => {
-                    const isCurrent = m.id === inspectorModeId;
-                    return (
-                      <div
-                        key={m.id}
-                        data-inspector-sbs-mode={m.id}
-                        className={`${isCurrent ? 'grid' : 'hidden'} gap-6 lg:grid-cols-2 items-start`}
-                      >
-                        <div className="space-y-2 border border-[#DFDACE]/25 bg-[#1B1F21] p-3">
-                          <div className="flex items-center justify-between font-mono text-xs font-bold text-[#EDE9E0]">
-                            <span>BEFORE · Baseline 52e179d</span>
-                            <span className="text-[#DFDACE]/60">{m.viewportText}</span>
-                          </div>
-                          <img
-                            src={m.beforeSrc}
-                            alt={isCurrent ? `Full uncropped BEFORE (${m.fullLabel})` : ''}
-                            width={m.naturalWidth}
-                            height={m.isFullPageScroll ? 3648 : m.naturalHeight}
-                            decoding="sync"
-                            className="w-full h-auto block border border-[#DFDACE]/15"
-                          />
-                        </div>
+                <span>Discuss a Project</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </button>
+              <Link
+                to="/lab"
+                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#EDE9E0]/75 hover:text-[#D9A62E] transition-colors"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                <span>Return to 03 / LAB</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                        <div className="space-y-2 border border-[#D9A62E]/50 bg-[#1B1F21] p-3">
-                          <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
-                            <span>AFTER · Experiment 195921a</span>
-                            <span className="text-[#DFDACE]/60">{m.viewportText}</span>
-                          </div>
-                          <img
-                            src={m.afterSrc}
-                            alt={isCurrent ? `Full uncropped AFTER (${m.fullLabel})` : ''}
-                            width={m.naturalWidth}
-                            height={m.naturalHeight}
-                            decoding="sync"
-                            className="w-full h-auto block border border-[#D9A62E]/25"
-                          />
-                        </div>
-                      </div>
-                    );
-                  })
-                ) : (
-                  <div className="grid gap-6 lg:grid-cols-2 items-start">
-                    <div className="space-y-2 border border-[#DFDACE]/25 bg-[#1B1F21] p-3">
-                      <div className="flex items-center justify-between font-mono text-xs font-bold text-[#EDE9E0]">
-                        <span>BEFORE · Original Neutral Specimen</span>
-                        <span className="text-[#DFDACE]/60">{activeInspectorMode.fullLabel}</span>
-                      </div>
-                      <div
-                        className={`w-full overflow-hidden border border-[#DFDACE]/20 ${
-                          inspectorModeId === 'mobile'
-                            ? 'mx-auto max-w-[360px] aspect-[390/844]'
-                            : 'aspect-[1440/900]'
-                        }`}
-                      >
-                        <DesignSystemSpecimen
-                          variant="neutral"
-                          viewport={inspectorModeId === 'mobile' ? 'mobile' : 'desktop'}
-                          reducedMotion={reducedMotion}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2 border border-[#D9A62E]/50 bg-[#1B1F21] p-3">
-                      <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
-                        <span>AFTER · {activeStudy.selectorLabel} Tokens Applied</span>
-                        <span className="text-[#DFDACE]/60">{activeInspectorMode.fullLabel}</span>
-                      </div>
-                      <div
-                        className={`w-full overflow-hidden border border-[#D9A62E]/30 ${
-                          inspectorModeId === 'mobile'
-                            ? 'mx-auto max-w-[360px] aspect-[390/844]'
-                            : 'aspect-[1440/900]'
-                        }`}
-                      >
-                        <DesignSystemSpecimen
-                          variant={activeStudyId}
-                          viewport={inspectorModeId === 'mobile' ? 'mobile' : 'desktop'}
-                          reducedMotion={reducedMotion}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
+      {/* =====================================================================
+          ACCESSIBLE DETAIL INSPECTOR MODAL (FOCUS-TRAPPED, ESCAPE-DISMISSIBLE)
+          ===================================================================== */}
+      {inspectorOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="detail-inspector-title"
+          ref={inspectorDialogRef}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeInspector();
+          }}
+          className="fixed inset-0 z-50 bg-[#141617]/90 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+        >
+          <div className="bg-[#181B1D] text-[#EDE9E0] border-2 border-[#D9A62E] w-full max-w-[1320px] max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+            {/* Modal Header */}
+            <div className="p-4 sm:px-6 border-b border-[#EDE9E0]/15 flex flex-wrap items-center justify-between gap-3 bg-[#23282A]">
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#D9A62E] font-bold block">
+                  FULL-RESOLUTION SPECIMEN &amp; REFERENCE INSPECTOR
+                </span>
+                <h2
+                  id="detail-inspector-title"
+                  className="font-display text-base sm:text-lg font-black uppercase tracking-tight text-[#EDE9E0]"
+                >
+                  {activeStudy.name} ({activeViewport === 'desktop' ? '1440×900' : '390×844'})
+                </h2>
               </div>
-            )}
 
-            {inspectorView === 'slider' && (
-              <div className="flex flex-col items-center space-y-4">
-                {(isHomepageCaptureMode ? INSPECTOR_MODES : MAIN_VIEWPORT_MODES).map((m) => {
-                  const isCurrent = m.id === inspectorModeId;
-                  return (
-                    <div
-                      key={m.id}
-                      ref={isCurrent ? inspectorStageRef : null}
-                      data-inspector-slider-stage={isCurrent ? 'true' : undefined}
-                      data-inspector-slider-mode={m.id}
-                      onPointerDown={isCurrent ? handleInspectorPointerDown : undefined}
-                      onPointerMove={isCurrent ? handleInspectorPointerMove : undefined}
-                      onPointerUp={isCurrent ? handleInspectorPointerUp : undefined}
-                      onPointerCancel={isCurrent ? handleInspectorPointerUp : undefined}
-                      style={{ touchAction: 'pan-y' }}
-                      className={`${
-                        isCurrent ? 'block' : 'hidden'
-                      } relative select-none overflow-hidden border border-[#DFDACE]/25 bg-[#141617] shadow-2xl cursor-ew-resize ${
-                        m.id === 'desktop'
-                          ? 'w-full max-w-[1200px] aspect-[1440/900]'
-                          : m.id === 'mobile'
-                          ? 'w-full max-w-[400px] aspect-[390/844]'
-                          : 'w-full max-w-[400px]'
-                      }`}
-                    >
-                      {isHomepageCaptureMode ? (
-                        <>
-                          <img
-                            src={m.afterSrc}
-                            alt={isCurrent ? `AFTER (${m.fullLabel})` : ''}
-                            width={m.naturalWidth}
-                            height={m.naturalHeight}
-                            decoding="sync"
-                            draggable={false}
-                            className={
-                              m.isFullPageScroll
-                                ? 'block w-full h-auto select-none pointer-events-none'
-                                : 'absolute inset-0 block w-full h-full object-contain select-none pointer-events-none'
-                            }
-                          />
-
-                          <div
-                            aria-hidden="true"
-                            style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
-                            className={`absolute inset-0 pointer-events-none ${
-                              m.isFullPageScroll ? 'bg-[#141617] flex flex-col justify-between' : ''
-                            }`}
-                          >
-                            <img
-                              src={m.beforeSrc}
-                              alt={isCurrent ? `BEFORE (${m.fullLabel})` : ''}
-                              width={m.naturalWidth}
-                              height={m.isFullPageScroll ? 3648 : m.naturalHeight}
-                              decoding="sync"
-                              draggable={false}
-                              className={
-                                m.isFullPageScroll
-                                  ? 'block w-full h-auto select-none pointer-events-none'
-                                  : 'absolute inset-0 block w-full h-full object-contain select-none pointer-events-none'
-                              }
-                            />
-                            {m.isFullPageScroll && (
-                              <div className="border-t border-dashed border-[#DFDACE]/30 bg-[#141617] px-3 py-2 font-mono text-[10px] text-[#DFDACE]/70">
-                                Baseline 52e179d ends at 1824px CSS height vs. 1901px After (+77px from vertical rhythm;
-                                neither image is stretched).
-                              </div>
-                            )}
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="absolute inset-0 pointer-events-none">
-                            <DesignSystemSpecimen
-                              variant={activeStudyId}
-                              viewport={m.id === 'mobile' ? 'mobile' : 'desktop'}
-                              reducedMotion={reducedMotion}
-                            />
-                          </div>
-                          <div
-                            aria-hidden="true"
-                            style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
-                            className="absolute inset-0 pointer-events-none"
-                          >
-                            <DesignSystemSpecimen
-                              variant="neutral"
-                              viewport={m.id === 'mobile' ? 'mobile' : 'desktop'}
-                              reducedMotion={reducedMotion}
-                            />
-                          </div>
-                        </>
-                      )}
-
-                      {showPlumbGuides && isHomepageCaptureMode && (
-                        <div className="pointer-events-none absolute inset-0 z-10">
-                          <div
-                            style={{ left: `${m.plumbLinePct}%` }}
-                            className="absolute top-0 bottom-0 border-l-2 border-dashed border-emerald-400/90"
-                          >
-                            <span className="absolute bottom-10 left-1.5 whitespace-nowrap bg-emerald-950/95 border border-emerald-400 px-1.5 py-0.5 font-mono text-[10px] font-bold text-emerald-300">
-                              AFTER Plumb: {m.id === 'desktop' ? '40px (0px drift)' : '20px (0px drift)'}
-                            </span>
-                          </div>
-                          {sliderPos > m.beforePlumbHeroPct && (
-                            <div
-                              style={{ left: `${m.beforePlumbHeroPct}%` }}
-                              className="absolute top-0 bottom-0 border-l border-dotted border-rose-400/90"
-                            >
-                              <span className="absolute bottom-3 left-1.5 whitespace-nowrap bg-rose-950/95 border border-rose-400 px-1.5 py-0.5 font-mono text-[10px] font-bold text-rose-200">
-                                BEFORE Hero: {m.id === 'desktop' ? '48px (+24px)' : '24px (+8px)'}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      <div
-                        style={{ left: `${sliderPos}%` }}
-                        className="absolute top-0 bottom-0 z-30 -ml-px w-0.5 bg-[#D9A62E]"
-                      >
-                        <div
-                          role="slider"
-                          tabIndex={0}
-                          aria-orientation="horizontal"
-                          aria-label={`Detail Inspector comparison slider (${activeStudy.selectorLabel} — ${m.fullLabel})`}
-                          aria-valuemin={0}
-                          aria-valuemax={100}
-                          aria-valuenow={Math.round(sliderPos)}
-                          aria-valuetext={`${Math.round(sliderPos)}% Before, ${Math.round(100 - sliderPos)}% After`}
-                          onKeyDown={handleSliderKeyDown}
-                          style={{ translate: `${-sliderPos}% -50%` }}
-                            className="absolute top-1/2 flex h-11 w-11 items-center justify-center border-2 border-[#141617] bg-[#D9A62E] text-[#141617] shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9E0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141617]"
-                        >
-                          <MoveHorizontal className="h-4 w-4 stroke-[2.5]" />
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="flex flex-wrap items-center gap-2">
+                {DESIGN_INTELLIGENCE_STUDIES.map((s) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => selectStudy(s.id)}
+                    className={`px-2.5 py-1 font-mono text-[10px] uppercase font-bold border ${
+                      activeStudyId === s.id
+                        ? 'bg-[#D9A62E] text-[#141617] border-[#D9A62E]'
+                        : 'bg-[#181B1D] text-[#EDE9E0]/80 border-[#EDE9E0]/20 hover:border-[#EDE9E0]'
+                    }`}
+                  >
+                    {s.shortName}
+                  </button>
+                ))}
+                <button
+                  ref={inspectorCloseBtnRef}
+                  type="button"
+                  onClick={closeInspector}
+                  aria-label="Close Detail Inspector"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#EDE9E0] text-[#141617] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#D9A62E] transition-colors"
+                >
+                  <X className="h-3.5 w-3.5" />
+                  <span>Close (Esc)</span>
+                </button>
               </div>
-            )}
+            </div>
 
-            {inspectorView === 'reference' && (
-              <div className="mx-auto max-w-6xl grid gap-6 lg:grid-cols-12 items-start">
-                <div className="lg:col-span-8 space-y-2 border border-[#D9A62E]/50 bg-[#1B1F21] p-4">
-                  <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
-                    <span>DESKTOP REFERENCE CAPTURE · {activeStudy.sourceDomain} (1440×900 @ 2x DPR)</span>
-                    <span>{activeStudy.inspectedAt}</span>
+            {/* Modal Body */}
+            <div className="p-4 sm:p-6 overflow-y-auto space-y-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <div className="font-mono text-xs uppercase tracking-wider text-[#EDE9E0]/75 flex items-center justify-between">
+                    <span>01 / SHARED NEUTRAL BASELINE (85 DOM NODES)</span>
+                    <span className="text-[#EDE9E0]/50">x = 40px / 20px Plumb Inset</span>
                   </div>
-                  <img
-                    src={activeStudy.referenceCaptures.desktop}
-                    alt={`${activeStudy.shortName} desktop above-the-fold reference capture`}
-                    className="w-full h-auto block border border-[#DFDACE]/20"
-                  />
+                  <div className="border border-[#EDE9E0]/20 overflow-hidden bg-[#141617]">
+                    <DesignSystemSpecimen variant="neutral" viewport={activeViewport} />
+                  </div>
                 </div>
-                <div className="lg:col-span-4 space-y-2 border border-[#DFDACE]/25 bg-[#1B1F21] p-4">
-                  <div className="flex items-center justify-between font-mono text-xs font-bold text-[#EDE9E0]">
-                    <span>MOBILE REFERENCE (390×844)</span>
-                    <span>2x DPR</span>
+
+                <div className="space-y-2">
+                  <div className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] flex items-center justify-between font-bold">
+                    <span>02 / TRANSFORMED SPECIMEN ({activeStudy.shortName.toUpperCase()})</span>
+                    <span>85 / 85 Identical DOM Nodes</span>
                   </div>
-                  <img
-                    src={activeStudy.referenceCaptures.mobile}
-                    alt={`${activeStudy.shortName} mobile above-the-fold reference capture`}
-                    className="w-full h-auto block border border-[#DFDACE]/20"
-                  />
+                  <div className="border border-[#D9A62E]/50 overflow-hidden bg-[#141617]">
+                    <DesignSystemSpecimen variant={activeStudy.id} viewport={activeViewport} />
+                  </div>
                 </div>
               </div>
-            )}
 
-            {inspectorView === 'hover' && (
-              <div className="mx-auto max-w-5xl space-y-3 border border-[#D9A62E]/50 bg-[#1B1F21] p-4">
-                <div className="flex items-center justify-between font-mono text-xs font-bold text-[#D9A62E]">
-                  <span>RECORDED HOVER STATE · Room 02 Custom Builds (Commit 195921a)</span>
-                  <span>exp01_after_desktop_hover_build.png (1440×900 @ 2x DPR)</span>
+              {/* Reference Source Capture */}
+              <div className="pt-4 border-t border-[#EDE9E0]/15">
+                <div className="font-mono text-xs uppercase tracking-wider text-[#EDE9E0]/75 mb-2 flex items-center justify-between">
+                  <span>
+                    03 / CAPTURED SOURCE REFERENCE ({activeStudy.sourceUrl} @{' '}
+                    {activeViewport === 'desktop' ? '1440×900' : '390×844'})
+                  </span>
+                  <span>{activeStudy.referenceDossierPath}</span>
                 </div>
                 <img
-                  src="/assets/images/design-intelligence/exp01_after_desktop_hover_build.png"
-                  alt="Full uncropped hover capture on Room 02 (Custom Builds)"
-                  className="w-full h-auto block border border-[#DFDACE]/20"
+                  src={
+                    activeViewport === 'desktop'
+                      ? activeStudy.referenceCaptures.desktop
+                      : activeStudy.referenceCaptures.mobile
+                  }
+                  alt={`Captured above-the-fold reference of ${activeStudy.shortName}`}
+                  className="max-h-[420px] w-auto mx-auto border border-[#EDE9E0]/20"
                 />
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
-
+      </main>
       <SiteFooter />
     </div>
   );

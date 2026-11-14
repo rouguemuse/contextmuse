@@ -120,9 +120,13 @@ export default function BriefDrawer() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
     setSubmitError(null);
 
+    const trimmedNotes = (brief.inquiry.notes || '').trim();
+    const hasAttachedItems = Boolean(includeSavedItems && totalCount > 0);
+    const hasInquiryDetails = Boolean(trimmedNotes || hasAttachedItems);
     const dossierText = generateMarkdownDossier();
     const serializedClips = includeSavedItems
       ? brief.whiteboardClips.map((c) => ({
@@ -143,12 +147,14 @@ export default function BriefDrawer() {
       inquiry_type: brief.inquiry.projectType || 'contact',
       name: brief.inquiry.name,
       email: brief.inquiry.email,
+      company: brief.inquiry.company || '',
       source: 'contextmuse_brief_drawer',
       category: brief.inquiry.projectType || 'General Inquiry',
       budget_band: brief.inquiry.budget || 'Not specified',
-      message: `${brief.inquiry.notes || ''}\n\n---\n${dossierText}`.trim(),
+      message: hasInquiryDetails ? `${trimmedNotes}\n\n---\n${dossierText}`.trim() : '',
       answers_json: {
         project_type: brief.inquiry.projectType,
+        company: brief.inquiry.company || '',
         budget: brief.inquiry.budget,
         notes: brief.inquiry.notes,
         include_saved_items: includeSavedItems,
@@ -172,8 +178,8 @@ export default function BriefDrawer() {
 
       const result = await response.json().catch(() => ({}));
 
-      if (!response.ok || result.ok === false) {
-        throw new Error(result.message || 'Unable to submit inquiry right now.');
+      if (!response.ok || result.ok === false || result.success === false) {
+        throw new Error(result.error || result.message || 'Unable to submit inquiry right now.');
       }
 
       setSubmitted(true);

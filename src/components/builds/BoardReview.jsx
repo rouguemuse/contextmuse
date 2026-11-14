@@ -1,7 +1,28 @@
+import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, FileImage, FileJson, Send } from 'lucide-react';
 
-export default function BoardReview({ open, pieces, links, onClose }) {
+export default function BoardReview({
+  open = true,
+  pieces = [],
+  links = [],
+  onClose,
+  onExportJson,
+  onExportPng,
+  onIncludeWithInquiry,
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const handleKey = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        onClose?.();
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [open, onClose]);
+
   const pages = pieces.filter((p) => p.type === 'page');
   const stickers = pieces.filter((p) => p.type === 'cta');
   const notes = pieces.filter((p) => p.type === 'note');
@@ -34,6 +55,10 @@ export default function BoardReview({ open, pieces, links, onClose }) {
           onClick={onClose}
         >
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Board review"
+            data-testid="board-review-modal"
             initial={{ y: 24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 16, opacity: 0 }}
@@ -90,7 +115,40 @@ export default function BoardReview({ open, pieces, links, onClose }) {
               </ul>
             </div>
 
-            <p className="mt-5 border-t border-line pt-3 text-[11px] leading-relaxed t-faint">
+            <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-line pt-4">
+              {onIncludeWithInquiry && (
+                <button
+                  type="button"
+                  onClick={onIncludeWithInquiry}
+                  className="inline-flex items-center gap-1.5 bg-[#D9A62E] px-3 py-2 font-mono text-[11px] font-bold uppercase tracking-wider text-[#141617] hover:bg-[#e5b43c]"
+                >
+                  <Send className="h-3.5 w-3.5" />
+                  <span>Include with Inquiry</span>
+                </button>
+              )}
+              {onExportPng && (
+                <button
+                  type="button"
+                  onClick={onExportPng}
+                  className="inline-flex items-center gap-1.5 border border-white/25 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-bone hover:border-mustard hover:text-mustard"
+                >
+                  <FileImage className="h-3.5 w-3.5" />
+                  <span>Export PNG</span>
+                </button>
+              )}
+              {onExportJson && (
+                <button
+                  type="button"
+                  onClick={onExportJson}
+                  className="inline-flex items-center gap-1.5 border border-white/25 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-bone hover:border-mustard hover:text-mustard"
+                >
+                  <FileJson className="h-3.5 w-3.5" />
+                  <span>Export JSON</span>
+                </button>
+              )}
+            </div>
+
+            <p className="mt-4 border-t border-line pt-3 text-[11px] leading-relaxed t-faint">
               Saved locally in your browser so you can sketch freely before sharing your brief.
             </p>
           </motion.div>

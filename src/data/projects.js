@@ -190,7 +190,7 @@ export const PROJECTS = [
         'Internal operator dashboards are private tools built for daily workflow tracking rather than public multi-tenant SaaS.',
       groupedTech: [
         { group: 'Public Platform', items: ['Responsive commercial web platform (inncontrolcoils.com)', 'Multi-property hospitality service intake'] },
-        { group: 'Internal Dashboards', items: ['Mobile daily check-in wizard (scott-daily / scott-app)', 'Interactive operator readiness & objective HUD (rpg-dashboard)'] },
+        { group: 'Internal Dashboards', items: ['Mobile daily operator check-in wizard', 'Interactive operator readiness & objective status HUD'] },
       ],
     },
     implementationTable: [

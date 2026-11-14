@@ -111,11 +111,11 @@ export default function SignalShowcase({ onOpenCaseStudy }) {
           </div>
 
           <div className="rounded-xl border border-[#D9A62E]/35 bg-[#121517] overflow-hidden shadow-xl p-2">
-            <div className="rounded-lg overflow-hidden border border-white/10 relative bg-[#0E1113]">
+            <div className="rounded-lg overflow-hidden border border-white/10 relative bg-[#0E1113] aspect-[4/3]">
               <img
                 src="/assets/images/signal-social-preview.jpg"
                 alt="Signal Restaurant Operational Intelligence"
-                className="w-full h-auto object-cover max-h-[420px] block"
+                className="w-full h-full object-cover object-top block"
                 loading="lazy"
               />
               <div className="absolute bottom-2.5 left-2.5 right-2.5 flex flex-wrap items-center justify-between gap-2 bg-[#121517]/95 backdrop-blur-sm border border-[#D9A62E]/40 px-3 py-2 rounded font-mono text-[10px] text-[#EDE9E0]">

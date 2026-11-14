@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MessageSquare,
   Send,
@@ -21,7 +21,7 @@ const CATEGORY_OPTIONS = [
 function serializeBriefSummary(brief, overrides = {}) {
   const name = overrides.name ?? brief.inquiry?.name ?? '';
   const email = overrides.email ?? brief.inquiry?.email ?? '';
-  const company = overrides.company ?? '';
+  const company = overrides.company ?? brief.inquiry?.company ?? '';
   const projectType = overrides.projectType ?? brief.inquiry?.projectType ?? '';
   const description = overrides.description ?? brief.inquiry?.notes ?? '';
 
@@ -70,9 +70,24 @@ export default function BuildEntryMethods({
   const [category, setCategory] = useState(brief.inquiry?.projectType || '');
   const [name, setName] = useState(brief.inquiry?.name || '');
   const [email, setEmail] = useState(brief.inquiry?.email || '');
-  const [company, setCompany] = useState('');
+  const [company, setCompany] = useState(brief.inquiry?.company || '');
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Keep form fields synchronized when brief.inquiry updates from Whiteboard attach or BriefDrawer
+  useEffect(() => {
+    setDescription(brief.inquiry?.notes || '');
+    setCategory(brief.inquiry?.projectType || '');
+    setName(brief.inquiry?.name || '');
+    setEmail(brief.inquiry?.email || '');
+    setCompany(brief.inquiry?.company || '');
+  }, [
+    brief.inquiry?.notes,
+    brief.inquiry?.projectType,
+    brief.inquiry?.name,
+    brief.inquiry?.email,
+    brief.inquiry?.company,
+  ]);
 
   const handleFieldSync = (patch) => {
     updateInquiry(patch);
@@ -80,27 +95,32 @@ export default function BuildEntryMethods({
 
   const handleDirectSubmit = async (e) => {
     e.preventDefault();
-    if (!email.trim() && !description.trim()) {
-      setErrorMsg('Please share a quick note about your idea and your email address.');
-      return;
-    }
+    if (status === 'sending') return;
 
     setStatus('sending');
     setErrorMsg('');
 
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedCompany = company.trim();
+    const trimmedNotes = description.trim();
+    const hasAttachedItems = Boolean(totalCount > 0);
+    const hasInquiryDetails = Boolean(trimmedNotes || hasAttachedItems);
+
     updateInquiry({
-      name: name.trim(),
-      email: email.trim(),
+      name,
+      email,
+      company,
       projectType: category,
-      notes: description.trim(),
+      notes: description,
     });
 
     const summaryText = serializeBriefSummary(brief, {
-      name: name.trim(),
-      email: email.trim(),
-      company: company.trim(),
+      name: trimmedName,
+      email: trimmedEmail,
+      company: trimmedCompany,
       projectType: category,
-      description: description.trim(),
+      description: trimmedNotes,
     });
 
     const serializedClips = (brief.whiteboardClips || []).map((c) => ({
@@ -115,16 +135,20 @@ export default function BuildEntryMethods({
     }));
 
     const payload = {
-      name: name.trim(),
-      email: email.trim(),
+      form_id: 'build-direct-inquiry',
+      source_page: typeof window !== 'undefined' ? window.location.pathname : '/build/',
+      inquiry_type: category || 'custom',
+      name: trimmedName,
+      email: trimmedEmail,
+      company: trimmedCompany,
       source: 'contextmuse_build_direct_inquiry',
       category: category || 'Custom Build Inquiry',
       budget_band: brief.inquiry?.budget || 'Not specified',
-      message: `${description.trim()}\n\n---\n${summaryText}`.trim(),
+      message: hasInquiryDetails ? `${trimmedNotes}\n\n---\n${summaryText}`.trim() : '',
       answers_json: {
         project_type: category || 'Custom Build Inquiry',
-        company: company.trim(),
-        notes: description.trim(),
+        company: trimmedCompany,
+        notes: trimmedNotes,
         include_saved_items: true,
         saved_projects: (brief.savedProjects || []).map((p) => ({ id: p.id, title: p.title })),
         audit_findings: brief.auditFindings || [],
@@ -143,8 +167,8 @@ export default function BuildEntryMethods({
       });
 
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || result.ok === false) {
-        throw new Error(result.message || result.error || `Server responded with ${response.status}`);
+      if (!response.ok || result.ok === false || result.success === false) {
+        throw new Error(result.error || result.message || 'Unable to submit inquiry right now.');
       }
       setStatus('sent');
     } catch (err) {
@@ -351,12 +375,13 @@ export default function BuildEntryMethods({
                     htmlFor="build-inquiry-name"
                     className="block font-mono text-[11px] uppercase tracking-wider text-[#23282A]/80 font-bold mb-1"
                   >
-                    Your Name
+                    Your Name *
                   </label>
                   <input
                     id="build-inquiry-name"
                     data-testid="build-inquiry-name"
                     type="text"
+                    required
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -399,7 +424,10 @@ export default function BuildEntryMethods({
                     data-testid="build-inquiry-company"
                     type="text"
                     value={company}
-                    onChange={(e) => setCompany(e.target.value)}
+                    onChange={(e) => {
+                      setCompany(e.target.value);
+                      handleFieldSync({ company: e.target.value });
+                    }}
                     placeholder="Acme Co."
                     className="w-full min-h-[44px] rounded-lg border border-[#23282A]/30 bg-[#EDE9E0] px-3 py-2 font-sans text-sm text-[#23282A] placeholder:text-[#23282A]/40 focus:border-[#17504A] focus:outline-none"
                   />

@@ -60,6 +60,20 @@ async function runTests() {
   }, '1.2.3.4', 'test-agent');
   assert(missingName.success === false && missingName.status === 400, 'Rejects missing/empty name');
 
+  const missingInquiryInfo = await processLeadSubmission({
+    form_id: 'brief-drawer',
+    name: 'Jane Doe',
+    email: 'valid@example.com',
+    message: '   '
+  }, '1.2.3.4', 'test-agent');
+  assert(
+    missingInquiryInfo.success === false &&
+      missingInquiryInfo.status === 400 &&
+      missingInquiryInfo.field === 'message' &&
+      missingInquiryInfo.error.includes('brief description'),
+    'Rejects missing required inquiry information when no notes or saved items provided'
+  );
+
   // Test 3: Honeypot drop
   const botSubmission = await processLeadSubmission({
     name: 'Spam Bot',

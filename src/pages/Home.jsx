@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import SiteHeader from '@/components/site/SiteHeader';
 import SiteFooter from '@/components/site/SiteFooter';
 import PageAnnotationOverlay from '@/components/site/PageAnnotationOverlay';
@@ -18,12 +17,7 @@ export default function Home() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.25 }}
-      className="relative flex min-h-screen flex-col bg-ink text-bone font-sans"
-    >
+    <div className="relative flex min-h-screen flex-col bg-ink text-bone font-sans">
       <SiteHeader />
 
       <main className="flex-1 flex flex-col">
@@ -49,6 +43,6 @@ export default function Home() {
 
       <PageAnnotationOverlay />
       <SiteFooter />
-    </motion.div>
+    </div>
   );
 }

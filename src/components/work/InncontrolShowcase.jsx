@@ -103,11 +103,11 @@ export default function InncontrolShowcase({ onOpenCaseStudy }) {
           </div>
 
           <div className="rounded-xl border border-[#0F2B48]/90 bg-[#0F2B48]/30 overflow-hidden shadow-lg p-2">
-            <div className="rounded-lg overflow-hidden border border-white/10 relative">
+            <div className="rounded-lg overflow-hidden border border-white/10 relative aspect-[4/3] bg-[#0A0C0D]">
               <img
                 src="/assets/images/inncontrol-commercial-platform.webp"
                 alt="INNcontrol Coils Commercial Hospitality Platform"
-                className="w-full h-auto object-cover max-h-[440px] block"
+                className="w-full h-full object-cover object-top block"
                 loading="eager"
               />
               <div className="absolute bottom-2.5 left-2.5 bg-[#0F2B48]/90 backdrop-blur-sm border border-[#FF6B00]/40 px-2.5 py-1 rounded font-mono text-[10px] text-[#EDE9E0]">

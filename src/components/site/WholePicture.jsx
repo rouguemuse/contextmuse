@@ -2,10 +2,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, X } from 'lucide-react';
 import { ROOMS } from '@/lib/rooms';
+import { useTransitionCoordinator } from '@/lib/TransitionContext';
 import SiteFooter from '@/components/site/SiteFooter';
 
 export default function WholePicture({ open, onClose }) {
   const navigate = useNavigate();
+  const { startTransition } = useTransitionCoordinator();
 
   return (
     <AnimatePresence>
@@ -38,9 +40,10 @@ export default function WholePicture({ open, onClose }) {
                 {ROOMS.map((room) => (
                   <button
                     key={room.id}
-                    onClick={() => {
+                    onClick={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
                       onClose();
-                      navigate(room.path);
+                      startTransition(room, rect, navigate);
                     }}
                     className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-4 border-b border-line py-5 text-left transition-colors duration-300 hover:bg-white/[0.04]"
                   >

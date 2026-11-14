@@ -435,23 +435,30 @@ export const ADDITIONAL_REGISTRY_ENTRIES = [
   {
     id: 'design-intelligence-01',
     aliases: ['design-intelligence'],
-    title: 'Design Intelligence Studies 01–03: Plaidis, Linear & Stripe Token Extraction',
-    subtitle: 'Comparative CSS/DOM Token Extraction, Shared Specimen Slider & Plumb-Line Verification',
+    title: 'Design Intelligence: From Visual Reference to Measurable Design Decisions',
+    subtitle: 'CSSOM/DOM Token Extraction across Plaidis, Linear & Stripe on an 85-Node Shared Specimen',
     year: '2026',
-    sector: 'Design systems research & empirical UI verification',
-    role: 'Token Extraction, Shared Specimen Architecture, Multi-Viewport Verification',
+    sector: 'Design engineering, UI/UX systems research & front-end architecture',
+    role: 'CSSOM/DOM Measurement, 85-Node Specimen Engineering, Production Transfer & Playwright Verification',
     plainSentence:
-      'Extracts verified CSS variables and computed DOM tokens from Plaidis (Locomotive), Linear, and Stripe and compares their perceptual and structural impact on an identical neutral interface specimen.',
+      'Measures how three contrasting reference systems (Plaidis / Locomotive, Linear, and Stripe) construct hierarchy, tests their extracted tokens on an identical 85-node specimen, and transfers verified structural rules into Context & Muse.',
     summary:
-      'An empirical three-study design-systems comparison evaluating how Plaidis (editorial grid & quintic choreography), Linear (dark-mode border luminance & fractional Inter Variable weights), and Stripe (light-weight Söhne typography & navy-tinted elevation) transform the same shared specimen alongside ContextMuse Entrance before/after captures.',
+      'An empirical seven-part design engineering case study (/lab/design-intelligence) demonstrating how CSSOM and DOM measurements turn visual analysis into testable token relationships across an 85-node interactive specimen and the Context & Muse production homepage (0px desktop drift, 85/85 DOM parity, 18/18 WCAG contrast checks, 11/11 smoke gates).',
+    tangibleOutput: {
+      title: 'Interactive 85-Node Specimen Stage & 3-System Measurement Dossier',
+      description:
+        'Live split-screen comparison across Neutral, Plaidis, Linear, and Stripe treatments on identical DOM nodes, plus Context & Muse homepage before/after verification (52e179d → 195921a).',
+      previewText:
+        '03 Reference Systems · 85 Identical DOM Nodes · 18/18 WCAG 2.1 Contrast Swatches · 0px Desktop Plumb Drift (/lab/design-intelligence)',
+    },
     contentType: 'experiment',
     maturityStatus: 'case-study',
     visibility: 'public',
-    featuredInWork: false,
+    featuredInWork: true,
     featuredInLab: true,
     canonicalDestination: '/lab/design-intelligence',
     liveDestination: '/lab/design-intelligence',
-    mediaUrl: '/assets/images/design-intelligence/after-desktop-viewport.png',
+    mediaUrl: '/assets/images/design-intelligence/exp01_after_desktop.png',
     canonicalTagIds: [
       'prob:structural-clarity',
       'cap:diagnostic-instrumentation',
@@ -461,12 +468,12 @@ export const ADDITIONAL_REGISTRY_ENTRIES = [
       {
         type: 'related-to',
         targetId: 'website-audit-system',
-        note: 'Complements the 4-Pillar Website + System Check with empirical DOM plumb-line verification.',
+        note: 'Complements the live 4-Pillar Website Audit System: Design Intelligence extracts tokens from reference systems onto a controlled specimen, while Website Audit diagnoses live multi-viewport conversion and structural clarity.',
       },
       {
         type: 'uses-capability',
         targetId: 'contrast-utility',
-        note: 'Evaluates typographic hierarchy, surface contrast, and spatial legibility.',
+        note: 'Verifies 18/18 WCAG 2.1 relative-luminance contrast ratios across Plaidis, Linear, and Stripe swatches.',
       },
     ],
   },

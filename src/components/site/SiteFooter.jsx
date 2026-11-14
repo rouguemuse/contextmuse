@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useBrief } from '@/lib/BriefContext';
 import { Lightbulb, Mail, X, ExternalLink, FolderSearch, CheckCircle2 } from 'lucide-react';
 
 export default function SiteFooter() {
   const { totalCount, openBrief } = useBrief();
   const [acqOpen, setAcqOpen] = useState(false);
+  const triggerBtnRef = useRef(null);
+  const closeBtnRef = useRef(null);
   const [consent, setConsent] = useState(() => {
     try {
       return window.localStorage.getItem('cm_analytics_consent') === 'granted' ? 'granted' : 'denied';
@@ -20,6 +22,30 @@ export default function SiteFooter() {
     window.addEventListener('cm:consent-changed', handleSync);
     return () => window.removeEventListener('cm:consent-changed', handleSync);
   }, []);
+
+  useEffect(() => {
+    if (!acqOpen) return;
+    const focusTimer = window.setTimeout(() => {
+      closeBtnRef.current?.focus();
+    }, 20);
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setAcqOpen(false);
+        triggerBtnRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [acqOpen]);
+
+  const handleCloseAcq = () => {
+    setAcqOpen(false);
+    triggerBtnRef.current?.focus();
+  };
 
   const toggleConsent = () => {
     const next = consent === 'denied' ? 'granted' : 'denied';
@@ -73,7 +99,10 @@ export default function SiteFooter() {
             Analytics: {consent === 'granted' ? 'On' : 'Off'}
           </button>
           <button
+            ref={triggerBtnRef}
             type="button"
+            aria-haspopup="dialog"
+            aria-expanded={acqOpen}
             onClick={() => setAcqOpen(true)}
             className="text-[11px] text-[#DFDACE]/50 hover:text-[#D9A62E] transition-colors"
           >
@@ -94,9 +123,12 @@ export default function SiteFooter() {
       {acqOpen && (
         <div
           className="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 backdrop-blur-sm p-4"
-          onClick={() => setAcqOpen(false)}
+          onClick={handleCloseAcq}
         >
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="acquisition-modal-title"
             className="w-full max-w-2xl rounded-xl border border-[#DFDACE]/20 bg-[#1B1F21] text-[#EDE9E0] p-6 shadow-2xl space-y-5 font-sans"
             onClick={(e) => e.stopPropagation()}
           >
@@ -105,7 +137,10 @@ export default function SiteFooter() {
                 <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#D9A62E] block">
                   STUDIO SOFTWARE IP • AVAILABLE FOR ACQUISITION
                 </span>
-                <h2 className="mt-1 font-display text-2xl font-black uppercase tracking-tight text-[#EDE9E0]">
+                <h2
+                  id="acquisition-modal-title"
+                  className="mt-1 font-display text-2xl font-black uppercase tracking-tight text-[#EDE9E0]"
+                >
                   Software Available for Acquisition
                 </h2>
                 <p className="mt-1 text-xs text-[#DFDACE]/75">
@@ -113,8 +148,9 @@ export default function SiteFooter() {
                 </p>
               </div>
               <button
+                ref={closeBtnRef}
                 type="button"
-                onClick={() => setAcqOpen(false)}
+                onClick={handleCloseAcq}
                 className="rounded p-1 text-[#DFDACE]/60 hover:bg-white/10 hover:text-white transition-colors"
                 aria-label="Close acquisition modal"
               >

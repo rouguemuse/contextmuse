@@ -1,18 +1,32 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function RoomTile({ room, index, onPick }) {
   const ref = useRef(null);
 
-  const handleClick = () => {
-    if (!ref.current) return;
+  const handleClick = (e) => {
+    if (
+      e.defaultPrevented ||
+      e.button !== 0 ||
+      e.metaKey ||
+      e.ctrlKey ||
+      e.shiftKey ||
+      e.altKey
+    ) {
+      return;
+    }
+    if (!ref.current || !onPick) return;
+    e.preventDefault();
     onPick(room, ref.current.getBoundingClientRect());
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === ' ') {
       e.preventDefault();
-      handleClick();
+      if (ref.current && onPick) {
+        onPick(room, ref.current.getBoundingClientRect());
+      }
     }
   };
 
@@ -118,16 +132,15 @@ export default function RoomTile({ room, index, onPick }) {
   };
 
   return (
-    <div
+    <Link
       ref={ref}
+      to={room.path}
       data-room-id={room.id}
-      tabIndex={0}
-      role="button"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       style={{ backgroundColor: room.color, color: room.text }}
       aria-label={`Enter Room ${room.num}: ${room.title} (${room.verb})`}
-      className="group relative flex flex-col justify-between p-5 sm:p-7 xl:p-[clamp(1.75rem,2.4vw,3.25rem)] text-left transition-all duration-300 hover:brightness-105 active:scale-[0.99] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#D9A62E] focus:z-10 min-h-[200px] sm:min-h-[240px] xl:min-h-[290px] h-full"
+      className="group relative flex flex-col justify-between p-5 sm:p-7 xl:p-[clamp(1.75rem,2.4vw,3.25rem)] text-left no-underline transition-all duration-300 hover:brightness-105 active:scale-[0.99] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#D9A62E] focus:z-10 min-h-[200px] sm:min-h-[240px] xl:min-h-[290px] h-full"
     >
       {/* Top Header Row */}
       <div className="flex items-center justify-between border-b border-current/15 pb-2.5 2xl:pb-3.5">
@@ -162,6 +175,6 @@ export default function RoomTile({ room, index, onPick }) {
 
       {/* Subtle Accent Glow on Hover */}
       <span className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-current transition-transform duration-300 group-hover:scale-x-100 opacity-60" />
-    </div>
+    </Link>
   );
 }
