@@ -9,3 +9,5 @@ node_modules/
 .env*.local
 /.spa-dist/
 assets/*.map
+!/build/
+!/build/index.html

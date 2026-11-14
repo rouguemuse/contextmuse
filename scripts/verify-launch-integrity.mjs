@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 import { SPA_ROUTE_SEO } from '../src/lib/seoRoutes.js';
 
 const root = process.cwd();
@@ -16,11 +17,20 @@ function assert(condition, message) {
 
 console.log('=== Running ContextMuse Launch Integrity Verification ===\n');
 
-// 1. Verify SPA Route HTML Metadata & Analytics Integration
+// 1. Verify SPA Route HTML Metadata, Git Tracking & Analytics Integration
 for (const [routeKey, routeMeta] of Object.entries(SPA_ROUTE_SEO)) {
   const filePath = path.join(root, routeMeta.outputFile);
   assert(fs.existsSync(filePath), `Generated HTML exists for ${routeKey} (${routeMeta.outputFile})`);
   if (!fs.existsSync(filePath)) continue;
+
+  let isTracked = false;
+  try {
+    execSync(`git ls-files --error-unmatch "${routeMeta.outputFile}"`, { cwd: root, stdio: 'ignore' });
+    isTracked = true;
+  } catch {
+    isTracked = false;
+  }
+  assert(isTracked, `Generated HTML is tracked in Git (${routeMeta.outputFile})`);
 
   const html = fs.readFileSync(filePath, 'utf8');
   assert(
