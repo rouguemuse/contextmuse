@@ -237,6 +237,7 @@ export function TransitionProvider({ children }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [activeFold, setActiveFold] = useState(null);
   const [phase, setPhase] = useState('idle'); // 'idle' | 'entering' | 'revealing'
+  const isTransitioningRef = useRef(false);
   const timersRef = useRef([]);
 
   const clearTimers = useCallback(() => {
@@ -245,13 +246,17 @@ export function TransitionProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    return () => clearTimers();
+    return () => {
+      clearTimers();
+      isTransitioningRef.current = false;
+    };
   }, [clearTimers]);
 
   const startTransition = useCallback(
     (room, rect, navigate) => {
       if (!room || !navigate) return;
-      if (isTransitioning) return;
+      if (isTransitioningRef.current) return;
+      isTransitioningRef.current = true;
 
       const prefersReducedMotion =
         typeof window !== 'undefined' &&
@@ -262,6 +267,7 @@ export function TransitionProvider({ children }) {
         setIsTransitioning(true);
         navigate(room.path);
         const id = setTimeout(() => {
+          isTransitioningRef.current = false;
           setIsTransitioning(false);
         }, 120);
         timersRef.current.push(id);
@@ -289,6 +295,7 @@ export function TransitionProvider({ children }) {
           const doneTimer = setTimeout(() => {
             setPhase('idle');
             setActiveFold(null);
+            isTransitioningRef.current = false;
             setIsTransitioning(false);
           }, 340);
           timersRef.current.push(doneTimer);
@@ -298,7 +305,7 @@ export function TransitionProvider({ children }) {
 
       timersRef.current.push(swapTimer);
     },
-    [isTransitioning, clearTimers]
+    [clearTimers]
   );
 
   const renderRoomTransition = () => {
