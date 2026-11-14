@@ -1,420 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Tag (gtag.js) + Privacy-Safe Consent Mode v2 + Microsoft Clarity + CM_Analytics -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-MVV7WNL42L');
+      (function() {
+        var consentState = 'denied';
+        try {
+          if (window.localStorage && window.localStorage.getItem('cm_analytics_consent') === 'granted') {
+            consentState = 'granted';
+          }
+        } catch (_) {}
+        window['ga-disable-G-MVV7WNL42L'] = (consentState !== 'granted');
+        gtag('consent', 'default', {
+          analytics_storage: consentState,
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+        if (consentState === 'granted') {
+          window.__cm_ga4_configured = true;
+          var gs = document.createElement('script');
+          gs.async = true;
+          gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L';
+          var firstScript = document.getElementsByTagName('script')[0];
+          firstScript.parentNode.insertBefore(gs, firstScript);
+          gtag('js', new Date());
+          gtag('config', 'G-MVV7WNL42L', {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false
+          });
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "zaubakunby");
+        }
+      })();
     </script>
     <script src="/assets/js/analytics.js" defer></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work &amp; Case Study Library | Context &amp; Muse</title>
-    <meta name="description" content="Case studies of digital products, operational systems, diagnostic tooling, and commercial websites built to solve specific business problems.">
-    <link rel="canonical" href="https://www.contextmuse.com/work/">
-    <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
-    
+    <title>The Work · Client Builds, Products &amp; Case Study Library | Context &amp; Muse</title>
+    <meta name="description" content="Production websites, quoting engines, operational software, and digital products designed and built end-to-end by Context &amp; Muse." />
+    <link rel="canonical" href="https://www.contextmuse.com/work/" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='16' height='16' fill='%23123F38'/%3E%3Crect x='16' width='16' height='16' fill='%232B7C72'/%3E%3Crect y='16' width='16' height='16' fill='%23A9CFC7'/%3E%3Crect x='16' y='16' width='16' height='16' fill='%23D9A62E'/%3E%3C/svg%3E" />
+    <link rel="manifest" href="/assets/manifest-Cm_Gkh3N.json" />
+
     <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Work &amp; Case Study Library | Context &amp; Muse">
-    <meta property="og:description" content="Digital products, operational systems, diagnostic tooling, and commercial web experiences.">
-    <meta property="og:url" content="https://www.contextmuse.com/work/">
-    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.contextmuse.com/work/" />
+    <meta property="og:title" content="The Work · Client Builds, Products &amp; Case Study Library | Context &amp; Muse" />
+    <meta property="og:description" content="Production websites, quoting engines, operational software, and digital products designed and built end-to-end by Context &amp; Muse." />
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Work &amp; Case Study Library | Context &amp; Muse">
-    <meta name="twitter:description" content="Digital products, operational systems, diagnostic tooling, and commercial web experiences.">
-    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg">
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Work · Client Builds, Products &amp; Case Study Library | Context &amp; Muse" />
+    <meta name="twitter:description" content="Production websites, quoting engines, operational software, and digital products designed and built end-to-end by Context &amp; Muse." />
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg" />
 
-    <!-- JSON-LD Schema -->
-    <script type="application/ld+json">
+    <!-- Structured Data (JSON-LD) -->
+    <script id="cm-route-jsonld" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "headline": "Context & Muse Work & Case Study Library",
-      "description": "Selected digital products, operational engines, and commercial web experiences built by Context & Muse.",
-      "url": "https://www.contextmuse.com/work/",
+      "@type": "Organization",
+      "@id": "https://www.contextmuse.com/#organization",
+      "name": "Context & Muse",
+      "url": "https://www.contextmuse.com/",
+      "logo": "https://www.contextmuse.com/assets/images/contextmuse_logo.svg",
+      "description": "Context & Muse is founder-led by Jayme Volstad. Independent design and full-stack software studio building commercial websites, quote engines, operational software, and original digital products.",
+      "founder": {
+        "@type": "Person",
+        "name": "Jayme Volstad",
+        "jobTitle": "Systems Architect & Principal Designer",
+        "url": "https://www.contextmuse.com/about/"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Austin"
+        },
+        {
+          "@type": "State",
+          "name": "Texas"
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
+      "knowsAbout": [
+        "Commercial Quoting Systems",
+        "Lead Intake Engineering",
+        "Custom Operations Software",
+        "Conversion Diagnostics",
+        "Design Systems Engineering"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.contextmuse.com/#website",
+      "url": "https://www.contextmuse.com/",
+      "name": "Context & Muse",
       "publisher": {
-        "@type": "Organization",
-        "name": "Context & Muse",
-        "url": "https://www.contextmuse.com"
+        "@id": "https://www.contextmuse.com/#organization"
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.contextmuse.com/work/#webpage",
+      "url": "https://www.contextmuse.com/work/",
+      "name": "The Work · Client Builds, Products & Case Study Library | Context & Muse",
+      "description": "Production websites, quoting engines, operational software, and digital products designed and built end-to-end by Context & Muse.",
+      "isPartOf": {
+        "@id": "https://www.contextmuse.com/#website"
       }
     }
+  ]
+}
     </script>
 
-    <!-- Fonts & CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=4.4">
-</head>
-<body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <!-- Navigation -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="container nav-container">
-            <a href="/" class="logo">
-                <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:22px;height:22px;">
-                <span>Context &amp; Muse</span>
-            </a>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <div class="nav-links" id="primary-nav-links">
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
-                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
-                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
-                </details>
-                <a href="/creative/" class="nav-link">Creative</a>
-                <a href="/about/" class="nav-link">About</a>
-                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
-            </div>
-        </div>
-    </nav>
-    <main id="main-content">
-        <!-- Header -->
-        <header class="cs-header" style="background: var(--bg-paper);">
-            <div class="container">
-                <div class="cs-meta-strip">
-                    <span class="cs-meta-tag">Case Study Library</span>
-                    <span class="cs-meta-tag">5 Flagship Deep-Dives</span>
-                    <span>Selected Systems &amp; Builds</span>
-                </div>
-                <h1 class="cs-headline">Products, Systems &amp; Commercial Web Experiences</h1>
-                <p class="cs-lead">
-                    Context &amp; Muse turns complicated real-world problems into clear digital products, operational systems, and commercial web experiences. Explore our flagship case studies below.
-                </p>
-            </div>
-        </header>
-
-        <!-- Flagship Case Studies List -->
-        <section class="cs-body-content" style="padding-top: 2.5rem; padding-bottom: 5rem;">
-            <div class="container">
-                
-                <div class="work-editorial-layout">
-                    
-                    <!-- 1. FULL-WIDTH FEATURE: Revision Atlas -->
-                    <a href="/work/revision-atlas/" class="work-feature-full">
-                        <div class="work-feature-media">
-                            <img src="/assets/images/revision-atlas-cover.webp" alt="Revision Atlas interactive manuscript inspection interface and variant drafting telemetry" width="1400" height="850">
-                        </div>
-                        <div class="work-feature-info">
-                            <div class="work-meta-row">
-                                <span class="cs-meta-tag status-active">● Active Production</span>
-                                <span>Editorial Systems</span>
-                            </div>
-                            <h2 class="work-feature-title">Revision Atlas</h2>
-                            <p class="work-feature-desc">
-                                A non-destructive manuscript revision environment that decomposes 80,000+ word drafts into queryable narrative units, visual pacing telemetry, and side-by-side variant drafting trees.
-                            </p>
-                            <div class="work-tag-group">
-                                <span class="work-tag-pill">Product Design</span>
-                                <span class="work-tag-pill">Information Architecture</span>
-                                <span class="work-tag-pill">Offline-First</span>
-                            </div>
-                            <span class="work-action-link">Read Full Case Study &rarr;</span>
-                        </div>
-                    </a>
-
-                    <!-- 2. TWO-COLUMN PAIR: Website Audit System & Client Opportunity Engine -->
-                    <div class="work-pair-grid">
-                        
-                        <!-- Website Audit System -->
-                        <a href="/work/website-audit-system/" class="work-pair-card">
-                            <div class="work-pair-media">
-                                <img src="/assets/images/website-audit-cover.webp" alt="Website Audit System visual diagnostics interface with coordinate issue pins and Evidence Drawer" width="1000" height="750">
-                            </div>
-                            <div>
-                                <div class="work-meta-row">
-                                    <span class="cs-meta-tag status-active">● Active Production</span>
-                                    <span>Diagnostics &amp; Tooling</span>
-                                </div>
-                                <h2 class="work-pair-title">Website Audit System</h2>
-                                <p class="work-pair-desc">
-                                    An automated diagnostic pipeline that replaces generic PDF audits with multi-viewport rendering captures, crop-relative DOM issue pins, and interactive Evidence Drawers.
-                                </p>
-                                <div class="work-tag-group">
-                                    <span class="work-tag-pill">Diagnostic Systems</span>
-                                    <span class="work-tag-pill">Visual Evidence</span>
-                                    <span class="work-tag-pill">Automation</span>
-                                </div>
-                            </div>
-                            <span class="work-action-link">Read Full Case Study &rarr;</span>
-                        </a>
-
-                        <!-- Client Opportunity Engine -->
-                        <a href="/work/client-opportunity-engine/" class="work-pair-card">
-                            <div class="work-pair-media">
-                                <img src="/assets/images/client-opportunity-engine-cover.webp" alt="Client Opportunity Engine decision support interface with Opportunity Score and Delivery Specification" width="1000" height="750">
-                            </div>
-                            <div>
-                                <div class="work-meta-row">
-                                    <span class="cs-meta-tag status-live">● Live Web Application</span>
-                                    <span>Decision Support</span>
-                                </div>
-                                <h2 class="work-pair-title">Client Opportunity Engine</h2>
-                                <p class="work-pair-desc">
-                                    An operational decision support platform that parses prospect domains, filters bad-fit leads via seller calibration and negative checks, and generates complete opportunity briefs and prototype specifications.
-                                </p>
-                                <div class="work-tag-group">
-                                    <span class="work-tag-pill">Decision Support</span>
-                                    <span class="work-tag-pill">Product Strategy</span>
-                                    <span class="work-tag-pill">Rapid Prototyping</span>
-                                </div>
-                            </div>
-                            <span class="work-action-link">Read Full Case Study &rarr;</span>
-                        </a>
-
-                    </div>
-
-                    <!-- 3. WIDE SYSTEM FEATURE: Contest Atlas -->
-                    <a href="/work/contest-atlas/" class="work-feature-system">
-                        <div class="work-system-media">
-                            <img src="/assets/images/contest-atlas-cover.webp" alt="Contest Atlas rules architecture and deterministic evaluation tree interface" width="1300" height="700">
-                        </div>
-                        <div class="work-feature-info">
-                            <div class="work-meta-row">
-                                <span class="cs-meta-tag status-dev">● In Active Development</span>
-                                <span>Rules Engine Architecture</span>
-                            </div>
-                            <h2 class="work-feature-title">Contest Atlas</h2>
-                            <p class="work-feature-desc">
-                                A deterministic rules evaluation engine that translates complex, ambiguous literary submission guidelines and fee structures into structured schemas and explainable eligibility verification trees.
-                            </p>
-                            <div class="work-tag-group">
-                                <span class="work-tag-pill">Rules Engine</span>
-                                <span class="work-tag-pill">Information Architecture</span>
-                                <span class="work-tag-pill">State Design</span>
-                            </div>
-                            <span class="work-action-link">Read Full Case Study &rarr;</span>
-                        </div>
-                    </a>
-
-                    <!-- 4. FULL-WIDTH COMMERCIAL FEATURE: Lone Wolf Dumpsters -->
-                    <a href="/work/lone-wolf-dumpsters/" class="work-feature-full commercial-accent">
-                        <div class="work-feature-media">
-                            <img src="/assets/images/lonewolf-cover.webp" alt="Lone Wolf Dumpsters commercial logistics platform with transparent pricing and 48 DFW municipal pages" width="1400" height="850">
-                        </div>
-                        <div class="work-feature-info">
-                            <div class="work-meta-row">
-                                <span class="cs-meta-tag status-live">● Live Client Build</span>
-                                <span>Commercial Platform</span>
-                            </div>
-                            <h2 class="work-feature-title">Lone Wolf Dumpsters</h2>
-                            <p class="work-feature-desc">
-                                A high-conversion commercial platform for a North Texas waste logistics provider, featuring transparent 15/20/25yd pricing, 48 DFW municipal landing pages, and differentiated intake workflows.
-                            </p>
-                            <div class="work-tag-group">
-                                <span class="work-tag-pill">Commercial UX</span>
-                                <span class="work-tag-pill">Local Architecture</span>
-                                <span class="work-tag-pill">Development</span>
-                            </div>
-                            <span class="work-action-link">Read Full Case Study &rarr;</span>
-                        </div>
-                    </a>
-
-                </div>
-
-                <!-- 5. SUPPORTING SECTION 1: ADDITIONAL PRODUCTS & SYSTEMS -->
-                <div style="margin-top: 5rem; padding-top: 3.5rem; border-top: 1px solid var(--border-light);">
-                    <div class="section-header" style="text-align: left; margin-bottom: 2.25rem;">
-                        <span class="section-eyebrow">PROPRIETARY SYSTEMS &amp; CIVIC TOOLS</span>
-                        <h2 class="section-title">Additional Products &amp; Systems</h2>
-                        <p class="section-desc">
-                            Operational intelligence engines, forensic taxonomy software, and civic access systems.
-                        </p>
-                    </div>
-
-                    <div class="work-support-grid">
-                        <!-- Signal -->
-                        <a href="/signal/" class="work-support-card">
-                            <div class="work-support-media">
-                                <img src="/assets/images/signal-priority-view.webp" alt="Signal operational diagnostic interface" loading="lazy" width="600" height="375">
-                                <div style="font-family: var(--font-mono, monospace); font-size: 10px; color: var(--text-tertiary, #888); margin-top: 0.4rem; text-align: center;">Synthetic Demonstration Dataset &mdash; simulated operational telemetry for demonstration.</div>
-                            </div>
-                            <div>
-                                <div class="work-meta-row">
-                                    <span class="cs-meta-tag status-live">● Active Service</span>
-                                </div>
-                                <h3 class="work-support-title">Signal</h3>
-                                <p class="work-support-desc">
-                                    Operational intelligence engine translating raw customer communication streams into prioritized diagnostic action queues.
-                                </p>
-                            </div>
-                            <span class="work-action-link">Explore Signal &rarr;</span>
-                        </a>
-
-                        <!-- GenSort -->
-                        <a href="/gensort/" class="work-support-card">
-                            <div class="work-support-media">
-                                <img src="/assets/images/gensort-compare.webp" alt="GenSort image taxonomy and classification workspace" loading="lazy" width="600" height="375">
-                            </div>
-                            <div>
-                                <div class="work-meta-row">
-                                    <span class="cs-meta-tag status-active">● Proprietary Tool</span>
-                                </div>
-                                <h3 class="work-support-title">GenSort</h3>
-                                <p class="work-support-desc">
-                                    Deterministic visual taxonomy and comparison environment built for rapid forensic categorization and side-by-side artifact auditing.
-                                </p>
-                            </div>
-                            <span class="work-action-link">Explore GenSort &rarr;</span>
-                        </a>
-
-                        <!-- Maps With Teeth -->
-                        <a href="https://www.mapswithteeth.org/" target="_blank" rel="noopener" class="work-support-card">
-                            <div class="work-support-media">
-                                <img src="/assets/images/mapswithteeth-screenshot.webp" alt="Maps With Teeth civic access resource platform" loading="lazy" width="600" height="375">
-                            </div>
-                            <div>
-                                <div class="work-meta-row">
-                                    <span class="cs-meta-tag status-active">● Public Initiative</span>
-                                </div>
-                                <h3 class="work-support-title">Maps With Teeth</h3>
-                                <p class="work-support-desc">
-                                    Independent civic resource access platform mapping public service barriers, documentation hurdles, and continuity pathways.
-                                </p>
-                            </div>
-                            <span class="work-action-link">Visit Initiative ↗</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 6. SUPPORTING SECTION 2: CLIENT & COMMERCIAL WORK -->
-                <div style="margin-top: 4.5rem; padding-top: 3.5rem; border-top: 1px solid var(--border-light);">
-                    <div class="section-header" style="text-align: left; margin-bottom: 2.25rem;">
-                        <span class="section-eyebrow">COMMERCIAL BUILDS &amp; CLIENT SYSTEMS</span>
-                        <h2 class="section-title">Client &amp; Commercial Work</h2>
-                        <p class="section-desc">
-                            Specialized web experiences, quotation calculators, and multi-variable business systems built for operational clients.
-                        </p>
-                    </div>
-
-                    <div class="work-support-grid">
-                        <!-- INNcontrol Coils -->
-                        <a href="/systems/client-builds/#inncontrol" class="work-support-card">
-                            <div class="work-support-media">
-                                <img src="/assets/images/inncontrol-commercial-platform.webp" alt="INNcontrol Coils commercial PTAC coil refurbishing web platform" loading="lazy" width="600" height="375">
-                            </div>
-                            <div>
-                                <div class="work-meta-row">
-                                    <span class="cs-meta-tag status-live">● Live Client Build</span>
-                                </div>
-                                <h3 class="work-support-title">INNcontrol Coils</h3>
-                                <p class="work-support-desc">
-                                    Commercial HVAC estimation platform replacing manual engineering spreadsheets with instant calculation for dimension, tonnage, and alloy specifications.
-                                </p>
-                            </div>
-                            <span class="work-action-link">View System Specs &rarr;</span>
-                        </a>
-
-                        <!-- EDR Party Rentals -->
-                        <a href="/systems/client-builds/#edr" class="work-support-card">
-                            <div class="work-support-media">
-                                <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals high-demand event equipment booking platform" loading="lazy" width="600" height="375">
-                            </div>
-                            <div>
-                                <div class="work-meta-row">
-                                    <span class="cs-meta-tag status-live">● Live Client Build</span>
-                                </div>
-                                <h3 class="work-support-title">EDR Party Rentals</h3>
-                                <p class="work-support-desc">
-                                    High-demand event equipment booking platform featuring date-constrained inventory availability, delivery zone calculations, and package configuration.
-                                </p>
-                            </div>
-                            <span class="work-action-link">View System Specs &rarr;</span>
-                        </a>
-
-                        <!-- D2 Auto Detail -->
-                        <a href="/systems/client-builds/#d2" class="work-support-card">
-                            <div class="work-support-media">
-                                <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail mobile customer intake and service flow" loading="lazy" width="600" height="375">
-                            </div>
-                            <div>
-                                <div class="work-meta-row">
-                                    <span class="cs-meta-tag status-live">● Live Client Build</span>
-                                </div>
-                                <h3 class="work-support-title">D2 Auto Detail</h3>
-                                <p class="work-support-desc">
-                                    Single-path service qualification and direct mobile booking engine designed for high-end automotive detailing clients.
-                                </p>
-                            </div>
-                            <span class="work-action-link">View System Specs &rarr;</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </main>
-    <!-- Footer -->
-        <footer class="site-footer" role="contentinfo">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="/" class="logo">
-                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
-                    <span>Context &amp; Muse</span>
-                </a>
-                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
-                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
-            </div>
-            <div class="footer-links-grid">
-                <div class="footer-col">
-                    <div class="footer-col-title">Services</div>
-                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
-                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
-                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
-                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
-                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Selected Work</div>
-                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
-                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
-                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
-                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
-                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">About</div>
-                    <a href="/about/" class="footer-link">About Jayme</a>
-                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/terms/" class="footer-link">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="/assets/js/nav.js" defer></script>
-    <script src="/assets/js/whatsapp.js" defer></script>
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,400..900;1,75..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/spa-DObCqmFI.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/spa-kMHWcPGy.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>

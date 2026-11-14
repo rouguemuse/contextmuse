@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Tag (gtag.js) + Privacy-Safe Consent Mode v2 + Microsoft Clarity + CM_Analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      (function() {
+        var consentState = 'denied';
+        try {
+          if (window.localStorage && window.localStorage.getItem('cm_analytics_consent') === 'granted') {
+            consentState = 'granted';
+          }
+        } catch (_) {}
+        window['ga-disable-G-MVV7WNL42L'] = (consentState !== 'granted');
+        gtag('consent', 'default', {
+          analytics_storage: consentState,
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+        if (consentState === 'granted') {
+          window.__cm_ga4_configured = true;
+          var gs = document.createElement('script');
+          gs.async = true;
+          gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L';
+          var firstScript = document.getElementsByTagName('script')[0];
+          firstScript.parentNode.insertBefore(gs, firstScript);
+          gtag('js', new Date());
+          gtag('config', 'G-MVV7WNL42L', {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false
+          });
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "zaubakunby");
+        }
+      })();
+    </script>
+    <script src="/assets/js/analytics.js" defer></script>
+
+    <title>Context &amp; Muse · Applied Systems, Quote Engines &amp; Custom Software</title>
+    <meta name="description" content="Context &amp; Muse — Independent design and development by Jayme Volstad. Websites, visual identities, digital products, quote engines, and custom software." />
+    <link rel="canonical" href="https://www.contextmuse.com/" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='16' height='16' fill='%23123F38'/%3E%3Crect x='16' width='16' height='16' fill='%232B7C72'/%3E%3Crect y='16' width='16' height='16' fill='%23A9CFC7'/%3E%3Crect x='16' y='16' width='16' height='16' fill='%23D9A62E'/%3E%3C/svg%3E" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.contextmuse.com/" />
+    <meta property="og:title" content="Context &amp; Muse · Applied Systems, Quote Engines &amp; Custom Software" />
+    <meta property="og:description" content="Context &amp; Muse — Independent design and development by Jayme Volstad. Websites, visual identities, digital products, quote engines, and custom software." />
+    <meta property="og:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Context &amp; Muse · Applied Systems, Quote Engines &amp; Custom Software" />
+    <meta name="twitter:description" content="Context &amp; Muse — Independent design and development by Jayme Volstad. Websites, visual identities, digital products, quote engines, and custom software." />
+    <meta name="twitter:image" content="https://www.contextmuse.com/og/context-muse-home-v3.jpg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script id="cm-route-jsonld" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.contextmuse.com/#organization",
+          "name": "Context & Muse",
+          "url": "https://www.contextmuse.com/",
+          "logo": "https://www.contextmuse.com/assets/images/contextmuse_logo.svg",
+          "description": "Context & Muse is founder-led by Jayme Volstad. Independent design and full-stack software studio building commercial websites, quote engines, operational software, and original digital products.",
+          "founder": {
+            "@type": "Person",
+            "name": "Jayme Volstad",
+            "jobTitle": "Systems Architect & Principal Designer",
+            "url": "https://www.contextmuse.com/about/"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Austin" },
+            { "@type": "State", "name": "Texas" },
+            { "@type": "Country", "name": "United States" }
+          ],
+          "knowsAbout": [
+            "Commercial Quoting Systems",
+            "Lead Intake Engineering",
+            "Custom Operations Software",
+            "Conversion Diagnostics",
+            "Design Systems Engineering"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.contextmuse.com/#website",
+          "url": "https://www.contextmuse.com/",
+          "name": "Context & Muse",
+          "publisher": {
+            "@id": "https://www.contextmuse.com/#organization"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,400..900;1,75..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

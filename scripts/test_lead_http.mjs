@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
     return healthHandler(req, res);
   }
 
-  if (url.pathname === '/api/lead') {
+  if (url.pathname === '/api/lead' || url.pathname === '/api/lead/') {
     let bodyStr = '';
     req.on('data', chunk => { bodyStr += chunk; });
     req.on('end', () => {

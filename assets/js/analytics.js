@@ -13,6 +13,100 @@
 
     var EMAIL_REGEX = /[^\s@]+@[^\s@]+\.[^\s@]+/;
     var PHONE_REGEX = /(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
+    var CONSENT_STORAGE_KEY = 'cm_analytics_consent';
+
+    function normalizePathname(rawPath) {
+        if (!rawPath || typeof rawPath !== 'string') return '/';
+        var clean = rawPath.split('?')[0].split('#')[0].trim();
+        if (!clean || clean === '/') return '/';
+        if (!clean.startsWith('/')) clean = '/' + clean;
+        if (!clean.endsWith('/') && clean.indexOf('.') === -1) clean = clean + '/';
+        return clean;
+    }
+
+    function getRawConsentChoice() {
+        try {
+            var v = localStorage.getItem(CONSENT_STORAGE_KEY);
+            if (v === 'denied' || v === 'granted') return v;
+        } catch (_) {}
+        return null;
+    }
+
+    function getStoredConsent() {
+        return getRawConsentChoice() === 'granted' ? 'granted' : 'denied';
+    }
+
+    function ensureGa4Loaded() {
+        if (getStoredConsent() !== 'granted') return;
+        window['ga-disable-G-MVV7WNL42L'] = false;
+        if (!document.querySelector('script[src*="googletagmanager.com/gtag/js?id=G-MVV7WNL42L"]')) {
+            var gs = document.createElement('script');
+            gs.async = true;
+            gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-MVV7WNL42L';
+            var first = document.getElementsByTagName('script')[0];
+            if (first && first.parentNode) {
+                first.parentNode.insertBefore(gs, first);
+            } else {
+                document.head.appendChild(gs);
+            }
+        }
+        if (!window.__cm_ga4_configured && typeof window.gtag === 'function') {
+            window.__cm_ga4_configured = true;
+            window.gtag('js', new Date());
+            window.gtag('config', 'G-MVV7WNL42L', {
+                anonymize_ip: true,
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false
+            });
+            lastTrackedPath = normalizePathname(window.location.pathname);
+        }
+    }
+
+    function syncGoogleConsentMode(state) {
+        var analyticsState = (state === 'granted') ? 'granted' : 'denied';
+        window['ga-disable-G-MVV7WNL42L'] = (analyticsState !== 'granted');
+        if (typeof window.gtag === 'function') {
+            window.gtag('consent', 'update', {
+                analytics_storage: analyticsState,
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied'
+            });
+        }
+        if (typeof window.clarity === 'function') {
+            try {
+                window.clarity('consent', analyticsState === 'granted');
+                if (analyticsState !== 'granted') {
+                    window.clarity('stop');
+                }
+            } catch (_) {}
+        }
+    }
+
+    function ensureClarityLoaded() {
+        if (getStoredConsent() !== 'granted') return;
+        if (!document.querySelector('script[src*="clarity.ms/tag/zaubakunby"]')) {
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "zaubakunby");
+        }
+        if (typeof window.clarity === 'function') {
+            try {
+                window.clarity('consent', true);
+            } catch (_) {}
+        }
+    }
+
+    function applyPrivacyMasks() {
+        try {
+            var sensitiveNodes = document.querySelectorAll('form, input, textarea, [data-whiteboard], [data-clarity-mask]');
+            for (var i = 0; i < sensitiveNodes.length; i++) {
+                sensitiveNodes[i].setAttribute('data-clarity-mask', 'true');
+            }
+        } catch (_) {}
+    }
 
     function cleanString(val) {
         if (typeof val !== 'string') return '';
@@ -22,7 +116,7 @@
             return '';
         }
         // Disallow placeholder strings
-        if (trimmed === 'not_specified' || trimmed === 'undefined' || trimmed === 'null') {
+        if (trimmed === 'not_specified' || trimmed === 'Not specified' || trimmed === 'undefined' || trimmed === 'null') {
             return '';
         }
         // Disallow HTML tags or quotes
@@ -31,6 +125,9 @@
     }
 
     function emitGtag(eventName, params) {
+        if (getStoredConsent() === 'denied') {
+            return;
+        }
         if (typeof window.gtag === 'function') {
             window.gtag('event', eventName, params);
         } else {
@@ -43,8 +140,67 @@
     var recordedLeads = new Set();
     var lastLeadTime = 0;
     var lastLeadKey = '';
+    // Initialized to current location when granted at boot so initial mount after gtag('config') never double-fires page_view
+    var lastTrackedPath = getStoredConsent() === 'granted' ? normalizePathname(window.location.pathname) : null;
 
     var CM_Analytics = {
+        measurementId: 'G-MVV7WNL42L',
+        clarityProjectId: 'zaubakunby',
+        config: {
+            ga4MeasurementId: 'G-MVV7WNL42L',
+            clarityProjectId: 'zaubakunby',
+            vercelAnalytics: true,
+            gtmContainerId: window.CM_GTM_CONTAINER_ID || null,
+            sentryDsn: window.CM_SENTRY_DSN || null
+        },
+
+        getConsent: function() {
+            return getStoredConsent();
+        },
+
+        getConsentChoice: function() {
+            return getRawConsentChoice() || 'unset';
+        },
+
+        setConsent: function(state) {
+            var normalized = (state === 'granted' || state === true) ? 'granted' : 'denied';
+            try {
+                localStorage.setItem(CONSENT_STORAGE_KEY, normalized);
+            } catch (_) {}
+            syncGoogleConsentMode(normalized);
+            if (normalized === 'granted') {
+                ensureGa4Loaded();
+                ensureClarityLoaded();
+            }
+            try {
+                window.dispatchEvent(new CustomEvent('cm:consent-changed', { detail: { consent: normalized } }));
+            } catch (_) {}
+            return normalized;
+        },
+
+        /**
+         * Deduplicated SPA route page_view tracker.
+         * Never fires on initial page load (already emitted by gtag config) or repeated renders of the same path.
+         * Never captures query strings, hashes, or user input.
+         */
+        trackPageView: function(pathname, pageTitle) {
+            if (getStoredConsent() !== 'granted') {
+                return false;
+            }
+            var normPath = normalizePathname(pathname || window.location.pathname);
+            if (normPath === lastTrackedPath) {
+                return false;
+            }
+            lastTrackedPath = normPath;
+            var safeTitle = String(pageTitle || document.title || 'Context & Muse').replace(/[<>'"]/g, '').trim().slice(0, 120);
+            emitGtag('page_view', {
+                page_path: normPath,
+                page_location: window.location.origin + normPath,
+                page_title: safeTitle
+            });
+            return true;
+        },
+
         /**
          * Fired ONLY after /api/lead has confirmed durable persistence
          * Gate: response.ok && (data.success || data.ok) && submission_id.startsWith('lead_') && data.synthetic !== true
@@ -218,6 +374,14 @@
     if (typeof origFetch === 'function') {
         window.fetch = function(url, options) {
             var urlStr = (typeof url === 'string') ? url : (url && url.url ? url.url : '');
+            if (
+                getStoredConsent() !== 'granted' &&
+                (urlStr.indexOf('clarity.ms') !== -1 ||
+                    urlStr.indexOf('google-analytics.com') !== -1 ||
+                    urlStr.indexOf('googletagmanager.com') !== -1)
+            ) {
+                return Promise.resolve(new Response(null, { status: 204 }));
+            }
             var isLeadApi = urlStr.indexOf('/api/lead') !== -1;
             
             var promise = origFetch.apply(this, arguments);
@@ -230,12 +394,13 @@
                     if (response && response.ok) {
                         var clone = response.clone();
                         clone.json().then(function(data) {
-                            // STRICT GATE: Real persisted leads only. Never synthetic or bot/honeypot leads
+                            // STRICT GATE: Real persisted leads only. Never synthetic, duplicate, or bot/honeypot leads
                             if (data &&
                                 (data.success === true || data.ok === true) &&
                                 typeof data.submission_id === 'string' &&
                                 data.submission_id.indexOf('lead_') === 0 &&
-                                data.synthetic !== true) {
+                                data.synthetic !== true &&
+                                data.duplicate !== true) {
 
                                 var reqPayload = {};
                                 try {
@@ -244,9 +409,9 @@
                                     }
                                 } catch (_) {}
 
-                                var formId = reqPayload.form_id || (window.location.pathname.indexOf('/contact') !== -1 ? 'contact-wizard' : 'lead-form');
-                                var inqType = reqPayload.inquiry_type || (window.location.pathname.indexOf('/contact') !== -1 ? 'contact' : (window.location.pathname.indexOf('/signal') !== -1 ? 'signal' : (window.location.pathname.indexOf('/website-system-check') !== -1 ? 'website_system_check' : 'general')));
-                                var service = reqPayload.service_interest || reqPayload.service || reqPayload.service_type || reqPayload.selected_tier || '';
+                                var formId = reqPayload.form_id || reqPayload.source || (window.location.pathname.indexOf('/contact') !== -1 ? 'contact-wizard' : 'lead-form');
+                                var inqType = reqPayload.inquiry_type || reqPayload.category || (window.location.pathname.indexOf('/contact') !== -1 ? 'contact' : (window.location.pathname.indexOf('/signal') !== -1 ? 'signal' : (window.location.pathname.indexOf('/website-system-check') !== -1 ? 'website_system_check' : 'general')));
+                                var service = reqPayload.service_interest || reqPayload.service || reqPayload.service_type || reqPayload.selected_tier || reqPayload.category || '';
 
                                 var leadParams = {
                                     form_id: formId,
@@ -256,8 +421,8 @@
                                 };
 
                                 // ONLY genuinely collected budget ranges (never substitute service tiers)
-                                var budget = reqPayload.budget_range || reqPayload.budget || '';
-                                if (budget && budget !== 'diagnostic' && budget !== 'snapshot' && budget !== 'ongoing' && budget !== 'not_specified') {
+                                var budget = reqPayload.budget_range || reqPayload.budget || reqPayload.budget_band || '';
+                                if (budget && budget !== 'diagnostic' && budget !== 'snapshot' && budget !== 'ongoing' && budget !== 'not_specified' && budget !== 'Not specified') {
                                     leadParams.budget_range = budget;
                                 }
 
@@ -290,7 +455,58 @@
         return 'section';
     }
 
+    // Block unload/pagehide beacons to GA4 or Clarity when consent is not granted
+    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+        var origSendBeacon = navigator.sendBeacon.bind(navigator);
+        navigator.sendBeacon = function(url, data) {
+            var u = String(url || '');
+            if (
+                getStoredConsent() !== 'granted' &&
+                (u.indexOf('clarity.ms') !== -1 ||
+                    u.indexOf('google-analytics.com') !== -1 ||
+                    u.indexOf('googletagmanager.com') !== -1)
+            ) {
+                return true;
+            }
+            return origSendBeacon(url, data);
+        };
+    }
+
+    if (typeof XMLHttpRequest !== 'undefined' && XMLHttpRequest.prototype) {
+        var origXhrOpen = XMLHttpRequest.prototype.open;
+        var origXhrSend = XMLHttpRequest.prototype.send;
+        XMLHttpRequest.prototype.open = function(method, url) {
+            this.__cm_url = String(url || '');
+            return origXhrOpen.apply(this, arguments);
+        };
+        XMLHttpRequest.prototype.send = function() {
+            var u = this.__cm_url || '';
+            if (
+                getStoredConsent() !== 'granted' &&
+                (u.indexOf('clarity.ms') !== -1 ||
+                    u.indexOf('google-analytics.com') !== -1 ||
+                    u.indexOf('googletagmanager.com') !== -1)
+            ) {
+                return;
+            }
+            return origXhrSend.apply(this, arguments);
+        };
+    }
+
     function initAnalyticsListeners() {
+        ensureGa4Loaded();
+        ensureClarityLoaded();
+        applyPrivacyMasks();
+
+        try {
+            if (typeof MutationObserver === 'function' && document.body) {
+                var obs = new MutationObserver(function() {
+                    applyPrivacyMasks();
+                });
+                obs.observe(document.body, { childList: true, subtree: true });
+            }
+        } catch (_) {}
+
         // Capture and persist outbound campaign attribution across session
         try {
             var urlParams = new URLSearchParams(window.location.search);

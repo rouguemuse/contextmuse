@@ -1,0 +1,9 @@
+{
+  "name": "Context & Muse",
+  "short_name": "ContextMuse",
+  "description": "Custom websites, quoting tools, and internal workflow software built around real operating conditions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#141617",
+  "theme_color": "#141617"
+}

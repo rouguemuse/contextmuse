@@ -768,7 +768,7 @@
                         </div>
                     </div>
 
-                    <form id="restaurant-intake-form" action="/api/lead" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <form id="restaurant-intake-form" action="/api/lead/" method="POST" style="display: flex; flex-direction: column; gap: 1.25rem;">
                         <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
                         <input type="hidden" name="form_id" value="restaurant-signal-scan">
                         <input type="hidden" name="source_page" value="/signal_restaurant_intelligence/">
@@ -845,7 +845,7 @@
                                 const formData = new FormData(form);
                                 const payload = Object.fromEntries(formData.entries());
 
-                                const res = await fetch('/api/lead', {
+                                const res = await fetch('/api/lead/', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json',

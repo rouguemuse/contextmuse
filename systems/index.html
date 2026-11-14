@@ -678,7 +678,7 @@
                         payload.form_id = 'systems-intake';
                         payload.form_source = window.location.pathname;
 
-                        var response = await fetch('/api/lead', {
+                        var response = await fetch('/api/lead/', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

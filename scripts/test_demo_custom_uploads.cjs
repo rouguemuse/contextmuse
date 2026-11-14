@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 8766;
-const ROOT_DIR = 'C:/Users/rougu/.gemini/antigravity/scratch/contextmuse-homepage';
+const ROOT_DIR = path.resolve(__dirname, '..');
 
 const server = http.createServer((req, res) => {
   let urlPath = req.url.split('?')[0];
@@ -103,8 +103,13 @@ server.listen(PORT, async () => {
 
     const uploadBadge = await page.$eval('#brief-status-badge', el => el.textContent.trim());
     console.log('Upload Status badge:', uploadBadge);
-    if (uploadBadge !== 'VERIFIED UPLOADED AUDIT DATA') {
-      throw new Error(`Expected badge "VERIFIED UPLOADED AUDIT DATA", got "${uploadBadge}"`);
+    if (uploadBadge !== 'USER-SUPPLIED POS EXPORT DATA') {
+      throw new Error(`Expected badge "USER-SUPPLIED POS EXPORT DATA", got "${uploadBadge}"`);
+    }
+
+    const noticeTagText = await page.$eval('#brief-notice-tag', el => el.textContent.trim());
+    if (!noticeTagText.includes('Unverified Source')) {
+      throw new Error(`Expected notice tag to declare Unverified Source, got "${noticeTagText}"`);
     }
 
     const stateAssessment = await page.$eval('#state-assessment-text', el => el.textContent.trim());

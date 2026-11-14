@@ -1,0 +1,584 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+/* ==========================================================================
+   CONTEXT & MUSE V2 — SHARED DESIGN FOUNDATIONS & STANDALONE SHELL SYSTEM
+   Unifies standalone HTML applications, legal pages, and product utilities
+   with the Four-Room React architecture without rewriting app logic.
+   ========================================================================== */
+
+:root {
+  /* Core V2 Surface & Ink Tokens */
+  --cm-v2-ink: #23282A;
+  --cm-v2-ink2: #2C3335;
+  --cm-v2-ink3: #171B1C;
+  --cm-v2-footer-bg: #1C2022;
+  --cm-v2-bone: #EDE9E0;
+  --cm-v2-bone2: #DFDACE;
+  --cm-v2-paper: #FAF8F5;
+  --cm-v2-paper-warm: #F4F1EA;
+
+  /* Four-Room & Functional Accent Tokens */
+  --cm-v2-mustard: #D9A62E;
+  --cm-v2-mustard2: #EFE3BE;
+  --cm-v2-teal: #17504A;
+  --cm-v2-teal2: #2B7C72;
+  --cm-v2-aqua: #A9CFC7;
+  --cm-v2-evergreen: #123F38;
+  --cm-v2-rust: #8A4A36;
+  --cm-v2-plum: #464366;
+  --cm-v2-ochre: #96722E;
+
+  /* Border & Hairline Tokens */
+  --cm-v2-line-dark: rgba(223, 218, 206, 0.16);
+  --cm-v2-line-dark-strong: rgba(223, 218, 206, 0.28);
+  --cm-v2-line-light: rgba(35, 40, 42, 0.15);
+  --cm-v2-line-light-strong: rgba(35, 40, 42, 0.28);
+
+  /* Typography Stack */
+  --cm-v2-font-display: 'Archivo', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cm-v2-font-sans: 'Plus Jakarta Sans', 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cm-v2-font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Layout & Container Tokens */
+  --cm-v2-shell-max: 1380px;
+  --cm-v2-content-max: 1120px;
+  --cm-v2-prose-max: 840px;
+}
+
+/* ── BASE SHELL PAGE ── */
+body.cm-v2-shell-page {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cm-v2-bone);
+  color: var(--cm-v2-ink);
+  font-family: var(--cm-v2-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.cm-v2-shell-page ::selection {
+  background: var(--cm-v2-mustard);
+  color: var(--cm-v2-ink3);
+}
+
+body.cm-v2-shell-page :focus-visible {
+  outline: 2px solid var(--cm-v2-mustard);
+  outline-offset: 2px;
+}
+
+/* ── PATTERN A: FULL V2 FOUR-ROOM HEADER ── */
+.cm-v2-header {
+  background-color: var(--cm-v2-ink);
+  color: var(--cm-v2-bone);
+  border-bottom: 1px solid var(--cm-v2-line-dark);
+  padding: 0.75rem 1.5rem;
+  position: relative;
+  z-index: 40;
+}
+
+.cm-v2-header-inner {
+  max-width: var(--cm-v2-shell-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+}
+
+.cm-v2-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.cm-v2-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--cm-v2-bone);
+  text-decoration: none;
+  font-family: var(--cm-v2-font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+.cm-v2-brand:hover {
+  color: #FFFFFF;
+}
+
+.cm-v2-context-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--cm-v2-line-dark-strong);
+  font-family: var(--cm-v2-font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(237, 233, 224, 0.85);
+}
+
+.cm-v2-context-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--cm-v2-mustard);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.cm-v2-context-num {
+  color: var(--cm-v2-mustard);
+  font-weight: 700;
+}
+
+.cm-v2-room-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cm-v2-room-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(223, 218, 206, 0.22);
+  background-color: #1F2325;
+  color: var(--cm-v2-bone);
+  text-decoration: none;
+  font-family: var(--cm-v2-font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+
+.cm-v2-room-link:hover,
+.cm-v2-room-link[aria-current="page"],
+.cm-v2-room-link.is-active {
+  border-color: var(--cm-v2-mustard);
+  color: var(--cm-v2-mustard);
+  background-color: #1B1F21;
+}
+
+.cm-v2-room-num {
+  color: var(--cm-v2-mustard);
+  font-weight: 700;
+}
+
+.cm-v2-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.85rem;
+  background-color: var(--cm-v2-mustard);
+  color: #141617;
+  text-decoration: none;
+  font-family: var(--cm-v2-font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--cm-v2-mustard);
+  transition: background-color 0.18s ease;
+}
+
+.cm-v2-cta:hover {
+  background-color: #e2b13c;
+  color: #141617;
+}
+
+/* Optional Product Sub-Navigation Bar (for multi-page suites like Signal) */
+.cm-v2-subbar {
+  background-color: #161A1C;
+  border-bottom: 1px solid var(--cm-v2-line-dark);
+  padding: 0.45rem 1.5rem;
+  font-family: var(--cm-v2-font-mono);
+  font-size: 11px;
+  position: relative;
+  z-index: 39;
+}
+
+.cm-v2-subbar-inner {
+  max-width: var(--cm-v2-shell-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.cm-v2-subbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cm-v2-mustard);
+  font-weight: 700;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.cm-v2-subbar-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #2DD4BF;
+  box-shadow: 0 0 6px rgba(45, 212, 191, 0.65);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.cm-v2-subbar-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cm-v2-subbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.6rem;
+  color: rgba(237, 233, 224, 0.78);
+  text-decoration: none;
+  font-family: var(--cm-v2-font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.cm-v2-subbar-link:hover {
+  color: var(--cm-v2-bone);
+  border-color: rgba(223, 218, 206, 0.24);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.cm-v2-subbar-link[aria-current="page"],
+.cm-v2-subbar-link.is-active {
+  color: var(--cm-v2-mustard);
+  border-color: rgba(217, 166, 46, 0.45);
+  background-color: rgba(217, 166, 46, 0.08);
+  font-weight: 600;
+}
+
+.cm-v2-subbar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.7rem;
+  background-color: var(--cm-v2-teal);
+  color: var(--cm-v2-bone);
+  border: 1px solid #2DD4BF;
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: var(--cm-v2-font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.cm-v2-subbar-cta:hover,
+.cm-v2-subbar-cta[aria-current="page"] {
+  background-color: #1e665e;
+  color: #FFFFFF;
+}
+
+/* ── PATTERN B: REDUCED PRODUCT WORKBENCH HEADER ── */
+.cm-v2-product-header {
+  background-color: var(--cm-v2-ink);
+  color: var(--cm-v2-bone);
+  border-bottom: 1px solid var(--cm-v2-line-dark);
+  padding: 0.55rem 1.5rem;
+  position: relative;
+  z-index: 40;
+}
+
+.cm-v2-product-header-inner {
+  max-width: var(--cm-v2-shell-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 1rem;
+}
+
+/* ── PATTERN C: MINIMAL CONTEXTMUSE RETURN CONTROL (For 100vh Apps) ── */
+.cm-v2-return-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  background-color: var(--cm-v2-ink);
+  color: var(--cm-v2-bone);
+  border: 1px solid var(--cm-v2-line-dark-strong);
+  font-family: var(--cm-v2-font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.cm-v2-return-pill:hover {
+  border-color: var(--cm-v2-mustard);
+  color: var(--cm-v2-mustard);
+}
+
+/* ── SHARED V2 FOOTER ── */
+.cm-v2-footer {
+  background-color: var(--cm-v2-footer-bg);
+  color: rgba(223, 218, 206, 0.72);
+  border-top: 1px solid var(--cm-v2-line-dark);
+  padding: 0.95rem 1.5rem;
+  font-family: var(--cm-v2-font-mono);
+  font-size: 12px;
+  margin-top: auto;
+}
+
+.cm-v2-footer-inner {
+  max-width: var(--cm-v2-shell-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.cm-v2-footer-left,
+.cm-v2-footer-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cm-v2-footer a {
+  color: rgba(223, 218, 206, 0.68);
+  text-decoration: none;
+  font-size: 11px;
+  transition: color 0.15s ease;
+}
+
+.cm-v2-footer a:hover {
+  color: var(--cm-v2-bone);
+}
+
+.cm-v2-footer a.cm-v2-mail {
+  color: var(--cm-v2-mustard);
+  font-size: 12px;
+}
+
+/* ── STANDALONE TOOL SURFACE BRIDGE (.cm-v2-tool-surface) ──
+   Aligns standalone diagnostic and product pages with V2 tokens,
+   editorial typography, and architectural 1px borders without
+   modifying internal DOM IDs or JavaScript state handlers. */
+body.cm-v2-tool-surface {
+  --bg-paper: #FAF8F5;
+  --bg-panel: #EDE9E0;
+  --bg-card: #FAF8F5;
+  --bg-sand: #EDE9E0;
+  --bg-sand-dark: #DFDACE;
+  --border-sand: rgba(35, 40, 42, 0.16);
+  --border-light: rgba(35, 40, 42, 0.14);
+  --forest-deep: #23282A;
+  --forest-soft: #2C3335;
+  --accent-teal: #17504A;
+  --accent-ochre: #96722E;
+  --text-primary: #23282A;
+  --text-secondary: rgba(35, 40, 42, 0.78);
+  --text-muted: rgba(35, 40, 42, 0.58);
+  --font-serif: var(--cm-v2-font-display);
+  --font-sans: var(--cm-v2-font-sans);
+  --font-mono: var(--cm-v2-font-mono);
+  background-color: var(--cm-v2-bone);
+  color: var(--cm-v2-ink);
+}
+
+body.cm-v2-tool-surface .tool-hero {
+  padding: clamp(3.25rem, 6vw, 4.75rem) 0 clamp(2.75rem, 5vw, 4rem) 0;
+  background: var(--cm-v2-bone);
+  border-bottom: 1px solid var(--cm-v2-line-light);
+}
+
+body.cm-v2-tool-surface .tool-eyebrow,
+body.cm-v2-tool-surface .section-label {
+  font-family: var(--cm-v2-font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cm-v2-teal);
+}
+
+body.cm-v2-tool-surface .tool-hero-title {
+  font-family: var(--cm-v2-font-display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--cm-v2-ink);
+}
+
+body.cm-v2-tool-surface .diag-card {
+  background: var(--cm-v2-paper);
+  border: 1px solid var(--cm-v2-line-light-strong);
+  border-top: 4px solid var(--cm-v2-teal);
+  border-radius: 2px;
+  box-shadow: 0 14px 34px rgba(23, 27, 28, 0.06);
+}
+
+body.cm-v2-tool-surface .diag-input,
+body.cm-v2-tool-surface .inquiry-textarea {
+  background: #FFFFFF;
+  border: 1px solid var(--cm-v2-line-light-strong);
+  border-radius: 2px;
+  color: var(--cm-v2-ink);
+}
+
+body.cm-v2-tool-surface .diag-input:focus,
+body.cm-v2-tool-surface .inquiry-textarea:focus {
+  border-color: var(--cm-v2-teal);
+  box-shadow: 0 0 0 2px rgba(217, 166, 46, 0.35);
+}
+
+body.cm-v2-tool-surface .diag-btn-submit {
+  background: var(--cm-v2-ink);
+  color: var(--cm-v2-bone);
+  font-family: var(--cm-v2-font-mono);
+  border-radius: 2px;
+  border: 1px solid var(--cm-v2-ink);
+  letter-spacing: 0.08em;
+}
+
+body.cm-v2-tool-surface .diag-btn-submit:hover:not(:disabled) {
+  background: var(--cm-v2-teal);
+  border-color: var(--cm-v2-teal);
+  color: #FFFFFF;
+}
+
+body.cm-v2-tool-surface .results-header-strip {
+  background: var(--cm-v2-ink);
+  color: var(--cm-v2-bone);
+  border-radius: 2px 2px 0 0;
+  border-top: 3px solid var(--cm-v2-mustard);
+}
+
+body.cm-v2-tool-surface .results-body {
+  background: var(--cm-v2-paper);
+  border: 1px solid var(--cm-v2-line-light-strong);
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+}
+
+body.cm-v2-tool-surface .finding-card {
+  background: #FFFFFF;
+  border: 1px solid var(--cm-v2-line-light);
+  border-radius: 2px;
+}
+
+body.cm-v2-tool-surface .finding-card.highlight {
+  background: #F4F7F5;
+  border-left: 4px solid var(--cm-v2-teal);
+}
+
+body.cm-v2-tool-surface .inquiry-conversion-panel {
+  background: var(--cm-v2-paper);
+  border: 1px solid var(--cm-v2-line-light-strong);
+  border-top: 4px solid var(--cm-v2-mustard);
+  border-radius: 2px;
+}
+
+body.cm-v2-tool-surface .diag-compare-table {
+  border-radius: 2px;
+  border: 1px solid var(--cm-v2-line-light-strong);
+}
+
+body.cm-v2-tool-surface .diag-compare-table th {
+  background: var(--cm-v2-ink);
+  color: var(--cm-v2-bone);
+  border-bottom: 1px solid var(--cm-v2-line-dark);
+}
+
+/* ── SIGNAL PRODUCT FAMILY SURFACE BRIDGE (.cm-v2-signal-surface) ──
+   Harmonizes the Signal operational intelligence suite (/signal/*) with V2
+   tokens, typography, and structural rules while preserving Signal's forensic
+   dark-emerald (#0E1F1B / #17504A) and warm-gold (#C5A059 / #D9A62E) identity. */
+body.cm-v2-signal-surface {
+  --bg-paper: #FAF8F5;
+  --bg-panel: #EDE9E0;
+  --bg-card: #FFFFFF;
+  --border-light: rgba(35, 40, 42, 0.14);
+  --border-dark: rgba(35, 40, 42, 0.26);
+  --text-primary: #23282A;
+  --text-secondary: rgba(35, 40, 42, 0.78);
+  --accent-teal: #0F766E;
+  --accent-gold: #C5A059;
+  --font-serif: var(--cm-v2-font-display);
+  --font-sans: var(--cm-v2-font-sans);
+  --font-mono: var(--cm-v2-font-mono);
+  background-color: var(--cm-v2-bone);
+  color: var(--cm-v2-ink);
+}
+
+html body.cm-v2-signal-surface header.product-hero,
+html body.cm-v2-signal-surface header.intake-hero,
+html body.cm-v2-signal-surface header.report-hero,
+html body.cm-v2-signal-surface header.export-hero,
+html body.cm-v2-signal-surface header.partner-hero,
+html body.cm-v2-signal-surface header[class*="hero"]:not(.demo-hero):not(.cart-hero) {
+  padding-top: clamp(2.75rem, 5vw, 4rem) !important;
+  padding-bottom: clamp(2.5rem, 4.5vw, 3.5rem) !important;
+  background-color: var(--cm-v2-paper) !important;
+  color: var(--cm-v2-ink) !important;
+  border-bottom: 1px solid var(--cm-v2-line-light) !important;
+}
+
+body.cm-v2-signal-surface .hero-trust-strip {
+  background: #0E1F1B;
+  color: #FAF9F5;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+}
+
+body.cm-v2-signal-surface .demo-hero {
+  padding-top: clamp(2.25rem, 4vw, 3.25rem);
+  padding-bottom: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+@media (max-width: 720px) {
+  .cm-v2-header,
+  .cm-v2-subbar,
+  .cm-v2-product-header {
+    padding: 0.55rem 0.9rem;
+  }
+  .cm-v2-context-pill {
+    display: none;
+  }
+  .cm-v2-room-link {
+    padding: 0.35rem 0.55rem;
+    font-size: 10px;
+  }
+  .cm-v2-cta {
+    padding: 0.35rem 0.65rem;
+    font-size: 10px;
+  }
+  .cm-v2-subbar-link,
+  .cm-v2-subbar-cta {
+    padding: 0.25rem 0.48rem;
+    font-size: 10px;
+  }
+}

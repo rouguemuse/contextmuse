@@ -24,111 +24,154 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=4.4">
+    <link rel="stylesheet" href="/assets/css/v2-shell.css">
+
+    <style>
+        .cm-v2-404-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1.5rem;
+        }
+        .cm-v2-404-card {
+            max-width: 720px;
+            width: 100%;
+            background-color: #FAF8F5;
+            border: 1px solid rgba(35, 40, 42, 0.15);
+            border-top: 4px solid #8A4A36;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .cm-v2-404-eyebrow {
+            color: #8A4A36;
+            font-family: var(--cm-v2-font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .cm-v2-404-title {
+            font-family: var(--cm-v2-font-display);
+            font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: #23282A;
+            line-height: 1.1;
+            margin-top: 0;
+            margin-bottom: 1.15rem;
+        }
+        .cm-v2-404-desc {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: rgba(35, 40, 42, 0.78);
+            margin-bottom: 2rem;
+        }
+        .cm-v2-404-actions {
+            display: flex;
+            gap: 0.65rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cm-v2-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            background-color: #23282A;
+            color: #EDE9E0;
+            text-decoration: none;
+            font-family: var(--cm-v2-font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border: 1px solid #23282A;
+        }
+        .cm-v2-btn-primary:hover {
+            background-color: #17504A;
+            border-color: #17504A;
+        }
+        .cm-v2-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.75rem 1rem;
+            background-color: #EDE9E0;
+            color: #23282A;
+            text-decoration: none;
+            font-family: var(--cm-v2-font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border: 1px solid rgba(35, 40, 42, 0.22);
+        }
+        .cm-v2-btn-secondary:hover {
+            border-color: #17504A;
+            color: #17504A;
+        }
+    </style>
 </head>
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+<body class="cm-v2-shell-page">
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navbar -->
-    <!-- Navbar -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="container nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
+    <header class="cm-v2-header" role="banner">
+        <div class="cm-v2-header-inner">
+            <a href="/" class="cm-v2-brand">
                 <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
                 <span>Context &amp; Muse</span>
             </a>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <div class="nav-links" id="primary-nav-links">
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
-                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
-                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
-                </details>
-                <a href="/creative/" class="nav-link">Creative</a>
-                <a href="/about/" class="nav-link">About</a>
-                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
-            </div>
+            <nav class="cm-v2-room-links" aria-label="Four Rooms Navigation">
+                <a href="/work/" class="cm-v2-room-link"><span class="cm-v2-room-num">01</span> <span>The Work</span></a>
+                <a href="/build/" class="cm-v2-room-link"><span class="cm-v2-room-num">02</span> <span>Custom Builds</span></a>
+                <a href="/lab/" class="cm-v2-room-link"><span class="cm-v2-room-num">03</span> <span>The Lab</span></a>
+                <a href="/method/" class="cm-v2-room-link"><span class="cm-v2-room-num">04</span> <span>The Method</span></a>
+                <a href="/build/" class="cm-v2-cta">Start a Project</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main id="main-content" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 7rem 1.5rem 5rem;">
-        <div class="container" style="max-width: 680px; text-align: center;">
-            <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.06em; font-weight: 700; display: block; margin-bottom: 1rem;">404 · Not found</span>
-            <h1 style="font-family: var(--font-sans); font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 700; color: var(--text-primary); line-height: 1.15; margin-bottom: 1.25rem;">
+    <main id="main-content" class="cm-v2-404-main">
+        <div class="cm-v2-404-card">
+            <span class="cm-v2-404-eyebrow">404 &middot; Route Not Found</span>
+            <h1 class="cm-v2-404-title">
                 This route does not exist.
             </h1>
-            <p style="font-size: 1.1rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 2.5rem;">
-                The page you are looking for has been moved, retired, or reorganized. Explore our core systems, client work, or operational tools below.
+            <p class="cm-v2-404-desc">
+                The page you are looking for has been moved, retired, or reorganized. Explore our Four Rooms below or return to the homepage.
             </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="/" class="btn btn-primary">Return to homepage →</a>
-                <a href="/services/" class="btn btn-secondary">View services</a>
+            <div class="cm-v2-404-actions">
+                <a href="/" class="cm-v2-btn-primary">Return to Homepage &rarr;</a>
+                <a href="/work/" class="cm-v2-btn-secondary"><span style="color:#8A4A36;font-weight:700;">01</span> The Work</a>
+                <a href="/build/" class="cm-v2-btn-secondary"><span style="color:#17504A;font-weight:700;">02</span> Custom Builds</a>
+                <a href="/lab/" class="cm-v2-btn-secondary"><span style="color:#464366;font-weight:700;">03</span> The Lab</a>
+                <a href="/method/" class="cm-v2-btn-secondary"><span style="color:#96722E;font-weight:700;">04</span> The Method</a>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-            <footer class="site-footer" role="contentinfo">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="/" class="logo">
-                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
-                    <span>Context &amp; Muse</span>
-                </a>
-                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
-                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
+    <footer class="cm-v2-footer" role="contentinfo">
+        <div class="cm-v2-footer-inner">
+            <div class="cm-v2-footer-left">
+                <strong style="color: #EDE9E0;">Context &amp; Muse</strong>
+                <span>&bull;</span>
+                <span>&copy; 2026 Context &amp; Muse</span>
+                <span>&bull;</span>
+                <a href="mailto:jayme@contextmuse.com" class="cm-v2-mail">jayme@contextmuse.com</a>
             </div>
-            <div class="footer-links-grid">
-                <div class="footer-col">
-                    <div class="footer-col-title">Services</div>
-                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
-                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
-                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
-                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
-                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Selected Work</div>
-                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
-                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
-                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
-                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
-                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">About</div>
-                    <a href="/about/" class="footer-link">About Jayme</a>
-                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/terms/" class="footer-link">Terms of Service</a>
-                </div>
+            <div class="cm-v2-footer-right">
+                <a href="/work/">The Work</a>
+                <a href="/build/">Custom Builds</a>
+                <a href="/lab/">The Lab</a>
+                <a href="/method/">The Method</a>
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/terms/">Terms of Service</a>
             </div>
         </div>
     </footer>
-    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>

@@ -815,54 +815,36 @@
             color: var(--text-secondary);
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/v2-shell.css">
 </head>
-<body>
+<body class="cm-v2-shell-page cm-v2-signal-surface">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Main Navigation -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="container nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
-                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
-                <span>Context &amp; Muse</span>
-            </a>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <div class="nav-links" id="primary-nav-links">
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
-                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
-                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
-                </details>
-                <a href="/creative/" class="nav-link">Creative</a>
-                <a href="/about/" class="nav-link">About</a>
-                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
+    <!-- Pattern B: Compact V2 Product Workbench Header -->
+    <header class="cm-v2-product-header" role="banner">
+        <div class="cm-v2-product-header-inner">
+            <div class="cm-v2-brand-group">
+                <a href="/" class="cm-v2-brand" aria-label="Context &amp; Muse Home">
+                    <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:18px;height:18px;display:block;filter:brightness(1.2);">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <span class="cm-v2-context-pill">
+                    <span class="cm-v2-context-dot" aria-hidden="true"></span>
+                    <a href="/lab/" style="color: var(--cm-v2-mustard); font-weight: 700; text-decoration: none;">03 · The Lab</a>
+                    <span>/ Signal Forensic Workbench</span>
+                </span>
             </div>
+            <nav class="cm-v2-subbar-links" aria-label="Signal Workbench Navigation">
+                <a href="/signal/" class="cm-v2-subbar-link">&larr; Signal Overview</a>
+                <a href="/signal/#pricing" class="cm-v2-subbar-link">Pricing</a>
+                <a href="/signal/demo/" class="cm-v2-subbar-link" aria-current="page">Interactive Demo</a>
+                <a href="/signal/sample-reports/" class="cm-v2-subbar-link">Sample Reports</a>
+                <a href="/signal/export-instructions/" class="cm-v2-subbar-link">Export Guide</a>
+                <a href="/signal/restaurant-data-partner/" class="cm-v2-subbar-link">Data Partner Pilot</a>
+                <a href="/signal/intake/" class="cm-v2-subbar-cta">Submit Exports &rarr;</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Header / Hero -->
     <header class="demo-hero">
@@ -896,7 +878,7 @@
     </div>
 
     <!-- Main Workspace Container -->
-    <main class="container" style="padding-top: 2rem; padding-bottom: 5rem;">
+    <main id="main-content" class="container" style="padding-top: 2rem; padding-bottom: 5rem;">
 
         <!-- Ingestion / Upload Section -->
         <section class="ingestion-panel" id="ingestion-section">
@@ -970,30 +952,30 @@
 
                 <!-- 2. Opportunity Stack Summary -->
                 <div>
-                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                        <h3 style="font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin: 0;">What We Found &amp; What You Can Save</h3>
-                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">Values based on measured 60-day run-rate</span>
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px;">
+                        <h3 style="font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin: 0;">Source-Recorded Figures vs. Projected Opportunities</h3>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">Calculated from 60-day records &bull; Realized savings require post-change measurement</span>
                     </div>
                     <div class="stack-grid" id="stack-grid">
                         <div class="stack-card">
-                            <div class="stack-title">In Your Records</div>
-                            <div class="stack-val" style="color: var(--accent-crimson);" id="stack-confirmed">$15,609 / 60d</div>
-                            <div class="stack-note" id="stack-confirmed-note">Disclosed anomalies across 60 days: OT ($6,846) + voids ($1,840) + promo excess ($3,200) + extras ($2,443) + miscoded meals ($1,640)</div>
+                            <div class="stack-title">Source-Recorded Totals</div>
+                            <div class="stack-val" style="color: var(--accent-crimson);" id="stack-confirmed">$15,969 in Records</div>
+                            <div class="stack-note" id="stack-confirmed-note">Source-recorded 60d figures ($12,769: OT $6,846 + voids $1,840 + modifier deficit $2,443 + staff meals $1,640) + calculated promo delta ($3,200)</div>
                         </div>
                         <div class="stack-card">
-                            <div class="stack-title">Modeled Cost</div>
+                            <div class="stack-title">Projected Turn Opportunity</div>
                             <div class="stack-val" style="color: var(--accent-amber);" id="stack-probable">$21,000–$32,000</div>
-                            <div class="stack-note" id="stack-probable-note">Lost peak table turns &amp; kitchen station delays ($1,750–$2,667/mo)</div>
+                            <div class="stack-note" id="stack-probable-note">Modeled peak table-turn opportunity ($1,750–$2,667/mo projected; requires floor verification)</div>
                         </div>
                         <div class="stack-card">
-                            <div class="stack-title">Fast POS Wins</div>
-                            <div class="stack-val" style="color: var(--accent-teal);" id="stack-recoverable">$35,650 / yr</div>
-                            <div class="stack-note" id="stack-recoverable-note">Capping promo ($19,200/yr / $3,200 period) + repricing 4 extras ($14,658/yr / $2,443 period)</div>
+                            <div class="stack-title">Calculated POS Opportunity</div>
+                            <div class="stack-val" style="color: var(--accent-teal);" id="stack-recoverable">$33,858 / yr</div>
+                            <div class="stack-note" id="stack-recoverable-note">Projected annual opportunity from capping promo ($19,200/yr; $3,200/60d calculated) + repricing 4 extras ($14,658/yr; $2,443/60d calculated)</div>
                         </div>
                         <div class="stack-card featured">
-                            <div class="stack-title" style="color: var(--accent-gold);">Total Opportunity</div>
-                            <div class="stack-val" id="stack-total">$79,000–$110,000</div>
-                            <div class="stack-note" id="stack-total-note">Direct cash recovery ($54,630/yr) + modeled peak turn recovery ($21k–$32k/yr)</div>
+                            <div class="stack-title" style="color: var(--accent-gold);">Total Projected Opportunity</div>
+                            <div class="stack-val" id="stack-total">$75,630–$86,630 / yr</div>
+                            <div class="stack-note" id="stack-total-note">Projected annual opportunity: calculated cost/pricing opportunity ($54,630/yr) + modeled turn opportunity ($21k–$32k/yr). Not realized savings.</div>
                         </div>
                     </div>
                 </div>
@@ -1891,7 +1873,7 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
             const dataset = {
                 restaurantName: customTitle || (isSynthetic ? "Mid-Size Casual Dining (120 Seats)" : "Ingested Operations Facility"),
                 isSynthetic,
-                classification: isSynthetic ? "SYNTHETIC DEMONSTRATION DATA" : "VERIFIED UPLOADED AUDIT DATA",
+                classification: isSynthetic ? "SYNTHETIC DEMONSTRATION DATA" : "USER-SUPPLIED POS EXPORT DATA",
                 streamsDetected,
                 netSales: Math.round(netSales * 100) / 100,
                 totalOrders,
@@ -1949,11 +1931,11 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                     noticeBanner.style.borderColor = "rgba(197, 160, 89, 0.28)";
                 }
             } else {
-                badge.textContent = "VERIFIED UPLOADED AUDIT DATA";
+                badge.textContent = "USER-SUPPLIED POS EXPORT DATA";
                 badge.style.color = "var(--accent-teal)";
-                noticeTag.textContent = "Verified Audit:";
+                noticeTag.textContent = "User-Supplied Export (Unverified Source):";
                 noticeTag.style.color = "var(--accent-teal)";
-                noticeText.textContent = `Audit strictly based on ${data.streamsDetected.length} uploaded operating streams (${data.streamsDetected.join(', ')}). Unsupplied streams are marked 'Insufficient Evidence' and excluded from loss totals.`;
+                noticeText.textContent = `Calculated strictly from ${data.streamsDetected.length} user-supplied operating stream(s) (${data.streamsDetected.join(', ')}). Signal parses and calculates from supplied files without independent authentication of underlying bank, payroll, or POS records. Unsupplied streams are marked 'Insufficient Evidence' and excluded from loss totals.`;
                 if (noticeBanner) {
                     noticeBanner.style.background = "rgba(15, 118, 110, 0.08)";
                     noticeBanner.style.borderColor = "rgba(15, 118, 110, 0.28)";
@@ -1985,22 +1967,22 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                 if (data.discounts) {
                     stateText += `Discounts total <strong>$${formatNum(data.discounts.totalDiscounts)}</strong>. `;
                 }
-                stateText += `Signal adheres strictly to uploaded evidence and does not invent or estimate unverified operating figures.`;
+                stateText += `Signal calculates strictly from user-supplied exports without independent authentication of the underlying records and does not invent or estimate unprovided operating figures.`;
             }
             document.getElementById('state-assessment-text').innerHTML = stateText;
 
             // 2. Opportunity Stack Summary
             if (data.isSynthetic) {
                 document.getElementById('stack-confirmed').textContent = "$15,969 in Records";
-                document.getElementById('stack-confirmed-note').textContent = "Disclosed anomalies across 60 days: OT ($6,846) + voids ($1,840) + promo excess ($3,200) + extras ($2,443) + miscoded meals ($1,640)";
+                document.getElementById('stack-confirmed-note').textContent = "Source-recorded 60d figures ($12,769: OT $6,846 + voids $1,840 + modifier deficit $2,443 + staff meals $1,640) + calculated promo delta ($3,200)";
                 document.getElementById('stack-probable').textContent = "$21,000–$32,000 / yr";
-                document.getElementById('stack-probable-note').textContent = "Lost peak table turns & kitchen station delays ($1,750–$2,667/mo)";
+                document.getElementById('stack-probable-note').textContent = "Modeled peak table-turn opportunity ($1,750–$2,667/mo projected; requires floor verification)";
                 document.getElementById('stack-recoverable').textContent = "$33,858 / yr";
-                document.getElementById('stack-recoverable-note').textContent = "Capping promo ($19,200/yr / $3,200 period) + repricing 4 extras ($14,658/yr / $2,443 period)";
+                document.getElementById('stack-recoverable-note').textContent = "Projected annual opportunity from capping promo ($19,200/yr / $3,200 period calculated) + repricing 4 extras ($14,658/yr / $2,443 period calculated)";
                 document.getElementById('stack-total').textContent = "$75,630–$86,630 / yr";
-                document.getElementById('stack-total-note').textContent = "Direct cash recovery ($54,630/yr) + modeled peak turn recovery ($21k–$32k/yr)";
+                document.getElementById('stack-total-note').textContent = "Projected annual opportunity: calculated cost/pricing opportunity ($54,630/yr) + modeled peak turn opportunity ($21k–$32k/yr). Realized savings require post-change measurement.";
             } else {
-                // Upload mode: tie strictly to verified numbers
+                // Upload mode: tie strictly to source-recorded numbers in supplied exports
                 const hasLossStreams = Boolean(data.labor || data.voids || data.discounts || data.modifiers);
                 if (hasLossStreams) {
                     let totalLoss = 0;
@@ -2010,22 +1992,22 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                     if (data.modifiers) totalLoss += data.modifiers.modifierDeficit;
 
                     document.getElementById('stack-confirmed').textContent = `$${formatNum(totalLoss)} in Records`;
-                    document.getElementById('stack-confirmed-note').textContent = "Verified anomalies directly identified in uploaded operational streams";
+                    document.getElementById('stack-confirmed-note').textContent = "Source-recorded figures directly parsed from user-supplied exports (unverified source)";
                     document.getElementById('stack-probable').textContent = "Pending Full Audit";
-                    document.getElementById('stack-probable-note').textContent = "Requires multi-stream correlation";
+                    document.getElementById('stack-probable-note').textContent = "Requires multi-stream correlation & floor check";
                     document.getElementById('stack-recoverable').textContent = `$${formatNum(totalLoss * (365 / data.periodDays))} / yr`;
-                    document.getElementById('stack-recoverable-note').textContent = "Annualized run-rate of verified leakage";
+                    document.getElementById('stack-recoverable-note').textContent = "Calculated annualized run-rate of source-recorded figures (projected opportunity, not realized savings)";
                     document.getElementById('stack-total').textContent = `$${formatNum(totalLoss * (365 / data.periodDays))} / yr`;
-                    document.getElementById('stack-total-note').textContent = "Direct cash opportunity derived strictly from uploaded records";
+                    document.getElementById('stack-total-note').textContent = "Projected annual opportunity calculated from supplied records; realized savings require post-change measurement";
                 } else {
-                    document.getElementById('stack-confirmed').textContent = "$0 Verified Loss";
-                    document.getElementById('stack-confirmed-note').textContent = "No loss, void, or payroll records uploaded";
+                    document.getElementById('stack-confirmed').textContent = "$0 Source-Recorded Loss";
+                    document.getElementById('stack-confirmed-note').textContent = "No loss, void, or payroll records supplied in upload";
                     document.getElementById('stack-probable').textContent = "Unavailable";
                     document.getElementById('stack-probable-note').textContent = "Requires labor & void streams";
                     document.getElementById('stack-recoverable').textContent = "Unavailable";
                     document.getElementById('stack-recoverable-note').textContent = "Requires discount & modifier reports";
                     document.getElementById('stack-total').textContent = "Pending Data";
-                    document.getElementById('stack-total-note').textContent = "Upload supplemental exports to unlock loss calculations";
+                    document.getElementById('stack-total-note').textContent = "Upload supplemental exports to unlock opportunity calculations";
                 }
             }
 
@@ -2193,62 +2175,62 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                     }
                 ];
             } else {
-                // Upload mode: derive findings exclusively from supplied streams
+                // Upload mode: derive findings exclusively from supplied streams (unverified source)
                 findingsList.push({
                     id: "U-01",
                     rank: 1,
                     category: "Sales & Volume Baseline",
-                    title: "U-01: Verified Sales Performance & Ticket Distribution",
+                    title: "U-01: Source-Recorded Sales Performance & Ticket Distribution",
                     priority: "Baseline Established",
                     decisionPriority: "Baseline Established",
-                    decisionRationale: `Establishes audited transaction baseline across ${data.periodDays} days ($${formatNum(data.netSales)} net sales, $${data.avgCheck.toFixed(2)} avg check).`,
-                    confidenceLevel: "Verified",
-                    confidenceRationale: `Calculated directly from ${formatNum(data.totalOrders)} guest transactions in uploaded sales records.`,
-                    observed: `Across the ${data.periodDays}-day reporting span, this operation recorded $${formatNum(data.netSales)} in net sales across ${formatNum(data.totalOrders)} checks, yielding an average check of $${data.avgCheck.toFixed(2)}.`,
-                    intersection: `Operational volume run-rate equates to approximately $${formatNum(data.netSales * (30.417 / data.periodDays))}/month ($${formatNum(data.netSales * (365 / data.periodDays))}/year).`,
+                    decisionRationale: `Establishes source-recorded transaction baseline across ${data.periodDays} days ($${formatNum(data.netSales)} net sales, $${data.avgCheck.toFixed(2)} calculated avg check).`,
+                    confidenceLevel: "Calculated from Upload",
+                    confidenceRationale: `Calculated directly from ${formatNum(data.totalOrders)} guest transactions in user-supplied sales records (unverified source).`,
+                    observed: `Across the ${data.periodDays}-day reporting span, the supplied file records $${formatNum(data.netSales)} in net sales across ${formatNum(data.totalOrders)} checks, yielding a calculated average check of $${data.avgCheck.toFixed(2)}.`,
+                    intersection: `Calculated volume run-rate equates to approximately $${formatNum(data.netSales * (30.417 / data.periodDays))}/month ($${formatNum(data.netSales * (365 / data.periodDays))}/year projected).`,
                     inferred: "Sales distribution forms the core denominator for all labor productivity, modifier attachment, and loss leakage ratios.",
-                    verify: "Verify net sales against monthly merchant processing settlements and bank deposit records.",
-                    actionCandidate: "Use verified sales and ticket volume as the operational baseline for scheduling and menu rationalization.",
+                    verify: "Verify POS net sales against monthly merchant processing settlements and bank deposit records.",
+                    actionCandidate: "Use source-recorded sales and ticket volume as the operational baseline for scheduling and menu rationalization.",
                     candidateInterventions: [
                         "A: Reconcile POS net sales against merchant gateway settlement batches.",
                         "B: Use hourly volume distribution to align shift call-in thresholds."
                     ],
-                    signalDecision: "Maintain audited sales baseline as the denominator for operational KPI tracking.",
+                    signalDecision: "Maintain reconciled sales baseline as the denominator for operational KPI tracking.",
                     measureNext: "Daily sales velocity and check average stability over next 30 days.",
-                    monthlyRange: `$${formatNum(data.netSales * (30.417 / data.periodDays))} / mo run-rate`,
-                    annualRange: `$${formatNum(data.netSales * (365 / data.periodDays))} / yr run-rate`,
-                    periodImpact: `$${formatNum(data.netSales)} total sales volume`,
-                    basis: `Aggregated across ${formatNum(data.totalOrders)} check/order records in uploaded POS files.`,
-                    friction: "Verified Fact"
+                    monthlyRange: `$${formatNum(data.netSales * (30.417 / data.periodDays))} / mo calculated run-rate`,
+                    annualRange: `$${formatNum(data.netSales * (365 / data.periodDays))} / yr calculated run-rate`,
+                    periodImpact: `$${formatNum(data.netSales)} source-recorded sales`,
+                    basis: `Aggregated across ${formatNum(data.totalOrders)} check/order records in user-supplied POS files.`,
+                    friction: "Source Record"
                 });
 
-                // Labor Finding (Verified or Insufficient Evidence)
+                // Labor Finding (Calculated from Upload or Insufficient Evidence)
                 if (data.labor) {
                     findingsList.push({
                         id: "U-02",
                         rank: 2,
                         category: "Labor & Payroll",
-                        title: "U-02: Verified Labor Expenditure & Overtime Ratio",
+                        title: "U-02: Source-Recorded Labor Expenditure & Overtime Ratio",
                         priority: "Review Staffing",
                         decisionPriority: "Review Staffing",
-                        decisionRationale: `Labor ran at ${data.labor.laborPercent.toFixed(1)}% of sales ($${formatNum(data.labor.laborCost)} total wages).`,
-                        confidenceLevel: "Verified",
-                        confidenceRationale: "Calculated from employee job/punch records in uploaded labor export.",
-                        observed: `Total labor expenditure was $${formatNum(data.labor.laborCost)} (${data.labor.laborPercent.toFixed(1)}% of net sales). Overtime accounted for ${data.labor.totalOTHours.toFixed(1)} hours ($${formatNum(data.labor.totalOTPay)} overtime wages).`,
-                        intersection: "Overtime hours represent 1.5× wage rates. Replacing scheduled overtime with straight-time shifts recovers the 0.5× overtime wage premium.",
+                        decisionRationale: `Labor ran at ${data.labor.laborPercent.toFixed(1)}% of sales ($${formatNum(data.labor.laborCost)} source-recorded wages).`,
+                        confidenceLevel: "Calculated from Upload",
+                        confidenceRationale: "Calculated from employee job/punch records in user-supplied labor export (unverified source).",
+                        observed: `Source-recorded labor expenditure was $${formatNum(data.labor.laborCost)} (${data.labor.laborPercent.toFixed(1)}% calculated share of net sales). Overtime accounted for ${data.labor.totalOTHours.toFixed(1)} hours ($${formatNum(data.labor.totalOTPay)} source-recorded overtime wages).`,
+                        intersection: "Overtime hours represent 1.5× wage rates. Replacing scheduled overtime with straight-time shifts projects recovery of the 0.5× overtime wage premium (realized savings require post-change payroll verification).",
                         inferred: "Overtime accumulation indicates shift coverage imbalances or prep delays.",
-                        verify: "Review shift rosters to confirm whether overtime occurred during prep or service rushes.",
+                        verify: "Review shift rosters and payroll registers to confirm whether overtime occurred during prep or service rushes.",
                         actionCandidate: "Audit schedule allocations to reduce unbudgeted overtime.",
                         candidateInterventions: [
                             "A: Enforce 38-hour shift caps for hourly crew members.",
                             "B: Re-allocate prep tasks to morning non-rush shifts."
                         ],
                         signalDecision: "Conduct shift-by-shift overtime audit to rebalance coverage.",
-                        measureNext: "Weekly overtime hours and labor cost percentage.",
-                        monthlyRange: `$${formatNum(data.labor.totalOTPay * (30.417 / data.periodDays))} / mo OT spend`,
-                        annualRange: `$${formatNum(data.labor.totalOTPay * (365 / data.periodDays))} / yr OT spend`,
-                        periodImpact: `$${formatNum(data.labor.totalOTPay)} OT wages in records`,
-                        basis: "Calculated directly from uploaded labor and wage export files.",
+                        measureNext: "Weekly overtime hours and realized labor cost percentage over 30 days.",
+                        monthlyRange: `$${formatNum(data.labor.totalOTPay * (30.417 / data.periodDays))} / mo calculated OT run-rate`,
+                        annualRange: `$${formatNum(data.labor.totalOTPay * (365 / data.periodDays))} / yr calculated OT run-rate`,
+                        periodImpact: `$${formatNum(data.labor.totalOTPay)} source-recorded OT wages`,
+                        basis: "Calculated directly from user-supplied labor and wage export files.",
                         friction: "Medium"
                     });
                 } else {
@@ -2261,14 +2243,14 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                         decisionPriority: "Upload Labor Report",
                         decisionRationale: "No payroll summary or timecard export was included in this upload.",
                         confidenceLevel: "Insufficient Evidence",
-                        confidenceRationale: "Cannot calculate labor percentage or overtime costs without verified employee wage records.",
+                        confidenceRationale: "Cannot calculate labor percentage or overtime costs without employee wage records.",
                         observed: "No employee timecards, hourly labor records, or payroll summary exports were detected in the uploaded file(s). Signal strictly withholds labor metrics when punch data is missing.",
                         intersection: "Labor cost analysis requires employee hours paired with wages. This metric will remain unavailable until labor data is provided.",
-                        inferred: "No defensible labor or staffing recommendations can be generated without verified timecards.",
+                        inferred: "No defensible labor or staffing recommendations can be generated without timecard records.",
                         verify: "Locate 'Labor Summary' or 'Labor Detail by Employee' in your POS or payroll system.",
                         actionCandidate: "Export a CSV labor report from your POS (Toast, Square, Clover) and upload it to Signal.",
                         candidateInterventions: [
-                            "A: Upload Toast Labor Summary CSV to calculate true labor % and overtime leakage.",
+                            "A: Upload Toast Labor Summary CSV to calculate labor % and overtime exposure.",
                             "B: Upload Timecard Punches CSV to evaluate hourly sales-per-labor-hour (SPLH)."
                         ],
                         signalDecision: "Upload Labor export to enable labor diagnostics.",
@@ -2281,19 +2263,19 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                     });
                 }
 
-                // Voids Finding (Verified or Insufficient Evidence)
+                // Voids Finding (Calculated from Upload or Insufficient Evidence)
                 if (data.voids) {
                     findingsList.push({
                         id: "U-03",
                         rank: 3,
                         category: "Voids & Comps",
-                        title: "U-03: Verified Void & Comp Audit",
+                        title: "U-03: Source-Recorded Void & Comp Summary",
                         priority: "Investigate Voids",
                         decisionPriority: "Investigate Voids",
-                        decisionRationale: `Identified $${formatNum(data.voids.voidAmount)} in voids across ${data.voids.voidCount} checks.`,
-                        confidenceLevel: "Verified",
-                        confidenceRationale: "Calculated directly from uploaded void transaction records.",
-                        observed: `Total voided check dollars amounted to $${formatNum(data.voids.voidAmount)} across ${data.voids.voidCount} transactions (average void: $${data.voids.avgVoidValue.toFixed(2)}).`,
+                        decisionRationale: `Source-recorded $${formatNum(data.voids.voidAmount)} in voids across ${data.voids.voidCount} checks.`,
+                        confidenceLevel: "Calculated from Upload",
+                        confidenceRationale: "Calculated directly from user-supplied void transaction records (unverified source).",
+                        observed: `Source-recorded voided check dollars amounted to $${formatNum(data.voids.voidAmount)} across ${data.voids.voidCount} transactions (calculated average void: $${data.voids.avgVoidValue.toFixed(2)}).`,
                         intersection: "Void timing indicates service recovery volume during rush periods.",
                         inferred: "Clustered voids point to kitchen backlog or order entry issues.",
                         verify: "Review timestamped void reasons on shift logs.",
@@ -2303,11 +2285,11 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                             "B: Track void timestamps against kitchen ticket fire times."
                         ],
                         signalDecision: "Establish daily manager review of all voided checks.",
-                        measureNext: "30-day void dollar volume and void frequency.",
-                        monthlyRange: `$${formatNum(data.voids.voidAmount * (30.417 / data.periodDays))} / mo`,
-                        annualRange: `$${formatNum(data.voids.voidAmount * (365 / data.periodDays))} / yr`,
-                        periodImpact: `$${formatNum(data.voids.voidAmount)} in records`,
-                        basis: "Calculated directly from uploaded void summary records.",
+                        measureNext: "30-day realized void dollar volume and void frequency.",
+                        monthlyRange: `$${formatNum(data.voids.voidAmount * (30.417 / data.periodDays))} / mo calculated run-rate`,
+                        annualRange: `$${formatNum(data.voids.voidAmount * (365 / data.periodDays))} / yr calculated run-rate`,
+                        periodImpact: `$${formatNum(data.voids.voidAmount)} source-recorded voids`,
+                        basis: "Calculated directly from user-supplied void summary records.",
                         friction: "Easy"
                     });
                 } else {
@@ -2339,32 +2321,32 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                     });
                 }
 
-                // Discounts Finding (Verified or Insufficient Evidence)
+                // Discounts Finding (Calculated from Upload or Insufficient Evidence)
                 if (data.discounts) {
                     findingsList.push({
                         id: "U-04",
                         rank: 4,
                         category: "Discounts & Promotions",
-                        title: "U-04: Verified Discount & Comp Evaluation",
+                        title: "U-04: Source-Recorded Discount & Comp Evaluation",
                         priority: "Review Discounts",
                         decisionPriority: "Review Discounts",
-                        decisionRationale: `Identified $${formatNum(data.discounts.totalDiscounts)} in discounts.`,
-                        confidenceLevel: "Verified",
-                        confidenceRationale: "Calculated directly from uploaded check discount records.",
-                        observed: `Total discounts applied across checks amounted to $${formatNum(data.discounts.totalDiscounts)}.`,
+                        decisionRationale: `Source-recorded $${formatNum(data.discounts.totalDiscounts)} in discounts.`,
+                        confidenceLevel: "Calculated from Upload",
+                        confidenceRationale: "Calculated directly from user-supplied check discount records (unverified source).",
+                        observed: `Source-recorded discounts applied across checks amounted to $${formatNum(data.discounts.totalDiscounts)}.`,
                         intersection: "Uncapped percentage discounts scale linearly with check size, creating margin drag on high-ticket orders.",
-                        inferred: "Discounts should be audited to evaluate counterfactual caps.",
+                        inferred: "Discounts should be audited to evaluate counterfactual caps (projected opportunity vs. realized savings).",
                         verify: "Audit promotion settings in POS backend.",
                         actionCandidate: "Test a maximum dollar cap on percentage discounts.",
                         candidateInterventions: [
                             "A: Apply flat dollar caps on percentage-off promotions."
                         ],
                         signalDecision: "Audit top 3 promotional discount codes in POS.",
-                        measureNext: "Discount spend as a percentage of gross sales.",
-                        monthlyRange: `$${formatNum(data.discounts.totalDiscounts * (30.417 / data.periodDays))} / mo`,
-                        annualRange: `$${formatNum(data.discounts.totalDiscounts * (365 / data.periodDays))} / yr`,
-                        periodImpact: `$${formatNum(data.discounts.totalDiscounts)} in records`,
-                        basis: "Calculated directly from uploaded discount records.",
+                        measureNext: "Realized discount spend as a percentage of gross sales over 30 days.",
+                        monthlyRange: `$${formatNum(data.discounts.totalDiscounts * (30.417 / data.periodDays))} / mo calculated run-rate`,
+                        annualRange: `$${formatNum(data.discounts.totalDiscounts * (365 / data.periodDays))} / yr calculated run-rate`,
+                        periodImpact: `$${formatNum(data.discounts.totalDiscounts)} source-recorded discounts`,
+                        basis: "Calculated directly from user-supplied discount records.",
                         friction: "Easy"
                     });
                 } else {
@@ -2741,43 +2723,28 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
         }
 </script>
 
-        <footer class="site-footer" role="contentinfo">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="/" class="logo">
-                    <img class="brand-mark" src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;">
-                    <span>Context &amp; Muse</span>
-                </a>
-                <p class="footer-tagline">Founder-led and independent. Finding where a business is losing time, money, or customers, and building the practical systems that fix it.</p>
-                <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
+    <footer class="cm-v2-footer" role="contentinfo">
+        <div class="cm-v2-footer-inner">
+            <div class="cm-v2-footer-left">
+                <span style="color: var(--cm-v2-bone); font-weight: 700;">Context &amp; Muse</span>
+                <span>&bull;</span>
+                <span>Jayme Volstad &middot; Founder-Led Studio &middot; Austin, TX</span>
+                <span>&bull;</span>
+                <a href="mailto:jayme@contextmuse.com" class="cm-v2-mail">jayme@contextmuse.com</a>
             </div>
-            <div class="footer-links-grid">
-                <div class="footer-col">
-                    <div class="footer-col-title">Services</div>
-                    <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
-                    <a href="/website-system-check/" class="footer-link">Website + System Check</a>
-                    <a href="/contact/?service=diagnostic" class="footer-link">Business System Diagnostic</a>
-                    <a href="/systems/" class="footer-link">Custom Operations Systems</a>
-                    <a href="/restaurant-systems/" class="footer-link">Restaurant Systems</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Selected Work</div>
-                    <a href="/work/lone-wolf-dumpsters/" class="footer-link">Lone Wolf Dumpsters</a>
-                    <a href="/systems/client-builds/#inncontrol" class="footer-link">INNcontrol Coils</a>
-                    <a href="/work/website-audit-system/" class="footer-link">Website Audit System</a>
-                    <a href="/case-studies/edr-party-rentals/" class="footer-link">EDR Party Rentals</a>
-                    <a href="/work/revision-atlas/" class="footer-link">Revision Atlas</a>
-                </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">About</div>
-                    <a href="/about/" class="footer-link">About Jayme</a>
-                    <a href="/contact/" class="footer-link">Contact &amp; Intake</a>
-                    <a href="/privacy/" class="footer-link">Privacy Policy</a>
-                    <a href="/terms/" class="footer-link">Terms of Service</a>
-                </div>
+            <div class="cm-v2-footer-right">
+                <a href="/">Home</a>
+                <a href="/work/">01 Work</a>
+                <a href="/build/">02 Build</a>
+                <a href="/lab/">03 Lab</a>
+                <a href="/method/">04 Method</a>
+                <a href="/signal/">Signal</a>
+                <a href="/website-system-check/">Website Check</a>
+                <a href="/privacy/">Privacy</a>
+                <a href="/terms/">Terms</a>
+                <span style="color: rgba(223, 218, 206, 0.45);">&copy; 2026</span>
             </div>
         </div>
     </footer>
-    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>
