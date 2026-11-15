@@ -42,10 +42,11 @@ def check_funnel(browser, base_url, width, height):
     if os.getenv("SIGNAL_SCREENSHOTS"):
         page.screenshot(path=f"/tmp/signal-intake-{width}.png")
 
-    page.get_by_label("Name", exact=True).fill("Test Restaurant Owner")
-    page.get_by_label("Email Address", exact=True).fill("owner@example.com")
-    page.get_by_label("POS or Software You Currently Use").fill("Toast")
-    problem = page.get_by_label("What problem are you noticing?")
+    form = page.locator("#signal-b2-form")
+    form.get_by_label("Name", exact=True).fill("Test Restaurant Owner")
+    form.get_by_label("Email Address", exact=True).fill("owner@example.com")
+    form.get_by_label("POS or Software You Currently Use").fill("Toast")
+    problem = form.get_by_label("What problem are you noticing?")
     problem.fill("Comps spike during weekend dinner.")
     button = page.get_by_role("button", name="Request Snapshot")
     button.click()
