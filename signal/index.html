@@ -556,7 +556,18 @@
         .snapshot-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem 1.25rem; margin-top: 1.65rem; }
         .snapshot-sample { color: var(--accent-teal); font-weight: 650; text-underline-offset: 0.2em; }
         .snapshot-note { margin: 0.9rem 0 0; color: var(--text-secondary); font-size: 0.9rem; }
-        @media (max-width: 600px) { .product-hero { padding: 2.5rem 0; } }
+        .hero-trust-strip .hero-trust-item { color: #E4DED1; }
+        @media (max-width: 600px) {
+            .product-hero { padding: 2.25rem 0; }
+            .cm-v2-subbar .cm-v2-subbar-links {
+                flex-wrap: nowrap;
+                max-width: 100%;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 0.35rem;
+            }
+            .cm-v2-subbar-links > a { flex: 0 0 auto; }
+        }
     </style>
     <link rel="stylesheet" href="/assets/css/v2-shell.css">
 </head>

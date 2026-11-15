@@ -240,6 +240,22 @@
         .btn-submit:hover {
             background: #0D655E;
         }
+        .snapshot-intake .intake-hero { padding: 2.25rem 0 1.75rem; }
+        .snapshot-intake .intake-section { padding-top: 1.25rem; }
+        .snapshot-intake .branch-panel.active { animation: none; }
+        .snapshot-intake .branch-picker { margin: 1.75rem 0 0; }
+        .snapshot-intake .snapshot-selection { margin-bottom: 1rem !important; }
+        @media (max-width: 600px) {
+            .snapshot-intake .cm-v2-subbar .cm-v2-subbar-links {
+                flex-wrap: nowrap;
+                max-width: 100%;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 0.35rem;
+            }
+            .snapshot-intake .cm-v2-subbar-links > a { flex: 0 0 auto; }
+            .snapshot-intake .branch-panel { padding: 1.25rem; }
+        }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
@@ -332,7 +348,7 @@
                             <span style="font-family: var(--font-mono); font-size: 9px; color: var(--accent-teal); font-weight: bold; text-transform: uppercase;">Door 02</span>
                             <div class="branch-btn-title">I know the issue, but not what reports you need</div>
                         </div>
-                        <p class="branch-btn-desc">Describe the problem and schedule a short scoping call.</p>
+                        <p class="branch-btn-desc">Describe the problem and get guidance on which reports to send.</p>
                     </button>
 
                     <button class="branch-btn" id="tab-3" role="tab" aria-selected="false" onclick="selectBranch(3)">
@@ -621,6 +637,8 @@
                 const tierLabel = tierNames[tier];
                 if (tier === 'snapshot' && (!door || door === '2')) {
                     selectBranch(2);
+                    document.body.classList.add('snapshot-intake');
+                    document.querySelector('.intake-container').append(document.querySelector('.branch-picker'));
                     document.querySelector('.intake-title').textContent = 'Request a Signal Snapshot.';
                     document.querySelector('.intake-sub').textContent = 'One question about your restaurant. I’ll help you figure out which reports can answer it.';
                     document.querySelector('#signal-b2-form button[type=submit]').textContent = 'Request Snapshot →';
@@ -642,6 +660,7 @@
                 const container = document.querySelector('.intake-container');
                 if (container) {
                     const badge = document.createElement('div');
+                    badge.className = 'snapshot-selection';
                     badge.style.cssText = 'background: rgba(15, 118, 110, 0.08); border: 1px solid var(--accent-teal); border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-family: var(--font-sans);';
                     badge.innerHTML = `
                         <div>

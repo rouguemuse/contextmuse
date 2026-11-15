@@ -33,16 +33,17 @@ def check_funnel(browser, base_url, width, height):
     assert image.evaluate("(img) => img.complete && img.naturalWidth > 0")
     assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
     if os.getenv("SIGNAL_SCREENSHOTS"):
-        page.screenshot(path=f"/tmp/signal-landing-{width}.png")
+        page.screenshot(animations="disabled", path=f"/tmp/signal-landing-{width}.png")
 
     page.get_by_role("link", name="Request a $195 Snapshot").click()
     expect(page.locator("#tab-2")).to_have_attribute("aria-selected", "true")
     expect(page.get_by_text("Signal Snapshot ($195)", exact=True)).to_be_visible()
     assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
     if os.getenv("SIGNAL_SCREENSHOTS"):
-        page.screenshot(path=f"/tmp/signal-intake-{width}.png")
+        page.screenshot(animations="disabled", path=f"/tmp/signal-intake-{width}.png")
 
     form = page.locator("#signal-b2-form")
+    assert form.bounding_box()["y"] < page.locator(".branch-picker").bounding_box()["y"]
     form.get_by_label("Name", exact=True).fill("Test Restaurant Owner")
     form.get_by_label("Email Address", exact=True).fill("owner@example.com")
     form.get_by_label("POS or Software You Currently Use").fill("Toast")
