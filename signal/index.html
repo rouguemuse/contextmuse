@@ -535,6 +535,28 @@
         .tag-verified { background: rgba(15, 118, 110, 0.25); color: #2DD4BF; border: 1px solid rgba(45, 212, 191, 0.4); }
         .tag-modeled { background: rgba(197, 160, 89, 0.2); color: #FACC15; border: 1px solid rgba(250, 204, 21, 0.4); }
         .tag-validation { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.4); }
+        .product-hero { background: var(--bg-paper-panel); }
+        .product-grid > * { min-width: 0; }
+        .snapshot-eyebrow {
+            font: 700 0.74rem var(--font-mono);
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .product-hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.65rem, 6vw, 5.35rem);
+            font-weight: 500;
+            line-height: 0.99;
+            letter-spacing: -0.045em;
+            margin: 0.9rem 0 1.3rem;
+            color: var(--text-primary);
+        }
+        .snapshot-intro { max-width: 48ch; font-size: 1.04rem; line-height: 1.65; color: var(--text-secondary); }
+        .snapshot-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem 1.25rem; margin-top: 1.65rem; }
+        .snapshot-sample { color: var(--accent-teal); font-weight: 650; text-underline-offset: 0.2em; }
+        .snapshot-note { margin: 0.9rem 0 0; color: var(--text-secondary); font-size: 0.9rem; }
+        @media (max-width: 600px) { .product-hero { padding: 2.5rem 0; } }
     </style>
     <link rel="stylesheet" href="/assets/css/v2-shell.css">
 </head>
@@ -587,27 +609,14 @@
         <div class="container">
             <div class="product-grid">
                 <div>
-                    <span class="eyebrow" style="color: var(--accent-teal); font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;">Operational intelligence · Founder-led</span>
-                    <h1 style="font-family: var(--font-sans); font-size: clamp(2.3rem, 4.5vw, 3.8rem); line-height: 1.15; margin-top: 0.75rem; margin-bottom: 1.25rem; color: var(--text-primary);">
-                        Signal turns fragmented restaurant reports into a clear, prioritized action list.
-                    </h1>
-                    <p style="font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 0.85rem;">
-                        It connects patterns across your POS, labor, and discount records, weighs the money at stake and how sure we are, and tells you what to check and what to fix first.
-                    </p>
-                    <p style="font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.5; color: var(--accent-teal); margin-bottom: 2rem;">
-                        Not more reporting. Clear answers for operators already drowning in reports.
-                    </p>
-                    <div class="btn-group" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <a href="/signal/demo/" class="btn btn-primary">Launch interactive demo →</a>
-                        <a href="/signal/intake/" class="btn btn-secondary">Submit your exports →</a>
-                        <a href="/signal/sample-reports/" class="btn btn-secondary">View sample diagnostic →</a>
+                    <span class="snapshot-eyebrow">Signal · Restaurant Operations</span>
+                    <h1>Where is your restaurant losing margin?</h1>
+                    <p class="snapshot-intro">Comps climbing on certain shifts? Add-ons going uncharged? Start with one question. The Signal Snapshot uses one or two reports to trace what’s happening and show you what to check first.</p>
+                    <div class="snapshot-actions">
+                        <a href="/signal/intake/?tier=snapshot&amp;door=2" class="btn btn-primary" data-snapshot-link>Request a $195 Snapshot</a>
+                        <a href="/signal/sample-reports/" class="snapshot-sample">See a sample report →</a>
                     </div>
-                    <div style="margin-top: 1.25rem; display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
-                        <a href="/signal/export-instructions/" style="font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--accent-teal); text-decoration: underline;">Toast export instructions (CSV) →</a>
-                    </div>
-                    <div style="margin-top: 1.75rem;">
-                        <span class="status-badge">WORKING SYSTEM &bull; ACTIVE EXTERNAL VALIDATION</span>
-                    </div>
+                    <p class="snapshot-note">Tell me what you’re seeing. You can send reports after we scope the question.</p>
                 </div>
 
                 <div class="build-visual-col">
@@ -1291,7 +1300,7 @@
                                 <li>1 in-store floor check protocol</li>
                             </ul>
                         </div>
-                        <a href="/signal/intake/?tier=snapshot" class="btn" style="text-align: center; text-decoration: none; display: block; padding: 0.75rem 1rem; background: var(--text-primary); color: #FAF9F5; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: 4px;">
+                        <a href="/signal/intake/?tier=snapshot&amp;door=2" data-snapshot-link class="btn" style="text-align: center; text-decoration: none; display: block; padding: 0.75rem 1rem; background: var(--text-primary); color: #FAF9F5; font-family: var(--font-sans); font-size: 13px; font-weight: 600; border-radius: 4px;">
                             Request Snapshot ($195) &rarr;
                         </a>
                     </div>
@@ -1649,6 +1658,17 @@
                     }
                 });
             });
+        });
+    </script>
+    <script>
+        const campaign = new URLSearchParams(window.location.search);
+        document.querySelectorAll('[data-snapshot-link]').forEach(link => {
+            const destination = new URL(link.href);
+            for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
+                const value = campaign.get(key);
+                if (value) destination.searchParams.set(key, value.slice(0, 128));
+            }
+            link.href = destination.href;
         });
     </script>
 </body>

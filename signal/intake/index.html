@@ -447,43 +447,11 @@
                 <!-- Branch 2 Form -->
                 <div class="branch-panel" id="panel-2" role="tabpanel">
                     <h2 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem; font-weight: 500;">
-                        Signal Export Instructions &amp; Guided Scoping
+                        Tell me what you’re seeing
                     </h2>
                     <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.55;">
-                        Follow our standard Toast protocol below to export your data in 3 minutes, or describe your problem and we will send tailored extraction notes.
+                        Share one issue you want to understand. I’ll reply with the reports I’d need to look into it.
                     </p>
-
-                    <!-- Built-in Toast Instructions Card -->
-                    <div style="background: #FAF9F5; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem;">
-                            <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin: 0; color: var(--text-primary);">Signal Export Instructions (Toast)</h3>
-                            <a href="/signal/export-instructions/" target="_blank" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); text-decoration: underline;">Open Full Page ↗</a>
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 13.5px; line-height: 1.5;">
-                            <div>
-                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Step 1 — Open Toast Reports</div>
-                                <p style="margin: 0.25rem 0 0.75rem 0; color: var(--text-secondary);">Navigate to: <code>Reports &rarr; Exports</code></p>
-                                
-                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Step 2 — Set Date Range</div>
-                                <p style="margin: 0.25rem 0 0.75rem 0; color: var(--text-secondary);">Recommended: <strong>Last 90–120 days</strong></p>
-
-                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Step 4 — Export Format</div>
-                                <p style="margin: 0.25rem 0 0; color: var(--text-primary); font-size: 13px;"><strong>All standard formats accepted:</strong> CSV, Excel (.xlsx), PDF reports, or ZIP.<br><span style="color: var(--text-secondary); font-size: 12px;">We work with whatever format your POS or payroll software exports.</span></p>
-                            </div>
-                            <div>
-                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase;">Step 3 — Export Reports</div>
-                                <p style="margin: 0.25rem 0 0.5rem 0; font-size: 12.5px;">
-                                    <strong>Required:</strong> Product Mix, Discounts / Comps / Voids, Sales by Hour, Labor Summary<br>
-                                    <strong>Recommended:</strong> Modifier Sales, Hourly Labor, Promo Redemptions, Revenue Center Sales, Guest Counts<br>
-                                    <strong>Deep Review:</strong> KDS Ticket Times, Manager Overrides, Refund Reports, Open Items
-                                </p>
-
-                                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-teal); font-weight: 700; text-transform: uppercase; margin-top: 0.75rem;">Step 5 — Upload</div>
-                                <p style="margin: 0.25rem 0 0; color: var(--text-secondary); font-size: 12.5px;">Compress all files into one ZIP folder and upload to Signal.</p>
-                            </div>
-                        </div>
-                    </div>
 
                     <form id="signal-b2-form" data-signal-intake action="/api/lead/" method="POST">
                         <input type="hidden" name="form_id" value="signal-branch-2">
@@ -514,14 +482,14 @@
                             <textarea id="b2-problem" name="problem_description" rows="4" class="form-textarea" required placeholder="e.g. Labor feels too high during shoulder hours, food cost doesn't match sales, servers are splitting checks weirdly..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit">Request Custom Scoping Call &rarr;</button>
+                        <button type="submit" class="btn-submit">Send inquiry &rarr;</button>
                     </form>
-                    <div id="b2-success" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
+                    <div id="b2-success" role="status" style="display:none; background: rgba(15,118,110,0.08); border: 1px solid var(--accent-teal); padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: var(--accent-teal); text-align: center; font-size: 14px;">
                         <strong>Thank you. Your scoping request has been securely recorded.</strong><br>
                         <span style="font-family: var(--font-mono); font-size: 12px; margin-top: 0.35rem; display: inline-block;">Durable Reference ID: <strong id="b2-sub-id"></strong></span><br>
                         <span style="display: inline-block; margin-top: 0.25rem;">Jayme personally reviews every inquiry and will respond after reviewing the business and project context.</span>
                     </div>
-                    <div id="b2-error" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
+                    <div id="b2-error" role="alert" style="display:none; background: rgba(220,38,38,0.08); border: 1px solid #DC2626; padding: 1.25rem; border-radius: 4px; margin-top: 1rem; color: #DC2626; font-size: 13.5px; text-align: center;"></div>
                 </div>
 
                 <!-- Branch 3 Form -->
@@ -634,7 +602,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
-            const tier = params.get('tier');
+            const tier = params.get('tier')?.toLowerCase();
             const door = params.get('door');
 
             if (door) {
@@ -642,15 +610,21 @@
                 if (dNum >= 1 && dNum <= 3) selectBranch(dNum);
             }
 
-            if (tier) {
-                const tierNames = {
+            const tierNames = {
                     'snapshot': 'Signal Snapshot ($195)',
                     'diagnostic': 'Signal Diagnostic ($595)',
                     'deepdive': 'Signal Deep Dive (From $1,250)',
                     'deepdive_validation': 'Deep Dive + 60-Day Validation (From $1,650 Total)',
                     'ongoing': 'Ongoing Review ($249 / month)'
-                };
-                const tierLabel = tierNames[tier.toLowerCase()] || tier;
+            };
+            if (Object.hasOwn(tierNames, tier)) {
+                const tierLabel = tierNames[tier];
+                if (tier === 'snapshot' && (!door || door === '2')) {
+                    selectBranch(2);
+                    document.querySelector('.intake-title').textContent = 'Request a Signal Snapshot.';
+                    document.querySelector('.intake-sub').textContent = 'One question about your restaurant. I’ll help you figure out which reports can answer it.';
+                    document.querySelector('#signal-b2-form button[type=submit]').textContent = 'Request Snapshot →';
+                }
 
                 // Add selected_tier to forms
                 document.querySelectorAll('form').forEach(f => {
@@ -704,6 +678,10 @@
                         payload.source_page = window.location.pathname;
                         payload.form_source = window.location.pathname;
                         payload.inquiry_type = 'signal';
+                        for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
+                            const value = params.get(key);
+                            if (value) payload[key] = value.slice(0, 128);
+                        }
 
                         // If file was attached, record its name and size in metadata and ingest readable files
                         const fileInput = form.querySelector('input[type="file"]');
