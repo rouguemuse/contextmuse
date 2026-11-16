@@ -1,0 +1,55 @@
+.cm-v2-signal-surface {
+    --signal-surface: #fff;
+    --signal-surface-featured: #faf9f5;
+    --signal-report-surface: #0e1f1b;
+    --signal-border: rgba(14, 31, 27, 0.14);
+    --signal-border-active: rgba(15, 118, 110, 0.48);
+    --signal-focus: #0f766e;
+    --signal-radius: 0.75rem;
+    --signal-radius-featured: 1rem;
+    --signal-card-padding: clamp(1.25rem, 2.4vw, 1.75rem);
+    --signal-shadow: 0 3px 12px rgba(14, 31, 27, 0.06);
+    --signal-shadow-active: 0 10px 24px rgba(14, 31, 27, 0.12);
+    --signal-report-shadow: inset 0 1px rgba(250, 249, 245, 0.1),
+        0 18px 42px rgba(14, 31, 27, 0.24);
+    --signal-transition: 180ms ease-out;
+}
+
+.cm-v2-signal-surface :is(.rail-card, .deliverable-card, .finding-card, .stack-card) {
+    background-color: var(--signal-surface);
+    border-color: var(--signal-border);
+    border-radius: var(--signal-radius);
+    padding: var(--signal-card-padding);
+    box-shadow: var(--signal-shadow);
+    transition: border-color var(--signal-transition), box-shadow var(--signal-transition);
+}
+
+.cm-v2-signal-surface :is(.rail-card, .finding-card):is(:hover, :focus-within) {
+    transform: none;
+    border-color: var(--signal-border-active);
+    box-shadow: var(--signal-shadow-active);
+}
+
+.cm-v2-signal-surface :is(.rail-card, .finding-card, .stack-card) :focus-visible {
+    outline: 2px solid var(--signal-focus);
+    outline-offset: 3px;
+}
+
+.cm-v2-signal-surface .stack-card.featured {
+    background: var(--signal-surface-featured);
+    border-color: var(--signal-border-active);
+}
+
+.cm-v2-signal-surface .report-viewer-card {
+    background: radial-gradient(ellipse at top right, rgba(15, 118, 110, 0.3), transparent 65%),
+        var(--signal-report-surface);
+    border-color: rgba(164, 210, 195, 0.28);
+    border-radius: var(--signal-radius-featured);
+    box-shadow: var(--signal-report-shadow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cm-v2-signal-surface {
+        --signal-transition: 0ms;
+    }
+}
