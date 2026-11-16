@@ -272,7 +272,7 @@ export default function PageAnnotationOverlay() {
                 onClick={openPageMarkup}
                 className="font-bold text-[#D9A62E] underline underline-offset-4 hover:text-[#EDE9E0] transition-colors"
               >
-                Mark up this page.
+                {hasAnnotations ? 'Resume page markup' : 'Mark up this page.'}
               </button>
             </div>
 
@@ -292,6 +292,16 @@ export default function PageAnnotationOverlay() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            {hasAnnotations && !pageMarkupActive && (
+              <button
+                type="button"
+                onClick={handleClearPage}
+                className="min-h-[44px] flex items-center gap-1.5 rounded border border-[#DFDACE]/25 px-3 py-1.5 text-xs font-mono hover:text-red-300"
+              >
+                <Trash2 aria-hidden="true" className="h-4 w-4" />
+                <span>Reset page markup</span>
+              </button>
+            )}
             {hasAnnotations && (
               <button
                 type="button"
@@ -309,20 +319,18 @@ export default function PageAnnotationOverlay() {
       {/* ============================================================
           FULL-PAGE ANNOTATION OVERLAY + FLOATING CONTROL BAR
           ============================================================ */}
-      {(pageMarkupActive || hasAnnotations) && (
+      {pageMarkupActive && (
         <div
           data-whiteboard="true"
           data-clarity-mask="true"
-          className={`absolute inset-x-0 top-0 z-30 overflow-hidden ${
-            pageMarkupActive ? 'pointer-events-auto' : 'pointer-events-none'
-          }`}
+          className="absolute inset-x-0 top-0 z-30 overflow-hidden pointer-events-auto"
           style={{ height: docSize.height }}
         >
           <DrawingOverlay
             width={docSize.width}
             height={docSize.height}
             zoom={1}
-            tool={pageMarkupActive ? tool : 'select'}
+            tool={tool}
             drawings={strokes}
             onAddStroke={handleAddStroke}
             penColor={currentPath === '/lab' ? '#17504A' : '#D9A62E'}
@@ -420,10 +428,10 @@ export default function PageAnnotationOverlay() {
                 data-testid="markup-clear-btn"
                 onClick={handleClearPage}
                 disabled={!hasAnnotations}
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded bg-[#23282A] border border-[#DFDACE]/20 text-[#EDE9E0] hover:text-red-400 disabled:opacity-30"
-                title="Clear page markup"
+                className="min-h-[44px] flex items-center gap-1.5 rounded bg-[#23282A] border border-[#DFDACE]/20 px-3 text-xs font-mono text-[#EDE9E0] hover:text-red-400 disabled:opacity-30"
               >
-                <Trash2 className="h-4 w-4" />
+                <Trash2 aria-hidden="true" className="h-4 w-4" />
+                <span>Reset page markup</span>
               </button>
             </div>
 
