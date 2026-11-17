@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Shuffle, ArrowLeft, Bookmark, Check, Sparkles, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shuffle, ArrowLeft, Bookmark, Check, ExternalLink } from 'lucide-react';
 import { useBrief } from '@/lib/BriefContext';
 
 const LAB_PROMPTS = [
@@ -35,8 +35,8 @@ const LAB_PROMPTS = [
     id: 'drag-vs-menu',
     q: 'What changes when you can drag it instead of choosing from a menu?',
     context: 'Direct physical manipulation gives immediate feedback on weight, connection, and boundaries that dropdowns never achieve.',
-    toolHint: 'Try this in Kinetic Physics Canvas',
-    toolTarget: '#tool-kinetic',
+    toolHint: 'Try this on the Custom Builds Whiteboard',
+    toolTarget: '/build',
   },
   {
     id: 'one-button-task',
@@ -59,7 +59,6 @@ export default function LabPromptCard({ onSelectTool }) {
   const currentAnswer = answers[currentPrompt.id] || '';
 
   const handleNext = () => {
-    // Avoid immediate repeat
     const remainingIndices = LAB_PROMPTS.map((_, i) => i).filter((i) => i !== currentIdx);
     const nextIdx = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
 
@@ -99,7 +98,7 @@ export default function LabPromptCard({ onSelectTool }) {
   };
 
   return (
-    <div className="h-full bg-[#FAF8F5] text-[#23282A] border border-[#23282A]/15 p-5 sm:p-6 shadow-sm font-sans flex flex-col justify-between">
+    <div className="h-full bg-[#FAF8F5] text-[#23282A] border border-[#23282A]/15 p-4 sm:p-6 shadow-sm font-sans flex flex-col justify-between">
       <div>
         <div className="flex items-center justify-between border-b border-[#23282A]/12 pb-3">
           <div>
@@ -110,13 +109,13 @@ export default function LabPromptCard({ onSelectTool }) {
               Workbench Prompts
             </h3>
           </div>
-          <span className="font-mono text-[10px] text-[#23282A]/60">
+          <span className="font-mono text-[10px] text-[#23282A]/60 font-bold">
             {String(currentIdx + 1).padStart(2, '0')} / {String(LAB_PROMPTS.length).padStart(2, '0')}
           </span>
         </div>
 
         {/* Stable Height Prompt Content Container */}
-        <div className="mt-4 min-h-[140px] flex flex-col justify-between">
+        <div className="mt-4 min-h-[130px] flex flex-col justify-between">
           <div>
             <p className="font-display text-lg sm:text-xl font-extrabold uppercase tracking-tight text-[#23282A] leading-snug">
               “{currentPrompt.q}”
@@ -129,11 +128,12 @@ export default function LabPromptCard({ onSelectTool }) {
           {currentPrompt.toolHint && (
             <div className="mt-3">
               <button
+                type="button"
                 onClick={() => onSelectTool && onSelectTool(currentPrompt.toolTarget)}
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#17504A] hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#17504A] hover:underline py-1"
               >
                 <span>→ {currentPrompt.toolHint}</span>
-                <ExternalLink className="h-3 w-3" />
+                <ExternalLink className="h-3 w-3 shrink-0" />
               </button>
             </div>
           )}
@@ -150,41 +150,39 @@ export default function LabPromptCard({ onSelectTool }) {
           className="w-full bg-white border border-[#23282A]/20 p-2.5 text-xs text-[#23282A] focus:border-[#23282A] focus:outline-none font-sans"
         />
 
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={handlePrev}
-              disabled={historyIndex <= 0}
-              className="flex items-center gap-1 font-mono text-[11px] text-[#23282A]/70 uppercase tracking-wider hover:text-[#23282A] disabled:opacity-30 disabled:pointer-events-none py-1.5 px-2.5 border border-[#23282A]/20"
-            >
-              <ArrowLeft className="h-3 w-3" />
-              <span>Back</span>
-            </button>
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-between gap-2">
+          <button
+            type="button"
+            onClick={handlePrev}
+            disabled={historyIndex <= 0}
+            className="min-h-[38px] flex items-center justify-center gap-1 font-mono text-[11px] text-[#23282A]/75 uppercase tracking-wider hover:text-[#23282A] disabled:opacity-30 disabled:pointer-events-none py-1.5 px-2.5 border border-[#23282A]/20 bg-white"
+          >
+            <ArrowLeft className="h-3 w-3 shrink-0" />
+            <span>Back</span>
+          </button>
 
-            <button
-              type="button"
-              onClick={handleNext}
-              className="flex items-center gap-1.5 font-mono text-[11px] text-[#23282A] font-bold uppercase tracking-wider hover:bg-[#23282A] hover:text-[#EDE9E0] py-1.5 px-3 border border-[#23282A]/30 transition-colors"
-            >
-              <Shuffle className="h-3 w-3" />
-              <span>Next Prompt</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="min-h-[38px] flex items-center justify-center gap-1.5 font-mono text-[11px] text-[#23282A] font-bold uppercase tracking-wider hover:bg-[#23282A] hover:text-[#EDE9E0] py-1.5 px-3 border border-[#23282A]/30 bg-white transition-colors"
+          >
+            <Shuffle className="h-3 w-3 shrink-0" />
+            <span>Next Prompt</span>
+          </button>
 
           <button
             type="submit"
             disabled={!currentAnswer.trim()}
-            className="flex items-center gap-1.5 bg-[#23282A] text-[#EDE9E0] px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider font-bold hover:bg-[#D9A62E] hover:text-[#141617] disabled:opacity-40 transition-colors"
+            className="col-span-2 sm:col-span-1 min-h-[38px] flex items-center justify-center gap-1.5 bg-[#23282A] text-[#EDE9E0] px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider font-bold hover:bg-[#D9A62E] hover:text-[#141617] disabled:opacity-40 transition-colors"
           >
             {savedNotice ? (
               <>
-                <Check className="h-3 w-3" />
+                <Check className="h-3 w-3 shrink-0" />
                 <span>Saved to My Ideas</span>
               </>
             ) : (
               <>
-                <Bookmark className="h-3 w-3" />
+                <Bookmark className="h-3 w-3 shrink-0" />
                 <span>Save Note</span>
               </>
             )}

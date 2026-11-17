@@ -78,6 +78,18 @@ export default function SiteFooter() {
 
         <div className="flex flex-wrap items-center gap-3 sm:gap-4">
           <a
+            href="/services/quote-lead-systems/"
+            className="text-[11px] text-[#DFDACE]/65 hover:text-[#D9A62E] transition-colors"
+          >
+            Quote + Lead Systems
+          </a>
+          <a
+            href="/services/"
+            className="text-[11px] text-[#DFDACE]/50 hover:text-[#EDE9E0] transition-colors"
+          >
+            Services
+          </a>
+          <a
             href="/privacy/"
             className="text-[11px] text-[#DFDACE]/50 hover:text-[#EDE9E0] transition-colors"
           >

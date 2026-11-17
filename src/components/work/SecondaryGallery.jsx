@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   Search,
   X,
@@ -21,6 +20,8 @@ import {
   getTagSuggestedEntries,
 } from '@/data/contentRegistry';
 import { CONTROLLED_TAGS, TAG_BY_ID } from '@/data/taxonomy';
+import EditorialEvidenceFrame from '@/components/work/EditorialEvidenceFrame';
+import { PROJECT_EVIDENCE_PLATES } from '@/components/work/workData';
 
 const TYPE_TABS = [
   { id: 'all', label: 'All Entries' },
@@ -41,15 +42,27 @@ const FEATURED_FILTER_TAGS = [
   'cap:diagnostic-instrumentation',
 ];
 
+function getTypeBadgeStyle(contentType) {
+  switch (contentType) {
+    case 'client-project':
+      return 'border-[#D9A62E]/50 bg-[#D9A62E]/15 text-[#D9A62E] font-bold';
+    case 'software-product':
+    case 'interactive-tool':
+      return 'border-[#17504A] bg-[#17504A]/40 text-[#EDE9E0] font-bold';
+    default:
+      return 'border-[#DFDACE]/30 bg-[#23282A] text-[#EDE9E0]';
+  }
+}
+
 export default function SecondaryGallery({ onOpenCaseStudy }) {
-  const navigate = useNavigate();
   const { isProjectSaved, toggleSaveProject } = useBrief();
 
   const [query, setQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [tagFilter, setTagFilter] = useState('all');
-  const [expandedId, setExpandedId] = useState('lone-wolf-dumpsters');
+  const [expandedId, setExpandedId] = useState(null);
   const [showAllTags, setShowAllTags] = useState(false);
+  const [mobileTagTrayOpen, setMobileTagTrayOpen] = useState(false);
 
   const filteredEntries = useMemo(() => {
     return searchAndFilterRegistry({
@@ -64,7 +77,6 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
   };
 
   const handleJumpToRelated = (targetEntry) => {
-    // Ensure filters do not hide the target entry when jumping to it
     const isVisible = filteredEntries.some((e) => e.id === targetEntry.id);
     if (!isVisible) {
       setQuery('');
@@ -97,23 +109,23 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
     <section
       id="content-index"
       aria-labelledby="content-index-heading"
-      className="space-y-6 border-t border-[#DFDACE]/20 pt-12 font-sans"
+      className="space-y-6 border-t border-[#DFDACE]/20 pt-14 font-sans"
     >
       {/* Editorial Index Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-4">
         <div className="space-y-1.5 max-w-3xl">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-[#D9A62E] font-bold">
+          <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[#D9A62E] font-bold">
             <span className="inline-block h-2 w-2 bg-[#D9A62E]" />
-            <span>Unified Content Registry &amp; Relationship Index</span>
+            <span>04 / Unified Content Registry &amp; Relationship Index</span>
           </div>
-          <h3
+          <h2
             id="content-index-heading"
             className="font-display text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#EDE9E0]"
           >
             Complete Work, Product &amp; Research Index
-          </h3>
+          </h2>
           <p className="text-xs sm:text-sm text-[#DFDACE]/75 leading-relaxed">
-            A text-first directory of {PUBLIC_REGISTRY.length} public client systems, standalone software products, interactive instruments, R&amp;D experiments, and architectural studies. Select any row to inspect details, authentic previews, and connected work.
+            A structured directory of {PUBLIC_REGISTRY.length} public client systems, standalone software products, interactive instruments, R&amp;D experiments, and architectural studies. Select any row to inspect details, authentic 16:10 previews, and connected work.
           </p>
         </div>
 
@@ -124,7 +136,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
       </div>
 
       {/* Search & Focused Filter Console (Mobile-First) */}
-      <div className="bg-[#181B1D] border border-[#DFDACE]/15 p-4 sm:p-5 space-y-4">
+      <div className="bg-[#1B1F21] border border-[#DFDACE]/20 p-4 sm:p-5 space-y-4">
         {/* Search Input + Reset */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
           <div className="relative flex-1 min-w-0">
@@ -136,7 +148,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search projects, problems, capabilities, or aliases (e.g., quoting, POS, dHash, WCAG, Locomotive)..."
               aria-label="Search the content index"
-              className="w-full bg-[#121416] border border-[#DFDACE]/20 pl-9 pr-9 py-2.5 text-xs sm:text-sm text-[#EDE9E0] placeholder:text-[#DFDACE]/45 focus:border-[#D9A62E] focus:outline-none font-sans"
+              className="w-full bg-[#121517] border border-[#DFDACE]/20 pl-9 pr-9 py-2.5 text-xs sm:text-sm text-[#EDE9E0] placeholder:text-[#DFDACE]/45 focus:border-[#D9A62E] focus:outline-none font-sans"
             />
             {query && (
               <button
@@ -184,7 +196,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                   className={`min-h-[34px] px-3 py-1.5 font-mono text-xs uppercase tracking-wider border transition-colors ${
                     active
                       ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
-                      : 'border-[#DFDACE]/15 bg-[#121416] text-[#DFDACE]/75 hover:border-[#DFDACE]/35 hover:text-[#EDE9E0]'
+                      : 'border-[#DFDACE]/15 bg-[#121517] text-[#DFDACE]/75 hover:border-[#DFDACE]/35 hover:text-[#EDE9E0]'
                   }`}
                 >
                   {tab.label}
@@ -194,16 +206,29 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
           </div>
         </div>
 
-        {/* Controlled Vocabulary Tag Filter Row */}
-        <div className="space-y-1.5 pt-1 border-t border-[#DFDACE]/10">
+        {/* Controlled Vocabulary Tag Filter Row (Collapsible on Mobile, Always Visible on sm+) */}
+        <div className="space-y-2 pt-1.5 border-t border-[#DFDACE]/10">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#DFDACE]/55 flex items-center gap-1.5">
-              <Tag className="h-3 w-3 text-[#D9A62E]" />
-              <span>Filter by Problem, Capability &amp; Domain:</span>
-            </span>
             <button
               type="button"
-              onClick={() => setShowAllTags((prev) => !prev)}
+              onClick={() => setMobileTagTrayOpen((prev) => !prev)}
+              className="sm:pointer-events-none font-mono text-[10px] uppercase tracking-[0.14em] text-[#DFDACE]/70 flex items-center gap-1.5"
+            >
+              <Tag className="h-3 w-3 text-[#D9A62E]" />
+              <span>
+                Filter by Problem, Capability &amp; Domain
+                {tagFilter !== 'all' ? ` (${TAG_BY_ID[tagFilter]?.label || tagFilter})` : ''}
+              </span>
+              <span className="sm:hidden text-[#D9A62E] font-bold ml-1">
+                {mobileTagTrayOpen || tagFilter !== 'all' ? '[Hide]' : '[Show Tags]'}
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileTagTrayOpen(true);
+                setShowAllTags((prev) => !prev);
+              }}
               className="font-mono text-[10.5px] text-[#D9A62E] hover:underline"
             >
               {showAllTags
@@ -215,7 +240,9 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
           <div
             role="group"
             aria-label="Filter by controlled tag"
-            className="flex flex-wrap items-center gap-1.5"
+            className={`${
+              mobileTagTrayOpen || tagFilter !== 'all' ? 'flex' : 'hidden sm:flex'
+            } flex-wrap items-center gap-1.5`}
           >
             <button
               type="button"
@@ -224,7 +251,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
               className={`min-h-[32px] px-2.5 py-1 font-mono text-[11px] border transition-colors ${
                 tagFilter === 'all'
                   ? 'border-[#17504A] bg-[#17504A] text-[#EDE9E0] font-bold'
-                  : 'border-[#DFDACE]/15 bg-[#121416] text-[#DFDACE]/70 hover:text-[#EDE9E0]'
+                  : 'border-[#DFDACE]/15 bg-[#121517] text-[#DFDACE]/70 hover:text-[#EDE9E0]'
               }`}
             >
               All Topics
@@ -240,7 +267,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                   className={`min-h-[32px] px-2.5 py-1 font-mono text-[11px] border transition-colors ${
                     active
                       ? 'border-[#D9A62E] bg-[#17504A] text-[#EDE9E0] font-bold'
-                      : 'border-[#DFDACE]/15 bg-[#121416] text-[#DFDACE]/75 hover:border-[#DFDACE]/35 hover:text-[#EDE9E0]'
+                      : 'border-[#DFDACE]/15 bg-[#121517] text-[#DFDACE]/75 hover:border-[#DFDACE]/35 hover:text-[#EDE9E0]'
                   }`}
                 >
                   {tag.label}
@@ -254,7 +281,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
       {/* Text-First Editorial Index List */}
       <div
         data-testid="editorial-index-list"
-        className="border-t border-b border-[#DFDACE]/20 divide-y divide-[#DFDACE]/15 bg-[#16191B]"
+        className="border border-[#DFDACE]/20 divide-y divide-[#DFDACE]/15 bg-[#16191B]"
       >
         {filteredEntries.length === 0 ? (
           <div className="p-8 text-center space-y-3">
@@ -284,12 +311,12 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                 data-entry-visibility={entry.visibility}
                 className="transition-colors"
               >
-                {/* Summary Row (Text-First, Mobile-First, Zero Thumbnail Clutter) */}
+                {/* Summary Row */}
                 <button
                   type="button"
                   onClick={() => handleToggleRow(entry.id)}
                   aria-expanded={isExpanded}
-                  className={`w-full text-left px-4 py-4 sm:px-6 sm:py-4.5 transition-colors flex flex-col lg:flex-row lg:items-center justify-between gap-3 ${
+                  className={`w-full text-left px-4 py-4 sm:px-6 sm:py-4 transition-colors flex flex-col lg:flex-row lg:items-center justify-between gap-3 ${
                     isExpanded
                       ? 'bg-[#1D2225] border-l-4 border-l-[#D9A62E]'
                       : 'hover:bg-[#1B1F22]'
@@ -302,9 +329,9 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                     </span>
                     <div className="min-w-0 flex-1 space-y-1">
                       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <h4 className="font-display text-base sm:text-lg font-extrabold uppercase tracking-tight text-[#EDE9E0]">
+                        <h3 className="font-display text-base sm:text-lg font-extrabold uppercase tracking-tight text-[#EDE9E0]">
                           {entry.title}
-                        </h4>
+                        </h3>
                         <span className="font-mono text-[11px] text-[#DFDACE]/60">
                           {entry.subtitle}
                         </span>
@@ -318,10 +345,14 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                   {/* Right: Minimal Metadata Strip + Expand Control */}
                   <div className="flex flex-wrap items-center justify-between lg:justify-end gap-2 pl-6 lg:pl-4 shrink-0 font-mono text-[11px]">
                     <div className="flex flex-wrap items-center gap-1.5">
-                      <span className="border border-[#DFDACE]/20 bg-[#23282A] px-2 py-0.5 text-[#EDE9E0] uppercase">
+                      <span
+                        className={`border px-2 py-0.5 uppercase ${getTypeBadgeStyle(
+                          entry.contentType
+                        )}`}
+                      >
                         {entry.contentTypeMeta?.shortLabel}
                       </span>
-                      <span className="border border-[#17504A]/60 bg-[#17504A]/30 px-2 py-0.5 text-[#DFDACE]/90 uppercase">
+                      <span className="border border-[#DFDACE]/20 bg-[#141719] px-2 py-0.5 text-[#DFDACE]/85 uppercase">
                         {entry.maturityStatusMeta?.label}
                       </span>
                       {entry.year && (
@@ -418,7 +449,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                             <button
                               type="button"
                               onClick={() => onOpenCaseStudy(entry.id)}
-                              className="inline-flex items-center gap-1.5 bg-[#D9A62E] text-[#141617] px-4 py-2.5 font-bold uppercase tracking-wider hover:bg-[#e0b240] transition-colors"
+                              className="inline-flex items-center gap-1.5 bg-[#D9A62E] text-[#141617] px-4 py-2.5 font-bold uppercase tracking-wider hover:bg-[#EDE9E0] transition-colors"
                             >
                               <span>Open Case Dossier</span>
                               <ArrowRight className="h-3.5 w-3.5" />
@@ -483,25 +514,20 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                         </div>
                       </div>
 
-                      {/* Right Column: Authentic Preview inside Neutral Presentation Frame */}
+                      {/* Right Column: Standardized Editorial Evidence Frame */}
                       {entry.mediaUrl && (
                         <div className="lg:col-span-5">
-                          <figure className="bg-[#181B1D] border border-[#DFDACE]/15 p-3 space-y-2">
-                            <div className="overflow-hidden border border-[#DFDACE]/15 bg-[#0A0C0D] aspect-[4/3]">
-                              <img
-                                src={entry.mediaUrl}
-                                alt={`${entry.title} authentic preview`}
-                                className="w-full h-full object-cover object-top"
-                                loading="lazy"
-                              />
-                            </div>
-                            <figcaption className="flex items-center justify-between font-mono text-[10.5px] text-[#DFDACE]/65 px-0.5">
-                              <span>Authentic System / Artifact Preview</span>
-                              <span className="text-[#D9A62E]">
-                                {entry.contentTypeMeta?.shortLabel}
-                              </span>
-                            </figcaption>
-                          </figure>
+                          <EditorialEvidenceFrame
+                            src={entry.mediaUrl}
+                            alt={`${entry.title} authentic preview`}
+                            title={entry.title}
+                            plates={PROJECT_EVIDENCE_PLATES[entry.id] || null}
+                            variant="compact"
+                            accentColor={
+                              entry.contentType === 'client-project' ? '#D9A62E' : '#17504A'
+                            }
+                            liveUrl={entry.liveDestination}
+                          />
                         </div>
                       )}
                     </div>
@@ -551,7 +577,7 @@ export default function SecondaryGallery({ onOpenCaseStudy }) {
                           )}
                         </div>
 
-                        {/* 2. Automated Tag-Based Suggestions (Clearly Distinguished) */}
+                        {/* 2. Automated Tag-Based Suggestions */}
                         <div
                           data-testid={`suggested-relations-${entry.id}`}
                           className="space-y-2.5"

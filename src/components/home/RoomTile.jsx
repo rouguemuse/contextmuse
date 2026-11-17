@@ -140,10 +140,10 @@ export default function RoomTile({ room, index, onPick }) {
       onKeyDown={handleKeyDown}
       style={{ backgroundColor: room.color, color: room.text }}
       aria-label={`Enter Room ${room.num}: ${room.title} (${room.verb})`}
-      className="group relative flex flex-col justify-between p-5 sm:p-7 xl:p-[clamp(1.75rem,2.4vw,3.25rem)] text-left no-underline transition-all duration-300 hover:brightness-105 active:scale-[0.99] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#D9A62E] focus:z-10 min-h-[200px] sm:min-h-[240px] xl:min-h-[290px] h-full"
+      className="group relative flex flex-col justify-between p-4 sm:p-7 xl:p-[clamp(1.75rem,2.4vw,3.25rem)] text-left no-underline transition-all duration-300 hover:brightness-105 active:scale-[0.99] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#D9A62E] focus:z-10 min-h-[148px] sm:min-h-[240px] xl:min-h-[290px] h-full"
     >
       {/* Top Header Row */}
-      <div className="flex items-center justify-between border-b border-current/15 pb-2.5 2xl:pb-3.5">
+      <div className="flex items-center justify-between border-b border-current/15 pb-2 sm:pb-2.5 2xl:pb-3.5">
         <div className="flex items-center gap-2 font-mono text-xs 2xl:text-[clamp(0.75rem,0.45vw+0.42rem,0.95rem)] uppercase tracking-wider font-bold opacity-85">
           <span>{room.num}</span>
           <span>/</span>
@@ -153,22 +153,22 @@ export default function RoomTile({ room, index, onPick }) {
       </div>
 
       {/* Center: Title, Blurb & Restrained Visual Motif */}
-      <div className="flex-1 flex flex-col justify-between py-4 sm:py-5 2xl:py-7">
+      <div className="flex-1 flex flex-col justify-between py-2.5 sm:py-5 2xl:py-7">
         <div className="my-auto">
-          <h3 className="font-display text-2xl sm:text-[26px] xl:text-[clamp(1.7rem,1.45vw+0.45rem,2.85rem)] font-black uppercase tracking-tight leading-[1.03] transition-transform duration-300 group-hover:-translate-y-0.5">
+          <h3 className="font-display text-xl sm:text-[26px] xl:text-[clamp(1.7rem,1.45vw+0.45rem,2.85rem)] font-black uppercase tracking-tight leading-[1.03] transition-transform duration-300 group-hover:-translate-y-0.5">
             {room.title}
           </h3>
-          <p className="mt-2 sm:mt-2.5 2xl:mt-3.5 max-w-[36rem] text-xs sm:text-[13px] xl:text-[clamp(0.82rem,0.48vw+0.45rem,1.1rem)] opacity-90 font-sans leading-relaxed">
+          <p className="mt-1.5 sm:mt-2.5 2xl:mt-3.5 max-w-[36rem] text-xs sm:text-[13px] xl:text-[clamp(0.82rem,0.48vw+0.45rem,1.1rem)] opacity-90 font-sans leading-relaxed">
             {room.blurb}
           </p>
         </div>
-        <div className="mt-4 pt-2 2xl:mt-6">
+        <div className="hidden sm:block mt-4 pt-2 2xl:mt-6">
           {renderVisualMotif()}
         </div>
       </div>
 
       {/* Bottom Navigation Cue */}
-      <div className="flex items-center justify-between border-t border-current/15 pt-2.5 2xl:pt-3.5 font-mono text-[11px] 2xl:text-[clamp(0.72rem,0.42vw+0.4rem,0.9rem)] opacity-85 group-hover:opacity-100 font-bold uppercase tracking-wider">
+      <div className="flex items-center justify-between border-t border-current/15 pt-2 sm:pt-2.5 2xl:pt-3.5 font-mono text-[10.5px] sm:text-[11px] 2xl:text-[clamp(0.72rem,0.42vw+0.4rem,0.9rem)] opacity-85 group-hover:opacity-100 font-bold uppercase tracking-wider">
         <span>{getCue()}</span>
         <span className="transition-transform group-hover:translate-x-1">→</span>
       </div>

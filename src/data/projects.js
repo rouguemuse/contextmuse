@@ -18,8 +18,8 @@ export const PROJECTS = [
     tier: 'featured',
     evidenceType: 'screenshot',
     liveUrl: 'https://lonewolf-dumpsters.vercel.app/',
-    mediaUrl: '/assets/images/lonewolf-screenshot.webp',
-    coverImage: '/assets/images/lonewolf-cover.webp',
+    mediaUrl: '/assets/captures/wolfridge-live.jpg',
+    coverImage: '/assets/captures/wolfridge-live.jpg',
     coverStyle: 'charcoal',
     coverColor: '#23282A',
     coverTextColor: '#EDE9E0',
@@ -119,7 +119,7 @@ export const PROJECTS = [
     tier: 'featured',
     evidenceType: 'screenshot',
     liveUrl: 'https://inncontrolcoils.com',
-    mediaUrl: '/assets/images/inncontrol-commercial-platform.webp',
+    mediaUrl: '/assets/captures/inncontrol-live.jpg',
     coverStyle: 'teal',
     coverColor: '#17504A',
     coverTextColor: '#EDE9E0',
@@ -220,7 +220,7 @@ export const PROJECTS = [
     statusBadge: 'Working Local-First Application',
     evidenceType: 'screenshot',
     liveUrl: '/cxm_gensort/index.html',
-    mediaUrl: '/assets/images/gensort-library.webp',
+    mediaUrl: '/assets/captures/gensort-live.jpg',
     coverStyle: 'charcoal',
     coverColor: '#23282A',
     coverTextColor: '#EDE9E0',
@@ -420,6 +420,8 @@ export const PROJECTS = [
     id: 'edr-party-rentals',
     tier: 'featured',
     evidenceType: 'interactive-demo',
+    liveUrl: '/case-studies/edr-party-rentals/',
+    mediaUrl: '/assets/captures/edr-live.jpg',
     coverStyle: 'mustard',
     coverColor: '#D9A62E',
     coverTextColor: '#23282A',
@@ -856,6 +858,7 @@ export const PROJECTS = [
     tier: 'demonstration',
     evidenceType: 'case-study',
     liveUrl: '/website-system-check/',
+    mediaUrl: '/assets/images/website-audit-hero.webp',
     coverStyle: 'charcoal',
     coverColor: '#23282A',
     coverTextColor: '#EDE9E0',
@@ -936,7 +939,7 @@ export const PROJECTS = [
     evidenceType: 'interactive-demo',
     liveUrl: '/signal/demo/',
     productUrl: '/signal/',
-    mediaUrl: '/assets/images/signal-social-preview.jpg',
+    mediaUrl: '/assets/images/signal-priority-view.webp',
     coverStyle: 'charcoal',
     coverColor: '#23282A',
     coverTextColor: '#EDE9E0',
@@ -1194,6 +1197,102 @@ export const PROJECTS = [
       technologies: ['JavaScript', 'GitHub Actions', 'Automated Crawling', 'Local-First'],
     },
   },
+
+  // 14: D2 AUTO DETAIL — DETAIL DRIVEN
+  {
+    id: 'd2-auto-detail',
+    tier: 'featured',
+    evidenceType: 'screenshot',
+    liveUrl: 'https://www.d2autodetail.com',
+    productUrl: 'https://www.d2autodetail.com/admin.html',
+    mediaUrl: '/assets/captures/d2-public-live.jpg',
+    coverImage: '/assets/captures/d2-public-live.jpg',
+    coverStyle: 'charcoal',
+    coverColor: '#23282A',
+    coverTextColor: '#EDE9E0',
+    illustrationType: 'interactive-demo',
+    title: 'D2 Auto Detail — Detail Driven',
+    subtitle: 'Precision Automotive Detailing Platform, Condition Quote Intake & Business Portal',
+    year: '2025–2026',
+    sector: 'Automotive paint correction, ceramic coatings & PPF (Austin, TX)',
+    role: 'Commercial Web Platform, Condition-Based Quote Intake, Internal Business & Ad Portal',
+    plainSentence:
+      'Pairs a high-contrast Austin automotive detailing and quote-intake website with an internal Business Portal for CMS updates, order tracking, invoicing, and social ad generation.',
+    summary:
+      'Built for Detail Driven (Austin, TX) to replace generic booking forms with a precision paint correction, ceramic coating, and PPF acquisition platform—paired with a custom D2 Business Portal containing CMS Studio, Order Center, Invoice Builder, and an in-browser Social Media Ad Creator.',
+    originalBrand: {
+      name: 'Detail Driven Obsidian & Racing Red',
+      primary: '#0A0A0A',
+      accent: '#E10600',
+      surface: '#161616',
+      text: '#FFFFFF',
+    },
+    overview: {
+      needed:
+        'High-ticket paint correction, ceramic coating, and PPF jobs require vehicle size and paint condition context before quoting, plus a fast way for the studio owner to manage orders, generate invoices, and publish social graphics without separate design software.',
+      built:
+        'The public acquisition platform at d2autodetail.com with vehicle-tiered pricing and quote intake that syncs directly into the custom D2 Business Portal (CMS Studio, Order Center, Invoice & Receipt Builder, and Social Ad Creator).',
+      enables:
+        'Austin vehicle owners request accurate quotes by vehicle class and service package, while the studio manages active leads, prints itemized invoices, and exports branded 1:1 and 9:16 social ads in one portal.',
+    },
+    tangibleOutput: {
+      title: 'Order Center Lead Record, Itemized Invoice & Branded Social Ad PNG',
+      description:
+        'Synchronizes public quote inquiries into the Order Center, populates one-click print-ready invoices/receipts, and exports 2x resolution social media graphics.',
+      previewText:
+        'Order #D2-1001 · 2022 BMW M4 Competition · Multi-Stage Paint Correction + 5-Yr Ceramic Shield ($1,648) · Status: Paid · Invoice & Ad Portal Ready',
+    },
+    howItsBuilt: {
+      requirements: [
+        'Public site must reflect concours-level automotive craft while capturing vehicle year/make/model and service tier upfront.',
+        'Internal Business Portal must allow zero-code updates to service pricing, blog articles, and DD TV YouTube episodes.',
+        'Order Center must convert active customer estimates into printable invoices/receipts with automatic tax calculation in one click.',
+      ],
+      flowDiagram: {
+        steps: [
+          { from: 'Public Acquisition', label: 'Vehicle owner explores Paint Correction, Ceramic Coating, and PPF packages on d2autodetail.com' },
+          { from: 'Quote Intake', label: 'Submits vehicle details and desired protection package into the Order Center' },
+          { from: 'Order & Billing', label: 'Operator reviews lead in D2 Business Portal and generates an itemized Invoice or Receipt PDF' },
+          { from: 'CMS & Ad Studio', label: 'Publishes DD TV episodes, service updates, and branded social promotions directly from the browser' },
+        ],
+      },
+      keyDecisions: [
+        {
+          decision: 'Unified Public Website + Operator Business Portal',
+          rationale:
+            'Connecting the public quote form directly to the Order Center and Invoice Builder eliminates re-typing customer and vehicle details.',
+        },
+        {
+          decision: 'Built-In Social Ad & Copy Generator',
+          rationale:
+            'Gives the shop owner instant 1:1 Square and 9:16 Story ad templates with curated detailing copy and controlled backdrop blur/scrim.',
+        },
+      ],
+      limitations:
+        'Designed as a fast, low-overhead single-studio operational portal rather than a multi-franchise enterprise ERP.',
+      groupedTech: [
+        { group: 'Public Platform', items: ['React 19 + TypeScript acquisition platform (d2autodetail.com)', 'DD TV video showcase & educational blog desk'] },
+        { group: 'Business Portal', items: ['CMS Studio for services, pricing tiers, and video episodes', 'Order Center + One-Click Invoice & Receipt PDF Builder', 'Interactive Social Media Ad Creator with PNG export'] },
+      ],
+    },
+    implementationTable: [
+      { tool: 'Public acquisition & quote platform (d2autodetail.com)', enables: 'Captures vehicle class, paint condition, and package selection upfront' },
+      { tool: 'Order Center & Invoice Builder', enables: 'Turns inbound estimates into itemized client invoices and receipts in one click' },
+      { tool: 'CMS Studio & Social Ad Creator', enables: 'Lets the operator update services, DD TV videos, and social graphics without outside agencies' },
+    ],
+    artifacts: [
+      'Public Acquisition Platform (d2autodetail.com)',
+      'D2 Business Portal: CMS Studio & Order Center',
+      'One-Click Invoice & Receipt PDF Builder',
+      'In-Browser Social Media Ad Creator',
+    ],
+    tags: {
+      visitorNeeds: ['Lead Intake', 'Internal Tools', 'Operator Dashboard', 'Quote Calculator'],
+      capabilities: ['Intake Routing', 'Quote Calculator', 'Workflow Engine'],
+      evidenceTypes: ['Live Website', 'Production Screenshot', 'Internal Tooling'],
+      technologies: ['React', 'TypeScript', 'HTML5 Canvas', 'Local-First CMS'],
+    },
+  },
 ];
 
 const PROJECT_ID_ALIASES = {
@@ -1202,6 +1301,8 @@ const PROJECT_ID_ALIASES = {
   'contest-atlas': 'wcsm',
   'lone-wolf': 'lone-wolf-dumpsters',
   inncontrol: 'inncontrol-coils',
+  'd2-design': 'd2-auto-detail',
+  d2: 'd2-auto-detail',
 };
 
 export const getProjectById = (id) => {

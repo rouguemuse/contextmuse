@@ -25,9 +25,6 @@ import {
   Search,
 } from 'lucide-react';
 import { useBrief } from '@/lib/BriefContext';
-import SiteHeader from '@/components/site/SiteHeader';
-import SiteFooter from '@/components/site/SiteFooter';
-import PageAnnotationOverlay from '@/components/site/PageAnnotationOverlay';
 import DesignSystemSpecimen from '@/components/lab/DesignSystemSpecimen';
 import {
   DESIGN_INTELLIGENCE_STUDIES,
@@ -382,9 +379,6 @@ export default function DesignIntelligenceCaseStudy() {
       '/assets/images/design-intelligence/exp01_before_mobile.png',
       '/assets/images/design-intelligence/exp01_after_mobile.png',
       '/assets/images/design-intelligence/exp01_after_desktop_hover_build.png',
-      '/assets/images/design-intelligence/cs_4x3_exp01_before_desktop.png',
-      '/assets/images/design-intelligence/cs_4x3_exp01_after_desktop.png',
-      '/assets/images/design-intelligence/cs_4x3_exp01_mobile_comparison.png',
       ...DESIGN_INTELLIGENCE_STUDIES.flatMap((s) => [
         s.referenceCaptures.desktop,
         s.referenceCaptures.mobile,
@@ -573,11 +567,7 @@ export default function DesignIntelligenceCaseStudy() {
       : sliderPercent;
 
   return (
-    <div className="min-h-screen flex flex-col w-full max-w-full overflow-x-hidden bg-[#EDE9E0] text-[#23282A] selection:bg-[#D9A62E] selection:text-[#141617]">
-      <SiteHeader />
-      <PageAnnotationOverlay />
-
-      <main className="flex-1">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#EDE9E0] text-[#23282A] selection:bg-[#D9A62E] selection:text-[#141617]">
       {/* =====================================================================
           EDITORIAL HERO BANNER — WORKING TITLE, OPENING THESIS & METRIC STRIP
           ===================================================================== */}
@@ -923,14 +913,23 @@ export default function DesignIntelligenceCaseStudy() {
                     ))}
                   </div>
 
-                  {/* Inferred Structural Pattern (Class C) & Adaptation (Class D) */}
-                  <div
+                  {/* Inferred Structural Pattern (Class C) & Adaptation (Class D) — Progressive Disclosure */}
+                  <details
                     style={{ borderColor: card.cardBorder }}
-                    className="mt-4 pt-3 border-t space-y-2 text-xs font-sans leading-relaxed"
+                    className="mt-4 pt-3 border-t text-xs font-sans leading-relaxed group"
                   >
-                    <p style={{ color: card.cardMuted }}>{card.inferredPattern}</p>
-                    <p style={{ color: card.cardMuted }}>{card.adaptationSummary}</p>
-                  </div>
+                    <summary
+                      style={{ color: card.cardMuted }}
+                      className="cursor-pointer font-mono text-[10px] uppercase tracking-[0.14em] font-bold select-none flex items-center justify-between"
+                    >
+                      <span>Inferred Pattern &amp; Specimen Notes (Class C / D)</span>
+                      <span className="group-open:rotate-180 transition-transform">▾</span>
+                    </summary>
+                    <div className="mt-2.5 space-y-2">
+                      <p style={{ color: card.cardMuted }}>{card.inferredPattern}</p>
+                      <p style={{ color: card.cardMuted }}>{card.adaptationSummary}</p>
+                    </div>
+                  </details>
                 </div>
 
                 {/* Bottom Pillar Footer & Load in Specimen Action */}
@@ -1402,9 +1401,12 @@ export default function DesignIntelligenceCaseStudy() {
           </a>
         </div>
 
-        {/* Cross-System Architectural Synthesis Matrix */}
-        <div className="mb-10 bg-[#FAF8F5] border border-[#23282A]/20 p-5 sm:p-6">
-          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-[#23282A]/15">
+        {/* Cross-System Architectural Synthesis Matrix (Progressive Disclosure on Mobile, Open on Desktop) */}
+        <details
+          open
+          className="mb-10 bg-[#FAF8F5] border border-[#23282A]/20 p-5 sm:p-6 group"
+        >
+          <summary className="cursor-pointer list-none flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#23282A]/15">
             <div>
               <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9A6F0B] font-bold block">
                 SYNTHESIS ACROSS ALL SYSTEMS
@@ -1413,12 +1415,15 @@ export default function DesignIntelligenceCaseStudy() {
                 Cross-System Architectural Comparison Matrix
               </h2>
             </div>
-            <span className="font-mono text-[11px] text-[#23282A]/65">
-              Measured at 1440×900 &amp; 390×844 (@ 2x DPR)
-            </span>
-          </div>
+            <div className="flex items-center gap-3 font-mono text-[11px] text-[#23282A]/65">
+              <span>Measured at 1440×900 &amp; 390×844 (@ 2x DPR)</span>
+              <span className="px-2 py-0.5 border border-[#23282A]/20 bg-[#EDE9E0] text-[#23282A] font-bold">
+                Toggle Table ▾
+              </span>
+            </div>
+          </summary>
 
-          <div className="overflow-x-auto">
+          <div className="mt-4 overflow-x-auto">
             <table className="w-full text-left border-collapse font-sans text-xs">
               <thead>
                 <tr className="border-b-2 border-[#23282A] font-mono text-[10px] uppercase tracking-wider text-[#23282A]/75 bg-[#EDE9E0]/60">
@@ -1452,7 +1457,7 @@ export default function DesignIntelligenceCaseStudy() {
               </tbody>
             </table>
           </div>
-        </div>
+        </details>
 
         {/* Active Study Switcher Pills inside Section 04 */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -1510,9 +1515,12 @@ export default function DesignIntelligenceCaseStudy() {
           ))}
         </div>
 
-        {/* 2. Evidence Classification Legend + Token Breakdown Table */}
-        <div className="bg-[#FAF8F5] border border-[#23282A]/20 p-5 sm:p-6 mb-8">
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-[#23282A]/15">
+        {/* 2. Evidence Classification Legend + Token Breakdown Table (Progressive Disclosure) */}
+        <details
+          open
+          className="bg-[#FAF8F5] border border-[#23282A]/20 p-5 sm:p-6 mb-8 group"
+        >
+          <summary className="cursor-pointer list-none flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#23282A]/15">
             <div>
               <h4 className="font-display text-base sm:text-lg font-black uppercase tracking-tight text-[#23282A]">
                 Extracted Token &amp; Rule Classification ({activeStudy.shortName})
@@ -1535,10 +1543,13 @@ export default function DesignIntelligenceCaseStudy() {
               <span className={`px-2 py-0.5 border font-bold ${CLASSIFICATION_BADGE_STYLES.D}`}>
                 Class D · Deliberate Adaptation
               </span>
+              <span className="px-2 py-0.5 border border-[#23282A]/20 bg-[#EDE9E0] text-[#23282A] font-bold">
+                Toggle Selectors ▾
+              </span>
             </div>
-          </div>
+          </summary>
 
-          <div className="overflow-x-auto">
+          <div className="mt-4 overflow-x-auto">
             <table className="w-full text-left border-collapse font-sans text-xs">
               <thead>
                 <tr className="border-b-2 border-[#23282A] font-mono text-[10px] uppercase tracking-wider text-[#23282A]/70">
@@ -1602,7 +1613,7 @@ export default function DesignIntelligenceCaseStudy() {
               </ul>
             </div>
           )}
-        </div>
+        </details>
 
         {/* 3. Live Rendered Color Swatches & WCAG 2.1 Contrast Verification */}
         <div className="mb-8">
@@ -2282,13 +2293,13 @@ export default function DesignIntelligenceCaseStudy() {
             </div>
 
             <div className="mt-6 pt-4 border-t border-[#23282A]/15 flex flex-wrap items-center gap-3">
-              <a
-                href="/website-system-check/"
+              <Link
+                to="/website-system-check/"
                 className="inline-flex items-center gap-2 bg-[#23282A] text-[#EDE9E0] px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
               >
                 <Search className="h-3.5 w-3.5" />
                 <span>Launch Live Website Audit</span>
-              </a>
+              </Link>
               <Link
                 to="/work?case=website-audit-system"
                 className="inline-flex items-center gap-2 bg-transparent text-[#23282A] border border-[#23282A]/35 px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider hover:border-[#23282A] transition-colors"
@@ -2446,8 +2457,6 @@ export default function DesignIntelligenceCaseStudy() {
           </div>
         </div>
       )}
-      </main>
-      <SiteFooter />
     </div>
   );
 }

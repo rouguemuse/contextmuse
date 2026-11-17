@@ -136,7 +136,7 @@ export default function SiteHeader() {
               <div
                 role="menu"
                 aria-label="Four Rooms switcher"
-                className="absolute right-0 mt-2 w-[300px] sm:w-[340px] border border-[#DFDACE]/25 bg-[#1B1F21] p-2.5 shadow-2xl z-50"
+                className="fixed left-2.5 right-2.5 top-[48px] sm:Contain-none sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 sm:w-[340px] border border-[#DFDACE]/25 bg-[#1B1F21] p-2.5 shadow-2xl z-50"
               >
                 <div className="mb-2 flex items-center justify-between px-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#DFDACE]/60">
                   <span>Select Working Room</span>

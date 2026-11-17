@@ -33,13 +33,18 @@ import {
   GenSortWorkflowIllustration,
   InncontrolOpsIllustration,
 } from '@/components/work/FunctionalIllustrations';
+import EditorialEvidenceFrame from '@/components/work/EditorialEvidenceFrame';
+import {
+  PROJECT_EVIDENCE_PLATES,
+  getWorkMediaProfile,
+} from '@/components/work/workData';
 
 export default function ProofViewer({ item, onClose, onSelectRelated }) {
   const { isProjectSaved, toggleSaveProject, openBrief } = useBrief();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'how-its-built'
   const [demoMode, setDemoMode] = useState(false);
-  const [expandedTech, setExpandedTech] = useState(false);
+  const [showUncroppedInline, setShowUncroppedInline] = useState(false);
 
   // Lock body scroll and listen for Escape key
   useEffect(() => {
@@ -212,13 +217,13 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
           className="min-h-full flex flex-col justify-between"
         >
           {/* Top Sticky Bar */}
-          <header className="sticky top-0 z-30 flex items-center justify-between gap-3 border-b border-[#DFDACE]/15 bg-[#141617]/95 backdrop-blur-lg px-4 py-3 sm:px-8">
-            <div className="flex items-center gap-3 truncate">
-              <span className="font-mono text-xs text-[#D9A62E] font-bold shrink-0">
+          <header className="sticky top-0 z-30 flex items-center justify-between gap-2 sm:gap-3 border-b border-[#DFDACE]/15 bg-[#141617]/95 backdrop-blur-lg px-3 py-2.5 sm:px-8 sm:py-3">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0 truncate">
+              <span className="hidden sm:inline font-mono text-xs text-[#D9A62E] font-bold shrink-0">
                 CASE DOSSIER
               </span>
-              <span className="text-[#DFDACE]/40">•</span>
-              <h2 className="font-mono text-xs font-bold text-[#EDE9E0] uppercase truncate">
+              <span className="hidden sm:inline text-[#DFDACE]/40">•</span>
+              <h2 className="font-mono text-[11px] sm:text-xs font-bold text-[#EDE9E0] uppercase truncate">
                 {item.title}
               </h2>
               <span className="hidden md:inline font-mono text-xs text-[#DFDACE]/50 truncate">
@@ -226,19 +231,21 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
               </span>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               <button
                 onClick={handleNeedSomethingLikeThis}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-wider rounded bg-[#D9A62E] text-[#141617] hover:bg-[#e0b240] transition-colors shadow-sm"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider bg-[#D9A62E] text-[#141617] hover:bg-[#EDE9E0] transition-colors"
               >
-                <span>Tell me what you need</span>
+                <span className="sm:hidden">Inquire</span>
+                <span className="hidden sm:inline">Tell me what you need</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
 
               <button
                 onClick={() => toggleSaveProject(item)}
                 title={saved ? 'Remove from My Ideas' : 'Save to My Ideas'}
-                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded border transition-colors ${
+                aria-label={saved ? 'Remove from My Ideas' : 'Save to My Ideas'}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 text-xs font-mono uppercase tracking-wider border transition-colors ${
                   saved
                     ? 'border-[#D9A62E] bg-[#D9A62E]/20 text-[#D9A62E] font-bold'
                     : 'border-[#DFDACE]/30 text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E]'
@@ -251,7 +258,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
               <button
                 onClick={onClose}
                 aria-label="Close dossier"
-                className="flex items-center gap-1 border border-[#DFDACE]/25 px-2.5 py-1.5 text-xs font-mono text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E] transition-colors rounded"
+                className="flex items-center gap-1 border border-[#DFDACE]/25 px-2 py-1.5 sm:px-2.5 text-[11px] sm:text-xs font-mono text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E] transition-colors"
               >
                 <span>Close</span>
                 <X className="h-3.5 w-3.5" />
@@ -260,15 +267,15 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
           </header>
 
           {/* Dossier Content Body */}
-          <main className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-8 sm:py-10 space-y-8 flex-1">
-            {/* Title & Metadata Strip */}
+          <main className="mx-auto w-full max-w-5xl px-4 py-6 sm:px-8 sm:py-10 space-y-6 sm:space-y-8 flex-1">
+            {/* Title, Metadata & Primary Story Lead */}
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="rounded bg-[#17504A] text-[#EDE9E0] px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider">
+                <span className="bg-[#17504A] text-[#EDE9E0] border border-[#EDE9E0]/20 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider">
                   {item.tier === 'featured' ? '★ Verified System' : 'Demonstration & Creative Practice'}
                 </span>
                 {item.availableForAcquisition && (
-                  <span className="rounded border border-[#D9A62E]/50 bg-[#D9A62E]/15 text-[#D9A62E] px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider">
+                  <span className="border border-[#D9A62E]/50 bg-[#D9A62E]/15 text-[#D9A62E] px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider">
                     Available for acquisition
                   </span>
                 )}
@@ -294,6 +301,11 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
               <p className="mt-1 font-mono text-sm sm:text-base text-[#D9A62E]">
                 {item.subtitle}
               </p>
+              {item.plainSentence && (
+                <p className="mt-3 max-w-3xl font-sans text-sm sm:text-base text-[#EDE9E0]/90 leading-relaxed border-l-2 border-[#D9A62E] pl-3.5">
+                  {item.plainSentence}
+                </p>
+              )}
             </div>
 
             {/* Navigation Tabs: Product Walkthrough vs Technical Architecture */}
@@ -332,8 +344,8 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
             {/* TAB 1: PRODUCT WALKTHROUGH */}
             {activeTab === 'overview' && (
               <div className="space-y-8">
-                {/* 1. Interface Bezel */}
-                <div className="space-y-2.5">
+                {/* 1. Authentic Evidence & Capability Bezel */}
+                <div className="space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold flex items-center gap-1.5">
                       <Laptop className="h-4 w-4" />
@@ -344,78 +356,136 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                       </span>
                     </span>
 
-                    {/* Screenshot / Demo Toggle if both exist */}
-                    {hasRealScreenshot && hasInteractiveDemo && (
-                      <div className="flex items-center gap-1 bg-black/50 p-1 rounded border border-white/10 font-mono text-[10px]">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {/* Inline Full Uncropped Screenshot Toggle */}
+                      {hasRealScreenshot && !demoMode && (
                         <button
-                          onClick={() => setDemoMode(false)}
-                          className={`px-2 py-0.5 rounded transition-colors ${
-                            !demoMode ? 'bg-[#17504A] text-[#EDE9E0] font-bold' : 'text-[#DFDACE]/60 hover:text-white'
+                          type="button"
+                          onClick={() => setShowUncroppedInline((prev) => !prev)}
+                          className={`px-2.5 py-1 border font-mono text-[10.5px] uppercase tracking-wider transition-colors ${
+                            showUncroppedInline
+                              ? 'border-[#D9A62E] bg-[#D9A62E] text-[#141617] font-bold'
+                              : 'border-[#DFDACE]/25 bg-[#141719] text-[#EDE9E0] hover:border-[#D9A62E]'
                           }`}
                         >
-                          Production Screenshot
+                          {showUncroppedInline
+                            ? 'Showing Uncropped Full Screenshot'
+                            : 'View Uncropped Full Screenshot'}
                         </button>
-                        <button
-                          onClick={() => setDemoMode(true)}
-                          className={`px-2 py-0.5 rounded transition-colors ${
-                            demoMode ? 'bg-[#D9A62E] text-black font-bold' : 'text-[#DFDACE]/60 hover:text-white'
-                          }`}
-                        >
-                          Try Example
-                        </button>
-                      </div>
-                    )}
-                  </div>
+                      )}
 
-                  {/* Browser Chrome Container */}
-                  <div className="rounded-xl border border-[#DFDACE]/25 bg-[#181B1C] overflow-hidden shadow-2xl">
-                    <div className="flex items-center justify-between border-b border-white/10 bg-[#121415] px-4 py-2">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-                      </div>
-                      <div className="font-mono text-[11px] text-[#DFDACE]/70 bg-black/50 px-3 py-0.5 rounded border border-white/5 truncate max-w-xs sm:max-w-md">
-                        {item.liveUrl || `https://${item.id}.contextmuse.internal/`}
-                      </div>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-[#D9A62E]">
-                        {hasRealScreenshot && !demoMode ? 'System Media' : 'Interactive Preview'}
-                      </span>
-                    </div>
-
-                    <div className="p-3 sm:p-5 bg-[#0A0C0D]">
-                      {hasRealScreenshot && !demoMode ? (
-                        <div className="relative rounded overflow-hidden border border-white/10 aspect-[4/3] bg-[#0A0C0D]">
-                          <img
-                            src={item.mediaUrl}
-                            alt={`${item.title} interface preview`}
-                            className="w-full h-full object-cover object-top block"
-                            loading="eager"
-                          />
-                        </div>
-                      ) : (
-                        <div className="max-w-3xl mx-auto py-2">
-                          {renderInteractiveDemo()}
+                      {/* Screenshot / Demo Toggle if both exist */}
+                      {hasRealScreenshot && hasInteractiveDemo && (
+                        <div className="inline-flex border border-[#DFDACE]/25 bg-[#111416] font-mono text-[10.5px]">
+                          <button
+                            type="button"
+                            onClick={() => setDemoMode(false)}
+                            className={`px-2.5 py-1 uppercase tracking-wider transition-colors ${
+                              !demoMode
+                                ? 'bg-[#17504A] text-[#EDE9E0] font-bold'
+                                : 'text-[#DFDACE]/65 hover:text-[#EDE9E0]'
+                            }`}
+                          >
+                            Production Screenshot
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setDemoMode(true)}
+                            className={`px-2.5 py-1 uppercase tracking-wider transition-colors ${
+                              demoMode
+                                ? 'bg-[#D9A62E] text-[#141617] font-bold'
+                                : 'text-[#DFDACE]/65 hover:text-[#EDE9E0]'
+                            }`}
+                          >
+                            Try Example
+                          </button>
                         </div>
                       )}
                     </div>
                   </div>
+
+                  {/* Architectural Specimen Frame */}
+                  {hasRealScreenshot && !demoMode ? (
+                    showUncroppedInline ? (
+                      <div className="border border-[#DFDACE]/25 bg-[#141719]">
+                        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#DFDACE]/15 bg-[#181C1E] px-4 py-2 font-mono text-[11px]">
+                          <span className="uppercase tracking-[0.14em] text-[#D9A62E] font-bold">
+                            Uncropped Full Screenshot Evidence ({getWorkMediaProfile(item.mediaUrl).naturalResolution})
+                          </span>
+                          <span className="text-[#DFDACE]/70">
+                            {item.liveUrl || getWorkMediaProfile(item.mediaUrl).provenance}
+                          </span>
+                        </div>
+                        <div className="p-3 sm:p-5 bg-[#0A0C0D] space-y-4">
+                          {(PROJECT_EVIDENCE_PLATES[item.id] || [
+                            {
+                              id: 'primary',
+                              label: getWorkMediaProfile(item.mediaUrl).figLabel,
+                              src: item.mediaUrl,
+                              alt: `${item.title} full uncropped screenshot`,
+                              caption: getWorkMediaProfile(item.mediaUrl).caption,
+                            },
+                          ]).map((plate) => (
+                            <figure
+                              key={plate.id}
+                              className="border border-[#DFDACE]/15 bg-[#101315] p-3 space-y-2"
+                            >
+                              <div className="font-mono text-[10.5px] uppercase tracking-wider text-[#D9A62E] font-bold">
+                                {plate.label}
+                              </div>
+                              <img
+                                src={plate.src}
+                                alt={plate.alt}
+                                className="w-full h-auto max-h-[75vh] object-contain border border-[#DFDACE]/15 bg-[#0A0C0D] mx-auto block"
+                                loading="eager"
+                              />
+                              <figcaption className="font-mono text-[11px] text-[#DFDACE]/75">
+                                {plate.caption}
+                              </figcaption>
+                            </figure>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <EditorialEvidenceFrame
+                        src={item.mediaUrl}
+                        alt={`${item.title} interface preview`}
+                        title={item.title}
+                        plates={PROJECT_EVIDENCE_PLATES[item.id] || null}
+                        variant="lead"
+                        showDualCompanionStrip={Boolean(PROJECT_EVIDENCE_PLATES[item.id])}
+                        accentColor="#D9A62E"
+                        loading="eager"
+                        liveUrl={item.liveUrl}
+                      />
+                    )
+                  ) : (
+                    <div className="border border-[#DFDACE]/25 bg-[#181B1C] overflow-hidden">
+                      <div className="flex items-center justify-between border-b border-[#DFDACE]/15 bg-[#121415] px-4 py-2.5">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#D9A62E] font-bold">
+                          02 / Interactive Capability Preview
+                        </span>
+                        <div className="font-mono text-[11px] text-[#DFDACE]/70 bg-black/50 px-3 py-0.5 border border-[#DFDACE]/15 truncate max-w-xs sm:max-w-md">
+                          {item.liveUrl || `https://${item.id}.contextmuse.internal/`}
+                        </div>
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/60">
+                          Interactive Specimen
+                        </span>
+                      </div>
+
+                      <div className="p-3 sm:p-5 bg-[#0A0C0D]">
+                        <div className="max-w-3xl mx-auto py-2">
+                          {renderInteractiveDemo()}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* 2. Plain-Language Statement */}
-                <div className="bg-[#FAF8F5] text-[#1C2022] p-5 sm:p-6 rounded-xl border border-[#DFDACE] shadow-sm">
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#17504A] block mb-1">
-                    AT A GLANCE
-                  </span>
-                  <p className="font-sans text-base sm:text-lg font-medium leading-relaxed text-[#1C2022]">
-                    {item.plainSentence}
-                  </p>
-                </div>
-
-                {/* 3. Operational Problem, Solution, and Enablement */}
+                {/* 2. Operational Problem, Solution, and Enablement */}
                 <div className="grid gap-4 sm:grid-cols-3">
-                  <div className="bg-[#1C2022] border border-red-900/30 p-5 rounded-xl space-y-2">
-                    <span className="font-mono text-xs font-bold text-red-400 uppercase tracking-wider block">
+                  <div className="bg-[#181B1C] border border-[#DFDACE]/20 border-t-2 border-t-[#DFDACE]/50 p-4 sm:p-5 space-y-2">
+                    <span className="font-mono text-xs font-bold text-[#DFDACE] uppercase tracking-wider block">
                       01 / The Operational Bottleneck
                     </span>
                     <p className="text-xs text-[#DFDACE]/90 font-sans leading-relaxed">
@@ -423,7 +493,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                     </p>
                   </div>
 
-                  <div className="bg-[#1C2022] border border-[#D9A62E]/30 p-5 rounded-xl space-y-2">
+                  <div className="bg-[#181B1C] border border-[#DFDACE]/20 border-t-2 border-t-[#D9A62E] p-4 sm:p-5 space-y-2">
                     <span className="font-mono text-xs font-bold text-[#D9A62E] uppercase tracking-wider block">
                       02 / The Engineered Solution
                     </span>
@@ -432,8 +502,8 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                     </p>
                   </div>
 
-                  <div className="bg-[#1C2022] border border-emerald-500/30 p-5 rounded-xl space-y-2">
-                    <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider block">
+                  <div className="bg-[#181B1C] border border-[#DFDACE]/20 border-t-2 border-t-[#17504A] p-4 sm:p-5 space-y-2">
+                    <span className="font-mono text-xs font-bold text-[#D9A62E] uppercase tracking-wider block">
                       03 / Operational Shift Enabled
                     </span>
                     <p className="text-xs text-[#EDE9E0] font-sans leading-relaxed">
@@ -442,9 +512,9 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                   </div>
                 </div>
 
-                {/* 4. Tangible Output Display */}
+                {/* 3. Tangible Output Display */}
                 {item.tangibleOutput && (
-                  <div className="border border-[#D9A62E]/30 bg-[#1A1E20] p-5 sm:p-6 rounded-xl space-y-3">
+                  <div className="border border-[#D9A62E]/30 bg-[#1A1E20] p-5 sm:p-6 space-y-3">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold flex items-center gap-1.5">
                         <FileCheck className="h-4 w-4" />
@@ -457,7 +527,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                       {item.tangibleOutput.description}
                     </p>
 
-                    <div className="p-3.5 rounded-lg bg-black/60 border border-white/10 font-mono text-xs text-[#EDE9E0] leading-relaxed">
+                    <div className="p-3.5 bg-[#101315] border border-[#DFDACE]/15 font-mono text-xs text-[#EDE9E0] leading-relaxed">
                       <span className="text-[#D9A62E] font-bold block text-[10px] uppercase mb-1">
                         Artifact Excerpt:
                       </span>
@@ -466,31 +536,10 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                   </div>
                 )}
 
-                {/* 5. Key Architectural Decisions */}
-                {item.howItsBuilt?.keyDecisions && (
-                  <div className="border border-[#DFDACE]/15 bg-[#171A1C] p-6 rounded-xl space-y-4">
-                    <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold block">
-                      Architectural Decisions & Rationale
-                    </span>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {item.howItsBuilt.keyDecisions.map((dec, idx) => (
-                        <div key={idx} className="bg-black/30 p-4 rounded-lg border border-white/5 space-y-1">
-                          <h4 className="font-mono text-xs font-bold text-[#EDE9E0]">
-                            {dec.decision}
-                          </h4>
-                          <p className="font-sans text-xs text-[#DFDACE]/80 leading-relaxed">
-                            {dec.rationale}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 {/* Connected Work & Relationships */}
                 {(curatedRelationships.length > 0 || tagSuggestedRelationships.length > 0) && (
-                  <div className="bg-[#181B1C] border border-[#DFDACE]/15 p-5 rounded-xl space-y-4">
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2.5">
+                  <div className="bg-[#181B1C] border border-[#DFDACE]/15 p-5 space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#DFDACE]/15 pb-2.5">
                       <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold">
                         Connected Work &amp; Shared Patterns
                       </span>
@@ -502,7 +551,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                     <div className="grid gap-4 sm:grid-cols-2">
                       {curatedRelationships.length > 0 && (
                         <div className="space-y-2">
-                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400 block">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#D9A62E] block">
                             Curated Relationships ({curatedRelationships.length})
                           </span>
                           <div className="space-y-1.5">
@@ -517,7 +566,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                                     handleNavigateDestination(rel.target.liveDestination);
                                   }
                                 }}
-                                className="w-full text-left rounded-lg border border-[#DFDACE]/15 bg-[#121415] hover:border-[#D9A62E]/60 px-3 py-2 transition-colors flex items-center justify-between gap-2"
+                                className="w-full text-left border border-[#DFDACE]/15 bg-[#121415] hover:border-[#D9A62E]/60 px-3 py-2 transition-colors flex items-center justify-between gap-2"
                               >
                                 <div className="min-w-0">
                                   <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-[#D9A62E] block">
@@ -551,7 +600,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                                     handleNavigateDestination(sug.target.liveDestination);
                                   }
                                 }}
-                                className="w-full text-left rounded-lg border border-[#DFDACE]/10 bg-[#121415]/70 hover:border-[#DFDACE]/35 px-3 py-2 transition-colors flex items-center justify-between gap-2"
+                                className="w-full text-left border border-[#DFDACE]/10 bg-[#121415]/70 hover:border-[#DFDACE]/35 px-3 py-2 transition-colors flex items-center justify-between gap-2"
                               >
                                 <div className="min-w-0">
                                   <span className="font-mono text-[9px] uppercase tracking-wider text-[#DFDACE]/55 block truncate">
@@ -575,7 +624,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                 <div className="pt-4 border-t border-[#DFDACE]/15 flex flex-wrap items-center justify-between gap-3">
                   <button
                     onClick={handleNeedSomethingLikeThis}
-                    className="bg-[#D9A62E] text-[#141617] px-6 py-2.5 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#e0b240] transition-colors rounded-lg flex items-center gap-2 shadow-md"
+                    className="bg-[#D9A62E] text-[#141617] px-6 py-2.5 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#EDE9E0] transition-colors flex items-center gap-2"
                   >
                     <span>Tell me what you need</span>
                     <ArrowRight className="h-4 w-4" />
@@ -584,14 +633,14 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => toggleSaveProject(item)}
-                      className="border border-[#DFDACE]/30 text-[#EDE9E0] px-4 py-2 font-mono text-xs uppercase tracking-wider hover:border-[#D9A62E] transition-colors rounded-lg"
+                      className="border border-[#DFDACE]/30 text-[#EDE9E0] px-4 py-2 font-mono text-xs uppercase tracking-wider hover:border-[#D9A62E] transition-colors"
                     >
                       {saved ? '✓ Saved in My Ideas' : '+ Save this example'}
                     </button>
 
                     <button
                       onClick={handleSendToWhiteboard}
-                      className="border border-[#DFDACE]/25 text-[#EDE9E0] px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-[#17504A] transition-colors rounded-lg flex items-center gap-1.5"
+                      className="border border-[#DFDACE]/25 text-[#EDE9E0] px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-[#17504A] transition-colors flex items-center gap-1.5"
                     >
                       <LayoutTemplate className="h-3.5 w-3.5" />
                       <span>Send to Whiteboard</span>
@@ -604,11 +653,32 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
             {/* TAB 2: TECHNICAL ARCHITECTURE */}
             {activeTab === 'how-its-built' && (
               <div className="space-y-8">
+                {/* Key Architectural Decisions (Relocated from Tab 1 to Technical Architecture) */}
+                {item.howItsBuilt?.keyDecisions && (
+                  <div className="border border-[#DFDACE]/15 bg-[#171A1C] p-5 sm:p-6 space-y-4">
+                    <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold block">
+                      Architectural Decisions &amp; Engineering Rationale
+                    </span>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {item.howItsBuilt.keyDecisions.map((dec, idx) => (
+                        <div key={idx} className="bg-[#121415] p-4 border border-[#DFDACE]/12 space-y-1">
+                          <h4 className="font-mono text-xs font-bold text-[#EDE9E0]">
+                            {dec.decision}
+                          </h4>
+                          <p className="font-sans text-xs text-[#DFDACE]/80 leading-relaxed">
+                            {dec.rationale}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Requirements & Constraints */}
                 {item.howItsBuilt?.requirements && (
-                  <div className="bg-[#1C2022] border border-[#DFDACE]/15 p-6 rounded-xl space-y-3">
+                  <div className="bg-[#1C2022] border border-[#DFDACE]/15 p-6 space-y-3">
                     <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold block">
-                      Operational Requirements & Boundary Constraints
+                      Operational Requirements &amp; Boundary Constraints
                     </span>
                     <ul className="space-y-2 font-sans text-xs sm:text-[13px] text-[#DFDACE]/90">
                       {item.howItsBuilt.requirements.map((req, idx) => (
@@ -623,20 +693,20 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
 
                 {/* System Flow Diagram */}
                 {item.howItsBuilt?.flowDiagram && (
-                  <div className="bg-[#1E2325] border border-[#DFDACE]/20 p-6 rounded-xl space-y-4">
+                  <div className="bg-[#1E2325] border border-[#DFDACE]/20 p-6 space-y-4">
                     <div className="flex items-center gap-2">
                       <Workflow className="h-4 w-4 text-[#D9A62E]" />
                       <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold">
-                        Interaction & Data Flow
+                        Interaction &amp; Data Flow
                       </span>
                     </div>
 
                     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 pt-1">
                       {item.howItsBuilt.flowDiagram.steps.map((st, idx) => (
-                        <div key={idx} className="bg-[#141617] p-3.5 rounded-lg border border-white/5 space-y-1">
+                        <div key={idx} className="bg-[#141617] p-3.5 border border-[#DFDACE]/12 space-y-1">
                           <div className="flex items-center justify-between font-mono text-[10px] text-[#D9A62E] font-bold">
                             <span>STEP 0{idx + 1}</span>
-                            <span className="text-white/40">{st.from}</span>
+                            <span className="text-[#DFDACE]/45">{st.from}</span>
                           </div>
                           <p className="font-sans text-xs text-[#EDE9E0]/90 leading-snug">
                             {st.label}
@@ -649,8 +719,8 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
 
                 {/* Limitations and External Reference */}
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="bg-[#1C2022] border border-amber-900/30 p-5 rounded-xl space-y-2">
-                    <span className="font-mono text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <div className="bg-[#1C2022] border border-[#D9A62E]/30 p-5 space-y-2">
+                    <span className="font-mono text-xs font-bold text-[#D9A62E] uppercase tracking-wider flex items-center gap-1.5">
                       <Info className="h-3.5 w-3.5" />
                       <span>Explicit System Boundaries</span>
                     </span>
@@ -659,9 +729,9 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
                     </p>
                   </div>
 
-                  <div className="bg-[#1C2022] border border-[#DFDACE]/15 p-5 rounded-xl space-y-2">
-                    <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-                      <ExternalLink className="h-3.5 w-3.5" />
+                  <div className="bg-[#1C2022] border border-[#17504A] p-5 space-y-2">
+                    <span className="font-mono text-xs font-bold text-[#EDE9E0] uppercase tracking-wider flex items-center gap-1.5">
+                      <ExternalLink className="h-3.5 w-3.5 text-[#D9A62E]" />
                       <span>Production Deployment</span>
                     </span>
                     {item.liveUrl ? (
@@ -688,7 +758,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
 
                 {/* Grouped Technologies */}
                 {item.howItsBuilt?.groupedTech && (
-                  <div className="bg-[#181B1C] border border-[#DFDACE]/15 p-6 rounded-xl space-y-4">
+                  <div className="bg-[#181B1C] border border-[#DFDACE]/15 p-6 space-y-4">
                     <div className="flex items-center gap-2">
                       <Code2 className="h-4 w-4 text-[#D9A62E]" />
                       <span className="font-mono text-xs uppercase tracking-wider text-[#D9A62E] font-bold">
@@ -698,7 +768,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
 
                     <div className="grid gap-3 sm:grid-cols-3">
                       {item.howItsBuilt.groupedTech.map((g, idx) => (
-                        <div key={idx} className="bg-black/40 p-3.5 rounded-lg border border-white/5 space-y-1.5">
+                        <div key={idx} className="bg-[#121415] p-3.5 border border-[#DFDACE]/12 space-y-1.5">
                           <span className="font-mono text-xs font-bold text-[#D9A62E] block">
                             {g.group}
                           </span>

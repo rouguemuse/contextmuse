@@ -98,13 +98,13 @@
             gap: 2.5rem;
             flex-wrap: wrap;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(250, 249, 245, 0.1);
+            border-top: 1px solid var(--border-light);
             font-family: var(--font-mono);
             font-size: 11.5px;
-            color: rgba(250, 249, 245, 0.7);
+            color: var(--text-secondary);
         }
         .cs-meta-item strong {
-            color: #FAF9F5;
+            color: var(--text-primary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-right: 4px;
@@ -592,12 +592,22 @@
             </div>
         </section>
 
-        <!-- ── READ FULL ARTICLE CTA ── -->
-        <section class="article-cta-strip">
-            <div class="container">
-                <a href="/custom/?service=quick-launch#intake" class="btn-article-link" data-track-cta="edr_case_study_intake">
-                    Build a Similar Website &amp; Intake Flow &rarr;
-                </a>
+        <!-- ── BUYER NEXT STEP CTA STRIP ── -->
+        <section class="article-cta-strip" style="background: var(--bg-paper); border-top: 1px solid var(--border-light); padding: 4.5rem 0;">
+            <div class="container" style="max-width: 780px; text-align: center;">
+                <span class="cs-section-label">HIRE CONTEXT &amp; MUSE FOR A SIMILAR BUILD</span>
+                <h2 class="cs-section-title" style="margin-bottom: 0.85rem;">Need a party rental or local service website that qualifies dates, delivery zones, and packages upfront?</h2>
+                <p style="font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); margin: 0 auto 1.75rem; max-width: 640px;">
+                    We design and build custom party rental websites and quote-request systems starting from <strong>$2,500</strong>—with package combinations, delivery-area validation, surface setup rules, and structured customer intake.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/services/quote-lead-systems/" class="btn btn-primary" data-track-cta="edr_case_study_qls_offer">
+                        Explore Party Rental &amp; Quote Systems (From $2,500) &rarr;
+                    </a>
+                    <a href="/services/quote-lead-systems/#intake" class="btn btn-secondary" data-track-cta="edr_case_study_intake">
+                        Request a Scope for Your Rental Business &rarr;
+                    </a>
+                </div>
             </div>
         </section>
     </main>

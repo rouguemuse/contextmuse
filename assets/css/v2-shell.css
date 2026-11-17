@@ -582,3 +582,24 @@ body.cm-v2-signal-surface .demo-hero {
     font-size: 10px;
   }
 }
+
+@media (max-width: 480px) {
+  body.cm-v2-shell-page {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  .cm-v2-header,
+  .cm-v2-subbar,
+  .cm-v2-product-header,
+  .cm-v2-footer {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+  .cm-v2-room-links {
+    gap: 0.25rem;
+  }
+  .cm-v2-room-link {
+    padding: 0.28rem 0.42rem;
+    font-size: 9.5px;
+  }
+}

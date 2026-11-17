@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   X,
   Trash2,
@@ -32,7 +32,9 @@ const BUDGET_RANGES = [
 ];
 
 export default function BriefDrawer() {
+  const location = useLocation();
   const navigate = useNavigate();
+  const currentPath = location.pathname.replace(/\/+$/, '') || '/';
   const {
     brief,
     totalCount,
@@ -469,13 +471,35 @@ export default function BriefDrawer() {
                               {c.note}
                             </p>
                           </div>
-                          <button
-                            onClick={() => removeWhiteboardClip(c.id)}
-                            className="text-[#23282A]/40 hover:text-red-600 p-1 shrink-0"
-                            title="Remove snapshot"
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                          </button>
+                          <div className="flex items-center gap-1 shrink-0">
+                            {c.source === 'page-markup' && (
+                              <button
+                                type="button"
+                                data-testid={`reopen-markup-clip-${c.id}`}
+                                onClick={() => {
+                                  const targetPath = (c.pagePath || '/').replace(/\/+$/, '') || '/';
+                                  closeBrief();
+                                  if (targetPath !== currentPath) {
+                                    navigate(targetPath, { state: { openPageMarkup: true } });
+                                  } else {
+                                    openPageMarkup();
+                                  }
+                                }}
+                                className="flex items-center gap-1 rounded border border-[#23282A]/25 bg-[#EDE9E0] px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#23282A] hover:bg-[#23282A] hover:text-[#D9A62E] transition-colors"
+                                title="Reopen saved markup on page"
+                              >
+                                <Highlighter className="h-3 w-3 text-[#D9A62E]" />
+                                <span>Reopen Markup</span>
+                              </button>
+                            )}
+                            <button
+                              onClick={() => removeWhiteboardClip(c.id)}
+                              className="text-[#23282A]/40 hover:text-red-600 p-1 shrink-0"
+                              title="Remove snapshot"
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                            </button>
+                          </div>
                         </div>
                         {c.dataUrl && (
                           <div className="rounded border border-[#23282A]/15 overflow-hidden bg-[#141617]">

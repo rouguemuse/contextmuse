@@ -69,41 +69,66 @@ export default function HeroPanel({ onEnterRoom }) {
         </div>
       </div>
 
-      {/* 3 Core Capability Pillars */}
-      <div className="pt-4 mt-5 sm:pt-6 sm:mt-7 xl:pt-[clamp(1.5rem,2.4vh,2.5rem)] xl:mt-[clamp(1.75rem,3vh,3.25rem)] border-t border-[#DFDACE]/15 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 2xl:gap-6 text-xs font-sans text-[#DFDACE]/80">
-        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-2.5 sm:p-3 2xl:p-4">
-          <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
-          <div className="min-w-0">
-            <strong className="block text-[#EDE9E0] font-mono text-[10.5px] sm:text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">
-              Design &amp; Identity
+      {/* 3 Core Capability Pillars — Compact Ledger on Mobile, Full Cards on sm+ */}
+      <div className="pt-3.5 mt-4 sm:pt-6 sm:mt-7 xl:pt-[clamp(1.5rem,2.4vh,2.5rem)] xl:mt-[clamp(1.75rem,3vh,3.25rem)] border-t border-[#DFDACE]/15 text-xs font-sans text-[#DFDACE]/80">
+        {/* Mobile compact 3-pillar strip (<640px) */}
+        <div className="grid grid-cols-3 gap-1.5 sm:hidden">
+          <div className="rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 px-2 py-2">
+            <span className="block font-mono text-[9px] text-[#D9A62E] font-bold uppercase tracking-wider">01 / Design</span>
+            <strong className="mt-0.5 block text-[#EDE9E0] font-sans text-[11px] font-semibold leading-tight">
+              Identity &amp; UI
             </strong>
-            <span className="mt-0.5 block text-[11px] sm:text-[11.5px] 2xl:text-[clamp(0.72rem,0.42vw+0.42rem,0.9rem)] text-[#DFDACE]/75 leading-snug">
-              Visual direction, interfaces, and brand clarity.
-            </span>
+          </div>
+          <div className="rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 px-2 py-2">
+            <span className="block font-mono text-[9px] text-[#D9A62E] font-bold uppercase tracking-wider">02 / Web</span>
+            <strong className="mt-0.5 block text-[#EDE9E0] font-sans text-[11px] font-semibold leading-tight">
+              Sites &amp; Apps
+            </strong>
+          </div>
+          <div className="rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 px-2 py-2">
+            <span className="block font-mono text-[9px] text-[#D9A62E] font-bold uppercase tracking-wider">03 / Systems</span>
+            <strong className="mt-0.5 block text-[#EDE9E0] font-sans text-[11px] font-semibold leading-tight">
+              Custom Tools
+            </strong>
           </div>
         </div>
 
-        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-2.5 sm:p-3 2xl:p-4">
-          <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
-          <div className="min-w-0">
-            <strong className="block text-[#EDE9E0] font-mono text-[10.5px] sm:text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">
-              Websites &amp; Products
-            </strong>
-            <span className="mt-0.5 block text-[11px] sm:text-[11.5px] 2xl:text-[clamp(0.72rem,0.42vw+0.42rem,0.9rem)] text-[#DFDACE]/75 leading-snug">
-              Custom web applications and interactive UX.
-            </span>
+        {/* Tablet & Desktop 3 capability cards (sm+) */}
+        <div className="hidden sm:grid sm:grid-cols-3 gap-4 2xl:gap-6">
+          <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-3 2xl:p-4">
+            <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
+            <div className="min-w-0">
+              <strong className="block text-[#EDE9E0] font-mono text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">
+                Design &amp; Identity
+              </strong>
+              <span className="mt-0.5 block text-[11.5px] 2xl:text-[clamp(0.72rem,0.42vw+0.42rem,0.9rem)] text-[#DFDACE]/75 leading-snug">
+                Visual direction, interfaces, and brand clarity.
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-2.5 sm:p-3 2xl:p-4">
-          <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
-          <div className="min-w-0">
-            <strong className="block text-[#EDE9E0] font-mono text-[10.5px] sm:text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">
-              Intelligent Software
-            </strong>
-            <span className="mt-0.5 block text-[11px] sm:text-[11.5px] 2xl:text-[clamp(0.72rem,0.42vw+0.42rem,0.9rem)] text-[#DFDACE]/75 leading-snug">
-              Quoting engines, custom tools, and AI workflows.
-            </span>
+          <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-3 2xl:p-4">
+            <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
+            <div className="min-w-0">
+              <strong className="block text-[#EDE9E0] font-mono text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">
+                Websites &amp; Products
+              </strong>
+              <span className="mt-0.5 block text-[11.5px] 2xl:text-[clamp(0.72rem,0.42vw+0.42rem,0.9rem)] text-[#DFDACE]/75 leading-snug">
+                Custom web applications and interactive UX.
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2.5 rounded border border-[#DFDACE]/15 bg-[#2C3335]/70 p-3 2xl:p-4">
+            <CheckCircle2 className="h-4 w-4 2xl:h-4.5 2xl:w-4.5 text-[#D9A62E] shrink-0 mt-0.5" />
+            <div className="min-w-0">
+              <strong className="block text-[#EDE9E0] font-mono text-[11px] 2xl:text-[clamp(0.7rem,0.42vw+0.42rem,0.88rem)] uppercase tracking-wider">
+                Intelligent Software
+              </strong>
+              <span className="mt-0.5 block text-[11.5px] 2xl:text-[clamp(0.72rem,0.42vw+0.42rem,0.9rem)] text-[#DFDACE]/75 leading-snug">
+                Quoting engines, custom tools, and AI workflows.
+              </span>
+            </div>
           </div>
         </div>
       </div>
