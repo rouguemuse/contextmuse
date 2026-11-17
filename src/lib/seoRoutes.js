@@ -9,10 +9,11 @@ const BASE_ORGANIZATION_NODE = {
   '@type': 'Organization',
   '@id': 'https://www.contextmuse.com/#organization',
   name: 'Context & Muse',
+  alternateName: 'ContextMuse',
   url: 'https://www.contextmuse.com/',
   logo: 'https://www.contextmuse.com/assets/images/contextmuse_logo.svg',
   description:
-    'Context & Muse is founder-led by Jayme Volstad. Independent design and full-stack software studio building commercial websites, quote engines, operational software, and original digital products.',
+    'Context & Muse (ContextMuse) is founder-led by Jayme Volstad in Austin & Round Rock, Texas. Independent design and full-stack software studio building commercial websites, quote engines, operational software, and original digital products.',
   founder: {
     '@type': 'Person',
     name: 'Jayme Volstad',
@@ -21,11 +22,13 @@ const BASE_ORGANIZATION_NODE = {
   },
   areaServed: [
     { '@type': 'City', name: 'Austin' },
+    { '@type': 'City', name: 'Round Rock' },
     { '@type': 'State', name: 'Texas' },
     { '@type': 'Country', name: 'United States' },
   ],
   knowsAbout: [
     'Commercial Quoting Systems',
+    'Party & Event Rental Website Design',
     'Lead Intake Engineering',
     'Custom Operations Software',
     'Conversion Diagnostics',
@@ -37,7 +40,8 @@ const BASE_WEBSITE_NODE = {
   '@type': 'WebSite',
   '@id': 'https://www.contextmuse.com/#website',
   url: 'https://www.contextmuse.com/',
-  name: 'Context & Muse',
+  name: 'ContextMuse',
+  alternateName: 'Context & Muse',
   publisher: {
     '@id': 'https://www.contextmuse.com/#organization',
   },
@@ -49,10 +53,12 @@ export const SPA_ROUTE_SEO = {
     outputFile: 'index.html',
     title: 'Context & Muse · Applied Systems, Quote Engines & Custom Software',
     description:
-      'Context & Muse — Independent design and development by Jayme Volstad. Websites, visual identities, digital products, quote engines, and custom software.',
+      'Context & Muse — Independent design and development by Jayme Volstad in Austin, TX. Custom websites, quote & lead systems, digital products, and operational software.',
     canonical: 'https://www.contextmuse.com/',
     ogType: 'website',
     ogImage: 'https://www.contextmuse.com/og/context-muse-home-v3.jpg',
+    h1: 'CONCEPT TO PRODUCT. GIVING IDEAS FORM.',
+    lead: 'Websites, visual identities, digital products, and custom software. Thoughtfully designed, fully realized.',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [BASE_ORGANIZATION_NODE, BASE_WEBSITE_NODE],
@@ -67,6 +73,9 @@ export const SPA_ROUTE_SEO = {
     canonical: 'https://www.contextmuse.com/work/',
     ogType: 'website',
     ogImage: 'https://www.contextmuse.com/og/context-muse-home-v3.jpg',
+    preloadImage: '/assets/captures/wolfridge-live.jpg',
+    h1: 'The Work.',
+    lead: 'Completed client builds, original digital products, civic initiatives, and applied systems research—demonstrating how visual design, user experience, and custom engineering work together.',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -93,6 +102,8 @@ export const SPA_ROUTE_SEO = {
     canonical: 'https://www.contextmuse.com/build/',
     ogType: 'website',
     ogImage: 'https://www.contextmuse.com/og/context-muse-home-v3.jpg',
+    h1: 'Custom Builds.',
+    lead: 'Tell me what you want to build in plain language, or open the optional whiteboard to sketch a rough layout, drop in screenshots, or map out how your business works.',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -119,6 +130,8 @@ export const SPA_ROUTE_SEO = {
     canonical: 'https://www.contextmuse.com/lab/',
     ogType: 'website',
     ogImage: 'https://www.contextmuse.com/og/context-muse-home-v3.jpg',
+    h1: 'The Lab.',
+    lead: 'Working software products, live browser utilities, and empirical design-systems research—built and running in real code.',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -145,6 +158,8 @@ export const SPA_ROUTE_SEO = {
     canonical: 'https://www.contextmuse.com/lab/design-intelligence/',
     ogType: 'article',
     ogImage: 'https://www.contextmuse.com/assets/images/design-intelligence/study_plaidis_overview_1440.png',
+    h1: 'Design Intelligence',
+    lead: 'From visual reference to measurable design decisions. CSSOM and DOM token extraction across Plaidis / Locomotive, Linear, and Stripe.',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -178,6 +193,8 @@ export const SPA_ROUTE_SEO = {
     canonical: 'https://www.contextmuse.com/lab/design-intelligence/',
     ogType: 'article',
     ogImage: 'https://www.contextmuse.com/assets/images/design-intelligence/study_plaidis_overview_1440.png',
+    h1: 'Design Intelligence',
+    lead: 'From visual reference to measurable design decisions. CSSOM and DOM token extraction across Plaidis / Locomotive, Linear, and Stripe.',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -211,6 +228,8 @@ export const SPA_ROUTE_SEO = {
     canonical: 'https://www.contextmuse.com/method/',
     ogType: 'website',
     ogImage: 'https://www.contextmuse.com/og/context-muse-home-v3.jpg',
+    h1: 'The Method.',
+    lead: 'How a project moves from understanding the underlying operational problem through visual design, engineering, and delivery—plus clear scope and pricing.',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [

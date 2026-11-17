@@ -32,6 +32,12 @@ function renderRouteHtml(baseHtml, routeMeta) {
     /<link rel="canonical" href="[^"]*"\s*\/?>/,
     `<link rel="canonical" href="${escapedCanonical}" />`
   );
+  if (routeMeta.preloadImage) {
+    html = html.replace(
+      /<link rel="canonical" href="[^"]*"\s*\/?>/,
+      `<link rel="canonical" href="${escapedCanonical}" />\n    <link rel="preload" as="image" href="${escapeHtmlAttr(routeMeta.preloadImage)}" fetchpriority="high" />`
+    );
+  }
   html = html.replace(
     /<meta property="og:type" content="[^"]*"\s*\/?>/,
     `<meta property="og:type" content="${escapedOgType}" />`
@@ -68,6 +74,11 @@ function renderRouteHtml(baseHtml, routeMeta) {
     /<script id="cm-route-jsonld" type="application\/ld\+json">[\s\S]*?<\/script>/,
     `<script id="cm-route-jsonld" type="application/ld+json">\n${jsonLdString}\n    </script>`
   );
+
+  if (routeMeta.h1 && routeMeta.lead) {
+    const initialShell = `<div id="root"><div style="min-height:100vh;background:#23282A;color:#EDE9E0;font-family:system-ui,-apple-system,sans-serif;padding:2.5rem 1.5rem;"><div style="max-width:1280px;margin:0 auto;"><p style="font-family:monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#D9A62E;margin:0 0 0.75rem 0;">CONTEXT &amp; MUSE</p><h1 style="font-size:clamp(2rem,5vw,4rem);font-weight:900;text-transform:uppercase;line-height:1;margin:0 0 1rem 0;color:#EDE9E0;">${escapeHtmlAttr(routeMeta.h1)}</h1><p style="max-width:62ch;font-size:15px;line-height:1.6;color:#DFDACE;margin:0 0 1.5rem 0;">${escapeHtmlAttr(routeMeta.lead)}</p><nav aria-label="Primary links" style="display:flex;flex-wrap:wrap;gap:12px;font-family:monospace;font-size:12px;"><a href="/work/" style="color:#D9A62E;">The Work</a><a href="/services/quote-lead-systems/" style="color:#D9A62E;">Quote + Lead Systems</a><a href="/services/" style="color:#D9A62E;">Services</a><a href="/case-studies/edr-party-rentals/" style="color:#D9A62E;">EDR Party Rentals Case Study</a><a href="/work/lone-wolf-dumpsters/" style="color:#D9A62E;">Lone Wolf Dumpsters Case Study</a><a href="/contact/" style="color:#D9A62E;">Start a Project</a></nav></div></div></div>`;
+    html = html.replace(/<div id="root"><\/div>/, initialShell);
+  }
 
   return html;
 }

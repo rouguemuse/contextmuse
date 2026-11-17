@@ -60,9 +60,9 @@ export default function PageAnnotationOverlay() {
     }
   }, [allPageData]);
 
-  // Measure document height when markup or saved annotations are active
+  // Measure document height when markup session is explicitly active
   useEffect(() => {
-    if (!pageMarkupActive && !hasAnnotations) return;
+    if (!pageMarkupActive) return;
     const updateDims = () => {
       const w = Math.min(
         document.documentElement.clientWidth || window.innerWidth || 1280,
@@ -78,7 +78,37 @@ export default function PageAnnotationOverlay() {
     updateDims();
     window.addEventListener('resize', updateDims);
     return () => window.removeEventListener('resize', updateDims);
-  }, [pageMarkupActive, hasAnnotations, currentPath]);
+  }, [pageMarkupActive, currentPath]);
+
+  // Automatically exit active markup session when navigating between routes,
+  // unless navigation explicitly requested opening page markup for review
+  const prevPathRef = React.useRef(currentPath);
+  useEffect(() => {
+    if (prevPathRef.current !== currentPath) {
+      prevPathRef.current = currentPath;
+      if (location.state?.openPageMarkup) {
+        openPageMarkup();
+      } else if (pageMarkupActive) {
+        closePageMarkup();
+      }
+    } else if (location.state?.openPageMarkup && !pageMarkupActive) {
+      openPageMarkup();
+    }
+  }, [currentPath, location.state, pageMarkupActive, closePageMarkup, openPageMarkup]);
+
+  // Allow pressing Escape to exit markup mode immediately
+  useEffect(() => {
+    if (!pageMarkupActive) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        const tag = document.activeElement?.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+        closePageMarkup();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [pageMarkupActive, closePageMarkup]);
 
   const updateCurrentPage = useCallback(
     (updater) => {
@@ -292,6 +322,17 @@ export default function PageAnnotationOverlay() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            {hasAnnotations && !pageMarkupActive && (
+              <button
+                type="button"
+                data-testid="markup-reopen-saved-btn"
+                onClick={openPageMarkup}
+                className="flex items-center gap-1.5 border border-[#D9A62E]/50 bg-[#23282A] text-[#D9A62E] px-3 py-1.5 rounded text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
+              >
+                <Highlighter className="h-3 w-3" />
+                <span>Reopen saved markup ({strokes.length + notes.length})</span>
+              </button>
+            )}
             {hasAnnotations && (
               <button
                 type="button"
@@ -308,21 +349,20 @@ export default function PageAnnotationOverlay() {
 
       {/* ============================================================
           FULL-PAGE ANNOTATION OVERLAY + FLOATING CONTROL BAR
+          Render strokes and notes ONLY during an explicitly opened markup session
           ============================================================ */}
-      {(pageMarkupActive || hasAnnotations) && (
+      {pageMarkupActive && (
         <div
           data-whiteboard="true"
           data-clarity-mask="true"
-          className={`absolute inset-x-0 top-0 z-30 overflow-hidden ${
-            pageMarkupActive ? 'pointer-events-auto' : 'pointer-events-none'
-          }`}
+          className="absolute inset-x-0 top-0 z-30 overflow-hidden pointer-events-auto"
           style={{ height: docSize.height }}
         >
           <DrawingOverlay
             width={docSize.width}
             height={docSize.height}
             zoom={1}
-            tool={pageMarkupActive ? tool : 'select'}
+            tool={tool}
             drawings={strokes}
             onAddStroke={handleAddStroke}
             penColor={currentPath === '/lab' ? '#17504A' : '#D9A62E'}

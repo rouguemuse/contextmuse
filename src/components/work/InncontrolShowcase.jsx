@@ -4,15 +4,16 @@ import {
   ExternalLink,
   Bookmark,
   BookmarkCheck,
-  LayoutDashboard,
   Building2,
-  ClipboardCheck,
 } from 'lucide-react';
 import { useBrief } from '@/lib/BriefContext';
+import EditorialEvidenceFrame from '@/components/work/EditorialEvidenceFrame';
+import { PROJECT_EVIDENCE_PLATES } from '@/components/work/workData';
 
 export default function InncontrolShowcase({ onOpenCaseStudy }) {
   const { isProjectSaved, toggleSaveProject } = useBrief();
   const saved = isProjectSaved('inncontrol-coils');
+  const savedD2 = isProjectSaved('d2-auto-detail');
 
   const handleSave = () => {
     toggleSaveProject({
@@ -23,155 +24,352 @@ export default function InncontrolShowcase({ onOpenCaseStudy }) {
     });
   };
 
+  const handleSaveD2 = () => {
+    toggleSaveProject({
+      id: 'd2-auto-detail',
+      title: 'D2 Auto Detail — Detail Driven',
+      subtitle: 'Precision Automotive Detailing Platform, Condition Quote Intake & Business Portal',
+      tier: 'featured',
+    });
+  };
+
   return (
-    <section id="inncontrol-coils" className="space-y-6 border-t border-[#DFDACE]/15 pt-10">
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#DFDACE]/15 pb-4">
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2 mb-1.5 font-mono text-xs">
-            <span className="rounded bg-[#0F2B48] text-[#FF6B00] border border-[#FF6B00]/40 px-2 py-0.5 font-bold uppercase tracking-wider text-[10px]">
-              Commercial Platform + Internal Ops
-            </span>
-            <span className="text-[#DFDACE]/60">Hospitality HVAC &amp; PTAC Refurbishing</span>
-          </div>
-
-          <h2 className="font-display text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#EDE9E0]">
-            INNcontrol Coils
-          </h2>
-          <p className="mt-0.5 font-mono text-xs sm:text-sm text-[#FF6B00]">
-            Nationwide B2B Hospitality Platform &amp; Daily Operator Check-In Dashboards
-          </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-wrap items-center gap-2 shrink-0">
-          <button
-            onClick={() => onOpenCaseStudy('inncontrol-coils')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono font-bold uppercase tracking-wider rounded bg-[#FF6B00] text-white hover:bg-[#e05e00] transition-colors"
-          >
-            <span>Inspect Case Study</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </button>
-
-          <a
-            href="https://inncontrolcoils.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded border border-[#DFDACE]/25 text-[#EDE9E0] hover:border-[#FF6B00] hover:text-[#FF6B00] transition-colors"
-          >
-            <span>Live Site</span>
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-
-          <a
-            href="/inncontrol-v2/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded border border-emerald-500/40 bg-emerald-950/30 text-emerald-300 hover:border-emerald-400 hover:text-white transition-colors"
-          >
-            <span>Operator HUD</span>
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-
-          <button
-            onClick={handleSave}
-            title={saved ? 'Saved in My Ideas' : 'Save to My Ideas'}
-            className={`p-1.5 rounded border transition-colors ${
-              saved
-                ? 'border-[#FF6B00] bg-[#FF6B00]/20 text-[#FF6B00]'
-                : 'border-[#DFDACE]/25 text-[#EDE9E0] hover:border-[#FF6B00] hover:text-[#FF6B00]'
-            }`}
-          >
-            {saved ? (
-              <BookmarkCheck className="h-4 w-4 text-[#FF6B00]" />
-            ) : (
-              <Bookmark className="h-4 w-4" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Grid: Authentic Interface Preview + Verified Platform & Dashboard Breakdown */}
-      <div className="grid gap-6 lg:grid-cols-12 items-start">
-        {/* Interface Preview (7 Cols) */}
-        <div className="lg:col-span-7 space-y-2">
-          <div className="flex items-center justify-between font-mono text-xs text-[#DFDACE]/60 px-1">
-            <span className="font-bold text-[#FF6B00] uppercase tracking-wider">
-              Commercial Platform (inncontrolcoils.com)
-            </span>
-            <span>Production Capture</span>
-          </div>
-
-          <div className="rounded-xl border border-[#0F2B48]/90 bg-[#0F2B48]/30 overflow-hidden shadow-lg p-2">
-            <div className="rounded-lg overflow-hidden border border-white/10 relative aspect-[4/3] bg-[#0A0C0D]">
-              <img
-                src="/assets/images/inncontrol-commercial-platform.webp"
-                alt="INNcontrol Coils Commercial Hospitality Platform"
-                className="w-full h-full object-cover object-top block"
-                loading="eager"
-              />
-              <div className="absolute bottom-2.5 left-2.5 bg-[#0F2B48]/90 backdrop-blur-sm border border-[#FF6B00]/40 px-2.5 py-1 rounded font-mono text-[10px] text-[#EDE9E0]">
-                Nationwide B2B Hotel PTAC Coil Restoration &amp; Service Intake
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Verified Deliverables Breakdown (5 Cols) */}
-        <div className="lg:col-span-5 space-y-4">
-          <div className="p-4 rounded-xl bg-[#141A1F] border border-[#0F2B48] space-y-2 font-sans text-xs">
-            <span className="font-mono text-xs font-bold text-[#FF6B00] uppercase tracking-wider flex items-center gap-1.5">
-              <Building2 className="h-3.5 w-3.5" />
-              <span>01 / Commercial Hospitality Web Platform</span>
-            </span>
-            <p className="text-[#DFDACE]/90 leading-relaxed">
-              Built for hotel ownership groups and facility directors managing high-volume PTAC units nationwide. Replaces generic HVAC brochure copy with clear positioning around deep chemical coil cleaning, odor and mold remediation, airflow recovery, and multi-property scheduling intake.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-[#141A1F] border border-emerald-500/25 space-y-2 font-sans text-xs">
-            <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-              <ClipboardCheck className="h-3.5 w-3.5" />
-              <span>02 / Mobile Daily Operator Check-In Wizard</span>
-            </span>
-            <p className="text-[#DFDACE]/90 leading-relaxed">
-              Custom internal mobile check-in workflow designed for field and operations leads. Captures morning readiness, top 3 daily priorities, active blockers, and an end-of-day after-action debrief in a single thumb-friendly flow.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-[#0E1418] border border-[#FF6B00]/30 font-mono text-xs space-y-2.5">
-            <div className="flex items-center justify-between border-b border-white/10 pb-2">
-              <span className="font-bold text-[#FF6B00] uppercase tracking-wider flex items-center gap-1.5">
-                <LayoutDashboard className="h-3.5 w-3.5" />
-                <span>03 / Operator Readiness &amp; Status HUD</span>
+    <div className="space-y-10">
+    <section id="inncontrol-coils" aria-label="INNcontrol Coils Client System">
+      <article className="bg-[#1B1F21] border border-[#DFDACE]/20 border-t-[3px] border-t-[#D9A62E] p-6 sm:p-8 lg:p-10 space-y-6">
+        {/* Header Bar: Composed Project Cover (Restrained Metadata → Prominent Title → Short Contextual Description) */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 border-b border-[#DFDACE]/15 pb-6">
+          <div className="min-w-0 space-y-2 max-w-3xl">
+            <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em]">
+              <span className="bg-[#D9A62E] text-[#141617] px-2.5 py-0.5 font-bold">
+                Commercial Client System
               </span>
-              <a
-                href="/inncontrol-v2/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] text-emerald-400 underline hover:text-white"
-              >
-                Open /inncontrol-v2/ →
-              </a>
+              <span className="border border-[#DFDACE]/20 bg-[#141719] text-[#EDE9E0] px-2.5 py-0.5">
+                Public B2B Platform + Internal Ops HUD
+              </span>
+              <span className="text-[#DFDACE]/60">Hospitality HVAC &amp; PTAC Refurbishing</span>
             </div>
 
-            <p className="text-[11px] text-[#DFDACE]/80 font-sans leading-relaxed">
-              Pairs the daily check-in flow with an interactive operator status dashboard that translates daily habits, field readiness, and completed objectives into a live visual HUD built around how the operator actually works.
+            <h3 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#EDE9E0] leading-none">
+              INNcontrol Coils
+            </h3>
+            <p className="font-mono text-xs sm:text-sm text-[#D9A62E]">
+              Nationwide B2B Hospitality Platform &amp; Daily Operator Check-In Dashboards
             </p>
+            <p className="font-sans text-xs sm:text-sm text-[#DFDACE]/80 leading-relaxed pt-0.5">
+              Pairs a public commercial platform for nationwide hotel ownership groups with an internal floorplan scoping wizard and daily operator readiness HUD.
+            </p>
+          </div>
 
-            <div className="grid grid-cols-2 gap-2 pt-1 text-[10px] text-[#DFDACE]/70">
-              <div className="rounded bg-black/40 border border-white/5 px-2.5 py-1.5">
-                <span className="block text-[#FF6B00] font-bold">PUBLIC SYSTEM</span>
-                <span>B2B Multi-Property Intake</span>
+          {/* Action Buttons (Consistent 0px Editorial Controls) */}
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0 font-mono text-xs">
+            <button
+              type="button"
+              onClick={() => onOpenCaseStudy('inncontrol-coils')}
+              className="inline-flex items-center gap-2 bg-[#D9A62E] text-[#141617] px-4 py-2.5 font-bold uppercase tracking-wider hover:bg-[#EDE9E0] transition-colors"
+            >
+              <span>Inspect Case Study</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </button>
+
+            <a
+              href="https://inncontrolcoils.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 border border-[#DFDACE]/25 bg-[#141719] text-[#EDE9E0] px-3.5 py-2.5 font-bold uppercase tracking-wider hover:border-[#D9A62E] hover:text-[#D9A62E] transition-colors"
+            >
+              <span>Live Site</span>
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+
+            <a
+              href="/inncontrol-v2/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 border border-[#17504A] bg-[#17504A]/35 text-[#EDE9E0] px-3.5 py-2.5 font-bold uppercase tracking-wider hover:bg-[#17504A] transition-colors"
+            >
+              <span>Operator HUD</span>
+              <ExternalLink className="h-3.5 w-3.5 text-[#D9A62E]" />
+            </a>
+
+            <button
+              type="button"
+              onClick={handleSave}
+              title={saved ? 'Saved in My Ideas' : 'Save to My Ideas'}
+              aria-label={saved ? 'Saved in My Ideas' : 'Save to My Ideas'}
+              className={`p-2.5 border transition-colors ${
+                saved
+                  ? 'border-[#D9A62E] bg-[#D9A62E]/20 text-[#D9A62E]'
+                  : 'border-[#DFDACE]/25 bg-[#141719] text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E]'
+              }`}
+            >
+              {saved ? (
+                <BookmarkCheck className="h-4 w-4 text-[#D9A62E]" />
+              ) : (
+                <Bookmark className="h-4 w-4" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* 12-Column Architectural Spread: Editorial Evidence Frame (7 Cols) + System Specification (5 Cols) */}
+        <div className="grid gap-6 lg:grid-cols-12 items-stretch min-w-0">
+          {/* Left 7 Columns: Composed Editorial Evidence Frame with Dual-Plate Switcher */}
+          <div className="lg:col-span-7 min-w-0 flex flex-col justify-between">
+            <EditorialEvidenceFrame
+              title="INNcontrol Coils"
+              plates={PROJECT_EVIDENCE_PLATES['inncontrol-coils']}
+              variant="lead"
+              showDualCompanionStrip={true}
+              accentColor="#D9A62E"
+              liveUrl="https://inncontrolcoils.com"
+            />
+          </div>
+
+          {/* Right 5 Columns: Unified Hospitality Platform & Operator Dossier */}
+          <div className="lg:col-span-5 min-w-0 flex flex-col justify-between bg-[#141719] border border-[#DFDACE]/15 p-5 sm:p-6 space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-[#DFDACE]/12 pb-2.5">
+                <span className="font-mono text-xs font-bold text-[#D9A62E] uppercase tracking-wider flex items-center gap-2">
+                  <Building2 className="h-3.5 w-3.5 shrink-0" />
+                  <span>Public Platform + Internal Ops Suite</span>
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/55">
+                  3 Connected Surfaces
+                </span>
               </div>
-              <div className="rounded bg-black/40 border border-white/5 px-2.5 py-1.5">
-                <span className="block text-emerald-400 font-bold">INTERNAL OPS</span>
-                <span>Daily Check-In + Status HUD</span>
+
+              <p className="font-sans text-xs sm:text-[13.5px] text-[#EDE9E0]/90 leading-relaxed">
+                Built for hotel ownership groups and facility directors managing high-volume PTAC units nationwide—pairing a commercial multi-property intake website with a custom mobile daily check-in workflow and live operator readiness HUD.
+              </p>
+
+              {/* Compact 3-Surface Ledger */}
+              <div className="divide-y divide-[#DFDACE]/10 border-t border-b border-[#DFDACE]/12 font-sans text-xs">
+                <div className="py-2.5 flex items-start gap-2.5">
+                  <span className="font-mono text-[10.5px] font-bold text-[#D9A62E] shrink-0 pt-0.5">01</span>
+                  <div>
+                    <strong className="font-mono text-[11px] uppercase tracking-wider text-[#EDE9E0] block">
+                      Commercial Hospitality Web Platform
+                    </strong>
+                    <span className="text-[#DFDACE]/75 text-xs">
+                      Positions deep PTAC coil restoration, airflow recovery, and multi-property scheduling intake.
+                    </span>
+                  </div>
+                </div>
+                <div className="py-2.5 flex items-start gap-2.5">
+                  <span className="font-mono text-[10.5px] font-bold text-[#D9A62E] shrink-0 pt-0.5">02</span>
+                  <div>
+                    <strong className="font-mono text-[11px] uppercase tracking-wider text-[#EDE9E0] block">
+                      Mobile Daily Operator Check-In Wizard
+                    </strong>
+                    <span className="text-[#DFDACE]/75 text-xs">
+                      Thumb-friendly field flow capturing morning readiness, top 3 priorities, and end-of-day debriefs.
+                    </span>
+                  </div>
+                </div>
+                <div className="py-2.5 flex items-start gap-2.5">
+                  <span className="font-mono text-[10.5px] font-bold text-[#D9A62E] shrink-0 pt-0.5">03</span>
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
+                      <strong className="font-mono text-[11px] uppercase tracking-wider text-[#EDE9E0]">
+                        Operator Readiness &amp; Status HUD
+                      </strong>
+                      <a
+                        href="/inncontrol-v2/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-[10.5px] text-[#D9A62E] underline hover:text-[#EDE9E0]"
+                      >
+                        Open HUD ↗
+                      </a>
+                    </div>
+                    <span className="text-[#DFDACE]/75 text-xs block mt-0.5">
+                      Live visual status dashboard translating daily habits and completed field objectives into an operator HUD.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2.5 font-mono text-[10.5px]">
+              <div className="bg-[#101214] border border-[#DFDACE]/15 px-3 py-2">
+                <span className="block text-[#D9A62E] font-bold uppercase">PUBLIC SYSTEM</span>
+                <span className="text-[#DFDACE]/75">B2B Multi-Property Intake</span>
+              </div>
+              <div className="bg-[#101214] border border-[#17504A] px-3 py-2">
+                <span className="block text-[#EDE9E0] font-bold uppercase">INTERNAL OPS</span>
+                <span className="text-[#DFDACE]/75">Daily Check-In + Status HUD</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </article>
     </section>
+
+    {/* D2 Auto Detail — Detail Driven (Public Website + Business Portal & Ad Studio) */}
+    <section id="d2-auto-detail" aria-label="D2 Auto Detail Client System">
+      <article className="bg-[#1B1F21] border border-[#DFDACE]/20 border-t-[3px] border-t-[#D9A62E] p-6 sm:p-8 lg:p-10 space-y-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 border-b border-[#DFDACE]/15 pb-6">
+          <div className="min-w-0 space-y-2 max-w-3xl">
+            <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em]">
+              <span className="bg-[#D9A62E] text-[#141617] px-2.5 py-0.5 font-bold">
+                Commercial Client System
+              </span>
+              <span className="border border-[#DFDACE]/20 bg-[#141719] text-[#EDE9E0] px-2.5 py-0.5">
+                Public Platform + D2 Business Portal
+              </span>
+              <span className="text-[#DFDACE]/60">Austin, TX · Automotive Detailing &amp; PPF</span>
+            </div>
+
+            <h3 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#EDE9E0] leading-none">
+              D2 Auto Detail — Detail Driven
+            </h3>
+            <p className="font-mono text-xs sm:text-sm text-[#D9A62E]">
+              Precision Automotive Detailing Platform, Condition Quote Intake &amp; Operator Business Portal
+            </p>
+            <p className="font-sans text-xs sm:text-sm text-[#DFDACE]/80 leading-relaxed pt-0.5">
+              Pairs a high-contrast Austin paint correction, ceramic coating, and PPF acquisition platform with a custom D2 Business Portal featuring CMS Studio, Order Center, Invoice Builder, and an in-browser Social Media Ad Creator.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0 font-mono text-xs">
+            <button
+              type="button"
+              onClick={() => onOpenCaseStudy('d2-auto-detail')}
+              className="inline-flex items-center gap-2 bg-[#D9A62E] text-[#141617] px-4 py-2.5 font-bold uppercase tracking-wider hover:bg-[#EDE9E0] transition-colors"
+            >
+              <span>Inspect Case Study</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </button>
+
+            <a
+              href="https://www.d2autodetail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 border border-[#DFDACE]/25 bg-[#141719] text-[#EDE9E0] px-3.5 py-2.5 font-bold uppercase tracking-wider hover:border-[#D9A62E] hover:text-[#D9A62E] transition-colors"
+            >
+              <span>Live Site</span>
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+
+            <a
+              href="https://www.d2autodetail.com/admin.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 border border-[#17504A] bg-[#17504A]/35 text-[#EDE9E0] px-3.5 py-2.5 font-bold uppercase tracking-wider hover:bg-[#17504A] transition-colors"
+            >
+              <span>Business Portal</span>
+              <ExternalLink className="h-3.5 w-3.5 text-[#D9A62E]" />
+            </a>
+
+            <button
+              type="button"
+              onClick={handleSaveD2}
+              title={savedD2 ? 'Saved in My Ideas' : 'Save to My Ideas'}
+              aria-label={savedD2 ? 'Saved in My Ideas' : 'Save to My Ideas'}
+              className={`p-2.5 border transition-colors ${
+                savedD2
+                  ? 'border-[#D9A62E] bg-[#D9A62E]/20 text-[#D9A62E]'
+                  : 'border-[#DFDACE]/25 bg-[#141719] text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E]'
+              }`}
+            >
+              {savedD2 ? (
+                <BookmarkCheck className="h-4 w-4 text-[#D9A62E]" />
+              ) : (
+                <Bookmark className="h-4 w-4" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-12 items-stretch min-w-0">
+          <div className="lg:col-span-7 min-w-0 flex flex-col justify-between">
+            <EditorialEvidenceFrame
+              title="D2 Auto Detail — Detail Driven"
+              plates={PROJECT_EVIDENCE_PLATES['d2-auto-detail']}
+              variant="lead"
+              accentColor="#D9A62E"
+              liveUrl="https://www.d2autodetail.com"
+            />
+          </div>
+
+          <div className="lg:col-span-5 min-w-0 flex flex-col justify-between bg-[#141719] border border-[#DFDACE]/15 p-5 sm:p-6 space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-[#DFDACE]/12 pb-2.5">
+                <span className="font-mono text-xs font-bold text-[#D9A62E] uppercase tracking-wider flex items-center gap-2">
+                  <Building2 className="h-3.5 w-3.5 shrink-0" />
+                  <span>Public Acquisition + Operator Portal</span>
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#DFDACE]/55">
+                  4 Admin Modules
+                </span>
+              </div>
+
+              <p className="font-sans text-xs sm:text-[13.5px] text-[#EDE9E0]/90 leading-relaxed">
+                Designed for Austin&apos;s Detail Driven studio to unify public ceramic coating, paint correction, and PPF quote requests with an internal operator portal for managing services, orders, invoices, and social graphics.
+              </p>
+
+              <div className="divide-y divide-[#DFDACE]/10 border-t border-b border-[#DFDACE]/12 font-sans text-xs">
+                <div className="py-2.5 flex items-start gap-2.5">
+                  <span className="font-mono text-[10.5px] font-bold text-[#D9A62E] shrink-0 pt-0.5">01</span>
+                  <div>
+                    <strong className="font-mono text-[11px] uppercase tracking-wider text-[#EDE9E0] block">
+                      Condition-Based Detailing &amp; PPF Intake
+                    </strong>
+                    <span className="text-[#DFDACE]/75 text-xs">
+                      Captures vehicle class, paint correction stage, and protection package selection upfront on d2autodetail.com.
+                    </span>
+                  </div>
+                </div>
+                <div className="py-2.5 flex items-start gap-2.5">
+                  <span className="font-mono text-[10.5px] font-bold text-[#D9A62E] shrink-0 pt-0.5">02</span>
+                  <div>
+                    <strong className="font-mono text-[11px] uppercase tracking-wider text-[#EDE9E0] block">
+                      Order Center &amp; One-Click Invoice Builder
+                    </strong>
+                    <span className="text-[#DFDACE]/75 text-xs">
+                      Syncs customer quotes into the D2 Business Portal and converts active jobs into itemized print/PDF invoices and receipts.
+                    </span>
+                  </div>
+                </div>
+                <div className="py-2.5 flex items-start gap-2.5">
+                  <span className="font-mono text-[10.5px] font-bold text-[#D9A62E] shrink-0 pt-0.5">03</span>
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
+                      <strong className="font-mono text-[11px] uppercase tracking-wider text-[#EDE9E0]">
+                        CMS Studio &amp; Social Ad Creator
+                      </strong>
+                      <a
+                        href="https://www.d2autodetail.com/admin.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-[10.5px] text-[#D9A62E] underline hover:text-[#EDE9E0]"
+                      >
+                        Open Portal ↗
+                      </a>
+                    </div>
+                    <span className="text-[#DFDACE]/75 text-xs block mt-0.5">
+                      Updates service tiers, DD TV YouTube episodes, and 1:1 / 9:16 social media graphics directly in the browser.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2.5 font-mono text-[10.5px]">
+              <div className="bg-[#101214] border border-[#DFDACE]/15 px-3 py-2">
+                <span className="block text-[#D9A62E] font-bold uppercase">PUBLIC SITE</span>
+                <span className="text-[#DFDACE]/75">Quote Intake + DD TV</span>
+              </div>
+              <div className="bg-[#101214] border border-[#17504A] px-3 py-2">
+                <span className="block text-[#EDE9E0] font-bold uppercase">BUSINESS PORTAL</span>
+                <span className="text-[#DFDACE]/75">Orders, Billing &amp; Ad Studio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    </div>
   );
 }

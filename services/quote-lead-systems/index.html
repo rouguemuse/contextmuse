@@ -13,37 +13,48 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote + Lead Systems | Context &amp; Muse</title>
-    <meta name="description" content="Turn vague inquiries into qualified, priced, and routed leads. Custom quoting engines, territory logic, and commercial conversion architecture.">
+    <title>Party Rental &amp; Local Service Website Design + Quote Systems | Context &amp; Muse</title>
+    <meta name="description" content="Custom party rental website design and quote request systems for event rentals, dumpster &amp; equipment haulers, and local service businesses. Qualify dates, delivery zones, and package pricing upfront—from $2,500.">
     <link rel="canonical" href="https://www.contextmuse.com/services/quote-lead-systems/">
     <link rel="icon" type="image/svg+xml" href="/assets/images/contextmuse_logo.svg">
+    <link rel="preload" as="image" href="/assets/images/edrpartyrentals-screenshot.webp" fetchpriority="high">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Quote + Lead Systems | Context &amp; Muse">
-    <meta property="og:description" content="Custom quoting engines, service-area territory logic, and commercial conversion architecture without plugin bloat.">
+    <meta property="og:title" content="Party Rental &amp; Local Service Website Design + Quote Systems | Context &amp; Muse">
+    <meta property="og:description" content="Custom websites and quote request systems for party rentals, equipment rentals, and local service operators. Qualify dates, delivery zones, and pricing upfront without phone tag.">
     <meta property="og:url" content="https://www.contextmuse.com/services/quote-lead-systems/">
-    <meta property="og:image" content="https://www.contextmuse.com/assets/images/lonewolf-commercial-spread.webp">
+    <meta property="og:image" content="https://www.contextmuse.com/assets/images/edrpartyrentals-screenshot.webp">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Quote + Lead Systems | Context &amp; Muse">
-    <meta name="twitter:description" content="Custom quoting engines, service-area territory logic, and commercial conversion architecture without plugin bloat.">
-    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/lonewolf-commercial-spread.webp">
+    <meta name="twitter:title" content="Party Rental &amp; Local Service Website Design + Quote Systems | Context &amp; Muse">
+    <meta name="twitter:description" content="Custom websites and quote request systems for party rentals, equipment rentals, and local service operators. Qualify dates, delivery zones, and pricing upfront without phone tag.">
+    <meta name="twitter:image" content="https://www.contextmuse.com/assets/images/edrpartyrentals-screenshot.webp">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Quote + Lead System",
-      "serviceType": "Lead Intake, Quoting Calculators & Territory Routing",
+      "@id": "https://www.contextmuse.com/services/quote-lead-systems/#service",
+      "name": "Party Rental & Local Service Website Design + Quote Systems",
+      "url": "https://www.contextmuse.com/services/quote-lead-systems/",
+      "serviceType": "Party Rental Website Design, Custom Quoting Calculators & Local Service Lead Intake Systems",
       "provider": {
         "@type": "Organization",
+        "@id": "https://www.contextmuse.com/#organization",
         "name": "Context & Muse",
+        "alternateName": "ContextMuse",
         "url": "https://www.contextmuse.com/"
       },
-      "description": "Custom commercial quoting systems, service-area territory qualification, and high-conversion intake architecture for local service and logistics operators.",
+      "areaServed": [
+        { "@type": "City", "name": "Austin" },
+        { "@type": "City", "name": "Round Rock" },
+        { "@type": "State", "name": "Texas" },
+        { "@type": "Country", "name": "United States" }
+      ],
+      "description": "Custom party rental website design, equipment rental quoting systems, delivery-area qualification, and structured lead intake for event rental and local service businesses.",
       "offers": {
         "@type": "Offer",
         "price": "2500",
@@ -60,7 +71,8 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="/styles.css?v=4.4">
 
     <style>
@@ -69,7 +81,7 @@
         }
 
         .qls-hero {
-            padding: clamp(105px, 14vh, 140px) 0 clamp(50px, 7vh, 75px) 0;
+            padding: clamp(92px, 12vh, 130px) 0 clamp(44px, 6vh, 70px) 0;
             background: radial-gradient(circle at 80% 35%, #FAF9F3 0%, #F5F3EB 50%, #EFECE2 100%);
             border-bottom: 1px solid var(--border-light);
         }
@@ -94,25 +106,25 @@
             letter-spacing: 0.14em;
             text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .qls-hero-title {
             font-family: var(--font-serif);
-            font-size: clamp(34px, 4.2vw, 52px);
+            font-size: clamp(28px, 4vw, 48px);
             line-height: 1.1;
             letter-spacing: -0.02em;
             color: #0E1F1B;
-            margin: 0 0 1.25rem 0;
+            margin: 0 0 1rem 0;
             font-weight: 400;
         }
 
         .qls-hero-subhead {
             font-family: var(--font-sans);
-            font-size: clamp(16px, 1.2vw, 18px);
-            line-height: 1.65;
+            font-size: clamp(15px, 1.15vw, 17.5px);
+            line-height: 1.6;
             color: var(--text-secondary);
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.25rem;
             max-width: 600px;
         }
 
@@ -128,7 +140,7 @@
             border: 1px solid var(--border-light);
             padding: 6px 14px;
             border-radius: 4px;
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.25rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
@@ -371,28 +383,31 @@
         <header class="qls-hero">
             <div class="container qls-hero-grid">
                 <div>
-                    <span class="qls-eyebrow">COMMERCIAL INTAKE &amp; ROUTING ARCHITECTURE</span>
+                    <span class="qls-eyebrow">PARTY RENTAL, EQUIPMENT RENTAL &amp; LOCAL SERVICE WEB DESIGN</span>
                     <h1 class="qls-hero-title">
-                        Stop playing phone tag for basic quotes.
+                        Party rental &amp; local service websites that qualify dates, delivery, and pricing upfront.
                     </h1>
                     <p class="qls-hero-subhead">
-                        Context &amp; Muse designs and builds custom <strong>Quote + Lead Systems</strong> that automatically qualify customers by service area, calculate upfront estimates, and deliver structured, high-intent leads directly to your operations.
+                        If you run a <strong>party or event rental company</strong>, a <strong>roll-off dumpster or equipment fleet</strong>, or a <strong>local service business</strong>, a generic contact form forces you into phone tag over the same questions: <em>Is it available on my date? Which package or size fits? Do you deliver to my zip code? Can you set up on concrete or grass?</em> Context &amp; Muse designs and builds custom websites and quote-request systems that answer those questions upfront and send your team complete, ready-to-book inquiries.
                     </p>
                     <div class="qls-price-badge">
                         <span>Starting from <strong>$2,500</strong></span>
                         <span style="color: var(--border-dark);">&bull;</span>
-                        <span style="color: var(--text-secondary); font-size: 12px; font-weight: normal;">Multi-market systems typically $4,500+</span>
+                        <span style="color: var(--text-secondary); font-size: 12px; font-weight: normal;">Multi-market &amp; multi-city systems typically $4,500+</span>
                     </div>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <a href="#intake" class="btn btn-primary">Discuss a Quote &amp; Lead System &rarr;</a>
-                        <a href="#proof" class="btn btn-secondary">See Lone Wolf Live Proof &darr;</a>
+                        <a href="#intake" class="btn btn-primary">Request a Quote System Scope &rarr;</a>
+                        <a href="#proof" class="btn btn-secondary">See EDR Party Rentals &amp; Lone Wolf Proof &darr;</a>
                     </div>
                 </div>
 
                 <div>
                     <div class="proof-img-frame">
-                        <img src="/assets/images/lonewolf-commercial-spread.webp" alt="Lone Wolf Dumpsters dynamic pricing and multi-market booking engine" width="1400" height="875">
+                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals custom bilingual website design, package combinations, and date-based quote intake system" width="1200" height="750" fetchpriority="high" decoding="async">
                     </div>
+                    <p style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); margin-top: 0.6rem;">
+                        Verified Client Build: <a href="/case-studies/edr-party-rentals/" style="color: var(--accent-teal); font-weight: 600; text-decoration: underline;">EDR Party Rentals</a> (Bilingual Event Catalog, Surface Safety Rules &amp; Date/Delivery Qualification)
+                    </p>
                 </div>
             </div>
         </header>
@@ -434,30 +449,73 @@
             </div>
         </section>
 
-        <!-- Real Case Study Proof: Lone Wolf Dumpsters -->
+        <!-- Real Case Study Proof: EDR Party Rentals + Lone Wolf Dumpsters -->
         <section class="proof-feature-section" id="proof">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-eyebrow">VERIFIED CLIENT SYSTEM</span>
-                    <h2 class="section-title">Case in point: Lone Wolf Dumpsters</h2>
+                    <span class="section-eyebrow">VERIFIED CLIENT BUILDS</span>
+                    <h2 class="section-title">Real client proof: Party rentals &amp; local equipment fleets</h2>
                     <p class="section-desc">
-                        A complete commercial platform built for a Dallas-Fort Worth logistics operator across 48 municipal markets.
+                        Two production systems built for operators whose customers needed package, sizing, delivery-area, and surface answers before booking.
                     </p>
                 </div>
 
-                <div class="proof-feature-grid">
+                <!-- Proof 01: EDR Party Rentals -->
+                <div class="proof-feature-grid" style="margin-bottom: 4.5rem; padding-bottom: 4rem; border-bottom: 1px solid var(--border-light);">
                     <div>
-                        <h3 style="font-family: var(--font-serif); font-size: 26px; color: var(--text-primary); margin: 0 0 1rem 0; font-weight: 400;">
-                            What the system handles:
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">CLIENT BUILD 01 &bull; PARTY &amp; EVENT RENTALS</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 28px; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                            EDR Party Rentals: Making a complicated rental catalog feel simple to book
                         </h3>
+                        <p style="font-size: 15px; line-height: 1.65; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
+                            Before a customer can put down a deposit on tents, bounce houses, tables, or chairs, they have to know what is available on their date, whether delivery covers their zip code, whether their order qualifies for free delivery, and whether their setup surface (concrete vs. grass) requires ballast weights.
+                        </p>
                         <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 1rem; font-size: 14.5px; line-height: 1.6; color: var(--text-secondary);">
                             <li style="border-left: 2.5px solid var(--accent-teal); padding-left: 1rem;">
-                                <strong style="color: var(--text-primary); display: block;">48 Dedicated Municipal Pages:</strong>
-                                Programmatic local SEO hubs targeting every city in Collin, Denton, Dallas, and Tarrant counties with localized metadata.
+                                <strong style="color: var(--text-primary); display: block;">Package Combinations &amp; Standardized Catalog:</strong>
+                                Clear party package bundles and cleaned, standardized real inventory photography so parents and event planners don't have to build every order from scratch.
                             </li>
                             <li style="border-left: 2.5px solid var(--accent-teal); padding-left: 1rem;">
+                                <strong style="color: var(--text-primary); display: block;">Early Date, Delivery &amp; Surface Qualification:</strong>
+                                Validates event date, delivery eligibility, and setup surface (grass vs. concrete ballast rules) before the request reaches staff.
+                            </li>
+                            <li style="border-left: 2.5px solid var(--accent-teal); padding-left: 1rem;">
+                                <strong style="color: var(--text-primary); display: block;">Bilingual (English / Spanish) Mobile-First Flow:</strong>
+                                Built for customers arriving from phones and social media with full English and Spanish shopping and intake parity.
+                            </li>
+                        </ul>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="/case-studies/edr-party-rentals/" class="btn btn-primary">Read EDR Party Rentals Case Study &rarr;</a>
+                            <a href="#intake" class="btn btn-secondary">Build a Similar Rental Website &darr;</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="proof-img-frame">
+                            <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals bilingual event inventory catalog and date-based reservation triage" width="1200" height="750" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proof 02: Lone Wolf Dumpsters -->
+                <div class="proof-feature-grid">
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">CLIENT BUILD 02 &bull; CONTAINER RENTAL &amp; HAULING LOGISTICS</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 28px; color: var(--text-primary); margin: 0 0 0.75rem 0; font-weight: 500;">
+                            Lone Wolf Dumpsters: 48-city container sizing &amp; dual-track intake
+                        </h3>
+                        <p style="font-size: 15px; line-height: 1.65; color: var(--text-secondary); margin: 0 0 1.25rem 0;">
+                            Dispatchers were fielding repetitive phone calls explaining cubic yardage, pickup-truck load equivalents, and heavy masonry weight limits before an order could be scheduled across the Dallas–Fort Worth metroplex.
+                        </p>
+                        <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 1rem; font-size: 14.5px; line-height: 1.6; color: var(--text-secondary);">
+                            <li style="border-left: 2.5px solid var(--accent-teal); padding-left: 1rem;">
                                 <strong style="color: var(--text-primary); display: block;">Transparent Sizing &amp; Tonnage Matrix:</strong>
-                                Clear 15yd, 20yd, and 25yd specifications with transparent rental periods and disposal allowances.
+                                Clear 15yd ($385), 20yd ($425), and 25yd ($475) specifications with pickup-truck load equivalents, 3-day base windows, and heavy-debris payload safeguards.
+                            </li>
+                            <li style="border-left: 2.5px solid var(--accent-teal); padding-left: 1rem;">
+                                <strong style="color: var(--text-primary); display: block;">48 Dedicated Municipal Pages:</strong>
+                                Programmatic local SEO hubs targeting 48 cities across Collin, Denton, Dallas, and Tarrant counties with local permit and driveway placement guidance.
                             </li>
                             <li style="border-left: 2.5px solid var(--accent-teal); padding-left: 1rem;">
                                 <strong style="color: var(--text-primary); display: block;">Differentiated Intake Workflows:</strong>
@@ -466,16 +524,27 @@
                         </ul>
 
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="/work/lone-wolf-dumpsters/" class="btn btn-secondary">Read Full Case Study &rarr;</a>
+                            <a href="/work/lone-wolf-dumpsters/" class="btn btn-secondary">Read Lone Wolf Dumpsters Case Study &rarr;</a>
                             <a href="https://lonewolf-dumpsters.vercel.app/" target="_blank" rel="noopener" class="btn btn-secondary" style="border-color: var(--accent-teal); color: var(--accent-teal);">Inspect Live Build ↗</a>
                         </div>
                     </div>
 
                     <div>
                         <div class="proof-img-frame">
-                            <img src="/assets/images/lonewolf-cover.webp" alt="Lone Wolf Dumpsters mobile and desktop booking interface" width="1400" height="850">
+                            <img src="/assets/images/lonewolf-cover.webp" alt="Lone Wolf Dumpsters mobile and desktop booking interface" width="1400" height="850" loading="lazy" decoding="async">
                         </div>
                     </div>
+                </div>
+
+                <!-- Related Hospitality / Venue Note -->
+                <div style="margin-top: 3.5rem; background: #FFFFFF; border: 1px solid var(--border-light); border-left: 3px solid var(--accent-teal); border-radius: 6px; padding: 1.5rem 1.75rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                    <div style="max-width: 680px;">
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.25rem;">ALSO EXPLORING PRIVATE EVENT OR VENUE INTAKE?</span>
+                        <p style="font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.55;">
+                            For restaurants, bars, and multi-room event venues, inspect our <a href="/restaurant-builds/events-venue/" style="color: var(--accent-teal); font-weight: 600;">Pub &amp; Live Events Venue Concept Study</a> and <a href="/restaurant-builds/" style="color: var(--accent-teal); font-weight: 600;">Hospitality Interface Studies</a> (independent concept work), or explore <a href="/signal/" style="color: var(--accent-teal); font-weight: 600;">Signal</a> for restaurant POS operational intelligence.
+                        </p>
+                    </div>
+                    <a href="/restaurant-builds/" class="btn btn-secondary" style="white-space: nowrap;">View Hospitality Studies &rarr;</a>
                 </div>
             </div>
         </section>

@@ -104,7 +104,7 @@ export default function Method() {
         {/* =================================================================
             SECTION 01: THE 5-STAGE PROCESS
            ================================================================= */}
-        <section aria-labelledby="method-process-heading" className="space-y-6">
+        <section id="five-stage-process" aria-labelledby="method-process-heading" className="space-y-6">
           <RoomHeading
             num={room.num}
             verb={room.verb}
@@ -113,7 +113,35 @@ export default function Method() {
             watermark={room.num}
             accentColor="#17504A"
             sub="How a project moves from understanding the underlying operational problem through visual design, engineering, and delivery—plus clear scope and pricing."
-          />
+          >
+            <nav
+              aria-label="Method sections"
+              className="relative z-10 mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2 font-mono text-xs"
+            >
+              {[
+                { num: '01', label: '5-Stage Execution Process', target: '#five-stage-process' },
+                { num: '02', label: 'Founder & Studio Philosophy', target: '#operating-philosophy' },
+                { num: '03', label: 'Capabilities & Pricing ($395–$10k+)', target: '#ways-to-work-together' },
+              ].map((sec) => (
+                <button
+                  key={sec.num}
+                  type="button"
+                  onClick={() => {
+                    const el = document.querySelector(sec.target);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className="flex items-center justify-between gap-2 bg-[#FAF8F5] border border-[#23282A]/20 hover:border-[#17504A] px-3.5 py-2.5 text-left transition-colors group"
+                >
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="inline-block h-2 w-2 shrink-0 bg-[#17504A]" />
+                    <span className="text-[#17504A] font-bold shrink-0">{sec.num}</span>
+                    <span className="text-[#23282A] font-semibold truncate">{sec.label}</span>
+                  </div>
+                  <ArrowRight className="h-3.5 w-3.5 text-[#23282A]/50 group-hover:text-[#17504A] shrink-0 transition-colors" />
+                </button>
+              ))}
+            </nav>
+          </RoomHeading>
 
           <div className="pt-2">
             <div className="flex flex-wrap items-center justify-between gap-2 mb-3">

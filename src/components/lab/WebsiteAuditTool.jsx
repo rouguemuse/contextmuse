@@ -250,7 +250,7 @@ export default function WebsiteAuditTool() {
   return (
     <div className="border border-[#23282A]/25 bg-[#23282A] text-[#EDE9E0] rounded shadow-xl overflow-hidden">
       {/* Section Header */}
-      <div className="border-b border-[#DFDACE]/15 bg-[#1F2325] px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="border-b border-[#DFDACE]/15 bg-[#1F2325] px-4 py-3.5 sm:px-6 sm:py-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-[#D9A62E] font-bold uppercase tracking-wider">
@@ -260,17 +260,17 @@ export default function WebsiteAuditTool() {
               Production Diagnostic
             </span>
           </div>
-          <h3 className="mt-1 font-display text-xl font-bold uppercase tracking-tight text-[#EDE9E0]">
+          <h3 className="mt-1 font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-[#EDE9E0]">
             Website + System Check
           </h3>
         </div>
-        <div className="text-right">
+        <div className="text-left sm:text-right">
           <span className="font-mono text-[11px] text-[#DFDACE]/60 block">4 Evaluation Pillars</span>
           <span className="font-mono text-[10px] text-[#D9A62E]">Message • Paths • Proof • Intake</span>
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         <p className="text-xs sm:text-[13px] text-[#DFDACE]/80 leading-relaxed font-sans max-w-3xl">
           Most business websites don’t have traffic problems — they have <strong>clarity and intake problems</strong>. Enter any business URL to identify where potential clients encounter friction, drop out of the quoting funnel, or get stuck in phone tag.
         </p>

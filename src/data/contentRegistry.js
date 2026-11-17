@@ -106,6 +106,39 @@ export const REGISTRY_METADATA = {
     ],
   },
 
+  'd2-auto-detail': {
+    aliases: ['d2-design', 'd2'],
+    contentType: 'client-project',
+    maturityStatus: 'production',
+    visibility: 'public',
+    featuredInWork: true,
+    featuredInLab: false,
+    canonicalDestination: 'https://www.d2autodetail.com',
+    caseStudyDestination: '/work?case=d2-auto-detail',
+    liveDestination: 'https://www.d2autodetail.com',
+    secondaryDestination: 'https://www.d2autodetail.com/admin.html',
+    canonicalTagIds: [
+      'prob:intake-triage',
+      'prob:sizing-pricing',
+      'cap:intake-routing',
+      'cap:quote-sizing-engine',
+      'cap:local-first-workbench',
+      'ind:logistics-rentals',
+    ],
+    relationships: [
+      {
+        type: 'uses-capability',
+        targetId: 'inncontrol-coils',
+        note: 'Both pair a public customer acquisition site with a custom internal operator portal.',
+      },
+      {
+        type: 'uses-capability',
+        targetId: 'ad-compositor',
+        note: 'Includes a custom in-browser Social Media Ad Creator inside the D2 Business Portal.',
+      },
+    ],
+  },
+
   gensort: {
     aliases: ['gensort-studio'],
     contentType: 'software-product',

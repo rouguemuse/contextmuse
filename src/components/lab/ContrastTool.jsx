@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeftRight, Eye } from 'lucide-react';
+import { ArrowLeftRight } from 'lucide-react';
 
 const toRgb = (hex) => {
   const h = hex.replace('#', '');
@@ -20,9 +20,16 @@ export const contrastRatio = (a, b) => {
   return (hi + 0.05) / (lo + 0.05);
 };
 
+const BRAND_PAIR_PRESETS = [
+  { label: 'Teal / Bone', fg: '#EDE9E0', bg: '#17504A' },
+  { label: 'Ink / Gold', fg: '#D9A62E', bg: '#23282A' },
+  { label: 'Paper / Ink', fg: '#23282A', bg: '#FAF8F5' },
+  { label: 'Low Contrast', fg: '#9A6F0B', bg: '#D9A62E' },
+];
+
 function Swatch({ label, value, onChange }) {
   return (
-    <label className="flex flex-1 items-center gap-2.5 border border-[#23282A]/20 px-3 py-2 bg-white cursor-pointer">
+    <label className="flex flex-1 items-center gap-2.5 border border-[#23282A]/20 px-3 py-2 bg-white cursor-pointer min-h-[42px]">
       <span
         className="relative block h-6 w-6 border border-[#23282A]/25 shrink-0"
         style={{ backgroundColor: value }}
@@ -35,9 +42,9 @@ function Swatch({ label, value, onChange }) {
           aria-label={label}
         />
       </span>
-      <span className="flex flex-col leading-none">
+      <span className="flex flex-col leading-none min-w-0">
         <span className="font-mono text-[9px] uppercase text-[#23282A]/60 font-semibold">{label}</span>
-        <span className="mt-1 font-mono text-[11px] font-bold text-[#23282A] uppercase">{value}</span>
+        <span className="mt-1 font-mono text-[11px] font-bold text-[#23282A] uppercase truncate">{value}</span>
       </span>
     </label>
   );
@@ -52,12 +59,12 @@ export default function ContrastTool() {
   return (
     <div
       id="tool-contrast"
-      className="h-full bg-[#FAF8F5] border border-[#23282A]/15 p-5 sm:p-6 text-[#23282A] space-y-5 font-sans shadow-sm flex flex-col justify-between"
+      className="h-full bg-[#FAF8F5] border border-[#23282A]/15 p-4 sm:p-6 text-[#23282A] space-y-4 font-sans shadow-sm flex flex-col justify-between"
     >
       <div className="space-y-4">
         <div className="border-b border-[#23282A]/12 pb-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#9A6F0B] font-bold block">
-            Live WCAG Ratio Calculator
+            02 · Live WCAG Ratio Calculator
           </span>
           <h3 className="font-display text-lg font-black uppercase tracking-tight text-[#23282A] mt-0.5">
             Color Contrast &amp; Readability Utility
@@ -68,9 +75,37 @@ export default function ContrastTool() {
           Test foreground and background color pairs against WCAG readability standards to verify typographic legibility.
         </p>
 
+        {/* Quick Brand Token Pair Presets */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 font-mono text-[10px]">
+          {BRAND_PAIR_PRESETS.map((p) => {
+            const active = fg.toLowerCase() === p.fg.toLowerCase() && bg.toLowerCase() === p.bg.toLowerCase();
+            return (
+              <button
+                key={p.label}
+                type="button"
+                onClick={() => {
+                  setFg(p.fg);
+                  setBg(p.bg);
+                }}
+                className={`min-h-[34px] px-2 py-1 border uppercase tracking-wider font-bold transition-colors flex items-center justify-center gap-1.5 ${
+                  active
+                    ? 'bg-[#23282A] text-[#D9A62E] border-[#23282A]'
+                    : 'bg-[#EDE9E0]/60 text-[#23282A]/80 border-[#23282A]/15 hover:border-[#23282A]'
+                }`}
+              >
+                <span
+                  className="inline-block h-2.5 w-2.5 border border-black/20 shrink-0"
+                  style={{ backgroundColor: p.bg }}
+                />
+                <span className="truncate">{p.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
         {/* Live Swatch Preview */}
         <div
-          className="flex min-h-[140px] items-center justify-center px-4 py-8 border border-[#23282A]/15 transition-colors duration-200"
+          className="flex min-h-[128px] sm:min-h-[140px] items-center justify-center px-4 py-6 sm:py-8 border border-[#23282A]/15 transition-colors duration-200"
           style={{ backgroundColor: bg, color: fg }}
         >
           <span className="text-center font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
@@ -79,20 +114,21 @@ export default function ContrastTool() {
         </div>
       </div>
 
-      <div className="space-y-4">
-        {/* Interactive Controls */}
-        <div className="flex flex-wrap items-stretch gap-2">
+      <div className="space-y-4 pt-2">
+        {/* Interactive Controls — Symmetrical Grid on Mobile */}
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-stretch gap-2">
           <Swatch label="Text" value={fg} onChange={setFg} />
           <Swatch label="Ground" value={bg} onChange={setBg} />
           <button
+            type="button"
             onClick={() => {
               setFg(bg);
               setBg(fg);
             }}
-            className="flex items-center gap-1.5 border border-[#23282A]/20 bg-[#23282A] text-[#EDE9E0] px-3.5 py-2 text-xs font-mono uppercase tracking-wider font-bold hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
+            className="col-span-2 sm:col-span-1 min-h-[42px] flex items-center justify-center gap-1.5 border border-[#23282A]/20 bg-[#23282A] text-[#EDE9E0] px-4 py-2 text-xs font-mono uppercase tracking-wider font-bold hover:bg-[#D9A62E] hover:text-[#141617] transition-colors"
           >
-            <ArrowLeftRight className="h-3 w-3" />
-            <span>Swap</span>
+            <ArrowLeftRight className="h-3.5 w-3.5" />
+            <span>Swap Fore / Ground</span>
           </button>
         </div>
 
