@@ -32,7 +32,7 @@ const COMPANION_PRODUCTS = [
     subtitle: 'Explainable Behavioral-Pattern & Topological Reflection Engine',
     summary:
       'Translates multi-step scenario reflections into an interactive 2D topological coordinate landscape using transparent, inspectable client-side vector weights with zero clinical labels.',
-    mediaUrl: '/assets/images/self_cartography_mockup.jpg',
+    mediaUrl: '/assets/captures/self-cartography-live.jpg',
     plates: null,
     liveUrl: '/cartography/',
     liveLabel: 'Launch App',

@@ -1033,7 +1033,7 @@ export const PROJECTS = [
     tier: 'featured',
     evidenceType: 'interactive-demo',
     liveUrl: '/cartography/',
-    mediaUrl: '/assets/images/self_cartography_mockup.jpg',
+    mediaUrl: '/assets/captures/self-cartography-live.jpg',
     coverStyle: 'teal',
     coverColor: '#17504A',
     coverTextColor: '#EDE9E0',

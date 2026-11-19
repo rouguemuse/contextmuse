@@ -48,7 +48,7 @@ const STANDALONE_APPS = [
     description:
       'Maps structured scenario reflections into an interactive 2D topological landscape using transparent, inspectable client-side vector weights with zero clinical labels.',
     specs: ['2D Topological Canvas', 'Inspectable Vector Weights', '100% Browser-Local State'],
-    image: '/assets/images/self_cartography_mockup.jpg',
+    image: '/assets/captures/self-cartography-live.jpg',
     imageAlt: 'Self-Cartography V1 topological map interface',
     primaryUrl: '/cartography/',
     primaryLabel: 'Launch Cartography V1',

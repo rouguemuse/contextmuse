@@ -116,6 +116,13 @@ export const WORK_MEDIA_PROFILES = {
     cropClass: 'w-full h-full object-contain object-top block',
     naturalResolution: '3200×2000',
   },
+  '/assets/captures/self-cartography-live.jpg': {
+    figLabel: '01 / TOPOLOGICAL TERRITORY ATLAS',
+    provenance: '/cartography/',
+    caption: 'Sequence 00–10 Interactive Territory Map — 00 Defining Self Selected',
+    cropClass: 'w-full h-full object-cover object-center block',
+    naturalResolution: '884×621',
+  },
   '/assets/images/self_cartography_mockup.jpg': {
     figLabel: '01 / TOPOLOGICAL COORDINATE MAP',
     provenance: '/cartography/',
