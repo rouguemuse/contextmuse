@@ -521,7 +521,7 @@ export const PROJECTS = [
     tier: 'featured',
     evidenceType: 'screenshot',
     liveUrl: 'https://www.mapswithteeth.org/',
-    mediaUrl: '/assets/images/mapswithteeth-screenshot.webp',
+    mediaUrl: '/assets/captures/mapswithteeth-live.jpg',
     coverStyle: 'charcoal',
     coverColor: '#23282A',
     coverTextColor: '#EDE9E0',

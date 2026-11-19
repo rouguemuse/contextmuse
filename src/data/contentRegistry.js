@@ -491,7 +491,7 @@ export const ADDITIONAL_REGISTRY_ENTRIES = [
     featuredInLab: true,
     canonicalDestination: '/lab/design-intelligence',
     liveDestination: '/lab/design-intelligence',
-    mediaUrl: '/assets/images/design-intelligence/exp01_after_desktop.png',
+    mediaUrl: '/assets/captures/design-intelligence-live.jpg',
     canonicalTagIds: [
       'prob:structural-clarity',
       'cap:diagnostic-instrumentation',

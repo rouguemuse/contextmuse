@@ -121,7 +121,7 @@ export const WORK_MEDIA_PROFILES = {
     provenance: '/cartography/',
     caption: 'Sequence 00–10 Interactive Territory Map — 00 Defining Self Selected',
     cropClass: 'w-full h-full object-cover object-center block',
-    naturalResolution: '884×621',
+    naturalResolution: '1408×968',
   },
   '/assets/images/self_cartography_mockup.jpg': {
     figLabel: '01 / TOPOLOGICAL COORDINATE MAP',
@@ -144,12 +144,26 @@ export const WORK_MEDIA_PROFILES = {
     cropClass: 'w-full h-full object-contain object-center block',
     naturalResolution: '2400×1500',
   },
+  '/assets/captures/mapswithteeth-live.jpg': {
+    figLabel: '01 / BARRIER-FIRST CIVIC INITIATIVE',
+    provenance: 'mapswithteeth.org',
+    caption: 'Independent Public-Interest Systems Research & Cross-Jurisdiction Continuity',
+    cropClass: 'w-full h-full object-cover object-center block',
+    naturalResolution: '1408×968',
+  },
   '/assets/images/mapswithteeth-screenshot.webp': {
     figLabel: '01 / BARRIER-FIRST CIVIC INTERFACE',
     provenance: 'mapswithteeth.org',
     caption: 'Cross-Jurisdiction Eligibility Prerequisite Map & Quick-Exit Safety Bar',
     cropClass: 'w-full h-full object-contain object-top block',
     naturalResolution: '2400×1500',
+  },
+  '/assets/captures/design-intelligence-live.jpg': {
+    figLabel: '01 / THREE-SYSTEM SPECIMEN COMPARISON',
+    provenance: '/lab/design-intelligence',
+    caption: 'One Specimen · Three Systems (Plaidis / Linear / Stripe) · Measurable Decisions',
+    cropClass: 'w-full h-full object-cover object-center block',
+    naturalResolution: '1408×968',
   },
   '/assets/images/design-intelligence/exp01_after_desktop.png': {
     figLabel: '01 / PRODUCTION TRANSFER SPECIMEN',
@@ -162,8 +176,8 @@ export const WORK_MEDIA_PROFILES = {
     figLabel: '01 / BILINGUAL RESERVATION PLATFORM',
     provenance: 'EDR Party Rentals (EN / ES)',
     caption: 'Bilingual English/Spanish Toggle, Date Availability & Surface Safety Triage',
-    cropClass: 'w-full h-full object-cover object-top block',
-    naturalResolution: '2209×1800',
+    cropClass: 'w-full h-full object-cover object-center block',
+    naturalResolution: '1408×968',
   },
   '/assets/images/edrpartyrentals-screenshot.webp': {
     figLabel: '01 / BILINGUAL RESERVATION PLATFORM',

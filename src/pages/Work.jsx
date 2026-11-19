@@ -166,7 +166,7 @@ export default function Work() {
 
                 <div className="pt-2">
                   <EditorialEvidenceFrame
-                    src="/assets/images/mapswithteeth-screenshot.webp"
+                    src="/assets/captures/mapswithteeth-live.jpg"
                     alt="Maps With Teeth Public-Interest Civic Continuity Platform"
                     title="Maps With Teeth"
                     variant="card"
@@ -227,7 +227,7 @@ export default function Work() {
 
                 <div className="pt-2">
                   <EditorialEvidenceFrame
-                    src="/assets/images/design-intelligence/exp01_after_desktop.png"
+                    src="/assets/captures/design-intelligence-live.jpg"
                     alt="Design Intelligence 85-Node Interactive Specimen and Token Transfer"
                     title="Design Intelligence"
                     variant="card"
