@@ -938,10 +938,38 @@
                 </div>
 
                 <!-- Demonstration Disclaimer Banner -->
-                <div style="background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.28); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                <div id="brief-notice-banner" style="background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.28); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px;">
                     <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0;" id="brief-notice-tag">Notice:</span>
                     <span style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;" id="brief-notice-text">Sample data only. This is not a real restaurant. Baseline metrics are kept constant across all Signal public pages.</span>
                 </div>
+
+                <!-- Interactive View Switcher: Full Forensic Dossier vs 4:15 PM Pre-Shift Lineup Sheet -->
+                <div class="signal-mode-bar" id="brief-view-switcher">
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-gold); font-weight: 700;">Operator View Mode:</span>
+                        <div class="signal-mode-tabs" role="tablist" aria-label="Brief display mode">
+                            <button type="button" class="signal-mode-btn active" id="view-mode-dossier" onclick="setBriefViewMode('dossier')">
+                                <span>📊</span>
+                                <span>Full Forensic Dossier</span>
+                            </button>
+                            <button type="button" class="signal-mode-btn" id="view-mode-clipboard" onclick="setBriefViewMode('clipboard')">
+                                <span>📋</span>
+                                <span>4:15 PM Pre-Shift Lineup Sheet (1-Page)</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 10.5px; color: rgba(250, 249, 245, 0.78); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="color: #2DD4BF;">● Interactive Tools Ready:</span>
+                        <span>Service Replay Scrubber</span>
+                        <span>&bull;</span>
+                        <span>What-If Margin Simulator</span>
+                        <span>&bull;</span>
+                        <span>Raw POS Tape Proof</span>
+                    </div>
+                </div>
+
+                <!-- 4:15 PM Pre-Shift Clipboard View (One-Click Shift Handoff Sheet) -->
+                <div class="preshift-clipboard" id="preshift-clipboard-view"></div>
 
                 <!-- 1. Operational State Assessment -->
                 <div class="state-assessment-box">
@@ -979,6 +1007,9 @@
                             <div class="stack-note" id="stack-total-note">Projected annual opportunity: calculated cost/pricing opportunity ($54,630/yr) + modeled turn opportunity ($21k–$32k/yr). Not realized savings.</div>
                         </div>
                     </div>
+
+                    <!-- 2B. Interactive "What-If Fix Simulator" (Live Margin Recovery Toggles) -->
+                    <div class="margin-sim-panel" id="margin-simulator-panel" style="display: none;"></div>
                 </div>
 
                 <!-- 3. Cross-Signal Hypothesis Map -->
@@ -2012,15 +2043,26 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                 }
             }
 
-            // 3. Cross-Signal Hypothesis Map
+            // 2B. Render Interactive Margin Simulator & 4:15 PM Pre-Shift Clipboard
+            renderMarginSimulator(data);
+            renderPreShiftClipboard(data);
+
+            // 3. Cross-Signal Hypothesis Map + Interactive Friday 6:00-9:00 PM Service Replay Scrubber
             const causalSection = document.getElementById('causal-map-section');
             if (causalSection) {
                 if (data.isSynthetic || (data.labor && data.voids)) {
                     causalSection.innerHTML = `
-                        <span class="causal-eyebrow">Where Numbers Collide (Correlation Map)</span>
-                        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin: 0 0 0.5rem 0; color: #FAF9F5;">Friday &amp; Saturday Dinner Slowdown</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+                            <div>
+                                <span class="causal-eyebrow">Where Numbers Collide (Correlation Map)</span>
+                                <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin: 0 0 0.5rem 0; color: #FAF9F5;">Friday &amp; Saturday Dinner Slowdown</h3>
+                            </div>
+                            <button type="button" id="replay-autoplay-btn" onclick="toggleAutoReplay()" style="appearance: none; background: rgba(197, 160, 89, 0.16); border: 1px solid #C5A059; color: #FAF9F5; font-family: var(--font-mono); font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 4px; cursor: pointer;">
+                                ▶ Auto-Replay Friday Rush (5:00–9:15 PM)
+                            </button>
+                        </div>
                         <p style="font-size: 13.5px; color: rgba(250, 249, 245, 0.7); margin: 0 0 1.5rem 0;">
-                            Looking at reports together shows connections that individual reports hide. The diagram below connects numbers that happen at the exact same time:
+                            Looking at reports together shows connections that individual reports hide. The diagram and live timeline scrubber below connect numbers that happen at the exact same time:
                         </p>
                         <div class="causal-flow">
                             <div class="causal-node root">
@@ -2041,8 +2083,57 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                                 <p class="node-desc">Full-meal voids cluster heavily between 6:00–8:30 PM, driven by ticket latency walkouts and cold food complaints.</p>
                             </div>
                         </div>
-                        <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-gold); border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
-                            Direct Recovery: $1,731/mo ($20,772/yr) direct payroll & void recovery; up to $2,800–$4,500/mo ($33,600–$54,000/yr) with peak station turn recovery.
+
+                        <!-- Synchronized 4-Track Service Replay Scrubber -->
+                        <div class="service-replay-box" id="service-replay-scrubber">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                                <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #2DD4BF; font-weight: 700;">
+                                    ⏱️ Friday Service Replay Scrubber &bull; Select a 15-Minute Window to Inspect Cross-Stream Collision
+                                </div>
+                                <span style="font-family: var(--font-mono); font-size: 11px; color: rgba(250, 249, 245, 0.65);" id="replay-window-tag">Window: 7:15 PM (Peak Saturation)</span>
+                            </div>
+
+                            <div class="replay-time-pills" id="replay-time-pills">
+                                <button type="button" class="replay-pill" onclick="setReplaySlot(0)">5:00 PM</button>
+                                <button type="button" class="replay-pill" onclick="setReplaySlot(1)">5:45 PM</button>
+                                <button type="button" class="replay-pill" onclick="setReplaySlot(2)">6:15 PM</button>
+                                <button type="button" class="replay-pill" onclick="setReplaySlot(3)">6:45 PM</button>
+                                <button type="button" class="replay-pill critical-slot active" onclick="setReplaySlot(4)">7:15 PM ⚠️</button>
+                                <button type="button" class="replay-pill critical-slot" onclick="setReplaySlot(5)">7:45 PM ⚠️</button>
+                                <button type="button" class="replay-pill" onclick="setReplaySlot(6)">8:30 PM</button>
+                                <button type="button" class="replay-pill" onclick="setReplaySlot(7)">9:15 PM</button>
+                            </div>
+
+                            <div class="replay-tracks-grid">
+                                <div class="replay-track-row">
+                                    <div class="replay-track-label"><span>01 // Active Line Checks</span></div>
+                                    <div class="replay-bar-shell"><div class="replay-bar-fill" id="track-orders-bar" style="width: 96%; background: #C5A059;"></div></div>
+                                    <div class="replay-track-val" id="track-orders-val">24 Active (18 Dine + 6 3P)</div>
+                                </div>
+                                <div class="replay-track-row">
+                                    <div class="replay-track-label"><span>02 // Kitchen Ticket Lag</span></div>
+                                    <div class="replay-bar-shell"><div class="replay-bar-fill" id="track-latency-bar" style="width: 95%; background: #E11D48;"></div></div>
+                                    <div class="replay-track-val" id="track-latency-val" style="color: #FDA4AF;">28.4 min (Crit &gt;20m)</div>
+                                </div>
+                                <div class="replay-track-row">
+                                    <div class="replay-track-label"><span>03 // Manager Comp Cluster</span></div>
+                                    <div class="replay-bar-shell"><div class="replay-bar-fill" id="track-voids-bar" style="width: 88%; background: #E11D48;"></div></div>
+                                    <div class="replay-track-val" id="track-voids-val" style="color: #FDA4AF;">14 Checks ($394 Voided)</div>
+                                </div>
+                                <div class="replay-track-row">
+                                    <div class="replay-track-label"><span>04 // BOH 1.5× Overtime</span></div>
+                                    <div class="replay-bar-shell"><div class="replay-bar-fill" id="track-ot-bar" style="width: 78%; background: #2DD4BF;"></div></div>
+                                    <div class="replay-track-val" id="track-ot-val" style="color: #5EEAD4;">4 Cooks in 1.5× OT</div>
+                                </div>
+                            </div>
+
+                            <div class="replay-readout-banner" id="replay-forensic-readout">
+                                <strong>7:15 PM Forensic Collision:</strong> Dine-in seating + unthrottled delivery tablets push active checks to <strong>24 simultaneous tickets</strong> (8 above the 16-ticket station ceiling). Sauté and grill run out of prepped backups mid-rush, pushing ticket times to <strong>28.4 minutes</strong> and triggering <strong>14 full-check manager comps ($394)</strong> for cold food and walkouts.
+                            </div>
+                        </div>
+
+                        <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--accent-gold); border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem; margin-top: 1rem;">
+                            Direct Recovery: $1,731/mo ($20,772/yr) direct payroll &amp; void recovery; up to $2,800–$4,500/mo ($33,600–$54,000/yr) with peak station turn recovery.
                         </div>
                     `;
                 } else {
@@ -2545,6 +2636,10 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                         </div>
                     `;
                 }
+
+                // Append Receipt-Tape Proof Drawer (Raw POS CSV Rows & Forensic Arithmetic)
+                card.insertAdjacentHTML('beforeend', buildReceiptProofHTML(f, data));
+
                 container.appendChild(card);
             });
 
@@ -2659,6 +2754,504 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
             return Math.round(val).toLocaleString();
         }
 
+        // =========================================================================
+        // 1. RECEIPT-TAPE PROOF DRAWER (Raw POS CSV Rows & Forensic Arithmetic)
+        // =========================================================================
+        function buildReceiptProofHTML(f, data) {
+            if (data.isSynthetic) {
+                const proofs = {
+                    "F-01": {
+                        source: "Void summary.csv (42 rush checks) × Labor cost by job.csv (BOH Line Cook)",
+                        headers: ["Check / Role", "Timestamp / Dept", "Server / Hrs", "Amount", "POS Reason / Rate"],
+                        rows: [
+                            ["TX-10492", "2026-04-03 18:42", "Alex M.", "$28.50", "Kitchen Latency / Long Wait"],
+                            ["TX-10501", "2026-04-03 19:15", "Sarah T.", "$31.00", "Food Cold / Re-fire Walkout"],
+                            ["TX-11412", "2026-04-10 19:22", "Alex M.", "$32.50", "Food Cold / Re-fire Walkout"],
+                            ["TX-15615", "2026-05-09 19:16", "Sarah T.", "$34.50", "Kitchen Latency / Long Wait"],
+                            ["BOH Line Cook", "Kitchen Payroll (60d)", "318.5 OT hrs", "$6,846.00", "1.5× Rate ($21.50/hr vs $14.33 base)"]
+                        ],
+                        math: "FORENSIC EQUATION: 318.5 BOH OT hrs × $7.165 (0.5× OT premium above $14.33 base) = $2,282.00 + 42 rush-window voids ($1,180.00) = $3,462.00 / 60d ($1,731/mo direct)."
+                    },
+                    "F-02": {
+                        source: "Check Discounts.csv (Offer A vs. Offer B Counterfactual Audit)",
+                        headers: ["Promo Code", "Rule Config", "Redemptions", "Gross Subtotals", "Total Discount Spend"],
+                        rows: [
+                            ["SUMMARY-A", "Offer A ($5 Off $50+)", "880 checks", "$65,560.00", "$4,400.00 ($5.00 avg)"],
+                            ["SUMMARY-B", "Offer B (10% Uncapped)", "940 checks", "$78,960.00", "$7,900.00 ($8.40 avg)"],
+                            ["COUNTERFACTUAL", "Offer B w/ $5.00 Cap", "940 checks", "$78,960.00", "$4,700.00 ($5.00 cap)"]
+                        ],
+                        math: "FORENSIC EQUATION: $7,900.00 (Actual Offer B uncapped spend) − $4,700.00 (940 redemptions × $5.00 max cap) = $3,200.00 recoverable per 60d ($1,600/mo | $19,200/yr)."
+                    },
+                    "F-03": {
+                        source: "Menu item sales with modifiers.csv × Distributor Invoice Portion Cost",
+                        headers: ["Parent Category", "Modifier Name", "Qty Sold (60d)", "POS Price vs Cost", "60d Margin Deficit"],
+                        rows: [
+                            ["Specialty Entrees", "Add Bacon", "1,120", "$1.00 vs $1.75 cost", "-$840.00 (-$0.75/ea)"],
+                            ["Burger & Sandwiches", "Sub Truffle Fries", "780", "$1.50 vs $2.60 cost", "-$858.00 (-$1.10/ea)"],
+                            ["Specialty Entrees", "Extra Cheese", "860", "$0.50 vs $0.95 cost", "-$387.00 (-$0.45/ea)"],
+                            ["Burger & Sandwiches", "Gluten-Free Bun", "480", "$1.00 vs $1.7458 cost", "-$358.00 (-$0.75/ea)"]
+                        ],
+                        math: "FORENSIC EQUATION: $840.00 (Bacon) + $858.00 (Truffle Fries) + $387.00 (Extra Cheese) + $358.00 (GF Bun) = $2,443.00 deficit across 3,240 modifiers ($1,222/mo | $14,658/yr)."
+                    },
+                    "F-04": {
+                        source: "Check Discounts.csv (MGR-COMP-99 Shift-Change Audit)",
+                        headers: ["Audit Segment", "Time Window", "Check Count", "Avg Check", "Recorded Comp Total"],
+                        rows: [
+                            ["MGR-COMP-99 (Staff Meal Pattern)", "15:30–16:30 & >00:00", "82 checks", "$20.00", "$1,640.00 (Single entree/bev)"],
+                            ["MGR-COMP-99 (True Guest Recovery)", "18:00–21:30 Dinner", "60 checks", "$40.00", "$1,200.00 (Table recovery)"]
+                        ],
+                        math: "FORENSIC EQUATION: 82 shift-change checks × $20.00 = $1,640.00 ($820/mo) misclassified under guest recovery comp key MGR-COMP-99. Reclassifying to Staff Meal key = $0 net cash, +100% comp reporting accuracy."
+                    }
+                };
+                const p = proofs[f.id];
+                if (!p) return '';
+                const rowsHtml = p.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('');
+                return `
+                    <button type="button" class="receipt-proof-trigger" onclick="toggleReceiptTape('${f.id}')" aria-expanded="false" id="receipt-btn-${f.id}">
+                        <span>🧾 Inspect Raw POS Tape &amp; Forensic Math (${p.source.split('×')[0].trim()})</span>
+                        <span id="receipt-caret-${f.id}">Show CSV Ledger &darr;</span>
+                    </button>
+                    <div class="receipt-tape-drawer" id="receipt-drawer-${f.id}">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; color: #94A3B8; font-size: 10.5px;">
+                            <span>SOURCE STREAM: <strong style="color: #FAF9F5;">${p.source}</strong></span>
+                            <span style="color: #C5A059;">AUTHENTICATED SYNTHETIC LEDGER</span>
+                        </div>
+                        <table class="receipt-tape-table">
+                            <thead>
+                                <tr>${p.headers.map(h => `<th>${h}</th>`).join('')}</tr>
+                            </thead>
+                            <tbody>${rowsHtml}</tbody>
+                        </table>
+                        <div class="receipt-math-strip">${p.math}</div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <button type="button" class="receipt-proof-trigger" onclick="toggleReceiptTape('${f.id}')" aria-expanded="false" id="receipt-btn-${f.id}">
+                        <span>🧾 Inspect Source-Record Provenance (${f.id})</span>
+                        <span id="receipt-caret-${f.id}">Show Basis &darr;</span>
+                    </button>
+                    <div class="receipt-tape-drawer" id="receipt-drawer-${f.id}">
+                        <div style="color: #C5A059; font-size: 10.5px; margin-bottom: 6px;">USER-SUPPLIED POS EXPORT PROVENANCE &bull; ${f.confidenceLevel.toUpperCase()}</div>
+                        <div style="color: #E2E8F0; font-size: 11.5px;"><strong>Basis:</strong> ${f.basis}</div>
+                        <div class="receipt-math-strip">Period Impact: ${f.periodImpact} | Run-Rate: ${f.monthlyRange}</div>
+                    </div>
+                `;
+            }
+        }
+
+        function toggleReceiptTape(findingId) {
+            const drawer = document.getElementById(`receipt-drawer-${findingId}`);
+            const caret = document.getElementById(`receipt-caret-${findingId}`);
+            const btn = document.getElementById(`receipt-btn-${findingId}`);
+            if (!drawer) return;
+            const isOpen = drawer.classList.toggle('open');
+            if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (caret) caret.innerHTML = isOpen ? 'Hide CSV Ledger &uarr;' : 'Show CSV Ledger &darr;';
+        }
+
+        // =========================================================================
+        // 2. FRIDAY 6:00-9:00 PM SERVICE REPLAY SCRUBBER
+        // =========================================================================
+        const SERVICE_REPLAY_SLOTS = [
+            {
+                time: "5:00 PM",
+                label: "5:00 PM (Early Seating — Normal Baseline)",
+                ordersPct: 28, ordersText: "7 Active (6 Dine + 1 3P)", ordersColor: "#2DD4BF",
+                latencyPct: 32, latencyText: "11.2 min (On Target)", latencyColor: "#2DD4BF",
+                voidsPct: 5, voidsText: "0 Checks ($0 Voided)", voidsColor: "#2DD4BF",
+                otPct: 12, otText: "0 Cooks in OT (Straight Time)", otColor: "#2DD4BF",
+                readout: "<strong>5:00 PM Early Service:</strong> Dining room is at 35% occupancy. Sauté and grill stations have full morning prep pans, ticket times average <strong>11.2 minutes</strong>, and zero service-recovery voids have fired."
+            },
+            {
+                time: "5:45 PM",
+                label: "5:45 PM (Delivery Tablet + Walk-In Surge)",
+                ordersPct: 58, ordersText: "14 Active (10 Dine + 4 3P)", ordersColor: "#C5A059",
+                latencyPct: 48, latencyText: "15.8 min (Approaching Cap)", latencyColor: "#C5A059",
+                voidsPct: 14, voidsText: "2 Checks ($54 Voided)", voidsColor: "#C5A059",
+                otPct: 25, otText: "Prep Holding on Line", otColor: "#C5A059",
+                readout: "<strong>5:45 PM Order Acceleration:</strong> Unthrottled 3P delivery tablets inject 4 multi-item orders simultaneously alongside 10 dine-in tables. Line cooks begin pulling unportioned backups from walk-in cooler."
+            },
+            {
+                time: "6:15 PM",
+                label: "6:15 PM (Station Ceiling Breached >16 Tickets)",
+                ordersPct: 76, ordersText: "19 Active (14 Dine + 5 3P)", ordersColor: "#F59E0B",
+                latencyPct: 68, latencyText: "21.0 min (Exceeds 18m SLA)", latencyColor: "#F59E0B",
+                voidsPct: 38, voidsText: "6 Checks ($168 Voided)", voidsColor: "#F59E0B",
+                otPct: 45, otText: "1 Cook Crosses 40-Hr Cap", otColor: "#2DD4BF",
+                readout: "<strong>6:15 PM Queue Saturation:</strong> Active tickets cross the <strong>16-order physical pass threshold</strong>. Grill station falls 5 tickets behind expeditor window; first wave of <em>'Kitchen Latency / Long Wait'</em> voids appears in Toast."
+            },
+            {
+                time: "6:45 PM",
+                label: "6:45 PM (Mid-Rush Prep Depletion)",
+                ordersPct: 88, ordersText: "22 Active (16 Dine + 6 3P)", ordersColor: "#E11D48",
+                latencyPct: 84, latencyText: "25.6 min (Pass Backed Up)", latencyColor: "#E11D48",
+                voidsPct: 64, voidsText: "10 Checks ($281 Voided)", voidsColor: "#E11D48",
+                otPct: 62, otText: "2 Cooks in 1.5× Overtime", otColor: "#2DD4BF",
+                readout: "<strong>6:45 PM Prep Depletion:</strong> Because 2.5 hrs of portioning was left for the PM shift, a line cook steps off sauté to batch sauces mid-rush. Window wait times hit <strong>25.6 minutes</strong>; entrees sit under heat lamps waiting on sides."
+            },
+            {
+                time: "7:15 PM",
+                label: "7:15 PM (Peak Saturation — Critical Collision)",
+                ordersPct: 96, ordersText: "24 Active (18 Dine + 6 3P)", ordersColor: "#C5A059",
+                latencyPct: 95, latencyText: "28.4 min (Crit >20m)", latencyColor: "#E11D48",
+                voidsPct: 88, voidsText: "14 Checks ($394 Voided)", voidsColor: "#E11D48",
+                otPct: 78, otText: "4 Cooks in 1.5× OT", otColor: "#2DD4BF",
+                readout: "<strong>7:15 PM Forensic Collision:</strong> Dine-in seating + unthrottled delivery tablets push active checks to <strong>24 simultaneous tickets</strong> (8 above the 16-ticket station ceiling). Sauté and grill run out of prepped backups mid-rush, pushing ticket times to <strong>28.4 minutes</strong> and triggering <strong>14 full-check manager comps ($394)</strong> for cold food and walkouts."
+            },
+            {
+                time: "7:45 PM",
+                label: "7:45 PM (Peak Service-Recovery Comp Wave)",
+                ordersPct: 82, ordersText: "20 Active (16 Dine + 4 3P)", ordersColor: "#F59E0B",
+                latencyPct: 88, latencyText: "26.2 min (Re-fires JamLine)", latencyColor: "#E11D48",
+                voidsPct: 96, voidsText: "16 Checks ($449 Voided)", voidsColor: "#E11D48",
+                otPct: 86, otText: "4 Cooks + Dish in 1.5× OT", otColor: "#2DD4BF",
+                readout: "<strong>7:45 PM Re-Fire Cascade:</strong> Cold entrees returned from 7:15 PM tables force priority re-fires on grill, delaying new tables and causing <strong>16 manager full-ticket voids ($449)</strong> in a 30-minute window."
+            },
+            {
+                time: "8:30 PM",
+                label: "8:30 PM (1.5× Overtime Burn Clearing Queue)",
+                ordersPct: 52, ordersText: "12 Active (10 Dine + 2 3P)", ordersColor: "#C5A059",
+                latencyPct: 55, latencyText: "18.5 min (Stabilizing)", latencyColor: "#C5A059",
+                voidsPct: 30, voidsText: "4 Checks ($112 Voided)", voidsColor: "#F59E0B",
+                otPct: 95, otText: "5 BOH Staff @ $21.50/hr OT", otColor: "#2DD4BF",
+                readout: "<strong>8:30 PM Overtime Hangover:</strong> New seating slows down, but <strong>5 kitchen staff are now clocked into 1.5× overtime ($21.50/hr)</strong> clearing backed-up dish pits, re-stocking depleted stations, and finishing late tickets."
+            },
+            {
+                time: "9:15 PM",
+                label: "9:15 PM (Late Close & Breakdown Overtime)",
+                ordersPct: 22, ordersText: "5 Active (Dine-In Late)", ordersColor: "#2DD4BF",
+                latencyPct: 28, latencyText: "12.0 min (Clear)", latencyColor: "#2DD4BF",
+                voidsPct: 8, voidsText: "0 Checks ($0 Voided)", voidsColor: "#2DD4BF",
+                otPct: 90, otText: "Closing Crew 1.5× OT Burn", otColor: "#2DD4BF",
+                readout: "<strong>9:15 PM Breakdown Drag:</strong> Kitchen closes 45 minutes behind schedule due to mid-rush prep depletion. Across 60 days, this Friday/Saturday pattern accumulated <strong>318.5 BOH overtime hours ($6,846 total; $2,282 pure 0.5× OT premium)</strong>."
+            }
+        ];
+
+        let replayInterval = null;
+        let currentReplayIdx = 4;
+
+        function setReplaySlot(idx) {
+            currentReplayIdx = idx;
+            const slot = SERVICE_REPLAY_SLOTS[idx];
+            if (!slot) return;
+
+            const pills = document.querySelectorAll('#replay-time-pills .replay-pill');
+            pills.forEach((btn, i) => btn.classList.toggle('active', i === idx));
+
+            const tag = document.getElementById('replay-window-tag');
+            if (tag) tag.textContent = `Window: ${slot.label}`;
+
+            const oBar = document.getElementById('track-orders-bar');
+            const oVal = document.getElementById('track-orders-val');
+            if (oBar && oVal) {
+                oBar.style.width = `${slot.ordersPct}%`;
+                oBar.style.background = slot.ordersColor;
+                oVal.textContent = slot.ordersText;
+            }
+
+            const lBar = document.getElementById('track-latency-bar');
+            const lVal = document.getElementById('track-latency-val');
+            if (lBar && lVal) {
+                lBar.style.width = `${slot.latencyPct}%`;
+                lBar.style.background = slot.latencyColor;
+                lVal.textContent = slot.latencyText;
+            }
+
+            const vBar = document.getElementById('track-voids-bar');
+            const vVal = document.getElementById('track-voids-val');
+            if (vBar && vVal) {
+                vBar.style.width = `${slot.voidsPct}%`;
+                vBar.style.background = slot.voidsColor;
+                vVal.textContent = slot.voidsText;
+            }
+
+            const otBar = document.getElementById('track-ot-bar');
+            const otVal = document.getElementById('track-ot-val');
+            if (otBar && otVal) {
+                otBar.style.width = `${slot.otPct}%`;
+                otBar.style.background = slot.otColor;
+                otVal.textContent = slot.otText;
+            }
+
+            const readout = document.getElementById('replay-forensic-readout');
+            if (readout) readout.innerHTML = slot.readout;
+        }
+
+        function toggleAutoReplay() {
+            const btn = document.getElementById('replay-autoplay-btn');
+            if (replayInterval) {
+                clearInterval(replayInterval);
+                replayInterval = null;
+                if (btn) btn.innerHTML = '▶ Auto-Replay Friday Rush (5:00–9:15 PM)';
+                return;
+            }
+            if (btn) btn.innerHTML = '⏸ Pause Friday Rush Replay';
+            setReplaySlot((currentReplayIdx + 1) % SERVICE_REPLAY_SLOTS.length);
+            replayInterval = setInterval(() => {
+                const next = (currentReplayIdx + 1) % SERVICE_REPLAY_SLOTS.length;
+                setReplaySlot(next);
+            }, 1600);
+        }
+
+        // =========================================================================
+        // 3. INTERACTIVE "WHAT-IF FIX SIMULATOR" (Live Margin Recovery Toggles)
+        // =========================================================================
+        const SIM_STATE = {
+            f01: true,
+            f02: true,
+            f03: true,
+            f04: true,
+            turns: false
+        };
+
+        function renderMarginSimulator(data) {
+            const panel = document.getElementById('margin-simulator-panel');
+            if (!panel) return;
+            if (!data.isSynthetic) {
+                panel.style.display = 'none';
+                return;
+            }
+            panel.style.display = 'block';
+            updateMarginSimulatorUI();
+        }
+
+        function toggleSimFix(key) {
+            SIM_STATE[key] = !SIM_STATE[key];
+            updateMarginSimulatorUI();
+        }
+
+        function updateMarginSimulatorUI() {
+            const panel = document.getElementById('margin-simulator-panel');
+            if (!panel) return;
+
+            let monthlyDirect = 0;
+            let annualDirect = 0;
+            if (SIM_STATE.f01) { monthlyDirect += 1731; annualDirect += 20772; }
+            if (SIM_STATE.f02) { monthlyDirect += 1600; annualDirect += 19200; }
+            if (SIM_STATE.f03) { monthlyDirect += 1222; annualDirect += 14658; }
+            if (SIM_STATE.turns) { monthlyDirect += 2208; annualDirect += 26500; }
+
+            const maxPossibleAnnual = 54630 + 26500;
+            const pct = Math.min(100, Math.round((annualDirect / maxPossibleAnnual) * 100));
+            const activeCount = [SIM_STATE.f01, SIM_STATE.f02, SIM_STATE.f03, SIM_STATE.f04, SIM_STATE.turns].filter(Boolean).length;
+
+            panel.innerHTML = `
+                <div class="sim-header-row">
+                    <div style="max-width: 540px;">
+                        <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-teal); font-weight: 700;">
+                            🎛️ Interactive "Fix It Before Next Friday" Margin Simulator
+                        </div>
+                        <h4 style="font-family: var(--font-serif); font-size: 1.35rem; margin: 0.25rem 0 0.35rem 0; color: var(--text-primary);">
+                            Toggle Operational Fixes to Simulate Projected Recovery
+                        </h4>
+                        <p style="font-size: 12.8px; color: var(--text-secondary); margin: 0; line-height: 1.45;">
+                            Test which POS and shift adjustments you want to deploy this week. Direct POS &amp; payroll fixes recover up to <strong>$4,553/mo ($54,630/yr)</strong> before counting table-turn upside.
+                        </p>
+                    </div>
+                    <div class="sim-counter-box">
+                        <div style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-gold);">
+                            Simulated Recovery (${activeCount}/5 Fixes Active)
+                        </div>
+                        <div style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700; color: #2DD4BF; line-height: 1.15; margin-top: 2px;" id="sim-monthly-readout">
+                            +$${formatNum(monthlyDirect)} / mo
+                        </div>
+                        <div style="font-family: var(--font-mono); font-size: 11.5px; color: rgba(250, 249, 245, 0.85); margin-top: 2px;" id="sim-annual-readout">
+                            +$${formatNum(annualDirect)} / yr projected ${SIM_STATE.f04 ? '&bull; +$9,840/yr COGS accuracy' : ''}
+                        </div>
+                        <div style="height: 6px; background: rgba(255,255,255,0.12); border-radius: 999px; overflow: hidden; margin-top: 8px;">
+                            <div style="width: ${pct}%; height: 100%; background: linear-gradient(90deg, #2DD4BF, #C5A059); transition: width 220ms ease;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sim-toggles-grid">
+                    <div class="sim-toggle-card ${SIM_STATE.f02 ? 'active' : ''}" onclick="toggleSimFix('f02')" role="switch" aria-checked="${SIM_STATE.f02}" tabindex="0">
+                        <div>
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); font-weight: 700;">F-02 &bull; 5-MIN POS SETTING &bull; +$1,600/MO</div>
+                            <div style="font-weight: 600; font-size: 13px; color: var(--text-primary); margin-top: 2px;">Cap "10% Off $50+" Promo at $5.00 Max</div>
+                            <div style="font-size: 11.5px; color: var(--text-secondary);">Recovers $3,200/60d ($19,200/yr) across 940 checks</div>
+                        </div>
+                        <div class="sim-switch-pill"></div>
+                    </div>
+
+                    <div class="sim-toggle-card ${SIM_STATE.f03 ? 'active' : ''}" onclick="toggleSimFix('f03')" role="switch" aria-checked="${SIM_STATE.f03}" tabindex="0">
+                        <div>
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); font-weight: 700;">F-03 &bull; 10-MIN POS PRICING &bull; +$1,222/MO</div>
+                            <div style="font-weight: 600; font-size: 13px; color: var(--text-primary); margin-top: 2px;">Reprice 4 Under-Costed Modifiers</div>
+                            <div style="font-size: 11.5px; color: var(--text-secondary);">Bacon $2, Truffle $2.75, Cheese $1, GF Bun $2 (+$14,658/yr)</div>
+                        </div>
+                        <div class="sim-switch-pill"></div>
+                    </div>
+
+                    <div class="sim-toggle-card ${SIM_STATE.f01 ? 'active' : ''}" onclick="toggleSimFix('f01')" role="switch" aria-checked="${SIM_STATE.f01}" tabindex="0">
+                        <div>
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; color: #991B1B; font-weight: 700;">F-01 &bull; SHIFT + TABLET RULE &bull; +$1,731/MO</div>
+                            <div style="font-weight: 600; font-size: 13px; color: var(--text-primary); margin-top: 2px;">Shift 2.5 Prep Hrs to AM + Throttle Tablets &gt;16</div>
+                            <div style="font-size: 11.5px; color: var(--text-secondary);">Saves $1,141/mo OT premium + $590/mo rush voids (+$20,772/yr)</div>
+                        </div>
+                        <div class="sim-switch-pill"></div>
+                    </div>
+
+                    <div class="sim-toggle-card ${SIM_STATE.f04 ? 'active' : ''}" onclick="toggleSimFix('f04')" role="switch" aria-checked="${SIM_STATE.f04}" tabindex="0">
+                        <div>
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; color: #8C6621; font-weight: 700;">F-04 &bull; ACCOUNTING HYGIENE &bull; $0 NET CASH</div>
+                            <div style="font-weight: 600; font-size: 13px; color: var(--text-primary); margin-top: 2px;">Separate "Staff Meal" Button from MGR-COMP-99</div>
+                            <div style="font-size: 11.5px; color: var(--text-secondary);">Reclassifies $820/mo ($9,840/yr) out of guest service voids</div>
+                        </div>
+                        <div class="sim-switch-pill"></div>
+                    </div>
+
+                    <div class="sim-toggle-card ${SIM_STATE.turns ? 'active' : ''}" onclick="toggleSimFix('turns')" role="switch" aria-checked="${SIM_STATE.turns}" tabindex="0" style="grid-column: 1 / -1; background: #FAF9F5;">
+                        <div>
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; color: #B45309; font-weight: 700;">BONUS MODELED UPSIDE &bull; +$2,208/MO (+$26,500/YR MIDPOINT)</div>
+                            <div style="font-weight: 600; font-size: 13px; color: var(--text-primary); margin-top: 2px;">Include Modeled Peak Table-Turn Recovery (+1.2 Turns / Station on Fri &amp; Sat)</div>
+                            <div style="font-size: 11.5px; color: var(--text-secondary);">Requires 48-hour floor pass verification first; unlocks $21,000–$32,000/yr in uncaptured weekend seating capacity</div>
+                        </div>
+                        <div class="sim-switch-pill"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // =========================================================================
+        // 4. 4:15 PM PRE-SHIFT CLIPBOARD VIEW (1-Page Role-Sorted Action Sheet)
+        // =========================================================================
+        function setBriefViewMode(mode) {
+            const dossierBtn = document.getElementById('view-mode-dossier');
+            const clipBtn = document.getElementById('view-mode-clipboard');
+            const clipBox = document.getElementById('preshift-clipboard-view');
+            if (!clipBox) return;
+
+            if (mode === 'clipboard') {
+                clipBox.classList.add('active');
+                if (dossierBtn) dossierBtn.classList.remove('active');
+                if (clipBtn) clipBtn.classList.add('active');
+                clipBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                clipBox.classList.remove('active');
+                if (dossierBtn) dossierBtn.classList.add('active');
+                if (clipBtn) clipBtn.classList.remove('active');
+            }
+        }
+
+        function renderPreShiftClipboard(data) {
+            const clipBox = document.getElementById('preshift-clipboard-view');
+            if (!clipBox) return;
+
+            if (data.isSynthetic) {
+                clipBox.innerHTML = `
+                    <div class="preshift-clip-header">
+                        <div>
+                            <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #991B1B; text-transform: uppercase; letter-spacing: 0.1em;">
+                                📋 4:15 PM Pre-Shift Lineup &amp; POS Lock Sheet &bull; Post on Kitchen Pass Clipboard
+                            </div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.55rem; margin: 0.2rem 0; color: #0E1F1B;">
+                                ${data.restaurantName} — Friday / Saturday Service Protocol
+                            </h3>
+                            <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
+                                Target Impact: <strong>$4,553/mo ($54,630/yr)</strong> direct cost &amp; pricing recovery &bull; Check off items at 4:15 PM lineup
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <span id="preshift-progress-badge" style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; background: #0E1F1B; color: #2DD4BF; padding: 6px 12px; border-radius: 4px;">
+                                0 / 6 Lineup Checks Signed Off
+                            </span>
+                            <button type="button" onclick="window.print()" style="appearance: none; background: #0F766E; color: #FFFFFF; border: none; font-family: var(--font-mono); font-size: 11px; font-weight: 700; padding: 7px 12px; border-radius: 4px; cursor: pointer;">
+                                🖨️ Print 1-Page Sheet
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="preshift-role-grid">
+                        <!-- Station 1: Kitchen Lead & Expeditor -->
+                        <div class="preshift-station-card urgent">
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: #991B1B; text-transform: uppercase; letter-spacing: 0.08em;">
+                                Station 01 // Kitchen Pass &amp; Prep
+                            </div>
+                            <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin: 0.2rem 0 0.65rem 0; color: #0E1F1B;">
+                                Stop the 6:45 PM Sauté/Grill Backup
+                            </div>
+                            <label class="preshift-check-item">
+                                <input type="checkbox" onchange="togglePreShiftCheck(this)">
+                                <span><strong>6:30–7:30 PM Pass Audit:</strong> Stand at expeditor window for 20 consecutive tickets; log if sauté or grill runs out of prepped backups.</span>
+                            </label>
+                            <label class="preshift-check-item">
+                                <input type="checkbox" onchange="togglePreShiftCheck(this)">
+                                <span><strong>Morning Prep Shift:</strong> Move 2.5 prep hours from PM rush to 8:00–10:30 AM straight-time shift ($14.33/hr vs $21.50 OT).</span>
+                            </label>
+                        </div>
+
+                        <!-- Station 2: GM / POS Backend Settings -->
+                        <div class="preshift-station-card pos">
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: #8C6621; text-transform: uppercase; letter-spacing: 0.08em;">
+                                Station 02 // POS Backend (15 Min Total)
+                            </div>
+                            <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin: 0.2rem 0 0.65rem 0; color: #0E1F1B;">
+                                Lock Promo Cap &amp; 4 Add-On Prices
+                            </div>
+                            <label class="preshift-check-item">
+                                <input type="checkbox" onchange="togglePreShiftCheck(this)">
+                                <span><strong>Cap Offer B Promo ($1,600/mo):</strong> Set a <strong>$5.00 max discount ceiling</strong> on the "10% Off $50+" POS discount button.</span>
+                            </label>
+                            <label class="preshift-check-item">
+                                <input type="checkbox" onchange="togglePreShiftCheck(this)">
+                                <span><strong>Update 4 Modifiers ($1,222/mo):</strong> Set Add Bacon to <strong>$2.00</strong>, Sub Truffle Fries to <strong>$2.75</strong>, Extra Cheese to <strong>$1.00</strong>, GF Bun to <strong>$2.00</strong>.</span>
+                            </label>
+                        </div>
+
+                        <!-- Station 3: FOH Shift Handoff -->
+                        <div class="preshift-station-card">
+                            <div style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: #0F766E; text-transform: uppercase; letter-spacing: 0.08em;">
+                                Station 03 // FOH &amp; Tablet Rules
+                            </div>
+                            <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; margin: 0.2rem 0 0.65rem 0; color: #0E1F1B;">
+                                Tablet Throttle &amp; Staff Meal Key
+                            </div>
+                            <label class="preshift-check-item">
+                                <input type="checkbox" onchange="togglePreShiftCheck(this)">
+                                <span><strong>16-Ticket Tablet Rule:</strong> Pause 3P delivery tablets for 15 mins whenever active dine-in KDS checks exceed <strong>16 tickets</strong>.</span>
+                            </label>
+                            <label class="preshift-check-item">
+                                <input type="checkbox" onchange="togglePreShiftCheck(this)">
+                                <span><strong>Ring Staff Meals Correctly:</strong> Use new <strong>STAFF-MEAL</strong> POS button for 3:30–4:30 PM shift meals; lock <code>MGR-COMP-99</code> for guest recovery only.</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            } else {
+                clipBox.innerHTML = `
+                    <div class="preshift-clip-header">
+                        <div>
+                            <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #0F766E; text-transform: uppercase; letter-spacing: 0.1em;">
+                                📋 Custom Upload Pre-Shift Action Sheet
+                            </div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; margin: 0.2rem 0; color: #0E1F1B;">
+                                ${data.restaurantName} — Reconciled Baseline Checklist
+                            </h3>
+                            <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
+                                Source-Recorded Net Sales: <strong>$${formatNum(data.netSales)}</strong> (${formatNum(data.totalOrders)} checks across ${data.periodDays} days)
+                            </div>
+                        </div>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+                        Review the findings below and upload any missing operational streams (Labor, Voids, Discounts, Modifiers) to unlock station-level pre-shift action items.
+                    </p>
+                `;
+            }
+        }
+
+        function togglePreShiftCheck(checkbox) {
+            const label = checkbox.closest('.preshift-check-item');
+            if (label) label.classList.toggle('checked', checkbox.checked);
+            const all = document.querySelectorAll('#preshift-clipboard-view input[type="checkbox"]');
+            const checked = document.querySelectorAll('#preshift-clipboard-view input[type="checkbox"]:checked');
+            const badge = document.getElementById('preshift-progress-badge');
+            if (badge) {
+                badge.textContent = `${checked.length} / ${all.length} Lineup Checks Signed Off`;
+            }
+        }
+
         // Generate clean markdown brief for export
         function generateMarkdownBrief(data, findings, tier) {
             let md = `# Signal Operational Intelligence Brief\n`;
@@ -2712,6 +3305,11 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
         }
 
         function resetDemo() {
+            if (replayInterval) {
+                clearInterval(replayInterval);
+                replayInterval = null;
+            }
+            setBriefViewMode('dossier');
             document.getElementById('brief-container').style.display = 'none';
             document.getElementById('detected-streams-container').style.display = 'none';
             document.getElementById('digest-terminal').style.display = 'none';
