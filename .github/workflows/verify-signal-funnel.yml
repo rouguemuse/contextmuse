@@ -1,0 +1,35 @@
+name: Verify Signal Snapshot Funnel
+
+on:
+  pull_request:
+    paths:
+      - 'signal/**'
+      - 'assets/**'
+      - 'styles.css'
+      - 'api/**'
+      - 'scripts/test_signal_funnel.py'
+      - '.github/workflows/verify-signal-funnel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install playwright==1.62.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/test_signal_funnel.py
+        env:
+          SIGNAL_SCREENSHOTS: '1'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: signal-funnel-screenshots
+          path: /tmp/signal-*.png
