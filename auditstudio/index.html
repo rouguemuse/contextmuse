@@ -370,66 +370,137 @@
         ];
       }
 
-      // Default / Editorial / Archive / Venue
+      if (intent === "sensory_venue") {
+        return [
+          {
+            id: "A",
+            code: "DIR-A · ATMOSPHERE & BOOKING STAGE",
+            name: "The Sensory Atmosphere & Instant Booking Stage",
+            archetype: "Day-to-Night Visual Stage + Zero-Friction Reservation Bar",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · VENUE OVERVIEW & LOCATION",
+            stateTwoLabel: "STATE II · MENU HIGHLIGHTS & INSTANT RESERVATION",
+            mechanic: "SWITCH VENUE MODE · DAYLIGHT OVERVIEW ↔ EVENING SERVICE & BOOKING",
+            stateTwoHeadline: h.hostname + " // " + s1,
+            stateTwoText: p2,
+            openingSpec: "Frames " + h.hostname + "'s primary venue photography with an immediate interactive atmosphere toggle and an unmistakable reservation/visit bar (hours, location, and live booking action).",
+            whyItWorks: "Guests decide where to dine or visit in seconds when atmosphere and practical booking logistics sit side by side.",
+            modules: [
+              { label: s1, surface: "Current entry headline on " + h.hostname + ": “" + h.primaryHeadline + "”", revealed: "↳ Featured Experience (" + s1 + "): " + p1.slice(0, 145), tag: "EXPERIENCE 01" },
+              { label: s2, surface: "Section “" + s2 + "” currently requires scrolling past decorative blocks.", revealed: "↳ Interactive HTML Menu & Program Preview (" + s2 + "): " + p2.slice(0, 145), tag: "HIGHLIGHT 02" },
+              { label: s3, surface: "Booking and visit details (“" + s3 + "”) are separated from the main showcase.", revealed: "↳ One-tap reservation, hours, and directions bar connected to “" + s3 + "”.", tag: "BOOKING 03" }
+            ]
+          },
+          {
+            id: "B",
+            code: "DIR-B · HOUSE MENU & EVENT LEDGER",
+            name: "The Tactile House Menu & Event Ledger",
+            archetype: "Two-Column Editorial Menu + Expandable Tasting & Event Notes",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · CURATED HOUSE INDEX",
+            stateTwoLabel: "STATE II · EXPANDED NOTES & DIRECT BOOKING",
+            mechanic: "EXPAND LEDGER ITEMS → VIEW DETAILS & RESERVE",
+            stateTwoHeadline: h.hostname + " House Ledger // " + s2,
+            stateTwoText: p2,
+            openingSpec: "Replaces " + h.hostname + "'s scattered cards and static PDFs with a crawlable, mobile-first HTML House Ledger organizing “" + s1 + "”, “" + s2 + "”, and “" + s3 + "”.",
+            whyItWorks: "Mobile visitors hate pinching-to-zoom on PDF menus; an interactive HTML ledger converts browsers into guests.",
+            modules: [
+              { label: "01 // " + s1.toUpperCase(), surface: "“" + h.primaryHeadline + "”", revealed: "↳ " + p1.slice(0, 160), tag: "MENU 01" },
+              { label: "02 // " + s2.toUpperCase(), surface: "“" + s2 + "”", revealed: "↳ " + p2.slice(0, 160), tag: "PROGRAM 02" },
+              { label: "03 // " + s3.toUpperCase(), surface: "“" + s3 + "”", revealed: "↳ Direct reservation and visit threshold for " + h.hostname + ".", tag: "RESERVE 03" }
+            ]
+          }
+        ];
+      }
+
+      if (intent === "public_archive") {
+        return [
+          {
+            id: "A",
+            code: "DIR-A · EVIDENCE & TOPIC EXPLORER",
+            name: "The Structured Knowledge & Evidence Explorer",
+            archetype: "High-Clarity Search Entry + Categorized Topic Pillars + Citation Drawer",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · PUBLIC OVERVIEW & TOPIC INDEX",
+            stateTwoLabel: "STATE II · VERIFIED PRIMARY SOURCE DOSSIER",
+            mechanic: "TOGGLE VIEW · EXECUTIVE SUMMARY ↔ PRIMARY SOURCE CITATIONS",
+            stateTwoHeadline: "Primary Evidence // " + h.primaryHeadline,
+            stateTwoText: p2,
+            openingSpec: "Gives " + h.hostname + " an authoritative research entry: a clear thesis statement (“" + h.primaryHeadline + "”), structured topic pillars (“" + s1 + "”, “" + s2 + "”, “" + s3 + "”), and expandable primary-source citations.",
+            whyItWorks: "Researchers, journalists, and citizens can grasp the headline takeaway immediately or drill straight into the citations.",
+            modules: [
+              { label: s1, surface: "Public summary for “" + s1 + "” on " + h.hostname + ".", revealed: "↳ Verified Source Record (" + s1 + "): " + p1.slice(0, 155), tag: "RECORD 01" },
+              { label: s2, surface: "Topic index entry for “" + s2 + "”.", revealed: "↳ Primary Documentation (" + s2 + "): " + p2.slice(0, 155), tag: "RECORD 02" },
+              { label: s3, surface: "Related archival pathway: “" + s3 + "”.", revealed: "↳ Cross-referenced dataset and citation trail for “" + s3 + "”.", tag: "CITATION 03" }
+            ]
+          },
+          {
+            id: "B",
+            code: "DIR-B · ANNOTATED RESEARCH BRIEF",
+            name: "The Annotated Research Brief & Index",
+            archetype: "Two-Column Briefing Document + Expandable Evidence Notes",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · KEY FINDINGS BRIEF",
+            stateTwoLabel: "STATE II · EXPANDED EVIDENCE & METHODOLOGY",
+            mechanic: "EXPAND KEY FINDINGS → INSPECT SUPPORTING DATA",
+            stateTwoHeadline: "Research Dossier // " + h.primaryHeadline,
+            stateTwoText: p2,
+            openingSpec: "Presents " + h.hostname + " as a clean, highly readable two-column briefing where key findings (“" + s1 + "”, “" + s2 + "”, “" + s3 + "”) expand inline with supporting data.",
+            whyItWorks: "Eliminates wall-of-text fatigue by letting readers expand only the evidence threads they need.",
+            modules: [
+              { label: "FINDING 01 // " + s1.toUpperCase(), surface: "“" + h.primaryHeadline + "”", revealed: "↳ " + p1.slice(0, 165), tag: "BRIEF 01" },
+              { label: "FINDING 02 // " + s2.toUpperCase(), surface: "“" + s2 + "”", revealed: "↳ " + p2.slice(0, 165), tag: "BRIEF 02" },
+              { label: "FINDING 03 // " + s3.toUpperCase(), surface: "“" + s3 + "”", revealed: "↳ Full archival index and downloadable reference for “" + s3 + "”.", tag: "BRIEF 03" }
+            ]
+          }
+        ];
+      }
+
+      // Editorial / Publishing / Narrative World
+      const isWolves = h.hostname.toLowerCase().includes("wolves");
       return [
         {
           id: "A",
-          code: "CONCEPT A · IMPOSSIBLE ORDINARY",
-          name: "The Impossible Ordinary (Swiss Gallery Frame)",
-          archetype: "Asymmetrical 12-Column Gallery Foundation + 1px Red Thread Datum",
+          code: isWolves ? "DIR-A · IMPOSSIBLE ORDINARY" : "DIR-A · EDITORIAL SHOWCASE",
+          name: isWolves ? "The Impossible Ordinary" : "The Editorial Story & Featured Work Stage",
+          archetype: "High-Focus Visual Lead + Clear Reader Orientation + Expandable Story Preview",
           headline: h.primaryHeadline,
           subline: p1,
-          stateOneLabel: "STATE I · OBSERVATIONAL SURFACE",
-          stateTwoLabel: "STATE II · UNFOLDED DOSSIER & PRIVATE LOGIC",
-          mechanic: "PULL DATUM THREAD · ORDINARY SURFACE ↔ DEEP RECOGNITION",
-          stateTwoHeadline: "Beneath the Surface // " + h.primaryHeadline,
+          stateOneLabel: "STATE I · ATMOSPHERIC ENTRY & PREMISE",
+          stateTwoLabel: "STATE II · INSIDE THE WORK & CHAPTERS",
+          mechanic: "TOGGLE PREVIEW · OPENING ATMOSPHERE ↔ STORY & CHAPTER PREVIEW",
+          stateTwoHeadline: "Inside the Work // " + h.primaryHeadline,
           stateTwoText: p2,
-          openingSpec: "Frames your harvested photography on stark #fbfaf7 gallery paper with zero explanatory clutter above the fold and a 1px crimson datum line piercing the focal point.",
-          whyItWorks: "Stops the visitor visually in under two seconds ('What am I looking at?') before unfolding the deep narrative truth in State II.",
+          openingSpec: "Pairs " + h.hostname + "'s atmospheric visual lead (“" + h.primaryHeadline + "”) with a crystal-clear 12-word reader orientation line and an interactive preview of “" + s1 + "” and “" + s2 + "”.",
+          whyItWorks: "Protects " + h.hostname + "'s distinctive creative tone while ensuring first-time visitors immediately know how to engage.",
           modules: [
-            { label: s1, surface: "Surface observation framed with museum-grade restraint", revealed: "Unfolded 3-column contradiction dossier revealing the emotional physics underneath", tag: "PLATE 01" },
-            { label: s2, surface: "Static vertical section header on current page", revealed: "Interactive focal pin linked directly to the horizontal crimson datum thread", tag: "PLATE 02" },
-            { label: s3, surface: "Standard footer CTA link", revealed: "Nonintrusive colophon threshold inviting the visitor deeper into the work", tag: "PLATE 03" }
+            { label: s1, surface: "Opening premise for “" + s1 + "” on " + h.hostname + ".", revealed: "↳ Inside “" + s1 + "”: " + p1.slice(0, 155), tag: "CHAPTER 01" },
+            { label: s2, surface: "Featured section “" + s2 + "” harvested from " + h.hostname + ".", revealed: "↳ Inside “" + s2 + "”: " + p2.slice(0, 155), tag: "CHAPTER 02" },
+            { label: s3, surface: "Reader entry pathway: “" + s3 + "”.", revealed: "↳ Direct reader action threshold for “" + s3 + "” on " + h.hostname + ".", tag: "BEGIN 03" }
           ]
         },
         {
           id: "B",
-          code: "CONCEPT B · LITERARY ARTIFACT",
-          name: "The Living Monograph & Unstitchable Galley",
-          archetype: "Two-Leaf White Broadsheet + Interlinear Unstitching + Reader Ledger",
+          code: isWolves ? "DIR-B · LITERARY ARTIFACT" : "DIR-B · READER'S EDITION",
+          name: isWolves ? "The Literary Artifact" : "The Two-Column Reader’s Edition & Index",
+          archetype: "Book-Grade Reading Spread + Expandable Excerpts + Chapter Directory",
           headline: h.primaryHeadline,
           subline: p1,
-          stateOneLabel: "STATE I · DIPLOMATIC / SURFACE TEXT",
-          stateTwoLabel: "STATE II · UNSTITCHED INTERLINEAR TRUTH",
-          mechanic: "UNSTITCH CLAUSES → UNFOLD INTERLINEAR PROOF & LOUVER SLITS",
-          stateTwoHeadline: "Galley Proof Unstitched // " + h.primaryHeadline,
+          stateOneLabel: "STATE I · CURATED OPENING EXCERPT",
+          stateTwoLabel: "STATE II · EXPANDED PASSAGE & READER GUIDE",
+          mechanic: "CLICK EXCERPTS → UNFOLD FULL PASSAGE & CONTEXT",
+          stateTwoHeadline: "Expanded Edition // " + h.primaryHeadline,
           stateTwoText: p2,
-          openingSpec: "Zero hero banner. Opens as a pure white two-leaf monograph with a live crimson binding thread in the gutter and a 20px dot-grid workbench on the right leaf.",
-          whyItWorks: "Turns reading into a physical act of unstitching polite surface sentences to uncover the candid truth and narrow photographic slits underneath.",
+          openingSpec: "Opens " + h.hostname + " directly into a book-grade reading spread on the left with a structured directory of “" + s1 + "”, “" + s2 + "”, and “" + s3 + "” on the right.",
+          whyItWorks: "Hooks readers with " + h.hostname + "'s actual voice in the first five seconds while keeping navigation effortless.",
           modules: [
-            { label: "FOLIO 01 // " + s1.toUpperCase(), surface: "“" + p1.slice(0, 110) + "...”", revealed: "↳ " + p2, tag: "GALLEY 01" },
-            { label: "FOLIO 02 // " + s2.toUpperCase(), surface: "“Trying to keep the surface orderly and easy to explain.”", revealed: "↳ Where understanding someone did not mean continuing to stand where they could hurt you.", tag: "GALLEY 02" },
-            { label: "FOLIO 03 // " + s3.toUpperCase(), surface: "“A conventional directory of pages and summaries.”", revealed: "↳ An interactive edition where the reader keeps or strikes the lines that belong to their own map.", tag: "GALLEY 03" }
-          ]
-        },
-        {
-          id: "C",
-          code: "CONCEPT C · UNRELIABLE ATLAS",
-          name: "The Calibrated Survey & Gravity Atlas",
-          archetype: "2D Architectural Survey Plane Warping by Emotional / Thematic Gravity",
-          headline: h.primaryHeadline,
-          subline: p1,
-          stateOneLabel: "STATE I · APPARENT CHRONOLOGICAL / SITEMAP GRID",
-          stateTwoLabel: "STATE II · RE-CLUSTERED BY EMOTIONAL ADJACENCY",
-          mechanic: "WARP SURVEY · RATIONAL GRID ↔ EMOTIONAL GRAVITY",
-          stateTwoHeadline: "Survey Recalibrated by Gravity // " + h.hostname,
-          stateTwoText: p2,
-          openingSpec: "Places 6 harvested sections and images onto a calibrated architectural drafting plane. Dragging the slider warps the grid from chronological distance into thematic adjacency.",
-          whyItWorks: "Mirrors how human memory and curiosity actually work—connecting distant rooms along a taut crimson triangulation vector.",
-          modules: [
-            { label: s1, surface: "Separated by 3 scrolls on the current vertical page", revealed: "Collapsed to 0.0 inches from its thematic counterpart along the red thread", tag: "0.0 INCHES" },
-            { label: s2, surface: "Isolated inside a static rectangular card", revealed: "Active triangulation origin linked to your primary conversion threshold", tag: "ORIGIN VECTOR" },
-            { label: s3, surface: "Buried at the bottom of the sitemap", revealed: "Elevated into the right-hand inspection dossier with side-by-side proof", tag: "DOSSIER" }
+            { label: "01 // " + s1.toUpperCase(), surface: "“" + h.primaryHeadline + "”", revealed: "↳ " + p1.slice(0, 165), tag: "EXCERPT 01" },
+            { label: "02 // " + s2.toUpperCase(), surface: "“" + s2 + "”", revealed: "↳ " + p2.slice(0, 165), tag: "EXCERPT 02" },
+            { label: "03 // " + s3.toUpperCase(), surface: "“" + s3 + "”", revealed: "↳ Direct pathway into “" + s3 + "” on " + h.hostname + ".", tag: "EXCERPT 03" }
           ]
         }
       ];
