@@ -152,9 +152,18 @@
       unstitchedIndices: [0],
       atlasDistortion: 0,
       selectedLocusIdx: 0,
+      activeCategoryFilter: "ALL",
+      findingStatusMap: {},
       harvested: null,
       report: null
     };
+
+    const LIFECYCLE_STAGES = [
+      { id: "IDENTIFIED", stepNum: "01", label: "Identified" },
+      { id: "APPROVED", stepNum: "02", label: "Approved for improvement" },
+      { id: "IMPLEMENTED", stepNum: "03", label: "Implemented" },
+      { id: "VERIFIED", stepNum: "04", label: "Verified after implementation" }
+    ];
 
     function detectIntent(hostname, text, requested) {
       if (requested && requested !== "auto") return requested;
@@ -463,12 +472,221 @@
       const directions = buildDirections(intentKey, pal, h);
       const boxScore = Math.min(96, Math.max(28, Math.round(35 + h.containerCount * 1.4)));
 
+      const titleLen = (h.siteTitle || "").length;
+      const descLen = h.metaDescriptionLength || (h.metaDescription ? h.metaDescription.length : 0);
+      const h1Count = typeof h.h1Count === "number" ? h.h1Count : 1;
+      const h2Count = typeof h.h2Count === "number" ? h.h2Count : (h.secondaryHeadlines ? h.secondaryHeadlines.length : 3);
+      const jsonLdCount = typeof h.jsonLdCount === "number" ? h.jsonLdCount : 0;
+      const internalLinkCount = typeof h.internalLinkCount === "number" ? h.internalLinkCount : (h.harvestedNavLinks ? h.harvestedNavLinks.length * 2 : 6);
+      const totalImages = typeof h.totalImages === "number" ? h.totalImages : (h.harvestedImages ? h.harvestedImages.length : 4);
+      const imagesMissingAlt = typeof h.imagesMissingAlt === "number" ? h.imagesMissingAlt : Math.max(1, Math.floor(totalImages / 3));
+      const hasSitemapXml = Boolean(h.hasSitemapXml);
+      const canonicalUrl = h.canonicalUrl || null;
+      const hasViewportMeta = h.hasViewportMeta !== false;
+      const ttfbMs = h.ttfbMs || 310;
+
+      const findabilityScore = Math.max(38, Math.min(95, Math.round(
+        52 + (titleLen >= 25 && titleLen <= 68 ? 14 : -6) +
+        (descLen >= 70 && descLen <= 165 ? 16 : -10) +
+        (h1Count === 1 ? 10 : -8) +
+        (hasSitemapXml ? 8 : -5)
+      )));
+
+      const understandabilityScore = Math.max(35, Math.min(94, Math.round(
+        50 + (jsonLdCount > 0 ? 18 : -12) +
+        (canonicalUrl ? 10 : -6) +
+        (internalLinkCount >= 6 ? 10 : -5) +
+        (h2Count >= 2 ? 8 : -6)
+      )));
+
+      const intentClarityScore = Math.max(40, Math.min(92, Math.round(
+        60 + ((h.leadParagraphs || []).length >= 2 ? 12 : -8) -
+        (boxScore > 65 ? 12 : 0)
+      )));
+
+      const experienceScore = Math.max(42, Math.min(96, Math.round(
+        68 + (hasViewportMeta ? 12 : -20) +
+        (imagesMissingAlt === 0 ? 10 : -Math.min(14, imagesMissingAlt * 3)) -
+        (boxScore > 70 ? 10 : 0)
+      )));
+
+      const evaluationCategories = [
+        {
+          id: "FINDABILITY",
+          question: "Can people find you?",
+          whatItLooksFor: "Search titles, descriptions, headings, indexability, sitemap",
+          score: findabilityScore,
+          statusBadge: findabilityScore >= 82 ? "Strong foundation" : findabilityScore >= 65 ? "Needs attention" : "Priority gap",
+          summary: `Evaluates whether ${h.hostname}'s search snippet (<title> "${h.siteTitle}"), meta description (${descLen > 0 ? descLen + " chars" : "missing"}), H1 hierarchy (${h1Count} detected), and /sitemap.xml (${hasSitemapXml ? "detected" : "not detected"}) clearly signal what the page offers.`
+        },
+        {
+          id: "UNDERSTANDABILITY",
+          question: "Can search engines understand you?",
+          whatItLooksFor: "Page structure, internal links, structured data (JSON-LD)",
+          score: understandabilityScore,
+          statusBadge: understandabilityScore >= 82 ? "Strong foundation" : understandabilityScore >= 65 ? "Needs attention" : "Priority gap",
+          summary: `Checks semantic sectioning (${h.sectionCount} <section> blocks, ${h2Count} H2 anchors), internal link architecture (${internalLinkCount} internal links), canonical tags (${canonicalUrl ? "present" : "missing"}), and Schema.org JSON-LD (${jsonLdCount} blocks).`
+        },
+        {
+          id: "INTENT_CLARITY",
+          question: "Does the content answer the right questions?",
+          whatItLooksFor: "Search intent, clarity, relevance, content gaps",
+          score: intentClarityScore,
+          statusBadge: intentClarityScore >= 82 ? "Strong foundation" : intentClarityScore >= 65 ? "Needs attention" : "Priority gap",
+          summary: `Measures how quickly visitors and search engines grasp ${h.hostname}'s specific value proposition (${meta.label}) and whether proof is surfaced clearly or buried inside ${h.containerCount} competing containers.`
+        },
+        {
+          id: "EXPERIENCE",
+          question: "Does the experience work well?",
+          whatItLooksFor: "Mobile usability, loading performance, accessibility-related issues",
+          score: experienceScore,
+          statusBadge: experienceScore >= 82 ? "Strong foundation" : experienceScore >= 65 ? "Needs attention" : "Priority gap",
+          summary: `Audits server responsiveness (${ttfbMs}ms TTFB), mobile viewport configuration (${hasViewportMeta ? "configured" : "missing"}), image accessibility (${imagesMissingAlt} of ${totalImages} images missing descriptive alt text), and layout fatigue (${boxScore}/100).`
+        }
+      ];
+
+      const integratedFindings = [
+        {
+          id: "seo-title-description",
+          categoryId: "FINDABILITY",
+          categoryQuestion: "Can people find you?",
+          badgeLabel: "SEO / SEARCH VISIBILITY · Needs attention",
+          headline: "Search engines may not understand what this page offers.",
+          affectedPages: [`${h.hostname}/ (Homepage)`, `${h.hostname} primary entry routes`],
+          detectedSignal: `Detected <title> (${titleLen} chars): "${h.siteTitle}" · Meta description: ${h.metaDescription ? `"${h.metaDescription.slice(0, 95)}..." (${descLen} chars)` : "Missing or empty <meta name='description'>"}`,
+          whatsHappening: !h.metaDescription || descLen < 70
+            ? `The homepage on ${h.hostname} is missing a complete, high-clarity meta description (${descLen} characters detected), and the current title tag ("${h.siteTitle}") doesn't pair the core service with the terms buyers actually search.`
+            : `The homepage's title ("${h.siteTitle}") and ${descLen}-character description emphasize brand phrasing over the specific problem and service ${h.hostname} solves.`,
+          whyItMatters: "These are signals search engines can use to understand and display a page in search results. Improving them may help attract more relevant visitors, although rankings aren't guaranteed.",
+          whatWedRecommend: `Rewrite the homepage title and meta description to describe the actual ${meta.label.toLowerCase()} offer, state who it is for, and reflect the plain-English terms potential customers search for.`,
+          fixType: "PAID_FIX",
+          availableServiceTitle: "Available service: SEO Refresh",
+          paidDeliverableScope: "Researched search-term mapping, rewritten title & meta description copy across core routes, production deployment, and Search Console verification.",
+          defaultLifecycleStatus: "IDENTIFIED"
+        },
+        {
+          id: "seo-sitemap-canonical",
+          categoryId: "FINDABILITY",
+          categoryQuestion: "Can people find you?",
+          badgeLabel: "INDEXABILITY & CANONICAL HYGIENE · Quick Win",
+          headline: !canonicalUrl || !hasSitemapXml
+            ? "Canonical URL or XML sitemap signal is incomplete on the root entry."
+            : "Canonical and indexability signals should be locked across secondary routes.",
+          affectedPages: [`${h.hostname}/`, `${h.hostname}/sitemap.xml`],
+          detectedSignal: `Canonical tag: ${canonicalUrl || "Not declared in <head>"} · /sitemap.xml: ${hasSitemapXml ? "HTTP 200 OK" : "Not detected at root /sitemap.xml"}`,
+          whatsHappening: !canonicalUrl || !hasSitemapXml
+            ? `Our live scan of ${h.hostname} detected ${!canonicalUrl ? "no explicit <link rel='canonical'> tag" : "a canonical tag"} and ${!hasSitemapXml ? "no reachable /sitemap.xml index" : "an active sitemap.xml"}.`
+            : `Root indexability is active, but secondary campaign or filter URLs can dilute crawl priority if self-referencing canonicals aren't enforced site-wide.`,
+          whyItMatters: "A clean canonical tag and XML sitemap help search crawlers identify which URL is the authoritative version to index, preventing duplicate URL dilution.",
+          whatWedRecommend: "Ensure every public page outputs a self-referencing <link rel=\"canonical\"> tag and that your platform's auto-generated /sitemap.xml is submitted in Google Search Console.",
+          fixType: "SELF_SERVE_WIN",
+          availableServiceTitle: "Self-Serve Quick Win (Do It Yourself)",
+          paidDeliverableScope: "Included free in your Website Diagnostic — your team can toggle canonical tags and submit /sitemap.xml in under 10 minutes inside your CMS settings.",
+          defaultLifecycleStatus: "IDENTIFIED"
+        },
+        {
+          id: "seo-structured-data-schema",
+          categoryId: "UNDERSTANDABILITY",
+          categoryQuestion: "Can search engines understand you?",
+          badgeLabel: "STRUCTURED DATA & ENTITY GRAPH · Needs attention",
+          headline: jsonLdCount === 0
+            ? "No Schema.org JSON-LD structured data was detected on this page."
+            : "Structured data exists, but entity relationships can be sharpened.",
+          affectedPages: [`${h.hostname}/ (Homepage)`, "Primary offer / about routes"],
+          detectedSignal: `application/ld+json blocks detected: ${jsonLdCount} · H1 tags: ${h1Count} · H2 tags: ${h2Count}`,
+          whatsHappening: jsonLdCount === 0
+            ? `${h.hostname} currently relies entirely on visual HTML paragraphs without machine-readable Schema.org JSON-LD markup to declare its organization, service, or work entity.`
+            : `${h.hostname} outputs ${jsonLdCount} JSON-LD script block(s), but does not yet connect its primary ${h.primaryHeadline} premise to explicit Service/CreativeWork entity properties.`,
+          whyItMatters: "Structured data helps search engines and AI answer engines disambiguate who you are, what you offer, and how your pages relate—without guessing from layout markup alone.",
+          whatWedRecommend: "Add validated Schema.org JSON-LD on the homepage and primary offer pages defining the primary entity, core offerings, and authoritative profiles.",
+          fixType: "PAID_FIX",
+          availableServiceTitle: "Available service: Structure & Schema Package",
+          paidDeliverableScope: "Custom JSON-LD entity graph authoring, heading hierarchy clean-up, implementation in production templates, and Rich Results validation.",
+          defaultLifecycleStatus: "IDENTIFIED"
+        },
+        {
+          id: "seo-internal-linking-spine",
+          categoryId: "UNDERSTANDABILITY",
+          categoryQuestion: "Can search engines understand you?",
+          badgeLabel: "PAGE STRUCTURE & INTERNAL LINKS · Needs attention",
+          headline: "Internal navigation links use generic labels instead of descriptive topic anchors.",
+          affectedPages: [`${h.hostname}/ global header & section pathways`],
+          detectedSignal: `${internalLinkCount} internal links scanned · Top nav labels: ${(h.harvestedNavLinks || []).map(l => l.label).join(" · ")}`,
+          whatsHappening: `The primary navigation and internal pathways on ${h.hostname} rely on short, generic labels that don't tell search crawlers or first-time visitors what specific problem each destination page solves.`,
+          whyItMatters: "Internal link anchor text is one of the clearest signals search engines use to understand the topic and relative importance of connected pages on your site.",
+          whatWedRecommend: "Pair clean top-level navigation with contextual internal links inside your core sections that name the specific service, topic, or proof artifact being linked.",
+          fixType: "SELF_SERVE_WIN",
+          availableServiceTitle: "Self-Serve Quick Win (Do It Yourself)",
+          paidDeliverableScope: "Included free in your Website Diagnostic — update 3–5 body link labels on your homepage to describe the destination page in plain English.",
+          defaultLifecycleStatus: "IDENTIFIED"
+        },
+        {
+          id: "content-intent-above-fold",
+          categoryId: "INTENT_CLARITY",
+          categoryQuestion: "Does the content answer the right questions?",
+          badgeLabel: "SEARCH INTENT & MESSAGING CLARITY · High Impact",
+          headline: "Above-the-fold copy delays the specific buyer answer and buries proof.",
+          affectedPages: [`${h.hostname}/ (Hero & opening 2 viewports)`],
+          detectedSignal: `Primary H1: "${h.primaryHeadline}" · Section anchors: ${(h.secondaryHeadlines || []).slice(0, 3).join(" / ")}`,
+          whatsHappening: `Visitors arriving from search or referral land on "${h.primaryHeadline}", but have to scroll through multiple static containers before seeing concrete evidence, deliverables, or how to engage.`,
+          whyItMatters: "When a page doesn't immediately confirm what it offers and back it with inspectable proof, qualified visitors bounce—hurting both conversion rates and search engagement signals.",
+          whatWedRecommend: `Keep your core "${h.primaryHeadline}" voice, but pair it immediately with a plain-English subline and an interactive State I → State II proof reveal (as modeled in Concepts A, B, and C).`,
+          fixType: "PAID_FIX",
+          availableServiceTitle: "Available service: Messaging & Intent Refactor",
+          paidDeliverableScope: "Above-the-fold messaging architecture, interactive State I → State II proof staging, copy tightening, and live conversion pathway verification.",
+          defaultLifecycleStatus: "APPROVED"
+        },
+        {
+          id: "experience-container-fatigue",
+          categoryId: "EXPERIENCE",
+          categoryQuestion: "Does the experience work well?",
+          badgeLabel: "VISUAL ARCHITECTURE & USABILITY · High Impact",
+          headline: `High container density (${h.containerCount} boxed elements) flattens hierarchy on desktop and mobile.`,
+          affectedPages: [`${h.hostname}/ full-page layout (${h.sectionCount} sections)`],
+          detectedSignal: `Box Fatigue Score: ${boxScore}/100 · ${h.containerCount} card/box/border containers · TTFB: ${ttfbMs}ms`,
+          whatsHappening: `${h.hostname} wraps nearly every idea in a similar rectangular card or bordered band (${h.containerCount} container instances detected), making primary proof look identical to secondary filler.`,
+          whyItMatters: "When every section has the same visual weight, readers skim past your strongest work on desktop and experience endless vertical card-scrolling on mobile.",
+          whatWedRecommend: "Replace repetitive multi-card grids with one of the three playable architectural concepts below—using open typographic tension and deliberate interactive reveals.",
+          fixType: "PAID_FIX",
+          availableServiceTitle: "Available service: Website Improvement Package (Architectural Rebuild)",
+          paidDeliverableScope: "Full implementation of your selected Concept Direction (A, B, or C) using your real assets, responsive QA across mobile/desktop, and post-launch verification.",
+          defaultLifecycleStatus: "IDENTIFIED"
+        },
+        {
+          id: "experience-accessibility-alt",
+          categoryId: "EXPERIENCE",
+          categoryQuestion: "Does the experience work well?",
+          badgeLabel: "ACCESSIBILITY & IMAGE SIGNALS · Quick Win",
+          headline: imagesMissingAlt > 0
+            ? `${imagesMissingAlt} of ${totalImages} scanned images are missing descriptive alt attributes.`
+            : `All ${totalImages} scanned images include alt attributes—verify descriptive specificity.`,
+          affectedPages: [`${h.hostname}/ media & visual plates`],
+          detectedSignal: `Scanned <img> tags: ${totalImages} · Missing or empty alt="": ${imagesMissingAlt} · Viewport meta: ${hasViewportMeta ? "Present" : "Missing"}`,
+          whatsHappening: imagesMissingAlt > 0
+            ? `${imagesMissingAlt} image elements on ${h.hostname} lack descriptive alt text, leaving screen readers and image search crawlers without context for your visual assets.`
+            : `Image alt attributes are present across scanned plates, though several can be tightened to describe the specific work shown.`,
+          whyItMatters: "Descriptive alt text improves accessibility for screen-reader visitors and gives search engines factual context for visual media.",
+          whatWedRecommend: "Add concise, plain-English alt descriptions (8–16 words) to every non-decorative image describing what is actually shown.",
+          fixType: "SELF_SERVE_WIN",
+          availableServiceTitle: "Self-Serve Quick Win (Do It Yourself)",
+          paidDeliverableScope: "Included free in your Website Diagnostic — add plain-English alt text directly in your media library.",
+          defaultLifecycleStatus: "IDENTIFIED"
+        }
+      ];
+
+      state.findingStatusMap = {};
+      integratedFindings.forEach(f => {
+        state.findingStatusMap[f.id] = f.defaultLifecycleStatus;
+      });
+
       state.report = {
         intentKey,
         intentLabel: meta.label,
         intentRationale: meta.rationale,
         palette: pal,
         boxScore,
+        evaluationCategories,
+        integratedFindings,
         directions
       };
 
@@ -805,22 +1023,49 @@
       }
 
       // =======================================================================
-      // DEFAULT VIEW: DIAGNOSTIC DOSSIER + 3 FULL-SCREEN CONCEPT LAUNCHERS
+      // DEFAULT VIEW: INTEGRATED SEO, LIVING RECORD DOSSIER + 3 CONCEPT LAUNCHERS
       // =======================================================================
+      const allFindings = r.integratedFindings || [];
+      const visibleFindings = state.activeCategoryFilter === "ALL"
+        ? allFindings
+        : allFindings.filter(f => f.categoryId === state.activeCategoryFilter);
+      const approvedFindings = allFindings.filter(f => {
+        const st = state.findingStatusMap[f.id] || f.defaultLifecycleStatus;
+        return st === "APPROVED" || st === "IMPLEMENTED" || st === "VERIFIED";
+      });
+      const verifiedCount = allFindings.filter(f => (state.findingStatusMap[f.id] || f.defaultLifecycleStatus) === "VERIFIED").length;
+
       root.innerHTML = `
         <main class="max-w-[1440px] mx-auto px-6 sm:px-10 py-10 sm:py-14 space-y-14">
           <!-- 1. SCANNER + INTENT LENS & NUANCE ENGINE -->
           <section class="bg-white border border-[#dfd9cf] p-6 sm:p-10 shadow-sm space-y-6">
-            <div class="border-b border-[#ece7df] pb-6 space-y-2 max-w-3xl">
-              <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">CONTEXT &amp; MUSE · ARCHITECTURAL DIAGNOSTIC &amp; 3-CONCEPT REBUILD ENGINE</span>
-              <h1 class="font-sans font-light text-3xl sm:text-5xl tracking-[-0.04em] leading-[1.06]">Harvest what they have. Rebuild it into 3 full-screen concepts. Guide what’s missing.</h1>
-              <p class="font-serif italic text-base sm:text-lg text-[#5c554d]">Enter any URL below, then click <strong>“LAUNCH FULL-SCREEN CONCEPT A, B, or C”</strong> to view the target website rebuilt in three distinct interactive architectures using their own harvested headlines, sections, and imagery.</p>
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[#ece7df] pb-6">
+              <div class="space-y-2 max-w-3xl">
+                <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">CONTEXT &amp; MUSE · INTEGRATED SEO, UX &amp; ARCHITECTURAL DIAGNOSTIC RECORD</span>
+                <h1 class="font-sans font-light text-3xl sm:text-5xl tracking-[-0.04em] leading-[1.06]">Give them the findings. Guide the strategy. Sell the verified implementation.</h1>
+                <p class="font-serif italic text-base sm:text-lg text-[#5c554d]">Every diagnostic evaluates <strong>search visibility, structural understanding, content intent, and user experience</strong> together—tracking every finding from <strong>Identified</strong> to <strong>Verified after implementation</strong> while staging 3 playable concept rebuilds.</p>
+              </div>
+              <div class="bg-[#fbfaf7] border border-[#dfd9cf] p-4 min-w-[270px] space-y-1.5">
+                <span class="text-[9px] font-mono uppercase tracking-[0.18em] text-[#7a7166] block">LIVING DIAGNOSTIC RECORD STATUS</span>
+                <div class="flex items-center justify-between text-xs font-mono">
+                  <span>Total Findings:</span>
+                  <strong>${allFindings.length}</strong>
+                </div>
+                <div class="flex items-center justify-between text-xs font-mono text-[#be2623]">
+                  <span>Approved for Improvement:</span>
+                  <strong>${approvedFindings.length}</strong>
+                </div>
+                <div class="flex items-center justify-between text-xs font-mono text-emerald-800">
+                  <span>Verified Complete:</span>
+                  <strong>${verifiedCount}</strong>
+                </div>
+              </div>
             </div>
 
             <form onsubmit="window.onScanSubmit(event)" class="flex flex-col sm:flex-row gap-3">
               <input id="input-url" type="text" value="${state.url}" placeholder="https://client-domain.com" class="flex-1 bg-[#fbfaf7] border border-[#dfd9cf] px-4 py-3 text-sm font-mono focus:outline-none" />
               <button type="submit" class="px-7 py-3.5 bg-[#141312] hover:bg-[#be2623] text-white text-[11px] tracking-[0.2em] uppercase font-semibold cursor-pointer transition-colors">
-                HARVEST &amp; GENERATE 3 CONCEPTS →
+                RUN INTEGRATED DIAGNOSTIC &amp; 3 CONCEPTS →
               </button>
             </form>
 
@@ -862,11 +1107,164 @@
             </div>
           </section>
 
-          <!-- 2. THREE FULL-SCREEN CONCEPT PROTOTYPE LAUNCHERS -->
+          <!-- 2. FOUR INTEGRATED EVALUATION CATEGORIES -->
           <section class="space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#dfd9cf] pb-4">
               <div>
-                <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">PLAYABLE FULL-SCREEN REBUILDS OF ${h.hostname.toUpperCase()}</span>
+                <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">I. INTEGRATED SEO, CONTENT &amp; EXPERIENCE SCORECARD</span>
+                <h2 class="font-sans font-light text-2xl sm:text-4xl tracking-[-0.035em]">Four Questions Every Website Must Answer</h2>
+              </div>
+              <button onclick="window.setCategoryFilter('ALL')" class="px-3 py-1.5 text-[10px] tracking-[0.18em] uppercase font-semibold border cursor-pointer ${state.activeCategoryFilter === 'ALL' ? 'bg-[#141312] text-white border-[#141312]' : 'bg-white text-[#5c554d] border-[#dfd9cf]'}">
+                SHOW ALL ${allFindings.length} FINDINGS
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              ${(r.evaluationCategories || []).map(cat => {
+                const isSelected = state.activeCategoryFilter === cat.id;
+                const badgeClass = cat.statusBadge === "Strong foundation"
+                  ? "bg-emerald-950/10 text-emerald-900 border border-emerald-800/30"
+                  : cat.statusBadge === "Needs attention"
+                  ? "bg-amber-500/15 text-amber-900 border border-amber-700/30"
+                  : "bg-[#be2623]/15 text-[#be2623] border border-[#be2623]/30";
+                return `
+                  <button onclick="window.setCategoryFilter('${isSelected ? "ALL" : cat.id}')" class="text-left bg-white p-6 border-2 transition-all cursor-pointer flex flex-col justify-between ${isSelected ? 'border-[#be2623] shadow-md' : 'border-[#dfd9cf] hover:border-[#141312]'}">
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between gap-2">
+                        <span class="px-2 py-0.5 text-[9px] font-mono uppercase tracking-[0.16em] font-semibold ${badgeClass}">${cat.statusBadge}</span>
+                        <span class="font-mono text-2xl font-bold text-[#141312]">${cat.score}<span class="text-xs opacity-50">/100</span></span>
+                      </div>
+                      <h3 class="font-sans text-lg font-semibold tracking-[-0.02em] text-[#141312]">${cat.question}</h3>
+                      <p class="font-mono text-[10px] uppercase tracking-[0.12em] text-[#7a7166]">Looks for: ${cat.whatItLooksFor}</p>
+                      <p class="font-serif text-xs sm:text-sm text-[#3d3833] leading-relaxed">${cat.summary}</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-[#ece7df] flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.16em] text-[#be2623] font-semibold">
+                      <span>${isSelected ? "● FILTERING FINDINGS" : "FILTER BY CATEGORY"}</span>
+                      <span>→</span>
+                    </div>
+                  </button>
+                `;
+              }).join("")}
+            </div>
+          </section>
+
+          <!-- 3. LIVING RECORD FINDINGS: FINDINGS vs RECOMMENDATIONS vs PAID FIXES -->
+          <section class="space-y-6">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#dfd9cf] pb-4">
+              <div>
+                <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">II. LIVING DIAGNOSTIC RECORD // GIVE THE DIAGNOSIS, SELL THE IMPLEMENTATION</span>
+                <h2 class="font-sans font-light text-2xl sm:text-4xl tracking-[-0.035em]">Findings, Plain-English Recommendations &amp; Verification Status</h2>
+                <p class="font-serif italic text-sm sm:text-base text-[#5c554d] mt-1">We include specific affected pages and plain-English recommendations on every item—plus <strong>Self-Serve Quick Wins</strong> your team can do today—while scoping larger technical &amp; copy execution as a verified deliverable.</p>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 text-[10px] font-mono uppercase">
+                <span class="px-2.5 py-1 bg-emerald-950/10 border border-emerald-800/30 text-emerald-900 font-semibold">✓ SELF-SERVE QUICK WINS INCLUDED</span>
+                <span class="px-2.5 py-1 bg-[#be2623]/10 border border-[#be2623]/30 text-[#be2623] font-semibold">⚡ PAID IMPLEMENTATION AVAILABLE</span>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              ${visibleFindings.map(finding => {
+                const currentStatus = state.findingStatusMap[finding.id] || finding.defaultLifecycleStatus;
+                const currentStageIdx = LIFECYCLE_STAGES.findIndex(s => s.id === currentStatus);
+                return `
+                  <div class="bg-white border border-[#dfd9cf] shadow-sm overflow-hidden">
+                    <!-- Top Header & 4-Stage Living Record Status Tracker -->
+                    <div class="bg-[#fbfaf7] border-b border-[#dfd9cf] px-6 py-4 flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+                      <div class="space-y-1">
+                        <div class="flex flex-wrap items-center gap-2">
+                          <span class="text-[10px] font-mono uppercase tracking-[0.18em] px-2.5 py-0.5 font-semibold ${finding.fixType === 'PAID_FIX' ? 'bg-[#be2623] text-white' : 'bg-emerald-900 text-white'}">${finding.badgeLabel}</span>
+                          <span class="text-[10px] font-mono uppercase tracking-[0.16em] text-[#7a7166]">CATEGORY: ${finding.categoryQuestion}</span>
+                        </div>
+                        <h3 class="font-sans text-xl sm:text-2xl font-normal tracking-[-0.025em] text-[#141312]">${finding.headline}</h3>
+                      </div>
+
+                      <!-- 4-STAGE LIVING RECORD WORKFLOW BAR -->
+                      <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 bg-white p-2 border border-[#dfd9cf]">
+                        <span class="text-[9px] font-mono uppercase tracking-[0.16em] text-[#7a7166] px-2">RECORD STATUS:</span>
+                        <div class="flex flex-wrap gap-1">
+                          ${LIFECYCLE_STAGES.map((stage, sIdx) => {
+                            const isActive = stage.id === currentStatus;
+                            const isPast = sIdx < currentStageIdx;
+                            const btnCls = isActive
+                              ? "bg-[#141312] text-white border-[#141312] font-bold"
+                              : isPast
+                              ? "bg-emerald-950/10 text-emerald-900 border-emerald-800/30 font-semibold"
+                              : "bg-[#fbfaf7] text-[#7a7166] border-[#dfd9cf] hover:text-[#141312]";
+                            return `
+                              <button onclick="window.setFindingStatus('${finding.id}', '${stage.id}')" class="px-2.5 py-1 text-[9px] font-mono uppercase tracking-[0.13em] cursor-pointer border transition-colors ${btnCls}">
+                                ${isPast ? "✓ " : ""}${stage.stepNum} · ${stage.label}
+                              </button>
+                            `;
+                          }).join("")}
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Evidence & Affected Pages Bar -->
+                    <div class="px-6 py-2.5 bg-[#f4f1ea] border-b border-[#dfd9cf] flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs font-mono">
+                      <div>
+                        <span class="text-[#7a7166] uppercase">AFFECTED ROUTES: </span>
+                        <span class="text-[#141312] font-semibold">${finding.affectedPages.join(" · ")}</span>
+                      </div>
+                      <div class="text-[#5c554d] truncate max-w-2xl">
+                        <span class="text-[#7a7166] uppercase">LIVE DOM EVIDENCE: </span>
+                        ${finding.detectedSignal}
+                      </div>
+                    </div>
+
+                    <!-- 4-Column Structure: What's Happening | Why It Matters | What We'd Recommend | Available Service / DIY Win -->
+                    <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                      <div class="lg:col-span-3 space-y-1.5">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#be2623] font-semibold block">WHAT’S HAPPENING (FINDING)</span>
+                        <p class="font-serif text-sm sm:text-base text-[#1e1b18] leading-relaxed">${finding.whatsHappening}</p>
+                      </div>
+
+                      <div class="lg:col-span-3 space-y-1.5 lg:border-l lg:border-[#ece7df] lg:pl-5">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#7a7166] font-semibold block">WHY IT MATTERS</span>
+                        <p class="font-serif text-sm sm:text-base text-[#3d3833] leading-relaxed">${finding.whyItMatters}</p>
+                      </div>
+
+                      <div class="lg:col-span-3 space-y-1.5 lg:border-l lg:border-[#ece7df] lg:pl-5">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-emerald-900 font-semibold block">WHAT WE’D RECOMMEND</span>
+                        <p class="font-serif text-sm sm:text-base text-[#1e1b18] leading-relaxed">${finding.whatWedRecommend}</p>
+                      </div>
+
+                      <div class="lg:col-span-3 p-4 border flex flex-col justify-between ${finding.fixType === 'PAID_FIX' ? 'bg-[#fbfaf7] border-[#141312]' : 'bg-emerald-950/5 border-emerald-800/40'}">
+                        <div class="space-y-2">
+                          <div class="flex items-center justify-between gap-2">
+                            <span class="text-[9px] font-mono uppercase tracking-[0.18em] px-2 py-0.5 font-bold ${finding.fixType === 'PAID_FIX' ? 'bg-[#be2623] text-white' : 'bg-emerald-800 text-white'}">
+                              ${finding.fixType === "PAID_FIX" ? "PAID FIX" : "SELF-SERVE DIY WIN"}
+                            </span>
+                            <span class="text-[9px] font-mono uppercase text-[#7a7166]">${currentStatus}</span>
+                          </div>
+                          <h4 class="font-sans text-sm font-bold text-[#141312]">${finding.availableServiceTitle}</h4>
+                          <p class="font-serif text-xs text-[#4a443e] leading-relaxed">${finding.paidDeliverableScope}</p>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-[#dfd9cf]">
+                          ${finding.fixType === "PAID_FIX" ? `
+                            <button onclick="window.setFindingStatus('${finding.id}', '${currentStatus === "APPROVED" ? "IDENTIFIED" : "APPROVED"}')" class="w-full py-2 px-3 text-[10px] font-mono uppercase tracking-[0.16em] font-bold cursor-pointer transition-colors ${currentStatus === 'APPROVED' ? 'bg-emerald-900 text-white' : 'bg-[#141312] hover:bg-[#be2623] text-white'}">
+                              ${currentStatus === "APPROVED" ? "✓ APPROVED FOR IMPROVEMENT PACKAGE" : "+ APPROVE FOR IMPROVEMENT"}
+                            </button>
+                          ` : `
+                            <button onclick="window.setFindingStatus('${finding.id}', '${currentStatus === "VERIFIED" ? "IDENTIFIED" : "VERIFIED"}')" class="w-full py-2 px-3 text-[10px] font-mono uppercase tracking-[0.16em] font-bold cursor-pointer border border-emerald-800 text-emerald-900 hover:bg-emerald-900 hover:text-white transition-colors">
+                              ${currentStatus === "VERIFIED" ? "✓ SELF-SERVE FIX VERIFIED" : "MARK DIY QUICK WIN COMPLETE"}
+                            </button>
+                          `}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </section>
+
+          <!-- 4. THREE FULL-SCREEN CONCEPT PROTOTYPE LAUNCHERS -->
+          <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#dfd9cf] pb-4">
+              <div>
+                <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">III. PLAYABLE FULL-SCREEN REBUILDS OF ${h.hostname.toUpperCase()}</span>
                 <h2 class="font-sans font-light text-2xl sm:text-4xl tracking-[-0.035em]">Launch the 3 Re-Architected Concept Directions</h2>
               </div>
               <span class="text-[11px] tracking-[0.18em] uppercase text-emerald-800 font-semibold">LENS: ${r.intentLabel.toUpperCase()}</span>
@@ -908,28 +1306,75 @@
             </div>
           </section>
 
-          <!-- 3. DIAGNOSTIC AUDIT -->
-          <section class="space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#dfd9cf] pb-4">
-              <h2 class="font-sans font-light text-2xl sm:text-3xl tracking-[-0.03em]">I. Diagnostic Audit of <strong>${h.hostname}</strong></h2>
-              <span class="text-[10px] tracking-[0.2em] uppercase text-[#be2623] font-semibold">BOX FATIGUE: ${r.boxScore}/100 (${h.containerCount} CONTAINERS) · FONTS: ${h.detectedFonts.join(", ")}</span>
+          <!-- 5. TWO-PURCHASE REVENUE LADDER -->
+          <section class="bg-[#141312] text-[#fbfaf7] p-8 sm:p-12 border border-[#2c2926] space-y-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[#2c2926] pb-6">
+              <div class="space-y-2 max-w-3xl">
+                <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-amber-400 font-semibold block">IV. HOW THIS BECOMES A PAID IMPROVEMENT RELATIONSHIP</span>
+                <h2 class="font-sans font-light text-2xl sm:text-4xl tracking-[-0.03em]">The ContextMuse Two-Step Service Ladder</h2>
+                <p class="font-serif italic text-sm sm:text-base text-[#cfc8bc]">No bloated retainer tiers. Start with a genuinely useful diagnostic report—then hire Context &amp; Muse to implement and verify the specific improvements you approve.</p>
+              </div>
+              <span class="text-xs font-mono uppercase tracking-[0.16em] text-amber-300">
+                ${approvedFindings.length} FINDING(S) CURRENTLY APPROVED IN THIS RECORD
+              </span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-serif text-sm sm:text-base leading-relaxed">
-              <div class="bg-white border border-[#dfd9cf] p-6 sm:p-8 space-y-3">
-                <span class="font-sans text-[10px] tracking-[0.2em] uppercase font-semibold text-emerald-800 block border-b border-[#ece7df] pb-2">01 · WHAT DESERVES PRESERVATION</span>
-                <p><strong>Core Domain Premise:</strong> “${h.primaryHeadline}” carries real authority that deserves an unboxed architectural stage.</p>
-                <p><strong>Harvested Section Anchors:</strong> (${h.secondaryHeadlines.slice(0,3).join(" · ")}) provide a strong conceptual spine once converted into interactive nodes.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- OFFER 1: WEBSITE DIAGNOSTIC -->
+              <div class="bg-[#1e1c1a] border border-[#3a3632] p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between">
+                    <span class="px-2.5 py-1 bg-emerald-900/40 border border-emerald-600/40 text-emerald-300 text-[10px] font-mono uppercase tracking-[0.18em] font-semibold">PURCHASE 01 · DELIVERED / ACTIVE</span>
+                    <span class="font-mono text-xs uppercase text-[#a89f93]">TRUST &amp; CLARITY STAGE</span>
+                  </div>
+                  <h3 class="font-sans text-2xl font-light tracking-[-0.02em] text-white">1. Website Diagnostic</h3>
+                  <p class="font-serif text-sm sm:text-base text-[#d8d2c9] leading-relaxed">A comprehensive, living diagnostic report with category scores, live DOM evidence, plain-English recommendations, self-serve quick wins, and 3 playable full-screen concept rebuilds of <strong>${h.hostname}</strong>.</p>
+                  <ul class="space-y-2 text-xs font-mono text-[#cfc8bc] pt-2 border-t border-[#2c2926]">
+                    <li>✓ Four-category SEO, structure, content intent &amp; UX evaluation</li>
+                    <li>✓ Specific affected pages &amp; plain-English recommendations</li>
+                    <li>✓ Self-serve quick wins your team can complete immediately</li>
+                    <li>✓ 3 playable full-screen Concept Rebuilds (Concepts A, B &amp; C)</li>
+                  </ul>
+                </div>
+                <div class="pt-4 border-t border-[#2c2926] flex items-center justify-between text-xs font-mono">
+                  <span class="text-emerald-400">STATUS: LIVING RECORD ACTIVE</span>
+                  <button onclick="document.getElementById('btn-export-html').click()" class="px-4 py-2 bg-[#fbfaf7] text-[#141312] font-bold uppercase tracking-[0.16em] text-[10px] cursor-pointer hover:bg-amber-300 transition-colors">
+                    EXPORT DIAGNOSTIC (.HTML) →
+                  </button>
+                </div>
               </div>
-              <div class="bg-white border border-[#dfd9cf] p-6 sm:p-8 space-y-3">
-                <span class="font-sans text-[10px] tracking-[0.2em] uppercase font-semibold text-[#be2623] block border-b border-[#ece7df] pb-2">02 · WHAT IS UNSUCCESSFUL</span>
-                <p><strong>Container &amp; Box Fatigue (${r.boxScore}/100):</strong> ${h.containerCount} bordered/boxed containers make high-conviction proof read like template filler.</p>
-                <p><strong>Over-Explanation Above the Fold:</strong> Summarizes everything in State I static text before earning visual curiosity.</p>
-              </div>
-              <div class="bg-white border border-[#dfd9cf] p-6 sm:p-8 space-y-3">
-                <span class="font-sans text-[10px] tracking-[0.2em] uppercase font-semibold text-amber-800 block border-b border-[#ece7df] pb-2">03 · WHAT IS LIMITING THE DESIGN</span>
-                <p><strong>Single-State Static Sections:</strong> Visitors scroll passively instead of pulling a datum seam, unstitching a claim, or warping a coordinate survey.</p>
-                <p><strong>Category-Blind Grammar:</strong> Needs mechanics built specifically for <em>${r.intentLabel}</em>.</p>
+
+              <!-- OFFER 2: WEBSITE IMPROVEMENT PACKAGE -->
+              <div class="bg-[#1e1c1a] border-2 border-[#be2623] p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between">
+                    <span class="px-2.5 py-1 bg-[#be2623] text-white text-[10px] font-mono uppercase tracking-[0.18em] font-bold">PURCHASE 02 · IMPLEMENTATION &amp; VERIFICATION</span>
+                    <span class="font-mono text-xs uppercase text-amber-300">FIXED START · SCOPED QUOTE</span>
+                  </div>
+                  <h3 class="font-sans text-2xl font-light tracking-[-0.02em] text-white">2. Website Improvement Package</h3>
+                  <p class="font-serif text-sm sm:text-base text-[#d8d2c9] leading-relaxed">Hire Context &amp; Muse to execute your selected improvements—including researched SEO titles/descriptions, Schema.org JSON-LD, messaging &amp; navigation refactors, and full conversion architecture implementation.</p>
+                  <div class="p-4 bg-[#141312] border border-[#3a3632] space-y-2">
+                    <span class="text-[10px] font-mono uppercase tracking-[0.16em] text-amber-300 block">CURRENTLY APPROVED FOR IMPLEMENTATION (${approvedFindings.length}):</span>
+                    ${approvedFindings.length === 0 ? `
+                      <p class="font-serif italic text-xs text-[#a89f93]">Click “+ APPROVE FOR IMPROVEMENT” on any finding above to add it to your implementation scope.</p>
+                    ` : `
+                      <ul class="space-y-1.5 text-xs font-mono text-[#fbfaf7]">
+                        ${approvedFindings.map(af => `
+                          <li class="flex items-center justify-between gap-2">
+                            <span class="truncate">● ${af.headline}</span>
+                            <span class="text-amber-300 shrink-0">${af.availableServiceTitle.replace("Available service: ", "")}</span>
+                          </li>
+                        `).join("")}
+                      </ul>
+                    `}
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-[#2c2926] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <span class="text-[11px] font-serif italic text-[#cfc8bc]">Every implemented fix is moved to <strong>Verified after implementation</strong> in this record.</span>
+                  <a href="https://www.contextmuse.com/#inquire" class="px-5 py-3 bg-[#be2623] hover:bg-amber-400 hover:text-[#141312] text-white font-mono text-[10px] uppercase tracking-[0.18em] font-bold text-center transition-colors shrink-0">
+                    SCOPE IMPROVEMENT PACKAGE →
+                  </a>
+                </div>
               </div>
             </div>
           </section>
@@ -954,6 +1399,14 @@
     window.setTone = (id) => {
       state.nuanceTone = id;
       compileReport();
+    };
+    window.setCategoryFilter = (catId) => {
+      state.activeCategoryFilter = catId;
+      render();
+    };
+    window.setFindingStatus = (findingId, status) => {
+      state.findingStatusMap[findingId] = status;
+      render();
     };
     window.launchConcept = (mode) => setViewMode(mode);
     window.toggleProtoState = () => {

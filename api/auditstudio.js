@@ -1,5 +1,5 @@
 /**
- * Context & Muse — Live DOM Asset Harvester & Architectural Diagnostic API
+ * Context & Muse — Live DOM Asset Harvester, Integrated SEO & Architectural Diagnostic API
  * Deployed at: https://www.contextmuse.com/api/auditstudio
  */
 
@@ -42,7 +42,7 @@ module.exports = async function handler(req, res) {
       const response = await fetch(parsed.toString(), {
         headers: {
           "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) ContextMuse-AuditStudio/3.0 (+https://www.contextmuse.com/auditstudio/)",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) ContextMuse-AuditStudio/4.0 (+https://www.contextmuse.com/auditstudio/)",
           Accept: "text/html,application/xhtml+xml",
         },
         signal: AbortSignal.timeout(9000),
@@ -56,8 +56,49 @@ module.exports = async function handler(req, res) {
 
     const ttfbMs = Date.now() - start;
 
+    let hasSitemapXml = false;
+    try {
+      const smRes = await fetch(`${parsed.origin}/sitemap.xml`, {
+        method: "HEAD",
+        signal: AbortSignal.timeout(2500),
+      });
+      hasSitemapXml = smRes.ok;
+    } catch {
+      hasSitemapXml = false;
+    }
+
     const titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
     const siteTitle = titleMatch ? cleanText(titleMatch[1]) : hostname;
+
+    const descMatch =
+      html.match(
+        /<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i
+      ) ||
+      html.match(
+        /<meta[^>]+content=["']([^"']*)["'][^>]+name=["']description["']/i
+      );
+    const metaDescription = descMatch ? cleanText(descMatch[1]) : null;
+
+    const canonicalMatch =
+      html.match(
+        /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i
+      ) ||
+      html.match(
+        /<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i
+      );
+    const canonicalUrl = canonicalMatch ? canonicalMatch[1].trim() : null;
+
+    const robotsMatch = html.match(
+      /<meta[^>]+name=["']robots["'][^>]+content=["']([^"']*)["']/i
+    );
+    const hasRobotsNoindex = robotsMatch
+      ? /noindex/i.test(robotsMatch[1])
+      : false;
+
+    const hasViewportMeta = /<meta[^>]+name=["']viewport["']/i.test(html);
+    const jsonLdCount = (
+      html.match(/<script[^>]+type=["']application\/ld\+json["']/gi) || []
+    ).length;
 
     const h1s = [...html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/gi)]
       .map((m) => cleanText(m[1]))
@@ -72,12 +113,23 @@ module.exports = async function handler(req, res) {
       .slice(0, 6);
 
     const ogImgMatch =
-      html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) ||
-      html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
+      html.match(
+        /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i
+      ) ||
+      html.match(
+        /<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i
+      );
     let heroImage = ogImgMatch ? ogImgMatch[1] : null;
     if (heroImage && heroImage.startsWith("/")) {
       heroImage = `${parsed.origin}${heroImage}`;
     }
+
+    const allImgTags = [...html.matchAll(/<img\b[^>]*>/gi)].map((m) => m[0]);
+    const totalImages = allImgTags.length;
+    const imagesMissingAlt = allImgTags.filter(
+      (tag) =>
+        !/\balt=["'][^"']+["']/i.test(tag) || /\balt=["']\s*["']/i.test(tag)
+    ).length;
 
     const rawImgs = [...html.matchAll(/<img[^>]+src=["']([^"']+)["']/gi)]
       .map((m) => m[1].trim())
@@ -98,9 +150,19 @@ module.exports = async function handler(req, res) {
       new Set(heroImage ? [heroImage, ...rawImgs] : rawImgs)
     ).slice(0, 8);
 
-    const navMatches = [
+    const allLinks = [
       ...html.matchAll(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi),
-    ]
+    ];
+    const internalLinkCount = allLinks.filter((m) => {
+      const href = m[1].trim();
+      return (
+        href.startsWith("/") ||
+        href.startsWith("#") ||
+        href.includes(hostname)
+      );
+    }).length;
+
+    const navMatches = allLinks
       .map((m) => ({ href: m[1].trim(), label: cleanText(m[2]) }))
       .filter(
         (l) =>
@@ -140,8 +202,22 @@ module.exports = async function handler(req, res) {
       httpStatus: status,
       ttfbMs,
       siteTitle,
+      metaDescription,
+      metaDescriptionLength: metaDescription ? metaDescription.length : 0,
+      canonicalUrl,
+      hasRobotsNoindex,
+      hasSitemapXml,
+      hasViewportMeta,
+      jsonLdCount,
+      h1Count: h1s.length,
+      h2Count: h2s.length,
+      internalLinkCount,
+      totalImages,
+      imagesMissingAlt,
       primaryHeadline:
-        h1s[0] || siteTitle.split(/[|—–-]/)[0].trim() || `Reimagining ${hostname}`,
+        h1s[0] ||
+        siteTitle.split(/[|—–-]/)[0].trim() ||
+        `Reimagining ${hostname}`,
       secondaryHeadlines:
         h2s.length > 0
           ? h2s
