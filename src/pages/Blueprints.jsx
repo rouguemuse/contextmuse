@@ -295,29 +295,58 @@ const PRACTICAL_COLLECTION = [
     id: 'util-docs',
     index: '01',
     category: 'DOCUMENT SYSTEM',
-    code: 'ARCHIVE-DOC // INSTANT DOWNLOAD',
+    code: 'ARCHIVE-DOC // INSTANT DOWNLOAD (.PDF + .DOCX)',
     title: 'Branded Business Document & SOW Dossier Set',
     oneLiner:
-      'Five archival-grade client documents engineered to lock scope, prevent unpaid revision creep, and present your studio with institutional authority.',
+      'Four archival-grade Context & Muse client documents (.PDF + editable .DOCX) engineered to separate what clients ask for from what they actually need, lock scope, and prevent unpaid revision creep.',
     price: '$79',
-    terms: 'One-time purchase · Editable Print/PDF + Markdown/Doc templates',
+    terms: 'One-time purchase · Editable .DOCX + Print-Ready .PDF Templates',
     stripeUrl: 'https://buy.stripe.com/fZudR8bnLbKqfMPbO5ebu0a',
     ctaLabel: 'Acquire Document Set — $79',
     specs: [
-      '01. Client Proposal & Executive Pitch Dossier (Scope, Timeline & Investment Options)',
-      '02. Scope-Locked Statement of Work (SOW) with explicit change-order boundaries',
-      '03. Technical Discovery Intake Brief + Invoice Ledger + Final Handoff Manual',
-      'Formatted in the Context & Muse Swiss brutalist grid for instant PDF export',
+      '01. Project Proposal + Scope of Work (3 Pages: Deliverables, 50/50 Split or 5% Prepay Discount & Quarterly Care Tiers)',
+      '02. Internal Project Discovery Worksheet (4 Pages: Stack Map, Technical Complexity & 12-Signal Scope-Risk Matrix)',
+      '03. Project Change Order (2 Pages: Cost + Timeline Impact & Explicit Rule Blocking Informal Scope Creep)',
+      '04. Client Services Agreement (3 Pages: 17-Clause Master Terms Covering Revisions, IP Ownership & Liability)',
+    ],
+    visualGallery: [
+      {
+        id: 'doc-01',
+        tab: '01 · Proposal + SOW',
+        meta: '3 PAGES · .PDF & .DOCX // PROJECT PROPOSAL + SCOPE OF WORK',
+        src: '/assets/captures/blueprints/docs-pack/doc-01-proposal-sow.png',
+        alt: 'Context & Muse Branded Project Proposal and Scope of Work document preview',
+      },
+      {
+        id: 'doc-02',
+        tab: '02 · Discovery Matrix',
+        meta: '4 PAGES · .PDF & .DOCX // INTERNAL DISCOVERY & SCOPE-RISK WORKSHEET',
+        src: '/assets/captures/blueprints/docs-pack/doc-02-discovery-worksheet.png',
+        alt: 'Context & Muse Internal Project Discovery Worksheet preview',
+      },
+      {
+        id: 'doc-03',
+        tab: '03 · Change Order',
+        meta: '2 PAGES · .PDF & .DOCX // PROJECT CHANGE ORDER & TIMELINE IMPACT',
+        src: '/assets/captures/blueprints/docs-pack/doc-03-change-order.png',
+        alt: 'Context & Muse Project Change Order document preview',
+      },
+      {
+        id: 'doc-04',
+        tab: '04 · Services Agreement',
+        meta: '3 PAGES · .PDF & .DOCX // 17-CLAUSE MASTER CLIENT SERVICES AGREEMENT',
+        src: '/assets/captures/blueprints/docs-pack/doc-04-services-agreement.png',
+        alt: 'Context & Muse Client Services Agreement document preview',
+      },
     ],
     specimen: {
-      header: 'SPECIMEN // SOW CLAUSE 04.2 & DELIVERABLE LEDGER',
-      stamp: '5 DOCUMENTS · PRINT & DIGITAL READY',
+      header: 'SPECIMEN // 4 BRANDED DOCUMENTS (12 PAGES TOTAL · .PDF + .DOCX)',
+      stamp: 'PRINT & EDITABLE DOCX READY',
       rows: [
-        { k: 'DOC-01', v: 'Executive Proposal & Option Matrix', tag: '12 PAGES' },
-        { k: 'DOC-02', v: 'Scope-Locked Statement of Work (SOW)', tag: 'CLAUSE-PROTECTED' },
-        { k: 'DOC-03', v: 'Technical Discovery & Asset Intake', tag: 'CLIENT QUESTIONNAIRE' },
-        { k: 'DOC-04', v: 'Milestone Invoice & Payment Schedule', tag: '50 / 50 SPLIT' },
-        { k: 'DOC-05', v: 'Production Handoff & Credentials Manual', tag: 'ARCHIVE RECORD' },
+        { k: 'DOC-01', v: '01_Context_Muse_Project_Proposal_SOW', tag: '3 PAGES · PDF/DOCX' },
+        { k: 'DOC-02', v: '02_Context_Muse_Internal_Discovery_Worksheet', tag: '4 PAGES · PDF/DOCX' },
+        { k: 'DOC-03', v: '03_Context_Muse_Project_Change_Order', tag: '2 PAGES · PDF/DOCX' },
+        { k: 'DOC-04', v: '04_Context_Muse_Client_Services_Agreement', tag: '3 PAGES · PDF/DOCX' },
       ],
     },
   },
@@ -325,58 +354,132 @@ const PRACTICAL_COLLECTION = [
     id: 'util-ads',
     index: '02',
     category: 'CAMPAIGN KIT',
-    code: 'CAMPAIGN-25 // TAILORED MULTI-CHANNEL PACK',
+    code: 'CAMPAIGN-25 // 6 SOCIAL FORMATS · DISTINCT SUBJECTS',
     title: '25-Asset Social Media & Multi-Channel Ad Pack',
     oneLiner:
-      'A complete 25-piece visual campaign tailored to your actual brand, headline hierarchy, and product screenshots across 6 paid and organic channels.',
+      'A complete 25-piece visual campaign spanning all 6 social media aspect ratios—demonstrated below with a different Context & Muse creation art-directed for each format.',
     price: '$149',
     terms: 'Fixed-price custom production · Delivered as ready-to-post PNG, MP4 & UTM Guide',
     stripeUrl: 'https://buy.stripe.com/3cI14mdvT15Mbwz3hzebu0b',
     ctaLabel: 'Order 25-Asset Ad Pack — $149',
     specs: [
-      '7 Vertical Pinterest Discovery Pins (1000×1500) + 4 Meta/IG Feed Squares (1080×1080)',
-      '5 High-Resolution 4:3 Showcase Boards (1600×1200) + 1 LinkedIn Sponsored Card (1200×627)',
-      '1 Vertical 9:16 Motion Video Ad (.MP4 for TikTok / Reels / Shorts) + 7 Story Frames',
+      '7 Vertical Pinterest Discovery Pins (1000×1500 · 2:3) + 4 Meta/IG Feed Squares (1080×1080 · 1:1)',
+      '7 TikTok / Reels / Story Verticals (1080×1920 · 9:16) + 1 Motion Video Ad (.MP4)',
+      '5 High-Resolution 4:3 Showcase Boards (1600×1200) + LinkedIn (1200×627) & X/Product Hunt (1600×900)',
       'Includes channel-specific headline hooks, caption copy, and UTM tracking spreadsheet',
     ],
+    visualGallery: [
+      {
+        id: 'ad-pin',
+        tab: '2:3 Pinterest',
+        meta: '1000×1500 PX (2:3) // FEATURING: LITERARY BRUTALISM WEBSITE STUDIO',
+        src: '/assets/captures/blueprints/ad-pack/01-pinterest-1000x1500-literary-brutalism.png',
+        alt: 'Pinterest 1000x1500 vertical pin featuring Literary Brutalism Website Studio',
+      },
+      {
+        id: 'ad-ig',
+        tab: '1:1 Meta/IG',
+        meta: '1080×1080 PX (1:1) // FEATURING: SIGNAL RESTAURANT POS INTELLIGENCE',
+        src: '/assets/captures/blueprints/ad-pack/02-instagram-meta-1080x1080-signal-pos.png',
+        alt: 'Instagram and Meta 1080x1080 square ad featuring Signal Restaurant POS Intelligence',
+      },
+      {
+        id: 'ad-story',
+        tab: '9:16 TikTok/Reel',
+        meta: '1080×1920 PX (9:16) // FEATURING: SELF-CARTOGRAPHY V1 ATLAS',
+        src: '/assets/captures/blueprints/ad-pack/03-tiktok-story-1080x1920-self-cartography.png',
+        alt: 'TikTok and Instagram Story 1080x1920 vertical ad featuring Self-Cartography V1',
+      },
+      {
+        id: 'ad-4x3',
+        tab: '4:3 Showcase',
+        meta: '1600×1200 PX (4:3) // FEATURING: DESIGN INTELLIGENCE TOKEN LAB',
+        src: '/assets/captures/blueprints/ad-pack/04-showcase-1600x1200-design-intelligence.png',
+        alt: '4:3 Showcase Board 1600x1200 featuring Design Intelligence Token Extraction Lab',
+      },
+      {
+        id: 'ad-li',
+        tab: '1.91:1 LinkedIn',
+        meta: '1200×627 PX (1.91:1) // FEATURING: MAPS WITH TEETH INITIATIVE',
+        src: '/assets/captures/blueprints/ad-pack/05-linkedin-1200x627-maps-with-teeth.png',
+        alt: 'LinkedIn Sponsored Card 1200x627 featuring Maps With Teeth accountability initiative',
+      },
+      {
+        id: 'ad-x',
+        tab: '16:9 X / Launch',
+        meta: '1600×900 PX (16:9) // FEATURING: EDR PARTY RENTALS CUSTOM BUILD',
+        src: '/assets/captures/blueprints/ad-pack/06-x-banner-1600x900-edr-commercial-build.png',
+        alt: 'X and Product Hunt 1600x900 launch banner featuring EDR Party Rentals custom conversion build',
+      },
+    ],
     specimen: {
-      header: 'SPECIMEN // 25-ASSET MULTI-RATIO DISTRIBUTION MATRIX',
-      stamp: '6 CHANNELS · PNG + 9:16 MP4 + UTM COPY',
+      header: 'SPECIMEN // 6 SOCIAL MEDIA RATIOS (DIFFERENT CREATION ON EACH)',
+      stamp: '6 FORMATS · 25 ASSETS TOTAL',
       rows: [
-        { k: '07× PIN', v: 'Pinterest Vertical Discovery Plates', tag: '1000 × 1500 PX' },
-        { k: '04× META', v: 'Instagram & Meta Carousel/Feed Squares', tag: '1080 × 1080 PX' },
-        { k: '05× SHOW', v: 'Editorial 4:3 Product Feature Boards', tag: '1600 × 1200 PX' },
-        { k: '01× REEL', v: 'Vertical Motion Video Ad (.MP4)', tag: '1080 × 1920 MP4' },
-        { k: '08× DIST', v: 'LinkedIn Card + Story Set + UTM Copy Guide', tag: 'READY TO LAUNCH' },
+        { k: '1000×1500 (2:3)', v: 'Pinterest Vertical Pin — Literary Brutalism Studio', tag: '07× PINS' },
+        { k: '1080×1080 (1:1)', v: 'Meta / IG Square — Signal Restaurant POS Margin', tag: '04× SQUARES' },
+        { k: '1080×1920 (9:16)', v: 'TikTok / Story Vertical — Self-Cartography V1 Atlas', tag: '07× STORIES + MP4' },
+        { k: '1600×1200 (4:3)', v: 'Showcase Board — Design Intelligence 3-System Diff', tag: '05× BOARDS' },
+        { k: '1200×627 & 1600×900', v: 'LinkedIn Card (Maps With Teeth) + X Banner (EDR)', tag: '02× B2B/LAUNCH' },
       ],
     },
   },
   {
     id: 'prompt-01',
     index: '03',
-    category: 'PROMPT ARCHITECTURE',
-    code: 'COGNITIVE-12 // INSTANT DOWNLOAD',
+    category: 'PROMPT ARCHITECTURE & CLAUDE SKILL',
+    code: 'COGNITIVE-12 // CLAUDE PERCEPTION & SEO PIPELINE',
     title: 'Audit-to-Action SEO & Conversion Prompt Pack',
     oneLiner:
-      'Our internal 12-stage prompt engineering chain that turns raw audit findings into sharpened positioning, 5 hub-and-spoke SEO pages, and valid JSON-LD schema.',
+      'Our complete 12-prompt SEO, conversion, and evidence-graded quality audit system—including the 10-Section Website Perception Audit and Deliverable Quality Auditor (E1–E4 / P0–P3 Gate) developed with Claude.',
     price: '$39',
-    terms: 'One-time purchase · Works with Claude, ChatGPT & Gemini',
+    terms: 'One-time purchase · Works with Claude (Desktop, Code & Skills), ChatGPT & Gemini',
     stripeUrl: 'https://buy.stripe.com/eVq14mezXeWCbwzg4lebu0c',
     ctaLabel: 'Acquire Prompt Pack — $39',
     specs: [
-      'Stages 01–04: Above-the-Fold Value Proposition Compression & Anti-Cliché Voice Filter',
-      'Stages 05–08: 5-Spoke Programmatic SEO Page Architect & Search-Intent Keyword Mapper',
-      'Stages 09–12: Schema.org JSON-LD Generator, Objection Rebuttal Matrix & CTA Calibrator',
-      'Includes real before/after input-output exemplars from production Context & Muse builds',
+      'Prompts 01–03 (Claude Audit Suite): 10-Section Uncontaminated Website Perception Audit, E1–E4 Deliverable Quality Auditor & 12-Item Live Security/SEO Fix Compiler',
+      'Prompts 04–06 (Conversion & Positioning): Above-the-Fold 3-Second Anti-Cliché Rewrite, 5-Spoke Commercial Keyword Funnel & $39→$395 Productized Offer Ladder',
+      'Prompts 07–09 (Technical SEO & Mobile): Schema.org @graph JSON-LD Compiler, 390px Thumb-Zone Sprint & High-CTR Title/Meta/OG Matrix',
+      'Prompts 10–12 (Distribution & Operations): 6-Ratio Multi-Channel Ad Brief Generator, Scope-Risk Discovery Matrix & Case-File Dossier Storyboarder',
+    ],
+    promptGallery: [
+      {
+        id: 'p-01',
+        tab: '01 · Claude Perception Audit',
+        meta: 'PROMPT 01 // 4-PHASE UNCONTAMINATED WEBSITE PERCEPTION & CONVERSION AUDIT',
+        excerpt:
+          '"Approach this as a highly perceptive first-time visitor... Phase 1: Uncontaminated First Impressions (10 diagnostic questions before reading internal routes). Phase 2: Full-Page Observable Route Inventory. Phase 3: Structural & Conceptual Critique. Deliverable: 10-section report ranking the 10 most consequential weaknesses, the 5 strongest elements to preserve, and a final commercial readiness verdict."',
+      },
+      {
+        id: 'p-02',
+        tab: '02 · E1–E4 Quality Auditor',
+        meta: 'PROMPT 02 // EVIDENCE-GRADED DELIVERABLE QUALITY AUDITOR (P0–P3 DEFECT GATE)',
+        excerpt:
+          '"Governing principle: A deliverable can look finished without being correct, complete, or fit for purpose. Attach an Evidence Grade (E1 Executed, E2 Inspected, E3 Inferred, E4 Unverifiable) to every finding. Apply the Defect Locus Rule (one defect, one home) and Critical Gate: any confirmed P0 caps the score at ≤40/100 and blocks a READY verdict regardless of visual polish."',
+      },
+      {
+        id: 'p-05',
+        tab: '05 · Hub & Spoke SEO',
+        meta: 'PROMPT 05 // NON-BRANDED COMMERCIAL KEYWORD & 5-SPOKE FUNNEL ARCHITECT',
+        excerpt:
+          '"Nobody searches for your brand name yet—they search for their immediate problem. Map 5 high-intent commercial keyword clusters across 5 distinct buyer niches. Design a Hub-and-Spoke URL architecture where / is the conversion showroom and 5 static spoke pages capture organic search with calibrated <title>, <meta>, H1, proof bullets, and FAQPage JSON-LD."',
+      },
+      {
+        id: 'p-06',
+        tab: '06 · Audit-to-Offer Ladder',
+        meta: 'PROMPT 06 // 5-LAYER DIAGNOSTIC TO 1-CLICK PRODUCTIZED OFFER LADDER ($39–$395)',
+        excerpt:
+          '"Turn every detected audit friction point across Layers 01–05 into a fixed-price, 1-click productized service or digital system ($39 Prompt Dossier, $79 Branded Document Set, $149 Turnkey SEO/Schema Fix, $295 48–72h Conversion Sprint, $395 Redesign Deposit credited 100% toward a $2,500+ Custom Build)."',
+      },
     ],
     specimen: {
-      header: 'SPECIMEN // 12-STAGE COGNITIVE PIPELINE ARCHITECTURE',
-      stamp: '12 ENGINEERED PROMPTS · ZERO FLUFF',
+      header: 'SPECIMEN // 12-STAGE CLAUDE AUDIT, SEO & CONVERSION PIPELINE',
+      stamp: '12 ENGINEERED PROMPTS · CLAUDE + GPT + GEMINI',
       rows: [
-        { k: 'STAGE 01–03', v: 'Positioning Compression & Cliché Purge', tag: 'VOICE ENGINE' },
-        { k: 'STAGE 04–06', v: 'Above-the-Fold Hero & Proof Restructuring', tag: 'CONVERSION' },
-        { k: 'STAGE 07–09', v: '5-Page Hub & Spoke SEO Content Architect', tag: 'ORGANIC SEARCH' },
-        { k: 'STAGE 10–12', v: 'JSON-LD Schema & Technical Meta Compiler', tag: 'STRUCTURED DATA' },
+        { k: 'PROMPTS 01–03', v: 'Claude 10-Section Perception Audit + E1–E4 Quality Gate', tag: 'CLAUDE SUITE' },
+        { k: 'PROMPTS 04–06', v: 'Above-the-Fold Anti-Cliché Rewrite + $39–$395 Offer Ladder', tag: 'CONVERSION' },
+        { k: 'PROMPTS 07–09', v: '5-Spoke SEO Architect + @graph JSON-LD + 390px Mobile Fix', tag: 'TECHNICAL SEO' },
+        { k: 'PROMPTS 10–12', v: '6-Ratio Ad Pack Brief + Scope-Risk Intake + Case Dossier', tag: 'DISTRIBUTION' },
       ],
     },
   },
@@ -474,6 +577,15 @@ export default function Blueprints() {
   const [activeViewId, setActiveViewId] = useState('studio-hud');
   const [activeBoardId, setActiveBoardId] = useState('board-01');
   const [selectedTierId, setSelectedTierId] = useState('tier-2');
+  const [collectionTabMap, setCollectionTabMap] = useState({
+    'util-docs': 'doc-01',
+    'util-ads': 'ad-pin',
+    'prompt-01': 'p-01',
+  });
+
+  const setCollectionTab = (itemId, tabId) => {
+    setCollectionTabMap((prev) => ({ ...prev, [itemId]: tabId }));
+  };
 
   const activeView =
     SHOWPIECE_VIEWS.find((v) => v.id === activeViewId) || SHOWPIECE_VIEWS[0];
@@ -1324,6 +1436,102 @@ export default function Blueprints() {
                       <p className="mt-3.5 font-sans text-sm sm:text-[15px] text-[#141817]/85 leading-relaxed">
                         {item.oneLiner}
                       </p>
+
+                      {/* Optional Interactive Real Visual Specimen Gallery (Branded Docs & 6-Ratio Multi-Channel Ad Pack) */}
+                      {item.visualGallery && (
+                        <div className="mt-5 border-[2px] border-[#141817] bg-[#141817]">
+                          <div className="flex flex-wrap border-b border-[#F2ECE1]/20 bg-[#1B211F]">
+                            {item.visualGallery.map((gItem) => {
+                              const isTabActive =
+                                (collectionTabMap[item.id] ||
+                                  item.visualGallery[0].id) === gItem.id;
+                              return (
+                                <button
+                                  key={gItem.id}
+                                  type="button"
+                                  data-testid={`gallery-tab-${item.id}-${gItem.id}`}
+                                  onClick={() =>
+                                    setCollectionTab(item.id, gItem.id)
+                                  }
+                                  className={`px-2.5 py-2 font-mono text-[10px] font-bold uppercase tracking-wider border-r border-b border-[#F2ECE1]/15 transition-colors cursor-pointer ${
+                                    isTabActive
+                                      ? 'bg-[#E5E750] text-[#141817]'
+                                      : 'bg-[#1B211F] text-[#F2ECE1]/80 hover:text-[#E5E750]'
+                                  }`}
+                                >
+                                  {gItem.tab}
+                                </button>
+                              );
+                            })}
+                          </div>
+                          {(() => {
+                            const activeSlide =
+                              item.visualGallery.find(
+                                (g) => g.id === collectionTabMap[item.id]
+                              ) || item.visualGallery[0];
+                            return (
+                              <div>
+                                <div className="px-3.5 py-2 border-b border-[#F2ECE1]/15 font-mono text-[10px] text-[#E5E750] font-bold uppercase tracking-wider">
+                                  {activeSlide.meta}
+                                </div>
+                                <div className="max-h-[380px] overflow-y-auto bg-[#EAE3D5] flex items-start justify-center p-3">
+                                  <img
+                                    src={activeSlide.src}
+                                    alt={activeSlide.alt}
+                                    className="max-w-full h-auto block border border-[#141817] shadow-[4px_4px_0_#141817]"
+                                  />
+                                </div>
+                              </div>
+                            );
+                          })()}
+                        </div>
+                      )}
+
+                      {/* Optional Interactive Prompt Architecture Inspector (Claude Perception & E1-E4 Quality Auditor Suite) */}
+                      {item.promptGallery && (
+                        <div className="mt-5 border-[2px] border-[#141817] bg-[#141817] text-[#F2ECE1]">
+                          <div className="flex flex-wrap border-b border-[#F2ECE1]/20 bg-[#1B211F]">
+                            {item.promptGallery.map((pItem) => {
+                              const isTabActive =
+                                (collectionTabMap[item.id] ||
+                                  item.promptGallery[0].id) === pItem.id;
+                              return (
+                                <button
+                                  key={pItem.id}
+                                  type="button"
+                                  data-testid={`prompt-tab-${item.id}-${pItem.id}`}
+                                  onClick={() =>
+                                    setCollectionTab(item.id, pItem.id)
+                                  }
+                                  className={`px-2.5 py-2 font-mono text-[10px] font-bold uppercase tracking-wider border-r border-b border-[#F2ECE1]/15 transition-colors cursor-pointer ${
+                                    isTabActive
+                                      ? 'bg-[#E5E750] text-[#141817]'
+                                      : 'bg-[#1B211F] text-[#F2ECE1]/80 hover:text-[#E5E750]'
+                                  }`}
+                                >
+                                  {pItem.tab}
+                                </button>
+                              );
+                            })}
+                          </div>
+                          {(() => {
+                            const activePrompt =
+                              item.promptGallery.find(
+                                (p) => p.id === collectionTabMap[item.id]
+                              ) || item.promptGallery[0];
+                            return (
+                              <div className="p-4 space-y-2">
+                                <div className="font-mono text-[10px] text-[#E5E750] font-bold uppercase tracking-wider">
+                                  {activePrompt.meta}
+                                </div>
+                                <p className="font-mono text-[11.5px] leading-relaxed text-[#F2ECE1]/90 bg-[#0D100F] p-3.5 border border-[#F2ECE1]/20">
+                                  {activePrompt.excerpt}
+                                </p>
+                              </div>
+                            );
+                          })()}
+                        </div>
+                      )}
 
                       {/* 3. Unclipped Technical Specimen Preview Sheet (Zero Cropped Promo Graphics) */}
                       <div className="mt-6 border-[1.5px] border-[#141817] bg-[#F2ECE1]">
