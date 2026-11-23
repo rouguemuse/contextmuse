@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ChevronDown, Lightbulb, Highlighter } from 'lucide-react';
+import { ChevronDown, Lightbulb, Highlighter, Compass } from 'lucide-react';
 import Logo from '@/components/site/Logo';
 import { useBrief } from '@/lib/BriefContext';
-import { ROOMS } from '@/lib/rooms';
+import { ROOMS, ALL_ROOMS, METHOD_ROOM } from '@/lib/rooms';
 import { useTransitionCoordinator } from '@/lib/TransitionContext';
 
 export default function SiteHeader() {
@@ -15,7 +15,7 @@ export default function SiteHeader() {
   const menuRef = useRef(null);
 
   const currentPath = location.pathname.replace(/\/+$/, '') || '/';
-  const activeRoom = ROOMS.find((room) => room.path === currentPath) || null;
+  const activeRoom = ALL_ROOMS.find((room) => room.path === currentPath) || null;
 
   useEffect(() => {
     setRoomsOpen(false);
@@ -70,6 +70,22 @@ export default function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          {/* Secondary Navigation Link: The Method (Process & Pricing) */}
+          <button
+            type="button"
+            data-testid="header-method-link"
+            onClick={(e) => handleSelectRoom(e, METHOD_ROOM)}
+            className={`hidden lg:flex items-center gap-1.5 border px-2.5 py-1.5 text-xs font-mono uppercase tracking-wider transition-colors ${
+              currentPath === '/method'
+                ? 'border-[#D9A62E] bg-[#17504A] text-[#EDE9E0] font-bold'
+                : 'border-[#DFDACE]/20 bg-[#1F2325] text-[#DFDACE]/85 hover:border-[#D9A62E] hover:text-[#D9A62E]'
+            }`}
+            title="The Method — Studio Approach, 5-Stage Process & Transparent Pricing"
+          >
+            <Compass className="h-3.5 w-3.5 text-[#D9A62E] shrink-0" />
+            <span>The Method</span>
+          </button>
+
           {/* Mark Up This Page Toggle */}
           <button
             type="button"
@@ -82,7 +98,10 @@ export default function SiteHeader() {
                 : 'border-[#DFDACE]/25 bg-[#1F2325] text-[#DFDACE]/85 hover:border-[#D9A62E] hover:text-[#D9A62E]'
             }`}
           >
-            <Highlighter className="h-3.5 w-3.5 text-[#D9A62E] shrink-0" style={pageMarkupActive ? { color: '#141617' } : undefined} />
+            <Highlighter
+              className="h-3.5 w-3.5 text-[#D9A62E] shrink-0"
+              style={pageMarkupActive ? { color: '#141617' } : undefined}
+            />
             <span className="hidden md:inline">
               {pageMarkupActive ? 'Marking Up Page' : 'Mark up this page'}
             </span>
@@ -136,11 +155,11 @@ export default function SiteHeader() {
               <div
                 role="menu"
                 aria-label="Four Rooms switcher"
-                className="fixed left-2.5 right-2.5 top-[48px] sm:Contain-none sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 sm:w-[340px] border border-[#DFDACE]/25 bg-[#1B1F21] p-2.5 shadow-2xl z-50"
+                className="fixed left-2.5 right-2.5 top-[48px] sm:Contain-none sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 sm:w-[360px] border border-[#DFDACE]/25 bg-[#1B1F21] p-2.5 shadow-2xl z-50"
               >
                 <div className="mb-2 flex items-center justify-between px-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#DFDACE]/60">
-                  <span>Select Working Room</span>
-                  <span>{activeRoom ? `Room ${activeRoom.num}` : 'All Rooms'}</span>
+                  <span>Primary Destinations</span>
+                  <span>{activeRoom ? `${activeRoom.title}` : 'Four Squares'}</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-1.5">
@@ -183,18 +202,41 @@ export default function SiteHeader() {
                   })}
                 </div>
 
-                <button
-                  type="button"
-                  role="menuitem"
-                  onClick={() => {
-                    setRoomsOpen(false);
-                    navigate('/lab/design-intelligence');
-                  }}
-                  className="mt-2 flex w-full items-center justify-between border border-[#D9A62E]/40 bg-[#23282A] px-3 py-2 font-mono text-[10.5px] uppercase tracking-wider text-[#D9A62E] transition-colors hover:bg-[#D9A62E] hover:text-[#141617] font-bold"
-                >
-                  <span>Case Study 01: Design Intelligence</span>
-                  <span>→</span>
-                </button>
+                <div className="mt-2.5 pt-2 border-t border-[#DFDACE]/15 space-y-1.5">
+                  <div className="px-1 font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#DFDACE]/50">
+                    Studio Approach &amp; Research
+                  </div>
+                  <button
+                    type="button"
+                    role="menuitem"
+                    data-switch-room="method"
+                    onClick={(e) => handleSelectRoom(e, METHOD_ROOM)}
+                    className={`flex w-full items-center justify-between border px-3 py-2 font-mono text-[10.5px] uppercase tracking-wider transition-colors font-bold ${
+                      currentPath === '/method'
+                        ? 'border-[#D9A62E] bg-[#17504A] text-[#EDE9E0]'
+                        : 'border-[#DFDACE]/25 bg-[#23282A] text-[#EDE9E0] hover:border-[#D9A62E] hover:text-[#D9A62E]'
+                    }`}
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <Compass className="h-3.5 w-3.5 text-[#D9A62E]" />
+                      <span>The Method · Process &amp; Pricing</span>
+                    </span>
+                    <span>→</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    role="menuitem"
+                    onClick={() => {
+                      setRoomsOpen(false);
+                      navigate('/lab/design-intelligence');
+                    }}
+                    className="flex w-full items-center justify-between border border-[#D9A62E]/40 bg-[#23282A] px-3 py-2 font-mono text-[10.5px] uppercase tracking-wider text-[#D9A62E] transition-colors hover:bg-[#D9A62E] hover:text-[#141617] font-bold"
+                  >
+                    <span>Case Study 01: Design Intelligence</span>
+                    <span>→</span>
+                  </button>
+                </div>
               </div>
             )}
           </div>

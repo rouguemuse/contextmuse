@@ -233,6 +233,57 @@ function MethodCascadeTransition({ room, phase }) {
   );
 }
 
+/**
+ * Room 02 — 02 / SHOWROOM (Blueprints)
+ * Deliberate studio-to-showroom curtain: sweeps in with the 4-tone expressive
+ * showroom accent bar (#E5E750, #E34232, #D9A62E, #17504A) to bridge the
+ * architectural foundation and the tactile product showroom without delay.
+ */
+function BlueprintsShowroomTransition({ room, phase }) {
+  const isEntering = phase === 'entering';
+  return (
+    <div
+      data-testid="room-transition-overlay"
+      data-transition-room={room.id}
+      data-transition-type="showroom-unfold"
+      data-transition-phase={phase}
+      className="pointer-events-none fixed inset-0 z-[100] overflow-hidden"
+    >
+      <motion.div
+        className="relative h-full w-full flex flex-col justify-between"
+        style={{
+          backgroundColor: '#141414',
+          color: '#F0E8D9',
+          transformOrigin: isEntering ? 'left center' : 'right center',
+          willChange: 'transform',
+        }}
+        initial={{ scaleX: isEntering ? 0 : 1 }}
+        animate={{ scaleX: isEntering ? 1 : 0 }}
+        transition={{ duration: 0.25, ease: EASE_SHUTTER }}
+      >
+        <div className="flex h-1.5 w-full" aria-hidden="true">
+          <span className="flex-1 bg-[#E5E750]" />
+          <span className="flex-1 bg-[#E34232]" />
+          <span className="flex-1 bg-[#D9A62E]" />
+          <span className="flex-1 bg-[#17504A]" />
+        </div>
+        <div className="px-8 sm:px-16 flex items-center justify-between">
+          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em]">
+            <span className="bg-[#E5E750] text-[#141414] px-2 py-0.5 font-bold">{room.num}</span>
+            <span className="text-[#E34232] font-bold">/</span>
+            <span className="text-[#F0E8D9] font-bold">{room.verb}</span>
+            <span className="hidden sm:inline text-[#F0E8D9]/60">— CONTEXT &amp; MUSE BLUEPRINTS</span>
+          </div>
+          <span className="hidden md:inline font-mono text-[11px] uppercase tracking-[0.18em] text-[#E5E750]">
+            PRODUCT SHOWROOM
+          </span>
+        </div>
+        <div className="h-1 w-full bg-[#E34232]" aria-hidden="true" />
+      </motion.div>
+    </div>
+  );
+}
+
 export function TransitionProvider({ children }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [activeFold, setActiveFold] = useState(null);
@@ -317,6 +368,8 @@ export function TransitionProvider({ children }) {
         return <WorkShutterTransition room={room} phase={phase} />;
       case 'build':
         return <BuildAssembleTransition room={room} phase={phase} />;
+      case 'blueprints':
+        return <BlueprintsShowroomTransition room={room} phase={phase} />;
       case 'lab':
         return <LabApertureTransition room={room} phase={phase} />;
       case 'method':

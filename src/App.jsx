@@ -17,6 +17,7 @@ import { vercelAnalyticsBeforeSend } from '@/lib/observability';
 import Home from '@/pages/Home';
 import Work from '@/pages/Work';
 import Builds from '@/pages/Builds';
+import Blueprints from '@/pages/Blueprints';
 import Lab from '@/pages/Lab';
 import Method from '@/pages/Method';
 import DesignIntelligenceCaseStudy from '@/pages/DesignIntelligenceCaseStudy';
@@ -96,6 +97,7 @@ const AuthenticatedApp = () => {
         <Route path="/work" element={<Work />} />
         <Route path="/index" element={<Work />} />
         <Route path="/build" element={<Builds />} />
+        <Route path="/blueprints" element={<Blueprints />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="/lab/design-intelligence" element={<DesignIntelligenceCaseStudy />} />
         <Route path="/design-intelligence" element={<DesignIntelligenceCaseStudy />} />

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ArrowRight, ArrowUpRight, CheckCircle2, Compass, Layers } from 'lucide-react';
 import { useBrief } from '@/lib/BriefContext';
 import { roomById } from '@/lib/rooms';
 import { useTransitionCoordinator } from '@/lib/TransitionContext';
@@ -66,6 +66,26 @@ export default function HeroPanel({ onEnterRoom }) {
             <span>Start a Project</span>
             <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
           </button>
+        </div>
+
+        {/* Secondary Wayfinding: Custom Commission vs. Ready-Made Blueprints + The Method */}
+        <div className="pt-1 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] text-[#DFDACE]/75">
+          <Link
+            to="/blueprints"
+            className="inline-flex items-center gap-1.5 text-[#EDE9E0] hover:text-[#D9A62E] transition-colors underline underline-offset-4 decoration-[#D9A62E]/60"
+          >
+            <Layers className="h-3.5 w-3.5 text-[#D9A62E] shrink-0" />
+            <span>Shop Ready-Made Blueprints</span>
+          </Link>
+          <span className="text-[#DFDACE]/30">•</span>
+          <Link
+            to="/method"
+            data-testid="hero-method-link"
+            className="inline-flex items-center gap-1.5 text-[#DFDACE]/85 hover:text-[#D9A62E] transition-colors underline underline-offset-4 decoration-[#DFDACE]/35"
+          >
+            <Compass className="h-3.5 w-3.5 text-[#D9A62E] shrink-0" />
+            <span>The Method: Process &amp; Pricing →</span>
+          </Link>
         </div>
       </div>
 

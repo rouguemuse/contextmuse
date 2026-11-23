@@ -101,6 +101,14 @@
       "destination": "/build/index.html"
     },
     {
+      "source": "/blueprints",
+      "destination": "/blueprints/index.html"
+    },
+    {
+      "source": "/blueprints/",
+      "destination": "/blueprints/index.html"
+    },
+    {
       "source": "/lab",
       "destination": "/lab/index.html"
     },

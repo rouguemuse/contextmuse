@@ -96,14 +96,14 @@ export const SPA_ROUTE_SEO = {
   '/build/': {
     path: '/build/',
     outputFile: 'build/index.html',
-    title: 'Custom Builds · Scope a Website, Tool or Software Project | Context & Muse',
+    title: 'Custom Build · Commission a Tailored Website, Tool or Software Project | Context & Muse',
     description:
-      'Start a project with Context & Muse. Describe what you want to create in plain language or sketch ideas on the optional interactive whiteboard.',
+      'Have something designed or built specifically for your needs. Describe your project in plain language or sketch ideas on the optional interactive whiteboard.',
     canonical: 'https://www.contextmuse.com/build/',
     ogType: 'website',
     ogImage: 'https://www.contextmuse.com/og/context-muse-home-v3.jpg',
-    h1: 'Custom Builds.',
-    lead: 'Tell me what you want to build in plain language, or open the optional whiteboard to sketch a rough layout, drop in screenshots, or map out how your business works.',
+    h1: 'Custom Build.',
+    lead: 'Have something designed or built specifically for your needs. Tell me what you want to create in plain language, or open the optional whiteboard to sketch a rough layout.',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -113,10 +113,38 @@ export const SPA_ROUTE_SEO = {
           '@type': 'Service',
           '@id': 'https://www.contextmuse.com/build/#service',
           url: 'https://www.contextmuse.com/build/',
-          name: 'Custom Builds · Scope a Website, Tool or Software Project | Context & Muse',
+          name: 'Custom Build · Commission a Tailored Website, Tool or Software Project | Context & Muse',
           description:
-            'Start a project with Context & Muse. Describe what you want to create in plain language or sketch ideas on the optional interactive whiteboard.',
+            'Have something designed or built specifically for your needs. Describe your project in plain language or sketch ideas on the optional interactive whiteboard.',
           provider: { '@id': 'https://www.contextmuse.com/#organization' },
+        },
+      ],
+    },
+  },
+  '/blueprints/': {
+    path: '/blueprints/',
+    outputFile: 'blueprints/index.html',
+    title: 'Blueprints · Ready-Made Websites, Figma Systems & Creative Tools | Context & Muse',
+    description:
+      'Explore Context & Muse Blueprints — ready-made website templates, browser Studios, 5-board Figma design systems, and reusable creative tools. Buy once, own the code forever.',
+    canonical: 'https://www.contextmuse.com/blueprints/',
+    ogType: 'website',
+    ogImage: 'https://www.contextmuse.com/assets/captures/blueprints/showcase-cover.png',
+    h1: 'Blueprints.',
+    lead: 'Ready-made websites, creative tools, and reusable systems. Self-contained browser Studios, 5-board Figma design kits, and tokenized vector libraries.',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        BASE_ORGANIZATION_NODE,
+        BASE_WEBSITE_NODE,
+        {
+          '@type': 'CollectionPage',
+          '@id': 'https://www.contextmuse.com/blueprints/#webpage',
+          url: 'https://www.contextmuse.com/blueprints/',
+          name: 'Blueprints · Ready-Made Websites, Figma Systems & Creative Tools | Context & Muse',
+          description:
+            'Explore Context & Muse Blueprints — ready-made website templates, browser Studios, 5-board Figma design systems, and reusable creative tools.',
+          isPartOf: { '@id': 'https://www.contextmuse.com/#website' },
         },
       ],
     },

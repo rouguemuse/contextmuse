@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import RoomShell from '@/components/room/RoomShell';
 import RoomHeading from '@/components/room/RoomHeading';
 import BuildEntryMethods from '@/components/builds/BuildEntryMethods';
@@ -22,6 +23,9 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
+  Compass,
+  Layers,
+  ArrowRight,
 } from 'lucide-react';
 
 function getInitialZoom() {
@@ -662,11 +666,54 @@ export default function Builds() {
           <RoomHeading
             num={room.num}
             verb={room.verb}
-            badge="Custom Websites, Business Tools & Thoughtful Software"
-            title="Custom Builds."
+            badge="Commission a Tailored Solution · Websites, Business Tools & Software"
+            title="Custom Build."
             watermark={room.num}
-            sub="Tell me what you want to build in plain language, or open the optional whiteboard to sketch a rough layout, drop in screenshots, or map out how your business works."
-          />
+            sub="Have something designed or built specifically for your needs. Describe what you want to create in plain language, or open the optional whiteboard to sketch a rough layout, drop in screenshots, or map out how your operation works."
+          >
+            {/* Contextual Wayfinding: The Method (Process & Pricing) vs. Blueprints (Ready-Made Products) */}
+            <div className="relative z-10 mt-5 grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+              <Link
+                to="/method"
+                data-testid="build-to-method-link"
+                className="group flex items-start justify-between gap-3 rounded-lg border-2 border-[#23282A]/25 bg-[#EDE9E0] p-3.5 text-left transition-all hover:border-[#17504A] hover:shadow-[3px_3px_0_#17504A]"
+              >
+                <div className="space-y-1">
+                  <div className="flex items-center gap-1.5 font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#17504A]">
+                    <Compass className="h-3.5 w-3.5 shrink-0" />
+                    <span>How Custom Builds Work · The Method</span>
+                  </div>
+                  <p className="font-sans text-xs text-[#23282A]/85 leading-snug">
+                    Inspect the 5-stage process (Observe → Evolve), scope bands, and transparent pricing ($2,500+ websites, $6,500+ custom software, $395 diagnostic).
+                  </p>
+                </div>
+                <span className="font-mono text-xs font-bold text-[#17504A] shrink-0 flex items-center gap-1 pt-0.5 group-hover:translate-x-0.5 transition-transform">
+                  <span>Method</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </Link>
+
+              <Link
+                to="/blueprints"
+                data-testid="build-to-blueprints-link"
+                className="group flex items-start justify-between gap-3 rounded-lg border-2 border-[#23282A] bg-[#17504A] text-[#EDE9E0] p-3.5 text-left transition-all hover:bg-[#123F38] shadow-[3px_3px_0_#23282A]"
+              >
+                <div className="space-y-1">
+                  <div className="flex items-center gap-1.5 font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#E5E750]">
+                    <Layers className="h-3.5 w-3.5 shrink-0" />
+                    <span>Want a Ready-Made System Instead? · 02 / Blueprints</span>
+                  </div>
+                  <p className="font-sans text-xs text-[#EDE9E0]/90 leading-snug">
+                    Purchase an existing website template, browser Studio, 5-board Figma kit, or creative system ($49–$199 one-time) with instant download.
+                  </p>
+                </div>
+                <span className="font-mono text-xs font-bold text-[#E5E750] shrink-0 flex items-center gap-1 pt-0.5 group-hover:translate-x-0.5 transition-transform">
+                  <span>Showroom</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </Link>
+            </div>
+          </RoomHeading>
         </div>
 
         {/* ============================================================

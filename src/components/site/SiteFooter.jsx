@@ -78,16 +78,41 @@ export default function SiteFooter() {
 
         <div className="flex flex-wrap items-center gap-3 sm:gap-4">
           <a
-            href="/services/quote-lead-systems/"
+            href="/build/"
             className="text-[11px] text-[#DFDACE]/65 hover:text-[#D9A62E] transition-colors"
           >
-            Quote + Lead Systems
+            01 Custom Build
           </a>
           <a
-            href="/services/"
-            className="text-[11px] text-[#DFDACE]/50 hover:text-[#EDE9E0] transition-colors"
+            href="/blueprints/"
+            className="text-[11px] text-[#DFDACE]/65 hover:text-[#D9A62E] transition-colors"
           >
-            Services
+            02 Blueprints
+          </a>
+          <a
+            href="/work/"
+            className="text-[11px] text-[#DFDACE]/65 hover:text-[#D9A62E] transition-colors"
+          >
+            03 Selected Work
+          </a>
+          <a
+            href="/lab/"
+            className="text-[11px] text-[#DFDACE]/65 hover:text-[#D9A62E] transition-colors"
+          >
+            04 The Lab
+          </a>
+          <a
+            href="/method/"
+            data-testid="footer-method-link"
+            className="text-[11px] text-[#D9A62E] font-bold hover:text-[#EDE9E0] transition-colors"
+          >
+            The Method &amp; Pricing
+          </a>
+          <a
+            href="/services/quote-lead-systems/"
+            className="text-[11px] text-[#DFDACE]/50 hover:text-[#D9A62E] transition-colors"
+          >
+            Quote + Lead Systems
           </a>
           <a
             href="/privacy/"

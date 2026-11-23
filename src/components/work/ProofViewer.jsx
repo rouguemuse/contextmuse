@@ -131,6 +131,7 @@ export default function ProofViewer({ item, onClose, onSelectRelated }) {
       '/',
       '/work',
       '/build',
+      '/blueprints',
       '/lab',
       '/lab/design-intelligence',
       '/design-intelligence',
