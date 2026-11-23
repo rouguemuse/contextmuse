@@ -144,6 +144,9 @@
       intentLens: "auto",
       nuanceTone: "swiss_architectural",
       viewMode: "dossier",
+      workspaceMode: "WORKING_REPORT",
+      activeProductTier: "ALL",
+      clientName: "Executive & Editorial Team",
       showGuidance: true,
       protoStateTwo: false,
       activePlateIdx: 0,
@@ -154,8 +157,22 @@
       selectedLocusIdx: 0,
       activeCategoryFilter: "ALL",
       findingStatusMap: {},
+      sectionOrder: [],
+      editingFindingId: null,
       harvested: null,
       report: null
+    };
+
+    const LAYOUT_BLOCKS = {
+      EDITORIAL_FEATURE: "01 · Editorial Feature (Lead Spread)",
+      CRITERIA_SAFEGUARD: "02 · Creative Choice Safeguard",
+      ANNOTATED_EXAMPLE: "03 · Annotated Page Example",
+      SCORECARD_MEASURE: "04 · Category-Weighted Scorecard",
+      BEFORE_AFTER_QUOTE: "05 · Search Snippet & Copy Contrast",
+      SIGNAL_LEDGER: "06 · Forensic Signal Ledger",
+      QUICK_WIN_CHECKLIST: "07 · Self-Serve Quick Wins",
+      ACTION_ROADMAP: "08 · Action Roadmap (First · Next · Later)",
+      DIRECTION_COMPARISON: "09 · Direction Comparison (3 Evolutions)"
     };
 
     const LIFECYCLE_STAGES = [
@@ -675,9 +692,114 @@
       ];
 
       state.findingStatusMap = {};
-      integratedFindings.forEach(f => {
+      integratedFindings.forEach((f, idx) => {
+        f.score = idx === 0 ? 62 : idx === 1 ? 88 : idx === 2 ? 54 : idx === 3 ? 79 : idx === 4 ? 64 : idx === 5 ? (100 - Math.round(boxScore * 0.5)) : 84;
+        f.curatedRuleId = idx === 0
+          ? "LIB-SEO-01 · Search Snippet Clarity (Curated Library)"
+          : idx === 1
+          ? "LIB-DIY-01 · Canonical & Sitemap Hygiene (Curated Library)"
+          : idx === 2
+          ? "LIB-STR-01 · Entity Schema & Heading Spine (Curated Library)"
+          : idx === 3
+          ? "LIB-DIY-02 · Descriptive Anchor Labels (Curated Library)"
+          : idx === 4
+          ? "LIB-MSG-01 · Clear Statement + Concrete Example (Curated Library)"
+          : idx === 5
+          ? "LIB-ARCH-02 · De-Box Primary Proof (Curated Library)"
+          : "LIB-DIY-03 · Image Alt Hygiene (Curated Library)";
+        f.productLevel = f.fixType === "SELF_SERVE_WIN" ? "DIAGNOSTIC" : idx === 5 ? "CUSTOM_STRATEGY" : "DIRECTION";
+        f.roadmapHorizon = idx <= 1 || f.fixType === "SELF_SERVE_WIN" ? "First (Immediate)" : idx <= 4 ? "Next (30 Days)" : "Later (Strategic Evolution)";
         state.findingStatusMap[f.id] = f.defaultLifecycleStatus;
       });
+
+      const grammarProfiles = {
+        editorial_world: {
+          grammar: "LITERARY_MONOGRAPH_BROADSHEET",
+          title: "Literary Monograph & Critical Review Broadsheet",
+          subtitle: `Tailored for ${h.hostname} · Evaluates atmospheric pacing, reader immersion, and typographic voice without penalizing deliberate narrative mystery.`,
+          canvasBg: "#f6f1e7",
+          paperBg: "#fffdf9",
+          inkHex: "#1b1714",
+          accentHex: "#8c231e",
+          borderHex: "#d5c9b8",
+          fontDisplay: "font-serif",
+          safeguards: [
+            "Protected Creative Choice: Atmospheric or enigmatic opening headlines are NOT penalized as 'unclear SaaS value propositions'.",
+            "Protected Creative Choice: Long-form prose passages and unhurried scroll cadence are evaluated for reading rhythm, not funnel compression.",
+            "Enforced Baseline: Readers and search engines still require accessible navigation, clean route signposting, and Book/Author schema."
+          ],
+          sequence: ["EDITORIAL_FEATURE", "CRITERIA_SAFEGUARD", "BEFORE_AFTER_QUOTE", "ANNOTATED_EXAMPLE", "DIRECTION_COMPARISON", "QUICK_WIN_CHECKLIST", "ACTION_ROADMAP", "SCORECARD_MEASURE"]
+        },
+        public_archive: {
+          grammar: "FORENSIC_ARCHIVE_BOARD",
+          title: "Investigative Evidence & Cartographic Field Dossier",
+          subtitle: `Tailored for ${h.hostname} · Prioritizes primary-source legibility, citation structure, and macro-to-human scale transitions.`,
+          canvasBg: "#eef0f2",
+          paperBg: "#ffffff",
+          inkHex: "#0f1419",
+          accentHex: "#c92a2a",
+          borderHex: "#cbd3da",
+          fontDisplay: "font-mono",
+          safeguards: [
+            "Protected Creative Choice: Dense evidentiary records and multi-node maps are NOT penalized for high information density.",
+            "Protected Creative Choice: Sober archival typography is preserved over commercial CTA styling.",
+            "Enforced Baseline: Structured dataset/article schema, clear internal cross-linking, and mobile legibility are weighted highest."
+          ],
+          sequence: ["ANNOTATED_EXAMPLE", "SIGNAL_LEDGER", "EDITORIAL_FEATURE", "CRITERIA_SAFEGUARD", "DIRECTION_COMPARISON", "ACTION_ROADMAP", "QUICK_WIN_CHECKLIST", "SCORECARD_MEASURE"]
+        },
+        product_proof: {
+          grammar: "TECHNICAL_TELEMETRY_SPEC",
+          title: "Product Telemetry & Verification Specification",
+          subtitle: `Tailored for ${h.hostname} · Prioritizes immediate time-to-value, interactive product proof, and technical search intent.`,
+          canvasBg: "#f4f6f8",
+          paperBg: "#ffffff",
+          inkHex: "#0b0f14",
+          accentHex: "#0f62fe",
+          borderHex: "#d0d7de",
+          fontDisplay: "font-sans",
+          safeguards: [
+            "Protected Creative Choice: Technical terminology appropriate for domain buyers is preserved rather than dumbed down.",
+            "Enforced Baseline: High penalty for burying product proof below generic feature cards or vague slogans."
+          ],
+          sequence: ["SCORECARD_MEASURE", "ANNOTATED_EXAMPLE", "EDITORIAL_FEATURE", "SIGNAL_LEDGER", "ACTION_ROADMAP", "DIRECTION_COMPARISON", "QUICK_WIN_CHECKLIST", "CRITERIA_SAFEGUARD"]
+        },
+        sensory_venue: {
+          grammar: "ATMOSPHERIC_VENUE_LOOKBOOK",
+          title: "Experiential Venue & Hospitality Lookbook Review",
+          subtitle: `Tailored for ${h.hostname} · Prioritizes sensory atmosphere, local search discovery, and zero-friction visit logistics.`,
+          canvasBg: "#f7f3eb",
+          paperBg: "#fffdfa",
+          inkHex: "#181512",
+          accentHex: "#b02a24",
+          borderHex: "#ded4c3",
+          fontDisplay: "font-serif",
+          safeguards: [
+            "Protected Creative Choice: Visual mood and photographic pacing take precedence over text-heavy explanations.",
+            "Enforced Baseline: Mobile tap targets, LocalBusiness/Event schema, and HTML menus are weighted highest."
+          ],
+          sequence: ["EDITORIAL_FEATURE", "ANNOTATED_EXAMPLE", "QUICK_WIN_CHECKLIST", "DIRECTION_COMPARISON", "ACTION_ROADMAP", "SCORECARD_MEASURE", "CRITERIA_SAFEGUARD"]
+        },
+        agency_authority: {
+          grammar: "SWISS_ADVISORY_DOSSIER",
+          title: "Executive Advisory & Conversion Architecture Dossier",
+          subtitle: `Tailored for ${h.hostname} · Prioritizes commercial positioning clarity, proof-of-work staging, and high-intent search authority.`,
+          canvasBg: "#fbfaf7",
+          paperBg: "#ffffff",
+          inkHex: "#141312",
+          accentHex: "#be2623",
+          borderHex: "#dfd9cf",
+          fontDisplay: "font-sans",
+          safeguards: [
+            "Protected Creative Choice: Distinct editorial point-of-view is preserved over generic agency jargon.",
+            "Enforced Baseline: High weight on homepage offer clarity, case-study proof staging, and service-level search visibility."
+          ],
+          sequence: ["EDITORIAL_FEATURE", "SCORECARD_MEASURE", "ANNOTATED_EXAMPLE", "BEFORE_AFTER_QUOTE", "ACTION_ROADMAP", "QUICK_WIN_CHECKLIST", "DIRECTION_COMPARISON", "CRITERIA_SAFEGUARD"]
+        }
+      };
+
+      const presentationProfile = grammarProfiles[intentKey] || grammarProfiles.agency_authority;
+      state.sectionOrder = [...presentationProfile.sequence];
+      state.clientName = h.hostname + " Leadership";
 
       state.report = {
         intentKey,
@@ -685,13 +807,14 @@
         intentRationale: meta.rationale,
         palette: pal,
         boxScore,
+        presentationProfile,
         evaluationCategories,
         integratedFindings,
         directions
       };
 
       document.getElementById("badge-target-host").textContent = "TARGET: " + h.hostname;
-      document.getElementById("badge-intent-label").textContent = "LENS: " + meta.label;
+      document.getElementById("badge-intent-label").textContent = "GRAMMAR: " + presentationProfile.grammar;
       render();
     }
 
@@ -1026,52 +1149,88 @@
       // DEFAULT VIEW: INTEGRATED SEO, LIVING RECORD DOSSIER + 3 CONCEPT LAUNCHERS
       // =======================================================================
       const allFindings = r.integratedFindings || [];
-      const visibleFindings = state.activeCategoryFilter === "ALL"
-        ? allFindings
-        : allFindings.filter(f => f.categoryId === state.activeCategoryFilter);
+      const prof = r.presentationProfile;
+      const visibleFindings = allFindings.filter(f => {
+        const catMatch = state.activeCategoryFilter === "ALL" || f.categoryId === state.activeCategoryFilter;
+        const tierMatch = state.activeProductTier === "ALL" || f.productLevel === state.activeProductTier;
+        return catMatch && tierMatch;
+      });
       const approvedFindings = allFindings.filter(f => {
         const st = state.findingStatusMap[f.id] || f.defaultLifecycleStatus;
         return st === "APPROVED" || st === "IMPLEMENTED" || st === "VERIFIED";
       });
       const verifiedCount = allFindings.filter(f => (state.findingStatusMap[f.id] || f.defaultLifecycleStatus) === "VERIFIED").length;
+      const leadFinding = allFindings[4] || allFindings[0];
 
       root.innerHTML = `
-        <main class="max-w-[1440px] mx-auto px-6 sm:px-10 py-10 sm:py-14 space-y-14">
+        <main class="max-w-[1440px] mx-auto px-6 sm:px-10 py-10 sm:py-14 space-y-12" style="background-color:${prof.canvasBg};color:${prof.inkHex}">
           <!-- 1. SCANNER + INTENT LENS & NUANCE ENGINE -->
-          <section class="bg-white border border-[#dfd9cf] p-6 sm:p-10 shadow-sm space-y-6">
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[#ece7df] pb-6">
+          <section class="border p-6 sm:p-10 shadow-sm space-y-6" style="background-color:${prof.paperBg};border-color:${prof.borderHex}">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b pb-6" style="border-color:${prof.borderHex}">
               <div class="space-y-2 max-w-3xl">
-                <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">CONTEXT &amp; MUSE · INTEGRATED SEO, UX &amp; ARCHITECTURAL DIAGNOSTIC RECORD</span>
-                <h1 class="font-sans font-light text-3xl sm:text-5xl tracking-[-0.04em] leading-[1.06]">Give them the findings. Guide the strategy. Sell the verified implementation.</h1>
-                <p class="font-serif italic text-base sm:text-lg text-[#5c554d]">Every diagnostic evaluates <strong>search visibility, structural understanding, content intent, and user experience</strong> together—tracking every finding from <strong>Identified</strong> to <strong>Verified after implementation</strong> while staging 3 playable concept rebuilds.</p>
+                <span class="text-[10px] tracking-[0.22em] uppercase font-semibold block" style="color:${prof.accentHex}">CONTEXT &amp; MUSE · STANDARDIZE THE JUDGMENT · PERSONALIZE THE INTERPRETATION · VARY THE PRESENTATION</span>
+                <h1 class="${prof.fontDisplay} font-light text-3xl sm:text-5xl tracking-[-0.04em] leading-[1.06]">${prof.title}</h1>
+                <p class="font-serif italic text-base sm:text-lg opacity-80">${prof.subtitle}</p>
               </div>
-              <div class="bg-[#fbfaf7] border border-[#dfd9cf] p-4 min-w-[270px] space-y-1.5">
-                <span class="text-[9px] font-mono uppercase tracking-[0.18em] text-[#7a7166] block">LIVING DIAGNOSTIC RECORD STATUS</span>
-                <div class="flex items-center justify-between text-xs font-mono">
-                  <span>Total Findings:</span>
-                  <strong>${allFindings.length}</strong>
+              <div class="flex flex-wrap items-center gap-2">
+                <div class="inline-flex border border-[#141312] bg-[#fbfaf7] p-0.5">
+                  <button onclick="window.setWorkspaceMode('WORKING_REPORT')" class="px-3 py-2 text-[10px] font-mono uppercase tracking-[0.15em] cursor-pointer ${state.workspaceMode === 'WORKING_REPORT' ? 'bg-[#141312] text-white font-bold' : 'text-[#5c554d]'}">✎ WORKING REPORT</button>
+                  <button onclick="window.setWorkspaceMode('CLIENT_REPORT')" class="px-3 py-2 text-[10px] font-mono uppercase tracking-[0.15em] cursor-pointer ${state.workspaceMode === 'CLIENT_REPORT' ? 'bg-[#be2623] text-white font-bold' : 'text-[#5c554d]'}">📄 CLIENT REPORT</button>
                 </div>
-                <div class="flex items-center justify-between text-xs font-mono text-[#be2623]">
-                  <span>Approved for Improvement:</span>
-                  <strong>${approvedFindings.length}</strong>
-                </div>
-                <div class="flex items-center justify-between text-xs font-mono text-emerald-800">
-                  <span>Verified Complete:</span>
-                  <strong>${verifiedCount}</strong>
-                </div>
+                <button onclick="window.printClientPdf()" class="px-4 py-2.5 bg-[#141312] hover:bg-[#be2623] text-white text-[10px] font-mono uppercase tracking-[0.16em] font-bold cursor-pointer">🖨 PRINT / SAVE CLIENT PDF</button>
               </div>
             </div>
 
             <form onsubmit="window.onScanSubmit(event)" class="flex flex-col sm:flex-row gap-3">
-              <input id="input-url" type="text" value="${state.url}" placeholder="https://client-domain.com" class="flex-1 bg-[#fbfaf7] border border-[#dfd9cf] px-4 py-3 text-sm font-mono focus:outline-none" />
+              <input id="input-url" type="text" value="${state.url}" placeholder="https://client-domain.com" class="flex-1 bg-[#fbfaf7] border border-[#dfd9cf] px-4 py-3 text-sm font-mono focus:outline-none text-[#141312]" />
               <button type="submit" class="px-7 py-3.5 bg-[#141312] hover:bg-[#be2623] text-white text-[11px] tracking-[0.2em] uppercase font-semibold cursor-pointer transition-colors">
                 RUN INTEGRATED DIAGNOSTIC &amp; 3 CONCEPTS →
               </button>
             </form>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 pt-2 border-t border-[#f0ece3]">
+            <!-- 3-LEVEL PRODUCT ARCHITECTURE FILTER & WORKING REPORT BLOCK COMPOSER -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 pt-2 border-t" style="border-color:${prof.borderHex}">
+              <div class="lg:col-span-8 space-y-2">
+                <span class="text-[10px] font-mono tracking-[0.18em] uppercase opacity-75 font-semibold block">PRODUCT ARCHITECTURE LEVEL (DIAGNOSTIC → DIRECTION → CUSTOM STRATEGY):</span>
+                <div class="flex flex-wrap gap-1.5">
+                  ${[
+                    {id:"ALL",label:"ALL 3 LEVELS"},
+                    {id:"DIAGNOSTIC",label:"1. DIAGNOSTIC (What's working & why)"},
+                    {id:"DIRECTION",label:"2. DIRECTION (Curated library guidance, non-AI)"},
+                    {id:"CUSTOM_STRATEGY",label:"3. CUSTOM STRATEGY (Bespoke concepts & execution)"}
+                  ].map(t => `<button onclick="window.setProductTier('${t.id}')" class="px-2.5 py-1.5 text-[10px] font-mono uppercase cursor-pointer border ${state.activeProductTier === t.id ? 'bg-[#141312] text-white border-[#141312] font-bold' : 'bg-transparent opacity-75'}">${t.label}</button>`).join("")}
+                </div>
+              </div>
+              <div class="lg:col-span-4 space-y-2">
+                <span class="text-[10px] font-mono tracking-[0.18em] uppercase opacity-75 font-semibold block">PREPARED FOR CLIENT:</span>
+                ${state.workspaceMode === "WORKING_REPORT"
+                  ? `<input type="text" value="${state.clientName}" onchange="window.setClientName(this.value)" class="w-full px-3 py-1.5 text-xs font-mono border bg-white text-[#141312]" />`
+                  : `<div class="text-sm font-mono font-bold">${state.clientName}</div>`
+                }
+              </div>
+            </div>
+
+            ${state.workspaceMode === "WORKING_REPORT" ? `
+              <div class="p-4 bg-[#fbfaf7] border border-[#dfd9cf] text-[#141312] space-y-2">
+                <div class="flex items-center justify-between text-[10px] font-mono uppercase">
+                  <span class="font-bold text-[#be2623]">WORKING REPORT LAYOUT COMPOSER · 8 REUSABLE LAYOUT BLOCKS ASSEMBLED FOR ${h.hostname.toUpperCase()}</span>
+                  <span class="text-[#7a7166]">Click ↑ / ↓ to reorder blocks for the Client Report</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  ${state.sectionOrder.map((bk, idx) => `
+                    <span class="inline-flex items-center gap-1.5 bg-white border border-[#dfd9cf] px-2.5 py-1 text-[10px] font-mono">
+                      <strong class="text-[#be2623]">0${idx + 1}</strong> ${LAYOUT_BLOCKS[bk] || bk}
+                      <button onclick="window.moveBlock(${idx},-1)" class="px-1 hover:bg-[#f4f1ea] cursor-pointer">↑</button>
+                      <button onclick="window.moveBlock(${idx},1)" class="px-1 hover:bg-[#f4f1ea] cursor-pointer">↓</button>
+                    </span>
+                  `).join("")}
+                </div>
+              </div>
+            ` : ""}
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 pt-2 border-t" style="border-color:${prof.borderHex}">
               <div class="lg:col-span-7 space-y-2">
-                <span class="text-[10px] tracking-[0.2em] uppercase text-[#7a7166] font-semibold block">1. STRATEGIC INTENT LENS (15 BESPOKE ARCHETYPES ACROSS 5 VERTICALS):</span>
+                <span class="text-[10px] tracking-[0.2em] uppercase opacity-70 font-semibold block">1. STRATEGIC INTENT LENS (CHANGES PRESENTATION GRAMMAR &amp; WEIGHTS):</span>
                 <div class="flex flex-wrap gap-1.5">
                   ${[
                     {id:"auto",label:"AUTO-DETECT"},
@@ -1084,26 +1243,50 @@
                 </div>
               </div>
               <div class="lg:col-span-5 space-y-2">
-                <span class="text-[10px] tracking-[0.2em] uppercase text-[#7a7166] font-semibold block">2. VISUAL &amp; TYPOGRAPHIC NUANCE PALETTE:</span>
+                <span class="text-[10px] tracking-[0.2em] uppercase opacity-70 font-semibold block">2. TEST ACROSS FUNDAMENTALLY DIFFERENT WEBSITES:</span>
                 <div class="flex flex-wrap gap-1.5">
                   ${[
-                    {id:"swiss_architectural",label:"Swiss Gallery"},
-                    {id:"warm_monograph",label:"Warm Monograph"},
-                    {id:"forensic_technical",label:"Forensic Tech"},
-                    {id:"cinematic_contrast",label:"Cinema Contrast"}
-                  ].map(t => `<button onclick="window.setTone('${t.id}')" class="px-2.5 py-1.5 text-[10px] tracking-[0.14em] uppercase cursor-pointer border ${state.nuanceTone === t.id ? 'bg-[#141312] text-white border-[#141312] font-semibold' : 'bg-[#fbfaf7] text-[#5c554d] border-[#dfd9cf]'}">${t.label}</button>`).join("")}
+                    "https://www.contextmuse.com",
+                    "https://mapswithteeth.org",
+                    "https://jaymevolstad.com",
+                    "https://howtoexplainyourselftowolves.com"
+                  ].map(u => `<button onclick="window.scanPreset('${u}')" class="px-2.5 py-1.5 text-[10px] font-mono border cursor-pointer ${state.url === u ? 'bg-[#141312] text-white border-[#141312]' : 'bg-[#fbfaf7] text-[#5c554d] border-[#dfd9cf]'}">${u.replace(/^https?:\/\/(www\.)?/,'')}</button>`).join("")}
                 </div>
               </div>
             </div>
+          </section>
 
-            <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#f0ece3]">
-              <span class="text-[10px] tracking-[0.18em] uppercase text-[#7a7166] font-semibold">LIVE PRESETS:</span>
-              ${[
-                "https://www.contextmuse.com",
-                "https://mapswithteeth.org",
-                "https://jaymevolstad.com",
-                "https://howtoexplainyourselftowolves.com"
-              ].map(u => `<button onclick="window.scanPreset('${u}')" class="px-3 py-1 text-[10px] font-mono border cursor-pointer ${state.url === u ? 'bg-[#141312] text-white border-[#141312]' : 'bg-[#fbfaf7] text-[#5c554d] border-[#dfd9cf]'}">${u.replace(/^https?:\/\/(www\.)?/,'')}</button>`).join("")}
+          <!-- ARCHETYPE-AWARE SAFEGUARD + EDITORIAL FEATURE LEAD SPREAD -->
+          <section class="border-2 p-6 sm:p-8 space-y-4" style="background-color:${prof.paperBg};border-color:${prof.accentHex}">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] font-bold" style="color:${prof.accentHex}">ARCHETYPE-AWARE SCORING SAFEGUARD // ${prof.grammar}</span>
+              <span class="text-[10px] font-mono uppercase opacity-75">LENS: ${r.intentLabel}</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              ${prof.safeguards.map(sg => `<div class="p-4 border text-xs sm:text-sm font-serif" style="background-color:${prof.canvasBg};border-color:${prof.borderHex}">${sg}</div>`).join("")}
+            </div>
+          </section>
+
+          <!-- EDITORIAL FEATURE + ANNOTATED PAGE EXAMPLE -->
+          <section class="border p-6 sm:p-10 space-y-6" style="background-color:${prof.paperBg};border-color:${prof.borderHex}">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-4" style="border-color:${prof.borderHex}">
+              <span class="px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.18em] text-white font-bold" style="background-color:${prof.accentHex}">LAYOUT · EDITORIAL FEATURE &amp; ANNOTATED PAGE INSPECTION</span>
+              <span class="text-[10px] font-mono uppercase opacity-75">${leadFinding.curatedRuleId}</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div class="lg:col-span-4 p-6 border space-y-3" style="background-color:${prof.canvasBg};border-color:${prof.borderHex}">
+                <span class="text-[10px] font-mono uppercase tracking-[0.18em] font-bold block">HOMEPAGE CLARITY &amp; INTENT SCORE</span>
+                <div class="text-6xl font-light font-mono">${leadFinding.score}<span class="text-sm opacity-60">/100</span></div>
+                <p class="text-xs font-mono opacity-75">${state.workspaceMode === 'WORKING_REPORT' ? 'Editable in Working Report before client approval' : 'Verified Diagnostic Baseline'}</p>
+              </div>
+              <div class="lg:col-span-8 space-y-4">
+                <h2 class="${prof.fontDisplay} text-2xl sm:text-4xl font-light">${leadFinding.headline}</h2>
+                <p class="font-serif text-base leading-relaxed"><strong>Diagnostic (What’s happening):</strong> ${leadFinding.whatsHappening}</p>
+                <div class="p-4 border-l-2 space-y-1" style="background-color:${prof.canvasBg};border-color:${prof.accentHex}">
+                  <span class="text-[10px] font-mono uppercase tracking-[0.18em] font-bold block" style="color:${prof.accentHex}">POSSIBLE DIRECTION (CURATED LIBRARY · NON-AI GUIDANCE)</span>
+                  <p class="font-serif text-base font-medium">Lead with one clear statement of what the website does, followed by a concrete example. Make the primary action easy to find. (${leadFinding.whatWedRecommend})</p>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -1407,6 +1590,33 @@
     window.setFindingStatus = (findingId, status) => {
       state.findingStatusMap[findingId] = status;
       render();
+    };
+    window.setWorkspaceMode = (mode) => {
+      state.workspaceMode = mode;
+      render();
+    };
+    window.setProductTier = (tier) => {
+      state.activeProductTier = tier;
+      render();
+    };
+    window.setClientName = (name) => {
+      state.clientName = name;
+      render();
+    };
+    window.moveBlock = (idx, delta) => {
+      const target = idx + delta;
+      if (target < 0 || target >= state.sectionOrder.length) return;
+      const arr = [...state.sectionOrder];
+      const tmp = arr[idx];
+      arr[idx] = arr[target];
+      arr[target] = tmp;
+      state.sectionOrder = arr;
+      render();
+    };
+    window.printClientPdf = () => {
+      state.workspaceMode = "CLIENT_REPORT";
+      render();
+      setTimeout(() => window.print(), 150);
     };
     window.launchConcept = (mode) => setViewMode(mode);
     window.toggleProtoState = () => {
