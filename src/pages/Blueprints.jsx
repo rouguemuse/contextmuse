@@ -4,369 +4,485 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  CheckCircle2,
+  Check,
   ExternalLink,
   KeyRound,
   Layers,
-  Compass,
-  Sparkles,
-  Wrench,
   FileText,
   Megaphone,
   Cpu,
-  ShieldCheck,
+  Wrench,
+  Sparkles,
+  Compass,
+  Maximize2,
 } from 'lucide-react';
 import SiteHeader from '@/components/site/SiteHeader';
 import SiteFooter from '@/components/site/SiteFooter';
 import PageAnnotationOverlay from '@/components/site/PageAnnotationOverlay';
 
-const NICHE_SHOWCASE = [
+/* ============================================================================
+   01. SHOWPIECE EXHIBITION DATA — LITERARY BRUTALISM WEBSITE STUDIO (#001)
+   Uses authentic, uncropped 1440px desktop & 390px mobile product captures
+   ============================================================================ */
+const SHOWPIECE_VIEWS = [
+  {
+    id: 'studio-hud',
+    num: '01',
+    label: 'Live Browser Studio HUD',
+    meta: '1440×900 · ZERO-INSTALL VISUAL EDITOR & .ZIP EXPORTER',
+    src: '/assets/captures/blueprints/1440px_desktop_landing_studio.png',
+    alt: 'Literary Brutalism In-Browser Visual Studio HUD with niche, palette, and page switchers open over the 1440px landing page',
+    urlBar: 'atelier-studio.local // ?studio=open&niche=author&palette=field-manual',
+    caption:
+      'Open the self-contained HTML Studio in any desktop browser. Switch between 5 niche architectures, toggle 4 color token palettes, rewrite any headline inline, and click Export Static .ZIP.',
+    callouts: [
+      'Top Studio Dock: Niche, Palette, Page & Export controls',
+      '100% Client-Side: Zero Node/build setup required to edit',
+      '1-Click Export: Compiles a clean, dependency-free static .ZIP',
+    ],
+  },
+  {
+    id: 'full-landing',
+    num: '02',
+    label: '1440px Editorial Landing',
+    meta: '1440×4625 · FULL UNCROPPED ARCHITECTURAL GRID',
+    src: '/assets/captures/blueprints/1440px_desktop_landing_full_preview.png',
+    alt: 'Uncropped 1440px Literary Brutalism landing page showing hero, excerpt reader, edition pricing, and botanical vector illustrations',
+    urlBar: 'blueprints.contextmuse.com // index.html (Published Production View)',
+    caption:
+      'Swiss industrial grid with exposed hairline rules, oversized display typography, chapter excerpt module, 3-tier Stripe edition cards, and embedded CSS-tokenized vector plates.',
+    callouts: [
+      'Asymmetric Hero: Editorial title block + technical metadata ledger',
+      'Embedded SVG Plates: Recolor automatically with active CSS tokens',
+      'Semantic HTML5 + Schema.org JSON-LD baked into every page',
+    ],
+  },
+  {
+    id: 'excerpt-audio',
+    num: '03',
+    label: 'Chapter & Audio Player',
+    meta: '1440×3100 · LONG-FORM READER + NATIVE AUDIO SAMPLE BAR',
+    src: '/assets/captures/blueprints/1440px_desktop_excerpt_audio.png',
+    alt: 'Literary Brutalism Excerpt Reader and Built-in Audio Sample Player page',
+    urlBar: 'blueprints.contextmuse.com // excerpt.html (Reader & Audio Engine)',
+    caption:
+      'Designed for novelists, musicians, and narrative podcasters: pairs long-form literary typesetting with an interactive waveform/seek audio player for chapters, singles, or episode clips.',
+    callouts: [
+      'Native HTML5 Audio Engine: Drop in any MP3/WAV with live seek bar',
+      'Print-Grade Reading Measure: Optimized 65ch column & marginalia',
+      'Direct Conversion Bridge: Sticky edition claim bar below the excerpt',
+    ],
+  },
+  {
+    id: 'press-kit',
+    num: '04',
+    label: 'Press & Media Dossier',
+    meta: '1440×3450 · EPK, BIOS, HI-RES ASSETS & TOUR/EVENT LEDGER',
+    src: '/assets/captures/blueprints/1440px_desktop_press.png',
+    alt: 'Literary Brutalism Press Kit and Electronic Press Kit page',
+    urlBar: 'blueprints.contextmuse.com // press.html (Media & Booking Kit)',
+    caption:
+      'Replaces scattered Google Drive folders with an authoritative press room: approved short/long bios, 300-DPI portrait & cover downloads, critical acclaim ledger, and booking inquiry dispatch.',
+    callouts: [
+      '1-Click Asset Pack: Jacket art, stage plot, or press photos',
+      'Structured Fact Sheet: ISBN/catalog numbers, release specs, credits',
+      'Promoter & Media Contact: Direct routing without middleman forms',
+    ],
+  },
+  {
+    id: 'journal-log',
+    num: '05',
+    label: 'Filterable Logbook',
+    meta: '1440×2780 · CLIENT-SIDE TAGGED ESSAY & EPISODE ARCHIVE',
+    src: '/assets/captures/blueprints/1440px_desktop_journal.png',
+    alt: 'Literary Brutalism Filterable Journal and Episode Logbook page',
+    urlBar: 'blueprints.contextmuse.com // journal.html (Serialized Archive)',
+    caption:
+      'An indexed archive for essays, field notes, podcast episodes, or studio dispatches with instant category filtering and numbered dossier cards.',
+    callouts: [
+      'Instant Tag Filtering: Zero page reloads or external CMS required',
+      'Numbered Entry Ledger: Date, reading time, classification tag, abstract',
+      'Long-Tail Search Architecture: Clean static URLs for organic indexing',
+    ],
+  },
+  {
+    id: 'editions-store',
+    num: '06',
+    label: '3-Tier Stripe Storefront',
+    meta: '1440×2950 · DIRECT-TO-BUYER EDITIONS & COMPARISON MATRIX',
+    src: '/assets/captures/blueprints/1440px_desktop_products_pricing.png',
+    alt: 'Literary Brutalism 3-Tier Editions and Stripe Storefront page',
+    urlBar: 'blueprints.contextmuse.com // products.html (Direct Commerce)',
+    caption:
+      'Sell books, vinyl records, digital downloads, or productized design sprints directly via Stripe Payment Links—keeping 100% of revenue with zero monthly platform fees.',
+    callouts: [
+      '3-Tier Architecture: Standard, Collector/Complete, and Commercial tiers',
+      'Full Specification Table: Deliverable-by-deliverable breakdown',
+      'Pre-Wired for Stripe, Gumroad, or Lemon Squeezy checkout links',
+    ],
+  },
+];
+
+const NICHE_ARCHITECTURES = [
   {
     id: 'author',
     num: '01',
-    tabLabel: '01 // Author & Book Launch',
-    badge: 'PRESET 01 // FIELD MANUAL PALETTE',
-    badgeBg: '#E34232',
-    badgeFg: '#F0E8D9',
-    title: 'Author, Monograph & Book Launch System',
-    description:
-      'Built for novelists, essayists, academic researchers, and independent presses launching a flagship book, serialized work, or literary archive without monthly platform rent.',
-    image: '/assets/captures/blueprints/showcase-cover.png',
-    imageAlt: 'Literary Brutalism Author and Book Launch Website Template Preview',
+    name: 'Author & Book Launch',
+    paletteName: 'Field Manual Palette',
+    summary:
+      'For novelists, essayists, academic researchers, and independent presses launching a flagship monograph or literary archive.',
     specUrl: 'https://blueprints.contextmuse.com/author-website-template',
-    specLabel: 'Inspect Author Template Specs',
-    swatches: [
-      { hex: '#141414', name: 'Ink' },
-      { hex: '#F0E8D9', name: 'Bone' },
-      { hex: '#E3DAC9', name: 'Paper' },
-      { hex: '#E34232', name: 'Scarlet' },
-      { hex: '#E5E750', name: 'Acid' },
-    ],
-    highlights: [
-      'Chapter Excerpt Reader: Long-form editorial typography paired with a built-in audiobook sample player.',
-      '3-Tier Edition Cards: Sell Hardcover, Signed Collector Dossier, or Digital EPUB directly via Stripe.',
-      'Press & Media Kit: High-res author portraits, jacket downloads, review blurbs, and event ledger.',
-    ],
+    swatches: ['#141414', '#F0E8D9', '#E3DAC9', '#E34232', '#E5E750'],
   },
   {
     id: 'musician',
     num: '02',
-    tabLabel: '02 // Musician & Album EPK',
-    badge: 'PRESET 02 // NIGHT INK PALETTE',
-    badgeBg: '#E5E750',
-    badgeFg: '#141414',
-    title: 'Musician, Band & Album Release EPK',
-    description:
-      'A high-contrast Electronic Press Kit (EPK) and direct-to-fan vinyl/merch storefront for recording artists, tour managers, and independent record labels.',
-    image: '/assets/captures/blueprints/showcase-pages.png',
-    imageAlt: 'Literary Brutalism Musician Album EPK Website Template Preview',
+    name: 'Musician & Album EPK',
+    paletteName: 'Night Ink Palette',
+    summary:
+      'High-contrast Electronic Press Kit, single audio player, tour ledger, and direct-to-fan vinyl/merch storefront.',
     specUrl: 'https://blueprints.contextmuse.com/musician-epk-template',
-    specLabel: 'Inspect Musician EPK Specs',
-    swatches: [
-      { hex: '#0E1013', name: 'Night Ink' },
-      { hex: '#ECE7DC', name: 'Chalk' },
-      { hex: '#1B1F26', name: 'Slate' },
-      { hex: '#FF5A36', name: 'Signal Orange' },
-      { hex: '#D9FF43', name: 'Acid Lime' },
-    ],
-    highlights: [
-      'Built-In Single Audio Bar: Drop in any MP3 or WAV track for instant browser playback with interactive seek bar.',
-      '1-Click Booking & EPK Downloads: Stage plot PDF, 300-DPI press photos, tech rider, and promoter contact.',
-      'Direct-to-Fan Vinyl & Merch: 3 physical/digital release tiers wired for Stripe Payment Links with 0% platform cut.',
-    ],
+    swatches: ['#0E1013', '#ECE7DC', '#1B1F26', '#FF5A36', '#D9FF43'],
   },
   {
     id: 'podcast',
     num: '03',
-    tabLabel: '03 // Podcast & Audio Show',
-    badge: 'PRESET 03 // OXIDE RED PALETTE',
-    badgeBg: '#C83422',
-    badgeFg: '#F7EFE4',
-    title: 'Narrative Podcast & Investigative Show Archive',
-    description:
-      'An archival editorial home for narrative podcasts, investigative journalism series, and interview shows that outgrow generic link-in-bio pages.',
-    image: '/assets/captures/blueprints/showcase-studio.png',
-    imageAlt: 'Literary Brutalism Podcast and Audio Show Website Template Preview',
+    name: 'Podcast & Audio Show',
+    paletteName: 'Oxide Red Palette',
+    summary:
+      'Serialized episode archive with full transcript templates, embedded audio bar, listener memberships, and sponsor kit.',
     specUrl: 'https://blueprints.contextmuse.com/podcast-website-template',
-    specLabel: 'Inspect Podcast Template Specs',
-    swatches: [
-      { hex: '#1D1311', name: 'Espresso' },
-      { hex: '#F7EFE4', name: 'Cream' },
-      { hex: '#EADBC8', name: 'Sand' },
-      { hex: '#C83422', name: 'Oxide Red' },
-      { hex: '#F3C846', name: 'Amber' },
-    ],
-    highlights: [
-      'Filterable Episode Logbook: Tag and filter episodes by season, theme, or format with instant client-side search.',
-      'Full Transcript & Show Notes Page: Structured editorial layout that captures long-tail organic search traffic.',
-      'Listener Memberships & Sponsor Kit: Dedicated media kit downloads and direct listener support tiers.',
-    ],
+    swatches: ['#1D1311', '#F7EFE4', '#EADBC8', '#C83422', '#F3C846'],
   },
   {
     id: 'studio',
     num: '04',
-    tabLabel: '04 // Design Studio & Agency',
-    badge: 'PRESET 04 // ARCHIVE OLIVE PALETTE',
-    badgeBg: '#CDD942',
-    badgeFg: '#171A14',
-    title: 'Independent Design Studio & Creative Practice',
-    description:
-      'For independent design studios, architectural practices, and creative directors—with an optional $199 Agency Unlimited license for shipping white-label client websites.',
-    image: '/assets/captures/blueprints/showcase-tokens.png',
-    imageAlt: 'Literary Brutalism Design Studio and Agency Website Template Preview',
+    name: 'Design Studio & Agency',
+    paletteName: 'Archive Olive Palette',
+    summary:
+      'Editorial case-file portfolio and productized service storefront—with optional $199 unlimited client handoff rights.',
     specUrl: 'https://blueprints.contextmuse.com/brutalist-agency-template',
-    specLabel: 'Inspect Agency License Specs',
-    swatches: [
-      { hex: '#171A14', name: 'Deep Olive' },
-      { hex: '#EFECE1', name: 'Warm Bone' },
-      { hex: '#DFE2CE', name: 'Sage Paper' },
-      { hex: '#D94E28', name: 'Vermilion' },
-      { hex: '#CDD942', name: 'Chartreuse' },
-    ],
-    highlights: [
-      'Case File Dossiers: Present client work, design principles, and capabilities with print-grade editorial rigor.',
-      'Productized Service Tiers: Fixed-fee sprint, design system, and retainer cards ready for direct Stripe checkout.',
-      '15-Minute Client Handoffs: Customize in the browser Studio, click Export .ZIP, and deploy to Vercel or Netlify.',
-    ],
-  },
-  {
-    id: 'figma',
-    num: '05',
-    tabLabel: '05 // 5-Board Figma & 23 SVGs',
-    badge: 'SYSTEM ASSETS // 1440PX FIGMA + RAW SVGS',
-    badgeBg: '#123F38',
-    badgeFg: '#E5E750',
-    title: '5-Board 1440px Figma Master Kit & 23 Vector SVGs',
-    description:
-      'Every $89 Complete Kit and $199 Agency package includes all 5 consolidated 1440px Figma Design System boards plus the standalone library of 23 CSS-tokenized vector illustrations.',
-    image: '/assets/captures/blueprints/showcase-vectors.png',
-    imageAlt: '5-Board Figma Design System and 23 Tokenized Vector SVGs Preview',
-    specUrl: 'https://blueprints.contextmuse.com/brutalist-figma-svg-kit',
-    specLabel: 'Inspect Figma & SVG Kit Specs',
-    swatches: [
-      { hex: '#141414', name: '--ink' },
-      { hex: '#F0E8D9', name: '--bone' },
-      { hex: '#E34232', name: '--scarlet' },
-      { hex: '#E5E750', name: '--acid' },
-      { hex: '#8DB8C2', name: '--blue' },
-    ],
-    highlights: [
-      '5 Consolidated 1440px Figma Boards: Foundations, Desktop Home, 6 Inner Pages, Niche Variations, and Vector Specimen Sheet.',
-      '23 Raw Tokenized .SVG Files: Botanical studies, architectural diagrams, tarot/emblem cards, and brutalist stamps.',
-      'Zero-Lock-In Vector Architecture: Drag the local SVG master sheets into any Figma file or duplicate from the master link.',
-    ],
+    swatches: ['#171A14', '#EFECE1', '#DFE2CE', '#D94E28', '#CDD942'],
   },
 ];
 
-const ANATOMY_PLATES = [
-  {
-    id: 'studio-hud',
-    label: '01 / In-Browser Visual Studio HUD',
-    meta: 'Zero-Install Live Editor · Export Static .ZIP',
-    src: '/assets/captures/blueprints/tab-studio-hud.png',
-    caption:
-      'Edit every headline, switch between 5 niche presets and 4 color palettes, manage 7 pages, and export a production-ready static .ZIP directly in your browser.',
-  },
-  {
-    id: 'svg-library',
-    label: '02 / 23-SVG Tokenized Graphic Library',
-    meta: 'Standalone Vector Catalog · CSS Variable Bound',
-    src: '/assets/captures/blueprints/tab-svg-library.png',
-    caption:
-      'Every illustration inherits --ink, --bone, --scarlet, --acid, and --blue automatically—re-coloring across all 4 studio palettes with zero manual re-exporting.',
-  },
-  {
-    id: 'figma-board',
-    label: '03 / 5-Board 1440px Figma Design System',
-    meta: 'Editable Figma Layers · Desktop & 390px Mobile',
-    src: '/assets/captures/blueprints/tab-figma-board.png',
-    caption:
-      'Includes Foundations & Token Swatches, Full Desktop Landing, 6 Inner Page Templates, Niche Variations, and the 23-Illustration Specimen Sheet.',
-  },
-  {
-    id: 'inner-pages',
-    label: '04 / 7 Multi-Page Editorial Layouts',
-    meta: 'Home · About · Excerpt/Audio · Press · Products · Journal · Contact',
-    src: '/assets/captures/blueprints/tab-journal.png',
-    caption:
-      'Seven interconnected page templates built with print-inspired grids, accessible keyboard navigation, and zero external framework dependencies.',
-  },
-];
-
-const STRIPE_TIERS = [
+const SHOWPIECE_LICENSES = [
   {
     id: 'tier-1',
-    code: 'TIER 01 // STANDARD LICENSE',
-    name: 'Literary Brutalism — Standard Studio',
+    code: 'EDITION 01 // STANDARD STUDIO',
+    name: 'Standard Studio License',
     price: '$49',
-    cadence: 'One-time payment · Perpetual license (1 brand)',
+    terms: 'One-time payment · Perpetual license for 1 brand',
     stripeUrl: 'https://buy.stripe.com/aFafZg3VjbKqbwz5pHebu00',
     specUrl: 'https://blueprints.contextmuse.com/literarybrutalism',
-    image: '/assets/captures/blueprints/Literary_Brutalism_49_Tier1_Standard_Studio.png',
-    featured: false,
-    accentBg: '#FAF8F3',
-    accentFg: '#141414',
-    shadowColor: '#141414',
-    description:
-      'For an individual author, musician, podcaster, or creator launching one flagship website with full browser Studio customization.',
-    includes: [
-      'Online Browser Studio unlock + offline Studio HTML file',
-      'All 5 Niche Presets (Author, Musician EPK, Podcast, Studio, Storefront)',
-      'All 7 multi-page layouts & 4 instant color token palettes',
-      '23 embedded vector SVG illustrations + 1-click static .ZIP exporter',
+    ctaLabel: 'Acquire Standard Studio — $49',
+    primary: false,
+    summary:
+      'Complete in-browser Website Studio + offline HTML Studio file with all 5 niche presets, 7 multi-page layouts, 4 color token palettes, and 1-click static .ZIP export.',
+    specs: [
+      'Online + Offline Visual Browser Studio',
+      'All 5 Niche Presets & 7 Multi-Page Layouts',
+      '23 Embedded Tokenized SVGs + .ZIP Exporter',
     ],
   },
   {
     id: 'tier-2',
-    code: 'TIER 02 // COMPLETE KIT ★ MOST POPULAR',
-    name: 'Studio + 5-Board Figma & SVG Bundle',
+    code: 'EDITION 02 // COMPLETE DESIGN + CODE SYSTEM',
+    name: 'Studio + 5-Board Figma & 23-SVG Bundle',
     price: '$89',
-    cadence: 'One-time payment · Perpetual license (Up to 2 brands)',
+    terms: 'One-time payment · Perpetual license for up to 2 brands',
     stripeUrl: 'https://buy.stripe.com/5kQ5kC4Zn9CifMP19rebu01',
     specUrl: 'https://blueprints.contextmuse.com/brutalist-figma-svg-kit',
-    image: '/assets/captures/blueprints/Literary_Brutalism_89_Tier2_Complete_Figma_Bundle.png',
-    featured: true,
-    accentBg: '#141414',
-    accentFg: '#F0E8D9',
-    shadowColor: '#E34232',
-    description:
-      'The complete design + code system: includes the Browser Studio plus the standalone 23-SVG graphic library and all 5 editable 1440px Figma boards.',
-    includes: [
-      'Everything in Tier 01 Standard Studio License (for up to 2 brands)',
-      '5-Board 1440px Figma Master Design System (Foundations, Pages, Niches, Vectors)',
-      'Standalone 23 raw .SVG vector files + searchable Graphic Library catalog',
-      'Instant Permanent License Key for cache-proof Online Studio & .ZIP access',
+    ctaLabel: 'Acquire Complete Bundle — $89',
+    primary: true,
+    badge: 'RECOMMENDED // INCLUDES FIGMA + RAW SVGS',
+    summary:
+      'Everything in the Standard Studio plus all 5 consolidated 1440px Figma Design System master boards and the standalone catalog of 23 raw, CSS-tokenized .SVG vector files.',
+    specs: [
+      'Everything in Standard Studio (Up to 2 Brands)',
+      '5 Consolidated 1440px Figma Master Boards',
+      '23 Raw Standalone .SVG Files + Searchable Catalog',
     ],
   },
   {
     id: 'tier-3',
-    code: 'TIER 03 // COMMERCIAL AGENCY LICENSE',
+    code: 'EDITION 03 // COMMERCIAL AGENCY LICENSE',
     name: 'Agency Unlimited + Modular Source',
     price: '$199',
-    cadence: 'One-time payment · Unlimited client builds & handoffs',
+    terms: 'One-time payment · Unlimited client builds & handoffs',
     stripeUrl: 'https://buy.stripe.com/9B628qezXdSy7gjg4lebu02',
     specUrl: 'https://blueprints.contextmuse.com/brutalist-agency-template',
-    image: '/assets/captures/blueprints/Literary_Brutalism_199_Tier3_Agency_Unlimited.png',
-    featured: false,
-    accentBg: '#E3DAC9',
-    accentFg: '#141414',
-    shadowColor: '#123F38',
-    description:
-      'For design studios, freelancers, and agencies building and handing off unlimited commercial websites to paying clients.',
-    includes: [
-      'Everything in Tier 02 Complete Studio + 5-Board Figma & 23-SVG Bundle',
-      'Unlimited commercial client projects & white-label static .ZIP handoff rights',
-      'Complete modular source code (src/) + zero-dependency Node.js compiler (build.js)',
-      'Custom preset compilation rights for internal agency workflows',
+    ctaLabel: 'Acquire Agency Unlimited — $199',
+    primary: false,
+    summary:
+      'Unrestricted commercial license to ship and hand off unlimited client websites, plus the uncompiled modular source repository (src/) and zero-dependency Node.js compiler (build.js).',
+    specs: [
+      'Everything in Complete $89 Studio + Figma Bundle',
+      'Unlimited White-Label Client .ZIP Handoff Rights',
+      'Modular Source (src/) + Custom Preset Compiler (build.js)',
     ],
   },
 ];
 
-const CREATIVE_UTILITIES_AND_PACKS = [
+/* ============================================================================
+   02. SECONDARY FEATURE DATA — THE 5-BOARD FIGMA & 23-SVG DESIGN SYSTEM
+   Uses authentic uncropped Figma master board captures
+   ============================================================================ */
+const FIGMA_SYSTEM_BOARDS = [
   {
-    id: 'util-docs',
-    code: 'UTIL-01 // BUSINESS DOCUMENT DOSSIER',
-    status: '● INSTANT DOWNLOAD',
-    title: 'Branded Business Document & SOW Dossier Set',
-    price: '$79',
-    unit: 'Complete Document Kit',
-    stripeUrl: 'https://buy.stripe.com/fZudR8bnLbKqfMPbO5ebu0a',
-    ctaLabel: 'Buy Document Set ($79)',
-    image: '/assets/captures/blueprints/Blueprint_79_Branded_Business_Document_Set.png',
-    description:
-      'Archival-grade business document templates that protect your scope and elevate client trust: Client Proposal & Pitch Dossier, Scope-Locked Statement of Work (SOW), Technical Discovery Intake Brief, Invoice Ledger, and Handoff Manual.',
-    chips: ['Proposals & SOW', 'Discovery Intake Matrix', 'Client Handoff Manual'],
-    icon: FileText,
-    theme: 'bone',
+    id: 'board-01',
+    shortLabel: 'Foundations',
+    code: 'BOARD 01 // FOUNDATIONS & TOKENS',
+    title: 'Color Palettes, Typography Scale & UI Components',
+    dimensions: '1440PX MASTER SHEET · AUTO-LAYOUT & VARIABLES',
+    src: '/assets/captures/blueprints/figma_v2_sheet01_foundations.png',
+    alt: 'Figma Board 01 showing 4 color token palettes, typographic scale, buttons, badges, and brutalist cards',
+    caption:
+      'Defines the 7 semantic color variables (--ink, --bone, --paper, --scarlet, --acid, --blue, --lilac) across all 4 studio palettes alongside display/serif/mono type styles and component variants.',
   },
   {
-    id: 'util-ads',
-    code: 'UTIL-02 // MULTI-CHANNEL CAMPAIGN KIT',
-    status: '● 25 CUSTOM ASSETS',
-    title: '25-Asset Social Media & Multi-Channel Ad Pack',
-    price: '$149',
-    unit: '25-Asset Custom Pack',
-    stripeUrl: 'https://buy.stripe.com/3cI14mdvT15Mbwz3hzebu0b',
-    ctaLabel: 'Order 25-Asset Ad Pack ($149)',
-    image: '/assets/captures/blueprints/Blueprint_149_25Asset_Social_Ad_Pack.png',
-    description:
-      'A complete 25-asset campaign tailored to your website and offer: 7 vertical Pinterest Pins (1000×1500), 4 Meta/IG 1:1 Ads (1080×1080), 5 4:3 Showcase Boards (1600×1200), 1 LinkedIn Ad, 1 9:16 TikTok/Reel Video (.MP4), and UTM Copy Guide.',
-    chips: ['7 Pinterest Pins', '4 Meta + 1 LinkedIn Ad', '9:16 TikTok MP4 + UTM Copy'],
-    icon: Megaphone,
-    theme: 'ink',
+    id: 'board-02',
+    shortLabel: '1440px Landing',
+    code: 'BOARD 02 // 1440PX DESKTOP MASTER',
+    title: 'Full 1440px Flagship Landing Architecture',
+    dimensions: '1440×4625PX · 12-COLUMN SWISS ARCHITECTURAL GRID',
+    src: '/assets/captures/blueprints/figma_v2_sheet02_desktop_landing.png',
+    alt: 'Figma Board 02 showing full 1440px desktop landing page layout',
+    caption:
+      'Complete desktop flagship composition with hero specimen frame, metadata strip, interactive chapter excerpt module, 3-tier edition pricing matrix, and editorial colophon.',
   },
   {
-    id: 'prompt-01',
-    code: 'PROMPT-01 // 12-STAGE COGNITIVE WORKFLOW',
-    status: '● INSTANT DOWNLOAD',
-    title: 'Audit-to-Action SEO & Conversion Prompt Pack',
-    price: '$39',
-    unit: 'Instant Prompt Dossier',
-    stripeUrl: 'https://buy.stripe.com/eVq14mezXeWCbwzg4lebu0c',
-    ctaLabel: 'Buy Prompt Pack ($39)',
-    image: '/assets/captures/blueprints/Blueprint_39_Audit_To_Action_Prompt_Pack.png',
-    description:
-      'The exact 12-stage engineered prompt system by Context & Muse to turn any website audit into high-converting landing page copy, 5 hub-and-spoke SEO spoke pages, JSON-LD rich schema, and anti-cliché brand positioning.',
-    chips: ['12-Stage Prompt Chain', 'SEO Spoke Generator', 'Editorial Voice Calibration'],
-    icon: Cpu,
-    theme: 'bone',
+    id: 'board-03',
+    shortLabel: '6 Inner Pages',
+    code: 'BOARD 03 // 6 INNER PAGE TEMPLATES',
+    title: 'About, Excerpt/Audio, Press, Products, Journal & Contact',
+    dimensions: '6 FULL-LENGTH 1440PX PAGE TEMPLATES',
+    src: '/assets/captures/blueprints/figma_v1_sheet03_inner_pages.png',
+    alt: 'Figma Board 03 showing all 6 inner page templates side by side',
+    caption:
+      'Every secondary page architected as a cohesive system—ready to duplicate, customize in Figma, or export directly from the paired Browser Studio.',
+  },
+  {
+    id: 'board-04',
+    shortLabel: 'Niches & 390px',
+    code: 'BOARD 04 // NICHES & 390PX MOBILE',
+    title: '5 Niche Variations & Responsive 390px Mobile Layouts',
+    dimensions: '1440PX NICHE HEADERS + 390×844PX MOBILE BREAKPOINTS',
+    src: '/assets/captures/blueprints/figma_v1_sheet04_niches_mobile.png',
+    alt: 'Figma Board 04 showing niche variations and 390px mobile responsive frames',
+    caption:
+      'Side-by-side niche transformations (Author, Musician EPK, Podcast, Design Studio) paired with mobile navigation drawers and responsive card stacks.',
+  },
+  {
+    id: 'board-05',
+    shortLabel: '23 Vector SVGs',
+    code: 'BOARD 05 // 23 TOKENIZED VECTOR SVGS',
+    title: 'Standalone 23-Illustration Graphic Library Catalog',
+    dimensions: '23 RAW .SVG FILES · CSS CUSTOM-PROPERTY BOUND',
+    src: '/assets/captures/blueprints/1440px_graphic_library_catalog.png',
+    alt: 'Standalone 23-SVG Tokenized Graphic Library catalog showing architectural, botanical, and emblematic vector illustrations',
+    caption:
+      'Botanical plates, architectural projections, brutalist stamps, and emblem cards built with clean paths bound to CSS custom properties so they recolor automatically.',
   },
 ];
 
-const AUDIT_REMEDIATION_SPRINTS = [
+/* ============================================================================
+   03. PRACTICAL TOOLS & FOCUSED WEBSITE IMPROVEMENTS — THE COLLECTION
+   Disciplined Swiss specification index with custom, unclipped visual specimens
+   ============================================================================ */
+const PRACTICAL_COLLECTION = [
+  {
+    id: 'util-docs',
+    index: '01',
+    category: 'DOCUMENT SYSTEM',
+    code: 'ARCHIVE-DOC // INSTANT DOWNLOAD',
+    title: 'Branded Business Document & SOW Dossier Set',
+    oneLiner:
+      'Five archival-grade client documents engineered to lock scope, prevent unpaid revision creep, and present your studio with institutional authority.',
+    price: '$79',
+    terms: 'One-time purchase · Editable Print/PDF + Markdown/Doc templates',
+    stripeUrl: 'https://buy.stripe.com/fZudR8bnLbKqfMPbO5ebu0a',
+    ctaLabel: 'Acquire Document Set — $79',
+    specs: [
+      '01. Client Proposal & Executive Pitch Dossier (Scope, Timeline & Investment Options)',
+      '02. Scope-Locked Statement of Work (SOW) with explicit change-order boundaries',
+      '03. Technical Discovery Intake Brief + Invoice Ledger + Final Handoff Manual',
+      'Formatted in the Context & Muse Swiss brutalist grid for instant PDF export',
+    ],
+    specimen: {
+      header: 'SPECIMEN // SOW CLAUSE 04.2 & DELIVERABLE LEDGER',
+      stamp: '5 DOCUMENTS · PRINT & DIGITAL READY',
+      rows: [
+        { k: 'DOC-01', v: 'Executive Proposal & Option Matrix', tag: '12 PAGES' },
+        { k: 'DOC-02', v: 'Scope-Locked Statement of Work (SOW)', tag: 'CLAUSE-PROTECTED' },
+        { k: 'DOC-03', v: 'Technical Discovery & Asset Intake', tag: 'CLIENT QUESTIONNAIRE' },
+        { k: 'DOC-04', v: 'Milestone Invoice & Payment Schedule', tag: '50 / 50 SPLIT' },
+        { k: 'DOC-05', v: 'Production Handoff & Credentials Manual', tag: 'ARCHIVE RECORD' },
+      ],
+    },
+  },
+  {
+    id: 'util-ads',
+    index: '02',
+    category: 'CAMPAIGN KIT',
+    code: 'CAMPAIGN-25 // TAILORED MULTI-CHANNEL PACK',
+    title: '25-Asset Social Media & Multi-Channel Ad Pack',
+    oneLiner:
+      'A complete 25-piece visual campaign tailored to your actual brand, headline hierarchy, and product screenshots across 6 paid and organic channels.',
+    price: '$149',
+    terms: 'Fixed-price custom production · Delivered as ready-to-post PNG, MP4 & UTM Guide',
+    stripeUrl: 'https://buy.stripe.com/3cI14mdvT15Mbwz3hzebu0b',
+    ctaLabel: 'Order 25-Asset Ad Pack — $149',
+    specs: [
+      '7 Vertical Pinterest Discovery Pins (1000×1500) + 4 Meta/IG Feed Squares (1080×1080)',
+      '5 High-Resolution 4:3 Showcase Boards (1600×1200) + 1 LinkedIn Sponsored Card (1200×627)',
+      '1 Vertical 9:16 Motion Video Ad (.MP4 for TikTok / Reels / Shorts) + 7 Story Frames',
+      'Includes channel-specific headline hooks, caption copy, and UTM tracking spreadsheet',
+    ],
+    specimen: {
+      header: 'SPECIMEN // 25-ASSET MULTI-RATIO DISTRIBUTION MATRIX',
+      stamp: '6 CHANNELS · PNG + 9:16 MP4 + UTM COPY',
+      rows: [
+        { k: '07× PIN', v: 'Pinterest Vertical Discovery Plates', tag: '1000 × 1500 PX' },
+        { k: '04× META', v: 'Instagram & Meta Carousel/Feed Squares', tag: '1080 × 1080 PX' },
+        { k: '05× SHOW', v: 'Editorial 4:3 Product Feature Boards', tag: '1600 × 1200 PX' },
+        { k: '01× REEL', v: 'Vertical Motion Video Ad (.MP4)', tag: '1080 × 1920 MP4' },
+        { k: '08× DIST', v: 'LinkedIn Card + Story Set + UTM Copy Guide', tag: 'READY TO LAUNCH' },
+      ],
+    },
+  },
+  {
+    id: 'prompt-01',
+    index: '03',
+    category: 'PROMPT ARCHITECTURE',
+    code: 'COGNITIVE-12 // INSTANT DOWNLOAD',
+    title: 'Audit-to-Action SEO & Conversion Prompt Pack',
+    oneLiner:
+      'Our internal 12-stage prompt engineering chain that turns raw audit findings into sharpened positioning, 5 hub-and-spoke SEO pages, and valid JSON-LD schema.',
+    price: '$39',
+    terms: 'One-time purchase · Works with Claude, ChatGPT & Gemini',
+    stripeUrl: 'https://buy.stripe.com/eVq14mezXeWCbwzg4lebu0c',
+    ctaLabel: 'Acquire Prompt Pack — $39',
+    specs: [
+      'Stages 01–04: Above-the-Fold Value Proposition Compression & Anti-Cliché Voice Filter',
+      'Stages 05–08: 5-Spoke Programmatic SEO Page Architect & Search-Intent Keyword Mapper',
+      'Stages 09–12: Schema.org JSON-LD Generator, Objection Rebuttal Matrix & CTA Calibrator',
+      'Includes real before/after input-output exemplars from production Context & Muse builds',
+    ],
+    specimen: {
+      header: 'SPECIMEN // 12-STAGE COGNITIVE PIPELINE ARCHITECTURE',
+      stamp: '12 ENGINEERED PROMPTS · ZERO FLUFF',
+      rows: [
+        { k: 'STAGE 01–03', v: 'Positioning Compression & Cliché Purge', tag: 'VOICE ENGINE' },
+        { k: 'STAGE 04–06', v: 'Above-the-Fold Hero & Proof Restructuring', tag: 'CONVERSION' },
+        { k: 'STAGE 07–09', v: '5-Page Hub & Spoke SEO Content Architect', tag: 'ORGANIC SEARCH' },
+        { k: 'STAGE 10–12', v: 'JSON-LD Schema & Technical Meta Compiler', tag: 'STRUCTURED DATA' },
+      ],
+    },
+  },
   {
     id: 'fix-seo',
-    layer: 'AUDIT LAYER 05 // SEARCH & SCHEMA FIX',
-    badge: '● 1-CLICK ORDER',
+    index: '04',
+    category: '1-CLICK AUDIT REMEDIATION',
+    code: 'LAYER 05 FIX // TURNKEY TECHNICAL DELIVERY',
     title: 'Optimize My SEO & Rich Schema Fix Pack',
+    oneLiner:
+      'We repair your website’s missing or truncated titles, meta descriptions, canonical tags, sitemap, Open Graph cards, and deploy custom JSON-LD structured data.',
     price: '$149',
-    unit: 'Fixed Turnkey Fix',
+    terms: 'Fixed-scope turnkey remediation · Delivered as drop-in code or direct PR',
     stripeUrl: 'https://buy.stripe.com/4gMbJ077v5m2bwz05nebu08',
-    ctaLabel: 'Optimize My SEO ($149)',
-    image: '/assets/captures/blueprints/Blueprint_149_Optimize_My_SEO.png',
-    description:
-      'Fixes missing or weak page titles, meta descriptions, canonical URLs, XML sitemap, robots.txt, 1200×630 Open Graph share card, and injects custom JSON-LD structured data (LocalBusiness, Product, FAQPage).',
-    chips: ['JSON-LD Rich Snippets', 'Title & Meta Hierarchy', 'Sitemap + OG Share Card'],
+    ctaLabel: 'Order SEO & Schema Fix — $149',
+    specs: [
+      'Custom Schema.org JSON-LD injection (LocalBusiness, Product, SoftwareApplication, FAQPage)',
+      'Rewritten high-CTR <title> and <meta name="description"> hierarchy across key routes',
+      'Validated XML Sitemap, clean robots.txt directives, and canonical URL deduplication',
+      'Custom 1200×630 Open Graph & X/Twitter share card so links never preview blank',
+    ],
+    specimen: {
+      header: 'SPECIMEN // TECHNICAL SEARCH & JSON-LD REMEDIATION DIFF',
+      stamp: 'AUDIT LAYER 05 · TURNKEY FIX',
+      rows: [
+        { k: '<title>', v: 'Intent-calibrated title hierarchy (50–60 chars)', tag: 'FIXED' },
+        { k: 'JSON-LD', v: 'Validated @graph: Organization + Product + FAQ', tag: 'INJECTED' },
+        { k: 'OG:IMAGE', v: '1200×630 High-Contrast Social Share Plate', tag: 'GENERATED' },
+        { k: 'INDEXING', v: 'sitemap.xml + robots.txt + rel="canonical"', tag: 'VERIFIED' },
+      ],
+    },
   },
   {
     id: 'fix-ux',
-    layer: 'AUDIT LAYERS 01–03 // CONVERSION & UX SPRINT',
-    badge: '● 48–72H TURNAROUND',
+    index: '05',
+    category: '48–72H CONVERSION SPRINT',
+    code: 'LAYERS 01–03 FIX // RAPID UX INTERVENTION',
     title: 'Web Refinement & Conversion Quick-Win Sprint',
+    oneLiner:
+      'A focused 48–72 hour surgical upgrade to your existing website’s hero headline, mobile call/quote action bar, tap targets, and lead-capture form friction.',
     price: '$295',
-    unit: 'Fixed Sprint',
+    terms: 'Fixed-scope 48–72h sprint · No full rebuild required',
     stripeUrl: 'https://buy.stripe.com/8x2bJ077v01I9org4lebu09',
-    ctaLabel: 'Refine My Website ($295)',
-    image: '/assets/captures/blueprints/Blueprint_295_Web_Refinement_Sprint.png',
-    description:
-      'Don’t need a full rebuild? We sharpen your existing website’s above-the-fold headline & positioning, install a high-visibility sticky mobile Call/Quote bar, fix mobile tap targets & layout shifts, and streamline your contact form.',
-    chips: ['Headline & CTA Rewrite', 'Sticky Mobile Action Bar', 'Mobile Tap-Target Fix'],
-    featured: true,
+    ctaLabel: 'Book Conversion Sprint — $295',
+    highlighted: true,
+    specs: [
+      'Above-the-fold headline, subheadline, and primary CTA rewrite for 3-second clarity',
+      'Installation of a thumb-friendly sticky mobile Call / Quote / Book action bar',
+      'Remediation of 390px mobile horizontal overflow, cramped tap targets, and layout shifts',
+      'Lead form simplification to eliminate drop-off and route inquiries cleanly',
+    ],
+    specimen: {
+      header: 'SPECIMEN // ABOVE-THE-FOLD & 390PX MOBILE CONVERSION INTERVENTION',
+      stamp: '48–72H TURNAROUND · HIGHEST ROI',
+      rows: [
+        { k: 'HERO-01', v: '3-Second Value Proposition & Primary CTA Lock', tag: 'REWRITTEN' },
+        { k: 'MOB-390', v: 'Sticky Thumb-Zone Call / Quote Action Bar', tag: 'INSTALLED' },
+        { k: 'UX-TAP', v: '48×48px Minimum Touch Targets & Zero Overflow', tag: 'REMEDIATED' },
+        { k: 'FORM-01', v: 'Low-Friction Lead Intake & Instant Confirmation', tag: 'STREAMLINED' },
+      ],
+    },
   },
   {
     id: 'fix-diagnostic',
-    layer: 'AUDIT LAYERS 02 & 04 // FULL TEARDOWN + REDESIGN',
-    badge: '● 100% CREDITED TO BUILD',
+    index: '06',
+    category: 'DIAGNOSTIC + REDESIGN DEPOSIT',
+    code: 'LAYERS 02 & 04 // 100% CREDITED TOWARD CUSTOM BUILD',
     title: 'Business System Diagnostic & Web Redesign Deposit',
+    oneLiner:
+      'A direct human teardown of your website, quote flow, and operational bottlenecks by Jayme Volstad—100% credited ($395) toward any $2,500+ Custom Build.',
     price: '$395',
-    unit: 'Credited to Redesign',
+    terms: '100% credited toward Custom Build · Includes $79 Document Dossier free',
     stripeUrl: 'https://buy.stripe.com/9B69AScrP7ua1VZ4lDebu0d',
-    ctaLabel: 'Book Diagnostic ($395)',
-    image: '/assets/captures/blueprints/Blueprint_395_Diagnostic_Web_Redesign_Deposit.png',
-    description:
-      'Direct human teardown of your website, quote flow, and operational bottlenecks by Jayme Volstad + prioritized P0/P1/P2 Remediation Matrix & custom Web Redesign roadmap. 100% credited ($395) toward a $2,500+ Custom Build.',
-    chips: ['Human Teardown by Jayme', '100% Custom Build Credit', 'Includes $79 Doc Set Free'],
+    ctaLabel: 'Book Diagnostic & Deposit — $395',
+    specs: [
+      'Line-by-line architectural teardown of your live site, positioning, and conversion leaks',
+      'Prioritized P0 / P1 / P2 Remediation Matrix + custom wireframe & architecture blueprint',
+      'Full $395 fee is credited dollar-for-dollar toward a Custom Build commission ($2,500+)',
+      'Includes immediate complimentary download of the $79 Branded Business Document Set',
+    ],
+    specimen: {
+      header: 'SPECIMEN // P0/P1/P2 ARCHITECTURAL TEARDOWN & BUILD CREDIT',
+      stamp: '100% CREDITED TO CUSTOM BUILD',
+      rows: [
+        { k: 'P0 CRITICAL', v: 'Conversion Leaks, Broken Flows & Trust Gaps', tag: 'HUMAN AUDIT' },
+        { k: 'P1 SYSTEM', v: 'Information Architecture & Copy Blueprint', tag: 'WIREFRAMED' },
+        { k: 'BONUS KIT', v: 'Branded Business Document & SOW Set Included', tag: '$79 VALUE FREE' },
+        { k: 'CREDIT', v: '100% ($395) Applied to Custom Build Commission', tag: 'ZERO RISK' },
+      ],
+    },
   },
 ];
 
 export default function Blueprints() {
-  const [activeNicheId, setActiveNicheId] = useState('author');
-  const [activePlateId, setActivePlateId] = useState('studio-hud');
+  const [activeViewId, setActiveViewId] = useState('studio-hud');
+  const [activeBoardId, setActiveBoardId] = useState('board-01');
+  const [selectedTierId, setSelectedTierId] = useState('tier-2');
 
-  const activeNiche =
-    NICHE_SHOWCASE.find((n) => n.id === activeNicheId) || NICHE_SHOWCASE[0];
-  const activePlate =
-    ANATOMY_PLATES.find((p) => p.id === activePlateId) || ANATOMY_PLATES[0];
+  const activeView =
+    SHOWPIECE_VIEWS.find((v) => v.id === activeViewId) || SHOWPIECE_VIEWS[0];
+  const activeBoard =
+    FIGMA_SYSTEM_BOARDS.find((b) => b.id === activeBoardId) ||
+    FIGMA_SYSTEM_BOARDS[0];
+  const selectedTier =
+    SHOWPIECE_LICENSES.find((t) => t.id === selectedTierId) ||
+    SHOWPIECE_LICENSES[1];
 
   const scrollToSection = (selector) => {
     const el = document.querySelector(selector);
@@ -378,77 +494,71 @@ export default function Blueprints() {
       className="relative flex min-h-screen flex-col bg-[#F2ECE1] text-[#141817] font-sans selection:bg-[#E5E750] selection:text-[#141817]"
       style={{
         backgroundImage:
-          'linear-gradient(to right, rgba(18,63,56,0.055) 1px, transparent 1px), linear-gradient(to bottom, rgba(18,63,56,0.055) 1px, transparent 1px)',
-        backgroundSize: '32px 32px',
+          'linear-gradient(to right, rgba(20,24,23,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(20,24,23,0.045) 1px, transparent 1px)',
+        backgroundSize: '36px 36px',
       }}
     >
-      {/* Shared Studio Header (Logo, The Method link, Mark up this page, Four Rooms Switcher, My Ideas) */}
+      {/* Shared Studio Header */}
       <SiteHeader />
 
-      {/* 4-Tone Expressive Showroom Accent Bar */}
-      <div className="flex h-1.5 w-full shrink-0" aria-hidden="true">
-        <span className="flex-1 bg-[#E5E750]" />
-        <span className="flex-1 bg-[#E34232]" />
-        <span className="flex-1 bg-[#123F38]" />
-        <span className="flex-1 bg-[#D9A62E]" />
-      </div>
-
-      {/* Showroom Wayfinding Sub-Bar: Bridges Main Architectural Studio & Expressive Storefront */}
-      <div className="border-b-[3px] border-[#141817] bg-[#123F38] text-[#F2ECE1] px-4 py-2.5 sm:px-8">
-        <div className="mx-auto max-w-[1380px] flex flex-wrap items-center justify-between gap-3 font-mono text-[11px]">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+      {/* =====================================================================
+          ARCHITECTURAL INDEX SUB-BAR — Quiet, disciplined wayfinding
+         ===================================================================== */}
+      <div className="border-b border-[#141817]/25 bg-[#EAE3D5]/90 backdrop-blur-sm px-4 py-2.5 sm:px-8">
+        <div className="mx-auto max-w-[1400px] flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] tracking-wider">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-5">
             <Link
               to="/"
               data-testid="blueprints-back-to-studio"
-              className="inline-flex items-center gap-1.5 bg-[#141817] text-[#E5E750] border border-[#E5E750]/40 px-2.5 py-1 font-bold uppercase tracking-wider hover:bg-[#E5E750] hover:text-[#141817] transition-colors"
+              className="inline-flex items-center gap-1.5 font-bold uppercase text-[#141817] hover:text-[#E34232] transition-colors"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               <span>Main Studio</span>
             </Link>
-            <span className="font-bold uppercase tracking-wider text-[#E5E750]">
-              02 / BLUEPRINTS SHOWROOM
+            <span className="text-[#141817]/30">/</span>
+            <span className="font-bold uppercase text-[#123F38]">
+              02 · BLUEPRINTS EDITION ARCHIVE
             </span>
-            <span className="hidden lg:inline text-[#F2ECE1]/45">•</span>
             <nav
-              aria-label="Showroom departments"
-              className="hidden md:flex items-center gap-3 text-[#F2ECE1]/90"
+              aria-label="Storefront movements"
+              className="hidden lg:flex items-center gap-5 pl-2 text-[#141817]/75"
             >
               <button
                 type="button"
-                onClick={() => scrollToSection('#dept-studios')}
-                className="hover:text-[#E5E750] underline underline-offset-4 cursor-pointer"
+                onClick={() => scrollToSection('#movement-showpiece')}
+                className="hover:text-[#141817] cursor-pointer transition-colors"
               >
-                01. Website Studios &amp; Figma
+                01 / Flagship Website Studio
               </button>
               <button
                 type="button"
-                onClick={() => scrollToSection('#dept-utilities')}
-                className="hover:text-[#E5E750] underline underline-offset-4 cursor-pointer"
+                onClick={() => scrollToSection('#movement-design-system')}
+                className="hover:text-[#141817] cursor-pointer transition-colors"
               >
-                02. Document Sets, Ads &amp; Prompts
+                02 / 5-Board Figma &amp; Vector System
               </button>
               <button
                 type="button"
-                onClick={() => scrollToSection('#dept-remediations')}
-                className="hover:text-[#E5E750] underline underline-offset-4 cursor-pointer"
+                onClick={() => scrollToSection('#movement-collection')}
+                className="hover:text-[#141817] cursor-pointer transition-colors"
               >
-                03. 1-Click Audit Fixes
+                03 / Practical Tools &amp; Sprints
               </button>
             </nav>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-4">
             <Link
               to="/build"
-              className="text-[#F2ECE1]/90 hover:text-[#E5E750] underline underline-offset-4 transition-colors font-bold"
+              className="text-[#141817]/80 hover:text-[#141817] underline underline-offset-4 transition-colors"
             >
-              Commission a Custom Build →
+              Need a tailored commission? 01 / Custom Build →
             </Link>
             <a
               href="https://blueprints.contextmuse.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 bg-[#E5E750] text-[#141817] border border-[#141817] px-2.5 py-1 font-bold uppercase tracking-wider shadow-[2px_2px_0_#141817] hover:bg-[#FAF8F3] transition-colors"
+              className="inline-flex items-center gap-1.5 border border-[#141817] bg-[#FAF8F3] px-2.5 py-1 font-bold uppercase text-[#141817] hover:bg-[#141817] hover:text-[#F2ECE1] transition-colors"
             >
               <KeyRound className="h-3 w-3" />
               <span>Restore Purchase</span>
@@ -458,320 +568,351 @@ export default function Blueprints() {
       </div>
 
       <main className="flex-1">
-        {/* =================================================================
-            SECTION 01: EXPRESSIVE EDITORIAL SHOWROOM HERO
-           ================================================================= */}
-        <section className="border-b-[3px] border-[#141817] bg-gradient-to-b from-[#123F38]/5 to-[#E6DEC8]/45 px-4 py-10 sm:px-8 sm:py-14 lg:py-16">
-          <div className="mx-auto max-w-[1380px] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            {/* Left 7 Columns: Bold Editorial Typography & Studio vs. Showroom Distinction */}
-            <div className="lg:col-span-7 space-y-5">
-              <div className="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-wider">
-                <span className="bg-[#123F38] text-[#F2ECE1] border-2 border-[#141817] px-3 py-1 font-bold shadow-[4px_4px_0_#D9A62E]">
-                  CONTEXT &amp; MUSE // 02 BLUEPRINTS
-                </span>
-                <span className="border-2 border-[#141817] bg-[#E5E750] text-[#141817] px-3 py-1 font-bold shadow-[3px_3px_0_#141817]">
-                  9 PUBLISHED PRODUCTS LIVE
+        {/* ===================================================================
+            MOVEMENT I — THE EDITORIAL HERO
+            Controlled visual intensity, dramatic scale, generous negative space,
+            and one art-directed digital exhibit preview.
+           =================================================================== */}
+        <section className="relative border-b-[2px] border-[#141817] px-4 pt-10 pb-16 sm:px-8 sm:pt-14 sm:pb-24 lg:pt-20 lg:pb-28 overflow-hidden">
+          <div className="mx-auto max-w-[1400px]">
+            {/* Top Swiss Technical Datum Line */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#141817]/20 pb-4 mb-10 sm:mb-14 font-mono text-[11px] uppercase tracking-[0.14em] text-[#141817]/70">
+              <div className="flex items-center gap-3">
+                <span className="inline-block h-2 w-2 bg-[#E34232]" aria-hidden="true" />
+                <span className="font-bold text-[#141817]">
+                  CONTEXT &amp; MUSE // DEPARTMENT 02 — DIGITAL ARTIFACTS &amp; SYSTEMS
                 </span>
               </div>
-
-              <h1 className="font-display text-[clamp(2.35rem,5.4vw,4.95rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] text-[#141817]">
-                <span className="block">READY-MADE WEBSITES,</span>
-                <span className="inline-block bg-[#D9A62E] text-[#141817] px-3 py-0.5 border-[3px] border-[#141817] shadow-[5px_5px_0_#123F38] mt-1.5">
-                  CREATIVE TOOLS
-                </span>
-                <span className="block font-serif italic font-normal text-[#123F38] tracking-normal text-[0.9em] mt-2">
-                  &amp; reusable systems you own outright.
-                </span>
-              </h1>
-
-              <p className="font-sans text-base sm:text-lg text-[#232B28] max-w-2xl leading-relaxed">
-                The product showroom of Context &amp; Muse. Self-contained browser Website Studios with 5-board Figma systems, archival Business Document Dossiers, 25-Asset Multi-Channel Ad Packs, Engineered Prompt Systems, and 1-Click Audit Remediations.
-              </p>
-
-              {/* Explicit Customer Journey Distinction: 02 Blueprints vs. 01 Custom Build */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                <div className="border-[2.5px] border-[#141817] bg-[#FAF8F3] p-4 shadow-[5px_5px_0_#123F38]">
-                  <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#123F38] flex items-center justify-between">
-                    <span>02 / BLUEPRINTS (SHOWROOM)</span>
-                    <span className="bg-[#E5E750] text-[#141817] px-1.5 py-0.5 text-[9.5px] border border-[#141817]">
-                      $39–$395
-                    </span>
-                  </div>
-                  <p className="mt-1.5 font-sans text-xs text-[#141817]/85 leading-snug">
-                    <strong>Purchase an existing product:</strong> Instant Stripe checkout, no sales calls, no recurring monthly subscriptions, and immediate access.
-                  </p>
-                </div>
-
-                <Link
-                  to="/build"
-                  data-testid="showroom-to-custom-build"
-                  className="group border-[2.5px] border-[#141817] bg-[#E6DEC8] p-4 shadow-[5px_5px_0_#141817] hover:bg-[#141817] hover:text-[#F2ECE1] transition-colors"
-                >
-                  <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#E34232] group-hover:text-[#E5E750] flex items-center justify-between">
-                    <span>01 / CUSTOM BUILD (STUDIO)</span>
-                    <span>COMMISSION →</span>
-                  </div>
-                  <p className="mt-1.5 font-sans text-xs text-[#141817]/85 group-hover:text-[#F2ECE1]/90 leading-snug">
-                    <strong>Commission a tailored solution:</strong> Have a custom website, quoting engine, or internal software application built specifically for your operation.
-                  </p>
-                </Link>
-              </div>
-
-              {/* Department Jump Pills */}
-              <div className="flex flex-wrap items-center gap-2.5 pt-2 font-mono text-xs">
-                <button
-                  type="button"
-                  onClick={() => scrollToSection('#dept-studios')}
-                  className="min-h-[46px] inline-flex items-center gap-2 border-[2.5px] border-[#141817] bg-[#123F38] text-[#FFFFFF] px-5 py-2.5 font-bold uppercase tracking-wider shadow-[5px_5px_0_#141817] hover:bg-[#E34232] transition-all cursor-pointer"
-                >
-                  <span>01 / Website Studios &amp; Figma ($49–$199)</span>
-                  <span>↘</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => scrollToSection('#dept-utilities')}
-                  className="min-h-[46px] inline-flex items-center gap-2 border-[2.5px] border-[#141817] bg-[#FAF8F3] text-[#141817] px-4 py-2.5 font-bold uppercase tracking-wider shadow-[4px_4px_0_#141817] hover:bg-[#D9A62E] transition-colors cursor-pointer"
-                >
-                  <span>02 / Docs, Ads &amp; Prompts ($39–$149)</span>
-                  <span>↘</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => scrollToSection('#dept-remediations')}
-                  className="min-h-[46px] inline-flex items-center gap-2 border-[2.5px] border-[#141817] bg-[#FAF8F3] text-[#141817] px-4 py-2.5 font-bold uppercase tracking-wider shadow-[4px_4px_0_#141817] hover:bg-[#E5E750] transition-colors cursor-pointer"
-                >
-                  <span>03 / 1-Click Audit Fixes ($149–$395)</span>
-                  <span>↘</span>
-                </button>
+              <div className="flex items-center gap-6">
+                <span>EDITION ARCHIVE: 09 PUBLISHED WORKS</span>
+                <span className="hidden sm:inline">OWNERSHIP: PERPETUAL / ZERO SUBSCRIPTION</span>
               </div>
             </div>
 
-            {/* Right 5 Columns: Dramatic Featured Release Poster Card (Edition #001) */}
-            <div className="lg:col-span-5">
-              <article className="relative border-[3px] border-[#141817] bg-[#FAF8F3] shadow-[12px_12px_0_#E34232]">
-                {/* Rotated Price Stamp */}
-                <div className="absolute -top-4 -right-3 z-10 border-2 border-[#141817] bg-[#E5E750] text-[#141817] px-3.5 py-1.5 font-display text-sm sm:text-base font-black uppercase tracking-tight shadow-[4px_4px_0_#141817] -rotate-2">
-                  Flagship Release · $49 / $89 / $199
-                </div>
-
-                <div className="border-b-[2.5px] border-[#141817] bg-[#141817] text-[#E5E750] px-4 py-2.5 font-mono text-[11px] flex items-center justify-between">
-                  <span className="font-bold">★ EDITION #001 // LITERARY BRUTALISM</span>
-                  <span className="text-[#F2ECE1]/80">INSTANT .ZIP + STUDIO</span>
-                </div>
-
-                <div className="relative aspect-[4/3] w-full overflow-hidden border-b-[2.5px] border-[#141817] bg-[#141817]">
-                  <img
-                    src="/assets/captures/blueprints/showcase-cover.png"
-                    alt="Literary Brutalism Editorial Website Studio, 5-Board Figma Kit and 23 Vector SVGs"
-                    className="h-full w-full object-cover object-top block"
-                  />
-                </div>
-
-                <div className="p-5 sm:p-6 space-y-4">
-                  <div>
-                    <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#E34232]">
-                      BROWSER WEBSITE STUDIO + 5-BOARD FIGMA KIT + 23 SVGS
-                    </div>
-                    <h2 className="mt-1 font-display text-2xl sm:text-3xl font-black uppercase leading-none tracking-tight text-[#141817]">
-                      Literary Brutalism
-                    </h2>
-                    <p className="mt-2 font-sans text-xs sm:text-sm text-[#2D3532] leading-relaxed">
-                      Open our zero-install visual Studio in your browser, switch between 5 complete 7-page presets (Author, Musician EPK, Podcast, Design Studio, Storefront), recolor 23 vector SVGs across 4 palettes, and export a clean static <code>.ZIP</code>.
-                    </p>
+            {/* Asymmetric Architectural Hero Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+              {/* Left 5 Columns: Monumental Editorial Statement + Restrained Controls */}
+              <div className="lg:col-span-5 flex flex-col justify-between lg:pr-4">
+                <div>
+                  <div className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#123F38] mb-4">
+                    MANIFESTO &amp; STOREFRONT // VOL. 01
                   </div>
 
-                  <div className="pt-3 border-t-2 border-[#141817] flex flex-wrap items-center justify-between gap-3">
+                  <h1 className="font-display text-[clamp(2.35rem,3.85vw,4.15rem)] font-black uppercase leading-[0.91] tracking-[-0.03em] text-[#141817]">
+                    <span className="block">GOOD DESIGN</span>
+                    <span className="block mt-1">DOESN’T ASK</span>
+                    <span className="inline-block bg-[#141817] text-[#F2ECE1] px-3 py-1 mt-2 border-l-[6px] border-[#E34232]">
+                      PERMISSION.
+                    </span>
+                  </h1>
+
+                  <p className="mt-7 font-sans text-base sm:text-[17px] text-[#141817]/85 leading-[1.65] max-w-xl">
+                    Ready-to-deploy website systems, editable 1440px Figma master kits, archival business dossiers, and fixed-scope website improvements. Built by an independent design studio for creators and operators who refuse to look like a template.
+                  </p>
+                </div>
+
+                {/* Primary CTA (Acid Yellow reserved strictly for primary action) + Discreet Secondary Link */}
+                <div className="mt-9 pt-7 border-t border-[#141817]/20 space-y-5">
+                  <div className="flex flex-wrap items-center gap-4">
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('#movement-showpiece')}
+                      data-testid="hero-explore-showpiece-cta"
+                      className="inline-flex items-center gap-3 border-[2px] border-[#141817] bg-[#E5E750] px-6 py-4 font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#141817] shadow-[5px_5px_0_#141817] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[3px_3px_0_#141817] transition-all cursor-pointer"
+                    >
+                      <span>Inspect Flagship Studio — From $49</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('#movement-collection')}
+                      className="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#141817] hover:text-[#E34232] underline underline-offset-4 py-2 cursor-pointer transition-colors"
+                    >
+                      <span>View All 9 Systems &amp; Tools</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+
+                  {/* Quiet Technical Index Ledger */}
+                  <div className="grid grid-cols-3 gap-4 pt-3 font-mono text-[11px]">
                     <div>
-                      <span className="font-display text-2xl font-black text-[#141817]">
-                        $49 – $199
-                      </span>
-                      <span className="block font-mono text-[10px] font-bold uppercase text-[#123F38]">
-                        One-Time License · Own Forever
-                      </span>
+                      <div className="text-[#141817]/55 uppercase">01 / SHOWPIECE</div>
+                      <div className="font-bold text-[#141817] mt-0.5">Browser Studio ($49)</div>
                     </div>
-
-                    <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-                      <button
-                        type="button"
-                        onClick={() => scrollToSection('#interactive-showroom')}
-                        className="border-2 border-[#141817] bg-[#F2ECE1] text-[#141817] px-3 py-2 font-bold uppercase shadow-[3px_3px_0_#141817] hover:bg-[#E5E750] transition-colors cursor-pointer"
-                      >
-                        5-Tab Preview
-                      </button>
-                      <a
-                        href="https://buy.stripe.com/5kQ5kC4Zn9CifMP19rebu01"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 border-2 border-[#141817] bg-[#123F38] text-[#FFFFFF] px-3.5 py-2 font-bold uppercase shadow-[3px_3px_0_#141817] hover:bg-[#E34232] transition-colors"
-                      >
-                        <span>Buy Complete ($89)</span>
-                        <ArrowUpRight className="h-3.5 w-3.5" />
-                      </a>
+                    <div className="border-l border-[#141817]/20 pl-3">
+                      <div className="text-[#141817]/55 uppercase">02 / SYSTEM</div>
+                      <div className="font-bold text-[#141817] mt-0.5">5-Board Figma ($89)</div>
+                    </div>
+                    <div className="border-l border-[#141817]/20 pl-3">
+                      <div className="text-[#141817]/55 uppercase">03 / COLLECTION</div>
+                      <div className="font-bold text-[#141817] mt-0.5">Tools &amp; Fixes ($39+)</div>
                     </div>
                   </div>
                 </div>
-              </article>
+              </div>
+
+              {/* Right 7 Columns: Art-Directed Digital Exhibit Preview (One Existing Product Showcased like a Museum Object) */}
+              <div className="lg:col-span-7 relative">
+                {/* Technical Annotation Bar Above Exhibit */}
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#141817]/70">
+                  <span>EXHIBIT 01 // LITERARY BRUTALISM WEBSITE STUDIO (1440PX LIVE CAPTURE)</span>
+                  <span className="text-[#123F38] font-bold">5 NICHES · 7 PAGES · 23 SVGS</span>
+                </div>
+
+                {/* Primary Oversized Browser Specimen Window */}
+                <div className="relative border-[2.5px] border-[#141817] bg-[#141817] shadow-[12px_12px_0_#141817]">
+                  {/* Industrial Browser Chrome */}
+                  <div className="flex items-center justify-between gap-3 border-b-[2px] border-[#141817] bg-[#141817] px-3.5 py-2.5 text-[#F2ECE1]">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#E34232]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#E5E750]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#F2ECE1]/30" />
+                      <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-[#E5E750] font-bold">
+                        ATELIER STUDIO HUD // LIVE 1440PX WORKSPACE
+                      </span>
+                    </div>
+                    <a
+                      href="https://blueprints.contextmuse.com/literarybrutalism"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hidden sm:inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-[#F2ECE1]/80 hover:text-[#E5E750] transition-colors"
+                    >
+                      <span>Open Live Spec</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+
+                  {/* Uncropped High-Resolution 1440px Studio Screenshot */}
+                  <div className="relative bg-[#F0E8D9] overflow-hidden">
+                    <img
+                      src="/assets/captures/blueprints/1440px_desktop_landing_studio.png"
+                      alt="Literary Brutalism Website Studio live 1440px interface showing the top customization HUD and brutalist editorial landing page"
+                      className="w-full h-auto block"
+                    />
+                  </div>
+
+                  {/* Subtle Architectural Footnote Strip inside Specimen */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#F2ECE1]/15 bg-[#141817] px-4 py-2.5 font-mono text-[10.5px] text-[#F2ECE1]/85">
+                    <span>
+                      FIG. 01A — Self-contained HTML visual editor + static .ZIP compiler
+                    </span>
+                    <span className="text-[#E5E750] font-bold">
+                      $49 STANDARD / $89 COMPLETE / $199 AGENCY
+                    </span>
+                  </div>
+                </div>
+
+                {/* Compositional Interruption: Overlapping 390px Mobile & Audio Reader Detail Card */}
+                <div className="mt-6 sm:mt-0 sm:absolute sm:-bottom-10 sm:-left-6 z-10 max-w-[330px] border-[2px] border-[#141817] bg-[#FAF8F3] p-3.5 shadow-[6px_6px_0_#E34232]">
+                  <div className="flex items-center justify-between gap-2 border-b border-[#141817]/20 pb-1.5 mb-2 font-mono text-[9.5px] font-bold uppercase tracking-wider">
+                    <span className="text-[#E34232]">● FIG. 01B // BUILT-IN AUDIO &amp; READER</span>
+                    <span className="text-[#141817]/60">EXCERPT.HTML</span>
+                  </div>
+                  <div className="border border-[#141817] bg-[#F0E8D9] overflow-hidden mb-2">
+                    <img
+                      src="/assets/captures/blueprints/1440px_desktop_excerpt_audio.png"
+                      alt="Close-up preview of the Chapter Excerpt Reader and native HTML5 audio player"
+                      className="w-full h-24 object-cover object-top block"
+                    />
+                  </div>
+                  <p className="font-mono text-[10px] leading-snug text-[#141817]/85">
+                    Includes long-form chapter/transcript reader paired with a native MP3/WAV audio sample bar and direct Stripe edition cards.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* =================================================================
-            DEPARTMENT 01: SELF-SERVE WEBSITE STUDIOS & FIGMA DESIGN SYSTEMS
-            (Interactive 5-Niche Workbench + 3-Layer Anatomy + 3 License Cards)
-           ================================================================= */}
+        {/* ===================================================================
+            MOVEMENT II — FEATURED PRODUCT: THE SHOWPIECE
+            Oversized major design release section for Literary Brutalism Website Studio
+           =================================================================== */}
         <section
-          id="dept-studios"
-          aria-labelledby="dept-01-heading"
-          className="border-b-[3px] border-[#141817] px-4 py-12 sm:px-8 sm:py-16"
+          id="movement-showpiece"
+          className="scroll-mt-16 border-b-[2px] border-[#141817] px-4 py-16 sm:px-8 sm:py-24"
         >
-          <div className="mx-auto max-w-[1380px] space-y-10">
-            {/* Department 01 Banner */}
-            <div className="border-[3px] border-[#141817] bg-[#141817] text-[#F2ECE1] p-5 sm:p-7 shadow-[8px_8px_0_#123F38] flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#D9A62E] block">
-                  DEPARTMENT 01 // SELF-SERVE WEBSITE STUDIOS &amp; FIGMA SYSTEMS
-                </span>
-                <h2
-                  id="dept-01-heading"
-                  className="mt-1 font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#F2ECE1]"
-                >
-                  Website Templates, Browser Studios &amp; Figma Kits
+          <div className="mx-auto max-w-[1400px]">
+            {/* Editorial Release Header */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end border-b-[2px] border-[#141817] pb-8 mb-12">
+              <div className="lg:col-span-8">
+                <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#123F38] mb-3">
+                  <span>01 / FEATURED RELEASE — THE SHOWPIECE</span>
+                  <span className="text-[#141817]/35">//</span>
+                  <span className="text-[#E34232]">EDITION #001</span>
+                </div>
+                <h2 className="font-display text-[clamp(2.1rem,4.3vw,4.1rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] text-[#141817]">
+                  LITERARY BRUTALISM WEBSITE STUDIO
                 </h2>
-                <p className="mt-1 font-sans text-sm text-[#A9CFC7] max-w-2xl">
-                  Replace an outdated website today for a one-time payment. Edit visually in your browser, export a clean static .ZIP, and host anywhere for $0/month.
+              </div>
+              <div className="lg:col-span-4 lg:text-right">
+                <p className="font-serif italic text-xl sm:text-2xl text-[#141817]/85 leading-snug">
+                  “A self-contained browser design studio that exports a finished, zero-dependency multi-page website in one click.”
                 </p>
               </div>
-              <a
-                href="https://blueprints.contextmuse.com/literarybrutalism"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center gap-1.5 border-2 border-[#141817] bg-[#E5E750] text-[#141817] px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0_#E34232] hover:bg-[#FAF8F3] transition-colors self-start md:self-auto"
-              >
-                <span>Open Standalone Product Site</span>
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
             </div>
 
-            {/* Interactive 5-Niche & Asset Switcher Workbench */}
-            <div id="interactive-showroom" className="space-y-5">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#E34232]">
-                  INTERACTIVE 5-NICHE PREVIEW // CLICK TO INSPECT EVERY INCLUDED PRESET &amp; PALETTE
-                </span>
-                <span className="font-mono text-xs text-[#45504C]">
-                  All 5 presets included in every Literary Brutalism license
-                </span>
-              </div>
-
-              <div
-                role="tablist"
-                aria-label="Blueprint Niche and Asset Previews"
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 font-mono text-xs"
-              >
-                {NICHE_SHOWCASE.map((item) => {
-                  const isActive = item.id === activeNiche.id;
-                  return (
-                    <button
-                      key={item.id}
-                      type="button"
-                      role="tab"
-                      aria-selected={isActive}
-                      data-testid={`showroom-tab-${item.id}`}
-                      onClick={() => setActiveNicheId(item.id)}
-                      className={`min-h-[48px] px-3.5 py-2.5 text-left font-bold uppercase tracking-wider border-2 border-[#141817] transition-all cursor-pointer ${
-                        isActive
-                          ? 'bg-[#141817] text-[#E5E750] shadow-[4px_4px_0_#E34232] -translate-y-0.5'
-                          : 'bg-[#FAF8F3] text-[#141817] shadow-[3px_3px_0_#141817] hover:bg-[#E5E750]'
-                      }`}
-                    >
-                      {item.tabLabel}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Active Niche Showcase Panel */}
-              <div
-                role="tabpanel"
-                data-testid="showroom-active-panel"
-                className="border-[3px] border-[#141817] bg-[#FAF8F3] p-5 sm:p-7 shadow-[10px_10px_0_#141817] grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
-              >
-                <div className="lg:col-span-7 border-[3px] border-[#141817] bg-[#141817] shadow-[6px_6px_0_#E34232] overflow-hidden">
-                  <img
-                    src={activeNiche.image}
-                    alt={activeNiche.imageAlt}
-                    className="w-full h-auto block"
-                  />
-                </div>
-
-                <div className="lg:col-span-5 space-y-4">
-                  <span
-                    className="inline-block border-2 border-[#141817] px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider"
-                    style={{
-                      backgroundColor: activeNiche.badgeBg,
-                      color: activeNiche.badgeFg,
-                    }}
-                  >
-                    {activeNiche.badge}
-                  </span>
-
-                  <h3 className="font-display text-2xl sm:text-3xl font-black uppercase leading-[0.95] tracking-tight text-[#141817]">
-                    {activeNiche.title}
-                  </h3>
-
-                  <p className="font-sans text-sm text-[#2D3532] leading-relaxed">
-                    {activeNiche.description}
-                  </p>
-
-                  {/* Color Token Swatches */}
-                  <div className="space-y-1.5">
-                    <span className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#45504C] block">
-                      7-Token CSS Variable Palette:
-                    </span>
-                    <div className="flex flex-wrap items-center gap-2">
-                      {activeNiche.swatches.map((sw) => (
-                        <div
-                          key={sw.hex}
-                          className="flex items-center gap-1.5 border border-[#141817] bg-[#F2ECE1] px-2 py-1 font-mono text-[10px]"
-                        >
-                          <span
-                            className="h-3.5 w-3.5 border border-[#141817] shrink-0"
-                            style={{ backgroundColor: sw.hex }}
-                          />
-                          <span className="font-bold">{sw.name}</span>
-                        </div>
-                      ))}
-                    </div>
+            {/* Interactive 6-View High-Resolution Exhibition Stage */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+              {/* Left 4 Columns: View Selector & Architectural Callouts */}
+              <div className="lg:col-span-4 space-y-6">
+                <div>
+                  <div className="font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#141817]/65 mb-3">
+                    INSPECT REAL 1440PX SYSTEM VIEWS (06)
                   </div>
 
-                  <ul className="space-y-2 border-t-2 border-b-2 border-[#141817]/15 py-3 font-sans text-xs sm:text-sm text-[#141817]">
-                    {activeNiche.highlights.map((pt, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-[#123F38] shrink-0 mt-0.5" />
-                        <span>{pt}</span>
+                  <div
+                    role="tablist"
+                    aria-label="Literary Brutalism Studio views"
+                    className="border-t border-[#141817]"
+                  >
+                    {SHOWPIECE_VIEWS.map((view) => {
+                      const isActive = view.id === activeView.id;
+                      return (
+                        <button
+                          key={view.id}
+                          type="button"
+                          role="tab"
+                          aria-selected={isActive}
+                          data-testid={`showpiece-view-tab-${view.id}`}
+                          onClick={() => setActiveViewId(view.id)}
+                          className={`w-full text-left border-b border-[#141817] px-4 py-3.5 transition-all cursor-pointer flex items-center justify-between gap-3 ${
+                            isActive
+                              ? 'bg-[#141817] text-[#F2ECE1]'
+                              : 'bg-[#FAF8F3]/70 text-[#141817] hover:bg-[#EAE3D5]'
+                          }`}
+                        >
+                          <div className="flex items-baseline gap-3">
+                            <span
+                              className={`font-mono text-xs font-bold ${
+                                isActive ? 'text-[#E5E750]' : 'text-[#141817]/50'
+                              }`}
+                            >
+                              {view.num}
+                            </span>
+                            <span className="font-mono text-xs sm:text-[13px] font-bold uppercase tracking-wider">
+                              {view.label}
+                            </span>
+                          </div>
+                          <ArrowRight
+                            className={`h-3.5 w-3.5 shrink-0 transition-transform ${
+                              isActive
+                                ? 'text-[#E5E750] translate-x-0.5'
+                                : 'text-[#141817]/35'
+                            }`}
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Active View Technical Description Card */}
+                <div className="border-[2px] border-[#141817] bg-[#FAF8F3] p-5">
+                  <div className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#123F38]">
+                    {activeView.meta}
+                  </div>
+                  <h3 className="mt-1.5 font-display text-xl font-black uppercase text-[#141817]">
+                    {activeView.num} // {activeView.label}
+                  </h3>
+                  <p className="mt-2.5 font-sans text-sm text-[#141817]/85 leading-relaxed">
+                    {activeView.caption}
+                  </p>
+                  <ul className="mt-4 space-y-2 border-t border-[#141817]/15 pt-3.5">
+                    {activeView.callouts.map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-2 font-mono text-[11px] text-[#141817]/90 leading-snug"
+                      >
+                        <span className="font-bold text-[#123F38]">→</span>
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
+                </div>
 
-                  <div className="flex flex-wrap items-center gap-3 pt-1 font-mono text-xs">
-                    <button
-                      type="button"
-                      onClick={() => scrollToSection('#blueprints-checkout')}
-                      className="inline-flex items-center gap-2 border-2 border-[#141817] bg-[#123F38] text-[#FFFFFF] px-4 py-2.5 font-bold uppercase tracking-wider shadow-[4px_4px_0_#141817] hover:bg-[#E34232] transition-colors cursor-pointer"
-                    >
-                      <span>Choose License ($49 / $89 / $199)</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </button>
+                {/* 4 Built-In Niche Architecture Modes Summary */}
+                <div className="border border-[#141817]/30 bg-[#EAE3D5]/60 p-5">
+                  <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#141817] mb-3">
+                    INCLUDED NICHE ARCHITECTURES &amp; LIVE SPECS
+                  </div>
+                  <div className="space-y-3">
+                    {NICHE_ARCHITECTURES.map((niche) => (
+                      <div
+                        key={niche.id}
+                        className="flex items-center justify-between gap-2 border-b border-[#141817]/15 pb-2.5 last:border-b-0 last:pb-0"
+                      >
+                        <div>
+                          <div className="font-mono text-xs font-bold text-[#141817]">
+                            {niche.num}. {niche.name}
+                          </div>
+                          <div className="font-mono text-[10px] text-[#141817]/65">
+                            {niche.paletteName}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center -space-x-1" aria-label={niche.paletteName}>
+                            {niche.swatches.map((hex, i) => (
+                              <span
+                                key={i}
+                                className="inline-block h-3.5 w-3.5 border border-[#141817]"
+                                style={{ backgroundColor: hex }}
+                              />
+                            ))}
+                          </div>
+                          <a
+                            href={niche.specUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-[10px] font-bold uppercase underline underline-offset-2 text-[#123F38] hover:text-[#E34232] ml-1"
+                          >
+                            Spec ↗
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
+              {/* Right 8 Columns: Uncropped High-Resolution Product Stage */}
+              <div className="lg:col-span-8">
+                <div className="border-[2.5px] border-[#141817] bg-[#141817] shadow-[10px_10px_0_#141817]">
+                  {/* Stage Header Bar */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b-[2px] border-[#141817] bg-[#141817] px-4 py-3 text-[#F2ECE1] font-mono text-[11px]">
+                    <div className="flex items-center gap-2.5">
+                      <span className="inline-block h-2 w-2 bg-[#E5E750]" />
+                      <span className="font-bold uppercase tracking-wider text-[#F2ECE1]">
+                        {activeView.urlBar}
+                      </span>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest text-[#E5E750]">
+                      VIEW {activeView.num} OF 06 · REAL CAPTURE
+                    </span>
+                  </div>
+
+                  {/* Viewport Frame — Tall enough to celebrate the design, scrollable for full-page inspection */}
+                  <div className="relative max-h-[640px] overflow-y-auto bg-[#F0E8D9] scrollbar-thin">
+                    <img
+                      src={activeView.src}
+                      alt={activeView.alt}
+                      className="w-full h-auto block"
+                    />
+                  </div>
+
+                  {/* Stage Footer Bar with Direct Action & Scroll Hint */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#F2ECE1]/15 bg-[#141817] px-5 py-3.5 text-[#F2ECE1]">
+                    <div className="font-mono text-[11px] text-[#F2ECE1]/80">
+                      <span className="text-[#E5E750] font-bold">TIP:</span> Scroll inside the specimen frame above to inspect the full 1440px vertical layout.
+                    </div>
                     <a
-                      href={activeNiche.specUrl}
+                      href="https://blueprints.contextmuse.com/literarybrutalism"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 border-2 border-[#141817] bg-[#F2ECE1] text-[#141817] px-3.5 py-2.5 font-bold uppercase tracking-wider hover:bg-[#E5E750] transition-colors"
+                      className="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#E5E750] hover:underline underline-offset-4"
                     >
-                      <span>{activeNiche.specLabel}</span>
+                      <span>Open Full Interactive Specification</span>
                       <ExternalLink className="h-3.5 w-3.5" />
                     </a>
                   </div>
@@ -779,427 +920,474 @@ export default function Blueprints() {
               </div>
             </div>
 
-            {/* 3-Layer Package Anatomy Inspector (Studio HUD + 23 SVGs + 5-Board Figma) */}
-            <div className="border-[3px] border-[#141817] bg-[#141817] text-[#F2ECE1] p-5 sm:p-7 shadow-[10px_10px_0_#123F38] space-y-6">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-[#F2ECE1]/20 pb-4">
+            {/* ===============================================================
+                SHOWPIECE LICENSE LEDGER — Clean architectural table replacing
+                repetitive promo cards. Acid yellow reserved for primary choice.
+               =============================================================== */}
+            <div className="mt-16 pt-12 border-t-[2px] border-[#141817]">
+              <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
                 <div>
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#E5E750] block">
-                    PACKAGE ANATOMY // WHAT YOU UNLOCK AFTER CHECKOUT
-                  </span>
-                  <h3 className="mt-1 font-display text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#F2ECE1]">
-                    Inspect the Browser Studio, 23 Vector SVGs &amp; 5 Figma Sheets
+                  <div className="font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#123F38]">
+                    ACQUISITION &amp; LICENSING // LITERARY BRUTALISM EDITION #001
+                  </div>
+                  <h3 className="mt-1 font-display text-2xl sm:text-3xl font-black uppercase text-[#141817]">
+                    SELECT YOUR STUDIO EDITION
                   </h3>
                 </div>
-                <span className="font-mono text-xs text-[#A9CFC7]">
-                  Click any component layer below to preview
-                </span>
+                <p className="font-mono text-xs text-[#141817]/75">
+                  Instant permanent license key + offline .ZIP download unlocked immediately after Stripe checkout.
+                </p>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                <div className="lg:col-span-5 flex flex-col justify-between space-y-2.5">
-                  {ANATOMY_PLATES.map((plate) => {
-                    const isSelected = plate.id === activePlate.id;
+              <div className="grid grid-cols-1 lg:grid-cols-3 border-[2px] border-[#141817] bg-[#FAF8F3] divide-y-[2px] lg:divide-y-0 lg:divide-x-[2px] divide-[#141817]">
+                {SHOWPIECE_LICENSES.map((tier) => {
+                  const isSelected = selectedTier.id === tier.id;
+                  return (
+                    <div
+                      key={tier.id}
+                      onClick={() => setSelectedTierId(tier.id)}
+                      className={`p-6 sm:p-8 flex flex-col justify-between transition-colors ${
+                        tier.primary
+                          ? 'bg-[#141817] text-[#F2ECE1]'
+                          : 'bg-[#FAF8F3] text-[#141817]'
+                      }`}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between gap-2 font-mono text-[10.5px] font-bold uppercase tracking-wider">
+                          <span
+                            className={
+                              tier.primary ? 'text-[#E5E750]' : 'text-[#123F38]'
+                            }
+                          >
+                            {tier.code}
+                          </span>
+                          {tier.badge && (
+                            <span className="bg-[#E34232] text-[#F2ECE1] px-2 py-0.5 text-[9.5px]">
+                              {tier.badge}
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="mt-4 flex items-baseline justify-between gap-4 border-b border-current/15 pb-4">
+                          <h4 className="font-display text-xl sm:text-2xl font-black uppercase leading-tight">
+                            {tier.name}
+                          </h4>
+                          <span
+                            className={`font-display text-4xl sm:text-5xl font-black tracking-tight shrink-0 ${
+                              tier.primary ? 'text-[#E5E750]' : 'text-[#141817]'
+                            }`}
+                          >
+                            {tier.price}
+                          </span>
+                        </div>
+
+                        <div
+                          className={`mt-2 font-mono text-[11px] ${
+                            tier.primary ? 'text-[#F2ECE1]/70' : 'text-[#141817]/65'
+                          }`}
+                        >
+                          {tier.terms}
+                        </div>
+
+                        <p
+                          className={`mt-4 font-sans text-sm leading-relaxed ${
+                            tier.primary ? 'text-[#F2ECE1]/90' : 'text-[#141817]/85'
+                          }`}
+                        >
+                          {tier.summary}
+                        </p>
+
+                        <ul className="mt-5 space-y-2.5 font-mono text-xs">
+                          {tier.specs.map((spec, idx) => (
+                            <li key={idx} className="flex items-start gap-2.5">
+                              <Check
+                                className={`h-4 w-4 shrink-0 mt-0.5 ${
+                                  tier.primary ? 'text-[#E5E750]' : 'text-[#123F38]'
+                                }`}
+                              />
+                              <span>{spec}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="mt-8 pt-5 border-t border-current/15 space-y-2.5">
+                        <a
+                          href={tier.stripeUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-testid={`buy-${tier.id}`}
+                          className={`w-full inline-flex items-center justify-center gap-2 border-[2px] px-5 py-3.5 font-mono text-xs font-bold uppercase tracking-wider transition-all ${
+                            tier.primary
+                              ? 'border-[#E5E750] bg-[#E5E750] text-[#141817] hover:bg-[#FAF8F3] hover:border-[#FAF8F3]'
+                              : 'border-[#141817] bg-transparent text-[#141817] hover:bg-[#141817] hover:text-[#F2ECE1]'
+                          }`}
+                        >
+                          <span>{tier.ctaLabel}</span>
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+
+                        <a
+                          href={tier.specUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-full inline-flex items-center justify-center gap-1 font-mono text-[11px] uppercase tracking-wider py-1 hover:underline underline-offset-4 ${
+                            tier.primary ? 'text-[#F2ECE1]/75' : 'text-[#141817]/70'
+                          }`}
+                        >
+                          <span>Inspect Full Deliverable Spec</span>
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            MOVEMENT III — SECONDARY FEATURE: THE DESIGN SYSTEM
+            Dramatic rhythm contrast: Full-bleed Deep Charcoal/Ink (#141817)
+            split composition showcasing the actual 5 Figma boards & 23 SVGs.
+           =================================================================== */}
+        <section
+          id="movement-design-system"
+          className="scroll-mt-16 border-b-[2px] border-[#141817] bg-[#141817] text-[#F2ECE1] px-4 py-20 sm:px-8 sm:py-28"
+        >
+          <div className="mx-auto max-w-[1400px]">
+            {/* Top Rhythm Header */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#F2ECE1]/20 pb-5 mb-12 font-mono text-[11px] uppercase tracking-[0.16em] text-[#F2ECE1]/70">
+              <div className="flex items-center gap-3">
+                <span className="inline-block h-2 w-2 bg-[#E5E750]" />
+                <span className="text-[#E5E750] font-bold">
+                  02 / SECONDARY FEATURE — THE DESIGN &amp; VECTOR ARCHITECTURE
+                </span>
+              </div>
+              <span>INCLUDED IN $89 COMPLETE BUNDLE &amp; $199 AGENCY EDITION</span>
+            </div>
+
+            {/* Split Composition: Left 7 Cols Board Stage, Right 5 Cols Typography & Token Specs */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+              {/* Left 7 Columns: Interactive Figma Master Board & Vector Sheet Viewer */}
+              <div className="lg:col-span-7 space-y-5">
+                {/* Board Selector Bar */}
+                <div
+                  role="tablist"
+                  aria-label="Figma Master Boards"
+                  className="grid grid-cols-2 sm:grid-cols-5 gap-2"
+                >
+                  {FIGMA_SYSTEM_BOARDS.map((board, index) => {
+                    const isActive = board.id === activeBoard.id;
                     return (
                       <button
-                        key={plate.id}
+                        key={board.id}
                         type="button"
-                        onClick={() => setActivePlateId(plate.id)}
-                        className={`w-full text-left p-3.5 border-2 transition-all cursor-pointer ${
-                          isSelected
-                            ? 'border-[#E5E750] bg-[#1F2523] text-[#F2ECE1] shadow-[4px_4px_0_#E34232]'
-                            : 'border-[#F2ECE1]/20 bg-[#181C1B] text-[#F2ECE1]/75 hover:border-[#F2ECE1]/50'
+                        role="tab"
+                        aria-selected={isActive}
+                        data-testid={`figma-board-tab-${board.id}`}
+                        onClick={() => setActiveBoardId(board.id)}
+                        className={`text-left border px-3 py-2.5 font-mono transition-all cursor-pointer ${
+                          isActive
+                            ? 'border-[#E5E750] bg-[#E5E750] text-[#141817]'
+                            : 'border-[#F2ECE1]/25 bg-[#1D2321] text-[#F2ECE1] hover:border-[#F2ECE1]/60'
                         }`}
                       >
-                        <div className="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-wider">
-                          <span className={isSelected ? 'text-[#E5E750] font-bold' : 'text-[#D9A62E]'}>
-                            {plate.label}
-                          </span>
-                          <span>{isSelected ? 'VIEWING →' : 'PREVIEW'}</span>
+                        <div className="text-[10px] font-bold uppercase tracking-wider">
+                          {index === 4 ? 'SHEET 05' : `BOARD 0${index + 1}`}
                         </div>
-                        <div className="mt-0.5 font-mono text-[10.5px] text-[#A9CFC7]">
-                          {plate.meta}
+                        <div className="text-[11px] font-bold mt-0.5">
+                          {board.shortLabel}
                         </div>
-                        <p className="mt-1.5 font-sans text-xs text-[#F2ECE1]/85 leading-snug">
-                          {plate.caption}
-                        </p>
                       </button>
                     );
                   })}
                 </div>
 
-                <div className="lg:col-span-7 border-2 border-[#E5E750] bg-[#0A0C0D] p-3 sm:p-4 flex flex-col justify-between">
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#F2ECE1]/15 pb-2.5 mb-3 font-mono text-xs">
-                    <span className="text-[#E5E750] font-bold uppercase">
-                      {activePlate.label}
+                {/* High-Resolution Uncropped Board Frame */}
+                <div className="border-[2px] border-[#F2ECE1]/30 bg-[#0D100F] shadow-[10px_10px_0_#123F38]">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#F2ECE1]/20 px-4 py-3 font-mono text-[11px]">
+                    <span className="font-bold text-[#E5E750]">
+                      {activeBoard.code}
                     </span>
-                    <span className="text-[#A9CFC7]">{activePlate.meta}</span>
+                    <span className="text-[#F2ECE1]/65 text-[10px]">
+                      {activeBoard.dimensions}
+                    </span>
                   </div>
-                  <div className="overflow-hidden border border-[#F2ECE1]/20 bg-[#141817]">
+
+                  <div className="max-h-[580px] overflow-y-auto bg-[#F0E8D9]">
                     <img
-                      src={activePlate.src}
-                      alt={activePlate.label}
-                      className="w-full h-auto max-h-[460px] object-contain mx-auto block"
+                      src={activeBoard.src}
+                      alt={activeBoard.alt}
+                      className="w-full h-auto block"
                     />
                   </div>
+
+                  <div className="border-t border-[#F2ECE1]/20 px-4 py-3.5 flex flex-wrap items-center justify-between gap-3">
+                    <p className="font-sans text-xs sm:text-sm text-[#F2ECE1]/85 max-w-xl">
+                      {activeBoard.caption}
+                    </p>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#E5E750]">
+                      UNCROPPED 1440PX SHEET
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* 3 Literary Brutalism License Tiers ($49 / $89 / $199) */}
-            <div id="blueprints-checkout" className="space-y-5 pt-2">
-              <div className="flex flex-wrap items-end justify-between gap-3">
+              {/* Right 5 Columns: Editorial Typography, Token Architecture & Direct Acquisition */}
+              <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
                 <div>
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#123F38] block">
-                    EDITION #001 LICENSES // INSTANT STRIPE CHECKOUT
-                  </span>
-                  <h3 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#141817]">
-                    Select Your Literary Brutalism Package
-                  </h3>
-                </div>
-                <span className="font-mono text-xs text-[#45504C]">
-                  Auto-redirects to Online Browser Studio + .ZIP download immediately after payment
-                </span>
-              </div>
+                  <div className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#E5E750] mb-3">
+                    5 CONSOLIDATED 1440PX BOARDS + 23 RAW SVGS
+                  </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-                {STRIPE_TIERS.map((tier) => (
-                  <article
-                    key={tier.id}
-                    data-testid={`blueprint-tier-${tier.id}`}
-                    style={{
-                      backgroundColor: tier.accentBg,
-                      color: tier.accentFg,
-                      boxShadow: `9px 9px 0 ${tier.shadowColor}`,
-                    }}
-                    className="border-[3px] border-[#141817] flex flex-col justify-between overflow-hidden"
-                  >
-                    <div>
-                      <div className="px-4 py-2.5 border-b-[2.5px] border-[#141817] bg-[#E6DEC8] text-[#141817] font-mono text-[11px] font-bold flex items-center justify-between">
-                        <span>{tier.code}</span>
-                        <span className="bg-[#123F38] text-[#FFFFFF] px-2 py-0.5 text-[10px]">
-                          ● INSTANT .ZIP
-                        </span>
-                      </div>
+                  <h2 className="font-display text-[clamp(2rem,3.6vw,3.4rem)] font-black uppercase leading-[0.93] tracking-[-0.025em] text-[#F2ECE1]">
+                    ARCHITECTED IN FIGMA. BOUND TO CSS TOKENS.
+                  </h2>
 
-                      <a
-                        href={tier.specUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block h-[220px] bg-[#141817] border-b-[2.5px] border-[#141817] overflow-hidden"
-                      >
-                        <img
-                          src={tier.image}
-                          alt={tier.name}
-                          className="w-full h-full object-cover object-top block hover:scale-[1.02] transition-transform"
-                        />
-                      </a>
+                  <p className="mt-5 font-sans text-base text-[#F2ECE1]/80 leading-relaxed">
+                    Most templates hand you flattened screenshots or locked components. The Complete Bundle ($89) gives you the entire 5-board 1440px Figma design system alongside 23 raw, CSS-tokenized vector illustrations that recolor automatically across every palette.
+                  </p>
 
-                      <div className="p-5 sm:p-6 space-y-4">
-                        <div>
-                          <h4 className="font-display text-xl sm:text-2xl font-black uppercase leading-tight">
-                            {tier.name}
-                          </h4>
-                          <div className="mt-2 flex items-baseline gap-2">
-                            <span className="font-display text-3xl sm:text-4xl font-black">
-                              {tier.price}
-                            </span>
-                            <span className="font-mono text-xs opacity-75">{tier.cadence}</span>
+                  {/* 7-Token Semantic Variable Ledger */}
+                  <div className="mt-7 border border-[#F2ECE1]/25 bg-[#1B211F] p-5">
+                    <div className="flex items-center justify-between font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#E5E750] mb-3">
+                      <span>SEMANTIC CSS &amp; FIGMA TOKEN ARCHITECTURE</span>
+                      <span>7 VARIABLES</span>
+                    </div>
+                    <div className="grid grid-cols-7 gap-1.5">
+                      {[
+                        { token: '--ink', hex: '#141414' },
+                        { token: '--bone', hex: '#F0E8D9' },
+                        { token: '--paper', hex: '#E3DAC9' },
+                        { token: '--scarlet', hex: '#E34232' },
+                        { token: '--acid', hex: '#E5E750' },
+                        { token: '--blue', hex: '#8DB8C2' },
+                        { token: '--lilac', hex: '#C7B8EA' },
+                      ].map((item) => (
+                        <div key={item.token} className="text-center">
+                          <div
+                            className="h-9 w-full border border-[#F2ECE1]/40"
+                            style={{ backgroundColor: item.hex }}
+                          />
+                          <div className="mt-1.5 font-mono text-[9.5px] font-bold text-[#F2ECE1]">
+                            {item.token}
+                          </div>
+                          <div className="font-mono text-[8.5px] text-[#F2ECE1]/55">
+                            {item.hex}
                           </div>
                         </div>
+                      ))}
+                    </div>
+                  </div>
 
-                        <p className="font-sans text-xs sm:text-sm opacity-90 leading-relaxed">
-                          {tier.description}
-                        </p>
+                  {/* Key System Deliverables List */}
+                  <div className="mt-6 space-y-3 border-t border-[#F2ECE1]/15 pt-5 font-mono text-xs text-[#F2ECE1]/90">
+                    <div className="flex items-start gap-3">
+                      <span className="text-[#E5E750] font-bold">01</span>
+                      <span>
+                        <strong>Board 01–04 (1440px + 390px):</strong> Foundations, Flagship Desktop Landing, all 6 Inner Page Templates, and 5 Niche Variations.
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-[#E5E750] font-bold">02</span>
+                      <span>
+                        <strong>23 Standalone .SVG Illustrations:</strong> Botanical studies, architectural diagrams, tarot emblems, and brutalist stamps.
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-[#E5E750] font-bold">03</span>
+                      <span>
+                        <strong>Zero Lock-In:</strong> Duplicate directly from our master Figma link or drag the included local SVG master sheets into any workspace.
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-                        <ul className="space-y-2 border-t border-current/20 pt-3 font-sans text-xs">
-                          {tier.includes.map((inc, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <CheckCircle2
-                                className={`h-4 w-4 shrink-0 mt-0.5 ${
-                                  tier.featured ? 'text-[#E5E750]' : 'text-[#123F38]'
-                                }`}
-                              />
-                              <span>{inc}</span>
-                            </li>
-                          ))}
-                        </ul>
+                {/* Acquisition Box for the Design System Bundle */}
+                <div className="border-[2px] border-[#E5E750] bg-[#1D2321] p-6">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <div>
+                      <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#E5E750]">
+                        COMPLETE STUDIO + FIGMA + 23-SVG BUNDLE
+                      </div>
+                      <div className="font-mono text-xs text-[#F2ECE1]/70 mt-0.5">
+                        Includes Online/Offline Browser Studio + All 5 Figma Boards
                       </div>
                     </div>
-
-                    <div className="p-5 sm:p-6 pt-0">
-                      <div className="pt-4 border-t-2 border-current/20 flex items-center gap-2 font-mono text-xs">
-                        <a
-                          href={tier.specUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="border-2 border-[#141817] bg-[#F2ECE1] text-[#141817] px-3 py-2.5 font-bold uppercase hover:bg-[#D9A62E] transition-colors"
-                        >
-                          Specs
-                        </a>
-                        <a
-                          href={tier.stripeUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          data-testid={`stripe-checkout-${tier.id}`}
-                          className={`flex-1 inline-flex items-center justify-center gap-1.5 border-2 border-[#141817] px-4 py-2.5 font-bold uppercase tracking-wider transition-all ${
-                            tier.featured
-                              ? 'bg-[#E5E750] text-[#141817] shadow-[4px_4px_0_#E34232] hover:bg-[#FFFFFF]'
-                              : 'bg-[#123F38] text-[#FFFFFF] shadow-[4px_4px_0_#141817] hover:bg-[#E34232]'
-                          }`}
-                        >
-                          <span>Buy ({tier.price})</span>
-                          <ArrowUpRight className="h-4 w-4" />
-                        </a>
-                      </div>
+                    <div className="font-display text-4xl font-black text-[#E5E750]">
+                      $89
                     </div>
-                  </article>
-                ))}
+                  </div>
+
+                  <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                    <a
+                      href="https://buy.stripe.com/5kQ5kC4Zn9CifMP19rebu01"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 bg-[#E5E750] px-5 py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-[#141817] hover:bg-[#FAF8F3] transition-colors"
+                    >
+                      <span>Acquire Complete Bundle — $89</span>
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                    <a
+                      href="https://blueprints.contextmuse.com/brutalist-figma-svg-kit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 border border-[#F2ECE1]/40 px-4 py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-[#F2ECE1] hover:border-[#E5E750] hover:text-[#E5E750] transition-colors"
+                    >
+                      <span>Full Spec</span>
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* =================================================================
-            DEPARTMENT 02: CREATIVE UTILITIES, DOCUMENT DOSSIERS, AD & PROMPT PACKS
-            (Distinctive Horizontal Editorial Feature Rows — Not another repetitive grid)
-           ================================================================= */}
+        {/* ===================================================================
+            MOVEMENT IV — PRACTICAL TOOLS: THE COLLECTION
+            Disciplined, museum-grade Swiss architectural index for the 6 utility
+            products and fixed-scope website audit remediations. Zero clipped
+            promo thumbnails; every item follows the 6-part product hierarchy.
+           =================================================================== */}
         <section
-          id="dept-utilities"
-          aria-labelledby="dept-02-heading"
-          className="border-b-[3px] border-[#141817] bg-[#E6DEC8] px-4 py-12 sm:px-8 sm:py-16"
+          id="movement-collection"
+          className="scroll-mt-16 border-b-[2px] border-[#141817] px-4 py-16 sm:px-8 sm:py-24"
         >
-          <div className="mx-auto max-w-[1380px] space-y-8">
-            <div className="border-[3px] border-[#141817] bg-[#141817] text-[#F2ECE1] p-5 sm:p-7 shadow-[8px_8px_0_#D9A62E] flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#E5E750] block">
-                  DEPARTMENT 02 // CREATIVE UTILITIES, AD PACKS &amp; PROMPT SYSTEMS
-                </span>
-                <h2
-                  id="dept-02-heading"
-                  className="mt-1 font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#F2ECE1]"
-                >
-                  Branded Document Sets, 25-Asset Ad Packs &amp; Prompts
+          <div className="mx-auto max-w-[1400px]">
+            {/* Collection Section Header */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end border-b-[2px] border-[#141817] pb-8 mb-12">
+              <div className="lg:col-span-7">
+                <div className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#123F38] mb-2.5">
+                  03 / PRACTICAL TOOLS &amp; FIXED-SCOPE IMPROVEMENTS — THE COLLECTION
+                </div>
+                <h2 className="font-display text-[clamp(2rem,4vw,3.6rem)] font-black uppercase leading-[0.94] tracking-[-0.03em] text-[#141817]">
+                  FOCUSED SYSTEMS, DOSSIERS &amp; 1-CLICK REMEDIATIONS
                 </h2>
-                <p className="mt-1 font-sans text-sm text-[#A9CFC7] max-w-2xl">
-                  High-leverage studio utilities and operational scaffolds that protect client scope, generate multi-channel social campaigns, and turn audits into finished copy.
+              </div>
+              <div className="lg:col-span-5">
+                <p className="font-sans text-base text-[#141817]/80 leading-relaxed">
+                  Not every problem requires a new website. Purchase standalone business document kits, 25-asset campaign packs, cognitive prompt chains, or fixed-scope technical sprints to upgrade your existing site in 48–72 hours.
                 </p>
               </div>
-              <span className="font-mono text-xs text-[#E5E750] font-bold uppercase">
-                3 Published Utilities · Instant Stripe Checkout
-              </span>
             </div>
 
-            {/* Distinctive Staggered Horizontal Dossier Spreads */}
-            <div className="space-y-6">
-              {CREATIVE_UTILITIES_AND_PACKS.map((item, idx) => {
-                const isDark = item.theme === 'ink';
-                const IconComp = item.icon;
-                return (
-                  <article
-                    key={item.id}
-                    data-testid={`blueprint-utility-${item.id}`}
-                    className={`border-[3px] border-[#141817] p-5 sm:p-7 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center ${
-                      isDark
-                        ? 'bg-[#141817] text-[#F2ECE1] shadow-[10px_10px_0_#E34232]'
-                        : 'bg-[#FAF8F3] text-[#141817] shadow-[10px_10px_0_#141817]'
-                    }`}
-                  >
-                    {/* Image Column (Alternates Left/Right for Strong Editorial Rhythm) */}
-                    <div
-                      className={`lg:col-span-5 border-[2.5px] border-[#141817] bg-[#141817] overflow-hidden shadow-[5px_5px_0_#D9A62E] ${
-                        idx % 2 === 1 ? 'lg:order-2' : ''
-                      }`}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-[250px] sm:h-[280px] object-cover object-top block"
-                      />
-                    </div>
-
-                    {/* Copy & Checkout Column */}
-                    <div
-                      className={`lg:col-span-7 space-y-4 ${
-                        idx % 2 === 1 ? 'lg:order-1' : ''
-                      }`}
-                    >
-                      <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-current/15 pb-2.5 font-mono text-xs font-bold">
-                        <span className={isDark ? 'text-[#E5E750]' : 'text-[#123F38]'}>
-                          {item.code}
-                        </span>
-                        <span className="bg-[#123F38] text-[#FFFFFF] border border-[#141817] px-2.5 py-0.5 text-[10px]">
-                          {item.status}
-                        </span>
-                      </div>
-
-                      <div className="flex items-start justify-between gap-4 flex-wrap">
-                        <h3 className="font-display text-2xl sm:text-3xl font-black uppercase leading-tight tracking-tight flex items-center gap-2.5">
-                          <IconComp
-                            className={`h-6 w-6 shrink-0 ${
-                              isDark ? 'text-[#E5E750]' : 'text-[#E34232]'
-                            }`}
-                          />
-                          <span>{item.title}</span>
-                        </h3>
-                      </div>
-
-                      <p
-                        className={`font-sans text-sm sm:text-base leading-relaxed ${
-                          isDark ? 'text-[#F2ECE1]/85' : 'text-[#2D3532]'
-                        }`}
-                      >
-                        {item.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2 font-mono text-[11px]">
-                        {item.chips.map((chip) => (
-                          <span
-                            key={chip}
-                            className={`border px-2.5 py-1 font-bold ${
-                              isDark
-                                ? 'border-[#F2ECE1]/30 bg-[#1F2523] text-[#E5E750]'
-                                : 'border-[#141817] bg-[#F2ECE1] text-[#141817]'
-                            }`}
-                          >
-                            {chip}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="pt-3 border-t-2 border-current/15 flex flex-wrap items-center justify-between gap-4">
-                        <div>
-                          <span className="font-display text-3xl font-black">
-                            {item.price}
-                          </span>
-                          <span className="ml-2 font-mono text-xs opacity-75">
-                            / {item.unit}
-                          </span>
-                        </div>
-
-                        <a
-                          href={item.stripeUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`inline-flex items-center gap-2 border-2 border-[#141817] px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider transition-all ${
-                            isDark
-                              ? 'bg-[#E5E750] text-[#141817] shadow-[4px_4px_0_#E34232] hover:bg-[#FFFFFF]'
-                              : 'bg-[#123F38] text-[#FFFFFF] shadow-[4px_4px_0_#141817] hover:bg-[#E34232]'
-                          }`}
-                        >
-                          <span>{item.ctaLabel}</span>
-                          <ArrowUpRight className="h-4 w-4" />
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* =================================================================
-            DEPARTMENT 03: 1-CLICK AUDIT REMEDIATIONS & WEB REDESIGN SPRINTS
-            (Bridges Free Website + System Check to Fixed-Price Execution)
-           ================================================================= */}
-        <section
-          id="dept-remediations"
-          aria-labelledby="dept-03-heading"
-          className="border-b-[3px] border-[#141817] bg-[#F2ECE1] px-4 py-12 sm:px-8 sm:py-16"
-        >
-          <div className="mx-auto max-w-[1380px] space-y-8">
-            <div className="border-[3px] border-[#141817] bg-[#141817] text-[#F2ECE1] p-5 sm:p-7 shadow-[8px_8px_0_#E34232] flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#D9A62E] block">
-                  DEPARTMENT 03 // AUDIT-TO-ACTION REMEDIATION SPRINTS
-                </span>
-                <h2
-                  id="dept-03-heading"
-                  className="mt-1 font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#F2ECE1]"
-                >
-                  1-Click Website Fixes, SEO &amp; Redesign Sprints
-                </h2>
-                <p className="mt-1 font-sans text-sm text-[#A9CFC7] max-w-2xl">
-                  Productized execution sprints that map directly to the diagnostic layers of the Context &amp; Muse Website + System Check. Book at a fixed price—no sales call required.
-                </p>
-              </div>
-              <a
-                href="/website-system-check/"
-                className="shrink-0 inline-flex items-center gap-1.5 border-2 border-[#141817] bg-[#D9A62E] text-[#141817] px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0_#123F38] hover:bg-[#E5E750] transition-colors self-start md:self-auto"
-              >
-                <ShieldCheck className="h-4 w-4" />
-                <span>Run Free Website Check First →</span>
-              </a>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-              {AUDIT_REMEDIATION_SPRINTS.map((sprint) => (
+            {/* Disciplined 2-Column Architectural Specimen Grid (6 Products) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {PRACTICAL_COLLECTION.map((item) => (
                 <article
-                  key={sprint.id}
-                  data-testid={`blueprint-sprint-${sprint.id}`}
-                  className={`border-[3px] border-[#141817] bg-[#FAF8F3] flex flex-col justify-between ${
-                    sprint.featured
-                      ? 'shadow-[10px_10px_0_#E34232]'
-                      : 'shadow-[8px_8px_0_#123F38]'
+                  key={item.id}
+                  data-testid={`collection-item-${item.id}`}
+                  className={`border-[2px] border-[#141817] flex flex-col justify-between transition-all ${
+                    item.highlighted
+                      ? 'bg-[#FAF8F3] shadow-[8px_8px_0_#123F38]'
+                      : 'bg-[#FAF8F3] shadow-[5px_5px_0_#141817]'
                   }`}
                 >
                   <div>
-                    <div className="px-4 py-2.5 bg-[#E6DEC8] border-b-[2.5px] border-[#141817] font-mono text-[10.5px] font-bold flex items-center justify-between">
-                      <span>{sprint.layer}</span>
-                      <span className="bg-[#123F38] text-[#FFFFFF] px-2 py-0.5 text-[9.5px]">
-                        {sprint.badge}
+                    {/* Top Classification & Price Header */}
+                    <div className="flex items-center justify-between gap-3 border-b-[2px] border-[#141817] bg-[#EAE3D5] px-5 py-3 font-mono text-[11px]">
+                      <div className="flex items-center gap-2.5">
+                        <span className="font-bold text-[#141817]">
+                          NO. {item.index}
+                        </span>
+                        <span className="text-[#141817]/35">//</span>
+                        <span className="font-bold uppercase tracking-wider text-[#123F38]">
+                          {item.category}
+                        </span>
+                      </div>
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#141817]/70">
+                        {item.code}
                       </span>
                     </div>
 
-                    <div className="h-[220px] bg-[#141817] border-b-[2.5px] border-[#141817] overflow-hidden">
-                      <img
-                        src={sprint.image}
-                        alt={sprint.title}
-                        className="w-full h-full object-cover object-top block"
-                      />
-                    </div>
-
-                    <div className="p-5 sm:p-6 space-y-3.5">
-                      <h3 className="font-display text-xl sm:text-2xl font-black uppercase leading-tight text-[#141817]">
-                        {sprint.title}
-                      </h3>
-                      <p className="font-sans text-xs sm:text-sm text-[#2D3532] leading-relaxed">
-                        {sprint.description}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
-                        {sprint.chips.map((c) => (
-                          <span
-                            key={c}
-                            className="border border-[#141817] bg-[#F2ECE1] px-2 py-0.5 font-bold"
-                          >
-                            {c}
-                          </span>
-                        ))}
+                    {/* Main Body: 1. Name, 2. One-Sentence Explanation, 5. Price & Terms */}
+                    <div className="p-6 sm:p-7">
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="font-display text-2xl sm:text-[26px] font-black uppercase leading-[1.05] text-[#141817]">
+                          {item.title}
+                        </h3>
+                        <div className="text-right shrink-0">
+                          <div className="font-display text-3xl sm:text-4xl font-black text-[#141817] leading-none">
+                            {item.price}
+                          </div>
+                        </div>
                       </div>
+
+                      <div className="mt-1.5 font-mono text-[11px] text-[#123F38] font-bold">
+                        {item.terms}
+                      </div>
+
+                      <p className="mt-3.5 font-sans text-sm sm:text-[15px] text-[#141817]/85 leading-relaxed">
+                        {item.oneLiner}
+                      </p>
+
+                      {/* 3. Unclipped Technical Specimen Preview Sheet (Zero Cropped Promo Graphics) */}
+                      <div className="mt-6 border-[1.5px] border-[#141817] bg-[#F2ECE1]">
+                        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#141817] bg-[#141817] px-3.5 py-2 font-mono text-[10px] text-[#F2ECE1]">
+                          <span className="font-bold uppercase tracking-wider">
+                            {item.specimen.header}
+                          </span>
+                          <span className="text-[#E5E750] font-bold">
+                            {item.specimen.stamp}
+                          </span>
+                        </div>
+                        <div className="divide-y divide-[#141817]/15 px-3.5 py-1 font-mono text-[11px]">
+                          {item.specimen.rows.map((row, rIdx) => (
+                            <div
+                              key={rIdx}
+                              className="flex items-center justify-between gap-3 py-2"
+                            >
+                              <div className="flex items-center gap-2.5 min-w-0">
+                                <span className="font-bold text-[#123F38] shrink-0">
+                                  {row.k}
+                                </span>
+                                <span className="text-[#141817] truncate">
+                                  {row.v}
+                                </span>
+                              </div>
+                              <span className="shrink-0 border border-[#141817]/30 bg-[#FAF8F3] px-1.5 py-0.5 text-[9.5px] font-bold text-[#141817]">
+                                {row.tag}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* 4. Three to Four Meaningful Technical Specifications */}
+                      <ul className="mt-5 space-y-2 font-mono text-xs text-[#141817]/90">
+                        {item.specs.map((spec, sIdx) => (
+                          <li key={sIdx} className="flex items-start gap-2">
+                            <span className="font-bold text-[#123F38]">•</span>
+                            <span className="leading-snug">{spec}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
 
-                  <div className="p-5 sm:p-6 pt-0">
-                    <div className="pt-4 border-t-2 border-[#141817] flex items-center justify-between gap-3">
-                      <div>
-                        <span className="font-display text-2xl sm:text-3xl font-black text-[#141817]">
-                          {sprint.price}
-                        </span>
-                        <span className="block font-mono text-[10px] font-bold text-[#45504C]">
-                          {sprint.unit}
-                        </span>
-                      </div>
-
-                      <a
-                        href={sprint.stripeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 border-2 border-[#141817] bg-[#123F38] text-[#FFFFFF] px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider shadow-[4px_4px_0_#141817] hover:bg-[#E34232] transition-colors"
-                      >
-                        <span>{sprint.ctaLabel}</span>
-                        <ArrowUpRight className="h-3.5 w-3.5" />
-                      </a>
-                    </div>
+                  {/* 6. Unmistakable Purchase Action Footer */}
+                  <div className="border-t-[2px] border-[#141817] bg-[#EAE3D5]/65 px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+                    <span className="font-mono text-[10.5px] uppercase tracking-wider text-[#141817]/75">
+                      STRIPE VERIFIED CHECKOUT · INSTANT RECEIPT
+                    </span>
+                    <a
+                      href={item.stripeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-testid={`buy-${item.id}`}
+                      className={`inline-flex items-center gap-2 border-[2px] border-[#141817] px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider transition-all ${
+                        item.highlighted
+                          ? 'bg-[#E5E750] text-[#141817] shadow-[3px_3px_0_#141817] hover:bg-[#141817] hover:text-[#E5E750]'
+                          : 'bg-[#141817] text-[#F2ECE1] hover:bg-[#E5E750] hover:text-[#141817]'
+                      }`}
+                    >
+                      <span>{item.ctaLabel}</span>
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
                   </div>
                 </article>
               ))}
@@ -1207,65 +1395,42 @@ export default function Blueprints() {
           </div>
         </section>
 
-        {/* =================================================================
-            SECTION 05: COHERENT CUSTOMER JOURNEY BRIDGE (STUDIO CONTINUITY)
-           ================================================================= */}
-        <section className="bg-[#123F38] text-[#F2ECE1] px-4 py-12 sm:px-8 sm:py-16">
-          <div className="mx-auto max-w-[1380px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-3">
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#E5E750] block">
-                ONE CREATIVE ECOSYSTEM // TAILORED COMMISSION VS. READY-MADE PRODUCT
-              </span>
-              <h2 className="font-display text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#F2ECE1] leading-tight">
-                Need a Tailored System Built Around Your Operation Instead?
-              </h2>
-              <p className="font-sans text-sm sm:text-base text-[#F2ECE1]/85 max-w-2xl leading-relaxed">
-                Blueprints are self-serve digital products and fixed-scope remediation sprints you can purchase immediately. If your business needs a tailored commercial website, an interactive quoting or reservation engine, or custom internal operational software, step back into the main studio rooms.
-              </p>
-            </div>
-
-            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
-              <Link
-                to="/build"
-                className="border-2 border-[#141817] bg-[#DFDACE] text-[#23282A] p-4 shadow-[5px_5px_0_#141817] hover:bg-[#E5E750] transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-[10px] font-bold text-[#17504A] uppercase block">
-                    01 / CUSTOM BUILD
-                  </span>
-                  <div className="mt-1 font-display text-lg font-black uppercase">
-                    Commission a Build
-                  </div>
-                  <p className="mt-1 font-sans text-xs text-[#23282A]/80">
-                    Describe your project or sketch on the interactive whiteboard.
-                  </p>
+        {/* ===================================================================
+            MOVEMENT V — ARCHITECTURAL CONTINUITY & CUSTOM BUILD BRIDGE
+            Quiet, authoritative colophon distinguishing ready-made Blueprints
+            from tailored Custom Build commissions and The Method.
+           =================================================================== */}
+        <section className="px-4 py-16 sm:px-8 sm:py-20 bg-[#EAE3D5]">
+          <div className="mx-auto max-w-[1400px] border-[2px] border-[#141817] bg-[#FAF8F3] p-8 sm:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7 space-y-3">
+                <div className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#123F38]">
+                  STUDIO CONTINUITY // BLUEPRINTS VS. CUSTOM COMMISSION
                 </div>
-                <span className="mt-3 inline-flex items-center gap-1 font-bold text-[#17504A]">
-                  <span>Open Custom Build</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </Link>
+                <h2 className="font-display text-2xl sm:text-4xl font-black uppercase leading-tight text-[#141817]">
+                  NEED BESPOKE ARCHITECTURE INSTEAD OF A READY-MADE SYSTEM?
+                </h2>
+                <p className="font-sans text-base text-[#141817]/80 leading-relaxed max-w-2xl">
+                  Blueprints are self-contained digital products you can deploy today for $39–$395. When your organization requires custom software architecture, interactive data instruments, or a ground-up flagship build, commission the main Context &amp; Muse studio.
+                </p>
+              </div>
 
-              <Link
-                to="/method"
-                className="border-2 border-[#141817] bg-[#23282A] text-[#EDE9E0] p-4 shadow-[5px_5px_0_#D9A62E] hover:border-[#E5E750] transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-[10px] font-bold text-[#D9A62E] uppercase block">
-                    STUDIO APPROACH
-                  </span>
-                  <div className="mt-1 font-display text-lg font-black uppercase">
-                    The Method &amp; Pricing
-                  </div>
-                  <p className="mt-1 font-sans text-xs text-[#EDE9E0]/80">
-                    5-stage process, capabilities, and upfront custom build pricing.
-                  </p>
-                </div>
-                <span className="mt-3 inline-flex items-center gap-1 font-bold text-[#D9A62E]">
-                  <span>Inspect The Method</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </Link>
+              <div className="lg:col-span-5 flex flex-col sm:flex-row lg:justify-end gap-3.5">
+                <Link
+                  to="/build"
+                  className="inline-flex items-center justify-center gap-2 border-[2px] border-[#141817] bg-[#141817] px-6 py-4 font-mono text-xs font-bold uppercase tracking-wider text-[#F2ECE1] hover:bg-[#E5E750] hover:text-[#141817] transition-colors"
+                >
+                  <Wrench className="h-4 w-4" />
+                  <span>01 / Custom Build</span>
+                </Link>
+                <Link
+                  to="/method"
+                  className="inline-flex items-center justify-center gap-2 border-[2px] border-[#141817] bg-[#FAF8F3] px-5 py-4 font-mono text-xs font-bold uppercase tracking-wider text-[#141817] hover:bg-[#EAE3D5] transition-colors"
+                >
+                  <Compass className="h-4 w-4" />
+                  <span>The Method &amp; Pricing</span>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
