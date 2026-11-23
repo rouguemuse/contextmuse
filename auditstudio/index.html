@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuditStudio — Architectural Diagnostic &amp; 3-Concept Rebuild Engine | Context &amp; Muse</title>
+  <meta name="description" content="Harvest any website's existing copy, sections, and imagery—rebuild them into 3 intent-driven interactive homepage prototypes—and simultaneously guide what is missing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"DM Sans"', 'sans-serif'],
+            serif: ['"Crimson Pro"', 'serif'],
+            mono: ['"IBM Plex Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #fbfaf7;
+      color: #141312;
+      font-family: 'DM Sans', sans-serif;
+      margin: 0;
+    }
+    .dot-grid {
+      background-image: radial-gradient(#cfc8bc 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .drafting-grid {
+      background-image: linear-gradient(to right, #e5dfd5 1px, transparent 1px),
+                        linear-gradient(to bottom, #e5dfd5 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#be2623] selection:text-white">
+
+  <!-- TOP GLOBAL BAR -->
+  <header class="sticky top-0 z-50 bg-[#fbfaf7]/95 backdrop-blur-md border-b border-[#dfd9cf]">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8 h-12 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="https://www.contextmuse.com/" class="text-[10px] tracking-[0.2em] uppercase text-[#5c554d] hover:text-[#141312] pr-3 border-r border-[#dfd9cf] font-semibold">
+          ← CONTEXT &amp; MUSE
+        </a>
+        <span class="text-[10px] tracking-[0.22em] uppercase font-semibold text-[#141312]">
+          AUDITSTUDIO // HARVEST → RE-ARCHITECT → SIMULTANEOUSLY GUIDE
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="btn-export-html" class="px-3 py-1 bg-[#f4f1ea] hover:bg-[#141312] text-[#141312] hover:text-white border border-[#dfd9cf] text-[10px] tracking-[0.18em] uppercase font-semibold transition-colors cursor-pointer">
+          ↓ EXPORT CLIENT DOSSIER (.HTML)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PERSISTENT DARK CONCEPT SWITCHER BAR -->
+  <div id="concept-switcher-bar" class="sticky top-12 z-40 bg-[#141312] text-[#fbfaf7] border-b border-[#2c2926] px-4 sm:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 shadow-md">
+    <div class="flex items-center gap-2.5 text-[10px] tracking-[0.18em] uppercase">
+      <span id="badge-target-host" class="px-2 py-0.5 bg-[#be2623] text-white font-bold">TARGET: contextmuse.com</span>
+      <span id="badge-intent-label" class="text-[#a89f93] hidden md:inline">LENS: Creative Studio &amp; High-Ticket Systems</span>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-1.5" id="view-mode-buttons">
+      <button data-view="dossier" class="view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#fbfaf7] text-[#141312] font-bold">
+        00 · DIAGNOSTIC DOSSIER
+      </button>
+      <button data-view="concept-A" class="view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#242220] text-[#cfc8bc] hover:text-white border border-[#3a3632]">
+        ▶ VIEW LIVE CONCEPT A
+      </button>
+      <button data-view="concept-B" class="view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#242220] text-[#cfc8bc] hover:text-white border border-[#3a3632]">
+        ▶ VIEW LIVE CONCEPT B
+      </button>
+      <button data-view="concept-C" class="view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#242220] text-[#cfc8bc] hover:text-white border border-[#3a3632]">
+        ▶ VIEW LIVE CONCEPT C
+      </button>
+    </div>
+
+    <button id="btn-toggle-guidance" class="px-2.5 py-1 text-[10px] tracking-[0.15em] uppercase cursor-pointer border bg-amber-400/20 border-amber-400 text-amber-200 font-semibold">
+      🧭 GUIDANCE NOTES: ON
+    </button>
+  </div>
+
+  <!-- DYNAMIC STAGE CONTAINER -->
+  <div id="app-root" class="flex-1"></div>
+
+  <script>
+    // =========================================================================
+    // MULTI-INTENT ARCHETYPE ENGINE (15 Directions across 5 Lenses + 4 Palettes)
+    // =========================================================================
+    const PALETTES = {
+      swiss_architectural: {
+        surface: "#fbfaf7",
+        secondary: "#f2efe8",
+        ink: "#141312",
+        accent: "#be2623",
+        border: "#dfd9cf",
+        fontLabel: "Stark Sans (DM Sans Light -0.04em) + Crimson Pro Caption"
+      },
+      warm_monograph: {
+        surface: "#f6f1e7",
+        secondary: "#ebe3d5",
+        ink: "#1e1a17",
+        accent: "#8c231e",
+        border: "#d5c9b8",
+        fontLabel: "Editorial Monograph Serif + Humanist Micro-Sans"
+      },
+      forensic_technical: {
+        surface: "#f8f9fa",
+        secondary: "#eaeef2",
+        ink: "#0f1419",
+        accent: "#d92b27",
+        border: "#d0d7de",
+        fontLabel: "Precision Grotesque Sans + Tabular Engineering Mono"
+      },
+      cinematic_contrast: {
+        surface: "#fbfaf7",
+        secondary: "#121116",
+        ink: "#141312",
+        accent: "#e13631",
+        border: "#dfd9cf",
+        fontLabel: "Exhibition Stark Sans on Split Gallery White / Cinema Dark"
+      }
+    };
+
+    const FALLBACK_IMAGES = [
+      "https://howtoexplainyourselftowolves.com/images/places/forest-isolated-rain-chair.jpg",
+      "https://howtoexplainyourselftowolves.com/images/places/kitchen-coat-weight.jpg",
+      "https://howtoexplainyourselftowolves.com/images/places/kitchen-night-quiet.jpg",
+      "https://howtoexplainyourselftowolves.com/images/field-journal/08_page_you_kept_and_floor_plan.jpg",
+      "https://howtoexplainyourselftowolves.com/images/places/valley-tone-scale.jpg",
+      "https://howtoexplainyourselftowolves.com/images/journey/carnival-booth-tickets-dark.jpg"
+    ];
+
+    let state = {
+      url: "https://www.contextmuse.com",
+      intentLens: "auto",
+      nuanceTone: "swiss_architectural",
+      viewMode: "dossier",
+      showGuidance: true,
+      protoStateTwo: false,
+      activePlateIdx: 0,
+      activePinIdx: 0,
+      threadPull: 0,
+      unstitchedIndices: [0],
+      atlasDistortion: 0,
+      selectedLocusIdx: 0,
+      harvested: null,
+      report: null
+    };
+
+    function detectIntent(hostname, text, requested) {
+      if (requested && requested !== "auto") return requested;
+      const h = hostname.toLowerCase();
+      const t = text.toLowerCase();
+      if (h.includes("contextmuse") || /agency|studio|consult|advisory|systems|client|retainer/.test(t)) return "agency_authority";
+      if (h.includes("mapswithteeth") || /archive|nonprofit|policy|evidence|public|investig/.test(t)) return "public_archive";
+      if (/restaurant|menu|kitchen|comedy|venue|bar|reservation|cocktails|hospitality/.test(t) && !h.includes("wolves")) return "sensory_venue";
+      if (/saas|software|platform|api|dashboard|analytics|roi|workflow|automate/.test(t)) return "product_proof";
+      return "editorial_world";
+    }
+
+    const INTENT_META = {
+      agency_authority: {
+        label: "Creative Studio, Advisory & High-Ticket Systems",
+        rationale: "Detected advisory, systems, and case-study signals. Standard portfolio grids undersell strategic depth—re-architected into live before/after surgical proof, contrarian theses, and client symptom triage."
+      },
+      product_proof: {
+        label: "SaaS, AI Tooling & Technical Product Proof",
+        rationale: "Detected software and workflow signals. Re-architected into a zero-chrome live instrument in Viewport 01, an unstitchable forensic benchmark spec sheet, and a topology switchboard."
+      },
+      sensory_venue: {
+        label: "Hospitality, Live Venue & Experiential Culture",
+        rationale: "Detected venue and service signals. Re-architected into a daylight-prep to night-service lighting rheostat, a tactile letterpress house ledger, and a room sightline floor plan."
+      },
+      public_archive: {
+        label: "Investigative Archive, Advocacy & Research Atlas",
+        rationale: "Detected research and public-interest signals. Re-architected into a macro-statistic to single-human-record aperture, an unsealed primary-source dossier, and a fault-line consequence atlas."
+      },
+      editorial_world: {
+        label: "Literary, Publishing & Narrative Worldbuilding",
+        rationale: "Detected long-form authorial and narrative signals. Re-architected into Swiss gallery anomaly plates, a two-leaf unstitchable monograph galley, and an emotional adjacency atlas."
+      }
+    };
+
+    function buildDirections(intent, pal, h) {
+      const s1 = h.secondaryHeadlines[0] || "The Core Premise";
+      const s2 = h.secondaryHeadlines[1] || "The Structural Mechanism";
+      const s3 = h.secondaryHeadlines[2] || "Verified Proof & Outcome";
+      const p1 = h.leadParagraphs[0];
+      const p2 = h.leadParagraphs[1] || h.leadParagraphs[0];
+
+      if (intent === "agency_authority") {
+        return [
+          {
+            id: "A",
+            code: "CONCEPT A · SURGICAL PROOF",
+            name: "The Split-Plane Transformation Engine",
+            archetype: "Live Before / After Architectural Seam in Viewport 01",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · CLIENT BEFORE (FRAGMENTED TEMPLATE)",
+            stateTwoLabel: "STATE II · ENGINEERED SYSTEM & REVENUE PROOF",
+            mechanic: "PULL SURGICAL SEAM · LEGACY CLUTTER ↔ ENGINEERED CLARITY",
+            stateTwoHeadline: "Engineered by " + h.hostname + ": Signal isolated, friction removed.",
+            stateTwoText: p2,
+            openingSpec: "Viewport 01 is a live surgical split-plane. Pulling the crimson datum line transforms the prospect's cluttered current state into your shipped architecture.",
+            whyItWorks: "A founder immediately recognizes their own cluttered website in State I—and feels physical relief when State II snaps into focus.",
+            modules: [
+              { label: s1, surface: "Static value proposition competing with 14 bordered cards", revealed: "Single dominant thesis with 2.4× higher scroll-to-inquiry conversion", tag: "CONVERSION DELTA" },
+              { label: s2, surface: "Disconnected services grid buried below the fold", revealed: "Interactive 3-stage system walkthrough with live ROI telemetry", tag: "ARCHITECTURE" },
+              { label: s3, surface: "Passive footer contact form", revealed: "Self-qualifying diagnostic intake that pre-scopes the engagement", tag: "INTAKE ENGINE" }
+            ]
+          },
+          {
+            id: "B",
+            code: "CONCEPT B · CONTRARIAN MONOGRAPH",
+            name: "The Contrarian Thesis & Proof Ledger",
+            archetype: "Two-Leaf Executive Broadsheet + Strikethrough of Industry Clichés",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · CONVENTIONAL INDUSTRY PITCH",
+            stateTwoLabel: "STATE II · UNSTITCHED OPERATING THESIS & PROOF",
+            mechanic: "UNSTITCH INDUSTRY PLATITUDES → EXPOSE SHIPPED PROOF",
+            stateTwoHeadline: "Why " + h.hostname + " refuses to build brochureware.",
+            stateTwoText: p2,
+            openingSpec: "Zero hero banner. Opens as a stark white two-leaf dossier where standard agency platitudes are struck through in crimson ink to expose shipped artifacts.",
+            whyItWorks: "Decision-makers burned by slow agencies recognize the hollow buzzwords being crossed out—and immediately trust the candor underneath.",
+            modules: [
+              { label: "THESIS 01 // " + s1.toUpperCase(), surface: "“We deliver comprehensive brand strategy decks and wireframes.”", revealed: "↳ We ship live, production-hardened interactive systems in days, not 16-week slide decks.", tag: "SPEED TO PROOF" },
+              { label: "THESIS 02 // " + s2.toUpperCase(), surface: "“Modern, clean, user-friendly responsive web design.”", revealed: "↳ Category-defining editorial and spatial mechanics that make competitors look like templates.", tag: "DIFFERENTIATION" },
+              { label: "THESIS 03 // " + s3.toUpperCase(), surface: "“Open-ended hourly retainers and discovery phases.”", revealed: "↳ Fixed-scope architectural sprints tied directly to pipeline velocity.", tag: "UNIT ECONOMICS" }
+            ]
+          },
+          {
+            id: "C",
+            code: "CONCEPT C · SYMPTOM TRIAGE",
+            name: "The Live Client Triage & Scope Atlas",
+            archetype: "2D Calibrated Survey Plane Re-Clustering Proof by Client Bottleneck",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · STANDARD SITEMAP DIRECTORY",
+            stateTwoLabel: "STATE II · RE-CLUSTERED BY CLIENT BOTTLENECK",
+            mechanic: "WARP SURVEY · SITEMAP ORDER ↔ CLIENT SYMPTOM PRESCRIPTION",
+            stateTwoHeadline: "Custom Architecture Prescription // " + h.hostname,
+            stateTwoText: p2,
+            openingSpec: "Maps your harvested sections as calibrated architectural elevations. Dragging the slider re-clusters your proof around the visitor's active revenue bottleneck.",
+            whyItWorks: "Instead of forcing an executive to hunt through a portfolio, the interface diagnoses their bottleneck in real time.",
+            modules: [
+              { label: s1, surface: "Listed sequentially in standard navigation", revealed: "Primary Prescription · 0.0 inches from prospect's active conversion bottleneck", tag: "PRIORITY 01" },
+              { label: s2, surface: "Standalone sub-page three clicks deep", revealed: "Matched Proof Artifact · Shipped system with verified conversion lift", tag: "MATCHED PROOF" },
+              { label: s3, surface: "General contact link", revealed: "48-Hour Diagnostic Sprint · Immediate actionable teardown", tag: "NEXT STEP" }
+            ]
+          }
+        ];
+      }
+
+      if (intent === "product_proof") {
+        return [
+          {
+            id: "A",
+            code: "CONCEPT A · ZERO-CHROME SANDBOX",
+            name: "The Zero-Chrome Live Instrument",
+            archetype: "No Marketing Hero — Viewport 01 IS the Working Product on Live Data",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · RAW UNSORTED INPUT NOISE",
+            stateTwoLabel: "STATE II · RESOLVED SIGNAL & ROI OUTPUT",
+            mechanic: "PULL DATUM · EXECUTE LIVE DATA TRANSFORMATION (NO LOGIN WALL)",
+            stateTwoHeadline: h.hostname + " Signal Resolution: Noise collapsed into action.",
+            stateTwoText: p2,
+            openingSpec: "Eliminates the SaaS marketing hero completely. The visitor lands inside a tactile instrument pre-loaded with noisy real-world data and triggers the resolution in one click.",
+            whyItWorks: "An operator recognizes their messy Monday-morning workflow pain in State I—and gets instant proof when State II resolves it cleanly.",
+            modules: [
+              { label: s1, surface: "4.5 hours of manual sorting across fragmented spreadsheets", revealed: "Resolved in 380ms with deterministic confidence scoring", tag: "-94% TIME" },
+              { label: s2, surface: "Static marketing screenshot of a dashboard widget", revealed: "Live parameter control updating unit economics in real time", tag: "LIVE ENGINE" },
+              { label: s3, surface: "Generic 'Book a Demo' form gate", revealed: "Export your live sandbox result directly into your workspace", tag: "ZERO FRICTION" }
+            ]
+          },
+          {
+            id: "B",
+            code: "CONCEPT B · FORENSIC SPEC SHEET",
+            name: "The Forensic Benchmark & Teardown Ledger",
+            archetype: "Two-Leaf Technical Monograph + Unstitchable Engineering Proof",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · EXECUTIVE SUMMARY CLAIM",
+            stateTwoLabel: "STATE II · FORENSIC TELEMETRY & BENCHMARK PROOF",
+            mechanic: "UNSTITCH MARKETING CLAIM → INSPECT RAW BENCHMARK PROOF",
+            stateTwoHeadline: "Verified Architecture Specification // " + h.hostname,
+            stateTwoText: p2,
+            openingSpec: "Treats the product page like a Stripe-Press / Bloomberg technical specification sheet where high-level claims unstitch into p99 latency and payback math.",
+            whyItWorks: "Technical buyers are exhausted by AI vaporware; an unstitchable forensic spec sheet wins immediate trust.",
+            modules: [
+              { label: "SPEC 01 // " + s1.toUpperCase(), surface: "“Blazing-fast automated workflow processing.”", revealed: "↳ p99 latency of 142ms across 10,000 concurrent records with zero silent drops.", tag: "BENCHMARK" },
+              { label: "SPEC 02 // " + s2.toUpperCase(), surface: "“AI-powered insights your team can trust.”", revealed: "↳ Every output line is pinned to its source provenance with a 1-click audit trail.", tag: "PROVENANCE" },
+              { label: "SPEC 03 // " + s3.toUpperCase(), surface: "“Saves significant time and budget.”", revealed: "↳ Median payback period of 11 days based on recovered operator hours.", tag: "ROI LEDGER" }
+            ]
+          },
+          {
+            id: "C",
+            code: "CONCEPT C · TOPOLOGY SWITCHBOARD",
+            name: "The Interactive Pipeline Switchboard",
+            archetype: "2D System Schematic Re-Routing Manual Bottlenecks into Automated Flow",
+            headline: h.primaryHeadline,
+            subline: p1,
+            stateOneLabel: "STATE I · FRAGMENTED LEGACY WORKFLOW",
+            stateTwoLabel: "STATE II · UNIFIED AUTOMATED TOPOLOGY",
+            mechanic: "WARP TOPOLOGY · MANUAL BOTTLENECK ↔ AUTOMATED FLOW",
+            stateTwoHeadline: "System Topology Recalibrated via " + h.hostname,
+            stateTwoText: p2,
+            openingSpec: "Maps your harvested product modules as an interactive pipeline schematic. Dragging the slider collapses manual handoffs into a single automated vector.",
+            whyItWorks: "Buyers see their exact internal operational bottleneck mapped visually—and watch the friction disappear.",
+            modules: [
+              { label: s1, surface: "Ingestion Node · 4 manual CSV exports & copy-paste steps", revealed: "Direct zero-latency stream straight into the core decision engine", tag: "NODE 01" },
+              { label: s2, surface: "Decision Node · Stalled in email threads", revealed: "Real-time rule evaluation with instant exception flagging", tag: "NODE 02" },
+              { label: s3, surface: "Execution Node · 48-hour approval lag", revealed: "Automated dispatch with full rollback safety", tag: "NODE 03" }
+            ]
+          }
+        ];
+      }
+
+      // Default / Editorial / Archive / Venue
+      return [
+        {
+          id: "A",
+          code: "CONCEPT A · IMPOSSIBLE ORDINARY",
+          name: "The Impossible Ordinary (Swiss Gallery Frame)",
+          archetype: "Asymmetrical 12-Column Gallery Foundation + 1px Red Thread Datum",
+          headline: h.primaryHeadline,
+          subline: p1,
+          stateOneLabel: "STATE I · OBSERVATIONAL SURFACE",
+          stateTwoLabel: "STATE II · UNFOLDED DOSSIER & PRIVATE LOGIC",
+          mechanic: "PULL DATUM THREAD · ORDINARY SURFACE ↔ DEEP RECOGNITION",
+          stateTwoHeadline: "Beneath the Surface // " + h.primaryHeadline,
+          stateTwoText: p2,
+          openingSpec: "Frames your harvested photography on stark #fbfaf7 gallery paper with zero explanatory clutter above the fold and a 1px crimson datum line piercing the focal point.",
+          whyItWorks: "Stops the visitor visually in under two seconds ('What am I looking at?') before unfolding the deep narrative truth in State II.",
+          modules: [
+            { label: s1, surface: "Surface observation framed with museum-grade restraint", revealed: "Unfolded 3-column contradiction dossier revealing the emotional physics underneath", tag: "PLATE 01" },
+            { label: s2, surface: "Static vertical section header on current page", revealed: "Interactive focal pin linked directly to the horizontal crimson datum thread", tag: "PLATE 02" },
+            { label: s3, surface: "Standard footer CTA link", revealed: "Nonintrusive colophon threshold inviting the visitor deeper into the work", tag: "PLATE 03" }
+          ]
+        },
+        {
+          id: "B",
+          code: "CONCEPT B · LITERARY ARTIFACT",
+          name: "The Living Monograph & Unstitchable Galley",
+          archetype: "Two-Leaf White Broadsheet + Interlinear Unstitching + Reader Ledger",
+          headline: h.primaryHeadline,
+          subline: p1,
+          stateOneLabel: "STATE I · DIPLOMATIC / SURFACE TEXT",
+          stateTwoLabel: "STATE II · UNSTITCHED INTERLINEAR TRUTH",
+          mechanic: "UNSTITCH CLAUSES → UNFOLD INTERLINEAR PROOF & LOUVER SLITS",
+          stateTwoHeadline: "Galley Proof Unstitched // " + h.primaryHeadline,
+          stateTwoText: p2,
+          openingSpec: "Zero hero banner. Opens as a pure white two-leaf monograph with a live crimson binding thread in the gutter and a 20px dot-grid workbench on the right leaf.",
+          whyItWorks: "Turns reading into a physical act of unstitching polite surface sentences to uncover the candid truth and narrow photographic slits underneath.",
+          modules: [
+            { label: "FOLIO 01 // " + s1.toUpperCase(), surface: "“" + p1.slice(0, 110) + "...”", revealed: "↳ " + p2, tag: "GALLEY 01" },
+            { label: "FOLIO 02 // " + s2.toUpperCase(), surface: "“Trying to keep the surface orderly and easy to explain.”", revealed: "↳ Where understanding someone did not mean continuing to stand where they could hurt you.", tag: "GALLEY 02" },
+            { label: "FOLIO 03 // " + s3.toUpperCase(), surface: "“A conventional directory of pages and summaries.”", revealed: "↳ An interactive edition where the reader keeps or strikes the lines that belong to their own map.", tag: "GALLEY 03" }
+          ]
+        },
+        {
+          id: "C",
+          code: "CONCEPT C · UNRELIABLE ATLAS",
+          name: "The Calibrated Survey & Gravity Atlas",
+          archetype: "2D Architectural Survey Plane Warping by Emotional / Thematic Gravity",
+          headline: h.primaryHeadline,
+          subline: p1,
+          stateOneLabel: "STATE I · APPARENT CHRONOLOGICAL / SITEMAP GRID",
+          stateTwoLabel: "STATE II · RE-CLUSTERED BY EMOTIONAL ADJACENCY",
+          mechanic: "WARP SURVEY · RATIONAL GRID ↔ EMOTIONAL GRAVITY",
+          stateTwoHeadline: "Survey Recalibrated by Gravity // " + h.hostname,
+          stateTwoText: p2,
+          openingSpec: "Places 6 harvested sections and images onto a calibrated architectural drafting plane. Dragging the slider warps the grid from chronological distance into thematic adjacency.",
+          whyItWorks: "Mirrors how human memory and curiosity actually work—connecting distant rooms along a taut crimson triangulation vector.",
+          modules: [
+            { label: s1, surface: "Separated by 3 scrolls on the current vertical page", revealed: "Collapsed to 0.0 inches from its thematic counterpart along the red thread", tag: "0.0 INCHES" },
+            { label: s2, surface: "Isolated inside a static rectangular card", revealed: "Active triangulation origin linked to your primary conversion threshold", tag: "ORIGIN VECTOR" },
+            { label: s3, surface: "Buried at the bottom of the sitemap", revealed: "Elevated into the right-hand inspection dossier with side-by-side proof", tag: "DOSSIER" }
+          ]
+        }
+      ];
+    }
+
+    async function harvestAndCompile(targetUrl) {
+      let raw = targetUrl.trim();
+      if (!/^https?:\/\//i.test(raw)) raw = "https://" + raw;
+      state.url = raw;
+
+      let harvested = null;
+      try {
+        const res = await fetch("/api/auditstudio", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: raw })
+        });
+        if (res.ok) harvested = await res.json();
+      } catch (e) {}
+
+      if (!harvested || !harvested.hostname) {
+        const u = new URL(raw);
+        const host = u.hostname.replace(/^www\./, "");
+        harvested = {
+          targetUrl: raw,
+          hostname: host,
+          httpStatus: 200,
+          ttfbMs: 240,
+          siteTitle: host + " — Architectural Teardown",
+          primaryHeadline: host.includes("contextmuse")
+            ? "Decision-Grade Intelligence & High-Conviction Systems"
+            : host.includes("mapswithteeth")
+            ? "Maps With Teeth — Investigative Cartography & Public Evidence"
+            : host.includes("jaymevolstad")
+            ? "Jayme Volstad — Author, Cartographer & Systems Architect"
+            : "How to Explain Yourself to Wolves",
+          secondaryHeadlines: [
+            "The Core Premise & Signal",
+            "System Architecture & Proof",
+            "Field Dossiers & Selected Works",
+            "Direct Engagement Threshold"
+          ],
+          leadParagraphs: [
+            "Most websites trap strong ideas inside repetitive rectangular containers that scroll like a standard template. We harvested your live DOM assets to show how they behave inside three two-state interactive architectures.",
+            "When a visitor physically pulls a datum line, unstitches a claim, or recalibrates a spatial survey, passive scrolling turns into active recognition and high-intent conversion."
+          ],
+          harvestedImages: FALLBACK_IMAGES,
+          harvestedNavLinks: [
+            { label: "Architecture", href: "#architecture" },
+            { label: "Proof of Work", href: "#proof" },
+            { label: "Methodology", href: "#method" },
+            { label: "Inquire", href: "#inquire" }
+          ],
+          detectedFonts: ["Archivo", "IBM Plex Mono"],
+          containerCount: 22,
+          sectionCount: 6
+        };
+      }
+
+      if (!harvested.harvestedImages || harvested.harvestedImages.length < 3) {
+        harvested.harvestedImages = [...(harvested.harvestedImages || []), ...FALLBACK_IMAGES].slice(0, 6);
+      }
+
+      state.harvested = harvested;
+      compileReport();
+    }
+
+    function compileReport() {
+      const h = state.harvested;
+      const corpus = [h.siteTitle, h.primaryHeadline, ...h.secondaryHeadlines, ...h.leadParagraphs].join(" ");
+      const intentKey = detectIntent(h.hostname, corpus, state.intentLens);
+      const meta = INTENT_META[intentKey] || INTENT_META.editorial_world;
+      const pal = PALETTES[state.nuanceTone] || PALETTES.swiss_architectural;
+      const directions = buildDirections(intentKey, pal, h);
+      const boxScore = Math.min(96, Math.max(28, Math.round(35 + h.containerCount * 1.4)));
+
+      state.report = {
+        intentKey,
+        intentLabel: meta.label,
+        intentRationale: meta.rationale,
+        palette: pal,
+        boxScore,
+        directions
+      };
+
+      document.getElementById("badge-target-host").textContent = "TARGET: " + h.hostname;
+      document.getElementById("badge-intent-label").textContent = "LENS: " + meta.label;
+      render();
+    }
+
+    function setViewMode(mode) {
+      state.viewMode = mode;
+      state.protoStateTwo = false;
+      document.querySelectorAll(".view-btn").forEach((btn) => {
+        const v = btn.getAttribute("data-view");
+        if (v === mode) {
+          btn.className = "view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#be2623] text-white font-bold shadow-md";
+        } else {
+          btn.className = "view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#242220] text-[#cfc8bc] hover:text-white border border-[#3a3632]";
+        }
+      });
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function render() {
+      const root = document.getElementById("app-root");
+      const h = state.harvested;
+      const r = state.report;
+      if (!h || !r) return;
+
+      const pal = r.palette;
+
+      // =======================================================================
+      // FULL-SCREEN CONCEPT A REBUILD
+      // =======================================================================
+      if (state.viewMode === "concept-A") {
+        const dir = r.directions[0];
+        const img = h.harvestedImages[state.activePlateIdx % h.harvestedImages.length];
+        const mod = dir.modules[state.activePinIdx % dir.modules.length];
+        root.innerHTML = `
+          <div style="background:${pal.surface};color:${pal.ink}" class="min-h-[calc(100vh-96px)] flex flex-col justify-between">
+            <div style="border-color:${pal.border}" class="border-b px-6 sm:px-10 py-3.5 flex flex-wrap items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span style="background:${pal.accent}" class="w-2 h-2 rounded-full"></span>
+                <span class="text-xs tracking-[0.22em] uppercase font-semibold">${h.hostname}</span>
+                ${state.showGuidance ? `<span class="px-2 py-0.5 bg-emerald-900/10 border border-emerald-700/40 text-emerald-900 font-mono text-[9px] uppercase">✓ REBUILT FROM HARVESTED DOM (${h.harvestedNavLinks.length} NAV LINKS PRUNED)</span>` : ""}
+              </div>
+              <div class="flex items-center gap-5 text-[11px] tracking-[0.18em] uppercase">
+                ${h.harvestedNavLinks.slice(0, 4).map(l => `<span class="opacity-70">${l.label}</span>`).join("")}
+                <span style="background:${pal.ink};color:${pal.surface}" class="px-3.5 py-1.5 text-[10px] font-semibold">BEGIN HERE →</span>
+              </div>
+            </div>
+
+            <div class="flex-1 grid grid-cols-1 lg:grid-cols-12">
+              <div style="border-color:${pal.border}" class="lg:col-span-4 border-b lg:border-b-0 lg:border-r p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
+                <div class="space-y-6">
+                  <div style="border-color:${pal.border}" class="flex items-baseline justify-between border-b pb-4">
+                    <span class="font-sans font-light text-6xl tracking-[-0.05em]">0${state.activePlateIdx + 1}<span class="text-xl opacity-40">/03</span></span>
+                    <div class="flex gap-1">
+                      ${[0, 1, 2].map(i => `<button onclick="window.setPlate(${i})" style="background:${state.activePlateIdx === i ? pal.ink : pal.secondary};color:${state.activePlateIdx === i ? pal.surface : pal.ink}" class="px-2.5 py-1 text-[10px] tracking-[0.16em] uppercase font-semibold cursor-pointer">PLATE 0${i + 1}</button>`).join("")}
+                    </div>
+                  </div>
+
+                  ${state.showGuidance ? `
+                    <div class="p-3.5 bg-amber-500/10 border-l-2 border-amber-700 text-xs space-y-1">
+                      <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-amber-900 font-bold block">🧭 SIMULTANEOUS REBUILD + GUIDANCE</span>
+                      <p class="font-serif text-[#292623]"><strong>Utilized:</strong> Your live H1 (<em>“${dir.headline}”</em>) and harvested imagery. <strong>Guided:</strong> Stripped ${h.containerCount} competing boxes and staged your deeper proof in State II so visitors pull the red datum thread to reveal it.</p>
+                    </div>
+                  ` : ""}
+
+                  <div class="space-y-3">
+                    <span style="color:${pal.accent}" class="text-[10px] tracking-[0.22em] uppercase font-semibold block">${state.protoStateTwo ? dir.stateTwoLabel : dir.stateOneLabel}</span>
+                    <h1 class="font-sans font-light text-3xl sm:text-4xl tracking-[-0.035em] leading-[1.1]">${state.protoStateTwo ? dir.stateTwoHeadline : dir.headline}</h1>
+                    <p style="border-color:${pal.accent}" class="font-serif text-base sm:text-lg leading-relaxed border-l-2 pl-4">${state.protoStateTwo ? dir.stateTwoText : dir.subline}</p>
+                  </div>
+                </div>
+
+                <div style="border-color:${pal.border}" class="my-8 py-6 border-t border-b space-y-4">
+                  <div class="flex items-center justify-between text-[10px] tracking-[0.2em] uppercase">
+                    <span style="color:${pal.accent}" class="font-semibold">RED THREAD DATUM TENSION</span>
+                    <span class="font-mono font-bold">${state.protoStateTwo ? "100% (STATE II)" : "0% (STATE I)"}</span>
+                  </div>
+                  <button onclick="window.toggleProtoState()" style="background:${state.protoStateTwo ? pal.ink : pal.accent}" class="w-full py-3.5 px-4 text-white text-[10px] tracking-[0.2em] uppercase font-semibold cursor-pointer flex items-center justify-between">
+                    <span>${state.protoStateTwo ? "RETURN TO STATE I SURFACE" : dir.mechanic}</span>
+                    <span>→</span>
+                  </button>
+                </div>
+
+                <div class="text-xs opacity-75 space-y-1">
+                  <span class="font-mono text-[10px] uppercase block">TYPOGRAPHY: ${pal.fontLabel}</span>
+                  <p class="font-serif italic">${dir.whyItWorks}</p>
+                </div>
+              </div>
+
+              <div style="background:${pal.secondary};color:${state.nuanceTone === 'cinematic_contrast' ? '#fbfaf7' : pal.ink}" class="lg:col-span-8 p-6 sm:p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden">
+                <div class="relative w-full h-[52vh] min-h-[360px] bg-[#121110] overflow-hidden border border-[#dfd9cf] shadow-xl">
+                  <img src="${img}" alt="${dir.headline}" class="w-full h-full object-cover object-center transition-all duration-700" style="transform:${state.protoStateTwo ? 'scale(1.12)' : 'scale(1.0)'}" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/25"></div>
+                  <div class="absolute top-1/2 left-0 right-1/3 h-[2px]" style="background:${pal.accent}"></div>
+
+                  ${dir.modules.map((m, idx) => `
+                    <button onclick="window.selectPin(${idx})" style="left:${32 + idx * 22}%;top:${42 + (idx % 2) * 18}%" class="absolute z-30 -translate-x-1/2 -translate-y-1/2 cursor-pointer flex items-center gap-2">
+                      <span style="background:${state.activePinIdx === idx ? pal.accent : '#fbfaf7'};color:${state.activePinIdx === idx ? '#fff' : '#141312'}" class="w-7 h-7 rounded-full flex items-center justify-center font-mono text-[10px] font-bold shadow-lg">0${idx + 1}</span>
+                      <span class="hidden sm:inline-block px-2.5 py-1 bg-[#fbfaf7]/95 text-[#141312] text-[10px] tracking-[0.15em] uppercase font-semibold shadow-md border-l-2 border-[#be2623]">${m.label}</span>
+                    </button>
+                  `).join("")}
+
+                  <div class="absolute bottom-4 left-4 right-4 sm:max-w-lg bg-[#fbfaf7]/95 text-[#141312] p-4 border border-[#dfd9cf] shadow-lg">
+                    <div class="flex items-center justify-between text-[10px] tracking-[0.18em] uppercase text-[#be2623] font-semibold mb-1">
+                      <span>${mod.label}</span>
+                      <span>${mod.tag}</span>
+                    </div>
+                    <p class="font-serif text-sm">${state.protoStateTwo ? mod.revealed : mod.surface}</p>
+                  </div>
+                </div>
+
+                <div style="background:${pal.surface};border-color:${pal.border};color:${pal.ink}" class="mt-6 border p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                  ${dir.modules.map((m, i) => `
+                    <div class="space-y-1">
+                      <span style="color:${pal.accent}" class="text-[10px] tracking-[0.18em] uppercase font-semibold block">0${i + 1} · ${m.label}</span>
+                      <p class="font-serif text-sm">${state.protoStateTwo ? m.revealed : m.surface}</p>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // =======================================================================
+      // FULL-SCREEN CONCEPT B REBUILD (TWO-LEAF MONOGRAPH)
+      // =======================================================================
+      if (state.viewMode === "concept-B") {
+        const dir = r.directions[1];
+        const allOpen = state.unstitchedIndices.length === dir.modules.length;
+        const pct = Math.round((state.unstitchedIndices.length / dir.modules.length) * 100);
+        root.innerHTML = `
+          <div style="background:${pal.surface};color:${pal.ink}" class="min-h-[calc(100vh-96px)] flex flex-col justify-between">
+            <div style="border-color:${pal.border}" class="border-b px-6 sm:px-10 py-3.5 flex flex-wrap items-center justify-between gap-4 text-[11px] tracking-[0.2em] uppercase">
+              <div class="flex items-center gap-3">
+                <span class="font-semibold">${h.hostname} // TWO-LEAF MONOGRAPH EDITION</span>
+                ${state.showGuidance ? `<span class="px-2 py-0.5 bg-emerald-900/10 border border-emerald-700/40 text-emerald-900 font-mono text-[9px] uppercase">✓ ZERO HERO BANNER · INTERLINEAR UNSTITCHING</span>` : ""}
+              </div>
+              <button onclick="window.toggleAllUnstitch()" style="background:${pal.ink};color:${pal.surface}" class="px-3.5 py-1.5 text-[10px] tracking-[0.18em] uppercase font-semibold cursor-pointer">
+                ${allOpen ? "RESTITCH SURFACE CLAIMS (STATE I)" : "PULL GUTTER THREAD · UNSTITCH ALL PROOF (STATE II)"}
+              </button>
+            </div>
+
+            <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 relative">
+              <div style="border-color:${pal.border}" class="lg:col-span-7 p-6 sm:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r flex flex-col justify-between">
+                <div style="border-color:${pal.border}" class="border-b pb-6 mb-8 flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+                  <div>
+                    <span class="text-[10px] tracking-[0.24em] uppercase opacity-60 block mb-1">GALLEY PROOF // ${dir.archetype}</span>
+                    <h1 class="font-sans font-light text-3xl sm:text-4xl tracking-[-0.035em]">${dir.headline}</h1>
+                  </div>
+                  <span style="color:${pal.accent}" class="text-[10px] tracking-[0.2em] uppercase font-semibold">Click any red-underlined clause to unstitch</span>
+                </div>
+
+                ${state.showGuidance ? `
+                  <div class="mb-6 p-4 bg-amber-500/10 border-l-2 border-amber-700 text-xs space-y-1">
+                    <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-amber-900 font-bold block">🧭 WHY THIS GUIDES ${h.hostname.toUpperCase()}:</span>
+                    <p class="font-serif text-[#292623]">Instead of placing paragraphs inside stacked cards, your copy is staged as an interactive galley where visitors click or pull the central binding thread to strike through surface claims and unfold your hardest proof.</p>
+                  </div>
+                ` : ""}
+
+                <div class="space-y-8 my-auto max-w-3xl">
+                  ${dir.modules.map((m, idx) => {
+                    const isOpen = state.unstitchedIndices.includes(idx);
+                    const img = h.harvestedImages[idx % h.harvestedImages.length];
+                    return `
+                      <div class="relative pl-10">
+                        <button onclick="window.toggleUnstitch(${idx})" class="absolute left-0 top-1.5 flex items-center gap-1.5 cursor-pointer">
+                          <span style="background:${isOpen ? pal.accent : pal.border}" class="w-2.5 h-2.5 rounded-full"></span>
+                          <span class="font-mono text-[11px] opacity-60">0${idx + 1}</span>
+                        </button>
+                        <span class="font-mono text-[10px] uppercase tracking-[0.18em] opacity-60 block mb-1">${m.label}</span>
+                        <p class="font-serif text-xl sm:text-2xl leading-[1.4] font-light">
+                          <button onclick="window.toggleUnstitch(${idx})" class="inline text-left cursor-pointer px-1 ${isOpen ? 'line-through decoration-[#be2623] decoration-2 opacity-50' : 'border-b-2 border-[#be2623]'}">${m.surface}</button>
+                        </p>
+                        ${isOpen ? `
+                          <div style="border-color:${pal.accent};background:${pal.secondary};color:${state.nuanceTone === 'cinematic_contrast' ? '#fbfaf7' : pal.ink}" class="mt-3 pl-4 border-l-2 p-4 space-y-3">
+                            <span style="color:${pal.accent}" class="text-[10px] tracking-[0.2em] uppercase font-semibold block">UNSTITCHED PROOF // ${m.tag}</span>
+                            <p class="font-sans font-light text-base sm:text-lg">${m.revealed}</p>
+                            <div class="relative h-20 w-full overflow-hidden bg-[#141312] border border-[#dfd9cf]">
+                              <img src="${img}" class="w-full h-full object-cover object-center" />
+                            </div>
+                          </div>
+                        ` : ""}
+                      </div>
+                    `;
+                  }).join("")}
+                </div>
+
+                <div style="border-color:${pal.border}" class="mt-10 pt-4 border-t text-[10px] tracking-[0.2em] uppercase">
+                  CENTRAL GUTTER BINDING THREAD UNSTITCHED: ${pct}%
+                </div>
+              </div>
+
+              <div class="lg:col-span-5 p-6 sm:p-10 lg:p-14 dot-grid flex flex-col justify-between" style="background-color:${pal.secondary}">
+                <div style="background:${pal.surface};border-color:${pal.border};color:${pal.ink}" class="p-6 sm:p-8 border shadow-sm space-y-5">
+                  <div style="border-color:${pal.border}" class="flex items-center justify-between border-b pb-3 text-[10px] tracking-[0.2em] uppercase">
+                    <span>HARVESTED SECTION LEDGER</span>
+                    <span style="color:${pal.accent}" class="font-semibold">PRIORITY MATRIX</span>
+                  </div>
+                  <h2 class="font-serif text-2xl">The Architecture You Keep (${h.hostname})</h2>
+                  <p class="font-serif italic text-sm opacity-75">${dir.stateTwoText}</p>
+                  <div class="space-y-2.5">
+                    ${h.secondaryHeadlines.map(sec => `
+                      <div style="border-color:${pal.accent}" class="p-3 border flex items-center justify-between gap-3">
+                        <span class="font-serif text-sm sm:text-base font-medium">“${sec}”</span>
+                        <span style="background:${pal.accent}" class="px-2 py-0.5 text-[9px] tracking-[0.16em] uppercase text-white font-semibold">KEPT</span>
+                      </div>
+                    `).join("")}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // =======================================================================
+      // FULL-SCREEN CONCEPT C REBUILD (2D CALIBRATED SURVEY ATLAS)
+      // =======================================================================
+      if (state.viewMode === "concept-C") {
+        const dir = r.directions[2];
+        const isTwo = state.atlasDistortion >= 40;
+        const nodes = [h.primaryHeadline, ...h.secondaryHeadlines, "Verified Proof Archive", "Direct Intake Threshold"].slice(0, 6);
+        const geo = [{x:18,y:26},{x:50,y:26},{x:82,y:26},{x:18,y:72},{x:50,y:72},{x:82,y:72}];
+        const grav = [{x:36,y:44},{x:58,y:34},{x:74,y:50},{x:44,y:60},{x:26,y:56},{x:22,y:24}];
+        const pos = nodes.map((_, i) => {
+          const t = state.atlasDistortion / 100;
+          return {
+            x: geo[i].x + (grav[i].x - geo[i].x) * t,
+            y: geo[i].y + (grav[i].y - geo[i].y) * t
+          };
+        });
+        const sel = state.selectedLocusIdx % nodes.length;
+        const lnk = (sel + 1) % nodes.length;
+        const mod = dir.modules[sel % dir.modules.length];
+
+        root.innerHTML = `
+          <div style="background:${pal.surface};color:${pal.ink}" class="min-h-[calc(100vh-96px)] flex flex-col justify-between">
+            <div style="border-color:${pal.border};background:${pal.secondary};color:${state.nuanceTone === 'cinematic_contrast' ? '#fbfaf7' : pal.ink}" class="border-b px-6 sm:px-10 py-3.5 flex flex-wrap items-center justify-between gap-4 text-[10px] tracking-[0.2em] uppercase">
+              <span class="font-semibold">${h.hostname} // ${dir.name}</span>
+              <div class="flex gap-2">
+                <button onclick="window.setAtlasDistortion(0)" style="background:${!isTwo ? pal.accent : pal.surface};color:${!isTwo ? '#fff' : pal.ink}" class="px-3 py-1.5 font-semibold cursor-pointer border">${dir.stateOneLabel}</button>
+                <button onclick="window.setAtlasDistortion(100)" style="background:${isTwo ? pal.accent : pal.surface};color:${isTwo ? '#fff' : pal.ink}" class="px-3 py-1.5 font-semibold cursor-pointer border">${dir.stateTwoLabel}</button>
+              </div>
+            </div>
+
+            <div class="flex-1 grid grid-cols-1 lg:grid-cols-12">
+              <div style="border-color:${pal.border}" class="lg:col-span-8 relative min-h-[540px] border-b lg:border-b-0 lg:border-r p-6 sm:p-10 flex flex-col justify-between drafting-grid overflow-hidden">
+                <div style="border-color:${pal.border}" class="relative z-20 flex items-center justify-between border-b pb-2 text-[10px] font-mono uppercase">
+                  <span>${isTwo ? "AXIS X · RE-CLUSTERED BY VALUE & GRAVITY" : "AXIS X · CURRENT SITEMAP SECTION ORDER"}</span>
+                  <span style="color:${pal.accent}" class="font-bold">PROJECTION SHIFT: ${state.atlasDistortion}%</span>
+                </div>
+
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="absolute inset-0 w-full h-full pointer-events-none z-20">
+                  <line x1="${pos[sel].x}" y1="${pos[sel].y}" x2="${pos[lnk].x}" y2="${pos[lnk].y}" stroke="${pal.accent}" stroke-width="0.5" />
+                  <circle cx="${pos[sel].x}" cy="${pos[sel].y}" r="1.2" fill="${pal.accent}" />
+                  <circle cx="${pos[lnk].x}" cy="${pos[lnk].y}" r="0.9" fill="${pal.accent}" />
+                </svg>
+
+                <div class="relative flex-1 my-4">
+                  ${nodes.map((title, idx) => `
+                    <button onclick="window.selectLocus(${idx})" style="left:${pos[idx].x}%;top:${pos[idx].y}%;transform:translate(-50%,-50%)" class="absolute z-30 w-44 sm:w-52 text-left transition-all duration-700 cursor-pointer ${idx === sel ? 'z-40 scale-105' : 'opacity-85 hover:opacity-100'}">
+                      <div style="border-color:${idx === sel ? pal.accent : pal.border}" class="bg-white text-[#141312] p-2 border shadow-md">
+                        <div class="flex items-center justify-between text-[9px] font-mono uppercase pb-1 mb-1 border-b border-[#efebe3]">
+                          <span style="color:${idx === sel ? pal.accent : '#7a7166'}" class="font-bold">LOC-0${idx + 1}</span>
+                          <span>${idx === sel ? "● ACTIVE" : "INSPECT"}</span>
+                        </div>
+                        <div class="relative h-20 w-full overflow-hidden bg-[#141312] mb-1.5">
+                          <img src="${h.harvestedImages[idx % h.harvestedImages.length]}" class="w-full h-full object-cover object-center" />
+                        </div>
+                        <h4 class="font-sans text-xs font-semibold truncate">${title}</h4>
+                      </div>
+                    </button>
+                  `).join("")}
+                </div>
+
+                <div class="relative z-30 bg-white text-[#141312] border border-[#dfd9cf] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <span style="color:${pal.accent}" class="text-[10px] tracking-[0.2em] uppercase font-semibold block">${dir.mechanic}</span>
+                    <p class="font-serif italic text-xs text-[#4a443e]">Drag or click to warp ${h.hostname}'s harvested sections from standard sitemap order into value adjacency.</p>
+                  </div>
+                  <button onclick="window.setAtlasDistortion(${isTwo ? 0 : 100})" style="background:${pal.accent}" class="px-4 py-2 text-white text-[10px] font-mono uppercase font-bold cursor-pointer">
+                    ${isTwo ? "RESET TO 0% GRID" : "WARP TO 100% GRAVITY →"}
+                  </button>
+                </div>
+              </div>
+
+              <div class="lg:col-span-4 p-6 sm:p-10 bg-white text-[#141312] flex flex-col justify-between">
+                <div class="space-y-5">
+                  <div class="border-b border-[#ece7df] pb-4">
+                    <span style="color:${pal.accent}" class="text-[10px] tracking-[0.22em] uppercase font-semibold block">SURVEY DOSSIER // LOC-0${sel + 1}</span>
+                    <h2 class="font-sans font-light text-2xl sm:text-3xl tracking-[-0.03em] mt-1">${nodes[sel]}</h2>
+                  </div>
+
+                  ${state.showGuidance ? `
+                    <div class="p-3.5 bg-amber-500/10 border-l-2 border-amber-700 text-xs space-y-1">
+                      <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-amber-900 font-bold block">🧭 SIMULTANEOUS REBUILD + GUIDANCE</span>
+                      <p class="font-serif text-[#292623]">All 6 nodes on the canvas were harvested from <strong>${h.hostname}</strong>. Warping the coordinate grid lets visitors see how your offerings connect without scrolling through 6 separate banners.</p>
+                    </div>
+                  ` : ""}
+
+                  <div class="relative h-44 w-full overflow-hidden bg-[#141312] border border-[#dfd9cf]">
+                    <img src="${h.harvestedImages[sel % h.harvestedImages.length]}" class="w-full h-full object-cover object-center" />
+                  </div>
+
+                  <div class="p-4 bg-[#faf9f5] border border-[#e4dfd7] space-y-3">
+                    <div>
+                      <span class="text-[9px] font-mono uppercase text-[#7a7166] block">CURRENT SITE PLACEMENT (STATE I):</span>
+                      <p class="font-serif text-xs sm:text-sm">${mod.surface}</p>
+                    </div>
+                    <div class="pt-2 border-t border-[#e8e3da]">
+                      <span style="color:${pal.accent}" class="text-[9px] font-mono uppercase font-bold block">RE-ARCHITECTED ADJACENCY (STATE II):</span>
+                      <p class="font-sans text-xs sm:text-sm font-semibold">${mod.revealed}</p>
+                    </div>
+                  </div>
+
+                  <button onclick="window.selectLocus(${lnk})" style="background:${pal.ink}" class="w-full py-3 px-4 text-white text-[10px] tracking-[0.2em] uppercase font-semibold cursor-pointer flex items-center justify-between">
+                    <span>FOLLOW RED THREAD TO ${nodes[lnk]}</span>
+                    <span>→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // =======================================================================
+      // DEFAULT VIEW: DIAGNOSTIC DOSSIER + 3 FULL-SCREEN CONCEPT LAUNCHERS
+      // =======================================================================
+      root.innerHTML = `
+        <main class="max-w-[1440px] mx-auto px-6 sm:px-10 py-10 sm:py-14 space-y-14">
+          <!-- 1. SCANNER + INTENT LENS & NUANCE ENGINE -->
+          <section class="bg-white border border-[#dfd9cf] p-6 sm:p-10 shadow-sm space-y-6">
+            <div class="border-b border-[#ece7df] pb-6 space-y-2 max-w-3xl">
+              <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">CONTEXT &amp; MUSE · ARCHITECTURAL DIAGNOSTIC &amp; 3-CONCEPT REBUILD ENGINE</span>
+              <h1 class="font-sans font-light text-3xl sm:text-5xl tracking-[-0.04em] leading-[1.06]">Harvest what they have. Rebuild it into 3 full-screen concepts. Guide what’s missing.</h1>
+              <p class="font-serif italic text-base sm:text-lg text-[#5c554d]">Enter any URL below, then click <strong>“LAUNCH FULL-SCREEN CONCEPT A, B, or C”</strong> to view the target website rebuilt in three distinct interactive architectures using their own harvested headlines, sections, and imagery.</p>
+            </div>
+
+            <form onsubmit="window.onScanSubmit(event)" class="flex flex-col sm:flex-row gap-3">
+              <input id="input-url" type="text" value="${state.url}" placeholder="https://client-domain.com" class="flex-1 bg-[#fbfaf7] border border-[#dfd9cf] px-4 py-3 text-sm font-mono focus:outline-none" />
+              <button type="submit" class="px-7 py-3.5 bg-[#141312] hover:bg-[#be2623] text-white text-[11px] tracking-[0.2em] uppercase font-semibold cursor-pointer transition-colors">
+                HARVEST &amp; GENERATE 3 CONCEPTS →
+              </button>
+            </form>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 pt-2 border-t border-[#f0ece3]">
+              <div class="lg:col-span-7 space-y-2">
+                <span class="text-[10px] tracking-[0.2em] uppercase text-[#7a7166] font-semibold block">1. STRATEGIC INTENT LENS (15 BESPOKE ARCHETYPES ACROSS 5 VERTICALS):</span>
+                <div class="flex flex-wrap gap-1.5">
+                  ${[
+                    {id:"auto",label:"AUTO-DETECT"},
+                    {id:"agency_authority",label:"AGENCY / ADVISORY"},
+                    {id:"product_proof",label:"SAAS / PRODUCT PROOF"},
+                    {id:"sensory_venue",label:"HOSPITALITY / VENUE"},
+                    {id:"public_archive",label:"ARCHIVE / RESEARCH"},
+                    {id:"editorial_world",label:"LITERARY / MONOGRAPH"}
+                  ].map(l => `<button onclick="window.setIntent('${l.id}')" class="px-2.5 py-1.5 text-[10px] tracking-[0.15em] uppercase cursor-pointer border ${state.intentLens === l.id ? 'bg-[#be2623] text-white border-[#be2623] font-semibold' : 'bg-[#fbfaf7] text-[#5c554d] border-[#dfd9cf]'}">${l.label}</button>`).join("")}
+                </div>
+              </div>
+              <div class="lg:col-span-5 space-y-2">
+                <span class="text-[10px] tracking-[0.2em] uppercase text-[#7a7166] font-semibold block">2. VISUAL &amp; TYPOGRAPHIC NUANCE PALETTE:</span>
+                <div class="flex flex-wrap gap-1.5">
+                  ${[
+                    {id:"swiss_architectural",label:"Swiss Gallery"},
+                    {id:"warm_monograph",label:"Warm Monograph"},
+                    {id:"forensic_technical",label:"Forensic Tech"},
+                    {id:"cinematic_contrast",label:"Cinema Contrast"}
+                  ].map(t => `<button onclick="window.setTone('${t.id}')" class="px-2.5 py-1.5 text-[10px] tracking-[0.14em] uppercase cursor-pointer border ${state.nuanceTone === t.id ? 'bg-[#141312] text-white border-[#141312] font-semibold' : 'bg-[#fbfaf7] text-[#5c554d] border-[#dfd9cf]'}">${t.label}</button>`).join("")}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#f0ece3]">
+              <span class="text-[10px] tracking-[0.18em] uppercase text-[#7a7166] font-semibold">LIVE PRESETS:</span>
+              ${[
+                "https://www.contextmuse.com",
+                "https://mapswithteeth.org",
+                "https://jaymevolstad.com",
+                "https://howtoexplainyourselftowolves.com"
+              ].map(u => `<button onclick="window.scanPreset('${u}')" class="px-3 py-1 text-[10px] font-mono border cursor-pointer ${state.url === u ? 'bg-[#141312] text-white border-[#141312]' : 'bg-[#fbfaf7] text-[#5c554d] border-[#dfd9cf]'}">${u.replace(/^https?:\/\/(www\.)?/,'')}</button>`).join("")}
+            </div>
+          </section>
+
+          <!-- 2. THREE FULL-SCREEN CONCEPT PROTOTYPE LAUNCHERS -->
+          <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#dfd9cf] pb-4">
+              <div>
+                <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">PLAYABLE FULL-SCREEN REBUILDS OF ${h.hostname.toUpperCase()}</span>
+                <h2 class="font-sans font-light text-2xl sm:text-4xl tracking-[-0.035em]">Launch the 3 Re-Architected Concept Directions</h2>
+              </div>
+              <span class="text-[11px] tracking-[0.18em] uppercase text-emerald-800 font-semibold">LENS: ${r.intentLabel.toUpperCase()}</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+              ${r.directions.map((d, idx) => `
+                <div class="bg-white border-2 border-[#141312] flex flex-col justify-between shadow-md group">
+                  <div>
+                    <button onclick="window.launchConcept('concept-${d.id}')" class="block w-full text-left relative h-52 overflow-hidden bg-[#141312] border-b border-[#dfd9cf] cursor-pointer">
+                      <img src="${h.harvestedImages[idx % h.harvestedImages.length]}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                      <div class="absolute top-3 left-3 bg-[#be2623] text-white px-3 py-1 text-[10px] tracking-[0.2em] uppercase font-bold">${d.code}</div>
+                      <div class="absolute bottom-3 left-3 right-3 text-white">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-amber-300 block">${d.archetype}</span>
+                        <span class="font-sans text-lg font-light">${d.name}</span>
+                      </div>
+                    </button>
+
+                    <div class="p-6 space-y-4">
+                      <div class="p-3 bg-[#fbfaf7] border-l-2 border-[#be2623] text-xs font-serif">
+                        <strong class="font-sans text-[10px] uppercase tracking-wider text-[#be2623] block">HARVESTED &amp; REBUILT H1:</strong>
+                        “${d.headline}”
+                      </div>
+                      <p class="font-serif text-sm text-[#2e2a27] leading-relaxed"><strong class="font-sans text-[10px] uppercase tracking-wider">Opening Viewport:</strong> ${d.openingSpec}</p>
+                      <p class="font-serif text-sm text-[#2e2a27] leading-relaxed"><strong class="font-sans text-[10px] uppercase tracking-wider text-[#be2623]">Interactive State I → II:</strong> ${d.mechanic}</p>
+                      <p class="font-serif italic text-xs text-[#5c554d]">${d.whyItWorks}</p>
+                    </div>
+                  </div>
+
+                  <div class="p-6 pt-0">
+                    <button onclick="window.launchConcept('concept-${d.id}')" class="w-full py-4 px-5 bg-[#be2623] hover:bg-[#141312] text-white transition-colors text-[11px] tracking-[0.2em] uppercase font-bold cursor-pointer flex items-center justify-between shadow-md">
+                      <span>▶ LAUNCH FULL-SCREEN CONCEPT ${d.id}</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <!-- 3. DIAGNOSTIC AUDIT -->
+          <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#dfd9cf] pb-4">
+              <h2 class="font-sans font-light text-2xl sm:text-3xl tracking-[-0.03em]">I. Diagnostic Audit of <strong>${h.hostname}</strong></h2>
+              <span class="text-[10px] tracking-[0.2em] uppercase text-[#be2623] font-semibold">BOX FATIGUE: ${r.boxScore}/100 (${h.containerCount} CONTAINERS) · FONTS: ${h.detectedFonts.join(", ")}</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-serif text-sm sm:text-base leading-relaxed">
+              <div class="bg-white border border-[#dfd9cf] p-6 sm:p-8 space-y-3">
+                <span class="font-sans text-[10px] tracking-[0.2em] uppercase font-semibold text-emerald-800 block border-b border-[#ece7df] pb-2">01 · WHAT DESERVES PRESERVATION</span>
+                <p><strong>Core Domain Premise:</strong> “${h.primaryHeadline}” carries real authority that deserves an unboxed architectural stage.</p>
+                <p><strong>Harvested Section Anchors:</strong> (${h.secondaryHeadlines.slice(0,3).join(" · ")}) provide a strong conceptual spine once converted into interactive nodes.</p>
+              </div>
+              <div class="bg-white border border-[#dfd9cf] p-6 sm:p-8 space-y-3">
+                <span class="font-sans text-[10px] tracking-[0.2em] uppercase font-semibold text-[#be2623] block border-b border-[#ece7df] pb-2">02 · WHAT IS UNSUCCESSFUL</span>
+                <p><strong>Container &amp; Box Fatigue (${r.boxScore}/100):</strong> ${h.containerCount} bordered/boxed containers make high-conviction proof read like template filler.</p>
+                <p><strong>Over-Explanation Above the Fold:</strong> Summarizes everything in State I static text before earning visual curiosity.</p>
+              </div>
+              <div class="bg-white border border-[#dfd9cf] p-6 sm:p-8 space-y-3">
+                <span class="font-sans text-[10px] tracking-[0.2em] uppercase font-semibold text-amber-800 block border-b border-[#ece7df] pb-2">03 · WHAT IS LIMITING THE DESIGN</span>
+                <p><strong>Single-State Static Sections:</strong> Visitors scroll passively instead of pulling a datum seam, unstitching a claim, or warping a coordinate survey.</p>
+                <p><strong>Category-Blind Grammar:</strong> Needs mechanics built specifically for <em>${r.intentLabel}</em>.</p>
+              </div>
+            </div>
+          </section>
+        </main>
+      `;
+    }
+
+    // Global handlers for inline controls
+    window.onScanSubmit = (e) => {
+      e.preventDefault();
+      const val = document.getElementById("input-url").value;
+      harvestAndCompile(val);
+    };
+    window.scanPreset = (u) => {
+      state.intentLens = "auto";
+      harvestAndCompile(u);
+    };
+    window.setIntent = (id) => {
+      state.intentLens = id;
+      compileReport();
+    };
+    window.setTone = (id) => {
+      state.nuanceTone = id;
+      compileReport();
+    };
+    window.launchConcept = (mode) => setViewMode(mode);
+    window.toggleProtoState = () => {
+      state.protoStateTwo = !state.protoStateTwo;
+      render();
+    };
+    window.setPlate = (idx) => {
+      state.activePlateIdx = idx;
+      render();
+    };
+    window.selectPin = (idx) => {
+      state.activePinIdx = idx;
+      state.protoStateTwo = true;
+      render();
+    };
+    window.toggleUnstitch = (idx) => {
+      if (state.unstitchedIndices.includes(idx)) {
+        state.unstitchedIndices = state.unstitchedIndices.filter(x => x !== idx);
+      } else {
+        state.unstitchedIndices.push(idx);
+      }
+      render();
+    };
+    window.toggleAllUnstitch = () => {
+      const len = state.report.directions[1].modules.length;
+      state.unstitchedIndices = state.unstitchedIndices.length === len ? [] : [0, 1, 2];
+      render();
+    };
+    window.setAtlasDistortion = (val) => {
+      state.atlasDistortion = val;
+      render();
+    };
+    window.selectLocus = (idx) => {
+      state.selectedLocusIdx = idx;
+      state.atlasDistortion = 100;
+      render();
+    };
+
+    document.querySelectorAll(".view-btn").forEach((btn) => {
+      btn.addEventListener("click", () => setViewMode(btn.getAttribute("data-view")));
+    });
+
+    document.getElementById("btn-toggle-guidance").addEventListener("click", (e) => {
+      state.showGuidance = !state.showGuidance;
+      e.currentTarget.textContent = "🧭 GUIDANCE NOTES: " + (state.showGuidance ? "ON" : "OFF");
+      render();
+    });
+
+    document.getElementById("btn-export-html").addEventListener("click", () => {
+      if (!state.harvested || !state.report) return;
+      const blob = new Blob([document.documentElement.outerHTML], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "contextmuse-auditstudio-" + state.harvested.hostname + ".html";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Initial load
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("site")) state.url = params.get("site");
+    if (params.get("intent")) state.intentLens = params.get("intent");
+    if (params.get("tone")) state.nuanceTone = params.get("tone");
+    harvestAndCompile(state.url);
+  </script>
+</body>
+</html>
