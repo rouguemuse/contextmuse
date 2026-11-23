@@ -275,6 +275,41 @@ export const SPA_ROUTE_SEO = {
       ],
     },
   },
+  '/prompt-pack/': {
+    path: '/prompt-pack/',
+    outputFile: 'prompt-pack/index.html',
+    title: '12-Stage SEO, Conversion & Claude Quality Auditor Prompt Pack ($39) | Context & Muse',
+    description:
+      '12-stage Audit-to-Action SEO & Conversion prompt architecture + 10-Section Cold Website Perception Audit + Installable Claude Deliverable Quality Auditor Skill (E1–E4 Rubric & P0–P3 Gate).',
+    canonical: 'https://www.contextmuse.com/prompt-pack/',
+    ogType: 'product',
+    ogImage: 'https://www.contextmuse.com/assets/captures/blueprints/showcase-cover.png',
+    h1: '12-Stage SEO, Conversion & Claude Quality Auditor Prompt Pack.',
+    lead: 'Stop running generic AI audits that miss the fix. Includes the 10-Section Cold Visitor Website Perception Audit, Installable Claude E1–E4 Quality Auditor Skill, Hub-and-Spoke SEO Architect, and JSON-LD Schema Compiler.',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        BASE_ORGANIZATION_NODE,
+        BASE_WEBSITE_NODE,
+        {
+          '@type': 'Product',
+          '@id': 'https://www.contextmuse.com/prompt-pack/#product',
+          name: 'Context & Muse 12-Stage SEO, Conversion & Claude Quality Auditor Prompt Pack',
+          description:
+            '12-stage Audit-to-Action SEO & Conversion prompt pipeline + 10-Section Independent Website Perception Audit + Installable Claude Deliverable Quality Auditor Skill (E1–E4 Rubric & P0–P3 Defect Gate).',
+          sku: 'CXM-PP-03',
+          brand: { '@id': 'https://www.contextmuse.com/#organization' },
+          offers: {
+            '@type': 'Offer',
+            url: 'https://www.contextmuse.com/prompt-pack/',
+            price: '39.00',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
+        },
+      ],
+    },
+  },
 };
 
 export function normalizeSpaPath(rawPathname) {
@@ -283,6 +318,7 @@ export function normalizeSpaPath(rawPathname) {
   if (!clean) return '/';
   if (clean === '/index') return '/work/';
   if (clean === '/design-intelligence') return '/lab/design-intelligence/';
+  if (clean === '/blueprints/prompt-pack') return '/prompt-pack/';
   return `${clean}/`;
 }
 

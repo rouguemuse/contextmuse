@@ -139,6 +139,22 @@
     {
       "source": "/method/",
       "destination": "/method/index.html"
+    },
+    {
+      "source": "/prompt-pack",
+      "destination": "/prompt-pack/index.html"
+    },
+    {
+      "source": "/prompt-pack/",
+      "destination": "/prompt-pack/index.html"
+    },
+    {
+      "source": "/blueprints/prompt-pack",
+      "destination": "/prompt-pack/index.html"
+    },
+    {
+      "source": "/blueprints/prompt-pack/",
+      "destination": "/prompt-pack/index.html"
     }
   ],
   "headers": [

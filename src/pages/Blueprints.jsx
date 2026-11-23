@@ -436,6 +436,8 @@ const PRACTICAL_COLLECTION = [
     terms: 'One-time purchase · Works with Claude (Desktop, Code & Skills), ChatGPT & Gemini',
     stripeUrl: 'https://buy.stripe.com/eVq14mezXeWCbwzg4lebu0c',
     ctaLabel: 'Acquire Prompt Pack — $39',
+    spokeUrl: '/prompt-pack',
+    spokeLabel: 'Full Landing Page & Live Sandbox',
     specs: [
       'Prompts 01–03 (Claude Audit Suite): 10-Section Uncontaminated Website Perception Audit, E1–E4 Deliverable Quality Auditor & 12-Item Live Security/SEO Fix Compiler',
       'Prompts 04–06 (Conversion & Positioning): Above-the-Fold 3-Second Anti-Cliché Rewrite, 5-Spoke Commercial Keyword Funnel & $39→$395 Productized Offer Ladder',
@@ -1579,9 +1581,20 @@ export default function Blueprints() {
 
                   {/* 6. Unmistakable Purchase Action Footer */}
                   <div className="border-t-[2px] border-[#141817] bg-[#EAE3D5]/65 px-6 py-4 flex flex-wrap items-center justify-between gap-3">
-                    <span className="font-mono text-[10.5px] uppercase tracking-wider text-[#141817]/75">
-                      STRIPE VERIFIED CHECKOUT · INSTANT RECEIPT
-                    </span>
+                    {item.spokeUrl ? (
+                      <Link
+                        to={item.spokeUrl}
+                        data-testid={`spoke-${item.id}`}
+                        className="inline-flex items-center gap-1.5 border-[1.5px] border-[#141817] bg-[#FAF8F3] px-3.5 py-2 font-mono text-[11px] font-bold uppercase tracking-wider text-[#123F38] shadow-[2px_2px_0_#141817] hover:bg-[#141817] hover:text-[#E5E750] transition-colors"
+                      >
+                        <span>{item.spokeLabel || 'Full Landing Page'}</span>
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </Link>
+                    ) : (
+                      <span className="font-mono text-[10.5px] uppercase tracking-wider text-[#141817]/75">
+                        STRIPE VERIFIED CHECKOUT · INSTANT RECEIPT
+                      </span>
+                    )}
                     <a
                       href={item.stripeUrl}
                       target="_blank"

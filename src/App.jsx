@@ -18,6 +18,7 @@ import Home from '@/pages/Home';
 import Work from '@/pages/Work';
 import Builds from '@/pages/Builds';
 import Blueprints from '@/pages/Blueprints';
+import PromptPack from '@/pages/PromptPack';
 import Lab from '@/pages/Lab';
 import Method from '@/pages/Method';
 import DesignIntelligenceCaseStudy from '@/pages/DesignIntelligenceCaseStudy';
@@ -98,6 +99,8 @@ const AuthenticatedApp = () => {
         <Route path="/index" element={<Work />} />
         <Route path="/build" element={<Builds />} />
         <Route path="/blueprints" element={<Blueprints />} />
+        <Route path="/prompt-pack" element={<PromptPack />} />
+        <Route path="/blueprints/prompt-pack" element={<PromptPack />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="/lab/design-intelligence" element={<DesignIntelligenceCaseStudy />} />
         <Route path="/design-intelligence" element={<DesignIntelligenceCaseStudy />} />
