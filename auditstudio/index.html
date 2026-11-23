@@ -73,13 +73,10 @@
         00 · DIAGNOSTIC DOSSIER
       </button>
       <button data-view="concept-A" class="view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#242220] text-[#cfc8bc] hover:text-white border border-[#3a3632]">
-        ▶ VIEW LIVE CONCEPT A
+        ▶ VIEW LIVE DIRECTION A
       </button>
       <button data-view="concept-B" class="view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#242220] text-[#cfc8bc] hover:text-white border border-[#3a3632]">
-        ▶ VIEW LIVE CONCEPT B
-      </button>
-      <button data-view="concept-C" class="view-btn px-3 py-1.5 text-[10px] tracking-[0.16em] uppercase cursor-pointer bg-[#242220] text-[#cfc8bc] hover:text-white border border-[#3a3632]">
-        ▶ VIEW LIVE CONCEPT C
+        ▶ VIEW LIVE DIRECTION B
       </button>
     </div>
 
@@ -502,29 +499,32 @@
       const hasViewportMeta = h.hasViewportMeta !== false;
       const ttfbMs = h.ttfbMs || 310;
 
-      const findabilityScore = Math.max(38, Math.min(95, Math.round(
-        52 + (titleLen >= 25 && titleLen <= 68 ? 14 : -6) +
-        (descLen >= 70 && descLen <= 165 ? 16 : -10) +
-        (h1Count === 1 ? 10 : -8) +
-        (hasSitemapXml ? 8 : -5)
+      const findabilityScore = Math.max(38, Math.min(96, Math.round(
+        Math.min(28, titleLen * 0.52) +
+        Math.min(30, descLen * 0.24) +
+        (hasSitemapXml ? 19 : 7) +
+        (canonicalUrl ? 17 : 6)
       )));
 
-      const understandabilityScore = Math.max(35, Math.min(94, Math.round(
-        50 + (jsonLdCount > 0 ? 18 : -12) +
-        (canonicalUrl ? 10 : -6) +
-        (internalLinkCount >= 6 ? 10 : -5) +
-        (h2Count >= 2 ? 8 : -6)
+      const understandabilityScore = Math.max(40, Math.min(95, Math.round(
+        (h1Count === 1 ? 30 : h1Count > 1 ? 18 : 10) +
+        Math.min(26, h2Count * 5) +
+        (jsonLdCount > 0 ? Math.min(24, 14 + jsonLdCount * 5) : 5) +
+        Math.min(15, internalLinkCount * 2)
       )));
 
-      const intentClarityScore = Math.max(40, Math.min(92, Math.round(
-        60 + ((h.leadParagraphs || []).length >= 2 ? 12 : -8) -
-        (boxScore > 65 ? 12 : 0)
+      const intentClarityScore = Math.max(44, Math.min(94, Math.round(
+        (intentKey === "editorial_world" ? 86 : 74) +
+        Math.min(10, (h.leadParagraphs || []).length * 3) -
+        Math.round(boxScore * (intentKey === "editorial_world" ? 0.14 : 0.28))
       )));
 
-      const experienceScore = Math.max(42, Math.min(96, Math.round(
-        68 + (hasViewportMeta ? 12 : -20) +
-        (imagesMissingAlt === 0 ? 10 : -Math.min(14, imagesMissingAlt * 3)) -
-        (boxScore > 70 ? 10 : 0)
+      const altRatio = totalImages > 0 ? (totalImages - imagesMissingAlt) / totalImages : 0.75;
+      const experienceScore = Math.max(42, Math.min(95, Math.round(
+        (hasViewportMeta ? 24 : 8) +
+        Math.max(8, 26 - Math.round(ttfbMs / 140)) +
+        Math.round(altRatio * 24) +
+        Math.round((100 - boxScore) * 0.22)
       )));
 
       const evaluationCategories = [
@@ -693,7 +693,19 @@
 
       state.findingStatusMap = {};
       integratedFindings.forEach((f, idx) => {
-        f.score = idx === 0 ? 62 : idx === 1 ? 88 : idx === 2 ? 54 : idx === 3 ? 79 : idx === 4 ? 64 : idx === 5 ? (100 - Math.round(boxScore * 0.5)) : 84;
+        f.score = idx === 0
+          ? findabilityScore
+          : idx === 1
+          ? Math.min(96, (hasSitemapXml ? 48 : 22) + (canonicalUrl ? 44 : 20))
+          : idx === 2
+          ? understandabilityScore
+          : idx === 3
+          ? Math.min(94, 46 + internalLinkCount * 3)
+          : idx === 4
+          ? intentClarityScore
+          : idx === 5
+          ? (100 - Math.round(boxScore * 0.5))
+          : experienceScore;
         f.curatedRuleId = idx === 0
           ? "LIB-SEO-01 · Search Snippet Clarity (Curated Library)"
           : idx === 1
@@ -1256,6 +1268,52 @@
             </div>
           </section>
 
+          <!-- 2 PLAYABLE FULL-SCREEN CONCEPT PROTOTYPE LAUNCHERS (MOVED UP FOR IMMEDIATE VISIBILITY) -->
+          <section class="border p-6 sm:p-10 space-y-6" style="background-color:${prof.paperBg};border-color:${prof.borderHex}">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b pb-4" style="border-color:${prof.borderHex}">
+              <div>
+                <span class="text-[10px] tracking-[0.22em] uppercase font-semibold block" style="color:${prof.accentHex}">LAYOUT · DIRECTION COMPARISON // 2 PLAYABLE FULL-SCREEN REBUILDS OF ${h.hostname.toUpperCase()}</span>
+                <h2 class="${prof.fontDisplay} font-light text-2xl sm:text-4xl tracking-[-0.035em]">Two Distinct Ways ${h.hostname} Could Evolve</h2>
+              </div>
+              <span class="text-[11px] tracking-[0.18em] uppercase text-emerald-800 font-semibold">LENS: ${r.intentLabel.toUpperCase()}</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+              ${r.directions.slice(0, 2).map((d, idx) => `
+                <div class="bg-white text-[#141312] border-2 border-[#141312] flex flex-col justify-between shadow-md group">
+                  <div>
+                    <button onclick="window.launchConcept('concept-${d.id}')" class="block w-full text-left relative h-56 overflow-hidden bg-[#141312] border-b border-[#dfd9cf] cursor-pointer">
+                      <img src="${h.harvestedImages[idx % h.harvestedImages.length]}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                      <div class="absolute top-3 left-3 bg-[#be2623] text-white px-3 py-1 text-[10px] tracking-[0.2em] uppercase font-bold">DIRECTION ${d.id} · ${d.code}</div>
+                      <div class="absolute bottom-3 left-3 right-3 text-white">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-amber-300 block">${d.archetype}</span>
+                        <span class="font-sans text-xl font-light">${d.name}</span>
+                      </div>
+                    </button>
+
+                    <div class="p-6 space-y-4">
+                      <div class="p-3 bg-[#fbfaf7] border-l-2 border-[#be2623] text-xs font-serif">
+                        <strong class="font-sans text-[10px] uppercase tracking-wider text-[#be2623] block">HARVESTED &amp; REBUILT H1:</strong>
+                        “${d.headline}”
+                      </div>
+                      <p class="font-serif text-sm text-[#2e2a27] leading-relaxed"><strong class="font-sans text-[10px] uppercase tracking-wider">Opening Viewport:</strong> ${d.openingSpec}</p>
+                      <p class="font-serif text-sm text-[#2e2a27] leading-relaxed"><strong class="font-sans text-[10px] uppercase tracking-wider text-[#be2623]">Interactive State I → II:</strong> ${d.mechanic}</p>
+                      <p class="font-serif italic text-xs text-[#5c554d]">${d.whyItWorks}</p>
+                    </div>
+                  </div>
+
+                  <div class="p-6 pt-0">
+                    <button onclick="window.launchConcept('concept-${d.id}')" class="w-full py-4 px-5 bg-[#be2623] hover:bg-[#141312] text-white transition-colors text-[11px] tracking-[0.2em] uppercase font-bold cursor-pointer flex items-center justify-between shadow-md">
+                      <span>▶ LAUNCH FULL-SCREEN DIRECTION ${d.id}</span>
+                      <span>→</span>
+                    </button>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
           <!-- ARCHETYPE-AWARE SAFEGUARD + EDITORIAL FEATURE LEAD SPREAD -->
           <section class="border-2 p-6 sm:p-8 space-y-4" style="background-color:${prof.paperBg};border-color:${prof.accentHex}">
             <div class="flex flex-wrap items-center justify-between gap-2">
@@ -1440,52 +1498,6 @@
                   </div>
                 `;
               }).join("")}
-            </div>
-          </section>
-
-          <!-- 4. THREE FULL-SCREEN CONCEPT PROTOTYPE LAUNCHERS -->
-          <section class="space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#dfd9cf] pb-4">
-              <div>
-                <span class="text-[10px] tracking-[0.22em] uppercase text-[#be2623] font-semibold block">III. PLAYABLE FULL-SCREEN REBUILDS OF ${h.hostname.toUpperCase()}</span>
-                <h2 class="font-sans font-light text-2xl sm:text-4xl tracking-[-0.035em]">Launch the 3 Re-Architected Concept Directions</h2>
-              </div>
-              <span class="text-[11px] tracking-[0.18em] uppercase text-emerald-800 font-semibold">LENS: ${r.intentLabel.toUpperCase()}</span>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-              ${r.directions.map((d, idx) => `
-                <div class="bg-white border-2 border-[#141312] flex flex-col justify-between shadow-md group">
-                  <div>
-                    <button onclick="window.launchConcept('concept-${d.id}')" class="block w-full text-left relative h-52 overflow-hidden bg-[#141312] border-b border-[#dfd9cf] cursor-pointer">
-                      <img src="${h.harvestedImages[idx % h.harvestedImages.length]}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" />
-                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                      <div class="absolute top-3 left-3 bg-[#be2623] text-white px-3 py-1 text-[10px] tracking-[0.2em] uppercase font-bold">${d.code}</div>
-                      <div class="absolute bottom-3 left-3 right-3 text-white">
-                        <span class="font-mono text-[10px] uppercase tracking-widest text-amber-300 block">${d.archetype}</span>
-                        <span class="font-sans text-lg font-light">${d.name}</span>
-                      </div>
-                    </button>
-
-                    <div class="p-6 space-y-4">
-                      <div class="p-3 bg-[#fbfaf7] border-l-2 border-[#be2623] text-xs font-serif">
-                        <strong class="font-sans text-[10px] uppercase tracking-wider text-[#be2623] block">HARVESTED &amp; REBUILT H1:</strong>
-                        “${d.headline}”
-                      </div>
-                      <p class="font-serif text-sm text-[#2e2a27] leading-relaxed"><strong class="font-sans text-[10px] uppercase tracking-wider">Opening Viewport:</strong> ${d.openingSpec}</p>
-                      <p class="font-serif text-sm text-[#2e2a27] leading-relaxed"><strong class="font-sans text-[10px] uppercase tracking-wider text-[#be2623]">Interactive State I → II:</strong> ${d.mechanic}</p>
-                      <p class="font-serif italic text-xs text-[#5c554d]">${d.whyItWorks}</p>
-                    </div>
-                  </div>
-
-                  <div class="p-6 pt-0">
-                    <button onclick="window.launchConcept('concept-${d.id}')" class="w-full py-4 px-5 bg-[#be2623] hover:bg-[#141312] text-white transition-colors text-[11px] tracking-[0.2em] uppercase font-bold cursor-pointer flex items-center justify-between shadow-md">
-                      <span>▶ LAUNCH FULL-SCREEN CONCEPT ${d.id}</span>
-                      <span>→</span>
-                    </button>
-                  </div>
-                </div>
-              `).join("")}
             </div>
           </section>
 
