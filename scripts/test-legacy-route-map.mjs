@@ -41,3 +41,10 @@ for (const [source, dest] of knownRoutes) {
 assert.equal(redirects.find((r) => r.source === '/audit/')?.destination, '/custom/?service=audit#intake');
 assert.equal(redirects.find((r) => r.source === '/start/')?.destination, '/custom/#intake');
 console.log(`Validated ${knownRoutes.size} alias routes and preserved both legacy intake links.`);
+
+for (const page of ['export-instructions', 'intake', 'restaurant-data-partner']) {
+  const html = read(`signal/${page}/index.html`);
+  assert.ok(html.includes('href="/method/#ways-to-work-together"'));
+  assert.ok(!html.includes('href="/method/#pricing"'));
+}
+console.log('Validated pricing links in three standalone Signal pages.');
