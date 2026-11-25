@@ -384,56 +384,36 @@
             border-color: #0d635c;
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/v2-shell.css">
+    <link rel="stylesheet" href="/assets/css/v2-legacy-rooms.css">
 </head>
-<body>
+<body class="cm-v2-shell-page cm-v2-legacy-room-page">
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navbar -->
-    <!-- Navbar -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="container nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:9px;">
-                <img src="/assets/images/contextmuse_logo.svg" alt="" aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;display:block;">
-                <span>Context &amp; Muse</span>
-            </a>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <div class="nav-links" id="primary-nav-links">
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Work <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/work/" class="nav-dropdown-link">Case Studies</a>
-                        <a href="/systems/client-builds/" class="nav-dropdown-link">Client Builds</a>
-                        <a href="/proof-of-work/" class="nav-dropdown-link">Proof of Work</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Services <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/services/" class="nav-dropdown-link">Ways to Work Together</a>
-                        <a href="/services/quote-lead-systems/" class="nav-dropdown-link">Quote + Lead Systems</a>
-                        <a href="/website-system-check/" class="nav-dropdown-link">Free Website + System Check</a>
-                        <a href="/systems/" class="nav-dropdown-link">Custom Operations Systems</a>
-                        <a href="/restaurant-systems/" class="nav-dropdown-link">Restaurant Systems</a>
-                        <a href="/partners/" class="nav-dropdown-link">Agency Partners</a>
-                    </div>
-                </details>
-                <details class="nav-dropdown" name="nav-dropdowns">
-                    <summary class="nav-link">Products <span class="nav-dropdown-arrow">▾</span></summary>
-                    <div class="nav-dropdown-content">
-                        <a href="/signal/" class="nav-dropdown-link">Signal</a>
-                        <a href="/gensort/" class="nav-dropdown-link">GenSort</a>
-                        </div>
-                </details>
-                <a href="/creative/" class="nav-link">Creative</a>
-                <a href="/about/" class="nav-link">About</a>
-                <a href="/contact/" class="nav-cta btn-magnetic">Start a Project</a>
+    <header class="cm-v2-header">
+        <div class="cm-v2-header-inner">
+            <div class="cm-v2-brand-group">
+                <a href="/" class="cm-v2-brand">
+                    <img src="/assets/images/contextmuse_logo.svg" alt="" width="20" height="20">
+                    <span>Context &amp; Muse</span>
+                </a>
+                <span class="cm-v2-context-pill">
+                    <span class="cm-v2-context-dot" aria-hidden="true"></span>
+                    <span class="cm-v2-context-num">Work</span>
+                    <span aria-hidden="true">/</span>
+                    <span>EDR Party Rentals</span>
+                </span>
             </div>
+            <nav class="cm-v2-room-links" aria-label="Main navigation">
+                <a href="/build/" class="cm-v2-room-link"><span class="cm-v2-room-num" aria-hidden="true">01</span> <span>Build</span></a>
+                <a href="/blueprints/" class="cm-v2-room-link"><span class="cm-v2-room-num" aria-hidden="true">02</span> <span>Blueprints</span></a>
+                <a href="/work/" class="cm-v2-room-link is-active"><span class="cm-v2-room-num" aria-hidden="true">03</span> <span>Work</span></a>
+                <a href="/lab/" class="cm-v2-room-link"><span class="cm-v2-room-num" aria-hidden="true">04</span> <span>Lab</span></a>
+                <a href="/method/" class="cm-v2-room-link"><span>Method</span></a>
+                <a href="/contact/" class="cm-v2-cta">Start a Project</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero -->
     <header class="cs-hero">
@@ -613,7 +593,7 @@
     </main>
 
     <!-- ── FOOTER ── -->
-        <footer class="site-footer" role="contentinfo">
+        <footer class="site-footer cm-v2-legacy-footer" role="contentinfo">
         <div class="container footer-container">
             <div class="footer-brand">
                 <a href="/" class="logo">
@@ -624,6 +604,16 @@
                 <div class="footer-copyright">&copy; 2026 Context &amp; Muse. All rights reserved.</div>
             </div>
             <div class="footer-links-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title">Explore</div>
+                    <a href="/systems/client-builds/" class="footer-link">Client Builds</a>
+                    <a href="/proof-of-work/" class="footer-link">Proof of Work</a>
+                    <a href="/services/" class="footer-link">Ways to Work Together</a>
+                    <a href="/partners/" class="footer-link">Agency Partners</a>
+                    <a href="/signal/" class="footer-link">Signal</a>
+                    <a href="/gensort/" class="footer-link">GenSort</a>
+                    <a href="/creative/" class="footer-link">Creative</a>
+                </div>
                 <div class="footer-col">
                     <div class="footer-col-title">Services</div>
                     <a href="/services/quote-lead-systems/" class="footer-link">Quote + Lead Systems</a>
@@ -650,6 +640,5 @@
             </div>
         </div>
     </footer>
-    <script src="/assets/js/nav.js" defer></script>
 </body>
 </html>
