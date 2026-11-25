@@ -940,7 +940,7 @@
                 <!-- Demonstration Disclaimer Banner -->
                 <div id="brief-notice-banner" style="background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.28); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px;">
                     <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0;" id="brief-notice-tag">Notice:</span>
-                    <span style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;" id="brief-notice-text">Sample data only. This is not a real restaurant. Baseline metrics are kept constant across all Signal public pages.</span>
+                    <span style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;" id="brief-notice-text">Fictional restaurant and synthetic operating records. Figures on this page are illustrative, not client outcomes or realized savings.</span>
                 </div>
 
                 <!-- Interactive View Switcher: Full Forensic Dossier vs 4:15 PM Pre-Shift Lineup Sheet -->
@@ -988,8 +988,8 @@
                     <div class="stack-grid" id="stack-grid">
                         <div class="stack-card">
                             <div class="stack-title">Source-Recorded Totals</div>
-                            <div class="stack-val" style="color: var(--accent-crimson);" id="stack-confirmed">$15,969 in Records</div>
-                            <div class="stack-note" id="stack-confirmed-note">Source-recorded 60d figures ($12,769: OT $6,846 + voids $1,840 + modifier deficit $2,443 + staff meals $1,640) + calculated promo delta ($3,200)</div>
+                            <div class="stack-val" style="color: var(--accent-crimson);" id="stack-confirmed">See individual findings</div>
+                            <div class="stack-note" id="stack-confirmed-note">Synthetic 60-day records: $6,846 overtime pay, $1,840 voids, $2,443 modifier difference, and $1,640 staff meals. These are different measures, not a combined loss.</div>
                         </div>
                         <div class="stack-card">
                             <div class="stack-title">Projected Turn Opportunity</div>
@@ -1003,8 +1003,8 @@
                         </div>
                         <div class="stack-card featured">
                             <div class="stack-title" style="color: var(--accent-gold);">Total Projected Opportunity</div>
-                            <div class="stack-val" id="stack-total">$75,630–$86,630 / yr</div>
-                            <div class="stack-note" id="stack-total-note">Projected annual opportunity: calculated cost/pricing opportunity ($54,630/yr) + modeled turn opportunity ($21k–$32k/yr). Not realized savings.</div>
+                            <div class="stack-val" id="stack-total">Not combined</div>
+                            <div class="stack-note" id="stack-total-note">Compare the examples one by one. This demo does not establish that opportunities can be added or that they will become savings.</div>
                         </div>
                     </div>
 
@@ -1957,7 +1957,7 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                 badge.style.color = "var(--accent-gold)";
                 noticeTag.textContent = "Notice:";
                 noticeTag.style.color = "var(--accent-gold)";
-                noticeText.textContent = "Sample data only. This is not a real restaurant. Baseline metrics are kept constant across all Signal public pages.";
+                noticeText.textContent = "Fictional restaurant and synthetic operating records. Figures on this page are illustrative, not client outcomes or realized savings.";
                 if (noticeBanner) {
                     noticeBanner.style.background = "rgba(197, 160, 89, 0.08)";
                     noticeBanner.style.borderColor = "rgba(197, 160, 89, 0.28)";
@@ -2005,14 +2005,14 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
 
             // 2. Opportunity Stack Summary
             if (data.isSynthetic) {
-                document.getElementById('stack-confirmed').textContent = "$15,969 in Records";
-                document.getElementById('stack-confirmed-note').textContent = "Source-recorded 60d figures ($12,769: OT $6,846 + voids $1,840 + modifier deficit $2,443 + staff meals $1,640) + calculated promo delta ($3,200)";
+                document.getElementById('stack-confirmed').textContent = "See individual findings";
+                document.getElementById('stack-confirmed-note').textContent = "Synthetic 60-day records: $6,846 overtime pay, $1,840 voids, $2,443 modifier difference, and $1,640 staff meals. These are different measures, not a combined loss.";
                 document.getElementById('stack-probable').textContent = "$21,000–$32,000 / yr";
                 document.getElementById('stack-probable-note').textContent = "Modeled peak table-turn opportunity ($1,750–$2,667/mo projected; requires floor verification)";
                 document.getElementById('stack-recoverable').textContent = "$33,858 / yr";
                 document.getElementById('stack-recoverable-note').textContent = "Projected annual opportunity from capping promo ($19,200/yr / $3,200 period calculated) + repricing 4 extras ($14,658/yr / $2,443 period calculated)";
-                document.getElementById('stack-total').textContent = "$75,630–$86,630 / yr";
-                document.getElementById('stack-total-note').textContent = "Projected annual opportunity: calculated cost/pricing opportunity ($54,630/yr) + modeled peak turn opportunity ($21k–$32k/yr). Realized savings require post-change measurement.";
+                document.getElementById('stack-total').textContent = "Not combined";
+                document.getElementById('stack-total-note').textContent = "Compare the examples one by one. This demo does not establish that opportunities can be added or that they will become savings.";
             } else {
                 // Upload mode: tie strictly to source-recorded numbers in supplied exports
                 const hasLossStreams = Boolean(data.labor || data.voids || data.discounts || data.modifiers);
@@ -3025,15 +3025,6 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
             const panel = document.getElementById('margin-simulator-panel');
             if (!panel) return;
 
-            let monthlyDirect = 0;
-            let annualDirect = 0;
-            if (SIM_STATE.f01) { monthlyDirect += 1731; annualDirect += 20772; }
-            if (SIM_STATE.f02) { monthlyDirect += 1600; annualDirect += 19200; }
-            if (SIM_STATE.f03) { monthlyDirect += 1222; annualDirect += 14658; }
-            if (SIM_STATE.turns) { monthlyDirect += 2208; annualDirect += 26500; }
-
-            const maxPossibleAnnual = 54630 + 26500;
-            const pct = Math.min(100, Math.round((annualDirect / maxPossibleAnnual) * 100));
             const activeCount = [SIM_STATE.f01, SIM_STATE.f02, SIM_STATE.f03, SIM_STATE.f04, SIM_STATE.turns].filter(Boolean).length;
 
             panel.innerHTML = `
@@ -3043,24 +3034,24 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                             🎛️ Interactive "Fix It Before Next Friday" Margin Simulator
                         </div>
                         <h4 style="font-family: var(--font-serif); font-size: 1.35rem; margin: 0.25rem 0 0.35rem 0; color: var(--text-primary);">
-                            Toggle Operational Fixes to Simulate Projected Recovery
+                            Choose Operational Fixes to Test
                         </h4>
                         <p style="font-size: 12.8px; color: var(--text-secondary); margin: 0; line-height: 1.45;">
-                            Test which POS and shift adjustments you want to deploy this week. Direct POS &amp; payroll fixes recover up to <strong>$4,553/mo ($54,630/yr)</strong> before counting table-turn upside.
+                            Explore POS and shift adjustments using synthetic records. Compare scenarios individually; their effects may overlap and are not realized savings.
                         </p>
                     </div>
                     <div class="sim-counter-box">
                         <div style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-gold);">
-                            Simulated Recovery (${activeCount}/5 Fixes Active)
+                            Synthetic scenario
                         </div>
                         <div style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700; color: #2DD4BF; line-height: 1.15; margin-top: 2px;" id="sim-monthly-readout">
-                            +$${formatNum(monthlyDirect)} / mo
+                            ${activeCount} of 5 selected
                         </div>
                         <div style="font-family: var(--font-mono); font-size: 11.5px; color: rgba(250, 249, 245, 0.85); margin-top: 2px;" id="sim-annual-readout">
-                            +$${formatNum(annualDirect)} / yr projected ${SIM_STATE.f04 ? '&bull; +$9,840/yr COGS accuracy' : ''}
+                            ${SIM_STATE.f04 ? 'Staff meals: reporting change only, no cash gain' : 'No combined savings estimate'}
                         </div>
                         <div style="height: 6px; background: rgba(255,255,255,0.12); border-radius: 999px; overflow: hidden; margin-top: 8px;">
-                            <div style="width: ${pct}%; height: 100%; background: linear-gradient(90deg, #2DD4BF, #C5A059); transition: width 220ms ease;"></div>
+                            <div style="width: ${activeCount * 20}%; height: 100%; background: linear-gradient(90deg, #2DD4BF, #C5A059); transition: width 220ms ease;"></div>
                         </div>
                     </div>
                 </div>
@@ -3070,7 +3061,7 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                         <div>
                             <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--accent-teal); font-weight: 700;">F-02 &bull; 5-MIN POS SETTING &bull; +$1,600/MO</div>
                             <div style="font-weight: 600; font-size: 13px; color: var(--text-primary); margin-top: 2px;">Cap "10% Off $50+" Promo at $5.00 Max</div>
-                            <div style="font-size: 11.5px; color: var(--text-secondary);">Recovers $3,200/60d ($19,200/yr) across 940 checks</div>
+                            <div style="font-size: 11.5px; color: var(--text-secondary);">Modeled price difference: $3,200 across 940 synthetic checks over 60 days</div>
                         </div>
                         <div class="sim-switch-pill"></div>
                     </div>
@@ -3088,7 +3079,7 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                         <div>
                             <div style="font-family: var(--font-mono); font-size: 10.5px; color: #991B1B; font-weight: 700;">F-01 &bull; SHIFT + TABLET RULE &bull; +$1,731/MO</div>
                             <div style="font-weight: 600; font-size: 13px; color: var(--text-primary); margin-top: 2px;">Shift 2.5 Prep Hrs to AM + Throttle Tablets &gt;16</div>
-                            <div style="font-size: 11.5px; color: var(--text-secondary);">Saves $1,141/mo OT premium + $590/mo rush voids (+$20,772/yr)</div>
+                            <div style="font-size: 11.5px; color: var(--text-secondary);">Illustrative overtime premium and rush void figures; verify causes in service before acting</div>
                         </div>
                         <div class="sim-switch-pill"></div>
                     </div>
@@ -3150,7 +3141,7 @@ Burger & Sandwiches,Gluten-Free Bun,480,1.00,1.7458,-358.00`;
                                 ${data.restaurantName} — Friday / Saturday Service Protocol
                             </h3>
                             <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary);">
-                                Target Impact: <strong>$4,553/mo ($54,630/yr)</strong> direct cost &amp; pricing recovery &bull; Check off items at 4:15 PM lineup
+                                Synthetic example &bull; No client results or projected total &bull; Check off items at 4:15 PM lineup
                             </div>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
