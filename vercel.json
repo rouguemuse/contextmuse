@@ -44,17 +44,17 @@
     },
     {
       "source": "/custom-tools/",
-      "destination": "/custom/",
+      "destination": "/build/",
       "permanent": true
     },
     {
       "source": "/custom-builds/",
-      "destination": "/custom/",
+      "destination": "/build/",
       "permanent": true
     },
     {
       "source": "/work-with-me/",
-      "destination": "/services/",
+      "destination": "/method/#ways-to-work-together",
       "permanent": true
     },
     {
@@ -64,7 +64,7 @@
     },
     {
       "source": "/websites/",
-      "destination": "/custom/",
+      "destination": "/build/",
       "permanent": true
     },
     {
@@ -79,7 +79,22 @@
     },
     {
       "source": "/portfolio/",
-      "destination": "/systems/client-builds/",
+      "destination": "/work/",
+      "permanent": true
+    },
+    {
+      "source": "/index/",
+      "destination": "/work/#content-index",
+      "permanent": true
+    },
+    {
+      "source": "/design-intelligence/",
+      "destination": "/lab/design-intelligence/",
+      "permanent": true
+    },
+    {
+      "source": "/blueprints/prompt-pack/",
+      "destination": "/prompt-pack/",
       "permanent": true
     }
   ],
@@ -125,14 +140,6 @@
       "destination": "/lab/design-intelligence/index.html"
     },
     {
-      "source": "/design-intelligence",
-      "destination": "/design-intelligence/index.html"
-    },
-    {
-      "source": "/design-intelligence/",
-      "destination": "/design-intelligence/index.html"
-    },
-    {
       "source": "/method",
       "destination": "/method/index.html"
     },
@@ -146,14 +153,6 @@
     },
     {
       "source": "/prompt-pack/",
-      "destination": "/prompt-pack/index.html"
-    },
-    {
-      "source": "/blueprints/prompt-pack",
-      "destination": "/prompt-pack/index.html"
-    },
-    {
-      "source": "/blueprints/prompt-pack/",
       "destination": "/prompt-pack/index.html"
     }
   ],
