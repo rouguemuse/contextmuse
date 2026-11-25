@@ -135,39 +135,28 @@ export default function EditorialEvidenceFrame({
           </div>
         </div>
 
-        {/* Clean Full-Bleed Edge-to-Edge Image Stage (Zero Pillarboxes, Zero Floating Overlays) */}
-        <div
+        {/* Consistent, padded stage. The capture is evidence, so never crop it to fill the frame. */}
+        <button
+          type="button"
           onClick={() => setInspectOpen(true)}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              setInspectOpen(true);
-            }
-          }}
-          aria-label={`Click to expand ${title || activePlate.alt}`}
-          className={`group relative min-w-0 w-full bg-[#090B0D] cursor-zoom-in overflow-hidden ${
-            variant === 'lead' ? '' : 'aspect-[16/11]'
-          }`}
+          aria-label={`Expand full screenshot for ${title || activePlate.alt}`}
+          className="relative block aspect-[16/11] w-full min-w-0 appearance-none border-0 bg-[#090B0D] p-0 cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[#D9A62E]"
         >
-          <img
-            src={activePlate.src}
-            alt={activePlate.alt}
-            className={
-              variant === 'lead'
-                ? 'w-full h-auto block transition-transform duration-200 group-hover:scale-[1.005]'
-                : 'w-full h-full object-cover object-top block transition-transform duration-200 group-hover:scale-[1.01]'
-            }
-            loading={loading}
-            fetchPriority={fetchPriority}
-            decoding="async"
-          />
-        </div>
+          <span className={`absolute inset-0 block ${variant === 'lead' ? 'p-3 sm:p-4' : 'p-2.5 sm:p-3'}`}>
+            <img
+              src={activePlate.src}
+              alt={activePlate.alt}
+              className="block h-full w-full object-contain object-center"
+              loading={loading}
+              fetchPriority={fetchPriority}
+              decoding="async"
+            />
+          </span>
+        </button>
 
         {/* Slim Caption Footer */}
-        <figcaption className="min-w-0 bg-[#141719] border-t border-[#DFDACE]/12 px-3 py-1.5 flex items-center justify-between gap-2 font-mono text-[10.5px]">
-          <span className="min-w-0 flex-1 text-[#DFDACE]/75 truncate">
+        <figcaption className="min-w-0 bg-[#141719] border-t border-[#DFDACE]/12 px-3 py-2 flex flex-wrap items-start justify-between gap-x-2 gap-y-1 font-mono text-[10.5px]">
+          <span className="min-w-0 flex-1 text-[#DFDACE]/75 break-words">
             {activePlate.caption}
           </span>
           <span className="text-[#D9A62E] shrink-0 hidden sm:inline">
