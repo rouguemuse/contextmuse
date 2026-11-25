@@ -140,12 +140,48 @@
             padding: 2px 8px;
             border-radius: 4px;
         }
-        .pow-card-media img {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            object-fit: cover;
-            object-position: top center;
+        .pow-card-preview {
             display: block;
+            min-width: 0;
+            background: #091311;
+        }
+        .pow-card-preview:focus-visible {
+            outline: 2px solid #C5A059;
+            outline-offset: -3px;
+        }
+        .pow-card-preview-stage {
+            position: relative;
+            display: block;
+            aspect-ratio: 16 / 11;
+        }
+        .pow-card-preview img {
+            position: absolute;
+            inset: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding: clamp(6px, 1.6vw, 14px);
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            margin: 0;
+        }
+        .pow-card-preview-label {
+            display: block;
+            padding: 5px 10px 7px;
+            color: #D8C7A5;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font: 10px/1.3 var(--font-mono, monospace);
+        }
+        .pow-browser-url {
+            min-width: 0;
+            margin-inline-start: 8px;
+            overflow-wrap: anywhere;
+            text-align: right;
+        }
+        @media (max-width: 480px) {
+            .pow-card-custom { padding: 1rem; }
         }
     </style>
 
@@ -244,7 +280,7 @@
                     </p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 2rem;">
                     <!-- Card: Lone Wolf Dumpsters -->
                     <div class="pow-card-custom">
                         <div>
@@ -257,7 +293,12 @@
                                     </div>
                                     <span class="pow-browser-url">lonewolf-dumpsters.vercel.app</span>
                                 </div>
-                                <img src="/assets/images/lonewolf-screenshot.webp" alt="Lone Wolf Dumpsters live website and contractor intake system" loading="lazy">
+                                <a class="pow-card-preview" href="/assets/images/lonewolf-screenshot.webp">
+                                    <span class="pow-card-preview-stage">
+                                        <img src="/assets/images/lonewolf-screenshot.webp" alt="Lone Wolf Dumpsters live website and contractor intake system" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="pow-card-preview-label">Open full preview</span>
+                                </a>
                             </div>
                             <span class="pow-capability-badge teal">Client Build</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Lone Wolf Dumpsters</h3>
@@ -285,7 +326,12 @@
                                     </div>
                                     <span class="pow-browser-url">edrpartyrentals.com</span>
                                 </div>
-                                <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals bilingual inventory catalog and booking platform" loading="lazy">
+                                <a class="pow-card-preview" href="/assets/images/edrpartyrentals-screenshot.webp">
+                                    <span class="pow-card-preview-stage">
+                                        <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals bilingual inventory catalog and booking platform" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="pow-card-preview-label">Open full preview</span>
+                                </a>
                             </div>
                             <span class="pow-capability-badge teal">Client Build</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">EDR Party Rentals</h3>
@@ -313,7 +359,12 @@
                                     </div>
                                     <span class="pow-browser-url">d2autodetail.com</span>
                                 </div>
-                                <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail automotive intake portal" loading="lazy">
+                                <a class="pow-card-preview" href="/assets/images/d2autodetail-screenshot.webp">
+                                    <span class="pow-card-preview-stage">
+                                        <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail automotive intake portal" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="pow-card-preview-label">Open full preview</span>
+                                </a>
                             </div>
                             <span class="pow-capability-badge teal">Service Concept</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">D2 Auto Detail</h3>
@@ -343,7 +394,7 @@
                     </p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 2rem;">
                     <!-- Card: INNcontrol Coils -->
                     <div class="pow-card-custom pow-card-dark">
                         <div>
@@ -356,7 +407,12 @@
                                     </div>
                                     <span class="pow-browser-url">inncontrolcoils.com</span>
                                 </div>
-                                <img src="/assets/images/inncontrol-commercial-platform.webp" alt="INNcontrol Coils commercial PTAC coil refurbishing platform" width="1440" height="900" loading="lazy">
+                                <a class="pow-card-preview" href="/assets/captures/inncontrol-live.jpg">
+                                    <span class="pow-card-preview-stage">
+                                        <img src="/assets/captures/inncontrol-live.jpg" alt="INNcontrol Coils commercial PTAC coil refurbishing platform homepage viewport" width="1024" height="798" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="pow-card-preview-label">Open full preview</span>
+                                </a>
                             </div>
                             <span class="pow-capability-badge indigo" style="color: #A5B4FC;">Field Scoping &amp; Estimation</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">INNcontrol Coils</h3>
@@ -384,7 +440,12 @@
                                     </div>
                                     <span class="pow-browser-url">contextmuse.com/signal</span>
                                 </div>
-                                <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard Preview" loading="lazy">
+                                <a class="pow-card-preview" href="/assets/images/signal-priority-view.webp">
+                                    <span class="pow-card-preview-stage">
+                                        <img src="/assets/images/signal-priority-view.webp" alt="Signal Priority View Dashboard Preview" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="pow-card-preview-label">Open full preview</span>
+                                </a>
                                 <div style="font-family: var(--font-mono); font-size: 10px; color: rgba(250, 249, 245, 0.55); margin-top: 0.5rem; text-align: center;">Synthetic Demonstration Dataset — simulated operational telemetry for demonstration.</div>
                             </div>
                             <span class="pow-capability-badge indigo" style="color: #A5B4FC;">Diagnostic Decision Support</span>
@@ -432,7 +493,7 @@
                     </p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 2rem;">
                     <!-- Card: MadeOfReasons -->
                     <div class="pow-card-custom">
                         <div>
@@ -445,7 +506,12 @@
                                     </div>
                                     <span class="pow-browser-url">madeofreasons.com</span>
                                 </div>
-                                <img src="/assets/images/madeofreasons-screenshot.webp" alt="MadeOfReasons interactive web application interface" loading="lazy">
+                                <a class="pow-card-preview" href="/assets/images/madeofreasons-screenshot.webp">
+                                    <span class="pow-card-preview-stage">
+                                        <img src="/assets/images/madeofreasons-screenshot.webp" alt="MadeOfReasons interactive web application interface" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="pow-card-preview-label">Open full preview</span>
+                                </a>
                             </div>
                             <span class="pow-capability-badge amber" style="background: rgba(197, 160, 89, 0.15); color: #9E7D3B; border-color: rgba(197, 160, 89, 0.3);">Relational Application</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">MadeOfReasons</h3>
@@ -475,7 +541,12 @@
                                     </div>
                                     <span class="pow-browser-url">contextmuse.com/gensort</span>
                                 </div>
-                                <img src="/assets/images/gensort-library.webp" alt="GenSort Workspace Preview" loading="lazy">
+                                <a class="pow-card-preview" href="/assets/images/gensort-library.webp">
+                                    <span class="pow-card-preview-stage">
+                                        <img src="/assets/images/gensort-library.webp" alt="GenSort Workspace Preview" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="pow-card-preview-label">Open full preview</span>
+                                </a>
                             </div>
                             <span class="pow-capability-badge amber">Visual Intelligence</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">GenSort Visual Intelligence</h3>
@@ -505,7 +576,12 @@
                                     </div>
                                     <span class="pow-browser-url">mapswithteeth.org</span>
                                 </div>
-                                <img src="/assets/images/mapswithteeth-screenshot.webp" alt="Maps With Teeth Survivor Continuity Platform Preview" loading="lazy">
+                                <a class="pow-card-preview" href="/assets/images/mapswithteeth-screenshot.webp">
+                                    <span class="pow-card-preview-stage">
+                                        <img src="/assets/images/mapswithteeth-screenshot.webp" alt="Maps With Teeth Survivor Continuity Platform Preview" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="pow-card-preview-label">Open full preview</span>
+                                </a>
                             </div>
                             <span class="pow-capability-badge amber">Civic / Public Infrastructure Initiative</span>
                             <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0 0 0.5rem 0; font-weight: 500;">Maps With Teeth</h3>

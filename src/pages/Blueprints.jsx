@@ -798,13 +798,21 @@ export default function Blueprints() {
                   </div>
 
                   {/* Uncropped High-Resolution 1440px Studio Screenshot */}
-                  <div className="relative bg-[#F0E8D9] overflow-hidden">
+                  <a
+                    href="/assets/captures/blueprints/1440px_desktop_landing_studio.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block bg-[#262724] p-2 sm:p-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E5E750] focus-visible:outline-offset-[-2px]"
+                  >
                     <img
                       src="/assets/captures/blueprints/1440px_desktop_landing_studio.png"
-                      alt="Literary Brutalism Website Studio live 1440px interface showing the top customization HUD and brutalist editorial landing page"
-                      className="w-full h-auto block"
+                      alt="Open full Literary Brutalism Website Studio interface and editorial landing page preview"
+                      width={1440}
+                      height={1080}
+                      className="block h-auto w-full"
+                      decoding="async"
                     />
-                  </div>
+                  </a>
 
                   {/* Subtle Architectural Footnote Strip inside Specimen */}
                   <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#F2ECE1]/15 bg-[#141817] px-4 py-2.5 font-mono text-[10.5px] text-[#F2ECE1]/85">
@@ -817,23 +825,36 @@ export default function Blueprints() {
                   </div>
                 </div>
 
-                {/* Compositional Interruption: Overlapping 390px Mobile & Audio Reader Detail Card */}
-                <div className="mt-6 sm:mt-0 sm:absolute sm:-bottom-10 sm:-left-6 z-10 max-w-[330px] border-[2px] border-[#141817] bg-[#FAF8F3] p-3.5 shadow-[6px_6px_0_#E34232]">
-                  <div className="flex items-center justify-between gap-2 border-b border-[#141817]/20 pb-1.5 mb-2 font-mono text-[9.5px] font-bold uppercase tracking-wider">
-                    <span className="text-[#E34232]">● FIG. 01B // BUILT-IN AUDIO &amp; READER</span>
-                    <span className="text-[#141817]/60">EXCERPT.HTML</span>
-                  </div>
-                  <div className="border border-[#141817] bg-[#F0E8D9] overflow-hidden mb-2">
+                {/* Second view: keep the reader legible without covering the studio capture. */}
+                <figure className="mt-7 grid min-w-0 gap-3 border-[2px] border-[#141817] bg-[#FAF8F3] p-3.5 shadow-[6px_6px_0_#E34232] sm:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] sm:items-center">
+                  <figcaption className="space-y-2">
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#963125]">
+                      FIG. 01B / BUILT-IN AUDIO &amp; READER
+                    </p>
+                    <p className="font-mono text-xs leading-relaxed text-[#141817]/85">
+                      Chapter excerpt and transcript reader, with a native MP3/WAV sample player and edition cards.
+                    </p>
+                  </figcaption>
+                  <a
+                    href="/assets/captures/blueprints/1440px_desktop_excerpt_audio.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block min-w-0 border border-[#141817] bg-[#262724] p-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#963125]"
+                  >
                     <img
                       src="/assets/captures/blueprints/1440px_desktop_excerpt_audio.png"
-                      alt="Close-up preview of the Chapter Excerpt Reader and native HTML5 audio player"
-                      className="w-full h-24 object-cover object-top block"
+                      alt="Full browser viewport of the chapter excerpt reader and audio player"
+                      width={1440}
+                      height={1080}
+                      className="block h-auto w-full"
+                      loading="lazy"
+                      decoding="async"
                     />
-                  </div>
-                  <p className="font-mono text-[10px] leading-snug text-[#141817]/85">
-                    Includes long-form chapter/transcript reader paired with a native MP3/WAV audio sample bar and direct Stripe edition cards.
-                  </p>
-                </div>
+                    <span className="block px-1.5 pt-1.5 font-mono text-[10px] text-[#F2ECE1] underline underline-offset-2">
+                      Open full reader preview
+                    </span>
+                  </a>
+                </figure>
               </div>
             </div>
           </div>

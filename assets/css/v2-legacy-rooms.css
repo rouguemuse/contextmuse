@@ -1,0 +1,43 @@
+/* Adopt the room shell without retheming case-study artifacts or intake fields. */
+.cm-v2-legacy-room-page .cm-v2-header {
+  position: relative;
+}
+
+.cm-v2-legacy-room-page .cm-v2-context-pill {
+  max-width: 100%;
+  white-space: normal;
+}
+
+.cm-v2-legacy-room-page .cm-v2-room-link,
+.cm-v2-legacy-room-page .cm-v2-cta {
+  min-height: 32px;
+}
+
+.cm-v2-legacy-room-page .cm-v2-legacy-footer {
+  background: var(--cm-v2-ink);
+  color: var(--cm-v2-bone);
+  border-top: 1px solid var(--cm-v2-ink2);
+}
+
+.cm-v2-legacy-room-page .cm-v2-legacy-footer :is(.logo, .footer-col-title, .footer-link, .footer-tagline, .footer-copyright) {
+  color: var(--cm-v2-bone);
+}
+
+.cm-v2-legacy-room-page .cm-v2-legacy-footer .footer-link:hover {
+  color: var(--cm-v2-mustard);
+}
+
+.cm-v2-legacy-room-page .footer-links-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 126px), 1fr));
+}
+
+/* Keep both screenshot compositions intact, in a common bounded stage. */
+.cm-v2-legacy-room-page .proof-img-container {
+  box-sizing: border-box;
+  padding: clamp(8px, 1.2vw, 16px);
+}
+.cm-v2-legacy-room-page .proof-img-container img {
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}

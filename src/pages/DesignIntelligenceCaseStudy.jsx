@@ -1912,7 +1912,7 @@ export default function DesignIntelligenceCaseStudy() {
               <img
                 src="/assets/images/design-intelligence/exp01_after_mobile.png"
                 alt="Context and Muse mobile viewport 390x844 after refinement"
-                className="w-full h-auto border border-[#EDE9E0]/10 max-h-[260px] object-cover object-top mx-auto"
+                className="block h-auto w-auto max-h-[300px] max-w-full border border-[#EDE9E0]/10 object-contain mx-auto"
               />
               <figcaption className="font-mono text-[10px] text-[#EDE9E0]/65 mt-2 leading-relaxed">
                 x = 20px header &amp; hero outer margin; room tiles retain 24px (p-6) touch inset.
