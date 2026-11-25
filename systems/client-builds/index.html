@@ -82,17 +82,18 @@
         }
         .case-study-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
             gap: 4rem;
             align-items: start;
         }
         @media (max-width: 960px) {
             .case-study-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
                 gap: 2.5rem;
             }
         }
         
+        .case-study-grid > * { min-width: 0; }
         .browser-mockup {
             background: #142420;
             border-radius: 8px;
@@ -129,14 +130,37 @@
             padding: 3px 12px;
             border-radius: 12px;
         }
+        .browser-preview {
+            display: block;
+            min-width: 0;
+            background: #091311;
+        }
+        .browser-preview:focus-visible { outline: 2px solid #C5A059; outline-offset: -3px; }
+        .browser-preview-stage {
+            display: block;
+            position: relative;
+            aspect-ratio: 16 / 11;
+        }
         .browser-img {
+            position: absolute;
+            inset: 0;
+            box-sizing: border-box;
             display: block;
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 10.5;
-            object-fit: cover;
-            object-position: top center;
+            height: 100%;
+            padding: clamp(6px, 1.6vw, 14px);
+            object-fit: contain;
+            object-position: center;
         }
+        .browser-preview-label {
+            display: block;
+            padding: 6px 12px 8px;
+            color: #D8C7A5;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font: 10px/1.3 var(--font-mono, monospace);
+        }
+        .browser-url { min-width: 0; overflow-wrap: anywhere; text-align: right; }
         
         .study-meta {
             font-family: var(--font-mono);
@@ -502,7 +526,12 @@
                                 </div>
                                 <span class="browser-url">lonewolf-dumpsters.vercel.app</span>
                             </div>
-                            <img src="/assets/images/lonewolf-screenshot.webp" alt="Lone Wolf Dumpsters live website and customer intake system" class="browser-img">
+                            <a class="browser-preview" href="/assets/images/lonewolf-screenshot.webp">
+                                <span class="browser-preview-stage">
+                                    <img src="/assets/images/lonewolf-screenshot.webp" alt="Lone Wolf Dumpsters live website and customer intake system" class="browser-img">
+                                </span>
+                                <span class="browser-preview-label">Open full preview</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -607,7 +636,12 @@
                                 </div>
                                 <span class="browser-url">inncontrolcoils.com</span>
                             </div>
-                            <img src="/assets/images/inncontrol-commercial-platform.webp" alt="INNcontrol Coils commercial PTAC refurbishing web platform" class="browser-img" width="1440" height="900" loading="lazy">
+                            <a class="browser-preview" href="/assets/captures/inncontrol-live.jpg">
+                                <span class="browser-preview-stage">
+                                    <img src="/assets/captures/inncontrol-live.jpg" alt="INNcontrol Coils commercial PTAC refurbishing web platform homepage viewport" class="browser-img" width="1024" height="798" loading="lazy">
+                                </span>
+                                <span class="browser-preview-label">Open full preview</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -713,7 +747,12 @@
                                 </div>
                                 <span class="browser-url">edrpartyrentals.com</span>
                             </div>
-                            <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory reservation engine" class="browser-img">
+                            <a class="browser-preview" href="/assets/images/edrpartyrentals-screenshot.webp">
+                                <span class="browser-preview-stage">
+                                    <img src="/assets/images/edrpartyrentals-screenshot.webp" alt="EDR Party Rentals inventory reservation engine" class="browser-img">
+                                </span>
+                                <span class="browser-preview-label">Open full preview</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -765,7 +804,12 @@
                                 </div>
                                 <span class="browser-url">d2autodetail.com</span>
                             </div>
-                            <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail customer acquisition and media portal" class="browser-img">
+                            <a class="browser-preview" href="/assets/images/d2autodetail-screenshot.webp">
+                                <span class="browser-preview-stage">
+                                    <img src="/assets/images/d2autodetail-screenshot.webp" alt="D2 Auto Detail customer acquisition and media portal" class="browser-img">
+                                </span>
+                                <span class="browser-preview-label">Open full preview</span>
+                            </a>
                         </div>
                     </div>
                 </div>
