@@ -920,7 +920,423 @@
             font-weight: bold;
         }
 
-    </style>
+    
+        
+        /* Founder-Led In-Depth Audit Banner */
+        .hp-founder-audit-banner {
+            background: linear-gradient(135deg, #121929 0%, #1A243B 100%);
+            border: 1.5px solid #D9A62E;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.25rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(217, 166, 46, 0.15);
+            position: relative;
+        }
+        @media (min-width: 768px) {
+            .hp-founder-audit-banner {
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+        .hp-founder-badge {
+            display: inline-block;
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #0A0D14;
+            background: #D9A62E;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 0.65rem;
+        }
+        .hp-founder-title {
+            font-family: var(--font-serif, serif);
+            font-size: clamp(20px, 2.5vw, 24px);
+            color: #FAF9F5;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        .hp-founder-desc {
+            font-size: 13px;
+            color: #C5BFB3;
+            line-height: 1.55;
+            margin: 0 0 1rem 0;
+            max-width: 65ch;
+        }
+        .hp-founder-perks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.25rem;
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            color: #E8E4D9;
+        }
+        .hp-founder-perks span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .hp-founder-audit-right {
+            text-align: left;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        @media (min-width: 768px) {
+            .hp-founder-audit-right {
+                text-align: right;
+                border-top: none;
+                padding-top: 0;
+                min-width: 220px;
+                border-left: 1px solid rgba(255, 255, 255, 0.12);
+                padding-left: 2rem;
+            }
+        }
+        .hp-founder-price {
+            font-family: var(--font-mono, monospace);
+            font-size: 28px;
+            font-weight: 700;
+            color: #FAF9F5;
+            line-height: 1;
+        }
+        .hp-founder-timing {
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            color: #8C887E;
+        }
+        .hp-founder-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #D9A62E;
+            color: #0A0D14 !important;
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 10px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-top: 4px;
+        }
+        .hp-founder-btn:hover {
+            background: #ECC357;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(217, 166, 46, 0.3);
+        }
+        .hp-founder-subnote {
+            font-size: 10px;
+            color: #9E998E;
+            font-family: var(--font-sans, sans-serif);
+            margin-top: 2px;
+        }
+
+/* ── MODAL: INSTANT WEBSITE AUDIT & PURCHASE SOLUTIONS ── */
+        .hp-audit-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 13, 20, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 99999;
+            overflow-y: auto;
+            padding: 1.5rem 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .hp-audit-backdrop.is-active {
+            display: flex;
+            animation: hpFadeIn 0.25s ease-out;
+        }
+        @keyframes hpFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .hp-audit-modal {
+            background: #0E131F;
+            color: #FAF9F5;
+            border: 1px solid rgba(217, 166, 46, 0.4);
+            border-radius: 12px;
+            max-width: 980px;
+            width: 100%;
+            margin: auto;
+            padding: clamp(1.5rem, 3.5vw, 2.5rem);
+            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6), 0 0 40px rgba(217, 166, 46, 0.12);
+            position: relative;
+            box-sizing: border-box;
+        }
+        .hp-modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #E8E4D9;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        .hp-modal-close:hover {
+            background: #D9A62E;
+            color: #0A0D14;
+            border-color: #D9A62E;
+        }
+        .hp-audit-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #D9A62E;
+            background: rgba(217, 166, 46, 0.12);
+            border: 1px solid rgba(217, 166, 46, 0.3);
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .hp-audit-title {
+            font-family: var(--font-serif, serif);
+            font-size: clamp(24px, 3.2vw, 36px);
+            color: #FAF9F5;
+            margin: 0 0 0.5rem 0;
+            font-weight: 500;
+            line-height: 1.15;
+        }
+        .hp-audit-url-pill {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            color: #5C6A9C;
+            background: rgba(92, 106, 156, 0.15);
+            padding: 3px 8px;
+            border-radius: 4px;
+            word-break: break-all;
+        }
+        /* Scanning State */
+        .hp-scan-container {
+            margin: 2rem 0 1rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .hp-progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .hp-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #5C6A9C, #D9A62E);
+            transition: width 0.3s ease;
+        }
+        .hp-scan-log {
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            color: #E8E4D9;
+            min-height: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hp-scan-spinner {
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(217, 166, 46, 0.25);
+            border-top-color: #D9A62E;
+            border-radius: 50%;
+            animation: hpSpin 0.75s linear infinite;
+        }
+        @keyframes hpSpin {
+            to { transform: rotate(360deg); }
+        }
+        /* Solutions Grid */
+        .hp-solutions-view {
+            display: none;
+            margin-top: 1.5rem;
+        }
+        .hp-solutions-view.is-visible {
+            display: block;
+            animation: hpFadeIn 0.35s ease-out;
+        }
+        .hp-solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+        .hp-sol-card {
+            background: #141A29;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .hp-sol-card:hover {
+            border-color: #D9A62E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        .hp-sol-card.featured {
+            border: 2px solid #D9A62E;
+            background: #192033;
+        }
+        .hp-sol-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .hp-sol-category {
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #D9A62E;
+            font-weight: 700;
+        }
+        .hp-sol-badge {
+            font-family: var(--font-mono, monospace);
+            font-size: 9.5px;
+            background: rgba(217, 166, 46, 0.2);
+            color: #F0CA65;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .hp-sol-title {
+            font-family: var(--font-serif, serif);
+            font-size: 18px;
+            color: #FAF9F5;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        .hp-sol-defect {
+            font-size: 12px;
+            color: #E08A8A;
+            background: rgba(224, 138, 138, 0.1);
+            border-left: 2px solid #E08A8A;
+            padding: 6px 8px;
+            margin-bottom: 0.75rem;
+            font-family: var(--font-sans, sans-serif);
+            line-height: 1.4;
+        }
+        .hp-sol-scope {
+            font-size: 12.5px;
+            color: #B5B0A4;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .hp-sol-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .hp-sol-price {
+            font-family: var(--font-mono, monospace);
+            font-size: 14px;
+            color: #FAF9F5;
+            font-weight: 700;
+        }
+        .hp-sol-timeline {
+            font-size: 11px;
+            color: #8C887E;
+            font-family: var(--font-mono, monospace);
+        }
+        .hp-sol-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #D9A62E;
+            color: #0A0D14;
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .hp-sol-btn:hover {
+            background: #ECC357;
+            transform: translateX(1px);
+        }
+        .hp-modal-footbar {
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 12px;
+            color: #8C887E;
+        }
+        .hp-footbar-link {
+            color: #D9A62E;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .hp-footbar-link:hover {
+            text-decoration: underline;
+        }
+
+</style>
+<style>
+.hp-audit-modal {background:#fbfaf7;color:#222522;border:1px solid #ccc8bf;border-radius:4px;box-shadow:0 24px 72px #0004}
+.hp-modal-close {position:static;width:auto;height:auto;margin:0 0 1.4rem auto;padding:.55rem .8rem;border-radius:2px;background:white;color:#23282a;border-color:#a9aaa3;font:inherit;font-size:.9rem}
+.hp-audit-header-badge,.hp-founder-badge,.hp-sol-category,.hp-sol-badge {color:#802e22;background:transparent;border:0}
+.hp-audit-title,.hp-founder-title,.hp-sol-title,.hp-founder-price,.hp-sol-price {color:#202422}
+.hp-audit-modal [style*="color:"],.hp-audit-modal .hp-founder-desc,.hp-founder-perks span,.hp-founder-timing,.hp-founder-subnote,.hp-sol-scope,.hp-sol-timeline,.hp-footbar-link {color:#444943!important}
+.hp-audit-url-pill,.hp-founder-audit-banner,.hp-sol-card,.hp-sol-card.featured {background:white;color:#252924;border:1px solid #d3d1c8;border-radius:2px;box-shadow:none}
+.hp-founder-audit-banner {border-top:3px solid #913728}
+.hp-founder-audit-right,.hp-sol-footer,.hp-modal-footbar {border-color:#d3d1c8}
+.hp-audit-modal .hp-sol-btn {color:white;background:#23282a;border-radius:2px}
+.hp-audit-modal .hp-sol-btn:hover {color:white;background:#823527}
+.hp-solutions-view.is-visible {animation:none}
+.hp-audit-modal :focus-visible {outline:3px solid #a33e2b;outline-offset:3px}
+@media(max-width:640px){.hp-solutions-grid{grid-template-columns:1fr}.hp-founder-audit-banner{display:block}.hp-founder-audit-right{margin-top:1rem;text-align:left}}
+</style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -1613,6 +2029,195 @@
     </footer>
 
     <!-- Client-Side Analytics & Interaction Scripts -->
+    <!-- ==========================================================================
+         INSTANT WEBSITE AUDIT & PURCHASE SOLUTIONS MODAL
+         ========================================================================== -->
+    <div id="hp-audit-modal-backdrop" class="hp-audit-backdrop" role="dialog" aria-modal="true" aria-labelledby="hp-modal-title">
+        <div class="hp-audit-modal">
+            <button type="button" id="hp-modal-close-btn" class="hp-modal-close" aria-label="Back to homepage">← Back to homepage</button>
+            
+            <div class="hp-audit-header-badge">Context &amp; Muse / Website reviews</div>
+            <h2 id="hp-modal-title" class="hp-audit-title">Your website review</h2>
+            <div style="font-size: 13px; color: #FAF9F5; margin-bottom: 1rem;">
+                Target URL: <span id="hp-modal-url" class="hp-audit-url-pill"></span>
+            </div>
+
+            <!-- Scanning State (Snappy 1.8s sequence) -->
+            <div id="hp-modal-scan" class="hp-scan-container">
+                <div class="hp-progress-bar">
+                    <div id="hp-progress-fill" class="hp-progress-fill"></div>
+                </div>
+                <div class="hp-scan-log">
+                    <div class="hp-scan-spinner"></div>
+                    <span id="hp-scan-status-text">Preparing review options…</span>
+                </div>
+            </div>
+
+            <!-- Solutions Grid (Appears immediately after scan) -->
+            <div id="hp-modal-solutions" class="hp-solutions-view">
+                
+                <!-- FEATURED: IN-DEPTH FOUNDER SYSTEMS DIAGNOSTIC -->
+                <div class="hp-founder-audit-banner">
+                    <div class="hp-founder-audit-left">
+                        <span class="hp-founder-badge">HUMAN ARCHITECT REVIEW · 100% CREDITED</span>
+                        <h3 class="hp-founder-title">In-Depth Founder Systems Diagnostic</h3>
+                        <p class="hp-founder-desc">
+                            Automated scanners only evaluate surface code. Have founder Jayme Volstad personally secret-shop your intake journey, benchmark your competitor search positioning, inspect code &amp; analytics, and deliver an annotated 15–20 min Loom video teardown and 90-day systems roadmap.
+                        </p>
+                        <div class="hp-founder-perks">
+                            <span>✦ 15–20 min custom Loom video</span>
+                            <span>✦ Secret-shopper quote test</span>
+                            <span>✦ Competitor positioning gap</span>
+                            <span>✦ 100% credited toward build</span>
+                        </div>
+                    </div>
+                    <div class="hp-founder-audit-right">
+                        <div class="hp-founder-price">$395</div>
+                        <div class="hp-founder-timing">Fixed rate · 48–72h turnaround</div>
+                        <a href="#" class="hp-founder-btn hp-sol-btn" id="hp-founder-audit-btn" data-service="diagnostic">Request $395 diagnostic &rarr;</a>
+                        <div class="hp-founder-subnote">100% credited toward implementation</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin: 1.75rem 0 0.5rem 0;">
+                    <div style="font-family: var(--font-mono, monospace); font-size: 11px; text-transform: uppercase; color: #D9A62E; font-weight: 700; letter-spacing: 0.1em;">
+                        Or Select a Targeted Sprint Fix
+                    </div>
+                    <div style="font-size: 11px; color: #8C887E; font-family: var(--font-mono, monospace);">
+                        Fixed-scope technical sprints with rapid delivery
+                    </div>
+                </div>
+
+                <div class="hp-solutions-grid">
+                    <!-- Solution 1: Brand Identity -->
+                    <div class="hp-sol-card">
+                        <div>
+                            <div class="hp-sol-top">
+                                <span class="hp-sol-category">Design Architecture</span>
+                                <span class="hp-sol-badge">5-7 Days</span>
+                            </div>
+                            <h3 class="hp-sol-title">Brand Identity &amp; Design System</h3>
+                            
+                            <p class="hp-sol-scope">
+                                Complete typographic scale, high-contrast palette tokens, editorial component library, and vector logo lockups.
+                            </p>
+                        </div>
+                        <div class="hp-sol-footer">
+                            <div>
+                                <div class="hp-sol-price">From $1,500</div>
+                                <div class="hp-sol-timeline">5–7 day turnaround</div>
+                            </div>
+                            <a href="#" class="hp-sol-btn" data-service="brand-identity">Request scope &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Solution 2: Website Redesign (Featured) -->
+                    <div class="hp-sol-card featured">
+                        <div>
+                            <div class="hp-sol-top">
+                                <span class="hp-sol-category">Full build</span>
+                                
+                            </div>
+                            <h3 class="hp-sol-title">Complete Website Redesign &amp; Build</h3>
+                            
+                            <p class="hp-sol-scope">
+                                End-to-end editorial design, custom responsive code, sub-second load velocity, living systems architecture.
+                            </p>
+                        </div>
+                        <div class="hp-sol-footer">
+                            <div>
+                                <div class="hp-sol-price">From $2,500</div>
+                                <div class="hp-sol-timeline">10–14 day turnaround</div>
+                            </div>
+                            <a href="#" class="hp-sol-btn" data-service="website-redesign">Request scope &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Solution 3: Copywriting -->
+                    <div class="hp-sol-card">
+                        <div>
+                            <div class="hp-sol-top">
+                                <span class="hp-sol-category">Message Velocity</span>
+                                <span class="hp-sol-badge">3-5 Days</span>
+                            </div>
+                            <h3 class="hp-sol-title">Strategic Copywriting &amp; Value Prop</h3>
+                            
+                            <p class="hp-sol-scope">
+                                Hard-hitting headline architecture, conversion-focused section copy, objection handling, clear CTAs.
+                            </p>
+                        </div>
+                        <div class="hp-sol-footer">
+                            <div>
+                                <div class="hp-sol-price">From $850</div>
+                                <div class="hp-sol-timeline">3–5 day turnaround</div>
+                            </div>
+                            <a href="#" class="hp-sol-btn" data-service="copywriting">Request scope &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Solution 4: Technical SEO -->
+                    <div class="hp-sol-card">
+                        <div>
+                            <div class="hp-sol-top">
+                                <span class="hp-sol-category">Search Health</span>
+                                <span class="hp-sol-badge">48 Hours</span>
+                            </div>
+                            <h3 class="hp-sol-title">Technical SEO &amp; Search Architecture</h3>
+                            
+                            <p class="hp-sol-scope">
+                                Rich Schema structured markup, metadata overhaul, performance speed pass, indexing &amp; sitemap fix.
+                            </p>
+                        </div>
+                        <div class="hp-sol-footer">
+                            <div>
+                                <div class="hp-sol-price">From $750</div>
+                                <div class="hp-sol-timeline">48-hour sprint</div>
+                            </div>
+                            <a href="#" class="hp-sol-btn" data-service="seo-search">Request scope &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Solution 5: Quoting Engine -->
+                    <div class="hp-sol-card">
+                        <div>
+                            <div class="hp-sol-top">
+                                <span class="hp-sol-category">Lead Conversion</span>
+                                
+                            </div>
+                            <h3 class="hp-sol-title">Custom Quoting &amp; Intake Engine</h3>
+                            
+                            <p class="hp-sol-scope">
+                                Interactive multi-step estimator, automated qualification rules, real-time CRM &amp; email delivery.
+                            </p>
+                        </div>
+                        <div class="hp-sol-footer">
+                            <div>
+                                <div class="hp-sol-price">From $2,500</div>
+                                <div class="hp-sol-timeline">7–10 day turnaround</div>
+                            </div>
+                            <a href="#" class="hp-sol-btn" data-service="quote-lead">Request scope &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hp-modal-footbar">
+                    <div>
+                        Need the technical raw report? 
+                        <a id="hp-modal-deep-report-link" href="/website-system-check/" class="hp-footbar-link">
+                            Open Full 5-Vector Diagnostic Breakdown &rarr;
+                        </a>
+                    </div>
+                    <div>
+                        Prefer a direct conversation? 
+                        <a id="hp-modal-direct-contact-link" href="/contact/?service=diagnostic" class="hp-footbar-link">
+                            Book $395 Founder Review &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
     (function() {
         // Analytics Dispatcher
@@ -1632,18 +2237,91 @@
             });
         }
 
-        // Track Hero Diagnostic Start
+        // ── EMBEDDED HOMEPAGE AUDIT & INSTANT PURCHASE SOLUTIONS MODAL ──
         const heroForm = document.getElementById('hero-diagnostic-form');
+        const auditModalBackdrop = document.getElementById('hp-audit-modal-backdrop');
+        const modalCloseBtn = document.getElementById('hp-modal-close-btn');
+        const modalUrlSpan = document.getElementById('hp-modal-url');
+        const modalScanView = document.getElementById('hp-modal-scan');
+        const modalSolutionsView = document.getElementById('hp-modal-solutions');
+        const progressFill = document.getElementById('hp-progress-fill');
+        const scanStatusText = document.getElementById('hp-scan-status-text');
+        const deepReportLink = document.getElementById('hp-modal-deep-report-link');
+        const directContactLink = document.getElementById('hp-modal-direct-contact-link');
+
+        window.openAuditModal = openAuditModal;
+        function openAuditModal(targetUrl) {
+            const backdrop = document.getElementById('hp-audit-modal-backdrop') || auditModalBackdrop;
+            if (!backdrop) return;
+            
+            // Format URL
+            let cleanUrl = targetUrl.trim();
+            if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
+                cleanUrl = 'https://' + cleanUrl;
+            }
+            let domainOnly = cleanUrl;
+            try { domainOnly = new URL(cleanUrl).hostname; } catch(_) {}
+
+            if (modalUrlSpan) modalUrlSpan.textContent = cleanUrl;
+            if (deepReportLink) deepReportLink.href = '/website-system-check/?url=' + encodeURIComponent(cleanUrl);
+            if (directContactLink) directContactLink.href = '/contact/?service=diagnostic&url=' + encodeURIComponent(cleanUrl);
+
+            // Wire purchase buttons
+            document.querySelectorAll('.hp-sol-btn').forEach(btn => {
+                const service = btn.getAttribute('data-service');
+                btn.href = '/contact/?service=' + encodeURIComponent(service) + '&url=' + encodeURIComponent(cleanUrl);
+            });
+
+            // Show backdrop
+            auditModalBackdrop.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+
+            // Reset scan progress
+            if (modalScanView) modalScanView.style.display = 'block';
+            if (modalSolutionsView) modalSolutionsView.classList.remove('is-visible');
+            if (progressFill) progressFill.style.width = '0%';
+
+            modalCloseBtn?.focus();
+            if (modalScanView) modalScanView.style.display = 'none';
+            if (modalSolutionsView) modalSolutionsView.classList.add('is-visible');
+
+            trackEvent('homepage_audit_modal_open', { target_domain: domainOnly });
+        }
+
+        function closeAuditModal() {
+            if (!auditModalBackdrop) return;
+            auditModalBackdrop.classList.remove('is-active');
+            document.getElementById('hp-target-url')?.focus();
+            document.body.style.overflow = '';
+        }
+
         if (heroForm) {
             heroForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Intercept navigation to immediately pop up the audit modal on the main page
                 const urlInput = document.getElementById('hp-target-url');
                 if (urlInput && urlInput.value) {
-                    let domainOnly = '';
-                    try { domainOnly = new URL(urlInput.value).hostname; } catch(_) { domainOnly = 'url_entered'; }
-                    trackEvent('homepage_free_check_start', { target_domain: domainOnly });
+                    openAuditModal(urlInput.value);
                 }
             });
         }
+
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', closeAuditModal);
+        }
+
+        if (auditModalBackdrop) {
+            auditModalBackdrop.addEventListener('click', function(e) {
+                if (e.target === auditModalBackdrop) {
+                    closeAuditModal();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && auditModalBackdrop && auditModalBackdrop.classList.contains('is-active')) {
+                closeAuditModal();
+            }
+        });
 
         // Track Primary Conversion CTAs
         const heroPrimary = document.getElementById('hero-primary-cta');
@@ -1714,5 +2392,7 @@
         }
     })();
     </script>
+
+    
 </body>
 </html>
