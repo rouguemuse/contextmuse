@@ -604,13 +604,30 @@
 
                                 <!-- Adaptive Block E: Diagnostic Review ($395) -->
                                 <div class="adaptive-block" id="block-diagnostic" style="display: none;">
+                                    <div style="background: rgba(15, 118, 110, 0.08); border: 1.5px solid rgba(15, 118, 110, 0.3); border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 1.5rem;">
+                                        <div style="font-family: var(--font-mono, monospace); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent-teal, #0F766E); letter-spacing: 0.1em; margin-bottom: 0.35rem;">
+                                            ✦ 100% Credited Toward Implementation
+                                        </div>
+                                        <p style="font-size: 13.5px; color: var(--text-secondary, #575651); margin: 0; line-height: 1.5;">
+                                            A forensic human evaluation by Jayme Volstad: customer intake test, competitor positioning gap analysis, 15–20 min Loom video walkthrough, and a prioritized 90-day systems roadmap. The full <strong>$395</strong> fee is credited toward your build if you proceed within 30 days.
+                                        </p>
+                                    </div>
                                     <div class="field-group">
-                                        <label class="field-label" for="inp-diag-url">Website URL to Audit (Optional)</label>
+                                        <label class="field-label" for="inp-diag-url">Website URL to Audit <span style="color: var(--accent-teal);">*</span></label>
                                         <input type="text" id="inp-diag-url" name="diagnostic_target_url" placeholder="https://yourbusiness.com" class="field-input">
                                     </div>
                                     <div class="field-group">
-                                        <label class="field-label" for="inp-diag-symptoms">What feels most inefficient right now?</label>
-                                        <textarea id="inp-diag-symptoms" name="diagnostic_symptoms" rows="3" placeholder="Describe the symptom or inefficiency you want examined..." class="field-textarea"></textarea>
+                                        <label class="field-label" for="inp-diag-symptoms">What feels most broken, confusing, or inefficient right now?</label>
+                                        <textarea id="inp-diag-symptoms" name="diagnostic_symptoms" rows="3" placeholder="e.g. Visitors leave without requesting quotes; quoting takes 2 days; competitors outrank us for key terms..." class="field-textarea"></textarea>
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-diag-competitors">Key Competitors to Benchmark (Optional)</label>
+                                        <input type="text" id="inp-diag-competitors" name="diagnostic_competitors" placeholder="e.g. competitor1.com, competitor2.com" class="field-input">
+                                        <span class="field-hint">We will benchmark their positioning, customer intake clarity, and search presence against yours.</span>
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label" for="inp-diag-goal">Primary Business Goal for this Review</label>
+                                        <input type="text" id="inp-diag-goal" name="diagnostic_primary_goal" placeholder="e.g. Automate quote sizing, double inbound call quality, overhaul brand perception" class="field-input">
                                     </div>
                                 </div>
 
@@ -913,13 +930,21 @@
             const pillLabel = document.getElementById('url-context-label');
 
             const queryMap = {
-                'diagnostic': { key: 'diagnostic', label: 'Business System Diagnostic ($395)' },
-                'audit': { key: 'diagnostic', label: 'Business System Diagnostic ($395)' },
-                'quote-lead': { key: 'quote-lead', label: 'Quote + Lead System' },
-                'custom-system': { key: 'operations-tool', label: 'Custom Operations System' },
-                'restaurant': { key: 'restaurant-data', label: 'Restaurant Operations Review' },
-                'restaurant-data': { key: 'restaurant-data', label: 'Restaurant Operations Review' }
+                'diagnostic': { key: 'diagnostic', label: 'In-Depth Founder Systems Diagnostic ($395 · 100% Credited)', budget: 'under_1000' },
+                'audit': { key: 'diagnostic', label: 'In-Depth Founder Systems Diagnostic ($395 · 100% Credited)', budget: 'under_1000' },
+                'brand-identity': { key: 'website-build', label: 'Brand Identity & Design System ($1,500)', budget: '1000_2500' },
+                'website-redesign': { key: 'website-build', label: 'Complete Website Redesign & Build ($2,500)', budget: '2500_5000' },
+                'copywriting': { key: 'website-conversion', label: 'Strategic Copywriting & Value Prop ($850)', budget: 'under_1000' },
+                'seo-search': { key: 'website-conversion', label: 'Technical SEO & Search Architecture ($750)', budget: 'under_1000' },
+                'quote-lead': { key: 'quote-lead', label: 'Quote + Lead System ($2,500)', budget: '2500_5000' },
+                'custom-system': { key: 'operations-tool', label: 'Custom Operations System', budget: '2500_5000' },
+                'restaurant': { key: 'restaurant-data', label: 'Restaurant Operations Review', budget: '1000_2500' },
+                'restaurant-data': { key: 'restaurant-data', label: 'Restaurant Operations Review', budget: '1000_2500' }
             };
+
+            const targetUrlParam = params.get('url') || params.get('target_url') || params.get('domain');
+            const budgetParam = params.get('budget');
+            const notesParam = params.get('notes');
 
             if (serviceParam && queryMap[serviceParam]) {
                 const target = queryMap[serviceParam];
@@ -928,9 +953,34 @@
                     pillLabel.textContent = target.label;
                     pill.style.display = 'inline-flex';
                 }
+                if (target.budget) {
+                    const budgetSel = document.getElementById('inp-budget');
+                    if (budgetSel) budgetSel.value = target.budget;
+                }
                 setStep(2);
             } else {
                 updateSelectedProblemUI('quote-lead');
+            }
+
+            if (targetUrlParam) {
+                const urlInputs = ['inp-site-universal', 'inp-web-url', 'inp-diag-url'];
+            const compParam = params.get('competitors');
+            if (compParam) {
+                const compEl = document.getElementById('inp-diag-competitors');
+                if (compEl) compEl.value = compParam;
+            }
+                urlInputs.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el && !el.value) el.value = targetUrlParam;
+                });
+            }
+            if (budgetParam) {
+                const bEl = document.getElementById('inp-budget');
+                if (bEl) bEl.value = budgetParam;
+            }
+            if (notesParam) {
+                const nEl = document.getElementById('inp-notes');
+                if (nEl) nEl.value = notesParam;
             }
         });
 
